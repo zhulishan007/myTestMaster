@@ -1,0 +1,1002 @@
+29-08-2020 21:43:39 |  |  | start savetestcase
+29-08-2020 21:43:39 | connection string |  | Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=CS-DC-17)(PORT=1521))(CONNECT_DATA=(SERVER=DEDICACATED)(SERVICE_NAME=orcl)));User Id=GEN_MARS_4;Password=GEN_MARS_4;pooling=false;Connection Timeout=1000;
+29-08-2020 21:43:39 |  |  | before validation
+29-08-2020 21:43:40 |  |  | after validation validation
+29-08-2020 21:43:40 |  |  | after connection 
+29-08-2020 21:43:40 |  |  | start delete count 
+29-08-2020 21:43:40 |  |  | start steps  
+29-08-2020 21:43:40 | stepid: 385065  Run Order: 1 |  | start step update 
+29-08-2020 21:43:41 | stepid: 385065  Run Order: 1 |  | end step update 
+29-08-2020 21:43:41 | stepid: 387629  Run Order: 2 |  | start step update 
+29-08-2020 21:43:41 | stepid: 387629  Run Order: 2 |  | end step update 
+29-08-2020 21:43:41 | stepid: 387350  Run Order: 3 |  | start step update 
+29-08-2020 21:43:42 | stepid: 387350  Run Order: 3 |  | end step update 
+29-08-2020 21:43:42 | stepid: 385287  Run Order: 4 |  | start step update 
+29-08-2020 21:43:42 | stepid: 385287  Run Order: 4 |  | end step update 
+29-08-2020 21:43:42 | stepid: 390439  Run Order: 5 |  | start step update 
+29-08-2020 21:43:42 | stepid: 390439  Run Order: 5 |  | end step update 
+29-08-2020 21:43:42 | stepid: 390438  Run Order: 6 |  | start step update 
+29-08-2020 21:43:43 | stepid: 390438  Run Order: 6 |  | end step update 
+29-08-2020 21:43:43 | stepid: 385568  Run Order: 7 |  | start step update 
+29-08-2020 21:43:43 | stepid: 385568  Run Order: 7 |  | end step update 
+29-08-2020 21:43:43 |  |  | delete column list
+29-08-2020 21:43:43 |  |  | start delete column list
+29-08-2020 21:43:43 |  |  | end delete count 
+29-08-2020 21:43:43 |  |  | start  feed process  
+29-08-2020 21:43:43 | 1074 | 1054 |   feed process ID 
+29-08-2020 21:43:44 |  |  | datatable start  
+29-08-2020 21:43:44 |  |  | Feed Process generate
+29-08-2020 21:43:44 |  |  | Feed Process generate 1
+29-08-2020 21:43:44 |  |  | datasetnames1
+29-08-2020 21:43:44 |  |  | Array bound 
+29-08-2020 21:43:44 | Demo Test_1,demo test |  | Array bound DATASETNAME
+29-08-2020 21:43:44 | 387181,385061 |  | Array bound datasetids
+29-08-2020 21:43:44 | ,ALL_PRODUCTS_OUTPUT |  | Array bound DATASETVALUE
+29-08-2020 21:43:44 |  ,  |  | Array bound q.DATASETDESCRIPTION
+29-08-2020 21:43:44 | 172161,171181 |  | Array bound DataSettingIds
+29-08-2020 21:43:44 |  |  | Inside loop Step1:385065 # demo test #demo test
+29-08-2020 21:43:44 |  |  | Inside loop Des 1:demo test # PegWindow #ASSET_DETAIL
+29-08-2020 21:43:44 |  |  | Inside loop Parameter 1:test # 1 #
+29-08-2020 21:43:44 |  |  | Inside loop Datasetname 1:Demo Test_1
+29-08-2020 21:43:44 |  |  | Inside loop Datasetids 1:387181
+29-08-2020 21:43:44 |  |  | Inside loop settingsid 1:172161
+29-08-2020 21:43:44 |  |  | Inside loop skips 1:4
+29-08-2020 21:43:44 |  |  | Inside loop Datasetvalue 1:
+29-08-2020 21:43:44 |  |  | Inside loop description 1: 
+29-08-2020 21:43:44 |  |  | added:
+29-08-2020 21:43:44 |  |  | Inside loop Step1:385065 # demo test #demo test
+29-08-2020 21:43:44 |  |  | Inside loop Des 1:demo test # PegWindow #ASSET_DETAIL
+29-08-2020 21:43:44 |  |  | Inside loop Parameter 1:test # 1 #
+29-08-2020 21:43:44 |  |  | Inside loop Datasetname 1:demo test
+29-08-2020 21:43:44 |  |  | Inside loop Datasetids 1:385061
+29-08-2020 21:43:44 |  |  | Inside loop settingsid 1:171181
+29-08-2020 21:43:44 |  |  | Inside loop skips 1:4
+29-08-2020 21:43:44 |  |  | Inside loop Datasetvalue 1:ALL_PRODUCTS_OUTPUT
+29-08-2020 21:43:44 |  |  | Inside loop description 1: 
+29-08-2020 21:43:44 |  |  | added:
+29-08-2020 21:43:44 |  |  | datasetnames1
+29-08-2020 21:43:44 | Demo Test_1 |  | datasetnames1 value
+29-08-2020 21:43:44 | demo test |  | datasetnames1 value
+29-08-2020 21:43:44 |  |  | DATASETVALUE value
+29-08-2020 21:43:44 |  |  | DATASETname start
+29-08-2020 21:43:44 | , |  | DATASETVALUE value=
+29-08-2020 21:43:44 | , |  | DATASETname start
+29-08-2020 21:43:44 | ,, |  | DATASETVALUE value=
+29-08-2020 21:43:44 |  |  | Array bound 
+29-08-2020 21:43:44 | Demo Test_1,demo test |  | Array bound DATASETNAME
+29-08-2020 21:43:44 | 387181,385061 |  | Array bound datasetids
+29-08-2020 21:43:44 | ,, |  | Array bound DATASETVALUE
+29-08-2020 21:43:44 |  ,  |  | Array bound q.DATASETDESCRIPTION
+29-08-2020 21:43:44 | 172310,172309 |  | Array bound DataSettingIds
+29-08-2020 21:43:44 |  |  | Inside loop Step1:387629 # demo test #demo test
+29-08-2020 21:43:44 | Save Testcase controller Exception |  | Object reference not set to an instance of an object.
+29-08-2020 21:46:57 |  |  | start savetestcase
+29-08-2020 21:46:57 | connection string |  | Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=CS-DC-17)(PORT=1521))(CONNECT_DATA=(SERVER=DEDICACATED)(SERVICE_NAME=orcl)));User Id=GEN_MARS_4;Password=GEN_MARS_4;pooling=false;Connection Timeout=1000;
+29-08-2020 21:46:57 |  |  | before validation
+29-08-2020 21:46:58 |  |  | after validation validation
+29-08-2020 21:46:58 |  |  | after connection 
+29-08-2020 21:46:58 |  |  | start delete count 
+29-08-2020 21:46:58 |  |  | start steps  
+29-08-2020 21:46:58 | stepid: 385065  Run Order: 1 |  | start step update 
+29-08-2020 21:46:59 | stepid: 385065  Run Order: 1 |  | end step update 
+29-08-2020 21:46:59 | stepid: 387629  Run Order: 2 |  | start step update 
+29-08-2020 21:46:59 | stepid: 387629  Run Order: 2 |  | end step update 
+29-08-2020 21:46:59 | stepid: 387350  Run Order: 3 |  | start step update 
+29-08-2020 21:46:59 | stepid: 387350  Run Order: 3 |  | end step update 
+29-08-2020 21:46:59 | stepid: 385287  Run Order: 4 |  | start step update 
+29-08-2020 21:47:00 | stepid: 385287  Run Order: 4 |  | end step update 
+29-08-2020 21:47:00 | stepid: 390439  Run Order: 5 |  | start step update 
+29-08-2020 21:47:00 | stepid: 390439  Run Order: 5 |  | end step update 
+29-08-2020 21:47:00 | stepid: 390438  Run Order: 6 |  | start step update 
+29-08-2020 21:47:00 | stepid: 390438  Run Order: 6 |  | end step update 
+29-08-2020 21:47:00 | stepid: 385568  Run Order: 7 |  | start step update 
+29-08-2020 21:47:01 | stepid: 385568  Run Order: 7 |  | end step update 
+29-08-2020 21:47:01 |  |  | delete column list
+29-08-2020 21:47:01 |  |  | start delete column list
+29-08-2020 21:47:01 |  |  | end delete count 
+29-08-2020 21:47:01 |  |  | start  feed process  
+29-08-2020 21:47:01 | 1076 | 1056 |   feed process ID 
+29-08-2020 21:47:02 |  |  | datatable start  
+29-08-2020 21:47:02 |  |  | Feed Process generate
+29-08-2020 21:47:02 |  |  | Feed Process generate 1
+29-08-2020 21:47:02 |  |  | datasetnames1
+29-08-2020 21:47:02 |  |  | Array bound 
+29-08-2020 21:47:02 | Demo Test_1,demo test |  | Array bound DATASETNAME
+29-08-2020 21:47:02 | 387181,385061 |  | Array bound datasetids
+29-08-2020 21:47:02 | ,ALL_PRODUCTS_OUTPUT |  | Array bound DATASETVALUE
+29-08-2020 21:47:02 |  ,  |  | Array bound q.DATASETDESCRIPTION
+29-08-2020 21:47:02 | 172161,171181 |  | Array bound DataSettingIds
+29-08-2020 21:47:02 |  |  | Inside loop Step1:385065 # demo test #demo test
+29-08-2020 21:47:02 |  |  | Inside loop Datasetname 1:Demo Test_1
+29-08-2020 21:47:02 |  |  | Inside loop Datasetids 1:387181
+29-08-2020 21:47:02 |  |  | Inside loop settingsid 1:172161
+29-08-2020 21:47:02 |  |  | Inside loop keyword 1:
+29-08-2020 21:47:02 |  |  | Inside loop object 1:
+29-08-2020 21:47:02 |  |  | Inside loop parameter 1:
+29-08-2020 21:47:02 |  |  | Inside loop comments 1:
+29-08-2020 21:47:02 |  |  | Inside loop dataset 1:
+29-08-2020 21:47:02 |  |  | Inside loop skips 1:4
+29-08-2020 21:47:02 |  |  | Inside loop Datasetvalue 1:
+29-08-2020 21:47:02 |  |  | Inside loop description 1: 
+29-08-2020 21:47:02 |  |  | added:
+29-08-2020 21:47:02 |  |  | Inside loop Step1:385065 # demo test #demo test
+29-08-2020 21:47:02 |  |  | Inside loop Datasetname 1:demo test
+29-08-2020 21:47:02 |  |  | Inside loop Datasetids 1:385061
+29-08-2020 21:47:02 |  |  | Inside loop settingsid 1:171181
+29-08-2020 21:47:02 |  |  | Inside loop keyword 1:
+29-08-2020 21:47:02 |  |  | Inside loop object 1:
+29-08-2020 21:47:02 |  |  | Inside loop parameter 1:
+29-08-2020 21:47:02 |  |  | Inside loop comments 1:
+29-08-2020 21:47:02 |  |  | Inside loop dataset 1:
+29-08-2020 21:47:02 |  |  | Inside loop skips 1:4
+29-08-2020 21:47:02 |  |  | Inside loop Datasetvalue 1:ALL_PRODUCTS_OUTPUT
+29-08-2020 21:47:02 |  |  | Inside loop description 1: 
+29-08-2020 21:47:02 |  |  | added:
+29-08-2020 21:47:02 |  |  | datasetnames1
+29-08-2020 21:47:02 | Demo Test_1 |  | datasetnames1 value
+29-08-2020 21:47:02 | demo test |  | datasetnames1 value
+29-08-2020 21:47:02 |  |  | DATASETVALUE value
+29-08-2020 21:47:02 |  |  | DATASETname start
+29-08-2020 21:47:02 | , |  | DATASETVALUE value=
+29-08-2020 21:47:02 | , |  | DATASETname start
+29-08-2020 21:47:02 | ,, |  | DATASETVALUE value=
+29-08-2020 21:47:02 |  |  | Array bound 
+29-08-2020 21:47:02 | Demo Test_1,demo test |  | Array bound DATASETNAME
+29-08-2020 21:47:02 | 387181,385061 |  | Array bound datasetids
+29-08-2020 21:47:02 | ,, |  | Array bound DATASETVALUE
+29-08-2020 21:47:02 |  ,  |  | Array bound q.DATASETDESCRIPTION
+29-08-2020 21:47:02 | 172310,172309 |  | Array bound DataSettingIds
+29-08-2020 21:47:02 |  |  | Inside loop Step1:387629 # demo test #demo test
+29-08-2020 21:47:02 |  |  | Inside loop Datasetname 1:Demo Test_1
+29-08-2020 21:47:02 |  |  | Inside loop Datasetids 1:387181
+29-08-2020 21:47:02 |  |  | Inside loop settingsid 1:172310
+29-08-2020 21:47:02 |  |  | Inside loop keyword 1:
+29-08-2020 21:47:02 |  |  | Inside loop object 1:
+29-08-2020 21:47:02 |  |  | Inside loop parameter 1:
+29-08-2020 21:47:02 |  |  | Inside loop comments 1:
+29-08-2020 21:47:02 |  |  | Inside loop dataset 1:
+29-08-2020 21:47:02 |  |  | Inside loop skips 1:4
+29-08-2020 21:47:02 |  |  | Inside loop Datasetvalue 1:
+29-08-2020 21:47:02 |  |  | Inside loop description 1: 
+29-08-2020 21:47:02 |  |  | added:
+29-08-2020 21:47:02 |  |  | Inside loop Step1:387629 # demo test #demo test
+29-08-2020 21:47:02 |  |  | Inside loop Datasetname 1:demo test
+29-08-2020 21:47:02 |  |  | Inside loop Datasetids 1:385061
+29-08-2020 21:47:02 |  |  | Inside loop settingsid 1:172309
+29-08-2020 21:47:02 |  |  | Inside loop keyword 1:
+29-08-2020 21:47:02 |  |  | Inside loop object 1:
+29-08-2020 21:47:02 |  |  | Inside loop parameter 1:
+29-08-2020 21:47:02 |  |  | Inside loop comments 1:
+29-08-2020 21:47:02 |  |  | Inside loop dataset 1:
+29-08-2020 21:47:02 |  |  | Inside loop skips 1:4
+29-08-2020 21:47:02 |  |  | Inside loop Datasetvalue 1:
+29-08-2020 21:47:02 |  |  | Inside loop description 1: 
+29-08-2020 21:47:02 |  |  | added:
+29-08-2020 21:47:02 |  |  | datasetnames1
+29-08-2020 21:47:02 | Demo Test_1 |  | datasetnames1 value
+29-08-2020 21:47:02 | demo test |  | datasetnames1 value
+29-08-2020 21:47:02 |  |  | DATASETVALUE value
+29-08-2020 21:47:02 |  |  | DATASETname start
+29-08-2020 21:47:02 | , |  | DATASETVALUE value=
+29-08-2020 21:47:02 | , |  | DATASETname start
+29-08-2020 21:47:02 | ,, |  | DATASETVALUE value=
+29-08-2020 21:47:02 |  |  | Array bound 
+29-08-2020 21:47:02 | Demo Test_1,demo test |  | Array bound DATASETNAME
+29-08-2020 21:47:02 | 387181,385061 |  | Array bound datasetids
+29-08-2020 21:47:02 | ,, |  | Array bound DATASETVALUE
+29-08-2020 21:47:02 |  ,  |  | Array bound q.DATASETDESCRIPTION
+29-08-2020 21:47:02 | 172216,172215 |  | Array bound DataSettingIds
+29-08-2020 21:47:02 |  |  | Inside loop Step1:387350 # demo test #demo test
+29-08-2020 21:47:02 |  |  | Inside loop Datasetname 1:Demo Test_1
+29-08-2020 21:47:02 |  |  | Inside loop Datasetids 1:387181
+29-08-2020 21:47:02 |  |  | Inside loop settingsid 1:172216
+29-08-2020 21:47:02 |  |  | Inside loop keyword 1:
+29-08-2020 21:47:02 |  |  | Inside loop object 1:
+29-08-2020 21:47:02 |  |  | Inside loop parameter 1:
+29-08-2020 21:47:02 |  |  | Inside loop comments 1:
+29-08-2020 21:47:02 |  |  | Inside loop dataset 1:
+29-08-2020 21:47:02 |  |  | Inside loop skips 1:4
+29-08-2020 21:47:02 |  |  | Inside loop Datasetvalue 1:
+29-08-2020 21:47:02 |  |  | Inside loop description 1: 
+29-08-2020 21:47:02 |  |  | added:
+29-08-2020 21:47:02 |  |  | Inside loop Step1:387350 # demo test #demo test
+29-08-2020 21:47:02 |  |  | Inside loop Datasetname 1:demo test
+29-08-2020 21:47:02 |  |  | Inside loop Datasetids 1:385061
+29-08-2020 21:47:02 |  |  | Inside loop settingsid 1:172215
+29-08-2020 21:47:02 |  |  | Inside loop keyword 1:
+29-08-2020 21:47:02 |  |  | Inside loop object 1:
+29-08-2020 21:47:02 |  |  | Inside loop parameter 1:
+29-08-2020 21:47:02 |  |  | Inside loop comments 1:
+29-08-2020 21:47:02 |  |  | Inside loop dataset 1:
+29-08-2020 21:47:02 |  |  | Inside loop skips 1:0
+29-08-2020 21:47:02 |  |  | Inside loop Datasetvalue 1:
+29-08-2020 21:47:02 |  |  | Inside loop description 1: 
+29-08-2020 21:47:02 |  |  | added:
+29-08-2020 21:47:02 |  |  | datasetnames1
+29-08-2020 21:47:02 | Demo Test_1 |  | datasetnames1 value
+29-08-2020 21:47:02 | demo test |  | datasetnames1 value
+29-08-2020 21:47:02 |  |  | DATASETVALUE value
+29-08-2020 21:47:02 |  |  | DATASETname start
+29-08-2020 21:47:02 | , |  | DATASETVALUE value=
+29-08-2020 21:47:02 | , |  | DATASETname start
+29-08-2020 21:47:02 | ,, |  | DATASETVALUE value=
+29-08-2020 21:47:02 |  |  | Array bound 
+29-08-2020 21:47:02 | Demo Test_1,demo test |  | Array bound DATASETNAME
+29-08-2020 21:47:02 | 387181,385061 |  | Array bound datasetids
+29-08-2020 21:47:02 | ,, |  | Array bound DATASETVALUE
+29-08-2020 21:47:02 |  ,  |  | Array bound q.DATASETDESCRIPTION
+29-08-2020 21:47:02 | 172162,171242 |  | Array bound DataSettingIds
+29-08-2020 21:47:02 |  |  | Inside loop Step1:385287 # demo test #demo test
+29-08-2020 21:47:02 |  |  | Inside loop Datasetname 1:Demo Test_1
+29-08-2020 21:47:02 |  |  | Inside loop Datasetids 1:387181
+29-08-2020 21:47:02 |  |  | Inside loop settingsid 1:172162
+29-08-2020 21:47:02 |  |  | Inside loop keyword 1:
+29-08-2020 21:47:02 |  |  | Inside loop object 1:
+29-08-2020 21:47:02 |  |  | Inside loop parameter 1:
+29-08-2020 21:47:02 |  |  | Inside loop comments 1:
+29-08-2020 21:47:02 |  |  | Inside loop dataset 1:
+29-08-2020 21:47:02 |  |  | Inside loop skips 1:4
+29-08-2020 21:47:02 |  |  | Inside loop Datasetvalue 1:
+29-08-2020 21:47:02 |  |  | Inside loop description 1: 
+29-08-2020 21:47:02 |  |  | added:
+29-08-2020 21:47:02 |  |  | Inside loop Step1:385287 # demo test #demo test
+29-08-2020 21:47:02 |  |  | Inside loop Datasetname 1:demo test
+29-08-2020 21:47:02 |  |  | Inside loop Datasetids 1:385061
+29-08-2020 21:47:02 |  |  | Inside loop settingsid 1:171242
+29-08-2020 21:47:02 |  |  | Inside loop keyword 1:
+29-08-2020 21:47:02 |  |  | Inside loop object 1:
+29-08-2020 21:47:02 |  |  | Inside loop parameter 1:
+29-08-2020 21:47:02 |  |  | Inside loop comments 1:
+29-08-2020 21:47:02 |  |  | Inside loop dataset 1:
+29-08-2020 21:47:02 |  |  | Inside loop skips 1:0
+29-08-2020 21:47:02 |  |  | Inside loop Datasetvalue 1:
+29-08-2020 21:47:02 |  |  | Inside loop description 1: 
+29-08-2020 21:47:02 |  |  | added:
+29-08-2020 21:47:02 |  |  | datasetnames1
+29-08-2020 21:47:02 | Demo Test_1 |  | datasetnames1 value
+29-08-2020 21:47:02 | demo test |  | datasetnames1 value
+29-08-2020 21:47:02 |  |  | DATASETVALUE value
+29-08-2020 21:47:02 |  |  | DATASETname start
+29-08-2020 21:47:02 | , |  | DATASETVALUE value=
+29-08-2020 21:47:02 | , |  | DATASETname start
+29-08-2020 21:47:02 | ,, |  | DATASETVALUE value=
+29-08-2020 21:47:02 |  |  | Array bound 
+29-08-2020 21:47:02 | Demo Test_1,demo test |  | Array bound DATASETNAME
+29-08-2020 21:47:02 | 387181,385061 |  | Array bound datasetids
+29-08-2020 21:47:02 | ,, |  | Array bound DATASETVALUE
+29-08-2020 21:47:02 |  ,  |  | Array bound q.DATASETDESCRIPTION
+29-08-2020 21:47:02 | 174212,174210 |  | Array bound DataSettingIds
+29-08-2020 21:47:02 |  |  | Inside loop Step1:390439 # demo test #demo test
+29-08-2020 21:47:02 |  |  | Inside loop Datasetname 1:Demo Test_1
+29-08-2020 21:47:02 |  |  | Inside loop Datasetids 1:387181
+29-08-2020 21:47:02 |  |  | Inside loop settingsid 1:174212
+29-08-2020 21:47:02 |  |  | Inside loop keyword 1:
+29-08-2020 21:47:02 |  |  | Inside loop object 1:
+29-08-2020 21:47:02 |  |  | Inside loop parameter 1:
+29-08-2020 21:47:02 |  |  | Inside loop comments 1:
+29-08-2020 21:47:02 |  |  | Inside loop dataset 1:
+29-08-2020 21:47:02 |  |  | Inside loop skips 1:4
+29-08-2020 21:47:02 |  |  | Inside loop Datasetvalue 1:
+29-08-2020 21:47:02 |  |  | Inside loop description 1: 
+29-08-2020 21:47:02 |  |  | added:
+29-08-2020 21:47:02 |  |  | Inside loop Step1:390439 # demo test #demo test
+29-08-2020 21:47:02 |  |  | Inside loop Datasetname 1:demo test
+29-08-2020 21:47:02 |  |  | Inside loop Datasetids 1:385061
+29-08-2020 21:47:02 |  |  | Inside loop settingsid 1:174210
+29-08-2020 21:47:02 |  |  | Inside loop keyword 1:
+29-08-2020 21:47:02 |  |  | Inside loop object 1:
+29-08-2020 21:47:02 |  |  | Inside loop parameter 1:
+29-08-2020 21:47:02 |  |  | Inside loop comments 1:
+29-08-2020 21:47:02 |  |  | Inside loop dataset 1:
+29-08-2020 21:47:02 |  |  | Inside loop skips 1:0
+29-08-2020 21:47:02 |  |  | Inside loop Datasetvalue 1:
+29-08-2020 21:47:02 |  |  | Inside loop description 1: 
+29-08-2020 21:47:02 |  |  | added:
+29-08-2020 21:47:02 |  |  | datasetnames1
+29-08-2020 21:47:02 | Demo Test_1 |  | datasetnames1 value
+29-08-2020 21:47:02 | demo test |  | datasetnames1 value
+29-08-2020 21:47:02 |  |  | DATASETVALUE value
+29-08-2020 21:47:02 |  |  | DATASETname start
+29-08-2020 21:47:02 | , |  | DATASETVALUE value=
+29-08-2020 21:47:02 | , |  | DATASETname start
+29-08-2020 21:47:02 | ,, |  | DATASETVALUE value=
+29-08-2020 21:47:02 |  |  | Array bound 
+29-08-2020 21:47:02 | Demo Test_1,demo test |  | Array bound DATASETNAME
+29-08-2020 21:47:02 | 387181,385061 |  | Array bound datasetids
+29-08-2020 21:47:02 | ,, |  | Array bound DATASETVALUE
+29-08-2020 21:47:02 |  ,  |  | Array bound q.DATASETDESCRIPTION
+29-08-2020 21:47:02 | 174209,174207 |  | Array bound DataSettingIds
+29-08-2020 21:47:02 |  |  | Inside loop Step1:390438 # demo test #demo test
+29-08-2020 21:47:02 |  |  | Inside loop Datasetname 1:Demo Test_1
+29-08-2020 21:47:02 |  |  | Inside loop Datasetids 1:387181
+29-08-2020 21:47:02 |  |  | Inside loop settingsid 1:174209
+29-08-2020 21:47:02 |  |  | Inside loop keyword 1:
+29-08-2020 21:47:02 |  |  | Inside loop object 1:
+29-08-2020 21:47:02 |  |  | Inside loop parameter 1:
+29-08-2020 21:47:02 |  |  | Inside loop comments 1:
+29-08-2020 21:47:02 |  |  | Inside loop dataset 1:
+29-08-2020 21:47:02 |  |  | Inside loop skips 1:4
+29-08-2020 21:47:02 |  |  | Inside loop Datasetvalue 1:
+29-08-2020 21:47:02 |  |  | Inside loop description 1: 
+29-08-2020 21:47:02 |  |  | added:
+29-08-2020 21:47:02 |  |  | Inside loop Step1:390438 # demo test #demo test
+29-08-2020 21:47:02 |  |  | Inside loop Datasetname 1:demo test
+29-08-2020 21:47:02 |  |  | Inside loop Datasetids 1:385061
+29-08-2020 21:47:02 |  |  | Inside loop settingsid 1:174207
+29-08-2020 21:47:02 |  |  | Inside loop keyword 1:
+29-08-2020 21:47:02 |  |  | Inside loop object 1:
+29-08-2020 21:47:02 |  |  | Inside loop parameter 1:
+29-08-2020 21:47:02 |  |  | Inside loop comments 1:
+29-08-2020 21:47:02 |  |  | Inside loop dataset 1:
+29-08-2020 21:47:02 |  |  | Inside loop skips 1:0
+29-08-2020 21:47:02 |  |  | Inside loop Datasetvalue 1:
+29-08-2020 21:47:02 |  |  | Inside loop description 1: 
+29-08-2020 21:47:02 |  |  | added:
+29-08-2020 21:47:02 |  |  | datasetnames1
+29-08-2020 21:47:02 | Demo Test_1 |  | datasetnames1 value
+29-08-2020 21:47:02 | demo test |  | datasetnames1 value
+29-08-2020 21:47:02 |  |  | DATASETVALUE value
+29-08-2020 21:47:02 |  |  | DATASETname start
+29-08-2020 21:47:02 | , |  | DATASETVALUE value=
+29-08-2020 21:47:02 | , |  | DATASETname start
+29-08-2020 21:47:02 | ,, |  | DATASETVALUE value=
+29-08-2020 21:47:02 |  |  | Array bound 
+29-08-2020 21:47:02 | Demo Test_1,demo test |  | Array bound DATASETNAME
+29-08-2020 21:47:02 | 387181,385061 |  | Array bound datasetids
+29-08-2020 21:47:02 | ,, |  | Array bound DATASETVALUE
+29-08-2020 21:47:02 |  ,  |  | Array bound q.DATASETDESCRIPTION
+29-08-2020 21:47:02 | 172164,171363 |  | Array bound DataSettingIds
+29-08-2020 21:47:02 |  |  | Inside loop Step1:385568 # demo test #demo test
+29-08-2020 21:47:02 |  |  | Inside loop Datasetname 1:Demo Test_1
+29-08-2020 21:47:02 |  |  | Inside loop Datasetids 1:387181
+29-08-2020 21:47:02 |  |  | Inside loop settingsid 1:172164
+29-08-2020 21:47:02 |  |  | Inside loop keyword 1:
+29-08-2020 21:47:02 |  |  | Inside loop object 1:
+29-08-2020 21:47:02 |  |  | Inside loop parameter 1:
+29-08-2020 21:47:02 |  |  | Inside loop comments 1:
+29-08-2020 21:47:02 |  |  | Inside loop dataset 1:
+29-08-2020 21:47:02 |  |  | Inside loop skips 1:4
+29-08-2020 21:47:02 |  |  | Inside loop Datasetvalue 1:
+29-08-2020 21:47:02 |  |  | Inside loop description 1: 
+29-08-2020 21:47:02 |  |  | added:
+29-08-2020 21:47:02 |  |  | Inside loop Step1:385568 # demo test #demo test
+29-08-2020 21:47:02 |  |  | Inside loop Datasetname 1:demo test
+29-08-2020 21:47:02 |  |  | Inside loop Datasetids 1:385061
+29-08-2020 21:47:02 |  |  | Inside loop settingsid 1:171363
+29-08-2020 21:47:02 |  |  | Inside loop keyword 1:
+29-08-2020 21:47:02 |  |  | Inside loop object 1:
+29-08-2020 21:47:02 |  |  | Inside loop parameter 1:
+29-08-2020 21:47:02 |  |  | Inside loop comments 1:
+29-08-2020 21:47:02 |  |  | Inside loop dataset 1:
+29-08-2020 21:47:02 |  |  | Inside loop skips 1:0
+29-08-2020 21:47:02 |  |  | Inside loop Datasetvalue 1:
+29-08-2020 21:47:02 |  |  | Inside loop description 1: 
+29-08-2020 21:47:02 |  |  | added:
+29-08-2020 21:47:02 |  |  | Feed Process generate 2
+29-08-2020 21:47:02 |  |  | Feed Process generate 3
+29-08-2020 21:47:02 |  |  | Feed Process generate 4
+29-08-2020 21:47:04 |  |  | Feed Process generate 5
+29-08-2020 21:47:04 |  |  | Feed Process generate 6
+29-08-2020 21:47:04 |  |  | Feed Process generate 7
+29-08-2020 21:47:04 |  |  | Feed Process generate 8
+29-08-2020 21:47:04 |  |  | Feed Process generate 9
+29-08-2020 21:57:51 |  |  | start savetestcase
+29-08-2020 21:57:51 | connection string |  | Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=CS-DC-17)(PORT=1521))(CONNECT_DATA=(SERVER=DEDICACATED)(SERVICE_NAME=orcl)));User Id=GEN_MARS_4;Password=GEN_MARS_4;pooling=false;Connection Timeout=1000;
+29-08-2020 21:57:51 |  |  | before validation
+29-08-2020 21:57:52 |  |  | after validation validation
+29-08-2020 21:57:52 |  |  | after connection 
+29-08-2020 21:57:53 |  |  | start delete count 
+29-08-2020 21:57:53 |  |  | start steps  
+29-08-2020 21:57:53 | stepid: 385065  Run Order: 1 |  | start step update 
+29-08-2020 21:57:53 | stepid: 385065  Run Order: 1 |  | end step update 
+29-08-2020 21:57:53 | stepid: 387629  Run Order: 2 |  | start step update 
+29-08-2020 21:57:53 | stepid: 387629  Run Order: 2 |  | end step update 
+29-08-2020 21:57:53 | stepid: 387350  Run Order: 3 |  | start step update 
+29-08-2020 21:57:53 | stepid: 387350  Run Order: 3 |  | end step update 
+29-08-2020 21:57:53 | stepid: 385287  Run Order: 4 |  | start step update 
+29-08-2020 21:57:54 | stepid: 385287  Run Order: 4 |  | end step update 
+29-08-2020 21:57:54 | stepid: 390439  Run Order: 5 |  | start step update 
+29-08-2020 21:57:54 | stepid: 390439  Run Order: 5 |  | end step update 
+29-08-2020 21:57:54 | stepid: 390438  Run Order: 6 |  | start step update 
+29-08-2020 21:57:54 | stepid: 390438  Run Order: 6 |  | end step update 
+29-08-2020 21:57:54 | stepid: 385568  Run Order: 7 |  | start step update 
+29-08-2020 21:57:55 | stepid: 385568  Run Order: 7 |  | end step update 
+29-08-2020 21:57:55 |  |  | delete column list
+29-08-2020 21:57:55 |  |  | start delete column list
+29-08-2020 21:57:55 |  |  | end delete count 
+29-08-2020 21:57:55 |  |  | start  feed process  
+29-08-2020 21:57:55 | 1078 | 1058 |   feed process ID 
+29-08-2020 21:57:56 |  |  | datatable start  
+29-08-2020 21:57:56 |  |  | Feed Process generate
+29-08-2020 21:57:56 |  |  | Feed Process generate 1
+29-08-2020 21:57:56 |  |  | datasetnames1
+29-08-2020 21:57:56 |  |  | Array bound 
+29-08-2020 21:57:56 | Demo Test_1,demo test |  | Array bound DATASETNAME
+29-08-2020 21:57:56 | 387181,385061 |  | Array bound datasetids
+29-08-2020 21:57:56 | ,ALL_PRODUCTS_OUTPUT |  | Array bound DATASETVALUE
+29-08-2020 21:57:56 |  ,  |  | Array bound q.DATASETDESCRIPTION
+29-08-2020 21:57:56 | 172161,171181 |  | Array bound DataSettingIds
+29-08-2020 21:57:56 |  |  | Inside loop Step1:385065 # demo test #demo test
+29-08-2020 21:57:56 |  |  | Inside loop Datasetname 1:Demo Test_1
+29-08-2020 21:57:56 |  |  | Inside loop Datasetids 1:387181
+29-08-2020 21:57:56 |  |  | Inside loop settingsid 1:172161
+29-08-2020 21:57:56 |  |  | Inside loop keyword 1:
+29-08-2020 21:57:56 |  |  | Inside loop object 1:
+29-08-2020 21:57:56 |  |  | Inside loop parameter 1:
+29-08-2020 21:57:56 |  |  | Inside loop comments 1:
+29-08-2020 21:57:56 |  |  | Inside loop dataset 1:
+29-08-2020 21:57:56 |  |  | Inside loop skips 1:4
+29-08-2020 21:57:56 |  |  | Inside loop Datasetvalue 1:
+29-08-2020 21:57:56 |  |  | Inside loop description 1: 
+29-08-2020 21:57:56 |  |  | added:
+29-08-2020 21:57:56 |  |  | Inside loop Step1:385065 # demo test #demo test
+29-08-2020 21:57:56 |  |  | Inside loop Datasetname 1:demo test
+29-08-2020 21:57:56 |  |  | Inside loop Datasetids 1:385061
+29-08-2020 21:57:56 |  |  | Inside loop settingsid 1:171181
+29-08-2020 21:57:56 |  |  | Inside loop keyword 1:
+29-08-2020 21:57:56 |  |  | Inside loop object 1:
+29-08-2020 21:57:56 |  |  | Inside loop parameter 1:
+29-08-2020 21:57:56 |  |  | Inside loop comments 1:
+29-08-2020 21:57:56 |  |  | Inside loop dataset 1:
+29-08-2020 21:57:56 |  |  | Inside loop skips 1:4
+29-08-2020 21:57:56 |  |  | Inside loop Datasetvalue 1:ALL_PRODUCTS_OUTPUT
+29-08-2020 21:57:56 |  |  | Inside loop description 1: 
+29-08-2020 21:57:56 |  |  | added:
+29-08-2020 21:57:56 |  |  | datasetnames1
+29-08-2020 21:57:56 | Demo Test_1 |  | datasetnames1 value
+29-08-2020 21:57:56 | demo test |  | datasetnames1 value
+29-08-2020 21:57:56 |  |  | DATASETVALUE value
+29-08-2020 21:57:56 |  |  | DATASETname start
+29-08-2020 21:57:56 | , |  | DATASETVALUE value=
+29-08-2020 21:57:56 | , |  | DATASETname start
+29-08-2020 21:57:56 | ,, |  | DATASETVALUE value=
+29-08-2020 21:57:56 |  |  | Array bound 
+29-08-2020 21:57:56 | Demo Test_1,demo test |  | Array bound DATASETNAME
+29-08-2020 21:57:56 | 387181,385061 |  | Array bound datasetids
+29-08-2020 21:57:56 | ,, |  | Array bound DATASETVALUE
+29-08-2020 21:57:56 |  ,  |  | Array bound q.DATASETDESCRIPTION
+29-08-2020 21:57:56 | 172310,172309 |  | Array bound DataSettingIds
+29-08-2020 21:57:56 |  |  | Inside loop Step1:387629 # demo test #demo test
+29-08-2020 21:57:56 |  |  | Inside loop Datasetname 1:Demo Test_1
+29-08-2020 21:57:56 |  |  | Inside loop Datasetids 1:387181
+29-08-2020 21:57:56 |  |  | Inside loop settingsid 1:172310
+29-08-2020 21:57:56 |  |  | Inside loop keyword 1:
+29-08-2020 21:57:56 |  |  | Inside loop object 1:
+29-08-2020 21:57:56 |  |  | Inside loop parameter 1:
+29-08-2020 21:57:56 |  |  | Inside loop comments 1:
+29-08-2020 21:57:56 |  |  | Inside loop dataset 1:
+29-08-2020 21:57:56 |  |  | Inside loop skips 1:4
+29-08-2020 21:57:56 |  |  | Inside loop Datasetvalue 1:
+29-08-2020 21:57:56 |  |  | Inside loop description 1: 
+29-08-2020 21:57:56 |  |  | added:
+29-08-2020 21:57:56 |  |  | Inside loop Step1:387629 # demo test #demo test
+29-08-2020 21:57:56 |  |  | Inside loop Datasetname 1:demo test
+29-08-2020 21:57:56 |  |  | Inside loop Datasetids 1:385061
+29-08-2020 21:57:56 |  |  | Inside loop settingsid 1:172309
+29-08-2020 21:57:56 |  |  | Inside loop keyword 1:
+29-08-2020 21:57:56 |  |  | Inside loop object 1:
+29-08-2020 21:57:56 |  |  | Inside loop parameter 1:
+29-08-2020 21:57:56 |  |  | Inside loop comments 1:
+29-08-2020 21:57:56 |  |  | Inside loop dataset 1:
+29-08-2020 21:57:56 |  |  | Inside loop skips 1:4
+29-08-2020 21:57:56 |  |  | Inside loop Datasetvalue 1:
+29-08-2020 21:57:56 |  |  | Inside loop description 1: 
+29-08-2020 21:57:56 |  |  | added:
+29-08-2020 21:57:56 |  |  | datasetnames1
+29-08-2020 21:57:56 | Demo Test_1 |  | datasetnames1 value
+29-08-2020 21:57:56 | demo test |  | datasetnames1 value
+29-08-2020 21:57:56 |  |  | DATASETVALUE value
+29-08-2020 21:57:56 |  |  | DATASETname start
+29-08-2020 21:57:56 | , |  | DATASETVALUE value=
+29-08-2020 21:57:56 | , |  | DATASETname start
+29-08-2020 21:57:56 | ,, |  | DATASETVALUE value=
+29-08-2020 21:57:56 |  |  | Array bound 
+29-08-2020 21:57:56 | Demo Test_1,demo test |  | Array bound DATASETNAME
+29-08-2020 21:57:56 | 387181,385061 |  | Array bound datasetids
+29-08-2020 21:57:56 | ,, |  | Array bound DATASETVALUE
+29-08-2020 21:57:56 |  ,  |  | Array bound q.DATASETDESCRIPTION
+29-08-2020 21:57:56 | 172216,172215 |  | Array bound DataSettingIds
+29-08-2020 21:57:56 |  |  | Inside loop Step1:387350 # demo test #demo test
+29-08-2020 21:57:56 |  |  | Inside loop Datasetname 1:Demo Test_1
+29-08-2020 21:57:56 |  |  | Inside loop Datasetids 1:387181
+29-08-2020 21:57:56 |  |  | Inside loop settingsid 1:172216
+29-08-2020 21:57:56 |  |  | Inside loop keyword 1:
+29-08-2020 21:57:56 |  |  | Inside loop object 1:
+29-08-2020 21:57:56 |  |  | Inside loop parameter 1:
+29-08-2020 21:57:56 |  |  | Inside loop comments 1:
+29-08-2020 21:57:56 |  |  | Inside loop dataset 1:
+29-08-2020 21:57:56 |  |  | Inside loop skips 1:4
+29-08-2020 21:57:56 |  |  | Inside loop Datasetvalue 1:
+29-08-2020 21:57:56 |  |  | Inside loop description 1: 
+29-08-2020 21:57:56 |  |  | added:
+29-08-2020 21:57:56 |  |  | Inside loop Step1:387350 # demo test #demo test
+29-08-2020 21:57:56 |  |  | Inside loop Datasetname 1:demo test
+29-08-2020 21:57:56 |  |  | Inside loop Datasetids 1:385061
+29-08-2020 21:57:56 |  |  | Inside loop settingsid 1:172215
+29-08-2020 21:57:56 |  |  | Inside loop keyword 1:
+29-08-2020 21:57:56 |  |  | Inside loop object 1:
+29-08-2020 21:57:56 |  |  | Inside loop parameter 1:
+29-08-2020 21:57:56 |  |  | Inside loop comments 1:
+29-08-2020 21:57:56 |  |  | Inside loop dataset 1:
+29-08-2020 21:57:56 |  |  | Inside loop skips 1:4
+29-08-2020 21:57:56 |  |  | Inside loop Datasetvalue 1:
+29-08-2020 21:57:56 |  |  | Inside loop description 1: 
+29-08-2020 21:57:56 |  |  | added:
+29-08-2020 21:57:56 |  |  | datasetnames1
+29-08-2020 21:57:56 | Demo Test_1 |  | datasetnames1 value
+29-08-2020 21:57:56 | demo test |  | datasetnames1 value
+29-08-2020 21:57:56 |  |  | DATASETVALUE value
+29-08-2020 21:57:56 |  |  | DATASETname start
+29-08-2020 21:57:56 | , |  | DATASETVALUE value=
+29-08-2020 21:57:56 | , |  | DATASETname start
+29-08-2020 21:57:56 | ,, |  | DATASETVALUE value=
+29-08-2020 21:57:56 |  |  | Array bound 
+29-08-2020 21:57:56 | Demo Test_1,demo test |  | Array bound DATASETNAME
+29-08-2020 21:57:56 | 387181,385061 |  | Array bound datasetids
+29-08-2020 21:57:56 | ,, |  | Array bound DATASETVALUE
+29-08-2020 21:57:56 |  ,  |  | Array bound q.DATASETDESCRIPTION
+29-08-2020 21:57:56 | 172162,171242 |  | Array bound DataSettingIds
+29-08-2020 21:57:56 |  |  | Inside loop Step1:385287 # demo test #demo test
+29-08-2020 21:57:56 |  |  | Inside loop Datasetname 1:Demo Test_1
+29-08-2020 21:57:56 |  |  | Inside loop Datasetids 1:387181
+29-08-2020 21:57:56 |  |  | Inside loop settingsid 1:172162
+29-08-2020 21:57:56 |  |  | Inside loop keyword 1:
+29-08-2020 21:57:56 |  |  | Inside loop object 1:
+29-08-2020 21:57:56 |  |  | Inside loop parameter 1:
+29-08-2020 21:57:56 |  |  | Inside loop comments 1:
+29-08-2020 21:57:56 |  |  | Inside loop dataset 1:
+29-08-2020 21:57:56 |  |  | Inside loop skips 1:4
+29-08-2020 21:57:56 |  |  | Inside loop Datasetvalue 1:
+29-08-2020 21:57:56 |  |  | Inside loop description 1: 
+29-08-2020 21:57:56 |  |  | added:
+29-08-2020 21:57:56 |  |  | Inside loop Step1:385287 # demo test #demo test
+29-08-2020 21:57:56 |  |  | Inside loop Datasetname 1:demo test
+29-08-2020 21:57:56 |  |  | Inside loop Datasetids 1:385061
+29-08-2020 21:57:56 |  |  | Inside loop settingsid 1:171242
+29-08-2020 21:57:56 |  |  | Inside loop keyword 1:
+29-08-2020 21:57:56 |  |  | Inside loop object 1:
+29-08-2020 21:57:56 |  |  | Inside loop parameter 1:
+29-08-2020 21:57:56 |  |  | Inside loop comments 1:
+29-08-2020 21:57:56 |  |  | Inside loop dataset 1:
+29-08-2020 21:57:56 |  |  | Inside loop skips 1:0
+29-08-2020 21:57:56 |  |  | Inside loop Datasetvalue 1:
+29-08-2020 21:57:56 |  |  | Inside loop description 1: 
+29-08-2020 21:57:56 |  |  | added:
+29-08-2020 21:57:56 |  |  | datasetnames1
+29-08-2020 21:57:56 | Demo Test_1 |  | datasetnames1 value
+29-08-2020 21:57:56 | demo test |  | datasetnames1 value
+29-08-2020 21:57:56 |  |  | DATASETVALUE value
+29-08-2020 21:57:56 |  |  | DATASETname start
+29-08-2020 21:57:56 | , |  | DATASETVALUE value=
+29-08-2020 21:57:56 | , |  | DATASETname start
+29-08-2020 21:57:56 | ,, |  | DATASETVALUE value=
+29-08-2020 21:57:56 |  |  | Array bound 
+29-08-2020 21:57:56 | Demo Test_1,demo test |  | Array bound DATASETNAME
+29-08-2020 21:57:56 | 387181,385061 |  | Array bound datasetids
+29-08-2020 21:57:56 | ,, |  | Array bound DATASETVALUE
+29-08-2020 21:57:56 |  ,  |  | Array bound q.DATASETDESCRIPTION
+29-08-2020 21:57:56 | 174212,174210 |  | Array bound DataSettingIds
+29-08-2020 21:57:56 |  |  | Inside loop Step1:390439 # demo test #demo test
+29-08-2020 21:57:56 |  |  | Inside loop Datasetname 1:Demo Test_1
+29-08-2020 21:57:56 |  |  | Inside loop Datasetids 1:387181
+29-08-2020 21:57:56 |  |  | Inside loop settingsid 1:174212
+29-08-2020 21:57:56 |  |  | Inside loop keyword 1:
+29-08-2020 21:57:56 |  |  | Inside loop object 1:
+29-08-2020 21:57:56 |  |  | Inside loop parameter 1:
+29-08-2020 21:57:56 |  |  | Inside loop comments 1:
+29-08-2020 21:57:56 |  |  | Inside loop dataset 1:
+29-08-2020 21:57:56 |  |  | Inside loop skips 1:4
+29-08-2020 21:57:56 |  |  | Inside loop Datasetvalue 1:
+29-08-2020 21:57:56 |  |  | Inside loop description 1: 
+29-08-2020 21:57:56 |  |  | added:
+29-08-2020 21:57:56 |  |  | Inside loop Step1:390439 # demo test #demo test
+29-08-2020 21:57:56 |  |  | Inside loop Datasetname 1:demo test
+29-08-2020 21:57:56 |  |  | Inside loop Datasetids 1:385061
+29-08-2020 21:57:56 |  |  | Inside loop settingsid 1:174210
+29-08-2020 21:57:56 |  |  | Inside loop keyword 1:
+29-08-2020 21:57:56 |  |  | Inside loop object 1:
+29-08-2020 21:57:56 |  |  | Inside loop parameter 1:
+29-08-2020 21:57:56 |  |  | Inside loop comments 1:
+29-08-2020 21:57:56 |  |  | Inside loop dataset 1:
+29-08-2020 21:57:56 |  |  | Inside loop skips 1:0
+29-08-2020 21:57:56 |  |  | Inside loop Datasetvalue 1:
+29-08-2020 21:57:56 |  |  | Inside loop description 1: 
+29-08-2020 21:57:56 |  |  | added:
+29-08-2020 21:57:56 |  |  | datasetnames1
+29-08-2020 21:57:56 | Demo Test_1 |  | datasetnames1 value
+29-08-2020 21:57:56 | demo test |  | datasetnames1 value
+29-08-2020 21:57:56 |  |  | DATASETVALUE value
+29-08-2020 21:57:56 |  |  | DATASETname start
+29-08-2020 21:57:56 | , |  | DATASETVALUE value=
+29-08-2020 21:57:56 | , |  | DATASETname start
+29-08-2020 21:57:56 | ,, |  | DATASETVALUE value=
+29-08-2020 21:57:56 |  |  | Array bound 
+29-08-2020 21:57:56 | Demo Test_1,demo test |  | Array bound DATASETNAME
+29-08-2020 21:57:56 | 387181,385061 |  | Array bound datasetids
+29-08-2020 21:57:56 | ,, |  | Array bound DATASETVALUE
+29-08-2020 21:57:56 |  ,  |  | Array bound q.DATASETDESCRIPTION
+29-08-2020 21:57:56 | 174209,174207 |  | Array bound DataSettingIds
+29-08-2020 21:57:56 |  |  | Inside loop Step1:390438 # demo test #demo test
+29-08-2020 21:57:56 |  |  | Inside loop Datasetname 1:Demo Test_1
+29-08-2020 21:57:56 |  |  | Inside loop Datasetids 1:387181
+29-08-2020 21:57:56 |  |  | Inside loop settingsid 1:174209
+29-08-2020 21:57:56 |  |  | Inside loop keyword 1:
+29-08-2020 21:57:56 |  |  | Inside loop object 1:
+29-08-2020 21:57:56 |  |  | Inside loop parameter 1:
+29-08-2020 21:57:56 |  |  | Inside loop comments 1:
+29-08-2020 21:57:56 |  |  | Inside loop dataset 1:
+29-08-2020 21:57:56 |  |  | Inside loop skips 1:4
+29-08-2020 21:57:56 |  |  | Inside loop Datasetvalue 1:
+29-08-2020 21:57:56 |  |  | Inside loop description 1: 
+29-08-2020 21:57:56 |  |  | added:
+29-08-2020 21:57:56 |  |  | Inside loop Step1:390438 # demo test #demo test
+29-08-2020 21:57:56 |  |  | Inside loop Datasetname 1:demo test
+29-08-2020 21:57:56 |  |  | Inside loop Datasetids 1:385061
+29-08-2020 21:57:56 |  |  | Inside loop settingsid 1:174207
+29-08-2020 21:57:56 |  |  | Inside loop keyword 1:
+29-08-2020 21:57:56 |  |  | Inside loop object 1:
+29-08-2020 21:57:56 |  |  | Inside loop parameter 1:
+29-08-2020 21:57:56 |  |  | Inside loop comments 1:
+29-08-2020 21:57:56 |  |  | Inside loop dataset 1:
+29-08-2020 21:57:56 |  |  | Inside loop skips 1:0
+29-08-2020 21:57:56 |  |  | Inside loop Datasetvalue 1:
+29-08-2020 21:57:56 |  |  | Inside loop description 1: 
+29-08-2020 21:57:56 |  |  | added:
+29-08-2020 21:57:56 |  |  | datasetnames1
+29-08-2020 21:57:56 | Demo Test_1 |  | datasetnames1 value
+29-08-2020 21:57:56 | demo test |  | datasetnames1 value
+29-08-2020 21:57:56 |  |  | DATASETVALUE value
+29-08-2020 21:57:56 |  |  | DATASETname start
+29-08-2020 21:57:56 | , |  | DATASETVALUE value=
+29-08-2020 21:57:56 | , |  | DATASETname start
+29-08-2020 21:57:56 | ,, |  | DATASETVALUE value=
+29-08-2020 21:57:56 |  |  | Array bound 
+29-08-2020 21:57:56 | Demo Test_1,demo test |  | Array bound DATASETNAME
+29-08-2020 21:57:56 | 387181,385061 |  | Array bound datasetids
+29-08-2020 21:57:56 | ,, |  | Array bound DATASETVALUE
+29-08-2020 21:57:56 |  ,  |  | Array bound q.DATASETDESCRIPTION
+29-08-2020 21:57:56 | 172164,171363 |  | Array bound DataSettingIds
+29-08-2020 21:57:56 |  |  | Inside loop Step1:385568 # demo test #demo test
+29-08-2020 21:57:56 |  |  | Inside loop Datasetname 1:Demo Test_1
+29-08-2020 21:57:56 |  |  | Inside loop Datasetids 1:387181
+29-08-2020 21:57:56 |  |  | Inside loop settingsid 1:172164
+29-08-2020 21:57:56 |  |  | Inside loop keyword 1:
+29-08-2020 21:57:56 |  |  | Inside loop object 1:
+29-08-2020 21:57:56 |  |  | Inside loop parameter 1:
+29-08-2020 21:57:56 |  |  | Inside loop comments 1:
+29-08-2020 21:57:56 |  |  | Inside loop dataset 1:
+29-08-2020 21:57:56 |  |  | Inside loop skips 1:4
+29-08-2020 21:57:56 |  |  | Inside loop Datasetvalue 1:
+29-08-2020 21:57:56 |  |  | Inside loop description 1: 
+29-08-2020 21:57:56 |  |  | added:
+29-08-2020 21:57:56 |  |  | Inside loop Step1:385568 # demo test #demo test
+29-08-2020 21:57:56 |  |  | Inside loop Datasetname 1:demo test
+29-08-2020 21:57:56 |  |  | Inside loop Datasetids 1:385061
+29-08-2020 21:57:56 |  |  | Inside loop settingsid 1:171363
+29-08-2020 21:57:56 |  |  | Inside loop keyword 1:
+29-08-2020 21:57:56 |  |  | Inside loop object 1:
+29-08-2020 21:57:56 |  |  | Inside loop parameter 1:
+29-08-2020 21:57:56 |  |  | Inside loop comments 1:
+29-08-2020 21:57:56 |  |  | Inside loop dataset 1:
+29-08-2020 21:57:56 |  |  | Inside loop skips 1:0
+29-08-2020 21:57:56 |  |  | Inside loop Datasetvalue 1:
+29-08-2020 21:57:56 |  |  | Inside loop description 1: 
+29-08-2020 21:57:56 |  |  | added:
+29-08-2020 21:57:56 |  |  | Feed Process generate 2
+29-08-2020 21:57:56 |  |  | Feed Process generate 3
+29-08-2020 21:57:56 |  |  | Feed Process generate 4
+29-08-2020 21:57:58 |  |  | Feed Process generate 5
+29-08-2020 21:57:58 |  |  | Feed Process generate 6
+29-08-2020 21:57:58 |  |  | Feed Process generate 7
+29-08-2020 21:57:58 |  |  | Feed Process generate 8
+29-08-2020 21:57:58 |  |  | Feed Process generate 9
+29-08-2020 22:24:14 |  |  | start savetestcase
+29-08-2020 22:24:14 | connection string |  | Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=CS-DC-17)(PORT=1521))(CONNECT_DATA=(SERVER=DEDICACATED)(SERVICE_NAME=orcl)));User Id=GEN_MARS_4;Password=GEN_MARS_4;pooling=false;Connection Timeout=1000;
+29-08-2020 22:24:14 |  |  | before validation
+29-08-2020 22:24:15 |  |  | after validation validation
+29-08-2020 22:24:15 |  |  | after connection 
+29-08-2020 22:24:15 |  |  | start delete count 
+29-08-2020 22:24:15 |  |  | start steps  
+29-08-2020 22:24:15 | stepid: 385065  Run Order: 1 |  | start step update 
+29-08-2020 22:24:15 | stepid: 385065  Run Order: 1 |  | end step update 
+29-08-2020 22:24:15 | stepid: 387629  Run Order: 2 |  | start step update 
+29-08-2020 22:24:16 | stepid: 387629  Run Order: 2 |  | end step update 
+29-08-2020 22:24:16 | stepid: 387350  Run Order: 3 |  | start step update 
+29-08-2020 22:24:16 | stepid: 387350  Run Order: 3 |  | end step update 
+29-08-2020 22:24:16 | stepid: 385287  Run Order: 4 |  | start step update 
+29-08-2020 22:24:16 | stepid: 385287  Run Order: 4 |  | end step update 
+29-08-2020 22:24:16 | stepid: 390439  Run Order: 5 |  | start step update 
+29-08-2020 22:24:16 | stepid: 390439  Run Order: 5 |  | end step update 
+29-08-2020 22:24:16 | stepid: 390438  Run Order: 6 |  | start step update 
+29-08-2020 22:24:17 | stepid: 390438  Run Order: 6 |  | end step update 
+29-08-2020 22:24:17 | stepid: 385568  Run Order: 7 |  | start step update 
+29-08-2020 22:24:17 | stepid: 385568  Run Order: 7 |  | end step update 
+29-08-2020 22:24:17 |  |  | delete column list
+29-08-2020 22:24:17 |  |  | start delete column list
+29-08-2020 22:24:17 |  |  | end delete count 
+29-08-2020 22:24:18 |  |  | start  feed process  
+29-08-2020 22:24:18 | 1080 | 1060 |   feed process ID 
+29-08-2020 22:24:18 |  |  | datatable start  
+29-08-2020 22:24:18 |  |  | Feed Process generate
+29-08-2020 22:24:18 |  |  | Feed Process generate 1
+29-08-2020 22:24:18 |  |  | datasetnames1
+29-08-2020 22:24:18 |  |  | Array bound 
+29-08-2020 22:24:18 | Demo Test_1,demo test |  | Array bound DATASETNAME
+29-08-2020 22:24:18 | 387181,385061 |  | Array bound datasetids
+29-08-2020 22:24:18 | ,ALL_PRODUCTS_OUTPUT |  | Array bound DATASETVALUE
+29-08-2020 22:24:18 |  ,  |  | Array bound q.DATASETDESCRIPTION
+29-08-2020 22:24:18 | 172161,171181 |  | Array bound DataSettingIds
+29-08-2020 22:24:18 |  |  | Inside loop Step1:385065 # demo test #demo test
+29-08-2020 22:24:18 |  |  | Inside loop Datasetname 1:Demo Test_1
+29-08-2020 22:24:18 |  |  | Inside loop Datasetids 1:387181
+29-08-2020 22:24:18 |  |  | Inside loop settingsid 1:172161
+29-08-2020 22:24:18 |  |  | Inside loop keyword 1:
+29-08-2020 22:24:18 |  |  | Inside loop object 1:
+29-08-2020 22:24:18 |  |  | Inside loop parameter 1:
+29-08-2020 22:24:18 |  |  | Inside loop comments 1:
+29-08-2020 22:24:18 |  |  | Inside loop dataset 1:
+29-08-2020 22:24:18 |  |  | Inside loop skips 1:4
+29-08-2020 22:24:18 |  |  | Inside loop Datasetvalue 1:
+29-08-2020 22:24:18 |  |  | Inside loop description 1: 
+29-08-2020 22:24:18 |  |  | added:
+29-08-2020 22:24:18 |  |  | Inside loop Step1:385065 # demo test #demo test
+29-08-2020 22:24:18 |  |  | Inside loop Datasetname 1:demo test
+29-08-2020 22:24:18 |  |  | Inside loop Datasetids 1:385061
+29-08-2020 22:24:18 |  |  | Inside loop settingsid 1:171181
+29-08-2020 22:24:18 |  |  | Inside loop keyword 1:
+29-08-2020 22:24:18 |  |  | Inside loop object 1:
+29-08-2020 22:24:18 |  |  | Inside loop parameter 1:
+29-08-2020 22:24:18 |  |  | Inside loop comments 1:
+29-08-2020 22:24:18 |  |  | Inside loop dataset 1:
+29-08-2020 22:24:18 |  |  | Inside loop skips 1:4
+29-08-2020 22:24:18 |  |  | Inside loop Datasetvalue 1:ALL_PRODUCTS_OUTPUT
+29-08-2020 22:24:18 |  |  | Inside loop description 1: 
+29-08-2020 22:24:18 |  |  | added:
+29-08-2020 22:24:18 |  |  | datasetnames1
+29-08-2020 22:24:18 | Demo Test_1 |  | datasetnames1 value
+29-08-2020 22:24:18 | demo test |  | datasetnames1 value
+29-08-2020 22:24:18 |  |  | DATASETVALUE value
+29-08-2020 22:24:18 |  |  | DATASETname start
+29-08-2020 22:24:18 | , |  | DATASETVALUE value=
+29-08-2020 22:24:18 | , |  | DATASETname start
+29-08-2020 22:24:18 | ,, |  | DATASETVALUE value=
+29-08-2020 22:24:18 |  |  | Array bound 
+29-08-2020 22:24:18 | Demo Test_1,demo test |  | Array bound DATASETNAME
+29-08-2020 22:24:18 | 387181,385061 |  | Array bound datasetids
+29-08-2020 22:24:18 | ,, |  | Array bound DATASETVALUE
+29-08-2020 22:24:18 |  ,  |  | Array bound q.DATASETDESCRIPTION
+29-08-2020 22:24:18 | 172310,172309 |  | Array bound DataSettingIds
+29-08-2020 22:24:18 |  |  | Inside loop Step1:387629 # demo test #demo test
+29-08-2020 22:24:18 |  |  | Inside loop Datasetname 1:Demo Test_1
+29-08-2020 22:24:18 |  |  | Inside loop Datasetids 1:387181
+29-08-2020 22:24:18 |  |  | Inside loop settingsid 1:172310
+29-08-2020 22:24:18 |  |  | Inside loop keyword 1:
+29-08-2020 22:24:18 |  |  | Inside loop object 1:
+29-08-2020 22:24:18 |  |  | Inside loop parameter 1:
+29-08-2020 22:24:18 |  |  | Inside loop comments 1:
+29-08-2020 22:24:18 |  |  | Inside loop dataset 1:
+29-08-2020 22:24:18 |  |  | Inside loop skips 1:4
+29-08-2020 22:24:18 |  |  | Inside loop Datasetvalue 1:
+29-08-2020 22:24:18 |  |  | Inside loop description 1: 
+29-08-2020 22:24:18 |  |  | added:
+29-08-2020 22:24:18 |  |  | Inside loop Step1:387629 # demo test #demo test
+29-08-2020 22:24:18 |  |  | Inside loop Datasetname 1:demo test
+29-08-2020 22:24:18 |  |  | Inside loop Datasetids 1:385061
+29-08-2020 22:24:18 |  |  | Inside loop settingsid 1:172309
+29-08-2020 22:24:18 |  |  | Inside loop keyword 1:
+29-08-2020 22:24:18 |  |  | Inside loop object 1:
+29-08-2020 22:24:18 |  |  | Inside loop parameter 1:
+29-08-2020 22:24:18 |  |  | Inside loop comments 1:
+29-08-2020 22:24:18 |  |  | Inside loop dataset 1:
+29-08-2020 22:24:18 |  |  | Inside loop skips 1:4
+29-08-2020 22:24:18 |  |  | Inside loop Datasetvalue 1:
+29-08-2020 22:24:18 |  |  | Inside loop description 1: 
+29-08-2020 22:24:18 |  |  | added:
+29-08-2020 22:24:18 |  |  | datasetnames1
+29-08-2020 22:24:18 | Demo Test_1 |  | datasetnames1 value
+29-08-2020 22:24:18 | demo test |  | datasetnames1 value
+29-08-2020 22:24:18 |  |  | DATASETVALUE value
+29-08-2020 22:24:18 |  |  | DATASETname start
+29-08-2020 22:24:18 | , |  | DATASETVALUE value=
+29-08-2020 22:24:18 | , |  | DATASETname start
+29-08-2020 22:24:18 | ,, |  | DATASETVALUE value=
+29-08-2020 22:24:18 |  |  | Array bound 
+29-08-2020 22:24:18 | Demo Test_1,demo test |  | Array bound DATASETNAME
+29-08-2020 22:24:18 | 387181,385061 |  | Array bound datasetids
+29-08-2020 22:24:18 | ,, |  | Array bound DATASETVALUE
+29-08-2020 22:24:18 |  ,  |  | Array bound q.DATASETDESCRIPTION
+29-08-2020 22:24:18 | 172216,172215 |  | Array bound DataSettingIds
+29-08-2020 22:24:18 |  |  | Inside loop Step1:387350 # demo test #demo test
+29-08-2020 22:24:18 |  |  | Inside loop Datasetname 1:Demo Test_1
+29-08-2020 22:24:18 |  |  | Inside loop Datasetids 1:387181
+29-08-2020 22:24:18 |  |  | Inside loop settingsid 1:172216
+29-08-2020 22:24:18 |  |  | Inside loop keyword 1:
+29-08-2020 22:24:18 |  |  | Inside loop object 1:
+29-08-2020 22:24:18 |  |  | Inside loop parameter 1:
+29-08-2020 22:24:18 |  |  | Inside loop comments 1:
+29-08-2020 22:24:18 |  |  | Inside loop dataset 1:
+29-08-2020 22:24:18 |  |  | Inside loop skips 1:4
+29-08-2020 22:24:18 |  |  | Inside loop Datasetvalue 1:
+29-08-2020 22:24:18 |  |  | Inside loop description 1: 
+29-08-2020 22:24:18 |  |  | added:
+29-08-2020 22:24:18 |  |  | Inside loop Step1:387350 # demo test #demo test
+29-08-2020 22:24:18 |  |  | Inside loop Datasetname 1:demo test
+29-08-2020 22:24:18 |  |  | Inside loop Datasetids 1:385061
+29-08-2020 22:24:18 |  |  | Inside loop settingsid 1:172215
+29-08-2020 22:24:18 |  |  | Inside loop keyword 1:
+29-08-2020 22:24:18 |  |  | Inside loop object 1:
+29-08-2020 22:24:18 |  |  | Inside loop parameter 1:
+29-08-2020 22:24:18 |  |  | Inside loop comments 1:
+29-08-2020 22:24:18 |  |  | Inside loop dataset 1:
+29-08-2020 22:24:18 |  |  | Inside loop skips 1:4
+29-08-2020 22:24:18 |  |  | Inside loop Datasetvalue 1:
+29-08-2020 22:24:18 |  |  | Inside loop description 1: 
+29-08-2020 22:24:18 |  |  | added:
+29-08-2020 22:24:18 |  |  | datasetnames1
+29-08-2020 22:24:18 | Demo Test_1 |  | datasetnames1 value
+29-08-2020 22:24:18 | demo test |  | datasetnames1 value
+29-08-2020 22:24:18 |  |  | DATASETVALUE value
+29-08-2020 22:24:18 |  |  | DATASETname start
+29-08-2020 22:24:18 | , |  | DATASETVALUE value=
+29-08-2020 22:24:18 | , |  | DATASETname start
+29-08-2020 22:24:18 | ,, |  | DATASETVALUE value=
+29-08-2020 22:24:18 |  |  | Array bound 
+29-08-2020 22:24:18 | Demo Test_1,demo test |  | Array bound DATASETNAME
+29-08-2020 22:24:18 | 387181,385061 |  | Array bound datasetids
+29-08-2020 22:24:18 | ,, |  | Array bound DATASETVALUE
+29-08-2020 22:24:18 |  ,  |  | Array bound q.DATASETDESCRIPTION
+29-08-2020 22:24:18 | 172162,171242 |  | Array bound DataSettingIds
+29-08-2020 22:24:18 |  |  | Inside loop Step1:385287 # demo test #demo test
+29-08-2020 22:24:18 |  |  | Inside loop Datasetname 1:Demo Test_1
+29-08-2020 22:24:18 |  |  | Inside loop Datasetids 1:387181
+29-08-2020 22:24:18 |  |  | Inside loop settingsid 1:172162
+29-08-2020 22:24:18 |  |  | Inside loop keyword 1:
+29-08-2020 22:24:18 |  |  | Inside loop object 1:
+29-08-2020 22:24:18 |  |  | Inside loop parameter 1:
+29-08-2020 22:24:18 |  |  | Inside loop comments 1:
+29-08-2020 22:24:18 |  |  | Inside loop dataset 1:
+29-08-2020 22:24:18 |  |  | Inside loop skips 1:4
+29-08-2020 22:24:18 |  |  | Inside loop Datasetvalue 1:
+29-08-2020 22:24:18 |  |  | Inside loop description 1: 
+29-08-2020 22:24:18 |  |  | added:
+29-08-2020 22:24:18 |  |  | Inside loop Step1:385287 # demo test #demo test
+29-08-2020 22:24:18 |  |  | Inside loop Datasetname 1:demo test
+29-08-2020 22:24:18 |  |  | Inside loop Datasetids 1:385061
+29-08-2020 22:24:18 |  |  | Inside loop settingsid 1:171242
+29-08-2020 22:24:18 |  |  | Inside loop keyword 1:
+29-08-2020 22:24:18 |  |  | Inside loop object 1:
+29-08-2020 22:24:18 |  |  | Inside loop parameter 1:
+29-08-2020 22:24:18 |  |  | Inside loop comments 1:
+29-08-2020 22:24:18 |  |  | Inside loop dataset 1:
+29-08-2020 22:24:18 |  |  | Inside loop skips 1:4
+29-08-2020 22:24:18 |  |  | Inside loop Datasetvalue 1:
+29-08-2020 22:24:18 |  |  | Inside loop description 1: 
+29-08-2020 22:24:18 |  |  | added:
+29-08-2020 22:24:18 |  |  | datasetnames1
+29-08-2020 22:24:18 | Demo Test_1 |  | datasetnames1 value
+29-08-2020 22:24:18 | demo test |  | datasetnames1 value
+29-08-2020 22:24:18 |  |  | DATASETVALUE value
+29-08-2020 22:24:18 |  |  | DATASETname start
+29-08-2020 22:24:18 | , |  | DATASETVALUE value=
+29-08-2020 22:24:18 | , |  | DATASETname start
+29-08-2020 22:24:18 | ,, |  | DATASETVALUE value=
+29-08-2020 22:24:18 |  |  | Array bound 
+29-08-2020 22:24:18 | Demo Test_1,demo test |  | Array bound DATASETNAME
+29-08-2020 22:24:18 | 387181,385061 |  | Array bound datasetids
+29-08-2020 22:24:18 | ,, |  | Array bound DATASETVALUE
+29-08-2020 22:24:18 |  ,  |  | Array bound q.DATASETDESCRIPTION
+29-08-2020 22:24:18 | 174212,174210 |  | Array bound DataSettingIds
+29-08-2020 22:24:18 |  |  | Inside loop Step1:390439 # demo test #demo test
+29-08-2020 22:24:18 |  |  | Inside loop Datasetname 1:Demo Test_1
+29-08-2020 22:24:18 |  |  | Inside loop Datasetids 1:387181
+29-08-2020 22:24:18 |  |  | Inside loop settingsid 1:174212
+29-08-2020 22:24:18 |  |  | Inside loop keyword 1:
+29-08-2020 22:24:18 |  |  | Inside loop object 1:
+29-08-2020 22:24:18 |  |  | Inside loop parameter 1:
+29-08-2020 22:24:18 |  |  | Inside loop comments 1:
+29-08-2020 22:24:18 |  |  | Inside loop dataset 1:
+29-08-2020 22:24:18 |  |  | Inside loop skips 1:4
+29-08-2020 22:24:18 |  |  | Inside loop Datasetvalue 1:
+29-08-2020 22:24:18 |  |  | Inside loop description 1: 
+29-08-2020 22:24:18 |  |  | added:
+29-08-2020 22:24:18 |  |  | Inside loop Step1:390439 # demo test #demo test
+29-08-2020 22:24:18 |  |  | Inside loop Datasetname 1:demo test
+29-08-2020 22:24:18 |  |  | Inside loop Datasetids 1:385061
+29-08-2020 22:24:18 |  |  | Inside loop settingsid 1:174210
+29-08-2020 22:24:18 |  |  | Inside loop keyword 1:
+29-08-2020 22:24:18 |  |  | Inside loop object 1:
+29-08-2020 22:24:18 |  |  | Inside loop parameter 1:
+29-08-2020 22:24:18 |  |  | Inside loop comments 1:
+29-08-2020 22:24:18 |  |  | Inside loop dataset 1:
+29-08-2020 22:24:18 |  |  | Inside loop skips 1:0
+29-08-2020 22:24:18 |  |  | Inside loop Datasetvalue 1:
+29-08-2020 22:24:18 |  |  | Inside loop description 1: 
+29-08-2020 22:24:18 |  |  | added:
+29-08-2020 22:24:18 |  |  | datasetnames1
+29-08-2020 22:24:18 | Demo Test_1 |  | datasetnames1 value
+29-08-2020 22:24:18 | demo test |  | datasetnames1 value
+29-08-2020 22:24:18 |  |  | DATASETVALUE value
+29-08-2020 22:24:18 |  |  | DATASETname start
+29-08-2020 22:24:18 | , |  | DATASETVALUE value=
+29-08-2020 22:24:18 | , |  | DATASETname start
+29-08-2020 22:24:18 | ,, |  | DATASETVALUE value=
+29-08-2020 22:24:18 |  |  | Array bound 
+29-08-2020 22:24:18 | Demo Test_1,demo test |  | Array bound DATASETNAME
+29-08-2020 22:24:18 | 387181,385061 |  | Array bound datasetids
+29-08-2020 22:24:18 | ,, |  | Array bound DATASETVALUE
+29-08-2020 22:24:18 |  ,  |  | Array bound q.DATASETDESCRIPTION
+29-08-2020 22:24:18 | 174209,174207 |  | Array bound DataSettingIds
+29-08-2020 22:24:18 |  |  | Inside loop Step1:390438 # demo test #demo test
+29-08-2020 22:24:18 |  |  | Inside loop Datasetname 1:Demo Test_1
+29-08-2020 22:24:18 |  |  | Inside loop Datasetids 1:387181
+29-08-2020 22:24:18 |  |  | Inside loop settingsid 1:174209
+29-08-2020 22:24:18 |  |  | Inside loop keyword 1:
+29-08-2020 22:24:18 |  |  | Inside loop object 1:
+29-08-2020 22:24:18 |  |  | Inside loop parameter 1:
+29-08-2020 22:24:18 |  |  | Inside loop comments 1:
+29-08-2020 22:24:18 |  |  | Inside loop dataset 1:
+29-08-2020 22:24:18 |  |  | Inside loop skips 1:4
+29-08-2020 22:24:18 |  |  | Inside loop Datasetvalue 1:
+29-08-2020 22:24:18 |  |  | Inside loop description 1: 
+29-08-2020 22:24:18 |  |  | added:
+29-08-2020 22:24:18 |  |  | Inside loop Step1:390438 # demo test #demo test
+29-08-2020 22:24:18 |  |  | Inside loop Datasetname 1:demo test
+29-08-2020 22:24:18 |  |  | Inside loop Datasetids 1:385061
+29-08-2020 22:24:18 |  |  | Inside loop settingsid 1:174207
+29-08-2020 22:24:18 |  |  | Inside loop keyword 1:
+29-08-2020 22:24:18 |  |  | Inside loop object 1:
+29-08-2020 22:24:18 |  |  | Inside loop parameter 1:
+29-08-2020 22:24:18 |  |  | Inside loop comments 1:
+29-08-2020 22:24:18 |  |  | Inside loop dataset 1:
+29-08-2020 22:24:18 |  |  | Inside loop skips 1:0
+29-08-2020 22:24:18 |  |  | Inside loop Datasetvalue 1:
+29-08-2020 22:24:18 |  |  | Inside loop description 1: 
+29-08-2020 22:24:18 |  |  | added:
+29-08-2020 22:24:18 |  |  | datasetnames1
+29-08-2020 22:24:18 | Demo Test_1 |  | datasetnames1 value
+29-08-2020 22:24:18 | demo test |  | datasetnames1 value
+29-08-2020 22:24:18 |  |  | DATASETVALUE value
+29-08-2020 22:24:18 |  |  | DATASETname start
+29-08-2020 22:24:18 | , |  | DATASETVALUE value=
+29-08-2020 22:24:18 | , |  | DATASETname start
+29-08-2020 22:24:18 | ,, |  | DATASETVALUE value=
+29-08-2020 22:24:18 |  |  | Array bound 
+29-08-2020 22:24:18 | Demo Test_1,demo test |  | Array bound DATASETNAME
+29-08-2020 22:24:18 | 387181,385061 |  | Array bound datasetids
+29-08-2020 22:24:18 | ,, |  | Array bound DATASETVALUE
+29-08-2020 22:24:18 |  ,  |  | Array bound q.DATASETDESCRIPTION
+29-08-2020 22:24:18 | 172164,171363 |  | Array bound DataSettingIds
+29-08-2020 22:24:18 |  |  | Inside loop Step1:385568 # demo test #demo test
+29-08-2020 22:24:18 |  |  | Inside loop Datasetname 1:Demo Test_1
+29-08-2020 22:24:18 |  |  | Inside loop Datasetids 1:387181
+29-08-2020 22:24:18 |  |  | Inside loop settingsid 1:172164
+29-08-2020 22:24:18 |  |  | Inside loop keyword 1:
+29-08-2020 22:24:18 |  |  | Inside loop object 1:
+29-08-2020 22:24:18 |  |  | Inside loop parameter 1:
+29-08-2020 22:24:18 |  |  | Inside loop comments 1:
+29-08-2020 22:24:18 |  |  | Inside loop dataset 1:
+29-08-2020 22:24:18 |  |  | Inside loop skips 1:4
+29-08-2020 22:24:18 |  |  | Inside loop Datasetvalue 1:
+29-08-2020 22:24:18 |  |  | Inside loop description 1: 
+29-08-2020 22:24:18 |  |  | added:
+29-08-2020 22:24:18 |  |  | Inside loop Step1:385568 # demo test #demo test
+29-08-2020 22:24:18 |  |  | Inside loop Datasetname 1:demo test
+29-08-2020 22:24:18 |  |  | Inside loop Datasetids 1:385061
+29-08-2020 22:24:18 |  |  | Inside loop settingsid 1:171363
+29-08-2020 22:24:18 |  |  | Inside loop keyword 1:
+29-08-2020 22:24:18 |  |  | Inside loop object 1:
+29-08-2020 22:24:18 |  |  | Inside loop parameter 1:
+29-08-2020 22:24:18 |  |  | Inside loop comments 1:
+29-08-2020 22:24:18 |  |  | Inside loop dataset 1:
+29-08-2020 22:24:18 |  |  | Inside loop skips 1:0
+29-08-2020 22:24:18 |  |  | Inside loop Datasetvalue 1:
+29-08-2020 22:24:18 |  |  | Inside loop description 1: 
+29-08-2020 22:24:18 |  |  | added:
+29-08-2020 22:24:18 |  |  | Feed Process generate 2
+29-08-2020 22:24:18 |  |  | Feed Process generate 3
+29-08-2020 22:24:18 |  |  | Feed Process generate 4
+29-08-2020 22:24:20 |  |  | Feed Process generate 5
+29-08-2020 22:24:20 |  |  | Feed Process generate 6
+29-08-2020 22:24:20 |  |  | Feed Process generate 7
+29-08-2020 22:24:20 |  |  | Feed Process generate 8
+29-08-2020 22:24:20 |  |  | Feed Process generate 9

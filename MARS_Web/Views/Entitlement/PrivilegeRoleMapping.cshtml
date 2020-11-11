@@ -1,0 +1,132 @@
+﻿<div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
+    <div class="kt-subheader   kt-grid__item" id="kt_subheader" style="left: @ViewBag.width;">
+        <div class="kt-container  kt-container--fluid ">
+            <div class="kt-subheader__main">
+                <span class="kt-subheader__separator kt-hidden"></span>
+                <div class="kt-subheader__breadcrumbs">
+                    <a href="#" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-settings" style="color:#1c6081"></i></a>
+                    <a href="#" class="kt-subheader__breadcrumbs-link" style="color:#1c6081">
+                        User Role
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+        <div class="kt-portlet kt-portlet--mobile">
+            <div class="kt-portlet__head kt-portlet__head--lg">
+                <div class="kt-portlet__head-label">
+                    <h3 class="kt-portlet__head-title" style="color:#1582ab">
+                        List of Privilages according to Role
+                    </h3>
+                </div>
+            </div>
+            <br />
+            <div class="kt-portlet__body">
+                <div class="form-group col-md-12">
+                    <label class="form-control-label">User Roles: </label>
+                    <div class="form-control-label" id="clsappobject">
+                        <select class="form-control kt-select2" id="drpRoles" name="roles">
+                            @{var lrolelist = ViewBag.rolelist as IEnumerable<SelectListItem>;
+
+                                foreach (var item in lrolelist)
+                                {
+                                    <option value="@item.Value">@item.Text</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                    <div id="PartialListBox" class="mt-2">
+                        @Html.Partial("_ListBox")
+                    </div>
+                </div>
+                
+                <div class="modal-footer">
+                    <button type="button" id="addPrivileges" class="btn btn-outline-brand btn-elevate btn-pill" onclick="AddEditPrivilegeRoleMappingSave($(this))">Save</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+    
+    <script type="text/javascript">
+        $("#drpRoles").on('change', function () {
+            var roleid = $("#drpRoles").val();
+            $.ajax({
+                url: "/Entitlement/GetPrivilegesByRoleId",
+                data: JSON.stringify({ roleId: roleid }),
+                type: "POST",
+                async: false,
+                contentType: "application/json;charset=utf-8",
+                dataType: "html",
+                success: function (data) {
+                    $("#PartialListBox").html("");
+                    $("#PartialListBox").html(data);
+                }
+            });
+        });
+
+
+        function AddEditPrivilegeRoleMappingSave(obj) {
+            var privileges = [];
+            $('.dual-listbox :selected').each(function (i, selected) {
+                privileges[i] = $(selected).val();
+            });
+            var PrivilegeRoleModel = {};
+            PrivilegeRoleModel.RoleId = $("#drpRoles").val(),
+                PrivilegeRoleModel.PrivilegeId = privileges.toString();
+            startloader();
+            $.ajax({
+                url: "/Entitlement/AddEditPrivilageRoleMapping",
+                data: JSON.stringify(PrivilegeRoleModel),
+                type: "POST",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    obj[0].parentElement.previousElementSibling.children[2].children[2].firstElementChild.firstElementChild.value = "";
+                   
+                    stoploader();
+                    if (result.status == 1) {
+                        
+                        $.ajax({
+                            url: "/Entitlement/GetPrivilegesByRoleId",
+                            data: JSON.stringify({ roleId: PrivilegeRoleModel.RoleId }),
+                            type: "POST",
+                            async: false,
+                            contentType: "application/json;charset=utf-8",
+                            dataType: "html",
+                            success: function (data) {
+                                $("#PartialListBox").html("");
+                                $("#PartialListBox").html(data);
+                            }
+                        });
+                        swal.fire({
+                            "title": "",
+                            "text": result.message,
+                            "type": "success",
+                            "onClose": function (e) {
+                                console.log('on close event fired!');
+                            }
+                        });
+                    }
+                    else if (result.status == 0) {
+                        swal.fire({
+                            "title": "",
+                            "text": result.message,
+                            "type": "error",
+                            "onClose": function (e) {
+                                console.log('on close event fired!');
+                            }
+                        });
+                    }
+                },
+                error: function (errormessage) {
+                    stoploader();
+                    alert(errormessage.responseText);
+                }
+            });
+        }
+
+    </script>
+

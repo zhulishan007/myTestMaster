@@ -1,0 +1,1628 @@
+@using MARS_Web.Helper
+@{
+    if (Session["LoginSuccessMsg"] != null)
+    {
+        var lMsg = Session["LoginSuccessMsg"] as string;
+        if (!string.IsNullOrEmpty(lMsg))
+        {
+            <script>
+   setTimeout(function () {
+       swal.fire({
+           "title": "",
+           "text": "@lMsg",
+           "type": "success",
+           "onClose": function (e) {
+               console.log('on close event fired!');
+           }
+       });
+   }, 1000);
+            </script>
+            Session["LoginSuccessMsg"] = "";
+        }
+    }
+
+    var Storyboardname = ViewBag.Storyboardname;
+    if (!String.IsNullOrEmpty(Storyboardname))
+    {
+        Storyboardname = Storyboardname.Replace(' ', '_');
+    }
+    var lstoryboardgrid = ".grid" + Storyboardname.Replace('/', '_').Replace('(', '_').Replace(')', '_').Replace('.', '_').Replace('*', '_').Replace('&', '_');
+    var classgrid = "grid" + Storyboardname.Replace('/', '_').Replace('(', '_').Replace(')', '_').Replace('.', '_').Replace('*', '_').Replace('&', '_');
+}
+
+
+@if (ViewBag.ProjectId != null && ViewBag.StoryBoardId != null && ViewBag.ProjectId != 0 && ViewBag.StoryBoardId != 0)
+{
+    <script>
+              var sbvalidmsg = false;
+        var lheight = $(window).height();
+        var testsuitevalidate = [];
+        var actionvalidate = [];
+        var suitevalidationmsg = "";
+        var actionvalidationmsg = "";
+        var testcasevalidate = [];
+        var casevalidationmsg = "";
+        var datasetvalidate = [];
+        var datasetvalidationmsg = "";
+        var dependencyvalidate = [];
+        var depedencyvalidationmsg = "";
+        var data = [];
+        var newsteps = [];
+        var testsuites = [];
+        var testcases = [];
+        var datasets = [];
+        var stepnames = [];
+        var newstepid = 1;
+        var lwrap = true;
+        var pqwidth = "99%";
+        var actions = [];
+        var pqheight = lheight - 130;
+
+        var jsonData = "";
+        var dt = [];
+        var obj = [];
+         dt.push({
+             dataIndx: "stateId", copy: false, maxWidth: 30, minWidth: 30, align: "center", resizable: false, title: "", menuIcon: false, type: 'checkbox', sortable: false, editor: false, dataType: 'bool',
+            render: function (ui) {
+                var rowData = ui.rowData,
+                    dataIndx = ui.dataIndx;
+                rowData.pq_cellcls = rowData.pq_cellcls || {};
+                return "<input type='checkbox'   " + (ui.cellData ? "checked='checked'" : "") + " />";
+            }
+        });
+        dt.push({
+            title: "", copy: false,editable: false, minWidth: 40, maxWidth: 40, sortable: false, dataIndx: "IsDelete", menuInHide: true, menuIcon: false, sortable: false, filter: { on: false, menuIcon: false },
+            render: function (ui) {
+                return "<button type='button' class='delete_btn' style='color:red;'></button>";
+            },
+            postRender: function (ui) {
+                var rowIndx = ui.rowIndx,
+                    grid = this,
+                    $cell = gridobj['@lstoryboardgrid'].getCell(ui);
+                $cell.find("button").button({ icons: { primary: 'ui-icon-close' } })
+                    .bind("click", function () {
+
+                        gridobj['@lstoryboardgrid'].addClass({ rowIndx: ui.rowIndx, cls: 'pq-row-delete' });
+                                ans = true;
+                                gridobj['@lstoryboardgrid'].removeClass({ rowIndx: rowIndx, cls: 'pq-row-delete' });
+                                if (ans) {
+                                    gridobj['@lstoryboardgrid'].deleteRow({ rowIndx: rowIndx });
+                                }
+                    });
+            }
+        });
+        dt.push({
+            title: "RUN_ORDER", copy: false, hidden: true, dataType: "int", dataIndx: "RUN_ORDER", align: "center", menuInHide: true, sortable: false,
+        });
+        dt.push({
+            title: "StoryboardDetailId", copy: false, hidden: true, dataType: "int", dataIndx: "detailid", align: "center", menuInHide: true, sortable: false,
+        });
+        dt.push({
+            title: "Storyboardid", copy: false, hidden: true, dataType: "int", dataIndx: "Storyboardid", align: "center", menuInHide: true, sortable: false,
+        });
+        dt.push({
+            title: "Storyboardname",copy:false, hidden: true, dataType: "string", dataIndx: "Storyboardname", align: "center", menuInHide: true, sortable: false,
+        });
+        dt.push({
+            title: "ProjectId", copy: false,hidden: true, dataType: "int", dataIndx: "ProjectId", align: "center", menuInHide: true, sortable: false,
+        });
+        dt.push({
+            title: "TestSuiteId", copy: false,hidden: true, dataType: "int", dataIndx: "suiteid", align: "center", menuInHide: true, sortable: false,
+        });
+        dt.push({
+            title: "TestCaseId", copy: false, hidden: true, dataType: "int", dataIndx: "caseid", align: "center", menuInHide: true, sortable: false,
+        });
+        dt.push({
+            title: "DatasetId", copy: false, hidden: true, dataType: "int", dataIndx: "datasetid", align: "center", menuInHide: true, sortable: false,
+        });
+        dt.push({
+            title: "BHistoryId", copy: false, hidden: true, dataType: "int", dataIndx: "bhistid", align: "center", menuInHide: true, sortable: false,
+        });
+        dt.push({
+            title: "CHistoryId", copy: false, hidden: true, dataType: "int", dataIndx: "chistid", align: "center", menuInHide: true, sortable: false,
+        });
+        dt.push({
+            title: "Actions", dataIndx: "actions", dataType: "string", align: "left", menuInHide: true, halign: "center", sortable: false, resizable: true, nodrag: true, nodrop: true, width: @ViewBag.actionwidth, minWidth: 20,
+            editor: {
+                type: 'select',
+                valueIndx: "value",
+                init: function (ui) {
+                    ui.$cell.find("select").pqSelect();
+                },
+                labelIndx: "text",
+                options: function (ui) {
+                    var List = [];
+                    var rowindx = ui.rowIndx;
+                    var sid = @ViewBag.StoryBoardId;
+                    $.ajax({
+                   url: "/StoryBoard/GetActionList",
+                   type: "POST",
+                   data: '{storyboardid: ' + sid + '}',
+                   contentType: "application/json;charset=utf-8",
+                   dataType: "json",
+                   async: false,
+                        success: function (result) {
+                            if (result.status == 1) {
+                                if (result.data != null && result.data.length > 0) {
+                                    actions.push({ "value": "", "text": "" });
+                                    for (var i = 0; i < result.data.length; i++) {
+                                        actions.push({ "value": result.data[i].DISPLAY_NAME, "text": result.data[i].DISPLAY_NAME });
+                                    }
+                                    List = actions;
+                                    actions = [];
+                                }
+                            }
+                            else if (result.status == 0) {
+                                swal.fire({
+                                    "title": "",
+                                    "text": result.message,
+                                    "type": "error",
+                                    "onClose": function (e) {
+                                        console.log('on close event fired!');
+                                    }
+                                });
+                            }
+                   },
+                   error(a, b, c) {
+                   }
+                    });
+                    return List;
+                }
+            },
+            filter: { crules: [{ condition: 'contain' }] },
+            labelIndx: "text",
+
+        });
+
+        dt.push({
+            title: "Steps", width: @ViewBag.stepswidth, minWidth: 20, menuInHide: false, align: "left", halign: "center", sortable: false, nodrag: true, nodrop: true, dataIndx: "steps", filter: { crules: [{ condition: 'contain' }] }, resizable: true});
+        dt.push({
+          title: "Test Suite", width: @ViewBag.testsuitewidth, minWidth: 20,  dataIndx: "testsuite", dataType: "string", align: "left", menuInHide: false, halign: "center", sortable: false, resizable: true, nodrag: true, nodrop: true,
+            editor: {
+                type: 'select',
+                valueIndx: "value",
+                init: function (ui) {
+                    ui.$cell.find("select").pqSelect();
+                },
+
+                labelIndx: "text",
+                options: function (ui) {
+
+
+                    var List = [];
+                    var rowindx = ui.rowIndx;
+                    var Projectid = @ViewBag.ProjectId;
+                    $.ajax({
+                        url: "/StoryBoard/GetTestSuiteListInStoryboard",
+                   type: "POST",
+                   data: '{ProjectId: ' + Projectid + '}',
+                   contentType: "application/json;charset=utf-8",
+                   dataType: "json",
+                   async: false,
+                   success: function (result) {
+                       if (result.status == 1) {
+                           if (result.data != null && result.data.length > 0) {
+                               testsuites.push({ "value": "", "text": "" });
+                               for (var i = 0; i < result.data.length; i++) {
+                                   testsuites.push({ "value": result.data[i].TestsuiteName, "text": result.data[i].TestsuiteName });
+                               }
+                               List = testsuites;
+                               testsuites = [];
+                           }
+                       }
+                       else if (result.status == 0) {
+                           swal.fire({
+                               "title": "",
+                               "text": result.message,
+                               "type": "error",
+                               "onClose": function (e) {
+                                   console.log('on close event fired!');
+                               }
+                           });
+                       }
+                   },
+                   error(a, b, c) {
+                   }
+                    });
+                    return List;
+                }
+            },
+            filter: { crules: [{ condition: 'contain' }] },
+        });
+        dt.push({
+          title: "Test Case", dataIndx: "testcase", dataType: "string", align: "left", menuInHide: false, halign: "center", sortable: false, resizable: true, nodrag: true, nodrop: true, width: @ViewBag.testcasewidth, minWidth: 20,
+        editor: {
+                type: 'select',
+                valueIndx: "value",
+                init: function (ui) {
+                    ui.$cell.find("select").pqSelect();
+                },
+                labelIndx: "text",
+                options: function (ui) {
+
+                    var List = [];
+                    var lgrid=[]
+                    var rowindx = ui.rowIndx + 1;
+                    var Projectid = @ViewBag.ProjectId;
+                    for (i = 0; i < gridobj['@lstoryboardgrid'].pdata.length; i++) {
+
+                        lgrid.push({ "testsuitename": gridobj['@lstoryboardgrid'].pdata[i].testsuite });
+                    }
+                    var TestSuitelist = {};
+                    TestSuitelist.grid = JSON.stringify(lgrid);
+                    TestSuitelist.stepid = rowindx;
+                    TestSuitelist.projectid = Projectid;
+                    $.ajax({
+                      url: "/StoryBoard/GetTestCaseListinStoryboard",
+                        type: "POST",
+                        data: '{lgrid: ' + JSON.stringify(TestSuitelist) + '}',
+                   contentType: "application/json;charset=utf-8",
+                   dataType: "json",
+                   async: false,
+                   success: function (result) {
+                       if (result.status == 1) {
+                           if (result.data != null && result.data.length > 0) {
+                               testcases.push({ "value": "", "text": "" });
+                               for (var i = 0; i < result.data.length; i++) {
+                                   testcases.push({ "value": result.data[i].TestcaseName, "text": result.data[i].TestcaseName });
+                               }
+                               List = testcases;
+                               testcases = [];
+                           }
+                       }
+                       else if (result.status == 0) {
+                           swal.fire({
+                               "title": "",
+                               "text": result.message,
+                               "type": "error",
+                               "onClose": function (e) {
+                                   console.log('on close event fired!');
+                               }
+                           });
+                       }
+                   },
+                   error(a, b, c) {
+                   }
+                    });
+                    return List;
+                }
+            },
+            filter: { crules: [{ condition: 'contain' }] },
+        });
+        dt.push({
+            title: "Dataset", dataIndx: "dataset", dataType: "string", align: "left", menuInHide: false, halign: "center", sortable: false, resizable: true, nodrag: true, nodrop: true, width: @ViewBag.datasetwidth, minWidth: 20,
+            editor: {
+                type: 'select',
+                valueIndx: "value",
+                init: function (ui) {
+                    ui.$cell.find("select").pqSelect();
+                    //  alert("1");
+                },
+                labelIndx: "text",
+                options: function (ui) {
+                    var List = [];
+                    var lgrid=[]
+                    var rowindx = ui.rowIndx + 1;
+                    var Projectid = @ViewBag.ProjectId;
+                    for (i = 0; i < gridobj['@lstoryboardgrid'].pdata.length; i++) {
+
+                        lgrid.push({ "testsuitename": gridobj['@lstoryboardgrid'].pdata[i].testsuite, "Testcasename": gridobj['@lstoryboardgrid'].pdata[i].testcase });
+                    }
+                    var Testcaselist = {};
+                    Testcaselist.grid = JSON.stringify(lgrid);
+                    Testcaselist.stepid = rowindx;
+                    Testcaselist.projectid = Projectid;
+                    $.ajax({
+                      url: "/StoryBoard/GetDatasetList",
+                        type: "POST",
+                        data: '{lgrid: ' + JSON.stringify(Testcaselist) + '}',
+                        contentType: "application/json;charset=utf-8",
+                        dataType: "json",
+                        async: false,
+                        success: function (result) {
+                            if (result.status == 1) {
+                                if (result.data != null && result.data.length > 0) {
+                                    datasets.push({ "value": "", "text": "" });
+                                    for (var i = 0; i < result.data.length; i++) {
+                                        datasets.push({ "value": result.data[i].Datasetname, "text": result.data[i].Datasetname });
+                                    }
+
+                                    List = datasets;
+                                    datasets = [];
+                                }
+                            }
+                            else if (result.status == 0) {
+                                swal.fire({
+                                    "title": "",
+                                    "text": result.message,
+                                    "type": "error",
+                                    "onClose": function (e) {
+                                        console.log('on close event fired!');
+                                    }
+                                });
+                            }
+                   },
+                   error(a, b, c) {
+                   }
+                    });
+                    return List;
+                }
+            },
+            filter: { crules: [{ condition: 'contain' }] },
+        });
+
+        dt.push({
+            title: "Base Line Data", menuInClose: false, sortable: false, resizable: true, width:500,
+            align: "center", colModel: [{
+                title: "Result", editable: false, menuInHide: false, align: "left", halign: "center", sortable: false, nodrag: true, nodrop: true, dataIndx: "btestresult", minWidth: 20, width: @ViewBag.bresultwidth,
+                filter: { crules: [{ condition: 'contain' }] }, resizable: true,
+                render: function (ui) {
+                    var result = ui.rowData.btestresult;
+                    if (result == "PASS") {
+                        return { style: { 'background': '#8df58d' } };
+                    }
+                    else if (result == "FAIL") {
+                        return { style: { 'background': 'red' } };
+                    }
+                    else if (result == "PARTIAL") {
+                        return { style: { 'background': '#FFFF00' } };
+                    }
+                }
+            },
+            { title: "Error cause", editable: false, menuInHide: false, align: "left", halign: "center", sortable: false, nodrag: true, nodrop: true, dataIndx: "berrcause", filter: { crules: [{ condition: 'contain' }] }, resizable: true, minWidth: 20, width: @ViewBag.berrorcausewidth, }
+                ,
+            { title: "Script Start", editable: false, menuInHide: false, align: "left", halign: "center", sortable: false, nodrag: true, nodrop: true, dataIndx: "bscriptstart", filter: { crules: [{ condition: 'contain' }] }, resizable: true, minWidth: 20, width: @ViewBag.bscriptstartwidth, }
+                ,
+            { title: "Script Duration", editable: false, menuInHide: false, align: "left", halign: "center", sortable: false, nodrag: true, nodrop: true, dataIndx: "bscriptend", filter: { crules: [{ condition: 'contain' }] }, resizable: true, minWidth: 20, width:  @ViewBag.bscriptdurationwidth, }
+            ]
+        });
+
+        dt.push({
+            title: "Comparison Data", menuInClose: false, sortable: false, resizable: true,
+            align: "center", colModel: [{
+                title: "Result", editable: false, menuInHide: false, align: "left", halign: "center", sortable: false, nodrag: true, nodrop: true, dataIndx: "ctestresult", minWidth: 20, width: @ViewBag.cresultwidth,
+                filter: { crules: [{ condition: 'contain' }] }, resizable: true,
+                render: function (ui) {
+                    var result = ui.rowData.ctestresult;
+                    if (result == "PASS") {
+                        return { style: { 'background': '#8df58d' } };
+                    }
+                    else if (result == "FAIL") {
+                        return { style: { 'background': 'red' } };
+                    }
+                    else if (result == "PARTIAL") {
+                        return { style: { 'background': '#FFFF00' } };
+                    }
+                }
+            },
+                { title: "Error cause", editable: false, menuInHide: false, align: "left", halign: "center", sortable: false, nodrag: true, nodrop: true, dataIndx: "cerrcause", filter: { crules: [{ condition: 'contain' }] }, resizable: true, minWidth: 20, width:  @ViewBag.cerrorcausewidth, }
+                ,
+                { title: "Script Start", editable: false, menuInHide: false, align: "left", halign: "center", sortable: false, nodrag: true, nodrop: true, dataIndx: "cscriptstart", filter: { crules: [{ condition: 'contain' }] }, resizable: true, minWidth: 20, width: @ViewBag.cscriptstartwidth, }
+                ,
+                { title: "Script Duration", editable: false, menuInHide: false, align: "left", halign: "center", sortable: false, nodrag: true, nodrop: true, dataIndx: "cscriptend", filter: { crules: [{ condition: 'contain' }] }, resizable: true, minWidth: 20, width: @ViewBag.cscriptdurationwidth,}
+            ]
+        });
+
+        dt.push({
+          title: "Dependency", dataIndx: "dependson", dataType: "string", align: "left", menuInHide: false, halign: "center", sortable: false, resizable: true, nodrag: true, nodrop: true, width: @ViewBag.dependencywidth, minWidth: 20,
+                  editor: {
+                type: 'select',
+                valueIndx: "value",
+                init: function (ui) {
+                    ui.$cell.find("select").pqSelect();
+                },
+                labelIndx: "text",
+                options: function (ui) {
+                    var List = [];
+                    var lgrid = [];
+                    var rowindx = ui.rowIndx + 1;
+                    var Projectid = @ViewBag.ProjectId;
+                    for (i = 0; i < gridobj['@lstoryboardgrid'].pdata.length; i++) {
+
+                        lgrid.push({ "stepname": gridobj['@lstoryboardgrid'].pdata[i].steps });
+                    }
+                    var Steplist = {};
+                    Steplist.grid = JSON.stringify(lgrid);
+                    Steplist.stepid = rowindx;
+                    Steplist.projectid = Projectid;
+                    $.ajax({
+                        url: "/StoryBoard/LoadDependency",
+                        type: "POST",
+                        data: '{dependencylist: ' + JSON.stringify(Steplist) + '}',
+                   contentType: "application/json;charset=utf-8",
+                   dataType: "json",
+                   async: false,
+                        success: function (result) {
+                            if (result.status == 1) {
+                                if (result.data != null && result.data.length > 0) {
+                                    stepnames.push({ "value": "", "text": "" });
+                                    for (var i = 0; i < result.data.length; i++) {
+                                        stepnames.push({ "value": result.data[i], "text": result.data[i] });
+                                    }
+                                    List = stepnames;
+                                    stepnames = [];
+                                }
+                            }
+                            else if (result.status == 0) {
+                                swal.fire({
+                                    "title": "",
+                                    "text": result.message,
+                                    "type": "error",
+                                    "onClose": function (e) {
+                                        console.log('on close event fired!');
+                                    }
+                                });
+                            }
+                   },
+                   error(a, b, c) {
+                   }
+                    });
+                    return List;
+                }
+            },
+            filter: { crules: [{ condition: 'contain' }] },
+        });
+              dt.push({ title: "Description", editable: false, menuInHide: false, align: "left", halign: "center", width: @ViewBag.descriptionwidth, minWidth: 20, sortable: false, nodrag: true, nodrop: true, dataIndx: "desc", filter: { crules: [{ condition: 'contain' }] }, resizable: true });
+        startloader();
+        obj = [];
+        obj = {
+            colModel: dt,
+            editModel: {
+                clicksToEdit: 1,
+            },
+            trackModel: { on: true },
+            track: { on: true },
+            dataModel: { data: data, recIndx: "detailid" },
+            virtualX: true,
+            editable: true,
+            selectionModel: { type: 'cell' },
+            collapsible: { on: false, toggle: false },
+            columnBorders: true,
+            hoverMode: 'row',
+
+            freezeCols: 0,
+            freezeRows: 0,
+            numberCell: { show: true },
+            history: function (evt, ui) {
+                var $tb = this.toolbar(),
+                    $undo = $tb.find("button:contains('Undo')"),
+                    $redo = $tb.find("button:contains('Redo')");
+                if (ui.canUndo != null) {
+                    $undo.button("option", { disabled: !ui.canUndo });
+                }
+                if (ui.canRedo != null) {
+                    $redo.button("option", "disabled", !ui.canRedo);
+              }
+              var $grid = this.widget();
+              if (ui.canUndo != null) {
+                $("button.undosbchanges", $grid).button("option", { disabled: !ui.canUndo });
+              }
+                $undo.button("option", { label: 'Undo (' + ui.num_undo + ')' });
+                $redo.button("option", { label: 'Redo (' + ui.num_redo + ')' });
+            },
+            columnTemplate: { render: filterRender },//
+            menuIcon: true,
+            menuUI: {
+                tabs: ['hideCols', 'filter'],
+                gridOptions: {
+                    columnTemplate: { dataType: 'html' }
+                }
+            },
+            //cellBeforeSave: function (event, ui) { debugger },
+            beforeValidate: function (event, ui) {
+                
+                ui.updateList.forEach(function (obj) {
+                    var newRow = obj.newRow;
+                   
+                    $.each(newRow, function (key, value) {
+                        if (key == "steps") {
+                            if (newRow["steps"].length > 64) {
+                                newRow["steps"] = newRow["steps"].substring(0, 64);
+                            }
+                        }
+                        
+                    });
+                    
+                });
+            },
+            cellSave: function (evt, ui) {
+
+                if (ui.dataIndx == "testsuite" && ui.newVal !== ui.oldVal) {
+
+                    //reset the region cell whenever country cell is modified.
+                    this.updateRow({
+                        rowIndx: ui.rowIndx,
+                        row: { 'testcase': '','dataset':'' }
+                    });
+                }
+                if (ui.dataIndx == "testcase" && ui.newVal != ui.oldVal) {
+                    this.updateRow({
+                        rowIndx: ui.rowIndx,
+                        row: {'dataset': '' }
+                    });
+                }
+            },
+            //important option for this example.
+            reactive: false,
+            width: pqwidth,
+            height: pqheight,
+            roundcorners: false,
+            rowBorders: true,
+            stripeRows: true,
+            showHeader: true,
+            showTitle: false,
+            showToolbar: true,
+            showTop: true,
+            title: "StoryBoard",
+
+            postRenderInterval: -1,
+            filterModel:
+            {
+                on: true,
+                mode: "OR",
+                header: true,
+                menuIcon: true
+            },
+            toolbar:
+            {
+                // cls: "pq-toolbar-search",
+                items: [
+                    {
+                        type: 'button',
+                        icon: 'export',
+                        attr: 'title="Export ResultSet"',
+                        label: '',
+                        cls: "floatRight btn btn-brand btn-elevate btn-icon-sm", listener: function () {
+                            //append empty row at the end.
+                            exportStoryboardResultSet(@ViewBag.ProjectId,@ViewBag.StoryBoardId);
+                        }
+                    },
+                    {
+                        type: 'button',
+                        icon: 'export',
+                        attr: 'title="Export"',
+                        label: '',
+                        cls: "floatRight btn btn-brand btn-elevate btn-icon-sm", listener: function () {
+                            //append empty row at the end.
+                            exportStoryboard('@lstoryboardgrid',@ViewBag.ProjectId,@ViewBag.StoryBoardId);
+                        }
+                    },
+                    {
+                        type: 'button',
+                        icon: 'save',
+                        attr: 'title="Save"',
+
+                        label: '',
+                        cls: "floatRight btn btn-brand btn-elevate btn-icon-sm", listener: function () {
+                            //append empty row at the end.
+                            saveChanges("@lstoryboardgrid",@ViewBag.ProjectId,@ViewBag.StoryBoardId);
+                        }
+                    },
+                    {
+                        type: 'button',
+                        attr: 'title="Validate"',
+                        label: '',
+                        icon: 'validate',
+                        cls: "floatRight btn btn-brand btn-elevate btn-icon-sm",
+                        cls: "floatRight btn btn-brand btn-elevate btn-icon-sm", listener: function () {
+                            //append empty row at the end.
+                            validate("@lstoryboardgrid",@ViewBag.StoryBoardId );
+                        }
+                    },
+
+                    {
+                        type: 'button',
+                        icon: 'plus',
+                        attr: 'title="New Step"',
+
+                        label: '',
+                        cls: "floatRight btn btn-brand btn-elevate btn-icon-sm",
+                        listener: function () {
+                            //append empty row at the end.
+                            console.log("@lstoryboardgrid");
+                            var ri = -1;
+                            if (gridobj['@lstoryboardgrid'].Selection().address().length > 0) {
+                                ri = gridobj['@lstoryboardgrid'].Selection().address()[0].r1;
+                            }
+
+                            var rowData = { stepsID: newstepid - 1 }; //empty row
+                            newstepid = newstepid - 1;
+                            var rowIndx;
+                            if (ri >= 0) {
+                                gridobj['@lstoryboardgrid'].addRow({
+                                    rowIndx: ri + 1,
+                                    newRow: {},
+                                    rowData: rowData
+                                })
+                            }
+                            else {
+                                rowIndx = gridobj['@lstoryboardgrid'].addRow({ rowData: rowData });
+                            }
+
+                            gridobj['@lstoryboardgrid'].goToPage({ rowIndx: rowIndx });
+                            gridobj['@lstoryboardgrid'].editFirstCellInRow({ rowIndx: rowIndx });
+                            var stepsCount = newsteps.length;
+                            newsteps.push({ "stepsid": 0, "RUN_ORDER": stepsCount + 2, "RUN_ORDER_OLD": stepsCount });
+                        }
+                    }
+                    , {
+                        type: 'button',
+                        //icon: '',
+                        icon: 'execute',
+                        attr: 'title="Execute Engine"',
+                        cls: 'floatRight btn btn-brand btn-icon-sm ',
+                        label: '',
+                        listener: function () {
+                            var lStoryboardName = gridobj['@lstoryboardgrid'].pdata[0].Storyboardname;
+                            var lStoryboardId = gridobj['@lstoryboardgrid'].pdata[0].StoryboardId;
+                            ExecuteEnginePopup(lStoryboardName, lStoryboardId);
+                        }
+                    },
+                    {
+                        type: 'button', label: '', attr: 'title="Reload"', cls: 'btn btn-brand btn-elevate btn-icon-sm bgImage ', icon: "flaticon2-reload", listener: function () {
+                            var lStoryboardName = gridobj['@lstoryboardgrid'].pdata[0].Storyboardname;
+                            swal.fire({
+                                title: '',
+                                text: "All changes in [" + lStoryboardName +"] will be discarded.  Please confirm",
+                                type: 'warning',
+                                showCancelButton: true,
+                                confirmButtonText: 'Yes'
+                            }).then(function (result) {
+                                if (result.value == true) {
+                                    ReloadStoryboard('@lstoryboardgrid',@ViewBag.ProjectId,@ViewBag.StoryBoardId);
+                                }
+                            });
+                        },
+                    },
+
+                    {
+                        type: 'button',
+                        attr: 'title="Wrap"',
+                        // cls: "floatRight btn btn-brand btn-elevate btn-icon-sm",
+                        cls: ' btn btn-brand btn-icon-sm ',
+                        label: '',
+                        icon: "wrap",
+                        listener: function (evt) {
+                            if (lwrap) {
+                                //this.option("wrap", { lwrap: false, hwrap: false });
+
+                                lwrap = false;
+                            } else {
+                                //this.option("wrap", { lwrap: true, hwrap: true });
+                                lwrap = true;
+                            }
+                            this.option('wrap', lwrap);
+                            this.refresh();
+                        }
+                    },
+                    {
+                        type: 'button',
+                        attr: 'title="Undo"',
+                        icon: 'undo',
+                        label: '&nbsp;Undo',
+                        cls: 'btn btn-brand btn-icon-sm undosbchanges',
+                        options: { disabled: true },
+                        listener: function () {
+                            gridobj['@lstoryboardgrid'].history({ method: 'undo' });
+                        }
+                    },
+                    {
+                        type: 'button',
+                        attr: 'title="Redo"',
+                        icon: 'redo',
+                        cls: 'btn btn-brand btn-icon-sm ',
+                        label: '&nbsp;Redo',
+                        options: { disabled: true },
+                        listener: function () {
+                            gridobj['@lstoryboardgrid'].history({ method: 'redo' });
+                        }
+                    }, {
+                        type: 'button',
+                        //icon: '',
+                        icon: 'resetfilter',
+                        attr: 'title="Reset Filter"',
+                        cls: 'btn btn-brand btn-icon-sm ',
+                        label: '',
+                        listener: function () {
+                            gridobj['@lstoryboardgrid'].reset({ filter: true })
+                        }
+            }, {
+                type: 'button',
+                //icon: '',
+                icon: 'ui-icon-Copy',
+                attr: 'title="Copy"',
+                cls: 'btn btn-brand btn-icon-sm ',
+                label: '',
+                listener: function () {
+                    this.copy();
+                }
+            }, {
+                type: 'button',
+                //icon: '',
+                icon: 'ui-icon-Paste',
+                attr: 'title="Paste"',
+                cls: 'btn btn-brand btn-icon-sm ',
+                label: '',
+                listener: function () {
+                    this.paste();
+                }
+            }
+                ]
+            },
+
+            complete: function () {
+                this.flex();
+             },
+            moveNode: function() {
+            this.Checkbox('stateId').unCheckAll();
+             },
+            dragModel: {
+                on: true,
+                //clsDnD: 'dnd1',
+                    diHelper: ['RUN_ORDER'],
+                    dragNodes: function(rd, evt) {
+                        var checkNodes = this.Checkbox('stateId').getCheckedNodes();
+                    return (checkNodes.length && checkNodes.indexOf(rd) > -1) ? checkNodes : [rd];
+            }
+        },
+         dropModel: {
+                on: true,
+                accept: '.lsdatasetdrag>p, div',
+                    // accept: 'div',
+
+                drop: function (evt, uiDrop) {
+                    var checkNodes = this.Checkbox('stateId').getCheckedNodes();
+
+                    if (uiDrop.draggable[0].tagName == "P" || uiDrop.draggable[0].tagName == "p") {
+                        var laction = "RUN";
+                        var lProjectId = uiDrop.draggable[0].getAttribute("data-Project-id");
+                        var lTestSuiteId = uiDrop.draggable[0].getAttribute("data-TestSuite-id");
+                        var lTestSuiteName = uiDrop.draggable[0].getAttribute("data-TestSuite-name");
+                        var lTestCaseId = uiDrop.draggable[0].getAttribute("data-TestCase-id");
+                        var lTestCaseName = uiDrop.draggable[0].getAttribute("data-TestCase-name");
+                        var lDataSetId = uiDrop.draggable[0].getAttribute("data-id");
+                        var lDataSetName = uiDrop.draggable[0].getAttribute("data-name");
+                        var rowIndx = uiDrop.rowIndx + (uiDrop.ratioY() > 0.5 ? 1 : 0),
+                            node = {};
+                        newstepid = newstepid - 1;
+                        node["detailid"] = newstepid;
+                        node["actions"] = laction;
+                        node["ProjectId"] = lProjectId;
+                        node["suiteid"] = lTestSuiteId;
+                        node["caseid"] = lTestCaseId;
+                        node["datasetid"] = lDataSetId;
+
+                        node["testsuite"] = lTestSuiteName;
+                        node["testcase"] = lTestCaseName;
+                        node["dataset"] = lDataSetName;
+                        ////add nodes to droppable grid.
+                        this.addNodes([node], isNaN(rowIndx) ? null : rowIndx);
+                    }
+                    else if (checkNodes.length > 0) {
+                        $.each(checkNodes, function (key, value) {
+                            var rdDrag = value;
+                            var rowIndx = uiDrop.rowIndx + (uiDrop.ratioY() > 0.5 ? 1 : 0);
+                            if (rowIndx !== NaN) {
+                                gridobj['@lstoryboardgrid'].moveNodes([rdDrag], rowIndx);
+                            }
+                        });
+                    }
+                    else {
+                        var Drag = uiDrop.helper.data('Drag'),
+                            uiDrag = Drag == undefined?"": Drag.getUI(),
+                            rdDrag = uiDrag.rowData;
+                        var rowIndx = uiDrop.rowIndx + (uiDrop.ratioY() > 0.5 ? 1 : 0);
+                        if (rowIndx !== NaN && Drag !== undefined) {
+                             gridobj['@lstoryboardgrid'].moveNodes([rdDrag], rowIndx);
+                        }
+                    }
+                    gridobj['@lstoryboardgrid'].toolbar().children()[5].removeAttribute("disabled");
+                }
+            },
+            contextMenu: {
+                on: true,
+                items: function (evt, ui) {
+                    return (SBbodyItems(ui,@ViewBag.ProjectId));
+                }
+            }
+        };
+
+        gridobj['@lstoryboardgrid'] = pq.grid("@lstoryboardgrid", obj);
+
+        ReloadStoryboard('@lstoryboardgrid',@ViewBag.ProjectId,@ViewBag.StoryBoardId);
+
+
+
+        function exportStoryboard(SBGrid, ProjectId, SBId) {
+             if (gridobj[SBGrid].isDirty() && gridobj[SBGrid].isValidChange({ focusInvalid: true }).valid) {
+           swal.fire({
+               title: 'Export',
+               text: "There are unsaved changes. Export will not contain these changes. Please confirm or cancel export.",
+               type: 'warning',
+               showCancelButton: true,
+               confirmButtonText: 'Yes'
+           }).then(function (result) {
+               if (result.value == true) {
+                   $.ajax({
+                       url: '/StoryBoard/ExportStoryboard', //call your controller and action
+                       contentType: "application/json; charset=utf-8",
+                       dataType: "json",
+                       data: {
+                           Storyboardid: SBId,
+                           Projectid: ProjectId
+                       },
+                   }).done(function (result) {
+                       stoploader();
+                      // if (result.status == 1) {
+                           window.location = "/TestSuite/DownloadExcel?FileName=" + result;
+                       //}
+                       //else if (result.status == 0) {
+                       //    swal.fire({
+                       //        "title": "",
+                       //        "text": result.message,
+                       //        "type": "error",
+                       //        "onClose": function (e) {
+                       //            console.log('on close event fired!');
+                       //        }
+                       //    });
+                       //}
+                   });
+               }
+           });
+       }
+             else {
+                 $.ajax({
+                     url: '/StoryBoard/ExportStoryboard', //call your controller and action
+                     contentType: "application/json; charset=utf-8",
+                     dataType: "json",
+                     data: {
+                         Storyboardid: SBId,
+                         Projectid: ProjectId
+                     },
+                 }).done(function (result) {
+                     stoploader();
+                    // if (result.status == 1) {
+                         window.location = "/TestSuite/DownloadExcel?FileName=" + result;
+                     //}
+                     //else if (result.status == 0) {
+                     //    swal.fire({
+                     //        "title": "",
+                     //        "text": result.message,
+                     //        "type": "error",
+                     //        "onClose": function (e) {
+                     //            console.log('on close event fired!');
+                     //        }
+                     //    });
+                     //}
+                 });
+       }
+        }
+
+
+        function ReloadStoryboard(sbgrid,ProjectId,SBId)
+        {
+            data = [];
+              $.ajax({
+
+                  url: "/StoryBoard/GetStoryBoardDetails?Pid=" + ProjectId + "&sid=" + SBId,
+            type: "GET",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+                  success: function (result) {
+                      if (result.status == 1) {
+
+                          jsonData = "[";
+
+                          var bhistid = "";
+                          var chistid = "";
+                          var suiteid = "";
+                          var projectid = "";
+                          var caseid = "";
+                          var datasetid = "";
+                          var detailid = "";
+                          var actionname = "";
+                          var stepname = "";
+                          var suitename = "";
+                          var casename = "";
+                          var datasetname = "";
+                          var dependency = "";
+                          var btestresult = "";
+                          var berrcause = "";
+                          var bscriptstart = "";
+                          var bscriptend = "";
+                          var ctestresult = "";
+                          var cerrcause = "";
+                          var cscriptstart = "";
+                          var cscriptend = "";
+                          var description = "";
+                          result.data = JSON.parse(result.data);
+                          if (result.data.length > 0) {
+                              for (i = 0; i < result.data.length; i++) {
+                                  if (i != 0) {
+                                      jsonData += ",";
+                                  }
+                                  bhistid = result.data[i].BHistid;
+                                  chistid = result.data[i].CHistid;
+                                  suiteid = result.data[i].Suiteid;
+                                  projectid = result.data[i].ProjectId;
+                                  storyboardid = result.data[i].Storyboardid;
+                                  storyboardname = result.data[i].Storyboardname;
+                                  caseid = result.data[i].Caseid;
+                                  datasetid = result.data[i].Datasetid;
+                                  detailid = result.data[i].storyboarddetailid;
+                                  if (result.data[i].ActionName != null) {
+                                      actionname = result.data[i].ActionName;
+                                  }
+                                  if (result.data[i].StepName != null) {
+                                      stepname = result.data[i].StepName;
+                                  } else {
+                                      stepname = "";
+                                  }
+                                  if (result.data[i].TestSuiteName != null) {
+                                      suitename = result.data[i].TestSuiteName;
+                                  }
+                                  if (result.data[i].TestCaseName != null) {
+                                      casename = result.data[i].TestCaseName;
+                                  }
+                                  if (result.data[i].DataSetName != null) {
+                                      datasetname = result.data[i].DataSetName;
+                                  }
+
+                                  if (result.data[i].Dependency != null) {
+                                      dependency = result.data[i].Dependency;
+                                  }
+                                  if (result.data[i].BTestResult != null) {
+                                      btestresult = result.data[i].BTestResult;
+                                  }
+                                  else {
+                                      btestresult = "";
+                                  }
+                                  if (result.data[i].BErrorcause != null) {
+                                      berrcause = result.data[i].BErrorcause;
+                                      berrcause = berrcause.trim();
+                                  }
+                                  else {
+                                      berrcause = "";
+                                  }
+                                  if (result.data[i].BScriptstart != null) {
+                                      bscriptstart = result.data[i].BScriptstart;
+                                  }
+                                  else {
+                                      bscriptstart = "";
+                                  }
+                                  if (result.data[i].BScriptend != null && result.data[i].BScriptstart != null) {
+
+                                      //bscriptend = result[i].BScriptend;
+                                      var bEnd = new Date(result.data[i].BScriptend);
+                                      var bStart = new Date(result.data[i].BScriptstart);
+
+                                      var res = Math.abs(bEnd - bStart) / 1000;
+                                      var hours = Math.floor(res / 3600) % 24;
+                                      var minutes = Math.floor(res / 60) % 60;
+                                      var seconds = res % 60;
+                                      bscriptend = hours + ":" + minutes + ":" + seconds;
+                                  }
+                                  else {
+                                      bscriptend = "";
+                                  }
+                                  if (result.data[i].CTestResult != null) {
+                                      ctestresult = result.data[i].CTestResult;
+                                  }
+                                  else {
+                                      ctestresult = "";
+                                  }
+                                  if (result.data[i].CErrorcause != null) {
+                                      cerrcause = result.data[i].CErrorcause;
+                                  }
+                                  else {
+                                      cerrcause = "";
+                                  }
+                                  if (result.data[i].CScriptstart != null) {
+                                      cscriptstart = result.data[i].CScriptstart;
+                                  }
+                                  else {
+                                      cscriptstart = "";
+                                  }
+                                  if (result.data[i].CScriptend != null && result.data[i].CScriptstart != null) {
+                                      //cscriptend = result[i].CScriptend;
+
+                                      var cEnd = new Date(result.data[i].CScriptend);
+                                      var cStart = new Date(result.data[i].CScriptstart);
+
+                                      var res = Math.abs(cEnd - cStart) / 1000;
+                                      var hours = Math.floor(res / 3600) % 24;
+                                      var minutes = Math.floor(res / 60) % 60;
+                                      var seconds = res % 60;
+                                      cscriptend = hours + ":" + minutes + ":" + seconds;
+                                  }
+                                  else {
+                                      cscriptend = "";
+                                  }
+
+                                  if (result.data[i].Description != null) {
+                                      description = result.data[i].Description;
+                                      description = description.trim().replace(/\s+/g, " ");//replace("-","_");
+                                  }
+                                  else {
+                                      description = "";
+                                  }
+                                  jsonData += '{"actions":"' + actionname + '",  "StoryboardId":"' + storyboardid + '",  "Storyboardname":"' + storyboardname + '",  "ProjectId":"' + projectid + '","steps":"' + stepname + '", "bhistid":"' + bhistid + '","chistid":"' + chistid + '", "suiteid":"' + suiteid + '", "caseid":"' + caseid + '", "datasetid":"' + datasetid + '", "detailid":"' + detailid + '", "testsuite":"'
+                                      + suitename + '", "testcase":"' + casename + '", "dataset":"' + datasetname + '", "btestresult": "' + btestresult + '", "berrcause": "' + berrcause + '", "bscriptstart": "' + bscriptstart + '", "bscriptend": "' + bscriptend + '","ctestresult": "' + ctestresult + '", "cerrcause": "' + cerrcause + '", "cscriptstart": "' + cscriptstart + '", "cscriptend": "' + cscriptend + '","dependson": "' + dependency + '", "desc": "' + description + '", "RUN_ORDER": "' + result.data[i].Run_order + '"';
+                                  jsonData += "}";
+                              }
+                              jsonData += "]";
+
+                              data = JSON.parse(jsonData);
+                          }
+                          
+                          gridobj[sbgrid].option("dataModel.data", data);
+                          gridobj[sbgrid].refreshDataAndView()
+
+                          stoploader();
+                      }
+                      else if (result.status == 0) {
+                          swal.fire({
+                              "title": "",
+                              "text": result.message,
+                              "type": "error",
+                              "onClose": function (e) {
+                                  console.log('on close event fired!');
+                              }
+                          });
+                  }
+            },
+                  error: function (errormessage) {
+                      //alert(errormessage.responseText);
+                  }
+         });
+        }
+        function ReloadStoryboardResult(sbgrid, ProjectId, SBId)
+        {
+              $.ajax({
+
+                  url: "/StoryBoard/GetStoryBoardDetails?Pid=" + ProjectId + "&sid=" + SBId,
+            type: "GET",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+                  success: function (result) {
+                      if (result.status == 1) {
+                          jsonData = "[";
+                          var bhistid = "";
+                          var chistid = "";
+                          var btestresult = "";
+                          var berrcause = "";
+                          var bscriptstart = "";
+                          var bscriptend = "";
+                          var ctestresult = "";
+                          var cerrcause = "";
+                          var cscriptstart = "";
+                          var cscriptend = "";
+                          result.data = JSON.parse(result.data);
+                          if (result.data.length > 0) {
+                              for (i = 0; i < result.data.length; i++) {
+                                  if (i != 0) {
+                                      jsonData += ",";
+                                  }
+                                  bhistid = result.data[i].BHistid;
+                                  chistid = result.data[i].CHistid;
+
+                                  if (result.data[i].BTestResult != null) {
+                                      btestresult = result.data[i].BTestResult;
+                                  }
+                                  else {
+                                      btestresult = "";
+                                  }
+                                  if (result.data[i].BErrorcause != null) {
+                                      berrcause = result.data[i].BErrorcause;
+                                  }
+                                  else {
+                                      berrcause = "";
+                                  }
+                                  if (result.data[i].BScriptstart != null) {
+                                      bscriptstart = result.data[i].BScriptstart;
+                                  }
+                                  else {
+                                      bscriptstart = "";
+                                  }
+                                  if (result.data[i].BScriptstart != null && result.data[i].BScriptend != null) {
+                                      var bEnd = new Date(result.data[i].BScriptend);
+                                      var bStart = new Date(result.data[i].BScriptstart);
+
+                                      var res = Math.abs(bEnd - bStart) / 1000;
+                                      var hours = Math.floor(res / 3600) % 24;
+                                      var minutes = Math.floor(res / 60) % 60;
+                                      var seconds = res % 60;
+                                      bscriptend = hours + ":" + minutes + ":" + seconds;
+                                     // bscriptend = result.data[i].BScriptend;
+                                  }
+                                  else {
+                                      bscriptend = "";
+                                  }
+
+
+                                  if (result.data[i].CTestResult != null) {
+                                      ctestresult = result.data[i].CTestResult;
+                                  }
+                                  else {
+                                      ctestresult = "";
+                                  }
+                                  if (result.data[i].CErrorcause != null) {
+                                      cerrcause = result.data[i].CErrorcause;
+                                  }
+                                  else {
+                                      cerrcause = "";
+                                  }
+                                  if (result.data[i].CScriptstart != null) {
+                                      cscriptstart = result.data[i].CScriptstart;
+                                  }
+                                  else {
+                                      cscriptstart = "";
+                                  }
+                                  if (result.data[i].CScriptend != null && result.data[i].CScriptstart != null) {
+                                      var cEnd = new Date(result.data[i].CScriptend);
+                                      var cStart = new Date(result.data[i].CScriptstart);
+
+                                      var res = Math.abs(cEnd - cStart) / 1000;
+                                      var hours = Math.floor(res / 3600) % 24;
+                                      var minutes = Math.floor(res / 60) % 60;
+                                      var seconds = res % 60;
+                                      cscriptend = hours + ":" + minutes + ":" + seconds;
+                                      //cscriptend = result.data[i].CScriptend;
+                                  }
+                                  else {
+                                      cscriptend = "";
+                                  }
+
+                                  if (result.data[i].Description != null) {
+                                      description = result.data[i].Description;
+                                  }
+                                  else {
+                                      description = "";
+                                  }
+                                  jsonData += '{"bhistid":"' + bhistid + '","chistid":"' + chistid + '", "btestresult": "' + btestresult + '", "berrcause": "' + berrcause + '", "bscriptstart": "' + bscriptstart + '", "bscriptend": "' + bscriptend + '", "ctestresult": "' + ctestresult + '", "cerrcause": "' + cerrcause + '", "cscriptstart": "' + cscriptstart + '", "cscriptend": "' + cscriptend + '", "Run_order": "' + result.data[i].Run_order + '"';
+                                  jsonData += "}";
+                              }
+                              jsonData += "]";
+                              data = JSON.parse(jsonData);
+                          }
+
+                          var lgrid = gridobj[sbgrid].option("dataModel.data");
+                          for (var i = 0; i < lgrid.length; i++) {
+                              if (lgrid[i].bhistid != "null") {
+                                  for (var j = 0; j < data.length; j++) {
+                                      if (data[j].bhistid == lgrid[i].bhistid) {
+                                          gridobj[sbgrid].updateRow({ rowIndx: i, checkEditable: false, row: { 'btestresult': data[j].btestresult } });
+                                          gridobj[sbgrid].updateRow({ rowIndx: i, checkEditable: false, row: { 'berrcause': data[j].berrcause } });
+                                          gridobj[sbgrid].updateRow({ rowIndx: i, checkEditable: false, row: { 'bscriptstart': data[j].bscriptstart } });
+                                          gridobj[sbgrid].updateRow({ rowIndx: i, checkEditable: false, row: { 'bscriptend': data[j].bscriptend } });
+                                      }
+                                  }
+                              } else {
+                                  for (var j = 0; j < data.length; j++) {
+                                      if (data[j].Run_order == lgrid[i].RUN_ORDER) {
+                                          gridobj[sbgrid].updateRow({ rowIndx: i, checkEditable: false, row: { 'btestresult': data[j].btestresult } });
+                                          gridobj[sbgrid].updateRow({ rowIndx: i, checkEditable: false, row: { 'berrcause': data[j].berrcause } });
+                                          gridobj[sbgrid].updateRow({ rowIndx: i, checkEditable: false, row: { 'bscriptstart': data[j].bscriptstart } });
+                                          gridobj[sbgrid].updateRow({ rowIndx: i, checkEditable: false, row: { 'bscriptend': data[j].bscriptend } });
+
+                                      }
+                                  }
+                              }
+
+
+                              if (lgrid[i].chistid != "null") {
+                                  for (var j = 0; j < data.length; j++) {
+                                      if (data[j].chistid == lgrid[i].chistid) {
+                                          gridobj[sbgrid].updateRow({ rowIndx: i, checkEditable: false, row: { 'ctestresult': data[j].ctestresult } });
+                                          gridobj[sbgrid].updateRow({ rowIndx: i, checkEditable: false, row: { 'cerrcause': data[j].cerrcause } });
+                                          gridobj[sbgrid].updateRow({ rowIndx: i, checkEditable: false, row: { 'cscriptstart': data[j].cscriptstart } });
+                                          gridobj[sbgrid].updateRow({ rowIndx: i, checkEditable: false, row: { 'cscriptend': data[j].cscriptend } });
+                                      }
+                                  }
+                              } else {
+                                  for (var j = 0; j < data.length; j++) {
+                                      if (data[j].Run_order == lgrid[i].RUN_ORDER) {
+                                          gridobj[sbgrid].updateRow({ rowIndx: i, row: { 'ctestresult': data[j].ctestresult } });
+                                          gridobj[sbgrid].updateRow({ rowIndx: i, row: { 'cerrcause': data[j].cerrcause } });
+                                          gridobj[sbgrid].updateRow({ rowIndx: i, row: { 'cscriptstart': data[j].cscriptstart } });
+                                          gridobj[sbgrid].updateRow({ rowIndx: i, row: { 'cscriptend': data[j].cscriptend } });
+
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                      else if (result.status == 0) {
+                          swal.fire({
+                              "title": "",
+                              "text": result.message,
+                              "type": "error",
+                              "onClose": function (e) {
+                                  console.log('on close event fired!');
+                              }
+                          });
+                      }
+            },
+            error: function (errormessage) {
+                //alert(errormessage.responseText);
+            }
+        });
+        }
+
+        function filterRender(ui) {
+            var val = ui.cellData,
+                filter = ui.column.filter,
+                crules = (filter || {}).crules;
+
+            if (filter && filter.on && crules && crules[0].value) {
+                var condition = crules[0].condition,
+                    valUpper = val.toUpperCase(),
+                    txt = crules[0].value,
+                    txt = (txt == null) ? "" : txt.toString(),
+                    txtUpper = txt.toUpperCase(),
+                    indx = -1;
+                if (condition == "end") {
+                    indx = valUpper.lastIndexOf(txtUpper);
+                    if (indx + txtUpper.length != valUpper.length) {
+                        indx = -1;
+                    }
+                }
+                else if (condition == "contain") {
+                    indx = valUpper.indexOf(txtUpper);
+                }
+                else if (condition == "begin") {
+                    indx = valUpper.indexOf(txtUpper);
+                    if (indx > 0) {
+                        indx = -1;
+                    }
+                }
+                if (indx >= 0) {
+                    var txt1 = val.substring(0, indx);
+                    var txt2 = val.substring(indx, indx + txt.length);
+                    var txt3 = val.substring(indx + txt.length);
+                    return txt1 + "<span style='background:yellow;color:#333;'>" + txt2 + "</span>" + txt3;
+                }
+                else {
+                    return val;
+                }
+            }
+            else {
+                return val;
+            }
+        }
+
+
+        function validate(sbgrid,sbid)
+        {
+            startloader();
+            gridobj[sbgrid].reset({ filter: true });
+            var lReqVal = $(sbgrid).find(".pq-cell-red-tr");
+            if ( lReqVal.length > 0) {
+                stoploader();
+                swal.fire({
+                    "title": "",
+                    "text": "Validation errors in the Storyboard. Please correct them",
+                    "type": "error",
+                    "onClose": function (e) {
+                        console.log('on close event fired!');
+                    }
+                });
+
+                return false;
+            }
+            var flag1 = false;
+            console.log(sbgrid);
+            gridobj[sbgrid].setSelection(null);
+            for (i = 0; i < gridobj[sbgrid].pdata.length; i++) {
+                if (gridobj[sbgrid].pdata[i].actions == undefined || gridobj[sbgrid].pdata[i].actions == "" || gridobj[sbgrid].pdata[i].actions =="null" || gridobj[sbgrid].pdata[i].testsuite == undefined || gridobj[sbgrid].pdata[i].testsuite == "" || gridobj[sbgrid].pdata[i].testsuite == "null" || gridobj[sbgrid].pdata[i].testcase == undefined || gridobj[sbgrid].pdata[i].testcase == "" || gridobj[sbgrid].pdata[i].testcase == "null" || gridobj[sbgrid].pdata[i].dataset == undefined || gridobj[sbgrid].pdata[i].dataset == "" || gridobj[sbgrid].pdata[i].dataset == "null") {
+                    gridobj[sbgrid].setSelection({ rowIndx: i, focus: true });
+                    flag1 = true;
+                }
+            }
+            if (flag1) {
+                stoploader();
+                swal.fire({
+                    "title": "",
+                    "text": "Actions,Test Suite,Test Case and Dataset fields are required.",
+                    "type": "error",
+                    "onClose": function (e) {
+                        console.log('on close event fired!');
+                    }
+                });
+                return false;
+            }
+
+            var pStoryboardArray = [];
+            $.each(gridobj[sbgrid].pdata, function (key, value) {
+                pStoryboardArray.push({
+                    "RowId": key, "Run_order": value.RUN_ORDER, "ProjectId": value.ProjectId, "ActionName": value.actions, "StepName": value.steps,
+                    "TestSuiteName": value.testsuite, "TestCaseName": value.testcase, "DataSetName": value.dataset, "Dependency": value.dependson
+                });
+            });
+
+
+
+            $.ajax({
+                dataType: "json",
+                type: "POST",
+                async: true,
+                beforeSend: function (jqXHR, settings) {
+                    //gridobj[sbgrid].showLoading("Saving Data");
+                },
+                url: "/StoryBoard/ValidateStoryboard",
+                data: { lGridJsonData: JSON.stringify(pStoryboardArray), lStoryboardId:sbid  },
+                success: function (result) {
+                    if (result.status == 1) {
+                        if (result.data == "[]") {
+
+                            swal.fire({
+                                "title": "",
+                                "text": result.message,
+                                "type": "success",
+                                "onClose": function (e) {
+                                    console.log('on close event fired!');
+                                }
+                            });
+                            gridobj[sbgrid].setSelection(null)
+                        }
+                        else {
+                            var validationmsgs = "<table cellborder='0' cellspacing='2' cellpadding='4'>";
+                            var lobject = JSON.parse(result.data);
+                            $("#ValidationMessageLabel").html("");
+                            for (var i = 0; i < lobject.length; i++) {
+                                var lrowid = lobject[i].RowId;
+                                gridobj[sbgrid].setSelection({ rowIndx: lrowid, focus: true });
+                                gridobj[sbgrid].Range({ r1: lrowid, r2: lrowid }).comment(lobject[i].ValidationMsg);
+                                validationmsgs += "<tr><td style='width: 80px;'>Row: " + (lrowid + 1) + "</td><td align='left'>" + lobject[i].ValidationMsg + "</td></tr>";
+                            }
+                            validationmsgs += "</table>";
+                            $("#ValidationMessageLabel").html(validationmsgs);
+                            $("#ValidateMsgModel").modal("toggle");
+                        }
+                    }
+                    else if (result.status == 0) {
+                        swal.fire({
+                            "title": "",
+                            "text": result.message,
+                            "type": "error",
+                            "onClose": function (e) {
+                                console.log('on close event fired!');
+                            }
+                        });
+                    }
+                },
+                complete: function (changes) {
+                    stoploader();
+                    //gridobj[sbgrid].hideLoading();
+                }
+            });
+        }
+
+        function saveChanges(sbgrid,ProjectId,sbid)
+        {
+            startloader();
+            gridobj[sbgrid].reset({ filter: true });
+             var lReqVal = $(sbgrid).find(".pq-cell-red-tr");
+          if (lReqVal.length > 0) {
+              sbvalidmsg = true;
+              stoploader();
+                swal.fire({
+                    "title": "",
+                    "text": "Please correct validation errors",
+                    "type": "error",
+                    "onClose": function (e) {
+                        console.log('on close event fired!');
+                    }
+                });
+
+                return false;
+            }
+            var flag1 = false;
+
+            gridobj[sbgrid].setSelection(null);
+            for (i = 0; i < gridobj[sbgrid].pdata.length; i++) {
+                if (gridobj[sbgrid].pdata[i].actions == undefined || gridobj[sbgrid].pdata[i].actions == "" || gridobj[sbgrid].pdata[i].actions =="null" || gridobj[sbgrid].pdata[i].testsuite == undefined || gridobj[sbgrid].pdata[i].testsuite == "" || gridobj[sbgrid].pdata[i].testsuite == "null" || gridobj[sbgrid].pdata[i].testcase == undefined || gridobj[sbgrid].pdata[i].testcase == "" || gridobj[sbgrid].pdata[i].testcase == "null" || gridobj[sbgrid].pdata[i].dataset == undefined || gridobj[sbgrid].pdata[i].dataset == "" || gridobj[sbgrid].pdata[i].dataset == "null") {
+                    gridobj[sbgrid].setSelection({ rowIndx: i, focus: true });
+                    flag1 = true;
+                }
+            }
+          if (flag1) {
+              sbvalidmsg = true;
+              stoploader();
+                swal.fire({
+                    "title": "",
+                    "text": "Action,Test Suite,Test Case and Dataset fields are required.",
+                    "type": "error",
+                    "onClose": function (e) {
+                        console.log('on close event fired!');
+                    }
+                });
+                return false;
+            }
+
+
+            var pStoryboardArray = [];
+            $.each(gridobj[sbgrid].pdata, function (key, value) {
+
+                pStoryboardArray.push({ "RowId": key, "Run_order": value.RUN_ORDER, "ProjectId": ProjectId, "ActionName": value.actions, "StepName": value.steps, "TestSuiteName": value.testsuite, "TestCaseName": value.testcase, "DataSetName": value.dataset, "Dependency": value.dependson, "storyboarddetailid": value.detailid});
+            });
+
+            changes = gridobj[sbgrid].getChanges({ format: "byVal" });
+
+
+            $.ajax({
+                dataType: "json",
+                type: "POST",
+                async: true,
+                beforeSend: function (jqXHR, settings) {
+                    //gridobj[sbgrid].showLoading("Saving Data");
+                },
+                url: "/StoryBoard/SaveStoryboardGrid",
+                data: { lGridJsonData: JSON.stringify(pStoryboardArray), lStoryboardId: sbid , lchangedGrid: JSON.stringify(changes) },
+                success: function (result) {
+                    if (result.status == 1) {
+                        if (result.data == "[]") {
+                            swal.fire({
+                                "title": "",
+                                "text": result.message,
+                                "type": "success",
+                                "onClose": function (e) {
+                                    console.log('on close event fired!');
+                                }
+                            });
+
+                            gridobj[sbgrid].commit({ type: 'add', rows: result.data.addList });
+                            gridobj[sbgrid].commit({ type: 'update', rows: result.data.updateList });
+                            gridobj[sbgrid].commit({ type: 'delete', rows: result.data.deleteList });
+
+                            gridobj[sbgrid].history({ method: 'reset' });
+                            gridobj[sbgrid].setSelection(null);
+                            sbvalidmsg = false;
+                            for (i = 0; i < gridobj[sbgrid].pdata.length; i++) {
+                                gridobj[sbgrid].Range({ r1: i, r2: i }).comment("");
+                            }
+                            ReloadStoryboard(sbgrid, ProjectId, sbid);
+                        }
+                        else {
+                            sbvalidmsg = true;
+                            var validationmsgs = "<table cellborder='0' cellspacing='2' cellpadding='4'>";
+                            var lobject = JSON.parse(result.data);
+                            $("#ValidationMessageLabel").html("");
+                            for (var i = 0; i < lobject.length; i++) {
+                                var lrowid = lobject[i].RowId;
+                                gridobj[sbgrid].setSelection({ rowIndx: lrowid, focus: true });
+                                gridobj[sbgrid].Range({ r1: lrowid, r2: lrowid }).comment(lobject[i].ValidationMsg);
+                                validationmsgs += "<tr><td style='width: 80px;'>Row: " + (lrowid + 1) + "</td><td align='left'>" + lobject[i].ValidationMsg + "</td></tr>";
+                            }
+                            validationmsgs += "</table>";
+                            $("#ValidationMessageLabel").html(validationmsgs);
+                            $("#ValidateMsgModel").modal("toggle");
+                        }
+                    }
+                    else if (result.status == 0) {
+                        swal.fire({
+                            "title": "",
+                            "text": result.message,
+                            "type": "error",
+                            "onClose": function (e) {
+                                console.log('on close event fired!');
+                            }
+                        });
+                    }
+                },
+                complete: function (result) {
+                    stoploader();
+                    //gridobj[sbgrid].hideLoading();
+                }
+            });
+        }
+
+        function exportStoryboardResultSet(ProjectId, sbid) {
+            $('#hdnEStoryboardId').val("");
+            $('#hdnEProjectId').val("");
+            $('#hdnEStoryboardId').val(sbid);
+            $('#hdnEProjectId').val(ProjectId);
+            $('#ResultSetExport').modal("show");
+        }
+
+        function ExportResultSet() {
+            var sid =  $('#hdnEStoryboardId').val();
+            var pid = $('#hdnEProjectId').val();
+            var mode = $('#drpRMode').val();
+            $('#ResultSetExport').modal("hide");
+            startloader();
+            $.ajax({
+                url: '/StoryBoard/ExportStoryboardResultSet', //call your controller and action
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: {
+                    Storyboardid: sid,
+                    Projectid: pid,
+                    Mode: mode
+                },
+            }).done(function (result) {
+                stoploader();
+                window.location = "/TestSuite/DownloadExcel?FileName=" + result;
+            });
+
+        }
+    </script>
+}
+@{
+
+    var BProjectId = "sProject" + ViewBag.StoryBoardId;
+    var BSBId = "sStoryboard" + ViewBag.StoryBoardId;
+
+}
+<div class="kt-subheader   kt-grid__item" id="kt_subheader" style="left: @ViewBag.width;">
+    <div class="kt-container  kt-container--fluid ">
+        <div class="kt-subheader__main">
+            <input type="hidden" id="hdnSProjectId" value="@ViewBag.ProjectId" />
+            <input type="hidden" id="hdnSBId" value="@ViewBag.StoryBoardId" />
+            <span class="kt-subheader__separator kt-hidden"></span>
+            <div class="kt-subheader__breadcrumbs">
+                <a href="#" class="kt-subheader__breadcrumbs-home">
+                    <i class="flaticon2-shelter" style="color:#1c6081;"></i>
+                </a>
+                <a href="#" class="kt-subheader__breadcrumbs-link" style="color:#1c6081;display:none;" id="@BProjectId">
+                </a>
+                <i class="fa fa-angle-double-right" style="color:#1c6081;display:none;">&nbsp;</i>
+                <a href="#" class="kt-subheader__breadcrumbs-link" style="color:#1c6081;display:none;" id="@BSBId">
+                    &nbsp;
+                </a>
+            </div>
+        </div>
+        <div class="kt-subheader__toolbar">
+        </div>
+    </div>
+</div>
+<div class="kt-portlet__body">
+    <div id="grid" class="@classgrid" style="margin:auto;padding:0px 10px;"></div>
+</div>
+<script>
+   $(document).ready(function () {
+       var lProjectId = $("#hdnSProjectId").val();
+       var lstoryboardid = $("#hdnSBId").val();
+
+          $.ajax({
+              dataType: "json",
+              type: "POST",
+              url: '/Home/GetSBBreadcum?lProjectId=@ViewBag.ProjectId&lStoryboardId=@ViewBag.StoryBoardId',
+              data: '{ lProjectId:'  + lProjectId +' ,lStoryboardId:'+lstoryboardid+ '}',
+              success: function (result) {
+                  if (result.status == 1) {
+                  console.log(result.data)
+                      if (result.data.length > 1) {
+                          var lProjectName = result.data.split("#")[0];
+                          var lstoryboardname = result.data.split("#")[1];
+
+                          var BProjectId = "sProject" + @ViewBag.StoryBoardId;
+                          var BSBId = "sStoryboard" + @ViewBag.StoryBoardId;
+
+                          $("#" + BProjectId)[0].innerHTML = lProjectName;
+                          $("#" + BSBId)[0].innerHTML = lstoryboardname;
+
+                          $("#" + BProjectId).css("display", "block");
+                          $("#" + BSBId).css("display", "block");
+                          $("#" + BProjectId).prev().css("display", "block");
+                          $("#" + BSBId).prev().css("display", "block");
+                      }
+                  }
+                  else if (result.status == 0) {
+                      swal.fire({
+                          "title": "",
+                          "text": result.message,
+                          "type": "error",
+                          "onClose": function (e) {
+                              console.log('on close event fired!');
+                          }
+                      });
+                  }
+              }
+          });
+        })
+
+
+
+</script>
+

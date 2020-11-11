@@ -1,0 +1,2445 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ErrorLog">
+    <Key>
+      <PropertyRef Name="ErrorLogId" />
+    </Key>
+    <Property Name="ErrorLogId" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="ExceptionMessage" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="ControllerName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="ExceptionStackTrace" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="LogTime" Type="DateTime" />
+    <Property Name="CreatedBy" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="URL" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="UrlReferrer" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="UserAgent" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="UserHostAddress" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="UserHostName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="LOGREPORT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="FILENAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="OBJECT" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="STATUS" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="LOGDETAILS" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="CREATEDON" Type="DateTime" Precision="255" />
+    <Property Name="FEEDPROCESSDETAILID" Type="Decimal" Precision="38" Scale="0" />
+  </EntityType>
+  <EntityType Name="REL_APP_BASELINECOMPARE">
+    <Key>
+      <PropertyRef Name="REL_ID" />
+    </Key>
+    <Property Name="REL_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="APP_ID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="ISBASELINE" Type="Decimal" Precision="38" Scale="0" />
+  </EntityType>
+  <EntityType Name="REL_APP_PROJ">
+    <Key>
+      <PropertyRef Name="RELATIONSHIP_ID" />
+    </Key>
+    <Property Name="RELATIONSHIP_ID" Type="Int64" Nullable="false" />
+    <Property Name="APPLICATION_ID" Type="Int64" />
+    <Property Name="PROJECT_ID" Type="Int64" />
+    <NavigationProperty Name="T_TEST_PROJECT" Relationship="Self.FK_REL_APP__REFERENCE_T_TEST_P" FromRole="REL_APP_PROJ" ToRole="T_TEST_PROJECT" />
+  </EntityType>
+  <EntityType Name="REL_APP_TESTCASE">
+    <Key>
+      <PropertyRef Name="RELATIONSHIP_ID" />
+    </Key>
+    <Property Name="RELATIONSHIP_ID" Type="Int64" Nullable="false" />
+    <Property Name="APPLICATION_ID" Type="Int64" />
+    <Property Name="TEST_CASE_ID" Type="Int64" />
+  </EntityType>
+  <EntityType Name="REL_APP_TESTSUITE">
+    <Key>
+      <PropertyRef Name="RELATIONSHIP_ID" />
+    </Key>
+    <Property Name="RELATIONSHIP_ID" Type="Int64" Nullable="false" />
+    <Property Name="APPLICATION_ID" Type="Int64" />
+    <Property Name="TEST_SUITE_ID" Type="Int64" />
+  </EntityType>
+  <EntityType Name="REL_OBJ_APP">
+    <Key>
+      <PropertyRef Name="RELATIONSHIP_ID" />
+    </Key>
+    <Property Name="RELATIONSHIP_ID" Type="Int64" Nullable="false" />
+    <Property Name="OBJECT_ID" Type="Int64" Nullable="false" />
+    <Property Name="APPLICATION_ID" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="T_REGISTERED_APPS" Relationship="Self.FK_OBJ_APP_APP_APP" FromRole="REL_OBJ_APP" ToRole="T_REGISTERED_APPS" />
+    <NavigationProperty Name="T_REGISTED_OBJECT" Relationship="Self.FK_OBJ_APP_OBJ_OBJ" FromRole="REL_OBJ_APP" ToRole="T_REGISTED_OBJECT" />
+  </EntityType>
+  <EntityType Name="REL_PROJECT_USER">
+    <Key>
+      <PropertyRef Name="RELATION_ID" />
+    </Key>
+    <Property Name="RELATION_ID" Type="Int64" Nullable="false" />
+    <Property Name="PROJECT_ID" Type="Int64" />
+    <Property Name="USER_ID" Type="Decimal" Precision="38" Scale="0" />
+  </EntityType>
+  <EntityType Name="REL_TC_DATA_SUMMARY">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" />
+    <Property Name="DATA_SUMMARY_ID" Type="Int64" />
+    <Property Name="TEST_CASE_ID" Type="Int64" />
+    <Property Name="CREATE_TIME" Type="DateTime" />
+    <NavigationProperty Name="T_TEST_CASE_SUMMARY" Relationship="Self.FK_REL_TC_D_REFERENCE_T_TEST_C" FromRole="REL_TC_DATA_SUMMARY" ToRole="T_TEST_CASE_SUMMARY" />
+    <NavigationProperty Name="T_TEST_DATA_SUMMARY" Relationship="Self.FK_REL_TC_D_REFERENCE_T_TEST_D" FromRole="REL_TC_DATA_SUMMARY" ToRole="T_TEST_DATA_SUMMARY" />
+  </EntityType>
+  <EntityType Name="REL_TEST_CASE_TEST_SUITE">
+    <Key>
+      <PropertyRef Name="RELATIONSHIP_ID" />
+    </Key>
+    <Property Name="RELATIONSHIP_ID" Type="Int64" Nullable="false" />
+    <Property Name="TEST_CASE_ID" Type="Int64" />
+    <Property Name="TEST_SUITE_ID" Type="Int64" />
+    <NavigationProperty Name="T_TEST_SUITE" Relationship="Self.FK_REL_TEST_REFERENCE_T_TEST_2" FromRole="REL_TEST_CASE_TEST_SUITE" ToRole="T_TEST_SUITE" />
+    <NavigationProperty Name="T_TEST_CASE_SUMMARY" Relationship="Self.FK_REL_TEST_REFERENCE_T_TEST_C" FromRole="REL_TEST_CASE_TEST_SUITE" ToRole="T_TEST_CASE_SUMMARY" />
+  </EntityType>
+  <EntityType Name="REL_TEST_SUIT_PROJECT">
+    <Key>
+      <PropertyRef Name="RELATIONSHIP_ID" />
+    </Key>
+    <Property Name="RELATIONSHIP_ID" Type="Int64" Nullable="false" />
+    <Property Name="TEST_SUITE_ID" Type="Int64" />
+    <Property Name="PROJECT_ID" Type="Int64" />
+    <NavigationProperty Name="T_TEST_PROJECT" Relationship="Self.FK_REL_TEST_REFERENCE_T_TEST_P" FromRole="REL_TEST_SUIT_PROJECT" ToRole="T_TEST_PROJECT" />
+    <NavigationProperty Name="T_TEST_SUITE" Relationship="Self.FK_REL_TEST_REFERENCE_T_TEST_S" FromRole="REL_TEST_SUIT_PROJECT" ToRole="T_TEST_SUITE" />
+  </EntityType>
+  <EntityType Name="SYSTEM_LOOKUP">
+    <Key>
+      <PropertyRef Name="LOOKUP_ID" />
+    </Key>
+    <Property Name="LOOKUP_ID" Type="Int64" Nullable="false" />
+    <Property Name="TABLE_NAME" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="FIELD_NAME" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="VALUE" Type="Int16" />
+    <Property Name="DISPLAY_NAME" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="STATUS" Type="Int16" />
+  </EntityType>
+  <EntityType Name="T_BASELINE_DATA_DETAIL">
+    <Key>
+      <PropertyRef Name="DETAIL_ID" />
+    </Key>
+    <Property Name="DETAIL_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="DATA_BASE_OBJ_ID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="LOOP_ID" Type="Int32" />
+    <Property Name="DATA_VALUE" Type="String" MaxLength="516" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="T_BASELINE_DATA_SUMMARY" Relationship="Self.FK_BSLN_DTL_BSID_BSLN_DT_ID" FromRole="T_BASELINE_DATA_DETAIL" ToRole="T_BASELINE_DATA_SUMMARY" />
+  </EntityType>
+  <EntityType Name="T_BASELINE_DATA_SUMMARY">
+    <Key>
+      <PropertyRef Name="DATA_BASE_OBJ_ID" />
+    </Key>
+    <Property Name="DATA_BASE_OBJ_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="DATA_SUMMARY_ID" Type="Int64" />
+    <Property Name="DATA_BASE_OBJ_PARENT_ID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="OBJECT_HAPPY_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="ORDER_ID" Type="Int16" />
+    <NavigationProperty Name="T_BASELINE_DATA_DETAIL" Relationship="Self.FK_BSLN_DTL_BSID_BSLN_DT_ID" FromRole="T_BASELINE_DATA_SUMMARY" ToRole="T_BASELINE_DATA_DETAIL" />
+  </EntityType>
+  <EntityType Name="T_BAT_RESULT">
+    <Key>
+      <PropertyRef Name="BAT_RESULT_ID" />
+    </Key>
+    <Property Name="BAT_RESULT_ID" Type="Int64" Nullable="false" />
+    <Property Name="BAT_ID" Type="Int64" Nullable="false" />
+    <Property Name="RESULT_ID" Type="Int64" />
+    <Property Name="START_TIME" Type="DateTime" />
+    <Property Name="END_TIME" Type="DateTime" />
+    <Property Name="ERROR_MESSAGE" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="T_BAT_RESULT_DETAIL" Relationship="Self.SYS_C007724" FromRole="T_BAT_RESULT" ToRole="T_BAT_RESULT_DETAIL" />
+    <NavigationProperty Name="T_TEST_BATCH" Relationship="Self.SYS_C007729" FromRole="T_BAT_RESULT" ToRole="T_TEST_BATCH" />
+  </EntityType>
+  <EntityType Name="T_BAT_RESULT_DETAIL">
+    <Key>
+      <PropertyRef Name="BAT_RESULT_DTL_ID" />
+    </Key>
+    <Property Name="BAT_RESULT_DTL_ID" Type="Int64" Nullable="false" />
+    <Property Name="BAT_RESULT_ID" Type="Int64" Nullable="false" />
+    <Property Name="BAT_DTL_ID" Type="Int64" Nullable="false" />
+    <Property Name="RESULT_ID" Type="Int64" />
+    <Property Name="START_TIME" Type="DateTime" />
+    <Property Name="END_TIME" Type="DateTime" />
+    <Property Name="ERROR_MESSAGE" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="T_BAT_RESULT" Relationship="Self.SYS_C007724" FromRole="T_BAT_RESULT_DETAIL" ToRole="T_BAT_RESULT" />
+    <NavigationProperty Name="T_TEST_BATCH_DETAIL" Relationship="Self.SYS_C007725" FromRole="T_BAT_RESULT_DETAIL" ToRole="T_TEST_BATCH_DETAIL" />
+  </EntityType>
+  <EntityType Name="T_COMPARE_CONFIG">
+    <Key>
+      <PropertyRef Name="COMPARE_ID" />
+    </Key>
+    <Property Name="COMPARE_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="COMPARE_NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="S1_TYPE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="S1_DBCONN" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="S1_QUERY" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="S1_FILE_LOC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="S2_TYPE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="S2_DBCONN" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="S2_QUERY" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="S2_FILE_LOC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="O_FILE_LOC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="KEY_FIELDS" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="SHOW_FIELDS" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="COMPARE_FIELDS" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ROW_FIELDS" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="COLUMN_FIELDS" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="T_COMPARE_CONNECTIONS">
+    <Key>
+      <PropertyRef Name="DBCONN_ID" />
+    </Key>
+    <Property Name="DBCONN_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="DBCONN_NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TYPE" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="HOST" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PORT" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PROTOCOL" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SERVICE_NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="USERID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PASSWORD" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_COMPARE_QUERIES">
+    <Key>
+      <PropertyRef Name="QUERY_ID" />
+    </Key>
+    <Property Name="QUERY_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="QUERY_NAME" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="QUERY_VAL" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_DATA_SOURCE">
+    <Key>
+      <PropertyRef Name="DATA_SOURCE_ID" />
+    </Key>
+    <Property Name="DATA_SOURCE_ID" Type="Int64" Nullable="false" />
+    <Property Name="DATA_SOURCE_NAME" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="DATA_SOURCE_TYPE" Type="Int16" />
+    <Property Name="DETAILS" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="DB_CONNECTION" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="DB_TYPE" Type="Int16" />
+    <Property Name="TEST_CONNECTION" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="T_DBCONNECTION">
+    <Key>
+      <PropertyRef Name="DBCONNECTION_ID" />
+    </Key>
+    <Property Name="DBCONNECTION_ID" Type="Int64" Nullable="false" />
+    <Property Name="DATABASENAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="USERNAME" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="PASSWORD" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="HOST" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="PORT" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="SERVICENAME" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="DECODE_METHOD" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="SCHEMA" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="T_DIC_RELATION_KEYWORD">
+    <Key>
+      <PropertyRef Name="RELATION_ID" />
+    </Key>
+    <Property Name="RELATION_ID" Type="Int64" Nullable="false" />
+    <Property Name="TYPE_ID" Type="Int64" />
+    <Property Name="KEY_WORD_ID" Type="Int64" />
+    <NavigationProperty Name="T_GUI_COMPONENT_TYPE_DIC" Relationship="Self.FK_T_DIC_RE_REFERENCE_T_GUI_CO" FromRole="T_DIC_RELATION_KEYWORD" ToRole="T_GUI_COMPONENT_TYPE_DIC" />
+    <NavigationProperty Name="T_KEYWORD" Relationship="Self.FK_T_DIC_RE_REFERENCE_T_KEYWOR" FromRole="T_DIC_RELATION_KEYWORD" ToRole="T_KEYWORD" />
+  </EntityType>
+  <EntityType Name="T_GUI_COMPONENT_TYPE_DIC">
+    <Key>
+      <PropertyRef Name="TYPE_ID" />
+    </Key>
+    <Property Name="TYPE_ID" Type="Int64" Nullable="false" />
+    <Property Name="TYPE_NAME" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="APPLICATION_TYPE_ID" Type="Int16" />
+    <Property Name="DESCRIPTION" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="T_DIC_RELATION_KEYWORD" Relationship="Self.FK_T_DIC_RE_REFERENCE_T_GUI_CO" FromRole="T_GUI_COMPONENT_TYPE_DIC" ToRole="T_DIC_RELATION_KEYWORD" />
+    <NavigationProperty Name="T_REGISTED_OBJECT" Relationship="Self.FK_T_REGIST_REFERENCE_T_GUI_CO" FromRole="T_GUI_COMPONENT_TYPE_DIC" ToRole="T_REGISTED_OBJECT" />
+  </EntityType>
+  <EntityType Name="T_KEYWORD">
+    <Key>
+      <PropertyRef Name="KEY_WORD_ID" />
+    </Key>
+    <Property Name="KEY_WORD_ID" Type="Int64" Nullable="false" />
+    <Property Name="KEY_WORD_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="DESCRIPTION" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="KEY_WORD_POSITION_ID" Type="Int16" />
+    <Property Name="ENTRY_IN_DATA_FILE" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="T_DIC_RELATION_KEYWORD" Relationship="Self.FK_T_DIC_RE_REFERENCE_T_KEYWOR" FromRole="T_KEYWORD" ToRole="T_DIC_RELATION_KEYWORD" />
+    <NavigationProperty Name="T_TEST_STEPS" Relationship="Self.FK_T_TEST_S_REFERENCE_T_KEYWOR" FromRole="T_KEYWORD" ToRole="T_TEST_STEPS" />
+  </EntityType>
+  <EntityType Name="T_MARS_COMPANY">
+    <Key>
+      <PropertyRef Name="COMPANY_ID" />
+    </Key>
+    <Property Name="COMPANY_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="COMPANY_NAME" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="COMPANY_DESC" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+    <Property Name="COMPANY_NUMBER" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="COMPANY_ADDRESS" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="CREATE_USERNAME" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="CREATE_TIME" Type="DateTime" />
+    <Property Name="AVAILABLE_MARK" Type="Decimal" Precision="38" Scale="0" />
+    <NavigationProperty Name="T_TESTER_INFO" Relationship="Self.T_TESTER_INFO_COMPANY_FK" FromRole="T_MARS_COMPANY" ToRole="T_TESTER_INFO" />
+  </EntityType>
+  <EntityType Name="T_OBJECT_NAMEINFO">
+    <Key>
+      <PropertyRef Name="OBJECT_NAME_ID" />
+    </Key>
+    <Property Name="OBJECT_NAME_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="OBJECT_HAPPY_NAME" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="PEGWINDOW_MARK" Type="Int16" />
+    <Property Name="OBJNAME_DESCRIPTION" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="EXT_ID" Type="Decimal" Precision="38" Scale="0" />
+  </EntityType>
+  <EntityType Name="T_PROJ_TC_MGR">
+    <Key>
+      <PropertyRef Name="STORYBOARD_DETAIL_ID" />
+    </Key>
+    <Property Name="STORYBOARD_DETAIL_ID" Type="Int64" Nullable="false" />
+    <Property Name="PROJECT_ID" Type="Int64" />
+    <Property Name="TEST_CASE_ID" Type="Int64" />
+    <Property Name="STORYBOARD_ID" Type="Int64" />
+    <Property Name="RUN_TYPE" Type="Int16" />
+    <Property Name="DEPENDS_ON" Type="Int64" />
+    <Property Name="RUN_ORDER" Type="Int64" />
+    <Property Name="LATEST_TEST_MARK_ID" Type="Int64" />
+    <Property Name="RECORD_VERSION" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="ALIAS_NAME" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="TEST_SUITE_ID" Type="Int64" />
+    <NavigationProperty Name="T_TEST_SUITE" Relationship="Self.FK_T_PROJ_T_REF_TEST_SUITE" FromRole="T_PROJ_TC_MGR" ToRole="T_TEST_SUITE" />
+    <NavigationProperty Name="T_STORYBOARD_SUMMARY" Relationship="Self.FK_T_PROJ_T_REFERENCE_T_STORYB" FromRole="T_PROJ_TC_MGR" ToRole="T_STORYBOARD_SUMMARY" />
+    <NavigationProperty Name="T_TEST_CASE_SUMMARY" Relationship="Self.FK_T_PROJ_T_REFERENCE_T_TEST_C" FromRole="T_PROJ_TC_MGR" ToRole="T_TEST_CASE_SUMMARY" />
+    <NavigationProperty Name="T_TEST_PROJECT" Relationship="Self.FK_T_PROJ_T_REFERENCE_T_TEST_P" FromRole="T_PROJ_TC_MGR" ToRole="T_TEST_PROJECT" />
+    <NavigationProperty Name="T_STORYBOARD_DATASET_SETTING" Relationship="Self.FK_T_STORYB_REFERENCE_T_PROJ_T" FromRole="T_PROJ_TC_MGR" ToRole="T_STORYBOARD_DATASET_SETTING" />
+  </EntityType>
+  <EntityType Name="T_PROJ_TEST_RESULT">
+    <Key>
+      <PropertyRef Name="HIST_ID" />
+    </Key>
+    <Property Name="HIST_ID" Type="Int64" Nullable="false" />
+    <Property Name="TEST_CASE_ID" Type="Int64" />
+    <Property Name="STORYBOARD_DETAIL_ID" Type="Int64" />
+    <Property Name="TEST_BEGIN_TIME" Type="DateTime" />
+    <Property Name="TEST_END_TIME" Type="DateTime" />
+    <Property Name="TEST_RESULT_IN_TEXT" Type="String" MaxLength="2048" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TEST_MODE" Type="Int16" />
+    <Property Name="TEST_RESULT" Type="Int16" />
+    <Property Name="TESTER_ID" Type="Int64" />
+    <Property Name="CREATE_TIME" Type="DateTime" />
+    <Property Name="LATEST_TEST_MARK_ID" Type="Int64" />
+    <Property Name="RELY_TEST_CASE_ID" Type="Int64" />
+    <Property Name="RESULT_ALIAS_NAME" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="RESULT_DESC" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="T_PROJECT_DATA_SOURCE">
+    <Key>
+      <PropertyRef Name="PRO_DBS_ID" />
+    </Key>
+    <Property Name="PRO_DBS_ID" Type="Int64" Nullable="false" />
+    <Property Name="PROJECT_ID" Type="Int64" />
+    <Property Name="DATA_SOURCE_ID" Type="Int64" />
+    <NavigationProperty Name="T_TEST_PROJECT" Relationship="Self.FK_T_PROJEC_REFERENCE_T_TEST_P" FromRole="T_PROJECT_DATA_SOURCE" ToRole="T_TEST_PROJECT" />
+  </EntityType>
+  <EntityType Name="T_REGISTED_OBJECT">
+    <Key>
+      <PropertyRef Name="OBJECT_ID" />
+    </Key>
+    <Property Name="OBJECT_ID" Type="Int64" Nullable="false" />
+    <Property Name="OBJECT_HAPPY_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="APPLICATION_ID" Type="Int64" />
+    <Property Name="TYPE_ID" Type="Int64" />
+    <Property Name="QUICK_ACCESS" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+    <Property Name="OBJECT_TYPE" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="COMMENT" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="ENUM_TYPE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="OBJECT_NAME_ID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="IS_CHECKERROR_OBJ" Type="Int16" />
+    <Property Name="OBJ_DATA_SRC" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="REL_OBJ_APP" Relationship="Self.FK_OBJ_APP_OBJ_OBJ" FromRole="T_REGISTED_OBJECT" ToRole="REL_OBJ_APP" />
+    <NavigationProperty Name="T_GUI_COMPONENT_TYPE_DIC" Relationship="Self.FK_T_REGIST_REFERENCE_T_GUI_CO" FromRole="T_REGISTED_OBJECT" ToRole="T_GUI_COMPONENT_TYPE_DIC" />
+    <NavigationProperty Name="T_TEST_STEPS" Relationship="Self.FK_T_TEST_S_REFERENCE_T_REGIST" FromRole="T_REGISTED_OBJECT" ToRole="T_TEST_STEPS" />
+  </EntityType>
+  <EntityType Name="T_REGISTERED_APPS">
+    <Key>
+      <PropertyRef Name="APPLICATION_ID" />
+    </Key>
+    <Property Name="APPLICATION_ID" Type="Int64" Nullable="false" />
+    <Property Name="APP_SHORT_NAME" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="PROCESS_IDENTIFIER" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="STARTER_PATH" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="STARTER_COMMAND" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="VERSION" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="COMMENT" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="APPLICATION_TYPE_ID" Type="Int16" />
+    <Property Name="RECORD_CREATE_PERSON" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="RECORD_CREATE_DATE" Type="DateTime" />
+    <Property Name="EXTRAREQUIREMENT" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="EXTRAPOPUPMENU" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="ISBASELINE" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="IS64BIT" Type="Decimal" Precision="38" Scale="0" />
+    <NavigationProperty Name="REL_OBJ_APP" Relationship="Self.FK_OBJ_APP_APP_APP" FromRole="T_REGISTERED_APPS" ToRole="REL_OBJ_APP" />
+  </EntityType>
+  <EntityType Name="T_RELATION_USER_ENGINEPATH">
+    <Key>
+      <PropertyRef Name="RELATIONID" />
+    </Key>
+    <Property Name="RELATIONID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="USERID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="ENGINEPATH" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="T_SHARED_OBJECT_POOL">
+    <Key>
+      <PropertyRef Name="OBJECT_POOL_ID" />
+    </Key>
+    <Property Name="OBJECT_POOL_ID" Type="Int64" Nullable="false" />
+    <Property Name="DATA_SUMMARY_ID" Type="Int64" />
+    <Property Name="OBJECT_NAME" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="OBJECT_ORDER" Type="Int64" />
+    <Property Name="LOOP_ID" Type="Int64" />
+    <Property Name="DATA_VALUE" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="CREATE_TIME" Type="DateTime" />
+    <Property Name="VERSION" Type="Int64" />
+    <NavigationProperty Name="T_TEST_DATA_SUMMARY" Relationship="Self.FK_T_SHARED_REFERENCE_T_TEST_D" FromRole="T_SHARED_OBJECT_POOL" ToRole="T_TEST_DATA_SUMMARY" />
+  </EntityType>
+  <EntityType Name="T_STORYBOARD_DATASET_SETTING">
+    <Key>
+      <PropertyRef Name="SETTING_ID" />
+    </Key>
+    <Property Name="SETTING_ID" Type="Int64" Nullable="false" />
+    <Property Name="STORYBOARD_DETAIL_ID" Type="Int64" />
+    <Property Name="DATA_SUMMARY_ID" Type="Int64" />
+    <Property Name="CREATETIME" Type="DateTime" />
+    <Property Name="VERSION" Type="Int64" />
+    <Property Name="TESTER_ID" Type="Int64" />
+    <Property Name="RUN_ORDER" Type="Int64" />
+    <NavigationProperty Name="T_PROJ_TC_MGR" Relationship="Self.FK_T_STORYB_REFERENCE_T_PROJ_T" FromRole="T_STORYBOARD_DATASET_SETTING" ToRole="T_PROJ_TC_MGR" />
+    <NavigationProperty Name="T_TEST_DATA_SUMMARY" Relationship="Self.FK_T_STORYB_REFERENCE_T_TEST_D" FromRole="T_STORYBOARD_DATASET_SETTING" ToRole="T_TEST_DATA_SUMMARY" />
+  </EntityType>
+  <EntityType Name="T_STORYBOARD_HISTORY">
+    <Key>
+      <PropertyRef Name="DASHBOARD_HIST_ID" />
+    </Key>
+    <Property Name="DASHBOARD_HIST_ID" Type="Int64" Nullable="false" />
+    <Property Name="STORYBOARD_ID" Type="Int64" />
+    <Property Name="VERION" Type="Int64" />
+    <Property Name="CREATE_TIME" Type="DateTime" />
+    <Property Name="CREATOR" Type="Int64" />
+    <Property Name="STORYBOARD_NAME" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="ASSIGNED_PROJECT_ID" Type="Int64" />
+    <Property Name="DESCRIPTION" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="HISTORY_CREATE_TIME" Type="DateTime" />
+    <Property Name="REASON" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="T_STORYBOARD_SUMMARY" Relationship="Self.FK_T_STORYB_REFERENCE_T_STORYB" FromRole="T_STORYBOARD_HISTORY" ToRole="T_STORYBOARD_SUMMARY" />
+  </EntityType>
+  <EntityType Name="T_STORYBOARD_SUMMARY">
+    <Key>
+      <PropertyRef Name="STORYBOARD_ID" />
+    </Key>
+    <Property Name="STORYBOARD_ID" Type="Int64" Nullable="false" />
+    <Property Name="CREATE_TIME" Type="DateTime" />
+    <Property Name="LATEST_VERISON" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="DESCRIPTION" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="CREATER" Type="Int64" />
+    <Property Name="ASSIGNED_PROJECT_ID" Type="Int64" />
+    <Property Name="STORYBOARD_NAME" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="T_PROJ_TC_MGR" Relationship="Self.FK_T_PROJ_T_REFERENCE_T_STORYB" FromRole="T_STORYBOARD_SUMMARY" ToRole="T_PROJ_TC_MGR" />
+    <NavigationProperty Name="T_STORYBOARD_HISTORY" Relationship="Self.FK_T_STORYB_REFERENCE_T_STORYB" FromRole="T_STORYBOARD_SUMMARY" ToRole="T_STORYBOARD_HISTORY" />
+  </EntityType>
+  <EntityType Name="T_TEST_BATCH">
+    <Key>
+      <PropertyRef Name="BAT_ID" />
+    </Key>
+    <Property Name="BAT_ID" Type="Int64" Nullable="false" />
+    <Property Name="BAT_NAME" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="BAT_DESC" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+    <Property Name="CREATE_TIME" Type="DateTime" />
+    <NavigationProperty Name="T_BAT_RESULT" Relationship="Self.SYS_C007729" FromRole="T_TEST_BATCH" ToRole="T_BAT_RESULT" />
+    <NavigationProperty Name="T_TEST_BATCH_DETAIL" Relationship="Self.SYS_C007722" FromRole="T_TEST_BATCH" ToRole="T_TEST_BATCH_DETAIL" />
+  </EntityType>
+  <EntityType Name="T_TEST_BATCH_DETAIL">
+    <Key>
+      <PropertyRef Name="BAT_DTL_ID" />
+    </Key>
+    <Property Name="BAT_DTL_ID" Type="Int64" Nullable="false" />
+    <Property Name="BAT_ID" Type="Int64" Nullable="false" />
+    <Property Name="STORYOBARD_ID" Type="Int64" Nullable="false" />
+    <Property Name="DTL_DESC" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+    <Property Name="RUN_ORDER" Type="Int64" Nullable="false" />
+    <Property Name="CREATE_TIME" Type="DateTime" />
+    <NavigationProperty Name="T_BAT_RESULT_DETAIL" Relationship="Self.SYS_C007725" FromRole="T_TEST_BATCH_DETAIL" ToRole="T_BAT_RESULT_DETAIL" />
+    <NavigationProperty Name="T_TEST_BATCH" Relationship="Self.SYS_C007722" FromRole="T_TEST_BATCH_DETAIL" ToRole="T_TEST_BATCH" />
+  </EntityType>
+  <EntityType Name="T_TEST_CASE_SUMMARY">
+    <Key>
+      <PropertyRef Name="TEST_CASE_ID" />
+    </Key>
+    <Property Name="TEST_CASE_ID" Type="Int64" Nullable="false" />
+    <Property Name="TEST_CASE_NAME" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="TEST_STEP_DESCRIPTION" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="TEST_STEP_CREATOR" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="TEST_STEP_CREATE_TIME" Type="DateTime" />
+    <Property Name="USAGE_STATUS" Type="Int16" />
+    <NavigationProperty Name="REL_TC_DATA_SUMMARY" Relationship="Self.FK_REL_TC_D_REFERENCE_T_TEST_C" FromRole="T_TEST_CASE_SUMMARY" ToRole="REL_TC_DATA_SUMMARY" />
+    <NavigationProperty Name="REL_TEST_CASE_TEST_SUITE" Relationship="Self.FK_REL_TEST_REFERENCE_T_TEST_C" FromRole="T_TEST_CASE_SUMMARY" ToRole="REL_TEST_CASE_TEST_SUITE" />
+    <NavigationProperty Name="T_PROJ_TC_MGR" Relationship="Self.FK_T_PROJ_T_REFERENCE_T_TEST_C" FromRole="T_TEST_CASE_SUMMARY" ToRole="T_PROJ_TC_MGR" />
+    <NavigationProperty Name="T_TEST_CASE_VERSION" Relationship="Self.FK_T_TEST_C_REFERENCE_T_TEST_C" FromRole="T_TEST_CASE_SUMMARY" ToRole="T_TEST_CASE_VERSION" />
+    <NavigationProperty Name="T_TEST_REPORT" Relationship="Self.FK_T_TEST_R_REFERENCE_T_TEST_C" FromRole="T_TEST_CASE_SUMMARY" ToRole="T_TEST_REPORT" />
+    <NavigationProperty Name="T_TEST_STEPS" Relationship="Self.FK_T_TEST_S_REFERENCE_T_TEST_C" FromRole="T_TEST_CASE_SUMMARY" ToRole="T_TEST_STEPS" />
+  </EntityType>
+  <EntityType Name="T_TEST_CASE_VERSION">
+    <Key>
+      <PropertyRef Name="TC_VERSOIN_ID" />
+    </Key>
+    <Property Name="TC_VERSOIN_ID" Type="Int64" Nullable="false" />
+    <Property Name="TEST_CASE_ID" Type="Int64" />
+    <Property Name="VERSION_NAME" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="VERSION_DESC" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="VERSION_NUMBER" Type="Int64" />
+    <Property Name="AVAILABLE_MARK" Type="Int16" />
+    <Property Name="CREATE_TIME" Type="DateTime" />
+    <Property Name="CREATOR_ID" Type="Int64" />
+    <NavigationProperty Name="T_TEST_CASE_SUMMARY" Relationship="Self.FK_T_TEST_C_REFERENCE_T_TEST_C" FromRole="T_TEST_CASE_VERSION" ToRole="T_TEST_CASE_SUMMARY" />
+  </EntityType>
+  <EntityType Name="T_TEST_DATA_SUMMARY">
+    <Key>
+      <PropertyRef Name="DATA_SUMMARY_ID" />
+    </Key>
+    <Property Name="DATA_SUMMARY_ID" Type="Int64" Nullable="false" />
+    <Property Name="ALIAS_NAME" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="DESCRIPTION_INFO" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+    <Property Name="AVAILABLE_MARK" Type="Int16" />
+    <Property Name="VERSION" Type="Int64" />
+    <Property Name="SHARE_MARK" Type="Int16" />
+    <Property Name="CREATE_TIME" Type="DateTime" />
+    <Property Name="STATUS" Type="Int16" />
+    <Property Name="DATA_SET_TYPE" Type="Int16" />
+    <NavigationProperty Name="REL_TC_DATA_SUMMARY" Relationship="Self.FK_REL_TC_D_REFERENCE_T_TEST_D" FromRole="T_TEST_DATA_SUMMARY" ToRole="REL_TC_DATA_SUMMARY" />
+    <NavigationProperty Name="T_SHARED_OBJECT_POOL" Relationship="Self.FK_T_SHARED_REFERENCE_T_TEST_D" FromRole="T_TEST_DATA_SUMMARY" ToRole="T_SHARED_OBJECT_POOL" />
+    <NavigationProperty Name="T_STORYBOARD_DATASET_SETTING" Relationship="Self.FK_T_STORYB_REFERENCE_T_TEST_D" FromRole="T_TEST_DATA_SUMMARY" ToRole="T_STORYBOARD_DATASET_SETTING" />
+    <NavigationProperty Name="TEST_DATA_SETTING" Relationship="Self.FK_TEST_DAT_REFERENCE_T_TEST_D" FromRole="T_TEST_DATA_SUMMARY" ToRole="TEST_DATA_SETTING" />
+  </EntityType>
+  <EntityType Name="T_TEST_ENUM">
+    <Key>
+      <PropertyRef Name="ENUM_ID" />
+    </Key>
+    <Property Name="ENUM_ID" Type="Int64" Nullable="false" />
+    <Property Name="ENUM_TYPE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ENUM_VALUE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="T_TEST_PROJECT">
+    <Key>
+      <PropertyRef Name="PROJECT_ID" />
+    </Key>
+    <Property Name="PROJECT_ID" Type="Int64" Nullable="false" />
+    <Property Name="PROJECT_NAME" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="PROJECT_DESCRIPTION" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="CREATOR" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="CREATE_DATE" Type="DateTime" />
+    <Property Name="STATUS" Type="Int16" />
+    <NavigationProperty Name="REL_APP_PROJ" Relationship="Self.FK_REL_APP__REFERENCE_T_TEST_P" FromRole="T_TEST_PROJECT" ToRole="REL_APP_PROJ" />
+    <NavigationProperty Name="REL_TEST_SUIT_PROJECT" Relationship="Self.FK_REL_TEST_REFERENCE_T_TEST_P" FromRole="T_TEST_PROJECT" ToRole="REL_TEST_SUIT_PROJECT" />
+    <NavigationProperty Name="T_PROJ_TC_MGR" Relationship="Self.FK_T_PROJ_T_REFERENCE_T_TEST_P" FromRole="T_TEST_PROJECT" ToRole="T_PROJ_TC_MGR" />
+    <NavigationProperty Name="T_PROJECT_DATA_SOURCE" Relationship="Self.FK_T_PROJEC_REFERENCE_T_TEST_P" FromRole="T_TEST_PROJECT" ToRole="T_PROJECT_DATA_SOURCE" />
+  </EntityType>
+  <EntityType Name="T_TEST_REPORT">
+    <Key>
+      <PropertyRef Name="TEST_REPORT_ID" />
+    </Key>
+    <Property Name="TEST_REPORT_ID" Type="Int64" Nullable="false" />
+    <Property Name="TEST_CASE_ID" Type="Int64" />
+    <Property Name="LOOP_ID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="BEGIN_TIME" Type="DateTime" />
+    <Property Name="END_TIME" Type="DateTime" />
+    <Property Name="RUNNING_RESULT" Type="Int16" />
+    <Property Name="RETURN_VALUES" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="RUNNING_RESULT_INFO" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+    <Property Name="HIST_ID" Type="Int64" />
+    <Property Name="APPLICATION_ID" Type="Int64" />
+    <Property Name="TEST_MODE" Type="Int16" />
+    <NavigationProperty Name="T_TEST_CASE_SUMMARY" Relationship="Self.FK_T_TEST_R_REFERENCE_T_TEST_C" FromRole="T_TEST_REPORT" ToRole="T_TEST_CASE_SUMMARY" />
+    <NavigationProperty Name="T_TEST_REPORT_STEPS" Relationship="Model.FK_T_TEST_R_REFERENCE_T_TEST_R" FromRole="T_TEST_REPORT" ToRole="T_TEST_REPORT_STEPS" />
+  </EntityType>
+  <EntityType Name="T_TEST_STEPS">
+    <Key>
+      <PropertyRef Name="STEPS_ID" />
+    </Key>
+    <Property Name="STEPS_ID" Type="Int64" Nullable="false" />
+    <Property Name="RUN_ORDER" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="KEY_WORD_ID" Type="Int64" />
+    <Property Name="TEST_CASE_ID" Type="Int64" />
+    <Property Name="OBJECT_ID" Type="Int64" />
+    <Property Name="COLUMN_ROW_SETTING" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="VALUE_SETTING" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="COMMENT" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="IS_RUNNABLE" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="OBJECT_NAME_ID" Type="Decimal" Precision="38" Scale="0" />
+    <NavigationProperty Name="T_KEYWORD" Relationship="Self.FK_T_TEST_S_REFERENCE_T_KEYWOR" FromRole="T_TEST_STEPS" ToRole="T_KEYWORD" />
+    <NavigationProperty Name="T_REGISTED_OBJECT" Relationship="Self.FK_T_TEST_S_REFERENCE_T_REGIST" FromRole="T_TEST_STEPS" ToRole="T_REGISTED_OBJECT" />
+    <NavigationProperty Name="T_TEST_CASE_SUMMARY" Relationship="Self.FK_T_TEST_S_REFERENCE_T_TEST_C" FromRole="T_TEST_STEPS" ToRole="T_TEST_CASE_SUMMARY" />
+    <NavigationProperty Name="TEST_DATA_SETTING" Relationship="Self.FK_TEST_DAT_REFERENCE_T_TEST_S" FromRole="T_TEST_STEPS" ToRole="TEST_DATA_SETTING" />
+  </EntityType>
+  <EntityType Name="T_TEST_SUITE">
+    <Key>
+      <PropertyRef Name="TEST_SUITE_ID" />
+    </Key>
+    <Property Name="TEST_SUITE_ID" Type="Int64" Nullable="false" />
+    <Property Name="TEST_SUITE_NAME" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="TEST_SUITE_DESCRIPTION" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="REL_TEST_CASE_TEST_SUITE" Relationship="Self.FK_REL_TEST_REFERENCE_T_TEST_2" FromRole="T_TEST_SUITE" ToRole="REL_TEST_CASE_TEST_SUITE" />
+    <NavigationProperty Name="REL_TEST_SUIT_PROJECT" Relationship="Self.FK_REL_TEST_REFERENCE_T_TEST_S" FromRole="T_TEST_SUITE" ToRole="REL_TEST_SUIT_PROJECT" />
+    <NavigationProperty Name="T_PROJ_TC_MGR" Relationship="Self.FK_T_PROJ_T_REF_TEST_SUITE" FromRole="T_TEST_SUITE" ToRole="T_PROJ_TC_MGR" />
+  </EntityType>
+  <EntityType Name="T_TESTCASE_VERSION">
+    <Key>
+      <PropertyRef Name="TC_VERSION_ID" />
+    </Key>
+    <Property Name="TC_VERSION_ID" Type="Int64" Nullable="false" />
+    <Property Name="TESTCASEID" Type="Int64" />
+    <Property Name="CREATORID" Type="Int64" />
+    <Property Name="ISAVAILABLE" Type="Int16" />
+    <Property Name="CREATETIME" Type="DateTime" />
+    <Property Name="VERSIONID" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_TESTER_INFO">
+    <Key>
+      <PropertyRef Name="TESTER_ID" />
+    </Key>
+    <Property Name="TESTER_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="TESTER_NAME_LAST" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="TESTER_NAME_M" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="TESTER_NAME_F" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="TESTER_LOGIN_NAME" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="TESTER_PWD" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="AVAILABLE_MARK" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="TESTER_MAIL" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="TESTER_NUMBER" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="COMPANY_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="CREATOR_NAME" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="CREATE_TIME" Type="DateTime" />
+    <Property Name="TESTER_DESC" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="T_MARS_COMPANY" Relationship="Self.T_TESTER_INFO_COMPANY_FK" FromRole="T_TESTER_INFO" ToRole="T_MARS_COMPANY" />
+    <NavigationProperty Name="T_USER_MAPPING" Relationship="Self.FK_T_TESTER_INFO" FromRole="T_TESTER_INFO" ToRole="T_USER_MAPPING" />
+  </EntityType>
+  <EntityType Name="T_USER_MAPPING">
+    <Key>
+      <PropertyRef Name="USER_MAPPING_ID" />
+    </Key>
+    <Property Name="USER_MAPPING_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="TESTER_ID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="TEMP_KEY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="IS_DELETED" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="STATUS" Type="Decimal" Precision="38" Scale="0" />
+    <NavigationProperty Name="T_TESTER_INFO" Relationship="Self.FK_T_TESTER_INFO" FromRole="T_USER_MAPPING" ToRole="T_TESTER_INFO" />
+  </EntityType>
+  <EntityType Name="TBLFEEDPROCESS">
+    <Key>
+      <PropertyRef Name="FEEDPROCESSID" />
+    </Key>
+    <Property Name="FEEDPROCESSID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="FEEDPROCESSSTATUS" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="FEEDRUNON" Type="DateTime" Precision="255" />
+    <Property Name="CREATEDBY" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="CREATEDON" Type="DateTime" Precision="255" />
+  </EntityType>
+  <EntityType Name="TBLFEEDPROCESSDETAIL">
+    <Key>
+      <PropertyRef Name="FEEDPROCESSDETAILID" />
+    </Key>
+    <Property Name="FEEDPROCESSDETAILID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="FEEDPROCESSID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="FILENAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="FEEDPROCESSSTATUS" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="CREATEDBY" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="CREATEDON" Type="DateTime" Precision="255" />
+    <Property Name="FILETYPE" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TBLSTGGUIOBJECT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="OBJECTNAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="TYPE" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="QUICKACCESS" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="PARENT" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="OBJECTCOMMENT" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="ENUMTYPE" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="SQL" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="APPLICATIONNAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="FEEDPROCESSDETAILID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="CREATEDON" Type="DateTime" Precision="255" />
+  </EntityType>
+  <EntityType Name="TBLSTGSTORYBOARD">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="FEEDPROCESSDETAILID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="TABNAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="RUNORDER" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="APPLICATIONNAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="PROJECTNAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="PROJECTDETAIL" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="STORYBOARDNAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="ACTIONNAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="STEPNAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="SUITENAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="CASENAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="DATASETNAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="DEPENDENCY" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="CREATEDDATE" Type="DateTime" />
+    <Property Name="DEPENDENCYID" Type="Decimal" Precision="38" Scale="0" />
+  </EntityType>
+  <EntityType Name="TEST_DATA_SETTING">
+    <Key>
+      <PropertyRef Name="DATA_SETTING_ID" />
+    </Key>
+    <Property Name="DATA_SETTING_ID" Type="Int64" Nullable="false" />
+    <Property Name="STEPS_ID" Type="Int64" Nullable="false" />
+    <Property Name="LOOP_ID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="DATA_VALUE" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="VALUE_OR_OBJECT" Type="Int16" />
+    <Property Name="DESCRIPTION" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="DATA_SUMMARY_ID" Type="Int64" />
+    <Property Name="DATA_DIRECTION" Type="Int16" />
+    <Property Name="VERSION" Type="Int64" />
+    <Property Name="CREATE_TIME" Type="DateTime" />
+    <Property Name="POOL_ID" Type="Int64" />
+    <NavigationProperty Name="T_TEST_DATA_SUMMARY" Relationship="Self.FK_TEST_DAT_REFERENCE_T_TEST_D" FromRole="TEST_DATA_SETTING" ToRole="T_TEST_DATA_SUMMARY" />
+    <NavigationProperty Name="T_TEST_STEPS" Relationship="Self.FK_TEST_DAT_REFERENCE_T_TEST_S" FromRole="TEST_DATA_SETTING" ToRole="T_TEST_STEPS" />
+  </EntityType>
+  <EntityType Name="DELETELOG">
+    <Key>
+      <PropertyRef Name="DELETEID" />
+    </Key>
+    <Property Name="DELETEID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="TABLENAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="MESSAGE" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="OBJECTID" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="OBJECTNAME" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="DELETEDDATE" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="DMPOSTINGEVENT">
+    <Key>
+      <PropertyRef Name="LOCATION" />
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="ORIGINALID" />
+      <PropertyRef Name="OWNERTABLE" />
+      <PropertyRef Name="TRADEID" />
+      <PropertyRef Name="SEQNUM" />
+      <PropertyRef Name="ASSETID" />
+      <PropertyRef Name="EVENT" />
+      <PropertyRef Name="AMOUNT" />
+      <PropertyRef Name="CCY" />
+      <PropertyRef Name="POSTINGDATE" />
+      <PropertyRef Name="VALUEDATE" />
+      <PropertyRef Name="BOOKINGDATE" />
+      <PropertyRef Name="DESCRIPTION" />
+      <PropertyRef Name="ACCOUNTID" />
+      <PropertyRef Name="DRORCR" />
+      <PropertyRef Name="POSTINGTYPE" />
+      <PropertyRef Name="EXTRACTFLAG" />
+      <PropertyRef Name="EXTRACTDATE" />
+      <PropertyRef Name="PROCESSFLAG" />
+      <PropertyRef Name="SETTLEACCTTYPE" />
+      <PropertyRef Name="SETTLEACCTID" />
+      <PropertyRef Name="ALTOWNERTABLE" />
+      <PropertyRef Name="ALTTRADEID" />
+      <PropertyRef Name="ALTVERSION" />
+      <PropertyRef Name="VERSION" />
+      <PropertyRef Name="BENEFICIARY" />
+      <PropertyRef Name="CUSTROLE" />
+      <PropertyRef Name="ACCTTYPE" />
+      <PropertyRef Name="ORIGSETTLECCY" />
+      <PropertyRef Name="ORIGSETTLEAMT" />
+      <PropertyRef Name="OBJID" />
+      <PropertyRef Name="GLDATE" />
+    </Key>
+    <Property Name="LOCATION" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ID" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ORIGINALID" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="OWNERTABLE" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRADEID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SEQNUM" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="ASSETID" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EVENT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AMOUNT" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="CCY" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="POSTINGDATE" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="VALUEDATE" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="BOOKINGDATE" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ACCOUNTID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DRORCR" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="POSTINGTYPE" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EXTRACTFLAG" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EXTRACTDATE" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PROCESSFLAG" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="SETTLEACCTTYPE" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SETTLEACCTID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ALTOWNERTABLE" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ALTTRADEID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ALTVERSION" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="VERSION" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="BENEFICIARY" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CUSTROLE" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ACCTTYPE" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ORIGSETTLECCY" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ORIGSETTLEAMT" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="OBJID" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="GLDATE" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DMPOSTINGEVENT2">
+    <Key>
+      <PropertyRef Name="LOCATION" />
+      <PropertyRef Name="ID" />
+      <PropertyRef Name="ORIGINALID" />
+      <PropertyRef Name="OWNERTABLE" />
+      <PropertyRef Name="TRADEID" />
+      <PropertyRef Name="SEQNUM" />
+      <PropertyRef Name="ASSETID" />
+      <PropertyRef Name="EVENT" />
+      <PropertyRef Name="AMOUNT" />
+      <PropertyRef Name="CCY" />
+      <PropertyRef Name="POSTINGDATE" />
+      <PropertyRef Name="VALUEDATE" />
+      <PropertyRef Name="BOOKINGDATE" />
+      <PropertyRef Name="DESCRIPTION" />
+      <PropertyRef Name="ACCOUNTID" />
+      <PropertyRef Name="DRORCR" />
+      <PropertyRef Name="POSTINGTYPE" />
+      <PropertyRef Name="EXTRACTFLAG" />
+      <PropertyRef Name="EXTRACTDATE" />
+      <PropertyRef Name="PROCESSFLAG" />
+      <PropertyRef Name="SETTLEACCTTYPE" />
+      <PropertyRef Name="SETTLEACCTID" />
+      <PropertyRef Name="ALTOWNERTABLE" />
+      <PropertyRef Name="ALTTRADEID" />
+      <PropertyRef Name="ALTVERSION" />
+      <PropertyRef Name="VERSION" />
+      <PropertyRef Name="BENEFICIARY" />
+      <PropertyRef Name="CUSTROLE" />
+      <PropertyRef Name="ACCTTYPE" />
+      <PropertyRef Name="ORIGSETTLECCY" />
+      <PropertyRef Name="ORIGSETTLEAMT" />
+      <PropertyRef Name="OBJID" />
+      <PropertyRef Name="GLDATE" />
+    </Key>
+    <Property Name="LOCATION" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ID" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ORIGINALID" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="OWNERTABLE" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TRADEID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SEQNUM" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="ASSETID" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EVENT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AMOUNT" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="CCY" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="POSTINGDATE" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="VALUEDATE" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="BOOKINGDATE" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DESCRIPTION" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ACCOUNTID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DRORCR" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="POSTINGTYPE" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EXTRACTFLAG" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="EXTRACTDATE" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PROCESSFLAG" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="SETTLEACCTTYPE" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SETTLEACCTID" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ALTOWNERTABLE" Type="String" MaxLength="9" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ALTTRADEID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ALTVERSION" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="VERSION" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="BENEFICIARY" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CUSTROLE" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ACCTTYPE" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ORIGSETTLECCY" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ORIGSETTLEAMT" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="OBJID" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="GLDATE" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MV_LAST_TC_INFO">
+    <Key>
+      <PropertyRef Name="HIST_ID" />
+      <PropertyRef Name="TEST_RESULT_IN_TEXT" />
+    </Key>
+    <Property Name="HIST_ID" Type="Int64" Nullable="false" />
+    <Property Name="TEST_CASE_ID" Type="Int64" />
+    <Property Name="STORYBOARD_DETAIL_ID" Type="Int64" />
+    <Property Name="TEST_BEGIN_TIME" Type="DateTime" />
+    <Property Name="TEST_END_TIME" Type="DateTime" />
+    <Property Name="TEST_RESULT_IN_TEXT" Type="String" MaxLength="2048" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TEST_MODE" Type="Int16" />
+    <Property Name="TEST_RESULT" Type="Int16" />
+    <Property Name="TESTER_ID" Type="Int64" />
+    <Property Name="CREATE_TIME" Type="DateTime" />
+    <Property Name="LATEST_TEST_MARK_ID" Type="Int64" />
+    <Property Name="RELY_TEST_CASE_ID" Type="Int64" />
+  </EntityType>
+  <EntityType Name="MV_LATEST_STB_TSMOD_MARK">
+    <Key>
+      <PropertyRef Name="STORYBOARD_DETAIL_ID" />
+    </Key>
+    <Property Name="STORYBOARD_ID" Type="Int64" />
+    <Property Name="TEST_MODE" Type="Int16" />
+    <Property Name="STORYBOARD_DETAIL_ID" Type="Int64" Nullable="false" />
+    <Property Name="MX_STB_LTST_ID" Type="Decimal" Precision="38" Scale="0" />
+  </EntityType>
+  <EntityType Name="MV_OBJ_WITH_PEG">
+    <Key>
+      <PropertyRef Name="OBJECT_ID" />
+      <PropertyRef Name="OBJECT_NAME_ID" />
+    </Key>
+    <Property Name="OBJECT_ID" Type="Int64" Nullable="false" />
+    <Property Name="OBJECT_HAPPY_NAME" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="OBJECT_TYPE" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="APPLICATION_ID" Type="Int64" />
+    <Property Name="QUICK_ACCESS" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+    <Property Name="OBJECT_NAME_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MV_OBJECT_SNAPSHOT">
+    <Key>
+      <PropertyRef Name="OBJECT_ID" />
+    </Key>
+    <Property Name="OBJECT_NAME_ID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="OBJECT_HAPPY_NAME" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="COMMENT" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="APPLICATION_ID" Type="Int64" />
+    <Property Name="ENUM_TYPE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="OBJECT_ID" Type="Int64" Nullable="false" />
+    <Property Name="OBJECT_TYPE" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="QUICK_ACCESS" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+    <Property Name="TYPE_ID" Type="Int64" />
+    <Property Name="TYPE_NAME" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="PEG_NAME" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="PEG_QUICK_ACCESS" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+    <Property Name="PEG_ID" Type="Int64" />
+  </EntityType>
+  <EntityType Name="MV_STORYBOARD_LATEST">
+    <Key>
+      <PropertyRef Name="STORYBOARD_DETAIL_ID" />
+    </Key>
+    <Property Name="STORYBOARD_ID" Type="Int64" />
+    <Property Name="STORYBOARD_DETAIL_ID" Type="Int64" Nullable="false" />
+    <Property Name="TEST_MODE" Type="Int16" />
+    <Property Name="MX_STB_LTST_ID" Type="Decimal" Precision="38" Scale="0" />
+  </EntityType>
+  <EntityType Name="MV_TC_DATASUMMARY">
+    <Key>
+      <PropertyRef Name="DATA_SUMMARY_ID" />
+    </Key>
+    <Property Name="ALIAS_NAME" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="DATA_SUMMARY_ID" Type="Int64" Nullable="false" />
+    <Property Name="TEST_CASE_ID" Type="Int64" />
+    <Property Name="AVAILABLE_MARK" Type="Int16" />
+    <Property Name="DATA_VERSION" Type="Int64" />
+    <Property Name="DATA_STATUS" Type="Int16" />
+    <Property Name="DATA_SET_TYPE" Type="Int16" />
+    <Property Name="DATASET_DESCRIPTION" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="T_REGISTED_OBJECT_TEST">
+    <Key>
+      <PropertyRef Name="OBJECT_ID" />
+    </Key>
+    <Property Name="OBJECT_ID" Type="Int64" Nullable="false" />
+    <Property Name="OBJECT_HAPPY_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="APPLICATION_ID" Type="Int64" />
+    <Property Name="TYPE_ID" Type="Int64" />
+    <Property Name="QUICK_ACCESS" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+    <Property Name="OBJECT_TYPE" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="COMMENT" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="ENUM_TYPE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="OBJECT_NAME_ID" Type="Decimal" Precision="38" Scale="0" />
+  </EntityType>
+  <EntityType Name="T_TEST_STEPS_TMP">
+    <Key>
+      <PropertyRef Name="STEPS_ID" />
+    </Key>
+    <Property Name="STEPS_ID" Type="Int64" Nullable="false" />
+    <Property Name="RUN_ORDER" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="KEY_WORD_ID" Type="Int64" />
+    <Property Name="TEST_CASE_ID" Type="Int64" />
+    <Property Name="OBJECT_ID" Type="Int64" />
+    <Property Name="COLUMN_ROW_SETTING" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="VALUE_SETTING" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="COMMENT" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="IS_RUNNABLE" Type="Decimal" Precision="38" Scale="0" />
+  </EntityType>
+  <EntityType Name="TBLLOGREPORT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="CREATIONDATE" Type="DateTime" Precision="6" />
+    <Property Name="MESSAGETYPE" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="ACTION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="CELLADDRESS" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="VALIDATIONNAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="VALIDATIONDESCRIPTION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="APPLICATIONNAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="TESTCASENAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="DATASETNAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="TESTSTEPNUMBER" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="OBJECTNAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="COMMENTDATA" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="ERRORDESCRIPTION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="PROGRAMLOCATION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="FEEDPROCESSINGDETAILSID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="FEEDPROCESSID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="GENERAL" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="PROJECTNAME" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="STORYBOARDNAME" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="TESTSUITE" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="DEPENDENCY" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="RUNORDER" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TBLSTGVARIABLE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="FEEDPROCESSDETAILID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="NAME" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="VALUE" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="TYPE" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="BASE_COMP" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="CREATEDDATE" Type="DateTime" />
+    <Property Name="BASE_COMP_ID" Type="Decimal" Precision="38" Scale="0" />
+  </EntityType>
+  <EntityType Name="TEST_DATA_SETTING_0426">
+    <Key>
+      <PropertyRef Name="DATA_SETTING_ID" />
+      <PropertyRef Name="STEPS_ID" />
+    </Key>
+    <Property Name="DATA_SETTING_ID" Type="Int64" Nullable="false" />
+    <Property Name="STEPS_ID" Type="Int64" Nullable="false" />
+    <Property Name="LOOP_ID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="DATA_VALUE" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="VALUE_OR_OBJECT" Type="Int16" />
+    <Property Name="DESCRIPTION" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="DATA_SUMMARY_ID" Type="Int64" />
+    <Property Name="DATA_DIRECTION" Type="Int16" />
+    <Property Name="VERSION" Type="Int64" />
+    <Property Name="CREATE_TIME" Type="DateTime" />
+    <Property Name="POOL_ID" Type="Int64" />
+  </EntityType>
+  <EntityType Name="TEST_DATA_SETTING_BAK">
+    <Key>
+      <PropertyRef Name="DATA_SETTING_ID" />
+      <PropertyRef Name="STEPS_ID" />
+    </Key>
+    <Property Name="DATA_SETTING_ID" Type="Int64" Nullable="false" />
+    <Property Name="STEPS_ID" Type="Int64" Nullable="false" />
+    <Property Name="LOOP_ID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="DATA_VALUE" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="VALUE_OR_OBJECT" Type="Int16" />
+    <Property Name="DESCRIPTION" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="DATA_SUMMARY_ID" Type="Int64" />
+    <Property Name="DATA_DIRECTION" Type="Int16" />
+    <Property Name="VERSION" Type="Int64" />
+    <Property Name="CREATE_TIME" Type="DateTime" />
+    <Property Name="POOL_ID" Type="Int64" />
+  </EntityType>
+  <EntityType Name="TEST_DATA_SETTING_TST">
+    <Key>
+      <PropertyRef Name="DATA_SETTING_ID" />
+      <PropertyRef Name="STEPS_ID" />
+    </Key>
+    <Property Name="DATA_SETTING_ID" Type="Int64" Nullable="false" />
+    <Property Name="STEPS_ID" Type="Int64" Nullable="false" />
+    <Property Name="LOOP_ID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="DATA_VALUE" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="VALUE_OR_OBJECT" Type="Int16" />
+    <Property Name="DESCRIPTION" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="DATA_SUMMARY_ID" Type="Int64" />
+    <Property Name="DATA_DIRECTION" Type="Int16" />
+    <Property Name="VERSION" Type="Int64" />
+    <Property Name="CREATE_TIME" Type="DateTime" />
+    <Property Name="POOL_ID" Type="Int64" />
+  </EntityType>
+  <EntityType Name="TEST_DATA_SETTING0424">
+    <Key>
+      <PropertyRef Name="DATA_SETTING_ID" />
+      <PropertyRef Name="STEPS_ID" />
+    </Key>
+    <Property Name="DATA_SETTING_ID" Type="Int64" Nullable="false" />
+    <Property Name="STEPS_ID" Type="Int64" Nullable="false" />
+    <Property Name="LOOP_ID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="DATA_VALUE" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="VALUE_OR_OBJECT" Type="Int16" />
+    <Property Name="DESCRIPTION" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="DATA_SUMMARY_ID" Type="Int64" />
+    <Property Name="DATA_DIRECTION" Type="Int16" />
+    <Property Name="VERSION" Type="Int64" />
+    <Property Name="CREATE_TIME" Type="DateTime" />
+    <Property Name="POOL_ID" Type="Int64" />
+  </EntityType>
+  <EntityType Name="TMP_T_OBJ">
+    <Key>
+      <PropertyRef Name="OBJECT_ID" />
+      <PropertyRef Name="OLD_OBJID" />
+    </Key>
+    <Property Name="OBJECT_ID" Type="Int64" Nullable="false" />
+    <Property Name="APPLICATION_ID" Type="Int64" />
+    <Property Name="TYPE_ID" Type="Int64" />
+    <Property Name="QUICK_ACCESS" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+    <Property Name="OBJECT_TYPE" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="COMMENT" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="ENUM_TYPE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="OBJECT_NAME_ID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="OBJECT_HAPPY_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="OBJ_DATA_SRC" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="IS_CHECKERROR_OBJ" Type="Int16" />
+    <Property Name="OLD_OBJID" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="V_OBJECT_SNAPSHOT">
+    <Key>
+      <PropertyRef Name="OBJECT_NAME_ID" />
+      <PropertyRef Name="OBJECT_ID" />
+      <PropertyRef Name="PEG_ID" />
+    </Key>
+    <Property Name="OBJECT_NAME_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="OBJECT_HAPPY_NAME" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="COMMENT" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="APPLICATION_ID" Type="Int64" />
+    <Property Name="ENUM_TYPE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="OBJECT_ID" Type="Int64" Nullable="false" />
+    <Property Name="OBJECT_TYPE" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="QUICK_ACCESS" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+    <Property Name="TYPE_ID" Type="Int64" />
+    <Property Name="IS_CHECKERROR_OBJ" Type="Int16" />
+    <Property Name="TYPE_NAME" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="PEG_NAME" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="PEG_QUICK_ACCESS" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+    <Property Name="PEG_ID" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TEST_CASE_VIEW">
+    <Key>
+      <PropertyRef Name="OBJECT_ID" />
+    </Key>
+    <Property Name="PROJECT_NAME" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="TEST_SUITE_NAME" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="TEST_CASE_NAME" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="KEY_WORD_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="OBJECT_ID" Type="Int64" Nullable="false" />
+    <Property Name="OBJECT_HAPPY_NAME" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="COLUMN_ROW_SETTING" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="DATA_VALUE" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="LOOP_ID" Type="Decimal" Precision="38" Scale="0" />
+  </EntityType>
+  <EntityType Name="TEST_CASE_VIEW2">
+    <Key>
+      <PropertyRef Name="OBJECT_ID" />
+      <PropertyRef Name="STEPS_ID" />
+    </Key>
+    <Property Name="PROJECT_NAME" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="TEST_SUITE_NAME" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="TEST_CASE_NAME" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="KEY_WORD_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="OBJECT_ID" Type="Int64" Nullable="false" />
+    <Property Name="OBJECT_HAPPY_NAME" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="COLUMN_ROW_SETTING" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="DATA_VALUE" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="LOOP_ID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="STEPS_ID" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TEST_OBJECT_VIEW">
+    <Key>
+      <PropertyRef Name="OBJECT_ID" />
+    </Key>
+    <Property Name="OBJECT_ID" Type="Int64" Nullable="false" />
+    <Property Name="OBJECT_HAPPY_NAME" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="APPLICATION_ID" Type="Int64" />
+    <Property Name="TYPE_ID" Type="Int64" />
+    <Property Name="QUICK_ACCESS" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+    <Property Name="OBJECT_TYPE" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="COMMENT" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="ENUM_TYPE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="APP_SHORT_NAME" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="TYPE_NAME" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="TEST_PROJECT_VIEW">
+    <Key>
+      <PropertyRef Name="PROJECT_ID" />
+      <PropertyRef Name="TEST_SUITE_ID" />
+      <PropertyRef Name="APPLICATION_ID" />
+    </Key>
+    <Property Name="PROJECT_NAME" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="PROJECT_ID" Type="Int64" Nullable="false" />
+    <Property Name="TEST_SUITE_NAME" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="TEST_SUITE_ID" Type="Int64" Nullable="false" />
+    <Property Name="APP_SHORT_NAME" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="APPLICATION_ID" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="V_MARS_STB_SNAPSHOT">
+    <Key>
+      <PropertyRef Name="STORYBOARD_DETAIL_ID" />
+    </Key>
+    <Property Name="STORYBOARD_ID" Type="Int64" />
+    <Property Name="STORYBOARD_DETAIL_ID" Type="Int64" Nullable="false" />
+    <Property Name="LATEST_TEST_MARK_ID" Type="Int64" />
+    <Property Name="TEST_MODE" Type="Int16" />
+    <Property Name="HIST_ID" Type="Int64" />
+    <Property Name="RUN_ORDER" Type="Int64" />
+  </EntityType>
+  <EntityType Name="V_OBJECT_APPS">
+    <Key>
+      <PropertyRef Name="OBJECT_ID" />
+    </Key>
+    <Property Name="APPLICATION_ID" Type="Int64" />
+    <Property Name="OBJECT_ID" Type="Int64" Nullable="false" />
+    <Property Name="COMMENT" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="ENUM_TYPE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="OBJECT_HAPPY_NAME" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="OBJECT_TYPE" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="QUICK_ACCESS" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+    <Property Name="TYPE_ID" Type="Int64" />
+    <Property Name="APP_APPLICATION_ID" Type="Int64" />
+    <Property Name="APP_SHORT_NAME" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="APPLICATION_TYPE_ID" Type="Int16" />
+    <Property Name="COMMENT_APP" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="EXTRAPOPUPMENU" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="EXTRAREQUIREMENT" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="PROCESS_IDENTIFIER" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="STARTER_COMMAND" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="STARTER_PATH" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="VERSION" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="TYPE_APPLICATION_TYPE_ID" Type="Int16" />
+    <Property Name="TYPE_DESCRPTION" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="TYP_TYPE_ID" Type="Int64" />
+    <Property Name="TYPE_NAME" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="V_STB_PROJ_APP_FULLVISION">
+    <Key>
+      <PropertyRef Name="STORYBOARD_ID" />
+    </Key>
+    <Property Name="PROJECT_ID" Type="Int64" />
+    <Property Name="CREATE_TIME" Type="DateTime" />
+    <Property Name="CREATER" Type="Int64" />
+    <Property Name="DESCRIPTION" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="STORYBOARD_ID" Type="Int64" Nullable="false" />
+    <Property Name="STORYBOARD_NAME" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="APPLICATION_ID" Type="Int64" />
+    <Property Name="APP_SHORT_NAME" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="APPLICATION_TYPE_ID" Type="Int16" />
+  </EntityType>
+  <EntityType Name="V_STORYBOARD_TEST_FULLVIEW">
+    <Key>
+      <PropertyRef Name="STORYBOARD_ID" />
+    </Key>
+    <Property Name="STORYBOARD_ID" Type="Int64" Nullable="false" />
+    <Property Name="STORYBOARD_DETAIL_ID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="STORYBOARD_NAME" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="PROJECT_ID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="PROJECT_NAME" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="PROJECT_DESCRIPTION" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="TEST_CASE_NAME" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="TEST_CASE_ID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="TEST_STEP_DESCRIPTION" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="TEST_SUITE_ID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="TEST_SUITE_NAME" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="TEST_SUITE_DESCRIPTION" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="RUN_ORDER" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="DEPENDS_ON" Type="Int64" />
+    <Property Name="ALIAS_NAME" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="PARENT_ALIAS_NAME" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="DISPLAY_NAME" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="TEST_RUN_VALUE" Type="Int16" />
+    <Property Name="LATEST_TEST_MARK_ID" Type="Int64" />
+    <Property Name="HIST_LATEST_TEST_MARK_ID" Type="Int64" />
+    <Property Name="HIST_ID" Type="Int64" />
+    <Property Name="HIST_TEST_ID" Type="Int64" />
+    <Property Name="TEST_CASE_BEGIN_TIME" Type="DateTime" />
+    <Property Name="TEST_CASE_END_TIME" Type="DateTime" />
+    <Property Name="HIST_TEST_RESULT_IN_TEXT" Type="String" MaxLength="2048" FixedLength="false" Unicode="false" />
+    <Property Name="HIST_TEST_MODE" Type="Int16" />
+    <Property Name="HIST_RESULT" Type="Int16" />
+    <Property Name="DATA_SETTING_ID" Type="Int64" />
+    <Property Name="DATA_SUMMARY_ID" Type="Int64" />
+    <Property Name="DATA_SET_CREATETIME" Type="DateTime" />
+    <Property Name="DATA_SET_TESTERID" Type="Int64" />
+    <Property Name="DATA_SET_VERSION" Type="Int64" />
+    <Property Name="DATA_SET_ALIAS_NAME" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="DATA_SET_SHARE_MARK" Type="Int16" />
+    <Property Name="DATA_SET_STATUS" Type="Int16" />
+    <Property Name="DATA_SET_TYPE" Type="Int16" />
+    <Property Name="DATASET_DESCRIPTION" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="V_STORYBOARD_TEST_FULLVISION">
+    <Key>
+      <PropertyRef Name="STORYBOARD_ID" />
+    </Key>
+    <Property Name="STORYBOARD_ID" Type="Int64" Nullable="false" />
+    <Property Name="STORYBOARD_DETAIL_ID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="STORYBOARD_NAME" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="PROJECT_ID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="PROJECT_NAME" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="PROJECT_DESCRIPTION" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="TEST_CASE_NAME" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="TEST_CASE_ID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="TEST_STEP_DESCRIPTION" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="TEST_SUITE_ID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="TEST_SUITE_NAME" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="TEST_SUITE_DESCRIPTION" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="RUN_ORDER" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="DEPENDS_ON" Type="Int64" />
+    <Property Name="ALIAS_NAME" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="PARENT_ALIAS_NAME" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="DISPLAY_NAME" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="TEST_RUN_VALUE" Type="Int16" />
+    <Property Name="LATEST_TEST_MARK_ID" Type="Int64" />
+    <Property Name="HIST_LATEST_TEST_MARK_ID" Type="Int64" />
+    <Property Name="HIST_ID" Type="Int64" />
+    <Property Name="HIST_TEST_ID" Type="Int64" />
+    <Property Name="TEST_CASE_BEGIN_TIME" Type="DateTime" />
+    <Property Name="TEST_CASE_END_TIME" Type="DateTime" />
+    <Property Name="HIST_TEST_RESULT_IN_TEXT" Type="String" MaxLength="2048" FixedLength="false" Unicode="false" />
+    <Property Name="HIST_TEST_MODE" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="HIST_RESULT" Type="Int16" />
+    <Property Name="DATA_SETTING_ID" Type="Int64" />
+    <Property Name="DATA_SUMMARY_ID" Type="Int64" />
+    <Property Name="DATA_SET_CREATETIME" Type="DateTime" />
+    <Property Name="DATA_SET_TESTERID" Type="Int64" />
+    <Property Name="DATA_SET_VERSION" Type="Int64" />
+    <Property Name="DATA_SET_ALIAS_NAME" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="DATA_SET_SHARE_MARK" Type="Int16" />
+    <Property Name="DATA_SET_STATUS" Type="Int16" />
+    <Property Name="DATA_SET_TYPE" Type="Int16" />
+    <Property Name="DATASET_DESCRIPTION" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="V_TEST_DATA_REPORT_SUMMARY">
+    <Key>
+      <PropertyRef Name="TEST_REPORT_STEP_ID" />
+    </Key>
+    <Property Name="KEY_WORD_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="OBJECT_HAPPY_NAME" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="INPUT_VALUE_SETTING" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="RETURN_VALUES" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="ACTUAL_INPUT_DATA" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="LATEST_TEST_MARK_ID" Type="Int64" />
+    <Property Name="STORYBOARD_DETAIL_ID" Type="Int64" />
+    <Property Name="LOOP_ID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="RUN_ORDER" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="TEST_MODE" Type="Int16" />
+    <Property Name="TEST_REPORT_STEP_ID" Type="Int64" Nullable="false" />
+    <Property Name="COLUMN_ROW_SETTING" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="STORYBOARD_ORDER" Type="Int64" />
+    <Property Name="STORYBOARD_ID" Type="Int64" />
+    <Property Name="TEST_CASE_ID" Type="Int64" />
+    <Property Name="RUNNING_RESULT_INFO" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+    <Property Name="STEPS_ID" Type="Int64" />
+    <Property Name="INFO_PIC" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="V_TEST_DATARPT_CAPTURE">
+    <Key>
+      <PropertyRef Name="TEST_REPORT_STEP_ID" />
+    </Key>
+    <Property Name="KEY_WORD_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="OBJECT_HAPPY_NAME" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="INPUT_VALUE_SETTING" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="RETURN_VALUES" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="ACTUAL_INPUT_DATA" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="LATEST_TEST_MARK_ID" Type="Int64" />
+    <Property Name="STORYBOARD_DETAIL_ID" Type="Int64" />
+    <Property Name="LOOP_ID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="RUN_ORDER" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="TEST_MODE" Type="Int16" />
+    <Property Name="TEST_REPORT_STEP_ID" Type="Int64" Nullable="false" />
+    <Property Name="STORYBOARD_ID" Type="Int64" />
+  </EntityType>
+  <EntityType Name="V_TEST_STEPS_FULLVISION">
+    <Key>
+      <PropertyRef Name="STEPS_ID" />
+    </Key>
+    <Property Name="TEST_CASE_ID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="TEST_CASE_NAME" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="KEY_WORD_ID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="KEY_WORD_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="OBJECT_HAPPY_NAME" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="OBJECT_ID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="OBJECT_TYPE" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="QUICK_ACCESS" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+    <Property Name="ENUM_TYPE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="APPLICATION_ID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="OBJECT_NAME_ID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="TYPE_NAME" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="STEPS_ID" Type="Int64" Nullable="false" />
+    <Property Name="COLUMN_ROW_SETTING" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="COMMENTINFO" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="IS_RUNNABLE" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="RUN_ORDER" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="VALUE_SETTING" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="V_USER_COMPANY">
+    <Key>
+      <PropertyRef Name="TESTER_ID" />
+      <PropertyRef Name="COMPANY_ID" />
+    </Key>
+    <Property Name="TESTER_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="TESTER_NAME_LAST" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="TESTER_NAME_M" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="TESTER_NAME_F" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="TESTER_LOGIN_NAME" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="TESTER_PWD" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="AVAILABLE_MARK" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="TESTER_MAIL" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="TESTER_NUMBER" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="COMPANY_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="TESTER_DESC" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="COMPANY_NAME" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="COMPANY_DESC" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+    <Property Name="COMPANY_ADDRESS" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="COMPANY_NUMBER" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="COMPANY_AVAILABLE_MARK" Type="Decimal" Precision="38" Scale="0" />
+  </EntityType>
+  <Association Name="FK_REL_APP__REFERENCE_T_TEST_P">
+    <End Role="T_TEST_PROJECT" Type="Self.T_TEST_PROJECT" Multiplicity="0..1" />
+    <End Role="REL_APP_PROJ" Type="Self.REL_APP_PROJ" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_TEST_PROJECT">
+        <PropertyRef Name="PROJECT_ID" />
+      </Principal>
+      <Dependent Role="REL_APP_PROJ">
+        <PropertyRef Name="PROJECT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OBJ_APP_APP_APP">
+    <End Role="T_REGISTERED_APPS" Type="Self.T_REGISTERED_APPS" Multiplicity="1" />
+    <End Role="REL_OBJ_APP" Type="Self.REL_OBJ_APP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_REGISTERED_APPS">
+        <PropertyRef Name="APPLICATION_ID" />
+      </Principal>
+      <Dependent Role="REL_OBJ_APP">
+        <PropertyRef Name="APPLICATION_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OBJ_APP_OBJ_OBJ">
+    <End Role="T_REGISTED_OBJECT" Type="Self.T_REGISTED_OBJECT" Multiplicity="1" />
+    <End Role="REL_OBJ_APP" Type="Self.REL_OBJ_APP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_REGISTED_OBJECT">
+        <PropertyRef Name="OBJECT_ID" />
+      </Principal>
+      <Dependent Role="REL_OBJ_APP">
+        <PropertyRef Name="OBJECT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_REL_TC_D_REFERENCE_T_TEST_C">
+    <End Role="T_TEST_CASE_SUMMARY" Type="Self.T_TEST_CASE_SUMMARY" Multiplicity="0..1" />
+    <End Role="REL_TC_DATA_SUMMARY" Type="Self.REL_TC_DATA_SUMMARY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_TEST_CASE_SUMMARY">
+        <PropertyRef Name="TEST_CASE_ID" />
+      </Principal>
+      <Dependent Role="REL_TC_DATA_SUMMARY">
+        <PropertyRef Name="TEST_CASE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_REL_TC_D_REFERENCE_T_TEST_D">
+    <End Role="T_TEST_DATA_SUMMARY" Type="Self.T_TEST_DATA_SUMMARY" Multiplicity="0..1" />
+    <End Role="REL_TC_DATA_SUMMARY" Type="Self.REL_TC_DATA_SUMMARY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_TEST_DATA_SUMMARY">
+        <PropertyRef Name="DATA_SUMMARY_ID" />
+      </Principal>
+      <Dependent Role="REL_TC_DATA_SUMMARY">
+        <PropertyRef Name="DATA_SUMMARY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_REL_TEST_REFERENCE_T_TEST_2">
+    <End Role="T_TEST_SUITE" Type="Self.T_TEST_SUITE" Multiplicity="0..1" />
+    <End Role="REL_TEST_CASE_TEST_SUITE" Type="Self.REL_TEST_CASE_TEST_SUITE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_TEST_SUITE">
+        <PropertyRef Name="TEST_SUITE_ID" />
+      </Principal>
+      <Dependent Role="REL_TEST_CASE_TEST_SUITE">
+        <PropertyRef Name="TEST_SUITE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_REL_TEST_REFERENCE_T_TEST_C">
+    <End Role="T_TEST_CASE_SUMMARY" Type="Self.T_TEST_CASE_SUMMARY" Multiplicity="0..1" />
+    <End Role="REL_TEST_CASE_TEST_SUITE" Type="Self.REL_TEST_CASE_TEST_SUITE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_TEST_CASE_SUMMARY">
+        <PropertyRef Name="TEST_CASE_ID" />
+      </Principal>
+      <Dependent Role="REL_TEST_CASE_TEST_SUITE">
+        <PropertyRef Name="TEST_CASE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_REL_TEST_REFERENCE_T_TEST_P">
+    <End Role="T_TEST_PROJECT" Type="Self.T_TEST_PROJECT" Multiplicity="0..1" />
+    <End Role="REL_TEST_SUIT_PROJECT" Type="Self.REL_TEST_SUIT_PROJECT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_TEST_PROJECT">
+        <PropertyRef Name="PROJECT_ID" />
+      </Principal>
+      <Dependent Role="REL_TEST_SUIT_PROJECT">
+        <PropertyRef Name="PROJECT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_REL_TEST_REFERENCE_T_TEST_S">
+    <End Role="T_TEST_SUITE" Type="Self.T_TEST_SUITE" Multiplicity="0..1" />
+    <End Role="REL_TEST_SUIT_PROJECT" Type="Self.REL_TEST_SUIT_PROJECT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_TEST_SUITE">
+        <PropertyRef Name="TEST_SUITE_ID" />
+      </Principal>
+      <Dependent Role="REL_TEST_SUIT_PROJECT">
+        <PropertyRef Name="TEST_SUITE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BSLN_DTL_BSID_BSLN_DT_ID">
+    <End Role="T_BASELINE_DATA_SUMMARY" Type="Self.T_BASELINE_DATA_SUMMARY" Multiplicity="0..1" />
+    <End Role="T_BASELINE_DATA_DETAIL" Type="Self.T_BASELINE_DATA_DETAIL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_BASELINE_DATA_SUMMARY">
+        <PropertyRef Name="DATA_BASE_OBJ_ID" />
+      </Principal>
+      <Dependent Role="T_BASELINE_DATA_DETAIL">
+        <PropertyRef Name="DATA_BASE_OBJ_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYS_C007724">
+    <End Role="T_BAT_RESULT" Type="Self.T_BAT_RESULT" Multiplicity="1" />
+    <End Role="T_BAT_RESULT_DETAIL" Type="Self.T_BAT_RESULT_DETAIL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_BAT_RESULT">
+        <PropertyRef Name="BAT_RESULT_ID" />
+      </Principal>
+      <Dependent Role="T_BAT_RESULT_DETAIL">
+        <PropertyRef Name="BAT_RESULT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYS_C007729">
+    <End Role="T_TEST_BATCH" Type="Self.T_TEST_BATCH" Multiplicity="1" />
+    <End Role="T_BAT_RESULT" Type="Self.T_BAT_RESULT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_TEST_BATCH">
+        <PropertyRef Name="BAT_ID" />
+      </Principal>
+      <Dependent Role="T_BAT_RESULT">
+        <PropertyRef Name="BAT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYS_C007725">
+    <End Role="T_TEST_BATCH_DETAIL" Type="Self.T_TEST_BATCH_DETAIL" Multiplicity="1" />
+    <End Role="T_BAT_RESULT_DETAIL" Type="Self.T_BAT_RESULT_DETAIL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_TEST_BATCH_DETAIL">
+        <PropertyRef Name="BAT_DTL_ID" />
+      </Principal>
+      <Dependent Role="T_BAT_RESULT_DETAIL">
+        <PropertyRef Name="BAT_DTL_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_DIC_RE_REFERENCE_T_GUI_CO">
+    <End Role="T_GUI_COMPONENT_TYPE_DIC" Type="Self.T_GUI_COMPONENT_TYPE_DIC" Multiplicity="0..1" />
+    <End Role="T_DIC_RELATION_KEYWORD" Type="Self.T_DIC_RELATION_KEYWORD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_GUI_COMPONENT_TYPE_DIC">
+        <PropertyRef Name="TYPE_ID" />
+      </Principal>
+      <Dependent Role="T_DIC_RELATION_KEYWORD">
+        <PropertyRef Name="TYPE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_DIC_RE_REFERENCE_T_KEYWOR">
+    <End Role="T_KEYWORD" Type="Self.T_KEYWORD" Multiplicity="0..1" />
+    <End Role="T_DIC_RELATION_KEYWORD" Type="Self.T_DIC_RELATION_KEYWORD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_KEYWORD">
+        <PropertyRef Name="KEY_WORD_ID" />
+      </Principal>
+      <Dependent Role="T_DIC_RELATION_KEYWORD">
+        <PropertyRef Name="KEY_WORD_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_REGIST_REFERENCE_T_GUI_CO">
+    <End Role="T_GUI_COMPONENT_TYPE_DIC" Type="Self.T_GUI_COMPONENT_TYPE_DIC" Multiplicity="0..1" />
+    <End Role="T_REGISTED_OBJECT" Type="Self.T_REGISTED_OBJECT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_GUI_COMPONENT_TYPE_DIC">
+        <PropertyRef Name="TYPE_ID" />
+      </Principal>
+      <Dependent Role="T_REGISTED_OBJECT">
+        <PropertyRef Name="TYPE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_TEST_S_REFERENCE_T_KEYWOR">
+    <End Role="T_KEYWORD" Type="Self.T_KEYWORD" Multiplicity="0..1" />
+    <End Role="T_TEST_STEPS" Type="Self.T_TEST_STEPS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_KEYWORD">
+        <PropertyRef Name="KEY_WORD_ID" />
+      </Principal>
+      <Dependent Role="T_TEST_STEPS">
+        <PropertyRef Name="KEY_WORD_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="T_TESTER_INFO_COMPANY_FK">
+    <End Role="T_MARS_COMPANY" Type="Self.T_MARS_COMPANY" Multiplicity="1" />
+    <End Role="T_TESTER_INFO" Type="Self.T_TESTER_INFO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_MARS_COMPANY">
+        <PropertyRef Name="COMPANY_ID" />
+      </Principal>
+      <Dependent Role="T_TESTER_INFO">
+        <PropertyRef Name="COMPANY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_PROJ_T_REF_TEST_SUITE">
+    <End Role="T_TEST_SUITE" Type="Self.T_TEST_SUITE" Multiplicity="0..1" />
+    <End Role="T_PROJ_TC_MGR" Type="Self.T_PROJ_TC_MGR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_TEST_SUITE">
+        <PropertyRef Name="TEST_SUITE_ID" />
+      </Principal>
+      <Dependent Role="T_PROJ_TC_MGR">
+        <PropertyRef Name="TEST_SUITE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_PROJ_T_REFERENCE_T_STORYB">
+    <End Role="T_STORYBOARD_SUMMARY" Type="Self.T_STORYBOARD_SUMMARY" Multiplicity="0..1" />
+    <End Role="T_PROJ_TC_MGR" Type="Self.T_PROJ_TC_MGR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_STORYBOARD_SUMMARY">
+        <PropertyRef Name="STORYBOARD_ID" />
+      </Principal>
+      <Dependent Role="T_PROJ_TC_MGR">
+        <PropertyRef Name="STORYBOARD_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_PROJ_T_REFERENCE_T_TEST_C">
+    <End Role="T_TEST_CASE_SUMMARY" Type="Self.T_TEST_CASE_SUMMARY" Multiplicity="0..1" />
+    <End Role="T_PROJ_TC_MGR" Type="Self.T_PROJ_TC_MGR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_TEST_CASE_SUMMARY">
+        <PropertyRef Name="TEST_CASE_ID" />
+      </Principal>
+      <Dependent Role="T_PROJ_TC_MGR">
+        <PropertyRef Name="TEST_CASE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_PROJ_T_REFERENCE_T_TEST_P">
+    <End Role="T_TEST_PROJECT" Type="Self.T_TEST_PROJECT" Multiplicity="0..1" />
+    <End Role="T_PROJ_TC_MGR" Type="Self.T_PROJ_TC_MGR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_TEST_PROJECT">
+        <PropertyRef Name="PROJECT_ID" />
+      </Principal>
+      <Dependent Role="T_PROJ_TC_MGR">
+        <PropertyRef Name="PROJECT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_STORYB_REFERENCE_T_PROJ_T">
+    <End Role="T_PROJ_TC_MGR" Type="Self.T_PROJ_TC_MGR" Multiplicity="0..1" />
+    <End Role="T_STORYBOARD_DATASET_SETTING" Type="Self.T_STORYBOARD_DATASET_SETTING" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_PROJ_TC_MGR">
+        <PropertyRef Name="STORYBOARD_DETAIL_ID" />
+      </Principal>
+      <Dependent Role="T_STORYBOARD_DATASET_SETTING">
+        <PropertyRef Name="STORYBOARD_DETAIL_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_PROJEC_REFERENCE_T_TEST_P">
+    <End Role="T_TEST_PROJECT" Type="Self.T_TEST_PROJECT" Multiplicity="0..1" />
+    <End Role="T_PROJECT_DATA_SOURCE" Type="Self.T_PROJECT_DATA_SOURCE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_TEST_PROJECT">
+        <PropertyRef Name="PROJECT_ID" />
+      </Principal>
+      <Dependent Role="T_PROJECT_DATA_SOURCE">
+        <PropertyRef Name="PROJECT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_TEST_S_REFERENCE_T_REGIST">
+    <End Role="T_REGISTED_OBJECT" Type="Self.T_REGISTED_OBJECT" Multiplicity="0..1" />
+    <End Role="T_TEST_STEPS" Type="Self.T_TEST_STEPS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_REGISTED_OBJECT">
+        <PropertyRef Name="OBJECT_ID" />
+      </Principal>
+      <Dependent Role="T_TEST_STEPS">
+        <PropertyRef Name="OBJECT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_SHARED_REFERENCE_T_TEST_D">
+    <End Role="T_TEST_DATA_SUMMARY" Type="Self.T_TEST_DATA_SUMMARY" Multiplicity="0..1" />
+    <End Role="T_SHARED_OBJECT_POOL" Type="Self.T_SHARED_OBJECT_POOL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_TEST_DATA_SUMMARY">
+        <PropertyRef Name="DATA_SUMMARY_ID" />
+      </Principal>
+      <Dependent Role="T_SHARED_OBJECT_POOL">
+        <PropertyRef Name="DATA_SUMMARY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_STORYB_REFERENCE_T_TEST_D">
+    <End Role="T_TEST_DATA_SUMMARY" Type="Self.T_TEST_DATA_SUMMARY" Multiplicity="0..1" />
+    <End Role="T_STORYBOARD_DATASET_SETTING" Type="Self.T_STORYBOARD_DATASET_SETTING" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_TEST_DATA_SUMMARY">
+        <PropertyRef Name="DATA_SUMMARY_ID" />
+      </Principal>
+      <Dependent Role="T_STORYBOARD_DATASET_SETTING">
+        <PropertyRef Name="DATA_SUMMARY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_STORYB_REFERENCE_T_STORYB">
+    <End Role="T_STORYBOARD_SUMMARY" Type="Self.T_STORYBOARD_SUMMARY" Multiplicity="0..1" />
+    <End Role="T_STORYBOARD_HISTORY" Type="Self.T_STORYBOARD_HISTORY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_STORYBOARD_SUMMARY">
+        <PropertyRef Name="STORYBOARD_ID" />
+      </Principal>
+      <Dependent Role="T_STORYBOARD_HISTORY">
+        <PropertyRef Name="STORYBOARD_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SYS_C007722">
+    <End Role="T_TEST_BATCH" Type="Self.T_TEST_BATCH" Multiplicity="1" />
+    <End Role="T_TEST_BATCH_DETAIL" Type="Self.T_TEST_BATCH_DETAIL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_TEST_BATCH">
+        <PropertyRef Name="BAT_ID" />
+      </Principal>
+      <Dependent Role="T_TEST_BATCH_DETAIL">
+        <PropertyRef Name="BAT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_TEST_C_REFERENCE_T_TEST_C">
+    <End Role="T_TEST_CASE_SUMMARY" Type="Self.T_TEST_CASE_SUMMARY" Multiplicity="0..1" />
+    <End Role="T_TEST_CASE_VERSION" Type="Self.T_TEST_CASE_VERSION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_TEST_CASE_SUMMARY">
+        <PropertyRef Name="TEST_CASE_ID" />
+      </Principal>
+      <Dependent Role="T_TEST_CASE_VERSION">
+        <PropertyRef Name="TEST_CASE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_TEST_R_REFERENCE_T_TEST_C">
+    <End Role="T_TEST_CASE_SUMMARY" Type="Self.T_TEST_CASE_SUMMARY" Multiplicity="0..1" />
+    <End Role="T_TEST_REPORT" Type="Self.T_TEST_REPORT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_TEST_CASE_SUMMARY">
+        <PropertyRef Name="TEST_CASE_ID" />
+      </Principal>
+      <Dependent Role="T_TEST_REPORT">
+        <PropertyRef Name="TEST_CASE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_TEST_S_REFERENCE_T_TEST_C">
+    <End Role="T_TEST_CASE_SUMMARY" Type="Self.T_TEST_CASE_SUMMARY" Multiplicity="0..1" />
+    <End Role="T_TEST_STEPS" Type="Self.T_TEST_STEPS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_TEST_CASE_SUMMARY">
+        <PropertyRef Name="TEST_CASE_ID" />
+      </Principal>
+      <Dependent Role="T_TEST_STEPS">
+        <PropertyRef Name="TEST_CASE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TEST_DAT_REFERENCE_T_TEST_D">
+    <End Role="T_TEST_DATA_SUMMARY" Type="Self.T_TEST_DATA_SUMMARY" Multiplicity="0..1" />
+    <End Role="TEST_DATA_SETTING" Type="Self.TEST_DATA_SETTING" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_TEST_DATA_SUMMARY">
+        <PropertyRef Name="DATA_SUMMARY_ID" />
+      </Principal>
+      <Dependent Role="TEST_DATA_SETTING">
+        <PropertyRef Name="DATA_SUMMARY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TEST_DAT_REFERENCE_T_TEST_S">
+    <End Role="T_TEST_STEPS" Type="Self.T_TEST_STEPS" Multiplicity="1" />
+    <End Role="TEST_DATA_SETTING" Type="Self.TEST_DATA_SETTING" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_TEST_STEPS">
+        <PropertyRef Name="STEPS_ID" />
+      </Principal>
+      <Dependent Role="TEST_DATA_SETTING">
+        <PropertyRef Name="STEPS_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_TESTER_INFO">
+    <End Role="T_TESTER_INFO" Type="Self.T_TESTER_INFO" Multiplicity="0..1" />
+    <End Role="T_USER_MAPPING" Type="Self.T_USER_MAPPING" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_TESTER_INFO">
+        <PropertyRef Name="TESTER_ID" />
+      </Principal>
+      <Dependent Role="T_USER_MAPPING">
+        <PropertyRef Name="TESTER_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ErrorLogs" EntityType="Self.ErrorLog" />
+    <EntitySet Name="LOGREPORTs" EntityType="Self.LOGREPORT" />
+    <EntitySet Name="REL_APP_BASELINECOMPARE" EntityType="Self.REL_APP_BASELINECOMPARE" />
+    <EntitySet Name="REL_APP_PROJ" EntityType="Self.REL_APP_PROJ" />
+    <EntitySet Name="REL_APP_TESTCASE" EntityType="Self.REL_APP_TESTCASE" />
+    <EntitySet Name="REL_APP_TESTSUITE" EntityType="Self.REL_APP_TESTSUITE" />
+    <EntitySet Name="REL_OBJ_APP" EntityType="Self.REL_OBJ_APP" />
+    <EntitySet Name="REL_PROJECT_USER" EntityType="Self.REL_PROJECT_USER" />
+    <EntitySet Name="REL_TC_DATA_SUMMARY" EntityType="Self.REL_TC_DATA_SUMMARY" />
+    <EntitySet Name="REL_TEST_CASE_TEST_SUITE" EntityType="Self.REL_TEST_CASE_TEST_SUITE" />
+    <EntitySet Name="REL_TEST_SUIT_PROJECT" EntityType="Self.REL_TEST_SUIT_PROJECT" />
+    <EntitySet Name="SYSTEM_LOOKUP" EntityType="Self.SYSTEM_LOOKUP" />
+    <EntitySet Name="T_BASELINE_DATA_DETAIL" EntityType="Self.T_BASELINE_DATA_DETAIL" />
+    <EntitySet Name="T_BASELINE_DATA_SUMMARY" EntityType="Self.T_BASELINE_DATA_SUMMARY" />
+    <EntitySet Name="T_BAT_RESULT" EntityType="Self.T_BAT_RESULT" />
+    <EntitySet Name="T_BAT_RESULT_DETAIL" EntityType="Self.T_BAT_RESULT_DETAIL" />
+    <EntitySet Name="T_COMPARE_CONFIG" EntityType="Self.T_COMPARE_CONFIG" />
+    <EntitySet Name="T_COMPARE_CONNECTIONS" EntityType="Self.T_COMPARE_CONNECTIONS" />
+    <EntitySet Name="T_COMPARE_QUERIES" EntityType="Self.T_COMPARE_QUERIES" />
+    <EntitySet Name="T_DATA_SOURCE" EntityType="Self.T_DATA_SOURCE" />
+    <EntitySet Name="T_DBCONNECTION" EntityType="Self.T_DBCONNECTION" />
+    <EntitySet Name="T_DIC_RELATION_KEYWORD" EntityType="Self.T_DIC_RELATION_KEYWORD" />
+    <EntitySet Name="T_GUI_COMPONENT_TYPE_DIC" EntityType="Self.T_GUI_COMPONENT_TYPE_DIC" />
+    <EntitySet Name="T_KEYWORD" EntityType="Self.T_KEYWORD" />
+    <EntitySet Name="T_MARS_COMPANY" EntityType="Self.T_MARS_COMPANY" />
+    <EntitySet Name="T_OBJECT_NAMEINFO" EntityType="Self.T_OBJECT_NAMEINFO" />
+    <EntitySet Name="T_PROJ_TC_MGR" EntityType="Self.T_PROJ_TC_MGR" />
+    <EntitySet Name="T_PROJ_TEST_RESULT" EntityType="Self.T_PROJ_TEST_RESULT" />
+    <EntitySet Name="T_PROJECT_DATA_SOURCE" EntityType="Self.T_PROJECT_DATA_SOURCE" />
+    <EntitySet Name="T_REGISTED_OBJECT" EntityType="Self.T_REGISTED_OBJECT" />
+    <EntitySet Name="T_REGISTERED_APPS" EntityType="Self.T_REGISTERED_APPS" />
+    <EntitySet Name="T_RELATION_USER_ENGINEPATH" EntityType="Self.T_RELATION_USER_ENGINEPATH" />
+    <EntitySet Name="T_SHARED_OBJECT_POOL" EntityType="Self.T_SHARED_OBJECT_POOL" />
+    <EntitySet Name="T_STORYBOARD_DATASET_SETTING" EntityType="Self.T_STORYBOARD_DATASET_SETTING" />
+    <EntitySet Name="T_STORYBOARD_HISTORY" EntityType="Self.T_STORYBOARD_HISTORY" />
+    <EntitySet Name="T_STORYBOARD_SUMMARY" EntityType="Self.T_STORYBOARD_SUMMARY" />
+    <EntitySet Name="T_TEST_BATCH" EntityType="Self.T_TEST_BATCH" />
+    <EntitySet Name="T_TEST_BATCH_DETAIL" EntityType="Self.T_TEST_BATCH_DETAIL" />
+    <EntitySet Name="T_TEST_CASE_SUMMARY" EntityType="Self.T_TEST_CASE_SUMMARY" />
+    <EntitySet Name="T_TEST_CASE_VERSION" EntityType="Self.T_TEST_CASE_VERSION" />
+    <EntitySet Name="T_TEST_DATA_SUMMARY" EntityType="Self.T_TEST_DATA_SUMMARY" />
+    <EntitySet Name="T_TEST_ENUM" EntityType="Self.T_TEST_ENUM" />
+    <EntitySet Name="T_TEST_PROJECT" EntityType="Self.T_TEST_PROJECT" />
+    <EntitySet Name="T_TEST_REPORT" EntityType="Self.T_TEST_REPORT" />
+    <EntitySet Name="T_TEST_STEPS" EntityType="Self.T_TEST_STEPS" />
+    <EntitySet Name="T_TEST_SUITE" EntityType="Self.T_TEST_SUITE" />
+    <EntitySet Name="T_TESTCASE_VERSION" EntityType="Self.T_TESTCASE_VERSION" />
+    <EntitySet Name="T_TESTER_INFO" EntityType="Self.T_TESTER_INFO" />
+    <EntitySet Name="T_USER_MAPPING" EntityType="Self.T_USER_MAPPING" />
+    <EntitySet Name="TBLFEEDPROCESSes" EntityType="Self.TBLFEEDPROCESS" />
+    <EntitySet Name="TBLFEEDPROCESSDETAILS" EntityType="Self.TBLFEEDPROCESSDETAIL" />
+    <EntitySet Name="TBLSTGGUIOBJECTs" EntityType="Self.TBLSTGGUIOBJECT" />
+    <EntitySet Name="TBLSTGSTORYBOARDs" EntityType="Self.TBLSTGSTORYBOARD" />
+    <EntitySet Name="TEST_DATA_SETTING" EntityType="Self.TEST_DATA_SETTING" />
+    <EntitySet Name="DELETELOGs" EntityType="Self.DELETELOG" />
+    <EntitySet Name="DMPOSTINGEVENTs" EntityType="Self.DMPOSTINGEVENT" />
+    <EntitySet Name="DMPOSTINGEVENT2" EntityType="Self.DMPOSTINGEVENT2" />
+    <EntitySet Name="MV_LAST_TC_INFO" EntityType="Self.MV_LAST_TC_INFO" />
+    <EntitySet Name="MV_LATEST_STB_TSMOD_MARK" EntityType="Self.MV_LATEST_STB_TSMOD_MARK" />
+    <EntitySet Name="MV_OBJ_WITH_PEG" EntityType="Self.MV_OBJ_WITH_PEG" />
+    <EntitySet Name="MV_OBJECT_SNAPSHOT" EntityType="Self.MV_OBJECT_SNAPSHOT" />
+    <EntitySet Name="MV_STORYBOARD_LATEST" EntityType="Self.MV_STORYBOARD_LATEST" />
+    <EntitySet Name="MV_TC_DATASUMMARY" EntityType="Self.MV_TC_DATASUMMARY" />
+    <EntitySet Name="T_REGISTED_OBJECT_TEST" EntityType="Self.T_REGISTED_OBJECT_TEST" />
+    <EntitySet Name="T_TEST_STEPS_TMP" EntityType="Self.T_TEST_STEPS_TMP" />
+    <EntitySet Name="TBLLOGREPORTs" EntityType="Self.TBLLOGREPORT" />
+    <EntitySet Name="TBLSTGVARIABLEs" EntityType="Self.TBLSTGVARIABLE" />
+    <EntitySet Name="TEST_DATA_SETTING_0426" EntityType="Self.TEST_DATA_SETTING_0426" />
+    <EntitySet Name="TEST_DATA_SETTING_BAK" EntityType="Self.TEST_DATA_SETTING_BAK" />
+    <EntitySet Name="TEST_DATA_SETTING_TST" EntityType="Self.TEST_DATA_SETTING_TST" />
+    <EntitySet Name="TEST_DATA_SETTING0424" EntityType="Self.TEST_DATA_SETTING0424" />
+    <EntitySet Name="TMP_T_OBJ" EntityType="Self.TMP_T_OBJ" />
+    <EntitySet Name="V_OBJECT_SNAPSHOT" EntityType="Self.V_OBJECT_SNAPSHOT" />
+    <EntitySet Name="TEST_CASE_VIEW" EntityType="Self.TEST_CASE_VIEW" />
+    <EntitySet Name="TEST_CASE_VIEW2" EntityType="Self.TEST_CASE_VIEW2" />
+    <EntitySet Name="TEST_OBJECT_VIEW" EntityType="Self.TEST_OBJECT_VIEW" />
+    <EntitySet Name="TEST_PROJECT_VIEW" EntityType="Self.TEST_PROJECT_VIEW" />
+    <EntitySet Name="V_MARS_STB_SNAPSHOT" EntityType="Self.V_MARS_STB_SNAPSHOT" />
+    <EntitySet Name="V_OBJECT_APPS" EntityType="Self.V_OBJECT_APPS" />
+    <EntitySet Name="V_STB_PROJ_APP_FULLVISION" EntityType="Self.V_STB_PROJ_APP_FULLVISION" />
+    <EntitySet Name="V_STORYBOARD_TEST_FULLVIEW" EntityType="Self.V_STORYBOARD_TEST_FULLVIEW" />
+    <EntitySet Name="V_STORYBOARD_TEST_FULLVISION" EntityType="Self.V_STORYBOARD_TEST_FULLVISION" />
+    <EntitySet Name="V_TEST_DATA_REPORT_SUMMARY" EntityType="Self.V_TEST_DATA_REPORT_SUMMARY" />
+    <EntitySet Name="V_TEST_DATARPT_CAPTURE" EntityType="Self.V_TEST_DATARPT_CAPTURE" />
+    <EntitySet Name="V_TEST_STEPS_FULLVISION" EntityType="Self.V_TEST_STEPS_FULLVISION" />
+    <EntitySet Name="V_USER_COMPANY" EntityType="Self.V_USER_COMPANY" />
+    <AssociationSet Name="FK_REL_APP__REFERENCE_T_TEST_P" Association="Self.FK_REL_APP__REFERENCE_T_TEST_P">
+      <End Role="T_TEST_PROJECT" EntitySet="T_TEST_PROJECT" />
+      <End Role="REL_APP_PROJ" EntitySet="REL_APP_PROJ" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OBJ_APP_APP_APP" Association="Self.FK_OBJ_APP_APP_APP">
+      <End Role="T_REGISTERED_APPS" EntitySet="T_REGISTERED_APPS" />
+      <End Role="REL_OBJ_APP" EntitySet="REL_OBJ_APP" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OBJ_APP_OBJ_OBJ" Association="Self.FK_OBJ_APP_OBJ_OBJ">
+      <End Role="T_REGISTED_OBJECT" EntitySet="T_REGISTED_OBJECT" />
+      <End Role="REL_OBJ_APP" EntitySet="REL_OBJ_APP" />
+    </AssociationSet>
+    <AssociationSet Name="FK_REL_TC_D_REFERENCE_T_TEST_C" Association="Self.FK_REL_TC_D_REFERENCE_T_TEST_C">
+      <End Role="T_TEST_CASE_SUMMARY" EntitySet="T_TEST_CASE_SUMMARY" />
+      <End Role="REL_TC_DATA_SUMMARY" EntitySet="REL_TC_DATA_SUMMARY" />
+    </AssociationSet>
+    <AssociationSet Name="FK_REL_TC_D_REFERENCE_T_TEST_D" Association="Self.FK_REL_TC_D_REFERENCE_T_TEST_D">
+      <End Role="T_TEST_DATA_SUMMARY" EntitySet="T_TEST_DATA_SUMMARY" />
+      <End Role="REL_TC_DATA_SUMMARY" EntitySet="REL_TC_DATA_SUMMARY" />
+    </AssociationSet>
+    <AssociationSet Name="FK_REL_TEST_REFERENCE_T_TEST_2" Association="Self.FK_REL_TEST_REFERENCE_T_TEST_2">
+      <End Role="T_TEST_SUITE" EntitySet="T_TEST_SUITE" />
+      <End Role="REL_TEST_CASE_TEST_SUITE" EntitySet="REL_TEST_CASE_TEST_SUITE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_REL_TEST_REFERENCE_T_TEST_C" Association="Self.FK_REL_TEST_REFERENCE_T_TEST_C">
+      <End Role="T_TEST_CASE_SUMMARY" EntitySet="T_TEST_CASE_SUMMARY" />
+      <End Role="REL_TEST_CASE_TEST_SUITE" EntitySet="REL_TEST_CASE_TEST_SUITE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_REL_TEST_REFERENCE_T_TEST_P" Association="Self.FK_REL_TEST_REFERENCE_T_TEST_P">
+      <End Role="T_TEST_PROJECT" EntitySet="T_TEST_PROJECT" />
+      <End Role="REL_TEST_SUIT_PROJECT" EntitySet="REL_TEST_SUIT_PROJECT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_REL_TEST_REFERENCE_T_TEST_S" Association="Self.FK_REL_TEST_REFERENCE_T_TEST_S">
+      <End Role="T_TEST_SUITE" EntitySet="T_TEST_SUITE" />
+      <End Role="REL_TEST_SUIT_PROJECT" EntitySet="REL_TEST_SUIT_PROJECT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BSLN_DTL_BSID_BSLN_DT_ID" Association="Self.FK_BSLN_DTL_BSID_BSLN_DT_ID">
+      <End Role="T_BASELINE_DATA_SUMMARY" EntitySet="T_BASELINE_DATA_SUMMARY" />
+      <End Role="T_BASELINE_DATA_DETAIL" EntitySet="T_BASELINE_DATA_DETAIL" />
+    </AssociationSet>
+    <AssociationSet Name="SYS_C007724" Association="Self.SYS_C007724">
+      <End Role="T_BAT_RESULT" EntitySet="T_BAT_RESULT" />
+      <End Role="T_BAT_RESULT_DETAIL" EntitySet="T_BAT_RESULT_DETAIL" />
+    </AssociationSet>
+    <AssociationSet Name="SYS_C007729" Association="Self.SYS_C007729">
+      <End Role="T_TEST_BATCH" EntitySet="T_TEST_BATCH" />
+      <End Role="T_BAT_RESULT" EntitySet="T_BAT_RESULT" />
+    </AssociationSet>
+    <AssociationSet Name="SYS_C007725" Association="Self.SYS_C007725">
+      <End Role="T_TEST_BATCH_DETAIL" EntitySet="T_TEST_BATCH_DETAIL" />
+      <End Role="T_BAT_RESULT_DETAIL" EntitySet="T_BAT_RESULT_DETAIL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_DIC_RE_REFERENCE_T_GUI_CO" Association="Self.FK_T_DIC_RE_REFERENCE_T_GUI_CO">
+      <End Role="T_GUI_COMPONENT_TYPE_DIC" EntitySet="T_GUI_COMPONENT_TYPE_DIC" />
+      <End Role="T_DIC_RELATION_KEYWORD" EntitySet="T_DIC_RELATION_KEYWORD" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_DIC_RE_REFERENCE_T_KEYWOR" Association="Self.FK_T_DIC_RE_REFERENCE_T_KEYWOR">
+      <End Role="T_KEYWORD" EntitySet="T_KEYWORD" />
+      <End Role="T_DIC_RELATION_KEYWORD" EntitySet="T_DIC_RELATION_KEYWORD" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_REGIST_REFERENCE_T_GUI_CO" Association="Self.FK_T_REGIST_REFERENCE_T_GUI_CO">
+      <End Role="T_GUI_COMPONENT_TYPE_DIC" EntitySet="T_GUI_COMPONENT_TYPE_DIC" />
+      <End Role="T_REGISTED_OBJECT" EntitySet="T_REGISTED_OBJECT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_TEST_S_REFERENCE_T_KEYWOR" Association="Self.FK_T_TEST_S_REFERENCE_T_KEYWOR">
+      <End Role="T_KEYWORD" EntitySet="T_KEYWORD" />
+      <End Role="T_TEST_STEPS" EntitySet="T_TEST_STEPS" />
+    </AssociationSet>
+    <AssociationSet Name="T_TESTER_INFO_COMPANY_FK" Association="Self.T_TESTER_INFO_COMPANY_FK">
+      <End Role="T_MARS_COMPANY" EntitySet="T_MARS_COMPANY" />
+      <End Role="T_TESTER_INFO" EntitySet="T_TESTER_INFO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_PROJ_T_REF_TEST_SUITE" Association="Self.FK_T_PROJ_T_REF_TEST_SUITE">
+      <End Role="T_TEST_SUITE" EntitySet="T_TEST_SUITE" />
+      <End Role="T_PROJ_TC_MGR" EntitySet="T_PROJ_TC_MGR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_PROJ_T_REFERENCE_T_STORYB" Association="Self.FK_T_PROJ_T_REFERENCE_T_STORYB">
+      <End Role="T_STORYBOARD_SUMMARY" EntitySet="T_STORYBOARD_SUMMARY" />
+      <End Role="T_PROJ_TC_MGR" EntitySet="T_PROJ_TC_MGR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_PROJ_T_REFERENCE_T_TEST_C" Association="Self.FK_T_PROJ_T_REFERENCE_T_TEST_C">
+      <End Role="T_TEST_CASE_SUMMARY" EntitySet="T_TEST_CASE_SUMMARY" />
+      <End Role="T_PROJ_TC_MGR" EntitySet="T_PROJ_TC_MGR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_PROJ_T_REFERENCE_T_TEST_P" Association="Self.FK_T_PROJ_T_REFERENCE_T_TEST_P">
+      <End Role="T_TEST_PROJECT" EntitySet="T_TEST_PROJECT" />
+      <End Role="T_PROJ_TC_MGR" EntitySet="T_PROJ_TC_MGR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_STORYB_REFERENCE_T_PROJ_T" Association="Self.FK_T_STORYB_REFERENCE_T_PROJ_T">
+      <End Role="T_PROJ_TC_MGR" EntitySet="T_PROJ_TC_MGR" />
+      <End Role="T_STORYBOARD_DATASET_SETTING" EntitySet="T_STORYBOARD_DATASET_SETTING" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_PROJEC_REFERENCE_T_TEST_P" Association="Self.FK_T_PROJEC_REFERENCE_T_TEST_P">
+      <End Role="T_TEST_PROJECT" EntitySet="T_TEST_PROJECT" />
+      <End Role="T_PROJECT_DATA_SOURCE" EntitySet="T_PROJECT_DATA_SOURCE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_TEST_S_REFERENCE_T_REGIST" Association="Self.FK_T_TEST_S_REFERENCE_T_REGIST">
+      <End Role="T_REGISTED_OBJECT" EntitySet="T_REGISTED_OBJECT" />
+      <End Role="T_TEST_STEPS" EntitySet="T_TEST_STEPS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_SHARED_REFERENCE_T_TEST_D" Association="Self.FK_T_SHARED_REFERENCE_T_TEST_D">
+      <End Role="T_TEST_DATA_SUMMARY" EntitySet="T_TEST_DATA_SUMMARY" />
+      <End Role="T_SHARED_OBJECT_POOL" EntitySet="T_SHARED_OBJECT_POOL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_STORYB_REFERENCE_T_TEST_D" Association="Self.FK_T_STORYB_REFERENCE_T_TEST_D">
+      <End Role="T_TEST_DATA_SUMMARY" EntitySet="T_TEST_DATA_SUMMARY" />
+      <End Role="T_STORYBOARD_DATASET_SETTING" EntitySet="T_STORYBOARD_DATASET_SETTING" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_STORYB_REFERENCE_T_STORYB" Association="Self.FK_T_STORYB_REFERENCE_T_STORYB">
+      <End Role="T_STORYBOARD_SUMMARY" EntitySet="T_STORYBOARD_SUMMARY" />
+      <End Role="T_STORYBOARD_HISTORY" EntitySet="T_STORYBOARD_HISTORY" />
+    </AssociationSet>
+    <AssociationSet Name="SYS_C007722" Association="Self.SYS_C007722">
+      <End Role="T_TEST_BATCH" EntitySet="T_TEST_BATCH" />
+      <End Role="T_TEST_BATCH_DETAIL" EntitySet="T_TEST_BATCH_DETAIL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_TEST_C_REFERENCE_T_TEST_C" Association="Self.FK_T_TEST_C_REFERENCE_T_TEST_C">
+      <End Role="T_TEST_CASE_SUMMARY" EntitySet="T_TEST_CASE_SUMMARY" />
+      <End Role="T_TEST_CASE_VERSION" EntitySet="T_TEST_CASE_VERSION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_TEST_R_REFERENCE_T_TEST_C" Association="Self.FK_T_TEST_R_REFERENCE_T_TEST_C">
+      <End Role="T_TEST_CASE_SUMMARY" EntitySet="T_TEST_CASE_SUMMARY" />
+      <End Role="T_TEST_REPORT" EntitySet="T_TEST_REPORT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_TEST_S_REFERENCE_T_TEST_C" Association="Self.FK_T_TEST_S_REFERENCE_T_TEST_C">
+      <End Role="T_TEST_CASE_SUMMARY" EntitySet="T_TEST_CASE_SUMMARY" />
+      <End Role="T_TEST_STEPS" EntitySet="T_TEST_STEPS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TEST_DAT_REFERENCE_T_TEST_D" Association="Self.FK_TEST_DAT_REFERENCE_T_TEST_D">
+      <End Role="T_TEST_DATA_SUMMARY" EntitySet="T_TEST_DATA_SUMMARY" />
+      <End Role="TEST_DATA_SETTING" EntitySet="TEST_DATA_SETTING" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TEST_DAT_REFERENCE_T_TEST_S" Association="Self.FK_TEST_DAT_REFERENCE_T_TEST_S">
+      <End Role="T_TEST_STEPS" EntitySet="T_TEST_STEPS" />
+      <End Role="TEST_DATA_SETTING" EntitySet="TEST_DATA_SETTING" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_TESTER_INFO" Association="Self.FK_T_TESTER_INFO">
+      <End Role="T_TESTER_INFO" EntitySet="T_TESTER_INFO" />
+      <End Role="T_USER_MAPPING" EntitySet="T_USER_MAPPING" />
+    </AssociationSet>
+    <FunctionImport Name="DeleteTestCase">
+      <Parameter Name="TESTCASEID" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="GETNEXT_VAL">
+      <Parameter Name="P_SEQUENCE_NAME" Mode="In" Type="String" />
+      <Parameter Name="V_NEXTVAL" Mode="Out" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="REMOVE_DUPLICATE_OBJECTS" />
+    <FunctionImport Name="SP_COPYDATASETS">
+      <Parameter Name="OLDDATASETID" Mode="In" Type="String" />
+      <Parameter Name="NEWDATASETID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_COPY_SELECTED_OBJECTS">
+      <Parameter Name="OBJECTID" Mode="In" Type="String" />
+      <Parameter Name="OLDAPPID" Mode="In" Type="String" />
+      <Parameter Name="NEWAPPID" Mode="In" Type="String" />
+      <Parameter Name="RESULT" Mode="Out" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_EXPORT_ALL_STORYBOARDS" />
+    <FunctionImport Name="SP_EXPORT_ALL_TESTSUITES" />
+    <FunctionImport Name="SP_EXPORT_COMPAREPARAM" />
+    <FunctionImport Name="SP_EXPORT_EXPORTOBJECT">
+      <Parameter Name="APPLICATION" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_EXPORT_LOGREPORT">
+      <Parameter Name="FEEDPROCESSDETAILID" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="SP_EXPORT_STORYBOARD">
+      <Parameter Name="PROJECT" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_EXPORT_STORYBOARDNEW">
+      <Parameter Name="PROJECT" Mode="In" Type="String" />
+      <Parameter Name="STORYBOARDNAME" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_EXPORT_TESTCASE">
+      <Parameter Name="TESTSUITENAME" Mode="In" Type="String" />
+      <Parameter Name="TESTCASENAME" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_EXPORT_TESTSUITE">
+      <Parameter Name="TESTSUITENAME" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_EXPORT_VARIABLE" />
+    <FunctionImport Name="SP_GETTESTCASEDETAIL">
+      <Parameter Name="TESTSUITEID" Mode="In" Type="Decimal" />
+      <Parameter Name="TESTCASEID" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="SP_GET_LEFTPANELPROJECTLIST">
+      <Parameter Name="USERID" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="SP_GET_STORYBOARD_DETAILS">
+      <Parameter Name="PROJECTID" Mode="In" Type="Decimal" />
+      <Parameter Name="STORYBOARDID" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="SP_GET_VARIABLE_DETAILS">
+      <Parameter Name="STARTREC" Mode="In" Type="Decimal" />
+      <Parameter Name="TOTALPAGESIZE" Mode="In" Type="Decimal" />
+      <Parameter Name="COLUMNNAME" Mode="In" Type="String" />
+      <Parameter Name="COLUMNORDER" Mode="In" Type="String" />
+      <Parameter Name="FIELDNAMESEARCH" Mode="In" Type="String" />
+      <Parameter Name="TABLESEARCH" Mode="In" Type="String" />
+      <Parameter Name="DISPLAYNAMESEARCH" Mode="In" Type="String" />
+      <Parameter Name="STATUSSEARCH" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_IMPORT_FILE_COMPAREPARAM">
+      <Parameter Name="DATA_SOURCE_NAME" Mode="In" Type="String" />
+      <Parameter Name="DATA_SOURCE_TYPE" Mode="In" Type="Decimal" />
+      <Parameter Name="DETAILS" Mode="In" Type="String" />
+      <Parameter Name="FEEDPROCESSDETAILID" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="SP_IMPORT_FILE_EXPORTTEST" />
+    <FunctionImport Name="SP_IMPORT_FILE_EXPORTTESTCASE" />
+    <FunctionImport Name="SP_IMPORT_FILE_OBJECT">
+      <Parameter Name="OBJECTNAME" Mode="In" Type="String" />
+      <Parameter Name="OBJECTTYPE" Mode="In" Type="String" />
+      <Parameter Name="QUICKACCESS" Mode="In" Type="String" />
+      <Parameter Name="PARENT" Mode="In" Type="String" />
+      <Parameter Name="OBJECTCOMMENT" Mode="In" Type="String" />
+      <Parameter Name="ENUMTYPE" Mode="In" Type="String" />
+      <Parameter Name="OBJECTSQL" Mode="In" Type="String" />
+      <Parameter Name="APPLICATIONNAME" Mode="In" Type="String" />
+      <Parameter Name="FEEDPROCESSDETAILID" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="SP_IMPORT_FILE_STORYBOARD">
+      <Parameter Name="RUNORDER" Mode="In" Type="Decimal" />
+      <Parameter Name="APPLICATIONNAME" Mode="In" Type="String" />
+      <Parameter Name="PROJECTNAME" Mode="In" Type="String" />
+      <Parameter Name="PROJECTDETAIL" Mode="In" Type="String" />
+      <Parameter Name="STORYBOARDNAME" Mode="In" Type="String" />
+      <Parameter Name="ACTIONNAME" Mode="In" Type="String" />
+      <Parameter Name="STEPNAME" Mode="In" Type="String" />
+      <Parameter Name="SUITENAME" Mode="In" Type="String" />
+      <Parameter Name="CASENAME" Mode="In" Type="String" />
+      <Parameter Name="DATASETNAME" Mode="In" Type="String" />
+      <Parameter Name="DEPENDENCY" Mode="In" Type="String" />
+      <Parameter Name="FEEDPROCESSDETAILID" Mode="In" Type="Decimal" />
+      <Parameter Name="TABNAME" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_IMPORT_FILE_TESTCASE">
+      <Parameter Name="TESTSUITENAME" Mode="In" Type="String" />
+      <Parameter Name="TESTCASENAME" Mode="In" Type="String" />
+      <Parameter Name="TESTCASEDESCRIPTION" Mode="In" Type="String" />
+      <Parameter Name="DATASETMODE" Mode="In" Type="String" />
+      <Parameter Name="KEYWORD" Mode="In" Type="String" />
+      <Parameter Name="OBJECT" Mode="In" Type="String" />
+      <Parameter Name="PARAMETER" Mode="In" Type="String" />
+      <Parameter Name="COMMENTS" Mode="In" Type="String" />
+      <Parameter Name="DATASETNAME" Mode="In" Type="String" />
+      <Parameter Name="DATASETVALUE" Mode="In" Type="String" />
+      <Parameter Name="ROWNUMBER" Mode="In" Type="Decimal" />
+      <Parameter Name="FEEDPROCESSDETAILID" Mode="In" Type="Decimal" />
+      <Parameter Name="TABNAME" Mode="In" Type="String" />
+      <Parameter Name="APPLICATION" Mode="In" Type="String" />
+      <Parameter Name="SKIP" Mode="In" Type="Decimal" />
+      <Parameter Name="DATASETDESCRIPTION" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_IMPORT_FILE_VARIABLE">
+      <Parameter Name="FEEDPROCESSDETAILID" Mode="In" Type="Decimal" />
+      <Parameter Name="NAME" Mode="In" Type="String" />
+      <Parameter Name="VALUE" Mode="In" Type="String" />
+      <Parameter Name="TYPE" Mode="In" Type="String" />
+      <Parameter Name="BASE_COMP" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_LIST_KEYWORDS">
+      <Parameter Name="STARTREC" Mode="In" Type="Decimal" />
+      <Parameter Name="TOTALPAGESIZE" Mode="In" Type="Decimal" />
+      <Parameter Name="COLUMNNAME" Mode="In" Type="String" />
+      <Parameter Name="COLUMNORDER" Mode="In" Type="String" />
+      <Parameter Name="NAMESEARCH" Mode="In" Type="String" />
+      <Parameter Name="TYPESEARCH" Mode="In" Type="String" />
+      <Parameter Name="ENTRYINFILE" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_LIST_OBJECTS">
+      <Parameter Name="STARTREC" Mode="In" Type="Decimal" />
+      <Parameter Name="TOTALPAGESIZE" Mode="In" Type="Decimal" />
+      <Parameter Name="COLUMNNAME" Mode="In" Type="String" />
+      <Parameter Name="COLUMNORDER" Mode="In" Type="String" />
+      <Parameter Name="OBJECTNAME" Mode="In" Type="String" />
+      <Parameter Name="TYPENAME" Mode="In" Type="String" />
+      <Parameter Name="QUICKACCESS" Mode="In" Type="String" />
+      <Parameter Name="PARENT" Mode="In" Type="String" />
+      <Parameter Name="APPLICATION" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_LIST_PROJECTS">
+      <Parameter Name="STARTREC" Mode="In" Type="Decimal" />
+      <Parameter Name="TOTALPAGESIZE" Mode="In" Type="Decimal" />
+      <Parameter Name="COLUMNNAME" Mode="In" Type="String" />
+      <Parameter Name="COLUMNORDER" Mode="In" Type="String" />
+      <Parameter Name="NAMESEARCH" Mode="In" Type="String" />
+      <Parameter Name="DESCRIPTIONSEARCH" Mode="In" Type="String" />
+      <Parameter Name="APPSEARCH" Mode="In" Type="String" />
+      <Parameter Name="STATUSSEARCH" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_LIST_STORYBOARDS">
+      <Parameter Name="STARTREC" Mode="In" Type="Decimal" />
+      <Parameter Name="TOTALPAGESIZE" Mode="In" Type="Decimal" />
+      <Parameter Name="COLUMNNAME" Mode="In" Type="String" />
+      <Parameter Name="COLUMNORDER" Mode="In" Type="String" />
+      <Parameter Name="SNAME" Mode="In" Type="String" />
+      <Parameter Name="SDESC" Mode="In" Type="String" />
+      <Parameter Name="PROJNAME" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_LIST_TESTCASES">
+      <Parameter Name="STARTREC" Mode="In" Type="Decimal" />
+      <Parameter Name="TOTALPAGESIZE" Mode="In" Type="Decimal" />
+      <Parameter Name="COLUMNNAME" Mode="In" Type="String" />
+      <Parameter Name="COLUMNORDER" Mode="In" Type="String" />
+      <Parameter Name="NAMESEARCH" Mode="In" Type="String" />
+      <Parameter Name="DESCRIPTIONSEARCH" Mode="In" Type="String" />
+      <Parameter Name="APPSEARCH" Mode="In" Type="String" />
+      <Parameter Name="SUITESEARCH" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_LIST_TESTSUITES">
+      <Parameter Name="STARTREC" Mode="In" Type="Decimal" />
+      <Parameter Name="TOTALPAGESIZE" Mode="In" Type="Decimal" />
+      <Parameter Name="COLUMNNAME" Mode="In" Type="String" />
+      <Parameter Name="COLUMNORDER" Mode="In" Type="String" />
+      <Parameter Name="NAMESEARCH" Mode="In" Type="String" />
+      <Parameter Name="DESCRIPTIONSEARCH" Mode="In" Type="String" />
+      <Parameter Name="APPSEARCH" Mode="In" Type="String" />
+      <Parameter Name="PROJECTSEARCH" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_TESTCASE_DETAILS">
+      <Parameter Name="TESTCASEID" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="USP_FEEDPROCESS">
+      <Parameter Name="FEEDPROCESSID" Mode="In" Type="Decimal" />
+      <Parameter Name="OPERATION" Mode="In" Type="String" />
+      <Parameter Name="CREATEDBY" Mode="In" Type="String" />
+      <Parameter Name="FEEDPROCESSSTATUS" Mode="In" Type="String" />
+      <Parameter Name="ID" Mode="Out" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="USP_FEEDPROCESSDETAILS">
+      <Parameter Name="FEEDPROCESSDETAILID" Mode="In" Type="Decimal" />
+      <Parameter Name="FEEDPROCESSID" Mode="In" Type="Decimal" />
+      <Parameter Name="OPERATION" Mode="In" Type="String" />
+      <Parameter Name="FILENAME" Mode="In" Type="String" />
+      <Parameter Name="CREATEDBY" Mode="In" Type="String" />
+      <Parameter Name="FEEDPROCESSSTATUS" Mode="In" Type="String" />
+      <Parameter Name="FILETYPE" Mode="In" Type="String" />
+      <Parameter Name="ID" Mode="Out" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="USP_FEEDPROCESSMAPPING_MODE_D">
+      <Parameter Name="FEEDPROCESSID1" Mode="In" Type="Decimal" />
+      <Parameter Name="ISOVERWRITE" Mode="In" Type="Decimal" />
+      <Parameter Name="RESULT" Mode="Out" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="USP_FEEDPROCESSMAPPING_WEB_D">
+      <Parameter Name="FEEDPROCESSID1" Mode="In" Type="Decimal" />
+      <Parameter Name="ISOVERWRITE" Mode="In" Type="Decimal" />
+      <Parameter Name="RESULT" Mode="Out" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="USP_MAPPING_VALIDATION">
+      <Parameter Name="FEEDPROCESSID1" Mode="In" Type="Decimal" />
+      <Parameter Name="RESULT" Mode="Out" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="USP_VALIDATION">
+      <Parameter Name="DATAVALUE" Mode="In" Type="String" />
+      <Parameter Name="VALIDATETYPE" Mode="In" Type="String" />
+      <Parameter Name="ID" Mode="Out" Type="Decimal" />
+    </FunctionImport>
+    <EntitySet Name="T_USER_ACTIVEPAGE" EntityType="Model.T_USER_ACTIVEPAGE" />
+    <FunctionImport Name="SP_CheckValidationTestCase">
+      <Parameter Name="FEEDPROCESSID1" Mode="In" Type="Decimal" />
+      <Parameter Name="RESULT" Mode="Out" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_GETTESTCASEVALIDATIONRESULT">
+      <Parameter Name="FEEDPROCESSID1" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <EntitySet Name="T_GRIDLIST" EntityType="Model.T_GRIDLIST" />
+    <EntitySet Name="T_MASTERGRIDLIST" EntityType="Model.T_MASTERGRIDLIST" />
+    <FunctionImport Name="SP_SavaAs_TestCase_AllDataset">
+      <Parameter Name="OLDTESTCASEID" Mode="In" Type="Decimal" />
+      <Parameter Name="NEWTESTCASENAME" Mode="In" Type="String" />
+      <Parameter Name="NEWTESTCASEDES" Mode="In" Type="String" />
+      <Parameter Name="TESTSUITEID" Mode="In" Type="Decimal" />
+      <Parameter Name="PROJECTID" Mode="In" Type="Decimal" />
+      <Parameter Name="SUFFIX" Mode="In" Type="String" />
+      <Parameter Name="LOGINUSER" Mode="In" Type="String" />
+      <Parameter Name="RESULT" Mode="Out" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_SaveTestcase">
+      <Parameter Name="FEEDPROCESSDETAIL_ID" Mode="In" Type="Decimal" />
+      <Parameter Name="TESTCASEID" Mode="In" Type="Decimal" />
+      <Parameter Name="RESULT" Mode="Out" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_SavaAs_TestCase_One_Dataset">
+      <Parameter Name="OLDTESTCASEID" Mode="In" Type="Decimal" />
+      <Parameter Name="NEWTESTCASENAME" Mode="In" Type="String" />
+      <Parameter Name="NEWTESTCASEDES" Mode="In" Type="String" />
+      <Parameter Name="TESTSUITEID" Mode="In" Type="Decimal" />
+      <Parameter Name="PROJECTID" Mode="In" Type="Decimal" />
+      <Parameter Name="OLDDATASETNAME" Mode="In" Type="String" />
+      <Parameter Name="SUFFIX" Mode="In" Type="String" />
+      <Parameter Name="LOGINUSER" Mode="In" Type="String" />
+      <Parameter Name="RESULT" Mode="Out" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_GET_STORYBOARD_RESULT">
+      <Parameter Name="COMPARE_HISTID" Mode="In" Type="Decimal" />
+      <Parameter Name="BASELINE_HISTID" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <EntitySet Name="T_TEST_REPORT_STEPS" EntityType="Model.T_TEST_REPORT_STEPS" />
+    <AssociationSet Name="FK_T_TEST_R_REFERENCE_T_TEST_R" Association="Model.FK_T_TEST_R_REFERENCE_T_TEST_R">
+      <End Role="T_TEST_REPORT" EntitySet="T_TEST_REPORT" />
+      <End Role="T_TEST_REPORT_STEPS" EntitySet="T_TEST_REPORT_STEPS" />
+    </AssociationSet>
+    <FunctionImport Name="DeleteResultSets">
+      <Parameter Name="HISTID" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="SP_SAVE_SB_RESULTS">
+      <Parameter Name="FEEDDETAILID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_SAVEAS_RESULTSET">
+      <Parameter Name="OLDCOMPARE_HISTID" Mode="In" Type="Decimal" />
+      <Parameter Name="OLDBASELINE_HISTID" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <EntitySet Name="REL_TEST_REPORT_STEPS_COMMENT" EntityType="Model.REL_TEST_REPORT_STEPS_COMMENT" />
+    <EntitySet Name="T_TEST_PRIVILEGE" EntityType="Model.T_TEST_PRIVILEGE" />
+    <EntitySet Name="T_TEST_PRIVILEGE_ROLE_MAPPING" EntityType="Model.T_TEST_PRIVILEGE_ROLE_MAPPING" />
+    <EntitySet Name="T_TEST_ROLES" EntityType="Model.T_TEST_ROLES" />
+    <EntitySet Name="T_TEST_USER_ROLE_MAPPING" EntityType="Model.T_TEST_USER_ROLE_MAPPING" />
+  </EntityContainer>
+  <EntityType Name="T_USER_ACTIVEPAGE">
+    <Key>
+      <PropertyRef Name="ACTIVEPAGE_ID" />
+    </Key>
+    <Property Name="ACTIVEPAGE_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+    <Property Name="USER_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+    <Property Name="PAGE_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+    <Property Name="PAGE_NAME" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="CREATEDBY" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="CREATEDDATE" Type="DateTime" />
+    <Property Name="PROJECT_ID" Type="Decimal" Precision="38" Scale="0" />
+  </EntityType>
+  <EntityType Name="T_GRIDLIST">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+    <Property Name="COLUMNNAME" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="COLUMNSIZE" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="GRID_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+    <Property Name="USER_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+    <Property Name="CREATEDBY" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="CREATEDDATE" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="T_MASTERGRIDLIST">
+    <Key>
+      <PropertyRef Name="GRID_ID" />
+    </Key>
+    <Property Name="GRID_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+    <Property Name="GRIDNAME" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="T_TEST_REPORT_STEPS">
+    <Key>
+      <PropertyRef Name="TEST_REPORT_STEP_ID" />
+    </Key>
+    <Property Name="TEST_REPORT_STEP_ID" Type="Int64" Nullable="false" />
+    <Property Name="TEST_REPORT_ID" Type="Int64" />
+    <Property Name="STEPS_ID" Type="Int64" />
+    <Property Name="BEGIN_TIME" Type="DateTime" />
+    <Property Name="END_TIME" Type="DateTime" />
+    <Property Name="RUNNING_RESULT" Type="Int16" />
+    <Property Name="RETURN_VALUES" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="RUNNING_RESULT_INFO" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+    <Property Name="DATA_SUMMARY_ID" Type="Int64" />
+    <Property Name="INPUT_VALUE_SETTING" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="ACTUAL_INPUT_DATA" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="DATA_ORDER" Type="Int64" />
+    <Property Name="INFO_PIC" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="ADVICE" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+    <Property Name="STACKINFO" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="T_TEST_REPORT" Relationship="Model.FK_T_TEST_R_REFERENCE_T_TEST_R" FromRole="T_TEST_REPORT_STEPS" ToRole="T_TEST_REPORT" />
+  </EntityType>
+  <Association Name="FK_T_TEST_R_REFERENCE_T_TEST_R">
+    <End Type="Model.T_TEST_REPORT" Role="T_TEST_REPORT" Multiplicity="0..1" />
+    <End Type="Model.T_TEST_REPORT_STEPS" Role="T_TEST_REPORT_STEPS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_TEST_REPORT">
+        <PropertyRef Name="TEST_REPORT_ID" />
+      </Principal>
+      <Dependent Role="T_TEST_REPORT_STEPS">
+        <PropertyRef Name="TEST_REPORT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="REL_TEST_REPORT_STEPS_COMMENT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" />
+    <Property Name="TEST_REPORT_STEP_ID" Type="Int64" Nullable="false" />
+    <Property Name="TEST_MODE" Type="Int16" Nullable="false" />
+    <Property Name="COMMENT" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="T_TEST_PRIVILEGE">
+    <Key>
+      <PropertyRef Name="PRIVILEGE_ID" />
+    </Key>
+    <Property Name="PRIVILEGE_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+    <Property Name="PRIVILEGE_NAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MODULE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DESCRIPTION" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ISACTIVE" Type="Int16" />
+    <Property Name="CREATOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CREATOR_DATE" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="T_TEST_PRIVILEGE_ROLE_MAPPING">
+    <Key>
+      <PropertyRef Name="PRIVILEGE_ROLE_MAP_ID" />
+    </Key>
+    <Property Name="PRIVILEGE_ROLE_MAP_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+    <Property Name="PRIVILEGE_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+    <Property Name="ROLE_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+    <Property Name="ISACTIVE" Type="Int16" Nullable="false" />
+    <Property Name="CREATOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CREATOR_DATE" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="T_TEST_ROLES">
+    <Key>
+      <PropertyRef Name="ROLE_ID" />
+    </Key>
+    <Property Name="ROLE_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+    <Property Name="ROLE_NAME" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ISACTIVE" Type="Int16" />
+    <Property Name="CREATOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CREATOR_DATE" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="T_TEST_USER_ROLE_MAPPING">
+    <Key>
+      <PropertyRef Name="USER_ROLE_MAP_ID" />
+    </Key>
+    <Property Name="USER_ROLE_MAP_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+    <Property Name="USER_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+    <Property Name="ROLE_ID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+    <Property Name="ISACTIVE" Type="Int16" />
+    <Property Name="CREATOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CREATOR_DATE" Type="DateTime" />
+  </EntityType>
+</Schema>

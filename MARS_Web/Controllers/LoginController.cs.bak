@@ -1,0 +1,43 @@
+﻿using MARS_Repository.Repositories;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using System.IO;
+using MARS_Web.Helper;
+
+namespace MARS_Web.Controllers
+{
+    public class LoginController : Controller
+    {
+       
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public JsonResult ForgotPsw(string lEmail)
+        {
+            AccountRepository Accountrepo = new AccountRepository();
+            var lMsg = "Error";
+
+            var lUser = Accountrepo.GetUserByEmail(lEmail);
+            var lUserPassword = PasswordHelper.DecodeString(lUser.TESTER_PWD);
+            var lUserName = lUser.TESTER_LOGIN_NAME;
+            
+            string body = string.Empty;
+            
+            var lFilePath = AppDomain.CurrentDomain.BaseDirectory + "EmailHTML\\ForgotEmail.html";
+          
+            using (StreamReader reader = new StreamReader(lFilePath))
+            {
+                body = reader.ReadToEnd();
+            }
+            lMsg = EmailHelper.ForgotPsw(lEmail, lUserPassword, lUserName, body);
+            return Json(lMsg, JsonRequestBehavior.AllowGet);
+        }
+
+    }
+}

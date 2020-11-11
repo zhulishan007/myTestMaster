@@ -1,0 +1,44 @@
+﻿
+@using MARS_Repository.ViewModel
+@model List<DataSetListByTestCase>
+
+@if (Model != null)
+{
+<div class="lsdatasetdrag">
+    @foreach (DataSetListByTestCase item in Model)
+    {
+    @*<span class="kt-menu__arrow"></span>
+        <ul class="kt-menu__subnav">
+            <li class="kt-menu__item lsdatasetdrag context-menu-DataSet " aria-haspopup="true">
+                <a href="javascript:;" class="kt-menu__link kt-menu__toggle" data-tab="DataSet" title="@item.Datasetname" data-name="@item.Datasetname"
+                   data-id="@item.Datasetid" data-Project-id="@item.ProjectId" data-Project-name="@item.ProjectName"  data-TestSuite-id="@item.TestsuiteId"
+                   data-TestSuite-name="@item.TestsuiteName" data-TestCase-id="@item.TestcaseId" data-TestCase-name="@item.TestcaseName" >
+                    <span class="kt-menu__link-icon">
+                        <i class="flaticon2-file-2"></i>
+                    </span>
+                    <span class="kt-menu__link-text">@item.Datasetname</span>
+                </a>
+                <div class="kt-menu__submenu "></div>
+            </li>
+        </ul>*@
+
+    <p href="javascript:;" data-name="@item.Datasetname"
+       data-id="@item.Datasetid" data-Project-id="@item.ProjectId" data-Project-name="@item.ProjectName" data-TestSuite-id="@item.TestsuiteId"
+       data-TestSuite-name="@item.TestsuiteName" data-TestCase-id="@item.TestcaseId" data-TestCase-name="@item.TestcaseName" style="padding: 0 0px;padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 25px;">
+        <img alt="Test Suite List" class="tab_icons_img" src="/assets/media/icons/ds.png" style="width:20px;margin-left: 15px;margin-top:2px;">&nbsp;&nbsp; @item.Datasetname
+    </p>
+    
+    }
+</div>
+}
+<script>
+    $(".lsdatasetdrag > p").draggable(dragObj);
+    var dragObj = {
+        afterDrop: function () {
+           // $(this).remove();
+        },
+        appendTo: document.body,
+        helper: 'clone'
+    } 
+    
+</script>

@@ -1,0 +1,464 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.3.0\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B98D1504-D9E4-47C7-913E-C285339C1DB2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>MARS_Repository</RootNamespace>
+    <AssemblyName>MARS_Repository</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\MARS_Revamp_Projects\MARS_Revamp_DB\MARS_Revamp_DB\MARS_Revamp_DB\bin\Debug\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.3.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.7.4\lib\net45\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.122.19.1, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>..\packages\Oracle.ManagedDataAccess.19.3.0\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.ManagedDataAccess.EntityFramework, Version=6.122.19.1, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <HintPath>..\packages\Oracle.ManagedDataAccess.EntityFramework.19.3.0\lib\net45\Oracle.ManagedDataAccess.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Entities\Db_Context.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Db_Context.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Db_Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Db_Context.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Db_Context.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\DELETELOG.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\DMPOSTINGEVENT.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\DMPOSTINGEVENT2.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\ErrorLog.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\LOGREPORT.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\MV_LAST_TC_INFO.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\MV_LATEST_STB_TSMOD_MARK.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\MV_OBJECT_SNAPSHOT.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\MV_OBJ_WITH_PEG.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\MV_STORYBOARD_LATEST.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\MV_TC_DATASUMMARY.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\REL_APP_BASELINECOMPARE.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\REL_APP_PROJ.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\REL_APP_TESTCASE.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\REL_APP_TESTSUITE.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\REL_OBJ_APP.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\REL_PROJECT_USER.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\REL_TC_DATA_SUMMARY.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\REL_TEST_CASE_TEST_SUITE.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\REL_TEST_REPORT_STEPS_COMMENT.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\REL_TEST_SUIT_PROJECT.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\SYSTEM_LOOKUP.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TBLFEEDPROCESS.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TBLFEEDPROCESSDETAIL.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TBLLOGREPORT.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TBLSTGGUIOBJECT.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TBLSTGSTORYBOARD.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TBLSTGVARIABLE.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TEST_CASE_VIEW.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TEST_CASE_VIEW2.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TEST_DATA_SETTING.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TEST_DATA_SETTING0424.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TEST_DATA_SETTING_0426.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TEST_DATA_SETTING_BAK.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TEST_DATA_SETTING_TST.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TEST_OBJECT_VIEW.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TEST_PROJECT_VIEW.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TMP_T_OBJ.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\T_BASELINE_DATA_DETAIL.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\T_BASELINE_DATA_SUMMARY.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\T_BAT_RESULT.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\T_BAT_RESULT_DETAIL.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\T_COMPARE_CONFIG.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\T_COMPARE_CONNECTIONS.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\T_COMPARE_QUERIES.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\T_DATA_SOURCE.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\T_DBCONNECTION.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\T_DIC_RELATION_KEYWORD.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\T_GRIDLIST.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\T_GUI_COMPONENT_TYPE_DIC.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\T_KEYWORD.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\T_MARS_COMPANY.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\T_MASTERGRIDLIST.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\T_OBJECT_NAMEINFO.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\T_PROJECT_DATA_SOURCE.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\T_PROJ_TC_MGR.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\T_PROJ_TEST_RESULT.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\T_REGISTED_OBJECT.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\T_REGISTED_OBJECT_TEST.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\T_REGISTERED_APPS.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\T_RELATION_USER_ENGINEPATH.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\T_SHARED_OBJECT_POOL.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\T_STORYBOARD_DATASET_SETTING.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\T_STORYBOARD_HISTORY.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\T_STORYBOARD_SUMMARY.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\T_TESTCASE_VERSION.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\T_TESTER_INFO.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\T_TEST_BATCH.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\T_TEST_BATCH_DETAIL.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\T_TEST_CASE_SUMMARY.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\T_TEST_CASE_VERSION.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\T_TEST_DATA_SUMMARY.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\T_TEST_ENUM.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\T_TEST_PRIVILEGE.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\T_TEST_PRIVILEGE_ROLE_MAPPING.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\T_TEST_PROJECT.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\T_TEST_REPORT.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\T_TEST_REPORT_STEPS.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\T_TEST_ROLES.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\T_TEST_STEPS.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\T_TEST_STEPS_TMP.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\T_TEST_SUITE.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\T_TEST_USER_ROLE_MAPPING.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\T_USER_ACTIVEPAGE.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\T_USER_MAPPING.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\V_MARS_STB_SNAPSHOT.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\V_OBJECT_APPS.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\V_OBJECT_SNAPSHOT.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\V_STB_PROJ_APP_FULLVISION.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\V_STORYBOARD_TEST_FULLVIEW.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\V_STORYBOARD_TEST_FULLVISION.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\V_TEST_DATARPT_CAPTURE.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\V_TEST_DATA_REPORT_SUMMARY.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\V_TEST_STEPS_FULLVISION.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\V_USER_COMPANY.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Helper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\AccountRepository.cs" />
+    <Compile Include="Repositories\ApplicationRepository.cs" />
+    <Compile Include="Repositories\CompanyRepository.cs" />
+    <Compile Include="Repositories\CompareParamRepository.cs" />
+    <Compile Include="Repositories\ConfigurationGridRepository.cs" />
+    <Compile Include="Repositories\EntitlementRepository.cs" />
+    <Compile Include="Repositories\ObjectRepository.cs" />
+    <Compile Include="Repositories\KeywordRepository.cs" />
+    <Compile Include="Repositories\GetTreeRepository.cs" />
+    <Compile Include="Repositories\ProjectRepository.cs" />
+    <Compile Include="Repositories\StoryBoardRepository.cs" />
+    <Compile Include="Repositories\TestCaseRepository.cs" />
+    <Compile Include="Repositories\TestProjectRepository.cs" />
+    <Compile Include="Repositories\TestSuiteRepository.cs" />
+    <Compile Include="Repositories\VariableRepository.cs" />
+    <Compile Include="ViewModel\ApplicationModel.cs" />
+    <Compile Include="ViewModel\BaseModel.cs" />
+    <Compile Include="ViewModel\CompareParam.cs" />
+    <Compile Include="ViewModel\DataSummaryModel.cs" />
+    <Compile Include="ViewModel\DBconnectionViewModel.cs" />
+    <Compile Include="ViewModel\GetKeywordList.cs" />
+    <Compile Include="ViewModel\GetObjectList.cs" />
+    <Compile Include="ViewModel\GetTestCaseByTestSuite.cs" />
+    <Compile Include="ViewModel\GridModel.cs" />
+    <Compile Include="ViewModel\KeywordList.cs" />
+    <Compile Include="ViewModel\KeywordObjectLink.cs" />
+    <Compile Include="ViewModel\ObjectList.cs" />
+    <Compile Include="ViewModel\PrivilegeViewModel.cs" />
+    <Compile Include="ViewModel\ProjectByUser.cs" />
+    <Compile Include="ViewModel\ProjectModel.cs" />
+    <Compile Include="ViewModel\RelUserExePath.cs" />
+    <Compile Include="ViewModel\RolePrivilegesMappingModel.cs" />
+    <Compile Include="ViewModel\SaveTestcaseModel.cs" />
+    <Compile Include="ViewModel\SearchModel.cs" />
+    <Compile Include="ViewModel\StoryboardModel.cs" />
+    <Compile Include="ViewModel\StoryBoardResultModel.cs" />
+    <Compile Include="ViewModel\TestCaseModel.cs" />
+    <Compile Include="ViewModel\TestCaseResult.cs" />
+    <Compile Include="ViewModel\TestCaseValidationResultModel.cs" />
+    <Compile Include="ViewModel\TestCase_Version_Model.cs" />
+    <Compile Include="ViewModel\TestResultModel.cs" />
+    <Compile Include="ViewModel\TestStepsModel.cs" />
+    <Compile Include="ViewModel\TestSuiteModel.cs" />
+    <Compile Include="ViewModel\TreeModel.cs" />
+    <Compile Include="ViewModel\UserMasterModel.cs" />
+    <Compile Include="ViewModel\UserModel.cs" />
+    <Compile Include="ViewModel\UserRoleMappingViewModel.cs" />
+    <Compile Include="ViewModel\PrivilegeRoleMappingViewModel.cs" />
+    <Compile Include="ViewModel\VariableModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <EntityDeploy Include="Entities\Db_Context.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Db_Context.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Entities\Db_Context.edmx.diagram">
+      <DependentUpon>Db_Context.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Entities\Db_Context.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Db_Context.edmx</DependentUpon>
+      <LastGenOutput>Db_Context.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Entities\Db_Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Db_Context.edmx</DependentUpon>
+      <LastGenOutput>Db_Context.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.3.0\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.3.0\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.3.0\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.3.0\build\EntityFramework.targets')" />
+</Project>

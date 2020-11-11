@@ -1,0 +1,2124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TESTIDE11.ACUP' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ACUP">
+    <Key>
+      <PropertyRef Name="BR" />
+      <PropertyRef Name="PRODUCT" />
+      <PropertyRef Name="TYPE" />
+      <PropertyRef Name="ARGNO" />
+      <PropertyRef Name="DEALNO" />
+      <PropertyRef Name="SEQ" />
+      <PropertyRef Name="GLNO" />
+      <PropertyRef Name="COSTCENT" />
+      <PropertyRef Name="CCY" />
+      <PropertyRef Name="BEIND" />
+      <PropertyRef Name="CODE" />
+      <PropertyRef Name="QUAL" />
+      <PropertyRef Name="EFFDATE" />
+      <PropertyRef Name="POSTDATE" />
+    </Key>
+    <Property Name="BR" Type="char" MaxLength="2" Nullable="false" />
+    <Property Name="PRODUCT" Type="char" MaxLength="6" Nullable="false" />
+    <Property Name="TYPE" Type="char" MaxLength="2" Nullable="false" />
+    <Property Name="ARGNO" Type="char" MaxLength="3" Nullable="false" />
+    <Property Name="DEALNO" Type="char" MaxLength="8" Nullable="false" />
+    <Property Name="SEQ" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="GLNO" Type="char" MaxLength="15" Nullable="false" />
+    <Property Name="COSTCENT" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="CCY" Type="char" MaxLength="3" Nullable="false" />
+    <Property Name="BEIND" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="CODE" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="QUAL" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="EFFDATE" Type="varchar2" MaxLength="20" Nullable="false" />
+    <Property Name="POSTDATE" Type="varchar2" MaxLength="20" Nullable="false" />
+    <Property Name="CMNE" Type="char" MaxLength="10" />
+    <Property Name="DRCRIND" Type="char" MaxLength="2" />
+    <Property Name="AMOUNT" Type="number" Precision="19" Scale="4" />
+    <Property Name="SMEANS" Type="char" MaxLength="7" />
+    <Property Name="SACCT" Type="char" MaxLength="15" />
+    <Property Name="DESCR" Type="char" MaxLength="70" />
+  </EntityType>
+  <EntityType Name="LOGREPORT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="FILENAME" Type="varchar2" MaxLength="500" />
+    <Property Name="OBJECT" Type="varchar2" MaxLength="500" />
+    <Property Name="STATUS" Type="varchar2" MaxLength="500" />
+    <Property Name="LOGDETAILS" Type="clob" />
+    <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="CREATEDON" Type="timestamp with local time zone" Precision="6" />
+    <Property Name="FEEDPROCESSDETAILID" Type="number" Precision="38" Scale="0" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TESTIDE11.MV_LAST_TC_INFO' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="MV_LAST_TC_INFO">
+    <Key>
+      <PropertyRef Name="HIST_ID" />
+      <PropertyRef Name="TEST_RESULT_IN_TEXT" />
+    </Key>
+    <Property Name="HIST_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="TEST_CASE_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="STORYBOARD_DETAIL_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="TEST_BEGIN_TIME" Type="date" />
+    <Property Name="TEST_END_TIME" Type="date" />
+    <Property Name="TEST_RESULT_IN_TEXT" Type="varchar2" MaxLength="2048" Nullable="false" />
+    <Property Name="TEST_MODE" Type="number" Precision="2" Scale="0" />
+    <Property Name="TEST_RESULT" Type="number" Precision="2" Scale="0" />
+    <Property Name="TESTER_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="CREATE_TIME" Type="date" />
+    <Property Name="LATEST_TEST_MARK_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="RELY_TEST_CASE_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="RESULT_ALIAS_NAME" Type="varchar2" MaxLength="128" />
+    <Property Name="RESULT_DESC" Type="varchar2" MaxLength="256" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TESTIDE11.MV_OBJ_WITH_PEG' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="MV_OBJ_WITH_PEG">
+    <Key>
+      <PropertyRef Name="OBJECT_ID" />
+      <PropertyRef Name="OBJECT_NAME_ID" />
+    </Key>
+    <Property Name="OROWID" Type="rowid" />
+    <Property Name="O1ROWID" Type="rowid" />
+    <Property Name="OBJECT_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="OBJECT_HAPPY_NAME" Type="varchar2" MaxLength="256" />
+    <Property Name="OBJECT_TYPE" Type="varchar2" MaxLength="1000" />
+    <Property Name="APPLICATION_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="QUICK_ACCESS" Type="varchar2" MaxLength="512" />
+    <Property Name="OBJECT_NAME_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TESTIDE11.MV_STORYBOARD_LATEST' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="MV_STORYBOARD_LATEST">
+    <Key>
+      <PropertyRef Name="STORYBOARD_DETAIL_ID" />
+    </Key>
+    <Property Name="STORYBOARD_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="STORYBOARD_DETAIL_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="TEST_MODE" Type="number" Precision="2" Scale="0" />
+    <Property Name="MX_STB_LTST_ID" Type="number" Precision="38" Scale="0" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TESTIDE11.MV_TC_DATASUMMARY' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="MV_TC_DATASUMMARY">
+    <Key>
+      <PropertyRef Name="DATA_SUMMARY_ID" />
+    </Key>
+    <Property Name="ALIAS_NAME" Type="varchar2" MaxLength="64" />
+    <Property Name="DATA_SUMMARY_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="TEST_CASE_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="AVAILABLE_MARK" Type="number" Precision="2" Scale="0" />
+    <Property Name="DATA_VERSION" Type="number" Precision="16" Scale="0" />
+    <Property Name="DATA_STATUS" Type="number" Precision="2" Scale="0" />
+    <Property Name="DATA_SET_TYPE" Type="number" Precision="2" Scale="0" />
+    <Property Name="DATASET_DESCRIPTION" Type="varchar2" MaxLength="512" />
+  </EntityType>
+  <EntityType Name="REL_APP_PROJ">
+    <Key>
+      <PropertyRef Name="RELATIONSHIP_ID" />
+    </Key>
+    <Property Name="RELATIONSHIP_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="APPLICATION_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="PROJECT_ID" Type="number" Precision="16" Scale="0" />
+  </EntityType>
+  <EntityType Name="REL_APP_TESTCASE">
+    <Key>
+      <PropertyRef Name="RELATIONSHIP_ID" />
+    </Key>
+    <Property Name="RELATIONSHIP_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="APPLICATION_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="TEST_CASE_ID" Type="number" Precision="16" Scale="0" />
+  </EntityType>
+  <EntityType Name="REL_APP_TESTSUITE">
+    <Key>
+      <PropertyRef Name="RELATIONSHIP_ID" />
+    </Key>
+    <Property Name="RELATIONSHIP_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="APPLICATION_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="TEST_SUITE_ID" Type="number" Precision="16" Scale="0" />
+  </EntityType>
+  <EntityType Name="REL_OBJ_APP">
+    <Key>
+      <PropertyRef Name="RELATIONSHIP_ID" />
+    </Key>
+    <Property Name="RELATIONSHIP_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="OBJECT_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="APPLICATION_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="REL_TC_DATA_SUMMARY">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="DATA_SUMMARY_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="TEST_CASE_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="CREATE_TIME" Type="date" />
+  </EntityType>
+  <EntityType Name="REL_TEST_CASE_TEST_SUITE">
+    <Key>
+      <PropertyRef Name="RELATIONSHIP_ID" />
+    </Key>
+    <Property Name="RELATIONSHIP_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="TEST_CASE_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="TEST_SUITE_ID" Type="number" Precision="16" Scale="0" />
+  </EntityType>
+  <EntityType Name="REL_TEST_SUIT_PROJECT">
+    <Key>
+      <PropertyRef Name="RELATIONSHIP_ID" />
+    </Key>
+    <Property Name="RELATIONSHIP_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="TEST_SUITE_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="PROJECT_ID" Type="number" Precision="16" Scale="0" />
+  </EntityType>
+  <EntityType Name="SYSTEM_LOOKUP">
+    <Key>
+      <PropertyRef Name="LOOKUP_ID" />
+    </Key>
+    <Property Name="LOOKUP_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="TABLE_NAME" Type="varchar2" MaxLength="32" />
+    <Property Name="FIELD_NAME" Type="varchar2" MaxLength="32" />
+    <Property Name="VALUE" Type="number" Precision="2" Scale="0" />
+    <Property Name="DISPLAY_NAME" Type="varchar2" MaxLength="1024" />
+    <Property Name="STATUS" Type="number" Precision="2" Scale="0" />
+  </EntityType>
+  <EntityType Name="T_BASELINE_DATA_DETAIL">
+    <Key>
+      <PropertyRef Name="DETAIL_ID" />
+    </Key>
+    <Property Name="DETAIL_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="DATA_BASE_OBJ_ID" Type="number" Precision="38" Scale="0" />
+    <Property Name="LOOP_ID" Type="number" Precision="8" Scale="0" />
+    <Property Name="DATA_VALUE" Type="varchar2" MaxLength="516" />
+  </EntityType>
+  <EntityType Name="T_BASELINE_DATA_SUMMARY">
+    <Key>
+      <PropertyRef Name="DATA_BASE_OBJ_ID" />
+    </Key>
+    <Property Name="DATA_BASE_OBJ_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="DATA_SUMMARY_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="DATA_BASE_OBJ_PARENT_ID" Type="number" Precision="38" Scale="0" />
+    <Property Name="OBJECT_HAPPY_NAME" Type="varchar2" MaxLength="255" />
+    <Property Name="ORDER_ID" Type="number" Precision="2" Scale="0" />
+  </EntityType>
+  <EntityType Name="T_COMPARE_CONFIG">
+    <Key>
+      <PropertyRef Name="COMPARE_ID" />
+    </Key>
+    <Property Name="COMPARE_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="COMPARE_NAME" Type="varchar2" MaxLength="30" Nullable="false" />
+    <Property Name="S1_TYPE" Type="varchar2" MaxLength="30" Nullable="false" />
+    <Property Name="S1_DBCONN" Type="varchar2" MaxLength="30" />
+    <Property Name="S1_QUERY" Type="varchar2" MaxLength="30" />
+    <Property Name="S1_FILE_LOC" Type="varchar2" MaxLength="50" />
+    <Property Name="S2_TYPE" Type="varchar2" MaxLength="30" Nullable="false" />
+    <Property Name="S2_DBCONN" Type="varchar2" MaxLength="30" />
+    <Property Name="S2_QUERY" Type="varchar2" MaxLength="30" />
+    <Property Name="S2_FILE_LOC" Type="varchar2" MaxLength="50" />
+    <Property Name="O_FILE_LOC" Type="varchar2" MaxLength="50" Nullable="false" />
+    <Property Name="KEY_FIELDS" Type="varchar2" MaxLength="100" />
+    <Property Name="SHOW_FIELDS" Type="varchar2" MaxLength="100" />
+    <Property Name="COMPARE_FIELDS" Type="varchar2" MaxLength="100" />
+    <Property Name="ROW_FIELDS" Type="varchar2" MaxLength="100" />
+    <Property Name="COLUMN_FIELDS" Type="varchar2" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="T_COMPARE_CONNECTIONS">
+    <Key>
+      <PropertyRef Name="DBCONN_ID" />
+    </Key>
+    <Property Name="DBCONN_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="DBCONN_NAME" Type="varchar2" MaxLength="30" Nullable="false" />
+    <Property Name="TYPE" Type="varchar2" MaxLength="30" Nullable="false" />
+    <Property Name="HOST" Type="varchar2" MaxLength="30" Nullable="false" />
+    <Property Name="PORT" Type="varchar2" MaxLength="30" Nullable="false" />
+    <Property Name="PROTOCOL" Type="varchar2" MaxLength="30" Nullable="false" />
+    <Property Name="SERVICE_NAME" Type="varchar2" MaxLength="30" Nullable="false" />
+    <Property Name="USERID" Type="varchar2" MaxLength="30" Nullable="false" />
+    <Property Name="PASSWORD" Type="varchar2" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_COMPARE_QUERIES">
+    <Key>
+      <PropertyRef Name="QUERY_ID" />
+    </Key>
+    <Property Name="QUERY_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="QUERY_NAME" Type="varchar2" MaxLength="30" Nullable="false" />
+    <Property Name="QUERY_VAL" Type="varchar2" MaxLength="2000" Nullable="false" />
+  </EntityType>
+  <EntityType Name="T_DATA_SOURCE">
+    <Key>
+      <PropertyRef Name="DATA_SOURCE_ID" />
+    </Key>
+    <Property Name="DATA_SOURCE_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="DATA_SOURCE_NAME" Type="varchar2" MaxLength="64" />
+    <Property Name="DATA_SOURCE_TYPE" Type="number" Precision="2" Scale="0" />
+    <Property Name="DETAILS" Type="clob" />
+    <Property Name="DB_CONNECTION" Type="varchar2" MaxLength="128" />
+    <Property Name="DB_TYPE" Type="number" Precision="2" Scale="0" />
+    <Property Name="TEST_CONNECTION" Type="varchar2" MaxLength="128" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TESTIDE11.T_DATA_SOURCE_TEST' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="T_DATA_SOURCE_TEST">
+    <Key>
+      <PropertyRef Name="DATA_SOURCE_ID" />
+    </Key>
+    <Property Name="DATA_SOURCE_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="DATA_SOURCE_NAME" Type="varchar2" MaxLength="64" />
+    <Property Name="DATA_SOURCE_TYPE" Type="number" Precision="2" Scale="0" />
+    <Property Name="DETAILS" Type="clob" />
+    <Property Name="DB_CONNECTION" Type="varchar2" MaxLength="128" />
+    <Property Name="DB_TYPE" Type="number" Precision="2" Scale="0" />
+    <Property Name="TEST_CONNECTION" Type="varchar2" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="T_DIC_RELATION_KEYWORD">
+    <Key>
+      <PropertyRef Name="RELATION_ID" />
+    </Key>
+    <Property Name="RELATION_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="TYPE_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="KEY_WORD_ID" Type="number" Precision="16" Scale="0" />
+  </EntityType>
+  <EntityType Name="T_GUI_COMPONENT_TYPE_DIC">
+    <Key>
+      <PropertyRef Name="TYPE_ID" />
+    </Key>
+    <Property Name="TYPE_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="TYPE_NAME" Type="varchar2" MaxLength="32" />
+    <Property Name="APPLICATION_TYPE_ID" Type="number" Precision="2" Scale="0" />
+    <Property Name="DESCRIPTION" Type="varchar2" MaxLength="64" />
+  </EntityType>
+  <EntityType Name="T_KEYWORD">
+    <Key>
+      <PropertyRef Name="KEY_WORD_ID" />
+    </Key>
+    <Property Name="KEY_WORD_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="KEY_WORD_NAME" Type="varchar2" MaxLength="255" />
+    <Property Name="DESCRIPTION" Type="varchar2" MaxLength="64" />
+    <Property Name="KEY_WORD_POSITION_ID" Type="number" Precision="2" Scale="0" />
+    <Property Name="ENTRY_IN_DATA_FILE" Type="varchar2" MaxLength="8" />
+  </EntityType>
+  <EntityType Name="T_MARS_COMPANY">
+    <Key>
+      <PropertyRef Name="COMPANY_ID" />
+    </Key>
+    <Property Name="COMPANY_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="COMPANY_NAME" Type="varchar2" MaxLength="256" />
+    <Property Name="COMPANY_DESC" Type="varchar2" MaxLength="1024" />
+    <Property Name="COMPANY_NUMBER" Type="varchar2" MaxLength="16" />
+    <Property Name="COMPANY_ADDRESS" Type="varchar2" MaxLength="256" />
+    <Property Name="CREATE_USERNAME" Type="varchar2" MaxLength="128" />
+    <Property Name="CREATE_TIME" Type="date" />
+    <Property Name="AVAILABLE_MARK" Type="number" Precision="38" Scale="0" />
+  </EntityType>
+  <EntityType Name="T_OBJECT_NAMEINFO">
+    <Key>
+      <PropertyRef Name="OBJECT_NAME_ID" />
+    </Key>
+    <Property Name="OBJECT_NAME_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="OBJECT_HAPPY_NAME" Type="varchar2" MaxLength="256" />
+    <Property Name="PEGWINDOW_MARK" Type="number" Precision="4" Scale="0" />
+    <Property Name="OBJNAME_DESCRIPTION" Type="varchar2" MaxLength="250" />
+    <Property Name="EXT_ID" Type="number" Precision="38" Scale="0" />
+  </EntityType>
+  <EntityType Name="T_PROJ_TC_MGR">
+    <Key>
+      <PropertyRef Name="STORYBOARD_DETAIL_ID" />
+    </Key>
+    <Property Name="STORYBOARD_DETAIL_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="PROJECT_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="TEST_CASE_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="STORYBOARD_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="RUN_TYPE" Type="number" Precision="2" Scale="0" />
+    <Property Name="DEPENDS_ON" Type="number" Precision="16" Scale="0" />
+    <Property Name="RUN_ORDER" Type="number" Precision="16" Scale="0" />
+    <Property Name="LATEST_TEST_MARK_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="RECORD_VERSION" Type="number" Precision="38" Scale="0" />
+    <Property Name="ALIAS_NAME" Type="varchar2" MaxLength="64" />
+    <Property Name="TEST_SUITE_ID" Type="number" Precision="16" Scale="0" />
+  </EntityType>
+  <EntityType Name="T_PROJ_TEST_RESULT">
+    <Key>
+      <PropertyRef Name="HIST_ID" />
+    </Key>
+    <Property Name="HIST_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="TEST_CASE_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="STORYBOARD_DETAIL_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="TEST_BEGIN_TIME" Type="date" />
+    <Property Name="TEST_END_TIME" Type="date" />
+    <Property Name="TEST_RESULT_IN_TEXT" Type="varchar2" MaxLength="2048" Nullable="false" />
+    <Property Name="TEST_MODE" Type="number" Precision="2" Scale="0" />
+    <Property Name="TEST_RESULT" Type="number" Precision="2" Scale="0" />
+    <Property Name="TESTER_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="CREATE_TIME" Type="date" />
+    <Property Name="LATEST_TEST_MARK_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="RELY_TEST_CASE_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="RESULT_ALIAS_NAME" Type="varchar2" MaxLength="128" />
+    <Property Name="RESULT_DESC" Type="varchar2" MaxLength="256" />
+  </EntityType>
+  <EntityType Name="T_PROJECT_DATA_SOURCE">
+    <Key>
+      <PropertyRef Name="PRO_DBS_ID" />
+    </Key>
+    <Property Name="PRO_DBS_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="PROJECT_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="DATA_SOURCE_ID" Type="number" Precision="16" Scale="0" />
+  </EntityType>
+  <EntityType Name="T_REGISTED_OBJECT">
+    <Key>
+      <PropertyRef Name="OBJECT_ID" />
+    </Key>
+    <Property Name="OBJECT_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="OBJECT_HAPPY_NAME" Type="varchar2" MaxLength="255" />
+    <Property Name="APPLICATION_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="TYPE_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="QUICK_ACCESS" Type="varchar2" MaxLength="512" />
+    <Property Name="OBJECT_TYPE" Type="varchar2" MaxLength="1000" />
+    <Property Name="COMMENT" Type="varchar2" MaxLength="128" />
+    <Property Name="ENUM_TYPE" Type="varchar2" MaxLength="100" />
+    <Property Name="OBJECT_NAME_ID" Type="number" Precision="38" Scale="0" />
+    <Property Name="IS_CHECKERROR_OBJ" Type="number" Precision="2" Scale="0" />
+    <Property Name="OBJ_DATA_SRC" Type="blob" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TESTIDE11.T_REGISTED_OBJECT_BAK' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="T_REGISTED_OBJECT_BAK">
+    <Key>
+      <PropertyRef Name="OBJECT_ID" />
+    </Key>
+    <Property Name="OBJECT_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="OBJECT_HAPPY_NAME" Type="varchar2" MaxLength="255" />
+    <Property Name="APPLICATION_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="TYPE_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="QUICK_ACCESS" Type="varchar2" MaxLength="512" />
+    <Property Name="OBJECT_TYPE" Type="varchar2" MaxLength="32" />
+    <Property Name="COMMENT" Type="varchar2" MaxLength="128" />
+    <Property Name="ENUM_TYPE" Type="varchar2" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="T_REGISTERED_APPS">
+    <Key>
+      <PropertyRef Name="APPLICATION_ID" />
+    </Key>
+    <Property Name="APPLICATION_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="APP_SHORT_NAME" Type="varchar2" MaxLength="32" />
+    <Property Name="PROCESS_IDENTIFIER" Type="varchar2" MaxLength="32" />
+    <Property Name="STARTER_PATH" Type="varchar2" MaxLength="128" />
+    <Property Name="STARTER_COMMAND" Type="varchar2" MaxLength="128" />
+    <Property Name="VERSION" Type="varchar2" MaxLength="10" />
+    <Property Name="COMMENT" Type="varchar2" MaxLength="128" />
+    <Property Name="APPLICATION_TYPE_ID" Type="number" Precision="2" Scale="0" />
+    <Property Name="RECORD_CREATE_PERSON" Type="varchar2" MaxLength="32" />
+    <Property Name="RECORD_CREATE_DATE" Type="date" />
+    <Property Name="EXTRAREQUIREMENT" Type="varchar2" MaxLength="256" />
+    <Property Name="EXTRAPOPUPMENU" Type="varchar2" MaxLength="32" />
+  </EntityType>
+  <EntityType Name="T_SHARED_OBJECT_POOL">
+    <Key>
+      <PropertyRef Name="OBJECT_POOL_ID" />
+    </Key>
+    <Property Name="OBJECT_POOL_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="DATA_SUMMARY_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="OBJECT_NAME" Type="varchar2" MaxLength="256" />
+    <Property Name="OBJECT_ORDER" Type="number" Precision="16" Scale="0" />
+    <Property Name="LOOP_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="DATA_VALUE" Type="varchar2" MaxLength="500" />
+    <Property Name="CREATE_TIME" Type="date" />
+    <Property Name="VERSION" Type="number" Precision="16" Scale="0" />
+  </EntityType>
+  <EntityType Name="T_STORYBOARD_DATASET_SETTING">
+    <Key>
+      <PropertyRef Name="SETTING_ID" />
+    </Key>
+    <Property Name="SETTING_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="STORYBOARD_DETAIL_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="DATA_SUMMARY_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="CREATETIME" Type="date" />
+    <Property Name="VERSION" Type="number" Precision="16" Scale="0" />
+    <Property Name="TESTER_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="RUN_ORDER" Type="number" Precision="16" Scale="0" />
+  </EntityType>
+  <EntityType Name="T_STORYBOARD_HISTORY">
+    <Key>
+      <PropertyRef Name="DASHBOARD_HIST_ID" />
+    </Key>
+    <Property Name="DASHBOARD_HIST_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="STORYBOARD_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="VERION" Type="number" Precision="16" Scale="0" />
+    <Property Name="CREATE_TIME" Type="date" />
+    <Property Name="CREATOR" Type="number" Precision="16" Scale="0" />
+    <Property Name="STORYBOARD_NAME" Type="varchar2" MaxLength="128" />
+    <Property Name="ASSIGNED_PROJECT_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="DESCRIPTION" Type="varchar2" MaxLength="128" />
+    <Property Name="HISTORY_CREATE_TIME" Type="date" />
+    <Property Name="REASON" Type="varchar2" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="T_STORYBOARD_SUMMARY">
+    <Key>
+      <PropertyRef Name="STORYBOARD_ID" />
+    </Key>
+    <Property Name="STORYBOARD_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="CREATE_TIME" Type="date" />
+    <Property Name="LATEST_VERISON" Type="number" Precision="38" Scale="0" />
+    <Property Name="DESCRIPTION" Type="varchar2" MaxLength="128" />
+    <Property Name="CREATER" Type="number" Precision="16" Scale="0" />
+    <Property Name="ASSIGNED_PROJECT_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="STORYBOARD_NAME" Type="varchar2" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="T_TEST_CASE_SUMMARY">
+    <Key>
+      <PropertyRef Name="TEST_CASE_ID" />
+    </Key>
+    <Property Name="TEST_CASE_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="TEST_CASE_NAME" Type="varchar2" MaxLength="64" />
+    <Property Name="TEST_STEP_DESCRIPTION" Type="varchar2" MaxLength="128" />
+    <Property Name="TEST_STEP_CREATOR" Type="varchar2" MaxLength="32" />
+    <Property Name="TEST_STEP_CREATE_TIME" Type="date" />
+    <Property Name="USAGE_STATUS" Type="number" Precision="2" Scale="0" />
+  </EntityType>
+  <EntityType Name="T_TEST_CASE_VERSION">
+    <Key>
+      <PropertyRef Name="TC_VERSOIN_ID" />
+    </Key>
+    <Property Name="TC_VERSOIN_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="TEST_CASE_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="VERSION_NAME" Type="varchar2" MaxLength="64" />
+    <Property Name="VERSION_DESC" Type="varchar2" MaxLength="128" />
+    <Property Name="VERSION_NUMBER" Type="number" Precision="16" Scale="0" />
+    <Property Name="AVAILABLE_MARK" Type="number" Precision="2" Scale="0" />
+    <Property Name="CREATE_TIME" Type="date" />
+    <Property Name="CREATOR_ID" Type="number" Precision="16" Scale="0" />
+  </EntityType>
+  <EntityType Name="T_TEST_DATA_SUMMARY">
+    <Key>
+      <PropertyRef Name="DATA_SUMMARY_ID" />
+    </Key>
+    <Property Name="DATA_SUMMARY_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="ALIAS_NAME" Type="varchar2" MaxLength="64" />
+    <Property Name="DESCRIPTION_INFO" Type="varchar2" MaxLength="512" />
+    <Property Name="AVAILABLE_MARK" Type="number" Precision="2" Scale="0" />
+    <Property Name="VERSION" Type="number" Precision="16" Scale="0" />
+    <Property Name="SHARE_MARK" Type="number" Precision="2" Scale="0" />
+    <Property Name="CREATE_TIME" Type="date" />
+    <Property Name="STATUS" Type="number" Precision="2" Scale="0" />
+    <Property Name="DATA_SET_TYPE" Type="number" Precision="2" Scale="0" />
+  </EntityType>
+  <EntityType Name="T_TEST_ENUM">
+    <Key>
+      <PropertyRef Name="ENUM_ID" />
+    </Key>
+    <Property Name="ENUM_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="ENUM_TYPE" Type="varchar2" MaxLength="100" />
+    <Property Name="ENUM_VALUE" Type="varchar2" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="T_TEST_PROJECT">
+    <Key>
+      <PropertyRef Name="PROJECT_ID" />
+    </Key>
+    <Property Name="PROJECT_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="PROJECT_NAME" Type="varchar2" MaxLength="32" />
+    <Property Name="PROJECT_DESCRIPTION" Type="varchar2" MaxLength="128" />
+    <Property Name="CREATOR" Type="varchar2" MaxLength="32" />
+    <Property Name="CREATE_DATE" Type="date" />
+    <Property Name="STATUS" Type="number" Precision="2" Scale="0" />
+  </EntityType>
+  <EntityType Name="T_TEST_REPORT">
+    <Key>
+      <PropertyRef Name="TEST_REPORT_ID" />
+    </Key>
+    <Property Name="TEST_REPORT_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="TEST_CASE_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="LOOP_ID" Type="number" Precision="38" Scale="0" />
+    <Property Name="BEGIN_TIME" Type="date" />
+    <Property Name="END_TIME" Type="date" />
+    <Property Name="RUNNING_RESULT" Type="number" Precision="2" Scale="0" />
+    <Property Name="RETURN_VALUES" Type="varchar2" MaxLength="64" />
+    <Property Name="RUNNING_RESULT_INFO" Type="varchar2" MaxLength="1024" />
+    <Property Name="HIST_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="APPLICATION_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="TEST_MODE" Type="number" Precision="2" Scale="0" />
+  </EntityType>
+  <EntityType Name="T_TEST_REPORT_STEPS">
+    <Key>
+      <PropertyRef Name="TEST_REPORT_STEP_ID" />
+    </Key>
+    <Property Name="TEST_REPORT_STEP_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="TEST_REPORT_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="STEPS_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="BEGIN_TIME" Type="date" />
+    <Property Name="END_TIME" Type="date" />
+    <Property Name="RUNNING_RESULT" Type="number" Precision="2" Scale="0" />
+    <Property Name="RETURN_VALUES" Type="varchar2" MaxLength="64" />
+    <Property Name="RUNNING_RESULT_INFO" Type="varchar2" MaxLength="1024" />
+    <Property Name="DATA_SUMMARY_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="INPUT_VALUE_SETTING" Type="varchar2" MaxLength="128" />
+    <Property Name="ACTUAL_INPUT_DATA" Type="varchar2" MaxLength="128" />
+    <Property Name="DATA_ORDER" Type="number" Precision="16" Scale="0" />
+    <Property Name="INFO_PIC" Type="blob" />
+  </EntityType>
+  <EntityType Name="T_TEST_STEPS">
+    <Key>
+      <PropertyRef Name="STEPS_ID" />
+    </Key>
+    <Property Name="STEPS_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="RUN_ORDER" Type="number" Precision="38" Scale="0" />
+    <Property Name="KEY_WORD_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="TEST_CASE_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="OBJECT_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="COLUMN_ROW_SETTING" Type="varchar2" MaxLength="128" />
+    <Property Name="VALUE_SETTING" Type="varchar2" MaxLength="128" />
+    <Property Name="COMMENT" Type="varchar2" MaxLength="128" />
+    <Property Name="IS_RUNNABLE" Type="number" Precision="38" Scale="0" />
+    <Property Name="OBJECT_NAME_ID" Type="number" Precision="38" Scale="0" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TESTIDE11.T_TEST_STEPS_BAK' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="T_TEST_STEPS_BAK">
+    <Key>
+      <PropertyRef Name="STEPS_ID" />
+    </Key>
+    <Property Name="STEPS_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="RUN_ORDER" Type="number" Precision="38" Scale="0" />
+    <Property Name="KEY_WORD_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="TEST_CASE_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="OBJECT_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="COLUMN_ROW_SETTING" Type="varchar2" MaxLength="128" />
+    <Property Name="VALUE_SETTING" Type="varchar2" MaxLength="128" />
+    <Property Name="COMMENT" Type="varchar2" MaxLength="128" />
+    <Property Name="IS_RUNNABLE" Type="number" Precision="38" Scale="0" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TESTIDE11.T_TEST_STEPS_TMP' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="T_TEST_STEPS_TMP">
+    <Key>
+      <PropertyRef Name="STEPS_ID" />
+    </Key>
+    <Property Name="STEPS_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="RUN_ORDER" Type="number" Precision="38" Scale="0" />
+    <Property Name="KEY_WORD_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="TEST_CASE_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="OBJECT_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="COLUMN_ROW_SETTING" Type="varchar2" MaxLength="128" />
+    <Property Name="VALUE_SETTING" Type="varchar2" MaxLength="128" />
+    <Property Name="COMMENT" Type="varchar2" MaxLength="128" />
+    <Property Name="IS_RUNNABLE" Type="number" Precision="38" Scale="0" />
+  </EntityType>
+  <EntityType Name="T_TEST_SUITE">
+    <Key>
+      <PropertyRef Name="TEST_SUITE_ID" />
+    </Key>
+    <Property Name="TEST_SUITE_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="TEST_SUITE_NAME" Type="varchar2" MaxLength="64" />
+    <Property Name="TEST_SUITE_DESCRIPTION" Type="varchar2" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="T_TESTER_INFO">
+    <Key>
+      <PropertyRef Name="TESTER_ID" />
+    </Key>
+    <Property Name="TESTER_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="TESTER_NAME_LAST" Type="varchar2" MaxLength="64" />
+    <Property Name="TESTER_NAME_M" Type="varchar2" MaxLength="64" />
+    <Property Name="TESTER_NAME_F" Type="varchar2" MaxLength="64" />
+    <Property Name="TESTER_LOGIN_NAME" Type="varchar2" MaxLength="64" />
+    <Property Name="TESTER_PWD" Type="varchar2" MaxLength="64" />
+    <Property Name="AVAILABLE_MARK" Type="number" Precision="38" Scale="0" />
+    <Property Name="TESTER_MAIL" Type="varchar2" MaxLength="64" />
+    <Property Name="TESTER_NUMBER" Type="varchar2" MaxLength="16" />
+    <Property Name="COMPANY_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="CREATOR_NAME" Type="varchar2" MaxLength="64" />
+    <Property Name="CREATE_TIME" Type="date" />
+    <Property Name="TESTER_DESC" Type="varchar2" MaxLength="256" />
+    <Property Name="TEMP_KEY" Type="varchar2" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="TBLFEEDPROCESS">
+    <Key>
+      <PropertyRef Name="FEEDPROCESSID" />
+    </Key>
+    <Property Name="FEEDPROCESSID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="FEEDPROCESSSTATUS" Type="varchar2" MaxLength="500" />
+    <Property Name="FEEDRUNON" Type="timestamp with local time zone" Precision="6" />
+    <Property Name="CREATEDBY" Type="varchar2" MaxLength="500" />
+    <Property Name="CREATEDON" Type="timestamp with local time zone" Precision="6" />
+  </EntityType>
+  <EntityType Name="TBLFEEDPROCESSDETAILS">
+    <Key>
+      <PropertyRef Name="FEEDPROCESSDETAILID" />
+    </Key>
+    <Property Name="FEEDPROCESSDETAILID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="FEEDPROCESSID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="FILENAME" Type="varchar2" MaxLength="500" />
+    <Property Name="FEEDPROCESSSTATUS" Type="varchar2" MaxLength="500" />
+    <Property Name="CREATEDBY" Type="varchar2" MaxLength="500" />
+    <Property Name="CREATEDON" Type="timestamp with local time zone" Precision="6" />
+    <Property Name="FILETYPE" Type="varchar2" MaxLength="500" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TESTIDE11.TBLLOGREPORT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TBLLOGREPORT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="CREATIONDATE" Type="timestamp" Precision="6" />
+    <Property Name="MESSAGETYPE" Type="varchar2" MaxLength="500" />
+    <Property Name="ACTION" Type="varchar2" MaxLength="500" />
+    <Property Name="CELLADDRESS" Type="varchar2" MaxLength="500" />
+    <Property Name="VALIDATIONNAME" Type="varchar2" MaxLength="500" />
+    <Property Name="VALIDATIONDESCRIPTION" Type="varchar2" MaxLength="500" />
+    <Property Name="APPLICATIONNAME" Type="varchar2" MaxLength="500" />
+    <Property Name="TESTCASENAME" Type="varchar2" MaxLength="500" />
+    <Property Name="DATASETNAME" Type="varchar2" MaxLength="500" />
+    <Property Name="TESTSTEPNUMBER" Type="varchar2" MaxLength="500" />
+    <Property Name="OBJECTNAME" Type="varchar2" MaxLength="500" />
+    <Property Name="COMMENTDATA" Type="varchar2" MaxLength="500" />
+    <Property Name="ERRORDESCRIPTION" Type="varchar2" MaxLength="500" />
+    <Property Name="PROGRAMLOCATION" Type="varchar2" MaxLength="500" />
+    <Property Name="FEEDPROCESSINGDETAILSID" Type="number" Precision="38" Scale="0" />
+    <Property Name="GENERAL" Type="varchar2" MaxLength="500" />
+    <Property Name="PROJECTNAME" Type="varchar2" MaxLength="500" />
+    <Property Name="STORYBOARDNAME" Type="varchar2" MaxLength="200" />
+    <Property Name="TESTSUITE" Type="varchar2" MaxLength="200" />
+    <Property Name="DEPENDENCY" Type="varchar2" MaxLength="200" />
+    <Property Name="RUNORDER" Type="varchar2" MaxLength="200" />
+    <Property Name="FEEDPROCESSID" Type="number" Precision="38" Scale="0" />
+  </EntityType>
+  <EntityType Name="TBLSTGGUIOBJECT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="OBJECTNAME" Type="varchar2" MaxLength="500" />
+    <Property Name="TYPE" Type="varchar2" MaxLength="500" />
+    <Property Name="QUICKACCESS" Type="varchar2" MaxLength="500" />
+    <Property Name="PARENT" Type="varchar2" MaxLength="500" />
+    <Property Name="OBJECTCOMMENT" Type="varchar2" MaxLength="500" />
+    <Property Name="ENUMTYPE" Type="varchar2" MaxLength="500" />
+    <Property Name="SQL" Type="varchar2" MaxLength="500" />
+    <Property Name="APPLICATIONNAME" Type="varchar2" MaxLength="500" />
+    <Property Name="FEEDPROCESSDETAILID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="CREATEDON" Type="timestamp with local time zone" Precision="6" />
+  </EntityType>
+  <EntityType Name="TBLSTGSTORYBOARD">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="FEEDPROCESSDETAILID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="TABNAME" Type="varchar2" MaxLength="500" />
+    <Property Name="RUNORDER" Type="number" Precision="38" Scale="0" />
+    <Property Name="APPLICATIONNAME" Type="varchar2" MaxLength="500" />
+    <Property Name="PROJECTNAME" Type="varchar2" MaxLength="500" />
+    <Property Name="PROJECTDETAIL" Type="varchar2" MaxLength="500" />
+    <Property Name="STORYBOARDNAME" Type="varchar2" MaxLength="500" />
+    <Property Name="ACTIONNAME" Type="varchar2" MaxLength="500" />
+    <Property Name="STEPNAME" Type="varchar2" MaxLength="500" />
+    <Property Name="SUITENAME" Type="varchar2" MaxLength="500" />
+    <Property Name="CASENAME" Type="varchar2" MaxLength="500" />
+    <Property Name="DATASETNAME" Type="varchar2" MaxLength="500" />
+    <Property Name="DEPENDENCY" Type="varchar2" MaxLength="500" />
+    <Property Name="CREATEDDATE" Type="date" />
+    <Property Name="DEPENDENCYID" Type="number" Precision="38" Scale="0" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TESTIDE11.TBLSTGVARIABLE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TBLSTGVARIABLE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="FEEDPROCESSDETAILID" Type="number" Precision="38" Scale="0" />
+    <Property Name="NAME" Type="varchar2" MaxLength="200" />
+    <Property Name="VALUE" Type="clob" />
+    <Property Name="TYPE" Type="varchar2" MaxLength="200" />
+    <Property Name="BASE_COMP" Type="varchar2" MaxLength="200" />
+    <Property Name="CREATEDDATE" Type="date" />
+    <Property Name="BASE_COMP_ID" Type="number" Precision="38" Scale="0" />
+  </EntityType>
+  <EntityType Name="TEST_DATA_SETTING">
+    <Key>
+      <PropertyRef Name="DATA_SETTING_ID" />
+    </Key>
+    <Property Name="DATA_SETTING_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="STEPS_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="LOOP_ID" Type="number" Precision="38" Scale="0" />
+    <Property Name="DATA_VALUE" Type="varchar2" MaxLength="128" />
+    <Property Name="VALUE_OR_OBJECT" Type="number" Precision="2" Scale="0" />
+    <Property Name="DESCRIPTION" Type="varchar2" MaxLength="128" />
+    <Property Name="DATA_SUMMARY_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="DATA_DIRECTION" Type="number" Precision="2" Scale="0" />
+    <Property Name="VERSION" Type="number" Precision="16" Scale="0" />
+    <Property Name="CREATE_TIME" Type="date" />
+    <Property Name="POOL_ID" Type="number" Precision="16" Scale="0" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TESTIDE11.TPOS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TPOS">
+    <Key>
+      <PropertyRef Name="SECID" />
+    </Key>
+    <Property Name="SECID" Type="char" MaxLength="20" Nullable="false" />
+    <Property Name="QTY" Type="number" Precision="19" Scale="4" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TESTIDE11.TPOS2' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TPOS2">
+    <Key>
+      <PropertyRef Name="SECID" />
+    </Key>
+    <Property Name="SECID" Type="char" MaxLength="20" Nullable="false" />
+    <Property Name="QTY" Type="number" Precision="19" Scale="4" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TESTIDE11.V_OBJECT_SNAPSHOT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="V_OBJECT_SNAPSHOT">
+    <Key>
+      <PropertyRef Name="OBJECT_NAME_ID" />
+      <PropertyRef Name="OBJECT_ID" />
+      <PropertyRef Name="PEG_ID" />
+    </Key>
+    <Property Name="OBJECT_NAME_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="OBJECT_HAPPY_NAME" Type="varchar2" MaxLength="256" />
+    <Property Name="COMMENT" Type="varchar2" MaxLength="128" />
+    <Property Name="APPLICATION_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="ENUM_TYPE" Type="varchar2" MaxLength="100" />
+    <Property Name="OBJECT_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="OBJECT_TYPE" Type="varchar2" MaxLength="1000" />
+    <Property Name="QUICK_ACCESS" Type="varchar2" MaxLength="512" />
+    <Property Name="TYPE_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="IS_CHECKERROR_OBJ" Type="number" Precision="2" Scale="0" />
+    <Property Name="TYPE_NAME" Type="varchar2" MaxLength="32" />
+    <Property Name="PEG_NAME" Type="varchar2" MaxLength="256" />
+    <Property Name="PEG_QUICK_ACCESS" Type="varchar2" MaxLength="512" />
+    <Property Name="PEG_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TESTIDE11.TEST_CASE_VIEW' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TEST_CASE_VIEW">
+    <Key>
+      <PropertyRef Name="OBJECT_ID" />
+    </Key>
+    <Property Name="PROJECT_NAME" Type="varchar2" MaxLength="32" />
+    <Property Name="TEST_SUITE_NAME" Type="varchar2" MaxLength="64" />
+    <Property Name="TEST_CASE_NAME" Type="varchar2" MaxLength="64" />
+    <Property Name="KEY_WORD_NAME" Type="varchar2" MaxLength="255" />
+    <Property Name="OBJECT_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="OBJECT_HAPPY_NAME" Type="varchar2" MaxLength="256" />
+    <Property Name="COLUMN_ROW_SETTING" Type="varchar2" MaxLength="128" />
+    <Property Name="DATA_VALUE" Type="varchar2" MaxLength="128" />
+    <Property Name="LOOP_ID" Type="number" Precision="38" Scale="0" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TESTIDE11.TEST_CASE_VIEW2' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TEST_CASE_VIEW2">
+    <Key>
+      <PropertyRef Name="OBJECT_ID" />
+      <PropertyRef Name="STEPS_ID" />
+    </Key>
+    <Property Name="PROJECT_NAME" Type="varchar2" MaxLength="32" />
+    <Property Name="TEST_SUITE_NAME" Type="varchar2" MaxLength="64" />
+    <Property Name="TEST_CASE_NAME" Type="varchar2" MaxLength="64" />
+    <Property Name="KEY_WORD_NAME" Type="varchar2" MaxLength="255" />
+    <Property Name="OBJECT_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="OBJECT_HAPPY_NAME" Type="varchar2" MaxLength="256" />
+    <Property Name="COLUMN_ROW_SETTING" Type="varchar2" MaxLength="128" />
+    <Property Name="DATA_VALUE" Type="varchar2" MaxLength="128" />
+    <Property Name="LOOP_ID" Type="number" Precision="38" Scale="0" />
+    <Property Name="STEPS_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TESTIDE11.TEST_OBJECT_VIEW' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TEST_OBJECT_VIEW">
+    <Key>
+      <PropertyRef Name="OBJECT_ID" />
+    </Key>
+    <Property Name="OBJECT_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="OBJECT_HAPPY_NAME" Type="varchar2" MaxLength="256" />
+    <Property Name="APPLICATION_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="TYPE_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="QUICK_ACCESS" Type="varchar2" MaxLength="512" />
+    <Property Name="OBJECT_TYPE" Type="varchar2" MaxLength="1000" />
+    <Property Name="COMMENT" Type="varchar2" MaxLength="128" />
+    <Property Name="ENUM_TYPE" Type="varchar2" MaxLength="100" />
+    <Property Name="APP_SHORT_NAME" Type="varchar2" MaxLength="32" />
+    <Property Name="TYPE_NAME" Type="varchar2" MaxLength="32" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TESTIDE11.TEST_PROJECT_VIEW' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TEST_PROJECT_VIEW">
+    <Key>
+      <PropertyRef Name="PROJECT_ID" />
+      <PropertyRef Name="TEST_SUITE_ID" />
+      <PropertyRef Name="APPLICATION_ID" />
+    </Key>
+    <Property Name="PROJECT_NAME" Type="varchar2" MaxLength="32" />
+    <Property Name="PROJECT_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="TEST_SUITE_NAME" Type="varchar2" MaxLength="64" />
+    <Property Name="TEST_SUITE_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="APP_SHORT_NAME" Type="varchar2" MaxLength="32" />
+    <Property Name="APPLICATION_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TESTIDE11.V_MARS_STB_SNAPSHOT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="V_MARS_STB_SNAPSHOT">
+    <Key>
+      <PropertyRef Name="STORYBOARD_DETAIL_ID" />
+    </Key>
+    <Property Name="STORYBOARD_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="STORYBOARD_DETAIL_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="LATEST_TEST_MARK_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="TEST_MODE" Type="number" Precision="2" Scale="0" />
+    <Property Name="HIST_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="RUN_ORDER" Type="number" Precision="16" Scale="0" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TESTIDE11.V_OBJECT_APPS' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="V_OBJECT_APPS">
+    <Key>
+      <PropertyRef Name="OBJECT_ID" />
+    </Key>
+    <Property Name="APPLICATION_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="OBJECT_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="COMMENT" Type="varchar2" MaxLength="128" />
+    <Property Name="ENUM_TYPE" Type="varchar2" MaxLength="100" />
+    <Property Name="OBJECT_HAPPY_NAME" Type="varchar2" MaxLength="256" />
+    <Property Name="OBJECT_TYPE" Type="varchar2" MaxLength="1000" />
+    <Property Name="QUICK_ACCESS" Type="varchar2" MaxLength="512" />
+    <Property Name="TYPE_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="APP_APPLICATION_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="APP_SHORT_NAME" Type="varchar2" MaxLength="32" />
+    <Property Name="APPLICATION_TYPE_ID" Type="number" Precision="2" Scale="0" />
+    <Property Name="COMMENT_APP" Type="varchar2" MaxLength="128" />
+    <Property Name="EXTRAPOPUPMENU" Type="varchar2" MaxLength="32" />
+    <Property Name="EXTRAREQUIREMENT" Type="varchar2" MaxLength="256" />
+    <Property Name="PROCESS_IDENTIFIER" Type="varchar2" MaxLength="32" />
+    <Property Name="STARTER_COMMAND" Type="varchar2" MaxLength="128" />
+    <Property Name="STARTER_PATH" Type="varchar2" MaxLength="128" />
+    <Property Name="VERSION" Type="varchar2" MaxLength="10" />
+    <Property Name="TYPE_APPLICATION_TYPE_ID" Type="number" Precision="2" Scale="0" />
+    <Property Name="TYPE_DESCRPTION" Type="varchar2" MaxLength="64" />
+    <Property Name="TYP_TYPE_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="TYPE_NAME" Type="varchar2" MaxLength="32" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TESTIDE11.V_STB_PROJ_APP_FULLVISION' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="V_STB_PROJ_APP_FULLVISION">
+    <Key>
+      <PropertyRef Name="STORYBOARD_ID" />
+    </Key>
+    <Property Name="PROJECT_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="CREATE_TIME" Type="date" />
+    <Property Name="CREATER" Type="number" Precision="16" Scale="0" />
+    <Property Name="DESCRIPTION" Type="varchar2" MaxLength="128" />
+    <Property Name="STORYBOARD_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="STORYBOARD_NAME" Type="varchar2" MaxLength="128" />
+    <Property Name="APPLICATION_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="APP_SHORT_NAME" Type="varchar2" MaxLength="32" />
+    <Property Name="APPLICATION_TYPE_ID" Type="number" Precision="2" Scale="0" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TESTIDE11.V_STORYBOARD_TEST_FULLVISION' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="V_STORYBOARD_TEST_FULLVISION">
+    <Key>
+      <PropertyRef Name="STORYBOARD_ID" />
+    </Key>
+    <Property Name="STORYBOARD_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="STORYBOARD_DETAIL_ID" Type="number" Precision="38" Scale="0" />
+    <Property Name="STORYBOARD_NAME" Type="varchar2" MaxLength="128" />
+    <Property Name="PROJECT_ID" Type="number" Precision="38" Scale="0" />
+    <Property Name="PROJECT_NAME" Type="varchar2" MaxLength="32" />
+    <Property Name="PROJECT_DESCRIPTION" Type="varchar2" MaxLength="128" />
+    <Property Name="TEST_CASE_NAME" Type="varchar2" MaxLength="64" />
+    <Property Name="TEST_CASE_ID" Type="number" Precision="38" Scale="0" />
+    <Property Name="TEST_STEP_DESCRIPTION" Type="varchar2" MaxLength="128" />
+    <Property Name="TEST_SUITE_ID" Type="number" Precision="38" Scale="0" />
+    <Property Name="TEST_SUITE_NAME" Type="varchar2" MaxLength="64" />
+    <Property Name="TEST_SUITE_DESCRIPTION" Type="varchar2" MaxLength="128" />
+    <Property Name="RUN_ORDER" Type="number" Precision="38" Scale="0" />
+    <Property Name="DEPENDS_ON" Type="number" Precision="16" Scale="0" />
+    <Property Name="ALIAS_NAME" Type="varchar2" MaxLength="64" />
+    <Property Name="PARENT_ALIAS_NAME" Type="varchar2" MaxLength="64" />
+    <Property Name="DISPLAY_NAME" Type="varchar2" MaxLength="1024" />
+    <Property Name="TEST_RUN_VALUE" Type="number" Precision="2" Scale="0" />
+    <Property Name="LATEST_TEST_MARK_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="HIST_LATEST_TEST_MARK_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="HIST_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="HIST_TEST_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="TEST_CASE_BEGIN_TIME" Type="date" />
+    <Property Name="TEST_CASE_END_TIME" Type="date" />
+    <Property Name="HIST_TEST_RESULT_IN_TEXT" Type="varchar2" MaxLength="2048" />
+    <Property Name="HIST_TEST_MODE" Type="number" Precision="2" Scale="0" />
+    <Property Name="HIST_RESULT" Type="number" Precision="2" Scale="0" />
+    <Property Name="DATA_SETTING_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="DATA_SUMMARY_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="DATA_SET_CREATETIME" Type="date" />
+    <Property Name="DATA_SET_TESTERID" Type="number" Precision="16" Scale="0" />
+    <Property Name="DATA_SET_VERSION" Type="number" Precision="16" Scale="0" />
+    <Property Name="DATA_SET_ALIAS_NAME" Type="varchar2" MaxLength="64" />
+    <Property Name="DATA_SET_SHARE_MARK" Type="number" Precision="2" Scale="0" />
+    <Property Name="DATA_SET_STATUS" Type="number" Precision="2" Scale="0" />
+    <Property Name="DATA_SET_TYPE" Type="number" Precision="2" Scale="0" />
+    <Property Name="DATASET_DESCRIPTION" Type="varchar2" MaxLength="512" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TESTIDE11.V_TEST_DATA_REPORT_SUMMARY' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="V_TEST_DATA_REPORT_SUMMARY">
+    <Key>
+      <PropertyRef Name="TEST_REPORT_STEP_ID" />
+    </Key>
+    <Property Name="KEY_WORD_NAME" Type="varchar2" MaxLength="255" />
+    <Property Name="OBJECT_HAPPY_NAME" Type="varchar2" MaxLength="256" />
+    <Property Name="INPUT_VALUE_SETTING" Type="varchar2" MaxLength="128" />
+    <Property Name="RETURN_VALUES" Type="varchar2" MaxLength="64" />
+    <Property Name="ACTUAL_INPUT_DATA" Type="varchar2" MaxLength="128" />
+    <Property Name="LATEST_TEST_MARK_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="STORYBOARD_DETAIL_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="LOOP_ID" Type="number" Precision="38" Scale="0" />
+    <Property Name="RUN_ORDER" Type="number" Precision="38" Scale="0" />
+    <Property Name="TEST_MODE" Type="number" Precision="2" Scale="0" />
+    <Property Name="TEST_REPORT_STEP_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="COLUMN_ROW_SETTING" Type="varchar2" MaxLength="128" />
+    <Property Name="STORYBOARD_ORDER" Type="number" Precision="16" Scale="0" />
+    <Property Name="STORYBOARD_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="TEST_CASE_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="RUNNING_RESULT_INFO" Type="varchar2" MaxLength="1024" />
+    <Property Name="STEPS_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="INFO_PIC" Type="blob" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TESTIDE11.V_TEST_DATARPT_CAPTURE' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="V_TEST_DATARPT_CAPTURE">
+    <Key>
+      <PropertyRef Name="TEST_REPORT_STEP_ID" />
+    </Key>
+    <Property Name="KEY_WORD_NAME" Type="varchar2" MaxLength="255" />
+    <Property Name="OBJECT_HAPPY_NAME" Type="varchar2" MaxLength="256" />
+    <Property Name="INPUT_VALUE_SETTING" Type="varchar2" MaxLength="128" />
+    <Property Name="RETURN_VALUES" Type="varchar2" MaxLength="64" />
+    <Property Name="ACTUAL_INPUT_DATA" Type="varchar2" MaxLength="128" />
+    <Property Name="LATEST_TEST_MARK_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="STORYBOARD_DETAIL_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="LOOP_ID" Type="number" Precision="38" Scale="0" />
+    <Property Name="RUN_ORDER" Type="number" Precision="38" Scale="0" />
+    <Property Name="TEST_MODE" Type="number" Precision="2" Scale="0" />
+    <Property Name="TEST_REPORT_STEP_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="STORYBOARD_ID" Type="number" Precision="16" Scale="0" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TESTIDE11.V_TEST_STEPS_FULLVISION' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="V_TEST_STEPS_FULLVISION">
+    <Key>
+      <PropertyRef Name="STEPS_ID" />
+    </Key>
+    <Property Name="TEST_CASE_ID" Type="number" Precision="38" Scale="0" />
+    <Property Name="TEST_CASE_NAME" Type="varchar2" MaxLength="64" />
+    <Property Name="KEY_WORD_ID" Type="number" Precision="38" Scale="0" />
+    <Property Name="KEY_WORD_NAME" Type="varchar2" MaxLength="255" />
+    <Property Name="OBJECT_HAPPY_NAME" Type="varchar2" MaxLength="256" />
+    <Property Name="OBJECT_ID" Type="number" Precision="38" Scale="0" />
+    <Property Name="OBJECT_TYPE" Type="varchar2" MaxLength="1000" />
+    <Property Name="QUICK_ACCESS" Type="varchar2" MaxLength="512" />
+    <Property Name="ENUM_TYPE" Type="varchar2" MaxLength="100" />
+    <Property Name="APPLICATION_ID" Type="number" Precision="38" Scale="0" />
+    <Property Name="OBJECT_NAME_ID" Type="number" Precision="38" Scale="0" />
+    <Property Name="TYPE_NAME" Type="varchar2" MaxLength="32" />
+    <Property Name="STEPS_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="COLUMN_ROW_SETTING" Type="varchar2" MaxLength="128" />
+    <Property Name="COMMENTINFO" Type="varchar2" MaxLength="128" />
+    <Property Name="IS_RUNNABLE" Type="number" Precision="38" Scale="0" />
+    <Property Name="RUN_ORDER" Type="number" Precision="38" Scale="0" />
+    <Property Name="VALUE_SETTING" Type="varchar2" MaxLength="128" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'TESTIDE11.V_USER_COMPANY' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="V_USER_COMPANY">
+    <Key>
+      <PropertyRef Name="TESTER_ID" />
+      <PropertyRef Name="COMPANY_ID" />
+    </Key>
+    <Property Name="TESTER_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="TESTER_NAME_LAST" Type="varchar2" MaxLength="64" />
+    <Property Name="TESTER_NAME_M" Type="varchar2" MaxLength="64" />
+    <Property Name="TESTER_NAME_F" Type="varchar2" MaxLength="64" />
+    <Property Name="TESTER_LOGIN_NAME" Type="varchar2" MaxLength="64" />
+    <Property Name="TESTER_PWD" Type="varchar2" MaxLength="64" />
+    <Property Name="AVAILABLE_MARK" Type="number" Precision="38" Scale="0" />
+    <Property Name="TESTER_MAIL" Type="varchar2" MaxLength="64" />
+    <Property Name="TESTER_NUMBER" Type="varchar2" MaxLength="16" />
+    <Property Name="COMPANY_ID" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="TESTER_DESC" Type="varchar2" MaxLength="256" />
+    <Property Name="COMPANY_NAME" Type="varchar2" MaxLength="256" />
+    <Property Name="COMPANY_DESC" Type="varchar2" MaxLength="1024" />
+    <Property Name="COMPANY_ADDRESS" Type="varchar2" MaxLength="256" />
+    <Property Name="COMPANY_NUMBER" Type="varchar2" MaxLength="16" />
+    <Property Name="COMPANY_AVAILABLE_MARK" Type="number" Precision="38" Scale="0" />
+  </EntityType>
+  <Association Name="FK_BSLN_DTL_BSID_BSLN_DT_ID">
+    <End Role="T_BASELINE_DATA_SUMMARY" Type="Self.T_BASELINE_DATA_SUMMARY" Multiplicity="0..1" />
+    <End Role="T_BASELINE_DATA_DETAIL" Type="Self.T_BASELINE_DATA_DETAIL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_BASELINE_DATA_SUMMARY">
+        <PropertyRef Name="DATA_BASE_OBJ_ID" />
+      </Principal>
+      <Dependent Role="T_BASELINE_DATA_DETAIL">
+        <PropertyRef Name="DATA_BASE_OBJ_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_REL_APP__REFERENCE_T_TEST_P">
+    <End Role="T_TEST_PROJECT" Type="Self.T_TEST_PROJECT" Multiplicity="0..1" />
+    <End Role="REL_APP_PROJ" Type="Self.REL_APP_PROJ" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_TEST_PROJECT">
+        <PropertyRef Name="PROJECT_ID" />
+      </Principal>
+      <Dependent Role="REL_APP_PROJ">
+        <PropertyRef Name="PROJECT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_REL_TC_D_REFERENCE_T_TEST_C">
+    <End Role="T_TEST_CASE_SUMMARY" Type="Self.T_TEST_CASE_SUMMARY" Multiplicity="0..1" />
+    <End Role="REL_TC_DATA_SUMMARY" Type="Self.REL_TC_DATA_SUMMARY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_TEST_CASE_SUMMARY">
+        <PropertyRef Name="TEST_CASE_ID" />
+      </Principal>
+      <Dependent Role="REL_TC_DATA_SUMMARY">
+        <PropertyRef Name="TEST_CASE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_REL_TC_D_REFERENCE_T_TEST_D">
+    <End Role="T_TEST_DATA_SUMMARY" Type="Self.T_TEST_DATA_SUMMARY" Multiplicity="0..1" />
+    <End Role="REL_TC_DATA_SUMMARY" Type="Self.REL_TC_DATA_SUMMARY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_TEST_DATA_SUMMARY">
+        <PropertyRef Name="DATA_SUMMARY_ID" />
+      </Principal>
+      <Dependent Role="REL_TC_DATA_SUMMARY">
+        <PropertyRef Name="DATA_SUMMARY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_REL_TEST_REFERENCE_T_TEST_2">
+    <End Role="T_TEST_SUITE" Type="Self.T_TEST_SUITE" Multiplicity="0..1" />
+    <End Role="REL_TEST_CASE_TEST_SUITE" Type="Self.REL_TEST_CASE_TEST_SUITE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_TEST_SUITE">
+        <PropertyRef Name="TEST_SUITE_ID" />
+      </Principal>
+      <Dependent Role="REL_TEST_CASE_TEST_SUITE">
+        <PropertyRef Name="TEST_SUITE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_REL_TEST_REFERENCE_T_TEST_C">
+    <End Role="T_TEST_CASE_SUMMARY" Type="Self.T_TEST_CASE_SUMMARY" Multiplicity="0..1" />
+    <End Role="REL_TEST_CASE_TEST_SUITE" Type="Self.REL_TEST_CASE_TEST_SUITE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_TEST_CASE_SUMMARY">
+        <PropertyRef Name="TEST_CASE_ID" />
+      </Principal>
+      <Dependent Role="REL_TEST_CASE_TEST_SUITE">
+        <PropertyRef Name="TEST_CASE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_REL_TEST_REFERENCE_T_TEST_P">
+    <End Role="T_TEST_PROJECT" Type="Self.T_TEST_PROJECT" Multiplicity="0..1" />
+    <End Role="REL_TEST_SUIT_PROJECT" Type="Self.REL_TEST_SUIT_PROJECT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_TEST_PROJECT">
+        <PropertyRef Name="PROJECT_ID" />
+      </Principal>
+      <Dependent Role="REL_TEST_SUIT_PROJECT">
+        <PropertyRef Name="PROJECT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_REL_TEST_REFERENCE_T_TEST_S">
+    <End Role="T_TEST_SUITE" Type="Self.T_TEST_SUITE" Multiplicity="0..1" />
+    <End Role="REL_TEST_SUIT_PROJECT" Type="Self.REL_TEST_SUIT_PROJECT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_TEST_SUITE">
+        <PropertyRef Name="TEST_SUITE_ID" />
+      </Principal>
+      <Dependent Role="REL_TEST_SUIT_PROJECT">
+        <PropertyRef Name="TEST_SUITE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_DIC_RE_REFERENCE_T_GUI_CO">
+    <End Role="T_GUI_COMPONENT_TYPE_DIC" Type="Self.T_GUI_COMPONENT_TYPE_DIC" Multiplicity="0..1" />
+    <End Role="T_DIC_RELATION_KEYWORD" Type="Self.T_DIC_RELATION_KEYWORD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_GUI_COMPONENT_TYPE_DIC">
+        <PropertyRef Name="TYPE_ID" />
+      </Principal>
+      <Dependent Role="T_DIC_RELATION_KEYWORD">
+        <PropertyRef Name="TYPE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_DIC_RE_REFERENCE_T_KEYWOR">
+    <End Role="T_KEYWORD" Type="Self.T_KEYWORD" Multiplicity="0..1" />
+    <End Role="T_DIC_RELATION_KEYWORD" Type="Self.T_DIC_RELATION_KEYWORD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_KEYWORD">
+        <PropertyRef Name="KEY_WORD_ID" />
+      </Principal>
+      <Dependent Role="T_DIC_RELATION_KEYWORD">
+        <PropertyRef Name="KEY_WORD_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_PROJ_T_REF_TEST_SUITE">
+    <End Role="T_TEST_SUITE" Type="Self.T_TEST_SUITE" Multiplicity="0..1" />
+    <End Role="T_PROJ_TC_MGR" Type="Self.T_PROJ_TC_MGR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_TEST_SUITE">
+        <PropertyRef Name="TEST_SUITE_ID" />
+      </Principal>
+      <Dependent Role="T_PROJ_TC_MGR">
+        <PropertyRef Name="TEST_SUITE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_PROJ_T_REFERENCE_T_STORYB">
+    <End Role="T_STORYBOARD_SUMMARY" Type="Self.T_STORYBOARD_SUMMARY" Multiplicity="0..1" />
+    <End Role="T_PROJ_TC_MGR" Type="Self.T_PROJ_TC_MGR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_STORYBOARD_SUMMARY">
+        <PropertyRef Name="STORYBOARD_ID" />
+      </Principal>
+      <Dependent Role="T_PROJ_TC_MGR">
+        <PropertyRef Name="STORYBOARD_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_PROJ_T_REFERENCE_T_TEST_C">
+    <End Role="T_TEST_CASE_SUMMARY" Type="Self.T_TEST_CASE_SUMMARY" Multiplicity="0..1" />
+    <End Role="T_PROJ_TC_MGR" Type="Self.T_PROJ_TC_MGR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_TEST_CASE_SUMMARY">
+        <PropertyRef Name="TEST_CASE_ID" />
+      </Principal>
+      <Dependent Role="T_PROJ_TC_MGR">
+        <PropertyRef Name="TEST_CASE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_PROJ_T_REFERENCE_T_TEST_P">
+    <End Role="T_TEST_PROJECT" Type="Self.T_TEST_PROJECT" Multiplicity="0..1" />
+    <End Role="T_PROJ_TC_MGR" Type="Self.T_PROJ_TC_MGR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_TEST_PROJECT">
+        <PropertyRef Name="PROJECT_ID" />
+      </Principal>
+      <Dependent Role="T_PROJ_TC_MGR">
+        <PropertyRef Name="PROJECT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_PROJEC_REFERENCE_T_DATA_S">
+    <End Role="T_DATA_SOURCE" Type="Self.T_DATA_SOURCE" Multiplicity="0..1" />
+    <End Role="T_PROJECT_DATA_SOURCE" Type="Self.T_PROJECT_DATA_SOURCE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_DATA_SOURCE">
+        <PropertyRef Name="DATA_SOURCE_ID" />
+      </Principal>
+      <Dependent Role="T_PROJECT_DATA_SOURCE">
+        <PropertyRef Name="DATA_SOURCE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_PROJEC_REFERENCE_T_TEST_P">
+    <End Role="T_TEST_PROJECT" Type="Self.T_TEST_PROJECT" Multiplicity="0..1" />
+    <End Role="T_PROJECT_DATA_SOURCE" Type="Self.T_PROJECT_DATA_SOURCE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_TEST_PROJECT">
+        <PropertyRef Name="PROJECT_ID" />
+      </Principal>
+      <Dependent Role="T_PROJECT_DATA_SOURCE">
+        <PropertyRef Name="PROJECT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_REGIST_REFERENCE_T_GUI_CO">
+    <End Role="T_GUI_COMPONENT_TYPE_DIC" Type="Self.T_GUI_COMPONENT_TYPE_DIC" Multiplicity="0..1" />
+    <End Role="T_REGISTED_OBJECT" Type="Self.T_REGISTED_OBJECT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_GUI_COMPONENT_TYPE_DIC">
+        <PropertyRef Name="TYPE_ID" />
+      </Principal>
+      <Dependent Role="T_REGISTED_OBJECT">
+        <PropertyRef Name="TYPE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_SHARED_REFERENCE_T_TEST_D">
+    <End Role="T_TEST_DATA_SUMMARY" Type="Self.T_TEST_DATA_SUMMARY" Multiplicity="0..1" />
+    <End Role="T_SHARED_OBJECT_POOL" Type="Self.T_SHARED_OBJECT_POOL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_TEST_DATA_SUMMARY">
+        <PropertyRef Name="DATA_SUMMARY_ID" />
+      </Principal>
+      <Dependent Role="T_SHARED_OBJECT_POOL">
+        <PropertyRef Name="DATA_SUMMARY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_STORYB_REFERENCE_T_PROJ_T">
+    <End Role="T_PROJ_TC_MGR" Type="Self.T_PROJ_TC_MGR" Multiplicity="0..1" />
+    <End Role="T_STORYBOARD_DATASET_SETTING" Type="Self.T_STORYBOARD_DATASET_SETTING" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_PROJ_TC_MGR">
+        <PropertyRef Name="STORYBOARD_DETAIL_ID" />
+      </Principal>
+      <Dependent Role="T_STORYBOARD_DATASET_SETTING">
+        <PropertyRef Name="STORYBOARD_DETAIL_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_STORYB_REFERENCE_T_STORYB">
+    <End Role="T_STORYBOARD_SUMMARY" Type="Self.T_STORYBOARD_SUMMARY" Multiplicity="0..1" />
+    <End Role="T_STORYBOARD_HISTORY" Type="Self.T_STORYBOARD_HISTORY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_STORYBOARD_SUMMARY">
+        <PropertyRef Name="STORYBOARD_ID" />
+      </Principal>
+      <Dependent Role="T_STORYBOARD_HISTORY">
+        <PropertyRef Name="STORYBOARD_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_STORYB_REFERENCE_T_TEST_D">
+    <End Role="T_TEST_DATA_SUMMARY" Type="Self.T_TEST_DATA_SUMMARY" Multiplicity="0..1" />
+    <End Role="T_STORYBOARD_DATASET_SETTING" Type="Self.T_STORYBOARD_DATASET_SETTING" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_TEST_DATA_SUMMARY">
+        <PropertyRef Name="DATA_SUMMARY_ID" />
+      </Principal>
+      <Dependent Role="T_STORYBOARD_DATASET_SETTING">
+        <PropertyRef Name="DATA_SUMMARY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_TEST_C_REFERENCE_T_TEST_C">
+    <End Role="T_TEST_CASE_SUMMARY" Type="Self.T_TEST_CASE_SUMMARY" Multiplicity="0..1" />
+    <End Role="T_TEST_CASE_VERSION" Type="Self.T_TEST_CASE_VERSION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_TEST_CASE_SUMMARY">
+        <PropertyRef Name="TEST_CASE_ID" />
+      </Principal>
+      <Dependent Role="T_TEST_CASE_VERSION">
+        <PropertyRef Name="TEST_CASE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_TEST_R_REFERENCE_T_TEST_C">
+    <End Role="T_TEST_CASE_SUMMARY" Type="Self.T_TEST_CASE_SUMMARY" Multiplicity="0..1" />
+    <End Role="T_TEST_REPORT" Type="Self.T_TEST_REPORT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_TEST_CASE_SUMMARY">
+        <PropertyRef Name="TEST_CASE_ID" />
+      </Principal>
+      <Dependent Role="T_TEST_REPORT">
+        <PropertyRef Name="TEST_CASE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_TEST_R_REFERENCE_T_TEST_R">
+    <End Role="T_TEST_REPORT" Type="Self.T_TEST_REPORT" Multiplicity="0..1" />
+    <End Role="T_TEST_REPORT_STEPS" Type="Self.T_TEST_REPORT_STEPS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_TEST_REPORT">
+        <PropertyRef Name="TEST_REPORT_ID" />
+      </Principal>
+      <Dependent Role="T_TEST_REPORT_STEPS">
+        <PropertyRef Name="TEST_REPORT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_TEST_S_REFERENCE_T_KEYWOR">
+    <End Role="T_KEYWORD" Type="Self.T_KEYWORD" Multiplicity="0..1" />
+    <End Role="T_TEST_STEPS" Type="Self.T_TEST_STEPS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_KEYWORD">
+        <PropertyRef Name="KEY_WORD_ID" />
+      </Principal>
+      <Dependent Role="T_TEST_STEPS">
+        <PropertyRef Name="KEY_WORD_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_TEST_S_REFERENCE_T_REGIST">
+    <End Role="T_REGISTED_OBJECT" Type="Self.T_REGISTED_OBJECT" Multiplicity="0..1" />
+    <End Role="T_TEST_STEPS" Type="Self.T_TEST_STEPS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_REGISTED_OBJECT">
+        <PropertyRef Name="OBJECT_ID" />
+      </Principal>
+      <Dependent Role="T_TEST_STEPS">
+        <PropertyRef Name="OBJECT_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_T_TEST_S_REFERENCE_T_TEST_C">
+    <End Role="T_TEST_CASE_SUMMARY" Type="Self.T_TEST_CASE_SUMMARY" Multiplicity="0..1" />
+    <End Role="T_TEST_STEPS" Type="Self.T_TEST_STEPS" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_TEST_CASE_SUMMARY">
+        <PropertyRef Name="TEST_CASE_ID" />
+      </Principal>
+      <Dependent Role="T_TEST_STEPS">
+        <PropertyRef Name="TEST_CASE_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TEST_DAT_REFERENCE_T_TEST_D">
+    <End Role="T_TEST_DATA_SUMMARY" Type="Self.T_TEST_DATA_SUMMARY" Multiplicity="0..1" />
+    <End Role="TEST_DATA_SETTING" Type="Self.TEST_DATA_SETTING" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_TEST_DATA_SUMMARY">
+        <PropertyRef Name="DATA_SUMMARY_ID" />
+      </Principal>
+      <Dependent Role="TEST_DATA_SETTING">
+        <PropertyRef Name="DATA_SUMMARY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TEST_DAT_REFERENCE_T_TEST_S">
+    <End Role="T_TEST_STEPS" Type="Self.T_TEST_STEPS" Multiplicity="1" />
+    <End Role="TEST_DATA_SETTING" Type="Self.TEST_DATA_SETTING" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_TEST_STEPS">
+        <PropertyRef Name="STEPS_ID" />
+      </Principal>
+      <Dependent Role="TEST_DATA_SETTING">
+        <PropertyRef Name="STEPS_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="T_TESTER_INFO_COMPANY_FK">
+    <End Role="T_MARS_COMPANY" Type="Self.T_MARS_COMPANY" Multiplicity="1" />
+    <End Role="T_TESTER_INFO" Type="Self.T_TESTER_INFO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_MARS_COMPANY">
+        <PropertyRef Name="COMPANY_ID" />
+      </Principal>
+      <Dependent Role="T_TESTER_INFO">
+        <PropertyRef Name="COMPANY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="CONCATENATE_APPLICATION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="TESTIDE11" ReturnType="clob">
+    <Parameter Name="TEST_SUITE_ID1" Type="number" Mode="In" />
+  </Function>
+  <Function Name="CONCATENATE_DATASETDESCRIPTION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="TESTIDE11" ReturnType="clob">
+    <Parameter Name="TEST_CASE_ID1" Type="number" Mode="In" />
+  </Function>
+  <Function Name="CONCATENATE_DATASETNAMES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="TESTIDE11" ReturnType="clob">
+    <Parameter Name="TEST_CASE_ID1" Type="number" Mode="In" />
+  </Function>
+  <Function Name="CONCATENATE_LIST" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="TESTIDE11" ReturnType="varchar2" />
+  <Function Name="CONCATENATE_TESTSTEPSKIP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="TESTIDE11" ReturnType="clob">
+    <Parameter Name="TEST_CASE_ID1" Type="number" Mode="In" />
+    <Parameter Name="STEPS_ID1" Type="number" Mode="In" />
+  </Function>
+  <Function Name="CONCATENATE_TESTSTEPVALUE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="TESTIDE11" ReturnType="clob">
+    <Parameter Name="TEST_CASE_ID1" Type="number" Mode="In" />
+    <Parameter Name="STEPS_ID1" Type="number" Mode="In" />
+  </Function>
+  <Function Name="GETNEXT_VAL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="TESTIDE11">
+    <Parameter Name="P_SEQUENCE_NAME" Type="varchar2" Mode="In" />
+    <Parameter Name="V_NEXTVAL" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="MARS_P_MERGEOBJECTS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="TESTIDE11" />
+  <Function Name="SP_EXPORT_COMPAREPARAM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="TESTIDE11" />
+  <Function Name="SP_EXPORT_EXPORTOBJECT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="TESTIDE11">
+    <Parameter Name="APPLICATION" Type="varchar2" Mode="In" />
+  </Function>
+  <Function Name="SP_EXPORT_LOGREPORT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="TESTIDE11">
+    <Parameter Name="FEEDPROCESSDETAILID" Type="number" Mode="In" />
+  </Function>
+  <Function Name="SP_EXPORT_STORYBOARD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="TESTIDE11">
+    <Parameter Name="PROJECT" Type="varchar2" Mode="In" />
+  </Function>
+  <Function Name="SP_EXPORT_TESTSUITE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="TESTIDE11">
+    <Parameter Name="TESTSUITENAME" Type="varchar2" Mode="In" />
+  </Function>
+  <Function Name="SP_EXPORT_VARIABLE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="TESTIDE11" />
+  <Function Name="SP_IMPORT_FILE_COMPAREPARAM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="TESTIDE11">
+    <Parameter Name="DATA_SOURCE_NAME" Type="varchar2" Mode="In" />
+    <Parameter Name="DATA_SOURCE_TYPE" Type="number" Mode="In" />
+    <Parameter Name="DETAILS" Type="varchar2" Mode="In" />
+    <Parameter Name="FEEDPROCESSDETAILID" Type="number" Mode="In" />
+  </Function>
+  <Function Name="SP_IMPORT_FILE_EXPORTTEST" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="TESTIDE11" />
+  <Function Name="SP_IMPORT_FILE_EXPORTTESTCASE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="TESTIDE11" />
+  <Function Name="SP_IMPORT_FILE_OBJECT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="TESTIDE11">
+    <Parameter Name="OBJECTNAME" Type="varchar2" Mode="In" />
+    <Parameter Name="OBJECTTYPE" Type="varchar2" Mode="In" />
+    <Parameter Name="QUICKACCESS" Type="varchar2" Mode="In" />
+    <Parameter Name="PARENT" Type="varchar2" Mode="In" />
+    <Parameter Name="OBJECTCOMMENT" Type="varchar2" Mode="In" />
+    <Parameter Name="ENUMTYPE" Type="varchar2" Mode="In" />
+    <Parameter Name="OBJECTSQL" Type="varchar2" Mode="In" />
+    <Parameter Name="APPLICATIONNAME" Type="varchar2" Mode="In" />
+    <Parameter Name="FEEDPROCESSDETAILID" Type="number" Mode="In" />
+  </Function>
+  <Function Name="SP_IMPORT_FILE_STORYBOARD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="TESTIDE11">
+    <Parameter Name="RUNORDER" Type="number" Mode="In" />
+    <Parameter Name="APPLICATIONNAME" Type="varchar2" Mode="In" />
+    <Parameter Name="PROJECTNAME" Type="varchar2" Mode="In" />
+    <Parameter Name="PROJECTDETAIL" Type="varchar2" Mode="In" />
+    <Parameter Name="STORYBOARDNAME" Type="varchar2" Mode="In" />
+    <Parameter Name="ACTIONNAME" Type="varchar2" Mode="In" />
+    <Parameter Name="STEPNAME" Type="varchar2" Mode="In" />
+    <Parameter Name="SUITENAME" Type="varchar2" Mode="In" />
+    <Parameter Name="CASENAME" Type="varchar2" Mode="In" />
+    <Parameter Name="DATASETNAME" Type="varchar2" Mode="In" />
+    <Parameter Name="DEPENDENCY" Type="varchar2" Mode="In" />
+    <Parameter Name="FEEDPROCESSDETAILID" Type="number" Mode="In" />
+    <Parameter Name="TABNAME" Type="varchar2" Mode="In" />
+  </Function>
+  <Function Name="SP_IMPORT_FILE_TESTCASE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="TESTIDE11">
+    <Parameter Name="TESTSUITENAME" Type="varchar2" Mode="In" />
+    <Parameter Name="TESTCASENAME" Type="varchar2" Mode="In" />
+    <Parameter Name="TESTCASEDESCRIPTION" Type="varchar2" Mode="In" />
+    <Parameter Name="DATASETMODE" Type="varchar2" Mode="In" />
+    <Parameter Name="KEYWORD" Type="varchar2" Mode="In" />
+    <Parameter Name="OBJECT" Type="varchar2" Mode="In" />
+    <Parameter Name="PARAMETER" Type="varchar2" Mode="In" />
+    <Parameter Name="COMMENTS" Type="varchar2" Mode="In" />
+    <Parameter Name="DATASETNAME" Type="varchar2" Mode="In" />
+    <Parameter Name="DATASETVALUE" Type="varchar2" Mode="In" />
+    <Parameter Name="ROWNUMBER" Type="number" Mode="In" />
+    <Parameter Name="FEEDPROCESSDETAILID" Type="number" Mode="In" />
+    <Parameter Name="TABNAME" Type="varchar2" Mode="In" />
+    <Parameter Name="APPLICATION" Type="varchar2" Mode="In" />
+    <Parameter Name="SKIP" Type="number" Mode="In" />
+    <Parameter Name="DATASETDESCRIPTION" Type="varchar2" Mode="In" />
+  </Function>
+  <Function Name="SP_IMPORT_FILE_VARIABLE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="TESTIDE11">
+    <Parameter Name="FEEDPROCESSDETAILID" Type="number" Mode="In" />
+    <Parameter Name="NAME" Type="varchar2" Mode="In" />
+    <Parameter Name="VALUE" Type="clob" Mode="In" />
+    <Parameter Name="TYPE" Type="varchar2" Mode="In" />
+    <Parameter Name="BASE_COMP" Type="varchar2" Mode="In" />
+  </Function>
+  <Function Name="SP_TESTCASE_DETAILS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="TESTIDE11">
+    <Parameter Name="TESTCASEID" Type="number" Mode="In" />
+  </Function>
+  <Function Name="USP_FEEDPROCESS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="TESTIDE11">
+    <Parameter Name="FEEDPROCESSID" Type="number" Mode="In" />
+    <Parameter Name="OPERATION" Type="varchar2" Mode="In" />
+    <Parameter Name="CREATEDBY" Type="varchar2" Mode="In" />
+    <Parameter Name="FEEDPROCESSSTATUS" Type="varchar2" Mode="In" />
+    <Parameter Name="ID" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="USP_FEEDPROCESSDETAILS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="TESTIDE11">
+    <Parameter Name="FEEDPROCESSDETAILID" Type="number" Mode="In" />
+    <Parameter Name="FEEDPROCESSID" Type="number" Mode="In" />
+    <Parameter Name="OPERATION" Type="varchar2" Mode="In" />
+    <Parameter Name="FILENAME" Type="varchar2" Mode="In" />
+    <Parameter Name="CREATEDBY" Type="varchar2" Mode="In" />
+    <Parameter Name="FEEDPROCESSSTATUS" Type="varchar2" Mode="In" />
+    <Parameter Name="FILETYPE" Type="varchar2" Mode="In" />
+    <Parameter Name="ID" Type="number" Mode="Out" />
+  </Function>
+  <Function Name="USP_FEEDPROCESSMAPPING_MODE_D" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="TESTIDE11">
+    <Parameter Name="FEEDPROCESSID1" Type="number" Mode="In" />
+    <Parameter Name="ISOVERWRITE" Type="number" Mode="In" />
+    <Parameter Name="RESULT" Type="clob" Mode="Out" />
+  </Function>
+  <Function Name="USP_MAPPING_VALIDATION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="TESTIDE11">
+    <Parameter Name="FEEDPROCESSID1" Type="number" Mode="In" />
+    <Parameter Name="RESULT" Type="clob" Mode="Out" />
+  </Function>
+  <Function Name="USP_VALIDATION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="TESTIDE11">
+    <Parameter Name="DATAVALUE" Type="varchar2" Mode="In" />
+    <Parameter Name="VALIDATETYPE" Type="varchar2" Mode="In" />
+    <Parameter Name="ID" Type="number" Mode="Out" />
+  </Function>
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="LOGREPORT" EntityType="Self.LOGREPORT" Schema="TESTIDE11" store:Type="Tables" />
+    <EntitySet Name="REL_APP_PROJ" EntityType="Self.REL_APP_PROJ" Schema="TESTIDE11" store:Type="Tables" />
+    <EntitySet Name="REL_APP_TESTCASE" EntityType="Self.REL_APP_TESTCASE" Schema="TESTIDE11" store:Type="Tables" />
+    <EntitySet Name="REL_APP_TESTSUITE" EntityType="Self.REL_APP_TESTSUITE" Schema="TESTIDE11" store:Type="Tables" />
+    <EntitySet Name="REL_OBJ_APP" EntityType="Self.REL_OBJ_APP" Schema="TESTIDE11" store:Type="Tables" />
+    <EntitySet Name="REL_TC_DATA_SUMMARY" EntityType="Self.REL_TC_DATA_SUMMARY" Schema="TESTIDE11" store:Type="Tables" />
+    <EntitySet Name="REL_TEST_CASE_TEST_SUITE" EntityType="Self.REL_TEST_CASE_TEST_SUITE" Schema="TESTIDE11" store:Type="Tables" />
+    <EntitySet Name="REL_TEST_SUIT_PROJECT" EntityType="Self.REL_TEST_SUIT_PROJECT" Schema="TESTIDE11" store:Type="Tables" />
+    <EntitySet Name="SYSTEM_LOOKUP" EntityType="Self.SYSTEM_LOOKUP" Schema="TESTIDE11" store:Type="Tables" />
+    <EntitySet Name="T_BASELINE_DATA_DETAIL" EntityType="Self.T_BASELINE_DATA_DETAIL" Schema="TESTIDE11" store:Type="Tables" />
+    <EntitySet Name="T_BASELINE_DATA_SUMMARY" EntityType="Self.T_BASELINE_DATA_SUMMARY" Schema="TESTIDE11" store:Type="Tables" />
+    <EntitySet Name="T_COMPARE_CONFIG" EntityType="Self.T_COMPARE_CONFIG" Schema="TESTIDE11" store:Type="Tables" />
+    <EntitySet Name="T_COMPARE_CONNECTIONS" EntityType="Self.T_COMPARE_CONNECTIONS" Schema="TESTIDE11" store:Type="Tables" />
+    <EntitySet Name="T_COMPARE_QUERIES" EntityType="Self.T_COMPARE_QUERIES" Schema="TESTIDE11" store:Type="Tables" />
+    <EntitySet Name="T_DATA_SOURCE" EntityType="Self.T_DATA_SOURCE" Schema="TESTIDE11" store:Type="Tables" />
+    <EntitySet Name="T_DIC_RELATION_KEYWORD" EntityType="Self.T_DIC_RELATION_KEYWORD" Schema="TESTIDE11" store:Type="Tables" />
+    <EntitySet Name="T_GUI_COMPONENT_TYPE_DIC" EntityType="Self.T_GUI_COMPONENT_TYPE_DIC" Schema="TESTIDE11" store:Type="Tables" />
+    <EntitySet Name="T_KEYWORD" EntityType="Self.T_KEYWORD" Schema="TESTIDE11" store:Type="Tables" />
+    <EntitySet Name="T_MARS_COMPANY" EntityType="Self.T_MARS_COMPANY" Schema="TESTIDE11" store:Type="Tables" />
+    <EntitySet Name="T_OBJECT_NAMEINFO" EntityType="Self.T_OBJECT_NAMEINFO" Schema="TESTIDE11" store:Type="Tables" />
+    <EntitySet Name="T_PROJ_TC_MGR" EntityType="Self.T_PROJ_TC_MGR" Schema="TESTIDE11" store:Type="Tables" />
+    <EntitySet Name="T_PROJ_TEST_RESULT" EntityType="Self.T_PROJ_TEST_RESULT" Schema="TESTIDE11" store:Type="Tables" />
+    <EntitySet Name="T_PROJECT_DATA_SOURCE" EntityType="Self.T_PROJECT_DATA_SOURCE" Schema="TESTIDE11" store:Type="Tables" />
+    <EntitySet Name="T_REGISTED_OBJECT" EntityType="Self.T_REGISTED_OBJECT" Schema="TESTIDE11" store:Type="Tables" />
+    <EntitySet Name="T_REGISTERED_APPS" EntityType="Self.T_REGISTERED_APPS" Schema="TESTIDE11" store:Type="Tables" />
+    <EntitySet Name="T_SHARED_OBJECT_POOL" EntityType="Self.T_SHARED_OBJECT_POOL" Schema="TESTIDE11" store:Type="Tables" />
+    <EntitySet Name="T_STORYBOARD_DATASET_SETTING" EntityType="Self.T_STORYBOARD_DATASET_SETTING" Schema="TESTIDE11" store:Type="Tables" />
+    <EntitySet Name="T_STORYBOARD_HISTORY" EntityType="Self.T_STORYBOARD_HISTORY" Schema="TESTIDE11" store:Type="Tables" />
+    <EntitySet Name="T_STORYBOARD_SUMMARY" EntityType="Self.T_STORYBOARD_SUMMARY" Schema="TESTIDE11" store:Type="Tables" />
+    <EntitySet Name="T_TEST_CASE_SUMMARY" EntityType="Self.T_TEST_CASE_SUMMARY" Schema="TESTIDE11" store:Type="Tables" />
+    <EntitySet Name="T_TEST_CASE_VERSION" EntityType="Self.T_TEST_CASE_VERSION" Schema="TESTIDE11" store:Type="Tables" />
+    <EntitySet Name="T_TEST_DATA_SUMMARY" EntityType="Self.T_TEST_DATA_SUMMARY" Schema="TESTIDE11" store:Type="Tables" />
+    <EntitySet Name="T_TEST_ENUM" EntityType="Self.T_TEST_ENUM" Schema="TESTIDE11" store:Type="Tables" />
+    <EntitySet Name="T_TEST_PROJECT" EntityType="Self.T_TEST_PROJECT" Schema="TESTIDE11" store:Type="Tables" />
+    <EntitySet Name="T_TEST_REPORT" EntityType="Self.T_TEST_REPORT" Schema="TESTIDE11" store:Type="Tables" />
+    <EntitySet Name="T_TEST_REPORT_STEPS" EntityType="Self.T_TEST_REPORT_STEPS" Schema="TESTIDE11" store:Type="Tables" />
+    <EntitySet Name="T_TEST_STEPS" EntityType="Self.T_TEST_STEPS" Schema="TESTIDE11" store:Type="Tables" />
+    <EntitySet Name="T_TEST_SUITE" EntityType="Self.T_TEST_SUITE" Schema="TESTIDE11" store:Type="Tables" />
+    <EntitySet Name="T_TESTER_INFO" EntityType="Self.T_TESTER_INFO" Schema="TESTIDE11" store:Type="Tables" />
+    <EntitySet Name="TBLFEEDPROCESS" EntityType="Self.TBLFEEDPROCESS" Schema="TESTIDE11" store:Type="Tables" />
+    <EntitySet Name="TBLFEEDPROCESSDETAILS" EntityType="Self.TBLFEEDPROCESSDETAILS" Schema="TESTIDE11" store:Type="Tables" />
+    <EntitySet Name="TBLSTGGUIOBJECT" EntityType="Self.TBLSTGGUIOBJECT" Schema="TESTIDE11" store:Type="Tables" />
+    <EntitySet Name="TBLSTGSTORYBOARD" EntityType="Self.TBLSTGSTORYBOARD" Schema="TESTIDE11" store:Type="Tables" />
+    <EntitySet Name="TEST_DATA_SETTING" EntityType="Self.TEST_DATA_SETTING" Schema="TESTIDE11" store:Type="Tables" />
+    <EntitySet Name="ACUP" EntityType="Self.ACUP" store:Type="Tables" store:Schema="TESTIDE11">
+      <DefiningQuery>SELECT 
+"ACUP"."BR" AS "BR", 
+"ACUP"."PRODUCT" AS "PRODUCT", 
+"ACUP"."TYPE" AS "TYPE", 
+"ACUP"."ARGNO" AS "ARGNO", 
+"ACUP"."DEALNO" AS "DEALNO", 
+"ACUP"."SEQ" AS "SEQ", 
+"ACUP"."GLNO" AS "GLNO", 
+"ACUP"."COSTCENT" AS "COSTCENT", 
+"ACUP"."CCY" AS "CCY", 
+"ACUP"."BEIND" AS "BEIND", 
+"ACUP"."CODE" AS "CODE", 
+"ACUP"."QUAL" AS "QUAL", 
+"ACUP"."EFFDATE" AS "EFFDATE", 
+"ACUP"."POSTDATE" AS "POSTDATE", 
+"ACUP"."CMNE" AS "CMNE", 
+"ACUP"."DRCRIND" AS "DRCRIND", 
+"ACUP"."AMOUNT" AS "AMOUNT", 
+"ACUP"."SMEANS" AS "SMEANS", 
+"ACUP"."SACCT" AS "SACCT", 
+"ACUP"."DESCR" AS "DESCR"
+FROM "TESTIDE11"."ACUP" "ACUP"</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="MV_LAST_TC_INFO" EntityType="Self.MV_LAST_TC_INFO" store:Type="Tables" store:Schema="TESTIDE11">
+      <DefiningQuery>SELECT 
+"MV_LAST_TC_INFO"."HIST_ID" AS "HIST_ID", 
+"MV_LAST_TC_INFO"."TEST_CASE_ID" AS "TEST_CASE_ID", 
+"MV_LAST_TC_INFO"."STORYBOARD_DETAIL_ID" AS "STORYBOARD_DETAIL_ID", 
+"MV_LAST_TC_INFO"."TEST_BEGIN_TIME" AS "TEST_BEGIN_TIME", 
+"MV_LAST_TC_INFO"."TEST_END_TIME" AS "TEST_END_TIME", 
+"MV_LAST_TC_INFO"."TEST_RESULT_IN_TEXT" AS "TEST_RESULT_IN_TEXT", 
+"MV_LAST_TC_INFO"."TEST_MODE" AS "TEST_MODE", 
+"MV_LAST_TC_INFO"."TEST_RESULT" AS "TEST_RESULT", 
+"MV_LAST_TC_INFO"."TESTER_ID" AS "TESTER_ID", 
+"MV_LAST_TC_INFO"."CREATE_TIME" AS "CREATE_TIME", 
+"MV_LAST_TC_INFO"."LATEST_TEST_MARK_ID" AS "LATEST_TEST_MARK_ID", 
+"MV_LAST_TC_INFO"."RELY_TEST_CASE_ID" AS "RELY_TEST_CASE_ID", 
+"MV_LAST_TC_INFO"."RESULT_ALIAS_NAME" AS "RESULT_ALIAS_NAME", 
+"MV_LAST_TC_INFO"."RESULT_DESC" AS "RESULT_DESC"
+FROM "TESTIDE11"."MV_LAST_TC_INFO" "MV_LAST_TC_INFO"</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="MV_OBJ_WITH_PEG" EntityType="Self.MV_OBJ_WITH_PEG" store:Type="Tables" store:Schema="TESTIDE11">
+      <DefiningQuery>SELECT 
+"MV_OBJ_WITH_PEG"."OROWID" AS "OROWID", 
+"MV_OBJ_WITH_PEG"."O1ROWID" AS "O1ROWID", 
+"MV_OBJ_WITH_PEG"."OBJECT_ID" AS "OBJECT_ID", 
+"MV_OBJ_WITH_PEG"."OBJECT_HAPPY_NAME" AS "OBJECT_HAPPY_NAME", 
+"MV_OBJ_WITH_PEG"."OBJECT_TYPE" AS "OBJECT_TYPE", 
+"MV_OBJ_WITH_PEG"."APPLICATION_ID" AS "APPLICATION_ID", 
+"MV_OBJ_WITH_PEG"."QUICK_ACCESS" AS "QUICK_ACCESS", 
+"MV_OBJ_WITH_PEG"."OBJECT_NAME_ID" AS "OBJECT_NAME_ID"
+FROM "TESTIDE11"."MV_OBJ_WITH_PEG" "MV_OBJ_WITH_PEG"</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="MV_STORYBOARD_LATEST" EntityType="Self.MV_STORYBOARD_LATEST" store:Type="Tables" store:Schema="TESTIDE11">
+      <DefiningQuery>SELECT 
+"MV_STORYBOARD_LATEST"."STORYBOARD_ID" AS "STORYBOARD_ID", 
+"MV_STORYBOARD_LATEST"."STORYBOARD_DETAIL_ID" AS "STORYBOARD_DETAIL_ID", 
+"MV_STORYBOARD_LATEST"."TEST_MODE" AS "TEST_MODE", 
+"MV_STORYBOARD_LATEST"."MX_STB_LTST_ID" AS "MX_STB_LTST_ID"
+FROM "TESTIDE11"."MV_STORYBOARD_LATEST" "MV_STORYBOARD_LATEST"</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="MV_TC_DATASUMMARY" EntityType="Self.MV_TC_DATASUMMARY" store:Type="Tables" store:Schema="TESTIDE11">
+      <DefiningQuery>SELECT 
+"MV_TC_DATASUMMARY"."ALIAS_NAME" AS "ALIAS_NAME", 
+"MV_TC_DATASUMMARY"."DATA_SUMMARY_ID" AS "DATA_SUMMARY_ID", 
+"MV_TC_DATASUMMARY"."TEST_CASE_ID" AS "TEST_CASE_ID", 
+"MV_TC_DATASUMMARY"."AVAILABLE_MARK" AS "AVAILABLE_MARK", 
+"MV_TC_DATASUMMARY"."DATA_VERSION" AS "DATA_VERSION", 
+"MV_TC_DATASUMMARY"."DATA_STATUS" AS "DATA_STATUS", 
+"MV_TC_DATASUMMARY"."DATA_SET_TYPE" AS "DATA_SET_TYPE", 
+"MV_TC_DATASUMMARY"."DATASET_DESCRIPTION" AS "DATASET_DESCRIPTION"
+FROM "TESTIDE11"."MV_TC_DATASUMMARY" "MV_TC_DATASUMMARY"</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="T_DATA_SOURCE_TEST" EntityType="Self.T_DATA_SOURCE_TEST" store:Type="Tables" store:Schema="TESTIDE11">
+      <DefiningQuery>SELECT 
+"T_DATA_SOURCE_TEST"."DATA_SOURCE_ID" AS "DATA_SOURCE_ID", 
+"T_DATA_SOURCE_TEST"."DATA_SOURCE_NAME" AS "DATA_SOURCE_NAME", 
+"T_DATA_SOURCE_TEST"."DATA_SOURCE_TYPE" AS "DATA_SOURCE_TYPE", 
+"T_DATA_SOURCE_TEST"."DETAILS" AS "DETAILS", 
+"T_DATA_SOURCE_TEST"."DB_CONNECTION" AS "DB_CONNECTION", 
+"T_DATA_SOURCE_TEST"."DB_TYPE" AS "DB_TYPE", 
+"T_DATA_SOURCE_TEST"."TEST_CONNECTION" AS "TEST_CONNECTION"
+FROM "TESTIDE11"."T_DATA_SOURCE_TEST" "T_DATA_SOURCE_TEST"</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="T_REGISTED_OBJECT_BAK" EntityType="Self.T_REGISTED_OBJECT_BAK" store:Type="Tables" store:Schema="TESTIDE11">
+      <DefiningQuery>SELECT 
+"T_REGISTED_OBJECT_BAK"."OBJECT_ID" AS "OBJECT_ID", 
+"T_REGISTED_OBJECT_BAK"."OBJECT_HAPPY_NAME" AS "OBJECT_HAPPY_NAME", 
+"T_REGISTED_OBJECT_BAK"."APPLICATION_ID" AS "APPLICATION_ID", 
+"T_REGISTED_OBJECT_BAK"."TYPE_ID" AS "TYPE_ID", 
+"T_REGISTED_OBJECT_BAK"."QUICK_ACCESS" AS "QUICK_ACCESS", 
+"T_REGISTED_OBJECT_BAK"."OBJECT_TYPE" AS "OBJECT_TYPE", 
+"T_REGISTED_OBJECT_BAK"."COMMENT" AS "COMMENT", 
+"T_REGISTED_OBJECT_BAK"."ENUM_TYPE" AS "ENUM_TYPE"
+FROM "TESTIDE11"."T_REGISTED_OBJECT_BAK" "T_REGISTED_OBJECT_BAK"</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="T_TEST_STEPS_BAK" EntityType="Self.T_TEST_STEPS_BAK" store:Type="Tables" store:Schema="TESTIDE11">
+      <DefiningQuery>SELECT 
+"T_TEST_STEPS_BAK"."STEPS_ID" AS "STEPS_ID", 
+"T_TEST_STEPS_BAK"."RUN_ORDER" AS "RUN_ORDER", 
+"T_TEST_STEPS_BAK"."KEY_WORD_ID" AS "KEY_WORD_ID", 
+"T_TEST_STEPS_BAK"."TEST_CASE_ID" AS "TEST_CASE_ID", 
+"T_TEST_STEPS_BAK"."OBJECT_ID" AS "OBJECT_ID", 
+"T_TEST_STEPS_BAK"."COLUMN_ROW_SETTING" AS "COLUMN_ROW_SETTING", 
+"T_TEST_STEPS_BAK"."VALUE_SETTING" AS "VALUE_SETTING", 
+"T_TEST_STEPS_BAK"."COMMENT" AS "COMMENT", 
+"T_TEST_STEPS_BAK"."IS_RUNNABLE" AS "IS_RUNNABLE"
+FROM "TESTIDE11"."T_TEST_STEPS_BAK" "T_TEST_STEPS_BAK"</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="T_TEST_STEPS_TMP" EntityType="Self.T_TEST_STEPS_TMP" store:Type="Tables" store:Schema="TESTIDE11">
+      <DefiningQuery>SELECT 
+"T_TEST_STEPS_TMP"."STEPS_ID" AS "STEPS_ID", 
+"T_TEST_STEPS_TMP"."RUN_ORDER" AS "RUN_ORDER", 
+"T_TEST_STEPS_TMP"."KEY_WORD_ID" AS "KEY_WORD_ID", 
+"T_TEST_STEPS_TMP"."TEST_CASE_ID" AS "TEST_CASE_ID", 
+"T_TEST_STEPS_TMP"."OBJECT_ID" AS "OBJECT_ID", 
+"T_TEST_STEPS_TMP"."COLUMN_ROW_SETTING" AS "COLUMN_ROW_SETTING", 
+"T_TEST_STEPS_TMP"."VALUE_SETTING" AS "VALUE_SETTING", 
+"T_TEST_STEPS_TMP"."COMMENT" AS "COMMENT", 
+"T_TEST_STEPS_TMP"."IS_RUNNABLE" AS "IS_RUNNABLE"
+FROM "TESTIDE11"."T_TEST_STEPS_TMP" "T_TEST_STEPS_TMP"</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TBLLOGREPORT" EntityType="Self.TBLLOGREPORT" store:Type="Tables" store:Schema="TESTIDE11">
+      <DefiningQuery>SELECT 
+"TBLLOGREPORT"."ID" AS "ID", 
+"TBLLOGREPORT"."CREATIONDATE" AS "CREATIONDATE", 
+"TBLLOGREPORT"."MESSAGETYPE" AS "MESSAGETYPE", 
+"TBLLOGREPORT"."ACTION" AS "ACTION", 
+"TBLLOGREPORT"."CELLADDRESS" AS "CELLADDRESS", 
+"TBLLOGREPORT"."VALIDATIONNAME" AS "VALIDATIONNAME", 
+"TBLLOGREPORT"."VALIDATIONDESCRIPTION" AS "VALIDATIONDESCRIPTION", 
+"TBLLOGREPORT"."APPLICATIONNAME" AS "APPLICATIONNAME", 
+"TBLLOGREPORT"."TESTCASENAME" AS "TESTCASENAME", 
+"TBLLOGREPORT"."DATASETNAME" AS "DATASETNAME", 
+"TBLLOGREPORT"."TESTSTEPNUMBER" AS "TESTSTEPNUMBER", 
+"TBLLOGREPORT"."OBJECTNAME" AS "OBJECTNAME", 
+"TBLLOGREPORT"."COMMENTDATA" AS "COMMENTDATA", 
+"TBLLOGREPORT"."ERRORDESCRIPTION" AS "ERRORDESCRIPTION", 
+"TBLLOGREPORT"."PROGRAMLOCATION" AS "PROGRAMLOCATION", 
+"TBLLOGREPORT"."FEEDPROCESSINGDETAILSID" AS "FEEDPROCESSINGDETAILSID", 
+"TBLLOGREPORT"."GENERAL" AS "GENERAL", 
+"TBLLOGREPORT"."PROJECTNAME" AS "PROJECTNAME", 
+"TBLLOGREPORT"."STORYBOARDNAME" AS "STORYBOARDNAME", 
+"TBLLOGREPORT"."TESTSUITE" AS "TESTSUITE", 
+"TBLLOGREPORT"."DEPENDENCY" AS "DEPENDENCY", 
+"TBLLOGREPORT"."RUNORDER" AS "RUNORDER", 
+"TBLLOGREPORT"."FEEDPROCESSID" AS "FEEDPROCESSID"
+FROM "TESTIDE11"."TBLLOGREPORT" "TBLLOGREPORT"</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TBLSTGVARIABLE" EntityType="Self.TBLSTGVARIABLE" store:Type="Tables" store:Schema="TESTIDE11">
+      <DefiningQuery>SELECT 
+"TBLSTGVARIABLE"."ID" AS "ID", 
+"TBLSTGVARIABLE"."FEEDPROCESSDETAILID" AS "FEEDPROCESSDETAILID", 
+"TBLSTGVARIABLE"."NAME" AS "NAME", 
+"TBLSTGVARIABLE"."VALUE" AS "VALUE", 
+"TBLSTGVARIABLE"."TYPE" AS "TYPE", 
+"TBLSTGVARIABLE"."BASE_COMP" AS "BASE_COMP", 
+"TBLSTGVARIABLE"."CREATEDDATE" AS "CREATEDDATE", 
+"TBLSTGVARIABLE"."BASE_COMP_ID" AS "BASE_COMP_ID"
+FROM "TESTIDE11"."TBLSTGVARIABLE" "TBLSTGVARIABLE"</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TPOS" EntityType="Self.TPOS" store:Type="Tables" store:Schema="TESTIDE11">
+      <DefiningQuery>SELECT 
+"TPOS"."SECID" AS "SECID", 
+"TPOS"."QTY" AS "QTY"
+FROM "TESTIDE11"."TPOS" "TPOS"</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TPOS2" EntityType="Self.TPOS2" store:Type="Tables" store:Schema="TESTIDE11">
+      <DefiningQuery>SELECT 
+"TPOS2"."SECID" AS "SECID", 
+"TPOS2"."QTY" AS "QTY"
+FROM "TESTIDE11"."TPOS2" "TPOS2"</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="V_OBJECT_SNAPSHOT" EntityType="Self.V_OBJECT_SNAPSHOT" store:Type="Tables" store:Schema="TESTIDE11">
+      <DefiningQuery>SELECT 
+"V_OBJECT_SNAPSHOT"."OBJECT_NAME_ID" AS "OBJECT_NAME_ID", 
+"V_OBJECT_SNAPSHOT"."OBJECT_HAPPY_NAME" AS "OBJECT_HAPPY_NAME", 
+"V_OBJECT_SNAPSHOT"."COMMENT" AS "COMMENT", 
+"V_OBJECT_SNAPSHOT"."APPLICATION_ID" AS "APPLICATION_ID", 
+"V_OBJECT_SNAPSHOT"."ENUM_TYPE" AS "ENUM_TYPE", 
+"V_OBJECT_SNAPSHOT"."OBJECT_ID" AS "OBJECT_ID", 
+"V_OBJECT_SNAPSHOT"."OBJECT_TYPE" AS "OBJECT_TYPE", 
+"V_OBJECT_SNAPSHOT"."QUICK_ACCESS" AS "QUICK_ACCESS", 
+"V_OBJECT_SNAPSHOT"."TYPE_ID" AS "TYPE_ID", 
+"V_OBJECT_SNAPSHOT"."IS_CHECKERROR_OBJ" AS "IS_CHECKERROR_OBJ", 
+"V_OBJECT_SNAPSHOT"."TYPE_NAME" AS "TYPE_NAME", 
+"V_OBJECT_SNAPSHOT"."PEG_NAME" AS "PEG_NAME", 
+"V_OBJECT_SNAPSHOT"."PEG_QUICK_ACCESS" AS "PEG_QUICK_ACCESS", 
+"V_OBJECT_SNAPSHOT"."PEG_ID" AS "PEG_ID"
+FROM "TESTIDE11"."V_OBJECT_SNAPSHOT" "V_OBJECT_SNAPSHOT"</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TEST_CASE_VIEW" EntityType="Self.TEST_CASE_VIEW" store:Type="Views" store:Schema="TESTIDE11">
+      <DefiningQuery>SELECT 
+"TEST_CASE_VIEW"."PROJECT_NAME" AS "PROJECT_NAME", 
+"TEST_CASE_VIEW"."TEST_SUITE_NAME" AS "TEST_SUITE_NAME", 
+"TEST_CASE_VIEW"."TEST_CASE_NAME" AS "TEST_CASE_NAME", 
+"TEST_CASE_VIEW"."KEY_WORD_NAME" AS "KEY_WORD_NAME", 
+"TEST_CASE_VIEW"."OBJECT_ID" AS "OBJECT_ID", 
+"TEST_CASE_VIEW"."OBJECT_HAPPY_NAME" AS "OBJECT_HAPPY_NAME", 
+"TEST_CASE_VIEW"."COLUMN_ROW_SETTING" AS "COLUMN_ROW_SETTING", 
+"TEST_CASE_VIEW"."DATA_VALUE" AS "DATA_VALUE", 
+"TEST_CASE_VIEW"."LOOP_ID" AS "LOOP_ID"
+FROM "TESTIDE11"."TEST_CASE_VIEW" "TEST_CASE_VIEW"</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TEST_CASE_VIEW2" EntityType="Self.TEST_CASE_VIEW2" store:Type="Views" store:Schema="TESTIDE11">
+      <DefiningQuery>SELECT 
+"TEST_CASE_VIEW2"."PROJECT_NAME" AS "PROJECT_NAME", 
+"TEST_CASE_VIEW2"."TEST_SUITE_NAME" AS "TEST_SUITE_NAME", 
+"TEST_CASE_VIEW2"."TEST_CASE_NAME" AS "TEST_CASE_NAME", 
+"TEST_CASE_VIEW2"."KEY_WORD_NAME" AS "KEY_WORD_NAME", 
+"TEST_CASE_VIEW2"."OBJECT_ID" AS "OBJECT_ID", 
+"TEST_CASE_VIEW2"."OBJECT_HAPPY_NAME" AS "OBJECT_HAPPY_NAME", 
+"TEST_CASE_VIEW2"."COLUMN_ROW_SETTING" AS "COLUMN_ROW_SETTING", 
+"TEST_CASE_VIEW2"."DATA_VALUE" AS "DATA_VALUE", 
+"TEST_CASE_VIEW2"."LOOP_ID" AS "LOOP_ID", 
+"TEST_CASE_VIEW2"."STEPS_ID" AS "STEPS_ID"
+FROM "TESTIDE11"."TEST_CASE_VIEW2" "TEST_CASE_VIEW2"</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TEST_OBJECT_VIEW" EntityType="Self.TEST_OBJECT_VIEW" store:Type="Views" store:Schema="TESTIDE11">
+      <DefiningQuery>SELECT 
+"TEST_OBJECT_VIEW"."OBJECT_ID" AS "OBJECT_ID", 
+"TEST_OBJECT_VIEW"."OBJECT_HAPPY_NAME" AS "OBJECT_HAPPY_NAME", 
+"TEST_OBJECT_VIEW"."APPLICATION_ID" AS "APPLICATION_ID", 
+"TEST_OBJECT_VIEW"."TYPE_ID" AS "TYPE_ID", 
+"TEST_OBJECT_VIEW"."QUICK_ACCESS" AS "QUICK_ACCESS", 
+"TEST_OBJECT_VIEW"."OBJECT_TYPE" AS "OBJECT_TYPE", 
+"TEST_OBJECT_VIEW"."COMMENT" AS "COMMENT", 
+"TEST_OBJECT_VIEW"."ENUM_TYPE" AS "ENUM_TYPE", 
+"TEST_OBJECT_VIEW"."APP_SHORT_NAME" AS "APP_SHORT_NAME", 
+"TEST_OBJECT_VIEW"."TYPE_NAME" AS "TYPE_NAME"
+FROM "TESTIDE11"."TEST_OBJECT_VIEW" "TEST_OBJECT_VIEW"</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TEST_PROJECT_VIEW" EntityType="Self.TEST_PROJECT_VIEW" store:Type="Views" store:Schema="TESTIDE11">
+      <DefiningQuery>SELECT 
+"TEST_PROJECT_VIEW"."PROJECT_NAME" AS "PROJECT_NAME", 
+"TEST_PROJECT_VIEW"."PROJECT_ID" AS "PROJECT_ID", 
+"TEST_PROJECT_VIEW"."TEST_SUITE_NAME" AS "TEST_SUITE_NAME", 
+"TEST_PROJECT_VIEW"."TEST_SUITE_ID" AS "TEST_SUITE_ID", 
+"TEST_PROJECT_VIEW"."APP_SHORT_NAME" AS "APP_SHORT_NAME", 
+"TEST_PROJECT_VIEW"."APPLICATION_ID" AS "APPLICATION_ID"
+FROM "TESTIDE11"."TEST_PROJECT_VIEW" "TEST_PROJECT_VIEW"</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="V_MARS_STB_SNAPSHOT" EntityType="Self.V_MARS_STB_SNAPSHOT" store:Type="Views" store:Schema="TESTIDE11">
+      <DefiningQuery>SELECT 
+"V_MARS_STB_SNAPSHOT"."STORYBOARD_ID" AS "STORYBOARD_ID", 
+"V_MARS_STB_SNAPSHOT"."STORYBOARD_DETAIL_ID" AS "STORYBOARD_DETAIL_ID", 
+"V_MARS_STB_SNAPSHOT"."LATEST_TEST_MARK_ID" AS "LATEST_TEST_MARK_ID", 
+"V_MARS_STB_SNAPSHOT"."TEST_MODE" AS "TEST_MODE", 
+"V_MARS_STB_SNAPSHOT"."HIST_ID" AS "HIST_ID", 
+"V_MARS_STB_SNAPSHOT"."RUN_ORDER" AS "RUN_ORDER"
+FROM "TESTIDE11"."V_MARS_STB_SNAPSHOT" "V_MARS_STB_SNAPSHOT"</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="V_OBJECT_APPS" EntityType="Self.V_OBJECT_APPS" store:Type="Views" store:Schema="TESTIDE11">
+      <DefiningQuery>SELECT 
+"V_OBJECT_APPS"."APPLICATION_ID" AS "APPLICATION_ID", 
+"V_OBJECT_APPS"."OBJECT_ID" AS "OBJECT_ID", 
+"V_OBJECT_APPS"."COMMENT" AS "COMMENT", 
+"V_OBJECT_APPS"."ENUM_TYPE" AS "ENUM_TYPE", 
+"V_OBJECT_APPS"."OBJECT_HAPPY_NAME" AS "OBJECT_HAPPY_NAME", 
+"V_OBJECT_APPS"."OBJECT_TYPE" AS "OBJECT_TYPE", 
+"V_OBJECT_APPS"."QUICK_ACCESS" AS "QUICK_ACCESS", 
+"V_OBJECT_APPS"."TYPE_ID" AS "TYPE_ID", 
+"V_OBJECT_APPS"."APP_APPLICATION_ID" AS "APP_APPLICATION_ID", 
+"V_OBJECT_APPS"."APP_SHORT_NAME" AS "APP_SHORT_NAME", 
+"V_OBJECT_APPS"."APPLICATION_TYPE_ID" AS "APPLICATION_TYPE_ID", 
+"V_OBJECT_APPS"."COMMENT_APP" AS "COMMENT_APP", 
+"V_OBJECT_APPS"."EXTRAPOPUPMENU" AS "EXTRAPOPUPMENU", 
+"V_OBJECT_APPS"."EXTRAREQUIREMENT" AS "EXTRAREQUIREMENT", 
+"V_OBJECT_APPS"."PROCESS_IDENTIFIER" AS "PROCESS_IDENTIFIER", 
+"V_OBJECT_APPS"."STARTER_COMMAND" AS "STARTER_COMMAND", 
+"V_OBJECT_APPS"."STARTER_PATH" AS "STARTER_PATH", 
+"V_OBJECT_APPS"."VERSION" AS "VERSION", 
+"V_OBJECT_APPS"."TYPE_APPLICATION_TYPE_ID" AS "TYPE_APPLICATION_TYPE_ID", 
+"V_OBJECT_APPS"."TYPE_DESCRPTION" AS "TYPE_DESCRPTION", 
+"V_OBJECT_APPS"."TYP_TYPE_ID" AS "TYP_TYPE_ID", 
+"V_OBJECT_APPS"."TYPE_NAME" AS "TYPE_NAME"
+FROM "TESTIDE11"."V_OBJECT_APPS" "V_OBJECT_APPS"</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="V_STB_PROJ_APP_FULLVISION" EntityType="Self.V_STB_PROJ_APP_FULLVISION" store:Type="Views" store:Schema="TESTIDE11">
+      <DefiningQuery>SELECT 
+"V_STB_PROJ_APP_FULLVISION"."PROJECT_ID" AS "PROJECT_ID", 
+"V_STB_PROJ_APP_FULLVISION"."CREATE_TIME" AS "CREATE_TIME", 
+"V_STB_PROJ_APP_FULLVISION"."CREATER" AS "CREATER", 
+"V_STB_PROJ_APP_FULLVISION"."DESCRIPTION" AS "DESCRIPTION", 
+"V_STB_PROJ_APP_FULLVISION"."STORYBOARD_ID" AS "STORYBOARD_ID", 
+"V_STB_PROJ_APP_FULLVISION"."STORYBOARD_NAME" AS "STORYBOARD_NAME", 
+"V_STB_PROJ_APP_FULLVISION"."APPLICATION_ID" AS "APPLICATION_ID", 
+"V_STB_PROJ_APP_FULLVISION"."APP_SHORT_NAME" AS "APP_SHORT_NAME", 
+"V_STB_PROJ_APP_FULLVISION"."APPLICATION_TYPE_ID" AS "APPLICATION_TYPE_ID"
+FROM "TESTIDE11"."V_STB_PROJ_APP_FULLVISION" "V_STB_PROJ_APP_FULLVISION"</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="V_STORYBOARD_TEST_FULLVISION" EntityType="Self.V_STORYBOARD_TEST_FULLVISION" store:Type="Views" store:Schema="TESTIDE11">
+      <DefiningQuery>SELECT 
+"V_STORYBOARD_TEST_FULLVISION"."STORYBOARD_ID" AS "STORYBOARD_ID", 
+"V_STORYBOARD_TEST_FULLVISION"."STORYBOARD_DETAIL_ID" AS "STORYBOARD_DETAIL_ID", 
+"V_STORYBOARD_TEST_FULLVISION"."STORYBOARD_NAME" AS "STORYBOARD_NAME", 
+"V_STORYBOARD_TEST_FULLVISION"."PROJECT_ID" AS "PROJECT_ID", 
+"V_STORYBOARD_TEST_FULLVISION"."PROJECT_NAME" AS "PROJECT_NAME", 
+"V_STORYBOARD_TEST_FULLVISION"."PROJECT_DESCRIPTION" AS "PROJECT_DESCRIPTION", 
+"V_STORYBOARD_TEST_FULLVISION"."TEST_CASE_NAME" AS "TEST_CASE_NAME", 
+"V_STORYBOARD_TEST_FULLVISION"."TEST_CASE_ID" AS "TEST_CASE_ID", 
+"V_STORYBOARD_TEST_FULLVISION"."TEST_STEP_DESCRIPTION" AS "TEST_STEP_DESCRIPTION", 
+"V_STORYBOARD_TEST_FULLVISION"."TEST_SUITE_ID" AS "TEST_SUITE_ID", 
+"V_STORYBOARD_TEST_FULLVISION"."TEST_SUITE_NAME" AS "TEST_SUITE_NAME", 
+"V_STORYBOARD_TEST_FULLVISION"."TEST_SUITE_DESCRIPTION" AS "TEST_SUITE_DESCRIPTION", 
+"V_STORYBOARD_TEST_FULLVISION"."RUN_ORDER" AS "RUN_ORDER", 
+"V_STORYBOARD_TEST_FULLVISION"."DEPENDS_ON" AS "DEPENDS_ON", 
+"V_STORYBOARD_TEST_FULLVISION"."ALIAS_NAME" AS "ALIAS_NAME", 
+"V_STORYBOARD_TEST_FULLVISION"."PARENT_ALIAS_NAME" AS "PARENT_ALIAS_NAME", 
+"V_STORYBOARD_TEST_FULLVISION"."DISPLAY_NAME" AS "DISPLAY_NAME", 
+"V_STORYBOARD_TEST_FULLVISION"."TEST_RUN_VALUE" AS "TEST_RUN_VALUE", 
+"V_STORYBOARD_TEST_FULLVISION"."LATEST_TEST_MARK_ID" AS "LATEST_TEST_MARK_ID", 
+"V_STORYBOARD_TEST_FULLVISION"."HIST_LATEST_TEST_MARK_ID" AS "HIST_LATEST_TEST_MARK_ID", 
+"V_STORYBOARD_TEST_FULLVISION"."HIST_ID" AS "HIST_ID", 
+"V_STORYBOARD_TEST_FULLVISION"."HIST_TEST_ID" AS "HIST_TEST_ID", 
+"V_STORYBOARD_TEST_FULLVISION"."TEST_CASE_BEGIN_TIME" AS "TEST_CASE_BEGIN_TIME", 
+"V_STORYBOARD_TEST_FULLVISION"."TEST_CASE_END_TIME" AS "TEST_CASE_END_TIME", 
+"V_STORYBOARD_TEST_FULLVISION"."HIST_TEST_RESULT_IN_TEXT" AS "HIST_TEST_RESULT_IN_TEXT", 
+"V_STORYBOARD_TEST_FULLVISION"."HIST_TEST_MODE" AS "HIST_TEST_MODE", 
+"V_STORYBOARD_TEST_FULLVISION"."HIST_RESULT" AS "HIST_RESULT", 
+"V_STORYBOARD_TEST_FULLVISION"."DATA_SETTING_ID" AS "DATA_SETTING_ID", 
+"V_STORYBOARD_TEST_FULLVISION"."DATA_SUMMARY_ID" AS "DATA_SUMMARY_ID", 
+"V_STORYBOARD_TEST_FULLVISION"."DATA_SET_CREATETIME" AS "DATA_SET_CREATETIME", 
+"V_STORYBOARD_TEST_FULLVISION"."DATA_SET_TESTERID" AS "DATA_SET_TESTERID", 
+"V_STORYBOARD_TEST_FULLVISION"."DATA_SET_VERSION" AS "DATA_SET_VERSION", 
+"V_STORYBOARD_TEST_FULLVISION"."DATA_SET_ALIAS_NAME" AS "DATA_SET_ALIAS_NAME", 
+"V_STORYBOARD_TEST_FULLVISION"."DATA_SET_SHARE_MARK" AS "DATA_SET_SHARE_MARK", 
+"V_STORYBOARD_TEST_FULLVISION"."DATA_SET_STATUS" AS "DATA_SET_STATUS", 
+"V_STORYBOARD_TEST_FULLVISION"."DATA_SET_TYPE" AS "DATA_SET_TYPE", 
+"V_STORYBOARD_TEST_FULLVISION"."DATASET_DESCRIPTION" AS "DATASET_DESCRIPTION"
+FROM "TESTIDE11"."V_STORYBOARD_TEST_FULLVISION" "V_STORYBOARD_TEST_FULLVISION"</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="V_TEST_DATA_REPORT_SUMMARY" EntityType="Self.V_TEST_DATA_REPORT_SUMMARY" store:Type="Views" store:Schema="TESTIDE11">
+      <DefiningQuery>SELECT 
+"V_TEST_DATA_REPORT_SUMMARY"."KEY_WORD_NAME" AS "KEY_WORD_NAME", 
+"V_TEST_DATA_REPORT_SUMMARY"."OBJECT_HAPPY_NAME" AS "OBJECT_HAPPY_NAME", 
+"V_TEST_DATA_REPORT_SUMMARY"."INPUT_VALUE_SETTING" AS "INPUT_VALUE_SETTING", 
+"V_TEST_DATA_REPORT_SUMMARY"."RETURN_VALUES" AS "RETURN_VALUES", 
+"V_TEST_DATA_REPORT_SUMMARY"."ACTUAL_INPUT_DATA" AS "ACTUAL_INPUT_DATA", 
+"V_TEST_DATA_REPORT_SUMMARY"."LATEST_TEST_MARK_ID" AS "LATEST_TEST_MARK_ID", 
+"V_TEST_DATA_REPORT_SUMMARY"."STORYBOARD_DETAIL_ID" AS "STORYBOARD_DETAIL_ID", 
+"V_TEST_DATA_REPORT_SUMMARY"."LOOP_ID" AS "LOOP_ID", 
+"V_TEST_DATA_REPORT_SUMMARY"."RUN_ORDER" AS "RUN_ORDER", 
+"V_TEST_DATA_REPORT_SUMMARY"."TEST_MODE" AS "TEST_MODE", 
+"V_TEST_DATA_REPORT_SUMMARY"."TEST_REPORT_STEP_ID" AS "TEST_REPORT_STEP_ID", 
+"V_TEST_DATA_REPORT_SUMMARY"."COLUMN_ROW_SETTING" AS "COLUMN_ROW_SETTING", 
+"V_TEST_DATA_REPORT_SUMMARY"."STORYBOARD_ORDER" AS "STORYBOARD_ORDER", 
+"V_TEST_DATA_REPORT_SUMMARY"."STORYBOARD_ID" AS "STORYBOARD_ID", 
+"V_TEST_DATA_REPORT_SUMMARY"."TEST_CASE_ID" AS "TEST_CASE_ID", 
+"V_TEST_DATA_REPORT_SUMMARY"."RUNNING_RESULT_INFO" AS "RUNNING_RESULT_INFO", 
+"V_TEST_DATA_REPORT_SUMMARY"."STEPS_ID" AS "STEPS_ID", 
+"V_TEST_DATA_REPORT_SUMMARY"."INFO_PIC" AS "INFO_PIC"
+FROM "TESTIDE11"."V_TEST_DATA_REPORT_SUMMARY" "V_TEST_DATA_REPORT_SUMMARY"</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="V_TEST_DATARPT_CAPTURE" EntityType="Self.V_TEST_DATARPT_CAPTURE" store:Type="Views" store:Schema="TESTIDE11">
+      <DefiningQuery>SELECT 
+"V_TEST_DATARPT_CAPTURE"."KEY_WORD_NAME" AS "KEY_WORD_NAME", 
+"V_TEST_DATARPT_CAPTURE"."OBJECT_HAPPY_NAME" AS "OBJECT_HAPPY_NAME", 
+"V_TEST_DATARPT_CAPTURE"."INPUT_VALUE_SETTING" AS "INPUT_VALUE_SETTING", 
+"V_TEST_DATARPT_CAPTURE"."RETURN_VALUES" AS "RETURN_VALUES", 
+"V_TEST_DATARPT_CAPTURE"."ACTUAL_INPUT_DATA" AS "ACTUAL_INPUT_DATA", 
+"V_TEST_DATARPT_CAPTURE"."LATEST_TEST_MARK_ID" AS "LATEST_TEST_MARK_ID", 
+"V_TEST_DATARPT_CAPTURE"."STORYBOARD_DETAIL_ID" AS "STORYBOARD_DETAIL_ID", 
+"V_TEST_DATARPT_CAPTURE"."LOOP_ID" AS "LOOP_ID", 
+"V_TEST_DATARPT_CAPTURE"."RUN_ORDER" AS "RUN_ORDER", 
+"V_TEST_DATARPT_CAPTURE"."TEST_MODE" AS "TEST_MODE", 
+"V_TEST_DATARPT_CAPTURE"."TEST_REPORT_STEP_ID" AS "TEST_REPORT_STEP_ID", 
+"V_TEST_DATARPT_CAPTURE"."STORYBOARD_ID" AS "STORYBOARD_ID"
+FROM "TESTIDE11"."V_TEST_DATARPT_CAPTURE" "V_TEST_DATARPT_CAPTURE"</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="V_TEST_STEPS_FULLVISION" EntityType="Self.V_TEST_STEPS_FULLVISION" store:Type="Views" store:Schema="TESTIDE11">
+      <DefiningQuery>SELECT 
+"V_TEST_STEPS_FULLVISION"."TEST_CASE_ID" AS "TEST_CASE_ID", 
+"V_TEST_STEPS_FULLVISION"."TEST_CASE_NAME" AS "TEST_CASE_NAME", 
+"V_TEST_STEPS_FULLVISION"."KEY_WORD_ID" AS "KEY_WORD_ID", 
+"V_TEST_STEPS_FULLVISION"."KEY_WORD_NAME" AS "KEY_WORD_NAME", 
+"V_TEST_STEPS_FULLVISION"."OBJECT_HAPPY_NAME" AS "OBJECT_HAPPY_NAME", 
+"V_TEST_STEPS_FULLVISION"."OBJECT_ID" AS "OBJECT_ID", 
+"V_TEST_STEPS_FULLVISION"."OBJECT_TYPE" AS "OBJECT_TYPE", 
+"V_TEST_STEPS_FULLVISION"."QUICK_ACCESS" AS "QUICK_ACCESS", 
+"V_TEST_STEPS_FULLVISION"."ENUM_TYPE" AS "ENUM_TYPE", 
+"V_TEST_STEPS_FULLVISION"."APPLICATION_ID" AS "APPLICATION_ID", 
+"V_TEST_STEPS_FULLVISION"."OBJECT_NAME_ID" AS "OBJECT_NAME_ID", 
+"V_TEST_STEPS_FULLVISION"."TYPE_NAME" AS "TYPE_NAME", 
+"V_TEST_STEPS_FULLVISION"."STEPS_ID" AS "STEPS_ID", 
+"V_TEST_STEPS_FULLVISION"."COLUMN_ROW_SETTING" AS "COLUMN_ROW_SETTING", 
+"V_TEST_STEPS_FULLVISION"."COMMENTINFO" AS "COMMENTINFO", 
+"V_TEST_STEPS_FULLVISION"."IS_RUNNABLE" AS "IS_RUNNABLE", 
+"V_TEST_STEPS_FULLVISION"."RUN_ORDER" AS "RUN_ORDER", 
+"V_TEST_STEPS_FULLVISION"."VALUE_SETTING" AS "VALUE_SETTING"
+FROM "TESTIDE11"."V_TEST_STEPS_FULLVISION" "V_TEST_STEPS_FULLVISION"</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="V_USER_COMPANY" EntityType="Self.V_USER_COMPANY" store:Type="Views" store:Schema="TESTIDE11">
+      <DefiningQuery>SELECT 
+"V_USER_COMPANY"."TESTER_ID" AS "TESTER_ID", 
+"V_USER_COMPANY"."TESTER_NAME_LAST" AS "TESTER_NAME_LAST", 
+"V_USER_COMPANY"."TESTER_NAME_M" AS "TESTER_NAME_M", 
+"V_USER_COMPANY"."TESTER_NAME_F" AS "TESTER_NAME_F", 
+"V_USER_COMPANY"."TESTER_LOGIN_NAME" AS "TESTER_LOGIN_NAME", 
+"V_USER_COMPANY"."TESTER_PWD" AS "TESTER_PWD", 
+"V_USER_COMPANY"."AVAILABLE_MARK" AS "AVAILABLE_MARK", 
+"V_USER_COMPANY"."TESTER_MAIL" AS "TESTER_MAIL", 
+"V_USER_COMPANY"."TESTER_NUMBER" AS "TESTER_NUMBER", 
+"V_USER_COMPANY"."COMPANY_ID" AS "COMPANY_ID", 
+"V_USER_COMPANY"."TESTER_DESC" AS "TESTER_DESC", 
+"V_USER_COMPANY"."COMPANY_NAME" AS "COMPANY_NAME", 
+"V_USER_COMPANY"."COMPANY_DESC" AS "COMPANY_DESC", 
+"V_USER_COMPANY"."COMPANY_ADDRESS" AS "COMPANY_ADDRESS", 
+"V_USER_COMPANY"."COMPANY_NUMBER" AS "COMPANY_NUMBER", 
+"V_USER_COMPANY"."COMPANY_AVAILABLE_MARK" AS "COMPANY_AVAILABLE_MARK"
+FROM "TESTIDE11"."V_USER_COMPANY" "V_USER_COMPANY"</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_BSLN_DTL_BSID_BSLN_DT_ID" Association="Self.FK_BSLN_DTL_BSID_BSLN_DT_ID">
+      <End Role="T_BASELINE_DATA_SUMMARY" EntitySet="T_BASELINE_DATA_SUMMARY" />
+      <End Role="T_BASELINE_DATA_DETAIL" EntitySet="T_BASELINE_DATA_DETAIL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_REL_APP__REFERENCE_T_TEST_P" Association="Self.FK_REL_APP__REFERENCE_T_TEST_P">
+      <End Role="T_TEST_PROJECT" EntitySet="T_TEST_PROJECT" />
+      <End Role="REL_APP_PROJ" EntitySet="REL_APP_PROJ" />
+    </AssociationSet>
+    <AssociationSet Name="FK_REL_TC_D_REFERENCE_T_TEST_C" Association="Self.FK_REL_TC_D_REFERENCE_T_TEST_C">
+      <End Role="T_TEST_CASE_SUMMARY" EntitySet="T_TEST_CASE_SUMMARY" />
+      <End Role="REL_TC_DATA_SUMMARY" EntitySet="REL_TC_DATA_SUMMARY" />
+    </AssociationSet>
+    <AssociationSet Name="FK_REL_TC_D_REFERENCE_T_TEST_D" Association="Self.FK_REL_TC_D_REFERENCE_T_TEST_D">
+      <End Role="T_TEST_DATA_SUMMARY" EntitySet="T_TEST_DATA_SUMMARY" />
+      <End Role="REL_TC_DATA_SUMMARY" EntitySet="REL_TC_DATA_SUMMARY" />
+    </AssociationSet>
+    <AssociationSet Name="FK_REL_TEST_REFERENCE_T_TEST_2" Association="Self.FK_REL_TEST_REFERENCE_T_TEST_2">
+      <End Role="T_TEST_SUITE" EntitySet="T_TEST_SUITE" />
+      <End Role="REL_TEST_CASE_TEST_SUITE" EntitySet="REL_TEST_CASE_TEST_SUITE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_REL_TEST_REFERENCE_T_TEST_C" Association="Self.FK_REL_TEST_REFERENCE_T_TEST_C">
+      <End Role="T_TEST_CASE_SUMMARY" EntitySet="T_TEST_CASE_SUMMARY" />
+      <End Role="REL_TEST_CASE_TEST_SUITE" EntitySet="REL_TEST_CASE_TEST_SUITE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_REL_TEST_REFERENCE_T_TEST_P" Association="Self.FK_REL_TEST_REFERENCE_T_TEST_P">
+      <End Role="T_TEST_PROJECT" EntitySet="T_TEST_PROJECT" />
+      <End Role="REL_TEST_SUIT_PROJECT" EntitySet="REL_TEST_SUIT_PROJECT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_REL_TEST_REFERENCE_T_TEST_S" Association="Self.FK_REL_TEST_REFERENCE_T_TEST_S">
+      <End Role="T_TEST_SUITE" EntitySet="T_TEST_SUITE" />
+      <End Role="REL_TEST_SUIT_PROJECT" EntitySet="REL_TEST_SUIT_PROJECT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_DIC_RE_REFERENCE_T_GUI_CO" Association="Self.FK_T_DIC_RE_REFERENCE_T_GUI_CO">
+      <End Role="T_GUI_COMPONENT_TYPE_DIC" EntitySet="T_GUI_COMPONENT_TYPE_DIC" />
+      <End Role="T_DIC_RELATION_KEYWORD" EntitySet="T_DIC_RELATION_KEYWORD" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_DIC_RE_REFERENCE_T_KEYWOR" Association="Self.FK_T_DIC_RE_REFERENCE_T_KEYWOR">
+      <End Role="T_KEYWORD" EntitySet="T_KEYWORD" />
+      <End Role="T_DIC_RELATION_KEYWORD" EntitySet="T_DIC_RELATION_KEYWORD" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_PROJ_T_REF_TEST_SUITE" Association="Self.FK_T_PROJ_T_REF_TEST_SUITE">
+      <End Role="T_TEST_SUITE" EntitySet="T_TEST_SUITE" />
+      <End Role="T_PROJ_TC_MGR" EntitySet="T_PROJ_TC_MGR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_PROJ_T_REFERENCE_T_STORYB" Association="Self.FK_T_PROJ_T_REFERENCE_T_STORYB">
+      <End Role="T_STORYBOARD_SUMMARY" EntitySet="T_STORYBOARD_SUMMARY" />
+      <End Role="T_PROJ_TC_MGR" EntitySet="T_PROJ_TC_MGR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_PROJ_T_REFERENCE_T_TEST_C" Association="Self.FK_T_PROJ_T_REFERENCE_T_TEST_C">
+      <End Role="T_TEST_CASE_SUMMARY" EntitySet="T_TEST_CASE_SUMMARY" />
+      <End Role="T_PROJ_TC_MGR" EntitySet="T_PROJ_TC_MGR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_PROJ_T_REFERENCE_T_TEST_P" Association="Self.FK_T_PROJ_T_REFERENCE_T_TEST_P">
+      <End Role="T_TEST_PROJECT" EntitySet="T_TEST_PROJECT" />
+      <End Role="T_PROJ_TC_MGR" EntitySet="T_PROJ_TC_MGR" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_PROJEC_REFERENCE_T_DATA_S" Association="Self.FK_T_PROJEC_REFERENCE_T_DATA_S">
+      <End Role="T_DATA_SOURCE" EntitySet="T_DATA_SOURCE" />
+      <End Role="T_PROJECT_DATA_SOURCE" EntitySet="T_PROJECT_DATA_SOURCE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_PROJEC_REFERENCE_T_TEST_P" Association="Self.FK_T_PROJEC_REFERENCE_T_TEST_P">
+      <End Role="T_TEST_PROJECT" EntitySet="T_TEST_PROJECT" />
+      <End Role="T_PROJECT_DATA_SOURCE" EntitySet="T_PROJECT_DATA_SOURCE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_REGIST_REFERENCE_T_GUI_CO" Association="Self.FK_T_REGIST_REFERENCE_T_GUI_CO">
+      <End Role="T_GUI_COMPONENT_TYPE_DIC" EntitySet="T_GUI_COMPONENT_TYPE_DIC" />
+      <End Role="T_REGISTED_OBJECT" EntitySet="T_REGISTED_OBJECT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_SHARED_REFERENCE_T_TEST_D" Association="Self.FK_T_SHARED_REFERENCE_T_TEST_D">
+      <End Role="T_TEST_DATA_SUMMARY" EntitySet="T_TEST_DATA_SUMMARY" />
+      <End Role="T_SHARED_OBJECT_POOL" EntitySet="T_SHARED_OBJECT_POOL" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_STORYB_REFERENCE_T_PROJ_T" Association="Self.FK_T_STORYB_REFERENCE_T_PROJ_T">
+      <End Role="T_PROJ_TC_MGR" EntitySet="T_PROJ_TC_MGR" />
+      <End Role="T_STORYBOARD_DATASET_SETTING" EntitySet="T_STORYBOARD_DATASET_SETTING" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_STORYB_REFERENCE_T_STORYB" Association="Self.FK_T_STORYB_REFERENCE_T_STORYB">
+      <End Role="T_STORYBOARD_SUMMARY" EntitySet="T_STORYBOARD_SUMMARY" />
+      <End Role="T_STORYBOARD_HISTORY" EntitySet="T_STORYBOARD_HISTORY" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_STORYB_REFERENCE_T_TEST_D" Association="Self.FK_T_STORYB_REFERENCE_T_TEST_D">
+      <End Role="T_TEST_DATA_SUMMARY" EntitySet="T_TEST_DATA_SUMMARY" />
+      <End Role="T_STORYBOARD_DATASET_SETTING" EntitySet="T_STORYBOARD_DATASET_SETTING" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_TEST_C_REFERENCE_T_TEST_C" Association="Self.FK_T_TEST_C_REFERENCE_T_TEST_C">
+      <End Role="T_TEST_CASE_SUMMARY" EntitySet="T_TEST_CASE_SUMMARY" />
+      <End Role="T_TEST_CASE_VERSION" EntitySet="T_TEST_CASE_VERSION" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_TEST_R_REFERENCE_T_TEST_C" Association="Self.FK_T_TEST_R_REFERENCE_T_TEST_C">
+      <End Role="T_TEST_CASE_SUMMARY" EntitySet="T_TEST_CASE_SUMMARY" />
+      <End Role="T_TEST_REPORT" EntitySet="T_TEST_REPORT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_TEST_R_REFERENCE_T_TEST_R" Association="Self.FK_T_TEST_R_REFERENCE_T_TEST_R">
+      <End Role="T_TEST_REPORT" EntitySet="T_TEST_REPORT" />
+      <End Role="T_TEST_REPORT_STEPS" EntitySet="T_TEST_REPORT_STEPS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_TEST_S_REFERENCE_T_KEYWOR" Association="Self.FK_T_TEST_S_REFERENCE_T_KEYWOR">
+      <End Role="T_KEYWORD" EntitySet="T_KEYWORD" />
+      <End Role="T_TEST_STEPS" EntitySet="T_TEST_STEPS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_TEST_S_REFERENCE_T_REGIST" Association="Self.FK_T_TEST_S_REFERENCE_T_REGIST">
+      <End Role="T_REGISTED_OBJECT" EntitySet="T_REGISTED_OBJECT" />
+      <End Role="T_TEST_STEPS" EntitySet="T_TEST_STEPS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_T_TEST_S_REFERENCE_T_TEST_C" Association="Self.FK_T_TEST_S_REFERENCE_T_TEST_C">
+      <End Role="T_TEST_CASE_SUMMARY" EntitySet="T_TEST_CASE_SUMMARY" />
+      <End Role="T_TEST_STEPS" EntitySet="T_TEST_STEPS" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TEST_DAT_REFERENCE_T_TEST_D" Association="Self.FK_TEST_DAT_REFERENCE_T_TEST_D">
+      <End Role="T_TEST_DATA_SUMMARY" EntitySet="T_TEST_DATA_SUMMARY" />
+      <End Role="TEST_DATA_SETTING" EntitySet="TEST_DATA_SETTING" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TEST_DAT_REFERENCE_T_TEST_S" Association="Self.FK_TEST_DAT_REFERENCE_T_TEST_S">
+      <End Role="T_TEST_STEPS" EntitySet="T_TEST_STEPS" />
+      <End Role="TEST_DATA_SETTING" EntitySet="TEST_DATA_SETTING" />
+    </AssociationSet>
+    <AssociationSet Name="T_TESTER_INFO_COMPANY_FK" Association="Self.T_TESTER_INFO_COMPANY_FK">
+      <End Role="T_MARS_COMPANY" EntitySet="T_MARS_COMPANY" />
+      <End Role="T_TESTER_INFO" EntitySet="T_TESTER_INFO" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

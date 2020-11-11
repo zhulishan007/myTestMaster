@@ -1,0 +1,56 @@
+﻿using MARS_Data.Entities;
+using MARS_Repository.Repositories;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace MARS_Web.Controllers
+{
+    public class AccountsController : Controller
+    {
+
+        // GET: Accounts
+        public ActionResult Index()
+        {
+            return View();
+        }
+        public ActionResult ListOfUsers()
+        {
+            var repAcc = new AccountRepository();
+           var listofusers = repAcc.ListAllUsers();
+           return View(listofusers);
+ 
+        }
+        public ActionResult AddUser()
+        {
+            var repCompany = new CompanyRepository();
+            var lCompanyList = repCompany.GetCompanyList();
+            var companylist = lCompanyList.Select(c => new SelectListItem { Text = c.COMPANY_NAME, Value = c.COMPANY_ID.ToString() }).ToList();
+            ViewBag.listCompany = companylist;
+            return View();
+        }
+        public ActionResult AddNewUser()
+        {
+            
+            return View();
+        }
+        [HttpPost]
+        public JsonResult CreateUser(T_TESTER_INFO t_TESTER)
+        {
+            AccountRepository Accountrepo = new AccountRepository();
+            var repCompany = new CompanyRepository();
+            var lCompanyList = repCompany.GetCompanyList();
+            var companylist = lCompanyList.Select(c => new SelectListItem { Text = c.COMPANY_NAME, Value = c.COMPANY_ID.ToString() }).ToList();
+            ViewBag.listCompany = companylist;
+            T_TESTER_INFO testerinfo = new T_TESTER_INFO();
+           
+
+                t_TESTER = Accountrepo.CreateNewUser(t_TESTER);
+                return Json(true, JsonRequestBehavior.AllowGet);
+            
+          
+        }
+    }
+}

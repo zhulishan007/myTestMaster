@@ -1,0 +1,63 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace MARS_Web.Controllers
+{
+    public class PQGridController : Controller
+    {
+        // GET: PQGrid
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        public ActionResult PQGrid()
+        {
+            return View();
+        }
+
+        [HttpPost, ValidateInput(false)]
+        public String exportData(String pq_ext, String pq_data, bool pq_decode, String pq_filename)
+        {
+            String[] arr = new String[] { "csv", "htm", "json", "xlsx", "zip" };
+            if (arr.Contains(pq_ext))
+            {
+                String filename = pq_filename + "." + pq_ext;
+                Session["pq_data"] = pq_data;
+                Session["pq_decode"] = pq_decode;
+                Session["pq_filename"] = filename;
+                return filename;
+            }
+            else
+            {
+                throw new Exception("unsupported format!");
+            }
+        }
+
+        [HttpGet]
+        public FileContentResult exportData(String pq_filename)
+        {
+            if (Session["pq_filename"].ToString() == pq_filename)
+            {
+                String contents = Session["pq_data"].ToString();
+                string ApplicationName = "\"Applicati\",\"NT_Summit5.6\",\"NT_Summit6.1\"";
+                string TestSuiteName = "\"Test Suite Name\",\"NT Swaps Trade Entry\",\"\"";
+                string TestCaseName = "\"Test Case Name\",\"NT FORM FEE Swp Trd Entry\",\"\"";
+                string TestCaseDescription = "\"Test Case Description\",\"Entry of a Formula Bases Interest Rate Swap\",\"\"";
+                string Mode = "\"Mode\",\"\",\"\",\"\"";
+                //string Header = "\"Func\",\"Keyword\",\"Object\",\"Parameters\",\"Comment\",\"\",\"Data :<b> Opics Test</b>\",\"\",\"Data:<b> Opics Swap</b>\",\"\",\"Data :<b> Opics Combined</b>\",\"\",\"Data :<b> Opics</b>\",\"\",\"Data :<b>Test</b>\",\"\",\"Data :<b> Swaps</b>\",\"\",\"Data :<b> Opics Test 1</b>\",\"\",\"Data :<b> Opics Test 2</b>\",\"\",\"Data :<b> Opics Test 3</b>\",\"\",\"Data :<b> Opics Test 4</b>\",\"\",\"Data :<b> Opics Test 5</b>\",\"\",\"Data :<b> Opics Test 6</b>\",\"\",\"Data :<b> Opics Test 7</b>\",\"\",\"Data :<b> Opics Test 8</b>\",\"\",\"Data :<b> Opics Test 9</b>\",\"\",\"Data :<b> Opics Test 10</b>\",\"\",\"Data :<b>Opics Swap 1</b>\",\"\",\"Data :<b> Opics Swap 2</b>\",\"\",\"Data :<b> Opics Swap 3</b>\",\"\",\"Data :<b> Opics Swap 4</b>\",\"\",\"Data :<b> Opics Swap 5</b>\",\"\",\"Data :<b> Opics Swap 6</b>\",\"\",\"Data :<b> Opics Swap 7</b>\",\"\",\"Data :<b> Opics Swap 8</b>\",\"\",\"Data :<b> Opics Swap 9</b>\",\"\",\"Data :<b> Opics Swap 10</b>\",\"\",\"Data :<b> Opics Combined 1</b>\",\"\",\"Data :<b> Opics Combined 2</b>\",\"\",\"Data :<b> Opics Combined 3</b>\",\"\",\"Data :<b> Opics Combined 4</b>\",\"\",\"Data :<b> Opics Combined 5</b>\",\"\",\"Data :<b> Opics Combined 6</b>\",\"\",\"Data :<b> Opics Combined 7</b>\",\"\",\"Data :<b> Opics Combined 8</b>\",\"\",\"Data :<b> Opics Combined 9</b>\",\"\",\"Data :<b> Opics Combined 10</b>\",\"\",\"Data :<b> Trade Entry 1</b>\",\"\",\"Data :<b> Trade Entry 2</b>\",\"\",\"Data :<b>Trade Entry 3</b>\",\"\",\"Data :<b> Trade Entry 4</b>\",\"\",\"Data :<b> Trade Entry 5</b>\",\"\",\"Data :<b>Trade Entry 6</b>\",\"\",\"Data :<b>Trade Entry 7</b>\",\"\",\"Data :<b> Trade Entry 8</b>\",\"\",\"Data :<b> Trade Entry 9</b>\",\"\",\"Data :<b> Trade Entry 10</b>\",\"\",\"Data :<b> Opics Test 33</b>\",\"\",\"Data :<b> Opics Test32</b>\",\"\",\"Data :<b> Opics 1</b>\",\"\",\"Data :<b> Opics 2</b>\",\"\",\"Data :<b> Opics 3</b>\",\"\",\"Data :<b> Opics 4</b>\",\"\",\"Data :<b> Opics 5</b>\",\"\",\"Data :<b> Opics 6</b>\",\"\",\"Data :<b> Opics 7</b>\",\"\",\"Data :<b> Opics 8 </b>\",\"\",\"Data :<b> Opics 9 </b>\",\"\",\"Data :<b> Opics 10</b>\",\"\",\"Data :<b> Opics 11</b>\",\"\",\"Data :<b> Opics12</b>\",\"\",\"Data :<b> Opics Entry 1</b>\",\"\",\"Data :<b> Opics Entry 2</b>\",\"\",\"Data :<b> Opics Entry 3</b>\",\"\",\"Data :<b> Opics Entry 4</b>\",\"\",\"Data :<b> Opics Entry 5</b>\",\"\",\"Data :<b> Opics Entry 6</b>\",\"\",\"Data :<b> Opics Entry 7</b>\",\"\",\"Data :<b> Opics Entry 8</b>\",\"\",\"Data :<b> Opics Entry 9</b>\",\"\",\"Data :<b> Opics Entry 10</b>\",\"\",\"Data :<b> Opics Entry 11</b>\",\"\",\"Data :<b> Opics Entry 12</b>\",\"\",\"Data :<b> Opics Trades 1</b>\",\"\",\"Data :<b> Opics Trades 2</b>\",\"\",\"Data :<b> Opics Trades 3</b>\",\"\",\"Data :<b> Opics Trades 4</b>\",\"\",\"Data :<b> Opics Trades 5</b>\",\"\",\"Data :<b> Opics Trades 6</b>\",\"\",\"Data :<b> Opics Trades 7</b>\",\"\",\"Data :<b> Opics Trades 8</b>\",\"\",\"Data :<b> Opics Trades 9</b>\",\"\",\"Data :<b> Opics Trades 10</b>\",\"\",\"Data :<b> Opics Trades 11</b>\",\"\",\"Data :<b> Opics Trades 12</b>\",\"\",\"Data :<b> Opics Forex 1</b>\",\"\",\"Data :<b> Opics Forex 2</b>\",\"\",\"Data :<b> Opics Forex 3</b>\",\"\",\"Data :<b> Opics Forex 4</b>\",\"\",\"Data :<b> Opics Forex 5</b>\",\"\",\"Data :<b> Opics Forex 6</b>\",\"\",\"Data :<b> Opics Forex 7</b>\",\"\",\"Data :<b> Opics Forex 8</b>\",\"\",\"Data :<b> Opics Forex 9</b>\",\"\",\"Data :<b> Opics Forex 10</b>\",\"\",\"Data :<b> Opics Forex 11</b>\",\"\",\"Data :<b> Opics Forex 12</b>\",\"\",\"Data :<b> Opics Fixed income 1</b>\",\"\",\"Data :<b> Opics Fixed income 2</b>\",\"\",\"Data :<b> Opics Fixed income 3</b>\",\"\",\"Data :<b> Opics Fixed income 4</b>\",\"\",\"Data :<b> Opics Fixed income 5</b>\",\"\",\"Data :<b> Opics Fixed income 6</b>\",\"\",\"Data :<b> Opics Fixed income 7</b>\",\"\",\"Data :<b> Opics Fixed income 8</b>\",\"\",\"Data :<b> Opics Fixed income 9</b>\",\"\",\"Data :<b> Opics Fixed income 10</b>\",\"\",\"Data :<b> Opics Fixed income 11</b>\",\"\",\"Data :<b> Opics Fixed income 12</b>\",\"\",\"Data :<b> Opics Exchange 1</b>\",\"\",\"Data :<b> Opics Exchange 2</b>\",\"\",\"Data :<b> Opics Exchange 3</b>\",\"\",\"Data :<b> Opics Exchange 4</b>\",\"\",\"Data :<b> Opics Exchange 5</b>\",\"\",\"Data :<b> Opics Exchange 6</b>\",\"\",\"Data :<b> Opics Exchange 7</b>\",\"\",\"Data :<b> Opics Exchange 8</b>\",\"\",\"Data :<b> Opics Exchange 9</b>\",\"\",\"Data :<b> Opics Exchange 10</b>\",\"\",\"Data :<b> Opics Exchange 11</b>\",\"\",\"Data :<b> Opics Exchange 12</b>\"";
+                contents = ApplicationName + "\r\n" + TestSuiteName + "\r\n" + TestCaseName + "\r\n" + TestCaseDescription + "\r\n" + Mode + "\r\n" + contents;
+                byte[] bytes = ((bool)Session["pq_decode"]) ? Convert.FromBase64String(contents) :
+                    new System.Text.UTF8Encoding().GetBytes(contents);
+                return File(bytes, "application/octet-stream", pq_filename);
+            }
+            else
+            {
+                throw new Exception("unknown file.");
+            }
+        }
+    }
+}

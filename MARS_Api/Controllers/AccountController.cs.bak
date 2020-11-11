@@ -1,0 +1,237 @@
+﻿/// <summary>
+/// *********************************************************
+/// Description: This Web API controller contains all API 
+///              related to Account operatins like Get Users
+///              Add User / Edit User etc
+/// *********************************************************
+/// </summary>
+
+using MARS_Revamp_DB.Entities;
+using MARS_Repository.Repositories;
+using MARS_Repository.ViewModel;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web.Mvc;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using Newtonsoft.Json;
+using AcceptVerbsAttribute = System.Web.Http.AcceptVerbsAttribute;
+using System.Web.Script.Serialization;
+using MARS_Web.Helper;
+
+namespace MarsApi.Controllers
+{
+    // [Route("api/Account")]
+    public class AccountController : ApiController
+    {
+        JavaScriptSerializer serializer = new JavaScriptSerializer();
+
+        [AcceptVerbs("GET")]
+        public string DataLoad(string searchValue = "", string drawValue = "", string orderValue = "",
+            string orderDirValue = "", int startRecValue = 0, int pageSizeValue = 10000, string LastNameSearchValue = "", string MiddelNameSearchValue = "",
+            string FirstNameSearchValue = "", string UserNameSearchValue = "", string EmailSearchValue = "", string CompanySearchValue = "",
+            string colOrderIndexValue = "", string colOrderValue = "", string colDirValue = ""
+        )
+        {
+            try
+            {
+                var repAcc = new AccountRepository();
+
+                string search = searchValue; // Request.Form.GetValues("search[value]")[0];
+                string draw = drawValue; // Request.Form.GetValues("draw")[0];
+                string order = orderValue;// Request.Form.GetValues("order[0][column]")[0];
+                string orderDir = orderDirValue; // Request.Form.GetValues("order[0][dir]")[0];
+                int startRec = startRecValue; //Convert.ToInt32(Request.Form.GetValues("start")[0]);
+                int pageSize = pageSizeValue; // Convert.ToInt32(Request.Form.GetValues("length")[0]);
+
+                var dataValues = new List<UserModel>();
+
+                dataValues = repAcc.ListAllUsers().ToList();
+
+                string LastNameSearch = LastNameSearchValue; // Request.Form.GetValues("columns[0][search][value]")[0];
+                string MiddelNameSearch = MiddelNameSearchValue; // Request.Form.GetValues("columns[1][search][value]")[0];
+                string FirstNameSearch = FirstNameSearchValue; // Request.Form.GetValues("columns[2][search][value]")[0];
+                string UserNameSearch = UserNameSearchValue; // Request.Form.GetValues("columns[3][search][value]")[0];
+                string EmailSearch = EmailSearchValue; // Request.Form.GetValues("columns[4][search][value]")[0];
+                string CompanySearch = CompanySearchValue;// Request.Form.GetValues("columns[5][search][value]")[0];
+
+                string colOrderIndex = colOrderIndexValue; // Request.Form.GetValues("order[0][column]")[0];
+                var colOrder = colOrderValue; // Request.Form.GetValues("columns[" + colOrderIndex + "][name]").FirstOrDefault();
+                string colDir = colDirValue; // Request.Form.GetValues("order[0][dir]")[0];
+
+
+                if (!string.IsNullOrEmpty(LastNameSearch))
+                {
+                    dataValues = dataValues.Where(x => x.TESTER_NAME_LAST.ToLower().Trim().Contains(LastNameSearch.ToLower().Trim())).ToList();
+                }
+                if (!string.IsNullOrEmpty(MiddelNameSearch))
+                {
+                    dataValues = dataValues.Where(p => p.TESTER_NAME_M.ToString().ToLower().Contains(MiddelNameSearch.ToLower())).ToList();
+                }
+                if (!string.IsNullOrEmpty(FirstNameSearch))
+                {
+                    dataValues = dataValues.Where(x => x.TESTER_NAME_F.ToLower().Trim().Contains(FirstNameSearch.ToLower().Trim())).ToList();
+                }
+                if (!string.IsNullOrEmpty(UserNameSearch))
+                {
+                    dataValues = dataValues.Where(x => x.TESTER_LOGIN_NAME.ToLower().Trim().Contains(UserNameSearch.ToLower().Trim())).ToList();
+                }
+                if (!string.IsNullOrEmpty(EmailSearch))
+                {
+                    dataValues = dataValues.Where(x => x.TESTER_MAIL.ToLower().Trim().Contains(EmailSearch.ToLower().Trim())).ToList();
+                }
+                if (!string.IsNullOrEmpty(CompanySearch))
+                {
+                    dataValues = dataValues.Where(x => x.COMPANY_NAME.ToLower().Trim().Contains(CompanySearch.ToLower().Trim())).ToList();
+                }
+
+                if (colDir == "desc")
+                {
+                    switch (colOrder)
+                    {
+                        case "Last Name":
+                            dataValues = dataValues.OrderByDescending(a => a.TESTER_NAME_LAST).ToList();
+                            break;
+                        case "Middle Name":
+                            dataValues = dataValues.OrderByDescending(a => a.TESTER_NAME_M).ToList();
+                            break;
+                        case "First Name":
+                            dataValues = dataValues.OrderByDescending(a => a.TESTER_NAME_F).ToList();
+                            break;
+                        case "User Name":
+                            dataValues = dataValues.OrderByDescending(a => a.TESTER_LOGIN_NAME).ToList();
+                            break;
+                        case "Email Address":
+                            dataValues = dataValues.OrderByDescending(a => a.TESTER_MAIL).ToList();
+                            break;
+                        case "Company Name":
+                            dataValues = dataValues.OrderByDescending(a => a.COMPANY_NAME).ToList();
+                            break;
+                        default:
+                            dataValues = dataValues.OrderByDescending(a => a.TESTER_NAME_LAST).ToList();
+                            break;
+                    }
+
+                }
+                else
+                {
+                    switch (colOrder)
+                    {
+                        case "Last Name":
+                            dataValues = dataValues.OrderBy(a => a.TESTER_NAME_LAST).ToList();
+                            break;
+                        case "Middle Name":
+                            dataValues = dataValues.OrderBy(a => a.TESTER_NAME_M).ToList();
+                            break;
+                        case "First Name":
+                            dataValues = dataValues.OrderBy(a => a.TESTER_NAME_F).ToList();
+                            break;
+                        case "User Name":
+                            dataValues = dataValues.OrderBy(a => a.TESTER_LOGIN_NAME).ToList();
+                            break;
+                        case "Email Address":
+                            dataValues = dataValues.OrderBy(a => a.TESTER_MAIL).ToList();
+                            break;
+                        case "Company Name":
+                            dataValues = dataValues.OrderBy(a => a.COMPANY_NAME).ToList();
+                            break;
+                        default:
+                            dataValues = dataValues.OrderBy(a => a.TESTER_NAME_LAST).ToList();
+                            break;
+                    }
+
+                }
+
+                int totalRecords = dataValues.Count();
+                if (!string.IsNullOrEmpty(search) &&
+                !string.IsNullOrWhiteSpace(search))
+                {
+                    // Apply search   
+                    dataValues = dataValues.Where(p => p.COMPANY_NAME.ToString().ToLower().Contains(search.ToLower())).ToList();
+                }
+
+                int recFilter = dataValues.Count();
+                dataValues = dataValues.Skip(startRec).Take(pageSize).ToList();
+
+                return serializer.Serialize(new
+                {
+                    data = dataValues
+                });
+
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        [AcceptVerbs("GET")]
+        public string AddEditUser(T_TESTER_INFO t_TESTER)
+        {
+            //ViewBag.Header = "Edit User";
+            var Accountrepo = new AccountRepository();
+            var repCompany = new CompanyRepository();
+            var lCompanyList = repCompany.GetCompanyList();
+            var companylist = lCompanyList.Select(c => new SelectListItem { Text = c.COMPANY_NAME, Value = c.COMPANY_ID.ToString() }).ToList();
+            //ViewBag.listCompany = companylist;
+            if (t_TESTER.TESTER_ID == 0)
+            {
+                t_TESTER.TESTER_PWD = PasswordHelper.EncodeString(t_TESTER.TESTER_PWD);
+                //ViewBag.Header = "Add User";
+            }
+            t_TESTER = Accountrepo.CreateNewUser(t_TESTER);
+            //Session["SubmitUserMsg"] = "Succefully Submitted User.";
+
+            return serializer.Serialize(new
+            {
+                data = true
+            });
+        }
+
+        [AcceptVerbs("GET")]
+        public string CheckLoginNameExist(string lLoginName, int? lLoginId)
+        {
+            AccountRepository Accountrepo = new AccountRepository();
+            var lflag = Accountrepo.CheckLoginNameExist(lLoginName, lLoginId);
+            return serializer.Serialize(new
+            {
+                data = lflag
+            });
+        }
+
+        [AcceptVerbs("GET")]
+        public string CheckEmailExist(string lLoginEmail, int? lLoginId)
+        {
+            AccountRepository Accountrepo = new AccountRepository();
+            var lflag = Accountrepo.CheckLoginEmailExist(lLoginEmail, lLoginId);
+            return serializer.Serialize(new
+            {
+                data = lflag
+            });
+        }
+
+        [AcceptVerbs("GET")]
+        public string ChangeUserPassowrd(string lOldPsw, string lNewPsw, int lUserId)
+        {
+            AccountRepository Accountrepo = new AccountRepository();
+            string lMsg = "Old Password Not Matched.";
+            var lUser = Accountrepo.GetUserById(lUserId);
+            var lOldPassword = PasswordHelper.DecodeString(lUser.TESTER_PWD);
+
+            if (lOldPsw == lOldPassword)
+            {
+                lNewPsw = PasswordHelper.EncodeString(lNewPsw);
+                var lflag = Accountrepo.ChangeUserPassword(lNewPsw, (decimal)lUserId);
+                lMsg = "Succefully Updated New Password";
+            }
+
+            return serializer.Serialize(new
+            {
+                data = lMsg
+            });
+        }
+    }
+}

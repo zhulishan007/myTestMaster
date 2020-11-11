@@ -1,0 +1,403 @@
+﻿@{
+    ViewBag.Title = "AddNewTestSuite";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+    @*<script src="~/assets/PQGrid/jquery-1.9.1.min.js"></script>
+    <script src="~/assets/PQGrid/jquery-ui.min.js"></script>*@
+   
+    <style>
+
+    .pq-grid, .pq-grid * {  box-sizing: content-box; }
+    .pq-grid table { border-collapse: separate; }
+    .CodeMirror {
+        border: 1px solid #eee;
+        border-radius: 5px;
+        height: auto;
+    }
+    .CodeMirror * {
+        font-family: monospace !important;
+        font-size: 12px;
+        line-height: 15px;
+    }
+    div.pq-toolbar * { margin: auto 3px;}
+    div.pq-toolbar textarea {padding: 3px;}
+    .ui-autocomplete {
+        max-height: 200px;        
+        overflow-y: auto;
+        /* prevent horizontal scrollbar */
+        overflow-x: auto;        
+        background-color:#fff;
+        border:1px solid #59c0e7;
+    }
+     .ui-autocomplete   .ui-menu-item {
+            padding: 3px 1em 3px .4em;
+        }
+    .pq-grid .pq-editor-focus
+    {
+        outline:none;
+        border:1px solid #59c0e7;    
+        border-radius:2px;
+        /*background-image: linear-gradient(#e6e6e6, #fefefe);*/
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#e6e6e6', endColorstr='#fefefe'); 
+        /*background: -webkit-gradient(linear, left top, left bottom, from(#e6e6e6), to(#fefefe)); 
+        background: -moz-linear-gradient(top,  #e6e6e6,  #fefefe);*/ 
+    }
+    div.pq-grid
+    {
+        overflow:visible;
+    }    
+
+    </style>
+
+    <script class="ppjs">
+        $(document).ready(function () {
+            loadPQGrid();
+        });
+        function loadPQGrid() {
+            $(function () {
+                function commentRender(ui) {
+                    var rowIndx = ui.rowIndx,
+                        dataIndx = ui.dataIndx,
+                        cellData = ui.cellData;
+                    if ($(this).pqGrid('attr', { rowIndx: rowIndx, dataIndx: dataIndx, attr: 'title' }).attr) {
+                        var pos = "bottom:0;right:0;";
+                        if (ui.column.align == 'right') {
+                            pos = "top:0;left:0;";
+                        }
+                        return "<div style='position:relative;'>" +
+                            cellData +
+                            "<span style='position:absolute;height:14px;width:14px;" + pos + "' class='ui-icon ui-icon-comment' ></span>" +
+                            "</div>";
+                    }
+
+                };
+                var Keyword = [
+                    "CopyExcelRangeToClipboard",
+                    "DBCompare",
+                    "ExecuteCommand",
+                    "KillApplication",
+                    "Loop",
+                    "PageWindow",
+                    "ResumeNext",
+                    "StartApplication",
+                    "WaitForSeconds"
+                ];
+
+                var Object = [
+                    "OPICS_SWAP",
+                    "OPSWAP_REV",
+                    "OSYS",
+                    "PFCE",
+                    "PMTQ",
+                    "QMON_MAIN",
+                    "RCON",
+                    "RDFE",
+                    "RSYS",
+                    "SDSF",
+                    "SVPI_MAIN",
+                    "SWEM",
+                    "SWIQ"
+                ];
+                var autoCompleteEditor = function (ui) {
+                    var $inp = ui.$cell.find("input");
+
+                    //initialize the editor
+                    $inp.autocomplete({
+                        appendTo: ui.$cell, //for grid in maximized state.
+                        source: (ui.dataIndx == "Keyword" ? Keyword : "/pro/demos/getCountries"),
+                        selectItem: { on: true }, //custom option
+                        highlightText: { on: true }, //custom option
+                        minLength: 0
+                    }).focus(function () {
+                        //open the autocomplete upon focus                
+                        $(this).autocomplete("search", "");
+                    });
+                }
+                var autoCompleteEditorObject = function (ui) {
+                    var $inp = ui.$cell.find("input");
+
+                    //initialize the editor
+                    $inp.autocomplete({
+                        appendTo: ui.$cell, //for grid in maximized state.
+                        source: (ui.dataIndx == "Object" ? Object : "/pro/demos/getCountries"),
+                        selectItem: { on: true }, //custom option
+                        highlightText: { on: true }, //custom option
+                        minLength: 0
+                    }).focus(function () {
+                        //open the autocomplete upon focus                
+                        $(this).autocomplete("search", "");
+                    });
+                }
+
+                var data = [
+
+                    { No: 1, Func: '', Keyword: 'PegWindow', Object: 'OPICS_MAIN', Parameters: '', Comment: 'F', Skip: 'true', Data: '', Skip_1: 'true', Data_1: 'Folders\ADMIN\2.iNTERFACES\FI_ID (INTERFCAE FIXED ICOME)' },
+                    { No: 2, Func: '', Keyword: 'MaximizeWindow', Object: 'OPICS_MAIN', Parameters: 'TEXT:', Comment: '', Skip: 'true', Data: '3', Skip_1: '', Data_1: 'on' },
+                    { No: 3, Func: '', Keyword: 'FillEdit', Object: 'GRSS_TABLE_COMBX', Parameters: 'F', Comment: '', Skip: '', Data: 'INTH -- Interance Transaction Header', Skip_1: 'true', Data_1: 'MODAL_VAR:FI C1.1.1.a_ID' },
+                    { No: 4, Func: '', Keyword: 'WaitForSeconds', Object: '', Parameters: 'F', Comment: 'Set Fail', Skip: '', Data: 'Failing', Skip_1: 'true', Data_1: '' },
+                    { No: 5, Func: '', Keyword: 'SelectListItem', Object: 'Main_Toolbar', Parameters: '', Comment: '', Skip: 'true', Data: 'on', Skip_1: '', Data_1: 'INTH -- Interance Transaction Header' },
+                    { No: 6, Func: '', Keyword: 'SetBox', Object: 'CFFI', Parameters: 'UI_EXPAND', Comment: '', Skip: '', Data: 'ApplicationToolbar;Run Query', Skip_1: '', Data_1: 'ApplicationToolbar;Fail.*' },
+                    { No: 7, Func: '', Keyword: 'CaptureValue', Object: 'Opics_GRSS', Parameters: 'F', Comment: '', Skip: '', Data: '', Skip_1: '', Data_1: '' },
+                    { No: 8, Func: '', Keyword: 'CaptureAndCompare', Object: 'GRSS_TABLE_COMBX', Parameters: 'test', Comment: '', Skip: '', Data: 'Folders\ADMIN\2.iNTERFACES\FI_ID (INTERFCAE FIXED ICOME)', Skip_1: 'true', Data_1: 'on' },
+                    { No: 9, Func: '', Keyword: 'CloseWindow', Object: 'GRSS_RSLT_TABLE', Parameters: 'UI_EXPAND', Comment: 'F', Skip: '', Data: '5' },
+                    { No: 10, Func: '', Keyword: 'WaitForSeconds', Object: '', Parameters: 'test', Comment: '', Skip: '', Data: 'Clear' },
+                    { No: 11, Func: '', Keyword: 'CloseWindow', Object: 'MAIN_TOOLBAR', Parameters: 'ALLROWS;BRANPRCDATE', Comment: '', Skip: '', Data: '' },
+                    { No: 12, Func: '', Keyword: 'SearchAndReplace', Object: 'CFIQ', Parameters: 'ALLROWS;YEARENDDATE', Comment: 'true', Skip: '', Data: 'FastPath' },
+                    { No: 13, Func: '', Keyword: 'SelectPage', Object: 'CFIQ_TOOLBAR', Parameters: '', Comment: '', Skip: '', Data: 'Settling' },
+                    { No: 14, Func: '', Keyword: 'ScrollDown', Object: 'MAIN_NAVIGATE_TREES', Parameters: 'UI_EXPAND', Comment: 'true', Skip: '', Data: 'ApplicationToolbar;Fail.*' },
+                    { No: 15, Func: '', Keyword: 'ScrollUp', Object: 'GRSS_TABLE_COMBX', Parameters: '', Comment: '', Skip: 'true', Data: '7' },
+                    { No: 16, Func: '', Keyword: 'CaptureAndCompare', Object: 'CFIQ_TOOLBAR', Parameters: 'ALLROWS;BRANPRCDATE', Comment: '', Skip: '', Data: '' },
+                    { No: 17, Func: '', Keyword: 'CaptureAndCompare', Object: 'CFIQ_SETTLING_RB', Parameters: 'ALLROWS;NEXTBRANPRCDATE', Comment: '', Skip: '', Data: '' },
+                    { No: 18, Func: '', Keyword: 'CaptureAndCompare', Object: 'Opics_GRSS', Parameters: 'F', Comment: '', Skip: '', Data: '' },
+                    { No: 19, Func: '', Keyword: 'CaptureValue', Object: 'CFIQ_TOOLBAR', Parameters: 'ALLROWS;NEXTBRANPRCDATE', Comment: '', Skip: '', Data: 'MODAL_VAR:FI C1.1.1.a_ID' },
+                    { No: 20, Func: '', Keyword: 'CaptureValue', Object: 'GRSS_TABLE_COMBX', Parameters: 'ALLROWS;BRANPRCDATE', Comment: '', Skip: 'true', Data: 'ApplicationToolbar;Clear.*' },
+                    { No: 21, Func: '', Keyword: 'Loop', Object: 'MAIN_NAVIGATE_TREES', Parameters: 'pre', Comment: '', Skip: '', Data: 'GLOBAL_VAR:TODAY' },
+                    { No: 22, Func: '', Keyword: 'Dismiss', Object: 'CFIQ_SETTLING_RB', Parameters: 'pre', Comment: '', Skip: '', Data: 'ApplicationToolbar;Run Query' },
+                    { No: 23, Func: '', Keyword: 'InsertEdit', Object: 'CFIQ', Parameters: 'test', Comment: '', Skip: '', Data: '2' },
+                    { No: 24, Func: '', Keyword: 'ClickButton', Object: 'GRSS_TABLE_COMBX', Parameters: 'UI_EXPAND', Comment: '', Skip: '', Data: '' },
+                    { No: 25, Func: '', Keyword: 'CheckError', Object: 'CFIQ', Parameters: 'test', Comment: '', Skip: 'true', Data: '' },
+                    { No: 26, Func: '', Keyword: 'SearchAndReplace', Object: 'CFIQ_TOOLBAR', Parameters: '', Comment: 'true', Skip: '', Data: 'GLOBAL_VAR:TODAY_PLUS_1' },
+                    { No: 27, Func: '', Keyword: 'SelectListItem', Object: 'CFIQ_SETTLING_RB', Parameters: 'F', Comment: '', Skip: '', Data: '8' },
+                    { No: 28, Func: '', Keyword: 'CloseWindow', Object: 'Opics_GRSS', Parameters: '', Comment: '', Skip: '', Data: '' },
+                ];
+
+                var obj = {
+                    //editable: false,
+                    resizable: true,
+                    selectionModel: { type: 'cell' },
+                    showBottom: true,
+                    pageModel: { type: "local", rPP: 10 },
+                    filterModel: { header: true, type: 'local' },
+                    trackModel: { on: true }, //to turn on the track changes.  
+                    toolbar: {
+                        cls: 'pq-toolbar-export',
+                        items: [{
+                            type: 'button',
+                            label: "Export to Excel",
+                            icon: 'ui-icon-document',
+                            listeners: [{
+                                "click": function (evt) {
+                                    $("#grid_row_styles").pqGrid("exportExcel", { url: "/pro/demos/excel", sheetName: "pqGrid sheet" });
+                                }
+                            }]
+                        }]
+                    }, dragModel: {
+                        on: true,
+                        cssHelper: { width: 300 },
+                        diHelper: ['Keyword', 'Object', 'Parameters'],
+                        dragNodes: function (rd, evt) {
+                            //debugger;
+                            if (rd.pq_gtitle) {
+                                return this.Group().getChildren(rd).slice(0);
+                            }
+                            else {
+                                var checkNodes = this.Group().getCheckedNodes();
+                                return (checkNodes.length && checkNodes.indexOf(rd) > -1) ? checkNodes : [rd];
+                            }
+
+                        },
+                        isDraggable: function (ui) {
+                            var rd = ui.rowData, GMDi = this.option('groupModel.dataIndx');
+                            return !(rd.pq_gsummary || (rd.pq_gtitle && GMDi.length - 1 != rd.pq_level))
+                        }
+                    },
+                    colModel: [
+                        { title: "No", width: "5%", dataIndx: "No" },
+                        { title: "Func", width: "5%", dataIndx: "Func" },
+                        { dataIndx: 'KeywordId', hidden: true },
+                        {
+                            title: "Keyword", dataIndx: "Keyword", width: "15%",
+                            editor: {
+                                type: 'select',
+                                init: function (ui) {
+                                    ui.$cell.find("select").pqSelect();
+                                },
+                                valueIndx: "value",
+                                labelIndx: "text",
+                                mapIndices: { "text": "Keyword", "value": "KeywordId" },
+                                options: [
+                                    { "value": "", "text": "" },
+                                    { "value": "CopyExcelRangeToClipboard", "text": "CopyExcelRangeToClipboard" },
+                                    { "value": "DBCompare", "text": "DBCompare" },
+                                    { "value": "ExecuteCommand", "text": "ExecuteCommand" },
+                                    { "value": "KillApplication", "text": "KillApplication" },
+                                    { "value": "Loop", "text": "Loop" },
+                                    { "value": "PageWindow", "text": "PageWindow" },
+                                    { "value": "ResumeNext", "text": "ResumeNext" },
+                                    { "value": "StartApplication", "text": "StartApplication" },
+                                    { "value": "WaitForSeconds", "text": "WaitForSeconds" }
+                                ]
+                            },
+                            filter: { type: 'textbox', condition: 'begin', listeners: ['keyup'] }
+                        },
+                        { dataIndx: 'ObjectId', hidden: true },
+                        {
+                            title: "Object", width: "20%", dataIndx: "Object",
+                            //    editor: {
+                            //type: "textbox",
+                            //init: autoCompleteEditorObject,
+                            //},
+                            editor: {
+                                type: 'select',
+                                init: function (ui) {
+                                    ui.$cell.find("select").pqSelect();
+                                },
+                                valueIndx: "value",
+                                labelIndx: "text",
+                                mapIndices: { "text": "Object", "value": "ObjectId" },
+                                options: [
+                                    { "value": "", "text": "" },
+                                    { "value": "OPICS_SWAP", "text": "OPICS_SWAP" },
+                                    { "value": "OPSWAP_REV", "text": "OPSWAP_REV" },
+                                    { "value": "OSYS", "text": "OSYS" },
+                                    { "value": "PFCE", "text": "PFCE" },
+                                    { "value": "PMTQ", "text": "PMTQ" },
+                                    { "value": "QMON_MAIN", "text": "QMON_MAIN" },
+                                    { "value": "RCON", "text": "RCON" },
+                                    { "value": "RDFE", "text": "RDFE" },
+                                    { "value": "RSYS", "text": "RSYS" },
+                                    { "value": "SDSF", "text": "SDSF" },
+                                    { "value": "SVPI_MAIN", "text": "SVPI_MAIN" },
+                                    { "value": "SWEM", "text": "SWEM" },
+                                    { "value": "SWIQ", "text": "SWIQ" }
+                                ]
+                            },
+                            filter: { type: 'textbox', condition: 'begin', listeners: ['keyup'] }
+                        },
+                        { title: "Parameters", width: "10%", align: "left", dataIndx: "Parameters", filter: { type: 'textbox', condition: 'begin', listeners: ['keyup'] } },
+                        {
+                            title: "Comment", width: "20%", dataType: "string", align: "left", dataIndx: "Comment",
+                            filter: { type: 'textbox', condition: 'begin', listeners: ['keyup'] }
+                        },
+
+
+
+
+
+                        {
+                            title: "DataSet : SWAP REVERSE", width: 140, align: "center", colModel:
+                                [
+                                    {
+                                        title: "", width: 50, dataType: "bool", menuInDisable: true,
+                                        //render: function (ui) {
+                                        //    return "<input type='checkbox' " + (ui.cellData ? "checked='checked'" : "") + " />";
+                                        //},
+                                        render: function (ui) {
+                                            var rowData = ui.rowData,
+                                                dataIndx = ui.dataIndx;
+                                            ldataIndx = 6;
+
+                                            rowData.pq_cellcls = rowData.pq_cellcls || {};
+                                            if (rowData["Skip"] == true) {
+                                                rowData.pq_cellcls[dataIndx] = 'grey';
+                                                rowData.pq_cellcls[ldataIndx] = 'grey';
+                                                return "<input type='checkbox' " + (ui.cellData ? "checked='checked'" : "") + " />";
+                                            }
+                                            else {
+                                                rowData.pq_cellcls[dataIndx] = '';
+                                                rowData.pq_cellcls[ldataIndx] = '';
+                                                return "<input type='checkbox' " + (ui.cellData ? "checked='checked'" : "") + " />";
+                                            }
+                                        }, align: "center", exportRender: false, editor: false, type: 'checkbox', cls: 'hideRightborder'
+                                    },
+                                { title: "Data", width: "20%", dataType: "string", dataIndx: "Data", filter: { type: 'textbox', condition: 'begin', listeners: ['keyup'] } }]
+                        },
+
+                        {
+                            title: "DataSet : FI REVERSE", width: 140, align: "center", colModel: [{
+                                title: "Skip",
+                                dataIndx: "Skip_1", width: "5%",
+
+                                type: 'checkBoxSelection', cls: 'ui-state-default', sortable: false, editable: false, align: 'center',
+                                cb: { all: true, header: false }
+                                //editor: { type: "checkbox", subtype: 'triple', style: "margin:3px 5px;" },           
+                            }, { title: "Data", width: "20%", dataType: "string", dataIndx: "Data_1", filter: { type: 'textbox', condition: 'begin', listeners: ['keyup'] } }]
+                        },
+
+                    ],
+                    dataModel: {
+                        data: data,
+                        location: "local",
+                        sorting: "local"
+                    },
+                    create: function (evt, ui) {
+                        $(this).pqTooltip();
+                    }
+                };
+                var $grid = $("#grid_row_styles").pqGrid(obj);
+            });
+        }
+    </script>
+    <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
+        <div class="kt-subheader   kt-grid__item" id="kt_subheader">
+            <div class="kt-container  kt-container--fluid ">
+                <div class="kt-subheader__main">
+                    
+                    <span class="kt-subheader__separator kt-hidden"></span>
+                    <div class="kt-subheader__breadcrumbs">
+                        <a href="#" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-shelter"></i></a>
+                        <a href="" class="kt-subheader__breadcrumbs-link">
+                            Project
+                        </a>
+                        <i class="fa fa-angle-double-right"></i>
+                        <a href="" class="kt-subheader__breadcrumbs-link">
+                          &nbsp;  Test Suites
+                        </a>
+                        <i class="fa fa-angle-double-right"></i>
+                        <a href="" class="kt-subheader__breadcrumbs-link">
+                            &nbsp;  FX Spot Verify
+                        </a>
+
+                        <!-- <span class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active">Active link</span> -->
+                    </div>
+                </div>
+                <div class="kt-subheader__toolbar">                    
+                    <div class="kt-subheader__wrapper">
+                        <a href="#" class="btn kt-subheader__btn-primary">
+                            Back &nbsp;
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+            <div class="row">
+                <div class="col">
+                    <div class="alert alert-light alert-elevate fade show" role="alert">
+                        <div class="alert-icon"><i class="flaticon2-shelter" style="color:#1582ab"></i></div>
+                        <div class="alert-text" style="color:#1582ab">
+                            Test Case
+                            <i class="fa fa-angle-double-right"></i>
+                            Opics FX FWD Entry
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="kt-portle1t ">
+                <div class="kt-portlet__body" >
+                    <div id="grid_row_styles" style="margin: auto;"></div>
+                </div>
+                <div class="kt-portlet__foot" style="margin-top:30px!important;">
+                    <div class="kt-form__actions kt-form__actions--center">
+
+                        <button type="reset" class="btn btn-success">Submit</button>
+                        <button type="reset" class="btn btn-secondary">Cancel</button>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+<script>
+    $(document).ready(function () {
+        $(".pq-vscroll").removeClass("pq-sb-vert pq-sb-vert-t pq-sb-vert-wt");/*removeClass("pq-sb-horiz pq-sb-horiz-t pq-sb-horiz-wt").unbind("click.pq-scrollbar").empty();*/
+        //$(".pq-hscroll").removeClass("pq-sb-horiz pq-sb-horiz-t pq-sb-horiz-wt");
+    })
+</script>
+

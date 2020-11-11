@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MARS_Repository.ViewModel
+{
+    public class RelUserExePath
+    {
+        public decimal? Relid { get; set; }
+        public decimal? userid { get; set; }
+        public string Username { get; set; }
+        public string ExePath { get; set; }
+    }
+}

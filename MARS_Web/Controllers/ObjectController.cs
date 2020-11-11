@@ -1,0 +1,629 @@
+using MARS_Repository.Entities;
+using MARS_Repository.Repositories;
+using MARS_Web.Helper;
+using MARS_Repository.ViewModel;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.IO;
+using System.Linq;
+using System.Web;
+using System.Web.Configuration;
+using System.Web.Mvc;
+using System.Web.Script.Serialization;
+using Oracle.ManagedDataAccess.Client;
+using System.Data.Common;
+using NLog;
+using System.Configuration;
+using MARSUtility;
+
+
+namespace MARS_Web.Controllers
+{
+    public class ObjectController : Controller
+    {
+        MARSUtility.CommonHelper objcommon = new MARSUtility.CommonHelper();
+        public ObjectController()
+        {
+            DBEntities.ConnectionString = SessionManager.ConnectionString;
+            DBEntities.Schema = SessionManager.Schema;
+        }
+        Logger logger = LogManager.GetLogger("Log");
+        Logger ELogger = LogManager.GetLogger("ErrorLog");
+        // GET: Object
+        #region Crud operation for Object
+        public ActionResult ObjectList()
+        {
+            try
+            {
+                var repo = new ApplicationRepository();
+                var objrepo = new ObjectRepository();
+                objrepo.Username = SessionManager.TESTER_LOGIN_NAME;
+                repo.Username = SessionManager.TESTER_LOGIN_NAME;
+                var list = repo.ListApplication();
+                ViewBag.applist = list.Select(c => new SelectListItem { Text = c.APP_SHORT_NAME, Value = c.APPLICATION_ID.ToString() }).ToList();
+
+                var typelist = objrepo.LoadObjectType();
+                ViewBag.typelist = typelist.Select(c => new SelectListItem { Text = c.typename, Value = c.typeid.ToString() }).OrderBy(x => x.Text).ToList();
+                var userId = SessionManager.TESTER_ID;
+                var repAcc = new ConfigurationGridRepository();
+                repAcc.Username = SessionManager.TESTER_LOGIN_NAME;
+                var Widthgridlst = repAcc.GetGridList((long)userId, GridNameList.ResizeLeftPanel);
+                var Rgriddata = GridHelper.GetLeftpanelgridwidth(Widthgridlst);
+
+                ViewBag.width = Rgriddata.Resize == null ? ConfigurationManager.AppSettings["DefultLeftPanel"] + "px" : Rgriddata.Resize.Trim() + "px";
+                setObjectGridWidth();
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured when object page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured when object page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+            }
+            return PartialView();
+        }
+
+        public JsonResult ApplicationList()
+        {
+            ResultModel resultModel = new ResultModel();
+            try
+            {
+                var objrepo = new ApplicationRepository();
+                objrepo.Username = SessionManager.TESTER_LOGIN_NAME;
+                var list = objrepo.ListApplicationObjectExport();
+                resultModel.data = list;
+                resultModel.status = 1;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in object page | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in object page | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                resultModel.status = 0;
+                resultModel.message = ex.Message.ToString();
+            }
+            return Json(resultModel, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult DatLoad(string appId)
+        {
+            logger.Info(string.Format("Object list open start | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+            string search = Request.Form.GetValues("search[value]")[0];
+            string draw = Request.Form.GetValues("draw")[0];
+            string order = Request.Form.GetValues("order[0][column]")[0];
+            string orderDir = Request.Form.GetValues("order[0][dir]")[0];
+            int startRec = Convert.ToInt32(Request.Form.GetValues("start")[0]);
+            int pageSize = Convert.ToInt32(Request.Form.GetValues("length")[0]);
+
+            string colOrderIndex = Request.Form.GetValues("order[0][column]")[0];
+            var colOrder = Request.Form.GetValues("columns[" + colOrderIndex + "][name]").FirstOrDefault();
+            string colDir = Request.Form.GetValues("order[0][dir]")[0];
+           
+            string lSchema = SessionManager.Schema;
+            var lConnectionStr = SessionManager.APP;
+            startRec = startRec + 1;
+
+            int totalRecords = 0;
+            int recFilter = 0;
+            var repo = new ObjectRepository();
+            repo.Username = SessionManager.TESTER_LOGIN_NAME;
+            string NameSearch = Request.Form.GetValues("columns[0][search][value]")[0];
+            string quickaccess = Request.Form.GetValues("columns[1][search][value]")[0];
+            string typesearch = Request.Form.GetValues("columns[2][search][value]")[0];
+            string parentsearch = Request.Form.GetValues("columns[3][search][value]")[0];
+            var data = new List<Objects>();
+
+            try
+            {
+                data = repo.ListObjects(lSchema, lConnectionStr, startRec, pageSize, NameSearch, typesearch, quickaccess, parentsearch, colOrder, orderDir, appId);
+
+                if (data.Count() > 0)
+                {
+                    totalRecords = data.FirstOrDefault().Totalcount;
+                }
+
+                if (data.Count() > 0)
+                {
+                    recFilter = data.FirstOrDefault().Totalcount;
+                }
+                logger.Info(string.Format("Object list open end | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+                logger.Info(string.Format("Object list open successfully | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in object page | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in object page | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+            }
+            return Json(new
+            {
+                draw = Convert.ToInt32(draw),
+                recordsTotal = totalRecords,
+                recordsFiltered = recFilter,
+                data = data
+            }, JsonRequestBehavior.AllowGet);
+
+        }
+
+        public ActionResult LoadData()
+        {
+            setObjectGridWidth();
+            return PartialView();
+        }
+
+        //Loads dropdown of Pegwindow by ApplicationId in Add/Edit/Saveas Object
+        public JsonResult LoadPegwindow(long ApplicationId)
+        {
+            ResultModel resultModel = new ResultModel();
+            try
+            {
+                var repo = new ObjectRepository();
+                repo.Username = SessionManager.TESTER_LOGIN_NAME;
+                var result = repo.GetPegwindowObject(ApplicationId);
+
+                resultModel.data = result;
+                resultModel.status = 1;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in object page | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in object page | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                resultModel.status = 0;
+                resultModel.message = ex.Message.ToString();
+            }
+            return Json(resultModel, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult AddEditObject(ObjectModel objmodel)
+        {
+            logger.Info(string.Format("Object Add/Edit  Modal open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+            ResultModel resultModel = new ResultModel();
+            try
+            {
+                var repo = new ObjectRepository();
+                repo.Username = SessionManager.TESTER_LOGIN_NAME;
+                if (objmodel.ObjectId == 0)
+                {
+                    var validationcheck = repo.CheckObjectName(objmodel.ObjectName, objmodel.applicationid, objmodel.ObjectParent, objmodel.ObjectType);
+                    if (validationcheck)
+                    {
+                        resultModel.status = 1;
+                        resultModel.data = validationcheck;
+                        resultModel.message = "Object: " + objmodel.ObjectName + " already exists in the system";
+                        return Json(resultModel, JsonRequestBehavior.AllowGet);
+                    }
+                }
+                var result = repo.AddEditObject(objmodel);
+                resultModel.data = result;
+                resultModel.status = 1;
+                resultModel.message = "Object is saved successfully!!";
+                logger.Info(string.Format("Object Add/Edit  Modal close | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+                logger.Info(string.Format("Object Save successfully | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in object page | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in object page | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                resultModel.status = 0;
+                resultModel.message = ex.Message.ToString();
+            }
+            return Json(resultModel, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult DeleteObject(long objectid, long appid)
+        {
+            logger.Info(string.Format("Object Delete start | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+            ResultModel resultModel = new ResultModel();
+            try
+            {
+                var repo = new ObjectRepository();
+                repo.Username = SessionManager.TESTER_LOGIN_NAME;
+                var objectids = repo.FindObjectId(objectid, appid);
+                var pegwindowcheck = repo.CheckPegwindowObject(objectid, appid);
+                if (pegwindowcheck == "success")
+                {
+                    if (objectids.Count > 0)
+                    {
+                        foreach (var itm in objectids)
+                        {
+                            var testcasename = repo.CheckObjectExistsInTestCase(itm);
+                            if (testcasename.Count > 0)
+                            {
+                                resultModel.data = testcasename;
+                                resultModel.status = 1;
+                                return Json(resultModel, JsonRequestBehavior.AllowGet);
+                            }
+                        }
+                    }
+                    var objectname = repo.GetObjectName(objectid, appid);
+                    var result = repo.DeleteObject(objectid, appid);
+                    resultModel.data = pegwindowcheck;
+                    resultModel.message = "'Object [" + objectname + "] has been deleted.'";
+                    logger.Info(string.Format("Object Delete end | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+                    logger.Info(string.Format("Object Delete successfully | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+                }
+                else
+                {
+                    var pegwindowname = repo.getPegwindowObjectName(objectid, appid);
+                    resultModel.message = "Pegwindow object [" + pegwindowname + "] cannot be deleted";
+                    resultModel.data = pegwindowcheck;
+                }
+                resultModel.status = 1;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in object page | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in object page | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                resultModel.status = 0;
+                resultModel.message = ex.Message.ToString();
+            }
+            return Json(resultModel, JsonRequestBehavior.AllowGet);
+        }
+        #endregion
+
+        #region Copy objects from one application to another
+        public JsonResult CheckConvertingObjectExists(string objectname, long appid, string parentobj, string objecttype)
+        {
+            ResultModel resultModel = new ResultModel();
+            try
+            {
+                var repo = new ObjectRepository();
+                repo.Username = SessionManager.TESTER_LOGIN_NAME;
+                var exists = repo.CheckConvertingObjectExists(objectname, appid, parentobj, objecttype);
+                resultModel.data = exists;
+                resultModel.message = exists == "duplicateerror" ? "Object of name[" + objectname + "] already exists" : "";
+                resultModel.status = 1;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in object page | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in object page | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                resultModel.status = 0;
+                resultModel.message = ex.Message.ToString();
+            }
+          
+            return Json(resultModel, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult CopyAllObjects(long copyfromappid, long copytoappid)
+        {
+            ResultModel resultModel = new ResultModel();
+            try
+            {
+                var lSchema = SessionManager.Schema;
+                var lConnectionStr = SessionManager.APP;
+                var repo = new ObjectRepository();
+                repo.Username = SessionManager.TESTER_LOGIN_NAME;
+                var result = repo.CopyAllObjects(copyfromappid, copytoappid, lSchema, lConnectionStr);
+                resultModel.data = result;
+                resultModel.message = result;
+                resultModel.status = 1;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in object page | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in object page | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                resultModel.status = 0;
+                resultModel.message = ex.Message.ToString();
+            }
+            return Json(resultModel, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult CheckDuplicateObjectList(long copyfromappid, long copytoappid)
+        {
+            ResultModel resultModel = new ResultModel();
+            try
+            {
+                var lSchema = SessionManager.Schema;
+                var lConnectionStr = SessionManager.APP;
+                var repo = new ObjectRepository();
+                repo.Username = SessionManager.TESTER_LOGIN_NAME;
+                var result = repo.DuplicateObjectList(copyfromappid, copytoappid, lConnectionStr, lSchema);
+                resultModel.data = result;
+                resultModel.message = "success";
+                resultModel.status = 1;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in object page | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in object page | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                resultModel.status = 0;
+                resultModel.message = ex.Message.ToString();
+            }
+            return Json(resultModel, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult CopyObjects(List<long> model, long fromid, long toid)
+        {
+            ResultModel resultModel = new ResultModel();
+            try
+            {
+                var lSchema = SessionManager.Schema;
+                var lConnectionStr = SessionManager.APP;
+                var repo = new ObjectRepository();
+                repo.Username = SessionManager.TESTER_LOGIN_NAME;
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                var result = repo.CopyObjects(model, fromid, toid, lConnectionStr, lSchema);
+                resultModel.data = result;
+                resultModel.message = result;
+                resultModel.status = 1;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in object page | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in object page | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                resultModel.status = 0;
+                resultModel.message = ex.Message.ToString();
+            }
+            return Json(resultModel, JsonRequestBehavior.AllowGet);
+        }
+
+        //Returns all the Object Ids from the selected Application
+        public JsonResult GetObjectIdByApp(long appid)
+        {
+            ResultModel resultModel = new ResultModel();
+            try
+            {
+                var repo = new ObjectRepository();
+                repo.Username = SessionManager.TESTER_LOGIN_NAME;
+                var result = repo.GetObjectId(appid);
+                resultModel.data = result;
+                resultModel.message = "success";
+                resultModel.status = 1;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in object page | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in object page | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                resultModel.status = 0;
+                resultModel.message = ex.Message.ToString();
+            }
+
+            return Json(resultModel, JsonRequestBehavior.AllowGet);
+        }
+        #endregion
+
+        #region Export and Import of Objects
+      
+        public JsonResult ExportObject(string application)
+        {
+           
+            string name = "Log_Object_Export" + "_" + DateTime.Now.ToString(" yyyy-MM-dd HH-mm-ss") + ".xlsx";
+            string lFileName = "Objects" + "_" + DateTime.Now.ToString("yyyyMMdd") + "_" + DateTime.Now.ToString("HHmmss") + ".xlsx";
+            string log_path = WebConfigurationManager.AppSettings["ExportLogPath"];
+            string strPath = Path.Combine(Server.MapPath("~/" + log_path), name);
+            try
+            {
+             
+                string FullPath = Path.Combine(System.Web.HttpContext.Current.Server.MapPath("~/TempExport/"), lFileName);
+
+                MARSUtility.ExportExcel excel = new MARSUtility.ExportExcel();
+                MARSUtility.ExportHelper exphelper = new MARSUtility.ExportHelper();
+                
+
+                string lSchema = SessionManager.Schema;
+                var lConnectionStr = SessionManager.APP;
+
+                //var repo = new ObjectRepository();
+                dbtable.dt_Log = null;
+                DataTable td = new DataTable();
+                DataColumn sequence_counter = new DataColumn();
+                sequence_counter.AutoIncrement = true;
+                sequence_counter.AutoIncrementSeed = 1;
+                sequence_counter.AutoIncrementStep = 1;
+
+                td.Columns.Add(sequence_counter);
+                td.Columns.Add("TimeStamp");
+                td.Columns.Add("Message Type");
+                td.Columns.Add("Action");
+
+                td.Columns.Add("SpreadSheet cell Address");
+                td.Columns.Add("Validation Name");
+                td.Columns.Add("Validation Fail Description");
+                td.Columns.Add("Application Name");
+                td.Columns.Add("Project Name");
+                td.Columns.Add("StoryBoard Name");
+
+                td.Columns.Add("Test Suite Name");
+
+
+                td.Columns.Add("TestCase Name");
+                td.Columns.Add("Test step Number");
+
+                td.Columns.Add("Dataset Name");
+                td.Columns.Add("Dependancy");
+                td.Columns.Add("Run Order");
+
+
+                td.Columns.Add("Object Name");
+                td.Columns.Add("Comment");
+                td.Columns.Add("Error Description");
+                td.Columns.Add("Program Location");
+                td.Columns.Add("Tab Name");
+
+
+
+                dbtable.dt_Log = td.Copy();
+                dbtable.errorlog("Export is started", "Export Object Excel", "", 0);
+                var result = excel.ExportObjectExcel(application, FullPath, lSchema, lConnectionStr);
+               
+                if (result==true)
+                {
+                    dbtable.errorlog("Export is completed", "Export Object Excel", "", 0);
+                    objcommon.excel(dbtable.dt_Log, strPath, "Export", application, "OBJECT");
+                    dbtable.dt_Log = null;
+                    return Json(lFileName, JsonRequestBehavior.AllowGet);
+                }
+              
+            }
+            catch (Exception ex)
+            {
+                int line;
+                string msg = ex.Message;
+                line = dbtable.lineNo(ex);
+                dbtable.errorlog("Export stopped", "Export Object Excel", "", 0);
+                objcommon.excel(dbtable.dt_Log, strPath, "Export", application, "OBJECT");
+                dbtable.dt_Log = null;
+                return Json(name, JsonRequestBehavior.AllowGet);
+            }
+          
+            return Json(lFileName, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult ImportObjects()
+        {
+            var userId = SessionManager.TESTER_ID;
+            var repAcc = new ConfigurationGridRepository();
+            repAcc.Username = SessionManager.TESTER_LOGIN_NAME;
+            var Widthgridlst = repAcc.GetGridList((long)userId, GridNameList.ResizeLeftPanel);
+            var Rgriddata = GridHelper.GetLeftpanelgridwidth(Widthgridlst);
+
+            ViewBag.width = Rgriddata.Resize == null ? ConfigurationManager.AppSettings["DefultLeftPanel"] + "px" : Rgriddata.Resize.Trim() + "px";
+            return PartialView();
+        }
+      
+        public ActionResult ImportFile()
+        {
+            string fileName = string.Empty;
+           
+            ViewBag.FileName = "";
+            string name = "Log_Import" + DateTime.Now.ToString(" yyyy-MM-dd HH-mm-ss") + ".xlsx";
+            string log_path = WebConfigurationManager.AppSettings["ImportLogPath"];
+           string strPath = Path.Combine(Server.MapPath("~/" + log_path), name);
+            try
+            {
+                HttpFileCollectionBase files = Request.Files;
+                for (int i = 0; i < files.Count; i++)
+                {
+                    HttpPostedFileBase variableupload = files[i];
+                    if (variableupload != null)
+                    {
+                       
+                        string destinationPath = string.Empty;
+                        string extension = string.Empty;
+                        var uploadFileModel = new List<ObjectFile>();
+                        MARSUtility.ImportHelper helper = new MARSUtility.ImportHelper();
+                        fileName = Path.GetFileNameWithoutExtension(variableupload.FileName);
+
+                        extension = Path.GetExtension(variableupload.FileName);
+                        fileName = fileName + "_" + DateTime.Now.ToString("dd_mm_yyyy") + "_" + DateTime.Now.TimeOfDay.ToString("hh") + "_" + DateTime.Now.TimeOfDay.ToString("mm") + "_" + DateTime.Now.TimeOfDay.ToString("ss") + "" + extension;
+                        destinationPath = Path.Combine(Server.MapPath("~/Import/"), fileName);
+                        variableupload.SaveAs(destinationPath);
+                        
+                       // string TempFileLocation = WebConfigurationManager.AppSettings["VariableTemplateLocation"];
+                        //name = "Log_"+ Path.GetFileNameWithoutExtension(variableupload.FileName) +"_Import" + DateTime.Now.ToString(" yyyy-MM-dd HH-mm-ss") + ".xlsx";
+                        
+                        // strPath = Path.Combine(Server.MapPath("~/" + log_path), name);
+                        string lSchema = SessionManager.Schema;
+                        var lConnectionStr = SessionManager.APP;
+                        dbtable.dt_Log = null;
+                        DataTable td = new DataTable();
+                        DataColumn sequence_counter = new DataColumn();
+                        sequence_counter.AutoIncrement = true;
+                        sequence_counter.AutoIncrementSeed = 1;
+                        sequence_counter.AutoIncrementStep = 1;
+
+                        td.Columns.Add(sequence_counter);
+                        td.Columns.Add("TimeStamp");
+                        td.Columns.Add("Message Type");
+                        td.Columns.Add("Action");
+
+                        td.Columns.Add("SpreadSheet cell Address");
+                        td.Columns.Add("Validation Name");
+                        td.Columns.Add("Validation Fail Description");
+                        td.Columns.Add("Application Name");
+                        td.Columns.Add("Project Name");
+                        td.Columns.Add("StoryBoard Name");
+
+                        td.Columns.Add("Test Suite Name");
+
+                        td.Columns.Add("TestCase Name");
+                        td.Columns.Add("Test step Number");
+
+                        td.Columns.Add("Dataset Name");
+                        td.Columns.Add("Dependancy");
+                        td.Columns.Add("Run Order");
+
+
+                        td.Columns.Add("Object Name");
+                        td.Columns.Add("Comment");
+                        td.Columns.Add("Error Description");
+                        td.Columns.Add("Program Location");
+                        td.Columns.Add("Tab Name");
+
+                        dbtable.dt_Log = td.Copy();
+                        dbtable.errorlog("Import is started", "Import Object", "", 0);
+                        // var lPath = ImportHelper.ImportObject(destinationPath, lConnectionStr, lSchema, Server.MapPath("~/Temp/"), SessionManager.TESTER_LOGIN_NAME);
+                        var lPath = helper.MasterImport(0, destinationPath, strPath, "OBJECT", 1, "", "", "", 1, lSchema, lConnectionStr);
+
+                        if (lPath == false)
+                        {
+                            //fileName = strPath + ".xlsx";
+                            dbtable.errorlog("Import is stopped", "Import Object", "", 0);
+                            objcommon.excel(dbtable.dt_Log, strPath, "Import", "", "OBJECT");
+                            return Json(strPath + ",validation", JsonRequestBehavior.AllowGet);
+                        }
+                        else
+                        {
+                            //fileName = ".xlsx";
+                            dbtable.errorlog("Import is completed", "Import Object", "", 0);
+                            objcommon.excel(dbtable.dt_Log, strPath, "Import", "", "OBJECT");
+                            return Json(fileName +",success", JsonRequestBehavior.AllowGet);
+                        }
+                    
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                int line;
+                string msg = ex.Message;
+                line = dbtable.lineNo(ex);
+                dbtable.errorlog("Import is stopped", "Import Object", "", 0);
+                objcommon.excel(dbtable.dt_Log, strPath, "Import", "", "OBJECT");
+                dbtable.dt_Log = null;
+                return Json(strPath + ",exception", JsonRequestBehavior.AllowGet);
+                //if (ex.Message.Contains("ORA-01403"))
+                //   return Json("Data not found",JsonRequestBehavior.AllowGet);
+                //else
+                //    return Json("Excel file is not valid.", JsonRequestBehavior.AllowGet);
+
+
+
+            }
+            return Json(fileName, JsonRequestBehavior.AllowGet);
+        }
+        public FileResult DownloadFile(string path)
+        {
+            ViewBag.FileName = "";
+            var result = "";
+            var byteArray = System.IO.File.ReadAllBytes(path);
+            var ms = new MemoryStream(byteArray);
+           
+              result = Path.GetFileName(path);
+            return new FileStreamResult(ms, "application/ms-excel")
+            {
+                FileDownloadName = result
+            };
+
+        }
+        public class ObjectFile
+        {
+            public string FileName { get; set; }
+            public string FilePath { get; set; }
+        }
+        #endregion
+
+        public void setObjectGridWidth()
+        {
+            var userId = SessionManager.TESTER_ID;
+            var repAcc = new ConfigurationGridRepository();
+            repAcc.Username = SessionManager.TESTER_LOGIN_NAME;
+            var gridlst = repAcc.GetGridList((long)userId, GridNameList.ObjectList);
+            var objgriddata = GridHelper.GetObjectwidth(gridlst);
+
+            ViewBag.namewidth = objgriddata.Name == null ? "20%" : objgriddata.Name.Trim() + '%';
+            ViewBag.internalAccesswidth = objgriddata.InternalAccess == null ? "30%" : objgriddata.InternalAccess.Trim() + '%';
+            ViewBag.typewidth = objgriddata.Type == null ? "10%" : objgriddata.Type.Trim() + '%';
+            ViewBag.pegwindowwidth = objgriddata.Pegwindow == null ? "20%" : objgriddata.Pegwindow.Trim() + '%';
+            ViewBag.actionswidth = objgriddata.Actions == null ? "10%" : objgriddata.Actions.Trim() + '%';
+            ViewBag.selectwidth = objgriddata.Select == null ? "10%" : objgriddata.Select.Trim() + '%';
+        }
+    }
+}

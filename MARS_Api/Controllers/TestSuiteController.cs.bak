@@ -1,0 +1,41 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
+using MARS_Revamp_DB.Entities;
+using MARS_Repository.Repositories;
+using Newtonsoft.Json;
+
+
+namespace MarsApi.Controllers
+{
+    public class TestSuiteController : ApiController
+    {
+        [Route("api/GetTestSuites")]
+        public IQueryable<T_TEST_SUITE> GetTestSuites()
+        {
+            var testsuiterepo = new TestSuiteRepository();
+            var result = testsuiterepo.ListAllTestSuites();
+            //var jsonSerializerSettings = new JsonSerializerSettings
+            //{
+            //    PreserveReferencesHandling = PreserveReferencesHandling.Objects
+            //};
+            //var jsonresult = JsonConvert.SerializeObject(result);
+            // var jsonresult= new System.Web.Script.Serialization.JavaScriptSerializer().Serialize(result);
+            //var jsonresult = Newtonsoft.Json.JsonConvert.SerializeObject(new
+            //{
+            //    result
+            //});
+            //JsonConvert.SerializeObject(result);
+            //var jsonresult = JsonConvert.SerializeObject(result, new JsonSerializerSettings()
+            //{
+            //    PreserveReferencesHandling=PreserveReferencesHandling.Objects,
+            //    Formatting=Formatting.Indented
+            //});
+            return result;
+        }
+    }
+
+}

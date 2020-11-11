@@ -1,0 +1,26 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using MARS_Revamp_DB.Entities;
+
+namespace MARS_Repository.Repositories
+{
+    public class TestCaseRepository
+    {
+        Entities entity = new Entities();
+
+        public List<V_TEST_CASE_DETAILS> GetTestCaseDetails(decimal TestCaseID, decimal TestSuiteId) {
+
+
+            long tci = Convert.ToInt64(TestCaseID);
+            long tsi = Convert.ToInt64(TestSuiteId);
+
+            var query = (from v in entity.V_TEST_CASE_DETAILS
+                         where v.TEST_CASE_ID == tci && v.TEST_SUITE_ID == tsi
+                         select v).ToList<V_TEST_CASE_DETAILS>();
+            return query;
+        }
+    }
+}

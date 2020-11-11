@@ -1,0 +1,25 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace MARS_Web.Controllers
+{
+    public class TestCaseController : Controller
+    {
+		public ActionResult ListTestCases()
+		{
+			return View();
+		}
+
+		public ActionResult Index()
+		{
+			return View();
+		}
+		public ActionResult AddTestCase()
+		{
+			return View();
+		}
+	}
+}

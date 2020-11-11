@@ -1,0 +1,128 @@
+﻿@model IEnumerable<Mars_Data.Models.T_TESTER_INFO>
+
+@{
+    ViewBag.Title = "ListOfUsers";
+}
+
+
+
+<p>
+    @*@Html.ActionLink("Create New", "Create")*@
+</p>
+<div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
+    <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+        <div class="kt-portlet kt-portlet--mobile">
+            <div class="kt-portlet__head kt-portlet__head--lg">
+                <div class="kt-portlet__head-label">
+                    <h3 class="kt-portlet__head-title" style="color:#1582ab">
+                        List Of All Users
+                    </h3>
+                </div>
+
+            </div>
+            <div class="kt-portlet__body">
+                <table class="table table-striped- table-bordered table-hover table-checkable" id="kt_table">
+                    <tr>
+                        @*<th>
+                @Html.DisplayNameFor(model => model.TESTER_ID)
+            </th>*@
+                        @*<th aria-controls="kt_table_1">
+                @Html.DisplayNameFor(model => model.TESTER_NAME_LAST)
+            </th>*@
+                        <th aria-controls="kt_table_1">Last Name</th>
+                        <th aria-controls="kt_table_1">Middle Name</th>
+                        <th aria-controls="kt_table_1">First Name</th>
+                        <th aria-controls="kt_table_1">User Name</th>
+                        @*<th>
+                @Html.DisplayNameFor(model => model.TESTER_PWD)
+            </th>*@
+                        @*<th>
+                @Html.DisplayNameFor(model => model.AVAILABLE_MARK)
+            </th>*@
+                        <th aria-controls="kt_table_1">Email Address</th>
+                        @*<th>
+                @Html.DisplayNameFor(model => model.TESTER_NUMBER)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.COMPANY_ID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CREATOR_NAME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CREATE_TIME)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TESTER_DESC)
+            </th>*@
+                        <th aria-controls="kt_table_1"></th>
+                    </tr>
+                    @if (Model != null)
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                @*<td>
+                        @Html.DisplayFor(modelItem => item.TESTER_ID)
+                    </td>*@
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TESTER_NAME_LAST)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TESTER_NAME_M)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TESTER_NAME_F)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TESTER_LOGIN_NAME)
+                                </td>
+                                @*<td>
+                        @Html.DisplayFor(modelItem => item.TESTER_PWD)
+                    </td>*@
+                                @*<td>
+                        @Html.DisplayFor(modelItem => item.AVAILABLE_MARK)
+                    </td>*@
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.TESTER_MAIL)
+                                </td>
+                                @*<td>
+                        @Html.DisplayFor(modelItem => item.TESTER_NUMBER)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.COMPANY_ID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CREATOR_NAME)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CREATE_TIME)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TESTER_DESC)
+                    </td>*@
+                                @*<td>
+                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                    </td>*@
+                            </tr>
+                        }
+                    }
+                </table>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+    $.ajax({
+        type: 'GET',
+        url: "http://localhost/MARWebAPI/api/Listusers",
+        data: {
+            
+        },
+        success: function (result) {
+            debugger;  
+        }
+    });
+</script>

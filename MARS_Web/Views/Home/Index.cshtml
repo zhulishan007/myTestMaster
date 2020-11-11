@@ -1,0 +1,104 @@
+﻿@using MARS_Repository.ViewModel
+@{
+    /**/
+    ViewBag.Title = "Test Case";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
+    <div class="kt-portlet">
+        <div class="kt-portlet__body " id="tabsList">
+            <div class="tabs_custom" id="myBox">
+                <ul class="nav nav-tabs ULtablist" role="tablist" id="tabList">
+                    <li class="nav-item context-menu-tab">
+                        <a href="#default" class="nav-link active context-tab" data-toggle="tab" data-target="#default" style="display:none" onclick="activetab($(this))"><i class="fa fa-home tab_icons"></i>home</a>
+                        @*<i class="fa fa-times-circle tab_close"></i>*@
+                    </li>
+                </ul>
+            </div>
+            <div class="tab-content divtablist">
+                <div class="tab-pane active div" id="default" role="tabpanel">
+
+                    @Html.Partial("RightSideGridView")
+
+
+                    @*<div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
+                            <div id="rightsideView">
+                                @Html.Partial("RightSideGridView")
+                            </div>
+
+                        </div>*@
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/Tab/Custom_AddingTab.js"></script>
+<script src="~/Scripts/Import_Export/Custom_ImporExport.js"></script>
+<script>
+    var statesAvailable = @Html.Raw(ViewBag.activePinList);
+
+    setTimeout(function () {
+        $.each(statesAvailable, function (key, value) {
+            if (value.PAGE_NAME.trim() == "ProjectsList") {
+                PartialRightSideProjectGrid("1");
+            }
+            else if (value.PAGE_NAME.trim() == "ApplicationList") {
+                PartialRightSideAplicationGrid("1");
+            }
+            else if (value.PAGE_NAME.trim() == "TestSuiteList") {
+                PartialRightSideTestSuiteGrid("1");
+            }
+            else if (value.PAGE_NAME.trim() == "ImportTestSuite") {
+                PartialRightSideImportTestSuite("1");
+            }
+            else if (value.PAGE_NAME.trim() == "TestCaseList") {
+                PartialRightSideTestCaseGrid("1");
+            }
+            else if (value.PAGE_NAME.trim() == "ImportStoryboard") {
+                PartialRightImportStoryboard("1");
+            }
+            else if (value.PAGE_NAME.trim() == "VariableList") {
+                PartialRightSideVariablesGrid("1");
+            }
+            else if (value.PAGE_NAME.trim() == "ImportVariable") {
+                ImportVariables("1");
+            }
+            else if (value.PAGE_NAME.trim() == "KeywordList") {
+                PartialRightSideKeywordGrid("1");
+            }
+            else if (value.PAGE_NAME.trim() == "objectlist") {
+                partialOpenObjectList("1");
+            }
+            else if (value.PAGE_NAME.trim() == "ImportObject") {
+                ImportObjects("1");
+            }
+            else if (value.PAGE_NAME.trim() == "UserList") {
+                RightSideUserGrid("1");
+            }
+            else if (value.PAGE_NAME.trim() == "UserExePathList") {
+                UserexecutionEnginePathList("1");
+            }
+            else if (value.PAGE_NAME.trim() == "SelectProject") {
+                partialRightOpenProjectList("1");
+            }
+            else if (value.PAGE_NAME.trim() == "UserListByProject") {
+                partialRightOpenUserList("1");
+            }
+            else if (value.PAGE_NAME.trim() == "Storyboard") {
+                DisplayStoryboardGrid(value.PAGE_ID, value.PROJECT_ID, "1");
+            }
+            else if (value.PAGE_NAME.trim() == "TestCase") {
+                DisplayTestCaseGrid(value.PAGE_ID, value.PROJECT_ID, "1");
+            }
+            else if (value.PAGE_NAME.trim() == "UserActiveList") {
+                RightSideUserActivePageList("1");
+            }
+            else if (value.PAGE_NAME.trim() == "GridList") {
+                RightSideGridList("1");
+            }
+        }); }, 1000);
+</script>

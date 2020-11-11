@@ -1,0 +1,1396 @@
+using MARS_Repository.ViewModel;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Objects;
+using System.Data.Objects.DataClasses;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using MARS_Repository.Entities;
+using NLog;
+
+namespace MARS_Repository.Repositories
+{
+    public class AccountRepository
+    {
+        Logger logger = LogManager.GetLogger("Log");
+        Logger ELogger = LogManager.GetLogger("ErrorLog");
+        DBEntities entity = Helper.GetMarsEntitiesInstance();
+        public string Username = string.Empty;
+
+        internal const string USER_SEQ = "SEQ_TESTER_ID";
+
+        public List<T_TESTER_INFO> GetAllUsers()
+        {
+            try
+            {
+                logger.Info(string.Format("Get All User start | Username: {0}", Username));
+                var result = entity.T_TESTER_INFO.ToList();
+                logger.Info(string.Format("Get All User end | Username: {0}", Username));
+                return result;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured user page in GetAllUsers method | Username: {0} |", Username));
+                ELogger.ErrorException(string.Format("Error occured user page in GetAllUsers method | Username: {0}", Username), ex);
+                throw;
+            }
+        }
+        public string CheckLoginNameAndEmail(string loginname, string emailid)
+        {
+            try
+            {
+                logger.Info(string.Format("Check LoginName And Email start | emailid: {0} | Username: {1}", emailid, Username));
+                var loginexists = entity.T_TESTER_INFO.Any(x => (x.TESTER_LOGIN_NAME).ToLower().Trim() == loginname.ToLower().Trim());
+                logger.Info(string.Format("Check LoginName And Email end | emailid: {0} | Username: {1}", emailid, Username));
+                if (loginexists)
+                    return "Login name invalid";
+
+                var emailexists = entity.T_TESTER_INFO.Any(x => (x.TESTER_MAIL).ToLower().Trim() == emailid.ToLower().Trim());
+                if (emailexists)
+                    return "Email invalid";
+
+                return "success";
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured user page in CheckLoginNameAndEmail method | Username: {0} |", Username));
+                ELogger.ErrorException(string.Format("Error occured user page in CheckLoginNameAndEmail method | Username: {0}", Username), ex);
+                throw;
+            }
+        }
+        public bool DeleteUserMapExePath(long userid)
+        {
+            try
+            {
+                logger.Info(string.Format("DeleteUserMapExePath start | User id: {0} | Username: {1}", userid, Username));
+                var flag = false;
+                var result = entity.T_RELATION_USER_ENGINEPATH.FirstOrDefault(x => x.RELATIONID == userid);
+                if (result != null)
+                {
+                    entity.T_RELATION_USER_ENGINEPATH.Remove(result);
+                    entity.SaveChanges();
+                    flag = true;
+                    return flag;
+                }
+                logger.Info(string.Format("DeleteUserMapExePath end | User id: {0} | Username: {1}", userid, Username));
+                return flag;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured user page in DeleteUserMapExePath method | Username: {0} |", Username));
+                ELogger.ErrorException(string.Format("Error occured user page in DeleteUserMapExePath method | Username: {0}", Username), ex);
+                throw;
+            }
+        }
+        public string AddUserPath(long userid, long relid, string exepath)
+        {
+            try
+            {
+                logger.Info(string.Format("AddUserPath start | User id: {0} | Username: {1}", userid, Username));
+                if (relid == 0)
+                {
+                    var result = entity.T_RELATION_USER_ENGINEPATH.Where(x => x.USERID == userid).ToList();
+                    if (result.Count == 0)
+                    {
+                        var userpath = new T_RELATION_USER_ENGINEPATH();
+                        userpath.RELATIONID = Helper.NextTestSuiteId("SEQ_REL_USER_ENGINEPATH");
+                        userpath.USERID = userid;
+                        userpath.ENGINEPATH = exepath;
+                        entity.T_RELATION_USER_ENGINEPATH.Add(userpath);
+                        entity.SaveChanges();
+                        logger.Info(string.Format("AddUserPath end | User id: {0} | Username: {1}", userid, Username));
+                        return "success";
+                    }
+                }
+                else
+                {
+                    var lresult = entity.T_RELATION_USER_ENGINEPATH.Find(relid);
+                    if (lresult != null)
+                    {
+                        lresult.ENGINEPATH = exepath;
+                        entity.SaveChanges();
+                        logger.Info(string.Format("AddUserPath end | User id: {0} | Username: {1}", userid, Username));
+                        return "success";
+                    }
+                }
+                logger.Info(string.Format("AddUserPath end | User id: {0} | Username: {1}", userid, Username));
+                return "error";
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured user page in AddUserPath method | Username: {0} |", Username));
+                ELogger.ErrorException(string.Format("Error occured user page in AddUserPath method | Username: {0}", Username), ex);
+                throw;
+            }
+        }
+        public List<RelUserExePath> ListUserExePath()
+        {
+            logger.Info(string.Format("ListUserExePath start | Username: {0}", Username));
+            try
+            {
+                List<RelUserExePath> relUsers = new List<RelUserExePath>();
+                var result = (from t in entity.T_TESTER_INFO
+                              join t2 in entity.T_RELATION_USER_ENGINEPATH on t.TESTER_ID equals t2.USERID
+                              select new RelUserExePath
+                              {
+                                  userid = t2.USERID,
+                                  Username = t.TESTER_LOGIN_NAME,
+                                  ExePath = t2.ENGINEPATH,
+                                  Relid = t2.RELATIONID
+
+                              }).ToList();
+
+                logger.Info(string.Format("ListUserExePath end | Username: {0}", Username));
+                return result;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured user page in ListUserExePath method | Username: {0} |", Username));
+                ELogger.ErrorException(string.Format("Error occured user page in ListUserExePath method | Username: {0}", Username), ex);
+                throw;
+            }
+        }
+        public RelUserExePath GetUserExePath(string lusername)
+        {
+            try
+            {
+                logger.Info(string.Format("GetUserExePath start | Username: {0}", Username));
+                var result = new RelUserExePath();
+                var lUsers = entity.T_TESTER_INFO.Where(x => x.TESTER_LOGIN_NAME.ToUpper().Trim() == lusername.ToUpper().Trim()).ToList();
+                if (lUsers.Count() > 0)
+                {
+                    var lUserId = lUsers.FirstOrDefault().TESTER_ID;
+                    var lList = entity.T_RELATION_USER_ENGINEPATH.Where(x => x.USERID == lUserId).ToList();
+                    if (lList.Count() > 0)
+                    {
+                        result = lList.Select(x => new RelUserExePath { userid = x.USERID, ExePath = x.ENGINEPATH }).FirstOrDefault();
+                    }
+                }
+                logger.Info(string.Format("GetUserExePath end | Username: {0}", Username));
+                return result;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured user page in GetUserExePath method | Username: {0} |", Username));
+                ELogger.ErrorException(string.Format("Error occured user page in GetUserExePath method | Username: {0}", Username), ex);
+                throw;
+            }
+        }
+        public T_TESTER_INFO GetUserById(int lUserId)
+        {
+            try
+            {
+                logger.Info(string.Format("Delete User start | User id: {0} | Username: {1}", lUserId, Username));
+                var result = entity.T_TESTER_INFO.FirstOrDefault(x => x.TESTER_ID == lUserId);
+                logger.Info(string.Format("Delete User start | User id: {0} | Username: {1}", lUserId, Username));
+                return result;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured user page in GetUserById method | Username: {0} |", Username));
+                ELogger.ErrorException(string.Format("Error occured user page in GetUserById method | Username: {0}", Username), ex);
+                throw;
+            }
+        }
+        public UserModel GetUserMappingById(int lUserId)
+        {
+            try
+            {
+                logger.Info(string.Format("Get User Mapping Id start | User id: {0} | Username: {1}", lUserId, Username));
+                var lList = entity.T_TESTER_INFO.Where(x => x.TESTER_ID == lUserId).Select(y => new UserModel
+                {
+                    TESTER_ID = y.TESTER_ID,
+                    COMPANY_ID = y.COMPANY_ID,
+                    TESTER_LOGIN_NAME = y.TESTER_LOGIN_NAME,
+                    TESTER_MAIL = y.TESTER_MAIL,
+                    TESTER_NAME_F = y.TESTER_NAME_F,
+                    TESTER_NAME_LAST = y.TESTER_NAME_LAST,
+                    TESTER_NAME_M = y.TESTER_NAME_M,
+
+                }).ToList();
+
+                foreach (UserModel item in lList)
+                {
+                    if (entity.T_USER_MAPPING.Any(x => x.TESTER_ID == item.TESTER_ID))
+                    {
+                        item.STATUS = entity.T_USER_MAPPING.FirstOrDefault(x => x.TESTER_ID == item.TESTER_ID).STATUS;
+                    }
+                }
+                var result = new UserModel();
+                if (lList.Count() > 0)
+                {
+                    result = lList.FirstOrDefault();
+                }
+                logger.Info(string.Format("Get User Mapping Id end | User id: {0} | Username: {1}", lUserId, Username));
+                return result;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured user page in GetUserMappingById method | Username: {0} |", Username));
+                ELogger.ErrorException(string.Format("Error occured user page in GetUserMappingById method | Username: {0}", Username), ex);
+                throw;
+            }
+        }
+
+        public T_TESTER_INFO GetUserByEmail(string lEmailId)
+        {
+            try
+            {
+                logger.Info(string.Format("Get User Email start | Email: {0}", lEmailId));
+                var result = entity.T_TESTER_INFO.FirstOrDefault(x => x.TESTER_MAIL.ToLower().Trim() == lEmailId.ToLower().Trim() || x.TESTER_LOGIN_NAME.ToLower().Trim() == lEmailId.ToLower().Trim());
+                logger.Info(string.Format("Get User Email start | Email: {0}", lEmailId));
+                return result;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured forgot password page in GetUserByEmail | Email: {0}", lEmailId));
+                ELogger.ErrorException(string.Format("Error occured in login page in GetUserByEmail | Email: {0}", lEmailId), ex);
+                throw;
+            }
+        }
+
+        public T_USER_MAPPING UpdateTempKey(decimal UserMapId, string TempKey)
+        {
+            try
+            {
+                logger.Info(string.Format("UpdateTempKey start | UserMapId: {0} | Username: {1}", UserMapId, Username));
+                var table = entity.T_USER_MAPPING.Find(UserMapId);
+                if (table != null)
+                {
+
+                    table.TEMP_KEY = TempKey;
+
+                    entity.SaveChanges();
+                }
+                logger.Info(string.Format("UpdateTempKey end | UserMapId: {0} | Username: {1}", UserMapId, Username));
+                return table;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured user page in UpdateTempKey method | Username: {0} |", Username));
+                ELogger.ErrorException(string.Format("Error occured user page in UpdateTempKey method | Username: {0}", Username), ex);
+                throw;
+            }
+        }
+
+        public T_USER_MAPPING GetUserMappingByUserId(decimal UserId)
+        {
+            try
+            {
+                logger.Info(string.Format("Get User Mapping Id start | UserId: {0}", UserId));
+                var table = entity.T_USER_MAPPING.FirstOrDefault(x => x.TESTER_ID == UserId);
+                logger.Info(string.Format("Get User Mapping Id end | UserId: {0}", UserId));
+                if (table != null)
+                {
+                    return table;
+                }
+                else
+                {
+                    return new T_USER_MAPPING();
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured Reset page in GetUserMappingByUserId Method | UserId: {0}", UserId));
+                ELogger.ErrorException(string.Format("Error occured Reset page in GetUserMappingByUserId Method | UserId: {0}", UserId), ex);
+                throw;
+            }
+        }
+
+        public T_TESTER_INFO GetUserByEmailAndLoginName(string lUserLogin)
+        {
+            try
+            {
+                logger.Info(string.Format("Get User Info start| UserName: {0}", lUserLogin));
+                var result = entity.T_TESTER_INFO.FirstOrDefault(x => x.TESTER_MAIL.ToLower().Trim() == lUserLogin.ToLower().Trim() || x.TESTER_LOGIN_NAME.ToLower().Trim() == lUserLogin.ToLower().Trim());
+
+                if(result != null)
+                {
+                    var checkIsDelete = entity.T_USER_MAPPING.Where(x => x.TESTER_ID == result.TESTER_ID).FirstOrDefault();
+                    if(checkIsDelete != null)
+                    {
+                        if (checkIsDelete.IS_DELETED == 1)
+                        {
+                            result = null;
+                        }
+                    }
+                }
+
+                logger.Info(string.Format("Get User Info end| UserName: {0}", lUserLogin));
+                return result;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured login page in GetUserByEmailAndLoginName method | UserName: {0}", lUserLogin));
+                ELogger.ErrorException(string.Format("Error occured login page in GetUserByEmailAndLoginName method | UserName: {0}", lUserLogin), ex);
+                throw;
+            }
+
+        }
+        public List<UserModel> ListAllUsersWithProjectMapping()
+        {
+            try
+            {
+                logger.Info(string.Format("ListAllUsersWithProjectMapping start | Username: {0}", Username));
+                var lList = new List<UserModel>();
+                var result = entity.T_TESTER_INFO.ToList().Select(a => new UserModel
+                {
+                    TESTER_ID = a.TESTER_ID,
+                    TESTER_NAME_F = a.TESTER_NAME_F,
+                    TESTER_NAME_M = a.TESTER_NAME_M,
+                    TESTER_NAME_LAST = a.TESTER_NAME_LAST,
+                    TESTER_LOGIN_NAME = a.TESTER_LOGIN_NAME,
+                    TESTER_MAIL = a.TESTER_MAIL,
+                }).ToList();
+                var flag = 0;
+                foreach (UserModel item in result)
+                {
+                    flag = 0;
+                    var rs = entity.T_USER_MAPPING.Where(x => x.TESTER_ID == item.TESTER_ID).ToList();
+                    foreach (var itm in rs)
+                    {
+                        if (itm.IS_DELETED == 1)
+                        {
+                            flag = 1;
+                        }
+                    }
+                    if (flag != 1)
+                    {
+                        var model = new UserModel();
+                        model.TESTER_ID = item.TESTER_ID;
+                        model.TESTER_NAME_F = item.TESTER_NAME_F;
+                        model.TESTER_NAME_LAST = item.TESTER_NAME_LAST;
+                        model.TESTER_LOGIN_NAME = item.TESTER_LOGIN_NAME;
+                        model.TESTER_MAIL = item.TESTER_MAIL;
+                        var projectlist = (from t in entity.REL_PROJECT_USER
+                                           join t1 in entity.T_TEST_PROJECT on t.PROJECT_ID equals t1.PROJECT_ID
+                                           where t.USER_ID == item.TESTER_ID
+                                           select new
+                                           {
+                                               t1.PROJECT_ID,
+                                               t1.PROJECT_NAME
+                                           }
+                                         );
+                        model.ProjectName = string.Join(",", projectlist.Where(y => !string.IsNullOrEmpty(y.PROJECT_NAME)).Select(x => x.PROJECT_NAME).Distinct());
+                        model.ProjectId = string.Join(",", projectlist.Where(y => y.PROJECT_ID > 0).Select(x => x.PROJECT_ID).Distinct());
+                        lList.Add(model);
+                    }
+                }
+                logger.Info(string.Format("ListAllUsersWithProjectMapping end | Username: {0}", Username));
+                return lList;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured user page in ListAllUsersWithProjectMapping method | Username: {0} |", Username));
+                ELogger.ErrorException(string.Format("Error occured user page in ListAllUsersWithProjectMapping method | Username: {0}", Username), ex);
+                throw;
+            }
+        }
+
+        public List<UserModel> ListAllUsers()
+        {
+            try
+            {
+                logger.Info(string.Format("List Users start | UserName: {0}", Username));
+                var lList = new List<UserModel>();
+                var result = entity.T_TESTER_INFO.ToList().Select(a => new UserModel
+                {
+                    TESTER_ID = a.TESTER_ID,
+                    TESTER_NAME_F = a.TESTER_NAME_F,
+                    TESTER_NAME_M = a.TESTER_NAME_M,
+                    TESTER_NAME_LAST = a.TESTER_NAME_LAST,
+                    TESTER_LOGIN_NAME = a.TESTER_LOGIN_NAME,
+                    TESTER_MAIL = a.TESTER_MAIL,
+                    COMPANY_NAME = a.T_MARS_COMPANY.COMPANY_NAME
+
+                }).ToList();
+
+                if (result.Count() > 0)
+                {
+                    lList = result.ToList();
+                    foreach (UserModel item in lList.ToList())
+                    {
+                        decimal lDeletedflag = 0;
+                        decimal lEnable = 0;
+                        var lT_User_MappingList = entity.T_USER_MAPPING.Where(x => x.TESTER_ID == item.TESTER_ID).ToList();
+
+                        if (lT_User_MappingList.Count() > 0)
+                        {
+                            lEnable = Convert.ToDecimal(lT_User_MappingList.FirstOrDefault().STATUS);
+                            lDeletedflag = Convert.ToDecimal(lT_User_MappingList.FirstOrDefault().IS_DELETED);
+                        }
+                        item.STATUS = lEnable;
+                        item.IsDeleted = lDeletedflag;
+                        if (item.IsDeleted == 1)
+                        {
+                            lList.Remove(item);
+                        }
+                    }
+                }
+                logger.Info(string.Format("List Users start | UserName: {0}", Username));
+                return lList;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured user page in ListAllUsers method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured user page in ListAllUsers method | UserName: {0}", Username), ex);
+                throw;
+            }
+        }
+
+        public List<UserActiveModel> ListAllActiveUsers()
+        {
+            try
+            {
+                logger.Info(string.Format("List All Active Users start | UserName: {0}", Username));
+                var result = entity.T_USER_ACTIVEPAGE.ToList().Select(a => new UserActiveModel
+                {
+                    ACTIVE_ID = a.ACTIVEPAGE_ID,
+                    USER_ID = a.USER_ID,
+                    PageName = SetPagename(a.PAGE_NAME, a.PAGE_ID),
+                    UserName = a.USER_ID == null ? "" : entity.T_TESTER_INFO.Where(x => x.TESTER_ID == a.USER_ID).FirstOrDefault().TESTER_LOGIN_NAME,
+
+                }).Distinct().ToList();
+
+                logger.Info(string.Format("List All Active Users end | UserName: {0}", Username));
+                return result;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured user page in ListAllActiveUsers method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured user page in ListAllActiveUsers method | UserName: {0}", Username), ex);
+                throw;
+            }
+        }
+
+        public string SetPagename(string pagename, decimal PgId)
+        {
+            try
+            {
+                logger.Info(string.Format("SetPagename start | pagename: {0} | Username: {1}", pagename, Username));
+                string result = string.Empty;
+                if (pagename == "TestCase")
+                    result = pagename + " >" + entity.T_TEST_CASE_SUMMARY.Where(x => x.TEST_CASE_ID == PgId).FirstOrDefault().TEST_CASE_NAME;
+                else if (pagename == "Storyboard")
+                    result = pagename + " >" + entity.T_STORYBOARD_SUMMARY.Where(x => x.STORYBOARD_ID == PgId).FirstOrDefault().STORYBOARD_NAME;
+                else
+                    result = pagename;
+
+                logger.Info(string.Format("SetPagename end | pagename: {0} | Username: {1}", pagename, Username));
+                return result;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured user page in SetPagename method | Username: {0} |", Username));
+                ELogger.ErrorException(string.Format("Error occured user page in SetPagename method | Username: {0}", Username), ex);
+                throw;
+            }
+        }
+        public T_TESTER_INFO CreateNewUser(T_TESTER_INFO t_TESTER, decimal? lchecked)
+        {
+            try
+            {
+
+                T_TESTER_INFO tester = new T_TESTER_INFO();
+                var lresult = entity.T_TESTER_INFO.Find(t_TESTER.TESTER_ID);
+                var result = entity.T_USER_MAPPING.Where(x => x.TESTER_ID == t_TESTER.TESTER_ID).ToList();
+                if (lresult != null)
+                {
+                    logger.Info(string.Format("Edit New User start | New User Name: {0} | Username: {1}", t_TESTER.TESTER_LOGIN_NAME, Username));
+                    lresult.TESTER_NAME_F = t_TESTER.TESTER_NAME_F;
+                    lresult.TESTER_NAME_M = t_TESTER.TESTER_NAME_M;
+                    lresult.TESTER_NAME_LAST = t_TESTER.TESTER_NAME_LAST;
+                    lresult.TESTER_MAIL = t_TESTER.TESTER_MAIL;
+                    lresult.TESTER_LOGIN_NAME = t_TESTER.TESTER_LOGIN_NAME;
+                    lresult.COMPANY_ID = t_TESTER.COMPANY_ID;
+                    entity.SaveChanges();
+                    logger.Info(string.Format("Edit New User end | New User Name: {0} | Username: {1}", t_TESTER.TESTER_LOGIN_NAME, Username));
+                }
+                else
+                {
+                    logger.Info(string.Format("Create New User start | New User Name: {0} | Username: {1}", t_TESTER.TESTER_LOGIN_NAME, Username));
+                    ObjectParameter outparam = new ObjectParameter("v_NEXTVAL", typeof(Int32));
+                    var projectId = entity.GETNEXT_VAL(USER_SEQ, outparam);
+                    var lUserId = long.Parse(outparam.Value.ToString());
+                    t_TESTER.TESTER_ID = lUserId;
+
+                    entity.T_TESTER_INFO.Add(t_TESTER);
+                    entity.SaveChanges();
+                    logger.Info(string.Format("Create New User end | New User Name: {0} | Username: {1}", t_TESTER.TESTER_LOGIN_NAME, Username));
+                }
+                if (result.Count() > 0)
+                {
+                    var lusermodel = entity.T_USER_MAPPING.Where(x => x.TESTER_ID == t_TESTER.TESTER_ID).FirstOrDefault();
+                    lusermodel.STATUS = lchecked;
+                    entity.SaveChanges();
+                }
+                else
+                {
+                    ObjectParameter outparam = new ObjectParameter("v_NEXTVAL", typeof(Int32));
+                    var projectId = entity.GETNEXT_VAL(USER_SEQ, outparam);
+                    var lUserId = long.Parse(outparam.Value.ToString());
+                    T_USER_MAPPING mapper = new T_USER_MAPPING();
+                    mapper.USER_MAPPING_ID = lUserId;
+                    mapper.STATUS = lchecked;
+                    mapper.TESTER_ID = t_TESTER.TESTER_ID;
+                    entity.T_USER_MAPPING.Add(mapper);
+                    entity.SaveChanges();
+                }
+
+                return t_TESTER;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured user page in CreateNewUser | Username: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured user page in CreateNewUser | Username: {0}", Username), ex);
+                throw;
+            }
+        }
+
+        public T_TESTER_INFO ChangeUserPassword(string lNewPsw, decimal lTesterId)
+        {
+            try
+            {
+                logger.Info(string.Format("ChangeUserPassword start | New Password: {0} | User id: {1} | Username: {2}", lNewPsw,lTesterId, Username));
+                T_TESTER_INFO tester = new T_TESTER_INFO();
+                var lresult = entity.T_TESTER_INFO.Find(lTesterId);
+                if (lresult != null)
+                {
+                    lresult.TESTER_PWD = lNewPsw;
+                    entity.SaveChanges();
+                }
+                logger.Info(string.Format("ChangeUserPassword end | New Password: {0} | User id: {1} | Username: {2}", lNewPsw, lTesterId, Username));
+                return lresult;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured user page in ChangeUserPassword method | Username: {0} |", Username));
+                ELogger.ErrorException(string.Format("Error occured user page in ChangeUserPassword method | Username: {0}", Username), ex);
+                throw;
+            }
+        }
+
+        public bool CheckLoginNameExist(string LoginName, decimal? TesterId)
+        {
+            try
+            {
+                logger.Info(string.Format("Check Login Name Exist start | LoginName: {0} | Username: {1}", LoginName, Username));
+                bool lresult = false;
+                if (TesterId != null && TesterId > 0)
+                {
+                    var fresult = (from t in entity.T_TESTER_INFO
+                                   join t1 in entity.T_USER_MAPPING on t.TESTER_ID equals t1.TESTER_ID
+                                   where t1.IS_DELETED == 1 && t.TESTER_LOGIN_NAME.ToUpper().Trim() == LoginName.ToUpper().Trim() && t.TESTER_ID != TesterId
+                                   select t
+                                 ).ToList();
+                    if (fresult.Count > 0)
+                    {
+                        return lresult;
+                    }
+                    lresult = entity.T_TESTER_INFO.Any(x => x.TESTER_LOGIN_NAME.ToLower().Trim() == LoginName.ToLower().Trim() && x.TESTER_ID != TesterId);
+                }
+                else
+                {
+                    var fresult = (from t in entity.T_TESTER_INFO
+                                   join t1 in entity.T_USER_MAPPING on t.TESTER_ID equals t1.TESTER_ID
+                                   where t1.IS_DELETED == 1 && t.TESTER_LOGIN_NAME.ToUpper().Trim() == LoginName.ToUpper().Trim()
+                                   select t
+                                 ).ToList();
+                    if (fresult.Count > 0)
+                    {
+                        return lresult;
+                    }
+                    lresult = entity.T_TESTER_INFO.Any(x => x.TESTER_LOGIN_NAME.ToLower().Trim() == LoginName.ToLower().Trim());
+                }
+                logger.Info(string.Format("Check Login Name Exist end | LoginName: {0} | Username: {1}", LoginName, Username));
+                return lresult;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured user page in CheckLoginNameExist | Username: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured user page in CheckLoginNameExist | Username: {0}", Username), ex);
+                throw;
+            }
+        }
+
+        public bool CheckLoginEmailExist(string LoginEmail, decimal? TesterId)
+        {
+            try
+            {
+                logger.Info(string.Format("Check Login Email Exist start | Email: {0} | Username: {1}", LoginEmail, Username));
+                bool lresult = false;
+                if (TesterId != null && TesterId > 0)
+                {
+                    var fresult = (from t in entity.T_TESTER_INFO
+                                   join t1 in entity.T_USER_MAPPING on t.TESTER_ID equals t1.TESTER_ID
+                                   where t1.IS_DELETED == 1 && t.TESTER_MAIL.ToUpper().Trim() == LoginEmail.ToUpper().Trim() && t.TESTER_ID != TesterId
+                                   select t
+                                ).ToList();
+                    if (fresult.Count > 0)
+                        return lresult;
+                    lresult = entity.T_TESTER_INFO.Any(x => x.TESTER_MAIL.ToLower().Trim() == LoginEmail.ToLower().Trim() && x.TESTER_ID != TesterId);
+                }
+                else
+                {
+                    var fresult = (from t in entity.T_TESTER_INFO
+                                   join t1 in entity.T_USER_MAPPING on t.TESTER_ID equals t1.TESTER_ID
+                                   where t1.IS_DELETED == 1 && t.TESTER_MAIL.ToUpper().Trim() == LoginEmail.ToUpper().Trim()
+                                   select t
+                                 ).ToList();
+
+                    if (fresult.Count > 0)
+                    {
+                        return lresult;
+                    }
+                    lresult = entity.T_TESTER_INFO.Any(x => x.TESTER_MAIL.ToLower().Trim() == LoginEmail.ToLower().Trim());
+                }
+                logger.Info(string.Format("Check Login Email Exist end | Email: {0} | Username: {1}", LoginEmail, Username));
+                return lresult;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured user page in CheckLoginEmailExist | Username: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured user page in CheckLoginEmailExist | Username: {0}", Username), ex);
+                throw;
+            }
+        }
+
+        public long GetUserID()
+        {
+            try
+            {
+                logger.Info(string.Format("GetUserID start | Username: {0}", Username));
+                ObjectParameter outparam = new ObjectParameter("v_NEXTVAL", typeof(Int32));
+
+                var projectId = entity.GETNEXT_VAL(USER_SEQ, outparam);
+                logger.Info(string.Format("GetUserID end | Username: {0}", Username));
+                return long.Parse(outparam.Value.ToString());
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured user page in GetUserID method | Username: {0} |", Username));
+                ELogger.ErrorException(string.Format("Error occured user page in GetUserID method | Username: {0}", Username), ex);
+                throw;
+            }
+        }
+        public T_USER_MAPPING GetUserId(decimal id)
+        {
+            try
+            {
+                logger.Info(string.Format("GetUser Id start | User id: {0}", id));
+                var result = entity.T_USER_MAPPING.FirstOrDefault(x => x.TESTER_ID == id);
+                logger.Info(string.Format("GetUser Id start | User id: {0}", id));
+                return result;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured user page in GetUserId | User id: {0}", id));
+                ELogger.ErrorException(string.Format("Error occured user page in GetUserId | User id: {0}", id), ex);
+                throw;
+            }
+        }
+        public void SetTemporaryKey(string tempkey, decimal testerid)
+        {
+            try
+            {
+                logger.Info(string.Format("SetTemporaryKey start | testerid: {0} | tempkey: {1}", testerid, tempkey));
+                T_USER_MAPPING User = new T_USER_MAPPING();
+                var ruser = GetUserId(testerid);
+                if (ruser != null)
+                {
+                    ruser.TEMP_KEY = tempkey;
+                    entity.SaveChanges();
+                }
+                else
+                {
+                    ObjectParameter outparam = new ObjectParameter("v_NEXTVAL", typeof(Int32));
+                    var projectId = entity.GETNEXT_VAL(USER_SEQ, outparam);
+                    var lUserId = long.Parse(outparam.Value.ToString());
+                    User.USER_MAPPING_ID = lUserId;
+                    User.TESTER_ID = testerid;
+                    User.TEMP_KEY = tempkey;
+                    entity.T_USER_MAPPING.Add(User);
+                    entity.SaveChanges();
+                }
+                logger.Info(string.Format("SetTemporaryKey end | User id: {0} | tempkey: {1}", testerid, tempkey));
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in forgot password page | User id: {0} | tempkey: {1}", testerid, tempkey));
+                ELogger.ErrorException(string.Format("Error occured in forgot password page | User id: {0}| tempkey: {1}", testerid, tempkey), ex);
+                throw;
+            }
+        }
+
+        public string GetUserName(int id)
+        {
+            try
+            {
+                logger.Info(string.Format("Get user name start | User id: {0} | Username: {1}", id, Username));
+                var username = entity.T_TESTER_INFO.FirstOrDefault(x => x.TESTER_ID == id).TESTER_LOGIN_NAME;
+                logger.Info(string.Format("Get user name end | User id: {0} | Username: {1}", id, Username));
+                return username;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured user page in GetUserName method | Username: {0} |", Username));
+                ELogger.ErrorException(string.Format("Error occured user page in GetUserName method | Username: {0}", Username), ex);
+                throw;
+            }
+        }
+        public T_TESTER_INFO DeleteUser(int id)
+        {
+            try
+            {
+                logger.Info(string.Format("Delete User start | User id: {0} | Username: {1}", id, Username));
+                var rUser = new T_USER_MAPPING();
+                var lUser = new T_TESTER_INFO();
+                if (id > 0)
+                {
+                    lUser = GetUserById(id);
+                    rUser = GetUserId(id);
+
+                    if (lUser != null && rUser != null)
+                    {
+                        var list = entity.REL_PROJECT_USER.Where(x => x.USER_ID == id).ToList();
+                        foreach (var item in list)
+                        {
+                            entity.REL_PROJECT_USER.Remove(item);
+                            entity.SaveChanges();
+                        }
+                        rUser.TESTER_ID = lUser.TESTER_ID;
+                        rUser.IS_DELETED = 1;
+                        entity.SaveChanges();
+                    }
+                    else
+                    {
+                        if (rUser == null)
+                        {
+                            ObjectParameter outparam = new ObjectParameter("v_NEXTVAL", typeof(Int32));
+                            var projectId = entity.GETNEXT_VAL(USER_SEQ, outparam);
+                            var lUserId = long.Parse(outparam.Value.ToString());
+                            var lmappingtable = new T_USER_MAPPING();
+                            lmappingtable.USER_MAPPING_ID = lUserId;
+                            lmappingtable.TESTER_ID = lUser.TESTER_ID;
+                            lmappingtable.IS_DELETED = 1;
+                            entity.T_USER_MAPPING.Add(lmappingtable);
+                            entity.SaveChanges();
+                        }
+                    }
+                }
+                logger.Info(string.Format("Delete User end | User id: {0} | Username: {1}", id, Username));
+                return lUser;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured user page in DeleteUser method | Username: {0} |", Username));
+                ELogger.ErrorException(string.Format("Error occured user page in DeleteUser method | Username: {0}", Username), ex);
+                throw;
+            }
+        }
+
+        public bool CheckPinExist(decimal useId, string datatab, long dataid, long ProjectId)
+        {
+            try
+            {
+                logger.Info(string.Format("Check Pin Exist start | User id: {0} | Username: {1}", useId, Username));
+                var result = false;
+
+                var list = entity.T_USER_ACTIVEPAGE.Where(x => x.USER_ID == useId && x.PAGE_NAME.Trim().ToLower() == datatab.Trim().ToLower() && x.PAGE_ID == dataid && x.PROJECT_ID == ProjectId).ToList();
+                if (list.Count > 0)
+                    result = true;
+                logger.Info(string.Format("Check Pin Exist end | User id: {0} | Username: {1}", useId, Username));
+                return result;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured user page in CheckPinExist method | Username: {0} |", Username));
+                ELogger.ErrorException(string.Format("Error occured user page in CheckPinExist method | Username: {0}", Username), ex);
+                throw;
+            }
+        }
+
+        public T_USER_ACTIVEPAGE DeleteActiveUser(long id)
+        {
+            try
+            {
+                logger.Info(string.Format("Delete Active User start | User id: {0} | Username: {1}", id, Username));
+                var lUser = new T_USER_ACTIVEPAGE();
+                if (id > 0)
+                {
+                    var list = entity.T_USER_ACTIVEPAGE.Where(x => x.ACTIVEPAGE_ID == id).ToList();
+                    foreach (var item in list)
+                    {
+                        entity.T_USER_ACTIVEPAGE.Remove(item);
+                        entity.SaveChanges();
+                    }
+                    lUser = entity.T_USER_ACTIVEPAGE.FirstOrDefault(x => x.ACTIVEPAGE_ID == id);
+                }
+                logger.Info(string.Format("Delete Active User end | User id: {0} | Username: {1}", id, Username));
+                return lUser;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured user page in DeleteActiveUser method | Username: {0} |", Username));
+                ELogger.ErrorException(string.Format("Error occured user page in DeleteActiveUser method | Username: {0}", Username), ex);
+                throw;
+            }
+        }
+
+        public T_STORYBOARD_SUMMARY GetStoryboradNameyId(long sid)
+        {
+            try
+            {
+                logger.Info(string.Format("Get StoryboradName start | Stroryboard id: {0} | Username: {1}", sid, Username));
+                var lResult = entity.T_STORYBOARD_SUMMARY.Where(x => x.STORYBOARD_ID == sid).FirstOrDefault();
+                logger.Info(string.Format("Get StoryboradName end | Stroryboard id: {0} | Username: {1}", sid, Username));
+                return lResult;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured user page in GetStoryboradNameyId method | Username: {0} |", Username));
+                ELogger.ErrorException(string.Format("Error occured user page in GetStoryboradNameyId method | Username: {0}", Username), ex);
+                throw;
+            }
+        }
+
+        public TestCaseTestSuiteModel GetTestsuiteIdByTeastcaseId(long Tid)
+        {
+            try
+            {
+                logger.Info(string.Format("Get TestsuiteId start | TeastcaseId: {0} | Username: {1}", Tid, Username));
+                var list = from t1 in entity.T_TEST_CASE_SUMMARY
+                           join t2 in entity.REL_TEST_CASE_TEST_SUITE on t1.TEST_CASE_ID equals t2.TEST_CASE_ID
+                           where t1.TEST_CASE_ID == Tid
+                           select new TestCaseTestSuiteModel
+                           {
+                               TestSuiteId = t2.TEST_SUITE_ID,
+                               TestCaseName = t1.TEST_CASE_NAME,
+                           };
+                var lResult = list.FirstOrDefault();
+                logger.Info(string.Format("Get TestsuiteId end | TeastcaseId: {0} | Username: {1}", Tid, Username));
+                return lResult;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured user page in GetTestsuiteIdByTeastcaseId method | Username: {0} |", Username));
+                ELogger.ErrorException(string.Format("Error occured user page in GetTestsuiteIdByTeastcaseId method | Username: {0}", Username), ex);
+                throw;
+            }
+        }
+
+        public string AddDetelteActivateTab(long useId, string userName, string datatab, long dataid, string dataname, string linkText, long ProjectId)
+        {
+            try
+            {
+                string result = string.Empty;
+                logger.Info(string.Format("Change Activate Tab start | UserId: {0} | UserName: {1}", useId, Username));
+                if (linkText.Trim() == "Pin Tab")
+                {
+                    var pagename = dataid == 0 ? dataname : datatab;
+                    var user = entity.T_USER_ACTIVEPAGE.Where(x => x.USER_ID == useId && x.PAGE_NAME.Trim() == pagename.Trim() && x.PAGE_ID == dataid && x.PROJECT_ID == ProjectId).FirstOrDefault();
+                    if (user == null)
+                    {
+                        var lUser = new T_USER_ACTIVEPAGE();
+                        lUser.ACTIVEPAGE_ID = Helper.NextTestSuiteId("T_ACTIVEUSERPAGE_SEQ");
+                        lUser.USER_ID = useId;
+                        lUser.PAGE_ID = dataid;
+                        lUser.PROJECT_ID = ProjectId;
+                        lUser.PAGE_NAME = dataid == 0 ? dataname : datatab;
+                        lUser.CREATEDBY = userName;
+                        lUser.CREATEDDATE = DateTime.Now;
+                        entity.T_USER_ACTIVEPAGE.Add(lUser);
+                        entity.SaveChanges();
+                    }
+                    result = "Successfully AddPin";
+                }
+                else if (linkText.Trim() == "UnPin Tab")
+                {
+                    var pagename = dataid == 0 ? dataname : datatab;
+                    var list = entity.T_USER_ACTIVEPAGE.Where(x => x.USER_ID == useId && x.PAGE_NAME.Trim() == pagename.Trim() && x.PAGE_ID == dataid && x.PROJECT_ID == ProjectId).ToList();
+                    foreach (var item in list)
+                    {
+                        entity.T_USER_ACTIVEPAGE.Remove(item);
+                        entity.SaveChanges();
+                    }
+                    list = entity.T_USER_ACTIVEPAGE.Where(x => x.USER_ID == useId && x.PAGE_NAME.Trim() == pagename.Trim() && x.PAGE_ID == dataid && x.PROJECT_ID == ProjectId).ToList();
+
+                    if (list.Count == 0)
+                        result = "Successfully Remove Pin";
+                }
+                logger.Info(string.Format("Change Activate Tab end | UserId: {0} | UserName: {1}", useId, Username));
+                return result;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured user page in AddDetelteActivateTab method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured user page in AddDetelteActivateTab method | UserName: {0}", Username), ex);
+                throw;
+            }
+        }
+
+        public List<T_USER_ACTIVEPAGE> ActivePinListByUserId(long userId)
+        {
+            try
+            {
+                logger.Info(string.Format("ActivePinListByUserId start | User id: {0} | Username: {1}", userId, Username));
+                var result = entity.T_USER_ACTIVEPAGE.Where(x => x.USER_ID == userId).ToList();
+                logger.Info(string.Format("ActivePinListByUserId end | User id: {0} | Username: {1}", userId, Username));
+                return result;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured user page in ActivePinListByUserId method | Username: {0} |", Username));
+                ELogger.ErrorException(string.Format("Error occured user page in ActivePinListByUserId method | Username: {0}", Username), ex);
+                throw;
+            }
+        }
+
+        public T_USER_MAPPING ChangeUserStatus(int id, int check)
+        {
+            try
+            {
+                logger.Info(string.Format("Change User Status start | UserId: {0} | UserName: {1}", id, Username));
+                var result = GetUserId(id);
+                if (result != null)
+                {
+                    result.STATUS = check;
+                    entity.SaveChanges();
+                }
+                else
+                {
+                    ObjectParameter outparam = new ObjectParameter("v_NEXTVAL", typeof(Int32));
+                    var projectId = entity.GETNEXT_VAL(USER_SEQ, outparam);
+                    var lUserId = long.Parse(outparam.Value.ToString());
+                    T_USER_MAPPING mapper = new T_USER_MAPPING();
+                    mapper.USER_MAPPING_ID = lUserId;
+                    mapper.STATUS = check;
+                    mapper.TESTER_ID = id;
+                    entity.T_USER_MAPPING.Add(mapper);
+                    entity.SaveChanges();
+                }
+                logger.Info(string.Format("Change User Status end | UserId: {0} | UserName: {1}", id, Username));
+                return new T_USER_MAPPING();
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured user page in ListApplication method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured user page in ListApplication method | UserName: {0}", Username), ex);
+                throw;
+            }
+        }
+
+        public List<T_DBCONNECTION> GetConnectionList()
+        {
+            try
+            {
+                logger.Info(string.Format("GetConnectionList start | Username: {0}", Username));
+                var ConnList = entity.T_DBCONNECTION.ToList();
+                logger.Info(string.Format("GetConnectionList end | Username: {0}", Username));
+                return ConnList;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured user page in GetConnectionList method | Username: {0} |", Username));
+                ELogger.ErrorException(string.Format("Error occured user page in GetConnectionList method | Username: {0}", Username), ex);
+                throw;
+            }
+        }
+
+        public bool AddEditConnection(DBconnectionViewModel lEntity)
+        {
+            try
+            {
+                logger.Info(string.Format("AddEditConnection start | Username: {0}", Username));
+                if (!string.IsNullOrEmpty(lEntity.UserName))
+                {
+                    lEntity.UserName = lEntity.UserName.Trim();
+                    lEntity.Password = lEntity.Password.Trim();
+                }
+                var flag = false;
+                if (lEntity.connectionId == 0)
+                {
+                    var tbl = new T_DBCONNECTION();
+                    tbl.DBCONNECTION_ID = Helper.NextTestSuiteId("SEQ_T_DBCONNECTION");
+                    tbl.DATABASENAME = "metadata=res://*/Entities.Db_Context.csdl|res://*/Entities.Db_Context.ssdl|res://*/Entities.Db_Context.msl;provider=Oracle.ManagedDataAccess.Client;provider connection string=\"DATA SOURCE={0};PASSWORD={1};USER ID={2}\"";
+                    tbl.USERNAME = lEntity.UserName;
+                    tbl.PASSWORD = lEntity.Password;
+                    tbl.PORT = lEntity.Port;
+                    tbl.HOST = lEntity.Host;
+                    tbl.SERVICENAME = lEntity.Service_Name;
+                    tbl.SCHEMA = lEntity.Schema;
+                    tbl.DECODE_METHOD = lEntity.DecodeMethod;
+                    lEntity.connectionId = tbl.DBCONNECTION_ID;
+                    entity.T_DBCONNECTION.Add(tbl);
+                    entity.SaveChanges();
+                    flag = true;
+                }
+                else
+                {
+                    var tbl = entity.T_DBCONNECTION.Find(lEntity.connectionId);
+
+                    if (tbl != null)
+                    {
+                        tbl.USERNAME = lEntity.UserName;
+                        tbl.PASSWORD = lEntity.Password;
+                        tbl.PORT = lEntity.Port;
+                        tbl.HOST = lEntity.Host;
+                        tbl.SERVICENAME = lEntity.Service_Name;
+                        tbl.SCHEMA = lEntity.Schema;
+                        tbl.DECODE_METHOD = lEntity.DecodeMethod;
+                        entity.SaveChanges();
+                    }
+                    flag = true;
+                }
+                logger.Info(string.Format("AddEditConnection end | Username: {0}", Username));
+                return flag;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured user page in AddEditConnection method | Username: {0} |", Username));
+                ELogger.ErrorException(string.Format("Error occured user page in AddEditConnection method | Username: {0}", Username), ex);
+                throw;
+            }
+        }
+
+        public bool CheckDuplicateConnectionExist(string Username, string Password, long? ConnectionId)
+        {
+            try
+            {
+                logger.Info(string.Format("CheckDuplicateConnectionExist start | ConnectionId: {0} | Username: {1}", ConnectionId, Username));
+                var lresult = false;
+                if (ConnectionId != null)
+                {
+                    lresult = entity.T_DBCONNECTION.Any(x => x.DBCONNECTION_ID != ConnectionId && x.USERNAME.ToLower().Trim() == Username.ToLower().Trim() && x.PASSWORD.ToLower().Trim() == Password.ToLower().Trim());
+                }
+                else
+                {
+                    lresult = entity.T_DBCONNECTION.Any(x => x.USERNAME.ToLower().Trim() == Username.ToLower().Trim() && x.PASSWORD.ToLower().Trim() == Password.ToLower().Trim());
+                }
+                logger.Info(string.Format("CheckDuplicateConnectionExist end | ConnectionId: {0} | Username: {1}", ConnectionId, Username));
+                return lresult;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured user page in CheckDuplicateConnectionExist method | Username: {0} |", Username));
+                ELogger.ErrorException(string.Format("Error occured user page in CheckDuplicateConnectionExist method | Username: {0}", Username), ex);
+                throw;
+            }
+        }
+
+        public bool DeletConnection(long ConnectionId)
+        {
+            try
+            {
+                logger.Info(string.Format("DeletConnection start | ConnectionId: {0} | Username: {1}", ConnectionId, Username));
+                var flag = false;
+                var result = entity.T_DBCONNECTION.FirstOrDefault(x => x.DBCONNECTION_ID == ConnectionId);
+                if (result != null)
+                {
+                    entity.T_DBCONNECTION.Remove(result);
+                    entity.SaveChanges();
+                    flag = true;
+                }
+                logger.Info(string.Format("DeletConnection end | ConnectionId: {0} | Username: {1}", ConnectionId, Username));
+
+                return flag;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured user page in DeletConnection method | Username: {0} |", Username));
+                ELogger.ErrorException(string.Format("Error occured user page in DeletConnection method | Username: {0}", Username), ex);
+                throw;
+            }
+           
+        }
+
+        #region User Role Privilages
+
+        public List<T_TEST_ROLES> GetAllRoles()
+        {
+            try
+            {
+                logger.Info(string.Format("GetAllRoles start | Username: {0}", Username));
+                var result = entity.T_TEST_ROLES.ToList();
+                logger.Info(string.Format("GetAllRoles end | Username: {0}", Username));
+                return result;               
+
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured user page in GetAllRoles method | Username: {0} |", Username));
+                ELogger.ErrorException(string.Format("Error occured user page in GetAllRoles method | Username: {0}", Username), ex);
+                throw;
+            }
+        }
+
+        public T_TEST_ROLES GetRoleById(long roleId)
+        {
+            try
+            {
+                logger.Info(string.Format("GetRoleById start | roleId: {0} | Username: {1}", roleId, Username));
+                var result = entity.T_TEST_ROLES.Where(x => x.ROLE_ID == roleId).FirstOrDefault();
+                logger.Info(string.Format("GetRoleById end | roleId: {0} | Username: {1}", roleId, Username));
+                return result;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured user page in GetRoleById method | Username: {0} |", Username));
+                ELogger.ErrorException(string.Format("Error occured user page in GetRoleById method | Username: {0}", Username), ex);
+                throw;
+            }
+        }
+
+        public List<T_TEST_PRIVILEGE> GetAllPrivileges()
+        {
+            try
+            {
+                logger.Info(string.Format("GetAllPrivileges start | Username: {0}", Username));
+                var result = entity.T_TEST_PRIVILEGE.ToList();
+                logger.Info(string.Format("GetAllPrivileges end | Username: {0}", Username));
+                return result;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured user page in GetAllPrivileges method | Username: {0} |", Username));
+                ELogger.ErrorException(string.Format("Error occured user page in GetAllPrivileges method | Username: {0}", Username), ex);
+                throw;
+            }
+        }
+
+        public List<T_TEST_PRIVILEGE_ROLE_MAPPING> GetAllPrivilegesRoleMapping()
+        {
+            try
+            {
+                logger.Info(string.Format("GetAllPrivilegesRoleMapping start | Username: {0}", Username));
+                var result = entity.T_TEST_PRIVILEGE_ROLE_MAPPING.ToList();
+                logger.Info(string.Format("GetAllPrivilegesRoleMapping end | Username: {0}", Username));
+                return result;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured user page in GetAllPrivilegesRoleMapping method | Username: {0} |", Username));
+                ELogger.ErrorException(string.Format("Error occured user page in GetAllPrivilegesRoleMapping method | Username: {0}", Username), ex);
+                throw;
+            }
+        }
+
+        public List<T_TEST_USER_ROLE_MAPPING> GetAllUserRoleMapping()
+        {
+            try
+            {
+                logger.Info(string.Format("GetAllUserRoleMapping start | Username: {0}", Username));
+                var result = entity.T_TEST_USER_ROLE_MAPPING.ToList();
+                logger.Info(string.Format("GetAllUserRoleMapping end | Username: {0}", Username));
+                return result;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured user page in GetAllUserRoleMapping method | Username: {0} |", Username));
+                ELogger.ErrorException(string.Format("Error occured user page in GetAllUserRoleMapping method | Username: {0}", Username), ex);
+                throw;
+            }
+        }
+
+        public List<T_TEST_USER_ROLE_MAPPING> GetUserRoleMappingByUserId(long userId)
+        {
+            try
+            {
+                logger.Info(string.Format("GetUserRoleMappingByUserId start | Username: {0}", Username));
+                var result = entity.T_TEST_USER_ROLE_MAPPING.Where(x => x.USER_ID == userId).ToList();
+                logger.Info(string.Format("GetUserRoleMappingByUserId end | Username: {0}", Username));
+                return result;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured user page in GetUserRoleMappingByUserId method | Username: {0} |", Username));
+                ELogger.ErrorException(string.Format("Error occured user page in GetUserRoleMappingByUserId method | Username: {0}", Username), ex);
+                throw;
+            }
+        }
+
+        public T_TEST_PRIVILEGE_ROLE_MAPPING GetPrivilegesRoleMappingByPrivilegeRoleMappingId(long privilegeRoleMappingId)
+        {
+            try
+            {
+                logger.Info(string.Format("GetPrivilegesRoleMappingByPrivilegeRoleMappingId start | privilegeRoleMappingId {0} | Username: {1}", privilegeRoleMappingId, Username));
+                var result = entity.T_TEST_PRIVILEGE_ROLE_MAPPING.Where(x => x.PRIVILEGE_ROLE_MAP_ID == privilegeRoleMappingId).FirstOrDefault();
+                logger.Info(string.Format("GetPrivilegesRoleMappingByPrivilegeRoleMappingId end | privilegeRoleMappingId {0} | Username: {1}", privilegeRoleMappingId, Username));
+                return result;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured user page in GetPrivilegesRoleMappingByPrivilegeRoleMappingId method | Username: {0} |", Username));
+                ELogger.ErrorException(string.Format("Error occured user page in GetPrivilegesRoleMappingByPrivilegeRoleMappingId method | Username: {0}", Username), ex);
+                throw;
+            }
+        }
+
+        public List<T_TEST_PRIVILEGE_ROLE_MAPPING> GetPrivilegesRoleMappingByRoleId(long roleId)
+        {
+            try
+            {
+                logger.Info(string.Format("GetPrivilegesRoleMappingByRoleId start | Username: {0}", Username));
+                var result = entity.T_TEST_PRIVILEGE_ROLE_MAPPING.Where(x => x.ROLE_ID == roleId).ToList();
+                logger.Info(string.Format("GetPrivilegesRoleMappingByRoleId end | Username: {0}", Username));
+                return result;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured user page in GetPrivilegesRoleMappingByRoleId method | Username: {0} |", Username));
+                ELogger.ErrorException(string.Format("Error occured user page in GetPrivilegesRoleMappingByRoleId method | Username: {0}", Username), ex);
+                throw;
+            }
+        }
+
+        public bool AddEditPrivilageRoleMapping(PrivilegeRoleMappingViewModel privilegeRoleMappingEntity)
+        {
+            try
+            {
+                bool flag = false;
+                if (privilegeRoleMappingEntity.PrivilegeRoleMappingId == 0)
+                {
+                    logger.Info(string.Format("Add PrivilegeRoleMapping start | Application: {0} | Username: {1}", "PrivilegeRoleMapping", Username));
+                    if (privilegeRoleMappingEntity.PrivilegeListModel.Count > 0)
+                    {
+                        foreach (var item in privilegeRoleMappingEntity.PrivilegeListModel)
+                        {
+                            var privilegeRoleMappingTbl = new T_TEST_PRIVILEGE_ROLE_MAPPING();
+                            privilegeRoleMappingTbl.PRIVILEGE_ROLE_MAP_ID = Helper.NextTestSuiteId("REL_PRIVILEGE_ROLE_MAPPING");
+                            privilegeRoleMappingTbl.ROLE_ID = privilegeRoleMappingEntity.RoleId;
+                            privilegeRoleMappingTbl.PRIVILEGE_ID = item.PrivilegeId;
+                            privilegeRoleMappingTbl.ISACTIVE = item.IsActive.Value;
+                            privilegeRoleMappingTbl.CREATOR = Username;
+                            privilegeRoleMappingTbl.CREATOR_DATE = DateTime.Now;
+
+                            entity.T_TEST_PRIVILEGE_ROLE_MAPPING.Add(privilegeRoleMappingTbl);
+                            entity.SaveChanges();
+                        }
+                        flag = true;
+                        logger.Info(string.Format("Add PrivilegeRoleMapping end | Application: {0} | Username: {1}", "PrivilegeRoleMapping", Username));
+                    }
+                    else
+                    {
+                        flag = false;
+                        logger.Info(string.Format("Add PrivilegeRoleMapping privilege not present. end | Application: {0} | Username: {1}", "PrivilegeRoleMapping", Username));
+                    }
+                }
+                else
+                {
+                    var privilegeRoleMappingTbl = entity.T_TEST_PRIVILEGE_ROLE_MAPPING.Find(privilegeRoleMappingEntity.PrivilegeRoleMappingId);
+                    logger.Info(string.Format("Edit PrivilegeRoleMapping start | Application: {0} | PrivilegeRoleMappingId: {1} | Username: {2}", "PrivilegeRoleMapping", privilegeRoleMappingEntity.PrivilegeRoleMappingId, Username));
+                    if (privilegeRoleMappingTbl != null)
+                    {
+                        foreach (var item in privilegeRoleMappingEntity.PrivilegeListModel)
+                        {
+                            privilegeRoleMappingTbl.ROLE_ID = privilegeRoleMappingEntity.RoleId;
+                            privilegeRoleMappingTbl.PRIVILEGE_ID = item.PrivilegeId;
+                            privilegeRoleMappingTbl.ISACTIVE = item.IsActive.Value;
+                            entity.SaveChanges();
+                        }
+                    }
+                    flag = true;
+                    logger.Info(string.Format("Edit PrivilegeRoleMapping end | Application: {0} |PrivilegeRoleMappingId: {1} | Username: {2}", "PrivilegeRoleMapping", privilegeRoleMappingEntity.PrivilegeRoleMappingId, Username));
+                }
+                return flag;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured PrivilegeRoleMapping page in AddEditPrivilageRoleMapping method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured PrivilegeRoleMapping page in AddEditPrivilageRoleMapping method | UserName: {0}", Username), ex);
+                throw;
+            }
+        }
+
+        //Get All role privilege map list
+        public List<PrivilegesDataModel> GetPrivilegesByRoleId(long roleId)
+        {
+            try
+            {
+                logger.Info(string.Format("GetPrivilegesByRoleId start | User id: {0} | Username: {1}", roleId, Username));
+                List<PrivilegesDataModel> privilegesList = new List<PrivilegesDataModel>();
+                var data = from tpr in entity.T_TEST_PRIVILEGE_ROLE_MAPPING
+                           join tp in entity.T_TEST_PRIVILEGE on tpr.PRIVILEGE_ID equals tp.PRIVILEGE_ID
+                           where tpr.ROLE_ID == roleId
+                           select new
+                           {
+                               tp.PRIVILEGE_ID,
+                               tp.PRIVILEGE_NAME
+                           };
+
+                foreach (var item in data)
+                {
+                    privilegesList.Add(new PrivilegesDataModel
+                    {
+                        PrivilegeId = (long)item.PRIVILEGE_ID,
+                        PrivilegeName = item.PRIVILEGE_NAME
+                    });
+                }
+                logger.Info(string.Format("GetPrivilegesByRoleId start | User id: {0} | Username: {1}", roleId, Username));
+                return privilegesList.Distinct().ToList();
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured user page in GetPrivilegesByRoleId method | Username: {0} |", Username));
+                ELogger.ErrorException(string.Format("Error occured user page in GetPrivilegesByRoleId method | Username: {0}", Username), ex);
+                throw;
+            }
+        }
+
+        public bool DeletePrivilagesByRoleId(long roleId)
+        {
+            try
+            {
+                logger.Info(string.Format("Delete PrivilegeRoleMapping start | RoleId: {0} | Username: {1}", roleId, Username));
+                var flag = false;
+                var result = entity.T_TEST_PRIVILEGE_ROLE_MAPPING.Where(x => x.ROLE_ID == roleId).ToList();
+                if (result != null && result.Count > 0)
+                {
+                    foreach (var item in result)
+                    {
+                        entity.T_TEST_PRIVILEGE_ROLE_MAPPING.Remove(item);
+                        entity.SaveChanges();
+                    }
+                    flag = true;
+                }
+                logger.Info(string.Format("Delete PrivilegeRoleMapping end | RoleId: {0} | Username: {1}", roleId, Username));
+                return flag;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured PrivilegeRoleMapping page in DeletePrivilagesByRoleId method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured PrivilegeRoleMapping page in DeletePrivilagesByRoleId method | UserName: {0}", Username), ex);
+                throw;
+            }
+        }
+
+        public T_TESTER_INFO ConverUserModel(UserModel userModel)
+        {
+            try
+            {
+                logger.Info(string.Format("ConverUserModel start | Username: {0}", Username));
+                T_TESTER_INFO obj = new T_TESTER_INFO();
+                obj.TESTER_NAME_LAST = userModel.TESTER_NAME_LAST;
+                obj.TESTER_NAME_M = userModel.TESTER_NAME_M;
+                obj.TESTER_NAME_F = userModel.TESTER_NAME_F;
+                obj.TESTER_MAIL = userModel.TESTER_MAIL;
+                obj.TESTER_LOGIN_NAME = userModel.TESTER_LOGIN_NAME;
+                obj.TESTER_PWD = userModel.TESTER_PWD;
+                obj.COMPANY_ID = userModel.COMPANY_ID;
+                obj.AVAILABLE_MARK = userModel.AVAILABLE_MARK;
+                obj.TESTER_ID = userModel.TESTER_ID;
+                logger.Info(string.Format("ConverUserModel end | Username: {0}", Username));
+                return obj;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured user page in ConverUserModel method | Username: {0} |", Username));
+                ELogger.ErrorException(string.Format("Error occured user page in ConverUserModel method | Username: {0}", Username), ex);
+                throw;
+            }
+        }
+        #endregion
+    }
+}

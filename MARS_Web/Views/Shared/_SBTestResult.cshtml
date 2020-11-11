@@ -1,0 +1,860 @@
+﻿@using MARS_Repository.ViewModel
+@{
+    var TestCaseId = ViewBag.TestCaseId;
+    var StoryboardDetailId = ViewBag.StoryboardDetailId;
+    var StoryboardName = ViewBag.StoryboardName;
+    var RunOrder = ViewBag.RunOrder;
+    var PrivilegeList = Session["PrivilegeList"] as List<PrivilegeViewModel>;
+    var RoleList = Session["RoleList"] as List<RoleViewModel>;
+    var SAVERESULTLISTBUTTON = "none";
+    if (PrivilegeList.Select(y => y.PRIVILEGE_NAME).ToList().Contains("Save ResultList"))
+    {
+        SAVERESULTLISTBUTTON = "block";
+    }
+}
+<style>
+    .SAVERESULTLISTBUTTON{
+        display:@SAVERESULTLISTBUTTON !important;
+    }
+</style>
+<script>
+    var Baselinedt = [];
+    var Comparedt = [];
+    var Baselineobj = [];
+    var Compareobj = [];
+    var rtbgrid;
+    var rtcgrid;
+
+    Baselinedt.push({
+        title: "", copy: false, editable: false, minWidth: 40, maxWidth: 40, sortable: false, dataIndx: "IsPrimary",
+        menuInHide: true, menuIcon: false, sortable: false, filter: { on: false, menuIcon: false },
+        render: function (ui) {
+            var rowData = ui.rowData,
+                dataIndx = ui.dataIndx;
+            rowData.pq_cellcls = rowData.pq_cellcls || {};
+            if (ui.rowData != undefined) {
+                if (rowData.IsMarkId == "true") {
+                    $("#hdnSelectedBHRadio").val(ui.rowData.HistId);
+                    $("#hdnSelectedBLRadio").val(ui.rowData.DataVersion);
+                }
+
+                return "<input type='radio' name='baseline' id='IsPrimary' onchange='baselinechange(" + ui.rowData.HistId + "," + ui.rowData.DataVersion+")'   data-name='" + ui.rowData.HistId + "' style='margin-left:5px;' value='" + ui.rowData.DataVersion + "' " + (ui.rowData.IsMarkId == "true" ? "checked='checked'" : "") + "> ";
+
+            } else {
+                return "<input type='radio' name='baseline' id='IsPrimary' onchange='baselinechange(" + ui.rowData.HistId + ",0)' data-name='" + ui.rowData.HistId + "' value='" + ui.rowData.DataVersion + "' style='margin-left:5px;'> ";
+            }
+        }
+    });
+
+    Baselinedt.push({
+         title: "", copy: false, editable: false, minWidth: 40, maxWidth: 40, sortable: false, dataIndx: "IsDelete",
+         menuInHide: true, menuIcon: false, sortable: false, filter: { on: false, menuIcon: false },
+            render: function (ui) {
+                return "<button type='button' class='delete_btn' style='color:red;'></button>";
+            },
+            postRender: function (ui) {
+                var rowIndx = ui.rowIndx,
+                    grid = this,
+                    $cell = rtbgrid.getCell(ui);
+                $cell.find("button").button({ icons: { primary: 'ui-icon-close' } })
+                    .bind("click", function () {
+                        rtbgrid.addClass({ rowIndx: ui.rowIndx, cls: 'pq-row-delete' });
+                                ans = true;
+                                rtbgrid.removeClass({ rowIndx: rowIndx, cls: 'pq-row-delete' });
+                                if (ans) {
+                                    rtbgrid.deleteRow({ rowIndx: rowIndx });
+                                }
+                    });
+            }
+        });
+    Baselinedt.push({
+        title: "IsMarkId", copy: false, hidden: true, dataType: "int", dataIndx: "IsMarkId", align: "center", menuInHide: true, sortable: false,
+    });
+    Baselinedt.push({
+        title: "HistId", copy: false, hidden: true, dataType: "int", dataIndx: "HistId", align: "center", menuInHide: true, sortable: false,
+    });
+    Baselinedt.push({
+        dataIndx: "DataVersion", title: "Data-Version", dataType: 'string', editable: false, width: 60, minWidth: 40, menuInHide: false, align: "left", halign: "center", sortable: true, nodrag: true, nodrop: true, filter: { crules: [{ condition: 'contain' }] }, resizable: true
+    });
+    Baselinedt.push({
+        dataIndx: "CreateTime", title: "CreateTime", dataType: 'string', editable: false, width: 100, minWidth: 40, menuInHide: false, align: "left", halign: "center", sortable: true, nodrag: true, nodrop: true, filter: { crules: [{ condition: 'contain' }] }, resizable: true
+    });
+    Baselinedt.push({
+        dataIndx: "Alias", title: "Alias Name", dataType: 'string',maxLen:10, width: 60, minWidth: 40, menuInHide: false, align: "left", halign: "center", sortable: true, nodrag: true, nodrop: true, filter: { crules: [{ condition: 'contain' }] }, resizable: true
+        //validations: [
+        //    { type: 'maxLen', value: 10, msg: "Required" },
+        //    ]
+    });
+    Baselinedt.push({
+        dataIndx: "Description", title: "Description", dataType: 'string', maxLen: 10, width: 60, minWidth: 40, menuInHide: false, align: "left", halign: "center", sortable: true, nodrag: true, nodrop: true, filter: { crules: [{ condition: 'contain' }] }, resizable: true
+        //validations: [
+        //    { type: 'maxLen', value: 10, msg: "Required" },
+        //]
+    });
+
+    Comparedt.push({
+        title: "", copy: false, editable: false, minWidth: 40, maxWidth: 40, sortable: false, dataIndx: "IsPrimary",
+        menuInHide: true, menuIcon: false, sortable: false, filter: { on: false, menuIcon: false },
+        render: function (ui) {
+            var rowData = ui.rowData,
+                dataIndx = ui.dataIndx;
+            rowData.pq_cellcls = rowData.pq_cellcls || {};
+            if (ui.rowData != undefined) {
+                if (rowData.IsMarkId == "true") {
+                    $("#hdnSelectedCHRadio").val(ui.rowData.HistId);
+                    $("#hdnSelectedCLRadio").val(ui.rowData.DataVersion);
+                }
+                return "<input type='radio' name='compare' id='IsPrimary' onchange='comparechange(" + ui.rowData.HistId + "," + ui.rowData.DataVersion +")'   data-name='" + ui.rowData.HistId + "' style='margin-left:5px;' value='" + ui.rowData.DataVersion +"' " + (ui.rowData.IsMarkId == "true" ? "checked='checked'" : "") + "> ";
+
+            } else {
+                return "<input type='radio' name='compare' id='IsPrimary' onchange='comparechange(" + ui.rowData.HistId + ",0)' data-name='" + ui.rowData.HistId + "' value='" + ui.rowData.DataVersion +"' style='margin-left:5px;'> ";
+            }
+        }
+    });
+
+    Comparedt.push({
+        title: "", copy: false, editable: false, minWidth: 40, maxWidth: 40, sortable: false, dataIndx: "IsDelete",
+        menuInHide: true, menuIcon: false, sortable: false, filter: { on: false, menuIcon: false },
+        render: function (ui) {
+            return "<button type='button' class='delete_btn' style='color:red;'></button>";
+        },
+        postRender: function (ui) {
+            var rowIndx = ui.rowIndx,
+                grid = this,
+                $cell = rtcgrid.getCell(ui);
+            $cell.find("button").button({ icons: { primary: 'ui-icon-close' } })
+                .bind("click", function () {
+                    rtcgrid.addClass({ rowIndx: ui.rowIndx, cls: 'pq-row-delete' });
+                    ans = true;
+                    rtcgrid.removeClass({ rowIndx: rowIndx, cls: 'pq-row-delete' });
+                    if (ans) {
+                        rtcgrid.deleteRow({ rowIndx: rowIndx });
+                    }
+                });
+        }
+    });
+    Comparedt.push({
+        title: "IsMarkId", copy: false, hidden: true, dataType: "int", dataIndx: "IsMarkId", align: "center", menuInHide: true, sortable: false,
+    });
+    Comparedt.push({
+        title: "HistId", copy: false, hidden: true, dataType: "int", dataIndx: "HistId", align: "center", menuInHide: true, sortable: false,
+    });
+    Comparedt.push({
+        dataIndx: "DataVersion", title: "Data-Version", dataType: 'string', editable: false, width: 60, minWidth: 40, menuInHide: false, align: "left", halign: "center", sortable: true, nodrag: true, nodrop: true, filter: { crules: [{ condition: 'contain' }] }, resizable: true
+    });
+    Comparedt.push({
+        dataIndx: "CreateTime", title: "CreateTime", dataType: 'string', editable: false, width: 100, minWidth: 40, menuInHide: false, align: "left", halign: "center", sortable: true, nodrag: true, nodrop: true, filter: { crules: [{ condition: 'contain' }] }, resizable: true
+    });
+    Comparedt.push({
+        dataIndx: "Alias", title: "Alias Name", dataType: 'string', maxLen: 10, width: 60, minWidth: 40, menuInHide: false, align: "left", halign: "center", sortable: true, nodrag: true, nodrop: true, filter: { crules: [{ condition: 'contain' }] }, resizable: true
+        //validations: [
+        //    { type: 'maxLen', value: 10, msg: "Required" },
+        //    ]
+    });
+    Comparedt.push({
+        dataIndx: "Description", title: "Description", dataType: 'string', maxLen: 10, width: 60, minWidth: 40, menuInHide: false, align: "left", halign: "center", sortable: true, nodrag: true, nodrop: true, filter: { crules: [{ condition: 'contain' }] }, resizable: true
+        //validations: [
+        //    { type: 'maxLen', value: 10, msg: "Required" },
+        //]
+    });
+
+    var Baselineobj = {
+        selectionModel: { type: 'cell' },
+        autoSizeInterval: 0,
+        scrollModel: { autoFit: true },
+        dragColumns: { enabled: false },
+        width: "auto",
+        height: 300,
+        colModel: Baselinedt,
+        editModel: {
+            clicksToEdit: 1,
+        },
+        trackModel: { on: true },
+        track: { on: true },
+        dataModel: { recIndx: "HistId" },
+        virtualX: true,
+        editable: true,
+        selectionModel: { type: 'cell' },
+        collapsible: { on: false, toggle: false },
+        columnBorders: true,
+        hoverMode: 'row',
+        numberCell: { show: true },
+        history: function (evt, ui) {
+            var $tb = this.toolbar(),
+                $undo = $tb.find("button:contains('Undo')"),
+                $redo = $tb.find("button:contains('Redo')");
+            if (ui.canUndo != null) {
+                $undo.button("option", { disabled: !ui.canUndo });
+            }
+            if (ui.canRedo != null) {
+                $redo.button("option", "disabled", !ui.canRedo);
+            }
+            var $grid = this.widget();
+            if (ui.canUndo != null) {
+                $("button.undosbchanges", $grid).button("option", { disabled: !ui.canUndo });
+            }
+            $undo.button("option", { label: 'Undo (' + ui.num_undo + ')' });
+            $redo.button("option", { label: 'Redo (' + ui.num_redo + ')' });
+        },
+        columnTemplate: { render: STResultfilterRender },
+        menuIcon: true,
+        menuUI: {
+            tabs: ['hideCols', 'filter'],
+            gridOptions: {
+                columnTemplate: { dataType: 'html' }
+            }
+        },
+        reactive: false,
+        roundcorners: false,
+        rowBorders: true,
+        stripeRows: false,
+        showHeader: true,
+        showTitle: false,
+        showToolbar: true,
+        showTop: true,
+        title: "StoryBoardResutSet",
+
+        postRenderInterval: -1,
+        filterModel:
+        {
+            on: true,
+            mode: "OR",
+            header: true,
+            menuIcon: true
+        },
+        complete: function () {
+            this.flex();
+        },
+        toolbar:
+        {
+            // cls: "pq-toolbar-search",
+            items: [
+                {
+                        type: 'button',
+                        icon: 'save',
+                        attr: 'title="Save"',
+                        label: '',
+                    cls: "floatRight btn btn-brand btn-elevate btn-icon-sm SAVERESULTLISTBUTTON", listener: function () {
+                            //append empty row at the end.
+                            SaveResultList(@TestCaseId,@StoryboardDetailId, "Baseline");
+                        }
+                },
+                 {
+                     type: 'button', label: '', attr: 'title="Reload"', cls: 'bgImage  btn btn-brand btn-elevate btn-icon-sm',
+                     icon: "flaticon2-reload", listener: function () {
+                           swal.fire({
+                                title: '',
+                                text: "All changes in ResultList will be discarded.  Please confirm",
+                                type: 'warning',
+                                showCancelButton: true,
+                                confirmButtonText: 'Yes'
+                            }).then(function (result) {
+                                if (result.value == true)
+                                {
+                                    ReloadBaselineResultList(@TestCaseId,@StoryboardDetailId);
+                                }
+                            });
+                         }
+                    },
+                    {
+                        type: 'button',
+                        attr: 'title="Undo"',
+                        icon: 'undo',
+                        label: '&nbsp;Undo',
+                        cls: 'btn btn-brand btn-icon-sm undosbchanges',
+                        options: { disabled: true },
+                        listener: function () {
+                            rtbgrid.history({ method: 'undo' });
+                        }
+                    },
+                    {
+                        type: 'button',
+                        attr: 'title="Redo"',
+                        icon: 'redo',
+                        cls: 'btn btn-brand btn-icon-sm ',
+                        label: '&nbsp;Redo',
+                        options: { disabled: true },
+                        listener: function () {
+                            rtbgrid.history({ method: 'redo' });
+                        }
+                    }, {
+                        type: 'button',
+                        //icon: '',
+                        icon: 'resetfilter',
+                        attr: 'title="Reset Filter"',
+                        cls: 'btn btn-brand btn-icon-sm ',
+                        label: '',
+                        listener: function () {
+                            rtbgrid.reset({ filter: true })
+                        }
+                    }, {
+                        type: 'button',
+                        //icon: '',
+                        icon: 'ui-icon-Copy',
+                        attr: 'title="Copy"',
+                        cls: 'btn btn-brand btn-icon-sm ',
+                        label: '',
+                        listener: function () {
+                            this.copy();
+                        }
+                    }, {
+                        type: 'button',
+                        //icon: '',
+                        icon: 'ui-icon-Paste',
+                        attr: 'title="Paste"',
+                        cls: 'btn btn-brand btn-icon-sm ',
+                        label: '',
+                        listener: function () {
+                            this.paste();
+                        }
+                    }
+            ]
+        }
+    };
+
+    rtbgrid = pq.grid("#BaselineResultset", Baselineobj);
+
+    var Compareobj = {
+        selectionModel: { type: 'cell' },
+        autoSizeInterval: 0,
+        scrollModel: { autoFit: true },
+        dragColumns: { enabled: false },
+        width: "auto",
+        height: 300,
+        colModel: Comparedt,
+        editModel: {
+            clicksToEdit: 1,
+        },
+        trackModel: { on: true },
+        track: { on: true },
+        dataModel: { recIndx: "HistId" },
+        virtualX: true,
+        editable: true,
+        selectionModel: { type: 'cell' },
+        collapsible: { on: false, toggle: false },
+        columnBorders: true,
+        hoverMode: 'row',
+        numberCell: { show: true },
+        history: function (evt, ui) {
+            var $tb = this.toolbar(),
+                $undo = $tb.find("button:contains('Undo')"),
+                $redo = $tb.find("button:contains('Redo')");
+            if (ui.canUndo != null) {
+                $undo.button("option", { disabled: !ui.canUndo });
+            }
+            if (ui.canRedo != null) {
+                $redo.button("option", "disabled", !ui.canRedo);
+            }
+            var $grid = this.widget();
+            if (ui.canUndo != null) {
+                $("button.undosbchanges", $grid).button("option", { disabled: !ui.canUndo });
+            }
+            $undo.button("option", { label: 'Undo (' + ui.num_undo + ')' });
+            $redo.button("option", { label: 'Redo (' + ui.num_redo + ')' });
+        },
+        columnTemplate: { render: STResultfilterRender },
+        menuIcon: true,
+        menuUI: {
+            tabs: ['hideCols', 'filter'],
+            gridOptions: {
+                columnTemplate: { dataType: 'html' }
+            }
+        },
+        reactive: false,
+        roundcorners: false,
+        rowBorders: true,
+        stripeRows: false,
+        showHeader: true,
+        showTitle: false,
+        showToolbar: true,
+        showTop: true,
+        title: "StoryBoardResutSet",
+
+        postRenderInterval: -1,
+        filterModel:
+        {
+            on: true,
+            mode: "OR",
+            header: true,
+            menuIcon: true
+        },
+        complete: function () {
+            this.flex();
+        },
+        toolbar:
+        {
+            // cls: "pq-toolbar-search",
+            items: [
+                {
+                        type: 'button',
+                        icon: 'save',
+                        attr: 'title="Save"',
+                        label: '',
+                    cls: "floatRight btn btn-brand btn-elevate btn-icon-sm SAVERESULTLISTBUTTON", listener: function () {
+                            //append empty row at the end.
+                            SaveResultList(@TestCaseId,@StoryboardDetailId, "Compare");
+                        }
+                },
+                 {
+                     type: 'button', label: '', attr: 'title="Reload"', cls: 'bgImage  btn btn-brand btn-elevate btn-icon-sm',
+                     icon: "flaticon2-reload", listener: function () {
+                           swal.fire({
+                                title: '',
+                                text: "All changes in ResultList will be discarded.  Please confirm",
+                                type: 'warning',
+                                showCancelButton: true,
+                                confirmButtonText: 'Yes'
+                            }).then(function (result) {
+                                if (result.value == true) {
+                                    ReloadCompareResultList(@TestCaseId,@StoryboardDetailId);
+
+                                }
+                            });
+                     }
+
+                    },
+                    {
+                        type: 'button',
+                        attr: 'title="Undo"',
+                        icon: 'undo',
+                        label: '&nbsp;Undo',
+                        cls: 'btn btn-brand btn-icon-sm undosbchanges',
+                        options: { disabled: true },
+                        listener: function () {
+                            rtcgrid.history({ method: 'undo' });
+                        }
+                    },
+                    {
+                        type: 'button',
+                        attr: 'title="Redo"',
+                        icon: 'redo',
+                        cls: 'btn btn-brand btn-icon-sm ',
+                        label: '&nbsp;Redo',
+                        options: { disabled: true },
+                        listener: function () {
+                            rtcgrid.history({ method: 'redo' });
+                        }
+                    }, {
+                        type: 'button',
+                        //icon: '',
+                        icon: 'resetfilter',
+                        attr: 'title="Reset Filter"',
+                        cls: 'btn btn-brand btn-icon-sm ',
+                        label: '',
+                        listener: function () {
+                            rtcgrid.reset({ filter: true })
+                        }
+                    }, {
+                        type: 'button',
+                        //icon: '',
+                        icon: 'ui-icon-Copy',
+                        attr: 'title="Copy"',
+                        cls: 'btn btn-brand btn-icon-sm ',
+                        label: '',
+                        listener: function () {
+                            this.copy();
+                        }
+                    }, {
+                        type: 'button',
+                        //icon: '',
+                        icon: 'ui-icon-Paste',
+                        attr: 'title="Paste"',
+                        cls: 'btn btn-brand btn-icon-sm ',
+                        label: '',
+                        listener: function () {
+                            this.paste();
+                        }
+                    }
+            ]
+        }
+    };
+
+    rtcgrid = pq.grid("#CompareResultset", Compareobj);
+
+
+    ReloadBaselineResultList(@TestCaseId,@StoryboardDetailId);
+    ReloadCompareResultList(@TestCaseId,@StoryboardDetailId);
+
+    function STResultfilterRender(ui) {
+        var val = ui.cellData,
+            filter = ui.column.filter,
+            crules = (filter || {}).crules;
+
+        if (filter && filter.on && crules && crules[0].value) {
+            var condition = crules[0].condition,
+                valUpper = val.toUpperCase(),
+                txt = crules[0].value,
+                txt = (txt == null) ? "" : txt.toString(),
+                txtUpper = txt.toUpperCase(),
+                indx = -1;
+            if (condition == "end") {
+                indx = valUpper.lastIndexOf(txtUpper);
+                if (indx + txtUpper.length != valUpper.length) {
+                    indx = -1;
+                }
+            }
+            else if (condition == "contain") {
+                indx = valUpper.indexOf(txtUpper);
+            }
+            else if (condition == "begin") {
+                indx = valUpper.indexOf(txtUpper);
+                if (indx > 0) {
+                    indx = -1;
+                }
+            }
+            if (indx >= 0) {
+                var txt1 = val.substring(0, indx);
+                var txt2 = val.substring(indx, indx + txt.length);
+                var txt3 = val.substring(indx + txt.length);
+                return txt1 + "<span style='background:yellow;color:#333;'>" + txt2 + "</span>" + txt3;
+            }
+            else {
+                return val;
+            }
+        }
+        else {
+            return val;
+        }
+    }
+
+    function ReloadBaselineResultList(TestcaseId,StoryboardDetailId) {
+         $.ajax({
+        url: "/StoryBoard/GetTestResultList?TestCaseId=" + TestcaseId + "&StoryboardDetailId=" +StoryboardDetailId,
+        type: "GET",
+        contentType: "application/json;charset=utf-8",
+             dataType: "json",
+             success: function (result) {
+                 if (result.status == 1) {
+                     var BaselinejsonData = [];
+                     BaselinejsonData = "[";
+                     var Resultlist = JSON.parse(result.data);
+                     if (Resultlist.length > 0) {
+                         //TestModeId
+                         for (i = 0; i < Resultlist.length; i++) {
+                             if (Resultlist[i].TestModeId == 1) {
+                                 if (BaselinejsonData.length > 1) {
+                                     BaselinejsonData += ",";
+                                 }
+
+                                 if (Resultlist[i].IsMark) {
+                                     $("#hdnSelectedBHRadio").val(Resultlist[i].HistId);
+                                     $("#hdnSelectedBLRadio").val(Resultlist[i].LatestTestMarkId);
+                                 }
+
+                                 BaselinejsonData += '{ "IsMarkId":"' + Resultlist[i].IsMark + '", "HistId":"' + Resultlist[i].HistId + '", "DataVersion":"' + Resultlist[i].LatestTestMarkId + '", "CreateTime": "' + Resultlist[i].CreatTime +
+                                     '", "Alias": "' + Resultlist[i].ResultAliasName + '", "Description": "' + Resultlist[i].ResultDesc + '"';
+                                 BaselinejsonData += "}";
+                             }
+                         }
+                     }
+                     BaselinejsonData = BaselinejsonData + "]";
+                     var STBdata = JSON.parse(BaselinejsonData);
+                     rtbgrid.option("dataModel.data", STBdata);
+                     rtbgrid.refreshDataAndView();
+                 }
+                 else if (result.status == 0) {
+                     swal.fire({
+                         "title": "",
+                         "text": result.message,
+                         "type": "error",
+                         "onClose": function (e) {
+                             console.log('on close event fired!');
+                         }
+                     });
+                 }
+        }
+    });
+    }
+
+    function ReloadCompareResultList(TestcaseId, StoryboardDetailId) {
+        $.ajax({
+
+            url: "/StoryBoard/GetTestResultList?TestCaseId=" + TestcaseId + "&StoryboardDetailId=" + StoryboardDetailId,
+            type: "GET",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                if (result.status == 1) {
+                    var ComparejsonData = [];
+                    ComparejsonData = "[";
+                    var Resultlist = JSON.parse(result.data);
+                    if (Resultlist.length > 0) {
+                        //TestModeId
+                        for (i = 0; i < Resultlist.length; i++) {
+                            if (Resultlist[i].TestModeId != 1) {
+                                if (ComparejsonData.length > 1) {
+                                    ComparejsonData += ",";
+                                }
+                                if (Resultlist[i].IsMark) {
+                                    $("#hdnSelectedCHRadio").val(Resultlist[i].HistId);
+                                    $("#hdnSelectedCLRadio").val(Resultlist[i].LatestTestMarkId);
+                                }
+                                ComparejsonData += '{ "IsMarkId":"' + Resultlist[i].IsMark + '", "HistId":"' + Resultlist[i].HistId + '", "DataVersion":"' + Resultlist[i].LatestTestMarkId + '", "CreateTime": "' + Resultlist[i].CreatTime +
+                                    '", "Alias": "' + Resultlist[i].ResultAliasName + '", "Description": "' + Resultlist[i].ResultDesc + '"';
+                                ComparejsonData += "}";
+                            }
+                        }
+                    }
+                    ComparejsonData = ComparejsonData + "]";
+                    var STCdata = JSON.parse(ComparejsonData);
+                    rtcgrid.option("dataModel.data", STCdata);
+                    rtcgrid.refreshDataAndView();
+                }
+                else if (result.status == 0) {
+                    swal.fire({
+                        "title": "",
+                        "text": result.message,
+                        "type": "error",
+                        "onClose": function (e) {
+                            console.log('on close event fired!');
+                        }
+                    });
+                }
+            }
+        });
+    }
+
+    function SaveResultList(TestCaseId, StoryboardDetailId, type) {
+        startloader();
+        var changes;
+        var latestTestMarkId=0;
+        var histedId = 0;
+
+        if (type == "Baseline") {
+            //latestTestMarkId = $("input[name='baseline']:checked").val();
+            //var obj = $("input[name='baseline']:checked");
+            //histedId = obj[0].dataset.name;
+            latestTestMarkId = $("#hdnSelectedBLRadio").val();
+            histedId = $("#hdnSelectedBHRadio").val();
+            rtbgrid.reset({ filter: true });
+            changes = rtbgrid.getChanges({ format: "byVal" });
+        } else {
+            //latestTestMarkId = $("input[name='compare']:checked").val();
+            //var obj = $("input[name='compare']:checked");
+            //if (obj.length > 0) {
+            //    histedId = obj[0].dataset.name;
+            //} else {
+            //    histedId = 0;
+            //    latestTestMarkId = 0;
+
+            //}
+            latestTestMarkId = $("#hdnSelectedCLRadio").val();
+            histedId = $("#hdnSelectedCHRadio").val();
+            rtcgrid.reset({ filter: true });
+            changes = rtcgrid.getChanges({ format: "byVal" });
+        }
+        $.ajax({
+            dataType: "json",
+            type: "POST",
+            async: true,
+            url: "/StoryBoard/SaveResultList",
+            data: { lchangedGrid: JSON.stringify(changes), lhistedId: histedId, latestTestMarkId: latestTestMarkId, TestCaseId:@TestCaseId , StoryboardDetailId:@StoryboardDetailId  },
+            success: function (result) {
+                if (result.status == 1 && result.data == "success") {
+                    swal.fire({
+                        "title": "",
+                        "text": type + result.message,
+                        "type": "success",
+                        "onClose": function (e) {
+                            console.log('on close event fired!');
+                        }
+                    });
+                    if (type == "Baseline") {
+                        rtbgrid.commit({ type: 'add', rows: changes.addList });
+                        rtbgrid.commit({ type: 'update', rows: changes.updateList });
+                        rtbgrid.commit({ type: 'delete', rows: changes.deleteList });
+                        rtbgrid.history({ method: 'reset' });
+                        ReloadBaselineResultList(TestCaseId, StoryboardDetailId);
+                    } else {
+                        rtcgrid.commit({ type: 'add', rows: changes.addList });
+                        rtcgrid.commit({ type: 'update', rows: changes.updateList });
+                        rtcgrid.commit({ type: 'delete', rows: changes.deleteList });
+                        rtcgrid.history({ method: 'reset' });
+                        ReloadCompareResultList(TestCaseId, StoryboardDetailId);
+                    }
+
+                }
+                else if (result.status == 0) {
+                    swal.fire({
+                        "title": "",
+                        "text": result.message,
+                        "type": "error",
+                        "onClose": function (e) {
+                            console.log('on close event fired!');
+                        }
+                    });
+                }
+                else {
+                    swal.fire({
+                        "title": "",
+                        "text": result,
+                        "type": "warning",
+                        "onClose": function (e) {
+                            console.log('on close event fired!');
+                        }
+                    });
+                }
+            },
+            complete: function (changes) {
+                stoploader();
+            }
+        });
+    }
+
+    $(".pq-cell-editor").change(function () {
+        alert("1");
+    })
+
+    function ShowCompareResultSet(Activetab, lTestCaseId, lStoryboardDetailId) {
+        var BhistedId = 0;
+        var ChistedId = 0;
+
+
+        BhistedId = $("#hdnSelectedBHRadio").val();
+        ChistedId = $("#hdnSelectedCHRadio").val();
+
+        if (BhistedId == "" || BhistedId == null)
+            BhistedId = 0;
+        if (ChistedId == "" || ChistedId == null)
+            ChistedId = 0;
+
+        //var lBgrid = rtbgrid.pdata;
+
+        //$.each(lBgrid, function (key, value) {
+        //    if (lBgrid[key].IsMarkId == "true") {
+        //        BhistedId = lBgrid[key].HistId;
+        //    }
+        //});
+
+        //var lCgrid = rtcgrid.pdata;
+
+        //$.each(lCgrid, function (key, value) {
+        //    if (lCgrid[key].IsMarkId == "true") {
+        //        ChistedId = lCgrid[key].HistId;
+        //    }
+        //});
+        //var Bobj = $("input[name='baseline']:checked");
+        //if (Bobj.length > 0) {
+        //     BhistedId = Bobj[0].dataset.name;
+        //}
+        //var Cobj = $("input[name='compare']:checked");
+        //if (Cobj.length > 0) {
+        //    ChistedId = Cobj[0].dataset.name;
+        //}
+        var RunOrder = "@RunOrder";
+        var StoryboardName = "@StoryboardName";
+        $("#StoryboardTestResultPopup").modal("hide");
+        displayresultsetdata(Activetab, lTestCaseId, lStoryboardDetailId, BhistedId, ChistedId, RunOrder, StoryboardName);
+    }
+
+    function displayresultsetdata(Activetab, lTestCaseId, lStoryboardDetailId, BhistedId, ChistedId, RunOrder, StoryboardName) {
+        startloader();
+        $.ajax({
+            url: "/StoryBoard/GetCompareResultSet",
+            data: '{"BhistedId":"' + BhistedId + '","ChistedId":"' + ChistedId + '","TestCaseId":"' + lTestCaseId + '","StoryboardDetailId":"' + lStoryboardDetailId + '"}',
+            type: "POST",
+            contentType: "application/json;charset=utf-8",
+            dataType: "HTML",
+            success: function (result) {
+                var lflag = false;
+                var name = "ResultView_BHistoryId_" + BhistedId + "_CHistoryId_" + ChistedId;
+                var ltabName = "#tab" + name;
+                var ltabIdName = "tab" + name;
+                $('.ULtablist li').each(function (index, value) {
+                    if ($(value).children().first().attr("data-target") == ltabName) {
+                        if ($(value).children().first().attr("data-tab") == "DataTag") {
+                            lflag = true;
+                        }
+                    }
+                });
+                var ltab = "";
+                //if (Default == "1") {
+                //    ltab = '<li class="nav-item context-menu-tab" ><a title="StoryboardName: ' + StoryboardName + ' Row: ' + RunOrder +' " data-pin="true" href="' + ltabName + '" class="nav-link active context-tab" data-tab="DataTag" data-testcaseid="' + lTestCaseId + '" data-storyboarddetailid="' + lStoryboardDetailId + '" data-baseid="' + BhistedId + '" data-compareid="' + ChistedId + '" data-storyboard="' + StoryboardName + '" data-runorder="' + RunOrder + '" data-name="' + name + '" data-toggle="tab" data-target="' + ltabName + '" onclick="ActiveTab($(this))"><img alt="DataTag" class="tab_icons_img" src="/assets/media/icons/rs.png">' + name + '</a><i class="fa fa-times-circle tab_close" style="cursor:pointer" onclick="closetab($(this))"></i></li>';
+                //} else {
+                //    ltab = '<li class="nav-item context-menu-tab" ><a title="StoryboardName: ' + StoryboardName + ' Row: ' + RunOrder +' " data-pin="false" href="' + ltabName + '" class="nav-link active context-tab" data-tab="DataTag" data-testcaseid="' + lTestCaseId + '" data-storyboarddetailid="' + lStoryboardDetailId + '" data-baseid="' + BhistedId + '" data-compareid="' + ChistedId + '" data-storyboard="' + StoryboardName + '" data-runorder="' + RunOrder + '" data-name="' + name + '" data-toggle="tab" data-target="' + ltabName + '" onclick="ActiveTab($(this))"><img alt="DataTag" class="tab_icons_img" src="/assets/media/icons/rs.png">' + name + '</a><i class="fa fa-times-circle tab_close" style="cursor:pointer" onclick="closetab($(this))"></i></li>';
+                //}
+
+                ltab = '<li class="nav-item context-menu-tab" ><a title="StoryboardName: ' + StoryboardName + ' Row: ' + RunOrder + ' " data-pin="false" href="' + ltabName + '" class="nav-link active context-tab" data-tab="DataTag" data-testcaseid="' + lTestCaseId + '" data-storyboarddetailid="' + lStoryboardDetailId + '" data-baseid="' + BhistedId + '" data-compareid="' + ChistedId + '" data-storyboard="' + StoryboardName + '" data-runorder="' + RunOrder + '" data-name="' + name + '" data-toggle="tab" data-target="' + ltabName + '" onclick="ActiveTab($(this))"><img alt="DataTag" class="tab_icons_img" src="/assets/media/icons/rs.png">' + name + '</a><i class="fa fa-times-circle tab_close" style="cursor:pointer" onclick="closetab($(this))"></i></li>';
+                var ldiv = '<div class="tab-pane active div" id="' + ltabIdName + '" role="tabpanel">' + result + '</div>';
+
+                if (lflag) {
+                    if (Activetab != null) {
+                        var lParentli = $(Activetab).parent();
+                        var ltab = '<a title="StoryboardName: ' + StoryboardName + ' Row: ' + RunOrder + ' " data-pin="false" href="' + ltabName + '" class="nav-link active context-tab" data-tab="DataTag" data-testcaseid="' + lTestCaseId + '" data-storyboarddetailid="' + lStoryboardDetailId + '" data-baseid="' + BhistedId + '" data-compareid="' + ChistedId + '" data-storyboard="' + StoryboardName + '" data-runorder="' + RunOrder + '" data-name="' + name + '" data-toggle="tab" data-target="' + ltabName + '" onclick="ActiveTab($(this))"><img alt="DataTag" class="tab_icons_img" src="/assets/media/icons/storyboard.png">' + name + '</a><i class="fa fa-times-circle tab_close" style="cursor:pointer" onclick="closetab($(this))"></i>';
+                        var ldiv = result;
+                        var lId = "tab" + name;
+                        var lGridDiv = $(".divtablist").find("#" + lId);
+                        $(lParentli).html("");
+                        $(lParentli).html(ltab);
+                        $(lGridDiv).html("");
+                        $(lGridDiv).html(ldiv);
+                    }
+                    $('.ULtablist li').each(function (index, value) {
+                        if ($(value).children().first().attr("data-target") == ltabName) {
+                            $(value).children().first().addClass("active");
+                        } else {
+                            $(value).children().first().removeClass("active");
+                        }
+                    });
+                    $('.divtablist div').each(function (index, value) {
+                        if ($(value).first().attr("id") == ltabIdName) {
+                            $(value).addClass("active");
+                        } else {
+                            $(value).removeClass("active");
+                        }
+                    });
+                }
+                else {
+                    $(".ULtablist").append(ltab);
+                    $(".divtablist").append(ldiv);
+                    $('.ULtablist li').each(function (index, value) {
+                        if ($(value).children().first().attr("data-target") != "#tab" + name) {
+                            $(value).children().first().removeClass("active");
+                        }
+                    });
+                    $('.divtablist div').each(function (index, value) {
+                        if ($(value).first().attr("id") != "tab" + name) {
+                            $(value).removeClass("active");
+                        }
+                    });
+                }
+                stoploader();
+            },
+        });
+    }
+    function baselinechange(histid,LatestTestMarkId) {
+        $("#hdnSelectedBHRadio").val(histid);
+        $("#hdnSelectedBLRadio").val(LatestTestMarkId);
+    }
+    function comparechange(histid, LatestTestMarkId) {
+        $("#hdnSelectedCHRadio").val(histid);
+        $("#hdnSelectedCLRadio").val(LatestTestMarkId);
+    }
+</script>
+
+<div class="modal-content">
+    <input type="hidden" id="hdnSelectedBHRadio" />
+    <input type="hidden" id="hdnSelectedCHRadio" />
+    <input type="hidden" id="hdnSelectedBLRadio" />
+    <input type="hidden" id="hdnSelectedCLRadio" />
+    <div class="modal-header">
+        <h5 class="modal-title">Result set selection</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-lg-6 col-xl-6 col-md-12 col-xs-12">
+                <div>Base Line Data</div>
+                <div id="BaselineResultset" style="margin:auto;padding:0px 10px;"></div>
+            </div>
+            <div class="col-lg-6 col-xl-6 col-md-12 col-xs-12">
+                <div>Compare Data</div>
+                <div id="CompareResultset" style="margin:auto;padding:0px 10px;"></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" onclick="ShowCompareResultSet(null,@TestCaseId,@StoryboardDetailId)">Compare</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    </div>
+</div>

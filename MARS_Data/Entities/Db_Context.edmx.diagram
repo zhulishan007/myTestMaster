@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="aeb78cc43f504272bd9047dcc3e9816f" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.LOGREPORT" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.REL_APP_PROJ" Width="1.5" PointX="6" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.REL_APP_TESTCASE" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.REL_APP_TESTSUITE" Width="1.5" PointX="5.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.REL_OBJ_APP" Width="1.5" PointX="10.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.REL_TC_DATA_SUMMARY" Width="1.5" PointX="3" PointY="14.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.REL_TEST_CASE_TEST_SUITE" Width="1.5" PointX="3" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.REL_TEST_SUIT_PROJECT" Width="1.5" PointX="6" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.SYSTEM_LOOKUP" Width="1.5" PointX="12.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.T_BASELINE_DATA_DETAIL" Width="1.5" PointX="11" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.T_BASELINE_DATA_SUMMARY" Width="1.5" PointX="8.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.T_COMPARE_CONFIG" Width="1.5" PointX="10.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.T_COMPARE_CONNECTIONS" Width="1.5" PointX="12.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.T_COMPARE_QUERIES" Width="1.5" PointX="13.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.T_DATA_SOURCE" Width="1.5" PointX="3.75" PointY="31.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.T_DIC_RELATION_KEYWORD" Width="1.5" PointX="5.75" PointY="23.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.T_GUI_COMPONENT_TYPE_DIC" Width="1.5" PointX="1.5" PointY="31.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.T_KEYWORD" Width="1.5" PointX="0.75" PointY="23.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.T_MARS_COMPANY" Width="1.5" PointX="8.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.T_OBJECT_NAMEINFO" Width="1.5" PointX="13.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.T_PROJ_TC_MGR" Width="1.5" PointX="6" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.T_PROJ_TEST_RESULT" Width="1.5" PointX="14.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.T_PROJECT_DATA_SOURCE" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.T_REGISTED_OBJECT" Width="1.5" PointX="0.75" PointY="26.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.T_REGISTERED_APPS" Width="1.5" PointX="14.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.T_SHARED_OBJECT_POOL" Width="1.5" PointX="3" PointY="35.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.T_STORYBOARD_DATASET_SETTING" Width="1.5" PointX="8.25" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.T_STORYBOARD_HISTORY" Width="1.5" PointX="6" PointY="31.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.T_STORYBOARD_SUMMARY" Width="1.5" PointX="3.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.T_TEST_CASE_SUMMARY" Width="1.5" PointX="0.75" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.T_TEST_CASE_VERSION" Width="1.5" PointX="3" PointY="22.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.T_TEST_DATA_SUMMARY" Width="1.5" PointX="0.75" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.T_TEST_ENUM" Width="1.5" PointX="15.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.T_TEST_PROJECT" Width="1.5" PointX="3.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.T_TEST_REPORT" Width="1.5" PointX="3" PointY="26.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.T_TEST_REPORT_STEPS" Width="1.5" PointX="5.25" PointY="26.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.T_TEST_STEPS" Width="1.5" PointX="3" PointY="18.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.T_TEST_SUITE" Width="1.5" PointX="0.75" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.T_TESTER_INFO" Width="1.5" PointX="11" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TBLFEEDPROCESS" Width="1.5" PointX="15.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TBLFEEDPROCESSDETAIL" Width="1.5" PointX="16.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TBLSTGGUIOBJECT" Width="1.5" PointX="7.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TBLSTGSTORYBOARD" Width="1.5" PointX="16.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TEST_DATA_SETTING" Width="1.5" PointX="5.25" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.ACUP" Width="1.5" PointX="12.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.MV_LAST_TC_INFO" Width="1.5" PointX="14.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.MV_OBJ_WITH_PEG" Width="1.5" PointX="16.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.MV_STORYBOARD_LATEST" Width="1.5" PointX="17.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.MV_TC_DATASUMMARY" Width="1.5" PointX="9.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.T_DATA_SOURCE_TEST" Width="1.5" PointX="18.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.T_REGISTED_OBJECT_BAK" Width="1.5" PointX="18.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.T_TEST_STEPS_BAK" Width="1.5" PointX="18.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.T_TEST_STEPS_TMP" Width="1.5" PointX="18.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TBLLOGREPORT" Width="1.5" PointX="16.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TBLSTGVARIABLE" Width="1.5" PointX="18.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TPOS" Width="1.5" PointX="19.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TPOS2" Width="1.5" PointX="20.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.V_OBJECT_SNAPSHOT" Width="1.5" PointX="20.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TEST_CASE_VIEW" Width="1.5" PointX="20.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TEST_CASE_VIEW2" Width="1.5" PointX="20.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TEST_OBJECT_VIEW" Width="1.5" PointX="20.75" PointY="22.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TEST_PROJECT_VIEW" Width="1.5" PointX="21.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.V_MARS_STB_SNAPSHOT" Width="1.5" PointX="7.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.V_OBJECT_APPS" Width="1.5" PointX="9.75" PointY="24.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.V_STB_PROJ_APP_FULLVISION" Width="1.5" PointX="22.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.V_STORYBOARD_TEST_FULLVISION" Width="1.5" PointX="22.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.V_TEST_DATA_REPORT_SUMMARY" Width="1.5" PointX="11.75" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.V_TEST_DATARPT_CAPTURE" Width="1.5" PointX="13.75" PointY="25.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.V_TEST_STEPS_FULLVISION" Width="1.5" PointX="22.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.V_USER_COMPANY" Width="1.5" PointX="22.75" PointY="25.75" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK_REL_APP__REFERENCE_T_TEST_P" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_REL_TC_D_REFERENCE_T_TEST_C" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_REL_TC_D_REFERENCE_T_TEST_D" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_REL_TEST_REFERENCE_T_TEST_2" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_REL_TEST_REFERENCE_T_TEST_C" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_REL_TEST_REFERENCE_T_TEST_P" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_REL_TEST_REFERENCE_T_TEST_S" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_BSLN_DTL_BSID_BSLN_DT_ID" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_T_PROJEC_REFERENCE_T_DATA_S" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_T_DIC_RE_REFERENCE_T_GUI_CO" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_T_DIC_RE_REFERENCE_T_KEYWOR" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_T_REGIST_REFERENCE_T_GUI_CO" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_T_TEST_S_REFERENCE_T_KEYWOR" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.T_TESTER_INFO_COMPANY_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_T_PROJ_T_REF_TEST_SUITE" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_T_PROJ_T_REFERENCE_T_STORYB" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_T_PROJ_T_REFERENCE_T_TEST_C" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_T_PROJ_T_REFERENCE_T_TEST_P" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_T_STORYB_REFERENCE_T_PROJ_T" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_T_PROJEC_REFERENCE_T_TEST_P" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_T_TEST_S_REFERENCE_T_REGIST" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_T_SHARED_REFERENCE_T_TEST_D" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_T_STORYB_REFERENCE_T_TEST_D" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_T_STORYB_REFERENCE_T_STORYB" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_T_TEST_C_REFERENCE_T_TEST_C" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_T_TEST_R_REFERENCE_T_TEST_C" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_T_TEST_S_REFERENCE_T_TEST_C" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TEST_DAT_REFERENCE_T_TEST_D" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_T_TEST_R_REFERENCE_T_TEST_R" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_TEST_DAT_REFERENCE_T_TEST_S" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

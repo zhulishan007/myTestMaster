@@ -1,0 +1,28 @@
+﻿
+using MARS_Revamp_DB.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MARS_Repository.Repositories
+{
+    public class TestSuiteRepository
+    {
+        Entities enty = new Entities();
+        //public List<T_TEST_SUITE> ListAllTestSuites()
+        //{
+        //    //var result= enty.T_TEST_SUITE.ToList();
+        //    var result = (from a in enty.T_TEST_SUITE select a).ToList();
+        //   //var jsonresult = JsonConvert.SerializeObject(result);
+        //   // var result = JsonConvert.SerializeObject(from a in enty.T_TEST_SUITE select a).ToList();
+        //    return result;
+        //}
+        public IQueryable<T_TEST_SUITE> ListAllTestSuites()
+        {
+            var result = enty.T_TEST_SUITE.ToList().Select(a => new T_TEST_SUITE { TEST_SUITE_ID = a.TEST_SUITE_ID, TEST_SUITE_NAME= a.TEST_SUITE_NAME, TEST_SUITE_DESCRIPTION=a.TEST_SUITE_DESCRIPTION }).AsQueryable();
+            return result;
+        }
+    }
+}

@@ -1,0 +1,27 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using MARS_Revamp_DB.Entities;
+using System.Web.Mvc;
+using MARS_Repository.Repositories;
+using Newtonsoft.Json;
+
+namespace MARS_Api.Controllers
+{
+    public class TestCaseController : Controller
+    {
+        // GET: TestCase
+        TestCaseRepository tc = new TestCaseRepository();
+        public ActionResult Index()
+        {
+            return View();
+        }
+
+        public string GetTestCaseDetails(int testcaseId, int testsuiteid) {
+            var result = tc.GetTestCaseDetails(testcaseId, testsuiteid);
+            var json = JsonConvert.SerializeObject(result);
+            return json;
+        }
+    }
+}

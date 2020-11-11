@@ -1,0 +1,70 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
+namespace MARS_Web.Controllers
+{
+    public class TestSuiteController : Controller
+    {
+		public ActionResult AddTestSuite()
+		{
+			return View();
+		}
+		public ActionResult AddNewTestSuite()
+		{
+			return View();
+		}
+
+		public ActionResult EditTestSuite()
+		{
+			return View();
+		}
+		public ActionResult ListTestSuites()
+		{
+			return View();
+		}
+        public ActionResult Index()
+        {
+            ViewBag.WebAPIURL = ConfigurationManager.AppSettings["WebApiURL"].ToString();
+            return View();
+        }
+        [HttpPost, ValidateInput(false)]
+        public String exportData(String pq_ext, String pq_data, bool pq_decode, String pq_filename)
+        {
+            ViewBag.WebAPIURL = ConfigurationManager.AppSettings["WebApiURL"].ToString();
+
+            String[] arr = new String[] { "csv", "htm", "json", "xlsx", "zip" };
+            if (arr.Contains(pq_ext))
+            {
+                String filename = pq_filename + "." + pq_ext;
+                Session["pq_data"] = pq_data;
+                Session["pq_decode"] = pq_decode;
+                Session["pq_filename"] = filename;
+                return filename;
+            }
+            else
+            {
+                throw new Exception("unsupported format!");
+            }
+        }
+
+        [HttpGet]
+        public FileContentResult exportData(String pq_filename)
+        {
+            if (Session["pq_filename"].ToString() == pq_filename)
+            {
+                String contents = Session["pq_data"].ToString();
+                byte[] bytes = ((bool)Session["pq_decode"]) ? Convert.FromBase64String(contents) :
+                    new System.Text.UTF8Encoding().GetBytes(contents);
+                return File(bytes, "application/octet-stream", pq_filename);
+            }
+            else
+            {
+                throw new Exception("unknown file.");
+            }
+        }
+    }
+}

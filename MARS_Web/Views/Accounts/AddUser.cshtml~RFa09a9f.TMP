@@ -1,0 +1,215 @@
+﻿@model Mars_Data.Models.T_TESTER_INFO
+@*@model IEnumerable<Mars_Data.Models.T_MARS_COMPANY>*@
+
+@{
+    ViewBag.Title = "AddUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="kt-portlet">
+            <div class="kt-portlet__head">
+                <div class="kt-portlet__head-label">
+                    <h3>
+                        Create User
+                    </h3>
+                </div>
+            </div>
+            <!--begin::Form-->
+            <form class="kt-form kt-form--label-right" id="kt_form_2" name="registration">
+                <div class="kt-portlet__body">
+                    <div class="form-group form-group-last kt-hide">
+                        <div class="alert alert-danger" role="alert" id="kt_form_2">
+                            <div class="alert-icon"><i class="flaticon-warning"></i></div>
+                            <div class="alert-text">
+                                Oh snap! Change a few things up and try submitting again.
+                            </div>
+                            <div class="alert-close">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true"><i class="la la-close"></i></span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label col-lg-3 col-sm-12">UserID</label>
+                        <div class="col-lg-9 col-md-9 col-sm-12">
+                            <input type="text" class="form-control" name="TESTER_ID" id="Userid">
+
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-form-label col-lg-3 col-sm-12">First Name</label>
+                        <div class="col-lg-9 col-md-9 col-sm-12">
+                            <input type="text" class="form-control" name="TESTER_NAME_F" id="Firstname">
+
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                        <label class="col-form-label col-lg-3 col-sm-12">Middle Name</label>
+                        <div class="col-lg-9 col-md-9 col-sm-12">
+                            <input type="text" class="form-control" name="TESTER_NAME_M" id="Middlename">
+
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-form-label col-lg-3 col-sm-12">Last Name</label>
+                        <div class="col-lg-9 col-md-9 col-sm-12">
+                            <input type="text" class="form-control" name="TESTER_NAME_LAST" id="LastName">
+
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-form-label col-lg-3 col-sm-12">Email Address</label>
+                        <div class="col-lg-9 col-md-9 col-sm-12">
+                            <input type="text" class="form-control" name="TESTER_MAIL" id="EmailId">
+
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                        <label class="col-form-label col-lg-3 col-sm-12">User Name</label>
+                        <div class="col-lg-9 col-md-9 col-sm-12">
+                            <input type="text" class="form-control" name="TESTER_LOGIN_NAME" id="Username">
+
+                        </div>
+                    </div>
+                    @*<div class="form-group row">
+                        <label class="col-form-label col-lg-3 col-sm-12">User Name</label>
+                        <div class="col-lg-9 col-md-9 col-sm-12">
+                            <input type="text" class="form-control" name="TESTER_LOGIN_NAME" id="Username">
+                            @Html.DropDownListFor(x => x.COMPANY_ID, new SelectList(Model.T_MARS_COMPANYS, "COMPANY_ID", "COMPANY_NAME",Model.COMPANY_ID)})
+                        </div>
+                    </div>*@
+                    <div class="form-group row">
+                        <label class="col-form-label col-lg-3 col-sm-12">Password</label>
+                        <div class="col-lg-9 col-md-9 col-sm-12">
+                            <input type="password" class="form-control" name="TESTER_PWD" id="Password">
+
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-form-label col-lg-3 col-sm-12">Confirm Password</label>
+                        <div class="col-lg-9 col-md-9 col-sm-12">
+                            <input type="text" class="form-control" name="cpassword" id="cpassword">
+
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="kt-portlet__foot">
+                    <div class="kt-form__actions">
+                        <div class="row">
+                            <div class="col-lg-9 ml-lg-auto">
+                                <button type="submit" class="btn btn-outline-brand btn-elevate btn-pill" id="btnAdd">Create</button>
+                                <button type="reset" class="btn btn-outline-brand btn-elevate btn-pill">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <!--end::Form-->
+        </div>
+
+    </div>
+</div>
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        var User = {
+            TESTER_ID: 1,
+            TESTER_NAME_LAST: "",
+            TESTER_NAME_M: "",
+            TESTER_NAME_F: "",
+            TESTER_MAIL: "",
+            TESTER_LOGIN_NAME: "",
+            TESTER_PWD: "",
+            COMPANY_ID: 1,
+        }
+        $("#btnAdd").click(function () {
+            debugger;
+            // $("#kt_form_1").valid();
+            var pass = $("#Password").val(),
+            var cpass = $("#cpassword").val(),
+            if (pass != cpass) {
+                return false;
+            }
+            var userObj = User;
+
+            userObj.TESTER_ID = $("#Userid").val(),
+                userObj.TESTER_NAME_LAST = $("#LastName").val(),
+                userObj.TESTER_NAME_M = $("#Middlename").val(),
+                userObj.TESTER_NAME_F = $("#Firstname").val(),
+                userObj.TESTER_MAIL = $("#EmailId").val(),
+                userObj.TESTER_LOGIN_NAME = $("#Username").val(),
+                userObj.TESTER_PWD = $("#Password").val()
+            //var options = {};
+            //debugger;
+            //options.url = "http://localhost/MARWebAPI/api/Account/Post";
+            //options.data = JSON.stringify(userObj);
+            //options.contentType = "application/json;charset=utf-8";
+            //options.dataType = "html";
+            //options.type = "post";
+            //options.success = function (msg) {
+            //    alert("done");
+            //},
+            //    options.error = function (msg) {
+            //        alert("not");
+            //    };
+            //$.ajax(options);
+            //var data = {
+            //    val: "test"
+            //};
+            //var data = {
+            //    T_TESTER_INFO: {
+            //        TESTER_ID: $("#Userid").val(),
+            //        TESTER_NAME_LAST: $("#LastName").val(),
+            //        TESTER_NAME_M: $("#Middlename").val(),
+            //        TESTER_NAME_F: $("#Firstname").val(),
+            //        TESTER_LOGIN_NAME: $("#Username").val(),
+            //        TESTER_PWD: $("#Password").val(),
+            //        TESTER_MAIL: $("#EmailId").val(),
+            //        COMPANY_ID: 1
+            //    }
+            //};
+            debugger;
+            $.ajax({
+                //url: "http://localhost:53001/api/CreateUser",
+                url: "/Accounts/CreateUser",
+                data: JSON.stringify(userObj),
+                type: "POST",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    debugger;
+                },
+                error: function (errormessage) {
+                    alert(errormessage.responseText);
+                }
+            });
+
+
+        });
+    });
+        //function Add() {
+        //    debugger;
+        //    var userObj = {
+        //        TESTER_ID:
+        //    };
+        //}
+</script>
+
+<script src="~/assets/plugins/global/plugins.bundle.js" type="text/javascript"></script>
+<script src="~/assets/js/scripts.bundle.js" type="text/javascript"></script>
+<!--end::Global Theme Bundle -->
+<!--begin::Page Scripts(used by this page) -->
+<script src="~/assets/js/pages/crud/forms/validation/form-controls.js" type="text/javascript"></script>

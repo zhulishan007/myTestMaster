@@ -1,0 +1,161 @@
+﻿using MARS_Revamp_DB.Entities;
+using MARS_Repository.ViewModel;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Objects;
+using System.Data.Objects.DataClasses;
+
+
+//using System.Data.Entity.Infrastructure;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MARS_Repository.Repositories
+{
+    public class AccountRepository
+    {
+       Entities entity = new Entities();
+        internal const string USER_SEQ = "SEQ_TESTER_ID";
+        //public static  List<T_TESTER_INFOModel> ListAllUsers()
+        //{
+
+        //    var result = entity.T_TESTER_INFO.Select(a => new T_TESTER_INFOModel
+        //    {
+        //        TESTER_NAME_F = a.TESTER_NAME_F,
+        //        TESTER_NAME_M = a.TESTER_NAME_M,
+        //        TESTER_NAME_LAST = a.TESTER_NAME_LAST,
+        //        TESTER_LOGIN_NAME = a.TESTER_LOGIN_NAME,
+        //        TESTER_MAIL = a.TESTER_MAIL
+        //    }).ToList();
+        //    return result;
+        //}
+
+        public T_TESTER_INFO GetUserById(int lUserId)
+        {
+            var result = entity.T_TESTER_INFO.FirstOrDefault(x => x.TESTER_ID == lUserId);
+            return result;
+        }
+
+        public T_TESTER_INFO GetUserByEmail(string lEmailId)
+        {
+            var result = entity.T_TESTER_INFO.FirstOrDefault(x => x.TESTER_MAIL.ToLower().Trim() == lEmailId.ToLower().Trim());
+            return result;
+        }
+
+
+        public IQueryable<UserModel> ListAllUsers()
+        {
+            //Include(x => x.T_MARS_COMPANY).
+            var result = entity.T_TESTER_INFO.ToList().Select(a => new UserModel
+            {
+                TESTER_ID=a.TESTER_ID,
+                TESTER_NAME_F = a.TESTER_NAME_F,
+                TESTER_NAME_M = a.TESTER_NAME_M,
+                TESTER_NAME_LAST = a.TESTER_NAME_LAST,
+                TESTER_LOGIN_NAME = a.TESTER_LOGIN_NAME,
+                TESTER_MAIL = a.TESTER_MAIL,
+                COMPANY_NAME=a.T_MARS_COMPANY.COMPANY_NAME
+                
+            }).AsQueryable();
+            return result;
+        }
+
+        public  T_TESTER_INFO CreateNewUser(T_TESTER_INFO t_TESTER)
+        {
+
+            T_TESTER_INFO tester = new T_TESTER_INFO();
+            var lresult = entity.T_TESTER_INFO.Find(t_TESTER.TESTER_ID);
+           // tester = entity.T_TESTER_INFO.Find(t_TESTER.TESTER_ID);
+            if (lresult != null)
+            {
+                lresult.TESTER_NAME_F = t_TESTER.TESTER_NAME_F;
+                lresult.TESTER_NAME_M = t_TESTER.TESTER_NAME_M;
+                lresult.TESTER_NAME_LAST = t_TESTER.TESTER_NAME_LAST;
+                lresult.TESTER_MAIL = t_TESTER.TESTER_MAIL;
+                lresult.TESTER_LOGIN_NAME = t_TESTER.TESTER_LOGIN_NAME;
+                //lresult.TESTER_PWD = t_TESTER.TESTER_PWD;
+                lresult.COMPANY_ID = t_TESTER.COMPANY_ID;
+                entity.SaveChanges();
+            }
+            else
+            {
+                ObjectParameter outparam = new ObjectParameter("v_NEXTVAL", typeof(Int32));
+                var projectId = (long)entity.GETNEXT_VAL(USER_SEQ, outparam);
+                var lUserId = long.Parse(outparam.Value.ToString());
+                t_TESTER.TESTER_ID = lUserId;
+                entity.T_TESTER_INFO.Add(t_TESTER);
+                entity.SaveChanges();
+            }
+          
+            // var query = entity.T_TESTER_INFO.Where(x => x.TESTER_LOGIN_NAME == t_TESTER.TESTER_LOGIN_NAME).FirstOrDefault();
+
+            //bool isValid = !entity.T_TESTER_INFO.ToList().Exists(p => p.TESTER_LOGIN_NAME.Equals(t_TESTER.TESTER_LOGIN_NAME, StringComparison.CurrentCultureIgnoreCase));
+            //if (query==null)
+            //{
+            //    entity.T_TESTER_INFO.Add(t_TESTER);
+            //    entity.SaveChanges();
+            //    return t_TESTER;
+            //}
+            //else
+            //{
+
+            //    return null;
+            //}
+            //entity.T_TESTER_INFO.Add(t_TESTER);
+            //  entity.SaveChanges();
+             return t_TESTER;
+        }
+
+
+        public T_TESTER_INFO ChangeUserPassword(string lNewPsw, decimal lTesterId)
+        {
+            T_TESTER_INFO tester = new T_TESTER_INFO();
+            var lresult = entity.T_TESTER_INFO.Find(lTesterId);
+            if (lresult != null)
+            {
+                lresult.TESTER_PWD = lNewPsw;
+                entity.SaveChanges();
+            }
+            return lresult;
+        }
+
+
+        public bool CheckLoginNameExist(string LoginName, decimal? TesterId)
+        {
+            bool lresult = false;
+            if(TesterId != null && TesterId > 0)
+                 lresult = entity.T_TESTER_INFO.Any(x => x.TESTER_LOGIN_NAME.ToLower().Trim() == LoginName.ToLower().Trim() && x.TESTER_ID != TesterId);               
+            else
+                lresult = entity.T_TESTER_INFO.Any(x => x.TESTER_LOGIN_NAME.ToLower().Trim() == LoginName.ToLower().Trim());               
+
+            return lresult;
+        }
+
+        public bool CheckLoginEmailExist(string LoginEmail, decimal? TesterId)
+        {
+            bool lresult = false;
+            if (TesterId != null && TesterId > 0)
+                lresult = entity.T_TESTER_INFO.Any(x => x.TESTER_MAIL.ToLower().Trim() == LoginEmail.ToLower().Trim() && x.TESTER_ID != TesterId);
+            else
+                lresult = entity.T_TESTER_INFO.Any(x => x.TESTER_MAIL.ToLower().Trim() == LoginEmail.ToLower().Trim());
+
+            return lresult;
+        }
+
+        public long GetUserID()
+        {
+            
+
+       //     System.Data.Entity.Core.Objects.ObjectParameter outparam = new System.Data.Entity.Core.Objects.ObjectParameter("SEQ_TESTER_ID", typeof(Int32));
+
+            ObjectParameter outparam = new ObjectParameter("v_NEXTVAL", typeof(Int32));
+
+
+            var projectId = (long)entity.GETNEXT_VAL(USER_SEQ, outparam);
+            return long.Parse(outparam.Value.ToString());
+        }
+        
+    }
+}

@@ -1,0 +1,1075 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="LOGREPORTs">
+      <EntityTypeMapping TypeName="Model.LOGREPORT">
+        <MappingFragment StoreEntitySet="LOGREPORT">
+          <ScalarProperty Name="FILENAME" ColumnName="FILENAME" />
+          <ScalarProperty Name="OBJECT" ColumnName="OBJECT" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="LOGDETAILS" ColumnName="LOGDETAILS" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CREATEDON" ColumnName="CREATEDON" />
+          <ScalarProperty Name="FEEDPROCESSDETAILID" ColumnName="FEEDPROCESSDETAILID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="REL_APP_PROJ">
+      <EntityTypeMapping TypeName="Model.REL_APP_PROJ">
+        <MappingFragment StoreEntitySet="REL_APP_PROJ">
+          <ScalarProperty Name="RELATIONSHIP_ID" ColumnName="RELATIONSHIP_ID" />
+          <ScalarProperty Name="APPLICATION_ID" ColumnName="APPLICATION_ID" />
+          <ScalarProperty Name="PROJECT_ID" ColumnName="PROJECT_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="REL_APP_TESTCASE">
+      <EntityTypeMapping TypeName="Model.REL_APP_TESTCASE">
+        <MappingFragment StoreEntitySet="REL_APP_TESTCASE">
+          <ScalarProperty Name="RELATIONSHIP_ID" ColumnName="RELATIONSHIP_ID" />
+          <ScalarProperty Name="APPLICATION_ID" ColumnName="APPLICATION_ID" />
+          <ScalarProperty Name="TEST_CASE_ID" ColumnName="TEST_CASE_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="REL_APP_TESTSUITE">
+      <EntityTypeMapping TypeName="Model.REL_APP_TESTSUITE">
+        <MappingFragment StoreEntitySet="REL_APP_TESTSUITE">
+          <ScalarProperty Name="RELATIONSHIP_ID" ColumnName="RELATIONSHIP_ID" />
+          <ScalarProperty Name="APPLICATION_ID" ColumnName="APPLICATION_ID" />
+          <ScalarProperty Name="TEST_SUITE_ID" ColumnName="TEST_SUITE_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="REL_OBJ_APP">
+      <EntityTypeMapping TypeName="Model.REL_OBJ_APP">
+        <MappingFragment StoreEntitySet="REL_OBJ_APP">
+          <ScalarProperty Name="RELATIONSHIP_ID" ColumnName="RELATIONSHIP_ID" />
+          <ScalarProperty Name="OBJECT_ID" ColumnName="OBJECT_ID" />
+          <ScalarProperty Name="APPLICATION_ID" ColumnName="APPLICATION_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="REL_TC_DATA_SUMMARY">
+      <EntityTypeMapping TypeName="Model.REL_TC_DATA_SUMMARY">
+        <MappingFragment StoreEntitySet="REL_TC_DATA_SUMMARY">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DATA_SUMMARY_ID" ColumnName="DATA_SUMMARY_ID" />
+          <ScalarProperty Name="TEST_CASE_ID" ColumnName="TEST_CASE_ID" />
+          <ScalarProperty Name="CREATE_TIME" ColumnName="CREATE_TIME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="REL_TEST_CASE_TEST_SUITE">
+      <EntityTypeMapping TypeName="Model.REL_TEST_CASE_TEST_SUITE">
+        <MappingFragment StoreEntitySet="REL_TEST_CASE_TEST_SUITE">
+          <ScalarProperty Name="RELATIONSHIP_ID" ColumnName="RELATIONSHIP_ID" />
+          <ScalarProperty Name="TEST_CASE_ID" ColumnName="TEST_CASE_ID" />
+          <ScalarProperty Name="TEST_SUITE_ID" ColumnName="TEST_SUITE_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="REL_TEST_SUIT_PROJECT">
+      <EntityTypeMapping TypeName="Model.REL_TEST_SUIT_PROJECT">
+        <MappingFragment StoreEntitySet="REL_TEST_SUIT_PROJECT">
+          <ScalarProperty Name="RELATIONSHIP_ID" ColumnName="RELATIONSHIP_ID" />
+          <ScalarProperty Name="TEST_SUITE_ID" ColumnName="TEST_SUITE_ID" />
+          <ScalarProperty Name="PROJECT_ID" ColumnName="PROJECT_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SYSTEM_LOOKUP">
+      <EntityTypeMapping TypeName="Model.SYSTEM_LOOKUP">
+        <MappingFragment StoreEntitySet="SYSTEM_LOOKUP">
+          <ScalarProperty Name="LOOKUP_ID" ColumnName="LOOKUP_ID" />
+          <ScalarProperty Name="TABLE_NAME" ColumnName="TABLE_NAME" />
+          <ScalarProperty Name="FIELD_NAME" ColumnName="FIELD_NAME" />
+          <ScalarProperty Name="VALUE" ColumnName="VALUE" />
+          <ScalarProperty Name="DISPLAY_NAME" ColumnName="DISPLAY_NAME" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_BASELINE_DATA_DETAIL">
+      <EntityTypeMapping TypeName="Model.T_BASELINE_DATA_DETAIL">
+        <MappingFragment StoreEntitySet="T_BASELINE_DATA_DETAIL">
+          <ScalarProperty Name="DETAIL_ID" ColumnName="DETAIL_ID" />
+          <ScalarProperty Name="DATA_BASE_OBJ_ID" ColumnName="DATA_BASE_OBJ_ID" />
+          <ScalarProperty Name="LOOP_ID" ColumnName="LOOP_ID" />
+          <ScalarProperty Name="DATA_VALUE" ColumnName="DATA_VALUE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_BASELINE_DATA_SUMMARY">
+      <EntityTypeMapping TypeName="Model.T_BASELINE_DATA_SUMMARY">
+        <MappingFragment StoreEntitySet="T_BASELINE_DATA_SUMMARY">
+          <ScalarProperty Name="DATA_BASE_OBJ_ID" ColumnName="DATA_BASE_OBJ_ID" />
+          <ScalarProperty Name="DATA_SUMMARY_ID" ColumnName="DATA_SUMMARY_ID" />
+          <ScalarProperty Name="DATA_BASE_OBJ_PARENT_ID" ColumnName="DATA_BASE_OBJ_PARENT_ID" />
+          <ScalarProperty Name="OBJECT_HAPPY_NAME" ColumnName="OBJECT_HAPPY_NAME" />
+          <ScalarProperty Name="ORDER_ID" ColumnName="ORDER_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_COMPARE_CONFIG">
+      <EntityTypeMapping TypeName="Model.T_COMPARE_CONFIG">
+        <MappingFragment StoreEntitySet="T_COMPARE_CONFIG">
+          <ScalarProperty Name="COMPARE_ID" ColumnName="COMPARE_ID" />
+          <ScalarProperty Name="COMPARE_NAME" ColumnName="COMPARE_NAME" />
+          <ScalarProperty Name="S1_TYPE" ColumnName="S1_TYPE" />
+          <ScalarProperty Name="S1_DBCONN" ColumnName="S1_DBCONN" />
+          <ScalarProperty Name="S1_QUERY" ColumnName="S1_QUERY" />
+          <ScalarProperty Name="S1_FILE_LOC" ColumnName="S1_FILE_LOC" />
+          <ScalarProperty Name="S2_TYPE" ColumnName="S2_TYPE" />
+          <ScalarProperty Name="S2_DBCONN" ColumnName="S2_DBCONN" />
+          <ScalarProperty Name="S2_QUERY" ColumnName="S2_QUERY" />
+          <ScalarProperty Name="S2_FILE_LOC" ColumnName="S2_FILE_LOC" />
+          <ScalarProperty Name="O_FILE_LOC" ColumnName="O_FILE_LOC" />
+          <ScalarProperty Name="KEY_FIELDS" ColumnName="KEY_FIELDS" />
+          <ScalarProperty Name="SHOW_FIELDS" ColumnName="SHOW_FIELDS" />
+          <ScalarProperty Name="COMPARE_FIELDS" ColumnName="COMPARE_FIELDS" />
+          <ScalarProperty Name="ROW_FIELDS" ColumnName="ROW_FIELDS" />
+          <ScalarProperty Name="COLUMN_FIELDS" ColumnName="COLUMN_FIELDS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_COMPARE_CONNECTIONS">
+      <EntityTypeMapping TypeName="Model.T_COMPARE_CONNECTIONS">
+        <MappingFragment StoreEntitySet="T_COMPARE_CONNECTIONS">
+          <ScalarProperty Name="DBCONN_ID" ColumnName="DBCONN_ID" />
+          <ScalarProperty Name="DBCONN_NAME" ColumnName="DBCONN_NAME" />
+          <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+          <ScalarProperty Name="HOST" ColumnName="HOST" />
+          <ScalarProperty Name="PORT" ColumnName="PORT" />
+          <ScalarProperty Name="PROTOCOL" ColumnName="PROTOCOL" />
+          <ScalarProperty Name="SERVICE_NAME" ColumnName="SERVICE_NAME" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_COMPARE_QUERIES">
+      <EntityTypeMapping TypeName="Model.T_COMPARE_QUERIES">
+        <MappingFragment StoreEntitySet="T_COMPARE_QUERIES">
+          <ScalarProperty Name="QUERY_ID" ColumnName="QUERY_ID" />
+          <ScalarProperty Name="QUERY_NAME" ColumnName="QUERY_NAME" />
+          <ScalarProperty Name="QUERY_VAL" ColumnName="QUERY_VAL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_DATA_SOURCE">
+      <EntityTypeMapping TypeName="Model.T_DATA_SOURCE">
+        <MappingFragment StoreEntitySet="T_DATA_SOURCE">
+          <ScalarProperty Name="DATA_SOURCE_ID" ColumnName="DATA_SOURCE_ID" />
+          <ScalarProperty Name="DATA_SOURCE_NAME" ColumnName="DATA_SOURCE_NAME" />
+          <ScalarProperty Name="DATA_SOURCE_TYPE" ColumnName="DATA_SOURCE_TYPE" />
+          <ScalarProperty Name="DETAILS" ColumnName="DETAILS" />
+          <ScalarProperty Name="DB_CONNECTION" ColumnName="DB_CONNECTION" />
+          <ScalarProperty Name="DB_TYPE" ColumnName="DB_TYPE" />
+          <ScalarProperty Name="TEST_CONNECTION" ColumnName="TEST_CONNECTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_DIC_RELATION_KEYWORD">
+      <EntityTypeMapping TypeName="Model.T_DIC_RELATION_KEYWORD">
+        <MappingFragment StoreEntitySet="T_DIC_RELATION_KEYWORD">
+          <ScalarProperty Name="RELATION_ID" ColumnName="RELATION_ID" />
+          <ScalarProperty Name="TYPE_ID" ColumnName="TYPE_ID" />
+          <ScalarProperty Name="KEY_WORD_ID" ColumnName="KEY_WORD_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_GUI_COMPONENT_TYPE_DIC">
+      <EntityTypeMapping TypeName="Model.T_GUI_COMPONENT_TYPE_DIC">
+        <MappingFragment StoreEntitySet="T_GUI_COMPONENT_TYPE_DIC">
+          <ScalarProperty Name="TYPE_ID" ColumnName="TYPE_ID" />
+          <ScalarProperty Name="TYPE_NAME" ColumnName="TYPE_NAME" />
+          <ScalarProperty Name="APPLICATION_TYPE_ID" ColumnName="APPLICATION_TYPE_ID" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_KEYWORD">
+      <EntityTypeMapping TypeName="Model.T_KEYWORD">
+        <MappingFragment StoreEntitySet="T_KEYWORD">
+          <ScalarProperty Name="KEY_WORD_ID" ColumnName="KEY_WORD_ID" />
+          <ScalarProperty Name="KEY_WORD_NAME" ColumnName="KEY_WORD_NAME" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="KEY_WORD_POSITION_ID" ColumnName="KEY_WORD_POSITION_ID" />
+          <ScalarProperty Name="ENTRY_IN_DATA_FILE" ColumnName="ENTRY_IN_DATA_FILE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_MARS_COMPANY">
+      <EntityTypeMapping TypeName="Model.T_MARS_COMPANY">
+        <MappingFragment StoreEntitySet="T_MARS_COMPANY">
+          <ScalarProperty Name="COMPANY_ID" ColumnName="COMPANY_ID" />
+          <ScalarProperty Name="COMPANY_NAME" ColumnName="COMPANY_NAME" />
+          <ScalarProperty Name="COMPANY_DESC" ColumnName="COMPANY_DESC" />
+          <ScalarProperty Name="COMPANY_NUMBER" ColumnName="COMPANY_NUMBER" />
+          <ScalarProperty Name="COMPANY_ADDRESS" ColumnName="COMPANY_ADDRESS" />
+          <ScalarProperty Name="CREATE_USERNAME" ColumnName="CREATE_USERNAME" />
+          <ScalarProperty Name="CREATE_TIME" ColumnName="CREATE_TIME" />
+          <ScalarProperty Name="AVAILABLE_MARK" ColumnName="AVAILABLE_MARK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_OBJECT_NAMEINFO">
+      <EntityTypeMapping TypeName="Model.T_OBJECT_NAMEINFO">
+        <MappingFragment StoreEntitySet="T_OBJECT_NAMEINFO">
+          <ScalarProperty Name="OBJECT_NAME_ID" ColumnName="OBJECT_NAME_ID" />
+          <ScalarProperty Name="OBJECT_HAPPY_NAME" ColumnName="OBJECT_HAPPY_NAME" />
+          <ScalarProperty Name="PEGWINDOW_MARK" ColumnName="PEGWINDOW_MARK" />
+          <ScalarProperty Name="OBJNAME_DESCRIPTION" ColumnName="OBJNAME_DESCRIPTION" />
+          <ScalarProperty Name="EXT_ID" ColumnName="EXT_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_PROJ_TC_MGR">
+      <EntityTypeMapping TypeName="Model.T_PROJ_TC_MGR">
+        <MappingFragment StoreEntitySet="T_PROJ_TC_MGR">
+          <ScalarProperty Name="STORYBOARD_DETAIL_ID" ColumnName="STORYBOARD_DETAIL_ID" />
+          <ScalarProperty Name="PROJECT_ID" ColumnName="PROJECT_ID" />
+          <ScalarProperty Name="TEST_CASE_ID" ColumnName="TEST_CASE_ID" />
+          <ScalarProperty Name="STORYBOARD_ID" ColumnName="STORYBOARD_ID" />
+          <ScalarProperty Name="RUN_TYPE" ColumnName="RUN_TYPE" />
+          <ScalarProperty Name="DEPENDS_ON" ColumnName="DEPENDS_ON" />
+          <ScalarProperty Name="RUN_ORDER" ColumnName="RUN_ORDER" />
+          <ScalarProperty Name="LATEST_TEST_MARK_ID" ColumnName="LATEST_TEST_MARK_ID" />
+          <ScalarProperty Name="RECORD_VERSION" ColumnName="RECORD_VERSION" />
+          <ScalarProperty Name="ALIAS_NAME" ColumnName="ALIAS_NAME" />
+          <ScalarProperty Name="TEST_SUITE_ID" ColumnName="TEST_SUITE_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_PROJ_TEST_RESULT">
+      <EntityTypeMapping TypeName="Model.T_PROJ_TEST_RESULT">
+        <MappingFragment StoreEntitySet="T_PROJ_TEST_RESULT">
+          <ScalarProperty Name="HIST_ID" ColumnName="HIST_ID" />
+          <ScalarProperty Name="TEST_CASE_ID" ColumnName="TEST_CASE_ID" />
+          <ScalarProperty Name="STORYBOARD_DETAIL_ID" ColumnName="STORYBOARD_DETAIL_ID" />
+          <ScalarProperty Name="TEST_BEGIN_TIME" ColumnName="TEST_BEGIN_TIME" />
+          <ScalarProperty Name="TEST_END_TIME" ColumnName="TEST_END_TIME" />
+          <ScalarProperty Name="TEST_RESULT_IN_TEXT" ColumnName="TEST_RESULT_IN_TEXT" />
+          <ScalarProperty Name="TEST_MODE" ColumnName="TEST_MODE" />
+          <ScalarProperty Name="TEST_RESULT" ColumnName="TEST_RESULT" />
+          <ScalarProperty Name="TESTER_ID" ColumnName="TESTER_ID" />
+          <ScalarProperty Name="CREATE_TIME" ColumnName="CREATE_TIME" />
+          <ScalarProperty Name="LATEST_TEST_MARK_ID" ColumnName="LATEST_TEST_MARK_ID" />
+          <ScalarProperty Name="RELY_TEST_CASE_ID" ColumnName="RELY_TEST_CASE_ID" />
+          <ScalarProperty Name="RESULT_ALIAS_NAME" ColumnName="RESULT_ALIAS_NAME" />
+          <ScalarProperty Name="RESULT_DESC" ColumnName="RESULT_DESC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_PROJECT_DATA_SOURCE">
+      <EntityTypeMapping TypeName="Model.T_PROJECT_DATA_SOURCE">
+        <MappingFragment StoreEntitySet="T_PROJECT_DATA_SOURCE">
+          <ScalarProperty Name="PRO_DBS_ID" ColumnName="PRO_DBS_ID" />
+          <ScalarProperty Name="PROJECT_ID" ColumnName="PROJECT_ID" />
+          <ScalarProperty Name="DATA_SOURCE_ID" ColumnName="DATA_SOURCE_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_REGISTED_OBJECT">
+      <EntityTypeMapping TypeName="Model.T_REGISTED_OBJECT">
+        <MappingFragment StoreEntitySet="T_REGISTED_OBJECT">
+          <ScalarProperty Name="OBJECT_ID" ColumnName="OBJECT_ID" />
+          <ScalarProperty Name="OBJECT_HAPPY_NAME" ColumnName="OBJECT_HAPPY_NAME" />
+          <ScalarProperty Name="APPLICATION_ID" ColumnName="APPLICATION_ID" />
+          <ScalarProperty Name="TYPE_ID" ColumnName="TYPE_ID" />
+          <ScalarProperty Name="QUICK_ACCESS" ColumnName="QUICK_ACCESS" />
+          <ScalarProperty Name="OBJECT_TYPE" ColumnName="OBJECT_TYPE" />
+          <ScalarProperty Name="COMMENT" ColumnName="COMMENT" />
+          <ScalarProperty Name="ENUM_TYPE" ColumnName="ENUM_TYPE" />
+          <ScalarProperty Name="OBJECT_NAME_ID" ColumnName="OBJECT_NAME_ID" />
+          <ScalarProperty Name="IS_CHECKERROR_OBJ" ColumnName="IS_CHECKERROR_OBJ" />
+          <ScalarProperty Name="OBJ_DATA_SRC" ColumnName="OBJ_DATA_SRC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_REGISTERED_APPS">
+      <EntityTypeMapping TypeName="Model.T_REGISTERED_APPS">
+        <MappingFragment StoreEntitySet="T_REGISTERED_APPS">
+          <ScalarProperty Name="APPLICATION_ID" ColumnName="APPLICATION_ID" />
+          <ScalarProperty Name="APP_SHORT_NAME" ColumnName="APP_SHORT_NAME" />
+          <ScalarProperty Name="PROCESS_IDENTIFIER" ColumnName="PROCESS_IDENTIFIER" />
+          <ScalarProperty Name="STARTER_PATH" ColumnName="STARTER_PATH" />
+          <ScalarProperty Name="STARTER_COMMAND" ColumnName="STARTER_COMMAND" />
+          <ScalarProperty Name="VERSION" ColumnName="VERSION" />
+          <ScalarProperty Name="COMMENT" ColumnName="COMMENT" />
+          <ScalarProperty Name="APPLICATION_TYPE_ID" ColumnName="APPLICATION_TYPE_ID" />
+          <ScalarProperty Name="RECORD_CREATE_PERSON" ColumnName="RECORD_CREATE_PERSON" />
+          <ScalarProperty Name="RECORD_CREATE_DATE" ColumnName="RECORD_CREATE_DATE" />
+          <ScalarProperty Name="EXTRAREQUIREMENT" ColumnName="EXTRAREQUIREMENT" />
+          <ScalarProperty Name="EXTRAPOPUPMENU" ColumnName="EXTRAPOPUPMENU" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_SHARED_OBJECT_POOL">
+      <EntityTypeMapping TypeName="Model.T_SHARED_OBJECT_POOL">
+        <MappingFragment StoreEntitySet="T_SHARED_OBJECT_POOL">
+          <ScalarProperty Name="OBJECT_POOL_ID" ColumnName="OBJECT_POOL_ID" />
+          <ScalarProperty Name="DATA_SUMMARY_ID" ColumnName="DATA_SUMMARY_ID" />
+          <ScalarProperty Name="OBJECT_NAME" ColumnName="OBJECT_NAME" />
+          <ScalarProperty Name="OBJECT_ORDER" ColumnName="OBJECT_ORDER" />
+          <ScalarProperty Name="LOOP_ID" ColumnName="LOOP_ID" />
+          <ScalarProperty Name="DATA_VALUE" ColumnName="DATA_VALUE" />
+          <ScalarProperty Name="CREATE_TIME" ColumnName="CREATE_TIME" />
+          <ScalarProperty Name="VERSION" ColumnName="VERSION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_STORYBOARD_DATASET_SETTING">
+      <EntityTypeMapping TypeName="Model.T_STORYBOARD_DATASET_SETTING">
+        <MappingFragment StoreEntitySet="T_STORYBOARD_DATASET_SETTING">
+          <ScalarProperty Name="SETTING_ID" ColumnName="SETTING_ID" />
+          <ScalarProperty Name="STORYBOARD_DETAIL_ID" ColumnName="STORYBOARD_DETAIL_ID" />
+          <ScalarProperty Name="DATA_SUMMARY_ID" ColumnName="DATA_SUMMARY_ID" />
+          <ScalarProperty Name="CREATETIME" ColumnName="CREATETIME" />
+          <ScalarProperty Name="VERSION" ColumnName="VERSION" />
+          <ScalarProperty Name="TESTER_ID" ColumnName="TESTER_ID" />
+          <ScalarProperty Name="RUN_ORDER" ColumnName="RUN_ORDER" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_STORYBOARD_HISTORY">
+      <EntityTypeMapping TypeName="Model.T_STORYBOARD_HISTORY">
+        <MappingFragment StoreEntitySet="T_STORYBOARD_HISTORY">
+          <ScalarProperty Name="DASHBOARD_HIST_ID" ColumnName="DASHBOARD_HIST_ID" />
+          <ScalarProperty Name="STORYBOARD_ID" ColumnName="STORYBOARD_ID" />
+          <ScalarProperty Name="VERION" ColumnName="VERION" />
+          <ScalarProperty Name="CREATE_TIME" ColumnName="CREATE_TIME" />
+          <ScalarProperty Name="CREATOR" ColumnName="CREATOR" />
+          <ScalarProperty Name="STORYBOARD_NAME" ColumnName="STORYBOARD_NAME" />
+          <ScalarProperty Name="ASSIGNED_PROJECT_ID" ColumnName="ASSIGNED_PROJECT_ID" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="HISTORY_CREATE_TIME" ColumnName="HISTORY_CREATE_TIME" />
+          <ScalarProperty Name="REASON" ColumnName="REASON" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_STORYBOARD_SUMMARY">
+      <EntityTypeMapping TypeName="Model.T_STORYBOARD_SUMMARY">
+        <MappingFragment StoreEntitySet="T_STORYBOARD_SUMMARY">
+          <ScalarProperty Name="STORYBOARD_ID" ColumnName="STORYBOARD_ID" />
+          <ScalarProperty Name="CREATE_TIME" ColumnName="CREATE_TIME" />
+          <ScalarProperty Name="LATEST_VERISON" ColumnName="LATEST_VERISON" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="CREATER" ColumnName="CREATER" />
+          <ScalarProperty Name="ASSIGNED_PROJECT_ID" ColumnName="ASSIGNED_PROJECT_ID" />
+          <ScalarProperty Name="STORYBOARD_NAME" ColumnName="STORYBOARD_NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_TEST_CASE_SUMMARY">
+      <EntityTypeMapping TypeName="Model.T_TEST_CASE_SUMMARY">
+        <MappingFragment StoreEntitySet="T_TEST_CASE_SUMMARY">
+          <ScalarProperty Name="TEST_CASE_ID" ColumnName="TEST_CASE_ID" />
+          <ScalarProperty Name="TEST_CASE_NAME" ColumnName="TEST_CASE_NAME" />
+          <ScalarProperty Name="TEST_STEP_DESCRIPTION" ColumnName="TEST_STEP_DESCRIPTION" />
+          <ScalarProperty Name="TEST_STEP_CREATOR" ColumnName="TEST_STEP_CREATOR" />
+          <ScalarProperty Name="TEST_STEP_CREATE_TIME" ColumnName="TEST_STEP_CREATE_TIME" />
+          <ScalarProperty Name="USAGE_STATUS" ColumnName="USAGE_STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_TEST_CASE_VERSION">
+      <EntityTypeMapping TypeName="Model.T_TEST_CASE_VERSION">
+        <MappingFragment StoreEntitySet="T_TEST_CASE_VERSION">
+          <ScalarProperty Name="TC_VERSOIN_ID" ColumnName="TC_VERSOIN_ID" />
+          <ScalarProperty Name="TEST_CASE_ID" ColumnName="TEST_CASE_ID" />
+          <ScalarProperty Name="VERSION_NAME" ColumnName="VERSION_NAME" />
+          <ScalarProperty Name="VERSION_DESC" ColumnName="VERSION_DESC" />
+          <ScalarProperty Name="VERSION_NUMBER" ColumnName="VERSION_NUMBER" />
+          <ScalarProperty Name="AVAILABLE_MARK" ColumnName="AVAILABLE_MARK" />
+          <ScalarProperty Name="CREATE_TIME" ColumnName="CREATE_TIME" />
+          <ScalarProperty Name="CREATOR_ID" ColumnName="CREATOR_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_TEST_DATA_SUMMARY">
+      <EntityTypeMapping TypeName="Model.T_TEST_DATA_SUMMARY">
+        <MappingFragment StoreEntitySet="T_TEST_DATA_SUMMARY">
+          <ScalarProperty Name="DATA_SUMMARY_ID" ColumnName="DATA_SUMMARY_ID" />
+          <ScalarProperty Name="ALIAS_NAME" ColumnName="ALIAS_NAME" />
+          <ScalarProperty Name="DESCRIPTION_INFO" ColumnName="DESCRIPTION_INFO" />
+          <ScalarProperty Name="AVAILABLE_MARK" ColumnName="AVAILABLE_MARK" />
+          <ScalarProperty Name="VERSION" ColumnName="VERSION" />
+          <ScalarProperty Name="SHARE_MARK" ColumnName="SHARE_MARK" />
+          <ScalarProperty Name="CREATE_TIME" ColumnName="CREATE_TIME" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+          <ScalarProperty Name="DATA_SET_TYPE" ColumnName="DATA_SET_TYPE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_TEST_ENUM">
+      <EntityTypeMapping TypeName="Model.T_TEST_ENUM">
+        <MappingFragment StoreEntitySet="T_TEST_ENUM">
+          <ScalarProperty Name="ENUM_ID" ColumnName="ENUM_ID" />
+          <ScalarProperty Name="ENUM_TYPE" ColumnName="ENUM_TYPE" />
+          <ScalarProperty Name="ENUM_VALUE" ColumnName="ENUM_VALUE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_TEST_PROJECT">
+      <EntityTypeMapping TypeName="Model.T_TEST_PROJECT">
+        <MappingFragment StoreEntitySet="T_TEST_PROJECT">
+          <ScalarProperty Name="PROJECT_ID" ColumnName="PROJECT_ID" />
+          <ScalarProperty Name="PROJECT_NAME" ColumnName="PROJECT_NAME" />
+          <ScalarProperty Name="PROJECT_DESCRIPTION" ColumnName="PROJECT_DESCRIPTION" />
+          <ScalarProperty Name="CREATOR" ColumnName="CREATOR" />
+          <ScalarProperty Name="CREATE_DATE" ColumnName="CREATE_DATE" />
+          <ScalarProperty Name="STATUS" ColumnName="STATUS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_TEST_REPORT">
+      <EntityTypeMapping TypeName="Model.T_TEST_REPORT">
+        <MappingFragment StoreEntitySet="T_TEST_REPORT">
+          <ScalarProperty Name="TEST_REPORT_ID" ColumnName="TEST_REPORT_ID" />
+          <ScalarProperty Name="TEST_CASE_ID" ColumnName="TEST_CASE_ID" />
+          <ScalarProperty Name="LOOP_ID" ColumnName="LOOP_ID" />
+          <ScalarProperty Name="BEGIN_TIME" ColumnName="BEGIN_TIME" />
+          <ScalarProperty Name="END_TIME" ColumnName="END_TIME" />
+          <ScalarProperty Name="RUNNING_RESULT" ColumnName="RUNNING_RESULT" />
+          <ScalarProperty Name="RETURN_VALUES" ColumnName="RETURN_VALUES" />
+          <ScalarProperty Name="RUNNING_RESULT_INFO" ColumnName="RUNNING_RESULT_INFO" />
+          <ScalarProperty Name="HIST_ID" ColumnName="HIST_ID" />
+          <ScalarProperty Name="APPLICATION_ID" ColumnName="APPLICATION_ID" />
+          <ScalarProperty Name="TEST_MODE" ColumnName="TEST_MODE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_TEST_REPORT_STEPS">
+      <EntityTypeMapping TypeName="Model.T_TEST_REPORT_STEPS">
+        <MappingFragment StoreEntitySet="T_TEST_REPORT_STEPS">
+          <ScalarProperty Name="TEST_REPORT_STEP_ID" ColumnName="TEST_REPORT_STEP_ID" />
+          <ScalarProperty Name="TEST_REPORT_ID" ColumnName="TEST_REPORT_ID" />
+          <ScalarProperty Name="STEPS_ID" ColumnName="STEPS_ID" />
+          <ScalarProperty Name="BEGIN_TIME" ColumnName="BEGIN_TIME" />
+          <ScalarProperty Name="END_TIME" ColumnName="END_TIME" />
+          <ScalarProperty Name="RUNNING_RESULT" ColumnName="RUNNING_RESULT" />
+          <ScalarProperty Name="RETURN_VALUES" ColumnName="RETURN_VALUES" />
+          <ScalarProperty Name="RUNNING_RESULT_INFO" ColumnName="RUNNING_RESULT_INFO" />
+          <ScalarProperty Name="DATA_SUMMARY_ID" ColumnName="DATA_SUMMARY_ID" />
+          <ScalarProperty Name="INPUT_VALUE_SETTING" ColumnName="INPUT_VALUE_SETTING" />
+          <ScalarProperty Name="ACTUAL_INPUT_DATA" ColumnName="ACTUAL_INPUT_DATA" />
+          <ScalarProperty Name="DATA_ORDER" ColumnName="DATA_ORDER" />
+          <ScalarProperty Name="INFO_PIC" ColumnName="INFO_PIC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_TEST_STEPS">
+      <EntityTypeMapping TypeName="Model.T_TEST_STEPS">
+        <MappingFragment StoreEntitySet="T_TEST_STEPS">
+          <ScalarProperty Name="STEPS_ID" ColumnName="STEPS_ID" />
+          <ScalarProperty Name="RUN_ORDER" ColumnName="RUN_ORDER" />
+          <ScalarProperty Name="KEY_WORD_ID" ColumnName="KEY_WORD_ID" />
+          <ScalarProperty Name="TEST_CASE_ID" ColumnName="TEST_CASE_ID" />
+          <ScalarProperty Name="OBJECT_ID" ColumnName="OBJECT_ID" />
+          <ScalarProperty Name="COLUMN_ROW_SETTING" ColumnName="COLUMN_ROW_SETTING" />
+          <ScalarProperty Name="VALUE_SETTING" ColumnName="VALUE_SETTING" />
+          <ScalarProperty Name="COMMENT" ColumnName="COMMENT" />
+          <ScalarProperty Name="IS_RUNNABLE" ColumnName="IS_RUNNABLE" />
+          <ScalarProperty Name="OBJECT_NAME_ID" ColumnName="OBJECT_NAME_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_TEST_SUITE">
+      <EntityTypeMapping TypeName="Model.T_TEST_SUITE">
+        <MappingFragment StoreEntitySet="T_TEST_SUITE">
+          <ScalarProperty Name="TEST_SUITE_ID" ColumnName="TEST_SUITE_ID" />
+          <ScalarProperty Name="TEST_SUITE_NAME" ColumnName="TEST_SUITE_NAME" />
+          <ScalarProperty Name="TEST_SUITE_DESCRIPTION" ColumnName="TEST_SUITE_DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_TESTER_INFO">
+      <EntityTypeMapping TypeName="Model.T_TESTER_INFO">
+        <MappingFragment StoreEntitySet="T_TESTER_INFO">
+          <ScalarProperty Name="TEMP_KEY" ColumnName="TEMP_KEY" />
+          <ScalarProperty Name="TESTER_ID" ColumnName="TESTER_ID" />
+          <ScalarProperty Name="TESTER_NAME_LAST" ColumnName="TESTER_NAME_LAST" />
+          <ScalarProperty Name="TESTER_NAME_M" ColumnName="TESTER_NAME_M" />
+          <ScalarProperty Name="TESTER_NAME_F" ColumnName="TESTER_NAME_F" />
+          <ScalarProperty Name="TESTER_LOGIN_NAME" ColumnName="TESTER_LOGIN_NAME" />
+          <ScalarProperty Name="TESTER_PWD" ColumnName="TESTER_PWD" />
+          <ScalarProperty Name="AVAILABLE_MARK" ColumnName="AVAILABLE_MARK" />
+          <ScalarProperty Name="TESTER_MAIL" ColumnName="TESTER_MAIL" />
+          <ScalarProperty Name="TESTER_NUMBER" ColumnName="TESTER_NUMBER" />
+          <ScalarProperty Name="COMPANY_ID" ColumnName="COMPANY_ID" />
+          <ScalarProperty Name="CREATOR_NAME" ColumnName="CREATOR_NAME" />
+          <ScalarProperty Name="CREATE_TIME" ColumnName="CREATE_TIME" />
+          <ScalarProperty Name="TESTER_DESC" ColumnName="TESTER_DESC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBLFEEDPROCESSes">
+      <EntityTypeMapping TypeName="Model.TBLFEEDPROCESS">
+        <MappingFragment StoreEntitySet="TBLFEEDPROCESS">
+          <ScalarProperty Name="FEEDPROCESSID" ColumnName="FEEDPROCESSID" />
+          <ScalarProperty Name="FEEDPROCESSSTATUS" ColumnName="FEEDPROCESSSTATUS" />
+          <ScalarProperty Name="FEEDRUNON" ColumnName="FEEDRUNON" />
+          <ScalarProperty Name="CREATEDBY" ColumnName="CREATEDBY" />
+          <ScalarProperty Name="CREATEDON" ColumnName="CREATEDON" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBLFEEDPROCESSDETAILS">
+      <EntityTypeMapping TypeName="Model.TBLFEEDPROCESSDETAIL">
+        <MappingFragment StoreEntitySet="TBLFEEDPROCESSDETAILS">
+          <ScalarProperty Name="FEEDPROCESSDETAILID" ColumnName="FEEDPROCESSDETAILID" />
+          <ScalarProperty Name="FEEDPROCESSID" ColumnName="FEEDPROCESSID" />
+          <ScalarProperty Name="FILENAME" ColumnName="FILENAME" />
+          <ScalarProperty Name="FEEDPROCESSSTATUS" ColumnName="FEEDPROCESSSTATUS" />
+          <ScalarProperty Name="CREATEDBY" ColumnName="CREATEDBY" />
+          <ScalarProperty Name="CREATEDON" ColumnName="CREATEDON" />
+          <ScalarProperty Name="FILETYPE" ColumnName="FILETYPE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBLSTGGUIOBJECTs">
+      <EntityTypeMapping TypeName="Model.TBLSTGGUIOBJECT">
+        <MappingFragment StoreEntitySet="TBLSTGGUIOBJECT">
+          <ScalarProperty Name="OBJECTNAME" ColumnName="OBJECTNAME" />
+          <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+          <ScalarProperty Name="QUICKACCESS" ColumnName="QUICKACCESS" />
+          <ScalarProperty Name="PARENT" ColumnName="PARENT" />
+          <ScalarProperty Name="OBJECTCOMMENT" ColumnName="OBJECTCOMMENT" />
+          <ScalarProperty Name="ENUMTYPE" ColumnName="ENUMTYPE" />
+          <ScalarProperty Name="SQL" ColumnName="SQL" />
+          <ScalarProperty Name="APPLICATIONNAME" ColumnName="APPLICATIONNAME" />
+          <ScalarProperty Name="FEEDPROCESSDETAILID" ColumnName="FEEDPROCESSDETAILID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CREATEDON" ColumnName="CREATEDON" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBLSTGSTORYBOARDs">
+      <EntityTypeMapping TypeName="Model.TBLSTGSTORYBOARD">
+        <MappingFragment StoreEntitySet="TBLSTGSTORYBOARD">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FEEDPROCESSDETAILID" ColumnName="FEEDPROCESSDETAILID" />
+          <ScalarProperty Name="TABNAME" ColumnName="TABNAME" />
+          <ScalarProperty Name="RUNORDER" ColumnName="RUNORDER" />
+          <ScalarProperty Name="APPLICATIONNAME" ColumnName="APPLICATIONNAME" />
+          <ScalarProperty Name="PROJECTNAME" ColumnName="PROJECTNAME" />
+          <ScalarProperty Name="PROJECTDETAIL" ColumnName="PROJECTDETAIL" />
+          <ScalarProperty Name="STORYBOARDNAME" ColumnName="STORYBOARDNAME" />
+          <ScalarProperty Name="ACTIONNAME" ColumnName="ACTIONNAME" />
+          <ScalarProperty Name="STEPNAME" ColumnName="STEPNAME" />
+          <ScalarProperty Name="SUITENAME" ColumnName="SUITENAME" />
+          <ScalarProperty Name="CASENAME" ColumnName="CASENAME" />
+          <ScalarProperty Name="DATASETNAME" ColumnName="DATASETNAME" />
+          <ScalarProperty Name="DEPENDENCY" ColumnName="DEPENDENCY" />
+          <ScalarProperty Name="CREATEDDATE" ColumnName="CREATEDDATE" />
+          <ScalarProperty Name="DEPENDENCYID" ColumnName="DEPENDENCYID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TEST_DATA_SETTING">
+      <EntityTypeMapping TypeName="Model.TEST_DATA_SETTING">
+        <MappingFragment StoreEntitySet="TEST_DATA_SETTING">
+          <ScalarProperty Name="DATA_SETTING_ID" ColumnName="DATA_SETTING_ID" />
+          <ScalarProperty Name="STEPS_ID" ColumnName="STEPS_ID" />
+          <ScalarProperty Name="LOOP_ID" ColumnName="LOOP_ID" />
+          <ScalarProperty Name="DATA_VALUE" ColumnName="DATA_VALUE" />
+          <ScalarProperty Name="VALUE_OR_OBJECT" ColumnName="VALUE_OR_OBJECT" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="DATA_SUMMARY_ID" ColumnName="DATA_SUMMARY_ID" />
+          <ScalarProperty Name="DATA_DIRECTION" ColumnName="DATA_DIRECTION" />
+          <ScalarProperty Name="VERSION" ColumnName="VERSION" />
+          <ScalarProperty Name="CREATE_TIME" ColumnName="CREATE_TIME" />
+          <ScalarProperty Name="POOL_ID" ColumnName="POOL_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ACUPs">
+      <EntityTypeMapping TypeName="Model.ACUP">
+        <MappingFragment StoreEntitySet="ACUP">
+          <ScalarProperty Name="BR" ColumnName="BR" />
+          <ScalarProperty Name="PRODUCT" ColumnName="PRODUCT" />
+          <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+          <ScalarProperty Name="ARGNO" ColumnName="ARGNO" />
+          <ScalarProperty Name="DEALNO" ColumnName="DEALNO" />
+          <ScalarProperty Name="SEQ" ColumnName="SEQ" />
+          <ScalarProperty Name="GLNO" ColumnName="GLNO" />
+          <ScalarProperty Name="COSTCENT" ColumnName="COSTCENT" />
+          <ScalarProperty Name="CCY" ColumnName="CCY" />
+          <ScalarProperty Name="BEIND" ColumnName="BEIND" />
+          <ScalarProperty Name="CODE" ColumnName="CODE" />
+          <ScalarProperty Name="QUAL" ColumnName="QUAL" />
+          <ScalarProperty Name="EFFDATE" ColumnName="EFFDATE" />
+          <ScalarProperty Name="POSTDATE" ColumnName="POSTDATE" />
+          <ScalarProperty Name="CMNE" ColumnName="CMNE" />
+          <ScalarProperty Name="DRCRIND" ColumnName="DRCRIND" />
+          <ScalarProperty Name="AMOUNT" ColumnName="AMOUNT" />
+          <ScalarProperty Name="SMEANS" ColumnName="SMEANS" />
+          <ScalarProperty Name="SACCT" ColumnName="SACCT" />
+          <ScalarProperty Name="DESCR" ColumnName="DESCR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MV_LAST_TC_INFO">
+      <EntityTypeMapping TypeName="Model.MV_LAST_TC_INFO">
+        <MappingFragment StoreEntitySet="MV_LAST_TC_INFO">
+          <ScalarProperty Name="HIST_ID" ColumnName="HIST_ID" />
+          <ScalarProperty Name="TEST_CASE_ID" ColumnName="TEST_CASE_ID" />
+          <ScalarProperty Name="STORYBOARD_DETAIL_ID" ColumnName="STORYBOARD_DETAIL_ID" />
+          <ScalarProperty Name="TEST_BEGIN_TIME" ColumnName="TEST_BEGIN_TIME" />
+          <ScalarProperty Name="TEST_END_TIME" ColumnName="TEST_END_TIME" />
+          <ScalarProperty Name="TEST_RESULT_IN_TEXT" ColumnName="TEST_RESULT_IN_TEXT" />
+          <ScalarProperty Name="TEST_MODE" ColumnName="TEST_MODE" />
+          <ScalarProperty Name="TEST_RESULT" ColumnName="TEST_RESULT" />
+          <ScalarProperty Name="TESTER_ID" ColumnName="TESTER_ID" />
+          <ScalarProperty Name="CREATE_TIME" ColumnName="CREATE_TIME" />
+          <ScalarProperty Name="LATEST_TEST_MARK_ID" ColumnName="LATEST_TEST_MARK_ID" />
+          <ScalarProperty Name="RELY_TEST_CASE_ID" ColumnName="RELY_TEST_CASE_ID" />
+          <ScalarProperty Name="RESULT_ALIAS_NAME" ColumnName="RESULT_ALIAS_NAME" />
+          <ScalarProperty Name="RESULT_DESC" ColumnName="RESULT_DESC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MV_OBJ_WITH_PEG">
+      <EntityTypeMapping TypeName="Model.MV_OBJ_WITH_PEG">
+        <MappingFragment StoreEntitySet="MV_OBJ_WITH_PEG">
+          <ScalarProperty Name="OROWID" ColumnName="OROWID" />
+          <ScalarProperty Name="O1ROWID" ColumnName="O1ROWID" />
+          <ScalarProperty Name="OBJECT_ID" ColumnName="OBJECT_ID" />
+          <ScalarProperty Name="OBJECT_HAPPY_NAME" ColumnName="OBJECT_HAPPY_NAME" />
+          <ScalarProperty Name="OBJECT_TYPE" ColumnName="OBJECT_TYPE" />
+          <ScalarProperty Name="APPLICATION_ID" ColumnName="APPLICATION_ID" />
+          <ScalarProperty Name="QUICK_ACCESS" ColumnName="QUICK_ACCESS" />
+          <ScalarProperty Name="OBJECT_NAME_ID" ColumnName="OBJECT_NAME_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MV_STORYBOARD_LATEST">
+      <EntityTypeMapping TypeName="Model.MV_STORYBOARD_LATEST">
+        <MappingFragment StoreEntitySet="MV_STORYBOARD_LATEST">
+          <ScalarProperty Name="STORYBOARD_ID" ColumnName="STORYBOARD_ID" />
+          <ScalarProperty Name="STORYBOARD_DETAIL_ID" ColumnName="STORYBOARD_DETAIL_ID" />
+          <ScalarProperty Name="TEST_MODE" ColumnName="TEST_MODE" />
+          <ScalarProperty Name="MX_STB_LTST_ID" ColumnName="MX_STB_LTST_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MV_TC_DATASUMMARY">
+      <EntityTypeMapping TypeName="Model.MV_TC_DATASUMMARY">
+        <MappingFragment StoreEntitySet="MV_TC_DATASUMMARY">
+          <ScalarProperty Name="ALIAS_NAME" ColumnName="ALIAS_NAME" />
+          <ScalarProperty Name="DATA_SUMMARY_ID" ColumnName="DATA_SUMMARY_ID" />
+          <ScalarProperty Name="TEST_CASE_ID" ColumnName="TEST_CASE_ID" />
+          <ScalarProperty Name="AVAILABLE_MARK" ColumnName="AVAILABLE_MARK" />
+          <ScalarProperty Name="DATA_VERSION" ColumnName="DATA_VERSION" />
+          <ScalarProperty Name="DATA_STATUS" ColumnName="DATA_STATUS" />
+          <ScalarProperty Name="DATA_SET_TYPE" ColumnName="DATA_SET_TYPE" />
+          <ScalarProperty Name="DATASET_DESCRIPTION" ColumnName="DATASET_DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_DATA_SOURCE_TEST">
+      <EntityTypeMapping TypeName="Model.T_DATA_SOURCE_TEST">
+        <MappingFragment StoreEntitySet="T_DATA_SOURCE_TEST">
+          <ScalarProperty Name="DATA_SOURCE_ID" ColumnName="DATA_SOURCE_ID" />
+          <ScalarProperty Name="DATA_SOURCE_NAME" ColumnName="DATA_SOURCE_NAME" />
+          <ScalarProperty Name="DATA_SOURCE_TYPE" ColumnName="DATA_SOURCE_TYPE" />
+          <ScalarProperty Name="DETAILS" ColumnName="DETAILS" />
+          <ScalarProperty Name="DB_CONNECTION" ColumnName="DB_CONNECTION" />
+          <ScalarProperty Name="DB_TYPE" ColumnName="DB_TYPE" />
+          <ScalarProperty Name="TEST_CONNECTION" ColumnName="TEST_CONNECTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_REGISTED_OBJECT_BAK">
+      <EntityTypeMapping TypeName="Model.T_REGISTED_OBJECT_BAK">
+        <MappingFragment StoreEntitySet="T_REGISTED_OBJECT_BAK">
+          <ScalarProperty Name="OBJECT_ID" ColumnName="OBJECT_ID" />
+          <ScalarProperty Name="OBJECT_HAPPY_NAME" ColumnName="OBJECT_HAPPY_NAME" />
+          <ScalarProperty Name="APPLICATION_ID" ColumnName="APPLICATION_ID" />
+          <ScalarProperty Name="TYPE_ID" ColumnName="TYPE_ID" />
+          <ScalarProperty Name="QUICK_ACCESS" ColumnName="QUICK_ACCESS" />
+          <ScalarProperty Name="OBJECT_TYPE" ColumnName="OBJECT_TYPE" />
+          <ScalarProperty Name="COMMENT" ColumnName="COMMENT" />
+          <ScalarProperty Name="ENUM_TYPE" ColumnName="ENUM_TYPE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_TEST_STEPS_BAK">
+      <EntityTypeMapping TypeName="Model.T_TEST_STEPS_BAK">
+        <MappingFragment StoreEntitySet="T_TEST_STEPS_BAK">
+          <ScalarProperty Name="STEPS_ID" ColumnName="STEPS_ID" />
+          <ScalarProperty Name="RUN_ORDER" ColumnName="RUN_ORDER" />
+          <ScalarProperty Name="KEY_WORD_ID" ColumnName="KEY_WORD_ID" />
+          <ScalarProperty Name="TEST_CASE_ID" ColumnName="TEST_CASE_ID" />
+          <ScalarProperty Name="OBJECT_ID" ColumnName="OBJECT_ID" />
+          <ScalarProperty Name="COLUMN_ROW_SETTING" ColumnName="COLUMN_ROW_SETTING" />
+          <ScalarProperty Name="VALUE_SETTING" ColumnName="VALUE_SETTING" />
+          <ScalarProperty Name="COMMENT" ColumnName="COMMENT" />
+          <ScalarProperty Name="IS_RUNNABLE" ColumnName="IS_RUNNABLE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_TEST_STEPS_TMP">
+      <EntityTypeMapping TypeName="Model.T_TEST_STEPS_TMP">
+        <MappingFragment StoreEntitySet="T_TEST_STEPS_TMP">
+          <ScalarProperty Name="STEPS_ID" ColumnName="STEPS_ID" />
+          <ScalarProperty Name="RUN_ORDER" ColumnName="RUN_ORDER" />
+          <ScalarProperty Name="KEY_WORD_ID" ColumnName="KEY_WORD_ID" />
+          <ScalarProperty Name="TEST_CASE_ID" ColumnName="TEST_CASE_ID" />
+          <ScalarProperty Name="OBJECT_ID" ColumnName="OBJECT_ID" />
+          <ScalarProperty Name="COLUMN_ROW_SETTING" ColumnName="COLUMN_ROW_SETTING" />
+          <ScalarProperty Name="VALUE_SETTING" ColumnName="VALUE_SETTING" />
+          <ScalarProperty Name="COMMENT" ColumnName="COMMENT" />
+          <ScalarProperty Name="IS_RUNNABLE" ColumnName="IS_RUNNABLE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBLLOGREPORTs">
+      <EntityTypeMapping TypeName="Model.TBLLOGREPORT">
+        <MappingFragment StoreEntitySet="TBLLOGREPORT">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CREATIONDATE" ColumnName="CREATIONDATE" />
+          <ScalarProperty Name="MESSAGETYPE" ColumnName="MESSAGETYPE" />
+          <ScalarProperty Name="ACTION" ColumnName="ACTION" />
+          <ScalarProperty Name="CELLADDRESS" ColumnName="CELLADDRESS" />
+          <ScalarProperty Name="VALIDATIONNAME" ColumnName="VALIDATIONNAME" />
+          <ScalarProperty Name="VALIDATIONDESCRIPTION" ColumnName="VALIDATIONDESCRIPTION" />
+          <ScalarProperty Name="APPLICATIONNAME" ColumnName="APPLICATIONNAME" />
+          <ScalarProperty Name="TESTCASENAME" ColumnName="TESTCASENAME" />
+          <ScalarProperty Name="DATASETNAME" ColumnName="DATASETNAME" />
+          <ScalarProperty Name="TESTSTEPNUMBER" ColumnName="TESTSTEPNUMBER" />
+          <ScalarProperty Name="OBJECTNAME" ColumnName="OBJECTNAME" />
+          <ScalarProperty Name="COMMENTDATA" ColumnName="COMMENTDATA" />
+          <ScalarProperty Name="ERRORDESCRIPTION" ColumnName="ERRORDESCRIPTION" />
+          <ScalarProperty Name="PROGRAMLOCATION" ColumnName="PROGRAMLOCATION" />
+          <ScalarProperty Name="FEEDPROCESSINGDETAILSID" ColumnName="FEEDPROCESSINGDETAILSID" />
+          <ScalarProperty Name="GENERAL" ColumnName="GENERAL" />
+          <ScalarProperty Name="PROJECTNAME" ColumnName="PROJECTNAME" />
+          <ScalarProperty Name="STORYBOARDNAME" ColumnName="STORYBOARDNAME" />
+          <ScalarProperty Name="TESTSUITE" ColumnName="TESTSUITE" />
+          <ScalarProperty Name="DEPENDENCY" ColumnName="DEPENDENCY" />
+          <ScalarProperty Name="RUNORDER" ColumnName="RUNORDER" />
+          <ScalarProperty Name="FEEDPROCESSID" ColumnName="FEEDPROCESSID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TBLSTGVARIABLEs">
+      <EntityTypeMapping TypeName="Model.TBLSTGVARIABLE">
+        <MappingFragment StoreEntitySet="TBLSTGVARIABLE">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FEEDPROCESSDETAILID" ColumnName="FEEDPROCESSDETAILID" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="VALUE" ColumnName="VALUE" />
+          <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+          <ScalarProperty Name="BASE_COMP" ColumnName="BASE_COMP" />
+          <ScalarProperty Name="CREATEDDATE" ColumnName="CREATEDDATE" />
+          <ScalarProperty Name="BASE_COMP_ID" ColumnName="BASE_COMP_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TPOS">
+      <EntityTypeMapping TypeName="Model.TPOS">
+        <MappingFragment StoreEntitySet="TPOS">
+          <ScalarProperty Name="SECID" ColumnName="SECID" />
+          <ScalarProperty Name="QTY" ColumnName="QTY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TPOS2">
+      <EntityTypeMapping TypeName="Model.TPOS2">
+        <MappingFragment StoreEntitySet="TPOS2">
+          <ScalarProperty Name="SECID" ColumnName="SECID" />
+          <ScalarProperty Name="QTY" ColumnName="QTY" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="V_OBJECT_SNAPSHOT">
+      <EntityTypeMapping TypeName="Model.V_OBJECT_SNAPSHOT">
+        <MappingFragment StoreEntitySet="V_OBJECT_SNAPSHOT">
+          <ScalarProperty Name="OBJECT_NAME_ID" ColumnName="OBJECT_NAME_ID" />
+          <ScalarProperty Name="OBJECT_HAPPY_NAME" ColumnName="OBJECT_HAPPY_NAME" />
+          <ScalarProperty Name="COMMENT" ColumnName="COMMENT" />
+          <ScalarProperty Name="APPLICATION_ID" ColumnName="APPLICATION_ID" />
+          <ScalarProperty Name="ENUM_TYPE" ColumnName="ENUM_TYPE" />
+          <ScalarProperty Name="OBJECT_ID" ColumnName="OBJECT_ID" />
+          <ScalarProperty Name="OBJECT_TYPE" ColumnName="OBJECT_TYPE" />
+          <ScalarProperty Name="QUICK_ACCESS" ColumnName="QUICK_ACCESS" />
+          <ScalarProperty Name="TYPE_ID" ColumnName="TYPE_ID" />
+          <ScalarProperty Name="IS_CHECKERROR_OBJ" ColumnName="IS_CHECKERROR_OBJ" />
+          <ScalarProperty Name="TYPE_NAME" ColumnName="TYPE_NAME" />
+          <ScalarProperty Name="PEG_NAME" ColumnName="PEG_NAME" />
+          <ScalarProperty Name="PEG_QUICK_ACCESS" ColumnName="PEG_QUICK_ACCESS" />
+          <ScalarProperty Name="PEG_ID" ColumnName="PEG_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TEST_CASE_VIEW">
+      <EntityTypeMapping TypeName="Model.TEST_CASE_VIEW">
+        <MappingFragment StoreEntitySet="TEST_CASE_VIEW">
+          <ScalarProperty Name="PROJECT_NAME" ColumnName="PROJECT_NAME" />
+          <ScalarProperty Name="TEST_SUITE_NAME" ColumnName="TEST_SUITE_NAME" />
+          <ScalarProperty Name="TEST_CASE_NAME" ColumnName="TEST_CASE_NAME" />
+          <ScalarProperty Name="KEY_WORD_NAME" ColumnName="KEY_WORD_NAME" />
+          <ScalarProperty Name="OBJECT_ID" ColumnName="OBJECT_ID" />
+          <ScalarProperty Name="OBJECT_HAPPY_NAME" ColumnName="OBJECT_HAPPY_NAME" />
+          <ScalarProperty Name="COLUMN_ROW_SETTING" ColumnName="COLUMN_ROW_SETTING" />
+          <ScalarProperty Name="DATA_VALUE" ColumnName="DATA_VALUE" />
+          <ScalarProperty Name="LOOP_ID" ColumnName="LOOP_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TEST_CASE_VIEW2">
+      <EntityTypeMapping TypeName="Model.TEST_CASE_VIEW2">
+        <MappingFragment StoreEntitySet="TEST_CASE_VIEW2">
+          <ScalarProperty Name="PROJECT_NAME" ColumnName="PROJECT_NAME" />
+          <ScalarProperty Name="TEST_SUITE_NAME" ColumnName="TEST_SUITE_NAME" />
+          <ScalarProperty Name="TEST_CASE_NAME" ColumnName="TEST_CASE_NAME" />
+          <ScalarProperty Name="KEY_WORD_NAME" ColumnName="KEY_WORD_NAME" />
+          <ScalarProperty Name="OBJECT_ID" ColumnName="OBJECT_ID" />
+          <ScalarProperty Name="OBJECT_HAPPY_NAME" ColumnName="OBJECT_HAPPY_NAME" />
+          <ScalarProperty Name="COLUMN_ROW_SETTING" ColumnName="COLUMN_ROW_SETTING" />
+          <ScalarProperty Name="DATA_VALUE" ColumnName="DATA_VALUE" />
+          <ScalarProperty Name="LOOP_ID" ColumnName="LOOP_ID" />
+          <ScalarProperty Name="STEPS_ID" ColumnName="STEPS_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TEST_OBJECT_VIEW">
+      <EntityTypeMapping TypeName="Model.TEST_OBJECT_VIEW">
+        <MappingFragment StoreEntitySet="TEST_OBJECT_VIEW">
+          <ScalarProperty Name="OBJECT_ID" ColumnName="OBJECT_ID" />
+          <ScalarProperty Name="OBJECT_HAPPY_NAME" ColumnName="OBJECT_HAPPY_NAME" />
+          <ScalarProperty Name="APPLICATION_ID" ColumnName="APPLICATION_ID" />
+          <ScalarProperty Name="TYPE_ID" ColumnName="TYPE_ID" />
+          <ScalarProperty Name="QUICK_ACCESS" ColumnName="QUICK_ACCESS" />
+          <ScalarProperty Name="OBJECT_TYPE" ColumnName="OBJECT_TYPE" />
+          <ScalarProperty Name="COMMENT" ColumnName="COMMENT" />
+          <ScalarProperty Name="ENUM_TYPE" ColumnName="ENUM_TYPE" />
+          <ScalarProperty Name="APP_SHORT_NAME" ColumnName="APP_SHORT_NAME" />
+          <ScalarProperty Name="TYPE_NAME" ColumnName="TYPE_NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TEST_PROJECT_VIEW">
+      <EntityTypeMapping TypeName="Model.TEST_PROJECT_VIEW">
+        <MappingFragment StoreEntitySet="TEST_PROJECT_VIEW">
+          <ScalarProperty Name="PROJECT_NAME" ColumnName="PROJECT_NAME" />
+          <ScalarProperty Name="PROJECT_ID" ColumnName="PROJECT_ID" />
+          <ScalarProperty Name="TEST_SUITE_NAME" ColumnName="TEST_SUITE_NAME" />
+          <ScalarProperty Name="TEST_SUITE_ID" ColumnName="TEST_SUITE_ID" />
+          <ScalarProperty Name="APP_SHORT_NAME" ColumnName="APP_SHORT_NAME" />
+          <ScalarProperty Name="APPLICATION_ID" ColumnName="APPLICATION_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="V_MARS_STB_SNAPSHOT">
+      <EntityTypeMapping TypeName="Model.V_MARS_STB_SNAPSHOT">
+        <MappingFragment StoreEntitySet="V_MARS_STB_SNAPSHOT">
+          <ScalarProperty Name="STORYBOARD_ID" ColumnName="STORYBOARD_ID" />
+          <ScalarProperty Name="STORYBOARD_DETAIL_ID" ColumnName="STORYBOARD_DETAIL_ID" />
+          <ScalarProperty Name="LATEST_TEST_MARK_ID" ColumnName="LATEST_TEST_MARK_ID" />
+          <ScalarProperty Name="TEST_MODE" ColumnName="TEST_MODE" />
+          <ScalarProperty Name="HIST_ID" ColumnName="HIST_ID" />
+          <ScalarProperty Name="RUN_ORDER" ColumnName="RUN_ORDER" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="V_OBJECT_APPS">
+      <EntityTypeMapping TypeName="Model.V_OBJECT_APPS">
+        <MappingFragment StoreEntitySet="V_OBJECT_APPS">
+          <ScalarProperty Name="APPLICATION_ID" ColumnName="APPLICATION_ID" />
+          <ScalarProperty Name="OBJECT_ID" ColumnName="OBJECT_ID" />
+          <ScalarProperty Name="COMMENT" ColumnName="COMMENT" />
+          <ScalarProperty Name="ENUM_TYPE" ColumnName="ENUM_TYPE" />
+          <ScalarProperty Name="OBJECT_HAPPY_NAME" ColumnName="OBJECT_HAPPY_NAME" />
+          <ScalarProperty Name="OBJECT_TYPE" ColumnName="OBJECT_TYPE" />
+          <ScalarProperty Name="QUICK_ACCESS" ColumnName="QUICK_ACCESS" />
+          <ScalarProperty Name="TYPE_ID" ColumnName="TYPE_ID" />
+          <ScalarProperty Name="APP_APPLICATION_ID" ColumnName="APP_APPLICATION_ID" />
+          <ScalarProperty Name="APP_SHORT_NAME" ColumnName="APP_SHORT_NAME" />
+          <ScalarProperty Name="APPLICATION_TYPE_ID" ColumnName="APPLICATION_TYPE_ID" />
+          <ScalarProperty Name="COMMENT_APP" ColumnName="COMMENT_APP" />
+          <ScalarProperty Name="EXTRAPOPUPMENU" ColumnName="EXTRAPOPUPMENU" />
+          <ScalarProperty Name="EXTRAREQUIREMENT" ColumnName="EXTRAREQUIREMENT" />
+          <ScalarProperty Name="PROCESS_IDENTIFIER" ColumnName="PROCESS_IDENTIFIER" />
+          <ScalarProperty Name="STARTER_COMMAND" ColumnName="STARTER_COMMAND" />
+          <ScalarProperty Name="STARTER_PATH" ColumnName="STARTER_PATH" />
+          <ScalarProperty Name="VERSION" ColumnName="VERSION" />
+          <ScalarProperty Name="TYPE_APPLICATION_TYPE_ID" ColumnName="TYPE_APPLICATION_TYPE_ID" />
+          <ScalarProperty Name="TYPE_DESCRPTION" ColumnName="TYPE_DESCRPTION" />
+          <ScalarProperty Name="TYP_TYPE_ID" ColumnName="TYP_TYPE_ID" />
+          <ScalarProperty Name="TYPE_NAME" ColumnName="TYPE_NAME" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="V_STB_PROJ_APP_FULLVISION">
+      <EntityTypeMapping TypeName="Model.V_STB_PROJ_APP_FULLVISION">
+        <MappingFragment StoreEntitySet="V_STB_PROJ_APP_FULLVISION">
+          <ScalarProperty Name="PROJECT_ID" ColumnName="PROJECT_ID" />
+          <ScalarProperty Name="CREATE_TIME" ColumnName="CREATE_TIME" />
+          <ScalarProperty Name="CREATER" ColumnName="CREATER" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="STORYBOARD_ID" ColumnName="STORYBOARD_ID" />
+          <ScalarProperty Name="STORYBOARD_NAME" ColumnName="STORYBOARD_NAME" />
+          <ScalarProperty Name="APPLICATION_ID" ColumnName="APPLICATION_ID" />
+          <ScalarProperty Name="APP_SHORT_NAME" ColumnName="APP_SHORT_NAME" />
+          <ScalarProperty Name="APPLICATION_TYPE_ID" ColumnName="APPLICATION_TYPE_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="V_STORYBOARD_TEST_FULLVISION">
+      <EntityTypeMapping TypeName="Model.V_STORYBOARD_TEST_FULLVISION">
+        <MappingFragment StoreEntitySet="V_STORYBOARD_TEST_FULLVISION">
+          <ScalarProperty Name="STORYBOARD_ID" ColumnName="STORYBOARD_ID" />
+          <ScalarProperty Name="STORYBOARD_DETAIL_ID" ColumnName="STORYBOARD_DETAIL_ID" />
+          <ScalarProperty Name="STORYBOARD_NAME" ColumnName="STORYBOARD_NAME" />
+          <ScalarProperty Name="PROJECT_ID" ColumnName="PROJECT_ID" />
+          <ScalarProperty Name="PROJECT_NAME" ColumnName="PROJECT_NAME" />
+          <ScalarProperty Name="PROJECT_DESCRIPTION" ColumnName="PROJECT_DESCRIPTION" />
+          <ScalarProperty Name="TEST_CASE_NAME" ColumnName="TEST_CASE_NAME" />
+          <ScalarProperty Name="TEST_CASE_ID" ColumnName="TEST_CASE_ID" />
+          <ScalarProperty Name="TEST_STEP_DESCRIPTION" ColumnName="TEST_STEP_DESCRIPTION" />
+          <ScalarProperty Name="TEST_SUITE_ID" ColumnName="TEST_SUITE_ID" />
+          <ScalarProperty Name="TEST_SUITE_NAME" ColumnName="TEST_SUITE_NAME" />
+          <ScalarProperty Name="TEST_SUITE_DESCRIPTION" ColumnName="TEST_SUITE_DESCRIPTION" />
+          <ScalarProperty Name="RUN_ORDER" ColumnName="RUN_ORDER" />
+          <ScalarProperty Name="DEPENDS_ON" ColumnName="DEPENDS_ON" />
+          <ScalarProperty Name="ALIAS_NAME" ColumnName="ALIAS_NAME" />
+          <ScalarProperty Name="PARENT_ALIAS_NAME" ColumnName="PARENT_ALIAS_NAME" />
+          <ScalarProperty Name="DISPLAY_NAME" ColumnName="DISPLAY_NAME" />
+          <ScalarProperty Name="TEST_RUN_VALUE" ColumnName="TEST_RUN_VALUE" />
+          <ScalarProperty Name="LATEST_TEST_MARK_ID" ColumnName="LATEST_TEST_MARK_ID" />
+          <ScalarProperty Name="HIST_LATEST_TEST_MARK_ID" ColumnName="HIST_LATEST_TEST_MARK_ID" />
+          <ScalarProperty Name="HIST_ID" ColumnName="HIST_ID" />
+          <ScalarProperty Name="HIST_TEST_ID" ColumnName="HIST_TEST_ID" />
+          <ScalarProperty Name="TEST_CASE_BEGIN_TIME" ColumnName="TEST_CASE_BEGIN_TIME" />
+          <ScalarProperty Name="TEST_CASE_END_TIME" ColumnName="TEST_CASE_END_TIME" />
+          <ScalarProperty Name="HIST_TEST_RESULT_IN_TEXT" ColumnName="HIST_TEST_RESULT_IN_TEXT" />
+          <ScalarProperty Name="HIST_TEST_MODE" ColumnName="HIST_TEST_MODE" />
+          <ScalarProperty Name="HIST_RESULT" ColumnName="HIST_RESULT" />
+          <ScalarProperty Name="DATA_SETTING_ID" ColumnName="DATA_SETTING_ID" />
+          <ScalarProperty Name="DATA_SUMMARY_ID" ColumnName="DATA_SUMMARY_ID" />
+          <ScalarProperty Name="DATA_SET_CREATETIME" ColumnName="DATA_SET_CREATETIME" />
+          <ScalarProperty Name="DATA_SET_TESTERID" ColumnName="DATA_SET_TESTERID" />
+          <ScalarProperty Name="DATA_SET_VERSION" ColumnName="DATA_SET_VERSION" />
+          <ScalarProperty Name="DATA_SET_ALIAS_NAME" ColumnName="DATA_SET_ALIAS_NAME" />
+          <ScalarProperty Name="DATA_SET_SHARE_MARK" ColumnName="DATA_SET_SHARE_MARK" />
+          <ScalarProperty Name="DATA_SET_STATUS" ColumnName="DATA_SET_STATUS" />
+          <ScalarProperty Name="DATA_SET_TYPE" ColumnName="DATA_SET_TYPE" />
+          <ScalarProperty Name="DATASET_DESCRIPTION" ColumnName="DATASET_DESCRIPTION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="V_TEST_DATA_REPORT_SUMMARY">
+      <EntityTypeMapping TypeName="Model.V_TEST_DATA_REPORT_SUMMARY">
+        <MappingFragment StoreEntitySet="V_TEST_DATA_REPORT_SUMMARY">
+          <ScalarProperty Name="KEY_WORD_NAME" ColumnName="KEY_WORD_NAME" />
+          <ScalarProperty Name="OBJECT_HAPPY_NAME" ColumnName="OBJECT_HAPPY_NAME" />
+          <ScalarProperty Name="INPUT_VALUE_SETTING" ColumnName="INPUT_VALUE_SETTING" />
+          <ScalarProperty Name="RETURN_VALUES" ColumnName="RETURN_VALUES" />
+          <ScalarProperty Name="ACTUAL_INPUT_DATA" ColumnName="ACTUAL_INPUT_DATA" />
+          <ScalarProperty Name="LATEST_TEST_MARK_ID" ColumnName="LATEST_TEST_MARK_ID" />
+          <ScalarProperty Name="STORYBOARD_DETAIL_ID" ColumnName="STORYBOARD_DETAIL_ID" />
+          <ScalarProperty Name="LOOP_ID" ColumnName="LOOP_ID" />
+          <ScalarProperty Name="RUN_ORDER" ColumnName="RUN_ORDER" />
+          <ScalarProperty Name="TEST_MODE" ColumnName="TEST_MODE" />
+          <ScalarProperty Name="TEST_REPORT_STEP_ID" ColumnName="TEST_REPORT_STEP_ID" />
+          <ScalarProperty Name="COLUMN_ROW_SETTING" ColumnName="COLUMN_ROW_SETTING" />
+          <ScalarProperty Name="STORYBOARD_ORDER" ColumnName="STORYBOARD_ORDER" />
+          <ScalarProperty Name="STORYBOARD_ID" ColumnName="STORYBOARD_ID" />
+          <ScalarProperty Name="TEST_CASE_ID" ColumnName="TEST_CASE_ID" />
+          <ScalarProperty Name="RUNNING_RESULT_INFO" ColumnName="RUNNING_RESULT_INFO" />
+          <ScalarProperty Name="STEPS_ID" ColumnName="STEPS_ID" />
+          <ScalarProperty Name="INFO_PIC" ColumnName="INFO_PIC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="V_TEST_DATARPT_CAPTURE">
+      <EntityTypeMapping TypeName="Model.V_TEST_DATARPT_CAPTURE">
+        <MappingFragment StoreEntitySet="V_TEST_DATARPT_CAPTURE">
+          <ScalarProperty Name="KEY_WORD_NAME" ColumnName="KEY_WORD_NAME" />
+          <ScalarProperty Name="OBJECT_HAPPY_NAME" ColumnName="OBJECT_HAPPY_NAME" />
+          <ScalarProperty Name="INPUT_VALUE_SETTING" ColumnName="INPUT_VALUE_SETTING" />
+          <ScalarProperty Name="RETURN_VALUES" ColumnName="RETURN_VALUES" />
+          <ScalarProperty Name="ACTUAL_INPUT_DATA" ColumnName="ACTUAL_INPUT_DATA" />
+          <ScalarProperty Name="LATEST_TEST_MARK_ID" ColumnName="LATEST_TEST_MARK_ID" />
+          <ScalarProperty Name="STORYBOARD_DETAIL_ID" ColumnName="STORYBOARD_DETAIL_ID" />
+          <ScalarProperty Name="LOOP_ID" ColumnName="LOOP_ID" />
+          <ScalarProperty Name="RUN_ORDER" ColumnName="RUN_ORDER" />
+          <ScalarProperty Name="TEST_MODE" ColumnName="TEST_MODE" />
+          <ScalarProperty Name="TEST_REPORT_STEP_ID" ColumnName="TEST_REPORT_STEP_ID" />
+          <ScalarProperty Name="STORYBOARD_ID" ColumnName="STORYBOARD_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="V_TEST_STEPS_FULLVISION">
+      <EntityTypeMapping TypeName="Model.V_TEST_STEPS_FULLVISION">
+        <MappingFragment StoreEntitySet="V_TEST_STEPS_FULLVISION">
+          <ScalarProperty Name="TEST_CASE_ID" ColumnName="TEST_CASE_ID" />
+          <ScalarProperty Name="TEST_CASE_NAME" ColumnName="TEST_CASE_NAME" />
+          <ScalarProperty Name="KEY_WORD_ID" ColumnName="KEY_WORD_ID" />
+          <ScalarProperty Name="KEY_WORD_NAME" ColumnName="KEY_WORD_NAME" />
+          <ScalarProperty Name="OBJECT_HAPPY_NAME" ColumnName="OBJECT_HAPPY_NAME" />
+          <ScalarProperty Name="OBJECT_ID" ColumnName="OBJECT_ID" />
+          <ScalarProperty Name="OBJECT_TYPE" ColumnName="OBJECT_TYPE" />
+          <ScalarProperty Name="QUICK_ACCESS" ColumnName="QUICK_ACCESS" />
+          <ScalarProperty Name="ENUM_TYPE" ColumnName="ENUM_TYPE" />
+          <ScalarProperty Name="APPLICATION_ID" ColumnName="APPLICATION_ID" />
+          <ScalarProperty Name="OBJECT_NAME_ID" ColumnName="OBJECT_NAME_ID" />
+          <ScalarProperty Name="TYPE_NAME" ColumnName="TYPE_NAME" />
+          <ScalarProperty Name="STEPS_ID" ColumnName="STEPS_ID" />
+          <ScalarProperty Name="COLUMN_ROW_SETTING" ColumnName="COLUMN_ROW_SETTING" />
+          <ScalarProperty Name="COMMENTINFO" ColumnName="COMMENTINFO" />
+          <ScalarProperty Name="IS_RUNNABLE" ColumnName="IS_RUNNABLE" />
+          <ScalarProperty Name="RUN_ORDER" ColumnName="RUN_ORDER" />
+          <ScalarProperty Name="VALUE_SETTING" ColumnName="VALUE_SETTING" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="V_USER_COMPANY">
+      <EntityTypeMapping TypeName="Model.V_USER_COMPANY">
+        <MappingFragment StoreEntitySet="V_USER_COMPANY">
+          <ScalarProperty Name="TESTER_ID" ColumnName="TESTER_ID" />
+          <ScalarProperty Name="TESTER_NAME_LAST" ColumnName="TESTER_NAME_LAST" />
+          <ScalarProperty Name="TESTER_NAME_M" ColumnName="TESTER_NAME_M" />
+          <ScalarProperty Name="TESTER_NAME_F" ColumnName="TESTER_NAME_F" />
+          <ScalarProperty Name="TESTER_LOGIN_NAME" ColumnName="TESTER_LOGIN_NAME" />
+          <ScalarProperty Name="TESTER_PWD" ColumnName="TESTER_PWD" />
+          <ScalarProperty Name="AVAILABLE_MARK" ColumnName="AVAILABLE_MARK" />
+          <ScalarProperty Name="TESTER_MAIL" ColumnName="TESTER_MAIL" />
+          <ScalarProperty Name="TESTER_NUMBER" ColumnName="TESTER_NUMBER" />
+          <ScalarProperty Name="COMPANY_ID" ColumnName="COMPANY_ID" />
+          <ScalarProperty Name="TESTER_DESC" ColumnName="TESTER_DESC" />
+          <ScalarProperty Name="COMPANY_NAME" ColumnName="COMPANY_NAME" />
+          <ScalarProperty Name="COMPANY_DESC" ColumnName="COMPANY_DESC" />
+          <ScalarProperty Name="COMPANY_ADDRESS" ColumnName="COMPANY_ADDRESS" />
+          <ScalarProperty Name="COMPANY_NUMBER" ColumnName="COMPANY_NUMBER" />
+          <ScalarProperty Name="COMPANY_AVAILABLE_MARK" ColumnName="COMPANY_AVAILABLE_MARK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="GETNEXT_VAL" FunctionName="Model.Store.GETNEXT_VAL" />
+    <FunctionImportMapping FunctionImportName="MARS_P_MERGEOBJECTS" FunctionName="Model.Store.MARS_P_MERGEOBJECTS" />
+    <FunctionImportMapping FunctionImportName="SP_EXPORT_COMPAREPARAM" FunctionName="Model.Store.SP_EXPORT_COMPAREPARAM" />
+    <FunctionImportMapping FunctionImportName="SP_EXPORT_EXPORTOBJECT" FunctionName="Model.Store.SP_EXPORT_EXPORTOBJECT" />
+    <FunctionImportMapping FunctionImportName="SP_EXPORT_LOGREPORT" FunctionName="Model.Store.SP_EXPORT_LOGREPORT" />
+    <FunctionImportMapping FunctionImportName="SP_EXPORT_STORYBOARD" FunctionName="Model.Store.SP_EXPORT_STORYBOARD" />
+    <FunctionImportMapping FunctionImportName="SP_EXPORT_TESTSUITE" FunctionName="Model.Store.SP_EXPORT_TESTSUITE" />
+    <FunctionImportMapping FunctionImportName="SP_EXPORT_VARIABLE" FunctionName="Model.Store.SP_EXPORT_VARIABLE" />
+    <FunctionImportMapping FunctionImportName="SP_IMPORT_FILE_COMPAREPARAM" FunctionName="Model.Store.SP_IMPORT_FILE_COMPAREPARAM" />
+    <FunctionImportMapping FunctionImportName="SP_IMPORT_FILE_EXPORTTEST" FunctionName="Model.Store.SP_IMPORT_FILE_EXPORTTEST" />
+    <FunctionImportMapping FunctionImportName="SP_IMPORT_FILE_EXPORTTESTCASE" FunctionName="Model.Store.SP_IMPORT_FILE_EXPORTTESTCASE" />
+    <FunctionImportMapping FunctionImportName="SP_IMPORT_FILE_OBJECT" FunctionName="Model.Store.SP_IMPORT_FILE_OBJECT" />
+    <FunctionImportMapping FunctionImportName="SP_IMPORT_FILE_STORYBOARD" FunctionName="Model.Store.SP_IMPORT_FILE_STORYBOARD" />
+    <FunctionImportMapping FunctionImportName="SP_IMPORT_FILE_TESTCASE" FunctionName="Model.Store.SP_IMPORT_FILE_TESTCASE" />
+    <FunctionImportMapping FunctionImportName="SP_IMPORT_FILE_VARIABLE" FunctionName="Model.Store.SP_IMPORT_FILE_VARIABLE" />
+    <FunctionImportMapping FunctionImportName="USP_FEEDPROCESS" FunctionName="Model.Store.USP_FEEDPROCESS" />
+    <FunctionImportMapping FunctionImportName="USP_FEEDPROCESSDETAILS" FunctionName="Model.Store.USP_FEEDPROCESSDETAILS" />
+    <FunctionImportMapping FunctionImportName="USP_FEEDPROCESSMAPPING_MODE_D" FunctionName="Model.Store.USP_FEEDPROCESSMAPPING_MODE_D" />
+    <FunctionImportMapping FunctionImportName="USP_MAPPING_VALIDATION" FunctionName="Model.Store.USP_MAPPING_VALIDATION" />
+    <FunctionImportMapping FunctionImportName="USP_VALIDATION" FunctionName="Model.Store.USP_VALIDATION" />
+    <FunctionImportMapping FunctionImportName="SP_TESTCASE_DETAILS" FunctionName="Model.Store.SP_TESTCASE_DETAILS" />
+  </EntityContainerMapping>
+</Mapping>

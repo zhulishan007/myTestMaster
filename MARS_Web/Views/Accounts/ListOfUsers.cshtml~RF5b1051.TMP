@@ -1,0 +1,77 @@
+﻿@*@model IEnumerable<Mars_Data.Models.T_TESTER_INFO>*@
+@*@model IEnumerable<Mars_Data.Models.T_MARS_COMPANY>*@
+@model IEnumerable<MARS_Repository.ViewModel.UserModel>
+
+@{
+    /**/
+
+    ViewBag.Title = "ListOfUsers";
+}
+
+
+
+<p>
+    @*@Html.ActionLink("Create New", "Create")*@
+</p>
+<div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
+    <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+        <div class="kt-portlet kt-portlet--mobile">
+            <div class="kt-portlet__head kt-portlet__head--lg">
+                <div class="kt-portlet__head-label">
+                    <h3 class="kt-portlet__head-title" style="color:#1582ab">
+                        List Of All Users
+                    </h3>
+                </div>
+
+            </div>
+            <div class="kt-portlet__body">
+                <table class="table table-striped- table-bordered table-hover table-checkable" id="kt_table">
+                    <tr>
+
+                        <th aria-controls="kt_table_1">Last Name</th>
+                        <th aria-controls="kt_table_1">Middle Name</th>
+                        <th aria-controls="kt_table_1">First Name</th>
+                        <th aria-controls="kt_table_1">User Name</th>
+
+                        <th aria-controls="kt_table_1">Email Address</th>
+                        <th aria-controls="kt_table_1">Company Name</th>
+
+                        <th aria-controls="kt_table_1"></th>
+                    </tr>
+                    @if(Model!=null)
+                    {
+                        foreach(var item in Model)
+                        {
+                    <tr>
+                        <td>@item.TESTER_NAME_LAST</td>
+                        <td>@item.TESTER_NAME_M</td>
+                        <td>@item.TESTER_NAME_F</td>
+                        <td>@item.TESTER_LOGIN_NAME</td>
+                        <td>@item.TESTER_MAIL</td>
+                        <td>@item.COMPANY_NAME</td>
+                        <td><i class="la la-edit" onclick="window.location.href='@Url.Action("UpdateUser","Accounts")';"></i></td>
+                    </tr>
+                        }
+                    }
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+@*<script type="text/javascript">
+    debugger;
+    $.ajax({
+        type: 'GET',
+        dataType: "json",
+        url: "/Accounts/ListOfUsers",
+        success: function (result) {
+            if (result && result.length > 0) {
+                for (var i = 0; i < result.length; i++) {
+                    $("#kt_table").append("<tr><td>" + result[i].TESTER_NAME_LAST + "</td><td>" + result[i].TESTER_NAME_M + "</td><td>" + result[i].TESTER_NAME_F + "</td><td>" + result[i].TESTER_LOGIN_NAME + "</td><td>" + result[i].TESTER_MAIL + "</td><td>" + result[i].COMPANY_NAME + "</td></tr>");
+                }
+            }
+        }
+    });
+</script>*@
