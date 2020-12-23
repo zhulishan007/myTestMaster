@@ -49,6 +49,7 @@ namespace MARS_Web.Controllers
             return PartialView();
         }
 
+        //This method will load all the data and filter them
         [HttpPost]
         public JsonResult DataLoad()
         {
@@ -141,6 +142,7 @@ namespace MARS_Web.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
 
+        //Add/Update User Role objects values
         [HttpPost]
         public JsonResult AddEditUserRoleMapping(UserRoleMappingViewModel model)
         {
@@ -174,6 +176,7 @@ namespace MARS_Web.Controllers
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
 
+        //Delete the User Role object data by UserId
         public ActionResult DeleteUserRole(long UserId)
         {
             logger.Info(string.Format("User Role Delete start | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
@@ -207,6 +210,7 @@ namespace MARS_Web.Controllers
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
 
+        //Check Role already exist or not
         public ActionResult CheckExistOrNotUser(long UserId)
         {
             logger.Info(string.Format("Check Exist Or Not User start | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
@@ -233,6 +237,7 @@ namespace MARS_Web.Controllers
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
 
+        //This method will Create Role
         public ActionResult CreateRole(string RoleName)
         {
             logger.Info(string.Format("Cretae Role Delete start | Username: {0} | RoleName: {1}", SessionManager.TESTER_LOGIN_NAME, RoleName));
@@ -270,6 +275,7 @@ namespace MARS_Web.Controllers
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
 
+        //This Method Get all Role
         [HttpPost]
         public JsonResult GetAllRoles()
         {
@@ -293,6 +299,7 @@ namespace MARS_Web.Controllers
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
 
+        //This Method Get All Privilege by User Role
         public ActionResult PrivilegeRoleMapping()
         {
             try
@@ -322,6 +329,7 @@ namespace MARS_Web.Controllers
             return PartialView();
         }
 
+        //This Method Get Selected Privilege by User Role
         public ActionResult GetPrivilegesByRoleId(long roleId)
         {
             try
@@ -338,6 +346,7 @@ namespace MARS_Web.Controllers
             return PartialView("_ListBox");
         }
 
+        //Add/Update PrivilageRoleMapping values
         [HttpPost]
         public JsonResult AddEditPrivilageRoleMapping(PrivilegeRoleMappingViewModel model)
         {

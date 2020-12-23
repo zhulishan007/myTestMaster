@@ -22,6 +22,10 @@
                     <a href="#" class="kt-subheader__breadcrumbs-link" style="color:#1c6081">
                         Application
                     </a>
+                    <i class="fa fa-angle-double-right" style="color:#1c6081"></i>
+                    <a href="#" class="kt-subheader__breadcrumbs-link" style="color:#1c6081">
+                        &nbsp;
+                    </a>
                 </div>
             </div>
         </div>
@@ -46,11 +50,11 @@
                     </div>
                 }
             </div>
-            <div class="modal fade" id="AddApplication" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="AddApplication" tabindex="-1" role="dialog" aria-labelledby="appexampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Add Application</h5>
+                            <h5 class="modal-title" id="appexampleModalLabel">Add Application</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -281,8 +285,8 @@
     function AddEditApplication(Id, editObj) {
         var validator = $("#frmapplication").validate();
         validator.resetForm();
-        $("#exampleModalLabel").text('');
-      $("#exampleModalLabel").text('Edit Application');
+        $("#appexampleModalLabel").text('');
+      $("#appexampleModalLabel").text('Edit Application');
       $("#addedapplication").prop("disabled", false);
         $("#applicationvalidate").css("display", "none");
         $("#AddApplication").modal("show");
@@ -310,8 +314,8 @@
     function AddApplication() {
         $("#applicationvalidate").css("display", "none");
         $("#addedapplication").attr("disabled", false);
-        $("#exampleModalLabel").text('');
-        $("#exampleModalLabel").text('Add Application');
+        $("#appexampleModalLabel").text('');
+        $("#appexampleModalLabel").text('Add Application');
         $("#AddApplication").modal("show");
         $("#hdnApplicationId").val("");
         $("#applicationname").val("");
@@ -327,7 +331,7 @@
         swal.fire({
             title: 'Please confirm.',
             text: "This action can not be undone.",
-            type: 'warning',
+            icon: 'warning',
             showCancelButton: true,
             confirmButtonText: 'Yes, delete it!'
         }).then(function (result) {
@@ -368,7 +372,7 @@
                             swal.fire({
                                 "title": "",
                                 "text": result.message,
-                                "type": "error",
+                                "icon": "error",
                                 "onClose": function (e) {
                                     console.log('on close event fired!');
                                 }
@@ -425,7 +429,7 @@
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "success",
+                        "icon": "success",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -435,7 +439,7 @@
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "error",
+                        "icon": "error",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -468,7 +472,7 @@
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "error",
+                        "icon": "error",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }

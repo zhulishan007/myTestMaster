@@ -1830,11 +1830,11 @@ namespace MARS_Api.Controllers
         [Route("api/AddEditDataset")]
         [HttpPost]
         [AcceptVerbs("GET", "POST")]
-        public string AddEditDataset(long? Testcaseid, long? datasetid, string datasetname, string datasetdesc)
+        public string AddEditDataset(long? Testcaseid, long? datasetid, string datasetname, string datasetdesc,DataSetTagModel model)
         {
             CommonHelper.SetConnectionString(Request);
             var testCaserepo = new TestCaseRepository();
-            var result = testCaserepo.AddTestDataSet(Testcaseid, datasetid, datasetname, datasetdesc);
+            var result = testCaserepo.AddTestDataSet(Testcaseid, datasetid, datasetname, datasetdesc,model);
             string[] result1 = result.Split(',');
             var lresult = new
             {

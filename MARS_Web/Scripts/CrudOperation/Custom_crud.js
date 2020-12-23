@@ -47,7 +47,7 @@ function RenameStoryboard() {
         swal.fire({
             "title": "",
             "text": "Storyboard name must contain only letters, numbers, spaces and underscore characters",
-            "type": "error",
+            "icon": "error",
             "onClose": function (e) {
                 console.log('on close event fired!');
             }
@@ -56,7 +56,7 @@ function RenameStoryboard() {
     }
     var storyboarddesc = $("#RenamestoryboardDesc").val();
     var projectid = $("#hdnRenameProjectId").val();
-    if (storyboardname !== "" && storyboardname !== null) {
+    if (storyboardname !== "" && storyboardname !== null && storyboarddesc !== "" && storyboarddesc !== null) {
         $.ajax({
             url: "/Storyboard/ChangeStoryboardName",
             data: '{"storyboardname":"' + storyboardname + '","storyboarddesc":"' + storyboarddesc + '","storyboardid":"' + storyboardid + '","projectid":"' + projectid + '"}',
@@ -70,7 +70,7 @@ function RenameStoryboard() {
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "success",
+                        "icon": "success",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -91,7 +91,7 @@ function RenameStoryboard() {
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "error",
+                        "icon": "error",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -103,8 +103,8 @@ function RenameStoryboard() {
     else {
         swal.fire({
             "title": "",
-            "text": "Storyboard name can not be blank",
-            "type": "error",
+            "text": "Storyboard name and description can not be blank",
+            "icon": "error",
             "onClose": function (e) {
                 console.log('on close event fired!');
             }
@@ -120,14 +120,14 @@ function RenameTestSuite() {
         swal.fire({
             "title": "",
             "text": "TestSuite name must contain only letters, numbers, spaces and underscore characters",
-            "type": "error",
+            "icon": "error",
             "onClose": function (e) {
                 console.log('on close event fired!');
             }
         });
         return false;
     }
-    if (lTestSuiteName != "" && lTestSuiteName != null) {
+    if (lTestSuiteName != "" && lTestSuiteName != null && ltestsuitedesc != "" && ltestsuitedesc != null) {
         $.ajax({
             url: "/TestSuite/ChangeTestSuiteName",
             data: '{"TestSuiteName":"' + lTestSuiteName + '","Testsuitedesc":"' + ltestsuitedesc + '","TestSuiteId":"' + lTestSuiteId + '"}',
@@ -143,7 +143,7 @@ function RenameTestSuite() {
                         swal.fire({
                             "title": "",
                             "text": result.message,
-                            "type": "success",
+                            "icon": "success",
                             "onClose": function (e) {
                                 console.log('on close event fired!');
                             }
@@ -163,7 +163,7 @@ function RenameTestSuite() {
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "error",
+                        "icon": "error",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -174,8 +174,8 @@ function RenameTestSuite() {
     } else {
         swal.fire({
             "title": "",
-            "text": "Test Suite name can not be blank",
-            "type": "error",
+            "text": "Test Suite name and description can not be blank",
+            "icon": "error",
             "onClose": function (e) {
                 console.log('on close event fired!');
             }
@@ -201,7 +201,7 @@ function CheckDuplicateRenameTestSuiteExist() {
                 swal.fire({
                     "title": "",
                     "text": result.message,
-                    "type": "error",
+                    "icon": "error",
                     "onClose": function (e) {
                         console.log('on close event fired!');
                     }
@@ -225,14 +225,14 @@ function RenameTestCase() {
         swal.fire({
             "title": "",
             "text": "Test Case name must contain only letters, numbers, spaces and underscore characters",
-            "type": "error",
+            "icon": "error",
             "onClose": function (e) {
                 console.log('on close event fired!');
             }
         });
         return false;
     }
-    if (lTestCaseName != "" && lTestCaseName != null) {
+    if (lTestCaseName != "" && lTestCaseName != null && lTestCaseDesc != "" && lTestCaseDesc != null) {
         startloader();
         $("#TestCasePopup").modal("toggle");
         $.ajax({
@@ -251,7 +251,7 @@ function RenameTestCase() {
                         swal.fire({
                             "title": "",
                             "text": result.message,
-                            "type": "success",
+                            "icon": "success",
                             "onClose": function (e) {
                                 console.log('on close event fired!');
                             }
@@ -262,7 +262,6 @@ function RenameTestCase() {
                         var lcountTC = $(lobjTestCase).children(".kt-menu__link-text").children(".tccount")[0].innerHTML;
                         $(lobjTestCase).children(".kt-menu__link-text")[0].innerHTML = lTestCaseName + "<span class='tccount'>" + lcountTC + "</span>";
                         $(lobjTestCase).attr("title", lTestCaseDesc);
-
                         $('.ULtablist li').each(function (index, value) {
                             var id = $(value).children().first().attr("data-id");
                             if (id == objTestCaseId) {
@@ -280,7 +279,7 @@ function RenameTestCase() {
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "error",
+                        "icon": "error",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -293,8 +292,8 @@ function RenameTestCase() {
     else {
         swal.fire({
             "title": "",
-            "text": "Test Case name can not be blank",
-            "type": "error",
+            "text": "Test Case name and description  can not be blank",
+            "icon": "error",
             "onClose": function (e) {
                 console.log('on close event fired!');
             }
@@ -321,7 +320,7 @@ function CheckDuplicateRenameTestCaseExist() {
                 swal.fire({
                     "title": "",
                     "text": result.message,
-                    "type": "error",
+                    "icon": "error",
                     "onClose": function (e) {
                         console.log('on close event fired!');
                     }
@@ -351,7 +350,7 @@ function DeleteTestCase(objTestCase) {
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "success",
+                        "icon": "success",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -408,7 +407,7 @@ function DeleteTestCase(objTestCase) {
             swal.fire({
                 "title": "",
                 "text": result.message,
-                "type": "error",
+                "icon": "error",
                 "onClose": function (e) {
                     console.log('on close event fired!');
                 }
@@ -433,7 +432,7 @@ function DeleteProject(objproject) {
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "success",
+                        "icon": "success",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -445,7 +444,7 @@ function DeleteProject(objproject) {
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "error",
+                        "icon": "error",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -471,7 +470,7 @@ function DeleteStoryboard(objStoryboard) {
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "success",
+                        "icon": "success",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -512,7 +511,7 @@ function DeleteStoryboard(objStoryboard) {
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "error",
+                        "icon": "error",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -540,7 +539,7 @@ function DeleteTestSuite(objTestSuite) {
                         swal.fire({
                             "title": "",
                             "text": result.message,
-                            "type": "success",
+                            "icon": "success",
                             "onClose": function (e) {
                                 console.log('on close event fired!');
                             }
@@ -597,7 +596,7 @@ function DeleteTestSuite(objTestSuite) {
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "error",
+                        "icon": "error",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -617,7 +616,7 @@ function RenameProject() {
     var lProjectId = $("#hdnRenameProjectId").val();
     var lProjectdesc = $("#RenameProjectDesc").val();
 
-    if (lProjectName != "" && lProjectName != null) {
+    if (lProjectName != "" && lProjectName != null && lProjectdesc != "" && lProjectdesc != null) {
         $.ajax({
             url: "/Project/ChangeProjectName",
             data: '{"ProjectName":"' + lProjectName + '","Projectdesc":"' + lProjectdesc + '","ProjectId":"' + lProjectId + '"}',
@@ -631,7 +630,7 @@ function RenameProject() {
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "success",
+                        "icon": "success",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -645,7 +644,7 @@ function RenameProject() {
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "error",
+                        "icon": "error",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -656,8 +655,8 @@ function RenameProject() {
     } else {
         swal.fire({
             "title": "",
-            "text": "Project name cannot be blank",
-            "type": "error",
+            "text": "Project name and Project decsription cannot be blank",
+            "icon": "error",
             "onClose": function (e) {
                 console.log('on close event fired!');
             }
@@ -737,7 +736,7 @@ function StoryboardSaveContext() {
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "success",
+                        "icon": "success",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }

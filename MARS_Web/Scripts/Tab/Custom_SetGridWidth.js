@@ -435,7 +435,7 @@ function Editgrid(Id, obj) {
                 swal.fire({
                     "title": "",
                     "text": result.message,
-                    "type": "error",
+                    "icon": "error",
                     "onClose": function (e) {
                         console.log('on close event fired!');
                     }
@@ -540,7 +540,7 @@ function AppGridWidthSave() {
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "success",
+                        "icon": "success",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -551,7 +551,7 @@ function AppGridWidthSave() {
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "error",
+                        "icon": "error",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -646,7 +646,7 @@ function proGridWidthSave() {
                 swal.fire({
                     "title": "",
                     "text": result.message,
-                    "type": "success",
+                    "icon": "success",
                     "onClose": function (e) {
                         console.log('on close event fired!');
                     }
@@ -657,7 +657,7 @@ function proGridWidthSave() {
                 swal.fire({
                     "title": "",
                     "text": result.message,
-                    "type": "error",
+                    "icon": "error",
                     "onClose": function (e) {
                         console.log('on close event fired!');
                     }
@@ -742,7 +742,7 @@ function keyGridWidthSave() {
                 swal.fire({
                     "title": "",
                     "text": result.message,
-                    "type": "success",
+                    "icon": "success",
                     "onClose": function (e) {
                         console.log('on close event fired!');
                     }
@@ -753,7 +753,7 @@ function keyGridWidthSave() {
                 swal.fire({
                     "title": "",
                     "text": result.message,
-                    "type": "error",
+                    "icon": "error",
                     "onClose": function (e) {
                         console.log('on close event fired!');
                     }
@@ -846,7 +846,7 @@ function TSGridWidthSave() {
                 swal.fire({
                     "title": "",
                     "text": result.message,
-                    "type": "success",
+                    "icon": "success",
                     "onClose": function (e) {
                         console.log('on close event fired!');
                     }
@@ -857,7 +857,7 @@ function TSGridWidthSave() {
                 swal.fire({
                     "title": "",
                     "text": result.message,
-                    "type": "error",
+                    "icon": "error",
                     "onClose": function (e) {
                         console.log('on close event fired!');
                     }
@@ -950,7 +950,7 @@ function TCGridWidthSave() {
                 swal.fire({
                     "title": "",
                     "text": result.message,
-                    "type": "success",
+                    "icon": "success",
                     "onClose": function (e) {
                         console.log('on close event fired!');
                     }
@@ -961,7 +961,7 @@ function TCGridWidthSave() {
                 swal.fire({
                     "title": "",
                     "text": result.message,
-                    "type": "error",
+                    "icon": "error",
                     "onClose": function (e) {
                         console.log('on close event fired!');
                     }
@@ -1061,7 +1061,7 @@ function ObjGridWidthSave() {
                 swal.fire({
                     "title": "",
                     "text": result.message,
-                    "type": "success",
+                    "icon": "success",
                     "onClose": function (e) {
                         console.log('on close event fired!');
                     }
@@ -1071,7 +1071,7 @@ function ObjGridWidthSave() {
                 swal.fire({
                     "title": "",
                     "text": result.message,
-                    "type": "error",
+                    "icon": "error",
                     "onClose": function (e) {
                         console.log('on close event fired!');
                     }
@@ -1164,7 +1164,7 @@ function VarGridWidthSave() {
                 swal.fire({
                     "title": "",
                     "text": result.message,
-                    "type": "success",
+                    "icon": "success",
                     "onClose": function (e) {
                         console.log('on close event fired!');
                     }
@@ -1174,7 +1174,7 @@ function VarGridWidthSave() {
                 swal.fire({
                     "title": "",
                     "text": result.message,
-                    "type": "error",
+                    "icon": "error",
                     "onClose": function (e) {
                         console.log('on close event fired!');
                     }
@@ -1292,7 +1292,7 @@ function userGridWidthSave() {
                 swal.fire({
                     "title": "",
                     "text": "Successfully submitted Users Grid Width.",
-                    "type": "success",
+                    "icon": "success",
                     "onClose": function (e) {
                         console.log('on close event fired!');
                     }
@@ -1302,7 +1302,7 @@ function userGridWidthSave() {
                 swal.fire({
                     "title": "",
                     "text": result.message,
-                    "type": "error",
+                    "icon": "error",
                     "onClose": function (e) {
                         console.log('on close event fired!');
                     }
@@ -1377,7 +1377,7 @@ function TCPGridWidthSave() {
                 swal.fire({
                     "title": "",
                     "text": result.message,
-                    "type": "success",
+                    "icon": "success",
                     "onClose": function (e) {
                         console.log('on close event fired!');
                     }
@@ -1387,7 +1387,7 @@ function TCPGridWidthSave() {
                 swal.fire({
                     "title": "",
                     "text": result.message,
-                    "type": "error",
+                    "icon": "error",
                     "onClose": function (e) {
                         console.log('on close event fired!');
                     }
@@ -1549,7 +1549,7 @@ function SPpqGridWidthSave() {
                 swal.fire({
                     "title": "",
                     "text": result.message,
-                    "type": "success",
+                    "icon": "success",
                     "onClose": function (e) {
                         console.log('on close event fired!');
                     }
@@ -1559,7 +1559,7 @@ function SPpqGridWidthSave() {
                 swal.fire({
                     "title": "",
                     "text": result.message,
-                    "type": "error",
+                    "icon": "error",
                     "onClose": function (e) {
                         console.log('on close event fired!');
                     }
@@ -1625,7 +1625,7 @@ function ResizeLeftPanel() {
                 swal.fire({
                     "title": "",
                     "text": result.message,
-                    "type": "error",
+                    "icon": "error",
                     "onClose": function (e) {
                         console.log('on close event fired!');
                     }

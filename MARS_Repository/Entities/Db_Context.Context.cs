@@ -126,6 +126,10 @@ namespace MARS_Repository.Entities
         public DbSet<T_TEST_PRIVILEGE_ROLE_MAPPING> T_TEST_PRIVILEGE_ROLE_MAPPING { get; set; }
         public DbSet<T_TEST_ROLES> T_TEST_ROLES { get; set; }
         public DbSet<T_TEST_USER_ROLE_MAPPING> T_TEST_USER_ROLE_MAPPING { get; set; }
+        public DbSet<T_TEST_FOLDER> T_TEST_FOLDER { get; set; }
+        public DbSet<T_TEST_GROUP> T_TEST_GROUP { get; set; }
+        public DbSet<T_TEST_SET> T_TEST_SET { get; set; }
+        public DbSet<T_TEST_DATASETTAG> T_TEST_DATASETTAG { get; set; }
     
         public virtual int DeleteTestCase(Nullable<decimal> tESTCASEID)
         {

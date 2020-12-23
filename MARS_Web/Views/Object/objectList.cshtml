@@ -134,11 +134,11 @@
     </div>
 </div>
 
-<div class="modal fade" id="AddEditObject" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="AddEditObject" tabindex="-1" role="dialog" aria-labelledby="oexampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Object</h5>
+                <h5 class="modal-title" id="oexampleModalLabel">Object</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -223,11 +223,11 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="AddPegwindowObject" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="AddPegwindowObject" tabindex="-1" role="dialog" aria-labelledby="oexampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Object</h5>
+                <h5 class="modal-title" id="oexampleModalLabel">Object</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -281,11 +281,11 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="saveAsObject" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="saveAsObject" tabindex="-1" role="dialog" aria-labelledby="oexampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Object</h5>
+                <h5 class="modal-title" id="oexampleModalLabel">Object</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -379,7 +379,7 @@
             swal.fire({
                 "title": "",
                 "text": "Source and Target application names can not be the same",
-                "type": "error",
+                "icon": "error",
                 "onClose": function (e) {
                     console.log('on close event fired!');
                 }
@@ -391,7 +391,7 @@
             swal.fire({
                 "title": "",
                 "text": "Please select the target application",
-                "type": "error",
+                "icon": "error",
                 "onClose": function (e) {
                     console.log('on close event fired!');
                 }
@@ -416,7 +416,7 @@
                             swal.fire({
                                 "title": "",
                                 "text": "Objects copied successfully to: " + appname,
-                                "type": "success",
+                                "icon": "success",
                                 "onClose": function (e) {
                                     console.log('on close event fired!');
                                 }
@@ -430,7 +430,7 @@
                             swal.fire({
                                 "title": "",
                                 "text": result.message,
-                                "type": "error",
+                                "icon": "error",
                                 "onClose": function (e) {
                                     console.log('on close event fired!');
                                 }
@@ -465,7 +465,7 @@
                                 swal.fire({
                                     title: 'Skip these existing objects and copy rest of them?,',
                                     text: "Following objects exists in the target application[" + appname + "]  " + resultstring,
-                                    type: 'warning',
+                                    icon: 'warning',
                                     showCancelButton: true,
                                     confirmButtonText: 'Yes,copy!!'
                                 }).then(function (result) {
@@ -484,7 +484,7 @@
                                                         swal.fire({
                                                             "title": "",
                                                             "text": "Objects copied successfully to: " + appname,
-                                                            "type": "success",
+                                                            "icon": "success",
                                                             "onClose": function (e) {
                                                                 console.log('on close event fired!');
                                                             }
@@ -499,7 +499,7 @@
                                                     swal.fire({
                                                         "title": "",
                                                         "text": result.message,
-                                                        "type": "error",
+                                                        "icon": "error",
                                                         "onClose": function (e) {
                                                             console.log('on close event fired!');
                                                         }
@@ -529,7 +529,7 @@
                                                 swal.fire({
                                                     "title": "",
                                                     "text": "Objects copied successfully to: " + appname,
-                                                    "type": "success",
+                                                    "icon": "success",
                                                     "onClose": function (e) {
                                                         console.log('on close event fired!');
                                                     }
@@ -543,7 +543,7 @@
                                             swal.fire({
                                                 "title": "",
                                                 "text": result.message,
-                                                "type": "error",
+                                                "icon": "error",
                                                 "onClose": function (e) {
                                                     console.log('on close event fired!');
                                                 }
@@ -561,7 +561,7 @@
                             swal.fire({
                                 "title": "",
                                 "text": result.message,
-                                "type": "error",
+                                "icon": "error",
                                 "onClose": function (e) {
                                     console.log('on close event fired!');
                                 }
@@ -574,7 +574,7 @@
                 swal.fire({
                     "title": "",
                     "text": "Please select objects to be converted",
-                    "type": "warning",
+                    "icon": "warning",
                     "onClose": function (e) {
                         console.log('on close event fired!');
                     }
@@ -693,7 +693,7 @@
                     swal.fire({
                         "title": "",
                         "text": "Please select the target application",
-                        "type": "error",
+                        "icon": "error",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -713,7 +713,7 @@
                                 swal.fire({
                                     "title": "",
                                     "text": result.message,
-                                    "type": "error",
+                                    "icon": "error",
                                     "onClose": function (e) {
                                         console.log('on close event fired!');
                                     }
@@ -731,7 +731,7 @@
                             swal.fire({
                                 "title": "",
                                 "text": result.message,
-                                "type": "error",
+                                "icon": "error",
                                 "onClose": function (e) {
                                     console.log('on close event fired!');
                                 }
@@ -835,7 +835,7 @@
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "error",
+                        "icon": "error",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -910,7 +910,7 @@
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "error",
+                        "icon": "error",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -989,7 +989,7 @@
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "success",
+                        "icon": "success",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -1003,7 +1003,7 @@
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "error",
+                        "icon": "error",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -1059,7 +1059,7 @@
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "success",
+                        "icon": "success",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -1073,7 +1073,7 @@
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "error",
+                        "icon": "error",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -1089,7 +1089,7 @@
         swal.fire({
             title: 'Please confirm.',
             text: "This action can not be undone.",
-            type: 'warning',
+            icon: 'warning',
             showCancelButton: true,
             confirmButtonText: 'Yes, delete it!'
         }).then(function (result) {
@@ -1116,7 +1116,7 @@
                                 swal.fire({
                                     "title": "",
                                     "text": result.message,
-                                    "type": "error",
+                                    "icon": "error",
                                     "onClose": function (e) {
                                         console.log('on close event fired!');
                                     }
@@ -1141,7 +1141,7 @@
                             swal.fire({
                                 "title": "",
                                 "text": result.message,
-                                "type": "error",
+                                "icon": "error",
                                 "onClose": function (e) {
                                     console.log('on close event fired!');
                                 }
@@ -1227,7 +1227,7 @@
                         swal.fire({
                             "title": "",
                             "text": result.message,
-                            "type": "error",
+                            "icon": "error",
                             "onClose": function (e) {
                                 console.log('on close event fired!');
                             }
@@ -1297,7 +1297,7 @@
             swal.fire({
                 "title": "",
                 "text": "Pegwindow object cannot have different parent!",
-                "type": "error",
+                "icon": "error",
                 "onClose": function (e) {
                     console.log('on close event fired!');
                 }
@@ -1327,7 +1327,7 @@
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "success",
+                        "icon": "success",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -1341,7 +1341,7 @@
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "error",
+                        "icon": "error",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }

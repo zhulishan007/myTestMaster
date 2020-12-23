@@ -82,11 +82,11 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="AddEditVariable" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="AddEditVariable" tabindex="-1" role="dialog" aria-labelledby="vexampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Variable</h5>
+                <h5 class="modal-title" id="vexampleModalLabel">Variable</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -230,7 +230,7 @@
                                
                                 var lRenderHtml = "";
                                 if (lEditVardisplay == "true") {
-                                    lRenderHtml = " <a href='#' class='btn btn-sm btn-clean btn-icon btn-icon-md' title='View'  data-name='" + lName + "' data-tablename='" + tablename + "'  data-display='" + Displayname + "' data-status='" + Status + "' onclick=AddEditVariableShow(" + lid + ",$(this))><i class='la la-edit' ></i></a> ";
+                                    lRenderHtml = " <a href='#' class='btn btn-sm btn-clean btn-icon btn-icon-md' title='Edit'  data-name='" + lName + "' data-tablename='" + tablename + "'  data-display='" + Displayname + "' data-status='" + Status + "' onclick=AddEditVariableShow(" + lid + ",$(this))><i class='la la-edit' ></i></a> ";
                                 }
                                 if (lDeleteVardisplay == "true") {
                                     lRenderHtml = lRenderHtml + "<a href='#' class='btn btn-sm btn-clean btn-icon btn-icon-md' title='Delete' data-Varname='" + lName + "' onclick=DeleteVariable(" + lid + ",$(this)) ><i class='la la-trash la-xs'></i></a>";
@@ -283,8 +283,8 @@
             $("#requiredtype").css("display", "none");
             $("#existvarname").css("display", "none");
             $("#addeditvariable").css("display", "block");
-            $("#exampleModalLabel").text('');
-            $("#exampleModalLabel").text('Edit Variable');
+            $("#vexampleModalLabel").text('');
+            $("#vexampleModalLabel").text('Edit Variable');
           $("#AddEditVariable").modal("show");
           $("#addeditvariable").attr("disabled", false);
             var lvariableId = Id;
@@ -370,8 +370,8 @@
         function AddVariable() {
             $("#requiredtype").css("display", "none");
             $("#existvarname").css("display", "none");
-            $("#exampleModalLabel").text('');
-            $("#exampleModalLabel").text('Add Variable');
+            $("#vexampleModalLabel").text('');
+            $("#vexampleModalLabel").text('Add Variable');
             $("#AddEditVariable").modal("show");
           $("#addeditvariable").attr("disabled", false);
             $("#hdnlookupid").val("");
@@ -465,7 +465,7 @@
                         swal.fire({
                             "title": "",
                             "text": result.message,
-                            "type": "success",
+                            "icon": "success",
                             "onClose": function (e) {
                                 console.log('on close event fired!');
                             }
@@ -475,7 +475,7 @@
                         swal.fire({
                             "title": "",
                             "text": result.message,
-                            "type": "error",
+                            "icon": "error",
                             "onClose": function (e) {
                                 console.log('on close event fired!');
                             }
@@ -494,7 +494,7 @@
             swal.fire({
                  title: 'Please confirm.',
                  text: "This action can not be undone.",
-                type: 'warning',
+                icon: 'warning',
                 showCancelButton: true,
                 confirmButtonText: 'Yes, delete it!'
             }).then(function (result) {
@@ -518,7 +518,7 @@
                                 swal.fire({
                                     "title": "",
                                     "text": result.message,
-                                    "type": "error",
+                                    "icon": "error",
                                     "onClose": function (e) {
                                         console.log('on close event fired!');
                                     }
@@ -592,7 +592,7 @@
                         swal.fire({
                             "title": "",
                             "text": result.message,
-                            "type": "error",
+                            "icon": "error",
                             "onClose": function (e) {
                                 console.log('on close event fired!');
                             }

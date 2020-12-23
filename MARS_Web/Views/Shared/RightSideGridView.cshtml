@@ -247,7 +247,7 @@
        title: "StepsID", copy: false, hidden: true,menuInHide: true,sortable: false, dataType: "int", dataIndx: "stepsID", align: "center",
    });
    dt.push({
-       title: "RUN_ORDER", copy: false, hidden: false, dataType: "int", dataIndx: "RUN_ORDER", align: "center", menuInHide: true, sortable: false,
+       title: "RUN_ORDER", copy: false, hidden: true, dataType: "int", dataIndx: "RUN_ORDER", align: "center", menuInHide: true, sortable: false,
    });
 
       dt.push({
@@ -293,7 +293,7 @@
                            swal.fire({
                                "title": "",
                                "text": result.message,
-                               "type": "error",
+                               "icon": "error",
                                "onClose": function (e) {
                                    console.log('on close event fired!');
                                }
@@ -410,7 +410,7 @@
                            swal.fire({
                                "title": "",
                                "text": result.message,
-                               "type": "error",
+                               "icon": "error",
                                "onClose": function (e) {
                                    console.log('on close event fired!');
                                }
@@ -741,7 +741,7 @@
                                     swal.fire({
                                         "title": "Notification",
                                         "text": EditedUserName + " is editing this testcase.",
-                                        "type": "warning",
+                                        "icon": "warning",
                                         "onClose": function (e) {
                                             console.log('on close event fired!');
                                         }
@@ -752,7 +752,7 @@
                                 swal.fire({
                                     "title": "",
                                     "text": result.message,
-                                    "type": "error",
+                                    "icon": "error",
                                     "onClose": function (e) {
                                         console.log('on close event fired!');
                                     }
@@ -970,7 +970,7 @@
                                swal.fire({
                                    title: '',
                                    text: "All changes in [" + testcaselist[1] +"] will be discarded.  Please confirm",
-                                   type: 'warning',
+                                   icon: 'warning',
                                    showCancelButton: true,
                                    confirmButtonText: 'Yes'
                                    //confirmButtonText: 'Yes, remove it!'
@@ -1212,7 +1212,7 @@
                         swal.fire({
                             "title": "",
                             "text": "Please expand this pegwindow row to drag",
-                            "type": "error",
+                            "icon": "error",
                             "onClose": function (e) {
                                 console.log('on close event fired!');
                             }
@@ -1439,7 +1439,7 @@
                         swal.fire({
                             "title": "",
                             "text": result.message,
-                            "type": "error",
+                            "icon": "error",
                             "onClose": function (e) {
                                 console.log('on close event fired!');
                             }
@@ -1640,7 +1640,7 @@
        title: "StepsID", copy: false,hidden: true,menuInHide: true,sortable: false, dataType: "int", dataIndx: "stepsID", align: "center",
    });
    dt.push({
-       title: "RUN_ORDER", copy: false,hidden: false, dataType: "int", dataIndx: "RUN_ORDER", align: "center", menuInHide: true, sortable: false,
+       title: "RUN_ORDER", copy: false, hidden: true, dataType: "int", dataIndx: "RUN_ORDER", align: "center", menuInHide: true, sortable: false,
    });
 
 
@@ -1690,7 +1690,7 @@
                            swal.fire({
                                "title": "",
                                "text": result.message,
-                               "type": "error",
+                               "icon": "error",
                                "onClose": function (e) {
                                    console.log('on close event fired!');
                                }
@@ -1796,7 +1796,7 @@
                            swal.fire({
                                "title": "",
                                "text": result.message,
-                               "type": "error",
+                               "icon": "error",
                                "onClose": function (e) {
                                    console.log('on close event fired!');
                                }
@@ -2021,7 +2021,7 @@
                                 swal.fire({
                                     "title": "",
                                     "text": result.message,
-                                    "type": "error",
+                                    "icon": "error",
                                     "onClose": function (e) {
                                         console.log('on close event fired!');
                                     }
@@ -2223,7 +2223,7 @@
                 title: "StepsID", copy: false, hidden: true, menuInHide: true, sortable: false, dataType: "int", dataIndx: "stepsID", align: "center",
             });
             dt.push({
-                title: "RUN_ORDER", copy: false,hidden: false, dataType: "int", dataIndx: "RUN_ORDER", align: "center", menuInHide: true, sortable: false,
+                title: "RUN_ORDER", copy: false, hidden: true, dataType: "int", dataIndx: "RUN_ORDER", align: "center", menuInHide: true, sortable: false,
             });
 
 
@@ -2284,7 +2284,7 @@
                                     swal.fire({
                                         "title": "",
                                         "text": result.message,
-                                        "type": "error",
+                                        "icon": "error",
                                         "onClose": function (e) {
                                             console.log('on close event fired!');
                                         }
@@ -2389,7 +2389,7 @@
                                     swal.fire({
                                         "title": "",
                                         "text": result.message,
-                                        "type": "error",
+                                        "icon": "error",
                                         "onClose": function (e) {
                                             console.log('on close event fired!');
                                         }
@@ -2728,7 +2728,7 @@
             swal.fire({
                 "title": "",
                 "text": result.message,
-                "type": "error",
+                "icon": "error",
                 "onClose": function (e) {
                     console.log('on close event fired!');
                 }
@@ -2788,7 +2788,7 @@
            swal.fire({
                "title": "",
                "text": "Keyowrd is required field.",
-               "type": "error",
+               "icon": "error",
                "onClose": function (e) {
                    console.log('on close event fired!');
                }
@@ -2801,7 +2801,7 @@
            swal.fire({
                "title": "",
                "text": "Keyword column is required.",
-               "type": "error",
+               "icon": "error",
                "onClose": function (e) {
                    console.log('on close event fired!');
                }
@@ -3019,7 +3019,7 @@
                        swal.fire({
                            "title": "",
                            "text": changes.message,
-                           "type": "success",
+                           "icon": "success",
                            "onClose": function (e) {
                                console.log('on close event fired!');
                            }
@@ -3046,7 +3046,7 @@
                         swal.fire({
                             "title": "",
                             "text": result.message,
-                            "type": "error",
+                            "icon": "error",
                             "onClose": function (e) {
                                 console.log('on close event fired!');
                             }
@@ -3060,7 +3060,7 @@
                        swal.fire({
                            "title": "",
                            "text": "Test Case validated successfully.",
-                           "type": "success",
+                           "icon": "success",
                            "onClose": function (e) {
                                console.log('on close event fired!');
                            }
@@ -3092,7 +3092,7 @@
            swal.fire({
                "title": "",
                "text": "There is no change to save.",
-               "type": "warning",
+               "icon": "warning",
                "onClose": function (e) {
                    console.log('on close event fired!');
                }
@@ -3107,7 +3107,7 @@
            swal.fire({
                title: 'Export',
                text: "There are unsaved changes. Export will not contain these changes. Please confirm or cancel export.",
-               type: 'warning',
+               icon: 'warning',
                showCancelButton: true,
                confirmButtonText: 'Yes'
            }).then(function (result) {
@@ -3274,7 +3274,7 @@
            swal.fire({
                "title": "",
                "text": "Keyword column is required.",
-               "type": "error",
+               "icon": "error",
                "onClose": function (e) {
                    console.log('on close event fired!');
                }
@@ -3463,7 +3463,7 @@
                        swal.fire({
                            "title": "",
                            "text": result.message,
-                           "type": "success",
+                           "icon": "success",
                            "onClose": function (e) {
                                console.log('on close event fired!');
                            }
@@ -3501,7 +3501,7 @@
                                    swal.fire({
                                        "title": "",
                                        "text": result.message,
-                                       "type": "error",
+                                       "icon": "error",
                                        "onClose": function (e) {
                                            console.log('on close event fired!');
                                        }
@@ -3543,7 +3543,7 @@
                        swal.fire({
                            "title": "",
                            "text": result.message,
-                           "type": "warning",
+                           "icon": "warning",
                            "onClose": function (e) {
                                console.log('on close event fired!');
                            }
@@ -3553,7 +3553,7 @@
                        swal.fire({
                            "title": "",
                            "text": "Please check log file for more information",
-                           "type": "error",
+                           "icon": "error",
                            "onClose": function (e) {
                                console.log('on close event fired!');
                            }
@@ -3563,7 +3563,7 @@
                        swal.fire({
                            "title": "",
                            "text": result.message,
-                           "type": "warning",
+                           "icon": "warning",
                            "onClose": function (e) {
                                console.log('on close event fired!');
                            }
@@ -3589,7 +3589,7 @@
                    swal.fire({
                        "title": "",
                        "text": result.message,
-                       "type": "error",
+                       "icon": "error",
                        "onClose": function (e) {
                            console.log('on close event fired!');
                        }
@@ -3681,7 +3681,7 @@
                 swal.fire({
                     "title": "",
                     "text": "Keyword column is required.",
-                    "type": "error",
+                    "icon": "error",
                     "onClose": function (e) {
                         console.log('on close event fired!');
                     }
@@ -3909,7 +3909,7 @@
                                         swal.fire({
                                             "title": "",
                                             "text": result.message,
-                                            "type": "error",
+                                            "icon": "error",
                                             "onClose": function (e) {
                                                 console.log('on close event fired!');
                                             }
@@ -3951,7 +3951,7 @@
                             swal.fire({
                                 "title": "",
                                 "text": result.message,
-                                "type": "warning",
+                                "icon": "warning",
                                 "onClose": function (e) {
                                     console.log('on close event fired!');
                                 }
@@ -3961,7 +3961,7 @@
                             swal.fire({
                                 "title": "",
                                 "text": "Please check log file for more information",
-                                "type": "error",
+                                "icon": "error",
                                 "onClose": function (e) {
                                     console.log('on close event fired!');
                                 }
@@ -3971,7 +3971,7 @@
                             swal.fire({
                                 "title": "",
                                 "text": result.message,
-                                "type": "warning",
+                                "icon": "warning",
                                 "onClose": function (e) {
                                     console.log('on close event fired!');
                                 }
@@ -3997,7 +3997,7 @@
                         swal.fire({
                             "title": "",
                             "text": result.message,
-                            "type": "error",
+                            "icon": "error",
                             "onClose": function (e) {
                                 console.log('on close event fired!');
                             }

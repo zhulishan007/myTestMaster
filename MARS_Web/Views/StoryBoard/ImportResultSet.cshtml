@@ -29,41 +29,48 @@
             </div>
             @Html.AntiForgeryToken()
             <div class="kt-portlet__body">
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-6">
                     <label class="form-control-label">Project :<span style="color:red">&nbsp;*</span></label>
                     <select class="form-control kt-select2" id="DrpIProject" name="DrpDataFile">
                         @{var lProjectList = ViewBag.projectlist as IEnumerable<SelectListItem>;
-
+                            <option value="">Select Project</option>
                             foreach (var item in lProjectList)
                             {
-                                <option value="@item.Value">@item.Text</option>
+                                <option value="@item.Value" @(item.Value == ViewBag.projectid ? "selected" : "")>@item.Text</option>
                             }
                         }
                     </select>
+                    <label id="projectError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                        This field is required.
+                    </label>
                 </div>
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-6">
                     <label for="name" class="form-control-label">Select Mode:</label>
                     <select class="form-control kt-select2" id="drpIPRMode" name="drpIPRMode">
+                        <option value="">Select Mode</option>
                         <option value="1">Baseline</option>
                         <option value="0">Compare</option>
                     </select>
+                    <label id="modeError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                        This field is required.
+                    </label>
                 </div>
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-6">
                     <label for="recipient-name" class="form-control-label">Name</label>
                     <input type="text" class="form-control" id="resultsetname" name="resultsetname" maxlength="128">
                 </div>
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-6">
                     <label for="message-text" class="form-control-label">Description</label>
                     <textarea class="form-control" id="resultsetdesc" name="resultsetdesc" maxlength="256"></textarea>
                 </div>
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-6">
                     <div></div>
                     <div class="custom-file ">
                         <input type="file" class="custom-file-input" id="resultsetupload" name="resultsetupload" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
                         <label class="custom-file-label " for="customFile" style="text-align: left;">Choose excel file</label>
                     </div>
                 </div>
-                <div class="form-group col-md-4" style="display:none;" id="hdnDownloadResultSetlink">
+                <div class="form-group col-md-6" style="display:none;" id="hdnDownloadResultSetlink">
                     <div></div>
                     <div class="custom-file ">
                         <a href="#" id="downloadResultSetFile"> Click here to download Validation File <i class="flaticon-download-1"></i>  </a>
@@ -87,6 +94,9 @@
     $(document).ready(function () {
         $('#btnImportResultSet').click(function () {
             // Checking whether FormData is available in browser
+            var checkerror = false;
+            $("#projectError").css("display", "none");
+            $("#modeError").css("display", "none");
             if (window.FormData !== undefined) {
 
                 var fileUpload = $("#resultsetupload").get(0);
@@ -95,7 +105,7 @@
                     swal.fire({
                         "title": "No files to import",
                         "text": "Please select a file to import",
-                        "type": "error",
+                        "icon": "error",
                         "allowOutsideClick": false,
                         "onClose": function (e) {
                             console.log('on close event fired!');
@@ -110,6 +120,15 @@
                 // Create FormData object
                 var fileData = new FormData();
 
+                if (lProjectId == "") {
+                    $("#projectError").css("display", "block");
+                    checkerror = true;
+                }
+                if (lMode == "") {
+                    $("#modeError").css("display", "block");
+                    checkerror = true;
+                }
+                if (checkerror) { return false; }
                 // Looping over all files and add it to FormData object
                 for (var i = 0; i < files.length; i++) {
                     fileData.append(files[i].name, files[i]);
@@ -122,8 +141,10 @@
                     processData: false, // Not to process data
                     data: fileData,
                     success: function (result) {
-                        $('#DrpIProject').prop('selectedIndex',0);
-                        $('#drpIPRMode').prop('selectedIndex', 0);
+                        //$('#DrpIProject').prop('selectedIndex',0);
+                        //$('#drpIPRMode').prop('selectedIndex', 0);
+                        $('#DrpIProject').val('');
+                        $('#drpIPRMode').val('');
                         $('#resultsetname').val('');
                         $('#resultsetdesc').val('');
                         document.getElementById("resultsetupload").value = "";
@@ -132,7 +153,7 @@
                         if (fresult[1] == "success") {
                             swal.fire({
                                 "title": "ResultSet is imported successfully",
-                                "type": "success",
+                                "icon": "success",
                                 "allowOutsideClick": false,
                                 "onClose": function (e) {
                                     console.log('on close event fired!');
@@ -152,10 +173,12 @@
                             });
                         }
                         else if (fresult[1] == "validation") {
+                            document.getElementById("resultsetupload").value = "";
+                            $('#resultsetupload').parents().find('.custom-file-label')[0].innerHTML = "Choose excel file";
                             swal.fire({
                                 "title": "ResultSet validation",
                                 "text": "Please click on link to download error report.",
-                                "type": "warning",
+                                "icon": "warning",
                                 "allowOutsideClick": false,
                                 "onClose": function (e) {
                                     console.log('on close event fired!');
@@ -168,7 +191,7 @@
                             swal.fire({
                                 "title": "Exception occured.",
                                 "text": "Please click on link to download error report.",
-                                "type": "warning",
+                                "icon": "warning",
                                 "allowOutsideClick": false,
                                 "onClose": function (e) {
                                     console.log('on close event fired!');

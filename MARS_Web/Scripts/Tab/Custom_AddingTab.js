@@ -236,7 +236,7 @@ function DisplayStoryboardGrid(StoryBoardid, Pid, Default) {
                 swal.fire({
                     "title": "",
                     "text": result.message,
-                    "type": "error",
+                    "icon": "error",
                     "onClose": function (e) {
                         console.log('on close event fired!');
                     }
@@ -260,7 +260,10 @@ function PartialRightGrid(TestcaseId, TestsuiteId, ProjectId, TestCaseName, Acti
     var lTestCaseId = TestcaseId;
     var lTestsuiteId = TestsuiteId;
     var lProjectId = ProjectId;
-    var lTestCaseName = TestCaseName.replace('/', '_').replace('(', '-').replace(')', '-').replace('.', '_').replace('*', '_').replace(/&/g, '_');
+    var lTestCaseName = "";
+    if (TestCaseName != undefined) {
+        lTestCaseName = TestCaseName.replace('/', '_').replace('(', '-').replace(')', '-').replace('.', '_').replace('*', '_').replace(/&/g, '_');
+    }
     if (lTestCaseName.indexOf(" ") > -1) {
         RecusrsiveTab(lTestCaseName);
         lTestCaseName = ltempTestCase;
@@ -365,7 +368,7 @@ function DisplayTestCaseGrid(Tid, Pid, Default) {
                 swal.fire({
                     "title": "",
                     "text": result.message,
-                    "type": "error",
+                    "icon": "error",
                     "onClose": function (e) {
                         console.log('on close event fired!');
                     }
@@ -1287,62 +1290,6 @@ function RightSideGridList(Default) {
     });
 }
 
-//Privilege Role mapping
-//function RightSidePrivilegeRoleMapping(Default) {
-//    $.ajax({
-//        url: "/Accounts/PrivilegeRoleMapping",
-//        type: "POST",
-//        contentType: "application/json;charset=utf-8",
-//        dataType: "HTML",
-//        success: function (result) {
-//            var lflag = false;
-//            $('.ULtablist li').each(function (index, value) {
-//                if ($(value).children().first().attr("data-target") == "#tabgridlist") {
-//                    lflag = true;
-//                }
-//            });
-//            var ltab = "";
-//            if (Default == "1") {
-//                ltab = '<li class="nav-item context-menu-tab"><a data-pin="true" class="nav-link active context-tab" data-tab="RolePrivileges" data-id="0" data-name="RolePrivileges" data-toggle="tab" href="#" data-target="#tabgridlist" onclick="ActiveTab($(this))"><img alt="Role Privileges" class="tab_icons_img" src="/assets/media/icons/user.png"/>Role Privileges</a><i class="fa fa-times-circle tab_close" style="cursor:pointer" onclick="closetab($(this))" ></i></li>';
-//            } else {
-//                ltab = '<li class="nav-item context-menu-tab"><a data-pin="false" class="nav-link active context-tab" data-tab="RolePrivileges" data-id="0" data-name="RolePrivileges" data-toggle="tab" href="#" data-target="#tabgridlist" onclick="ActiveTab($(this))"><img alt="Role Privileges" class="tab_icons_img" src="/assets/media/icons/user.png"/>Role Privileges</a><i class="fa fa-times-circle tab_close" style="cursor:pointer" onclick="closetab($(this))" ></i></li>';
-//            }
-//            var ldiv = '<div class="tab-pane active div" id="tabgridlist" role="tabpanel">' + result + '</div>';
-
-//            if (lflag) {
-//                $('.ULtablist li').each(function (index, value) {
-//                    if ($(value).children().first().attr("data-target") == "#tabgridlist") {
-//                        $(value).children().first().addClass("active");
-//                    } else {
-//                        $(value).children().first().removeClass("active");
-//                    }
-//                });
-//                $('.divtablist div').each(function (index, value) {
-//                    if ($(value).first().attr("id") == "tabgridlist") {
-//                        $(value).addClass("active");
-//                    } else {
-//                        $(value).removeClass("active");
-//                    }
-//                });
-//            }
-//            else {
-//                $(".ULtablist").append(ltab);
-//                $(".divtablist").append(ldiv);
-//                $('.ULtablist li').each(function (index, value) {
-//                    if ($(value).children().first().attr("data-target") != "#tabgridlist") {
-//                        $(value).children().first().removeClass("active");
-//                    }
-//                });
-//                $('.divtablist div').each(function (index, value) {
-//                    if ($(value).first().attr("id") != "tabgridlist") {
-//                        $(value).removeClass("active");
-//                    }
-//                });
-//            }
-//        }
-//    });
-//}
-
 function RightSidePrivilegeRoleMapping(Default) {
     $.ajax({
         url: "/Entitlement/PrivilegeRoleMapping",
@@ -1791,7 +1738,7 @@ function alertShow(testcasegrid, lname, tcsbid, suiteid, projectid, tabname, tab
         //html: buttons,
         title: 'Save changes to [' + lname + '] ?',
         text: "You have some unsaved changes left!",
-        type: 'warning',
+        icon: 'warning',
         showCancelButton: false,
         showConfirmButton: false,
         closeOnConfirm: true
@@ -1806,6 +1753,24 @@ function cancelTCSBGrid() {
     var targetname = $(lParent).children().first().attr("data-tab");
     var lfindname = $(lParent).children().first().attr("data-name");
     if ($(lParent).children().first().attr("data-tab") == "TestCase") {
+        var tcidclose = $(lParent).children().first().attr("data-id");
+        if (ExistDataSetRenameList.length > 0) {
+            ExistDataSetRenameList = jQuery.grep(ExistDataSetRenameList, function (value) {
+                if (value != undefined) {
+                    return value["TestCaseId"] != tcidclose;
+                }
+
+            });
+        }
+        if (DeleteColumnsList.length > 0) {
+            DeleteColumnsList = jQuery.grep(DeleteColumnsList, function (value) {
+
+                if (value != undefined) {
+                    return value["TestCaseId"] != tcidclose;
+                }
+
+            });
+        }
         testCaseIds = testCaseIds + "," + $(lParent).children().first().attr("data-id");
     }
     var baseid = $(lParent).children().first().attr("data-baseid");
@@ -1951,7 +1916,23 @@ function closetab(tabcloseObj) {
     }
     var lTabNameId = lFindTab.replace("#", "").replace('(', '_').replace(')', '_');
     var lDirGrid = $(".divtablist #" + lTabNameId);
+    if (ExistDataSetRenameList.length > 0) {
+        ExistDataSetRenameList = jQuery.grep(ExistDataSetRenameList, function (value) {
+            if (value != undefined) {
+                return value["TestCaseId"] != lfindid;
+            }
 
+        });
+    }
+    if (DeleteColumnsList.length > 0) {
+        DeleteColumnsList = jQuery.grep(DeleteColumnsList, function (value) {
+
+            if (value != undefined) {
+                return value["TestCaseId"] != lfindid;
+            }
+
+        });            
+    }
     $(lParent).remove();
     $(lDirGrid).remove();
     var lflag = true;
@@ -2050,6 +2031,7 @@ function Closeallbutthistab(tabObject) {
     var lActiveTabObj;
     var lflag = false;
     var testCaseIds = "";
+    
     $('.ULtablist li').each(function (index, value) {
         var lFindTab = $(value).children().first().attr("data-target");
 
@@ -2067,8 +2049,27 @@ function Closeallbutthistab(tabObject) {
 
             } else {
                 if ($(value).children().first().attr("data-tab") == "TestCase") {
+                    tcidvar = $(value).children().first().attr("data-id");
                     testCaseIds = testCaseIds + "," + $(value).children().first().attr("data-id");
+                    if (ExistDataSetRenameList.length > 0) {
+                        ExistDataSetRenameList = jQuery.grep(ExistDataSetRenameList, function (value) {
+                            if (value != undefined) {
+                                return value["TestCaseId"] != tcidvar;
+                            }
+
+                        });
+                    }
+                    if (DeleteColumnsList.length > 0) {
+                        DeleteColumnsList = jQuery.grep(DeleteColumnsList, function (value) {
+
+                            if (value != undefined) {
+                                return value["TestCaseId"] != tcidvar;
+                            }
+
+                        });
+                    }
                 }
+
                 var lTabNameId = lFindTab.replace("#", "");
                 var lDirGrid = $(".divtablist #" + lTabNameId);
                 // $(value).html("");
@@ -2110,6 +2111,8 @@ function Closeallbutthistab(tabObject) {
 
 function CloseAll(tabObject) {
     var testCaseIds = "";
+    ExistDataSetRenameList = [];
+    DeleteColumnsList = [];
     $('.ULtablist li').each(function (index, value) {
         var lFindTab = $(value).children().first().attr("data-target");
         if (lFindTab != undefined) {
@@ -2124,6 +2127,35 @@ function CloseAll(tabObject) {
     });
     SetCloseTabLog("3", "");
     UpdateIsAvailableTestCase(testCaseIds);
+}
+
+function closeExistOldtab(tabcloseObj) {
+    var testCaseIds = "";
+    var lFindTab = $(tabcloseObj).children().first().attr("data-target");
+    var suiteidsave = $("#hdnTestsuiteId").val();
+    var projectidsave = $("#hdnSProjectId").val();
+    projectidsave = projectidsave === undefined ? 0 : projectidsave;
+    suiteidsave = suiteidsave === undefined ? 0 : suiteidsave;
+
+    if ($(tabcloseObj).children().first().attr("data-tab") == "TestCase") {
+        testCaseIds = testCaseIds + "," + $(lParent).children().first().attr("data-id");
+    }
+    var lTabNameId = lFindTab.replace("#", "").replace('(', '_').replace(')', '_');
+    var lDirGrid = $(".divtablist #" + lTabNameId);
+   
+    $(tabcloseObj).remove();
+    $(lDirGrid).remove();
+
+    $.ajax({
+        url: "/Login/LeftPanel",
+        type: "POST",
+        contentType: "application/json;charset=utf-8",
+        dataType: "HTML",
+        success: function (result) {
+            $("#leftProjectList").html("");
+            $("#leftProjectList").html(result);
+        }
+    });
 }
 
 function PinTab(tabObject) {
@@ -2170,7 +2202,7 @@ function PinTab(tabObject) {
                 swal.fire({
                     "title": "",
                     "text": result.message,
-                    "type": "error",
+                    "icon": "error",
                     "onClose": function (e) {
                         console.log('on close event fired!');
                     }
@@ -2200,7 +2232,7 @@ function UpdateIsAvailableTestCase(TestCases) {
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "error",
+                        "icon": "error",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -2225,12 +2257,17 @@ function SetCloseTabLog(flag, tabname) {
     }
 }
 
-function PartialRightImportResultSet(Default) {
+function PartialRightImportResultSet(Default, obj) {
+    var projectId = 0;
     if (Default == "0")
         startloader();
+    if (obj != null)
+        projectId = obj[0].dataset.projectId;
+    
     $.ajax({
         url: "/Storyboard/ImportResultSet",
         type: "POST",
+        data: '{"projectId":"' + projectId + '"}',
         contentType: "application/json;charset=utf-8",
         dataType: "HTML",
         success: function (result) {
@@ -2249,6 +2286,11 @@ function PartialRightImportResultSet(Default) {
             var ldiv = '<div class="tab-pane active div" id="tabimportresultset" role="tabpanel">' + result + '</div>';
 
             if (lflag) {
+                if (projectId == 0)
+                    $('#DrpIProject').val('');
+                else
+                    $('#DrpIProject').val(projectId.toString());
+
                 $('.ULtablist li').each(function (index, value) {
                     if ($(value).children().first().attr("data-target") == "#tabimportresultset") {
                         $(value).children().first().addClass("active");
@@ -2338,3 +2380,167 @@ function RightSideUserRoleMappingList(Default) {
     });
 }
 
+function RightSideGroupList(Default) {
+    $.ajax({
+        url: "/TestCase/GroupList",
+        type: "POST",
+        contentType: "application/json;charset=utf-8",
+        dataType: "HTML",
+        success: function (result) {
+            var lflag = false;
+            $('.ULtablist li').each(function (index, value) {
+                if ($(value).children().first().attr("data-target") == "#tabgrouplist") {
+                    lflag = true;
+                }
+            });
+            var ltab = "";
+            if (Default == "1") {
+                ltab = '<li class="nav-item context-menu-tab"><a data-pin="true" class="nav-link active context-tab" data-tab="Group" data-id="0" data-name="Group" data-toggle="tab" href="#" data-target="#tabgrouplist" onclick="ActiveTab($(this))"><img alt="Group" class="tab_icons_img" src="/assets/media/icons/GL.png"/>Group List</a><i class="fa fa-times-circle tab_close" style="cursor:pointer" onclick="closetab($(this))" ></i></li>';
+            } else {
+                ltab = '<li class="nav-item context-menu-tab"><a data-pin="false" class="nav-link active context-tab" data-tab="Group" data-id="0" data-name="Group" data-toggle="tab" href="#" data-target="#tabgrouplist" onclick="ActiveTab($(this))"><img alt="Group" class="tab_icons_img" src="/assets/media/icons/GL.png"/>Group List</a><i class="fa fa-times-circle tab_close" style="cursor:pointer" onclick="closetab($(this))" ></i></li>';
+            }
+            var ldiv = '<div class="tab-pane active div" id="tabgrouplist" role="tabpanel">' + result + '</div>';
+
+            if (lflag) {
+                $('.ULtablist li').each(function (index, value) {
+                    if ($(value).children().first().attr("data-target") == "#tabgrouplist") {
+                        $(value).children().first().addClass("active");
+                    } else {
+                        $(value).children().first().removeClass("active");
+                    }
+                });
+                $('.divtablist div').each(function (index, value) {
+                    if ($(value).first().attr("id") == "tabgrouplist") {
+                        $(value).addClass("active");
+                    } else {
+                        $(value).removeClass("active");
+                    }
+                });
+            }
+            else {
+                $(".ULtablist").append(ltab);
+                $(".divtablist").append(ldiv);
+                $('.ULtablist li').each(function (index, value) {
+                    if ($(value).children().first().attr("data-target") != "#tabgrouplist") {
+                        $(value).children().first().removeClass("active");
+                    }
+                });
+                $('.divtablist div').each(function (index, value) {
+                    if ($(value).first().attr("id") != "tabgrouplist") {
+                        $(value).removeClass("active");
+                    }
+                });
+            }
+        }
+    });
+}
+
+function RightSideSetList(Default) {
+    $.ajax({
+        url: "/TestCase/SetList",
+        type: "POST",
+        contentType: "application/json;charset=utf-8",
+        dataType: "HTML",
+        success: function (result) {
+            var lflag = false;
+            $('.ULtablist li').each(function (index, value) {
+                if ($(value).children().first().attr("data-target") == "#tabsetlist") {
+                    lflag = true;
+                }
+            });
+            var ltab = "";
+            if (Default == "1") {
+                ltab = '<li class="nav-item context-menu-tab"><a data-pin="true" class="nav-link active context-tab" data-tab="Set" data-id="0" data-name="Set" data-toggle="tab" href="#" data-target="#tabsetlist" onclick="ActiveTab($(this))"><img alt="Set" class="tab_icons_img" src="/assets/media/icons/SL.png"/>Set List</a><i class="fa fa-times-circle tab_close" style="cursor:pointer" onclick="closetab($(this))" ></i></li>';
+            } else {
+                ltab = '<li class="nav-item context-menu-tab"><a data-pin="false" class="nav-link active context-tab" data-tab="Set" data-id="0" data-name="Set" data-toggle="tab" href="#" data-target="#tabsetlist" onclick="ActiveTab($(this))"><img alt="Set" class="tab_icons_img" src="/assets/media/icons/SL.png"/>Set List</a><i class="fa fa-times-circle tab_close" style="cursor:pointer" onclick="closetab($(this))" ></i></li>';
+            }
+            var ldiv = '<div class="tab-pane active div" id="tabsetlist" role="tabpanel">' + result + '</div>';
+
+            if (lflag) {
+                $('.ULtablist li').each(function (index, value) {
+                    if ($(value).children().first().attr("data-target") == "#tabsetlist") {
+                        $(value).children().first().addClass("active");
+                    } else {
+                        $(value).children().first().removeClass("active");
+                    }
+                });
+                $('.divtablist div').each(function (index, value) {
+                    if ($(value).first().attr("id") == "tabsetlist") {
+                        $(value).addClass("active");
+                    } else {
+                        $(value).removeClass("active");
+                    }
+                });
+            }
+            else {
+                $(".ULtablist").append(ltab);
+                $(".divtablist").append(ldiv);
+                $('.ULtablist li').each(function (index, value) {
+                    if ($(value).children().first().attr("data-target") != "#tabsetlist") {
+                        $(value).children().first().removeClass("active");
+                    }
+                });
+                $('.divtablist div').each(function (index, value) {
+                    if ($(value).first().attr("id") != "tabsetlist") {
+                        $(value).removeClass("active");
+                    }
+                });
+            }
+        }
+    });
+}
+
+function RightSideFolderList(Default) {
+    $.ajax({
+        url: "/TestCase/FolderList",
+        type: "POST",
+        contentType: "application/json;charset=utf-8",
+        dataType: "HTML",
+        success: function (result) {
+            var lflag = false;
+            $('.ULtablist li').each(function (index, value) {
+                if ($(value).children().first().attr("data-target") == "#tabfolderlist") {
+                    lflag = true;
+                }
+            });
+            var ltab = "";
+            if (Default == "1") {
+                ltab = '<li class="nav-item context-menu-tab"><a data-pin="true" class="nav-link active context-tab" data-tab="Folder" data-id="0" data-name="Folder" data-toggle="tab" href="#" data-target="#tabfolderlist" onclick="ActiveTab($(this))"><img alt="Folder" class="tab_icons_img" src="/assets/media/icons/FL.png"/>Folder List</a><i class="fa fa-times-circle tab_close" style="cursor:pointer" onclick="closetab($(this))" ></i></li>';
+            } else {
+                ltab = '<li class="nav-item context-menu-tab"><a data-pin="false" class="nav-link active context-tab" data-tab="Folder" data-id="0" data-name="Folder" data-toggle="tab" href="#" data-target="#tabfolderlist" onclick="ActiveTab($(this))"><img alt="Folder" class="tab_icons_img" src="/assets/media/icons/FL.png"/>Folder List</a><i class="fa fa-times-circle tab_close" style="cursor:pointer" onclick="closetab($(this))" ></i></li>';
+            }
+            var ldiv = '<div class="tab-pane active div" id="tabfolderlist" role="tabpanel">' + result + '</div>';
+
+            if (lflag) {
+                $('.ULtablist li').each(function (index, value) {
+                    if ($(value).children().first().attr("data-target") == "#tabfolderlist") {
+                        $(value).children().first().addClass("active");
+                    } else {
+                        $(value).children().first().removeClass("active");
+                    }
+                });
+                $('.divtablist div').each(function (index, value) {
+                    if ($(value).first().attr("id") == "tabfolderlist") {
+                        $(value).addClass("active");
+                    } else {
+                        $(value).removeClass("active");
+                    }
+                });
+            }
+            else {
+                $(".ULtablist").append(ltab);
+                $(".divtablist").append(ldiv);
+                $('.ULtablist li').each(function (index, value) {
+                    if ($(value).children().first().attr("data-target") != "#tabfolderlist") {
+                        $(value).children().first().removeClass("active");
+                    }
+                });
+                $('.divtablist div').each(function (index, value) {
+                    if ($(value).first().attr("id") != "tabfolderlist") {
+                        $(value).removeClass("active");
+                    }
+                });
+            }
+        }
+    });
+}

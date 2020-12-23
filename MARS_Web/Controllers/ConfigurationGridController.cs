@@ -42,6 +42,8 @@ namespace MARS_Web.Controllers
             }
             return PartialView();
         }
+
+        //This method will load all the data and filter them
         [HttpPost]
         public JsonResult DataLoadGridList()
         {
@@ -122,6 +124,8 @@ namespace MARS_Web.Controllers
                 data = data
             }, JsonRequestBehavior.AllowGet);
         }
+
+        //This method save application grid width
         [HttpPost]
         public ActionResult SaveAppGridWidth(AppGridWidthModel appGridWidth)
         {
@@ -147,6 +151,8 @@ namespace MARS_Web.Controllers
             }
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
+
+        //This method get grid width by Id
         [HttpPost]
         public ActionResult GetGridbyId(long Id, string gridName)
         {
@@ -229,6 +235,8 @@ namespace MARS_Web.Controllers
             return Json(resultModel, JsonRequestBehavior.AllowGet);
          
         }
+
+        //This method save project grid width
         [HttpPost]
         public ActionResult SaveProjectGridWidth(ProjectGridWidthModel projectGridWidth)
         {
@@ -253,6 +261,8 @@ namespace MARS_Web.Controllers
             }
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
+
+        //This method save Keyworad grid width
         [HttpPost]
         public ActionResult SaveKeywordGridWidth(KeywordGridWidthModel keywordGridWidth)
         {
@@ -278,6 +288,8 @@ namespace MARS_Web.Controllers
             return Json(resultModel, JsonRequestBehavior.AllowGet);
             
         }
+
+        //This method save Testsuite grid width
         [HttpPost]
         public ActionResult SaveTestSuiteGridWidth(TestSuiteGridWidthModel TSModel)
         {
@@ -302,6 +314,8 @@ namespace MARS_Web.Controllers
             }
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
+
+        //This method save Testcase grid width
         [HttpPost]
         public ActionResult SaveTestCaseGridWidth(TestCaseGridWidthModel TCModel)
         {
@@ -326,6 +340,8 @@ namespace MARS_Web.Controllers
             }
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
+
+        //This method save object grid width
         [HttpPost]
         public ActionResult SaveObjectGridWidth(ObjectGridWidthModel ObjModel)
         {
@@ -350,6 +366,8 @@ namespace MARS_Web.Controllers
             }
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
+
+        //This method save varibel grid width
         [HttpPost]
         public ActionResult SaveVaribleGridWidth(VariableGridWidthModel variableGridWidth)
         {
@@ -374,6 +392,8 @@ namespace MARS_Web.Controllers
             }
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
+
+        //This method save user grid width
         [HttpPost]
         public ActionResult SaveUserGridWidth(UserGridWidthModel userGridWidth)
         {
@@ -398,6 +418,8 @@ namespace MARS_Web.Controllers
             }
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
+
+        //This method save Testcase pqgrid width
         [HttpPost]
         public ActionResult SaveTestCasePqGridWidth(TestcasePqGridWidthModel testcasePqGrid)
         {
@@ -422,6 +444,8 @@ namespace MARS_Web.Controllers
             }
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
+
+        //This method save storyboard pqgrid width
         [HttpPost]
         public ActionResult SaveStoryboardPqGridWidth(StoryboardPqGridWidthModel storyboardPqGrid)
         {
@@ -446,6 +470,8 @@ namespace MARS_Web.Controllers
             }
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
+
+        //This method save left panel grid width
         [HttpPost]
         public ActionResult SaveLeftPanelGridWidth(LeftPanelPqGridWidthModel leftPanel)
         {

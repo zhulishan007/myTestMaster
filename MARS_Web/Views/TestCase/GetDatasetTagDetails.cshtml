@@ -1,0 +1,95 @@
+﻿@using MARS_Repository.ViewModel
+@{
+    var tagfolder = ViewBag.TagFolder as IEnumerable<SelectListItem>;
+    var taggroup = ViewBag.Taggroup as IEnumerable<SelectListItem>;
+    var tagset = ViewBag.TagSet as IEnumerable<SelectListItem>;
+    var sequencedisable = ViewBag.Folder == "" || ViewBag.Folder == null ? "disabled" : "";
+    var sequencenum = ViewBag.Sequence == 0 ? "" : ViewBag.Sequence;
+}
+<style>
+    .select2-dropdown--below {
+        opacity: 1000000 !important;
+        z-index: 10000000 !important;
+    }
+
+    .select2-selection__rendered {
+        text-align: left !important;
+    }
+    
+</style>
+
+@*<div style="height: 571px;overflow: hidden;overflow-y: scroll !important;">*@
+    <form method="post" id="taxcode-update" name="taxcodeUpdate">
+        <label style="margin-right: 595px; margin-top: 9px;">DataSet Name:</label><input id="title" style="width: 100%;" class="form-control " type="text" name="title" value="@ViewBag.Datasetname" maxlength="64">
+        <label style="margin-right: 563px; margin-top: 9px;">DataSet Description:</label><textarea id="desc" style="width: 100%;" class="form-control " name="desc" value="" maxlength="500">@ViewBag.Datasetdesc</textarea>
+        <div class="form-group">
+            <div class="form-group">
+                <label class="form-control-label " style="margin-right: 666px; margin-top: 9px;">Group:</label>
+                <select class="form-control kt-select2" id="taggroupid" name="taggroupid">
+                    <option value="">Select</option>
+                    @foreach (var item in taggroup)
+                    {
+                        <option value="@item.Value" selected="@item.Selected">@item.Text</option>
+                    }
+                </select>
+            </div>
+            <label style="margin-right: 666px; margin-top: 9px;">Set:</label>
+            <div>
+                <select class="form-control kt-select2" id="tagsetid" name="tagsetid">
+                    <option value="">Select</option>
+                    @foreach (var item in tagset)
+                    {
+                        <option value="@item.Value" selected="@item.Selected">@item.Text</option>
+                    }
+                </select>
+            </div>
+            
+               
+                    <label style="margin-right: 666px; margin-top: 9px;">Folder:</label>
+                    <div style="width:100%">
+
+                        <select class="form-control kt-select2" id="tagfolderid" name="tagfolderid" onchange="folderChange($(this))">
+                            <option value="">Select</option>
+                            @foreach (var item in tagfolder)
+                            {
+                                <option value="@item.Value" selected="@item.Selected">@item.Text</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <label style="margin-right: 271px; margin-top: 9px;">Sequence:</label><input id="tagsequenceid" style="width:  100%;" class="form-control " @sequencedisable type="number" name="tagsequenceid" onchange="sequencechange()" value="@sequencenum" min="1" maxlength="38">
+                            <label id="tagsequencerequired" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                This field is required.
+                            </label>
+                            <label id="tagsequencenumber" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                Sequence must be a valid number.
+                            </label>
+                            <label id="tagsequencevalid" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                Sequence must be greater than 0.
+                            </label>
+                            <label id="tagfoldersequencecheck" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                Sequence is already used in this folder. Please use another sequence.
+                            </label>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <label style="margin-right: 299px; margin-top: 9px;">Diary:</label><input id="tagdiaryid" style="width: 100%;" class="form-control " type="text" name="tagdiaryid" value="@ViewBag.Diary" maxlength="256">
+                        </div>
+                    </div>
+
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <label style="margin-right: 158px; margin-top: 9px;">Expected result description:</label>
+                    <textarea id="tagexpresultid" style="width: 100%;" class="form-control " type="text" name="tagexpresultid" value="" maxlength="256">@ViewBag.Expresult</textarea>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <label style="margin-right: 230px; margin-top: 9px;">Step description:</label>
+                    <textarea id="tagstepdescid" style="width: 100%;" class="form-control " type="text" name="tagstepdescid" value="" maxlength="256">@ViewBag.StepDesc</textarea>
+                </div>
+            </div>
+           
+        </div>
+        @* <button type="button" role='button' tabindex='0' class="swal2-confirm swal2-styled" onclick="DeleteDatasetProperty(@ViewBag.datasetid)" aria-label="">Delete tags</button>*@
+    </form>
+@*</div>*@
+ 

@@ -193,6 +193,7 @@ namespace MARS_Web.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
+        //get Baseline/Compare data by id
         public JsonResult GetBaselineCompare(int id)
         {
             ResultModel resultModel = new ResultModel();
@@ -207,6 +208,7 @@ namespace MARS_Web.Controllers
         #endregion
 
         #region Checks Variable with same name exists in the system or not and returns result
+        //Check Variable name already exist or not
         [HttpPost]
         public JsonResult CheckDuplicateVariableExist(string Varname, long Varid)
         {

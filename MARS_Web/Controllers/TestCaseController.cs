@@ -725,7 +725,7 @@ namespace MARS_Web.Controllers
                                         lParameter = Convert.ToString(item.Value);
                                         lflag = false;
                                     }
-                                   
+
                                     if (lflag)
                                     {
 
@@ -1991,12 +1991,12 @@ namespace MARS_Web.Controllers
                 var testSuiterepo = new TestSuiteRepository();
                 var TestSuiteName = testSuiterepo.GetTestSuiteNameById(Convert.ToInt64(TestSuiteId));
 
-                string lSchema =SessionManager.Schema;
+                string lSchema = SessionManager.Schema;
                 var lConnectionStr = SessionManager.APP;
 
                 string lFileName = TestCaseName + "_" + DateTime.Now.ToString("yyyyMMdd") + "_" + DateTime.Now.ToString("HHmmss") + ".xlsx";
                 string FullPath = Path.Combine(System.Web.HttpContext.Current.Server.MapPath("~/TempExport/"), lFileName);
-                 name = "Log_" + TestCaseName + "_Export" + DateTime.Now.ToString(" yyyy-MM-dd HH-mm-ss") + ".xlsx";
+                name = "Log_" + TestCaseName + "_Export" + DateTime.Now.ToString(" yyyy-MM-dd HH-mm-ss") + ".xlsx";
                 strPath = Path.Combine(Server.MapPath("~/" + log_path), name);
                 try
                 {
@@ -2037,7 +2037,7 @@ namespace MARS_Web.Controllers
         #region Add/Edit Dataset in TestCase
         //Add/Edit a dataset in a TestCase
         [HttpPost]
-        public JsonResult AddEditDataset(long? Testcaseid, long? datasetid, string datasetname, string datasetdesc)
+        public JsonResult AddEditDataset(long? Testcaseid, long? datasetid, string datasetname, string datasetdesc,DataSetTagModel tagmodel)
         {
             logger.Info(string.Format("Add/Edit Dataset start | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
             ResultModel resultModel = new ResultModel();
@@ -2045,7 +2045,7 @@ namespace MARS_Web.Controllers
             {
                 var testCaserepo = new TestCaseRepository();
                 testCaserepo.Username = SessionManager.TESTER_LOGIN_NAME;
-                var result = testCaserepo.AddTestDataSet(Testcaseid, datasetid, datasetname, datasetdesc);
+                var result = testCaserepo.AddTestDataSet(Testcaseid, datasetid, datasetname, datasetdesc,tagmodel);
                 string[] result1 = result.Split(',');
                 var lresult = new
                 {
@@ -2055,7 +2055,7 @@ namespace MARS_Web.Controllers
 
                 var flag = datasetid == 0 ? "added" : "saved";
                 resultModel.data = lresult;
-                resultModel.message = lresult.msg == "success" ? "Dataset is " + flag + " successfully" : "Dataset named '[" + datasetname + "]' already exists";
+                resultModel.message = lresult.msg == "success" ? "Dataset is " + flag + " successfully" : "DataSet already exist in system.";
                 resultModel.status = 1;
                 logger.Info(string.Format("Add/Edit Dataset end | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
             }
@@ -2183,7 +2183,7 @@ namespace MARS_Web.Controllers
 
             return Json(true, JsonRequestBehavior.AllowGet);
         }
-        
+
         //Saves a copy of TestCase with different name and all the steps of TestCase grid
         public ActionResult SaveAsTestCase(string testcasename, long oldtestcaseid, string testcasedesc, long testsuiteid, long projectid, string optionval, string datasetName = "", string suffix = "")
         {
@@ -2228,5 +2228,838 @@ namespace MARS_Web.Controllers
             }
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
+
+        #region DataTag
+        [HttpPost]
+        public ActionResult GroupList()
+        {
+            try
+            {
+                var userId = SessionManager.TESTER_ID;
+                var repAcc = new ConfigurationGridRepository();
+                repAcc.Username = SessionManager.TESTER_LOGIN_NAME;
+                var Widthgridlst = repAcc.GetGridList((long)userId, GridNameList.ResizeLeftPanel);
+                var Rgriddata = GridHelper.GetLeftpanelgridwidth(Widthgridlst);
+
+                ViewBag.width = Rgriddata.Resize == null ? ConfigurationManager.AppSettings["DefultLeftPanel"] + "px" : Rgriddata.Resize.Trim() + "px";
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured when group page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured when group page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+            }
+            return PartialView();
+        }
+
+        //This method will load all the data and filter them
+        [HttpPost]
+        public JsonResult GroupDataLoad()
+        {
+            var data = new List<DataTagCommonViewModel>();
+            int recFilter = 0;
+            int totalRecords = 0;
+            string draw = string.Empty;
+            try
+            {
+                var repo = new TestCaseRepository();
+                repo.Username = SessionManager.TESTER_LOGIN_NAME;
+                string search = Request.Form.GetValues("search[value]")[0];
+                draw = Request.Form.GetValues("draw")[0];
+                string order = Request.Form.GetValues("order[0][column]")[0];
+                string orderDir = Request.Form.GetValues("order[0][dir]")[0];
+                int startRec = Convert.ToInt32(Request.Form.GetValues("start")[0]);
+                int pageSize = Convert.ToInt32(Request.Form.GetValues("length")[0]);
+
+                data = repo.ListOfGroup();
+
+                string NameSearch = Request.Form.GetValues("columns[0][search][value]")[0];
+                string DescSearch = Request.Form.GetValues("columns[1][search][value]")[0];
+                //string ActiveSearch = Request.Form.GetValues("columns[2][search][value]")[0];
+
+                string colOrderIndex = Request.Form.GetValues("order[0][column]")[0];
+                var colOrder = Request.Form.GetValues("columns[" + colOrderIndex + "][name]").FirstOrDefault();
+                string colDir = Request.Form.GetValues("order[0][dir]")[0];
+
+                if (!string.IsNullOrEmpty(NameSearch))
+                {
+                    data = data.Where(x => !string.IsNullOrEmpty(x.Name) && x.Name.ToLower().Trim().Contains(NameSearch.ToLower().Trim())).ToList();
+                }
+                if (!string.IsNullOrEmpty(DescSearch))
+                {
+                    data = data.Where(p => !string.IsNullOrEmpty(p.Description) && p.Description.ToString().ToLower().Contains(DescSearch.ToLower())).ToList();
+                }
+                if (colDir == "desc")
+                {
+                    switch (colOrder)
+                    {
+                        case "Name":
+                            data = data.OrderByDescending(a => a.Name).ToList();
+                            break;
+                        case "Description":
+                            data = data.OrderByDescending(a => a.Description).ToList();
+                            break;
+                        default:
+                            data = data.OrderByDescending(a => a.Name).ToList();
+                            break;
+                    }
+                }
+                else
+                {
+                    switch (colOrder)
+                    {
+                        case "Name":
+                            data = data.OrderBy(a => a.Name).ToList();
+                            break;
+                        case "Description":
+                            data = data.OrderBy(a => a.Description).ToList();
+                            break;
+                        default:
+                            data = data.OrderBy(a => a.Name).ToList();
+                            break;
+                    }
+                }
+
+                totalRecords = data.Count();
+                if (!string.IsNullOrEmpty(search) &&
+                !string.IsNullOrWhiteSpace(search))
+                {
+                    // Apply search   
+                    data = data.Where(p => p.Name.ToString().ToLower().Contains(search.ToLower()) ||
+                    p.Description.ToString().ToLower().Contains(search.ToLower())
+                    ).ToList();
+                }
+                recFilter = data.Count();
+                data = data.Skip(startRec).Take(pageSize).ToList();
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured when Group page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured when Group page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+            }
+            return Json(new
+            {
+                draw = Convert.ToInt32(draw),
+                recordsTotal = totalRecords,
+                recordsFiltered = recFilter,
+                data = data
+            }, JsonRequestBehavior.AllowGet);
+        }
+
+        //Add/Update Group values
+        [HttpPost]
+        public JsonResult AddEditGroup(DataTagCommonViewModel model)
+        {
+            logger.Info(string.Format("Group Add/Edit  Modal open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+            ResultModel resultModel = new ResultModel();
+            try
+            {
+                var repo = new TestCaseRepository();
+                repo.Username = SessionManager.TESTER_LOGIN_NAME;
+
+                var _addeditResult = repo.AddEditGroup(model);
+
+                resultModel.message = "Saved [" + model.Name + "] Group.";
+                resultModel.data = _addeditResult;
+                resultModel.status = 1;
+
+                logger.Info(string.Format("Group Add/Edit  Modal close | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+                logger.Info(string.Format("Group Save successfully | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in Group page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Group page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                resultModel.status = 0;
+                resultModel.message = ex.Message.ToString();
+            }
+            return Json(resultModel, JsonRequestBehavior.AllowGet);
+        }
+
+        //Check Group name already exist or not
+        public JsonResult CheckDuplicateGroupNameExist(string Name, long? Id)
+        {
+            ResultModel resultModel = new ResultModel();
+            try
+            {
+                Name = Name.Trim();
+                var repo = new TestCaseRepository();
+                repo.Username = SessionManager.TESTER_LOGIN_NAME;
+                var result = repo.CheckDuplicateGroupNameExist(Name, Id);
+                resultModel.message = "success";
+                resultModel.data = result;
+                resultModel.status = 1;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in Set page | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Set page | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                resultModel.status = 0;
+                resultModel.message = ex.Message.ToString();
+            }
+            return Json(resultModel, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public ActionResult SetList()
+        {
+            try
+            {
+                var userId = SessionManager.TESTER_ID;
+                var repAcc = new ConfigurationGridRepository();
+                repAcc.Username = SessionManager.TESTER_LOGIN_NAME;
+                var Widthgridlst = repAcc.GetGridList((long)userId, GridNameList.ResizeLeftPanel);
+                var Rgriddata = GridHelper.GetLeftpanelgridwidth(Widthgridlst);
+
+                ViewBag.width = Rgriddata.Resize == null ? ConfigurationManager.AppSettings["DefultLeftPanel"] + "px" : Rgriddata.Resize.Trim() + "px";
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured when group page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured when group page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+            }
+            return PartialView();
+        }
+
+        //This method will load all the data and filter them
+        [HttpPost]
+        public JsonResult SetDataLoad()
+        {
+            var data = new List<DataTagCommonViewModel>();
+            int recFilter = 0;
+            int totalRecords = 0;
+            string draw = string.Empty;
+            try
+            {
+                var repo = new TestCaseRepository();
+                repo.Username = SessionManager.TESTER_LOGIN_NAME;
+                string search = Request.Form.GetValues("search[value]")[0];
+                draw = Request.Form.GetValues("draw")[0];
+                string order = Request.Form.GetValues("order[0][column]")[0];
+                string orderDir = Request.Form.GetValues("order[0][dir]")[0];
+                int startRec = Convert.ToInt32(Request.Form.GetValues("start")[0]);
+                int pageSize = Convert.ToInt32(Request.Form.GetValues("length")[0]);
+
+                data = repo.ListOfSet();
+
+                string NameSearch = Request.Form.GetValues("columns[0][search][value]")[0];
+                string DescSearch = Request.Form.GetValues("columns[1][search][value]")[0];
+
+                string colOrderIndex = Request.Form.GetValues("order[0][column]")[0];
+                var colOrder = Request.Form.GetValues("columns[" + colOrderIndex + "][name]").FirstOrDefault();
+                string colDir = Request.Form.GetValues("order[0][dir]")[0];
+
+                if (!string.IsNullOrEmpty(NameSearch))
+                {
+                    data = data.Where(x => !string.IsNullOrEmpty(x.Name) && x.Name.ToLower().Trim().Contains(NameSearch.ToLower().Trim())).ToList();
+                }
+                if (!string.IsNullOrEmpty(DescSearch))
+                {
+                    data = data.Where(p => !string.IsNullOrEmpty(p.Description) && p.Description.ToString().ToLower().Contains(DescSearch.ToLower())).ToList();
+                }
+                if (colDir == "desc")
+                {
+                    switch (colOrder)
+                    {
+                        case "Name":
+                            data = data.OrderByDescending(a => a.Name).ToList();
+                            break;
+                        case "Description":
+                            data = data.OrderByDescending(a => a.Description).ToList();
+                            break;
+                        default:
+                            data = data.OrderByDescending(a => a.Name).ToList();
+                            break;
+                    }
+                }
+                else
+                {
+                    switch (colOrder)
+                    {
+                        case "Name":
+                            data = data.OrderBy(a => a.Name).ToList();
+                            break;
+                        case "Description":
+                            data = data.OrderBy(a => a.Description).ToList();
+                            break;
+                        default:
+                            data = data.OrderBy(a => a.Name).ToList();
+                            break;
+                    }
+                }
+
+                totalRecords = data.Count();
+                if (!string.IsNullOrEmpty(search) &&
+                !string.IsNullOrWhiteSpace(search))
+                {
+                    // Apply search   
+                    data = data.Where(p => p.Name.ToString().ToLower().Contains(search.ToLower()) ||
+                    p.Description.ToString().ToLower().Contains(search.ToLower())
+                    ).ToList();
+                }
+                recFilter = data.Count();
+                data = data.Skip(startRec).Take(pageSize).ToList();
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured when Set page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured when Set page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+            }
+            return Json(new
+            {
+                draw = Convert.ToInt32(draw),
+                recordsTotal = totalRecords,
+                recordsFiltered = recFilter,
+                data = data
+            }, JsonRequestBehavior.AllowGet);
+        }
+
+        //Add/Update Set values
+        [HttpPost]
+        public JsonResult AddEditSet(DataTagCommonViewModel model)
+        {
+            logger.Info(string.Format("Set Add/Edit  Modal open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+            ResultModel resultModel = new ResultModel();
+            try
+            {
+                var repo = new TestCaseRepository();
+                repo.Username = SessionManager.TESTER_LOGIN_NAME;
+
+                var _addeditResult = repo.AddEditSet(model);
+
+                resultModel.message = "Saved [" + model.Name + "] Set.";
+                resultModel.data = _addeditResult;
+                resultModel.status = 1;
+
+                logger.Info(string.Format("Set Add/Edit  Modal close | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+                logger.Info(string.Format("Set Save successfully | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in Set page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Set page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                resultModel.status = 0;
+                resultModel.message = ex.Message.ToString();
+            }
+            return Json(resultModel, JsonRequestBehavior.AllowGet);
+        }
+
+        //Check Set name already exist or not
+        public JsonResult CheckDuplicateSetNameExist(string Name, long? Id)
+        {
+            ResultModel resultModel = new ResultModel();
+            try
+            {
+                Name = Name.Trim();
+                var repo = new TestCaseRepository();
+                repo.Username = SessionManager.TESTER_LOGIN_NAME;
+                var result = repo.CheckDuplicateSetNameExist(Name, Id);
+                resultModel.message = "success";
+                resultModel.data = result;
+                resultModel.status = 1;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in Set page | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Set page | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                resultModel.status = 0;
+                resultModel.message = ex.Message.ToString();
+            }
+            return Json(resultModel, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public ActionResult FolderList()
+        {
+            try
+            {
+                var userId = SessionManager.TESTER_ID;
+                var repAcc = new ConfigurationGridRepository();
+                repAcc.Username = SessionManager.TESTER_LOGIN_NAME;
+                var Widthgridlst = repAcc.GetGridList((long)userId, GridNameList.ResizeLeftPanel);
+                var Rgriddata = GridHelper.GetLeftpanelgridwidth(Widthgridlst);
+
+                ViewBag.width = Rgriddata.Resize == null ? ConfigurationManager.AppSettings["DefultLeftPanel"] + "px" : Rgriddata.Resize.Trim() + "px";
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured when group page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured when group page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+            }
+            return PartialView();
+        }
+
+        //This method will load all the data and filter them
+        [HttpPost]
+        public JsonResult FolderDataLoad()
+        {
+            var data = new List<DataTagCommonViewModel>();
+            int recFilter = 0;
+            int totalRecords = 0;
+            string draw = string.Empty;
+            try
+            {
+                var repo = new TestCaseRepository();
+                repo.Username = SessionManager.TESTER_LOGIN_NAME;
+                string search = Request.Form.GetValues("search[value]")[0];
+                draw = Request.Form.GetValues("draw")[0];
+                string order = Request.Form.GetValues("order[0][column]")[0];
+                string orderDir = Request.Form.GetValues("order[0][dir]")[0];
+                int startRec = Convert.ToInt32(Request.Form.GetValues("start")[0]);
+                int pageSize = Convert.ToInt32(Request.Form.GetValues("length")[0]);
+
+                data = repo.ListOfFolder();
+
+                string NameSearch = Request.Form.GetValues("columns[0][search][value]")[0];
+                string DescSearch = Request.Form.GetValues("columns[1][search][value]")[0];
+
+                string colOrderIndex = Request.Form.GetValues("order[0][column]")[0];
+                var colOrder = Request.Form.GetValues("columns[" + colOrderIndex + "][name]").FirstOrDefault();
+                string colDir = Request.Form.GetValues("order[0][dir]")[0];
+
+                if (!string.IsNullOrEmpty(NameSearch))
+                {
+                    data = data.Where(x => !string.IsNullOrEmpty(x.Name) && x.Name.ToLower().Trim().Contains(NameSearch.ToLower().Trim())).ToList();
+                }
+                if (!string.IsNullOrEmpty(DescSearch))
+                {
+                    data = data.Where(p => !string.IsNullOrEmpty(p.Description) && p.Description.ToString().ToLower().Contains(DescSearch.ToLower())).ToList();
+                }
+                if (colDir == "desc")
+                {
+                    switch (colOrder)
+                    {
+                        case "Name":
+                            data = data.OrderByDescending(a => a.Name).ToList();
+                            break;
+                        case "Description":
+                            data = data.OrderByDescending(a => a.Description).ToList();
+                            break;
+                        default:
+                            data = data.OrderByDescending(a => a.Name).ToList();
+                            break;
+                    }
+                }
+                else
+                {
+                    switch (colOrder)
+                    {
+                        case "Name":
+                            data = data.OrderBy(a => a.Name).ToList();
+                            break;
+                        case "Description":
+                            data = data.OrderBy(a => a.Description).ToList();
+                            break;
+                        default:
+                            data = data.OrderBy(a => a.Name).ToList();
+                            break;
+                    }
+                }
+
+                totalRecords = data.Count();
+                if (!string.IsNullOrEmpty(search) &&
+                !string.IsNullOrWhiteSpace(search))
+                {
+                    // Apply search   
+                    data = data.Where(p => p.Name.ToString().ToLower().Contains(search.ToLower()) ||
+                    p.Description.ToString().ToLower().Contains(search.ToLower())
+                    ).ToList();
+                }
+                recFilter = data.Count();
+                data = data.Skip(startRec).Take(pageSize).ToList();
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured when User Role page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured when User Role page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+            }
+            return Json(new
+            {
+                draw = Convert.ToInt32(draw),
+                recordsTotal = totalRecords,
+                recordsFiltered = recFilter,
+                data = data
+            }, JsonRequestBehavior.AllowGet);
+        }
+
+        //Add/Update Folder values
+        [HttpPost]
+        public JsonResult AddEditFolder(DataTagCommonViewModel model)
+        {
+            logger.Info(string.Format("Folder Add/Edit  Modal open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+            ResultModel resultModel = new ResultModel();
+            try
+            {
+                var repo = new TestCaseRepository();
+                repo.Username = SessionManager.TESTER_LOGIN_NAME;
+
+                var _addeditResult = repo.AddEditFolder(model);
+
+                resultModel.message = "Saved [" + model.Name + "] Folder.";
+                resultModel.data = _addeditResult;
+                resultModel.status = 1;
+
+                logger.Info(string.Format("Folder Add/Edit  Modal close | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+                logger.Info(string.Format("Folder Save successfully | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in Folder page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Folder page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                resultModel.status = 0;
+                resultModel.message = ex.Message.ToString();
+            }
+            return Json(resultModel, JsonRequestBehavior.AllowGet);
+        }
+
+        //Check Folder name already exist or not
+        public JsonResult CheckDuplicateFolderNameExist(string Name, long? Id)
+        {
+            ResultModel resultModel = new ResultModel();
+            try
+            {
+                Name = Name.Trim();
+                var repo = new TestCaseRepository();
+                repo.Username = SessionManager.TESTER_LOGIN_NAME;
+                var result = repo.CheckDuplicateFolderNameExist(Name, Id);
+                resultModel.message = "success";
+                resultModel.data = result;
+                resultModel.status = 1;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in Folder page | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Folder page | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                resultModel.status = 0;
+                resultModel.message = ex.Message.ToString();
+            }
+            return Json(resultModel, JsonRequestBehavior.AllowGet);
+        }
+
+        //Get DatasetTag Details
+        public ActionResult GetDatasetTagDetails(long datasetid)
+        {
+            TestCaseRepository repo = new TestCaseRepository();
+
+            var dataresults = repo.GetTagDetails(datasetid);
+            ViewBag.Folder = dataresults.Count == 0 ? "" : dataresults[0].Folder;
+            ViewBag.Group = dataresults.Count == 0 ? "" : dataresults[0].Group;
+            ViewBag.Set = dataresults.Count == 0 ? "" : dataresults[0].Set;
+            ViewBag.Expresult = dataresults.Count == 0 ? "" : dataresults[0].Expectedresults;
+            ViewBag.Sequence = dataresults.Count == 0 ? 0 : dataresults[0].Sequence;
+            ViewBag.Diary = dataresults.Count == 0 ? "" : dataresults[0].Diary;
+            ViewBag.StepDesc = dataresults.Count == 0 ? "" : dataresults[0].StepDesc;
+            var groups = repo.GetGroups();
+            ViewBag.Taggroup = groups.Select(x => new SelectListItem { Text = x.GROUPNAME, Value = Convert.ToString(x.GROUPID), Selected = x.GROUPNAME == (dataresults.Count == 0 ? "" : dataresults[0].Group) ? true : false }).Distinct().ToList();
+
+            var folder = repo.GetFolders();
+            ViewBag.TagFolder = folder.Select(x => new SelectListItem { Text = x.FOLDERNAME, Value = Convert.ToString(x.FOLDERID), Selected = x.FOLDERNAME == (dataresults.Count == 0 ? "" : dataresults[0].Folder) ? true : false }).Distinct().ToList();
+
+            var sets = repo.GetSets();
+            ViewBag.TagSet = sets.Select(x => new SelectListItem { Text = x.SETNAME, Value = Convert.ToString(x.SETID), Selected = x.SETNAME == (dataresults.Count == 0 ? "" : dataresults[0].Set) ? true : false }).Distinct().ToList();
+
+            var dataset = repo.GetDataSetName(datasetid);
+            ViewBag.datasetid = datasetid;
+            ViewBag.Datasetname = dataset[0].Data_Summary_Name;
+            ViewBag.Datasetdesc = dataset[0].Dataset_desc;
+            return PartialView("GetDatasetTagDetails");
+
+        }
+
+        //Delete the DatasetTag data by datasetid
+        [HttpPost]
+        public ActionResult DeleteDatSetTag(long datasetid)
+        {
+            TestCaseRepository repo = new TestCaseRepository();
+            var result = repo.DeleteTagProperties(datasetid);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        //Check Folder Sequence already exist or not
+        [HttpPost]
+        public ActionResult CheckFolderSequenceMapping(long FolderId,long SequenceId,long DatasetId)
+        {
+            var repo = new TestCaseRepository();
+            var result = repo.CheckFolderSequenceMapping(FolderId, SequenceId, DatasetId);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+        #endregion
+
+        #region DatasetTag Import/Export
+        //Export DatasetTag
+        public JsonResult ExportDatasetTag()
+        {
+            string name = "Log_Export" + DateTime.Now.ToString(" yyyy-MM-dd HH-mm-ss") + ".xlsx";
+            string log_path = WebConfigurationManager.AppSettings["ExportLogPath"];
+            string strPath = Path.Combine(Server.MapPath("~/" + log_path), name);
+            dbtable.dt_Log = null;
+            DataTable td = new DataTable();
+            DataColumn sequence_counter = new DataColumn();
+            sequence_counter.AutoIncrement = true;
+            sequence_counter.AutoIncrementSeed = 1;
+            sequence_counter.AutoIncrementStep = 1;
+
+            td.Columns.Add(sequence_counter);
+            td.Columns.Add("TimeStamp");
+            td.Columns.Add("Message Type");
+            td.Columns.Add("Action");
+
+            td.Columns.Add("SpreadSheet cell Address");
+            td.Columns.Add("Validation Name");
+            td.Columns.Add("Validation Fail Description");
+            td.Columns.Add("Application Name");
+            td.Columns.Add("Project Name");
+            td.Columns.Add("StoryBoard Name");
+
+            td.Columns.Add("Test Suite Name");
+
+
+            td.Columns.Add("TestCase Name");
+            td.Columns.Add("Test step Number");
+
+            td.Columns.Add("Dataset Name");
+            td.Columns.Add("Dependancy");
+            td.Columns.Add("Run Order");
+
+
+            td.Columns.Add("Object Name");
+            td.Columns.Add("Comment");
+            td.Columns.Add("Error Description");
+            td.Columns.Add("Program Location");
+            td.Columns.Add("Tab Name");
+
+            dbtable.dt_Log = td.Copy();
+
+            ExportExcel excel = new ExportExcel();
+
+            string lSchema = SessionManager.Schema;
+            var lConnectionStr = SessionManager.APP;
+
+            string lFileName =  "DATASETTAG_" + DateTime.Now.ToString("yyyyMMdd") + "_" + DateTime.Now.ToString("HHmmss") + ".xlsx";
+            string FullPath = Path.Combine(System.Web.HttpContext.Current.Server.MapPath("~/TempExport/"), lFileName);
+            name = "Log_DATASETTAG_Export" + DateTime.Now.ToString(" yyyy-MM-dd HH-mm-ss") + ".xlsx";
+            strPath = Path.Combine(Server.MapPath("~/" + log_path), name);
+            try
+            {
+                dbtable.errorlog("Export is started", "Export DatasetTag Excel", "", 0);
+
+                var presult = excel.ExportDatasetTagExcel(FullPath, lSchema,lConnectionStr);
+
+                if (presult == true)
+                {
+                    dbtable.errorlog("Export is completed", "Export DatasetTag Excel", "", 0);
+                    objcommon.excel(dbtable.dt_Log, strPath, "Export", "", "DATASETTAG");
+                    dbtable.dt_Log = null;
+                    return Json(lFileName, JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch (Exception ex)
+            {
+                int line;
+                string msg = ex.Message;
+                line = dbtable.lineNo(ex);
+                dbtable.errorlog("Export stopped", "Export DatasetTag Excel", "", 0);
+                objcommon.excel(dbtable.dt_Log, strPath, "Export", "", "DATASETTAG");
+                dbtable.dt_Log = null;
+                return Json(name, JsonRequestBehavior.AllowGet);
+            }
+            return Json(lFileName, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult ImportDatasetTag()
+        {
+            var userId = SessionManager.TESTER_ID;
+            var repAcc = new ConfigurationGridRepository();
+            repAcc.Username = SessionManager.TESTER_LOGIN_NAME;
+            var Widthgridlst = repAcc.GetGridList((long)userId, GridNameList.ResizeLeftPanel);
+            var Rgriddata = GridHelper.GetLeftpanelgridwidth(Widthgridlst);
+
+            ViewBag.width = Rgriddata.Resize == null ? ConfigurationManager.AppSettings["DefultLeftPanel"] + "px" : Rgriddata.Resize.Trim() + "px";
+            return PartialView();
+        }
+
+        //This method will import datasettag file 
+        public ActionResult ImportDatasetTagFile()
+        {
+            ViewBag.FileName = "";
+            string fileName = string.Empty;
+            string name = "Log_Import" + DateTime.Now.ToString(" yyyy-MM-dd HH-mm-ss") + ".xlsx";
+            string log_path = WebConfigurationManager.AppSettings["ImportLogPath"];
+            string strPath = Path.Combine(Server.MapPath("~/" + log_path), name);
+            try
+            {
+                dbtable.dt_Log = null;
+                DataTable td = new DataTable();
+                DataColumn sequence_counter = new DataColumn();
+                sequence_counter.AutoIncrement = true;
+                sequence_counter.AutoIncrementSeed = 1;
+                sequence_counter.AutoIncrementStep = 1;
+
+                td.Columns.Add(sequence_counter);
+                td.Columns.Add("TimeStamp");
+                td.Columns.Add("Message Type");
+                td.Columns.Add("Action");
+
+                td.Columns.Add("SpreadSheet cell Address");
+                td.Columns.Add("Validation Name");
+                td.Columns.Add("Validation Fail Description");
+                td.Columns.Add("Application Name");
+                td.Columns.Add("Project Name");
+                td.Columns.Add("StoryBoard Name");
+
+                td.Columns.Add("Test Suite Name");
+
+                td.Columns.Add("TestCase Name");
+                td.Columns.Add("Test step Number");
+
+                td.Columns.Add("Dataset Name");
+                td.Columns.Add("Dependancy");
+                td.Columns.Add("Run Order");
+
+
+                td.Columns.Add("Object Name");
+                td.Columns.Add("Comment");
+                td.Columns.Add("Error Description");
+                td.Columns.Add("Program Location");
+                td.Columns.Add("Tab Name");
+
+                dbtable.dt_Log = td.Copy();
+                HttpFileCollectionBase files = Request.Files;
+                for (int i = 0; i < files.Count; i++)
+                {
+                    HttpPostedFileBase datasettagupload = files[i];
+                    if (datasettagupload != null)
+                    {
+
+                        string destinationPath = string.Empty;
+                        string extension = string.Empty;
+                        var uploadFileModel = new List<DatasetTagFileUpload>();
+                        MARSUtility.ImportHelper helper = new MARSUtility.ImportHelper();
+                        fileName = Path.GetFileNameWithoutExtension(datasettagupload.FileName);
+
+                        extension = Path.GetExtension(datasettagupload.FileName);
+                        fileName = fileName + "_" + DateTime.Now.ToString("dd_mm_yyyy") + "_" + DateTime.Now.TimeOfDay.ToString("hh") + "_" + DateTime.Now.TimeOfDay.ToString("mm") + "_" + DateTime.Now.TimeOfDay.ToString("ss") + "" + extension;
+                        destinationPath = Path.Combine(Server.MapPath("~/Import/"), fileName);
+                        datasettagupload.SaveAs(destinationPath);
+
+                        string lSchema = SessionManager.Schema;
+                        var lConnectionStr = SessionManager.APP;
+                        dbtable.errorlog("Import is started", "Import DatasetTag", "", 0);
+                        var lPath = helper.MasterImport(0, destinationPath, strPath, "DATASETTAG", 1, "", "", "", 1, lSchema, lConnectionStr);
+
+                        if (lPath == false)
+                        {
+                            dbtable.errorlog("Import is stopped", "Import DatasetTag", "", 0);
+                            objcommon.excel(dbtable.dt_Log, strPath, "Import", "", "DATASETTAG");
+                            return Json(strPath + ",validation", JsonRequestBehavior.AllowGet);
+                        }
+                        else
+                        {
+                            dbtable.errorlog("Import is completed", "Import DatasetTag", "", 0);
+                            objcommon.excel(dbtable.dt_Log, strPath, "Import", "", "DATASETTAG");
+                            return Json(fileName + ",success", JsonRequestBehavior.AllowGet);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                int line;
+                string msg = ex.Message;
+                line = dbtable.lineNo(ex);
+                dbtable.errorlog("Import is stopped", "Import DatasetTag", "", 0);
+                objcommon.excel(dbtable.dt_Log, strPath, "Import", "", "DATASETTAG");
+                dbtable.dt_Log = null;
+                return Json(strPath + ",exception", JsonRequestBehavior.AllowGet);
+
+            }
+            return Json(fileName, JsonRequestBehavior.AllowGet);
+        }
+
+        //Export DatasetTag Report
+        public JsonResult ExportDatasetTagReport()
+        {
+            string name = "Log_Export" + DateTime.Now.ToString(" yyyy-MM-dd HH-mm-ss") + ".xlsx";
+            string log_path = WebConfigurationManager.AppSettings["ExportLogPath"];
+            string strPath = Path.Combine(Server.MapPath("~/" + log_path), name);
+            dbtable.dt_Log = null;
+            DataTable td = new DataTable();
+            DataColumn sequence_counter = new DataColumn();
+            sequence_counter.AutoIncrement = true;
+            sequence_counter.AutoIncrementSeed = 1;
+            sequence_counter.AutoIncrementStep = 1;
+
+            td.Columns.Add(sequence_counter);
+            td.Columns.Add("TimeStamp");
+            td.Columns.Add("Message Type");
+            td.Columns.Add("Action");
+
+            td.Columns.Add("SpreadSheet cell Address");
+            td.Columns.Add("Validation Name");
+            td.Columns.Add("Validation Fail Description");
+            td.Columns.Add("Application Name");
+            td.Columns.Add("Project Name");
+            td.Columns.Add("StoryBoard Name");
+
+            td.Columns.Add("Test Suite Name");
+
+
+            td.Columns.Add("TestCase Name");
+            td.Columns.Add("Test step Number");
+
+            td.Columns.Add("Dataset Name");
+            td.Columns.Add("Dependancy");
+            td.Columns.Add("Run Order");
+
+
+            td.Columns.Add("Object Name");
+            td.Columns.Add("Comment");
+            td.Columns.Add("Error Description");
+            td.Columns.Add("Program Location");
+            td.Columns.Add("Tab Name");
+
+            dbtable.dt_Log = td.Copy();
+
+            ExportExcel excel = new ExportExcel();
+
+            string lSchema = SessionManager.Schema;
+            var lConnectionStr = SessionManager.APP;
+
+            string lFileName = "REPORTDATASETTAG_" + DateTime.Now.ToString("yyyyMMdd") + "_" + DateTime.Now.ToString("HHmmss") + ".xlsx";
+            string FullPath = Path.Combine(System.Web.HttpContext.Current.Server.MapPath("~/TempExport/"), lFileName);
+            name = "Log_REPORTDATASETTAG_Export" + DateTime.Now.ToString(" yyyy-MM-dd HH-mm-ss") + ".xlsx";
+            strPath = Path.Combine(Server.MapPath("~/" + log_path), name);
+            try
+            {
+                dbtable.errorlog("Export is started", "Export ReportDatasetTag Excel", "", 0);
+
+                var presult = excel.ExportReportDatasetTagExcel(FullPath, lSchema, lConnectionStr);
+
+                if (presult == true)
+                {
+                    dbtable.errorlog("Export is completed", "Export ReportDatasetTag Excel", "", 0);
+                    objcommon.excel(dbtable.dt_Log, strPath, "Export", "", "REPORTDATASETTAG");
+                    dbtable.dt_Log = null;
+                    return Json(lFileName, JsonRequestBehavior.AllowGet);
+                }
+            }
+            catch (Exception ex)
+            {
+                int line;
+                string msg = ex.Message;
+                line = dbtable.lineNo(ex);
+                dbtable.errorlog("Export stopped", "Export ReportDatasetTag Excel", "", 0);
+                objcommon.excel(dbtable.dt_Log, strPath, "Export", "", "REPORTDATASETTAG");
+                dbtable.dt_Log = null;
+                return Json(name, JsonRequestBehavior.AllowGet);
+            }
+            return Json(lFileName, JsonRequestBehavior.AllowGet);
+        }
+
+        public class DatasetTagFileUpload
+        {
+            public string FileName { get; set; }
+            public string FilePath { get; set; }
+        }
+        #endregion
     }
 }

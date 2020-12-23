@@ -300,10 +300,19 @@
     <Compile Include="Entities\T_TEST_CASE_VERSION.cs">
       <DependentUpon>Db_Context.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\T_TEST_DATASETTAG.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\T_TEST_DATA_SUMMARY.cs">
       <DependentUpon>Db_Context.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\T_TEST_ENUM.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\T_TEST_FOLDER.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\T_TEST_GROUP.cs">
       <DependentUpon>Db_Context.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\T_TEST_PRIVILEGE.cs">
@@ -322,6 +331,9 @@
       <DependentUpon>Db_Context.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\T_TEST_ROLES.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\T_TEST_SET.cs">
       <DependentUpon>Db_Context.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\T_TEST_STEPS.cs">
@@ -393,6 +405,7 @@
     <Compile Include="ViewModel\BaseModel.cs" />
     <Compile Include="ViewModel\CompareParam.cs" />
     <Compile Include="ViewModel\DataSummaryModel.cs" />
+    <Compile Include="ViewModel\DataTagCommonViewModel.cs" />
     <Compile Include="ViewModel\DBconnectionViewModel.cs" />
     <Compile Include="ViewModel\GetKeywordList.cs" />
     <Compile Include="ViewModel\GetObjectList.cs" />

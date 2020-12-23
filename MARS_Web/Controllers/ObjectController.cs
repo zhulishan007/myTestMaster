@@ -62,6 +62,7 @@ namespace MARS_Web.Controllers
             return PartialView();
         }
 
+        //This method get all application 
         public JsonResult ApplicationList()
         {
             ResultModel resultModel = new ResultModel();
@@ -82,6 +83,8 @@ namespace MARS_Web.Controllers
             }
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
+
+        //This method will load by applicationId the data and filter them
         [HttpPost]
         public JsonResult DatLoad(string appId)
         {
@@ -142,6 +145,7 @@ namespace MARS_Web.Controllers
 
         }
 
+        //This method will load all the data and filter them
         public ActionResult LoadData()
         {
             setObjectGridWidth();
@@ -171,6 +175,7 @@ namespace MARS_Web.Controllers
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
 
+        //Add/Update object values
         public JsonResult AddEditObject(ObjectModel objmodel)
         {
             logger.Info(string.Format("Object Add/Edit  Modal open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
@@ -207,6 +212,7 @@ namespace MARS_Web.Controllers
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
 
+        //Delete the object data by objectid and appid
         public JsonResult DeleteObject(long objectid, long appid)
         {
             logger.Info(string.Format("Object Delete start | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
@@ -259,6 +265,7 @@ namespace MARS_Web.Controllers
         #endregion
 
         #region Copy objects from one application to another
+        //This method will check Converting Object Exists
         public JsonResult CheckConvertingObjectExists(string objectname, long appid, string parentobj, string objecttype)
         {
             ResultModel resultModel = new ResultModel();
@@ -282,6 +289,7 @@ namespace MARS_Web.Controllers
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
 
+        //This method will copy all objects
         public JsonResult CopyAllObjects(long copyfromappid, long copytoappid)
         {
             ResultModel resultModel = new ResultModel();
@@ -306,6 +314,7 @@ namespace MARS_Web.Controllers
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
 
+        //This method will Check Duplicate Object List
         public JsonResult CheckDuplicateObjectList(long copyfromappid, long copytoappid)
         {
             ResultModel resultModel = new ResultModel();
@@ -330,6 +339,7 @@ namespace MARS_Web.Controllers
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
 
+        //This method will copy objects
         public JsonResult CopyObjects(List<long> model, long fromid, long toid)
         {
             ResultModel resultModel = new ResultModel();
@@ -381,7 +391,7 @@ namespace MARS_Web.Controllers
         #endregion
 
         #region Export and Import of Objects
-      
+        //This method will export object
         public JsonResult ExportObject(string application)
         {
            
@@ -466,6 +476,7 @@ namespace MARS_Web.Controllers
           
             return Json(lFileName, JsonRequestBehavior.AllowGet);
         }
+
         public ActionResult ImportObjects()
         {
             var userId = SessionManager.TESTER_ID;
@@ -477,7 +488,8 @@ namespace MARS_Web.Controllers
             ViewBag.width = Rgriddata.Resize == null ? ConfigurationManager.AppSettings["DefultLeftPanel"] + "px" : Rgriddata.Resize.Trim() + "px";
             return PartialView();
         }
-      
+
+        //This method will import object file 
         public ActionResult ImportFile()
         {
             string fileName = string.Empty;

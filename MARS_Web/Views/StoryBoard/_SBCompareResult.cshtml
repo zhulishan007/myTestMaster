@@ -18,7 +18,7 @@
     var PrivilegeList = Session["PrivilegeList"] as List<PrivilegeViewModel>;
     var RoleList = Session["RoleList"] as List<RoleViewModel>;
     var SAVERESULTBUTTON = "none";
-    if (PrivilegeList.Select(y => y.PRIVILEGE_NAME).ToList().Contains("Edit Result Data"))
+    if (PrivilegeList.Select(y => y.PRIVILEGE_NAME).ToList().Contains("Save Result Data"))
     {
         SAVERESULTBUTTON = "block";
     }
@@ -360,7 +360,7 @@
                            swal.fire({
                                 title: '',
                                 text: "All changes in ResultList will be discarded.  Please confirm",
-                                type: 'warning',
+                               icon: 'warning',
                                 showCancelButton: true,
                                 confirmButtonText: 'Yes'
                             }).then(function (result) {
@@ -531,7 +531,7 @@
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "error",
+                        "icon": "error",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -581,7 +581,7 @@
                     swal.fire({
                         "title": "",
                         "text": " Data Saved successfully.",
-                        "type": "success",
+                        "icon": "success",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -612,7 +612,7 @@
                         swal.fire({
                             "title": "",
                             "text": result.message,
-                            "type": "error",
+                            "icon": "error",
                             "onClose": function (e) {
                                 console.log('on close event fired!');
                             }
@@ -644,7 +644,7 @@
                     swal.fire({
                         "title": "",
                         "text": " Data Validate successfully.",
-                        "type": "success",
+                        "icon": "success",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -669,7 +669,7 @@
                         swal.fire({
                             "title": "",
                             "text": result.message,
-                            "type": "error",
+                            "icon": "error",
                             "onClose": function (e) {
                                 console.log('on close event fired!');
                             }
@@ -696,7 +696,7 @@
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "success",
+                        "icon": "success",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -705,7 +705,7 @@
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "error",
+                        "icon": "error",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }

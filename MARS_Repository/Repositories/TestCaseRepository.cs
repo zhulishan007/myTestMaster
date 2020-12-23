@@ -598,7 +598,7 @@ namespace MARS_Repository.Repositories
             }
         }
 
-        public string AddTestDataSet(long? testCaseId, long? datasetid, string DataSetName, string DataSetDesc)
+        public string AddTestDataSet(long? testCaseId, long? datasetid, string DataSetName, string DataSetDesc,DataSetTagModel tagmodel)
         {
             try
             {
@@ -641,6 +641,43 @@ namespace MARS_Repository.Repositories
                     ds.ALIAS_NAME = DataSetName;
                     ds.DESCRIPTION_INFO = DataSetDesc;
                     entity.SaveChanges();
+                    var result = entity.T_TEST_DATASETTAG.Where(x => x.DATASETID == datasetid).SingleOrDefault();
+                    var seqcheck = entity.T_TEST_DATASETTAG.Where(x => x.FOLDERID == tagmodel.Folderid && x.SEQUENCE == tagmodel.Sequence && x.DATASETID != datasetid).ToList();
+                    if (seqcheck.Count > 0)
+                    {
+                        return datasetid + ",sequence error";
+                    }
+                    if (result != null)
+                    {
+
+                        result.FOLDERID = tagmodel.Folderid;
+                        result.SETID = tagmodel.Setid;
+                        result.GROUPID = tagmodel.Groupid;
+                        result.STEPDESC = tagmodel.StepDesc;
+                        result.SEQUENCE = tagmodel.Sequence;
+                        result.EXPECTEDRESULTS = tagmodel.Expectedresults;
+                        result.DIARY = tagmodel.Diary;
+                        entity.SaveChanges();
+                    }
+                    else
+                    {
+                        if (tagmodel.Folderid != 0 || tagmodel.Sequence != null || tagmodel.Groupid != 0 || tagmodel.Setid != 0 || tagmodel.StepDesc != null || tagmodel.Expectedresults != null || tagmodel.Diary != null)
+                        {
+                            var dtmodel = new T_TEST_DATASETTAG();
+                            dtmodel.T_TEST_DATASETTAG_ID = Helper.NextTestSuiteId("SEQ_T_TEST_DATASETTAG");
+                            dtmodel.DATASETID = datasetid;
+                            dtmodel.FOLDERID = tagmodel.Folderid;
+                            dtmodel.SETID = tagmodel.Setid;
+                            dtmodel.GROUPID = tagmodel.Groupid;
+                            dtmodel.STEPDESC = tagmodel.StepDesc;
+                            dtmodel.SEQUENCE = tagmodel.Sequence;
+                            dtmodel.EXPECTEDRESULTS = tagmodel.Expectedresults;
+                            dtmodel.DIARY = tagmodel.Diary;
+                            entity.T_TEST_DATASETTAG.Add(dtmodel);
+                            entity.SaveChanges();
+                        }
+
+                    }
                     logger.Info(string.Format("Add TestDataSet end | TestCaseId: {0} | DataSetName: {1} | UserName: {2}", testCaseId, DataSetName, Username));
                     return datasetid + ",success";
                 }
@@ -2496,6 +2533,459 @@ namespace MARS_Repository.Repositories
                 throw;
             }
         
+        }
+
+        public List<DataTagCommonViewModel> ListOfGroup()
+        {
+            try
+            {
+                logger.Info(string.Format("ListOfGroup start | Username: {0}", Username));
+                var lList = entity.T_TEST_GROUP.Select(y => new DataTagCommonViewModel
+                {
+                    Id = y.GROUPID,
+                    Name = y.GROUPNAME,
+                    Description = y.DESCRIPTION,
+                    IsActive = y.ACTIVE,
+                    Active = y.ACTIVE == 1 ? "Y" : "N"
+                }).OrderBy(z => z.Name).ToList();
+                logger.Info(string.Format("ListOfGroup end | Username: {0}", Username));
+                return lList;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured TestCase Repository in ListOfGroup method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase Repository in ListOfGroup method | UserName: {0}", Username), ex);
+                throw;
+            }
+        }
+
+        public bool AddEditGroup(DataTagCommonViewModel lEntity)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(lEntity.Name))
+                {
+                    lEntity.Name = lEntity.Name.Trim();
+                }
+                var flag = false;
+                if (lEntity.Id == 0)
+                {
+                    logger.Info(string.Format("Add Group start | Group: {0} | UserName: {1}", lEntity.Name, Username));
+                    var tbl = new T_TEST_GROUP();
+                    tbl.GROUPID = Helper.NextTestSuiteId("SEQ_T_TEST_GROUP");
+                    tbl.GROUPNAME = lEntity.Name;
+                    tbl.DESCRIPTION = lEntity.Description;
+                    tbl.ACTIVE = lEntity.IsActive;
+                    tbl.CREATION_DATE = DateTime.Now;
+                    tbl.UPDATE_DATE = DateTime.Now;
+                    tbl.CREATION_USER = Username;
+                    tbl.UPDATE_CREATION_USER = Username;
+                    lEntity.Id = tbl.GROUPID;
+                    entity.T_TEST_GROUP.Add(tbl);
+                    entity.SaveChanges();
+                    flag = true;
+                    logger.Info(string.Format("Add Group end | Group: {0} | UserName: {1}", lEntity.Name, Username));
+                }
+                else
+                {
+                    logger.Info(string.Format("Edit Group start | Group: {0} | GroupId: {1} | UserName: {2}", lEntity.Name, lEntity.Id, Username));
+                    var tbl = entity.T_TEST_GROUP.Find(lEntity.Id);
+                   
+                    if (tbl != null)
+                    {
+                        tbl.DESCRIPTION = lEntity.Description;
+                        tbl.ACTIVE = lEntity.IsActive;
+                        tbl.UPDATE_DATE = DateTime.Now;
+                        tbl.UPDATE_CREATION_USER = Username;
+                        entity.SaveChanges();
+                    }
+                    flag = true;
+                    logger.Info(string.Format("Edit Group end | Group: {0} | GroupId: {1} | UserName: {2}", lEntity.Name, lEntity.Id, Username));
+                }
+                return flag;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured Group page in AddEditGroup method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured Group page in AddEditGroup method | UserName: {0}", Username), ex);
+                throw;
+            }
+        }
+
+        public bool CheckDuplicateGroupNameExist(string Name, long? Id)
+        {
+            try
+            {
+                logger.Info(string.Format("Check Duplicate Group Name Exist start | Group: {0} | GroupId: {1} | UserName: {2}", Name, Id, Username));
+                var lresult = false;
+                if (Id != null)
+                {
+                    lresult = entity.T_TEST_GROUP.Any(x => x.GROUPID != Id && x.GROUPNAME.ToLower().Trim() == Name.ToLower().Trim());
+                }
+                else
+                {
+                    lresult = entity.T_TEST_GROUP.Any(x => x.GROUPNAME.ToLower().Trim() == Name.ToLower().Trim());
+                }
+                logger.Info(string.Format("Check Duplicate Group Name Exist end | Group: {0} | GroupId: {1} | UserName: {2}", Name, Id, Username));
+                return lresult;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured Group page in CheckDuplicateGroupNameExist method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured Group page in CheckDuplicateGroupNameExist method | UserName: {0}", Username), ex);
+                throw;
+            }
+        }
+
+        public List<DataTagCommonViewModel> ListOfSet()
+        {
+            try
+            {
+                logger.Info(string.Format("ListOfSet start | Username: {0}", Username));
+                var lList = entity.T_TEST_SET.Select(y => new DataTagCommonViewModel
+                {
+                    Id = y.SETID,
+                    Name = y.SETNAME,
+                    Description = y.DESCRIPTION,
+                    IsActive = y.ACTIVE,
+                    Active = y.ACTIVE == 1 ? "Y" : "N"
+                }).OrderBy(z => z.Name).ToList();
+                logger.Info(string.Format("ListOfSet end | Username: {0}", Username));
+                return lList;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured TestCase Repository in ListOfSet method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase Repository in ListOfSet method | UserName: {0}", Username), ex);
+                throw;
+            }
+        }
+
+        public bool AddEditSet(DataTagCommonViewModel lEntity)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(lEntity.Name))
+                {
+                    lEntity.Name = lEntity.Name.Trim();
+                }
+                var flag = false;
+                if (lEntity.Id == 0)
+                {
+                    logger.Info(string.Format("Add Set start | Set: {0} | UserName: {1}", lEntity.Name, Username));
+                    var tbl = new T_TEST_SET();
+                    tbl.SETID = Helper.NextTestSuiteId("SEQ_T_TEST_SET");
+                    tbl.SETNAME = lEntity.Name;
+                    tbl.DESCRIPTION = lEntity.Description;
+                    tbl.ACTIVE = lEntity.IsActive;
+                    tbl.CREATION_DATE = DateTime.Now;
+                    tbl.UPDATE_DATE = DateTime.Now;
+                    tbl.CREATION_USER = Username;
+                    tbl.UPDATE_CREATION_USER = Username;
+                    lEntity.Id = tbl.SETID;
+                    entity.T_TEST_SET.Add(tbl);
+                    entity.SaveChanges();
+                    flag = true;
+                    logger.Info(string.Format("Add Set end | Set: {0} | UserName: {1}", lEntity.Name, Username));
+                }
+                else
+                {
+                    logger.Info(string.Format("Edit Set start | Set: {0} | SetId: {1} | UserName: {2}", lEntity.Name, lEntity.Id, Username));
+                    var tbl = entity.T_TEST_SET.Find(lEntity.Id);
+
+                    if (tbl != null)
+                    {
+                        tbl.DESCRIPTION = lEntity.Description;
+                        tbl.ACTIVE = lEntity.IsActive;
+                        tbl.UPDATE_DATE = DateTime.Now;
+                        tbl.UPDATE_CREATION_USER = Username;
+                        entity.SaveChanges();
+                    }
+                    flag = true;
+                    logger.Info(string.Format("Edit Set end | Set: {0} | SetId: {1} | UserName: {2}", lEntity.Name, lEntity.Id, Username));
+                }
+                return flag;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured Set page in AddEditSet method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured Set page in AddEditSet method | UserName: {0}", Username), ex);
+                throw;
+            }
+        }
+
+        public bool CheckDuplicateSetNameExist(string Name, long? Id)
+        {
+            try
+            {
+                logger.Info(string.Format("Check Duplicate Set Name Exist start | Set: {0} | SetId: {1} | UserName: {2}", Name, Id, Username));
+                var lresult = false;
+                if (Id != null)
+                {
+                    lresult = entity.T_TEST_SET.Any(x => x.SETID != Id && x.SETNAME.ToLower().Trim() == Name.ToLower().Trim());
+                }
+                else
+                {
+                    lresult = entity.T_TEST_SET.Any(x => x.SETNAME.ToLower().Trim() == Name.ToLower().Trim());
+                }
+                logger.Info(string.Format("Check Duplicate Set Name Exist end | Set: {0} | SetId: {1} | UserName: {2}", Name, Id, Username));
+                return lresult;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured Set page in CheckDuplicateSetNameExist method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured Set page in CheckDuplicateSetNameExist method | UserName: {0}", Username), ex);
+                throw;
+            }
+        }
+
+        public List<DataTagCommonViewModel> ListOfFolder()
+        {
+            try
+            {
+                logger.Info(string.Format("ListOfFolder start | Username: {0}", Username));
+                var lList = entity.T_TEST_FOLDER.Select(y => new DataTagCommonViewModel
+                {
+                    Id = y.FOLDERID,
+                    Name = y.FOLDERNAME,
+                    Description = y.DESCRIPTION,
+                    IsActive = y.ACTIVE,
+                    Active = y.ACTIVE == 1 ? "Y" : "N"
+                }).OrderBy(z => z.Name).ToList();
+                logger.Info(string.Format("ListOfFolder end | Username: {0}", Username));
+                return lList;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured TestCase Repository in ListOfFolder method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase Repository in ListOfFolder method | UserName: {0}", Username), ex);
+                throw;
+            }
+        }
+
+        public bool AddEditFolder(DataTagCommonViewModel lEntity)
+        {
+            try
+            {
+                if (!string.IsNullOrEmpty(lEntity.Name))
+                {
+                    lEntity.Name = lEntity.Name.Trim();
+                }
+                var flag = false;
+                if (lEntity.Id == 0)
+                {
+                    logger.Info(string.Format("Add Folder start | Folder: {0} | UserName: {1}", lEntity.Name, Username));
+                    var tbl = new T_TEST_FOLDER();
+                    tbl.FOLDERID = Helper.NextTestSuiteId("SEQ_T_TEST_FOLDER");
+                    tbl.FOLDERNAME = lEntity.Name;
+                    tbl.DESCRIPTION = lEntity.Description;
+                    tbl.ACTIVE = lEntity.IsActive;
+                    tbl.CREATION_DATE = DateTime.Now;
+                    tbl.UPDATE_DATE = DateTime.Now;
+                    tbl.CREATION_USER = Username;
+                    tbl.UPDATE_CREATION_USER = Username;
+                    lEntity.Id = tbl.FOLDERID;
+                    entity.T_TEST_FOLDER.Add(tbl);
+                    entity.SaveChanges();
+                    flag = true;
+                    logger.Info(string.Format("Add Folder end | Folder: {0} | UserName: {1}", lEntity.Name, Username));
+                }
+                else
+                {
+                    logger.Info(string.Format("Edit Folder start | Folder: {0} | FolderId: {1} | UserName: {2}", lEntity.Name, lEntity.Id, Username));
+                    var tbl = entity.T_TEST_FOLDER.Find(lEntity.Id);
+
+                    if (tbl != null)
+                    {
+                        tbl.DESCRIPTION = lEntity.Description;
+                        tbl.ACTIVE = lEntity.IsActive;
+                        tbl.UPDATE_DATE = DateTime.Now;
+                        tbl.UPDATE_CREATION_USER = Username;
+                        entity.SaveChanges();
+                    }
+                    flag = true;
+                    logger.Info(string.Format("Edit Folder end | Folder: {0} | FolderId: {1} | UserName: {2}", lEntity.Name, lEntity.Id, Username));
+                }
+                return flag;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured Folder page in AddEditFolder method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured Folder page in AddEditFolder method | UserName: {0}", Username), ex);
+                throw;
+            }
+        }
+
+        public bool CheckDuplicateFolderNameExist(string Name, long? Id)
+        {
+            try
+            {
+                logger.Info(string.Format("Check Duplicate Folder Name Exist start | Folder: {0} | FolderId: {1} | UserName: {2}", Name, Id, Username));
+                var lresult = false;
+                if (Id != null)
+                {
+                    lresult = entity.T_TEST_FOLDER.Any(x => x.FOLDERID != Id && x.FOLDERNAME.ToLower().Trim() == Name.ToLower().Trim());
+                }
+                else
+                {
+                    lresult = entity.T_TEST_FOLDER.Any(x => x.FOLDERNAME.ToLower().Trim() == Name.ToLower().Trim());
+                }
+                logger.Info(string.Format("Check Duplicate Folder Name Exist end | Folder: {0} | FolderId: {1} | UserName: {2}", Name, Id, Username));
+                return lresult;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured Folder page in CheckDuplicateFolderNameExist method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured Folder page in CheckDuplicateFolderNameExist method | UserName: {0}", Username), ex);
+                throw;
+            }
+        }
+        public List<T_TEST_FOLDER> GetFolders()
+        {
+            try
+            {
+                logger.Info(string.Format("GetFolders start | Username: {0}", Username));
+                var folders = entity.T_TEST_FOLDER.Where(y => y.ACTIVE == 1).Distinct().ToList();
+                logger.Info(string.Format("GetFolders end | Username: {0}", Username));
+                return folders;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured TestCase Repository in GetFolders method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase Repository in GetFolders method | UserName: {0}", Username), ex);
+                throw;
+            }
+        }
+        public List<T_TEST_SET> GetSets()
+        {
+            try
+            {
+                logger.Info(string.Format("GetSets start | Username: {0}", Username));
+                var sets = entity.T_TEST_SET.Where(y => y.ACTIVE == 1).Distinct().ToList();
+                logger.Info(string.Format("GetSets end | Username: {0}", Username));
+                return sets;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured TestCase Repository in GetSets method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase Repository in GetSets method | UserName: {0}", Username), ex);
+                throw;
+            }
+        }
+        public List<T_TEST_GROUP> GetGroups()
+        {
+            try
+            {
+                logger.Info(string.Format("GetGroups start | Username: {0}", Username));
+                var groups = entity.T_TEST_GROUP.Where(y => y.ACTIVE == 1).Distinct().ToList();
+                logger.Info(string.Format("GetGroups end | Username: {0}", Username));
+                return groups;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured TestCase Repository in GetGroups method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase Repository in GetGroups method | UserName: {0}", Username), ex);
+                throw;
+            }
+        }
+        public List<DataSetTagModel> GetTagDetails(long datasetid)
+        {
+            try
+            {
+                logger.Info(string.Format("GetTagDetails start | datasetid: {0} | Username: {1}", datasetid, Username));
+                var tags = (from k in entity.T_TEST_DATASETTAG
+                            join k1 in entity.T_TEST_GROUP on k.GROUPID equals k1.GROUPID into grp
+                            from k2 in grp.DefaultIfEmpty()
+                            join k3 in entity.T_TEST_FOLDER on k.FOLDERID equals k3.FOLDERID into fold
+                            from k4 in fold.DefaultIfEmpty()
+                            join k5 in entity.T_TEST_SET on k.SETID equals k5.SETID into set
+                            from k6 in set.DefaultIfEmpty()
+
+                            where k.DATASETID == datasetid
+                            select new DataSetTagModel
+                            {
+                                Group = k2.GROUPNAME == null ? "" : k2.GROUPNAME,
+                                Set = k6.SETNAME == null ? "" : k6.SETNAME,
+                                Folder = k4.FOLDERNAME == null ? "" : k4.FOLDERNAME,
+                                Sequence = k.SEQUENCE == null ? 0 : k.SEQUENCE,
+                                Expectedresults = k.EXPECTEDRESULTS == null ? "" : k.EXPECTEDRESULTS,
+                                Diary = k.DIARY == null ? "" : k.DIARY,
+                                Datasetid = k.DATASETID == null ? 0 : k.DATASETID,
+                                Tagid = k.T_TEST_DATASETTAG_ID,
+                                StepDesc = k.STEPDESC == null ? "" : k.STEPDESC,
+
+                            }
+
+                     ).ToList();
+                logger.Info(string.Format("GetTagDetails end | datasetid: {0} | Username: {1}", datasetid, Username));
+                return tags;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured TestCase Repository in GetTagDetails method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase Repository in GetTagDetails method | UserName: {0}", Username), ex);
+                throw;
+            }
+        }
+        public List<DataSummaryModel> GetDataSetName(long datasetid)
+        {
+            try
+            {
+                logger.Info(string.Format("GetDataSetName start | datasetid: {0} | Username: {1}", datasetid, Username));
+                var dataset = entity.T_TEST_DATA_SUMMARY.Where(x => x.DATA_SUMMARY_ID == datasetid).Select(x => new DataSummaryModel
+                {
+                    DATA_SUMMARY_ID = x.DATA_SUMMARY_ID,
+                    Data_Summary_Name = x.ALIAS_NAME,
+                    Dataset_desc = x.DESCRIPTION_INFO
+                }
+       ).Distinct().ToList();
+                logger.Info(string.Format("GetDataSetName end | datasetid: {0} | Username: {1}", datasetid, Username));
+                return dataset;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured TestCase Repository in GetDataSetName method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase Repository in GetDataSetName method | UserName: {0}", Username), ex);
+                throw;
+            }
+        }
+
+        public string DeleteTagProperties(long datasetid)
+        {
+            try
+            {
+                logger.Info(string.Format("DeleteTagProperties start | datasetid: {0} | Username: {1}", datasetid, Username));
+                var result = entity.T_TEST_DATASETTAG.Where(x => x.DATASETID == datasetid).FirstOrDefault();
+                if (result != null)
+                {
+                    entity.T_TEST_DATASETTAG.Remove(result);
+                    entity.SaveChanges();
+                }
+                logger.Info(string.Format("DeleteTagProperties end | datasetid: {0} | Username: {1}", datasetid, Username));
+                return "success";
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured TestCase Repository in DeleteTagProperties method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase Repository in DeleteTagProperties method | UserName: {0}", Username), ex);
+                throw;
+            }
+        }
+        public bool CheckFolderSequenceMapping(long FolderId, long SequenceId,long datasetid)
+        {
+            try
+            {
+                logger.Info(string.Format("CheckFolderSequenceMapping start | datasetid: {0} | FolderId: {1} | SequenceId: {2} | Username: {2}", datasetid, FolderId, SequenceId, Username));
+                bool result = entity.T_TEST_DATASETTAG.Any(x => x.FOLDERID == FolderId && x.SEQUENCE == SequenceId && x.DATASETID != datasetid);
+                logger.Info(string.Format("CheckFolderSequenceMapping end | datasetid: {0} | FolderId: {1} | SequenceId: {2} | Username: {2}", datasetid, FolderId, SequenceId, Username));
+                return result;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured TestCase Repository in CheckFolderSequenceMapping method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase Repository in CheckFolderSequenceMapping method | UserName: {0}", Username), ex);
+                throw;
+            }
         }
     }
 }

@@ -79,11 +79,11 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="AddEditTestCase" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="AddEditTestCase" tabindex="-1" role="dialog" aria-labelledby="TCexampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Test Case</h5>
+                <h5 class="modal-title" id="TCexampleModalLabel">Test Case</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -329,8 +329,8 @@
 
         $("#testcasevalidate").css("display", "none");
         $("#existtestcasename").css("display", "none");
-        $("#exampleModalLabel").text('');
-        $("#exampleModalLabel").text('Add Test Case');
+        $("#TCexampleModalLabel").text('');
+        $("#TCexampleModalLabel").text('Add Test Case');
       $("#AddEditTestCase").modal("show");
       $("#addedittestcase").attr("disabled", false);
         $("#hdnTestCaseId").val("");
@@ -349,8 +349,8 @@
     function AddEditTestCase(Id, editObj) {
         $("#testcasevalidate").css("display", "none");
         $("#existtestcasename").css("display", "none");
-        $("#exampleModalLabel").text('');
-        $("#exampleModalLabel").text('Edit Test Case');
+        $("#TCexampleModalLabel").text('');
+        $("#TCexampleModalLabel").text('Edit Test Case');
       $("#AddEditTestCase").modal("show");
       $("#addedittestcase").attr("disabled", false);
         var lTestCaseId = Id;
@@ -395,7 +395,7 @@
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "error",
+                        "icon": "error",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -455,7 +455,7 @@
                         swal.fire({
                             "title": "",
                             "text": result.message,
-                            "type": "success",
+                            "icon": "success",
                             "onClose": function (e) {
                                 console.log('on close event fired!');
                             }
@@ -494,7 +494,7 @@
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "error",
+                        "icon": "error",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -542,7 +542,7 @@
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "error",
+                        "icon": "error",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -561,7 +561,7 @@
         swal.fire({
             title: 'Please confirm.',
             text: "This action can not be undone.",
-            type: 'warning',
+            icon: 'warning',
             showCancelButton: true,
             confirmButtonText: 'Yes, delete it!'
         }).then(function (result) {
@@ -603,7 +603,7 @@
                             swal.fire({
                                 "title": "",
                                 "text": result.message,
-                                "type": "error",
+                                "icon": "error",
                                 "onClose": function (e) {
                                     console.log('on close event fired!');
                                 }
@@ -639,7 +639,7 @@
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "error",
+                        "icon": "error",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }

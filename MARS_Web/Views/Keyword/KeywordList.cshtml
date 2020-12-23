@@ -29,6 +29,10 @@
                     <a href="#" class="kt-subheader__breadcrumbs-link" style="color:#1c6081">
                         Keyword
                     </a>
+                    <i class="fa fa-angle-double-right" style="color:#1c6081"></i>
+                    <a href="#" class="kt-subheader__breadcrumbs-link" style="color:#1c6081">
+                        &nbsp;
+                    </a>
                 </div>
             </div>
         </div>
@@ -53,11 +57,11 @@
                     </div>
                 }
                 </div>
-            <div class="modal fade" id="AddKeyword" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="AddKeyword" tabindex="-1" role="dialog" aria-labelledby="kwexampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Add Keyword</h5>
+                            <h5 class="modal-title" id="kwexampleModalLabel">Add Keyword</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -302,8 +306,8 @@
     });
 
     function AddEditKeyword(Id, editObj) {
-        $("#exampleModalLabel").text('');
-        $("#exampleModalLabel").text('Edit Keyword');
+        $("#kwexampleModalLabel").text('');
+        $("#kwexampleModalLabel").text('Edit Keyword');
       $("#addedkeyword").attr("disabled", false);
         $("#existkeywordname").css("display", "none");
         $("#AddKeyword").modal("show");
@@ -325,8 +329,8 @@
     function AddKeyword() {
         $("#existkeywordname").css("display", "none");
         $("#addedkeyword").attr("disabled", false);
-        $("#exampleModalLabel").text('');
-        $("#exampleModalLabel").text('Add Keyword');
+        $("#kwexampleModalLabel").text('');
+        $("#kwexampleModalLabel").text('Add Keyword');
         $("#AddKeyword").modal("show");
         $("#hdnKeywordId").val("");
         $("#keywordname").val("");
@@ -339,7 +343,7 @@
         swal.fire({
             title: 'Please confirm.',
             text: "This action can not be undone.",
-            type: 'warning',
+            icon: 'warning',
             showCancelButton: true,
             confirmButtonText: 'Yes, delete it!'
         }).then(function (result) {
@@ -380,7 +384,7 @@
                             swal.fire({
                                 "title": "",
                                 "text": result.message,
-                                "type": "error",
+                                "icon": "error",
                                 "onClose": function (e) {
                                     console.log('on close event fired!');
                                 }
@@ -443,7 +447,7 @@
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "success",
+                        "icon": "success",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -452,7 +456,7 @@
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "error",
+                        "icon": "error",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -486,7 +490,7 @@
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "error",
+                        "icon": "error",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }

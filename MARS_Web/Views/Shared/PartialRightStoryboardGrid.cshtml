@@ -14,7 +14,7 @@
        swal.fire({
            "title": "",
            "text": "@lMsg",
-           "type": "success",
+           "icon": "success",
            "onClose": function (e) {
                console.log('on close event fired!');
            }
@@ -54,7 +54,7 @@
         SAVEButtonStyle = "block";
     }
 }
-            <style>
+<style>
     .SBExportRoleHide{
         display:@ExButtonstyle !important;
     }
@@ -68,7 +68,7 @@
         display:@SAVEButtonStyle !important;
     }
 
-            </style>
+</style>
 
 @if (ViewBag.ProjectId != null && ViewBag.StoryBoardId != null && ViewBag.ProjectId != 0 && ViewBag.StoryBoardId != 0)
 {
@@ -195,7 +195,7 @@
                                 swal.fire({
                                     "title": "",
                                     "text": result.message,
-                                    "type": "error",
+                                    "icon": "error",
                                     "onClose": function (e) {
                                         console.log('on close event fired!');
                                     }
@@ -253,7 +253,7 @@
                            swal.fire({
                                "title": "",
                                "text": result.message,
-                               "type": "error",
+                               "icon": "error",
                                "onClose": function (e) {
                                    console.log('on close event fired!');
                                }
@@ -313,7 +313,7 @@
                            swal.fire({
                                "title": "",
                                "text": result.message,
-                               "type": "error",
+                               "icon": "error",
                                "onClose": function (e) {
                                    console.log('on close event fired!');
                                }
@@ -374,7 +374,7 @@
                                 swal.fire({
                                     "title": "",
                                     "text": result.message,
-                                    "type": "error",
+                                    "icon": "error",
                                     "onClose": function (e) {
                                         console.log('on close event fired!');
                                     }
@@ -486,7 +486,7 @@
                                 swal.fire({
                                     "title": "",
                                     "text": result.message,
-                                    "type": "error",
+                                    "icon": "error",
                                     "onClose": function (e) {
                                         console.log('on close event fired!');
                                     }
@@ -699,11 +699,17 @@
                     },
                     {
                         type: 'button', label: '', attr: 'title="Reload"', cls: 'btn btn-brand btn-elevate btn-icon-sm bgImage ', icon: "flaticon2-reload", listener: function () {
-                            var lStoryboardName = gridobj['@lstoryboardgrid'].pdata[0].Storyboardname;
+                            var lStoryboardName = "";
+                            if (gridobj['.gridMTP_STRB'].pdata[0] != undefined) {
+                                lStoryboardName = gridobj['@lstoryboardgrid'].pdata[0].Storyboardname;
+                            } else {
+                                lStoryboardName = "@lstoryboardgrid".replace(".grid", "");
+                            }
+                                
                             swal.fire({
                                 title: '',
                                 text: "All changes in [" + lStoryboardName +"] will be discarded.  Please confirm",
-                                type: 'warning',
+                                icon: 'warning',
                                 showCancelButton: true,
                                 confirmButtonText: 'Yes'
                             }).then(function (result) {
@@ -877,7 +883,7 @@
            swal.fire({
                title: 'Export',
                text: "There are unsaved changes. Export will not contain these changes. Please confirm or cancel export.",
-               type: 'warning',
+               icon: 'warning',
                showCancelButton: true,
                confirmButtonText: 'Yes'
            }).then(function (result) {
@@ -974,6 +980,9 @@
                           var cscriptstart = "";
                           var cscriptend = "";
                           var description = "";
+						  
+						 // result.data = result.data.replace("\\","\\\\");
+
                           result.data = JSON.parse(result.data);
                           if (result.data.length > 0) {
                               for (i = 0; i < result.data.length; i++) {
@@ -1019,6 +1028,9 @@
                                   if (result.data[i].BErrorcause != null) {
                                       berrcause = result.data[i].BErrorcause;
                                       berrcause = berrcause.trim();
+                                      
+                                      berrcause = berrcause.replace("	", "");
+                                      
                                   }
                                   else {
                                       berrcause = "";
@@ -1057,6 +1069,8 @@
                                   }
                                   if (result.data[i].CErrorcause != null) {
                                       cerrcause = result.data[i].CErrorcause;
+                                      cerrcause = cerrcause.trim();
+                                      cerrcause = cerrcause.replace("	", "");
                                   }
                                   else {
                                       cerrcause = "";
@@ -1100,7 +1114,10 @@
                                   jsonData += "}";
                               }
                               jsonData += "]";
-
+							  debugger;
+								//jsonData = jsonData.replace("\\","\\\\");
+                              jsonData = jsonData.replaceAll("\\\\r", " ");
+                              jsonData = jsonData.replaceAll("\\\\n", " ");
                               data = JSON.parse(jsonData);
                           }
 
@@ -1113,7 +1130,7 @@
                           swal.fire({
                               "title": "",
                               "text": result.message,
-                              "type": "error",
+                              "icon": "error",
                               "onClose": function (e) {
                                   console.log('on close event fired!');
                               }
@@ -1146,6 +1163,8 @@
                           var cerrcause = "";
                           var cscriptstart = "";
                           var cscriptend = "";
+						  debugger;
+						  //result.data = result.data.replace("\\","\\\\");
                           result.data = JSON.parse(result.data);
                           if (result.data.length > 0) {
                               for (i = 0; i < result.data.length; i++) {
@@ -1163,6 +1182,10 @@
                                   }
                                   if (result.data[i].BErrorcause != null) {
                                       berrcause = result.data[i].BErrorcause;
+                                      berrcause = berrcause.trim();
+
+                                      berrcause = berrcause.replace("	", "");
+
                                   }
                                   else {
                                       berrcause = "";
@@ -1202,6 +1225,10 @@
                                   }
                                   if (result.data[i].CErrorcause != null) {
                                       cerrcause = result.data[i].CErrorcause;
+                                      cerrcause = cerrcause.trim();
+
+                                      cerrcause = cerrcause.replace("	", "");
+
                                   }
                                   else {
                                       cerrcause = "";
@@ -1242,6 +1269,9 @@
                                   jsonData += "}";
                               }
                               jsonData += "]";
+							  debugger;
+                              jsonData = jsonData.replaceAll("\\\\r", " ");
+                              jsonData = jsonData.replaceAll("\\\\n", " ");
                               data = JSON.parse(jsonData);
                           }
 
@@ -1295,7 +1325,7 @@
                           swal.fire({
                               "title": "",
                               "text": result.message,
-                              "type": "error",
+                              "icon": "error",
                               "onClose": function (e) {
                                   console.log('on close event fired!');
                               }
@@ -1361,7 +1391,7 @@
                 swal.fire({
                     "title": "",
                     "text": "Validation errors in the Storyboard. Please correct them",
-                    "type": "error",
+                    "icon": "error",
                     "onClose": function (e) {
                         console.log('on close event fired!');
                     }
@@ -1383,7 +1413,7 @@
                 swal.fire({
                     "title": "",
                     "text": "Actions,Test Suite,Test Case and Dataset fields are required.",
-                    "type": "error",
+                    "icon": "error",
                     "onClose": function (e) {
                         console.log('on close event fired!');
                     }
@@ -1417,7 +1447,7 @@
                             swal.fire({
                                 "title": "",
                                 "text": result.message,
-                                "type": "success",
+                                "icon": "success",
                                 "onClose": function (e) {
                                     console.log('on close event fired!');
                                 }
@@ -1443,7 +1473,7 @@
                         swal.fire({
                             "title": "",
                             "text": result.message,
-                            "type": "error",
+                            "icon": "error",
                             "onClose": function (e) {
                                 console.log('on close event fired!');
                             }
@@ -1468,7 +1498,7 @@
                 swal.fire({
                     "title": "",
                     "text": "Please correct validation errors",
-                    "type": "error",
+                    "icon": "error",
                     "onClose": function (e) {
                         console.log('on close event fired!');
                     }
@@ -1491,7 +1521,7 @@
                 swal.fire({
                     "title": "",
                     "text": "Action,Test Suite,Test Case and Dataset fields are required.",
-                    "type": "error",
+                    "icon": "error",
                     "onClose": function (e) {
                         console.log('on close event fired!');
                     }
@@ -1524,7 +1554,7 @@
                             swal.fire({
                                 "title": "",
                                 "text": result.message,
-                                "type": "success",
+                                "icon": "success",
                                 "onClose": function (e) {
                                     console.log('on close event fired!');
                                 }
@@ -1562,7 +1592,7 @@
                         swal.fire({
                             "title": "",
                             "text": result.message,
-                            "type": "error",
+                            "icon": "error",
                             "onClose": function (e) {
                                 console.log('on close event fired!');
                             }
@@ -1671,7 +1701,7 @@
                       swal.fire({
                           "title": "",
                           "text": result.message,
-                          "type": "error",
+                          "icon": "error",
                           "onClose": function (e) {
                               console.log('on close event fired!');
                           }

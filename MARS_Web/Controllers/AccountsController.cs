@@ -56,6 +56,7 @@ namespace MARS_Web.Controllers
             return PartialView();
         }
 
+        //This method will load all the data and filter them
         [HttpPost]
         public JsonResult DataLoad()
         {
@@ -246,6 +247,7 @@ namespace MARS_Web.Controllers
             return PartialView(lModel);
         }
 
+        //Add/Update User objects values
         [HttpPost]
         public JsonResult AddEditUser(UserModel userModel)
         {
@@ -330,6 +332,7 @@ namespace MARS_Web.Controllers
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
 
+        //Delete the User object data by ID
         [HttpPost]
         public JsonResult DeleteUser(int id)
         {
@@ -540,7 +543,7 @@ namespace MARS_Web.Controllers
         #endregion
 
         #region Changes User Status
-
+        // Chnage user Status by Id
         [HttpPost]
         public JsonResult ChangeUserStatus(int Id, int Checked)
         {
@@ -586,6 +589,7 @@ namespace MARS_Web.Controllers
             return PartialView();
         }
 
+        //This method will load all the data and filter them
         [HttpPost]
         public JsonResult DataLoadUserActivePage()
         {
@@ -679,6 +683,7 @@ namespace MARS_Web.Controllers
             }
         }
 
+        //Delete the Active User object data by ID
         [HttpPost]
         public JsonResult DeleteActiveUser(long id)
         {
@@ -702,6 +707,7 @@ namespace MARS_Web.Controllers
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
 
+        //Add/Delete User Pin/UnPin objects values
         [HttpPost]
         public JsonResult UserPinUnPinTab(string datatab, long dataid, string dataname, string linkText, long ProjectId)
         {
@@ -726,6 +732,7 @@ namespace MARS_Web.Controllers
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
 
+        //check Pin tab already exist or not 
         [HttpPost]
         public JsonResult CheckPinExist(string datatab, long dataid, long ProjectId)
         {
@@ -749,6 +756,7 @@ namespace MARS_Web.Controllers
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
 
+        //This method get all storyboard
         [HttpPost]
         public JsonResult GetStoryboradNameyId(long StoryBoardid)
         {
@@ -772,6 +780,7 @@ namespace MARS_Web.Controllers
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
 
+        //This method get all TestsuiteId by TeastcaseId
         [HttpPost]
         public JsonResult GetTestsuiteIdByTeastcaseId(long Tid)
         {
@@ -899,6 +908,7 @@ namespace MARS_Web.Controllers
 
         #endregion
 
+        //This method get dataset list by Id 
         [HttpPost]
         public ActionResult GetDataSetListbyId(long lTestCaseId)
         {

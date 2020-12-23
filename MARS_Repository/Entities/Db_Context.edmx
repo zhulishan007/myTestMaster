@@ -766,6 +766,20 @@ warning 6002: The table/view 'GEN_MARS_4.T_REGISTED_OBJECT_TEST' does not have a
           <Property Name="STATUS" Type="number" Precision="2" Scale="0" />
           <Property Name="DATA_SET_TYPE" Type="number" Precision="2" Scale="0" />
         </EntityType>
+        <EntityType Name="T_TEST_DATASETTAG">
+          <Key>
+            <PropertyRef Name="T_TEST_DATASETTAG_ID" />
+          </Key>
+          <Property Name="T_TEST_DATASETTAG_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+          <Property Name="DATASETID" Type="number" Precision="16" Scale="0" />
+          <Property Name="GROUPID" Type="number" Precision="16" Scale="0" />
+          <Property Name="SETID" Type="number" Precision="16" Scale="0" />
+          <Property Name="FOLDERID" Type="number" Precision="16" Scale="0" />
+          <Property Name="EXPECTEDRESULTS" Type="varchar2" MaxLength="256" />
+          <Property Name="STEPDESC" Type="varchar2" MaxLength="256" />
+          <Property Name="DIARY" Type="varchar2" MaxLength="256" />
+          <Property Name="SEQUENCE" Type="number" Precision="38" Scale="0" />
+        </EntityType>
         <EntityType Name="T_TEST_ENUM">
           <Key>
             <PropertyRef Name="ENUM_ID" />
@@ -773,6 +787,32 @@ warning 6002: The table/view 'GEN_MARS_4.T_REGISTED_OBJECT_TEST' does not have a
           <Property Name="ENUM_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
           <Property Name="ENUM_TYPE" Type="varchar2" MaxLength="100" />
           <Property Name="ENUM_VALUE" Type="varchar2" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="T_TEST_FOLDER">
+          <Key>
+            <PropertyRef Name="FOLDERID" />
+          </Key>
+          <Property Name="FOLDERID" Type="number" Precision="16" Scale="0" Nullable="false" />
+          <Property Name="FOLDERNAME" Type="varchar2" MaxLength="32" />
+          <Property Name="DESCRIPTION" Type="varchar2" MaxLength="1024" />
+          <Property Name="ACTIVE" Type="number" Precision="2" Scale="0" />
+          <Property Name="CREATION_DATE" Type="date" />
+          <Property Name="UPDATE_DATE" Type="date" />
+          <Property Name="CREATION_USER" Type="varchar2" MaxLength="50" />
+          <Property Name="UPDATE_CREATION_USER" Type="varchar2" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="T_TEST_GROUP">
+          <Key>
+            <PropertyRef Name="GROUPID" />
+          </Key>
+          <Property Name="GROUPID" Type="number" Precision="16" Scale="0" Nullable="false" />
+          <Property Name="GROUPNAME" Type="varchar2" MaxLength="32" />
+          <Property Name="DESCRIPTION" Type="varchar2" MaxLength="1024" />
+          <Property Name="ACTIVE" Type="number" Precision="2" Scale="0" />
+          <Property Name="CREATION_DATE" Type="date" />
+          <Property Name="UPDATE_DATE" Type="date" />
+          <Property Name="CREATION_USER" Type="varchar2" MaxLength="50" />
+          <Property Name="UPDATE_CREATION_USER" Type="varchar2" MaxLength="20" />
         </EntityType>
         <EntityType Name="T_TEST_PRIVILEGE">
           <Key>
@@ -834,7 +874,7 @@ warning 6002: The table/view 'GEN_MARS_4.T_REGISTED_OBJECT_TEST' does not have a
           <Property Name="BEGIN_TIME" Type="date" />
           <Property Name="END_TIME" Type="date" />
           <Property Name="RUNNING_RESULT" Type="number" Precision="2" Scale="0" />
-          <Property Name="RETURN_VALUES" Type="varchar2" MaxLength="64" />
+          <Property Name="RETURN_VALUES" Type="varchar2" MaxLength="266" />
           <Property Name="RUNNING_RESULT_INFO" Type="varchar2" MaxLength="1024" />
           <Property Name="DATA_SUMMARY_ID" Type="number" Precision="16" Scale="0" />
           <Property Name="INPUT_VALUE_SETTING" Type="varchar2" MaxLength="1024" />
@@ -853,6 +893,19 @@ warning 6002: The table/view 'GEN_MARS_4.T_REGISTED_OBJECT_TEST' does not have a
           <Property Name="ISACTIVE" Type="number" Precision="1" Scale="0" />
           <Property Name="CREATOR" Type="varchar2" MaxLength="50" />
           <Property Name="CREATOR_DATE" Type="date" />
+        </EntityType>
+        <EntityType Name="T_TEST_SET">
+          <Key>
+            <PropertyRef Name="SETID" />
+          </Key>
+          <Property Name="SETID" Type="number" Precision="16" Scale="0" Nullable="false" />
+          <Property Name="SETNAME" Type="varchar2" MaxLength="32" />
+          <Property Name="DESCRIPTION" Type="varchar2" MaxLength="1024" />
+          <Property Name="ACTIVE" Type="number" Precision="2" Scale="0" />
+          <Property Name="CREATION_DATE" Type="date" />
+          <Property Name="UPDATE_DATE" Type="date" />
+          <Property Name="CREATION_USER" Type="varchar2" MaxLength="50" />
+          <Property Name="UPDATE_CREATION_USER" Type="varchar2" MaxLength="50" />
         </EntityType>
         <EntityType Name="T_TEST_STEPS">
           <Key>
@@ -2308,13 +2361,17 @@ warning 6002: The table/view 'GEN_MARS_4.V_USER_COMPANY' does not have a primary
           <EntitySet Name="T_TEST_CASE_SUMMARY" EntityType="Self.T_TEST_CASE_SUMMARY" Schema="GEN_MARS_4" store:Type="Tables" />
           <EntitySet Name="T_TEST_CASE_VERSION" EntityType="Self.T_TEST_CASE_VERSION" Schema="GEN_MARS_4" store:Type="Tables" />
           <EntitySet Name="T_TEST_DATA_SUMMARY" EntityType="Self.T_TEST_DATA_SUMMARY" Schema="GEN_MARS_4" store:Type="Tables" />
+          <EntitySet Name="T_TEST_DATASETTAG" EntityType="Self.T_TEST_DATASETTAG" Schema="GEN_MARS_4" store:Type="Tables" />
           <EntitySet Name="T_TEST_ENUM" EntityType="Self.T_TEST_ENUM" Schema="GEN_MARS_4" store:Type="Tables" />
+          <EntitySet Name="T_TEST_FOLDER" EntityType="Self.T_TEST_FOLDER" Schema="GEN_MARS_4" store:Type="Tables" />
+          <EntitySet Name="T_TEST_GROUP" EntityType="Self.T_TEST_GROUP" Schema="GEN_MARS_4" store:Type="Tables" />
           <EntitySet Name="T_TEST_PRIVILEGE" EntityType="Self.T_TEST_PRIVILEGE" Schema="GEN_MARS_4" store:Type="Tables" />
           <EntitySet Name="T_TEST_PRIVILEGE_ROLE_MAPPING" EntityType="Self.T_TEST_PRIVILEGE_ROLE_MAPPING" Schema="GEN_MARS_4" store:Type="Tables" />
           <EntitySet Name="T_TEST_PROJECT" EntityType="Self.T_TEST_PROJECT" Schema="GEN_MARS_4" store:Type="Tables" />
           <EntitySet Name="T_TEST_REPORT" EntityType="Self.T_TEST_REPORT" Schema="GEN_MARS_4" store:Type="Tables" />
           <EntitySet Name="T_TEST_REPORT_STEPS" EntityType="Self.T_TEST_REPORT_STEPS" Schema="GEN_MARS_4" store:Type="Tables" />
           <EntitySet Name="T_TEST_ROLES" EntityType="Self.T_TEST_ROLES" Schema="GEN_MARS_4" store:Type="Tables" />
+          <EntitySet Name="T_TEST_SET" EntityType="Self.T_TEST_SET" Schema="GEN_MARS_4" store:Type="Tables" />
           <EntitySet Name="T_TEST_STEPS" EntityType="Self.T_TEST_STEPS" Schema="GEN_MARS_4" store:Type="Tables" />
           <EntitySet Name="T_TEST_SUITE" EntityType="Self.T_TEST_SUITE" Schema="GEN_MARS_4" store:Type="Tables" />
           <EntitySet Name="T_TEST_USER_ROLE_MAPPING" EntityType="Self.T_TEST_USER_ROLE_MAPPING" Schema="GEN_MARS_4" store:Type="Tables" />
@@ -5376,6 +5433,10 @@ FROM "GEN_MARS_4"."V_USER_COMPANY" "V_USER_COMPANY"</DefiningQuery>
           <EntitySet Name="T_TEST_PRIVILEGE_ROLE_MAPPING" EntityType="Model.T_TEST_PRIVILEGE_ROLE_MAPPING" />
           <EntitySet Name="T_TEST_ROLES" EntityType="Model.T_TEST_ROLES" />
           <EntitySet Name="T_TEST_USER_ROLE_MAPPING" EntityType="Model.T_TEST_USER_ROLE_MAPPING" />
+          <EntitySet Name="T_TEST_FOLDER" EntityType="Model.T_TEST_FOLDER" />
+          <EntitySet Name="T_TEST_GROUP" EntityType="Model.T_TEST_GROUP" />
+          <EntitySet Name="T_TEST_SET" EntityType="Model.T_TEST_SET" />
+          <EntitySet Name="T_TEST_DATASETTAG" EntityType="Model.T_TEST_DATASETTAG" />
         </EntityContainer>
         <EntityType Name="T_USER_ACTIVEPAGE">
           <Key>
@@ -5493,6 +5554,59 @@ FROM "GEN_MARS_4"."V_USER_COMPANY" "V_USER_COMPANY"</DefiningQuery>
           <Property Name="ISACTIVE" Type="Int16" />
           <Property Name="CREATOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="CREATOR_DATE" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="T_TEST_FOLDER">
+          <Key>
+            <PropertyRef Name="FOLDERID" />
+          </Key>
+          <Property Name="FOLDERID" Type="Int64" Nullable="false" />
+          <Property Name="FOLDERNAME" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+          <Property Name="ACTIVE" Type="Int16" />
+          <Property Name="CREATION_DATE" Type="DateTime" />
+          <Property Name="UPDATE_DATE" Type="DateTime" />
+          <Property Name="CREATION_USER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UPDATE_CREATION_USER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="T_TEST_GROUP">
+          <Key>
+            <PropertyRef Name="GROUPID" />
+          </Key>
+          <Property Name="GROUPID" Type="Int64" Nullable="false" />
+          <Property Name="GROUPNAME" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+          <Property Name="ACTIVE" Type="Int16" />
+          <Property Name="CREATION_DATE" Type="DateTime" />
+          <Property Name="UPDATE_DATE" Type="DateTime" />
+          <Property Name="CREATION_USER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UPDATE_CREATION_USER" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="T_TEST_SET">
+          <Key>
+            <PropertyRef Name="SETID" />
+          </Key>
+          <Property Name="SETID" Type="Int64" Nullable="false" />
+          <Property Name="SETNAME" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+          <Property Name="ACTIVE" Type="Int16" />
+          <Property Name="CREATION_DATE" Type="DateTime" />
+          <Property Name="UPDATE_DATE" Type="DateTime" />
+          <Property Name="CREATION_USER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UPDATE_CREATION_USER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="T_TEST_DATASETTAG">
+          <Key>
+            <PropertyRef Name="T_TEST_DATASETTAG_ID" />
+          </Key>
+          <Property Name="T_TEST_DATASETTAG_ID" Type="Int64" Nullable="false" />
+          <Property Name="DATASETID" Type="Int64" />
+          <Property Name="GROUPID" Type="Int64" />
+          <Property Name="SETID" Type="Int64" />
+          <Property Name="FOLDERID" Type="Int64" />
+          <Property Name="EXPECTEDRESULTS" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="STEPDESC" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="DIARY" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="SEQUENCE" Type="Decimal" Precision="38" Scale="0" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -6993,6 +7107,63 @@ FROM "GEN_MARS_4"."V_USER_COMPANY" "V_USER_COMPANY"</DefiningQuery>
                 <ScalarProperty Name="ROLE_ID" ColumnName="ROLE_ID" />
                 <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
                 <ScalarProperty Name="USER_ROLE_MAP_ID" ColumnName="USER_ROLE_MAP_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_TEST_FOLDER">
+            <EntityTypeMapping TypeName="Model.T_TEST_FOLDER">
+              <MappingFragment StoreEntitySet="T_TEST_FOLDER">
+                <ScalarProperty Name="UPDATE_CREATION_USER" ColumnName="UPDATE_CREATION_USER" />
+                <ScalarProperty Name="CREATION_USER" ColumnName="CREATION_USER" />
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+                <ScalarProperty Name="CREATION_DATE" ColumnName="CREATION_DATE" />
+                <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="FOLDERNAME" ColumnName="FOLDERNAME" />
+                <ScalarProperty Name="FOLDERID" ColumnName="FOLDERID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_TEST_GROUP">
+            <EntityTypeMapping TypeName="Model.T_TEST_GROUP">
+              <MappingFragment StoreEntitySet="T_TEST_GROUP">
+                <ScalarProperty Name="UPDATE_CREATION_USER" ColumnName="UPDATE_CREATION_USER" />
+                <ScalarProperty Name="CREATION_USER" ColumnName="CREATION_USER" />
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+                <ScalarProperty Name="CREATION_DATE" ColumnName="CREATION_DATE" />
+                <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="GROUPNAME" ColumnName="GROUPNAME" />
+                <ScalarProperty Name="GROUPID" ColumnName="GROUPID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_TEST_SET">
+            <EntityTypeMapping TypeName="Model.T_TEST_SET">
+              <MappingFragment StoreEntitySet="T_TEST_SET">
+                <ScalarProperty Name="UPDATE_CREATION_USER" ColumnName="UPDATE_CREATION_USER" />
+                <ScalarProperty Name="CREATION_USER" ColumnName="CREATION_USER" />
+                <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+                <ScalarProperty Name="CREATION_DATE" ColumnName="CREATION_DATE" />
+                <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="SETNAME" ColumnName="SETNAME" />
+                <ScalarProperty Name="SETID" ColumnName="SETID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_TEST_DATASETTAG">
+            <EntityTypeMapping TypeName="Model.T_TEST_DATASETTAG">
+              <MappingFragment StoreEntitySet="T_TEST_DATASETTAG">
+                <ScalarProperty Name="SEQUENCE" ColumnName="SEQUENCE" />
+                <ScalarProperty Name="DIARY" ColumnName="DIARY" />
+                <ScalarProperty Name="STEPDESC" ColumnName="STEPDESC" />
+                <ScalarProperty Name="EXPECTEDRESULTS" ColumnName="EXPECTEDRESULTS" />
+                <ScalarProperty Name="FOLDERID" ColumnName="FOLDERID" />
+                <ScalarProperty Name="SETID" ColumnName="SETID" />
+                <ScalarProperty Name="GROUPID" ColumnName="GROUPID" />
+                <ScalarProperty Name="DATASETID" ColumnName="DATASETID" />
+                <ScalarProperty Name="T_TEST_DATASETTAG_ID" ColumnName="T_TEST_DATASETTAG_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

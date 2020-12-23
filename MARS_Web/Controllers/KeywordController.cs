@@ -53,6 +53,8 @@ namespace MARS_Web.Controllers
             }
             return PartialView("KeywordList");
         }
+
+        //This method will load all the data and filter them
         [HttpPost]
         public JsonResult DataLoad()
         {
@@ -108,6 +110,7 @@ namespace MARS_Web.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
 
+        //Add/Update Keyword objects values
         [HttpPost]
         public JsonResult AddEditKeyword(KeywordViewModel lModel)
         {
@@ -139,6 +142,7 @@ namespace MARS_Web.Controllers
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
 
+        //Delete the Keyword object data by Keywordid
         public ActionResult DeletKeyword(long Keywordid)
         {
             logger.Info(string.Format("keyword Delete start | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
@@ -184,6 +188,7 @@ namespace MARS_Web.Controllers
         #endregion
 
         #region Checks whether the keyword with same name exists in the system or not
+        //Check Keyword name already exist or not
         public JsonResult CheckDuplicateKeywordNameExist(string keywordname, long? KeywordId)
         {
             ResultModel resultModel = new ResultModel();

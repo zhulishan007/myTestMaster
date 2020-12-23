@@ -197,7 +197,7 @@
                            
                             var lRenderHtml = "";
                             if (lEditObjdisplay == "true") {
-                                lRenderHtml = " <a href='#' class='btn btn-sm btn-clean btn-icon btn-icon-md' title='View'  data-name='" + lName + "' data-objecttype='" + objecttype + "'  data-app='" + lApplication + "' data-quickaccess='" + quickaccess + "'  data-parent='" + parent + "' data-description='" + description + "' data-autocheckerrorid='" + autocheckerrorid + "' onclick=EditPopupShow(" + lid + ",$(this))><i class='la la-edit' ></i></a> ";
+                                lRenderHtml = " <a href='#' class='btn btn-sm btn-clean btn-icon btn-icon-md' title='Edit'  data-name='" + lName + "' data-objecttype='" + objecttype + "'  data-app='" + lApplication + "' data-quickaccess='" + quickaccess + "'  data-parent='" + parent + "' data-description='" + description + "' data-autocheckerrorid='" + autocheckerrorid + "' onclick=EditPopupShow(" + lid + ",$(this))><i class='la la-edit' ></i></a> ";
                             }
                             if (lDeleteObjdisplay == "true") {
                                 lRenderHtml = lRenderHtml + "<a href='#' class='btn btn-sm btn-clean btn-icon btn-icon-md' title='Delete'  data-app='" + lApplication + "' onclick='deleteObject(" + lid + ",$(this))' ><i class='la la-trash la-xs'></i></a>";
@@ -307,7 +307,7 @@
                         swal.fire({
                             "title": "",
                             "text": result.message,
-                            "type": "error",
+                            "icon": "error",
                             "onClose": function (e) {
                                 console.log('on close event fired!');
                             }

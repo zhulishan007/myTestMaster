@@ -202,6 +202,7 @@ namespace MARS_Web.Controllers
             return lMsg;
         }
 
+        //This method will be check User exist or not 
         [HttpPost]
         public JsonResult CheckUserExist(string lUserLogin, string lPassword, string lconnection)
         {
@@ -235,7 +236,7 @@ namespace MARS_Web.Controllers
                     resultModel.message = msg;
                     logger.Error(string.Format("{0} | UserName: {1} | Password: {2} | DataBase: {3} | Ip Address: {4}", msg, lUserLogin, lPassword, lconnection, ipAddress));
                 }
-                resultModel.status = 0;
+                resultModel.status = 1;
             }
             catch (Exception ex)
             {
@@ -359,6 +360,7 @@ namespace MARS_Web.Controllers
             }
         }
 
+        //This Method will chnage Password 
         [HttpPost]
         public JsonResult ResetPwd(string TESTER_PWD, string emailid)
         {
@@ -527,6 +529,8 @@ namespace MARS_Web.Controllers
             return PartialView(lstoryboardlist);
         }
         #endregion
+
+        #region Create Dynamic Connection String 
         public List<DBconnectionViewModel> GetEncodingConnList(List<T_DBCONNECTION> dBconnections)
         {
             var data = new List<DBconnectionViewModel>();
@@ -569,5 +573,6 @@ namespace MARS_Web.Controllers
                 return null;
             }
         }
+        #endregion
     }
 }

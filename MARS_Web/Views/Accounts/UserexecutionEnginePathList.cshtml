@@ -39,7 +39,7 @@
                     "lengthMenu": [10, 100, 1000],
                     "ajax": {
                         "url": "/Accounts/LoadExePathList",
-                        "type": "POST",
+                        "icon": "POST",
                         "datatype": "json",
                         "data": {
                             // parameters for custom backend script demo
@@ -221,7 +221,7 @@
                         swal.fire({
                             "title": "",
                             "text": "Successfully submitted User.",
-                            "type": "success",
+                            "icon": "success",
                             "onClose": function (e) {
                                 console.log('on close event fired!');
                             }
@@ -233,7 +233,7 @@
                         swal.fire({
                             "title": "",
                             "text": "User has the exe path already.",
-                            "type": "error",
+                            "icon": "error",
                             "onClose": function (e) {
                                 console.log('on close event fired!');
                             }
@@ -302,7 +302,7 @@
             swal.fire({
                 title: 'Are you sure?',
                 text: "You won't be able to revert this!",
-                type: 'warning',
+                icon: 'warning',
                 showCancelButton: true,
                 confirmButtonText: 'Yes, delete it!'
             }).then(function (result) {

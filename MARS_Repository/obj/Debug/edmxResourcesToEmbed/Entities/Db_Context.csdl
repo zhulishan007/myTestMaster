@@ -2324,6 +2324,10 @@
     <EntitySet Name="T_TEST_PRIVILEGE_ROLE_MAPPING" EntityType="Model.T_TEST_PRIVILEGE_ROLE_MAPPING" />
     <EntitySet Name="T_TEST_ROLES" EntityType="Model.T_TEST_ROLES" />
     <EntitySet Name="T_TEST_USER_ROLE_MAPPING" EntityType="Model.T_TEST_USER_ROLE_MAPPING" />
+    <EntitySet Name="T_TEST_FOLDER" EntityType="Model.T_TEST_FOLDER" />
+    <EntitySet Name="T_TEST_GROUP" EntityType="Model.T_TEST_GROUP" />
+    <EntitySet Name="T_TEST_SET" EntityType="Model.T_TEST_SET" />
+    <EntitySet Name="T_TEST_DATASETTAG" EntityType="Model.T_TEST_DATASETTAG" />
   </EntityContainer>
   <EntityType Name="T_USER_ACTIVEPAGE">
     <Key>
@@ -2441,5 +2445,58 @@
     <Property Name="ISACTIVE" Type="Int16" />
     <Property Name="CREATOR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="CREATOR_DATE" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="T_TEST_FOLDER">
+    <Key>
+      <PropertyRef Name="FOLDERID" />
+    </Key>
+    <Property Name="FOLDERID" Type="Int64" Nullable="false" />
+    <Property Name="FOLDERNAME" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="DESCRIPTION" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+    <Property Name="ACTIVE" Type="Int16" />
+    <Property Name="CREATION_DATE" Type="DateTime" />
+    <Property Name="UPDATE_DATE" Type="DateTime" />
+    <Property Name="CREATION_USER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UPDATE_CREATION_USER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="T_TEST_GROUP">
+    <Key>
+      <PropertyRef Name="GROUPID" />
+    </Key>
+    <Property Name="GROUPID" Type="Int64" Nullable="false" />
+    <Property Name="GROUPNAME" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="DESCRIPTION" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+    <Property Name="ACTIVE" Type="Int16" />
+    <Property Name="CREATION_DATE" Type="DateTime" />
+    <Property Name="UPDATE_DATE" Type="DateTime" />
+    <Property Name="CREATION_USER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UPDATE_CREATION_USER" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="T_TEST_SET">
+    <Key>
+      <PropertyRef Name="SETID" />
+    </Key>
+    <Property Name="SETID" Type="Int64" Nullable="false" />
+    <Property Name="SETNAME" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="DESCRIPTION" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" />
+    <Property Name="ACTIVE" Type="Int16" />
+    <Property Name="CREATION_DATE" Type="DateTime" />
+    <Property Name="UPDATE_DATE" Type="DateTime" />
+    <Property Name="CREATION_USER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UPDATE_CREATION_USER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="T_TEST_DATASETTAG">
+    <Key>
+      <PropertyRef Name="T_TEST_DATASETTAG_ID" />
+    </Key>
+    <Property Name="T_TEST_DATASETTAG_ID" Type="Int64" Nullable="false" />
+    <Property Name="DATASETID" Type="Int64" />
+    <Property Name="GROUPID" Type="Int64" />
+    <Property Name="SETID" Type="Int64" />
+    <Property Name="FOLDERID" Type="Int64" />
+    <Property Name="EXPECTEDRESULTS" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="STEPDESC" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="DIARY" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="SEQUENCE" Type="Decimal" Precision="38" Scale="0" />
   </EntityType>
 </Schema>

@@ -362,6 +362,8 @@ namespace MARS_Web.Controllers
             }
             return PartialView("ProjectsList");
         }
+
+        //This method will load all the data and filter them
         [HttpPost]
         public JsonResult DataLoad()
         {
@@ -418,6 +420,8 @@ namespace MARS_Web.Controllers
             }, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
+
+        //Add/Update Project objects values
         public JsonResult AddEditProject(ProjectViewModel lModel)
         {
             logger.Info(string.Format("Project Add/Edit  Modal open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
@@ -447,6 +451,8 @@ namespace MARS_Web.Controllers
             }
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
+
+        //Delete the Project object data by projectid
         public ActionResult DeleteProject(long projectid)
         {
             logger.Info(string.Format("project Delete start | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
@@ -476,6 +482,8 @@ namespace MARS_Web.Controllers
             }
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
+
+        //Check Project name already exist or not
         public JsonResult CheckDuplicateProjectNameExist(string ProjectName, long? ProjectId)
         {
             ResultModel resultModel = new ResultModel();

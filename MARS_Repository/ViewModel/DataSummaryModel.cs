@@ -10,5 +10,6 @@ namespace MARS_Repository.ViewModel
     {
         public long DATA_SUMMARY_ID { get; set; }
         public string Data_Summary_Name { get; set; }
+        public string Dataset_desc { get; set; }
     }
 }

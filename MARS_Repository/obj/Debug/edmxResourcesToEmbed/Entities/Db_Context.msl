@@ -1497,5 +1497,62 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="T_TEST_FOLDER">
+      <EntityTypeMapping TypeName="Model.T_TEST_FOLDER">
+        <MappingFragment StoreEntitySet="T_TEST_FOLDER">
+          <ScalarProperty Name="UPDATE_CREATION_USER" ColumnName="UPDATE_CREATION_USER" />
+          <ScalarProperty Name="CREATION_USER" ColumnName="CREATION_USER" />
+          <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="CREATION_DATE" ColumnName="CREATION_DATE" />
+          <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="FOLDERNAME" ColumnName="FOLDERNAME" />
+          <ScalarProperty Name="FOLDERID" ColumnName="FOLDERID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_TEST_GROUP">
+      <EntityTypeMapping TypeName="Model.T_TEST_GROUP">
+        <MappingFragment StoreEntitySet="T_TEST_GROUP">
+          <ScalarProperty Name="UPDATE_CREATION_USER" ColumnName="UPDATE_CREATION_USER" />
+          <ScalarProperty Name="CREATION_USER" ColumnName="CREATION_USER" />
+          <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="CREATION_DATE" ColumnName="CREATION_DATE" />
+          <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="GROUPNAME" ColumnName="GROUPNAME" />
+          <ScalarProperty Name="GROUPID" ColumnName="GROUPID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_TEST_SET">
+      <EntityTypeMapping TypeName="Model.T_TEST_SET">
+        <MappingFragment StoreEntitySet="T_TEST_SET">
+          <ScalarProperty Name="UPDATE_CREATION_USER" ColumnName="UPDATE_CREATION_USER" />
+          <ScalarProperty Name="CREATION_USER" ColumnName="CREATION_USER" />
+          <ScalarProperty Name="UPDATE_DATE" ColumnName="UPDATE_DATE" />
+          <ScalarProperty Name="CREATION_DATE" ColumnName="CREATION_DATE" />
+          <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="SETNAME" ColumnName="SETNAME" />
+          <ScalarProperty Name="SETID" ColumnName="SETID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_TEST_DATASETTAG">
+      <EntityTypeMapping TypeName="Model.T_TEST_DATASETTAG">
+        <MappingFragment StoreEntitySet="T_TEST_DATASETTAG">
+          <ScalarProperty Name="SEQUENCE" ColumnName="SEQUENCE" />
+          <ScalarProperty Name="DIARY" ColumnName="DIARY" />
+          <ScalarProperty Name="STEPDESC" ColumnName="STEPDESC" />
+          <ScalarProperty Name="EXPECTEDRESULTS" ColumnName="EXPECTEDRESULTS" />
+          <ScalarProperty Name="FOLDERID" ColumnName="FOLDERID" />
+          <ScalarProperty Name="SETID" ColumnName="SETID" />
+          <ScalarProperty Name="GROUPID" ColumnName="GROUPID" />
+          <ScalarProperty Name="DATASETID" ColumnName="DATASETID" />
+          <ScalarProperty Name="T_TEST_DATASETTAG_ID" ColumnName="T_TEST_DATASETTAG_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

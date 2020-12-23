@@ -23,27 +23,8 @@ namespace MARS_Web.Controllers
         }
         Logger logger = LogManager.GetLogger("Log");
         Logger ELogger = LogManager.GetLogger("ErrorLog");
-        public JsonResult GetTSTCDSName(string TestCasename, string TestSuitname, string Datasetname)
-        {
-            ResultModel resultModel = new ResultModel();
-            try
-            {
-                var lRep = new TestCaseRepository();
-                var result = lRep.GetTSTCDSId(TestCasename, TestSuitname, Datasetname);
-                string[] fresult = result.Split(',');
-
-                resultModel.data = fresult;
-                resultModel.status = 1;
-            }
-            catch (Exception ex)
-            {
-                logger.Error(string.Format("Error occured in user page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in user page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
-                resultModel.status = 0;
-                resultModel.message = ex.Message.ToString();
-            }
-            return Json(resultModel, JsonRequestBehavior.AllowGet);
-        }
+        
+        // Main page after login User 
         public ActionResult Index(int TestcaseId = 0, int TestsuiteId = 0, int ProjectId = 0)
         {
             try
@@ -99,6 +80,8 @@ namespace MARS_Web.Controllers
             }
             return View();
         }
+
+        #region Right Side Display PqGrid
         public ActionResult PartialRightStoryboardGrid(int Projectid = 0, int Storyboardid = 0)
         {
             try
@@ -211,7 +194,29 @@ namespace MARS_Web.Controllers
             }
             return PartialView("RightSideGridView");
         }
+        #endregion
 
+        public JsonResult GetTSTCDSName(string TestCasename, string TestSuitname, string Datasetname)
+        {
+            ResultModel resultModel = new ResultModel();
+            try
+            {
+                var lRep = new TestCaseRepository();
+                var result = lRep.GetTSTCDSId(TestCasename, TestSuitname, Datasetname);
+                string[] fresult = result.Split(',');
+
+                resultModel.data = fresult;
+                resultModel.status = 1;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in user page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in user page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                resultModel.status = 0;
+                resultModel.message = ex.Message.ToString();
+            }
+            return Json(resultModel, JsonRequestBehavior.AllowGet);
+        }
         public ActionResult GetSBBreadcum(string lProjectId, string lStoryboardId)
         {
             ResultModel resultModel = new ResultModel();

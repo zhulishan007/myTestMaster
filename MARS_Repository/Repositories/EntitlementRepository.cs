@@ -113,7 +113,7 @@ namespace MARS_Repository.Repositories
                     model.RoleId = string.Join(",", userrolelist.Where(y => y.RoleId > 0).Select(x => x.RoleId).Distinct());
                     lList.Add(model);
                 }
-                logger.Info(string.Format("ListOfUserRoleMapping start | Username: {0}", Username));
+                logger.Info(string.Format("ListOfUserRoleMapping end | Username: {0}", Username));
                 return lList;
             }
             catch (Exception ex)

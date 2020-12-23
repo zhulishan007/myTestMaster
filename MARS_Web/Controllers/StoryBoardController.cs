@@ -55,6 +55,7 @@ namespace MARS_Web.Controllers
             return PartialView();
         }
 
+        //Add/Update Storyboard objects values
         public ActionResult AddEditStoryboard(StoryboardModel model)
         {
             logger.Info(string.Format("Satoryboard Add/Edit  Modal open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
@@ -93,6 +94,7 @@ namespace MARS_Web.Controllers
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
 
+        //This method will load all the data and filter them
         [HttpPost]
         public JsonResult DataLoad()
         {
@@ -133,6 +135,8 @@ namespace MARS_Web.Controllers
                 data = data
             }, JsonRequestBehavior.AllowGet);
         }
+
+        //Delete the Storyboard object data by StoryboardID
         public ActionResult DeleteStoryboard(long sid)
         {
             logger.Info(string.Format("Delete Storyboard start | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
@@ -434,7 +438,6 @@ namespace MARS_Web.Controllers
             }
             return PartialView();
         }
-
         public ActionResult ImportStoryboards()
         {
             ViewBag.FileName = "";
@@ -565,7 +568,9 @@ namespace MARS_Web.Controllers
 
                 jsonresult = jsonresult.Replace("\\r", "\\\\r");
                 jsonresult = jsonresult.Replace("\\n", "\\\\n");
-
+                jsonresult = jsonresult.Replace("   ", "");
+                jsonresult = jsonresult.Replace("\\", "\\\\");
+                jsonresult = jsonresult.Trim();
                 resultModel.status = 1;
                 resultModel.data = jsonresult;
             }
@@ -1104,6 +1109,7 @@ namespace MARS_Web.Controllers
         #endregion
 
         #region Shows the Test results
+        //This method Get TestResult by TestCaseId and StoryboardDetailId
         public ActionResult GetTestResult(long TestCaseId, long StoryboardDetailId, string StoryboardName = "", long RunOrder = 0)
         {
             try
@@ -1121,6 +1127,7 @@ namespace MARS_Web.Controllers
             return PartialView("_SBTestResult");
         }
 
+        //This method Get TestResult List by TestCaseId and StoryboardDetailId
         public ActionResult GetTestResultList(long TestCaseId, long StoryboardDetailId)
         {
             ResultModel resultModel = new ResultModel();
@@ -1145,6 +1152,7 @@ namespace MARS_Web.Controllers
         #endregion
 
         #region shows Compare Result
+        //This method Get Compare ResultSet by TestCaseId, StoryboardDetailId, BhistedId and ChistedId
         [HttpPost]
         public ActionResult GetCompareResultSet(long BhistedId, long ChistedId, long TestCaseId, long StoryboardDetailId)
         {
@@ -1177,6 +1185,7 @@ namespace MARS_Web.Controllers
             return PartialView("_SBCompareResult");
         }
 
+        //This method Get Compare ResultSet List by BhistedId and ChistedId
         public ActionResult GetCompareResultList(long BhistedId, long ChistedId)
         {
             ResultModel resultModel = new ResultModel();
@@ -1201,6 +1210,7 @@ namespace MARS_Web.Controllers
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
 
+        //Add/Update ResultData objects values
         public ActionResult SaveSbResultData(string lgridchange, string lgrid, long BaselineReportId, long CompareReportId,long TestCaseId, long StoryboardDetailId)
         {
             ResultModel resultModel = new ResultModel();
@@ -1423,6 +1433,7 @@ namespace MARS_Web.Controllers
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
 
+        //Validate ResultData objects values
         public ActionResult ValidationSbResultData(string lgridchange, string lgrid)
         {
             ResultModel resultModel = new ResultModel();
@@ -1510,6 +1521,7 @@ namespace MARS_Web.Controllers
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
 
+        //SaveAs ResultData by BhistedId and ChistedId
         [HttpPost]
         public ActionResult SaveAsResultSet(long BhistedId, long ChistedId)
         {
@@ -1533,6 +1545,7 @@ namespace MARS_Web.Controllers
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
 
+        //This method will Save Result list
         public ActionResult SaveResultList(string lchangedGrid, long lhistedId, long latestTestMarkId, long TestCaseId, long StoryboardDetailId)
         {
             ResultModel resultModel = new ResultModel();
@@ -1621,6 +1634,7 @@ namespace MARS_Web.Controllers
         }
 
         #region ResultSet Import/Export
+        //This method will export ResultSet by Storyboard
         public JsonResult ExportStoryboardResultSet(int Storyboardid, int Projectid,int Mode)
         {
             string name = "Log__ResultSetExport" + DateTime.Now.ToString(" yyyy-MM-dd HH-mm-ss") + ".xlsx";
@@ -1713,6 +1727,7 @@ namespace MARS_Web.Controllers
             return Json(name, JsonRequestBehavior.AllowGet);
         }
 
+        //This method will export ResultSet
         public JsonResult ExportProjectResultSet(int Projectid, int Mode)
         {
             string name = "Log__ResultSetExport" + DateTime.Now.ToString(" yyyy-MM-dd HH-mm-ss") + ".xlsx";
@@ -1803,7 +1818,7 @@ namespace MARS_Web.Controllers
             return Json(name, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult ImportResultSet()
+        public ActionResult ImportResultSet(int projectId = 0)
         {
             var userId = SessionManager.TESTER_ID;
             var repAcc = new ConfigurationGridRepository();
@@ -1813,12 +1828,14 @@ namespace MARS_Web.Controllers
             var repTree = new GetTreeRepository();
             var lSchema = SessionManager.Schema;
             var lConnectionStr = SessionManager.APP;
+            ViewBag.projectid = projectId == 0 ? "" : projectId.ToString();
             var result = repTree.GetProjectList(SessionManager.TESTER_ID, lSchema, lConnectionStr);
             ViewBag.projectlist = result.Select(c => new SelectListItem { Text = c.ProjectName, Value = c.ProjectId.ToString() }).OrderBy(x => x.Text).ToList();
             ViewBag.width = Rgriddata.Resize == null ? ConfigurationManager.AppSettings["DefultLeftPanel"] + "px" : Rgriddata.Resize.Trim() + "px";
             return PartialView();
         }
 
+        //This method will Import ResultSet File
         public ActionResult ImportResultSets(int ProjectId, int Mode, string Name = "", string Desc = "")
         {
             ViewBag.FileName = "";
@@ -1903,7 +1920,6 @@ namespace MARS_Web.Controllers
                                 objcommon.excel(dbtable.dt_Log, strPath, "Import", "", "RESULTSET");
                                 return Json(fileName + ",success", JsonRequestBehavior.AllowGet);
                             }
-
                         }
                     }
                 }
