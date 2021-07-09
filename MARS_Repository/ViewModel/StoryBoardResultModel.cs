@@ -24,10 +24,12 @@ namespace MARS_Repository.ViewModel
     public string BTestResult { get; set; }
     public string BErrorcause { get; set; }
     public DateTime? BScriptstart { get; set; }
+    public string Bstart { get; set; }
     public DateTime? BScriptend { get; set; }
     public string CTestResult { get; set; }
     public string CErrorcause { get; set; }
     public DateTime? CScriptstart { get; set; }
+    public string Cstart { get; set; }
     public DateTime? CScriptend { get; set; }
     public string Description { get; set; }
     public long Suiteid { get; set; }

@@ -31,8 +31,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured grid page in ListAllGrid method | Username: {0} |", Username));
-                ELogger.ErrorException(string.Format("Error occured grid page in ListAllGrid method | Username: {0}", Username), ex);
+                logger.Error(string.Format("Error occured Grid in ListAllGrid method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured Grid in ListAllGrid method | UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured Grid in ListAllGrid method |UserName: {0}", Username), ex.InnerException);
                 throw;
             }
         }
@@ -57,8 +59,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured grid page in ListAllGrid method | Username: {0} |", Username));
-                ELogger.ErrorException(string.Format("Error occured grid page in ListAllGrid method | Username: {0}", Username), ex);
+                logger.Error(string.Format("Error occured Grid in GetGridbyId method | User Id: {0} | Username: {1}", userId, Username));
+                ELogger.ErrorException(string.Format("Error occured Grid in GetGridbyId method | User Id: {0} | Username: {1}", userId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured Grid in GetGridbyId method | User Id: {0} | Username: {1}", userId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -219,8 +223,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured grid page in AddEditAppGridWidth method | Username: {0} |", Username));
-                ELogger.ErrorException(string.Format("Error occured grid page in AddEditAppGridWidth method | Username: {0}", Username), ex);
+                logger.Error(string.Format("Error occured Grid in AddEditAppGridWidth method | User Id: {0} | Username: {1}", UserId, Username));
+                ELogger.ErrorException(string.Format("Error occured Grid in AddEditAppGridWidth method | User Id: {0} | Username: {1}", UserId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured Grid in AddEditAppGridWidthUs method | User Id: {0} | Username: {1}", UserId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -243,8 +249,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in GetGridList Method | UseName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured in GetGridList Method | UseName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured Grid in GetGridList method | User Id: {0} | Grid Name : {1} | Username: {1}", userId, gridname, Username));
+                ELogger.ErrorException(string.Format("Error occured Grid in GetGridList method | User Id: {0} | Grid Name : {1} | Username: {1}", userId, gridname, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured Grid in GetGridList method | User Id: {0} | Grid Name : {1} | Username: {1}", userId, gridname, Username), ex.InnerException);
                 throw;
             }
         }
@@ -366,8 +374,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured grid page in AddEditProjectGridWidth method | Username: {0} |", Username));
-                ELogger.ErrorException(string.Format("Error occured grid page in AddEditProjectGridWidth method | Username: {0}", Username), ex);
+                logger.Error(string.Format("Error occured Grid in AddEditProjectGridWidth method | User Id: {0} | Username: {1}", UserId, Username));
+                ELogger.ErrorException(string.Format("Error occured Grid in AddEditProjectGridWidth method | User Id: {0} | Username: {1}", UserId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured Grid in AddEditProjectGridWidth method | User Id: {0} | Username: {1}", UserId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -468,8 +478,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured grid page in AddEditKeywordGridWidth method | Username: {0} |", Username));
-                ELogger.ErrorException(string.Format("Error occured grid page in AddEditKeywordGridWidth method | Username: {0}", Username), ex);
+                logger.Error(string.Format("Error occured Grid in AddEditKeywordGridWidth method | User Id: {0} | Username: {1}", UserId, Username));
+                ELogger.ErrorException(string.Format("Error occured Grid in AddEditKeywordGridWidth method | User Id: {0} | Username: {1}", UserId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured Grid in AddEditKeywordGridWidth method | User Id: {0} | Username: {1}", UserId, Username), ex.InnerException);
                 throw;
             }
            
@@ -589,8 +601,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured grid page in AddEditTestSuiteGridWidth method | Username: {0} |", Username));
-                ELogger.ErrorException(string.Format("Error occured grid page in AddEditTestSuiteGridWidth method | Username: {0}", Username), ex);
+                logger.Error(string.Format("Error occured Grid in AddEditTestSuiteGridWidth method | User Id: {0} | Username: {1}", UserId, Username));
+                ELogger.ErrorException(string.Format("Error occured Grid in AddEditTestSuiteGridWidth method | User Id: {0} | Username: {1}", UserId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured Grid in AddEditTestSuiteGridWidth method | User Id: {0} | Username: {1}", UserId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -849,8 +863,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured grid page in AddEditObjectGridWidth method | Username: {0} |", Username));
-                ELogger.ErrorException(string.Format("Error occured grid page in AddEditObjectGridWidth method | Username: {0}", Username), ex);
+                logger.Error(string.Format("Error occured Grid in AddEditObjectGridWidth method | User Id: {0} | Username: {1}", UserId, Username));
+                ELogger.ErrorException(string.Format("Error occured Grid in AddEditObjectGridWidth method | User Id: {0} | Username: {1}", UserId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured Grid in AddEditObjectGridWidth method | User Id: {0} | Username: {1}", UserId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -969,8 +985,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured grid page in AddEditObjectGridWidth method | Username: {0} |", Username));
-                ELogger.ErrorException(string.Format("Error occured grid page in AddEditObjectGridWidth method | Username: {0}", Username), ex);
+                logger.Error(string.Format("Error occured Grid in AddEditVaribleGridWidth method | User Id: {0} | Username: {1}", UserId, Username));
+                ELogger.ErrorException(string.Format("Error occured Grid in AddEditVaribleGridWidth method | User Id: {0} | Username: {1}", UserId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured Grid in AddEditVaribleGridWidth method | User Id: {0} | Username: {1}", UserId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -1149,8 +1167,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured grid page in AddEditUserGridWidth method | Username: {0} |", Username));
-                ELogger.ErrorException(string.Format("Error occured grid page in AddEditUserGridWidth method | Username: {0}", Username), ex);
+                logger.Error(string.Format("Error occured Grid in AddEditUserGridWidth method | User Id: {0} | Username: {1}", UserId, Username));
+                ELogger.ErrorException(string.Format("Error occured Grid in AddEditUserGridWidth method | User Id: {0} | Username: {1}", UserId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured Grid in AddEditUserGridWidth method | User Id: {0} | Username: {1}", UserId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -1250,8 +1270,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured grid page in AddEditTestCasePqGridWidth method | Username: {0} |", Username));
-                ELogger.ErrorException(string.Format("Error occured grid page in AddEditTestCasePqGridWidth method | Username: {0}", Username), ex);
+                logger.Error(string.Format("Error occured Grid in AddEditTestCasePqGridWidth method | TestCaseGrid: {0} | User Id: {1} | Username: {2}", testcasePqGrid.KeywordId, UserId, Username));
+                ELogger.ErrorException(string.Format("Error occured Grid in AddEditTestCasePqGridWidth method | TestCaseGrid: {0} | User Id: {1} | Username: {2}", testcasePqGrid.KeywordId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured Grid in AddEditTestCasePqGridWidth method | TestCaseGrid: {0} | User Id: {1} | Username: {2}", testcasePqGrid.KeywordId, UserId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -1570,8 +1592,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured grid page in AddEditStoryboardPqGridWidth method | Username: {0} |", Username));
-                ELogger.ErrorException(string.Format("Error occured grid page in AddEditStoryboardPqGridWidth method | Username: {0}", Username), ex);
+                logger.Error(string.Format("Error occured Grid in AddEditStoryboardPqGridWidth method | StoryboardPqGrid: {0} | User Id: {1} | Username: {2}", storyboardPqGrid.GridId, UserId, Username));
+                ELogger.ErrorException(string.Format("Error occured Grid in AddEditStoryboardPqGridWidth method | StoryboardPqGrid: {0} | User Id: {1} | Username: {2}", storyboardPqGrid.GridId, UserId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured Grid in AddEditStoryboardPqGridWidth method | StoryboardPqGrid: {0} | User Id: {1} | Username: {2}", storyboardPqGrid.GridId, UserId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -1611,8 +1635,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured grid page in AddEditLeftPanelGridWidth method | Username: {0} |", Username));
-                ELogger.ErrorException(string.Format("Error occured grid page in AddEditLeftPanelGridWidth method | Username: {0}", Username), ex);
+                logger.Error(string.Format("Error occured Grid in AddEditLeftPanelGridWidth method | LeftPanelGrid: {0} | User Id: {1} | Username: {2}", LRmodel.GridId, UserId, Username));
+                ELogger.ErrorException(string.Format("Error occured Grid in AddEditLeftPanelGridWidth method | LeftPanelGrid: {0} | User Id: {1} | Username: {2}", LRmodel.GridId, UserId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured Grid in AddEditLeftPanelGridWidth method | LeftPanelGrid: {0} | User Id: {1} | Username: {2}", LRmodel.GridId, UserId, Username), ex.InnerException);
                 throw;
             }
         }

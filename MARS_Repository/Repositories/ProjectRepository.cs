@@ -29,8 +29,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured stoaryborad export in GetProjectNameById method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured stoaryborad export in GetProjectNameById method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in Project for GetProjectNameById method | Project Id : {0} | UserName: {1}", Projectid, Username));
+                ELogger.ErrorException(string.Format("Error occured in Project for GetProjectNameById method | Project Id : {0} | UserName: {1}", Projectid, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Project for GetProjectNameById method | Project Id : {0} | UserName: {1}", Projectid, Username), ex.InnerException);
                 throw;
             }
         }
@@ -45,8 +47,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured ProjectRepository in ListProject method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured ProjectRepository in ListProject method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in Project for ListProject method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured in Project for ListProject method |UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Project for ListProject method | UserName: {0}", Username), ex.InnerException);
                 throw;
             }
         }
@@ -88,8 +92,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured ProjectRepository in SaveProjectByUserId method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured ProjectRepository in SaveProjectByUserId method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in Project for SaveProjectByUserId method | User Id : {0} | UserName: {1}", userid, Username));
+                ELogger.ErrorException(string.Format("Error occured in Project for SaveProjectByUserId method | User Id : {0} | UserName: {1}", userid, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Project for SaveProjectByUserId method | User Id : {0} | UserName: {1}", userid, Username), ex.InnerException);
                 throw;
             }
         }
@@ -115,8 +121,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured ProjectRepository in DeleteProjectUserMapping method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured ProjectRepository in DeleteProjectUserMapping method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in Project for DeleteProjectUserMapping method | User Id : {0} | UserName: {1}", uid, Username));
+                ELogger.ErrorException(string.Format("Error occured in Project for DeleteProjectUserMapping method | User Id : {0} | UserName: {1}", uid, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Project for DeleteProjectUserMapping method | User Id : {0} | UserName: {1}", uid, Username), ex.InnerException);
                 throw;
             }
         }
@@ -143,8 +151,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured ProjectRepository in ListProjectModel method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured ProjectRepository in ListProjectModel method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in Project for ListProjectModel method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured in Project for ListProjectModel method |UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Project for ListProjectModel method | UserName: {0}", Username), ex.InnerException);
                 throw;
             }
         }
@@ -165,8 +175,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured project page in ChangeProjectName method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured project page in ChangeProjectName method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in Project for ChangeProjectName method | Project Id : {0} | Project Name : {1} | Preject Desc : {2} | UserName: {3}", lProjectId, lProjectName, lProjectdesc, Username));
+                ELogger.ErrorException(string.Format("Error occured in Project for ChangeProjectName method | Project Id : {0} | Project Name : {1} | Preject Desc : {2} | UserName: {3}", lProjectId, lProjectName, lProjectdesc, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Project for ChangeProjectName method | Project Id : {0} | Project Name : {1} | Preject Desc : {2} | UserName: {3}", lProjectId, lProjectName, lProjectdesc, Username), ex.InnerException);
                 throw;
             }
         }
@@ -190,8 +202,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured project page in CheckDuplicateProjectName method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured project page in CheckDuplicateProjectName method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in Project for CheckDuplicateProjectName method | Project Id : {0} | Project Name : {1} | UserName: {2}", lProjectId, lProjectName, Username));
+                ELogger.ErrorException(string.Format("Error occured in Project for CheckDuplicateProjectName method | Project Id : {0} | Project Name : {1} | UserName: {2}", lProjectId, lProjectName, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Project for CheckDuplicateProjectName method |Project Id : {0} | Project Name : {1} | UserName: {2}", lProjectId, lProjectName, Username), ex.InnerException);
                 throw;
             }
         }
@@ -221,8 +235,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured ProjectRepository in ListRelProjectApp method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured ProjectRepository in ListRelProjectApp method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in Project for ListRelProjectApp method | Application Id : {0} | UserName: {1}", ApplicationId, Username));
+                ELogger.ErrorException(string.Format("Error occured in Project for ListRelProjectApp method | Application Id : {0} | UserName: {1}", ApplicationId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Project for ListRelProjectApp method | Application Id : {0} | UserName: {1}", ApplicationId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -285,8 +301,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured stoaryborad export in ExportProject method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured stoaryborad export in ExportProject method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in Project for ExportProject method | Project Name : {0} | Connection String : {1} | Schema : {2} | UserName: {2}", projectname, lstrConn, schema, Username));
+                ELogger.ErrorException(string.Format("Error occured in Project for ExportProject method | Project Name : {0} | Connection String : {1} | Schema : {2} | UserName: {2}", projectname, lstrConn, schema, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Project for ExportProject method | Project Name : {0} | Connection String : {1} | Schema : {2} | UserName: {2}", projectname, lstrConn, schema, Username), ex.InnerException);
                 throw;
             }
         }
@@ -301,8 +319,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured project page in ListAllProject method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured project page in ListAllProject method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in Project for GetProjectNamebyId method | Project Id : {0} | UserName: {1}", projectid, Username));
+                ELogger.ErrorException(string.Format("Error occured in Project for GetProjectNamebyId method | Project Id : {0} | UserName: {1}", projectid, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Project for GetProjectNamebyId method | Project Id : {0} | UserName: {1}", projectid, Username), ex.InnerException);
                 throw;
             }
         }
@@ -363,8 +383,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured project page in ListAllProject method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured project page in ListAllProject method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in Project for DeleteProject method | Project Id : {0} | UserName: {1}", projectid, Username));
+                ELogger.ErrorException(string.Format("Error occured in Project for DeleteProject method | Project Id : {0} | UserName: {1}", projectid, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Project for DeleteProject method | Project Id : {0} | UserName: {1}", projectid, Username), ex.InnerException);
                 throw;
             }
         }
@@ -450,8 +472,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured project page in ListAllProject method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured project page in ListAllProject method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in Project for ListAllProject method | Connection String : {0} | Schema : {1} | UserName: {2}", lconstring, schema, Username));
+                ELogger.ErrorException(string.Format("Error occured in Project for ListAllProject method | Connection String : {0} | Schema : {1} | UserName: {2}", lconstring, schema, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Project for ListAllProject method | Connection String : {0} | Schema : {1} | UserName: {2}", lconstring, schema, Username), ex.InnerException);
                 throw;
             }
         }
@@ -528,8 +552,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured project page in AddEditProject method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured project page in AddEditProject method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in Project for AddEditProject method | Project Id : {0} | UserName: {1}", lEntity.ProjectId, Username));
+                ELogger.ErrorException(string.Format("Error occured in Project for AddEditProject method | Project Id : {0} | UserName: {1}", lEntity.ProjectId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Project for AddEditProject method | Project Id : {0} | UserName: {1}", lEntity.ProjectId, Username), ex.InnerException);
                 throw;
             }
         }

@@ -326,6 +326,9 @@
         $("#TSexampleModalLabel").text('Edit Test Suite');
         $("#testsuitevalidate").css("display", "none");
         $("#AddTestSuite").modal("show");
+        $('.modal-dialog').draggable({
+            handle: ".modal-header"
+        });
         $("#addedittestsuite").attr("disabled", false);
         $("#existtestsuitename").css("display", "none");
         var lTestSuiteId = Id;
@@ -444,7 +447,9 @@
         $("#TSexampleModalLabel").text('');
         $("#TSexampleModalLabel").text('Add Test Suite');
         $("#AddTestSuite").modal("show");
-
+        $('.modal-dialog').draggable({
+            handle: ".modal-header"
+        });
         $("#existtestsuitename").css("display", "none");
         $("#hdnTestSuiteId").val("");
         $("#testsuitename").val("");

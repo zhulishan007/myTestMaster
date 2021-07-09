@@ -147,22 +147,6 @@
                         }
                     });
 
-                    // hide search column for responsive table
-                    //var hideSearchColumnResponsive = function () {
-                    //    thisTable.api().columns().every(function () {
-                    //        var column = this
-                    //        if (column.responsiveHidden()) {
-                    //            $(rowFilter).find('th').eq(column.index()).show();
-                    //        } else {
-                    //            $(rowFilter).find('th').eq(column.index()).hide();
-                    //        }
-                    //    })
-                    //};
-
-                    //// init on datatable load
-                    //hideSearchColumnResponsive();
-                    //// recheck on window resize
-                    //window.onresize = hideSearchColumnResponsive;
                 },
                 columnDefs: [
                     {
@@ -199,7 +183,7 @@
         swal.fire({
             title: 'Please confirm.',
             text: "This action can not be undone.",
-            type: 'warning',
+            icon: 'warning',
             showCancelButton: true,
             confirmButtonText: 'Yes, delete it!'
         }).then(function (result) {
@@ -211,22 +195,32 @@
                     url: "/Project/DeleteUserProjectMapping",
                     data: { userid: id },
                     success: function (result) {
-                        if (result.Status == "success") {
+                        if (result.status == 1 && result.data.Status == "success") {
                             swal.fire({
                                 "title": "",
-                                "text": "Successfully deleted Project mappings for user [" + result.Username + "]",
-                                "type": "success",
+                                "text": "Successfully deleted Project mappings for user [" + result.data.Username + "]",
+                                "icon": "success",
                                 "onClose": function (e) {
                                     console.log('on close event fired!');
                                 }
                             });
                             UpTable.table().draw();
                         }
+                        else if (result.status == 0) {
+                            swal.fire({
+                                "title": "",
+                                "text": result.message,
+                                "icon": "error",
+                                "onClose": function (e) {
+                                    console.log('on close event fired!');
+                                }
+                            });
+                        }
                         else {
                             swal.fire({
                                 "title": "",
                                 "text": "No Projects are mapped to this user.",
-                                "type": "error",
+                                "icon": "error",
                                 "onClose": function (e) {
                                     console.log('on close event fired!');
                                 }

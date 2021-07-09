@@ -61,7 +61,10 @@
     </Reference>
     <Reference Include="MARSUtility, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>DLL\MARSUtility.dll</HintPath>
+      <HintPath>..\MARS_Utility\MARSUtility\bin\Debug\MARSUtility.dll</HintPath>
+    </Reference>
+    <Reference Include="MARS_Repository">
+      <HintPath>..\MARS_Repository\bin\Debug\MARS_Repository.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.4.1\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
@@ -78,6 +81,9 @@
     </Reference>
     <Reference Include="Microsoft.Owin.Security, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.Security.2.1.0\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Management.SqlParser, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Management.SqlParser.160.21099.39\lib\netstandard2.0\Microsoft.SqlServer.Management.SqlParser.dll</HintPath>
     </Reference>
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>..\packages\NLog.4.7.4\lib\net45\NLog.dll</HintPath>
@@ -181,6 +187,9 @@
     <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\ApplicationController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\ChartController.cs" />
+    <Compile Include="Controllers\CompareConfigController.cs" />
+    <Compile Include="Controllers\DatabaseConnectionController.cs" />
     <Compile Include="Controllers\ConfigurationGridController.cs" />
     <Compile Include="Controllers\DBConnectionController.cs" />
     <Compile Include="Controllers\EntitlementController.cs" />
@@ -189,6 +198,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ObjectController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
+    <Compile Include="Controllers\QueryController.cs" />
     <Compile Include="Controllers\StoryBoardController.cs" />
     <Compile Include="Controllers\TestCaseController.cs" />
     <Compile Include="Controllers\TestSuiteController.cs" />
@@ -196,6 +206,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\ChartHelper.cs" />
     <Compile Include="Helper\DatabaseConnectionDetails.cs" />
     <Compile Include="Helper\EmailHelper.cs" />
     <Compile Include="Helper\GridHelper.cs" />
@@ -204,6 +215,8 @@
     <Compile Include="Helper\PasswordHelper.cs" />
     <Compile Include="Helper\SessionManager.cs" />
     <Compile Include="Helper\SessionTimeoutAttribute.cs" />
+    <Compile Include="Helper\SQLServerConnectionStringBuilder.cs" />
+    <Compile Include="Helper\SybaseConnectionStringBuilder.cs" />
     <Compile Include="HUB\MyHub.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -211,6 +224,7 @@
   <ItemGroup>
     <Content Include="App_Data\Log.txt" />
     <Content Include="assets\css\custom.css" />
+    <Content Include="assets\css\json-viewer.css" />
     <Content Include="assets\css\pages\error\error-1.css" />
     <Content Include="assets\css\pages\error\error-1.rtl.css" />
     <Content Include="assets\css\pages\error\error-2.css" />
@@ -280,6 +294,7 @@
     <Content Include="assets\css\pages\wizard\wizard-4.css" />
     <Content Include="assets\css\pages\wizard\wizard-4.rtl.css" />
     <Content Include="assets\css\simplebar.css" />
+    <Content Include="assets\css\simpleXML.css" />
     <Content Include="assets\css\skins\aside\dark.css" />
     <Content Include="assets\css\skins\aside\dark.rtl.css" />
     <Content Include="assets\css\skins\aside\light.css" />
@@ -1197,6 +1212,7 @@
     <Content Include="assets\media\icons\test_case.png" />
     <Content Include="assets\media\icons\test_suits.png" />
     <Content Include="assets\media\icons\tsl.png" />
+    <Content Include="assets\media\icons\UCL.png" />
     <Content Include="assets\media\icons\upm.png" />
     <Content Include="assets\media\icons\URM.png" />
     <Content Include="assets\media\icons\user.png" />
@@ -1278,6 +1294,7 @@
     <Content Include="assets\media\project-logos\5.png" />
     <Content Include="assets\media\project-logos\6.png" />
     <Content Include="assets\media\project-logos\7.png" />
+    <Content Include="assets\media\simpleXML-images.png" />
     <Content Include="assets\media\users\100_1.jpg" />
     <Content Include="assets\media\users\100_10.jpg" />
     <Content Include="assets\media\users\100_11.jpg" />
@@ -1572,6 +1589,13 @@
     <Content Include="assets\plugins\global\plugins.bundle.css" />
     <Content Include="assets\plugins\global\plugins.bundle.js" />
     <Content Include="assets\plugins\global\plugins.bundle.rtl.css" />
+    <Content Include="Charts\css\ChartLayout.css" />
+    <Content Include="Charts\css\x3dom.css" />
+    <Content Include="Charts\js\d3-x3d.min.js" />
+    <Content Include="Charts\js\d3.v5.min.js" />
+    <Content Include="Charts\js\highcharts.js" />
+    <Content Include="Charts\js\plotly.min.js" />
+    <Content Include="Charts\js\x3dom-full.js" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -1696,9 +1720,13 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\json-viewer.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\simpleXML.js" />
     <Content Include="Scripts\Tab\Custom_AddingTab.js" />
     <Content Include="Scripts\Tab\Custom_SetGridWidth.js" />
+    <Content Include="Scripts\xmlToJson.js" />
+    <Content Include="Scripts\xmlToJson.min.js" />
     <Content Include="Views\Object\loadData.cshtml" />
     <Content Include="Views\Object\objectList.cshtml" />
     <Content Include="Web.config">
@@ -1763,10 +1791,23 @@
     <Content Include="Views\TestCase\FolderList.cshtml" />
     <Content Include="Views\TestCase\ImportDatasetTag.cshtml" />
     <Content Include="Views\TestCase\GetDatasetTagDetails.cshtml" />
+    <Content Include="Views\Accounts\UserConfigList.cshtml" />
+    <Content Include="Views\Shared\ChartsLayout.cshtml" />
+    <Content Include="Views\Chart\ChartIndex.cshtml" />
+    <Content Include="Views\DatabaseConnection\DatabaseList.cshtml" />
+    <Content Include="Views\Query\QueryList.cshtml" />
+    <Content Include="Views\Chart\ShowChart.cshtml" />
+    <Content Include="Views\Chart\BarChart.cshtml" />
+    <Content Include="Views\Chart\ThreeDChart.cshtml" />
+    <Content Include="Views\Chart\PieChart.cshtml" />
+    <Content Include="Views\Chart\PieChart3D.cshtml" />
+    <Content Include="Views\CompareConfig\ImportCompareConfig.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="assets\css\charts\" />
     <Folder Include="Import\" />
     <Folder Include="Models\" />
+    <Folder Include="Scripts\Charts\" />
     <Folder Include="TempExport\" />
     <Folder Include="Temp\" />
     <Folder Include="Views\Base\" />
@@ -1784,15 +1825,47 @@
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MARS_Repository\MARS_Repository.csproj">
-      <Project>{b98d1504-d9e4-47c7-913e-c285339c1db2}</Project>
-      <Name>MARS_Repository</Name>
-    </ProjectReference>
-  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />

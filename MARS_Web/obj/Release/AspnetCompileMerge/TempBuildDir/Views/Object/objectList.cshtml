@@ -2,8 +2,9 @@
     #clspegwindow span {
         height: 31px;
     }
-    #saveaspegdiv span{
-        height:31px;
+
+    #saveaspegdiv span {
+        height: 31px;
     }
 
     .Column {
@@ -27,6 +28,10 @@
         margin-left: 20px;
     }
 </style>
+@using MARS_Repository.ViewModel
+@{
+    var PrivilegeList = Session["PrivilegeList"] as List<PrivilegeViewModel>;
+}
 <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
     <div class="kt-subheader   kt-grid__item" id="kt_subheader" style="left: @ViewBag.width;">
         <div class="kt-container  kt-container--fluid ">
@@ -74,23 +79,26 @@
                                     }
                                 </select>
                             </div>
-                            <div class="Column">
-                                <button type="button" id="convertobjectid" class="btn btn-outline-brand btn-elevate btn-pill Column convert_app" onclick="ConvertObject()">Convert To</button>
+                            @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Convert To App Object"))
+                            {
+                                <div class="Column">
+                                    <button type="button" id="convertobjectid" class="btn btn-outline-brand btn-elevate btn-pill Column convert_app" onclick="ConvertObject()">Convert To</button>
+                                </div>
+                            }
+                                <div class="Column">
+                                    <select class="form-control kt-select2" id="convertappid" name="convertappid" onchange="emptyObjectArray()" style="width: 182px;">
+                                        @{var AppList = ViewBag.applist as IEnumerable<SelectListItem>;
+                                            <optgroup label="Applications">
+                                                <option value="0" style="visibility:hidden"></option>
+                                                @foreach (var item in AppList)
+                                                {
+                                                    <option value="@item.Value">@item.Text</option>
+                                                }
+                                            </optgroup>
+                                        }
+                                    </select>
+                                </div>
                             </div>
-                            <div class="Column">
-                                <select class="form-control kt-select2" id="convertappid" name="convertappid" onchange="emptyObjectArray()" style="width: 182px;">
-                                    @{var AppList = ViewBag.applist as IEnumerable<SelectListItem>;
-                                        <optgroup label="Applications">
-                                            <option value="0" style="visibility:hidden"></option>
-                                            @foreach (var item in AppList)
-                                            {
-                                                <option value="@item.Value">@item.Text</option>
-                                            }
-                                        </optgroup>
-                                    }
-                                </select>
-                            </div>
-                        </div>
 
                     </div>
                 </div>
@@ -99,17 +107,22 @@
 
                 <div class="kt-portlet__head-wrapper">
                     <div class="kt-portlet__head-actions" style="float:right">
-
                         &nbsp;
-                        <a href="#" onclick="addObject()" class="btn btn-brand btn-elevate btn-icon-sm">
-                            <i class="la la-plus"></i>
-                            New Object
-                        </a>
-                        <a href="#" onclick="addPegObject()" class="btn btn-brand btn-elevate btn-icon-sm">
-                            <i class="la la-plus"></i>
-                            Insert Pegwindow Object
-                        </a>
-                    </div>
+                        @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Add Object"))
+                        {
+                            <a href="#" onclick="addObject()" class="btn btn-brand btn-elevate btn-icon-sm">
+                                <i class="la la-plus"></i>
+                                New Object
+                            </a>
+                        }
+                        @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Add Pegwindow Object"))
+                        {
+                            <a href="#" onclick="addPegObject()" class="btn btn-brand btn-elevate btn-icon-sm">
+                                <i class="la la-plus"></i>
+                                Insert Pegwindow Object
+                            </a>
+                        }
+                        </div>
                 </div>
             </div>
         </div>
@@ -121,11 +134,11 @@
     </div>
 </div>
 
-<div class="modal fade" id="AddEditObject" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="AddEditObject" tabindex="-1" role="dialog" aria-labelledby="oexampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Object</h5>
+                <h5 class="modal-title" id="oexampleModalLabel">Object</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -133,7 +146,8 @@
                     <input type="hidden" id="hdnobjectid" name="hdnobjectid" />
                     <div class="form-group">
                         <label for="recipient-name" class="form-control-label">Object Name<span style="color:red">&nbsp;*</span></label>
-                        <input type="text" class="form-control" id="objecthappyname" name="objecthappyname" required onchange="CheckNameExist()" maxlength="256">
+                        @*<input type="text" class="form-control" id="objecthappyname" name="objecthappyname" required onchange="CheckNameExist()" maxlength="256">*@
+                        <input type="text" class="form-control" id="objecthappyname" name="objecthappyname" required maxlength="256">
                         <label id="existobjectname" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
                             Object Name already exist.
                         </label>
@@ -182,7 +196,7 @@
                     <div class="form-group">
                         <label class="col-form-label">Pegwindow/Parent <span style="color:red">&nbsp;*</span></label>
                         <div id="clspegwindow">
-                            <select class="form-control kt-select2" id="DrpPeg" name="DrpPeg" @*style="width: 624px;"*@ ></select>
+                            <select class="form-control kt-select2" id="DrpPeg" name="DrpPeg" @*style="width: 624px;"*@></select>
                         </div>
                         <label id="requiredparent" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
                             This field is required
@@ -210,11 +224,11 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="AddPegwindowObject" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="AddPegwindowObject" tabindex="-1" role="dialog" aria-labelledby="oexampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Object</h5>
+                <h5 class="modal-title" id="oexampleModalLabel">Object</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -268,11 +282,11 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="saveAsObject" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="saveAsObject" tabindex="-1" role="dialog" aria-labelledby="oexampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Object</h5>
+                <h5 class="modal-title" id="oexampleModalLabel">Object</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -280,7 +294,8 @@
                     <input type="hidden" id="hdnobjectid" name="hdnobjectid" />
                     <div class="form-group">
                         <label for="recipient-name" class="form-control-label">Object Name<span style="color:red">&nbsp;*</span></label>
-                        <input type="text" class="form-control" id="saveasobjecthappyname" name="saveasobjecthappyname" required onchange="CheckNameExist()" maxlength="256">
+                        <input type="text" class="form-control" id="saveasobjecthappyname" name="saveasobjecthappyname" required maxlength="256">
+                        @*<input type="text" class="form-control" id="saveasobjecthappyname" name="saveasobjecthappyname" required onchange="CheckNameExist()" maxlength="256">*@
                         <label id="existobjectname" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
                             Object Name already exist.
                         </label>
@@ -337,7 +352,7 @@
                     </div>
                     <div class="form-group">
                         <label for="message-text" class="form-control-label">Internal Access<span style="color:red">&nbsp;*</span></label>
-                        <textarea class="form-control" id="saveasquickaccess" name="saveasquickaccess" maxlength="512" ></textarea>
+                        <textarea class="form-control" id="saveasquickaccess" name="saveasquickaccess" maxlength="512"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="message-text" class="form-control-label">Description</label>
@@ -359,7 +374,6 @@
 <script>
     var idarrays = [];
     function ConvertObject() {
-
         var appid = $("#appid option:selected").val();
         var convertappid = $("#convertappid option:selected").val();
         var appname = $("#convertappid option:selected").text();
@@ -367,7 +381,7 @@
             swal.fire({
                 "title": "",
                 "text": "Source and Target application names can not be the same",
-                "type": "error",
+                "icon": "error",
                 "onClose": function (e) {
                     console.log('on close event fired!');
                 }
@@ -379,7 +393,7 @@
             swal.fire({
                 "title": "",
                 "text": "Please select the target application",
-                "type": "error",
+                "icon": "error",
                 "onClose": function (e) {
                     console.log('on close event fired!');
                 }
@@ -400,11 +414,12 @@
                 dataType: "json",
                 success: function (result) {
                     if (result.status == 1) {
+                        RefreshCacheForObject();
                         if (result.message == "success") {
                             swal.fire({
                                 "title": "",
                                 "text": "Objects copied successfully to: " + appname,
-                                "type": "success",
+                                "icon": "success",
                                 "onClose": function (e) {
                                     console.log('on close event fired!');
                                 }
@@ -418,7 +433,7 @@
                             swal.fire({
                                 "title": "",
                                 "text": result.message,
-                                "type": "error",
+                                "icon": "error",
                                 "onClose": function (e) {
                                     console.log('on close event fired!');
                                 }
@@ -447,13 +462,12 @@
                             if (result.data.length > 0) {
                                 var resultstring = "";
                                 for (i = 0; i < result.data.length; i++) {
-
                                     resultstring = resultstring + result.data[i] + " , ";
                                 }
                                 swal.fire({
                                     title: 'Skip these existing objects and copy rest of them?,',
                                     text: "Following objects exists in the target application[" + appname + "]  " + resultstring,
-                                    type: 'warning',
+                                    icon: 'warning',
                                     showCancelButton: true,
                                     confirmButtonText: 'Yes,copy!!'
                                 }).then(function (result) {
@@ -469,10 +483,11 @@
                                                 stoploader();
                                                 if (result.status == 1) {
                                                     if (result.data == "success") {
+                                                        RefreshCacheForObject();
                                                         swal.fire({
                                                             "title": "",
                                                             "text": "Objects copied successfully to: " + appname,
-                                                            "type": "success",
+                                                            "icon": "success",
                                                             "onClose": function (e) {
                                                                 console.log('on close event fired!');
                                                             }
@@ -487,7 +502,7 @@
                                                     swal.fire({
                                                         "title": "",
                                                         "text": result.message,
-                                                        "type": "error",
+                                                        "icon": "error",
                                                         "onClose": function (e) {
                                                             console.log('on close event fired!');
                                                         }
@@ -512,20 +527,36 @@
                                     dataType: "json",
                                     success: function (result) {
                                         stoploader();
-                                        if (result == "success") {
+                                        if (result.status == 1) {
+                                            if (result.data == "success") {
+                                                RefreshCacheForObject();
+                                                swal.fire({
+                                                    "title": "",
+                                                    "text": "Objects copied successfully to: " + appname,
+                                                    "icon": "success",
+                                                    "onClose": function (e) {
+                                                        console.log('on close event fired!');
+                                                    }
+                                                });
+                                                $("#hiddenobjectid").val("");
+                                                ojectidarray = [];
+                                                loadData();
+                                            }
+                                        }
+                                        else if (result.status == 0) {
                                             swal.fire({
                                                 "title": "",
-                                                "text": "Objects copied successfully to: " + appname,
-                                                "type": "success",
+                                                "text": result.message,
+                                                "icon": "error",
                                                 "onClose": function (e) {
                                                     console.log('on close event fired!');
                                                 }
                                             });
+                                            stoploader();
                                             $("#hiddenobjectid").val("");
                                             ojectidarray = [];
                                             loadData();
                                         }
-
                                     }
                                 });
                             }
@@ -534,7 +565,7 @@
                             swal.fire({
                                 "title": "",
                                 "text": result.message,
-                                "type": "error",
+                                "icon": "error",
                                 "onClose": function (e) {
                                     console.log('on close event fired!');
                                 }
@@ -547,7 +578,7 @@
                 swal.fire({
                     "title": "",
                     "text": "Please select objects to be converted",
-                    "type": "warning",
+                    "icon": "warning",
                     "onClose": function (e) {
                         console.log('on close event fired!');
                     }
@@ -666,7 +697,7 @@
                     swal.fire({
                         "title": "",
                         "text": "Please select the target application",
-                        "type": "error",
+                        "icon": "error",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -686,7 +717,7 @@
                                 swal.fire({
                                     "title": "",
                                     "text": result.message,
-                                    "type": "error",
+                                    "icon": "error",
                                     "onClose": function (e) {
                                         console.log('on close event fired!');
                                     }
@@ -704,7 +735,7 @@
                             swal.fire({
                                 "title": "",
                                 "text": result.message,
-                                "type": "error",
+                                "icon": "error",
                                 "onClose": function (e) {
                                     console.log('on close event fired!');
                                 }
@@ -742,6 +773,10 @@
         var validator = $("#frmpegobject").validate();
         validator.resetForm();
         $("#AddPegwindowObject").modal("show");
+        $('.modal-dialog').draggable({
+            handle: ".modal-header"
+        });
+
         $("#pegobjecthappyname").val("");
         $("#pegapp").val("");
         $("#pegquickaccess").val("");
@@ -754,6 +789,10 @@
         validator.resetForm();
 
         $("#AddEditObject").modal("show");
+        $('.modal-dialog').draggable({
+            handle: ".modal-header"
+        });
+
         $("#app").prop("disabled", false);
         $("#objecthappyname").prop("disabled", false);
         $("#DrpPeg").prop("disabled", false);
@@ -767,10 +806,10 @@
 
         $("#quickaccess").val("");
         $("#desc").val("");
-      
+
         $("#app").val("");
         $("#DrpPeg").val("");
-       
+
         $("#DrpPeg").text("");
         $("#hdnobjectid").val("");
         $("#drpObjecttype").val("");
@@ -808,7 +847,7 @@
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "error",
+                        "icon": "error",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -822,6 +861,9 @@
     }
     function EditPopupShow(id, obj) {
         $("#AddEditObject").modal("show");
+        $('.modal-dialog').draggable({
+            handle: ".modal-header"
+        });
         var validator = $("#frmObject").validate();
         validator.resetForm();
         $("#DrpPeg").val("");
@@ -883,7 +925,7 @@
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "error",
+                        "icon": "error",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -895,9 +937,12 @@
             }
 
         });
-        $("#DrpPeg option:contains(" + parent + ")").attr('selected', true);
+        $("#DrpPeg option:contains(" + parent + ")").filter(function () {
+            return $(this).text() === parent ? true : false;
+        }).attr('selected', true);
+      //  $("#DrpPeg option:contains(" + parent + ")").attr('selected', true);
         $("#DrpPeg").select2();
-       
+
     }
     function saveObject() {
         var flag = false;
@@ -958,11 +1003,12 @@
             dataType: "json",
             success: function (result) {
                 if (result.status == 1) {
+                    RefreshCacheForObject();
                     $("#AddEditObject").modal("hide");
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "success",
+                        "icon": "success",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -976,7 +1022,7 @@
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "error",
+                        "icon": "error",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -1028,17 +1074,18 @@
             dataType: "json",
             success: function (result) {
                 if (result.status == 1) {
-                        $("#AddPegwindowObject").modal("hide");
-                        swal.fire({
-                            "title": "",
-                            "text": result.message,
-                            "type": "success",
-                            "onClose": function (e) {
-                                console.log('on close event fired!');
-                            }
-                        });
-                        $("#peginsert").attr("disabled", false);
-                        table.table().draw();
+                    RefreshCacheForObject();
+                    $("#AddPegwindowObject").modal("hide");
+                    swal.fire({
+                        "title": "",
+                        "text": result.message,
+                        "icon": "success",
+                        "onClose": function (e) {
+                            console.log('on close event fired!');
+                        }
+                    });
+                    $("#peginsert").attr("disabled", false);
+                    table.table().draw();
                 }
                 else if (result.status == 0) {
                     $("#AddPegwindowObject").modal("hide");
@@ -1046,7 +1093,7 @@
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "error",
+                        "icon": "error",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -1062,15 +1109,17 @@
         swal.fire({
             title: 'Please confirm.',
             text: "This action can not be undone.",
-            type: 'warning',
+            icon: 'warning',
             showCancelButton: true,
             confirmButtonText: 'Yes, delete it!'
         }).then(function (result) {
             if (result.value == true) {
+                debugger;
                 var appid = $(obj).attr("data-app");
+                var parent = $(obj).attr("data-parent");
                 $.ajax({
                     url: "/Object/DeleteObject",
-                    data: JSON.stringify({ "objectid": id, "appid": appid }),
+                    data: JSON.stringify({ "objectid": id, "appid": appid, "parent": parent }),
                     type: "POST",
                     async: false,
                     contentType: "application/json;charset=utf-8",
@@ -1078,6 +1127,7 @@
                     success: function (result) {
                         if (result.status == 1) {
                             if (result.data == "success") {
+                                RefreshCacheForObject();
                                 swal.fire(
                                     'Deleted!',
                                     result.message,
@@ -1089,7 +1139,7 @@
                                 swal.fire({
                                     "title": "",
                                     "text": result.message,
-                                    "type": "error",
+                                    "icon": "error",
                                     "onClose": function (e) {
                                         console.log('on close event fired!');
                                     }
@@ -1114,7 +1164,7 @@
                             swal.fire({
                                 "title": "",
                                 "text": result.message,
-                                "type": "error",
+                                "icon": "error",
                                 "onClose": function (e) {
                                     console.log('on close event fired!');
                                 }
@@ -1137,6 +1187,9 @@
         var validator = $("#frmsaveasobject").validate();
         validator.resetForm();
         $("#saveAsObject").modal("show");
+        $('.modal-dialog').draggable({
+            handle: ".modal-header"
+        });
         $("#saveasrequiredtype").css("display", "none");
         $("#saveasrequiredapp").css("display", "none");
         $("#saveasrequiredDrpPeg").css("display", "none");
@@ -1161,11 +1214,11 @@
         $("select#saveasdrpObjecttype option").filter(function () {
             return $(this).text() == objecttype;
         }).prop('selected', true);
-       
+
         $("#saveasapp").val(app);
         $("#saveasquickaccess").val(quickaccess);
         $("#saveasdesc").val(description);
-       
+
         if (objecttype == "Pegwindow") {
             $("#saveaspegdiv").hide();
             $("#saveasdrpObjecttype").attr("disabled", true);
@@ -1180,7 +1233,6 @@
                 contentType: "application/json;charset=utf-8",
                 dataType: "json",
                 success: function (result) {
-                    debugger
                     if (result.status == 1) {
                         var optionString = "<optgroup>";
                         optionString = optionString + " <option value=-1></option>";
@@ -1191,7 +1243,7 @@
 
                             optionString = optionString + " <option value='" + optionValue + "'>" + optionText + "</option>";
                         }
-                        optionString = optionString + "</optgroup>"; 
+                        optionString = optionString + "</optgroup>";
                         //$("#DrpPeg").append($(optionString));
                         //$("#DrpPeg").select2();
                         $("#saveasDrpPeg").append($(optionString));
@@ -1201,7 +1253,7 @@
                         swal.fire({
                             "title": "",
                             "text": result.message,
-                            "type": "error",
+                            "icon": "error",
                             "onClose": function (e) {
                                 console.log('on close event fired!');
                             }
@@ -1271,7 +1323,7 @@
             swal.fire({
                 "title": "",
                 "text": "Pegwindow object cannot have different parent!",
-                "type": "error",
+                "icon": "error",
                 "onClose": function (e) {
                     console.log('on close event fired!');
                 }
@@ -1297,11 +1349,12 @@
             dataType: "json",
             success: function (result) {
                 if (result.status == 1) {
+                    RefreshCacheForObject();
                     $("#saveAsObject").modal("hide");
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "success",
+                        "icon": "success",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -1315,7 +1368,7 @@
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "error",
+                        "icon": "error",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }

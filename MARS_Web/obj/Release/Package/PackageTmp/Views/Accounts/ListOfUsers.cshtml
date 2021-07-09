@@ -1,20 +1,17 @@
+@using MARS_Repository.ViewModel
 @{
-    /**/
-
-    //ViewBag.Title = "List Of Users";
-
 
     if (Session["SubmitUserMsg"] != null)
     {
-      var lMsg = Session["SubmitUserMsg"] as string;
-      if (!string.IsNullOrEmpty(lMsg))
-      {
+        var lMsg = Session["SubmitUserMsg"] as string;
+        if (!string.IsNullOrEmpty(lMsg))
+        {
             <script>
                 setTimeout(function () {
                     swal.fire({
                         "title": "",
                         "text": "@lMsg",
-                        "type": "success",
+                        "icon": "success",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -25,7 +22,14 @@
             Session["SubmitUserMsg"] = "";
         }
     }
-
+    string EditUser = "false", DeleteUser = "false", PassUser = "false";
+    var PrivilegeList = Session["PrivilegeList"] as List<PrivilegeViewModel>;
+    if (PrivilegeList.Count > 0)
+    {
+        EditUser = PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Edit User").ToString().ToLower();
+        DeleteUser = PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Delete User").ToString().ToLower();
+        PassUser = PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Reset Password User").ToString().ToLower();
+    }
 }
 <head>
     <meta name="viewport" content="width=device-width" />
@@ -34,32 +38,37 @@
 
 <p>
 </p>
+<input type="hidden" value="@EditUser" id="hdnEditUser" />
+<input type="hidden" value="@DeleteUser" id="hdnDeleteUser" />
+<input type="hidden" value="@PassUser" id="hdnPassUser" />
 <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
-        <div class="kt-subheader   kt-grid__item" id="kt_subheader" style="left: @ViewBag.width;">
-            <div class="kt-container  kt-container--fluid ">
-                <div class="kt-subheader__main">
-                    <span class="kt-subheader__separator kt-hidden"></span>
-                    <div class="kt-subheader__breadcrumbs">
-                        <a href="#" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-settings" style="color:#1c6081"></i></a>
-                        <a href="#" class="kt-subheader__breadcrumbs-link" style="color:#1c6081">
-                            Settings
-                        </a>
-                        <i class="fa fa-angle-double-right" style="color:#1c6081"></i>
-                        <a href="#" class="kt-subheader__breadcrumbs-link" style="color:#1c6081">
-                            &nbsp;User List
-                        </a>
-                    </div>
+    <div class="kt-subheader   kt-grid__item" id="kt_subheader" style="left: @ViewBag.width;">
+        <div class="kt-container  kt-container--fluid ">
+            <div class="kt-subheader__main">
+                <span class="kt-subheader__separator kt-hidden"></span>
+                <div class="kt-subheader__breadcrumbs">
+                    <a href="#" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-settings" style="color:#1c6081"></i></a>
+                    <a href="#" class="kt-subheader__breadcrumbs-link" style="color:#1c6081">
+                        Settings
+                    </a>
+                    <i class="fa fa-angle-double-right" style="color:#1c6081"></i>
+                    <a href="#" class="kt-subheader__breadcrumbs-link" style="color:#1c6081">
+                        &nbsp;User List
+                    </a>
                 </div>
             </div>
         </div>
-        <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
-            <div class="kt-portlet kt-portlet--mobile">
-                <div class="kt-portlet__head kt-portlet__head--lg">
-                    <div class="kt-portlet__head-label">
-                        <h3 class="kt-portlet__head-title" style="color:#1582ab">
-                            List Of All Users
-                        </h3>
-                    </div>
+    </div>
+    <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+        <div class="kt-portlet kt-portlet--mobile">
+            <div class="kt-portlet__head kt-portlet__head--lg">
+                <div class="kt-portlet__head-label">
+                    <h3 class="kt-portlet__head-title" style="color:#1582ab">
+                        List Of All Users
+                    </h3>
+                </div>
+                @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Add User"))
+                {
                     <div class="kt-portlet__head-toolbar">
                         <div class="kt-portlet__head-wrapper">
                             <div class="kt-portlet__head-actions">
@@ -71,28 +80,29 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                }
+            </div>
 
-                <div class="kt-portlet__body">
-                    <table class="table table-striped- table-bordered table-hover table-checkable " id="kt_table">
-                        <thead>
-                            <tr>
-                                <th>First Name</th>
-                                <th>Middle Name</th>
-                                <th>Last Name</th>
-                                <th>User Name</th>
-                                <th>Email Address</th>
-                                <th>Company Name</th>
-                                <th style="color: #1c6081;background-color: #e9f5ff;font-weight: bold;">Status</th>
-                                <th style="color: #1c6081;background-color: #e9f5ff;font-weight: bold;">Actions</th>
-                            </tr>
-                        </thead>
-                    </table>
-                </div>
+            <div class="kt-portlet__body">
+                <table class="table table-striped- table-bordered table-hover table-checkable " id="kt_table">
+                    <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Middle Name</th>
+                            <th>Last Name</th>
+                            <th>User Name</th>
+                            <th>Email Address</th>
+                            <th>Company Name</th>
+                            <th style="color: #1c6081;background-color: #e9f5ff;font-weight: bold;">Status</th>
+                            <th style="color: #1c6081;background-color: #e9f5ff;font-weight: bold;">Actions</th>
+                        </tr>
+                    </thead>
+                </table>
             </div>
         </div>
     </div>
-    <script>
+</div>
+<script>
         var Usertable;
         var UserTable = function () {
 
@@ -101,7 +111,9 @@
             });
 
             var initTable1 = function () {
-
+                var lEditUserdisplay = $("#hdnEditUser").val();
+                var lDeleteUserdisplay = $("#hdnDeleteUser").val();
+                var lPassUserdisplay = $("#hdnPassUser").val();
                 // begin first table
                 Usertable = $('#kt_table').DataTable({
                     responsive: false,
@@ -112,8 +124,8 @@
                     lengthMenu: [10, 100, 1000],
                     processing: true,
                     pageLength: 100,
-                   
-                    
+
+
                     language: {
                         'lengthMenu': 'Display _MENU_',
                         "processing": "<img  src='../assets/media/mars.gif' style='width:80px;'/>"
@@ -158,7 +170,7 @@
                             data: 'STATUS', name: "Status", autowidth: false, width: '@ViewBag.statustwidth', "targets": 6,
                             orderable: false,
                             render: function (data, type, row, meta) {
-                                
+
                                 if (type === 'export') {
                                     var i = $(data).prop("checked") === true ? 'Yes' : 'No';
                                     if (i != null) {
@@ -173,7 +185,7 @@
                                 var lid = row.TESTER_ID;
                                 var Name = row.TESTER_LOGIN_NAME;
                                 var lHtml = "";
-                               
+
                                 if (data == 0) {
                                     lHtml = '<span class="kt-switch"><label><input type="checkbox" id="ischeckedEnable" data-name=' + Name +' name="" onchange="ChangeStatus(' + lid + ',$(this))" /><span></span></label></span>';
                                 } else {
@@ -232,9 +244,18 @@
                             render: function (data, type, full, meta) {
                                 var lid = full.TESTER_ID;
                                 var emailid = full.TESTER_MAIL;
-                                return " <a href='#' onclick='AddEditUser("+lid+")' class='btn btn-sm btn-clean btn-icon btn-icon-md' title='View'><i class='la la-edit'></i></a> " +
-                                    "<a href='#' class='btn btn-sm btn-clean btn-icon btn-icon-md' title='Delete' onclick='UseDelete(" + lid + ")' ><i class='la la-trash la-xs'></i></a>" +
-                                    "<a href='#' class='btn btn-sm btn-clean btn-icon btn-icon-md' title='Reset Password' onclick=ChangePassword('" + emailid + "') ><i class='fa fa-key'></i></a>";
+                              
+                                var lRenderHtml = "";
+                                if (lEditUserdisplay == "true") {
+                                    lRenderHtml = " <a href='#' onclick='AddEditUser(" + lid + ")' class='btn btn-sm btn-clean btn-icon btn-icon-md' title='View'><i class='la la-edit'></i></a> ";
+                                }
+                                if (lDeleteUserdisplay == "true") {
+                                    lRenderHtml = lRenderHtml + "<a href='#' class='btn btn-sm btn-clean btn-icon btn-icon-md' title='Delete' onclick='UseDelete(" + lid + ")' ><i class='la la-trash la-xs'></i></a>";
+                                }
+                                if (lPassUserdisplay == "true") {
+                                    lRenderHtml = lRenderHtml + "<a href='#' class='btn btn-sm btn-clean btn-icon btn-icon-md' title='Reset Password' onclick=ChangePassword('" + emailid + "') ><i class='fa fa-key'></i></a>";
+                                }
+                                return lRenderHtml;
                             },
                         }
                     ],
@@ -259,7 +280,7 @@
             swal.fire({
                 title: 'Are you sure?',
                 text: "You won't be able to revert this!",
-                type: 'warning',
+                icon: 'warning',
                 showCancelButton: true,
                 confirmButtonText: 'Yes, delete it!'
             }).then(function (result) {
@@ -300,7 +321,7 @@
                             swal.fire({
                                 "title": "",
                                 "text": result.message,
-                                "type": "error",
+                                "icon": "error",
                                 "onClose": function (e) {
                                     console.log('on close event fired!');
                                 }
@@ -320,7 +341,7 @@
             swal.fire({
                 title: 'Please confirm.',
                 text: "This action can not be undone.",
-                type: 'warning',
+                icon: 'warning',
                 showCancelButton: true,
                 confirmButtonText: 'Yes, delete it!'
             }).then(function (result) {
@@ -347,7 +368,7 @@
                                 swal.fire({
                                     "title": "",
                                     "text": result.message,
-                                    "type": "error",
+                                    "icon": "error",
                                     "onClose": function (e) {
                                         console.log('on close event fired!');
                                     }
@@ -379,7 +400,7 @@
                         swal.fire({
                             "title": "",
                             "text": "Reset Password link has been sent to your Email",
-                            "type": type,
+                            "icon": type,
                             "onClose": function (e) {
                                 console.log('on close event fired!');
                             }
@@ -389,7 +410,7 @@
                         swal.fire({
                             "title": "",
                             "text": result.message,
-                            "type": "error",
+                            "icon": "error",
                             "onClose": function (e) {
                                 console.log('on close event fired!');
                             }
@@ -399,7 +420,7 @@
             });
         }
         function newexportaction(e, dt, button, config) {
-            
+
             var self = this;
             var oldStart = dt.settings()[0]._iDisplayStart;
             dt.one('preXhr', function (e, s, data) {
@@ -425,9 +446,9 @@
             });
             dt.ajax.reload();
         };
-    </script>
-  
-   
+</script>
+
+
 
 
 

@@ -311,6 +311,9 @@
       $("#addedkeyword").attr("disabled", false);
         $("#existkeywordname").css("display", "none");
         $("#AddKeyword").modal("show");
+        $('.modal-dialog').draggable({
+            handle: ".modal-header"
+        });
         var lKeywordId = Id;
         var Name = $(editObj).attr("data-name").replace(/###/g, "'");
         var contorltypeId = $(editObj).attr("data-ControlTypeId");
@@ -332,6 +335,9 @@
         $("#kwexampleModalLabel").text('');
         $("#kwexampleModalLabel").text('Add Keyword');
         $("#AddKeyword").modal("show");
+        $('.modal-dialog').draggable({
+            handle: ".modal-header"
+        });
         $("#hdnKeywordId").val("");
         $("#keywordname").val("");
         $("#sDrpControlType").val("");

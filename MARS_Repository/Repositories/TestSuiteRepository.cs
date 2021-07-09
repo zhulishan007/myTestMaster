@@ -108,8 +108,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestSuite in ListAllTestSuites method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestSuite in ListAllTestSuites method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in TestSuite for ListAllTestSuites method | Schema : {0} | Connection String : {1} | UserName: {2}", schema, lconstring, Username));
+                ELogger.ErrorException(string.Format("Error occured in TestSuite for ListAllTestSuites method | Schema : {0} | Connection String : {1} | UserName: {2}", schema, lconstring, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestSuite for ListAllTestSuites method | Schema : {0} | Connection String : {1} | UserName: {2}", schema, lconstring, Username), ex.InnerException);
                 throw;
             }
         }
@@ -149,8 +151,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestSuite in ListProjectsByTestSuite method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestSuite in ListProjectsByTestSuite method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in TestSuite for ListProjectsByTestSuite method | TestSuiteId: {0} | projectid: {1} | UserName: {2}", suiteid, projectid, Username));
+                ELogger.ErrorException(string.Format("Error occured in TestSuite for ListProjectsByTestSuite method | TestSuiteId: {0} | projectid: {1} | UserName: {2}", suiteid, projectid, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestSuite for ListProjectsByTestSuite method | TestSuiteId: {0} | projectid: {1} | UserName: {2}", suiteid, projectid, Username), ex.InnerException);
                 throw;
             }
         }
@@ -252,8 +256,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestSuite in AddEditTestSuite method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestSuite in AddEditTestSuite method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in TestSuite for AddEditTestSuite method | TestSuiteId: {0} | UserName: {1}", lEntity.TestSuiteId, Username));
+                ELogger.ErrorException(string.Format("Error occured in TestSuite for AddEditTestSuite method | TestSuiteId: {0} | UserName: {1}", lEntity.TestSuiteId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestSuite for AddEditTestSuite method | TestSuiteId: {0} | UserName: {1}", lEntity.TestSuiteId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -274,8 +280,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestSuite in ChangeTestSuiteName method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestSuite in ChangeTestSuiteName method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in TestSuite for ChangeTestSuiteName method | TestSuiteId: {0} | TestSuiteName : {1} | TestSuite Desc : {2} | UserName: {3}", lTestSuiteId, lTestSuiteName, testsuitedesc, Username));
+                ELogger.ErrorException(string.Format("Error occured in TestSuite for ChangeTestSuiteName method | TestSuiteId: {0} | TestSuiteName : {1} | TestSuite Desc : {2} | UserName: {3}", lTestSuiteId, lTestSuiteName, testsuitedesc, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestSuite for ChangeTestSuiteName method | TestSuiteId: {0} | TestSuiteName : {1} | TestSuite Desc : {2} | UserName: {3}", lTestSuiteId, lTestSuiteName, testsuitedesc, Username), ex.InnerException);
                 throw;
             }
         }
@@ -299,8 +307,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestSuite in CheckDuplicateTestSuiteName method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestSuite in CheckDuplicateTestSuiteName method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in TestSuite for ChangeTestSuiteName method | TestSuiteId: {0} | TestSuiteName : {1} | UserName: {2}", lTestSuiteId, lTestSuiteName, Username));
+                ELogger.ErrorException(string.Format("Error occured in TestSuite for ChangeTestSuiteName method | TestSuiteId: {0} | TestSuiteName : {1} | UserName: {2}", lTestSuiteId, lTestSuiteName, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestSuite for ChangeTestSuiteName method | TestSuiteId: {0} | TestSuiteName : {1} | UserName: {2}", lTestSuiteId, lTestSuiteName, Username), ex.InnerException);
                 throw;
             }
         }
@@ -315,8 +325,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestSuite in GetTestSuiteNameById method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestSuite in GetTestSuiteNameById method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured TestSuite in GetTestSuiteNameById method | TestSuiteId: {0} | UserName: {1}", SuiteId, Username));
+                ELogger.ErrorException(string.Format("Error occured TestSuite in GetTestSuiteNameById method | TestSuiteId: {0} | UserName: {1}", SuiteId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestSuite in GetTestSuiteNameById method | TestSuiteId: {0} | UserName: {1}", SuiteId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -363,8 +375,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestSuite in DeleteTestSuite method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestSuite in DeleteTestSuite method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in TestSuite for DeleteTestSuite method | TestSuiteId: {0} | UserName: {1}", TestSuiteId, Username));
+                ELogger.ErrorException(string.Format("Error occured in TestSuite for DeleteTestSuite method | TestSuiteId: {0} | UserName: {1}", TestSuiteId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestSuite for DeleteTestSuite method | TestSuiteId: {0} | UserName: {1}", TestSuiteId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -389,8 +403,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestSuite in ListProjectsByTestSuite method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestSuite in ListProjectsByTestSuite method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in TestSuite for ListProjectsByTestSuite method | TestSuiteId: {0} | UserName: {1}", suiteid, Username));
+                ELogger.ErrorException(string.Format("Error occured in TestSuite for ListProjectsByTestSuite method | TestSuiteId: {0} | UserName: {1}", suiteid, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestSuite for ListProjectsByTestSuite method | TestSuiteId: {0} | UserName: {1}", suiteid, Username), ex.InnerException);
                 throw;
             }
         }
@@ -426,8 +442,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestSuite in CheckTestSuiteInStoryboardByProject method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestSuite in CheckTestSuiteInStoryboardByProject method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in TestSuite for CheckTestSuiteInStoryboardByProject method | TestSuiteId: {0} | projectid: {1} | UserName: {2}", suiteid, projectid, Username));
+                ELogger.ErrorException(string.Format("Error occured in TestSuite for CheckTestSuiteInStoryboardByProject method | TestSuiteId: {0} | projectid: {1} | UserName: {2}", suiteid, projectid, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestSuite for CheckTestSuiteInStoryboardByProject method | TestSuiteId: {0} | projectid: {1} | UserName: {2}", suiteid, projectid, Username), ex.InnerException);
                 throw;
             }
         }
@@ -456,8 +474,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestSuite in CheckTestSuiteExist method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestSuite in CheckTestSuiteExist method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in TestSuite for CheckTestSuiteInStoryboardByProject method | TestSuiteId: {0} | ProjectId: {1} | UserName: {2}", TestSuiteId, projectid, Username));
+                ELogger.ErrorException(string.Format("Error occured in TestSuite for CheckTestSuiteInStoryboardByProject method | TestSuiteId: {0} | ProjectId: {1} | UserName: {2}", TestSuiteId, projectid, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestSuite for CheckTestSuiteInStoryboardByProject method | TestSuiteId: {0} | ProjectId: {1} | UserName: {2}", TestSuiteId, projectid, Username), ex.InnerException);
                 throw;
             }
         }
@@ -486,8 +506,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestSuite in CheckTestSuiteExistInStoryboard method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestSuite in CheckTestSuiteExistInStoryboard method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in TestSuite for CheckTestSuiteExistInStoryboard method | TestSuiteId: {0} | UserName: {1}", TestSuiteId, Username));
+                ELogger.ErrorException(string.Format("Error occured in TestSuite for CheckTestSuiteExistInStoryboard method | TestSuiteId: {0} | UserName: {1}", TestSuiteId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestSuite for CheckTestSuiteExistInStoryboard method | TestSuiteId: {0} | UserName: {1}", TestSuiteId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -504,8 +526,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestSuite in ExportTestSuite method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestSuite in ExportTestSuite method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in TestSuite for ExportTestSuite method | TestSuiteId: {0} | Path : {1} | UserName: {2}", TestSuiteId, Path, Username));
+                ELogger.ErrorException(string.Format("Error occured in TestSuite for ExportTestSuite method | TestSuiteId: {0} | Path : {1} | UserName: {2}", TestSuiteId, Path, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestSuite for ExportTestSuite method | TestSuiteId: {0} | Path : {1} | UserName: {2}", TestSuiteId, Path, Username), ex.InnerException);
                 throw;
             }
         }
@@ -537,8 +561,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestSuite in ListRelationTestSuiteApplication method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestSuite in ListRelationTestSuiteApplication method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured TestSuite in ListRelationTestSuiteApplication method | ApplicationId: {0} | UserName: {1}", ApplicationId, Username));
+                ELogger.ErrorException(string.Format("Error occured TestSuite in ListRelationTestSuiteApplication method | ApplicationId: {0} | UserName: {1}", ApplicationId, Username), ex);
+                if(ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestSuite in ListRelationTestSuiteApplication method | ApplicationId: {0} | UserName: {1}", ApplicationId, Username), ex.InnerException);
                 throw;
             }
         }

@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Configuration;
 using System.Web.Mvc;
@@ -62,8 +63,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in TestCase page | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in TestCase page | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in TestCase controller for TestCaseList method | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in TestCase controller for TestCaseList method | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if(ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for TestCaseList method | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
             }
             return PartialView("");
         }
@@ -75,6 +78,7 @@ namespace MARS_Web.Controllers
             try
             {
                 var repAcc = new TestCaseRepository();
+                repAcc.Username = SessionManager.TESTER_LOGIN_NAME;
                 //Assign values in local variables
                 string search = Request.Form.GetValues("search[value]")[0];
                 string draw = Request.Form.GetValues("draw")[0];
@@ -121,6 +125,11 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
+                logger.Error(string.Format("Error occured in TestCase controller for DataLoad method | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in TestCase controller for DataLoad method | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if(ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for DataLoad method | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+
                 throw ex;
             }
         }
@@ -151,8 +160,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in TestCase | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in TestCase | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in TestCase controller for DeleteTestCase method | TestCaseId: {0} | UserName: {1}", TestCaseId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in TestCase controller for DeleteTestCase method | TestCaseId: {0} | UserName: {1}", TestCaseId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if(ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for DeleteTestCase method | TestCaseId: {0} | UserName: {1}", TestCaseId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -199,8 +210,11 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in TestCase | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in TestCase | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in TestCase controller for AddEditTestCase method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in TestCase controller for AddEditTestCase method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+
+                if(ex.InnerException != null)
+                   ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for AddEditTestCase method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -224,8 +238,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in TestCase | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in TestCase | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in TestCase controller for GetTestSuiteByApplicaton method | ApplicationId: {0} | UserName: {1}", ApplicationId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in TestCase controller for GetTestSuiteByApplicaton method | ApplicationId: {0} | UserName: {1}", ApplicationId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if(ex.InnerException != null)
+                     ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for GetTestSuiteByApplicaton method | ApplicationId: {0} | UserName: {1}", ApplicationId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -249,8 +265,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in TestCase | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in TestCase | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in TestCase controller for GetTestSuiteByproject method | ProjectId: {0} | UserName: {1}", ProjectId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in TestCase controller for GetTestSuiteByproject method | ProjectId: {0} | UserName: {1}", ProjectId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for GetTestSuiteByproject method | ProjectId: {0} | UserName: {1}", ProjectId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -284,8 +302,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in TestCase | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in TestCase | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in TestCase controller for MoveTestCase method | projectId: {0} | TestSuiteId: {1} | TestCaseId : {2} | UserName: {3}", lprojectId, lsuiteId, caseId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in TestCase controller for MoveTestCase method | projectId: {0} | TestSuiteId: {1} | TestCaseId : {2} | UserName: {3}", lprojectId, lsuiteId, caseId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if(ex.InnerException != null)
+                   ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for MoveTestCase method | projectId: {0} | TestSuiteId: {1} | TestCaseId : {2} | UserName: {3}", lprojectId, lsuiteId, caseId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -317,8 +337,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in TestCase | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in TestCase | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in TestCase controller for ChangeTestCaseName method | TestCaseName: {0} | TestCaseId: {1} | TestCaseDesc : {2} | UserName: {3}", TestCaseName, TestCaseId,  TestCaseDes, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in TestCase controller for ChangeTestCaseName method | TestCaseName: {0} | TestCaseId: {1} | TestCaseDesc : {2} | UserName: {3}", TestCaseName, TestCaseId, TestCaseDes, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for ChangeTestCaseName method | TestCaseName: {0} | TestCaseId: {1} | TestCaseDesc : {2} | UserName: {3}", TestCaseName, TestCaseId, TestCaseDes, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -340,8 +362,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in TestCase | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in TestCase | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in TestCase controller for CheckDuplicateTestCaseNameExist method | TestCaseName: {0} | TestCaseId: {1} | UserName: {2}", TestCaseName, TestCaseId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in TestCase controller for CheckDuplicateTestCaseNameExist method | TestCaseName: {0} | TestCaseId: {1} | UserName: {2}", TestCaseName, TestCaseId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for CheckDuplicateTestCaseNameExist method | TestCaseName: {0} | TestCaseId: {1} | UserName: {2}", TestCaseName, TestCaseId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -370,8 +394,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in TestCase | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in TestCase | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in TestCase controller for GetTestCaseDetails method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in TestCase controller for GetTestCaseDetails method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for GetTestCaseDetails method | TestCaseId: {0} | UserName: {1}", testcaseId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -385,8 +411,8 @@ namespace MARS_Web.Controllers
             string logPath = WebConfigurationManager.AppSettings["LogPathLocation"];
             EmailHelper.logFilePath = System.Web.HttpContext.Current.Server.MapPath("~/" + logPath + "/");
             var repTC = new TestCaseRepository();
-
-            logger.Info(string.Format("Testcase SaveAs Start | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+            repTC.Username = SessionManager.TESTER_LOGIN_NAME;
+            logger.Info(string.Format("Testcase Save Start | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
             ResultModel resultModel = new ResultModel();
             try
             {
@@ -502,7 +528,7 @@ namespace MARS_Web.Controllers
 
                     dt.Columns.Add("TestcaseId");
                     dt.Columns.Add("TestsuiteId");
-
+                    dt.Columns.Add("ParentObj");
 
                     string returnValues = repTC.InsertFeedProcess();
                     EmailHelper.WriteMessage("start  feed process  ", EmailHelper.logFilePath, DateTime.Now.ToString(), "");
@@ -600,7 +626,6 @@ namespace MARS_Web.Controllers
                                                 }
                                             }
 
-
                                             if (dataset.Data_Summary_Name == Convert.ToString(item.Key) || (lSplitDatasetname && dataset.Data_Summary_Name == lDatasetname))
                                             {
 
@@ -622,7 +647,7 @@ namespace MARS_Web.Controllers
                                                 }
                                                 if (updates.Any(x => x.Key == dataset.Data_Summary_Name))
                                                 {
-                                                    dr["DATASETVALUE"] = Convert.ToString(updates.FirstOrDefault(x => x.Key == dataset.Data_Summary_Name).Value);
+                                                    dr["DATASETVALUE"] = Convert.ToString(updates.FirstOrDefault(x => x.Key == dataset.Data_Summary_Name).Value.ToString().Trim());
                                                 }
                                                 if (updates.Any(x => x.Key == "skip_" + dataset.Data_Summary_Name))
                                                 {
@@ -728,7 +753,6 @@ namespace MARS_Web.Controllers
 
                                     if (lflag)
                                     {
-
                                         foreach (var dataset in lDatasetnameList)
                                         {
                                             var lForSkipValue = adds.Any(x => x.Key == dataset.Data_Summary_Name);
@@ -765,7 +789,7 @@ namespace MARS_Web.Controllers
                                                 }
                                                 if (adds.Any(x => x.Key == dataset.Data_Summary_Name))
                                                 {
-                                                    dr["DATASETVALUE"] = Convert.ToString(adds.FirstOrDefault(x => x.Key == dataset.Data_Summary_Name).Value);
+                                                    dr["DATASETVALUE"] = Convert.ToString(adds.FirstOrDefault(x => x.Key == dataset.Data_Summary_Name).Value.ToString().Trim());
                                                 }
                                                 if (adds.Any(x => x.Key == "skip_" + dataset.Data_Summary_Name))
                                                 {
@@ -780,11 +804,9 @@ namespace MARS_Web.Controllers
                                                 dr["TestsuiteId"] = lTestSuiteId;
                                                 dt.Rows.Add(dr);
                                                 lflagAdded = true;
-
                                             }
                                         }
                                     }
-
                                 }
 
                                 if (!lflagAdded)
@@ -857,13 +879,44 @@ namespace MARS_Web.Controllers
                         return Json(resultModel, JsonRequestBehavior.AllowGet);
                     }
                     //insert into Stging table
+                    if(dt != null)
+                    {
+                        if(dt.Rows.Count > 0)
+                        {
+                            for (int i = 0; i < dt.Rows.Count; i++)
+                            {
+                                var row = dt.Rows[i];
+                                if (Convert.ToString(row.ItemArray[12]) == "Update" || Convert.ToString(row.ItemArray[12]) == "Add")
+                                {
+                                    var ParentObject = string.Empty;
+                                    var rowNumber = Convert.ToInt32(row.ItemArray[5]);
+                                    var lGridObjList = lobj.Where(x => x.pq_ri < rowNumber).ToList();
+                                    if (lGridObjList != null)
+                                    {
+                                        foreach (var item in lGridObjList.OrderByDescending(x => x.pq_ri))
+                                        {
+                                            if (item.Keyword.ToLower().Trim() == "pegwindow")
+                                            {
+                                                ParentObject = item.Object;
+                                                //row.ItemArray[16] = ParentObject;
+                                                dt.Rows[i][16] = ParentObject;
+                                                break;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                           
+                        }
+                    }
+                    
                     EmailHelper.WriteMessage("Start Save Testcase", EmailHelper.logFilePath, DateTime.Now.ToString(), "");
                     repTC.InsertStgTestCaseSave(lConnectionStr, lSchema, dt, lTestCaseId, int.Parse(valFeedD));
                     EmailHelper.WriteMessage("Complete Save Testcase", EmailHelper.logFilePath, DateTime.Now.ToString(), "");
 
                     repTC.SaveTestCaseVersion(int.Parse(lTestCaseId), (long)SessionManager.TESTER_ID);
 
-                    logger.Info(string.Format("Test Case SaveAs end | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                    logger.Info(string.Format("Test Case Save end | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
                     resultModel.data = "success";
                 }
                 else
@@ -871,15 +924,20 @@ namespace MARS_Web.Controllers
                     var result = JsonConvert.SerializeObject(ValidationSteps);
                     resultModel.data = result;
                 }
-                logger.Info(string.Format("Test Case SaveAs end | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                logger.Info(string.Format("Test Case Save end | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
                 logger.Info(string.Format("Test Case saved successfully. | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
                 resultModel.message = "Test Case saved.";
                 resultModel.status = 1;
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in TestCase | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in TestCase | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in TestCase controller for SaveTestCase method | TestCaseId: {0} | TestSuiteId: {1} | UserName: {2}",  lTestCaseId, lTestSuiteId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in TestCase controller for SaveTestCase method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if(ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for SaveTestCase method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+                if (ex.InnerException.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for SaveTestCase method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException.InnerException);
+
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -908,6 +966,7 @@ namespace MARS_Web.Controllers
                 EmailHelper.WriteMessage(lConnectionStr, EmailHelper.logFilePath, "connection string", "");
                 JavaScriptSerializer js = new JavaScriptSerializer();
                 TestCaseRepository tc = new TestCaseRepository();
+                tc.Username = SessionManager.TESTER_LOGIN_NAME;
                 decimal testcaseId = int.Parse(testCaseId);
                 decimal testsuiteid = int.Parse(testSuiteId);
                 var lUserId = SessionManager.TESTER_ID;
@@ -1218,7 +1277,7 @@ namespace MARS_Web.Controllers
                                         if (datasetvalues.Count() > i)
                                         {
                                             EmailHelper.WriteMessage("Inside loop Datasetvalue 1:" + datasetvalues[i].ToString(), EmailHelper.logFilePath, "", "");
-                                            dr["DATASETVALUE"] = datasetvalues[i].ToString();
+                                            dr["DATASETVALUE"] = datasetvalues[i].ToString().Trim();
                                         }
                                         else
                                         {
@@ -1325,7 +1384,7 @@ namespace MARS_Web.Controllers
                                                                 {
                                                                     if (up.Value != null)
                                                                     {
-                                                                        dt.Rows[i]["DATASETVALUE"] = up.Value.ToString();
+                                                                        dt.Rows[i]["DATASETVALUE"] = up.Value.ToString().Trim();
                                                                     }
                                                                     else
                                                                     {
@@ -1420,7 +1479,7 @@ namespace MARS_Web.Controllers
                                             {
                                                 if (item.Value != null)
                                                 {
-                                                    dr["DATASETVALUE"] = item.Value.ToString();
+                                                    dr["DATASETVALUE"] = item.Value.ToString().Trim();
                                                 }
 
                                             }
@@ -1743,7 +1802,6 @@ namespace MARS_Web.Controllers
                     var result = JsonConvert.SerializeObject(ValidationSteps);
                     return Json(result, JsonRequestBehavior.AllowGet);
                 }
-                //-------------------------------------------------------------
             }
             catch (Exception ex)
             {
@@ -1777,8 +1835,11 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in TestCase | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in TestCase | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in TestCase controller for ValidateTestCase method | TestCaseId: {0} | pKeywordObject: {1} | TestSuiteId: {2} | UserName: {3}", testCaseId, pKeywordObject, testSuiteId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in TestCase controller for ValidateTestCase method | TestCaseId: {0} | pKeywordObject: {1} | TestSuiteId: {2} | UserName: {3}", testCaseId, pKeywordObject, testSuiteId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for ValidateTestCase method | TestCaseId: {0} | pKeywordObject: {1} | TestSuiteId: {2} | UserName: {3}", testCaseId ,  pKeywordObject, testSuiteId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -1803,7 +1864,7 @@ namespace MARS_Web.Controllers
                 int lstepId = stepId;
                 var lPegStepId = 0;
                 int i = 1;
-                foreach (var item in lobj)
+                /*foreach (var item in lobj)
                 {
                     if (!string.IsNullOrEmpty(item.Keyword))
                     {
@@ -1816,8 +1877,21 @@ namespace MARS_Web.Controllers
                         }
                     }
                     i++;
-                }
+                }*/
+                //to find the first peg window
+                foreach (var item in lobj)
+                {
+                    if (!string.IsNullOrEmpty(item.Keyword))
+                    {
+                        if (item.Keyword.ToLower() == "pegwindow" && lPegStepId == 0)
+                        {
+                            lPegStepId = i;
+                            break;
+                        }
+                    }
 
+                    i++;
+                }
                 //Loads keyword dropdown If it is first step
                 if (lstepId == 1 || lstepId < lPegStepId || lPegStepId == 0)
                 {
@@ -1831,7 +1905,8 @@ namespace MARS_Web.Controllers
                     lKeywordList.Add("resumenext");
                     lKeywordList.Add("startapplication");
                     lKeywordList.Add("waitforseconds");
-
+                    
+                    
                     lList = repKeyword.GetKeywords().Where(x => lKeywordList.Contains(x.KEY_WORD_NAME.ToLower().Trim())).Select(y => new KeywordList
                     {
                         KeywordId = y.KEY_WORD_ID,
@@ -1852,8 +1927,11 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in TestCase | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in TestCase | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in TestCase controller for GetKeywordsList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in TestCase controller for GetKeywordsList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for GetKeywordsList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -1886,18 +1964,17 @@ namespace MARS_Web.Controllers
                 lobj.Where(c => c.Keyword == null).ToList().ForEach(x => { x.Keyword = ""; });
 
                 var lPegKeywordList = lobj.Where(x => x.Keyword.ToLower() == "pegwindow").ToList();
-                var lSelectedGrid = lPegKeywordList.Where(x => x.Id == stepId).ToList();
+                //var lSelectedGrid = lPegKeywordList.Where(x => x.Id == stepId).ToList();
                 if (lPegKeywordList.Count() > 0)
                 {
                     if (stepId < lPegKeywordList.First().Id)
                     {
                         lList = new List<ObjectList>();
-
                     }
-                    else if (lSelectedGrid.Count() > 0)
-                    {
-                        lList = repObject.GetObjectsByPegWindowType(lTestCaseId).OrderBy(y => y.ObjectName).ToList();
-                    }
+                    //else if (lSelectedGrid.Count() > 0)
+                    //{
+                    //    lList = repObject.GetObjectsByPegWindowType(lTestCaseId).OrderBy(y => y.ObjectName).ToList();
+                    //}
                     else
                     {
                         var lPegKeywordNameList = lobj.Where(x => x.Id == stepId).ToList();
@@ -1908,7 +1985,6 @@ namespace MARS_Web.Controllers
                             llinkedKeywordId = lLinkedKeyList.KEY_WORD_ID;
                             var lPegObjectName = lPegKeywordList.Where(x => x.Id < stepId).OrderByDescending(y => y.Id).First().Object;
 
-                            //var lPegObj = repObject.GetObjectByObjectName(lPegObjectName);
                             var lPegObj = repObject.GetPegObjectByObjectName(lPegObjectName);
                             if (lPegObj != null)
                             {
@@ -1927,13 +2003,90 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Testcase | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in Testcase | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in TestCase controller for GetObjectsList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in TestCase controller for GetObjectsList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for GetObjectsList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
+
+        //[HttpPost]
+        //public ActionResult GetObjectsList(GetObjectList ObjectList)
+        //{
+        //    ResultModel resultModel = new ResultModel();
+        //    try
+        //    {
+        //        var repObject = new ObjectRepository();
+        //        repObject.Username = SessionManager.TESTER_LOGIN_NAME;
+        //        var repKeyword = new KeywordRepository();
+        //        repKeyword.Username = SessionManager.TESTER_LOGIN_NAME;
+        //        var lList = new List<ObjectList>();
+
+        //        JavaScriptSerializer js = new JavaScriptSerializer();
+        //        string lGrid = ObjectList.Grid;
+        //        int stepId = ObjectList.stepId;
+        //        int lTestCaseId = ObjectList.TestCaseId;
+
+        //        var lobj = js.Deserialize<KeywordObjectLink[]>(lGrid);
+
+        //        int lPegStepId = 0;
+        //        decimal lPegObjectId = 0;
+        //        long llinkedKeywordId = 0;
+        //        lobj.Where(c => c.Keyword == null).ToList().ForEach(x => { x.Keyword = ""; });
+
+        //        var lPegKeywordList = lobj.Where(x => x.Keyword.ToLower() == "pegwindow").ToList();
+        //        var lSelectedGrid = lPegKeywordList.Where(x => x.Id == stepId).ToList();
+        //        if (lPegKeywordList.Count() > 0)
+        //        {
+        //            if (stepId < lPegKeywordList.First().Id)
+        //            {
+        //                lList = new List<ObjectList>();
+
+        //            }
+        //            else if (lSelectedGrid.Count() > 0)
+        //            {
+        //                lList = repObject.GetObjectsByPegWindowType(lTestCaseId).OrderBy(y => y.ObjectName).ToList();
+        //            }
+        //            else
+        //            {
+        //                var lPegKeywordNameList = lobj.Where(x => x.Id == stepId).ToList();
+        //                var lPegKeywordName = lPegKeywordNameList.First().Keyword;
+        //                var lLinkedKeyList = repKeyword.GetKeywordByName(lPegKeywordName);
+        //                if (lLinkedKeyList != null)
+        //                {
+        //                    llinkedKeywordId = lLinkedKeyList.KEY_WORD_ID;
+        //                    var lPegObjectName = lPegKeywordList.Where(x => x.Id < stepId).OrderByDescending(y => y.Id).First().Object;
+
+        //                    //var lPegObj = repObject.GetObjectByObjectName(lPegObjectName);
+        //                    var lPegObj = repObject.GetPegObjectByObjectName(lPegObjectName);
+        //                    if (lPegObj != null)
+        //                    {
+        //                        lPegObjectId = lPegObj.OBJECT_NAME_ID;
+        //                        lList = repObject.GetObjectByParent(lTestCaseId, lPegObjectId, llinkedKeywordId).Select(y => new ObjectList
+        //                        {
+        //                            ObjectId = y.OBJECT_NAME_ID,
+        //                            ObjectName = y.OBJECT_HAPPY_NAME
+        //                        }).OrderBy(y => y.ObjectName).ToList();
+        //                    }
+        //                }
+        //            }
+        //        }
+        //        resultModel.status = 1;
+        //        resultModel.data = lList;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        logger.Error(string.Format("Error occured in Testcase | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+        //        ELogger.ErrorException(string.Format("Error occured in Testcase | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+        //        resultModel.status = 0;
+        //        resultModel.message = ex.Message.ToString();
+        //    }
+        //    return Json(resultModel, JsonRequestBehavior.AllowGet);
+        //}
 
         #endregion
 
@@ -1987,16 +2140,19 @@ namespace MARS_Web.Controllers
                 MARSUtility.ExportExcel excel = new MARSUtility.ExportExcel();
                 MARSUtility.ExportHelper exphelper = new MARSUtility.ExportHelper();
                 var testCaserepo = new TestCaseRepository();
+                testCaserepo.Username = SessionManager.TESTER_LOGIN_NAME;
                 var TestCaseName = testCaserepo.GetTestCaseNameById(Convert.ToInt64(TestCaseId));
                 var testSuiterepo = new TestSuiteRepository();
                 var TestSuiteName = testSuiterepo.GetTestSuiteNameById(Convert.ToInt64(TestSuiteId));
 
                 string lSchema = SessionManager.Schema;
                 var lConnectionStr = SessionManager.APP;
+                Regex re = new Regex("[;\\/:*?\"<>|&']");
+                var TestCase = re.Replace(TestCaseName, "_").Replace("\\", "&bs").Replace("/", "&fs").Replace("*", "&ast").Replace("[", "&ob").Replace("]", "&cb").Replace(":", "&col").Replace("?", "&qtn");
 
-                string lFileName = TestCaseName + "_" + DateTime.Now.ToString("yyyyMMdd") + "_" + DateTime.Now.ToString("HHmmss") + ".xlsx";
+                string lFileName = TestCase + "_" + DateTime.Now.ToString("yyyyMMdd") + "_" + DateTime.Now.ToString("HHmmss") + ".xlsx";
                 string FullPath = Path.Combine(System.Web.HttpContext.Current.Server.MapPath("~/TempExport/"), lFileName);
-                name = "Log_" + TestCaseName + "_Export" + DateTime.Now.ToString(" yyyy-MM-dd HH-mm-ss") + ".xlsx";
+                name = "Log_" + TestCase + "_Export" + DateTime.Now.ToString(" yyyy-MM-dd HH-mm-ss") + ".xlsx";
                 strPath = Path.Combine(Server.MapPath("~/" + log_path), name);
                 try
                 {
@@ -2037,15 +2193,17 @@ namespace MARS_Web.Controllers
         #region Add/Edit Dataset in TestCase
         //Add/Edit a dataset in a TestCase
         [HttpPost]
-        public JsonResult AddEditDataset(long? Testcaseid, long? datasetid, string datasetname, string datasetdesc,DataSetTagModel tagmodel)
+        public JsonResult AddEditDataset(long? Testcaseid, long? datasetid, string datasetname, string datasetdesc, DataSetTagModel tagmodel)
         {
             logger.Info(string.Format("Add/Edit Dataset start | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
             ResultModel resultModel = new ResultModel();
             try
             {
+                var lSchema = SessionManager.Schema;
+                var lConnectionStr = SessionManager.APP;
                 var testCaserepo = new TestCaseRepository();
                 testCaserepo.Username = SessionManager.TESTER_LOGIN_NAME;
-                var result = testCaserepo.AddTestDataSet(Testcaseid, datasetid, datasetname, datasetdesc,tagmodel);
+                var result = testCaserepo.AddTestDataSet(Testcaseid, datasetid, datasetname, datasetdesc, tagmodel, lConnectionStr, lSchema);
                 string[] result1 = result.Split(',');
                 var lresult = new
                 {
@@ -2061,8 +2219,11 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Testcase | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in Testcase | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in TestCase controller for AddEditDataset method | Testcaseid: {0} | datasetid: {1} | datasetname: {2} | datasetdesc: {3} | UserName: {4}", Testcaseid, datasetid, datasetname, datasetdesc, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in TestCase controller for AddEditDataset method | Testcaseid: {0} | datasetid: {1} | datasetname: {2} | datasetdesc: {3} | UserName: {4}", Testcaseid, datasetid, datasetname, datasetdesc, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for AddEditDataset method | Testcaseid: {0} | datasetid: {1} | datasetname: {2} | datasetdesc: {3} | UserName: {4}", Testcaseid, datasetid, datasetname, datasetdesc, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -2083,8 +2244,11 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Testcase | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in Testcase | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in TestCase controller for CheckDatasetExistsInStoryboard method | datasetid: {0} | UserName: {1}", datasetid, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in TestCase controller for CheckDatasetExistsInStoryboard method | datasetid: {0} | UserName: {1}", datasetid, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for CheckDatasetExistsInStoryboard method | datasetid: {0} | UserName: {1}",  datasetid, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -2103,8 +2267,11 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in TestCase | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in TestCase | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in TestCase controller for GetDataSetCount method  | ProjectId: {0} | TestSuiteId: {1} | TestCaseId: {2} | UserName: {3}", ProjectId, TestSuiteId, TestCaseId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in TestCase controller for GetDataSetCount method  | ProjectId: {0} | TestSuiteId: {1} | TestCaseId: {2} | UserName: {3}", ProjectId, TestSuiteId, TestCaseId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for GetDataSetCount method  | ProjectId: {0} | TestSuiteId: {1} | TestCaseId: {2} | UserName: {3}", ProjectId, TestSuiteId, TestCaseId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -2141,8 +2308,11 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in TestCase | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in TestCase | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in TestCase controller for CopyDataSet method | TestCaseId: {0} | OldTestCaseId: {1} | datasetname: {2} | datasetdescription: {3} | UserName: {4}", testcaseid, oldDatasetid, datasetname, datasetdescription, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in TestCase controller for CopyDataSet method | TestCaseId: {0} | OldTestCaseId: {1} | datasetname: {2} | datasetdescription: {3} | UserName: {4}", testcaseid, oldDatasetid, datasetname, datasetdescription, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for CopyDataSet method | TestCaseId: {0} | OldTestCaseId: {1} | datasetname: {2} | datasetdescription: {3} | UserName: {4}", testcaseid, oldDatasetid, datasetname, datasetdescription, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -2164,8 +2334,11 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in TestCase | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in TestCase | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in TestCase controller for UpdateIsAvailable method | TestCaseIds: {0} | UserName: {1}", TestCaseIds, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in TestCase controller for UpdateIsAvailable method | TestCaseIds: {0} | UserName: {1}", TestCaseIds, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for UpdateIsAvailable method | TestCaseIds: {0} | UserName: {1}", TestCaseIds, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -2221,8 +2394,14 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in TestCase | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in TestCase | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in TestCase controller for SaveAsTestCase method | testcasename: {0} | OldTestCaseId: {1} | testcasedesc: {2} | testsuiteid: {3} | projectid: {4} | optionval: {5} | datasetName: {6} | suffix: {7} | UserName: {8}", testcasename, oldtestcaseid, testcasedesc, testsuiteid, projectid, optionval, datasetName, suffix, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in TestCase controller for SaveAsTestCase method | testcasename: {0} | OldTestCaseId: {1} | testcasedesc: {2} | testsuiteid: {3} | projectid: {4} | optionval: {5} | datasetName: {6} | suffix: {7} | UserName: {8}", testcasename, oldtestcaseid, testcasedesc, testsuiteid, projectid, optionval, datasetName, suffix, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for SaveAsTestCase method | testcasename: {0} | OldTestCaseId: {1} | testcasedesc: {2} | testsuiteid: {3} | projectid: {4} | optionval: {5} | datasetName: {6} | suffix: {7} | UserName: {8}", testcasename, oldtestcaseid, testcasedesc, testsuiteid, projectid, optionval, datasetName , suffix, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+
+                if(ex.InnerException.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for SaveAsTestCase method | testcasename: {0} | OldTestCaseId: {1} | testcasedesc: {2} | testsuiteid: {3} | projectid: {4} | optionval: {5} | datasetName: {6} | suffix: {7} | UserName: {8}", testcasename, oldtestcaseid, testcasedesc, testsuiteid, projectid, optionval, datasetName, suffix, SessionManager.TESTER_LOGIN_NAME), ex.InnerException.InnerException);
+
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -2245,8 +2424,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured when group page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured when group page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in TestCase controller for GroupList method | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in TestCase controller for GroupList method | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for GroupList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
             }
             return PartialView();
         }
@@ -2333,8 +2514,11 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured when Group page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured when Group page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in TestCase controller for GroupDataLoad method | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in TestCase controller for GroupDataLoad method | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for GroupDataLoad method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+
             }
             return Json(new
             {
@@ -2367,8 +2551,11 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Group page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in Group page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in TestCase controller for AddEditGroup method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in TestCase controller for AddEditGroup method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for AddEditGroup method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -2391,8 +2578,11 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Set page | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in Set page | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in TestCase controller for CheckDuplicateGroupNameExist method | Name: {0} | Id: {1} | Username: {2}", Name,Id, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in TestCase controller for CheckDuplicateGroupNameExist method | Name: {0} | Id: {1} | Username: {2}", Name, Id, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured  in TestCase controller for CheckDuplicateGroupNameExist method | Name: {0} | Id: {1} | Username: {2}", Name, Id, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -2414,8 +2604,11 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured when group page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured when group page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in TestCase controller for SetList method | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in TestCase controller for SetList method | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for SetList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+
             }
             return PartialView();
         }
@@ -2501,8 +2694,11 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured when Set page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured when Set page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in TestCase controller for SetDataLoad method | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in TestCase controller for SetDataLoad method | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for SetDataLoad method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+
             }
             return Json(new
             {
@@ -2535,8 +2731,11 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Set page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in Set page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in TestCase controller for AddEditSet method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in TestCase controller for AddEditSet method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for AddEditSet method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -2559,8 +2758,11 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Set page | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in Set page | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in TestCase controller for CheckDuplicateSetNameExist method | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in TestCase controller for CheckDuplicateSetNameExist method | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for CheckDuplicateSetNameExist method | Name: {0} | Id: {1} | Username: {2}", Name, Id, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -2582,8 +2784,11 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured when group page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured when group page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in TestCase controller for FolderList method | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in TestCase controller for FolderList method | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for FolderList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+
             }
             return PartialView();
         }
@@ -2669,8 +2874,11 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured when User Role page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured when User Role page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in TestCase controller for FolderDataLoad method | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in TestCase controller for FolderDataLoad method | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for FolderDataLoad method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+
             }
             return Json(new
             {
@@ -2703,8 +2911,11 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Folder page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in Folder page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in TestCase controller for AddEditFolder method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in TestCase controller for AddEditFolder method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for AddEditFolder method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -2727,8 +2938,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Folder page | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in Folder page | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in TestCase controller for CheckDuplicateFolderNameExist method | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in TestCase controller for CheckDuplicateFolderNameExist method | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for CheckDuplicateFolderNameExist method | Name: {0} | Id: {1} | Username: {2}", Name, Id, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -2738,49 +2951,89 @@ namespace MARS_Web.Controllers
         //Get DatasetTag Details
         public ActionResult GetDatasetTagDetails(long datasetid)
         {
-            TestCaseRepository repo = new TestCaseRepository();
+            try
+            {
+                TestCaseRepository repo = new TestCaseRepository();
+                repo.Username = SessionManager.TESTER_LOGIN_NAME;
+                var dataresults = repo.GetTagDetails(datasetid);
+                ViewBag.Folder = dataresults.Count == 0 ? "" : dataresults[0].Folder;
+                ViewBag.Group = dataresults.Count == 0 ? "" : dataresults[0].Group;
+                ViewBag.Set = dataresults.Count == 0 ? "" : dataresults[0].Set;
+                ViewBag.Expresult = dataresults.Count == 0 ? "" : dataresults[0].Expectedresults;
+                ViewBag.Sequence = dataresults.Count == 0 ? 0 : dataresults[0].Sequence;
+                ViewBag.Diary = dataresults.Count == 0 ? "" : dataresults[0].Diary;
+                ViewBag.StepDesc = dataresults.Count == 0 ? "" : dataresults[0].StepDesc;
+                var groups = repo.GetGroups();
+                ViewBag.Taggroup = groups.Select(x => new SelectListItem { Text = x.GROUPNAME, Value = Convert.ToString(x.GROUPID), Selected = x.GROUPNAME == (dataresults.Count == 0 ? "" : dataresults[0].Group) ? true : false }).Distinct().ToList();
 
-            var dataresults = repo.GetTagDetails(datasetid);
-            ViewBag.Folder = dataresults.Count == 0 ? "" : dataresults[0].Folder;
-            ViewBag.Group = dataresults.Count == 0 ? "" : dataresults[0].Group;
-            ViewBag.Set = dataresults.Count == 0 ? "" : dataresults[0].Set;
-            ViewBag.Expresult = dataresults.Count == 0 ? "" : dataresults[0].Expectedresults;
-            ViewBag.Sequence = dataresults.Count == 0 ? 0 : dataresults[0].Sequence;
-            ViewBag.Diary = dataresults.Count == 0 ? "" : dataresults[0].Diary;
-            ViewBag.StepDesc = dataresults.Count == 0 ? "" : dataresults[0].StepDesc;
-            var groups = repo.GetGroups();
-            ViewBag.Taggroup = groups.Select(x => new SelectListItem { Text = x.GROUPNAME, Value = Convert.ToString(x.GROUPID), Selected = x.GROUPNAME == (dataresults.Count == 0 ? "" : dataresults[0].Group) ? true : false }).Distinct().ToList();
+                var folder = repo.GetFolders();
+                ViewBag.TagFolder = folder.Select(x => new SelectListItem { Text = x.FOLDERNAME, Value = Convert.ToString(x.FOLDERID), Selected = x.FOLDERNAME == (dataresults.Count == 0 ? "" : dataresults[0].Folder) ? true : false }).Distinct().ToList();
 
-            var folder = repo.GetFolders();
-            ViewBag.TagFolder = folder.Select(x => new SelectListItem { Text = x.FOLDERNAME, Value = Convert.ToString(x.FOLDERID), Selected = x.FOLDERNAME == (dataresults.Count == 0 ? "" : dataresults[0].Folder) ? true : false }).Distinct().ToList();
+                var sets = repo.GetSets();
+                ViewBag.TagSet = sets.Select(x => new SelectListItem { Text = x.SETNAME, Value = Convert.ToString(x.SETID), Selected = x.SETNAME == (dataresults.Count == 0 ? "" : dataresults[0].Set) ? true : false }).Distinct().ToList();
 
-            var sets = repo.GetSets();
-            ViewBag.TagSet = sets.Select(x => new SelectListItem { Text = x.SETNAME, Value = Convert.ToString(x.SETID), Selected = x.SETNAME == (dataresults.Count == 0 ? "" : dataresults[0].Set) ? true : false }).Distinct().ToList();
+                var dataset = repo.GetDataSetName(datasetid);
+                ViewBag.datasetid = datasetid;
+                ViewBag.Datasetname = dataset[0].Data_Summary_Name;
+                ViewBag.Datasetdesc = dataset[0].Dataset_desc;
+                return PartialView("GetDatasetTagDetails");
 
-            var dataset = repo.GetDataSetName(datasetid);
-            ViewBag.datasetid = datasetid;
-            ViewBag.Datasetname = dataset[0].Data_Summary_Name;
-            ViewBag.Datasetdesc = dataset[0].Dataset_desc;
-            return PartialView("GetDatasetTagDetails");
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in TestCase controller for GetDatasetTagDetails method | datasetid: {0} | Username: {1}", datasetid,SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in TestCase controller for GetDatasetTagDetails method | datasetid: {0} | Username: {1}", datasetid, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for GetDatasetTagDetails method | datasetid: {0} | Username: {1}", datasetid, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
 
+                throw;
+            }
         }
 
         //Delete the DatasetTag data by datasetid
         [HttpPost]
         public ActionResult DeleteDatSetTag(long datasetid)
         {
-            TestCaseRepository repo = new TestCaseRepository();
-            var result = repo.DeleteTagProperties(datasetid);
-            return Json(result, JsonRequestBehavior.AllowGet);
+            try
+            {
+                TestCaseRepository repo = new TestCaseRepository();
+                repo.Username = SessionManager.TESTER_LOGIN_NAME;
+                var result = repo.DeleteTagProperties(datasetid);
+                return Json(result, JsonRequestBehavior.AllowGet);
+
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in TestCase controller for DeleteDatSetTag method | datasetid: {0} | Username: {1}", datasetid, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in TestCase controller for DeleteDatSetTag method | datasetid: {0} | Username: {1}", datasetid, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for DeleteDatSetTag method | datasetid: {0} | Username: {1}", datasetid, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+
+                throw;
+            }
+            
         }
 
         //Check Folder Sequence already exist or not
         [HttpPost]
-        public ActionResult CheckFolderSequenceMapping(long FolderId,long SequenceId,long DatasetId)
+        public ActionResult CheckFolderSequenceMapping(long FolderId, long SequenceId, long DatasetId)
         {
-            var repo = new TestCaseRepository();
-            var result = repo.CheckFolderSequenceMapping(FolderId, SequenceId, DatasetId);
-            return Json(result, JsonRequestBehavior.AllowGet);
+            try
+            {
+                var repo = new TestCaseRepository();
+                repo.Username = SessionManager.TESTER_LOGIN_NAME;
+                var result = repo.CheckFolderSequenceMapping(FolderId, SequenceId, DatasetId);
+                return Json(result, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in TestCase controller for CheckFolderSequenceMapping method | FolderId: {0} | SequenceId: {1} | DatasetId: {2} | Username: {3}", FolderId, SequenceId, DatasetId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in TestCase controller for CheckFolderSequenceMapping method | FolderId: {0} | SequenceId: {1} | DatasetId: {2} | Username: {3}", FolderId, SequenceId, DatasetId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for CheckFolderSequenceMapping method | FolderId: {0} | SequenceId: {1} | DatasetId: {2} | Username: {3}", FolderId, SequenceId,DatasetId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+
+                throw;
+            }
         }
         #endregion
 
@@ -2834,7 +3087,7 @@ namespace MARS_Web.Controllers
             string lSchema = SessionManager.Schema;
             var lConnectionStr = SessionManager.APP;
 
-            string lFileName =  "DATASETTAG_" + DateTime.Now.ToString("yyyyMMdd") + "_" + DateTime.Now.ToString("HHmmss") + ".xlsx";
+            string lFileName = "DATASETTAG_" + DateTime.Now.ToString("yyyyMMdd") + "_" + DateTime.Now.ToString("HHmmss") + ".xlsx";
             string FullPath = Path.Combine(System.Web.HttpContext.Current.Server.MapPath("~/TempExport/"), lFileName);
             name = "Log_DATASETTAG_Export" + DateTime.Now.ToString(" yyyy-MM-dd HH-mm-ss") + ".xlsx";
             strPath = Path.Combine(Server.MapPath("~/" + log_path), name);
@@ -2842,7 +3095,7 @@ namespace MARS_Web.Controllers
             {
                 dbtable.errorlog("Export is started", "Export DatasetTag Excel", "", 0);
 
-                var presult = excel.ExportDatasetTagExcel(FullPath, lSchema,lConnectionStr);
+                var presult = excel.ExportDatasetTagExcel(FullPath, lSchema, lConnectionStr);
 
                 if (presult == true)
                 {

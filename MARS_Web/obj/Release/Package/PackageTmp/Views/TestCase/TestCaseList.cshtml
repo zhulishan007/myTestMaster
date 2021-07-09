@@ -3,6 +3,19 @@
         height: 37px;
     }
 </style>
+@using MARS_Repository.ViewModel
+@{
+    string EditTC = "false", DeleteTC = "false";
+    var PrivilegeList = Session["PrivilegeList"] as List<PrivilegeViewModel>;
+    if (PrivilegeList.Count > 0)
+    {
+        EditTC = PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Edit TestCase").ToString().ToLower();
+        DeleteTC = PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Delete TestCase").ToString().ToLower();
+    }
+}
+<input type="hidden" value="@EditTC" id="hdnEditTC" />
+<input type="hidden" value="@DeleteTC" id="hdnDeleteTC" />
+
 <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
     <div class="kt-subheader   kt-grid__item" id="kt_subheader" style="left: @ViewBag.width;">
         <div class="kt-container  kt-container--fluid ">
@@ -18,9 +31,6 @@
                     <a href="#" class="kt-subheader__breadcrumbs-link" style="color:#1c6081">
                         &nbsp;
                     </a>
-
-
-                    <!-- <span class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active">Active link</span> -->
                 </div>
             </div>
         </div>
@@ -33,19 +43,21 @@
                         List Of All Test Case
                     </h3>
                 </div>
-                <div class="kt-portlet__head-toolbar">
-                    <div class="kt-portlet__head-wrapper">
-                        <div class="kt-portlet__head-actions">
-
-                            &nbsp;
-                            <a href="#" onclick="AddTestCase()" class="btn btn-brand btn-elevate btn-icon-sm">
-                                <i class="la la-plus"></i>
-                                New TestCase
-                            </a>
+                @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Add TestCase"))
+                {
+                    <div class="kt-portlet__head-toolbar">
+                        <div class="kt-portlet__head-wrapper">
+                            <div class="kt-portlet__head-actions">
+                                &nbsp;
+                                <a href="#" onclick="AddTestCase()" class="btn btn-brand btn-elevate btn-icon-sm">
+                                    <i class="la la-plus"></i>
+                                    New TestCase
+                                </a>
+                            </div>
                         </div>
                     </div>
+                }
                 </div>
-            </div>
 
             <div class="kt-portlet__body">
                 <table class="table table-striped- table-bordered table-hover table-checkable " id="TestCasetable">
@@ -67,11 +79,11 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="AddEditTestCase" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="AddEditTestCase" tabindex="-1" role="dialog" aria-labelledby="TCexampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Test Case</h5>
+                <h5 class="modal-title" id="TCexampleModalLabel">Test Case</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -132,6 +144,8 @@
         });
 
         var initTestCaseTable = function () {
+            var lEditTCdisplay = $("#hdnEditTC").val();
+            var lDeleteTCdisplay = $("#hdnDeleteTC").val();
             tableTestCase = $('#TestCasetable').DataTable({
                 responsive: false,
 
@@ -224,8 +238,15 @@
                             var lTestSuite = full.TestSuite;
                             var lApplicationId = full.ApplicationId;
                             var lTestSuiteId = full.TestSuiteId;
-                            return " <a href='#' class='btn btn-sm btn-clean btn-icon btn-icon-md' title='View'  data-name='" + lName + "' data-des='" + lDes + "'  data-app='" + lApplication + "' data-testsuite='" + lTestSuite + "'  data-appid='" + lApplicationId + "' data-testsuiteid='" + lTestSuiteId + "' onclick=AddEditTestCase(" + lid + ",$(this))><i class='la la-edit' ></i></a> " +
-                                "<a href='#' class='btn btn-sm btn-clean btn-icon btn-icon-md' title='Delete' data-testcasename='" + lName + "' onclick='TestCaseDelete(" + lid + ",$(this))' ><i class='la la-trash la-xs'></i></a>";
+                            
+                            var lRenderHtml = "";
+                            if (lEditTCdisplay == "true") {
+                                lRenderHtml = " <a href='#' class='btn btn-sm btn-clean btn-icon btn-icon-md' title='View'  data-name='" + lName + "' data-des='" + lDes + "'  data-app='" + lApplication + "' data-testsuite='" + lTestSuite + "'  data-appid='" + lApplicationId + "' data-testsuiteid='" + lTestSuiteId + "' onclick=AddEditTestCase(" + lid + ",$(this))><i class='la la-edit' ></i></a> ";
+                            }
+                            if (lDeleteTCdisplay == "true") {
+                                lRenderHtml = lRenderHtml + "<a href='#' class='btn btn-sm btn-clean btn-icon btn-icon-md' title='Delete' data-testcasename='" + lName + "' onclick='TestCaseDelete(" + lid + ",$(this))' ><i class='la la-trash la-xs'></i></a>";
+                            }
+                            return lRenderHtml;
                         },
                     }
                 ],
@@ -308,9 +329,12 @@
 
         $("#testcasevalidate").css("display", "none");
         $("#existtestcasename").css("display", "none");
-        $("#exampleModalLabel").text('');
-        $("#exampleModalLabel").text('Add Test Case');
-      $("#AddEditTestCase").modal("show");
+        $("#TCexampleModalLabel").text('');
+        $("#TCexampleModalLabel").text('Add Test Case');
+        $("#AddEditTestCase").modal("show");
+        $('.modal-dialog').draggable({
+            handle: ".modal-header"
+        });
       $("#addedittestcase").attr("disabled", false);
         $("#hdnTestCaseId").val("");
         $("#testcasename").val("");
@@ -328,9 +352,12 @@
     function AddEditTestCase(Id, editObj) {
         $("#testcasevalidate").css("display", "none");
         $("#existtestcasename").css("display", "none");
-        $("#exampleModalLabel").text('');
-        $("#exampleModalLabel").text('Edit Test Case');
-      $("#AddEditTestCase").modal("show");
+        $("#TCexampleModalLabel").text('');
+        $("#TCexampleModalLabel").text('Edit Test Case');
+        $("#AddEditTestCase").modal("show");
+        $('.modal-dialog').draggable({
+            handle: ".modal-header"
+        });
       $("#addedittestcase").attr("disabled", false);
         var lTestCaseId = Id;
         var Name = $(editObj).attr("data-name").replace(/###/g, "'");
@@ -355,20 +382,32 @@
             contentType: "application/json;charset=utf-8",
             dataType: "json",
             success: function (result) {
-                var lTempApplication = "";
-                var optionString = "<optgroup>";;
+                if (result.status == 1) {
+                    var lTempApplication = "";
+                    var optionString = "<optgroup>";;
 
-                for (i = 0; i < result.length; i++) {
+                    for (i = 0; i < result.data.length; i++) {
 
-                    var optionValue = result[i].TestSuiteId;
-                    var optionText = result[i].TestSuiteName;
-                    optionString = optionString + " <option value='" + optionValue + "'>" + optionText + "</option>";
+                        var optionValue = result.data[i].TestSuiteId;
+                        var optionText = result.data[i].TestSuiteName;
+                        optionString = optionString + " <option value='" + optionValue + "'>" + optionText + "</option>";
+                    }
+                    optionString = optionString + "</optgroup>";
+
+                    $("#DrpTestSuite").append($(optionString));
+                    $("#DrpTestSuite").select2();
                 }
-                optionString = optionString + "</optgroup>";
-
-                $("#DrpTestSuite").append($(optionString));
-                $("#DrpTestSuite").select2();
-            },
+                else if (result.status == 0) {
+                    swal.fire({
+                        "title": "",
+                        "text": result.message,
+                        "icon": "error",
+                        "onClose": function (e) {
+                            console.log('on close event fired!');
+                        }
+                    });
+                }
+            }
         });
 
         $("#DrpTestSuite").val(lTestSuiteId.split(","));
@@ -422,7 +461,7 @@
                         swal.fire({
                             "title": "",
                             "text": result.message,
-                            "type": "success",
+                            "icon": "success",
                             "onClose": function (e) {
                                 console.log('on close event fired!');
                             }
@@ -461,7 +500,7 @@
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "error",
+                        "icon": "error",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -489,20 +528,32 @@
           dataType: "json",
           async:false,
             success: function (result) {
-                var optionString = "<optgroup>";
-                optionString = optionString + " <option value=0></option>";
-                for (i = 0; i < result.length; i++) {
-                    var optionValue = result[i].TestSuiteId;
-                    var optionText = result[i].TestSuiteName;
+                if (result.status == 1) {
+                    var optionString = "<optgroup>";
+                    optionString = optionString + " <option value=0></option>";
+                    for (i = 0; i < result.data.length; i++) {
+                        var optionValue = result.data[i].TestSuiteId;
+                        var optionText = result.data[i].TestSuiteName;
 
-                    optionString = optionString + " <option value='" + optionValue + "'>" + optionText + "</option>";
+                        optionString = optionString + " <option value='" + optionValue + "'>" + optionText + "</option>";
+                    }
+                    optionString = optionString + "</optgroup>";
+                    $("#DrpTestSuite").append($(optionString));
+                    $("#DrpTestSuite").select2();
+
+                    $("#DrpTestSuite").val(TestSuiteIds);
+                    $("#DrpTestSuite").select2();
                 }
-                optionString = optionString + "</optgroup>";
-                $("#DrpTestSuite").append($(optionString));
-                $("#DrpTestSuite").select2();
-
-                $("#DrpTestSuite").val(TestSuiteIds);
-                $("#DrpTestSuite").select2();
+                else if (result.status == 0) {
+                    swal.fire({
+                        "title": "",
+                        "text": result.message,
+                        "icon": "error",
+                        "onClose": function (e) {
+                            console.log('on close event fired!');
+                        }
+                    });
+                }
             },
             error: function (errormessage) {
                 alert(errormessage.responseText);
@@ -516,7 +567,7 @@
         swal.fire({
             title: 'Please confirm.',
             text: "This action can not be undone.",
-            type: 'warning',
+            icon: 'warning',
             showCancelButton: true,
             confirmButtonText: 'Yes, delete it!'
         }).then(function (result) {
@@ -558,7 +609,7 @@
                             swal.fire({
                                 "title": "",
                                 "text": result.message,
-                                "type": "error",
+                                "icon": "error",
                                 "onClose": function (e) {
                                     console.log('on close event fired!');
                                 }
@@ -594,7 +645,7 @@
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "error",
+                        "icon": "error",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }

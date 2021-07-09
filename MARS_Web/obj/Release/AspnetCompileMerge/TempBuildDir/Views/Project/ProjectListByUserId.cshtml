@@ -133,7 +133,7 @@
             swal.fire({
                 "title": "",
                 "text": "Please select/deselect Project/s to save",
-                "type": "warning",
+                "icon": "warning",
                 "onClose": function (e) {
                     console.log('on close event fired!');
                 }
@@ -144,7 +144,8 @@
            r += "]";
 
            var projectlist = JSON.parse(r);
-           var prolist =  projectlist.map(({ ProjectName }) => ProjectName)
+           
+           var prolist = projectlist.map(({ ProjectName }) => ProjectName);
            startloader();
         $.ajax({
             dataType: "json",
@@ -153,20 +154,21 @@
             url: "/Project/SaveProjectChangesByUser",
             data: { model: r, userid: dataId },
             success: function (result) {
-                if (result == "success") {
+                if (result.status == 1 && result.data == "success") {
+                    stoploader();
                     swal.fire({
                         "title": "",
                         "text": "Project [" + prolist +"] is saved",
-                        "type": "success",
+                        "icon": "success",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
                     });
                    
                     $("#jsondata").val("");
+                    jsonData = "[";
                     $.ajax({
                         url: "/Login/LeftPanel",
-                        // data: { 'lLoginName': pLoginName, 'lLoginId': TESTER_ID },
 
                         type: "POST",
                         contentType: "application/json;charset=utf-8",
@@ -174,35 +176,22 @@
                         success: function (result) {
                             $("#leftProjectList").html("");
                             $("#leftProjectList").html(result);
-                            stoploader();
-                            UpTable.table().draw();
                             
-                            //$('.ULtablist li').each(function (index, value) {
-                            //    var lFindTab = $(value).children().first().attr("data-target");
-
-                            //    if (lFindTab != undefined) {
-                            //        var lFindTabId = $(value).children().first().attr("data-id");
-                            //        //var lFindTabName = $(value).children().first().attr("data-name");
-                            //        var lFindTabName = $(value).children().first().attr("data-tab");
-                            //        if (lFindTabId == storyboardid && lFindTabName == "Storyboard") {
-                            //            var lPrevTab = $(value).children().first().attr("data-target");
-                            //            var lPrevTabNameId = lPrevTab.replace("#", "");
-                            //            var lPrevDirGrid = $(".divtablist #" + lPrevTabNameId);
-                            //            $(value).children().first().addClass("active");
-                            //            $(lPrevDirGrid).addClass("active");
-                            //            var lTabNameId = lFindTab.replace("#", "");
-                            //            var lDirGrid = $(".divtablist #" + lTabNameId);
-                            //            $(value).remove();
-                            //            $(lDirGrid).remove();
-                            //        }
-                            //    }
-                            //});
+                            UpTable.table().draw();
                         }
                     });
                 }
-
+                else if (result.status == 0) {
+                    swal.fire({
+                        "title": "",
+                        "text": result.message,
+                        "icon": "error",
+                        "onClose": function (e) {
+                            console.log('on close event fired!');
+                        }
+                    });
+                }
             }
         });
-        //a[0].value);
     }
 </script>

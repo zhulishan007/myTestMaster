@@ -1,12 +1,12 @@
 @using MARS_Repository.ViewModel
 @{
     var lTestCaseName = ViewBag.TestCaseName;
-    if (!String.IsNullOrEmpty(lTestCaseName))
-    {
-        lTestCaseName = lTestCaseName.Replace(' ', '_');
-    }
-    var lTestCasegrid = ".grid" + lTestCaseName.Replace('/', '_').Replace('(', '_').Replace(')', '_').Replace('.', '_').Replace('*', '_').Replace('&', '_');
-    var lclassgrid = "grid" + lTestCaseName.Replace('/', '_').Replace('(', '_').Replace(')', '_').Replace('.', '_').Replace('*', '_').Replace('&', '_');
+    //if (!String.IsNullOrEmpty(lTestCaseName))
+    //{
+    //    lTestCaseName = lTestCaseName.Replace(' ', '_');
+    //}
+    var lTestCasegrid = ".grid" + lTestCaseName.Replace('/', '_').Replace('(', '_').Replace(')', '_').Replace('.', '_').Replace('*', '_').Replace('&', '_').Replace(' ', '_');
+    var lclassgrid = "grid" + lTestCaseName.Replace('/', '_').Replace('(', '_').Replace(')', '_').Replace('.', '_').Replace('*', '_').Replace('&', '_').Replace(' ', '_');
 
     var DatasetName = "";
     if (ViewBag.VisibleDataset != null)
@@ -38,7 +38,7 @@
 && ViewBag.TestcaseId != 0 && ViewBag.TestsuiteId != 0 && ViewBag.ProjectId != 0
 )
 {
-    <script>
+<script>
       var undonum;
    var draggedRow;
         var lheight = $(window).height();
@@ -246,8 +246,8 @@
    dt.push({
        title: "StepsID", copy: false, hidden: true,menuInHide: true,sortable: false, dataType: "int", dataIndx: "stepsID", align: "center",
    });
-   dt.push({
-       title: "RUN_ORDER", copy: false, hidden: true, dataType: "int", dataIndx: "RUN_ORDER", align: "center", menuInHide: true, sortable: false,
+    dt.push({
+        title: "RUN_ORDER", copy: false, hidden: true, dataType: "int", dataIndx: "RUN_ORDER", align: "center", menuInHide: false, sortable: false,
    });
 
       dt.push({
@@ -266,43 +266,73 @@
                for (i = 0; i < gridobj["@lTestCasegrid"].pdata.length; i++) {
                    lGridList.push({ "Id": gridobj["@lTestCasegrid"].pdata[i].stepsID, "Keyword": gridobj["@lTestCasegrid"].pdata[i].keyword});
                }
-               var KeywordList = {};
+                var KeywordList = {};
                KeywordList.stepId = ui.rowIndx + 1;
                KeywordList.Grid = JSON.stringify(lGridList);
-               $.ajax({
-                   url: "/TestCase/GetKeywordsList",
-                   type: "POST",
-                   data: '{KeywordList: ' + JSON.stringify(KeywordList) + '}',
-                   contentType: "application/json;charset=utf-8",
-                   dataType: "json",
-                   async: false,
-                   success: function (result) {
-                   if (result.status == 1) {
-                           if (result.data != null && result.data.length > 0) {
-                               keywords.push({ "value": "", "text": "" });
-                               keywordValidate.push("");
-                               for (var i = 0; i < result.data.length; i++) {
-                                   keywords.push({ "value": result.data[i].KeywordName, "text": result.data[i].KeywordName });
-                                   keywordValidate.push(result.data[i].KeywordName);
-                               }
-                               List = keywords;
-                               keywords = [];
-                           }
-                       }
-                       else if (result.status == 0) {
-                           swal.fire({
-                               "title": "",
-                               "text": result.message,
-                               "icon": "error",
-                               "onClose": function (e) {
-                                   console.log('on close event fired!');
-                               }
-                           });
-                       }
-                   },
-                   error(a, b, c) {
-                   }
+               var lPegStepId = 0;
+               var lstepId = ui.rowIndx + 1;
+               var keywordsList = [];
+               for (i = 0; i < gridobj["@lTestCasegrid"].pdata.length; i++)
+               {
+                   var item = gridobj["@lTestCasegrid"].pdata[i];
+                   if (item.keyword) {
+
+                            if (item.keyword.toLowerCase() == "pegwindow" && lPegStepId == 0) {
+                                lPegStepId = i + 1;
+                                break;
+
+                        }
+                    }
+
+                    i++;
+               }
+               if (lstepId == 1 || lstepId < lPegStepId || lPegStepId == 0) {
+                   keywordsList = @Html.Raw(ViewBag.KeywordsPegwindowList);
+
+               }
+               else {
+                   keywordsList = @Html.Raw(ViewBag.KeywordsList);
+               }
+               keywords.push({ "value": "", "text": "" });
+               $.each(keywordsList, function (key, value) {
+                   keywords.push({ "value": value.KeywordName, "text": value.KeywordName });
                });
+               List = keywords;
+               keywords = [];
+               //$.ajax({
+               //    url: "/TestCase/GetKeywordsList",
+               //    type: "POST",
+               //    data: '{KeywordList: ' + JSON.stringify(KeywordList) + '}',
+               //    contentType: "application/json;charset=utf-8",
+               //    dataType: "json",
+               //    async: false,
+               //    success: function (result) {
+               //    if (result.status == 1) {
+               //            if (result.data != null && result.data.length > 0) {
+               //                keywords.push({ "value": "", "text": "" });
+               //                keywordValidate.push("");
+               //                for (var i = 0; i < result.data.length; i++) {
+               //                    keywords.push({ "value": result.data[i].KeywordName, "text": result.data[i].KeywordName });
+               //                    keywordValidate.push(result.data[i].KeywordName);
+               //                }
+               //                List = keywords;
+               //                keywords = [];
+               //            }
+               //        }
+               //        else if (result.status == 0) {
+               //            swal.fire({
+               //                "title": "",
+               //                "text": result.message,
+               //                "icon": "error",
+               //                "onClose": function (e) {
+               //                    console.log('on close event fired!');
+               //                }
+               //            });
+               //        }
+               //    },
+               //    error(a, b, c) {
+               //    }
+               //});
                return List;
            }
           },
@@ -386,40 +416,54 @@
                ObjectList.stepId = ui.rowIndx + 1;
                ObjectList.Grid = JSON.stringify(lGridList);
                ObjectList.TestCaseId = @ViewBag.TestcaseId;
-               $.ajax({
-                   url: "/TestCase/GetObjectsList",
-                   type: "POST",
-                   data: '{ObjectList: ' + JSON.stringify(ObjectList) + '}',
-                   contentType: "application/json;charset=utf-8",
-                   dataType: "json",
-                   async: false,
-                   success: function (result) {
-                       if (result.status == 1) {
-                           if (result.data != null && result.data.length > 0) {
-                               objects.push({ "value": "", "text": "" });
-                               objectValidate.push("");
-                               for (var i = 0; i < result.data.length; i++) {
-                                   objects.push({ "value": result.data[i].ObjectName, "text": result.data[i].ObjectName });
-                                   objectValidate.push(result.data[i].ObjectName);
+
+               if (ui.rowData.keyword == "PegWindow") {
+                   var objectlist = @Html.Raw(ViewBag.ObjectList);
+                   objects.push({ "value": "", "text": "" });
+                   objectValidate.push("");
+                   $.each(objectlist, function (key, value) {
+                       objects.push({ "value": value.ObjectName, "text": value.ObjectName });
+                       objectValidate.push(value.ObjectName);
+                   });
+
+                   List = objects;
+                   objects = [];
+               } else {
+                   $.ajax({
+                       url: "/TestCase/GetObjectsList",
+                       type: "POST",
+                       data: '{ObjectList: ' + JSON.stringify(ObjectList) + '}',
+                       contentType: "application/json;charset=utf-8",
+                       dataType: "json",
+                       async: false,
+                       success: function (result) {
+                           if (result.status == 1) {
+                               if (result.data != null && result.data.length > 0) {
+                                   objects.push({ "value": "", "text": "" });
+                                   objectValidate.push("");
+                                   for (var i = 0; i < result.data.length; i++) {
+                                       objects.push({ "value": result.data[i].ObjectName, "text": result.data[i].ObjectName });
+                                       objectValidate.push(result.data[i].ObjectName);
+                                   }
+                                   List = objects;
+                                   objects = [];
                                }
-                               List = objects;
-                               objects = [];
                            }
+                           else if (result.status == 0) {
+                               swal.fire({
+                                   "title": "",
+                                   "text": result.message,
+                                   "icon": "error",
+                                   "onClose": function (e) {
+                                       console.log('on close event fired!');
+                                   }
+                               });
+                           }
+                       },
+                       error(a, b, c) {
                        }
-                       else if (result.status == 0) {
-                           swal.fire({
-                               "title": "",
-                               "text": result.message,
-                               "icon": "error",
-                               "onClose": function (e) {
-                                   console.log('on close event fired!');
-                               }
-                           });
-                       }
-                   },
-                   error(a, b, c) {
-                   }
-               });
+                   });
+               }
                return List;
            }
        },
@@ -512,22 +556,27 @@
                                             lTitle = '<span title="' + datasetdescs[k] + '">' + datasetnames[k] + '</span>';
                                         }
 
-                                        var pDatasetName = "@DatasetName";
+                                        var pDatasetName = "@ViewBag.VisibleDataset";
 
                                         var IsHidden = false;
+                                        var IsCopy = true;
                                         if (pDatasetName != "" && pDatasetName != null) {
                                             IsHidden = true;
+                                            IsCopy = false;
+                                            //copy: false,
+                                            
                                         }
                                         if (pDatasetName != "") {
                                             if (OTitle.toUpperCase() == pDatasetName.toUpperCase()) {
                                                 IsHidden = false;
+                                                IsCopy = true;
                                             }
                                         }
 
                                          dt.push({
-                                            title: lTitle, clsHead: datasetid[k], menuInClose: true, sortable: false, resizable: true, minWidth: 50, width: 250, hidden: IsHidden,
+                                             title: lTitle, clsHead: datasetid[k], menuInClose: true, sortable: false, resizable: true, minWidth: 50, width: 250, copy: IsCopy, hidden: IsHidden,
                                             align: "center", colModel: [{
-                                                title: "", width: "2%", dataType: "bool", sortable: false,
+                                                title: "", width: "2%", dataType: "bool", sortable: false, copy: IsCopy,
                                                 render: function (ui) {
 
                                                     var rowData = ui.rowData,
@@ -560,6 +609,7 @@
                                                 nodrag: true,
                                                 nodrop: true,
                                                 cls: 'hideRightborder',
+                                                copy: IsCopy,
                                                 editable: function (ui) {
                                                     if (ui.rowData != undefined) {
                                                         if (ui.rowData.pq_rowcls == "collapseBorder") {
@@ -582,6 +632,7 @@
                                                 cls: 'hideLeftborder',
                                                 nodrag: true,
                                                 nodrop: true,
+                                                copy: IsCopy,
                                                 filter: { crules: [{ condition: 'contain' }] },
                                                 resizable: true,
                                                 render: function (ui) {
@@ -810,7 +861,6 @@
                beforeValidate: function (event, ui) {
 
                    ui.updateList.forEach(function (obj) {
-                       debugger
                        var newRow = obj.newRow;
                        //if (!(newRow["state"] || newRow["IsDelete"] || newRow["stepsID"] || newRow["RUN_ORDER"] || newRow["keyword"] || newRow["object"] || newRow["VERSION"] || newRow["ISAVAILABLE"])) {
                        $.each(newRow, function (key, value) {
@@ -870,61 +920,62 @@
                    on: true,
                    mode: "OR",
                    header: true,
-                   menuIcon: true
+                   menuIcon: true,
+                   copy: false
                },
                toolbar:
                {
                    // cls: "pq-toolbar-search",
                    items: [
-                   {
-                       type: 'button',
-                       icon: 'export',
-                       attr: 'title="Export"',
-                       label: '',
+                       {
+                           type: 'button',
+                           icon: 'export',
+                           attr: 'title="Export"',
+                           label: '',
                            cls: "floatRight btn btn-brand btn-elevate btn-icon-sm TCExportButton", listener: function () {
-                           //append empty row at the end.
-                           exportTestcase("@lTestCasegrid",@ViewBag.TestcaseId,@ViewBag.TestsuiteId);
-                       }
-                   },
-                   {
-                       type: 'button',
-                       icon: 'save',
-                       attr: 'title="Save"',
+                               //append empty row at the end.
+                               exportTestcase("@lTestCasegrid",@ViewBag.TestcaseId,@ViewBag.TestsuiteId);
+                           }
+                       },
+                       {
+                           type: 'button',
+                           icon: 'save',
+                           attr: 'title="Save"',
 
-                       label: '',
-                       cls: "floatRight btn btn-brand btn-elevate btn-icon-sm TCSaveButton", listener: function () {
-                           //append empty row at the end.
-                           saveChangesTC("@lTestCasegrid",@ViewBag.TestcaseId,@ViewBag.TestsuiteId);
-                       }
-                   },
-                   {
-                       type: 'button',
-                       attr: 'title="Validate"',
-                       label: '',
-                       icon:'validate',
-                       cls: "floatRight btn btn-brand btn-elevate btn-icon-sm",
-                       cls: "floatRight btn btn-brand btn-elevate btn-icon-sm", listener: function () {
-                           //append empty row at the end.
-                           validateTC("@lTestCasegrid",@ViewBag.TestcaseId,@ViewBag.TestsuiteId);
-                       }
+                           label: '',
+                           cls: "floatRight btn btn-brand btn-elevate btn-icon-sm TCSaveButton", listener: function () {
+                               //append empty row at the end.
+                               saveChangesTC("@lTestCasegrid",@ViewBag.TestcaseId,@ViewBag.TestsuiteId);
+                           }
+                       },
+                       {
+                           type: 'button',
+                           attr: 'title="Validate"',
+                           label: '',
+                           icon: 'validate',
+                           cls: "floatRight btn btn-brand btn-elevate btn-icon-sm",
+                           cls: "floatRight btn btn-brand btn-elevate btn-icon-sm", listener: function () {
+                               //append empty row at the end.
+                               validateTC("@lTestCasegrid",@ViewBag.TestcaseId,@ViewBag.TestsuiteId);
+                           }
                        },
 
-                   {
-                       type: 'button',
-                       icon: 'plus',
-                       attr: 'title="New Step"',
+                       {
+                           type: 'button',
+                           icon: 'plus',
+                           attr: 'title="New Step"',
 
-                        label: '',
-                       cls: "floatRight btn btn-brand btn-elevate btn-icon-sm",
-                       listener: function () {
+                           label: '',
+                           cls: "floatRight btn btn-brand btn-elevate btn-icon-sm",
+                           listener: function () {
 
-                           //append empty row at the end.
-                           var lMinValueStepId = 0;
-                           for (var k = 0; gridobj["@lTestCasegrid"].pdata.length > k; k++) {
-                               if (gridobj["@lTestCasegrid"].pdata[k].stepsID <= lMinValueStepId) {
-                                   lMinValueStepId = gridobj["@lTestCasegrid"].pdata[k].stepsID - 1;
+                               //append empty row at the end.
+                               var lMinValueStepId = 0;
+                               for (var k = 0; gridobj["@lTestCasegrid"].pdata.length > k; k++) {
+                                   if (gridobj["@lTestCasegrid"].pdata[k].stepsID <= lMinValueStepId) {
+                                       lMinValueStepId = gridobj["@lTestCasegrid"].pdata[k].stepsID - 1;
+                                   }
                                }
-                              }
 
 
                                var ri = -1;
@@ -932,8 +983,8 @@
                                    ri = gridobj['@lTestCasegrid'].Selection().address()[0].r1;
                                }
 
-                           var rowData = { stepsID: lMinValueStepId}; //empty row
-                           newstepid = newstepid - 1;
+                               var rowData = { stepsID: lMinValueStepId }; //empty row
+                               newstepid = newstepid - 1;
                                var rowIndx;
                                if (ri >= 0) {
                                    gridobj['@lTestCasegrid'].addRow({
@@ -949,9 +1000,9 @@
                                gridobj['@lTestCasegrid'].goToPage({ rowIndx: rowIndx });
                                gridobj['@lTestCasegrid'].editFirstCellInRow({ rowIndx: rowIndx });
                                var stepsCount = newsteps.length;
-                           newsteps.push({ "stepsid": lMinValueStepId, "RUN_ORDER": stepsCount + 2, "RUN_ORDER_OLD": stepsCount });
+                               newsteps.push({ "stepsid": lMinValueStepId, "RUN_ORDER": stepsCount + 2, "RUN_ORDER_OLD": stepsCount });
 
-                       }
+                           }
                        },
 
 
@@ -964,57 +1015,83 @@
                            listener: function () {
                                var lTestcaseName = "@lTestCasegrid";
                                var testcaselist = lTestcaseName.split(".grid");
-                          // if (undonum == "0" || undonum == "" || undonum == undefined) {
-                            // return false;
-                           //}
-                               swal.fire({
-                                   title: '',
-                                   text: "All changes in [" + testcaselist[1] +"] will be discarded.  Please confirm",
-                                   icon: 'warning',
-                                   showCancelButton: true,
-                                   confirmButtonText: 'Yes'
-                                   //confirmButtonText: 'Yes, remove it!'
-                               }).then(function (result) {
-                                   if (result.value == true)
-                                   {
+                               var changes = gridobj["@lTestCasegrid"].getChanges({ format: "byVal" });
+                               console.log(changes);
+                               if (changes.updateList.length == 0 && changes.addList.length == 0 && changes.deleteList.length == 0 && changes.oldList.length == 0) {
 
-                                       var changes = gridobj["@lTestCasegrid"].getChanges({ format: "byVal" });
-                                       gridobj["@lTestCasegrid"].commit({ type: 'add', rows: changes.addList });
-                                       gridobj["@lTestCasegrid"].commit({ type: 'update', rows: changes.updateList });
-                                       gridobj["@lTestCasegrid"].commit({ type: 'delete', rows: changes.deleteList });
+                                   gridobj["@lTestCasegrid"].commit({ type: 'add', rows: changes.addList });
+                                   gridobj["@lTestCasegrid"].commit({ type: 'update', rows: changes.updateList });
+                                   gridobj["@lTestCasegrid"].commit({ type: 'delete', rows: changes.deleteList });
 
-                                       gridobj["@lTestCasegrid"].history({ method: 'reset' });
+                                   gridobj["@lTestCasegrid"].history({ method: 'reset' });
 
-
-                                       //NewColumnsList = [];
-
-
-
-                                       var lDeletedColLength = 0;
-                                       var lExistDataSetLength = 0;
-                                       lDeletedColLength = DeleteColumnsList.length;
-                                       lExistDataSetLength = ExistDataSetRenameList.length;
-                                       while (lDeletedColLength--) {
-                                           if (DeleteColumnsList[lDeletedColLength]["TestCaseId"] == @ViewBag.TestcaseId) {
-                                               DeleteColumnsList.splice(lDeletedColLength, 1);
-                                           }
+                                   var lDeletedColLength = 0;
+                                   var lExistDataSetLength = 0;
+                                   lDeletedColLength = DeleteColumnsList.length;
+                                   lExistDataSetLength = ExistDataSetRenameList.length;
+                                   while (lDeletedColLength--) {
+                                       if (DeleteColumnsList[lDeletedColLength]["TestCaseId"] == @ViewBag.TestcaseId) {
+                                           DeleteColumnsList.splice(lDeletedColLength, 1);
                                        }
-
-                                       while (lExistDataSetLength--) {
-                                           if (ExistDataSetRenameList[lExistDataSetLength]["TestCaseId"] == @ViewBag.TestcaseId) {
-                                               ExistDataSetRenameList.splice(lExistDataSetLength, 1);
-                                           }
-                                       }
-
-                                       Version = 0;
-                                       IsAvailable = 0;
-                                       dt = [];
-
-                               ReloadGrid('@lTestCasegrid', @ViewBag.TestcaseId,@ViewBag.TestsuiteId,"");
-
-                             // gridobj['@lTestCasegrid'].toolbar().children()[4].setAttribute("disabled", "");
                                    }
-                               });
+
+                                   while (lExistDataSetLength--) {
+                                       if (ExistDataSetRenameList[lExistDataSetLength]["TestCaseId"] == @ViewBag.TestcaseId) {
+                                           ExistDataSetRenameList.splice(lExistDataSetLength, 1);
+                                       }
+                                   }
+
+                                   Version = 0;
+                                   IsAvailable = 0;
+                                   dt = [];
+
+                                   ReloadGrid('@lTestCasegrid', @ViewBag.TestcaseId,@ViewBag.TestsuiteId, "");
+
+                               }
+                               else {
+                                   swal.fire({
+                                       title: '',
+                                       text: "All changes in [" + testcaselist[1] + "] will be discarded.  Please confirm",
+                                       icon: 'warning',
+                                       showCancelButton: true,
+                                       confirmButtonText: 'Yes'
+                                       //confirmButtonText: 'Yes, remove it!'
+                                   }).then(function (result) {
+                                       if (result.value == true) {
+
+
+                                           gridobj["@lTestCasegrid"].commit({ type: 'add', rows: changes.addList });
+                                           gridobj["@lTestCasegrid"].commit({ type: 'update', rows: changes.updateList });
+                                           gridobj["@lTestCasegrid"].commit({ type: 'delete', rows: changes.deleteList });
+
+                                           gridobj["@lTestCasegrid"].history({ method: 'reset' });
+
+                                           var lDeletedColLength = 0;
+                                           var lExistDataSetLength = 0;
+                                           lDeletedColLength = DeleteColumnsList.length;
+                                           lExistDataSetLength = ExistDataSetRenameList.length;
+                                           while (lDeletedColLength--) {
+                                               if (DeleteColumnsList[lDeletedColLength]["TestCaseId"] == @ViewBag.TestcaseId) {
+                                                   DeleteColumnsList.splice(lDeletedColLength, 1);
+                                               }
+                                           }
+
+                                           while (lExistDataSetLength--) {
+                                               if (ExistDataSetRenameList[lExistDataSetLength]["TestCaseId"] == @ViewBag.TestcaseId) {
+                                                   ExistDataSetRenameList.splice(lExistDataSetLength, 1);
+                                               }
+                                           }
+
+                                           Version = 0;
+                                           IsAvailable = 0;
+                                           dt = [];
+
+                                           ReloadGrid('@lTestCasegrid', @ViewBag.TestcaseId,@ViewBag.TestsuiteId, "");
+
+                                   // gridobj['@lTestCasegrid'].toolbar().children()[4].setAttribute("disabled", "");
+                               }
+                           });
+                       }
                            },
                //    options: { disabled: true }
                        },
@@ -1640,7 +1717,7 @@
        title: "StepsID", copy: false,hidden: true,menuInHide: true,sortable: false, dataType: "int", dataIndx: "stepsID", align: "center",
    });
    dt.push({
-       title: "RUN_ORDER", copy: false, hidden: true, dataType: "int", dataIndx: "RUN_ORDER", align: "center", menuInHide: true, sortable: false,
+       title: "RUN_ORDER", copy: false, hidden: true, dataType: "int", dataIndx: "RUN_ORDER", align: "center", menuInHide: false, sortable: false,
    });
 
 
@@ -1665,41 +1742,71 @@
                var KeywordList = {};
                KeywordList.stepId = ui.rowIndx + 1;
                KeywordList.Grid = JSON.stringify(lGridList);
-               $.ajax({
-                   url: "/TestCase/GetKeywordsList",
-                   type: "POST",
-                  // data: { stepId: ui.rowIndx + 1, lGrid: JSON.stringify(lGridList) },
-                   data: '{KeywordList: ' + JSON.stringify(KeywordList) + '}',
-                   contentType: "application/json;charset=utf-8",
-                   dataType: "json",
-                   async: false,
-                   success: function (result) {
-                       if (result.status == 1) {
-                           if (result.data != null && result.data.length > 0) {
-                               keywords.push({ "value": "", "text": "" });
-                               keywordValidate.push("");
-                               for (var i = 0; i < result.data.length; i++) {
-                                   keywords.push({ "value": result.data[i].KeywordName, "text": result.data[i].KeywordName });
-                                   keywordValidate.push(result.data[i].KeywordName);
-                               }
-                               List = keywords;
-                               keywords = [];
-                           }
-                       }
-                       else if (result.status == 0) {
-                           swal.fire({
-                               "title": "",
-                               "text": result.message,
-                               "icon": "error",
-                               "onClose": function (e) {
-                                   console.log('on close event fired!');
-                               }
-                           });
-                       }
-                   },
-                   error(a, b, c) {
-                   }
+                var lPegStepId = 0;
+               var lstepId = ui.rowIndx + 1;
+               var keywordsList;
+               for (i = 0; i < gridobj[tcgrid].pdata.length; i++)
+               {
+                   var item = gridobj[tcgrid].pdata[i];
+                   if (item.keyword) {
+
+                            if (item.keyword.toLowerCase() == "pegwindow" && lPegStepId == 0) {
+                                lPegStepId = i + 1;
+                                break;
+
+                        }
+                    }
+
+                    i++;
+               }
+               if (lstepId == 1 || lstepId < lPegStepId || lPegStepId == 0) {
+                   keywordsList = @Html.Raw(ViewBag.KeywordsPegwindowList);
+
+               }
+               else {
+                   keywordsList = @Html.Raw(ViewBag.KeywordsList);
+               }
+               keywords.push({ "value": "", "text": "" });
+               $.each(keywordsList, function (key, value) {
+                   keywords.push({ "value": value.KeywordName, "text": value.KeywordName });
                });
+               List = keywords;
+               keywords = [];
+               //$.ajax({
+               //    url: "/TestCase/GetKeywordsList",
+               //    type: "POST",
+               //   // data: { stepId: ui.rowIndx + 1, lGrid: JSON.stringify(lGridList) },
+               //    data: '{KeywordList: ' + JSON.stringify(KeywordList) + '}',
+               //    contentType: "application/json;charset=utf-8",
+               //    dataType: "json",
+               //    async: false,
+               //    success: function (result) {
+               //        if (result.status == 1) {
+               //            if (result.data != null && result.data.length > 0) {
+               //                keywords.push({ "value": "", "text": "" });
+               //                keywordValidate.push("");
+               //                for (var i = 0; i < result.data.length; i++) {
+               //                    keywords.push({ "value": result.data[i].KeywordName, "text": result.data[i].KeywordName });
+               //                    keywordValidate.push(result.data[i].KeywordName);
+               //                }
+               //                List = keywords;
+               //                keywords = [];
+               //            }
+               //        }
+               //        else if (result.status == 0) {
+               //            swal.fire({
+               //                "title": "",
+               //                "text": result.message,
+               //                "icon": "error",
+               //                "onClose": function (e) {
+               //                    console.log('on close event fired!');
+               //                }
+               //            });
+               //        }
+               //    },
+               //    error(a, b, c) {
+               //    }
+               //});
                return List;
            }
        },
@@ -1762,51 +1869,67 @@
            },
            labelIndx: "text",
            options: function (ui) {
+               debugger
                var List = [];
                var lGridList = [];
                for (i = 0; i < gridobj[tcgrid].pdata.length; i++) {
                    lGridList.push({ "Id": i + 1,"StepId": gridobj[tcgrid].pdata[i].stepsID, "Keyword": gridobj[tcgrid].pdata[i].keyword, "Object": gridobj[tcgrid].pdata[i].object });
                }
+               debugger
 
-               var ObjectList = {};
-               ObjectList.stepId = ui.rowIndx + 1;
-               ObjectList.Grid = JSON.stringify(lGridList);
-               ObjectList.TestCaseId = tcid;
-               $.ajax({
-                   url: "/TestCase/GetObjectsList",
-                   type: "POST",
-                   data: '{ObjectList: ' + JSON.stringify(ObjectList) + '}',
-                   contentType: "application/json;charset=utf-8",
-                   dataType: "json",
-                   async: false,
-                   success: function (result) {
-                       if (result.status == 1) {
-                           if (result.data != null && result.data.length > 0) {
-                               objects.push({ "value": "", "text": "" });
-                               objectValidate.push("");
-                               for (var i = 0; i < result.data.length; i++) {
-                                   objects.push({ "value": result.data[i].ObjectName, "text": result.data[i].ObjectName });
-                                   objectValidate.push(result.data[i].ObjectName);
+               if (ui.rowData.keyword == "PegWindow") {
+                   var objectlist = @Html.Raw(ViewBag.ObjectList);
+                   objects.push({ "value": "", "text": "" });
+                   objectValidate.push("");
+                   $.each(objectlist, function (key, value) {
+                       objects.push({ "value": value.ObjectName, "text": value.ObjectName });
+                       objectValidate.push(value.ObjectName);
+                   });
+
+                   List = objects;
+                   objects = [];
+               } else {
+                   var ObjectList = {};
+                   ObjectList.stepId = ui.rowIndx + 1;
+                   ObjectList.Grid = JSON.stringify(lGridList);
+                   ObjectList.TestCaseId = tcid;
+                   $.ajax({
+                       url: "/TestCase/GetObjectsList",
+                       type: "POST",
+                       data: '{ObjectList: ' + JSON.stringify(ObjectList) + '}',
+                       contentType: "application/json;charset=utf-8",
+                       dataType: "json",
+                       async: false,
+                       success: function (result) {
+                           if (result.status == 1) {
+                               if (result.data != null && result.data.length > 0) {
+                                   objects.push({ "value": "", "text": "" });
+                                   objectValidate.push("");
+                                   for (var i = 0; i < result.data.length; i++) {
+                                       objects.push({ "value": result.data[i].ObjectName, "text": result.data[i].ObjectName });
+                                       objectValidate.push(result.data[i].ObjectName);
+                                   }
+                                   List = objects;
+                                   objects = [];
                                }
-                               List = objects;
-                               objects = [];
                            }
-                       }
-                       else if (result.status == 0) {
-                           swal.fire({
-                               "title": "",
-                               "text": result.message,
-                               "icon": "error",
-                               "onClose": function (e) {
-                                   console.log('on close event fired!');
-                               }
-                           });
+                           else if (result.status == 0) {
+                               swal.fire({
+                                   "title": "",
+                                   "text": result.message,
+                                   "icon": "error",
+                                   "onClose": function (e) {
+                                       console.log('on close event fired!');
+                                   }
+                               });
 
+                           }
+                       },
+                       error(a, b, c) {
                        }
-                   },
-                   error(a, b, c) {
-                   }
-               });
+                   });
+               }
+
                return List;
            }
        },
@@ -2223,7 +2346,7 @@
                 title: "StepsID", copy: false, hidden: true, menuInHide: true, sortable: false, dataType: "int", dataIndx: "stepsID", align: "center",
             });
             dt.push({
-                title: "RUN_ORDER", copy: false, hidden: true, dataType: "int", dataIndx: "RUN_ORDER", align: "center", menuInHide: true, sortable: false,
+                title: "RUN_ORDER", copy: false, hidden: true, dataType: "int", dataIndx: "RUN_ORDER", align: "center", menuInHide: false, sortable: false,
             });
 
 
@@ -2259,41 +2382,71 @@
                         var KeywordList = {};
                         KeywordList.stepId = ui.rowIndx + 1;
                         KeywordList.Grid = JSON.stringify(lGridList);
-                        $.ajax({
-                            url: "/TestCase/GetKeywordsList",
-                            type: "POST",
-                            // data: { stepId: ui.rowIndx + 1, lGrid: JSON.stringify(lGridList) },
-                            data: '{KeywordList: ' + JSON.stringify(KeywordList) + '}',
-                            contentType: "application/json;charset=utf-8",
-                            dataType: "json",
-                            async: false,
-                            success: function (result) {
-                                if (result.status == 1) {
-                                    if (result.data != null && result.data.length > 0) {
-                                        keywords.push({ "value": "", "text": "" });
-                                        keywordValidate.push("");
-                                        for (var i = 0; i < result.data.length; i++) {
-                                            keywords.push({ "value": result.data[i].KeywordName, "text": result.data[i].KeywordName });
-                                            keywordValidate.push(result.data[i].KeywordName);
-                                        }
-                                        List = keywords;
-                                        keywords = [];
-                                    }
-                                }
-                                else if (result.status == 0) {
-                                    swal.fire({
-                                        "title": "",
-                                        "text": result.message,
-                                        "icon": "error",
-                                        "onClose": function (e) {
-                                            console.log('on close event fired!');
-                                        }
-                                    });
-                                }
-                            },
-                            error(a, b, c) {
-                            }
-                        });
+                        var lPegStepId = 0;
+               var lstepId = ui.rowIndx + 1;
+               var keywordsList;
+               for (i = 0; i < gridobj[tcgrid].pdata.length; i++)
+               {
+                   var item = gridobj[tcgrid].pdata[i];
+                   if (item.keyword) {
+
+                            if (item.keyword.toLowerCase() == "pegwindow" && lPegStepId == 0) {
+                                lPegStepId = i + 1;
+                                break;
+                         }
+                        }
+
+
+                    i++;
+               }
+               if (lstepId == 1 || lstepId < lPegStepId || lPegStepId == 0) {
+                   keywordsList = @Html.Raw(ViewBag.KeywordsPegwindowList);
+
+               }
+               else {
+                   keywordsList = @Html.Raw(ViewBag.KeywordsList);
+               }
+               keywords.push({ "value": "", "text": "" });
+               $.each(keywordsList, function (key, value) {
+                   keywords.push({ "value": value.KeywordName, "text": value.KeywordName });
+               });
+               List = keywords;
+               keywords = [];
+                        //$.ajax({
+                        //    url: "/TestCase/GetKeywordsList",
+                        //    type: "POST",
+                        //    // data: { stepId: ui.rowIndx + 1, lGrid: JSON.stringify(lGridList) },
+                        //    data: '{KeywordList: ' + JSON.stringify(KeywordList) + '}',
+                        //    contentType: "application/json;charset=utf-8",
+                        //    dataType: "json",
+                        //    async: false,
+                        //    success: function (result) {
+                        //        if (result.status == 1) {
+                        //            if (result.data != null && result.data.length > 0) {
+                        //                keywords.push({ "value": "", "text": "" });
+                        //                keywordValidate.push("");
+                        //                for (var i = 0; i < result.data.length; i++) {
+                        //                    keywords.push({ "value": result.data[i].KeywordName, "text": result.data[i].KeywordName });
+                        //                    keywordValidate.push(result.data[i].KeywordName);
+                        //                }
+                        //                List = keywords;
+                        //                keywords = [];
+                        //            }
+                        //        }
+                        //        else if (result.status == 0) {
+                        //            swal.fire({
+                        //                "title": "",
+                        //                "text": result.message,
+                        //                "icon": "error",
+                        //                "onClose": function (e) {
+                        //                    console.log('on close event fired!');
+                        //                }
+                        //            });
+                        //        }
+                        //    },
+                        //    error(a, b, c) {
+                        //    }
+                        //});
                         return List;
                     }
                 },
@@ -2361,44 +2514,59 @@
                             lGridList.push({ "Id": i + 1, "StepId": gridobj[tcgrid].pdata[i].stepsID, "Keyword": gridobj[tcgrid].pdata[i].keyword, "Object": gridobj[tcgrid].pdata[i].object });
                         }
 
-                        var ObjectList = {};
-                        ObjectList.stepId = ui.rowIndx + 1;
-                        ObjectList.Grid = JSON.stringify(lGridList);
-                        ObjectList.TestCaseId = tcid;
-                        $.ajax({
-                            url: "/TestCase/GetObjectsList",
-                            type: "POST",
-                            data: '{ObjectList: ' + JSON.stringify(ObjectList) + '}',
-                            contentType: "application/json;charset=utf-8",
-                            dataType: "json",
-                            async: false,
-                            success: function (result) {
-                               if (result.status == 1) {
-                                    if (result.data != null && result.data.length > 0) {
-                                        objects.push({ "value": "", "text": "" });
-                                        objectValidate.push("");
-                                        for (var i = 0; i < result.data.length; i++) {
-                                            objects.push({ "value": result.data[i].ObjectName, "text": result.data[i].ObjectName });
-                                            objectValidate.push(result.data[i].ObjectName);
+                        if (ui.rowData.keyword == "PegWindow") {
+                            var objectlist = @Html.Raw(ViewBag.ObjectList);
+                            objects.push({ "value": "", "text": "" });
+                            objectValidate.push("");
+                            $.each(objectlist, function (key, value) {
+                                objects.push({ "value": value.ObjectName, "text": value.ObjectName });
+                                objectValidate.push(value.ObjectName);
+                            });
+
+                            List = objects;
+                            objects = [];
+                        } else {
+                            var ObjectList = {};
+                            ObjectList.stepId = ui.rowIndx + 1;
+                            ObjectList.Grid = JSON.stringify(lGridList);
+                            ObjectList.TestCaseId = tcid;
+                            $.ajax({
+                                url: "/TestCase/GetObjectsList",
+                                type: "POST",
+                                data: '{ObjectList: ' + JSON.stringify(ObjectList) + '}',
+                                contentType: "application/json;charset=utf-8",
+                                dataType: "json",
+                                async: false,
+                                success: function (result) {
+                                    if (result.status == 1) {
+                                        if (result.data != null && result.data.length > 0) {
+                                            objects.push({ "value": "", "text": "" });
+                                            objectValidate.push("");
+                                            for (var i = 0; i < result.data.length; i++) {
+                                                objects.push({ "value": result.data[i].ObjectName, "text": result.data[i].ObjectName });
+                                                objectValidate.push(result.data[i].ObjectName);
+                                            }
+                                            List = objects;
+                                            objects = [];
                                         }
-                                        List = objects;
-                                        objects = [];
                                     }
+                                    else if (result.status == 0) {
+                                        swal.fire({
+                                            "title": "",
+                                            "text": result.message,
+                                            "icon": "error",
+                                            "onClose": function (e) {
+                                                console.log('on close event fired!');
+                                            }
+                                        });
+                                    }
+                                },
+                                error(a, b, c) {
                                 }
-                                else if (result.status == 0) {
-                                    swal.fire({
-                                        "title": "",
-                                        "text": result.message,
-                                        "icon": "error",
-                                        "onClose": function (e) {
-                                            console.log('on close event fired!');
-                                        }
-                                    });
-                                }
-                            },
-                            error(a, b, c) {
-                            }
-                        });
+                            });
+                        }
+
+                      
                         return List;
                     }
                 },
@@ -2787,7 +2955,7 @@
            stoploader();
            swal.fire({
                "title": "",
-               "text": "Keyowrd is required field.",
+               "text": "Keyword is required field.",
                "icon": "error",
                "onClose": function (e) {
                    console.log('on close event fired!');
@@ -4028,7 +4196,7 @@
            "html": message
        });
    }
-    </script>
+</script>
 }
 
 @{

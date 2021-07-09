@@ -1,0 +1,165 @@
+﻿<div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
+    <div class="kt-subheader   kt-grid__item" id="kt_subheader" style="left: @ViewBag.width;">
+        <div class="kt-container  kt-container--fluid ">
+            <div class="kt-subheader__main">
+
+                <span class="kt-subheader__separator kt-hidden"></span>
+                <div class="kt-subheader__breadcrumbs">
+                    <a href="#" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-settings" style="color:#1c6081"></i></a>
+                    <a href="#" class="kt-subheader__breadcrumbs-link" style="color:#1c6081">
+                        CompareConfig
+                    </a>
+                    <i class="fa fa-angle-double-right" style="color:#1c6081"></i>
+                    <a href="#" class="kt-subheader__breadcrumbs-link" style="color:#1c6081">
+                        &nbsp;
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+        <div class="kt-portlet kt-portlet--mobile">
+            <div class="kt-portlet__head kt-portlet__head--lg">
+                <div class="kt-portlet__head-label">
+                    <h3 class="kt-portlet__head-title" style="color:#1582ab">
+                        Import Compare Config
+                    </h3>
+                </div>
+            </div>
+            @Html.AntiForgeryToken()
+            <div class="kt-portlet__body">
+                <div class="form-group col-md-8">
+                    <div></div>
+                    <div class="custom-file ">
+                        <input type="file" class="custom-file-input" id="txtUploadConfigFile" name="txtUploadConfigFile" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
+                        <label class="custom-file-label " for="customFile" style="text-align: left;">Choose excel file</label>
+                    </div>
+                </div>
+                <div class="form-group col-md-4" style="display:none;" id="hdnDownloadConfigLink">
+                    <div></div>
+                    <div class="custom-file ">
+                        <a href="#" id="downloadConfigFile"> Click here to download CompareConfig File <i class="flaticon-download-1"></i>  </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="kt-portlet__foot">
+                <div class="kt-form__actions">
+                    <div class="row">
+                        <div class="col-lg-9 ">
+                            <button type="submit" class="btn btn-outline-brand btn-elevate btn-pill" id="btnImportConfig">Import</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('#btnImportConfig').click(function () {
+            console.log("import config")
+            // Checking whether FormData is available in browser
+            if (window.FormData !== undefined) {
+
+                var fileUpload = $("#txtUploadConfigFile").get(0);
+                var files = fileUpload.files;
+                if (files.length <= 0) {
+                    swal.fire({
+                        "title": "No files to import",
+                        "text":"Please select a file to import",
+                        "icon": "error",
+                        "allowOutsideClick": false,
+                        "onClose": function (e) {
+                            console.log('on close event fired!');
+                        }
+                    });
+                    return false;
+                }
+                // Create FormData CompareConfig
+                var fileData = new FormData();
+
+                // Looping over all files and add it to FormData CompareConfig
+                for (var i = 0; i < files.length; i++) {
+                    fileData.append(files[i].name, files[i]);
+                }
+                startloader();
+                $.ajax({
+                    url: '/CompareConfig/ImportCompareConfigFile',
+                    type: "POST",
+                    contentType: false, // Not to set any content header
+                    processData: false, // Not to process data
+                    data: fileData,
+                    success: function (result) {
+                        var fresult = result.split(',');
+                        document.getElementById("txtUploadConfigFile").value = "";
+                        $('#txtUploadConfigFile').parents().find('.custom-file-label')[0].innerHTML = "Choose excel file";
+                        if (fresult[1] == "success") {
+                            swal.fire({
+                                "title": "CompareConfig imported successfully",
+                                "icon": "success",
+                                "allowOutsideClick": false,
+                                "onClose": function (e) {
+                                    console.log('on close event fired!');
+                                }
+                            });
+                            $("#hdnDownloadConfigLink").css("display", "none");
+                            $("#downloadVariableFile").attr("href", "#");
+                        }
+                        else if (fresult[1] == "validation") {
+                            document.getElementById("txtUploadConfigFile").value = "";
+                            $('#txtUploadConfigFile').parents().find('.custom-file-label')[0].innerHTML = "Choose excel file";
+                            swal.fire({
+                                "title": "CompareConfig Import Validation Error",
+                                "text": "Please click on link to download error report.",
+                                "icon": "warning",
+                                "allowOutsideClick": false,
+                                "onClose": function (e) {
+                                    console.log('on close event fired!');
+                                }
+                            });
+                            $("#hdnDownloadConfigLink").css("display", "block");
+                            $("#downloadConfigFile").attr("href", "/TestSuite/DownloadFile?path=" + fresult[0]);
+                        }
+                        else {
+                            swal.fire({
+                                "title": "Excpetion occured",
+                                "text": "Please click on link to download error report.",
+                                "icon": "error",
+                                "allowOutsideClick": false,
+                                "onClose": function (e) {
+                                    console.log('on close event fired!');
+                                }
+                            });
+                            $("#hdnDownloadConfigLink").css("display", "block");
+                            $("#downloadConfigFile").attr("href", "/TestSuite/DownloadFile?path=" + fresult[0]);
+                        }
+                        stoploader();
+                    },
+                    error: function (err) {
+                        stoploader();
+                        alert(err.statusText);
+                    }
+                });
+            } else {
+                stoploader();
+                alert("FormData is not supported.");
+            }
+        });
+    });
+    $('#txtUploadConfigFile').on('change', function () {
+        var fileName = document.getElementById("txtUploadConfigFile").files[0].name;
+        $(this).next('.custom-file-label').html(fileName);
+    })
+</script>
+
+
+
+
+
+
+
+
+
+
+

@@ -55,6 +55,21 @@ namespace MARS_Repository.ViewModel
         public string BaselineComment { get; set; }
         public string CompareComment { get; set; }
         public string COMMENT { get; set; }
+        public long? Run_Order { get; set; }
+    }
+
+    public class StorybookResultViewModel
+    {
+        public decimal? BCount { get; set; }
+        public decimal? CCount { get; set; }
+        public long? BaselineReportId { get; set; }
+        public long? CompareReportId { get; set; }
+        public string BreturnValues { get; set; }
+        public string CreturnValues { get; set; }
+        public string Keyword { get; set; }
+        public string Result { get; set; }
+        public string COMMENT { get; set; }
+        public long? Run_Order { get; set; }
     }
 
     public class ValidatResultViewModel

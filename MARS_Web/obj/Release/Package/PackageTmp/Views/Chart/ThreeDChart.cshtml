@@ -1,0 +1,29 @@
+﻿<style>
+
+</style>
+<script>
+
+    var json_axis = @Html.Raw(Json.Encode(@ViewBag.axis));
+    var axis = JSON.parse(json_axis);
+                  
+           var xdata = axis["XAxis"];
+           var ydata = axis["YAxis"];
+           var zdata = axis["ZAxis"];
+            
+          Plotly.newPlot('chartholder', [{
+                   z: zdata,
+				   x: xdata,
+				   y: ydata,
+                   type: 'surface'
+             
+          }]);
+    console.log(xdata);
+    console.log(ydata);
+    console.log(zdata);
+
+    
+ 
+   // Plotly.newPlot('chartholder', data);
+</script>
+
+

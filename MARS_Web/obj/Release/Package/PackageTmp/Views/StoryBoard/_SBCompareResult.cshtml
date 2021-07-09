@@ -1,4 +1,5 @@
-﻿@{
+﻿@using MARS_Repository.ViewModel
+@{
     var BhistedId = ViewBag.BhistedId;
     var ChistedId = ViewBag.ChistedId;
     var BTestReportId = ViewBag.BTestReportId;
@@ -12,10 +13,22 @@
 
     var TestCaseId = ViewBag.TestCaseId;
     var StoryboardDetailId = ViewBag.StoryboardDetailId;
+
+
+    var PrivilegeList = Session["PrivilegeList"] as List<PrivilegeViewModel>;
+    var RoleList = Session["RoleList"] as List<RoleViewModel>;
+    var SAVERESULTBUTTON = "none";
+    if (PrivilegeList.Select(y => y.PRIVILEGE_NAME).ToList().Contains("Save Result Data"))
+    {
+        SAVERESULTBUTTON = "block";
+    }
 }
 <style>
     .pq-cell-dirty div {
         font-weight: 600 !important;
+    }
+     .SAVERESULTBUTTON{
+        display:@SAVERESULTBUTTON !important;
     }
 </style>
 <script>
@@ -111,14 +124,14 @@
             else {
                 result = "";
             }
-            
+
             return result;
         }
     });
     DataTagdt.push({
         dataIndx: "BaselineComment", title: "Baseline Comment", dataType: 'string', maxLen: 10, width: 200, minWidth: 40, menuInHide: false, align: "left", halign: "center", sortable: true, nodrag: true, nodrop: true, filter: { crules: [{ condition: 'contain' }] }, resizable: true
         , editable: function (ui) {
-            
+
             if (ui.rowData != undefined) {
                 if (ui.rowData.pq_cellcls != undefined) {
                     if (ui.rowData.pq_cellcls["BreturnValues"] == "pq-cell-dirty") {
@@ -130,7 +143,7 @@
                 if (ui.rowData.StepNo == "0" || ui.rowData.StepNo == undefined) {
                     return true;
                 }
-                
+
             }
             return false;
         }
@@ -149,10 +162,10 @@
                 if (ui.rowData.StepNo == "0" || ui.rowData.StepNo==undefined) {
                     return true;
                 }
-                
+
             }
             return false;
-           
+
         }
     });
     var DataTagobj = {
@@ -215,19 +228,19 @@
                 var newRow = obj.newRow;
                 $.each(newRow, function (key, value) {
                     if (key == "BreturnValues") {
-                        newRow["BreturnValues"] = newRow["BreturnValues"].substring(0, 255);
+                        newRow["BreturnValues"] = newRow["BreturnValues"] == null ? newRow["BreturnValues"] :newRow["BreturnValues"].substring(0, 255);
                     }
                     else if (key == "CreturnValues") {
-                        newRow["CreturnValues"] = newRow["CreturnValues"].substring(0, 255);
+                        newRow["CreturnValues"] = newRow["CreturnValues"] == null ? newRow["CreturnValues"] : newRow["CreturnValues"].substring(0, 255);
                     }
                     else if (key == "CompareComment") {
-                        newRow["CompareComment"] = newRow["CompareComment"].substring(0, 2000);
+                        newRow["CompareComment"] = newRow["CompareComment"] == null ? newRow["CompareComment"] : newRow["CompareComment"].substring(0, 2000);
                     }
                     else if (key == "BaselineComment") {
-                        newRow["BaselineComment"] = newRow["BaselineComment"].substring(0, 2000);
+                        newRow["BaselineComment"] = newRow["BaselineComment"] == null ? newRow["BaselineComment"]:newRow["BaselineComment"].substring(0, 2000);
                     }
                     else if (key == "InputValueSetting") {
-                        newRow["InputValueSetting"] = newRow["InputValueSetting"].substring(0, 1024);
+                        newRow["InputValueSetting"] = newRow["InputValueSetting"] == null ? newRow["InputValueSetting"]:newRow["InputValueSetting"].substring(0, 1024);
                     }
                 });
 
@@ -273,7 +286,7 @@
 
 
 
-            
+
             //if (ui.rowData.result == "FALSE") {
 
             //}
@@ -307,7 +320,7 @@
                         icon: 'save',
                         attr: 'title="Save"',
                         label: '',
-                        cls: "floatRight btn btn-brand btn-elevate btn-icon-sm", listener: function () {
+                    cls: "floatRight btn btn-brand btn-elevate btn-icon-sm SAVERESULTBUTTON", listener: function () {
                             //append empty row at the end.
                             SaveSBResultData('@lgridName',@BhistedId,@ChistedId, @TestCaseId,@StoryboardDetailId);
                         }
@@ -333,7 +346,7 @@
                         cls: "floatRight btn btn-brand btn-elevate btn-icon-sm",
                         listener: function () {
                             //append empty row at the end.
-                           
+
                             var rowData = { StepNo:0 }; //empty row
                             var rowIndx = this.addRow({ rowData: rowData, checkEditable: true });
                             this.goToPage({ rowIndx: rowIndx });
@@ -347,7 +360,7 @@
                            swal.fire({
                                 title: '',
                                 text: "All changes in ResultList will be discarded.  Please confirm",
-                                type: 'warning',
+                               icon: 'warning',
                                 showCancelButton: true,
                                 confirmButtonText: 'Yes'
                             }).then(function (result) {
@@ -499,9 +512,12 @@
                         //    $("#CompareReportId" + ChistedId).val(Resultlist[Resultlist.length - 1].CompareReportId);
                         //}
                         for (i = 0; i < Resultlist.length; i++) {
+
                             if (DataTagjsonData.length > 1) {
                                 DataTagjsonData += ",";
                             }
+                          
+
                             StepNo = StepNo + 1;
                             DataTagjsonData += '{ "StepNo":"' + StepNo + '","Keyword":"' + Resultlist[i].Keyword + '", "BaselineStepId":"' + Resultlist[i].BaselineStepId + '", "CompareStepId":"' + Resultlist[i].CompareStepId + '", "InputValueSetting":"' + Resultlist[i].InputValueSetting +
                                 '", "BreturnValues": "' + Resultlist[i].BreturnValues + '", "CreturnValues": "' + Resultlist[i].CreturnValues + '", "COMMENT": "' + Resultlist[i].COMMENT
@@ -511,6 +527,11 @@
                         }
                     }
                     DataTagjsonData = DataTagjsonData + "]";
+                    DataTagjsonData = DataTagjsonData.replaceAll('\t',' ');
+                    DataTagjsonData = DataTagjsonData.replaceAll('\r',' ');
+                    DataTagjsonData = DataTagjsonData.replaceAll('\\\\',' ');
+                    DataTagjsonData = DataTagjsonData.replaceAll('\\',' ');
+                    
                     var SCRdata = JSON.parse(DataTagjsonData);
                     gridobj[lgridName].option("dataModel.data", SCRdata);
                     gridobj[lgridName].refreshDataAndView();
@@ -518,7 +539,7 @@
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "error",
+                        "icon": "error",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -529,7 +550,7 @@
     }
 
     function SaveSBResultData(lgridName, BhistedId, ChistedId, TestCaseId, StoryboardDetailId) {
-        
+
         startloader();
         var changes;
         changes = gridobj[lgridName].getChanges({ format: "byVal" });
@@ -539,7 +560,7 @@
             BaselineReportId = 0;
         if (CompareReportId == "")
             CompareReportId = 0;
-       
+
         gridobj[lgridName].setSelection(null);
         $.ajax({
             dataType: "json",
@@ -568,7 +589,7 @@
                     swal.fire({
                         "title": "",
                         "text": " Data Saved successfully.",
-                        "type": "success",
+                        "icon": "success",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -599,7 +620,7 @@
                         swal.fire({
                             "title": "",
                             "text": result.message,
-                            "type": "error",
+                            "icon": "error",
                             "onClose": function (e) {
                                 console.log('on close event fired!');
                             }
@@ -631,7 +652,7 @@
                     swal.fire({
                         "title": "",
                         "text": " Data Validate successfully.",
-                        "type": "success",
+                        "icon": "success",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -656,7 +677,7 @@
                         swal.fire({
                             "title": "",
                             "text": result.message,
-                            "type": "error",
+                            "icon": "error",
                             "onClose": function (e) {
                                 console.log('on close event fired!');
                             }
@@ -683,7 +704,7 @@
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "success",
+                        "icon": "success",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -692,7 +713,7 @@
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "error",
+                        "icon": "error",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -718,7 +739,7 @@
                     <i class="flaticon2-shelter" style="color:#1c6081;"></i>
                 </a>
                 <input type="hidden" name="@BaselineReportId" id="@BaselineReportId" value="@BTestReportId" />
-                <input type="hidden" name="@CompareReportId" id="@CompareReportId"  value="@CTestReportId"/>
+                <input type="hidden" name="@CompareReportId" id="@CompareReportId" value="@CTestReportId" />
             </div>
         </div>
         <div class="kt-subheader__toolbar">

@@ -154,8 +154,8 @@ function PartialRightStoryboardGrid(ProjectId, StoryBoardid, storyboardname, Act
         dataType: "HTML",
         success: function (result) {
             var lflag = false;
-            var ltabName = "#tab" + storyboard;
-            var ltabIdName = "tab" + storyboard;
+            var ltabName = "#tabSB" + storyboard;
+            var ltabIdName = "tabSB" + storyboard;
             $('.ULtablist li').each(function (index, value) {
                 if ($(value).children().first().attr("data-target") == ltabName) {
                     if ($(value).children().first().attr("data-tab") == "Storyboard") {
@@ -178,7 +178,7 @@ function PartialRightStoryboardGrid(ProjectId, StoryBoardid, storyboardname, Act
                     var lParentli = $(Activetab).parent();
                     var ltab = '<a href="' + ltabName + '" class="nav-link active context-tab" data-tab="Storyboard" data-id="' + StoryBoardid + '" data-name="' + storyboard + '" data-storyboardid="' + StoryBoardid + '" data-projectId="' + ProjectId + '" data-storyboardname="' + storyboard + '" data-toggle="tab"  data-target="' + ltabName + '" onclick="ActiveTab($(this))"><img alt="Storyboard" class="tab_icons_img" src="/assets/media/icons/storyboard.png">' + storyboard + '</a><i class="fa fa-times-circle tab_close" style="cursor:pointer" onclick="closetab($(this))"></i>';
                     var ldiv = result;
-                    var lId = "tab" + storyboard;
+                    var lId = "tabSB" + storyboard;
                     var lGridDiv = $(".divtablist").find("#" + lId);
                     $(lParentli).html("");
                     $(lParentli).html(ltab);
@@ -204,19 +204,20 @@ function PartialRightStoryboardGrid(ProjectId, StoryBoardid, storyboardname, Act
                 $(".ULtablist").append(ltab);
                 $(".divtablist").append(ldiv);
                 $('.ULtablist li').each(function (index, value) {
-                    if ($(value).children().first().attr("data-target") != "#tab" + storyboard) {
+                    if ($(value).children().first().attr("data-target") != "#tabSB" + storyboard) {
                         $(value).children().first().removeClass("active");
                     }
                 });
                 $('.divtablist div').each(function (index, value) {
-                    if ($(value).first().attr("id") != "tab" + storyboard) {
+                    if ($(value).first().attr("id") != "tabSB" + storyboard) {
                         $(value).removeClass("active");
                     }
                 });
             }
-            stoploader();
+            //stoploader();
         },
     });
+    stoploader();
 }
 
 function DisplayStoryboardGrid(StoryBoardid, Pid, Default) {
@@ -289,7 +290,6 @@ function PartialRightGrid(TestcaseId, TestsuiteId, ProjectId, TestCaseName, Acti
                     }
                 }
             });
-
             var ltab = "";
             if (Default == "1") {
                 ltab = '<li class="nav-item context-menu-tab" ><a data-pin="true" href="' + ltabName + '"  class="nav-link active context-tab" data-tab="TestCase" data-id="' + lTestCaseId + '" data-name="' + lTestCaseName + '" data-testcaseId="' + lTestCaseId + '" data-testsuiteId="' + lTestsuiteId + '" data-projectId="' + lProjectId + '" data-testcasename="' + lTestCaseName + '" data-toggle="tab" data-target="' + ltabName + '" onclick="ActiveTab($(this))"><img alt="TestCase" class="tab_icons_img" src="/assets/media/icons/test_case.png">' + TestCaseName + '</a><i class="fa fa-times-circle tab_close" style="cursor:pointer" onclick="closetab($(this))"></i></li>';
@@ -297,7 +297,6 @@ function PartialRightGrid(TestcaseId, TestsuiteId, ProjectId, TestCaseName, Acti
                 ltab = '<li class="nav-item context-menu-tab" ><a data-pin="false" href="' + ltabName + '"  class="nav-link active context-tab" data-tab="TestCase" data-id="' + lTestCaseId + '" data-name="' + lTestCaseName + '" data-testcaseId="' + lTestCaseId + '" data-testsuiteId="' + lTestsuiteId + '" data-projectId="' + lProjectId + '" data-testcasename="' + lTestCaseName + '" data-toggle="tab" data-target="' + ltabName + '" onclick="ActiveTab($(this))"><img alt="TestCase" class="tab_icons_img" src="/assets/media/icons/test_case.png">' + TestCaseName + '</a><i class="fa fa-times-circle tab_close" style="cursor:pointer" onclick="closetab($(this))"></i></li>';
             }
             var ldiv = '<div class="tab-pane active div" id="' + ltabIdName + '" role="tabpanel">' + result + '</div>';
-
             if (lflag) {
                 if (Activetab != null) {
                     var lParentli = $(Activetab).parent();
@@ -347,6 +346,7 @@ function PartialRightGrid(TestcaseId, TestsuiteId, ProjectId, TestCaseName, Acti
         },
 
     });
+    //stoploader();
 }
 
 function DisplayTestCaseGrid(Tid, Pid, Default) {
@@ -363,7 +363,7 @@ function DisplayTestCaseGrid(Tid, Pid, Default) {
                 var TestsuiteId = obj.TestSuiteId;
                 var TestCaseName = obj.TestCaseName;
                 PartialRightGrid(Tid, TestsuiteId, Pid, TestCaseName, null, null, Default);
-            } 
+            }
             else if (result.status == 0) {
                 swal.fire({
                     "title": "",
@@ -383,7 +383,7 @@ function PartialRightGridTestCaseFromStoryboard(TestcaseId, TestsuiteId, Project
     var lTestCaseId = TestcaseId;
     var lTestsuiteId = TestsuiteId;
     var lProjectId = ProjectId;
-    var lTestCaseName = TestCaseName.replace('/', '_').replace('(', '-').replace(')', '-').replace('.', '_').replace('*', '_').replace(/&/g, '_');
+    var lTestCaseName = TestCaseName.replace('/', '_').replace('(', '-').replace(')', '-').replace('.', '_').replace('*', '_').replace(/&/g, '_').replace(' ', '_');
     if (lTestCaseName.indexOf(" ") > -1) {
         RecusrsiveTab(lTestCaseName);
         lTestCaseName = ltempTestCase;
@@ -415,9 +415,9 @@ function PartialRightGridTestCaseFromStoryboard(TestcaseId, TestsuiteId, Project
             if (lflag) {
                 if (Activetab != null) {
                     var lParentli = $(Activetab).parent();
-                    var ltab = '<a  href="' + ltabName + '"  class="nav-link active context-tab" data-tab="TestCase" data-id="' + lTestCaseId + '" data-name="' + lTestCaseName + '" data-testcaseId="' + lTestCaseId + '" data-testsuiteId="' + lTestsuiteId + '" data-projectId="' + lProjectId + '" data-testcasename="' + lTestCaseName + '" data-toggle="tab"  data-target="' + ltabName + '" onclick="ActiveTab($(this))"><img alt="TestCase" class="tab_icons_img" src="/assets/media/icons/test_case.png">' + TestCaseName + '</a><i class="fa fa-times-circle tab_close" style="cursor:pointer" onclick="closetab($(this))"></i>';
-                    var ldiv = result;
-                    var lId = "tab" + TestCaseName;
+                    ltab = '<a  href="' + ltabName + '"  class="nav-link active context-tab" data-tab="TestCase" data-id="' + lTestCaseId + '" data-name="' + lTestCaseName + '" data-testcaseId="' + lTestCaseId + '" data-testsuiteId="' + lTestsuiteId + '" data-projectId="' + lProjectId + '" data-testcasename="' + lTestCaseName + '" data-toggle="tab"  data-target="' + ltabName + '" onclick="ActiveTab($(this))"><img alt="TestCase" class="tab_icons_img" src="/assets/media/icons/test_case.png">' + TestCaseName + '</a><i class="fa fa-times-circle tab_close" style="cursor:pointer" onclick="closetab($(this))"></i>';
+                    ldiv = result;
+                    var lId = "tab" + lTestCaseName;
                     var lGridDiv = $(".divtablist").find("#" + lId);
                     $(lParentli).html("");
                     $(lParentli).html(ltab);
@@ -499,9 +499,12 @@ function ActiveTab(Activetab) {
 
         //   PartialRightGrid(lTestCaseId, lTestsuiteId, lProjectId, lTestCaseName, Activetab,null);
     }
-    if (storyboardid != null && lProjectId != null && storyboardname != null
+    if (storyboardid != null && lProjectId != null && storyboardname != null && storyboardname != undefined
         && storyboardid > 0 && lProjectId > 0) {
-        setTimeout(function () { gridobj[".grid" + storyboardname].reset({ filter: true }); }, 500);
+        setTimeout(function () {
+            gridobj[".gridSB" + storyboardname.replace(/ /g, '_')].reset({ filter: true });
+        }, 500);
+        //setTimeout(function () { gridobj[".grid" + storyboardname].reset({ filter: true }); }, 500);
         //  PartialRightStoryboardGrid(lProjectId, storyboardid, storyboardname, Activetab, null);
     }
     $.each(TestCaselst, function (key, value) {
@@ -528,8 +531,10 @@ function ActiveTab(Activetab) {
         }
         storyboardname = storyboardname == undefined ? storyboardname : storyboardname.replace(/_/g, ' ');
         obj = obj == undefined ? obj : obj.replace(/_/g, ' ').trim();
-        if (obj.includes(storyboardname.trim())) {
-            value.classList.add("kt-menu__item--open");
+        if (storyboardname != undefined) {
+            if (obj.includes(storyboardname.trim())) {
+                value.classList.add("kt-menu__item--open");
+            }
         }
     });
 }
@@ -1714,7 +1719,7 @@ function checkTCSBChangesOnClose(value) {
 
 
     if (lFindTab == "TestCase" || lFindTab == "Storyboard" || lFindTab == "DataTag") {
-        var checkarray = gridobj[".grid" + lfindname].getChanges({ format: "byVal" });
+        var checkarray = lFindTab == "Storyboard" ? gridobj[".gridSB" + lfindname].getChanges({ format: "byVal" }) : gridobj[".grid" + lfindname].getChanges({ format: "byVal" });
         if (checkarray.addList.length > 0 || checkarray.deleteList.length > 0 || checkarray.updateList.length > 0 || checkarray.oldList.length > 0) {
             // testcaseopenflag = true;
             return "unsaved";
@@ -1816,7 +1821,7 @@ function cancelTCSBGrid() {
         }
         if (storyboardid != null && lProjectId != null && storyboardname != null
             && storyboardid > 0 && lProjectId > 0) {
-            setTimeout(function () { gridobj[".grid" + storyboardname].reset({ filter: true }); }, 500);
+            setTimeout(function () { gridobj[".grid" + storyboardname.replace(/ /g, '_')].reset({ filter: true }); }, 500);
             //   PartialRightStoryboardGrid(lProjectId, storyboardid, storyboardname, Activetab, null);
         }
 
@@ -1838,7 +1843,7 @@ function saveTCSBGrid(obj) {
     var testcaseid = $(obj).attr("data-testcaseid");
     var storyboarddetailid = $(obj).attr("data-storyboarddetailid");
 
-  
+
     if (tabname == "TestCase") {
         $.when($.ajax(saveChangesTC(testcasegrid, tcsbid, suiteid))).then(function () {
             if (validflag == true || msgflag == true) {
@@ -1878,7 +1883,7 @@ function closetab(tabcloseObj) {
     var targetname = $(lParent).children().first().attr("data-tab");
     var lfindname = $(lParent).children().first().attr("data-name");
     var lfindid = $(lParent).children().first().attr("data-id");
-    var ltestcasegridname = ".grid" + lfindname;
+    var ltestcasegridname = targetname == "Storyboard" ? ".gridSB" + lfindname : ".grid" + lfindname;
     var suiteidsave = $("#hdnTestsuiteId").val();
     var projectidsave = $("#hdnSProjectId").val();
     projectidsave = projectidsave === undefined ? 0 : projectidsave;
@@ -1921,7 +1926,6 @@ function closetab(tabcloseObj) {
             if (value != undefined) {
                 return value["TestCaseId"] != lfindid;
             }
-
         });
     }
     if (DeleteColumnsList.length > 0) {
@@ -1931,7 +1935,7 @@ function closetab(tabcloseObj) {
                 return value["TestCaseId"] != lfindid;
             }
 
-        });            
+        });
     }
     $(lParent).remove();
     $(lDirGrid).remove();
@@ -1990,9 +1994,10 @@ function closetab(tabcloseObj) {
             setTimeout(function () { gridobj[".grid" + lTestCaseName].reset({ filter: true }); }, 500);
             //  PartialRightGrid(lTestCaseId, lTestsuiteId, lProjectId, lTestCaseName, Activetab, null);
         }
-        if (storyboardid != null && lProjectId != null && storyboardname != null
+        if (storyboardid != null && lProjectId != null && storyboardname != null && storyboardname != undefined
             && storyboardid > 0 && lProjectId > 0) {
-            setTimeout(function () { gridobj[".grid" + storyboardname].reset({ filter: true }); }, 500);
+            setTimeout(function () { gridobj[".gridSB" + storyboardname.replace(/ /g, '_')].reset({ filter: true }); }, 500);
+            //setTimeout(function () { gridobj[".grid" + storyboardname].reset({ filter: true }); }, 500);
             //   PartialRightStoryboardGrid(lProjectId, storyboardid, storyboardname, Activetab, null);
         }
     }
@@ -2005,7 +2010,7 @@ function closetab(tabcloseObj) {
 
 function closetabforresultset(tabcloseObj) {
     var lParent = $(tabcloseObj).parent();
-    
+
     var lFindTab = tabcloseObj.attr("data-target");
     var targetname = tabcloseObj.attr("data-tab");
     var lfindname = tabcloseObj.attr("data-name");
@@ -2031,7 +2036,7 @@ function Closeallbutthistab(tabObject) {
     var lActiveTabObj;
     var lflag = false;
     var testCaseIds = "";
-    
+
     $('.ULtablist li').each(function (index, value) {
         var lFindTab = $(value).children().first().attr("data-target");
 
@@ -2142,7 +2147,7 @@ function closeExistOldtab(tabcloseObj) {
     }
     var lTabNameId = lFindTab.replace("#", "").replace('(', '_').replace(')', '_');
     var lDirGrid = $(".divtablist #" + lTabNameId);
-   
+
     $(tabcloseObj).remove();
     $(lDirGrid).remove();
 
@@ -2263,7 +2268,7 @@ function PartialRightImportResultSet(Default, obj) {
         startloader();
     if (obj != null)
         projectId = obj[0].dataset.projectId;
-    
+
     $.ajax({
         url: "/Storyboard/ImportResultSet",
         type: "POST",
@@ -2544,3 +2549,59 @@ function RightSideFolderList(Default) {
         }
     });
 }
+
+function RightSideUserConfigList(Default) {
+    $.ajax({
+        url: "/Accounts/UserConfigList",
+        type: "POST",
+        contentType: "application/json;charset=utf-8",
+        dataType: "HTML",
+        success: function (result) {
+            var lflag = false;
+            $('.ULtablist li').each(function (index, value) {
+                if ($(value).children().first().attr("data-target") == "#tabuserconfiglist") {
+                    lflag = true;
+                }
+            });
+            var ltab = "";
+            if (Default == "1") {
+                ltab = '<li class="nav-item context-menu-tab"><a data-pin="true" class="nav-link active context-tab" data-tab="UserConfiguration" data-id="0" data-name="UserConfiguration" data-toggle="tab" href="#" data-target="#tabuserconfiglist" onclick="ActiveTab($(this))"><img alt="User Configuration" class="tab_icons_img" src="/assets/media/icons/UCL.png"/>User Configuration List</a><i class="fa fa-times-circle tab_close" style="cursor:pointer" onclick="closetab($(this))" ></i></li>';
+            } else {
+                ltab = '<li class="nav-item context-menu-tab"><a data-pin="false" class="nav-link active context-tab" data-tab="UserConfiguration" data-id="0" data-name="UserConfiguration" data-toggle="tab" href="#" data-target="#tabuserconfiglist" onclick="ActiveTab($(this))"><img alt="User Configuration" class="tab_icons_img" src="/assets/media/icons/UCL.png"/>User Configuration List</a><i class="fa fa-times-circle tab_close" style="cursor:pointer" onclick="closetab($(this))" ></i></li>';
+            }
+            var ldiv = '<div class="tab-pane active div" id="tabuserconfiglist" role="tabpanel">' + result + '</div>';
+
+            if (lflag) {
+                $('.ULtablist li').each(function (index, value) {
+                    if ($(value).children().first().attr("data-target") == "#tabuserconfiglist") {
+                        $(value).children().first().addClass("active");
+                    } else {
+                        $(value).children().first().removeClass("active");
+                    }
+                });
+                $('.divtablist div').each(function (index, value) {
+                    if ($(value).first().attr("id") == "tabuserconfiglist") {
+                        $(value).addClass("active");
+                    } else {
+                        $(value).removeClass("active");
+                    }
+                });
+            }
+            else {
+                $(".ULtablist").append(ltab);
+                $(".divtablist").append(ldiv);
+                $('.ULtablist li').each(function (index, value) {
+                    if ($(value).children().first().attr("data-target") != "#tabuserconfiglist") {
+                        $(value).children().first().removeClass("active");
+                    }
+                });
+                $('.divtablist div').each(function (index, value) {
+                    if ($(value).first().attr("id") != "tabuserconfiglist") {
+                        $(value).removeClass("active");
+                    }
+                });
+            }
+        }
+    });
+}
+

@@ -1554,5 +1554,86 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_CheckValidationStoryboard" FunctionName="Model.Store.SP_CheckValidationStoryboard" />
+    <FunctionImportMapping FunctionImportName="SP_SaveStoryboard" FunctionName="Model.Store.SP_SaveStoryboard" />
+    <EntitySetMapping Name="T_USER_CONFIGURATION">
+      <EntityTypeMapping TypeName="Model.T_USER_CONFIGURATION">
+        <MappingFragment StoreEntitySet="T_USER_CONFIGURATION">
+          <ScalarProperty Name="ISDELETE" ColumnName="ISDELETE" />
+          <ScalarProperty Name="MODIFYON" ColumnName="MODIFYON" />
+          <ScalarProperty Name="MODIFYBY" ColumnName="MODIFYBY" />
+          <ScalarProperty Name="CREATEDON" ColumnName="CREATEDON" />
+          <ScalarProperty Name="CREATEDBY" ColumnName="CREATEDBY" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="BLOBVALUETYPE" ColumnName="BLOBVALUETYPE" />
+          <ScalarProperty Name="BLOBVALUE" ColumnName="BLOBVALUE" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="SUBKEY" ColumnName="SUBKEY" />
+          <ScalarProperty Name="MAINKEY" ColumnName="MAINKEY" />
+          <ScalarProperty Name="USERCONFIGID" ColumnName="USERCONFIGID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_DATABASE_CONNECTIONS">
+      <EntityTypeMapping TypeName="Model.T_DATABASE_CONNECTIONS">
+        <MappingFragment StoreEntitySet="T_DATABASE_CONNECTIONS">
+          <ScalarProperty Name="ERROR_MESSAGE" ColumnName="ERROR_MESSAGE" />
+          <ScalarProperty Name="LAST_TESTED" ColumnName="LAST_TESTED" />
+          <ScalarProperty Name="IS_TESTED" ColumnName="IS_TESTED" />
+          <ScalarProperty Name="MODIFIED_DATE" ColumnName="MODIFIED_DATE" />
+          <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+          <ScalarProperty Name="CREATION_DATE" ColumnName="CREATION_DATE" />
+          <ScalarProperty Name="CREATEDBY" ColumnName="CREATEDBY" />
+          <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+          <ScalarProperty Name="CONNECTION_STRING" ColumnName="CONNECTION_STRING" />
+          <ScalarProperty Name="DB_PASSWORD" ColumnName="DB_PASSWORD" />
+          <ScalarProperty Name="DB_USERNAME" ColumnName="DB_USERNAME" />
+          <ScalarProperty Name="DB_SID" ColumnName="DB_SID" />
+          <ScalarProperty Name="SERVICE_NAME" ColumnName="SERVICE_NAME" />
+          <ScalarProperty Name="PROTOCOL" ColumnName="PROTOCOL" />
+          <ScalarProperty Name="PORT_NUMBER" ColumnName="PORT_NUMBER" />
+          <ScalarProperty Name="HOST_NAME" ColumnName="HOST_NAME" />
+          <ScalarProperty Name="CONNECTION_TYPE" ColumnName="CONNECTION_TYPE" />
+          <ScalarProperty Name="CONNECTION_NAME" ColumnName="CONNECTION_NAME" />
+          <ScalarProperty Name="CONNECTION_ID" ColumnName="CONNECTION_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="REL_DB_QUERY">
+      <EntityTypeMapping TypeName="Model.REL_DB_QUERY">
+        <MappingFragment StoreEntitySet="REL_DB_QUERY">
+          <ScalarProperty Name="DATABASE_CONN_ID" ColumnName="DATABASE_CONN_ID" />
+          <ScalarProperty Name="QUERY_ID" ColumnName="QUERY_ID" />
+          <ScalarProperty Name="DB_QUERY_ID" ColumnName="DB_QUERY_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_QUERY">
+      <EntityTypeMapping TypeName="Model.T_QUERY">
+        <MappingFragment StoreEntitySet="T_QUERY">
+          <ScalarProperty Name="CONN_ID" ColumnName="CONN_ID" />
+          <ScalarProperty Name="MODIFIED_DATE" ColumnName="MODIFIED_DATE" />
+          <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+          <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+          <ScalarProperty Name="CREATEDBY" ColumnName="CREATEDBY" />
+          <ScalarProperty Name="IS_ACTIVE" ColumnName="IS_ACTIVE" />
+          <ScalarProperty Name="QUERY_DESC" ColumnName="QUERY_DESC" />
+          <ScalarProperty Name="QUERY_NAME" ColumnName="QUERY_NAME" />
+          <ScalarProperty Name="QUERY_ID" ColumnName="QUERY_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="T_AXIS_LIST">
+      <EntityTypeMapping TypeName="Model.T_AXIS_LIST">
+        <MappingFragment StoreEntitySet="T_AXIS_LIST">
+          <ScalarProperty Name="Z_AXIS" ColumnName="Z_AXIS" />
+          <ScalarProperty Name="Y_AXIS" ColumnName="Y_AXIS" />
+          <ScalarProperty Name="X_AXIS" ColumnName="X_AXIS" />
+          <ScalarProperty Name="COMMAND_TYPE_ID" ColumnName="COMMAND_TYPE_ID" />
+          <ScalarProperty Name="QUERY_ID" ColumnName="QUERY_ID" />
+          <ScalarProperty Name="AXIS_LIST_ID" ColumnName="AXIS_LIST_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

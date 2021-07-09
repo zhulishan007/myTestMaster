@@ -383,3 +383,105 @@ function ExportReportDatasetTag() {
         window.location = "/TestSuite/DownloadExcel?FileName=" + result;
     });
 }
+
+function ExportProjectAllStoryboard(objstoryboard) {
+    debugger
+    var pid = $(objstoryboard).attr("data-project-id");
+    if (pid != null && pid != "") {
+        startloader();
+        $.ajax({
+            url: '/StoryBoard/ExportAllStoryboradResultSet', //call your controller and action
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: {
+                Projectid: pid
+            },
+        }).done(function (result) {
+
+            stoploader();
+            //if (result.status == 1) {
+            window.location = "/TestSuite/DownloadExcel?FileName=" + result;
+            //} else if (result.status == 0) {
+            //    swal.fire({
+            //        "title": "",
+            //        "text": result.message,
+            //        "type": "error",
+            //        "onClose": function (e) {
+            //            console.log('on close event fired!');
+            //        }
+            //    });
+            //}
+        });
+    }
+}
+
+function ExportCompareConfig() {
+   
+      $.ajax({
+         url: '/CompareConfig/ExportCompareConfig', //call your controller and action
+        contentType: "application/json; charset=utf-8",
+        dataType: "json"
+    }).done(function (result) {
+        
+      
+        window.location = "/TestSuite/DownloadExcel?FileName=" + result;
+  
+    });
+}
+
+function ImportCompareConfig(Default) {
+    console.log("Export Config");
+    $.ajax({
+        url: "/CompareConfig/ImportCompareConfig",
+        // data: '{"TestcaseId":"' + TestcaseId + '","TestsuiteId":"' + TestsuiteId + '","ProjectId":"' + ProjectId + '"}',
+        type: "POST",
+        contentType: "application/json;charset=utf-8",
+        dataType: "HTML",
+        success: function (result) {
+            var lflag = false;
+            $('.ULtablist li').each(function (index, value) {
+                if ($(value).children().first().attr("data-target") == "#tabImportCompareConfig") {
+                    lflag = true;
+                }
+            });
+            var ltab = "";
+            if (Default == "1") {
+                ltab = '<li class="nav-item context-menu-tab"><a data-pin="true" class="nav-link active context-tab" data-id="0" data-tab="ImportCompareConfigTag" data-name="ImportCompareConfigTag" data-toggle="tab" href="#" data-target="#tabImportCompareConfig" onclick="ActiveTab($(this),0,0,0,"")"><img alt="Import CompareConfig" class="tab_icons_img" src="/assets/media/icons/icc.png"/>Import CompareConfig</a><i class="fa fa-times-circle tab_close" style="cursor:pointer" onclick="closetab($(this))"></i></li>';
+            } else {
+                ltab = '<li class="nav-item context-menu-tab"><a data-pin="false" class="nav-link active context-tab" data-id="0" data-tab="ImportCompareConfigTag" data-name="ImportCompareConfigTag" data-toggle="tab" href="#" data-target="#tabImportCompareConfig" onclick="ActiveTab($(this),0,0,0,"")"><img alt="Import CompareConfig" class="tab_icons_img" src="/assets/media/icons/icc.png"/>Import CompareConfig</a><i class="fa fa-times-circle tab_close" style="cursor:pointer" onclick="closetab($(this))"></i></li>';
+            }
+            var ldiv = '<div class="tab-pane active div" id="tabImportCompareConfig" role="tabpanel">' + result + '</div>';
+
+            if (lflag) {
+                $('.ULtablist li').each(function (index, value) {
+                    if ($(value).children().first().attr("data-target") == "#tabImportCompareConfig") {
+                        $(value).children().first().addClass("active");
+                    } else {
+                        $(value).children().first().removeClass("active");
+                    }
+                });
+                $('.divtablist div').each(function (index, value) {
+                    if ($(value).first().attr("id") == "tabImportCompareConfig") {
+                        $(value).addClass("active");
+                    } else {
+                        $(value).removeClass("active");
+                    }
+                });
+            }
+            else {
+                $(".ULtablist").append(ltab);
+                $(".divtablist").append(ldiv);
+                $('.ULtablist li').each(function (index, value) {
+                    if ($(value).children().first().attr("data-target") != "#tabImportCompareConfig") {
+                        $(value).children().first().removeClass("active");
+                    }
+                });
+                $('.divtablist div').each(function (index, value) {
+                    if ($(value).first().attr("id") != "tabImportCompareConfig") {
+                        $(value).removeClass("active");
+                    }
+                });
+            }
+        }
+    });
+}

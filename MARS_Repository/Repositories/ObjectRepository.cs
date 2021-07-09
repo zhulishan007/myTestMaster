@@ -37,8 +37,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured ObjectRepository in GetObjectsByPegWindowType method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured ObjectRepository in GetObjectsByPegWindowType method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in Object for GetObjects method | TestCase Id : {0} | UserName: {1}", testcaseId, Username));
+                ELogger.ErrorException(string.Format("Error occured in Object for GetObjects method | TestCase Id : {0} | UserName: {1}", testcaseId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Object for GetObjects method | TestCase Id : {0} | UserName: {1}", testcaseId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -67,8 +69,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase in GetObjectsByPegWindowType method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase in GetObjectsByPegWindowType method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in Object for GetObjectsByPegWindowType method | TestCase Id : {0} | UserName: {1}", testcaseId, Username));
+                ELogger.ErrorException(string.Format("Error occured in Object for GetObjectsByPegWindowType method | TestCase Id : {0} | UserName: {1}", testcaseId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Object for GetObjectsByPegWindowType method | TestCase Id : {0} | UserName: {1}", testcaseId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -84,8 +88,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase in GetObjectByObjectName method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase in GetObjectByObjectName method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in Object for GetObjectByObjectName method | Object Name : {0} | UserName: {1}", lObjectName, Username));
+                ELogger.ErrorException(string.Format("Error occured in Object for GetObjectByObjectName method | Object Name : {0} | UserName: {1}", lObjectName, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Object for GetObjectByObjectName method | Object Name : {0} | UserName: {1}", lObjectName, Username), ex.InnerException);
                 throw;
             }
         }
@@ -106,8 +112,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase in GetObjectByObjectName method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase in GetObjectByObjectName method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in Object for GetPegObjectByObjectName method | Object Name : {0} | UserName: {1}", lObjectName, Username));
+                ELogger.ErrorException(string.Format("Error occured in Object for GetPegObjectByObjectName method | Object Name : {0} | UserName: {1}", lObjectName, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Object for GetPegObjectByObjectName method | Object Name : {0} | UserName: {1}", lObjectName, Username), ex.InnerException);
                 throw;
             }
         }
@@ -135,8 +143,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase in GetObjectByParent method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase in GetObjectByParent method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in Object for GetObjectByParent method | PegObjectId: {0} | TestcaseId: {1} | Keyword Id : {2} | UserName: {3}", lPegObjectId, testcaseId, llinkedKeywordId, Username));
+                ELogger.ErrorException(string.Format("Error occured in Object for GetObjectByParent method | PegObjectId: {0} | TestcaseId: {1} | Keyword Id : {2} | UserName: {3}", lPegObjectId, testcaseId, llinkedKeywordId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Object for GetObjectByParent method | PegObjectId: {0} | TestcaseId: {1} | Keyword Id : {2} | UserName: {3}", lPegObjectId, testcaseId, llinkedKeywordId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -223,8 +233,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured object page in ListObjects method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured object page in ListObjects method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in Object for ListObjects method | Connection String: {0} | Schema: {1} | UserName: {2}", lconstring, schema, Username));
+                ELogger.ErrorException(string.Format("Error occured in Object for ListObjects method | Connection String: {0} | Schema: {1} | UserName: {2}", lconstring, schema, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Object for ListObjects method | Connection String: {0} | Schema: {1} | UserName: {2}", lconstring, schema, Username), ex.InnerException);
                 throw;
             }
         }
@@ -282,8 +294,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured object export in ExportObject method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured object export in ExportObject method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in Object for ExportObject method | Application Id : {0} | Connection String: {1} | Schema: {2} | UserName: {3}", pApplication, lstrconn, schema, Username));
+                ELogger.ErrorException(string.Format("Error occured in Object for ExportObject method | Application Id : {0} | Connection String: {1} | Schema: {2} | UserName: {3}", pApplication, lstrconn, schema, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Object for ExportObject method | Application Id : {0} | Connection String: {1} | Schema: {2} | UserName: {3}", pApplication, lstrconn, schema, Username), ex.InnerException);
                 throw;
             }
         }
@@ -301,8 +315,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured object page in GetPegwindowObject method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured object page in GetPegwindowObject method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in Object for GetPegwindowObject method | Application Id : {0} | UserName: {1}", appid, Username));
+                ELogger.ErrorException(string.Format("Error occured in Object for GetPegwindowObject method | Application Id : {0} | UserName: {1}", appid, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Object for GetPegwindowObject method | Application Id : {0} | UserName: {1}", appid, Username), ex.InnerException);
                 throw;
             }
         }
@@ -323,8 +339,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured object page in LoadObjectType method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured object page in LoadObjectType method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in Object for LoadObjectType method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured in Object for LoadObjectType method | UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Object for LoadObjectType method | UserName: {0}", Username), ex.InnerException);
                 throw;
             }
         }
@@ -335,20 +353,39 @@ namespace MARS_Repository.Repositories
                 if (model.ObjectId == 0)
                 {
                     logger.Info(string.Format("Add object start | ApplicationId: {0} | Object: {1} | Username: {2}", model.applicationid, model.ObjectName,Username));
-                    if (model.description == null)
-                    {
-                        model.description = "";
-                    }
+
+                    var objectexist = entity.T_OBJECT_NAMEINFO.Where(x => x.OBJECT_HAPPY_NAME.Trim() == model.ObjectName.Trim()).FirstOrDefault();
                     var objnameinfo = new T_OBJECT_NAMEINFO();
-                    objnameinfo.OBJECT_NAME_ID = Helper.NextTestSuiteId("SEQ_MARS_OBJECT_ID");
-                    objnameinfo.OBJECT_HAPPY_NAME = model.ObjectName;
-                    objnameinfo.OBJNAME_DESCRIPTION = model.description;
-                    if (model.ObjectName.ToLower() == model.ObjectParent.ToLower())
-                        objnameinfo.PEGWINDOW_MARK = 1;
+                    if (objectexist != null)
+                    {
+                        objnameinfo.OBJECT_NAME_ID = objectexist.OBJECT_NAME_ID;
+                        if (objectexist.PEGWINDOW_MARK == null)
+                        {
+                            if (model.ObjectName.ToLower() == model.ObjectParent.ToLower())
+                            {
+                                objectexist.PEGWINDOW_MARK = 1;
+                                entity.SaveChanges();
+                            }
+                        }
+                    }
                     else
-                        objnameinfo.PEGWINDOW_MARK = null;
-                    entity.T_OBJECT_NAMEINFO.Add(objnameinfo);
-                    entity.SaveChanges();
+                    {
+                        if (model.description == null)
+                        {
+                            model.description = "";
+                        }
+                       
+                        objnameinfo.OBJECT_NAME_ID = Helper.NextTestSuiteId("SEQ_MARS_OBJECT_ID");
+                        objnameinfo.OBJECT_HAPPY_NAME = model.ObjectName;
+                        objnameinfo.OBJNAME_DESCRIPTION = model.description;
+                        if (model.ObjectName.ToLower() == model.ObjectParent.ToLower())
+                            objnameinfo.PEGWINDOW_MARK = 1;
+                        else
+                            objnameinfo.PEGWINDOW_MARK = null;
+                        entity.T_OBJECT_NAMEINFO.Add(objnameinfo);
+                        entity.SaveChanges();
+                    }
+
 
                     if (model.EnumType == null)
 
@@ -388,7 +425,7 @@ namespace MARS_Repository.Repositories
 
                         entity.SaveChanges();
 
-                        var registeredobject = entity.T_REGISTED_OBJECT.Where(x => x.OBJECT_NAME_ID == model.ObjectId && x.APPLICATION_ID == model.applicationid).ToList();
+                        var registeredobject = entity.T_REGISTED_OBJECT.Where(x => x.OBJECT_NAME_ID == model.ObjectId && x.APPLICATION_ID == model.applicationid && x.OBJECT_TYPE.ToLower().Trim() == model.ObjectParent.ToLower().Trim()).ToList();
                         foreach (var itm in registeredobject)
                         {
 
@@ -409,8 +446,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured object page in AddEditObject method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured object page in AddEditObject method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in Object for AddEditObject method | Application Id : {0} | Object: {1} | ObjectId: {2} | Username: {3}", model.applicationid, model.ObjectName, model.ObjectId, Username));
+                ELogger.ErrorException(string.Format("Error occured in Object for AddEditObject method | Application Id : {0} | Object: {1} | ObjectId: {2} | Username: {3}", model.applicationid, model.ObjectName, model.ObjectId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Object for AddEditObject method | Application Id : {0} | Object: {1} | ObjectId: {2} | Username: {3}", model.applicationid, model.ObjectName, model.ObjectId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -435,8 +474,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured object page in FindObjectId method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured object page in FindObjectId method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in Object for FindObjectId method | ApplicationId: {0} | ObjectId: {1} | Username: {2}", appid, objecid, Username));
+                ELogger.ErrorException(string.Format("Error occured in Object for FindObjectId method | ApplicationId: {0} | ObjectId: {1} | Username: {2}", appid, objecid, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Object for FindObjectId method | ApplicationId: {0} | ObjectId: {1} | Username: {2}", appid, objecid, Username), ex.InnerException);
                 throw;
             }
         }
@@ -463,8 +504,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured object page in CheckPegwindowObject method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured object page in CheckPegwindowObject method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in Object for CheckPegwindowObject method | ApplicationId: {0} | ObjectId: {1} | Username: {2}", appid, objectid, Username));
+                ELogger.ErrorException(string.Format("Error occured in Object for CheckPegwindowObject method | ApplicationId: {0} | ObjectId: {1} | Username: {2}", appid, objectid, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Object for CheckPegwindowObject method | ApplicationId: {0} | ObjectId: {1} | Username: {2}", appid, objectid, Username), ex.InnerException);
                 throw;
             }
         }
@@ -479,12 +522,14 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured object page in getPegwindowObjectName method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured object page in getPegwindowObjectName method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in Object for getPegwindowObjectName method | ApplicationId: {0} | ObjectId: {1} | Username: {2}", appid, objectid, Username));
+                ELogger.ErrorException(string.Format("Error occured in Object for getPegwindowObjectName method | ApplicationId: {0} | ObjectId: {1} | Username: {2}", appid, objectid, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Object for getPegwindowObjectName method | ApplicationId: {0} | ObjectId: {1} | Username: {2}", appid, objectid, Username), ex.InnerException);
                 throw;
             }
         }
-        public string DeleteObject(long id, long appid)
+        public string DeleteObject(long id, long appid,string parent)
         {
             try
             {
@@ -492,7 +537,7 @@ namespace MARS_Repository.Repositories
                 var result = entity.T_OBJECT_NAMEINFO.Find(id);
                 if (result != null)
                 {
-                    var regobj = entity.T_REGISTED_OBJECT.Where(x => x.OBJECT_NAME_ID == id && x.APPLICATION_ID == appid).ToList();
+                    var regobj = entity.T_REGISTED_OBJECT.Where(x => x.OBJECT_NAME_ID == id && x.APPLICATION_ID == appid && x.OBJECT_TYPE.ToLower().Trim() == parent.ToLower().Trim()).ToList();
                     foreach (var itm in regobj)
                     {
                         var app = entity.REL_OBJ_APP.Where(x => x.OBJECT_ID == itm.OBJECT_ID).ToList();
@@ -512,8 +557,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured object page in DeleteObject method | Username: {2}", id, appid, Username));
-                ELogger.ErrorException(string.Format("Error occured object page in DeleteObject method | Username: {2}", id, appid, Username), ex);
+                logger.Error(string.Format("Error occured in Object for DeleteObject method | ApplicationId: {0} | ObjectId: {1} | Parent : {2} | Username: {3}", appid, id, parent, Username));
+                ELogger.ErrorException(string.Format("Error occured in Object for DeleteObject method | ApplicationId: {0} | ObjectId: {1} | Parent : {2} | Username: {3}", appid, id, parent, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Object for DeleteObject method | ApplicationId: {0} | ObjectId: {1} | Parent : {2} | Username: {3}", appid, id, parent, Username), ex.InnerException);
                 throw;
             }
         }
@@ -529,8 +576,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured object page in GetObjectName method | Username: {2}", id, appid, Username));
-                ELogger.ErrorException(string.Format("Error occured object page in GetObjectName method | Username: {2}", id, appid, Username), ex);
+                logger.Error(string.Format("Error occured in Object for GetObjectName method | ApplicationId: {0} | ObjectId: {1} | Username: {2}", appid, id, Username));
+                ELogger.ErrorException(string.Format("Error occured in Object for GetObjectName method | ApplicationId: {0} | ObjectId: {1} | Username: {2}", appid, id, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Object for GetObjectName method | ApplicationId: {0} | ObjectId: {1} | Username: {2}", appid, id, Username), ex.InnerException);
                 throw;
             }
         }
@@ -558,8 +607,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured object page in CheckObjectExistsInTestCase method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured object page in CheckObjectExistsInTestCase method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in Object for CheckObjectExistsInTestCase method | ObjectId: {0} | Username: {2}", objectid, Username));
+                ELogger.ErrorException(string.Format("Error occured in Object for CheckObjectExistsInTestCase method | ObjectId: {0} | Username: {2}", objectid, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Object for CheckObjectExistsInTestCase method | ObjectId: {0} | Username: {2}", objectid, Username), ex.InnerException);
                 throw;
             }
         }
@@ -605,8 +656,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured object page in CopyAllObjects method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured object page in CopyAllObjects method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in Object for CopyAllObjects method | Old ApplicationId: {0} | New ApplicationId: {1} | Connection String : {2} | Schema : {3} | Username: {4}", copyfromappid, copytoappid, lstrConn, schema, Username));
+                ELogger.ErrorException(string.Format("Error occured in Object for CopyAllObjects method | Old ApplicationId: {0} | New ApplicationId: {1} | Connection String : {2} | Schema : {3} | Username: {4}", copyfromappid, copytoappid, lstrConn, schema, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Object for CopyAllObjects method | Old ApplicationId: {0} | New ApplicationId: {1} | Connection String : {2} | Schema : {3} | Username: {4}", copyfromappid, copytoappid, lstrConn, schema, Username), ex.InnerException);
                 throw;
             }
         }
@@ -656,8 +709,10 @@ namespace MARS_Repository.Repositories
             }
             catch(Exception ex)
             {
-                logger.Error(string.Format("Error occured object page in CopyObjects method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured object page in CopyObjects method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in Object for CopyObjects method | Old ApplicationId: {0} | New ApplicationId: {1} | Connection String : {2} | Schema : {3} | Username: {4}", fromid, toid, lstrConn, schema, Username));
+                ELogger.ErrorException(string.Format("Error occured in Object for CopyObjects method | Old ApplicationId: {0} | New ApplicationId: {1} | Connection String : {2} | Schema : {3} | Username: {4}", fromid, toid, lstrConn, schema, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Object for CopyObjects method | Old ApplicationId: {0} | New ApplicationId: {1} | Connection String : {2} | Schema : {3} | Username: {4}", fromid, toid, lstrConn, schema, Username), ex.InnerException);
                 throw;
             }
         }
@@ -683,8 +738,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured ObjectRepository in CheckObjectExists method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured ObjectRepository in CheckObjectExists method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in Object for CheckObjectExists method | ApplicationId: {0} | ObjectName: {1} | ObjectType : {2} | TypeId : {3} | Username: {4}", appid, objectname, objecttype, typeid, Username));
+                ELogger.ErrorException(string.Format("Error occured in Object for CheckObjectExists method | ApplicationId: {0} | ObjectName: {1} | ObjectType : {2} | TypeId : {3} | Username: {4}", appid, objectname, objecttype, typeid, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Object for CheckObjectExists method | ApplicationId: {0} | ObjectName: {1} | ObjectType : {2} | TypeId : {3} | Username: {4}", appid, objectname, objecttype, typeid, Username), ex.InnerException);
                 throw;
             }
         }
@@ -707,8 +764,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured object page in CheckConvertingObjectExists method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured object page in CheckConvertingObjectExists method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in Object for CheckConvertingObjectExists method | ApplicationId: {0} | ObjectName: {1} | ObjectType : {2} | ParentType : {3} | Username: {4}", appid, objectname, objecttype, parentobj, Username));
+                ELogger.ErrorException(string.Format("Error occured in Object for CheckConvertingObjectExists method | ApplicationId: {0} | ObjectName: {1} | ObjectType : {2} | ParentType : {3} | Username: {4}", appid, objectname, objecttype, parentobj, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Object for CheckConvertingObjectExists method | ApplicationId: {0} | ObjectName: {1} | ObjectType : {2} | ParentType : {3} | Username: {4}", appid, objectname, objecttype, parentobj, Username), ex.InnerException);
                 throw;
             }
         }
@@ -738,8 +797,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured object page in CheckObjectName method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured object page in CheckObjectName method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in Object for CheckObjectName method | ApplicationId: {0} | ObjectName: {1} | ObjectType : {2} | ParentType : {3} | Username: {4}", appid, objectname, objecttype, parent, Username));
+                ELogger.ErrorException(string.Format("Error occured in Object for CheckObjectName method | ApplicationId: {0} | ObjectName: {1} | ObjectType : {2} | ParentType : {3} | Username: {4}", appid, objectname, objecttype, parent, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Object for CheckObjectName method | ApplicationId: {0} | ObjectName: {1} | ObjectType : {2} | ParentType : {3} | Username: {4}", appid, objectname, objecttype, parent, Username), ex.InnerException);
                 throw;
             }
         }
@@ -791,8 +852,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured object page in DuplicateObjectList method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured object page in DuplicateObjectList method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in Object for DuplicateObjectList method | Old ApplicationId: {0} | New ApplicationId: {1} | Connection String : {2} | Schema : {3} | Username: {4}", copyfromappid, copytoappid, lstrConn, schema, Username));
+                ELogger.ErrorException(string.Format("Error occured in Object for DuplicateObjectList method | Old ApplicationId: {0} | New ApplicationId: {1} | Connection String : {2} | Schema : {3} | Username: {4}", copyfromappid, copytoappid, lstrConn, schema, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Object for DuplicateObjectList method | Old ApplicationId: {0} | New ApplicationId: {1} | Connection String : {2} | Schema : {3} | Username: {4}", copyfromappid, copytoappid, lstrConn, schema, Username), ex.InnerException);
                 throw;
             }
         }
@@ -813,8 +876,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured object page in GetObjectId method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured object page in GetObjectId method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in Object for GetObjectId method | Application Id : {0} | UserName: {1}", appid, Username));
+                ELogger.ErrorException(string.Format("Error occured in Object for GetObjectId method | Application Id : {0} | UserName: {1}", appid, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Object for GetObjectId Method | Application Id : {0} | UserName: {1}", appid, Username), ex.InnerException);
                 throw;
             }
         }

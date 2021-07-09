@@ -1,17 +1,29 @@
 function showProjectRenamePopup() {
     $("#RenameProjecterror").css("display", "none");
     $("#ProjectPopup").modal("show");
+    $('.modal-dialog').draggable({
+        handle: ".modal-header"
+    });
 }
 function Showrenamepopup() {
     $("#Renamestoryboarderror").css("display", "none");
     $("#StoryboardPopup").modal("show");
+    $('.modal-dialog').draggable({
+        handle: ".modal-header"
+    });
 }
 function showrenameTestcasePopup() {
     $("#TestCasePopup").modal("show");
+    $('.modal-dialog').draggable({
+        handle: ".modal-header"
+    });
     $("#RenameTestCaseerror").css("display", "none");
 }
 function showrenameTestSuitePopup() {
     $("#TestSuitePopup").modal("show");
+    $('.modal-dialog').draggable({
+        handle: ".modal-header"
+    });
     $("#RenameTestSuiteerror").css("display", "none");
 }
 function CheckduplicateStoryboardExists() {
@@ -242,6 +254,7 @@ function RenameTestCase() {
             contentType: "application/json;charset=utf-8",
             dataType: "json",
             success: function (result) {
+                stoploader();
                 if (result.status == 1) {
                     if (result.data == "success") {
                         $("#RenameTestCaseName").val("");
@@ -273,7 +286,7 @@ function RenameTestCase() {
                         $("#RenameTestCaseerror").css("display", "block");
                         $("#RenameTestCaseName").val("");
                     }
-                    stoploader();
+                   // stoploader();
                 }
                 else if (result.status == 0) {
                     swal.fire({
@@ -284,9 +297,12 @@ function RenameTestCase() {
                             console.log('on close event fired!');
                         }
                     });
-                    stoploader();
+                  //  stoploader();
                 }
             },
+            complete: function (result) {
+                stoploader();
+            }
         });
     }
     else {
@@ -336,276 +352,317 @@ $("#RenameTestCaseName").on('keyup', function () {
 
 function DeleteTestCase(objTestCase) {
     var TestCaseId = $(objTestCase).attr("data-testcase-id");
-    if (TestCaseId !== null && TestCaseId !== "") {
-        startloader();
-        $.ajax({
-            url: "/TestCase/DeleteTestCase",
-            data: '{"TestCaseId":"' + TestCaseId + '"}',
-            type: "POST",
-            contentType: "application/json;charset=utf-8",
-            dataType: "json",
-            success: function (result) {
-                if (result.status == 1) {
-                    if (result.data === true) {
-                    swal.fire({
-                        "title": "",
-                        "text": result.message,
-                        "icon": "success",
-                        "onClose": function (e) {
-                            console.log('on close event fired!');
-                        }
-                    });
-                    stoploader();
-                    $.ajax({
-                        url: "/Login/LeftPanel",
-                        type: "POST",
-                        contentType: "application/json;charset=utf-8",
-                        dataType: "HTML",
-                        success: function (result) {
-                            $("#leftProjectList").html("");
-                            $("#leftProjectList").html(result);
-
-                            $('.ULtablist li').each(function (index, value) {
-                                var lFindTab = $(value).children().first().attr("data-target");
-
-                                if (lFindTab != undefined) {
-                                    var lFindTabId = $(value).children().first().attr("data-id");
-                                    var lFindTabName = $(value).children().first().attr("data-tab");
-                                    if (lFindTabId == TestCaseId && lFindTabName == "TestCase") {
-                                        var lPrevTab = $(value).children().first().attr("data-target");
-                                        var lPrevTabNameId = lPrevTab.replace("#", "");
-                                        var lPrevDirGrid = $(".divtablist #" + lPrevTabNameId);
-                                        $(value).children().first().addClass("active");
-                                        $(lPrevDirGrid).addClass("active");
-                                        var lTabNameId = lFindTab.replace("#", "");
-                                        var lDirGrid = $(".divtablist #" + lTabNameId);
-                                        $(value).remove();
-                                        $(lDirGrid).remove();
+    swal.fire({
+        title: 'Please confirm.',
+        text: "This action can not be undone.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!'
+    }).then(function (result) {
+        if (result.value == true) {
+            if (TestCaseId !== null && TestCaseId !== "") {
+                startloader();
+                $.ajax({
+                    url: "/TestCase/DeleteTestCase",
+                    data: '{"TestCaseId":"' + TestCaseId + '"}',
+                    type: "POST",
+                    contentType: "application/json;charset=utf-8",
+                    dataType: "json",
+                    success: function (result) {
+                        if (result.status == 1) {
+                            if (result.data === true) {
+                                swal.fire({
+                                    "title": "",
+                                    "text": result.message,
+                                    "icon": "success",
+                                    "onClose": function (e) {
+                                        console.log('on close event fired!');
                                     }
+                                });
+                                stoploader();
+                                $.ajax({
+                                    url: "/Login/LeftPanel",
+                                    type: "POST",
+                                    contentType: "application/json;charset=utf-8",
+                                    dataType: "HTML",
+                                    success: function (result) {
+                                        $("#leftProjectList").html("");
+                                        $("#leftProjectList").html(result);
+
+                                        $('.ULtablist li').each(function (index, value) {
+                                            var lFindTab = $(value).children().first().attr("data-target");
+
+                                            if (lFindTab != undefined) {
+                                                var lFindTabId = $(value).children().first().attr("data-id");
+                                                var lFindTabName = $(value).children().first().attr("data-tab");
+                                                if (lFindTabId == TestCaseId && lFindTabName == "TestCase") {
+                                                    var lPrevTab = $(value).children().first().attr("data-target");
+                                                    var lPrevTabNameId = lPrevTab.replace("#", "");
+                                                    var lPrevDirGrid = $(".divtablist #" + lPrevTabNameId);
+                                                    $(value).children().first().addClass("active");
+                                                    $(lPrevDirGrid).addClass("active");
+                                                    var lTabNameId = lFindTab.replace("#", "");
+                                                    var lDirGrid = $(".divtablist #" + lTabNameId);
+                                                    $(value).remove();
+                                                    $(lDirGrid).remove();
+                                                }
+                                            }
+                                        });
+                                    }
+                                });
+                            }
+                            else {
+                                if (result.data.length > 0) {
+                                    var resultstring = "";
+                                    for (i = 0; i < result.data.length; i++) {
+
+                                        resultstring = resultstring + result.data[i] + " , ";
+                                    }
+                                    swal.fire(
+                                        '',
+                                        'Following Storyboards contains this Test Case.Please remove this Test Case from storyboards ' + "<br>" + resultstring,
+                                        'error'
+                                    );
+                                    stoploader();
+                                }
+                            }
+                        }
+                        else if (result.status == 0) {
+                            swal.fire({
+                                "title": "",
+                                "text": result.message,
+                                "icon": "error",
+                                "onClose": function (e) {
+                                    console.log('on close event fired!');
                                 }
                             });
                         }
-                    });
-                }
-                else {
-                    if (result.data.length > 0) {
-                        var resultstring = "";
-                        for (i = 0; i < result.data.length; i++) {
-
-                            resultstring = resultstring + result.data[i] + " , ";
-                        }
-                        swal.fire(
-                            '',
-                            'Following Storyboards contains this Test Case.Please remove this Test Case from storyboards ' + "<br>" + resultstring,
-                            'error'
-                        );
-                        stoploader();
                     }
-                }
+                });
             }
-                else if(result.status == 0) {
-            swal.fire({
-                "title": "",
-                "text": result.message,
-                "icon": "error",
-                "onClose": function (e) {
-                    console.log('on close event fired!');
-                }
-            });
         }
-            }
-        });
-    }
+    });
 }
 function DeleteProject(objproject) {
     var projectid = $(objproject).attr("data-project-id");
-    if (projectid != null && projectid != "") {
-        startloader();
-        $.ajax({
-            url: "/Project/DeleteProject",
-            data: '{"projectid":"' + projectid + '"}',
-            type: "POST",
-            contentType: "application/json;charset=utf-8",
-            dataType: "json",
-            success: function (result) {
-                if (result.status == 1) {
-                    swal.fire({
-                        "title": "",
-                        "text": result.message,
-                        "icon": "success",
-                        "onClose": function (e) {
-                            console.log('on close event fired!');
+    swal.fire({
+        title: 'Please confirm.',
+        text: "This action can not be undone.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!'
+    }).then(function (result) {
+        if (result.value == true) {
+            if (projectid != null && projectid != "") {
+                startloader();
+                $.ajax({
+                    url: "/Project/DeleteProject",
+                    data: '{"projectid":"' + projectid + '"}',
+                    type: "POST",
+                    contentType: "application/json;charset=utf-8",
+                    dataType: "json",
+                    success: function (result) {
+                        if (result.status == 1) {
+                            swal.fire({
+                                "title": "",
+                                "text": result.message,
+                                "icon": "success",
+                                "onClose": function (e) {
+                                    console.log('on close event fired!');
+                                }
+                            });
+                            stoploader();
+                            window.location.href = "/Home/Index";
                         }
-                    });
-                    stoploader();
-                    window.location.href = "/Home/Index";
-                }
-                else if (result.status == 0) {
-                    swal.fire({
-                        "title": "",
-                        "text": result.message,
-                        "icon": "error",
-                        "onClose": function (e) {
-                            console.log('on close event fired!');
+                        else if (result.status == 0) {
+                            swal.fire({
+                                "title": "",
+                                "text": result.message,
+                                "icon": "error",
+                                "onClose": function (e) {
+                                    console.log('on close event fired!');
+                                }
+                            });
                         }
-                    });
-                }
-            },
-        });
-    }
+                    },
+                });
+            }
+        }
+    });
 }
 
 function DeleteStoryboard(objStoryboard) {
     var storyboardid = $(objStoryboard).attr("data-storyboard-id");
-    if (storyboardid != null && storyboardid != "") {
-        startloader();
-        $.ajax({
-            url: "/Storyboard/DeleteStoryboard",
-            data: '{"sid":"' + storyboardid + '"}',
-            type: "POST",
-            contentType: "application/json;charset=utf-8",
-            dataType: "json",
-            success: function (result) {
-                if (result.status == 1 && result.data == true) {
-                    swal.fire({
-                        "title": "",
-                        "text": result.message,
-                        "icon": "success",
-                        "onClose": function (e) {
-                            console.log('on close event fired!');
-                        }
-                    });
-                    stoploader();
-                    $.ajax({
-                        url: "/Login/LeftPanel",
-                        type: "POST",
-                        contentType: "application/json;charset=utf-8",
-                        dataType: "HTML",
-                        success: function (result) {
-                            $("#leftProjectList").html("");
-                            $("#leftProjectList").html(result);
 
-                            $('.ULtablist li').each(function (index, value) {
-                                var lFindTab = $(value).children().first().attr("data-target");
+    swal.fire({
+        title: 'Please confirm.',
+        text: "This action can not be undone.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!'
+    }).then(function (result) {
+        if (result.value == true) {
+            if (storyboardid != null && storyboardid != "") {
+                startloader();
+                $.ajax({
+                    url: "/Storyboard/DeleteStoryboard",
+                    data: '{"sid":"' + storyboardid + '"}',
+                    type: "POST",
+                    contentType: "application/json;charset=utf-8",
+                    dataType: "json",
+                    success: function (result) {
+                        if (result.status == 1 && result.data == true) {
+                            swal.fire({
+                                "title": "",
+                                "text": result.message,
+                                "icon": "success",
+                                "onClose": function (e) {
+                                    console.log('on close event fired!');
+                                }
+                            });
+                            stoploader();
+                            $.ajax({
+                                url: "/Login/LeftPanel",
+                                type: "POST",
+                                contentType: "application/json;charset=utf-8",
+                                dataType: "HTML",
+                                success: function (result) {
+                                    $("#leftProjectList").html("");
+                                    $("#leftProjectList").html(result);
 
-                                if (lFindTab != undefined) {
-                                    var lFindTabId = $(value).children().first().attr("data-id");
-                                    var lFindTabName = $(value).children().first().attr("data-tab");
-                                    if (lFindTabId == storyboardid && lFindTabName == "Storyboard") {
-                                        var lPrevTab = $(value).children().first().attr("data-target");
-                                        var lPrevTabNameId = lPrevTab.replace("#", "");
-                                        var lPrevDirGrid = $(".divtablist #" + lPrevTabNameId);
-                                        $(value).children().first().addClass("active");
-                                        $(lPrevDirGrid).addClass("active");
-                                        var lTabNameId = lFindTab.replace("#", "");
-                                        var lDirGrid = $(".divtablist #" + lTabNameId);
-                                        $(value).remove();
-                                        $(lDirGrid).remove();
-                                    }
+                                    $('.ULtablist li').each(function (index, value) {
+                                        var lFindTab = $(value).children().first().attr("data-target");
+
+                                        if (lFindTab != undefined) {
+                                            var lFindTabId = $(value).children().first().attr("data-id");
+                                            var lFindTabName = $(value).children().first().attr("data-tab");
+                                            if (lFindTabId == storyboardid && lFindTabName == "Storyboard") {
+                                                var lPrevTab = $(value).children().first().attr("data-target");
+                                                var lPrevTabNameId = lPrevTab.replace("#", "");
+                                                var lPrevDirGrid = $(".divtablist #" + lPrevTabNameId);
+                                                $(value).children().first().addClass("active");
+                                                $(lPrevDirGrid).addClass("active");
+                                                var lTabNameId = lFindTab.replace("#", "");
+                                                var lDirGrid = $(".divtablist #" + lTabNameId);
+                                                $(value).remove();
+                                                $(lDirGrid).remove();
+                                            }
+                                        }
+                                    });
                                 }
                             });
                         }
-                    });
-                }
-                else if (result.status == 0) {
-                    swal.fire({
-                        "title": "",
-                        "text": result.message,
-                        "icon": "error",
-                        "onClose": function (e) {
-                            console.log('on close event fired!');
+                        else if (result.status == 0) {
+                            swal.fire({
+                                "title": "",
+                                "text": result.message,
+                                "icon": "error",
+                                "onClose": function (e) {
+                                    console.log('on close event fired!');
+                                }
+                            });
+                            stoploader();
                         }
-                    });
-                    stoploader();
-                }
+                    }
+                });
             }
-        });
-    }
+        }
+    });
 }
 
 function DeleteTestSuite(objTestSuite) {
     var TestSuiteId = $(objTestSuite).attr("data-testsuite-id");
-    if (TestSuiteId != null && TestSuiteId != "") {
-        startloader();
-        $.ajax({
-            url: "/TestSuite/DeleteTestSuite",
-            data: '{"TestSuiteId":"' + TestSuiteId + '"}',
-            type: "POST",
-            contentType: "application/json;charset=utf-8",
-            dataType: "json",
-            success: function (result) {
-                if (result.status == 1) {
-                    if (result.data == true) {
-                        swal.fire({
-                            "title": "",
-                            "text": result.message,
-                            "icon": "success",
-                            "onClose": function (e) {
-                                console.log('on close event fired!');
-                            }
-                        });
-                        $.ajax({
-                            url: "/Login/LeftPanel",
-                            type: "POST",
-                            contentType: "application/json;charset=utf-8",
-                            dataType: "HTML",
-                            success: function (result) {
-                                $("#leftProjectList").html("");
-                                $("#leftProjectList").html(result);
-
-                                $('.ULtablist li').each(function (index, value) {
-                                    var lFindTab = $(value).children().first().attr("data-target");
-
-                                    if (lFindTab != undefined) {
-                                        var lFindTabId = $(value).children().first().attr("data-id");
-                                        var lFindTabName = $(value).children().first().attr("data-tab");
-                                        if (lFindTabId == TestSuiteId && lFindTabName == "TestSuite") {
-                                            var lPrevTab = $(value).children().first().attr("data-target");
-                                            var lPrevTabNameId = lPrevTab.replace("#", "");
-                                            var lPrevDirGrid = $(".divtablist #" + lPrevTabNameId);
-                                            $(value).children().first().addClass("active");
-                                            $(lPrevDirGrid).addClass("active");
-                                            var lTabNameId = lFindTab.replace("#", "");
-                                            var lDirGrid = $(".divtablist #" + lTabNameId);
-                                            $(value).remove();
-                                            $(lDirGrid).remove();
-                                        }
+    swal.fire({
+        title: 'Please confirm.',
+        text: "This action can not be undone.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!'
+    }).then(function (result) {
+        if (result.value == true) {
+            if (TestSuiteId != null && TestSuiteId != "") {
+                startloader();
+                $.ajax({
+                    url: "/TestSuite/DeleteTestSuite",
+                    data: '{"TestSuiteId":"' + TestSuiteId + '"}',
+                    type: "POST",
+                    contentType: "application/json;charset=utf-8",
+                    dataType: "json",
+                    success: function (result) {
+                        if (result.status == 1) {
+                            if (result.data == true) {
+                                swal.fire({
+                                    "title": "",
+                                    "text": result.message,
+                                    "icon": "success",
+                                    "onClose": function (e) {
+                                        console.log('on close event fired!');
                                     }
                                 });
-                            }
-                        });
-                        stoploader();
-                    }
-                    else {
-                        if (result.data.length > 0) {
-                            var resultstring = "";
-                            for (i = 0; i < result.data.length; i++) {
+                                $.ajax({
+                                    url: "/Login/LeftPanel",
+                                    type: "POST",
+                                    contentType: "application/json;charset=utf-8",
+                                    dataType: "HTML",
+                                    success: function (result) {
+                                        $("#leftProjectList").html("");
+                                        $("#leftProjectList").html(result);
 
-                                resultstring = resultstring + result.data[i] + " , ";
+                                        $('.ULtablist li').each(function (index, value) {
+                                            var lFindTab = $(value).children().first().attr("data-target");
+
+                                            if (lFindTab != undefined) {
+                                                var lFindTabId = $(value).children().first().attr("data-id");
+                                                var lFindTabName = $(value).children().first().attr("data-tab");
+                                                if (lFindTabId == TestSuiteId && lFindTabName == "TestSuite") {
+                                                    var lPrevTab = $(value).children().first().attr("data-target");
+                                                    var lPrevTabNameId = lPrevTab.replace("#", "");
+                                                    var lPrevDirGrid = $(".divtablist #" + lPrevTabNameId);
+                                                    $(value).children().first().addClass("active");
+                                                    $(lPrevDirGrid).addClass("active");
+                                                    var lTabNameId = lFindTab.replace("#", "");
+                                                    var lDirGrid = $(".divtablist #" + lTabNameId);
+                                                    $(value).remove();
+                                                    $(lDirGrid).remove();
+                                                }
+                                            }
+                                        });
+                                    }
+                                });
+                                stoploader();
                             }
+                            else {
+                                if (result.data.length > 0) {
+                                    var resultstring = "";
+                                    for (i = 0; i < result.data.length; i++) {
+
+                                        resultstring = resultstring + result.data[i] + " , ";
+                                    }
+                                    stoploader();
+                                    swal.fire(
+                                        '',
+                                        'Following Storyboards contain this Test Suite. Please remove this Test Suite from Storyboards. ' + "<br>" + resultstring,
+                                        'error'
+                                    );
+                                }
+                            }
+                        }
+                        else if (result.status == 0) {
+                            swal.fire({
+                                "title": "",
+                                "text": result.message,
+                                "icon": "error",
+                                "onClose": function (e) {
+                                    console.log('on close event fired!');
+                                }
+                            });
                             stoploader();
-                            swal.fire(
-                                '',
-                                'Following Storyboards contain this Test Suite. Please remove this Test Suite from Storyboards. ' + "<br>" + resultstring,
-                                'error'
-                            );
                         }
                     }
-                }
-                else if (result.status == 0) {
-                    swal.fire({
-                        "title": "",
-                        "text": result.message,
-                        "icon": "error",
-                        "onClose": function (e) {
-                            console.log('on close event fired!');
-                        }
-                    });
-                    stoploader();
-                }
+                });
             }
-        });
-    }
+        }
+    });
 }
 
 $("#RenameProjectName").on('keyup', function () {
@@ -688,6 +745,9 @@ function CheckDuplicateRenameProjectExist() {
 
 function AddStoryboardContext() {
     $("#AddStoryboardContext").modal("show");
+    $('.modal-dialog').draggable({
+        handle: ".modal-header"
+    });
     $("#contextstoryboarderror").css("display", "none");
     var validator = $("#addstoryboardcontext").validate();
     validator.resetForm();
@@ -792,6 +852,9 @@ function ExportResultSetProject(objproject) {
     $('#hdnExpProjectId').val("");
     $('#hdnExpProjectId').val(projectid);
     $('#ResultSetProjectExport').modal("show");
+    $('.modal-dialog').draggable({
+        handle: ".modal-header"
+    });
 }
 
 function ExportPResultSet() {

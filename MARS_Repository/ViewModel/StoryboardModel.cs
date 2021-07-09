@@ -29,4 +29,17 @@ namespace MARS_Repository.ViewModel
         public string ALIAS_NAME { get; set; }
         public long? STORYBOARD_DETAIL_ID { get; set; }
     }
+
+    //public class StoryboardViewModel
+    //{
+    //    public long RowId { get; set;  }
+    //    public long? Run_order { get; set; }
+    //    public long? ProjectId { get; set; }
+    //    public string ActionName { get; set; }
+    //    public string StepName { get; set; }
+    //    public string TestSuiteName { get; set; }
+    //    public string TestCaseName { get; set; }
+    //    public string DataSetName { get; set; }
+    //    public string Dependency { get; set; }
+    //}
 }

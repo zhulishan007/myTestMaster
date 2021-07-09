@@ -7,7 +7,7 @@
     string ShowStoryboardImp = "false", Showvar = "false", ShowVarImp = "false", ShowKey = "false";
     string ShowObj = "false", ShowObjImp = "false", ShowUser = "false", ShowSelPro = "false";
     string ShowUserPro = "false", ShowSBSave = "false", ShowTCSave = "false";
-    string ShowGroup = "false", ShowSet = "false", ShowFolder = "false";
+    string ShowGroup = "false", ShowSet = "false", ShowFolder = "false", ShowConfig = "false";
     var PrivilegeList = Session["PrivilegeList"] as List<PrivilegeViewModel>;
     var RoleList = Session["RoleList"] as List<RoleViewModel>;
     if (PrivilegeList.Count > 0)
@@ -28,6 +28,7 @@
         ShowGroup = PrivilegeList.Select(y => y.MODULE).ToList().Contains("Group").ToString().ToLower();
         ShowSet = PrivilegeList.Select(y => y.MODULE).ToList().Contains("Set").ToString().ToLower();
         ShowFolder = PrivilegeList.Select(y => y.MODULE).ToList().Contains("Folder").ToString().ToLower();
+        ShowConfig = PrivilegeList.Select(y => y.MODULE).ToList().Contains("UserConfiguration").ToString().ToLower();
 
         if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Add Object") || PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Add Pegwindow Object") ||
            PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Edit Object") || PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("View Object") ||
@@ -68,6 +69,7 @@
 <input type="hidden" value="@ShowGroup" id="hdnShowGroup" />
 <input type="hidden" value="@ShowSet" id="hdnShowSet" />
 <input type="hidden" value="@ShowFolder" id="hdnShowFolder" />
+<input type="hidden" value="@ShowConfig" id="hdnShowConfig" />
 
 <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
     <div class="kt-portlet">
@@ -122,6 +124,7 @@
     var lhdnShowGroupdisplay = $("#hdnShowGroup").val();
     var lhdnShowSetdisplay = $("#hdnShowSet").val();
     var lhdnShowFolderdisplay = $("#hdnShowFolder").val();
+    var lhdnShowConfigdisplay = $("#hdnShowConfig").val();
 
     setTimeout(function () {
         $.each(statesAvailable, function (key, value) {
@@ -184,6 +187,9 @@
             }
             else if (value.PAGE_NAME.trim() == "Folder" && lhdnShowFolderdisplay == "true") {
                 RightSideFolderList("1");
+            }
+            else if (value.PAGE_NAME.trim() == "UserConfiguration" && lhdnShowConfigdisplay == "true") {
+                RightSideUserConfigList("1");
             }
             //else if (value.PAGE_NAME.trim() == "GridList") {
             //    RightSideGridList("1");

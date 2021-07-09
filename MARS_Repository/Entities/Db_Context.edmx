@@ -313,6 +313,14 @@ warning 6002: The table/view 'GEN_MARS_4.MV_TC_DATASUMMARY' does not have a prim
           <Property Name="APPLICATION_ID" Type="number" Precision="16" Scale="0" />
           <Property Name="TEST_SUITE_ID" Type="number" Precision="16" Scale="0" />
         </EntityType>
+        <EntityType Name="REL_DB_QUERY">
+          <Key>
+            <PropertyRef Name="DB_QUERY_ID" />
+          </Key>
+          <Property Name="DB_QUERY_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+          <Property Name="QUERY_ID" Type="number" Precision="16" Scale="0" />
+          <Property Name="DATABASE_CONN_ID" Type="number" Precision="16" Scale="0" />
+        </EntityType>
         <EntityType Name="REL_OBJ_APP">
           <Key>
             <PropertyRef Name="RELATIONSHIP_ID" />
@@ -373,6 +381,17 @@ warning 6002: The table/view 'GEN_MARS_4.MV_TC_DATASUMMARY' does not have a prim
           <Property Name="VALUE" Type="number" Precision="2" Scale="0" />
           <Property Name="DISPLAY_NAME" Type="varchar2" MaxLength="64" />
           <Property Name="STATUS" Type="number" Precision="2" Scale="0" />
+        </EntityType>
+        <EntityType Name="T_AXIS_LIST">
+          <Key>
+            <PropertyRef Name="AXIS_LIST_ID" />
+          </Key>
+          <Property Name="AXIS_LIST_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+          <Property Name="QUERY_ID" Type="number" Precision="16" Scale="0" />
+          <Property Name="COMMAND_TYPE_ID" Type="number" Precision="2" Scale="0" />
+          <Property Name="X_AXIS" Type="number" Precision="2" Scale="0" />
+          <Property Name="Y_AXIS" Type="number" Precision="2" Scale="0" />
+          <Property Name="Z_AXIS" Type="number" Precision="2" Scale="0" />
         </EntityType>
         <EntityType Name="T_BASELINE_DATA_DETAIL">
           <Key>
@@ -470,6 +489,30 @@ warning 6002: The table/view 'GEN_MARS_4.MV_TC_DATASUMMARY' does not have a prim
           <Property Name="DB_CONNECTION" Type="varchar2" MaxLength="128" />
           <Property Name="DB_TYPE" Type="number" Precision="2" Scale="0" />
           <Property Name="TEST_CONNECTION" Type="varchar2" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="T_DATABASE_CONNECTIONS">
+          <Key>
+            <PropertyRef Name="CONNECTION_ID" />
+          </Key>
+          <Property Name="CONNECTION_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+          <Property Name="CONNECTION_NAME" Type="varchar2" MaxLength="128" />
+          <Property Name="CONNECTION_TYPE" Type="number" Precision="2" Scale="0" />
+          <Property Name="HOST_NAME" Type="varchar2" MaxLength="128" />
+          <Property Name="PORT_NUMBER" Type="number" Precision="8" Scale="0" />
+          <Property Name="PROTOCOL" Type="varchar2" MaxLength="16" />
+          <Property Name="SERVICE_NAME" Type="varchar2" MaxLength="64" />
+          <Property Name="DB_SID" Type="varchar2" MaxLength="64" />
+          <Property Name="DB_USERNAME" Type="varchar2" MaxLength="32" />
+          <Property Name="DB_PASSWORD" Type="varchar2" MaxLength="32" />
+          <Property Name="CONNECTION_STRING" Type="varchar2" MaxLength="1028" />
+          <Property Name="ACTIVE" Type="number" Precision="2" Scale="0" />
+          <Property Name="CREATEDBY" Type="varchar2" MaxLength="64" />
+          <Property Name="CREATION_DATE" Type="date" />
+          <Property Name="MODIFIEDBY" Type="varchar2" MaxLength="64" />
+          <Property Name="MODIFIED_DATE" Type="date" />
+          <Property Name="IS_TESTED" Type="number" Precision="2" Scale="0" />
+          <Property Name="LAST_TESTED" Type="date" />
+          <Property Name="ERROR_MESSAGE" Type="varchar2" MaxLength="1028" />
         </EntityType>
         <EntityType Name="T_DBCONNECTION">
           <Key>
@@ -597,6 +640,20 @@ warning 6002: The table/view 'GEN_MARS_4.MV_TC_DATASUMMARY' does not have a prim
           <Property Name="PROJECT_ID" Type="number" Precision="16" Scale="0" />
           <Property Name="DATA_SOURCE_ID" Type="number" Precision="16" Scale="0" />
         </EntityType>
+        <EntityType Name="T_QUERY">
+          <Key>
+            <PropertyRef Name="QUERY_ID" />
+          </Key>
+          <Property Name="QUERY_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+          <Property Name="QUERY_NAME" Type="varchar2" MaxLength="128" />
+          <Property Name="QUERY_DESC" Type="varchar2" MaxLength="1028" />
+          <Property Name="IS_ACTIVE" Type="number" Precision="2" Scale="0" />
+          <Property Name="CREATEDBY" Type="varchar2" MaxLength="64" />
+          <Property Name="CREATED_DATE" Type="date" />
+          <Property Name="MODIFIEDBY" Type="varchar2" MaxLength="64" />
+          <Property Name="MODIFIED_DATE" Type="date" />
+          <Property Name="CONN_ID" Type="number" Precision="16" Scale="0" />
+        </EntityType>
         <EntityType Name="T_REGISTED_OBJECT">
           <Key>
             <PropertyRef Name="OBJECT_ID" />
@@ -665,7 +722,7 @@ warning 6002: The table/view 'GEN_MARS_4.T_REGISTED_OBJECT_TEST' does not have a
           <Property Name="OBJECT_NAME" Type="varchar2" MaxLength="256" />
           <Property Name="OBJECT_ORDER" Type="number" Precision="16" Scale="0" />
           <Property Name="LOOP_ID" Type="number" Precision="16" Scale="0" />
-          <Property Name="DATA_VALUE" Type="varchar2" MaxLength="128" />
+          <Property Name="DATA_VALUE" Type="varchar2" MaxLength="1024" />
           <Property Name="CREATE_TIME" Type="date" />
           <Property Name="VERSION" Type="number" Precision="16" Scale="0" />
         </EntityType>
@@ -998,6 +1055,23 @@ warning 6002: The table/view 'GEN_MARS_4.T_TEST_STEPS_TMP' does not have a prima
           <Property Name="CREATEDDATE" Type="date" />
           <Property Name="PROJECT_ID" Type="number" Precision="38" Scale="0" />
         </EntityType>
+        <EntityType Name="T_USER_CONFIGURATION">
+          <Key>
+            <PropertyRef Name="USERCONFIGID" />
+          </Key>
+          <Property Name="USERCONFIGID" Type="number" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="MAINKEY" Type="varchar2" MaxLength="128" Nullable="false" />
+          <Property Name="SUBKEY" Type="varchar2" MaxLength="128" />
+          <Property Name="USERID" Type="number" Precision="38" Scale="0" />
+          <Property Name="BLOBVALUE" Type="blob" />
+          <Property Name="BLOBVALUETYPE" Type="number" Precision="2" Scale="0" />
+          <Property Name="DESCRIPTION" Type="varchar2" MaxLength="256" />
+          <Property Name="CREATEDBY" Type="varchar2" MaxLength="50" />
+          <Property Name="CREATEDON" Type="date" />
+          <Property Name="MODIFYBY" Type="varchar2" MaxLength="50" />
+          <Property Name="MODIFYON" Type="date" />
+          <Property Name="ISDELETE" Type="number" Precision="2" Scale="0" />
+        </EntityType>
         <EntityType Name="T_USER_MAPPING">
           <Key>
             <PropertyRef Name="USER_MAPPING_ID" />
@@ -1119,7 +1193,7 @@ warning 6002: The table/view 'GEN_MARS_4.TBLSTGVARIABLE' does not have a primary
           <Property Name="DATA_SETTING_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
           <Property Name="STEPS_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
           <Property Name="LOOP_ID" Type="number" Precision="38" Scale="0" />
-          <Property Name="DATA_VALUE" Type="varchar2" MaxLength="128" />
+          <Property Name="DATA_VALUE" Type="varchar2" MaxLength="1024" />
           <Property Name="VALUE_OR_OBJECT" Type="number" Precision="2" Scale="0" />
           <Property Name="DESCRIPTION" Type="varchar2" MaxLength="128" />
           <Property Name="DATA_SUMMARY_ID" Type="number" Precision="16" Scale="0" />
@@ -1564,6 +1638,18 @@ warning 6002: The table/view 'GEN_MARS_4.V_USER_COMPANY' does not have a primary
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_DB_QUERY">
+          <End Role="T_DATABASE_CONNECTIONS" Type="Self.T_DATABASE_CONNECTIONS" Multiplicity="0..1" />
+          <End Role="REL_DB_QUERY" Type="Self.REL_DB_QUERY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_DATABASE_CONNECTIONS">
+              <PropertyRef Name="CONNECTION_ID" />
+            </Principal>
+            <Dependent Role="REL_DB_QUERY">
+              <PropertyRef Name="DATABASE_CONN_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_OBJ_APP_APP_APP">
           <End Role="T_REGISTERED_APPS" Type="Self.T_REGISTERED_APPS" Multiplicity="1" />
           <End Role="REL_OBJ_APP" Type="Self.REL_OBJ_APP" Multiplicity="*" />
@@ -1972,6 +2058,34 @@ warning 6002: The table/view 'GEN_MARS_4.V_USER_COMPANY' does not have a primary
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="T_AXIS_LIST_FK1">
+          <End Role="T_QUERY" Type="Self.T_QUERY" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="T_AXIS_LIST" Type="Self.T_AXIS_LIST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_QUERY">
+              <PropertyRef Name="QUERY_ID" />
+            </Principal>
+            <Dependent Role="T_AXIS_LIST">
+              <PropertyRef Name="QUERY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="T_QUERY_FK1">
+          <End Role="T_DATABASE_CONNECTIONS" Type="Self.T_DATABASE_CONNECTIONS" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="T_QUERY" Type="Self.T_QUERY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_DATABASE_CONNECTIONS">
+              <PropertyRef Name="CONNECTION_ID" />
+            </Principal>
+            <Dependent Role="T_QUERY">
+              <PropertyRef Name="CONN_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="T_TESTER_INFO_COMPANY_FK">
           <End Role="T_MARS_COMPANY" Type="Self.T_MARS_COMPANY" Multiplicity="1" />
           <End Role="T_TESTER_INFO" Type="Self.T_TESTER_INFO" Multiplicity="*" />
@@ -2068,6 +2182,10 @@ warning 6002: The table/view 'GEN_MARS_4.V_USER_COMPANY' does not have a primary
           <Parameter Name="OBJECTID" Type="varchar2" Mode="In" />
           <Parameter Name="OLDAPPID" Type="long" Mode="In" />
           <Parameter Name="NEWAPPID" Type="long" Mode="In" />
+          <Parameter Name="RESULT" Type="clob" Mode="Out" />
+        </Function>
+        <Function Name="SP_CheckValidationStoryboard" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN_MARS_4">
+          <Parameter Name="FEEDPROCESSID1" Type="number" Mode="In" />
           <Parameter Name="RESULT" Type="clob" Mode="Out" />
         </Function>
         <Function Name="SP_CheckValidationTestCase" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN_MARS_4">
@@ -2272,6 +2390,12 @@ warning 6002: The table/view 'GEN_MARS_4.V_USER_COMPANY' does not have a primary
           <Parameter Name="LOGINUSER" Type="varchar2" Mode="In" />
           <Parameter Name="RESULT" Type="varchar2" Mode="Out" />
         </Function>
+        <Function Name="SP_SaveStoryboard" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN_MARS_4">
+          <Parameter Name="FEEDPROCESS_ID" Type="number" Mode="In" />
+          <Parameter Name="STORYBOARDID" Type="number" Mode="In" />
+          <Parameter Name="PROJECTID" Type="number" Mode="In" />
+          <Parameter Name="RESULT" Type="clob" Mode="Out" />
+        </Function>
         <Function Name="SP_SaveTestcase" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN_MARS_4">
           <Parameter Name="FEEDPROCESSDETAIL_ID" Type="number" Mode="In" />
           <Parameter Name="TESTCASEID" Type="number" Mode="In" />
@@ -2323,6 +2447,7 @@ warning 6002: The table/view 'GEN_MARS_4.V_USER_COMPANY' does not have a primary
           <EntitySet Name="REL_APP_PROJ" EntityType="Self.REL_APP_PROJ" Schema="GEN_MARS_4" store:Type="Tables" />
           <EntitySet Name="REL_APP_TESTCASE" EntityType="Self.REL_APP_TESTCASE" Schema="GEN_MARS_4" store:Type="Tables" />
           <EntitySet Name="REL_APP_TESTSUITE" EntityType="Self.REL_APP_TESTSUITE" Schema="GEN_MARS_4" store:Type="Tables" />
+          <EntitySet Name="REL_DB_QUERY" EntityType="Self.REL_DB_QUERY" Schema="GEN_MARS_4" store:Type="Tables" />
           <EntitySet Name="REL_OBJ_APP" EntityType="Self.REL_OBJ_APP" Schema="GEN_MARS_4" store:Type="Tables" />
           <EntitySet Name="REL_PROJECT_USER" EntityType="Self.REL_PROJECT_USER" Schema="GEN_MARS_4" store:Type="Tables" />
           <EntitySet Name="REL_TC_DATA_SUMMARY" EntityType="Self.REL_TC_DATA_SUMMARY" Schema="GEN_MARS_4" store:Type="Tables" />
@@ -2330,6 +2455,7 @@ warning 6002: The table/view 'GEN_MARS_4.V_USER_COMPANY' does not have a primary
           <EntitySet Name="REL_TEST_REPORT_STEPS_COMMENT" EntityType="Self.REL_TEST_REPORT_STEPS_COMMENT" Schema="GEN_MARS_4" store:Type="Tables" />
           <EntitySet Name="REL_TEST_SUIT_PROJECT" EntityType="Self.REL_TEST_SUIT_PROJECT" Schema="GEN_MARS_4" store:Type="Tables" />
           <EntitySet Name="SYSTEM_LOOKUP" EntityType="Self.SYSTEM_LOOKUP" Schema="GEN_MARS_4" store:Type="Tables" />
+          <EntitySet Name="T_AXIS_LIST" EntityType="Self.T_AXIS_LIST" Schema="GEN_MARS_4" store:Type="Tables" />
           <EntitySet Name="T_BASELINE_DATA_DETAIL" EntityType="Self.T_BASELINE_DATA_DETAIL" Schema="GEN_MARS_4" store:Type="Tables" />
           <EntitySet Name="T_BASELINE_DATA_SUMMARY" EntityType="Self.T_BASELINE_DATA_SUMMARY" Schema="GEN_MARS_4" store:Type="Tables" />
           <EntitySet Name="T_BAT_RESULT" EntityType="Self.T_BAT_RESULT" Schema="GEN_MARS_4" store:Type="Tables" />
@@ -2338,6 +2464,7 @@ warning 6002: The table/view 'GEN_MARS_4.V_USER_COMPANY' does not have a primary
           <EntitySet Name="T_COMPARE_CONNECTIONS" EntityType="Self.T_COMPARE_CONNECTIONS" Schema="GEN_MARS_4" store:Type="Tables" />
           <EntitySet Name="T_COMPARE_QUERIES" EntityType="Self.T_COMPARE_QUERIES" Schema="GEN_MARS_4" store:Type="Tables" />
           <EntitySet Name="T_DATA_SOURCE" EntityType="Self.T_DATA_SOURCE" Schema="GEN_MARS_4" store:Type="Tables" />
+          <EntitySet Name="T_DATABASE_CONNECTIONS" EntityType="Self.T_DATABASE_CONNECTIONS" Schema="GEN_MARS_4" store:Type="Tables" />
           <EntitySet Name="T_DBCONNECTION" EntityType="Self.T_DBCONNECTION" Schema="GEN_MARS_4" store:Type="Tables" />
           <EntitySet Name="T_DIC_RELATION_KEYWORD" EntityType="Self.T_DIC_RELATION_KEYWORD" Schema="GEN_MARS_4" store:Type="Tables" />
           <EntitySet Name="T_GRIDLIST" EntityType="Self.T_GRIDLIST" Schema="GEN_MARS_4" store:Type="Tables" />
@@ -2349,6 +2476,7 @@ warning 6002: The table/view 'GEN_MARS_4.V_USER_COMPANY' does not have a primary
           <EntitySet Name="T_PROJ_TC_MGR" EntityType="Self.T_PROJ_TC_MGR" Schema="GEN_MARS_4" store:Type="Tables" />
           <EntitySet Name="T_PROJ_TEST_RESULT" EntityType="Self.T_PROJ_TEST_RESULT" Schema="GEN_MARS_4" store:Type="Tables" />
           <EntitySet Name="T_PROJECT_DATA_SOURCE" EntityType="Self.T_PROJECT_DATA_SOURCE" Schema="GEN_MARS_4" store:Type="Tables" />
+          <EntitySet Name="T_QUERY" EntityType="Self.T_QUERY" Schema="GEN_MARS_4" store:Type="Tables" />
           <EntitySet Name="T_REGISTED_OBJECT" EntityType="Self.T_REGISTED_OBJECT" Schema="GEN_MARS_4" store:Type="Tables" />
           <EntitySet Name="T_REGISTERED_APPS" EntityType="Self.T_REGISTERED_APPS" Schema="GEN_MARS_4" store:Type="Tables" />
           <EntitySet Name="T_RELATION_USER_ENGINEPATH" EntityType="Self.T_RELATION_USER_ENGINEPATH" Schema="GEN_MARS_4" store:Type="Tables" />
@@ -2378,6 +2506,7 @@ warning 6002: The table/view 'GEN_MARS_4.V_USER_COMPANY' does not have a primary
           <EntitySet Name="T_TESTCASE_VERSION" EntityType="Self.T_TESTCASE_VERSION" Schema="GEN_MARS_4" store:Type="Tables" />
           <EntitySet Name="T_TESTER_INFO" EntityType="Self.T_TESTER_INFO" Schema="GEN_MARS_4" store:Type="Tables" />
           <EntitySet Name="T_USER_ACTIVEPAGE" EntityType="Self.T_USER_ACTIVEPAGE" Schema="GEN_MARS_4" store:Type="Tables" />
+          <EntitySet Name="T_USER_CONFIGURATION" EntityType="Self.T_USER_CONFIGURATION" Schema="GEN_MARS_4" store:Type="Tables" />
           <EntitySet Name="T_USER_MAPPING" EntityType="Self.T_USER_MAPPING" Schema="GEN_MARS_4" store:Type="Tables" />
           <EntitySet Name="TBLFEEDPROCESS" EntityType="Self.TBLFEEDPROCESS" Schema="GEN_MARS_4" store:Type="Tables" />
           <EntitySet Name="TBLFEEDPROCESSDETAILS" EntityType="Self.TBLFEEDPROCESSDETAILS" Schema="GEN_MARS_4" store:Type="Tables" />
@@ -2964,6 +3093,10 @@ FROM "GEN_MARS_4"."V_USER_COMPANY" "V_USER_COMPANY"</DefiningQuery>
             <End Role="T_BASELINE_DATA_SUMMARY" EntitySet="T_BASELINE_DATA_SUMMARY" />
             <End Role="T_BASELINE_DATA_DETAIL" EntitySet="T_BASELINE_DATA_DETAIL" />
           </AssociationSet>
+          <AssociationSet Name="FK_DB_QUERY" Association="Self.FK_DB_QUERY">
+            <End Role="T_DATABASE_CONNECTIONS" EntitySet="T_DATABASE_CONNECTIONS" />
+            <End Role="REL_DB_QUERY" EntitySet="REL_DB_QUERY" />
+          </AssociationSet>
           <AssociationSet Name="FK_OBJ_APP_APP_APP" Association="Self.FK_OBJ_APP_APP_APP">
             <End Role="T_REGISTERED_APPS" EntitySet="T_REGISTERED_APPS" />
             <End Role="REL_OBJ_APP" EntitySet="REL_OBJ_APP" />
@@ -3099,6 +3232,14 @@ FROM "GEN_MARS_4"."V_USER_COMPANY" "V_USER_COMPANY"</DefiningQuery>
           <AssociationSet Name="SYS_C007729" Association="Self.SYS_C007729">
             <End Role="T_TEST_BATCH" EntitySet="T_TEST_BATCH" />
             <End Role="T_BAT_RESULT" EntitySet="T_BAT_RESULT" />
+          </AssociationSet>
+          <AssociationSet Name="T_AXIS_LIST_FK1" Association="Self.T_AXIS_LIST_FK1">
+            <End Role="T_QUERY" EntitySet="T_QUERY" />
+            <End Role="T_AXIS_LIST" EntitySet="T_AXIS_LIST" />
+          </AssociationSet>
+          <AssociationSet Name="T_QUERY_FK1" Association="Self.T_QUERY_FK1">
+            <End Role="T_DATABASE_CONNECTIONS" EntitySet="T_DATABASE_CONNECTIONS" />
+            <End Role="T_QUERY" EntitySet="T_QUERY" />
           </AssociationSet>
           <AssociationSet Name="T_TESTER_INFO_COMPANY_FK" Association="Self.T_TESTER_INFO_COMPANY_FK">
             <End Role="T_MARS_COMPANY" EntitySet="T_MARS_COMPANY" />
@@ -5437,6 +5578,33 @@ FROM "GEN_MARS_4"."V_USER_COMPANY" "V_USER_COMPANY"</DefiningQuery>
           <EntitySet Name="T_TEST_GROUP" EntityType="Model.T_TEST_GROUP" />
           <EntitySet Name="T_TEST_SET" EntityType="Model.T_TEST_SET" />
           <EntitySet Name="T_TEST_DATASETTAG" EntityType="Model.T_TEST_DATASETTAG" />
+          <FunctionImport Name="SP_CheckValidationStoryboard">
+            <Parameter Name="FEEDPROCESSID1" Mode="In" Type="Decimal" />
+            <Parameter Name="RESULT" Mode="Out" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="SP_SaveStoryboard">
+            <Parameter Name="FEEDPROCESS_ID" Mode="In" Type="Decimal" />
+            <Parameter Name="STORYBOARDID" Mode="In" Type="Decimal" />
+            <Parameter Name="PROJECTID" Mode="In" Type="Decimal" />
+            <Parameter Name="RESULT" Mode="Out" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="T_USER_CONFIGURATION" EntityType="Model.T_USER_CONFIGURATION" />
+          <EntitySet Name="T_DATABASE_CONNECTIONS" EntityType="Model.T_DATABASE_CONNECTIONS" />
+          <EntitySet Name="REL_DB_QUERY" EntityType="Model.REL_DB_QUERY" />
+          <AssociationSet Name="FK_DB_QUERY" Association="Model.FK_DB_QUERY">
+            <End Role="T_DATABASE_CONNECTIONS" EntitySet="T_DATABASE_CONNECTIONS" />
+            <End Role="REL_DB_QUERY" EntitySet="REL_DB_QUERY" />
+          </AssociationSet>
+          <EntitySet Name="T_QUERY" EntityType="Model.T_QUERY" />
+          <AssociationSet Name="T_QUERY_FK1" Association="Model.T_QUERY_FK1">
+            <End Role="T_DATABASE_CONNECTIONS" EntitySet="T_DATABASE_CONNECTIONS" />
+            <End Role="T_QUERY" EntitySet="T_QUERY" />
+          </AssociationSet>
+          <EntitySet Name="T_AXIS_LIST" EntityType="Model.T_AXIS_LIST" />
+          <AssociationSet Name="T_AXIS_LIST_FK1" Association="Model.T_AXIS_LIST_FK1">
+            <End Role="T_QUERY" EntitySet="T_QUERY" />
+            <End Role="T_AXIS_LIST" EntitySet="T_AXIS_LIST" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="T_USER_ACTIVEPAGE">
           <Key>
@@ -5608,6 +5776,126 @@ FROM "GEN_MARS_4"."V_USER_COMPANY" "V_USER_COMPANY"</DefiningQuery>
           <Property Name="DIARY" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
           <Property Name="SEQUENCE" Type="Decimal" Precision="38" Scale="0" />
         </EntityType>
+        <EntityType Name="T_USER_CONFIGURATION">
+          <Key>
+            <PropertyRef Name="USERCONFIGID" />
+          </Key>
+          <Property Name="USERCONFIGID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+          <Property Name="MAINKEY" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="SUBKEY" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="USERID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="BLOBVALUE" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="BLOBVALUETYPE" Type="Int16" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="CREATEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CREATEDON" Type="DateTime" />
+          <Property Name="MODIFYBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MODIFYON" Type="DateTime" />
+          <Property Name="ISDELETE" Type="Int16" />
+        </EntityType>
+        <EntityType Name="T_DATABASE_CONNECTIONS">
+          <Key>
+            <PropertyRef Name="CONNECTION_ID" />
+          </Key>
+          <Property Name="CONNECTION_ID" Type="Int64" Nullable="false" />
+          <Property Name="CONNECTION_NAME" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="CONNECTION_TYPE" Type="Int16" />
+          <Property Name="HOST_NAME" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="PORT_NUMBER" Type="Int32" />
+          <Property Name="PROTOCOL" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="SERVICE_NAME" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="DB_SID" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="DB_USERNAME" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="DB_PASSWORD" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="CONNECTION_STRING" Type="String" MaxLength="1028" FixedLength="false" Unicode="false" />
+          <Property Name="ACTIVE" Type="Int16" />
+          <Property Name="CREATEDBY" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="CREATION_DATE" Type="DateTime" />
+          <Property Name="MODIFIEDBY" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="MODIFIED_DATE" Type="DateTime" />
+          <Property Name="IS_TESTED" Type="Int16" />
+          <Property Name="LAST_TESTED" Type="DateTime" />
+          <Property Name="ERROR_MESSAGE" Type="String" MaxLength="1028" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="REL_DB_QUERY" Relationship="Model.FK_DB_QUERY" FromRole="T_DATABASE_CONNECTIONS" ToRole="REL_DB_QUERY" />
+          <NavigationProperty Name="T_QUERY" Relationship="Model.T_QUERY_FK1" FromRole="T_DATABASE_CONNECTIONS" ToRole="T_QUERY" />
+        </EntityType>
+        <EntityType Name="REL_DB_QUERY">
+          <Key>
+            <PropertyRef Name="DB_QUERY_ID" />
+          </Key>
+          <Property Name="DB_QUERY_ID" Type="Int64" Nullable="false" />
+          <Property Name="QUERY_ID" Type="Int64" />
+          <Property Name="DATABASE_CONN_ID" Type="Int64" />
+          <NavigationProperty Name="T_DATABASE_CONNECTIONS" Relationship="Model.FK_DB_QUERY" FromRole="REL_DB_QUERY" ToRole="T_DATABASE_CONNECTIONS" />
+        </EntityType>
+        <Association Name="FK_DB_QUERY">
+          <End Type="Model.T_DATABASE_CONNECTIONS" Role="T_DATABASE_CONNECTIONS" Multiplicity="0..1" />
+          <End Type="Model.REL_DB_QUERY" Role="REL_DB_QUERY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_DATABASE_CONNECTIONS">
+              <PropertyRef Name="CONNECTION_ID" />
+            </Principal>
+            <Dependent Role="REL_DB_QUERY">
+              <PropertyRef Name="DATABASE_CONN_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="T_QUERY">
+          <Key>
+            <PropertyRef Name="QUERY_ID" />
+          </Key>
+          <Property Name="QUERY_ID" Type="Int64" Nullable="false" />
+          <Property Name="QUERY_NAME" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="QUERY_DESC" Type="String" MaxLength="1028" FixedLength="false" Unicode="false" />
+          <Property Name="IS_ACTIVE" Type="Int16" />
+          <Property Name="CREATEDBY" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="CREATED_DATE" Type="DateTime" />
+          <Property Name="MODIFIEDBY" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="MODIFIED_DATE" Type="DateTime" />
+          <Property Name="CONN_ID" Type="Int64" />
+          <NavigationProperty Name="T_DATABASE_CONNECTIONS" Relationship="Model.T_QUERY_FK1" FromRole="T_QUERY" ToRole="T_DATABASE_CONNECTIONS" />
+          <NavigationProperty Name="T_AXIS_LIST" Relationship="Model.T_AXIS_LIST_FK1" FromRole="T_QUERY" ToRole="T_AXIS_LIST" />
+        </EntityType>
+        <Association Name="T_QUERY_FK1">
+          <End Type="Model.T_DATABASE_CONNECTIONS" Role="T_DATABASE_CONNECTIONS" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model.T_QUERY" Role="T_QUERY" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_DATABASE_CONNECTIONS">
+              <PropertyRef Name="CONNECTION_ID" />
+            </Principal>
+            <Dependent Role="T_QUERY">
+              <PropertyRef Name="CONN_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="T_AXIS_LIST">
+          <Key>
+            <PropertyRef Name="AXIS_LIST_ID" />
+          </Key>
+          <Property Name="AXIS_LIST_ID" Type="Int64" Nullable="false" />
+          <Property Name="QUERY_ID" Type="Int64" />
+          <Property Name="COMMAND_TYPE_ID" Type="Int16" />
+          <Property Name="X_AXIS" Type="Int16" />
+          <Property Name="Y_AXIS" Type="Int16" />
+          <Property Name="Z_AXIS" Type="Int16" />
+          <NavigationProperty Name="T_QUERY" Relationship="Model.T_AXIS_LIST_FK1" FromRole="T_AXIS_LIST" ToRole="T_QUERY" />
+        </EntityType>
+        <Association Name="T_AXIS_LIST_FK1">
+          <End Type="Model.T_QUERY" Role="T_QUERY" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="Model.T_AXIS_LIST" Role="T_AXIS_LIST" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="T_QUERY">
+              <PropertyRef Name="QUERY_ID" />
+            </Principal>
+            <Dependent Role="T_AXIS_LIST">
+              <PropertyRef Name="QUERY_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -7164,6 +7452,87 @@ FROM "GEN_MARS_4"."V_USER_COMPANY" "V_USER_COMPANY"</DefiningQuery>
                 <ScalarProperty Name="GROUPID" ColumnName="GROUPID" />
                 <ScalarProperty Name="DATASETID" ColumnName="DATASETID" />
                 <ScalarProperty Name="T_TEST_DATASETTAG_ID" ColumnName="T_TEST_DATASETTAG_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_CheckValidationStoryboard" FunctionName="Model.Store.SP_CheckValidationStoryboard" />
+          <FunctionImportMapping FunctionImportName="SP_SaveStoryboard" FunctionName="Model.Store.SP_SaveStoryboard" />
+          <EntitySetMapping Name="T_USER_CONFIGURATION">
+            <EntityTypeMapping TypeName="Model.T_USER_CONFIGURATION">
+              <MappingFragment StoreEntitySet="T_USER_CONFIGURATION">
+                <ScalarProperty Name="ISDELETE" ColumnName="ISDELETE" />
+                <ScalarProperty Name="MODIFYON" ColumnName="MODIFYON" />
+                <ScalarProperty Name="MODIFYBY" ColumnName="MODIFYBY" />
+                <ScalarProperty Name="CREATEDON" ColumnName="CREATEDON" />
+                <ScalarProperty Name="CREATEDBY" ColumnName="CREATEDBY" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="BLOBVALUETYPE" ColumnName="BLOBVALUETYPE" />
+                <ScalarProperty Name="BLOBVALUE" ColumnName="BLOBVALUE" />
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
+                <ScalarProperty Name="SUBKEY" ColumnName="SUBKEY" />
+                <ScalarProperty Name="MAINKEY" ColumnName="MAINKEY" />
+                <ScalarProperty Name="USERCONFIGID" ColumnName="USERCONFIGID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_DATABASE_CONNECTIONS">
+            <EntityTypeMapping TypeName="Model.T_DATABASE_CONNECTIONS">
+              <MappingFragment StoreEntitySet="T_DATABASE_CONNECTIONS">
+                <ScalarProperty Name="ERROR_MESSAGE" ColumnName="ERROR_MESSAGE" />
+                <ScalarProperty Name="LAST_TESTED" ColumnName="LAST_TESTED" />
+                <ScalarProperty Name="IS_TESTED" ColumnName="IS_TESTED" />
+                <ScalarProperty Name="MODIFIED_DATE" ColumnName="MODIFIED_DATE" />
+                <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+                <ScalarProperty Name="CREATION_DATE" ColumnName="CREATION_DATE" />
+                <ScalarProperty Name="CREATEDBY" ColumnName="CREATEDBY" />
+                <ScalarProperty Name="ACTIVE" ColumnName="ACTIVE" />
+                <ScalarProperty Name="CONNECTION_STRING" ColumnName="CONNECTION_STRING" />
+                <ScalarProperty Name="DB_PASSWORD" ColumnName="DB_PASSWORD" />
+                <ScalarProperty Name="DB_USERNAME" ColumnName="DB_USERNAME" />
+                <ScalarProperty Name="DB_SID" ColumnName="DB_SID" />
+                <ScalarProperty Name="SERVICE_NAME" ColumnName="SERVICE_NAME" />
+                <ScalarProperty Name="PROTOCOL" ColumnName="PROTOCOL" />
+                <ScalarProperty Name="PORT_NUMBER" ColumnName="PORT_NUMBER" />
+                <ScalarProperty Name="HOST_NAME" ColumnName="HOST_NAME" />
+                <ScalarProperty Name="CONNECTION_TYPE" ColumnName="CONNECTION_TYPE" />
+                <ScalarProperty Name="CONNECTION_NAME" ColumnName="CONNECTION_NAME" />
+                <ScalarProperty Name="CONNECTION_ID" ColumnName="CONNECTION_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="REL_DB_QUERY">
+            <EntityTypeMapping TypeName="Model.REL_DB_QUERY">
+              <MappingFragment StoreEntitySet="REL_DB_QUERY">
+                <ScalarProperty Name="DATABASE_CONN_ID" ColumnName="DATABASE_CONN_ID" />
+                <ScalarProperty Name="QUERY_ID" ColumnName="QUERY_ID" />
+                <ScalarProperty Name="DB_QUERY_ID" ColumnName="DB_QUERY_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_QUERY">
+            <EntityTypeMapping TypeName="Model.T_QUERY">
+              <MappingFragment StoreEntitySet="T_QUERY">
+                <ScalarProperty Name="CONN_ID" ColumnName="CONN_ID" />
+                <ScalarProperty Name="MODIFIED_DATE" ColumnName="MODIFIED_DATE" />
+                <ScalarProperty Name="MODIFIEDBY" ColumnName="MODIFIEDBY" />
+                <ScalarProperty Name="CREATED_DATE" ColumnName="CREATED_DATE" />
+                <ScalarProperty Name="CREATEDBY" ColumnName="CREATEDBY" />
+                <ScalarProperty Name="IS_ACTIVE" ColumnName="IS_ACTIVE" />
+                <ScalarProperty Name="QUERY_DESC" ColumnName="QUERY_DESC" />
+                <ScalarProperty Name="QUERY_NAME" ColumnName="QUERY_NAME" />
+                <ScalarProperty Name="QUERY_ID" ColumnName="QUERY_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="T_AXIS_LIST">
+            <EntityTypeMapping TypeName="Model.T_AXIS_LIST">
+              <MappingFragment StoreEntitySet="T_AXIS_LIST">
+                <ScalarProperty Name="Z_AXIS" ColumnName="Z_AXIS" />
+                <ScalarProperty Name="Y_AXIS" ColumnName="Y_AXIS" />
+                <ScalarProperty Name="X_AXIS" ColumnName="X_AXIS" />
+                <ScalarProperty Name="COMMAND_TYPE_ID" ColumnName="COMMAND_TYPE_ID" />
+                <ScalarProperty Name="QUERY_ID" ColumnName="QUERY_ID" />
+                <ScalarProperty Name="AXIS_LIST_ID" ColumnName="AXIS_LIST_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

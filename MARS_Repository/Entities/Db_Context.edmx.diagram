@@ -140,6 +140,14 @@
         <EntityTypeShape EntityType="Model.T_TEST_GROUP" Width="1.5" PointX="29.375" PointY="25.75" />
         <EntityTypeShape EntityType="Model.T_TEST_SET" Width="1.5" PointX="29.375" PointY="29.75" />
         <EntityTypeShape EntityType="Model.T_TEST_DATASETTAG" Width="1.5" PointX="29.375" PointY="11.75" />
+        <EntityTypeShape EntityType="Model.T_USER_CONFIGURATION" Width="1.5" PointX="30.375" PointY="15.75" />
+        <EntityTypeShape EntityType="Model.T_DATABASE_CONNECTIONS" Width="1.5" PointX="31.375" PointY="0.75" />
+        <EntityTypeShape EntityType="Model.REL_DB_QUERY" Width="1.5" PointX="33.625" PointY="2.25" />
+        <AssociationConnector Association="Model.FK_DB_QUERY" />
+        <EntityTypeShape EntityType="Model.T_QUERY" Width="1.5" PointX="33.625" PointY="4.75" />
+        <AssociationConnector Association="Model.T_QUERY_FK1" />
+        <EntityTypeShape EntityType="Model.T_AXIS_LIST" Width="1.5" PointX="35.875" PointY="5.125" />
+        <AssociationConnector Association="Model.T_AXIS_LIST_FK1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

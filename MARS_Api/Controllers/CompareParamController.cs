@@ -12,7 +12,7 @@ using AuthorizeAttribute = MARS_Api.Provider.AuthorizeAttribute;
 
 namespace MARS_Api.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class CompareParamController : ApiController
     {
         [Route("api/ListCompareConfig")]
@@ -21,7 +21,7 @@ namespace MARS_Api.Controllers
         {
             CommonHelper.SetConnectionString(Request);
             CompareParamRepository obj = new CompareParamRepository();
-            obj.Username = SessionManager.TESTER_LOGIN_NAME;
+            //obj.Username = SessionManager.TESTER_LOGIN_NAME;
             var lresult = obj.ListCompareConfig();
             return lresult;
         }
@@ -48,18 +48,18 @@ namespace MARS_Api.Controllers
         {
             CommonHelper.SetConnectionString(Request);
             CompareParamRepository obj = new CompareParamRepository();
-            obj.Username = SessionManager.TESTER_LOGIN_NAME;
-            var result = obj.AddorEditCompareconfig(id,data,datatype);
+            //obj.Username = SessionManager.TESTER_LOGIN_NAME;
+            var result = obj.AddorEditCompareconfig(id, data, datatype);
             return result;
         }
         [Route("api/DeleteCompareconfig")]
         [AcceptVerbs("GET", "POST")]
-        public string DeleteCompareconfig(string id,short datatype)
+        public string DeleteCompareconfig(string id, short datatype)
         {
             CommonHelper.SetConnectionString(Request);
             CompareParamRepository obj = new CompareParamRepository();
-            obj.Username = SessionManager.TESTER_LOGIN_NAME;
-            var result = obj.DeleteCompareConfig(id,datatype);
+            //obj.Username = SessionManager.TESTER_LOGIN_NAME;
+            var result = obj.DeleteCompareConfig(id, datatype);
             return result;
         }
 

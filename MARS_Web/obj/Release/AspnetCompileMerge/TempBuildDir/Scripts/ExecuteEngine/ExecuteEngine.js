@@ -29,7 +29,7 @@
     ///  date   : 2020/08/11
     ///  reason : To enable MARS Engine to be invoked
     ///  version: 1.0.0.0	
-    var engineURI = window.location.origin + "/MARSENGINE/Mars.AutoTestingDriver.application?userName=" + lLoginUser + "&command=-S&storyBoadName=" + encodeURI($("#hdnExeStoryboardName").val()) + "&storyBoardId=" + lAppIds + "&app=" + lAppIds + "&Mode=" + lMode + "&Continue=" + lContinue + "&IgnoreError=" + lIgnoreError;
+    var engineURI = window.location.origin + "/MARSENGINE/Mars.AutoTestingDriver.application?userName=" + lLoginUser + "&command=-S&storyBoadName=" + encodeURI($("#hdnExeStoryboardName").val()) + "&storyBoardId=" + lStoryboardId + "&app=" + lAppIds + "&Mode=" + lMode + "&Continue=" + lContinue + "&IgnoreError=" + lIgnoreError + "&currentDB=" + lDataBase;
     window.open(engineURI);
     ///added End 
 }

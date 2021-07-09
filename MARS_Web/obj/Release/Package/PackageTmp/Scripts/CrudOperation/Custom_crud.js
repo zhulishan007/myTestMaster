@@ -1,17 +1,29 @@
 function showProjectRenamePopup() {
     $("#RenameProjecterror").css("display", "none");
     $("#ProjectPopup").modal("show");
+    $('.modal-dialog').draggable({
+        handle: ".modal-header"
+    });
 }
 function Showrenamepopup() {
     $("#Renamestoryboarderror").css("display", "none");
     $("#StoryboardPopup").modal("show");
+    $('.modal-dialog').draggable({
+        handle: ".modal-header"
+    });
 }
 function showrenameTestcasePopup() {
     $("#TestCasePopup").modal("show");
+    $('.modal-dialog').draggable({
+        handle: ".modal-header"
+    });
     $("#RenameTestCaseerror").css("display", "none");
 }
 function showrenameTestSuitePopup() {
     $("#TestSuitePopup").modal("show");
+    $('.modal-dialog').draggable({
+        handle: ".modal-header"
+    });
     $("#RenameTestSuiteerror").css("display", "none");
 }
 function CheckduplicateStoryboardExists() {
@@ -47,7 +59,7 @@ function RenameStoryboard() {
         swal.fire({
             "title": "",
             "text": "Storyboard name must contain only letters, numbers, spaces and underscore characters",
-            "type": "error",
+            "icon": "error",
             "onClose": function (e) {
                 console.log('on close event fired!');
             }
@@ -56,7 +68,7 @@ function RenameStoryboard() {
     }
     var storyboarddesc = $("#RenamestoryboardDesc").val();
     var projectid = $("#hdnRenameProjectId").val();
-    if (storyboardname !== "" && storyboardname !== null) {
+    if (storyboardname !== "" && storyboardname !== null && storyboarddesc !== "" && storyboarddesc !== null) {
         $.ajax({
             url: "/Storyboard/ChangeStoryboardName",
             data: '{"storyboardname":"' + storyboardname + '","storyboarddesc":"' + storyboarddesc + '","storyboardid":"' + storyboardid + '","projectid":"' + projectid + '"}',
@@ -70,7 +82,7 @@ function RenameStoryboard() {
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "success",
+                        "icon": "success",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -91,7 +103,7 @@ function RenameStoryboard() {
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "error",
+                        "icon": "error",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -103,8 +115,8 @@ function RenameStoryboard() {
     else {
         swal.fire({
             "title": "",
-            "text": "Storyboard name can not be blank",
-            "type": "error",
+            "text": "Storyboard name and description can not be blank",
+            "icon": "error",
             "onClose": function (e) {
                 console.log('on close event fired!');
             }
@@ -120,14 +132,14 @@ function RenameTestSuite() {
         swal.fire({
             "title": "",
             "text": "TestSuite name must contain only letters, numbers, spaces and underscore characters",
-            "type": "error",
+            "icon": "error",
             "onClose": function (e) {
                 console.log('on close event fired!');
             }
         });
         return false;
     }
-    if (lTestSuiteName != "" && lTestSuiteName != null) {
+    if (lTestSuiteName != "" && lTestSuiteName != null && ltestsuitedesc != "" && ltestsuitedesc != null) {
         $.ajax({
             url: "/TestSuite/ChangeTestSuiteName",
             data: '{"TestSuiteName":"' + lTestSuiteName + '","Testsuitedesc":"' + ltestsuitedesc + '","TestSuiteId":"' + lTestSuiteId + '"}',
@@ -143,7 +155,7 @@ function RenameTestSuite() {
                         swal.fire({
                             "title": "",
                             "text": result.message,
-                            "type": "success",
+                            "icon": "success",
                             "onClose": function (e) {
                                 console.log('on close event fired!');
                             }
@@ -163,7 +175,7 @@ function RenameTestSuite() {
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "error",
+                        "icon": "error",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -174,8 +186,8 @@ function RenameTestSuite() {
     } else {
         swal.fire({
             "title": "",
-            "text": "Test Suite name can not be blank",
-            "type": "error",
+            "text": "Test Suite name and description can not be blank",
+            "icon": "error",
             "onClose": function (e) {
                 console.log('on close event fired!');
             }
@@ -201,7 +213,7 @@ function CheckDuplicateRenameTestSuiteExist() {
                 swal.fire({
                     "title": "",
                     "text": result.message,
-                    "type": "error",
+                    "icon": "error",
                     "onClose": function (e) {
                         console.log('on close event fired!');
                     }
@@ -225,14 +237,14 @@ function RenameTestCase() {
         swal.fire({
             "title": "",
             "text": "Test Case name must contain only letters, numbers, spaces and underscore characters",
-            "type": "error",
+            "icon": "error",
             "onClose": function (e) {
                 console.log('on close event fired!');
             }
         });
         return false;
     }
-    if (lTestCaseName != "" && lTestCaseName != null) {
+    if (lTestCaseName != "" && lTestCaseName != null && lTestCaseDesc != "" && lTestCaseDesc != null) {
         startloader();
         $("#TestCasePopup").modal("toggle");
         $.ajax({
@@ -242,6 +254,7 @@ function RenameTestCase() {
             contentType: "application/json;charset=utf-8",
             dataType: "json",
             success: function (result) {
+                stoploader();
                 if (result.status == 1) {
                     if (result.data == "success") {
                         $("#RenameTestCaseName").val("");
@@ -251,7 +264,7 @@ function RenameTestCase() {
                         swal.fire({
                             "title": "",
                             "text": result.message,
-                            "type": "success",
+                            "icon": "success",
                             "onClose": function (e) {
                                 console.log('on close event fired!');
                             }
@@ -262,7 +275,6 @@ function RenameTestCase() {
                         var lcountTC = $(lobjTestCase).children(".kt-menu__link-text").children(".tccount")[0].innerHTML;
                         $(lobjTestCase).children(".kt-menu__link-text")[0].innerHTML = lTestCaseName + "<span class='tccount'>" + lcountTC + "</span>";
                         $(lobjTestCase).attr("title", lTestCaseDesc);
-
                         $('.ULtablist li').each(function (index, value) {
                             var id = $(value).children().first().attr("data-id");
                             if (id == objTestCaseId) {
@@ -274,27 +286,30 @@ function RenameTestCase() {
                         $("#RenameTestCaseerror").css("display", "block");
                         $("#RenameTestCaseName").val("");
                     }
-                    stoploader();
+                   // stoploader();
                 }
                 else if (result.status == 0) {
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "error",
+                        "icon": "error",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
                     });
-                    stoploader();
+                  //  stoploader();
                 }
             },
+            complete: function (result) {
+                stoploader();
+            }
         });
     }
     else {
         swal.fire({
             "title": "",
-            "text": "Test Case name can not be blank",
-            "type": "error",
+            "text": "Test Case name and description  can not be blank",
+            "icon": "error",
             "onClose": function (e) {
                 console.log('on close event fired!');
             }
@@ -321,7 +336,7 @@ function CheckDuplicateRenameTestCaseExist() {
                 swal.fire({
                     "title": "",
                     "text": result.message,
-                    "type": "error",
+                    "icon": "error",
                     "onClose": function (e) {
                         console.log('on close event fired!');
                     }
@@ -337,276 +352,317 @@ $("#RenameTestCaseName").on('keyup', function () {
 
 function DeleteTestCase(objTestCase) {
     var TestCaseId = $(objTestCase).attr("data-testcase-id");
-    if (TestCaseId !== null && TestCaseId !== "") {
-        startloader();
-        $.ajax({
-            url: "/TestCase/DeleteTestCase",
-            data: '{"TestCaseId":"' + TestCaseId + '"}',
-            type: "POST",
-            contentType: "application/json;charset=utf-8",
-            dataType: "json",
-            success: function (result) {
-                if (result.status == 1) {
-                    if (result.data === true) {
-                    swal.fire({
-                        "title": "",
-                        "text": result.message,
-                        "type": "success",
-                        "onClose": function (e) {
-                            console.log('on close event fired!');
-                        }
-                    });
-                    stoploader();
-                    $.ajax({
-                        url: "/Login/LeftPanel",
-                        type: "POST",
-                        contentType: "application/json;charset=utf-8",
-                        dataType: "HTML",
-                        success: function (result) {
-                            $("#leftProjectList").html("");
-                            $("#leftProjectList").html(result);
-
-                            $('.ULtablist li').each(function (index, value) {
-                                var lFindTab = $(value).children().first().attr("data-target");
-
-                                if (lFindTab != undefined) {
-                                    var lFindTabId = $(value).children().first().attr("data-id");
-                                    var lFindTabName = $(value).children().first().attr("data-tab");
-                                    if (lFindTabId == TestCaseId && lFindTabName == "TestCase") {
-                                        var lPrevTab = $(value).children().first().attr("data-target");
-                                        var lPrevTabNameId = lPrevTab.replace("#", "");
-                                        var lPrevDirGrid = $(".divtablist #" + lPrevTabNameId);
-                                        $(value).children().first().addClass("active");
-                                        $(lPrevDirGrid).addClass("active");
-                                        var lTabNameId = lFindTab.replace("#", "");
-                                        var lDirGrid = $(".divtablist #" + lTabNameId);
-                                        $(value).remove();
-                                        $(lDirGrid).remove();
+    swal.fire({
+        title: 'Please confirm.',
+        text: "This action can not be undone.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!'
+    }).then(function (result) {
+        if (result.value == true) {
+            if (TestCaseId !== null && TestCaseId !== "") {
+                startloader();
+                $.ajax({
+                    url: "/TestCase/DeleteTestCase",
+                    data: '{"TestCaseId":"' + TestCaseId + '"}',
+                    type: "POST",
+                    contentType: "application/json;charset=utf-8",
+                    dataType: "json",
+                    success: function (result) {
+                        if (result.status == 1) {
+                            if (result.data === true) {
+                                swal.fire({
+                                    "title": "",
+                                    "text": result.message,
+                                    "icon": "success",
+                                    "onClose": function (e) {
+                                        console.log('on close event fired!');
                                     }
+                                });
+                                stoploader();
+                                $.ajax({
+                                    url: "/Login/LeftPanel",
+                                    type: "POST",
+                                    contentType: "application/json;charset=utf-8",
+                                    dataType: "HTML",
+                                    success: function (result) {
+                                        $("#leftProjectList").html("");
+                                        $("#leftProjectList").html(result);
+
+                                        $('.ULtablist li').each(function (index, value) {
+                                            var lFindTab = $(value).children().first().attr("data-target");
+
+                                            if (lFindTab != undefined) {
+                                                var lFindTabId = $(value).children().first().attr("data-id");
+                                                var lFindTabName = $(value).children().first().attr("data-tab");
+                                                if (lFindTabId == TestCaseId && lFindTabName == "TestCase") {
+                                                    var lPrevTab = $(value).children().first().attr("data-target");
+                                                    var lPrevTabNameId = lPrevTab.replace("#", "");
+                                                    var lPrevDirGrid = $(".divtablist #" + lPrevTabNameId);
+                                                    $(value).children().first().addClass("active");
+                                                    $(lPrevDirGrid).addClass("active");
+                                                    var lTabNameId = lFindTab.replace("#", "");
+                                                    var lDirGrid = $(".divtablist #" + lTabNameId);
+                                                    $(value).remove();
+                                                    $(lDirGrid).remove();
+                                                }
+                                            }
+                                        });
+                                    }
+                                });
+                            }
+                            else {
+                                if (result.data.length > 0) {
+                                    var resultstring = "";
+                                    for (i = 0; i < result.data.length; i++) {
+
+                                        resultstring = resultstring + result.data[i] + " , ";
+                                    }
+                                    swal.fire(
+                                        '',
+                                        'Following Storyboards contains this Test Case.Please remove this Test Case from storyboards ' + "<br>" + resultstring,
+                                        'error'
+                                    );
+                                    stoploader();
+                                }
+                            }
+                        }
+                        else if (result.status == 0) {
+                            swal.fire({
+                                "title": "",
+                                "text": result.message,
+                                "icon": "error",
+                                "onClose": function (e) {
+                                    console.log('on close event fired!');
                                 }
                             });
                         }
-                    });
-                }
-                else {
-                    if (result.data.length > 0) {
-                        var resultstring = "";
-                        for (i = 0; i < result.data.length; i++) {
-
-                            resultstring = resultstring + result.data[i] + " , ";
-                        }
-                        swal.fire(
-                            '',
-                            'Following Storyboards contains this Test Case.Please remove this Test Case from storyboards ' + "<br>" + resultstring,
-                            'error'
-                        );
-                        stoploader();
                     }
-                }
+                });
             }
-                else if(result.status == 0) {
-            swal.fire({
-                "title": "",
-                "text": result.message,
-                "type": "error",
-                "onClose": function (e) {
-                    console.log('on close event fired!');
-                }
-            });
         }
-            }
-        });
-    }
+    });
 }
 function DeleteProject(objproject) {
     var projectid = $(objproject).attr("data-project-id");
-    if (projectid != null && projectid != "") {
-        startloader();
-        $.ajax({
-            url: "/Project/DeleteProject",
-            data: '{"projectid":"' + projectid + '"}',
-            type: "POST",
-            contentType: "application/json;charset=utf-8",
-            dataType: "json",
-            success: function (result) {
-                if (result.status == 1) {
-                    swal.fire({
-                        "title": "",
-                        "text": result.message,
-                        "type": "success",
-                        "onClose": function (e) {
-                            console.log('on close event fired!');
+    swal.fire({
+        title: 'Please confirm.',
+        text: "This action can not be undone.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!'
+    }).then(function (result) {
+        if (result.value == true) {
+            if (projectid != null && projectid != "") {
+                startloader();
+                $.ajax({
+                    url: "/Project/DeleteProject",
+                    data: '{"projectid":"' + projectid + '"}',
+                    type: "POST",
+                    contentType: "application/json;charset=utf-8",
+                    dataType: "json",
+                    success: function (result) {
+                        if (result.status == 1) {
+                            swal.fire({
+                                "title": "",
+                                "text": result.message,
+                                "icon": "success",
+                                "onClose": function (e) {
+                                    console.log('on close event fired!');
+                                }
+                            });
+                            stoploader();
+                            window.location.href = "/Home/Index";
                         }
-                    });
-                    stoploader();
-                    window.location.href = "/Home/Index";
-                }
-                else if (result.status == 0) {
-                    swal.fire({
-                        "title": "",
-                        "text": result.message,
-                        "type": "error",
-                        "onClose": function (e) {
-                            console.log('on close event fired!');
+                        else if (result.status == 0) {
+                            swal.fire({
+                                "title": "",
+                                "text": result.message,
+                                "icon": "error",
+                                "onClose": function (e) {
+                                    console.log('on close event fired!');
+                                }
+                            });
                         }
-                    });
-                }
-            },
-        });
-    }
+                    },
+                });
+            }
+        }
+    });
 }
 
 function DeleteStoryboard(objStoryboard) {
     var storyboardid = $(objStoryboard).attr("data-storyboard-id");
-    if (storyboardid != null && storyboardid != "") {
-        startloader();
-        $.ajax({
-            url: "/Storyboard/DeleteStoryboard",
-            data: '{"sid":"' + storyboardid + '"}',
-            type: "POST",
-            contentType: "application/json;charset=utf-8",
-            dataType: "json",
-            success: function (result) {
-                if (result.status == 1 && result.data == true) {
-                    swal.fire({
-                        "title": "",
-                        "text": result.message,
-                        "type": "success",
-                        "onClose": function (e) {
-                            console.log('on close event fired!');
-                        }
-                    });
-                    stoploader();
-                    $.ajax({
-                        url: "/Login/LeftPanel",
-                        type: "POST",
-                        contentType: "application/json;charset=utf-8",
-                        dataType: "HTML",
-                        success: function (result) {
-                            $("#leftProjectList").html("");
-                            $("#leftProjectList").html(result);
 
-                            $('.ULtablist li').each(function (index, value) {
-                                var lFindTab = $(value).children().first().attr("data-target");
+    swal.fire({
+        title: 'Please confirm.',
+        text: "This action can not be undone.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!'
+    }).then(function (result) {
+        if (result.value == true) {
+            if (storyboardid != null && storyboardid != "") {
+                startloader();
+                $.ajax({
+                    url: "/Storyboard/DeleteStoryboard",
+                    data: '{"sid":"' + storyboardid + '"}',
+                    type: "POST",
+                    contentType: "application/json;charset=utf-8",
+                    dataType: "json",
+                    success: function (result) {
+                        if (result.status == 1 && result.data == true) {
+                            swal.fire({
+                                "title": "",
+                                "text": result.message,
+                                "icon": "success",
+                                "onClose": function (e) {
+                                    console.log('on close event fired!');
+                                }
+                            });
+                            stoploader();
+                            $.ajax({
+                                url: "/Login/LeftPanel",
+                                type: "POST",
+                                contentType: "application/json;charset=utf-8",
+                                dataType: "HTML",
+                                success: function (result) {
+                                    $("#leftProjectList").html("");
+                                    $("#leftProjectList").html(result);
 
-                                if (lFindTab != undefined) {
-                                    var lFindTabId = $(value).children().first().attr("data-id");
-                                    var lFindTabName = $(value).children().first().attr("data-tab");
-                                    if (lFindTabId == storyboardid && lFindTabName == "Storyboard") {
-                                        var lPrevTab = $(value).children().first().attr("data-target");
-                                        var lPrevTabNameId = lPrevTab.replace("#", "");
-                                        var lPrevDirGrid = $(".divtablist #" + lPrevTabNameId);
-                                        $(value).children().first().addClass("active");
-                                        $(lPrevDirGrid).addClass("active");
-                                        var lTabNameId = lFindTab.replace("#", "");
-                                        var lDirGrid = $(".divtablist #" + lTabNameId);
-                                        $(value).remove();
-                                        $(lDirGrid).remove();
-                                    }
+                                    $('.ULtablist li').each(function (index, value) {
+                                        var lFindTab = $(value).children().first().attr("data-target");
+
+                                        if (lFindTab != undefined) {
+                                            var lFindTabId = $(value).children().first().attr("data-id");
+                                            var lFindTabName = $(value).children().first().attr("data-tab");
+                                            if (lFindTabId == storyboardid && lFindTabName == "Storyboard") {
+                                                var lPrevTab = $(value).children().first().attr("data-target");
+                                                var lPrevTabNameId = lPrevTab.replace("#", "");
+                                                var lPrevDirGrid = $(".divtablist #" + lPrevTabNameId);
+                                                $(value).children().first().addClass("active");
+                                                $(lPrevDirGrid).addClass("active");
+                                                var lTabNameId = lFindTab.replace("#", "");
+                                                var lDirGrid = $(".divtablist #" + lTabNameId);
+                                                $(value).remove();
+                                                $(lDirGrid).remove();
+                                            }
+                                        }
+                                    });
                                 }
                             });
                         }
-                    });
-                }
-                else if (result.status == 0) {
-                    swal.fire({
-                        "title": "",
-                        "text": result.message,
-                        "type": "error",
-                        "onClose": function (e) {
-                            console.log('on close event fired!');
+                        else if (result.status == 0) {
+                            swal.fire({
+                                "title": "",
+                                "text": result.message,
+                                "icon": "error",
+                                "onClose": function (e) {
+                                    console.log('on close event fired!');
+                                }
+                            });
+                            stoploader();
                         }
-                    });
-                    stoploader();
-                }
+                    }
+                });
             }
-        });
-    }
+        }
+    });
 }
 
 function DeleteTestSuite(objTestSuite) {
     var TestSuiteId = $(objTestSuite).attr("data-testsuite-id");
-    if (TestSuiteId != null && TestSuiteId != "") {
-        startloader();
-        $.ajax({
-            url: "/TestSuite/DeleteTestSuite",
-            data: '{"TestSuiteId":"' + TestSuiteId + '"}',
-            type: "POST",
-            contentType: "application/json;charset=utf-8",
-            dataType: "json",
-            success: function (result) {
-                if (result.status == 1) {
-                    if (result.data == true) {
-                        swal.fire({
-                            "title": "",
-                            "text": result.message,
-                            "type": "success",
-                            "onClose": function (e) {
-                                console.log('on close event fired!');
-                            }
-                        });
-                        $.ajax({
-                            url: "/Login/LeftPanel",
-                            type: "POST",
-                            contentType: "application/json;charset=utf-8",
-                            dataType: "HTML",
-                            success: function (result) {
-                                $("#leftProjectList").html("");
-                                $("#leftProjectList").html(result);
-
-                                $('.ULtablist li').each(function (index, value) {
-                                    var lFindTab = $(value).children().first().attr("data-target");
-
-                                    if (lFindTab != undefined) {
-                                        var lFindTabId = $(value).children().first().attr("data-id");
-                                        var lFindTabName = $(value).children().first().attr("data-tab");
-                                        if (lFindTabId == TestSuiteId && lFindTabName == "TestSuite") {
-                                            var lPrevTab = $(value).children().first().attr("data-target");
-                                            var lPrevTabNameId = lPrevTab.replace("#", "");
-                                            var lPrevDirGrid = $(".divtablist #" + lPrevTabNameId);
-                                            $(value).children().first().addClass("active");
-                                            $(lPrevDirGrid).addClass("active");
-                                            var lTabNameId = lFindTab.replace("#", "");
-                                            var lDirGrid = $(".divtablist #" + lTabNameId);
-                                            $(value).remove();
-                                            $(lDirGrid).remove();
-                                        }
+    swal.fire({
+        title: 'Please confirm.',
+        text: "This action can not be undone.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!'
+    }).then(function (result) {
+        if (result.value == true) {
+            if (TestSuiteId != null && TestSuiteId != "") {
+                startloader();
+                $.ajax({
+                    url: "/TestSuite/DeleteTestSuite",
+                    data: '{"TestSuiteId":"' + TestSuiteId + '"}',
+                    type: "POST",
+                    contentType: "application/json;charset=utf-8",
+                    dataType: "json",
+                    success: function (result) {
+                        if (result.status == 1) {
+                            if (result.data == true) {
+                                swal.fire({
+                                    "title": "",
+                                    "text": result.message,
+                                    "icon": "success",
+                                    "onClose": function (e) {
+                                        console.log('on close event fired!');
                                     }
                                 });
-                            }
-                        });
-                        stoploader();
-                    }
-                    else {
-                        if (result.data.length > 0) {
-                            var resultstring = "";
-                            for (i = 0; i < result.data.length; i++) {
+                                $.ajax({
+                                    url: "/Login/LeftPanel",
+                                    type: "POST",
+                                    contentType: "application/json;charset=utf-8",
+                                    dataType: "HTML",
+                                    success: function (result) {
+                                        $("#leftProjectList").html("");
+                                        $("#leftProjectList").html(result);
 
-                                resultstring = resultstring + result.data[i] + " , ";
+                                        $('.ULtablist li').each(function (index, value) {
+                                            var lFindTab = $(value).children().first().attr("data-target");
+
+                                            if (lFindTab != undefined) {
+                                                var lFindTabId = $(value).children().first().attr("data-id");
+                                                var lFindTabName = $(value).children().first().attr("data-tab");
+                                                if (lFindTabId == TestSuiteId && lFindTabName == "TestSuite") {
+                                                    var lPrevTab = $(value).children().first().attr("data-target");
+                                                    var lPrevTabNameId = lPrevTab.replace("#", "");
+                                                    var lPrevDirGrid = $(".divtablist #" + lPrevTabNameId);
+                                                    $(value).children().first().addClass("active");
+                                                    $(lPrevDirGrid).addClass("active");
+                                                    var lTabNameId = lFindTab.replace("#", "");
+                                                    var lDirGrid = $(".divtablist #" + lTabNameId);
+                                                    $(value).remove();
+                                                    $(lDirGrid).remove();
+                                                }
+                                            }
+                                        });
+                                    }
+                                });
+                                stoploader();
                             }
+                            else {
+                                if (result.data.length > 0) {
+                                    var resultstring = "";
+                                    for (i = 0; i < result.data.length; i++) {
+
+                                        resultstring = resultstring + result.data[i] + " , ";
+                                    }
+                                    stoploader();
+                                    swal.fire(
+                                        '',
+                                        'Following Storyboards contain this Test Suite. Please remove this Test Suite from Storyboards. ' + "<br>" + resultstring,
+                                        'error'
+                                    );
+                                }
+                            }
+                        }
+                        else if (result.status == 0) {
+                            swal.fire({
+                                "title": "",
+                                "text": result.message,
+                                "icon": "error",
+                                "onClose": function (e) {
+                                    console.log('on close event fired!');
+                                }
+                            });
                             stoploader();
-                            swal.fire(
-                                '',
-                                'Following Storyboards contain this Test Suite. Please remove this Test Suite from Storyboards. ' + "<br>" + resultstring,
-                                'error'
-                            );
                         }
                     }
-                }
-                else if (result.status == 0) {
-                    swal.fire({
-                        "title": "",
-                        "text": result.message,
-                        "type": "error",
-                        "onClose": function (e) {
-                            console.log('on close event fired!');
-                        }
-                    });
-                    stoploader();
-                }
+                });
             }
-        });
-    }
+        }
+    });
 }
 
 $("#RenameProjectName").on('keyup', function () {
@@ -617,7 +673,7 @@ function RenameProject() {
     var lProjectId = $("#hdnRenameProjectId").val();
     var lProjectdesc = $("#RenameProjectDesc").val();
 
-    if (lProjectName != "" && lProjectName != null) {
+    if (lProjectName != "" && lProjectName != null && lProjectdesc != "" && lProjectdesc != null) {
         $.ajax({
             url: "/Project/ChangeProjectName",
             data: '{"ProjectName":"' + lProjectName + '","Projectdesc":"' + lProjectdesc + '","ProjectId":"' + lProjectId + '"}',
@@ -631,7 +687,7 @@ function RenameProject() {
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "success",
+                        "icon": "success",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -645,7 +701,7 @@ function RenameProject() {
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "error",
+                        "icon": "error",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -656,8 +712,8 @@ function RenameProject() {
     } else {
         swal.fire({
             "title": "",
-            "text": "Project name cannot be blank",
-            "type": "error",
+            "text": "Project name and Project decsription cannot be blank",
+            "icon": "error",
             "onClose": function (e) {
                 console.log('on close event fired!');
             }
@@ -676,7 +732,7 @@ function CheckDuplicateRenameProjectExist() {
         contentType: "application/json;charset=utf-8",
         dataType: "json",
         success: function (result) {
-            if (result) {
+            if (result.data) {
                 $("#RenameProjectName").val("");
                 $("#RenameProjecterror").css("display", "block");
             }
@@ -689,6 +745,9 @@ function CheckDuplicateRenameProjectExist() {
 
 function AddStoryboardContext() {
     $("#AddStoryboardContext").modal("show");
+    $('.modal-dialog').draggable({
+        handle: ".modal-header"
+    });
     $("#contextstoryboarderror").css("display", "none");
     var validator = $("#addstoryboardcontext").validate();
     validator.resetForm();
@@ -737,7 +796,7 @@ function StoryboardSaveContext() {
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "success",
+                        "icon": "success",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -776,7 +835,7 @@ function checkstoryboardnameContext() {
 
         success: function (result) {
 
-            if (result == true) {
+            if (result.data == true) {
                 $("#contextStoryboardname").val("");
                 $("#contextstoryboarderror").css("display", "block");
                 // return result;
@@ -793,6 +852,9 @@ function ExportResultSetProject(objproject) {
     $('#hdnExpProjectId').val("");
     $('#hdnExpProjectId').val(projectid);
     $('#ResultSetProjectExport').modal("show");
+    $('.modal-dialog').draggable({
+        handle: ".modal-header"
+    });
 }
 
 function ExportPResultSet() {

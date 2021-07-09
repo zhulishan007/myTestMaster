@@ -176,7 +176,7 @@ namespace MARS_Api.Controllers
           }
 
         }
-        var result = repo.DeleteObject(objectid, appid);
+        var result = repo.DeleteObject(objectid, appid,"");
         model.status = 1;
         model.message = "Success";
         return model;

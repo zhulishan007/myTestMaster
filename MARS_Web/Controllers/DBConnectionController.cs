@@ -2,6 +2,7 @@
 using MARS_Repository.Repositories;
 using MARS_Repository.ViewModel;
 using MARS_Web.Helper;
+using NLog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,14 +11,17 @@ using System.Web.Mvc;
 
 namespace MARS_Web.Controllers
 {
+    [SessionTimeout]
     public class DBConnectionController : Controller
     {
         public DBConnectionController()
         {
-           // GetConectionString();
+            // GetConectionString();
             DBEntities.ConnectionString = SessionManager.ConnectionString;
             DBEntities.Schema = SessionManager.Schema;
         }
+        Logger logger = LogManager.GetLogger("Log");
+        Logger ELogger = LogManager.GetLogger("ErrorLog");
         // GET: DBConnection
         public ActionResult ConnectionList()
         {
@@ -172,6 +176,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
+                logger.Error(string.Format("Error occured in DbConnecion for DataLoad method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in DbConnecion for DataLoad method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in DbConnecion for DataLoad method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 throw ex;
             }
         }
@@ -179,49 +187,70 @@ namespace MARS_Web.Controllers
         [HttpPost]
         public JsonResult AddEditConnection(DBconnectionViewModel lModel)
         {
-            var reppa = new AccountRepository();
-            lModel.UserName = PasswordHelper.EncodeMethod(lModel.UserName, lModel.DecodeMethod.Trim());
-            lModel.Password = PasswordHelper.EncodeMethod(lModel.Password, lModel.DecodeMethod.Trim());
-            lModel.Port = PasswordHelper.EncodeMethod(lModel.Port, lModel.DecodeMethod.Trim());
-            lModel.Host = PasswordHelper.EncodeMethod(lModel.Host, lModel.DecodeMethod.Trim());
-            lModel.Service_Name = PasswordHelper.EncodeMethod(lModel.Service_Name, lModel.DecodeMethod.Trim());
-            lModel.Schema = PasswordHelper.EncodeMethod(lModel.Schema, lModel.DecodeMethod.Trim());
-            var lSchema = SessionManager.Schema;
-            var lConnectionStr = SessionManager.APP;
-            
-            if (lModel.connectionId > 0)
+            try
             {
-                var lResult = reppa.AddEditConnection(lModel);
-                var repTree = new GetTreeRepository();
-                
-                Session["LeftProjectList"] = repTree.GetProjectList(SessionManager.TESTER_ID, lSchema, lConnectionStr);
-                return Json(lResult, JsonRequestBehavior.AllowGet);
+                var reppa = new AccountRepository();
+                lModel.UserName = PasswordHelper.EncodeMethod(lModel.UserName, lModel.DecodeMethod.Trim());
+                lModel.Password = PasswordHelper.EncodeMethod(lModel.Password, lModel.DecodeMethod.Trim());
+                lModel.Port = PasswordHelper.EncodeMethod(lModel.Port, lModel.DecodeMethod.Trim());
+                lModel.Host = PasswordHelper.EncodeMethod(lModel.Host, lModel.DecodeMethod.Trim());
+                lModel.Service_Name = PasswordHelper.EncodeMethod(lModel.Service_Name, lModel.DecodeMethod.Trim());
+                lModel.Schema = PasswordHelper.EncodeMethod(lModel.Schema, lModel.DecodeMethod.Trim());
+                var lSchema = SessionManager.Schema;
+                var lConnectionStr = SessionManager.APP;
+
+                if (lModel.connectionId > 0)
+                {
+                    var lResult = reppa.AddEditConnection(lModel);
+                    var repTree = new GetTreeRepository();
+
+                    Session["LeftProjectList"] = repTree.GetProjectList(SessionManager.TESTER_ID, lSchema, lConnectionStr);
+                    return Json(lResult, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    var addresult = reppa.AddEditConnection(lModel);
+                    var repTree = new GetTreeRepository();
+
+                    Session["LeftProjectList"] = repTree.GetProjectList(SessionManager.TESTER_ID, lSchema, lConnectionStr);
+                    return Json(addresult, JsonRequestBehavior.AllowGet);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                var addresult = reppa.AddEditConnection(lModel);
-                var repTree = new GetTreeRepository();
-                
-                Session["LeftProjectList"] = repTree.GetProjectList(SessionManager.TESTER_ID, lSchema, lConnectionStr);
-                return Json(addresult, JsonRequestBehavior.AllowGet);
+                logger.Error(string.Format("Error occured in DbConnecion for AddEditConnection method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in DbConnecion for AddEditConnection method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in DbConnecion for AddEditConnection method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+                throw ex;
             }
         }
 
         public JsonResult CheckDuplicateConnectionExist(string Username, string Password, long? ConnectionId)
         {
-            var repo = new AccountRepository();
             var lresult = false;
-
-            var getList = repo.GetConnectionList();
-            var data = GetEncodingConnList(getList);
-
-            if (ConnectionId != null)
+            try
             {
-                lresult = data.Any(x => x.connectionId != ConnectionId && x.UserName.ToLower().Trim() == Username.ToLower().Trim() && x.Password.ToLower().Trim() == Password.ToLower().Trim());
+                var repo = new AccountRepository();
+               
+                var getList = repo.GetConnectionList();
+                var data = GetEncodingConnList(getList);
+
+                if (ConnectionId != null)
+                {
+                    lresult = data.Any(x => x.connectionId != ConnectionId && x.UserName.ToLower().Trim() == Username.ToLower().Trim() && x.Password.ToLower().Trim() == Password.ToLower().Trim());
+                }
+                else
+                {
+                    lresult = data.Any(x => x.UserName.ToLower().Trim() == Username.ToLower().Trim() && x.Password.ToLower().Trim() == Password.ToLower().Trim());
+                }
             }
-            else
+            catch (Exception ex)
             {
-                lresult = data.Any(x => x.UserName.ToLower().Trim() == Username.ToLower().Trim() && x.Password.ToLower().Trim() == Password.ToLower().Trim());
+                logger.Error(string.Format("Error occured in DbConnecion for CheckDuplicateConnectionExist method | User : {0} | Connection Id : {1} | UserName: {2}", Username, ConnectionId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in DbConnecion for CheckDuplicateConnectionExist method | User : {0} | Connection Id : {1} | UserName: {2}", Username, ConnectionId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in DbConnecion for CheckDuplicateConnectionExist method | User : {0} | Connection Id : {1} | UserName: {2}", Username, ConnectionId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
             }
             //return lresult;
             return Json(lresult, JsonRequestBehavior.AllowGet);
@@ -229,33 +258,54 @@ namespace MARS_Web.Controllers
 
         public ActionResult DeletConnection(long ConnectionId)
         {
-            var repo = new AccountRepository();
-            var result = repo.DeletConnection(ConnectionId);
-            var repTree = new GetTreeRepository();
-            var lSchema = SessionManager.Schema;
-            var lConnectionStr = SessionManager.APP;
-            
-            Session["LeftProjectList"] = repTree.GetProjectList(SessionManager.TESTER_ID, lSchema, lConnectionStr);
+            var result = false;
+            try
+            {
+                var repo = new AccountRepository();
+                result = repo.DeletConnection(ConnectionId);
+                var repTree = new GetTreeRepository();
+                var lSchema = SessionManager.Schema;
+                var lConnectionStr = SessionManager.APP;
 
+                Session["LeftProjectList"] = repTree.GetProjectList(SessionManager.TESTER_ID, lSchema, lConnectionStr);
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in DbConnecion for DeletConnection method | Connection Id {0} | UserName: {1}", ConnectionId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in DbConnecion for DeletConnection method | Connection Id {0} | UserName: {1}", ConnectionId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in DbConnecion for DeletConnection method | Connection Id {0} | UserName: {1}", ConnectionId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+            }
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
         public List<DBconnectionViewModel> GetEncodingConnList(List<T_DBCONNECTION> dBconnections)
         {
             var data = new List<DBconnectionViewModel>();
-            foreach (var item in dBconnections)
+            try
             {
-                DBconnectionViewModel db = new DBconnectionViewModel();
-                db.connectionId = item.DBCONNECTION_ID;
-                db.DecodeMethod = item.DECODE_METHOD;
-                db.Databasename = item.DATABASENAME;
-                db.Host = PasswordHelper.DecodeMethod(item.HOST, item.DECODE_METHOD.Trim());
-                db.Port = PasswordHelper.DecodeMethod(item.PORT, item.DECODE_METHOD.Trim());
-                db.UserName = PasswordHelper.DecodeMethod(item.USERNAME, item.DECODE_METHOD.Trim());
-                db.Password = PasswordHelper.DecodeMethod(item.PASSWORD, item.DECODE_METHOD.Trim());
-                db.Service_Name = PasswordHelper.DecodeMethod(item.SERVICENAME, item.DECODE_METHOD.Trim());
-                db.Schema = PasswordHelper.DecodeMethod(item.SCHEMA, item.DECODE_METHOD.Trim());
-                data.Add(db);
+                foreach (var item in dBconnections)
+                {
+                    DBconnectionViewModel db = new DBconnectionViewModel();
+                    db.connectionId = item.DBCONNECTION_ID;
+                    db.DecodeMethod = item.DECODE_METHOD;
+                    db.Databasename = item.DATABASENAME;
+                    db.Host = PasswordHelper.DecodeMethod(item.HOST, item.DECODE_METHOD.Trim());
+                    db.Port = PasswordHelper.DecodeMethod(item.PORT, item.DECODE_METHOD.Trim());
+                    db.UserName = PasswordHelper.DecodeMethod(item.USERNAME, item.DECODE_METHOD.Trim());
+                    db.Password = PasswordHelper.DecodeMethod(item.PASSWORD, item.DECODE_METHOD.Trim());
+                    db.Service_Name = PasswordHelper.DecodeMethod(item.SERVICENAME, item.DECODE_METHOD.Trim());
+                    db.Schema = PasswordHelper.DecodeMethod(item.SCHEMA, item.DECODE_METHOD.Trim());
+                    data.Add(db);
+                }
+
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in DbConnecion for GetEncodingConnList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in DbConnecion for GetEncodingConnList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in DbConnecion for GetEncodingConnList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
             }
             return data;
         }

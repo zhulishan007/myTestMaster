@@ -15,6 +15,7 @@ using System.Web.Script.Serialization;
 
 namespace MARS_Web.Controllers
 {
+    [SessionTimeout]
     public class ProjectController : Controller
     {
         public ProjectController()
@@ -56,8 +57,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Project controller | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in Project controller | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in Project for SaveProjectChangesByUser method | Model : {0} | User Id : {1} | UserName: {2}", model, userid, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Project for SaveProjectChangesByUser method | Model : {0} | User Id : {1} | UserName: {2}", model, userid, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Project for SaveProjectChangesByUser method | Model : {0} | User Id : {1} | UserName: {2}", model, userid, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -91,8 +94,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Project controller | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in Project controller | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in Project for ProjectListByUserId method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Project for ProjectListByUserId method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Project for ProjectListByUserId method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
             }
             return PartialView(lProjectList);
 
@@ -115,8 +120,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Project controller | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in Project controller | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in Project for DeleteUserProjectMapping method | User Id : {0} | UserName: {1}", userid, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Project for DeleteUserProjectMapping method | User Id : {0} | UserName: {1}", userid, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Project for DeleteUserProjectMapping method | User Id : {0} | UserName: {1}", userid, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -139,8 +146,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Project controller | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in Project controller | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in Project for UserList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Project for UserList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Project for UserList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
             }
             return PartialView();
         }
@@ -272,8 +281,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Project controller | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in Project controller | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in Project for ListUsers method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Project for ListUsers method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Project for ListUsers method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
             }
             return Json(new
             {
@@ -317,8 +328,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in project page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in project page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in Project for ChangeProjectName method | Project Id : {0} | Project Name : {1} | Project Desc : {2} | UserName: {3}", ProjectId, ProjectName, Projectdesc, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Project for ChangeProjectName method | Project Id : {0} | Project Name : {1} | Project Desc : {2} | UserName: {3}", ProjectId, ProjectName, Projectdesc, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Project for ChangeProjectName method |Project Id : {0} | Project Name : {1} | Project Desc : {2} | UserName: {3}", ProjectId, ProjectName, Projectdesc, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -357,8 +370,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured when project page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured when project page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in Project for ProjectsList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Project for ProjectsList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Project for ProjectsList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
             }
             return PartialView("ProjectsList");
         }
@@ -408,8 +423,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured when Projet page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured when Projet page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in Project for DataLoad method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Project for DataLoad method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Project for DataLoad method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
             }
             return Json(new
             {
@@ -444,8 +461,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in project page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in project page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in Project for AddEditProject method | Project Id : {0} | UserName: {1}", lModel.ProjectId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Project for AddEditProject method | Project Id : {0} | UserName: {1}", lModel.ProjectId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Project for AddEditProject method | Project Id : {0} | UserName: {1}", lModel.ProjectId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -475,8 +494,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in project page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in project page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in Project for DeleteProject method | Project Id : {0} | UserName: {1}", projectid, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Project for DeleteProject method | Project Id : {0} | UserName: {1}", projectid, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Project for DeleteProject method | Project Id : {0} | UserName: {1}", projectid, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -499,8 +520,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in project page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in project page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in Project for CheckDuplicateProjectNameExist method | Project Id : {0} | Project Name : {1} | UserName: {2}", ProjectId, ProjectName, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Project for CheckDuplicateProjectNameExist method | Project Id : {0} | Project Name : {1} | UserName: {2}", ProjectId, ProjectName, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Project for CheckDuplicateProjectNameExist method | Project Id : {0} | Project Name : {1} | UserName: {2}", ProjectId, ProjectName, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }

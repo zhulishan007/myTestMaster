@@ -61,8 +61,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in TestSuite page | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in TestSuite page | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in TestSuite for TestSuiteList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in TestSuite for TestSuiteList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestSuite for TestSuiteList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
             }
             return PartialView("TestSuiteList");
         }
@@ -122,6 +124,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
+                logger.Error(string.Format("Error occured in TestSuite for DataLoad method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in TestSuite for DataLoad method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestSuite for DataLoad method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 throw ex;
             }
         }
@@ -154,8 +160,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in TestSuite | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in TestSuite | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in TestSuite for AddEditTestSuite method | TestSuiteId : {0} | UserName: {1}", lModel.TestSuiteId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in TestSuite for AddEditTestSuite method | TestSuiteId : {0} | UserName: {1}", lModel.TestSuiteId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestSuite for AddEditTestSuite method | TestSuiteId : {0} | UserName: {1}", lModel.TestSuiteId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -193,8 +201,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in TestSuite | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in TestSuite | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in TestSuite for DeleteTestSuite method | TestSuiteId : {0} | UserName: {1}", TestsuiteId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in TestSuite for DeleteTestSuite method | TestSuiteId : {0} | UserName: {1}", TestsuiteId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestSuite for DeleteTestSuite method | TestSuiteId : {0} | UserName: {1}", TestsuiteId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -227,8 +237,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in TestSuite | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in TestSuite | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in TestSuite for ChangeTestSuiteName method | TestSuiteId : {0} |TestSuite Name : {1} | TestSuite Desc : {2} | UserName: {3}", TestSuiteId, TestSuiteName, Testsuitedesc, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in TestSuite for ChangeTestSuiteName method | TestSuiteId : {0} |TestSuite Name : {1} | TestSuite Desc : {2} | UserName: {3}", TestSuiteId, TestSuiteName, Testsuitedesc, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestSuite for ChangeTestSuiteName method | TestSuiteId : {0} |TestSuite Name : {1} | TestSuite Desc : {2} | UserName: {3}", TestSuiteId, TestSuiteName, Testsuitedesc, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -250,8 +262,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in TestSuite | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in TestSuite | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in TestSuite for CheckDuplicateTestSuiteNameExist method | TestSuiteId : {0} |TestSuite Name : {1} | TestSuite Desc : {2} | UserName: {3}", TestSuiteId, TestSuiteName, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in TestSuite for CheckDuplicateTestSuiteNameExist method | TestSuiteId : {0} |TestSuite Name : {1} | TestSuite Desc : {2} | UserName: {3}", TestSuiteId, TestSuiteName, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestSuite for CheckDuplicateTestSuiteNameExist method | TestSuiteId : {0} |TestSuite Name : {1} | TestSuite Desc : {2} | UserName: {3}", TestSuiteId, TestSuiteName, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -277,8 +291,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in TestSuite page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in TestSuite page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in TestSuite for GetProjectByApplicaton method | Application Id : {0} | UserName: {1}", ApplicationId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in TestSuite for GetProjectByApplicaton method | Application Id : {0} | UserName: {1}", ApplicationId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestSuite for GetProjectByApplicaton method | Application Id : {0} | UserName: {1}", ApplicationId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -291,13 +307,23 @@ namespace MARS_Web.Controllers
         //Renders Partial view
         public ActionResult ImportTestSuite()
         {
-            var userId = SessionManager.TESTER_ID;
-            var repAcc = new ConfigurationGridRepository();
-            repAcc.Username = SessionManager.TESTER_LOGIN_NAME;
-            var Widthgridlst = repAcc.GetGridList((long)userId, GridNameList.ResizeLeftPanel);
-            var Rgriddata = GridHelper.GetLeftpanelgridwidth(Widthgridlst);
+            try
+            {
+                var userId = SessionManager.TESTER_ID;
+                var repAcc = new ConfigurationGridRepository();
+                repAcc.Username = SessionManager.TESTER_LOGIN_NAME;
+                var Widthgridlst = repAcc.GetGridList((long)userId, GridNameList.ResizeLeftPanel);
+                var Rgriddata = GridHelper.GetLeftpanelgridwidth(Widthgridlst);
 
-            ViewBag.width = Rgriddata.Resize == null ? ConfigurationManager.AppSettings["DefultLeftPanel"] + "px" : Rgriddata.Resize.Trim() + "px";
+                ViewBag.width = Rgriddata.Resize == null ? ConfigurationManager.AppSettings["DefultLeftPanel"] + "px" : Rgriddata.Resize.Trim() + "px";
+            }
+            catch(Exception ex)
+            {
+                logger.Error(string.Format("Error occured in TestSuite for ImportTestSuite method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in TestSuite for ImportTestSuite method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestSuite for ImportTestSuite method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+            }
             return PartialView();
         }
 
@@ -380,19 +406,22 @@ namespace MARS_Web.Controllers
                             objcommon.excel(dbtable.dt_Log, strPath, "Import", "", "TESTCASE");
                             return Json(strPath + ",validation", JsonRequestBehavior.AllowGet);
                         }
-                           
                         else
                         {
                             dbtable.errorlog("Import is completed", "Import TestCase", "", 0);
                             objcommon.excel(dbtable.dt_Log, strPath, "Import", "", "TESTCASE");
                             return Json(fileName + ",success", JsonRequestBehavior.AllowGet);
                         }
-                       
                     }
                 }
             }
             catch (Exception ex)
             {
+
+                logger.Error(string.Format("Error occured in TestSuite for ImportTestSuites method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in TestSuite for ImportTestSuites method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestSuite for ImportTestSuites method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 int line;
                 string msg = ex.Message;
                 line = dbtable.lineNo(ex);
@@ -517,6 +546,10 @@ namespace MARS_Web.Controllers
                 }
                 catch (Exception ex)
                 {
+                    logger.Error(string.Format("Error occured in TestSuite for ExportTestSuite method | TestSuiteId : {0} | UserName: {1}", TestSuiteId, SessionManager.TESTER_LOGIN_NAME));
+                    ELogger.ErrorException(string.Format("Error occured in TestSuite for ExportTestSuite method | TestSuiteId : {0} | UserName: {1}", TestSuiteId, SessionManager.TESTER_LOGIN_NAME), ex);
+                    if (ex.InnerException != null)
+                        ELogger.ErrorException(string.Format("InnerException : Error occured in TestSuite for ExportTestSuite method | TestSuiteId : {0} | UserName: {1}", TestSuiteId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                     int line;
                     string msg = ex.Message;
                     line = MARSUtility.dbtable.lineNo(ex);
@@ -545,6 +578,10 @@ namespace MARS_Web.Controllers
             }
             catch(Exception ex)
             {
+                logger.Error(string.Format("Error occured in TestSuite for DownloadExcel method | FileName : {0} | UserName: {1}", FileName, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in TestSuite for DownloadExcel method | FileName : {0} | UserName: {1}", FileName, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestSuite for DownloadExcel method | FileName : {0} | UserName: {1}", FileName, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 var ms = new MemoryStream();
                 return new FileStreamResult(ms, "application/ms-excel");
             }

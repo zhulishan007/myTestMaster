@@ -1,3 +1,16 @@
+@using MARS_Repository.ViewModel
+@{
+    string EditPro = "false", DeletePro = "false";
+    var PrivilegeList = Session["PrivilegeList"] as List<PrivilegeViewModel>;
+    if (PrivilegeList.Count > 0)
+    {
+        EditPro = PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Edit Project").ToString().ToLower();
+        DeletePro = PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Delete Project").ToString().ToLower();
+    }
+}
+
+<input type="hidden" value="@EditPro" id="hdnEditPro" />
+<input type="hidden" value="@DeletePro" id="hdnDeletePro" />
 <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
     <div class="kt-subheader   kt-grid__item" id="kt_subheader" style="left: @ViewBag.width;">
         <div class="kt-container  kt-container--fluid ">
@@ -8,6 +21,10 @@
                     <a href="#" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-settings" style="color:#1c6081"></i></a>
                     <a href="#" class="kt-subheader__breadcrumbs-link" style="color:#1c6081">
                         Project
+                    </a>
+                    <i class="fa fa-angle-double-right" style="color:#1c6081"></i>
+                    <a href="#" class="kt-subheader__breadcrumbs-link" style="color:#1c6081">
+                        &nbsp;
                     </a>
                 </div>
             </div>
@@ -21,20 +38,23 @@
                         List Of All Project
                     </h3>
                 </div>
-                <div class="kt-portlet__head-toolbar">
-                    <div class="kt-portlet__head-wrapper">
-                        <div class="kt-portlet__head-actions">
-                            <button type="button" class="btn btn-brand btn-elevate btn-icon-sm" data-toggle="modal" onclick="AddProject()" data-target="#kt_modal_4"><i class="la la-plus"></i>New Project</button>
-                            &nbsp;
+                @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Add Project"))
+                {
+                    <div class="kt-portlet__head-toolbar">
+                        <div class="kt-portlet__head-wrapper">
+                            <div class="kt-portlet__head-actions">
+                                <button type="button" class="btn btn-brand btn-elevate btn-icon-sm" data-toggle="modal" onclick="AddProject()" data-target="#kt_modal_4"><i class="la la-plus"></i>New Project</button>
+                                &nbsp;
+                            </div>
                         </div>
                     </div>
+                }
                 </div>
-            </div>
-            <div class="modal fade" id="AddProject" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="AddProject" tabindex="-1" role="dialog" aria-labelledby="projexampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Add Project</h5>
+                            <h5 class="modal-title" id="projexampleModalLabel">Add Project</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -112,6 +132,8 @@
         });
 
         var initProjectTable = function () {
+            var lEditAppdisplay = $("#hdnEditPro").val();
+            var lDeleteAppdisplay = $("#hdnDeletePro").val();
             ProjectTable = $('#Projecttable').DataTable({
                 responsive: false,
 
@@ -200,8 +222,15 @@
                             var lApplicationId = full.ApplicationId;
                             var lStatusId = full.StatusId;
                             var lStatus = full.Status;
-                            return " <a href='#' class='btn btn-sm btn-clean btn-icon btn-icon-md' title='View' data-name='" + lName + "' data-des='" + lDes + "' data-app='" + lApplication + "' data-status='" + lStatus + "' data-appid='" + lApplicationId + "' data-statusId='" + lStatusId + "' onclick=AddEditProject(" + lid + ",$(this)) ><i class='la la-edit'></i></a> " +
-                                "<a href='#' class='btn btn-sm btn-clean btn-icon btn-icon-md' title='Delete' data-projectname='" + lName + "' onclick='ProDelete(" + lid + ",$(this))' ><i class='la la-trash la-xs'></i></a>";
+                           
+                            var lRenderHtml = "";
+                            if (lEditAppdisplay == "true") {
+                                lRenderHtml = " <a href='#' class='btn btn-sm btn-clean btn-icon btn-icon-md' title='View' data-name='" + lName + "' data-des='" + lDes + "' data-app='" + lApplication + "' data-status='" + lStatus + "' data-appid='" + lApplicationId + "' data-statusId='" + lStatusId + "' onclick=AddEditProject(" + lid + ",$(this)) ><i class='la la-edit'></i></a> "; 
+                            }
+                            if (lDeleteAppdisplay == "true") {
+                                lRenderHtml = lRenderHtml + "<a href='#' class='btn btn-sm btn-clean btn-icon btn-icon-md' title='Delete' data-projectname='" + lName + "' onclick='ProDelete(" + lid + ",$(this))' ><i class='la la-trash la-xs'></i></a>";
+                            }
+                            return lRenderHtml;
                         },
                     }
                 ],
@@ -246,11 +275,14 @@
     function AddEditProject(Id, editObj) {
         var validator = $("#frmproject").validate();
         validator.resetForm();
-        $("#exampleModalLabel").text('');
-        $("#exampleModalLabel").text('Edit Project');
+        $("#projexampleModalLabel").text('');
+        $("#projexampleModalLabel").text('Edit Project');
         $("#projectvalidate").css("display", "none");
         $("#existPappName").css("display", "none");
         $("#AddProject").modal("show");
+        $('.modal-dialog').draggable({
+            handle: ".modal-header"
+        });
         $("#addedproject").attr("disabled", false);
         var lprojectId = Id;
         var Name = $(editObj).attr("data-name").replace(/###/g, "'");
@@ -273,9 +305,12 @@
         $("#projectvalidate").css("display", "none");
         $("#existPappName").css("display", "none");
         $("#addedproject").attr("disabled", false);
-        $("#exampleModalLabel").text('');
-        $("#exampleModalLabel").text('Add Project');
+        $("#projexampleModalLabel").text('');
+        $("#projexampleModalLabel").text('Add Project');
         $("#AddProject").modal("show");
+        $('.modal-dialog').draggable({
+            handle: ".modal-header"
+        });
         $("#hdnProjectId").val("");
         $("#projectname").val("");
         $("#projectdesc").val("");
@@ -290,7 +325,7 @@
         swal.fire({
             title: 'Please confirm.',
             text: "This action can not be undone.",
-            type: 'warning',
+            icon: 'warning',
             showCancelButton: true,
             confirmButtonText: 'Yes, delete it!'
         }).then(function (result) {
@@ -327,7 +362,7 @@
                             swal.fire({
                                 "title": "",
                                 "text": result.message,
-                                "type": "error",
+                                "icon": "error",
                                 "onClose": function (e) {
                                     console.log('on close event fired!');
                                 }
@@ -354,7 +389,7 @@
     }
     function AddEditProjectSave() {
         var appvalue = $("#sDrpApplication").val();
-       
+
         if (!$("#frmproject").valid()) {
             if (appvalue.length == 0) {
                 $("#existPappName").css("display", "block");
@@ -382,7 +417,7 @@
             $("#projectname").val("");
             $("#projectvalidate").css("display", "block");
             $("#addedproject").attr("disabled", false);
-           
+
             return false;
         }
         $.ajax({
@@ -397,7 +432,7 @@
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "success",
+                        "icon": "success",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -406,7 +441,7 @@
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "error",
+                        "icon": "error",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -438,7 +473,7 @@
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "error",
+                        "icon": "error",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }

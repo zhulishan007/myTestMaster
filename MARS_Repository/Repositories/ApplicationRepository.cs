@@ -28,8 +28,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured Application page in ListApplication method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured Application page in ListApplication method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured Application in ListApplication method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured Application in ListApplication method | UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured Application in ListApplication method | UserName: {0}", Username), ex.InnerException);
                 throw;
             }
         }
@@ -44,8 +46,10 @@ namespace MARS_Repository.Repositories
             }
             catch(Exception ex)
             {
-                logger.Error(string.Format("Error occured Application Repository | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured Application page in ListApplication method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured Application in ListApplicationObjectExport method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured Application in ListApplicationObjectExport method | UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured Application in ListApplicationObjectExport method | UserName: {0}", Username), ex.InnerException);
                 throw;
             }
         }
@@ -71,8 +75,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured Application Repository | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured Application page in GetApplicationDetail method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured Application in GetApplicationDetail method | AppId: {0} | UserName: {1}", AppId, Username));
+                ELogger.ErrorException(string.Format("Error occured Application in GetApplicationDetail method | AppId: {0} | UserName: {1}", AppId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured Application in GetApplicationDetail method | AppId: {0} | UserName: {1}", AppId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -111,8 +117,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured Application page in GetApplicationList method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured Application page in GetApplicationList method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured Application in GetApplicationList method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured Application in GetApplicationList method | UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured Application in GetApplicationList method | UserName: {0}", Username), ex.InnerException);
                 throw;
             }
         }
@@ -136,8 +144,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured Application page in CheckDuplicateApplicationNameExist method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured Application page in CheckDuplicateApplicationNameExist method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured Application in CheckDuplicateApplicationNameExist method | AppId: {0} | UserName: {1}", ApplicationId, Username));
+                ELogger.ErrorException(string.Format("Error occured Application in CheckDuplicateApplicationNameExist method | AppId: {0} | UserName: {1}", ApplicationId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured Application in CheckDuplicateApplicationNameExist method | AppId: {0} | UserName: {1}", ApplicationId, Username), ex.InnerException);
                 throw;
             } 
         }
@@ -209,8 +219,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured Application page in AddEditApplication method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured Application page in AddEditApplication method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured Application in AddEditApplication method | AppId: {0} | UserName: {1}", AppModelEntity.ApplicationId, Username));
+                ELogger.ErrorException(string.Format("Error occured Application in AddEditApplication method | AppId: {0} | UserName: {1}", AppModelEntity.ApplicationId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured Application in AddEditApplication method | AppId: {0} | UserName: {1}", AppModelEntity.ApplicationId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -239,8 +251,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured Application page in CheckTestCaseExistsInAppliction method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured Application page in CheckTestCaseExistsInAppliction method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured Application in CheckTestCaseExistsInAppliction method | AppId: {0} | UserName: {1}", ApplicationId, Username));
+                ELogger.ErrorException(string.Format("Error occured Application in CheckTestCaseExistsInAppliction method | AppId: {0} | UserName: {1}", ApplicationId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured Application in CheckTestCaseExistsInAppliction method | AppId: {0} | UserName: {1}", ApplicationId, Username), ex.InnerException);
                 throw;
             }
            
@@ -288,8 +302,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured Application page in DeleteApplication method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured Application page in DeleteApplication method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured Application in DeleteApplication method | AppId: {0} | UserName: {1}", ApplicationId, Username));
+                ELogger.ErrorException(string.Format("Error occured Application in DeleteApplication method | AppId: {0} | UserName: {1}", ApplicationId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured Application in DeleteApplication method | AppId: {0} | UserName: {1}", ApplicationId, Username), ex.InnerException);
                 throw;
             }
            
@@ -305,8 +321,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured Application page in GetApplicationNameById method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured Application page in GetApplicationNameById method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured Application in GetApplicationNameById method | AppId: {0} | UserName: {1}", ApplicationId, Username));
+                ELogger.ErrorException(string.Format("Error occured Application in GetApplicationNameById method | AppId: {0} | UserName: {1}", ApplicationId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured Application in GetApplicationNameById method | AppId: {0} | UserName: {1}", ApplicationId, Username), ex.InnerException);
                 throw;
             }
         }

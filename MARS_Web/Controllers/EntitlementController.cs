@@ -12,6 +12,7 @@ using System.Web.Mvc;
 
 namespace MARS_Web.Controllers
 {
+    [SessionTimeout]
     public class EntitlementController : Controller
     {
         public EntitlementController()
@@ -43,8 +44,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured when User Role page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured when User Role page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in Entitlement for UserRoleMappingList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Entitlement for UserRoleMappingList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Entitlement for UserRoleMappingList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
             }
             return PartialView();
         }
@@ -130,8 +133,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured when User Role page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured when User Role page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in Entitlement for DataLoad method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Entitlement for DataLoad method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Entitlement for DataLoad method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
             }
             return Json(new
             {
@@ -168,8 +173,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in User Role page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in User Role page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in Entitlement for AddEditUserRoleMapping method | Role Id : {0} | UserName: {1}",model.RoleId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Entitlement for AddEditUserRoleMapping method | Role Id : {0} | UserName: {1}", model.RoleId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Entitlement for AddEditUserRoleMapping method | Role Id : {0} | UserName: {1}", model.RoleId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -202,8 +209,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in User Role page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in User Role page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in Entitlement for DeleteUserRole method | User Id : {0} | UserName: {1}", UserId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Entitlement for DeleteUserRole method | User Id : {0} | UserName: {1}", UserId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Entitlement for DeleteUserRole method | User Id : {0} | UserName: {1}", UserId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -229,8 +238,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in User Role page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in User Role page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in Entitlement for CheckExistOrNotUser method | User Id : {0} | UserName: {1}", UserId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Entitlement for CheckExistOrNotUser method | User Id : {0} | UserName: {1}", UserId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Entitlement for CheckExistOrNotUser method | User Id : {0} | UserName: {1}", UserId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -267,8 +278,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Create Role page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in Role Create page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in Entitlement for CreateRole method | RoleName : {0} | UserName: {1}", RoleName, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Entitlement for CreateRole method | RoleName : {0} | UserName: {1}", RoleName, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Entitlement for CreateRole method | RoleName : {0} | UserName: {1}", RoleName, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -291,8 +304,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in User Role page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in User Role page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in Entitlement for GetAllRoles method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Entitlement for GetAllRoles method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Entitlement for GetAllRoles method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -323,8 +338,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured when User Role page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured when User Role page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in Entitlement for PrivilegeRoleMapping method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Entitlement for PrivilegeRoleMapping method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Entitlement for PrivilegeRoleMapping method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
             }
             return PartialView();
         }
@@ -340,8 +357,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured when User Privilege page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured when User Privilege page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in Entitlement for PrivilegeRoleMapping method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Entitlement for PrivilegeRoleMapping method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Entitlement for PrivilegeRoleMapping method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
             }
             return PartialView("_ListBox");
         }
@@ -371,8 +390,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in PrivilegeRoleMapping page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in PrivilegeRoleMapping page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in Entitlement for AddEditPrivilageRoleMapping method | Role Id : {0} | UserName: {1}", model.RoleId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Entitlement for AddEditPrivilageRoleMapping method | Role Id : {0} | UserName: {1}", model.RoleId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Entitlement for AddEditPrivilageRoleMapping method | Role Id : {0} | UserName: {1}", model.RoleId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }

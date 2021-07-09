@@ -32,7 +32,7 @@ namespace MARS_Web.Helper
 
         protected internal string Create()
         {
-            string connectionString =  String.Format("Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST={0})(PORT={1}))(CONNECT_DATA=(SERVER=DEDICACATED)(SERVICE_NAME={2})));User Id={3};Password={4};pooling=false;Connection Timeout=1000;",
+            string connectionString =  String.Format("Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST={0})(PORT={1}))(CONNECT_DATA=(SERVER=DEDICACATED)(SERVICE_NAME={2})));User Id={3};Password={4};pooling=false;Connection Timeout=100;",
                         hostName, port, serviceName, username, password);
             return connectionString;
         }

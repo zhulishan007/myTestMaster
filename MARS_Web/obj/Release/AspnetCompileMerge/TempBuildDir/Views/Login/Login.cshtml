@@ -120,6 +120,21 @@
                                         <i class="fa fa-envelope" aria-hidden="true"></i>
                                     </span>
                                 </div>
+                                <div class="input-group wrap-input100">
+                                    <select class="form-control input100" id="DrpFPDataConn" name="DrpFPDataConn">
+                                        @{var lconlist = ViewBag.connlist as IEnumerable<SelectListItem>;
+
+                                            foreach (var item in lconlist)
+                                            {
+                                                <option value="@item.Value" @(item.Text.Contains(ViewBag.defaultDb) ? "selected" : "")>@item.Text</option>
+                                            }
+                                        }
+                                    </select>
+                                    <span class="focus-input100"></span>
+                                    <span class="symbol-input100">
+                                        <i class="fa fa-database" aria-hidden="true"></i>
+                                    </span>
+                                </div>
                                 <div class="kt-login__actions">
                                     <button id="kt_login_forgot_submit" class="btn btn-pill kt-login__btn-primary">Request</button>&nbsp;&nbsp;
                                     <button id="kt_login_forgot_cancel" class="btn btn-pill kt-login__btn-secondary">Cancel</button>
@@ -183,7 +198,7 @@
                 var btn = $(this);
                 var form = $(this).closest('form');
                 var lEmail = $("#kt_email").val();
-                var lconnection = $("#DrpDataConn").val();
+                var lconnection = $("#DrpFPDataConn").val();
                 $.ajax({
                     url: "/Login/ForgotPsw",
                     data: '{"lEmail":"' + lEmail + '","lConnection":"' + lconnection + '"}',
@@ -247,7 +262,7 @@
                             swal.fire({
                                 "title": "",
                                 "text": result.message,
-                                "type": "error",
+                                "icon": "error",
                                 "onClose": function (e) {
                                     console.log('on close event fired!');
                                 }
@@ -274,7 +289,7 @@
                     swal.fire({
                         "title": "",
                         "text": "There are some invalid entries. Please correct and submit again.",
-                        "type": "error",
+                        "icon": "error",
                         "confirmButtonClass": "btn btn-secondary",
                         "onClose": function (e) {
                             console.log('on close event fired!');
@@ -333,14 +348,7 @@
                     "password": lPassword,
                     "Scope": connList[0],
                 };
-
-                @*$.ajax({
-                   url: "@WebAPIURL/api/token",
-                    data: data,
-                    type: "POST",
-                    success: function (data) {
-                        accesstoken = data.access_token;*@
-                        //if (accesstoken != "") {
+               
                             $.ajax({
                                 url: "/Login/Login",
                                 data: { lUserLogin: lEmail, lPassword: lPassword, lconnection: lconnection, lRememberme: lChkRememberMe, accesstoken: accesstoken },
@@ -355,7 +363,7 @@
                                             swal.fire({
                                                 "title": "",
                                                 "text": result.message,
-                                                "type": type,
+                                                "icon": type,
                                                 "onClose": function (e) {
                                                     console.log('on close event fired!');
                                                 }
@@ -367,32 +375,7 @@
                                         }
                                 },
                             });
-                        //}
-                //    },
-                //    error: function (requestObject, error, errorThrown) {
-                //        $.ajax({
-                //            url: "/Login/CheckUserExist",
-                //            data: { lUserLogin: lEmail, lPassword: lPassword, lconnection: connList[0] },
-                //            type: "POST",
-                //            dataType: "json",
-                //            success: function (result) {
-                //                if (result.status == 1) {
-                //                    $("#kt_login_signin_submit_In").prop("disabled", false);
-                //                    stoploader();
-                //                    var type = "error";
-                //                    swal.fire({
-                //                        "title": "",
-                //                        "text": result.message,
-                //                        "type": type,
-                //                        "onClose": function (e) {
-                //                            console.log('on close event fired!');
-                //                        }
-                //                    });
-                //                }
-                //            },
-                //        });
-                //    }
-                //});
+                       
             }
         });
 
@@ -422,12 +405,14 @@
         });
 
         function startloader() {
+            $("body").css("pointer-events", "none");
             $(".lds-roller").css("display", "inline-block");
             $("#mainbody").css("opacity", "0.5");
             $("#mainbody").css("z-index", "-1");
         }
 
         function stoploader() {
+            $("body").css("pointer-events", "visible");
             $(".lds-roller").css("display", "none");
             $("#mainbody").css("opacity", "1");
             $("#mainbody").css("z-index", "1");
@@ -454,7 +439,7 @@
                     swal.fire({
                         "title": "",
                         "text": "@lMsg",
-                        "type": "success",
+                        "icon": "success",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
