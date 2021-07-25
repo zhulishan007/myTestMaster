@@ -11,6 +11,8 @@ namespace myGitTest
             Console.WriteLine("Send to Master");
             Console.WriteLine("Hello World!");
             Console.WriteLine("Hello World!");
+            Console.WriteLine("----------Send to Master");
+            Console.WriteLine("----------Send to Master");
             Console.ReadKey();
         }
     }
