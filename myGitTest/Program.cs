@@ -8,6 +8,9 @@ namespace myGitTest
         {
             Console.WriteLine("----------Send to Master");
             Console.WriteLine("----------Send to Master");
+
+            Console.WriteLine("========Send to Master");
+            Console.WriteLine("========Send to Master");
             Console.ReadKey();
         }
     }
