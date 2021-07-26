@@ -26,28 +26,30 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("GetTSTCDSId start | TestCaseName: {0} | UserName: {1}", TestCasename, Username));
+                logger.Info(string.Format("GetTSTCDSId start | TestCaseName: {0} | TestSuitname: {1} | Datasetname: {2} | UserName: {3}", TestCasename, TestSuitname, Datasetname, Username));
                 var llist = new List<string>();
                 var suiteid = entity.T_TEST_SUITE.FirstOrDefault(x => x.TEST_SUITE_NAME == TestSuitname).TEST_SUITE_ID;
                 var caseid = entity.T_TEST_CASE_SUMMARY.FirstOrDefault(x => x.TEST_CASE_NAME == TestCasename).TEST_CASE_ID;
                 var datasetid = entity.T_TEST_DATA_SUMMARY.FirstOrDefault(x => x.ALIAS_NAME == Datasetname).DATA_SUMMARY_ID;
 
-                logger.Info(string.Format("GetTSTCDSId end | TestCaseName: {0} | UserName: {1}", TestCasename, Username));
+                logger.Info(string.Format("GetTSTCDSId end | TestCaseName: {0} | TestSuitname: {1} | Datasetname: {2} | UserName: {3}", TestCasename, TestSuitname, Datasetname, Username));
                 return suiteid + "," + caseid + "," + datasetid;
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase in GetTSTCDSId method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase in GetTSTCDSId method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured TestCase in GetTSTCDSId method | TestCaseName: {0} | TestSuitname: {1} | Datasetname: {2} | UserName: {3}", TestCasename, TestSuitname, Datasetname, Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase in GetTSTCDSId method | TestCaseName: {0} | TestSuitname: {1} | Datasetname: {2} | UserName: {3}", TestCasename, TestSuitname, Datasetname, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in GetTSTCDSId method | TestCaseName: {0} | TestSuitname: {1} | Datasetname: {2} | UserName: {3}", TestCasename, TestSuitname, Datasetname, Username), ex.InnerException);
                 throw;
             }
         }
-      
+
         public bool CheckTestCaseTestSuiteRel(long testcaseId, long testsuiteid)
         {
             try
             {
-                logger.Info(string.Format("Check TestCase TestSuite Rel start | testcaseId: {0} | testsuiteid: {1} | UserName: {2}", testcaseId, testsuiteid,Username));
+                logger.Info(string.Format("Check TestCase TestSuite Rel start | testcaseId: {0} | testsuiteid: {1} | UserName: {2}", testcaseId, testsuiteid, Username));
                 var flag = false;
                 var lStoryboardList = entity.T_PROJ_TC_MGR.Where(x => x.TEST_CASE_ID == testcaseId).ToList();
                 foreach (var item in lStoryboardList)
@@ -62,8 +64,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase in CheckTestCaseTestSuiteRel method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase in CheckTestCaseTestSuiteRel method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured TestCase in CheckTestCaseTestSuiteRel method | testcaseId: {0} | testsuiteid: {1} | UserName: {2}", testcaseId, testsuiteid, Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase in CheckTestCaseTestSuiteRel method | testcaseId: {0} | testsuiteid: {1} | UserName: {2}", testcaseId, testsuiteid, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in CheckTestCaseTestSuiteRel method | testcaseId: {0} | testsuiteid: {1} | UserName: {2}", testcaseId, testsuiteid, Username), ex.InnerException);
                 throw;
             }
         }
@@ -71,7 +75,7 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("Change TestCaseName start | TestCaseName: {0} | UserName: {1}", lTestCaseName, Username));
+                logger.Info(string.Format("Change TestCaseName start | TestCaseName: {0} | lTestCaseId: {1} | UserName: {2}", lTestCaseName, lTestCaseId, Username));
                 if (!string.IsNullOrEmpty(lTestCaseName))
                     lTestCaseName = lTestCaseName.Trim();
 
@@ -79,13 +83,15 @@ namespace MARS_Repository.Repositories
                 lTestCase.TEST_CASE_NAME = lTestCaseName;
                 lTestCase.TEST_STEP_DESCRIPTION = TestCaseDes;
                 entity.SaveChanges();
-                logger.Info(string.Format("Change TestCaseName end | TestCaseName: {0} | UserName: {1}", lTestCaseName, Username));
+                logger.Info(string.Format("Change TestCaseName end | TestCaseName: {0} | lTestCaseId: {1} | UserName: {2}", lTestCaseName, lTestCaseId, Username));
                 return "success";
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase in ChangeTestCaseName method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase in ChangeTestCaseName method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured TestCase in ChangeTestCaseName method | TestCaseName: {0} | lTestCaseId: {1} | UserName: {2}", lTestCaseName, lTestCaseId, Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase in ChangeTestCaseName method | TestCaseName: {0} | lTestCaseId: {1} | UserName: {2}", lTestCaseName, lTestCaseId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in ChangeTestCaseName method | TestCaseName: {0} | lTestCaseId: {1} | UserName: {2}", lTestCaseName, lTestCaseId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -93,7 +99,7 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("Check Duplicate TestCaseName start | TestCaseName: {0} | UserName: {1}", lTestCaseName, Username));
+                logger.Info(string.Format("Check Duplicate TestCaseName start | TestCaseName: {0} | lTestCaseId: {1} | UserName: {2}", lTestCaseName, lTestCaseId, Username));
                 var lresult = false;
                 if (lTestCaseId != null)
                 {
@@ -103,13 +109,15 @@ namespace MARS_Repository.Repositories
                 {
                     lresult = entity.T_TEST_CASE_SUMMARY.Any(x => x.TEST_CASE_NAME.ToLower().Trim() == lTestCaseName.ToLower().Trim());
                 }
-                logger.Info(string.Format("Check Duplicate TestCaseName end | TestCaseName: {0} | UserName: {1}", lTestCaseName, Username));
+                logger.Info(string.Format("Check Duplicate TestCaseName end | TestCaseName: {0} | lTestCaseId: {1} | UserName: {2}", lTestCaseName, lTestCaseId, Username));
                 return lresult;
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase in CheckDuplicateTestCaseName method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase in CheckDuplicateTestCaseName method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured TestCase in CheckDuplicateTestCaseName method | TestCaseName: {0} | lTestCaseId: {1} | UserName: {2}", lTestCaseName, lTestCaseId, Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase in CheckDuplicateTestCaseName method | TestCaseName: {0} | lTestCaseId: {1} | UserName: {2}", lTestCaseName, lTestCaseId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in CheckDuplicateTestCaseName method | TestCaseName: {0} | lTestCaseId: {1} | UserName: {2}", lTestCaseName, lTestCaseId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -117,7 +125,7 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("Check Duplicate Dataset start | Datasetname: {0} | UserName: {1}", lDatasetname, Username));
+                logger.Info(string.Format("Check Duplicate Dataset start | Datasetname: {0} | datasetid: {1} | UserName: {2}", lDatasetname, ldatasetid, Username));
                 var lresult = false;
                 if (ldatasetid != null)
                 {
@@ -127,13 +135,15 @@ namespace MARS_Repository.Repositories
                 {
                     lresult = entity.T_TEST_DATA_SUMMARY.Any(x => x.ALIAS_NAME.ToLower().Trim() == lDatasetname.ToLower().Trim());
                 }
-                logger.Info(string.Format("Check Duplicate Dataset end | Datasetname: {0} | UserName: {1}", lDatasetname, Username));
+                logger.Info(string.Format("Check Duplicate Dataset end | Datasetname: {0} | datasetid: {1} | UserName: {2}", lDatasetname, ldatasetid, Username));
                 return lresult;
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured Dataset in CheckDuplicateDataset method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured Dataset in CheckDuplicateDataset method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured Dataset in CheckDuplicateDataset method | Datasetname: {0} | datasetid: {1} | UserName: {2}", lDatasetname, ldatasetid, Username));
+                ELogger.ErrorException(string.Format("Error occured Dataset in CheckDuplicateDataset method | Datasetname: {0} | datasetid: {1} | UserName: {2}", lDatasetname, ldatasetid, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured Dataset in CheckDuplicateDataset method | Datasetname: {0} | datasetid: {1} | UserName: {2}", lDatasetname, ldatasetid, Username), ex.InnerException);
                 throw;
             }
         }
@@ -142,7 +152,10 @@ namespace MARS_Repository.Repositories
             try
             {
                 logger.Info(string.Format("Insert FeedProcess start | UserName: {0}", Username));
+
+                logger.Info(string.Format("TBLFEEDPROCESS_SEQ : Getting TestCase Feed Process Id start | UserName: {0}", Username));
                 var feedprocessID = Helper.NextTestSuiteId("TBLFEEDPROCESS_SEQ");
+                logger.Info(string.Format("TBLFEEDPROCESS_SEQ : Getting TestCase Feed Process Id end | Feed Process Id : {0} | UserName: {1}", feedprocessID, Username));
 
                 var ltbl = new TBLFEEDPROCESS();
                 ltbl.FEEDPROCESSID = feedprocessID;
@@ -152,20 +165,31 @@ namespace MARS_Repository.Repositories
                 ltbl.CREATEDON = System.DateTime.Now;
 
                 entity.TBLFEEDPROCESSes.Add(ltbl);
-
+                logger.Info(string.Format("Save TestCase FeedProcess changes start | UserName: {0}", Username));
                 entity.SaveChanges();
+                logger.Info(string.Format("Save TestCase FeedProcess changes end | UserName: {0}", Username));
 
+                logger.Info(string.Format("TBLFEEDPROCESSDETAILS_SEQ : Getting TestCase Feed Process Detail Id start | UserName: {0}", Username));
                 var feedprocessDetailsID = Helper.NextTestSuiteId("TBLFEEDPROCESSDETAILS_SEQ");
+                logger.Info(string.Format("TBLFEEDPROCESSDETAILS_SEQ : Getting TestCase Feed Process Detail Id end | Feed Process Detail Id : {0} | UserName: {1}", feedprocessDetailsID, Username));
 
                 entity.TBLFEEDPROCESSDETAILS.Add(new TBLFEEDPROCESSDETAIL { CREATEDBY = "WebApp", FEEDPROCESSDETAILID = feedprocessDetailsID, CREATEDON = System.DateTime.Now, FEEDPROCESSID = feedprocessID, FEEDPROCESSSTATUS = "INPROGRESS", FILENAME = "WebAppImport", FILETYPE = "TESTCASE" });
+
+                logger.Info(string.Format("Save TestCase FeedProcessDetail changes start | UserName: {0}", Username));
                 entity.SaveChanges();
+                logger.Info(string.Format("Save TestCase FeedProcessDetail changes end | UserName: {0}", Username));
+
                 logger.Info(string.Format("Insert FeedProcess end | UserName: {0}", Username));
                 return Convert.ToString(feedprocessID) + "~" + Convert.ToString(feedprocessDetailsID);
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase in InsertFeedProcess method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase in InsertFeedProcess method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured Dataset in InsertFeedProcess method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured Dataset in InsertFeedProcess method | UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured Dataset in InsertFeedProcess method | UserName: {0}", Username), ex.InnerException);
+                if (ex.InnerException.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured Dataset in InsertFeedProcess method | UserName: {0}", Username), ex.InnerException.InnerException);
                 throw;
             }
         }
@@ -194,8 +218,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase in CheckTestCaseExistsInStoryboard method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase in CheckTestCaseExistsInStoryboard method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured TestCase in CheckTestCaseExistsInStoryboard method | testcaseId: {0} | UserName: {1}", testcaseId, Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase in CheckTestCaseExistsInStoryboard method | testcaseId: {0} | UserName: {1}", testcaseId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in CheckTestCaseExistsInStoryboard method | testcaseId: {0} | UserName: {1}", testcaseId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -210,8 +236,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase in GetTestcaseNameById method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase in GetTestcaseNameById method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured TestCase in GetTestcaseNameById method | testcaseId: {0} | UserName: {1}", caseId, Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase in GetTestcaseNameById method | testcaseId: {0} | UserName: {1}", caseId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in GetTestcaseNameById method | testcaseId: {0} | UserName: {1}", caseId, Username), ex.InnerException);
                 throw;
             }
 
@@ -235,8 +263,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase in MoveTestCase method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase in MoveTestCase method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured TestCase in MoveTestCase method | Project Id : {0} | TestSuite Id : {1} | testcaseId: {2} | UserName: {3}", projectId, testsuiteid, testcaseid, Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase in MoveTestCase method | Project Id : {0} | TestSuite Id : {1} | testcaseId: {2} | UserName: {3}", projectId, testsuiteid, testcaseid, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in MoveTestCase method | Project Id : {0} | TestSuite Id : {1} | testcaseId: {2} | UserName: {3}", projectId, testsuiteid, testcaseid, Username), ex.InnerException);
                 throw;
             }
         }
@@ -253,8 +283,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase in ValidateSave method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase in ValidateSave method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured TestCase in ValidateSave method | FeedProcess Id : {0} | UserName: {1}", feedprocessid, Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase in ValidateSave method | FeedProcess Id : {0} | UserName: {1}", feedprocessid, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in ValidateSave method | FeedProcess Id : {0} | UserName: {1}", feedprocessid, Username), ex.InnerException);
                 throw;
             }
         }
@@ -303,8 +335,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase in SaveData method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase in SaveData method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured TestCase in SaveData method | FeedProcess Id : {0} | Connection String : {1} | Schema : {2} | UserName: {3}", feedprocessid, lstrConn, schema, Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase in SaveData method | FeedProcess Id : {0} | Connection String : {1} | Schema : {2} | UserName: {3}", feedprocessid, lstrConn, schema, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in SaveData method | FeedProcess Id : {0} | Connection String : {1} | Schema : {2} | UserName: {3}", feedprocessid, lstrConn, schema, Username), ex.InnerException);
                 throw;
             }
         }
@@ -326,8 +360,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase in Validate method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase in Validate method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured TestCase in Validate method | FeedProcess Id : {0} | UserName: {1}", feedprocessid, Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase in Validate method | FeedProcess Id : {0} | UserName: {1}", feedprocessid, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in Validate method | FeedProcess Id : {0} | UserName: {1}", feedprocessid, Username), ex.InnerException);
                 throw;
             }
         }
@@ -342,8 +378,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase in CheckDuplicateTestCaseName method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase in CheckDuplicateTestCaseName method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured TestCase in GetValidations method | FeedProcess Id : {0} | UserName: {1}", feedprocessid, Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase in GetValidations method | FeedProcess Id : {0} | UserName: {1}", feedprocessid, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in GetValidations method | FeedProcess Id : {0} | UserName: {1}", feedprocessid, Username), ex.InnerException);
                 throw;
             }
         }
@@ -379,8 +417,11 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase in DeleteStep method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase in DeleteStep method | UserName: {0}", Username), ex);
+
+                logger.Error(string.Format("Error occured TestCase in DeleteStep method | FeedProcess Id : {0} | UserName: {1}", stepID, Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase in DeleteStep method | FeedProcess Id : {0} | UserName: {1}", stepID, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in DeleteStep method | FeedProcess Id : {0} | UserName: {1}", stepID, Username), ex.InnerException);
                 throw;
             }
         }
@@ -423,8 +464,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase in AddStep method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase in AddStep method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured TestCase in AddStep method | TestSuite Id : {0} | TestCase Id : {1} | Keyword : {2} | Comment : {3} | Object : {4} | Parameter : {5} | UserName: {6}", TestSuiteId, TestCaseId, lKeywordName, lComment, lObjectName, lParameter, Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase in AddStep method | TestSuite Id : {0} | TestCase Id : {1} | Keyword : {2} | Comment : {3} | Object : {4} | Parameter : {5} | UserName: {6}", TestSuiteId, TestCaseId, lKeywordName, lComment, lObjectName, lParameter, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in AddStep method | TestSuite Id : {0} | TestCase Id : {1} | Keyword : {2} | Comment : {3} | Object : {4} | Parameter : {5} | UserName: {6}", TestSuiteId, TestCaseId, lKeywordName, lComment, lObjectName, lParameter, Username), ex.InnerException);
                 throw;
             }
         }
@@ -447,8 +490,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase in UpdateSteps method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase in UpdateSteps method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured TestCase in UpdateSteps method | TestCase Id : {0} | UserName: {1}", testcaseId, Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase in UpdateSteps method | TestCase Id : {0} | UserName: {1}", testcaseId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in UpdateSteps method | TestCase Id : {0} | UserName: {1}", testcaseId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -467,8 +512,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase in UpdateStepID method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase in UpdateStepID method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured TestCase in UpdateStepID method | Step Id : {0} | Run Order: {1} | UserName: {2}", stepsId, RUN_ORDER, Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase in UpdateStepID method | Step Id : {0} | Run Order: {1} | UserName: {2}", stepsId, RUN_ORDER, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in UpdateStepID method | Step Id : {0} | Run Order: {1} | UserName: {2}", stepsId, RUN_ORDER, Username), ex.InnerException);
                 throw;
             }
         }
@@ -483,8 +530,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase in GetTestCaseNameById method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase in GetTestCaseNameById method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured TestCase in GetTestCaseNameById method | testcaseId: {0} | UserName: {1}", CaseId, Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase in GetTestCaseNameById method | testcaseId: {0} | UserName: {1}", CaseId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in GetTestCaseNameById method | testcaseId: {0} | UserName: {1}", CaseId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -504,8 +553,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase in UpdateRunOrder method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase in UpdateRunOrder method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured TestCase in UpdateRunOrder method | Step Id : {0} | Run Order: {1} | UserName: {2}", stepId, newRun_Order, Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase in UpdateRunOrder method | Step Id : {0} | Run Order: {1} | UserName: {2}", stepId, newRun_Order, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in UpdateRunOrder method | Step Id : {0} | Run Order: {1} | UserName: {2}", stepId, newRun_Order, Username), ex.InnerException);
                 throw;
             }
         }
@@ -538,8 +589,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase in CheckDatasetInStoryboard method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase in CheckDatasetInStoryboard method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured TestCase in CheckDatasetInStoryboard method | Dataset Id : {0} | UserName: {1}", datasetid, Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase in CheckDatasetInStoryboard method | Dataset Id : {0} | UserName: {1}", datasetid, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in CheckDatasetInStoryboard method | Dataset Id : {0} | UserName: {1}", datasetid, Username), ex.InnerException);
                 throw;
             }
         }
@@ -547,7 +600,7 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("Delete RelTestCaseDataSummary start | TestCaseId: {0} | UserName: {1}", testCaseId, Username));
+                logger.Info(string.Format("Delete RelTestCaseDataSummary start | TestCaseId: {0} | dataSetId: {1} | UserName: {2}", testCaseId, dataSetId, Username));
                 var dataseting = (from setting in entity.TEST_DATA_SETTING
                                   where dataSetId == setting.DATA_SUMMARY_ID
                                   select setting);
@@ -565,7 +618,28 @@ namespace MARS_Repository.Repositories
                     entity.REL_TC_DATA_SUMMARY.Remove(relTcDataSummary);
                 entity.SaveChanges();
 
+                var datasetobjlist = entity.REL_TC_DATA_SUMMARY.Where(x => x.DATA_SUMMARY_ID == dataSetId).ToList();
 
+                if (!datasetobjlist.Any())
+                {
+                    var obj1 = entity.T_SHARED_OBJECT_POOL.Where(x => x.DATA_SUMMARY_ID == dataSetId).ToList();
+                    logger.Info(string.Format("Delete Dataset in T_SHARED_OBJECT_POOL start | DataSetId: {0} | UserName: {1}", dataSetId, Username));
+                    foreach (var itm in obj1)
+                    {
+                        entity.T_SHARED_OBJECT_POOL.Remove(itm);
+                    }
+                    logger.Info(string.Format("Delete Dataset in T_SHARED_OBJECT_POOL end | DataSetId: {0} | UserName: {1}", dataSetId, Username));
+                    entity.SaveChanges();
+
+                    var datasetobj = entity.T_TEST_DATA_SUMMARY.Where(x => x.DATA_SUMMARY_ID == dataSetId).FirstOrDefault();
+
+                    logger.Info(string.Format("Delete Dataset  start | DataSetId: {0} | UserName: {1}", dataSetId, Username));
+                    if (datasetobj != null)
+                        entity.T_TEST_DATA_SUMMARY.Remove(datasetobj);
+                    entity.SaveChanges();
+
+                    logger.Info(string.Format("Delete Dataset  end | DataSetId: {0} | UserName: {1}", dataSetId, Username));
+                }
 
                 var sharedObject = (from rt in entity.T_SHARED_OBJECT_POOL
                                     where rt.DATA_SUMMARY_ID == dataSetId
@@ -587,18 +661,20 @@ namespace MARS_Repository.Repositories
 
 
                 entity.SaveChanges();
-                logger.Info(string.Format("Delete RelTestCaseDataSummary end | TestCaseId: {0} | UserName: {1}", testCaseId, Username));
+                logger.Info(string.Format("Delete RelTestCaseDataSummary end | TestCaseId: {0} | dataSetId: {1} | UserName: {2}", testCaseId, dataSetId, Username));
                 return "success";
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase in DeleteRelTestCaseDataSummary method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase in DeleteRelTestCaseDataSummary method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured TestCase in DeleteRelTestCaseDataSummary method | TestCaseId: {0} | dataSetId: {1} | UserName: {2}", testCaseId, dataSetId, Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase in DeleteRelTestCaseDataSummary method | TestCaseId: {0} | dataSetId: {1} | UserName: {2}", testCaseId, dataSetId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in DeleteRelTestCaseDataSummary method | TestCaseId: {0} | dataSetId: {1} | UserName: {2}", testCaseId, dataSetId, Username), ex.InnerException);
                 throw;
             }
         }
 
-        public string AddTestDataSet(long? testCaseId, long? datasetid, string DataSetName, string DataSetDesc,DataSetTagModel tagmodel)
+        public string AddTestDataSet(long? testCaseId, long? datasetid, string DataSetName, string DataSetDesc, DataSetTagModel tagmodel, string lConnectionStr, string lSchema)
         {
             try
             {
@@ -610,6 +686,7 @@ namespace MARS_Repository.Repositories
                 var lresult = CheckDuplicateDataset(DataSetName, datasetid);
                 if (lresult == true)
                 {
+                    logger.Info(string.Format("CheckDuplicateDataset lresult: {0}", lresult));
                     return datasetid + ",error";
                 }
                 var ds = entity.T_TEST_DATA_SUMMARY.Where(x => x.DATA_SUMMARY_ID == datasetid).SingleOrDefault();
@@ -641,30 +718,97 @@ namespace MARS_Repository.Repositories
                     ds.ALIAS_NAME = DataSetName;
                     ds.DESCRIPTION_INFO = DataSetDesc;
                     entity.SaveChanges();
-                    var result = entity.T_TEST_DATASETTAG.Where(x => x.DATASETID == datasetid).SingleOrDefault();
+
                     var seqcheck = entity.T_TEST_DATASETTAG.Where(x => x.FOLDERID == tagmodel.Folderid && x.SEQUENCE == tagmodel.Sequence && x.DATASETID != datasetid).ToList();
                     if (seqcheck.Count > 0)
                     {
                         return datasetid + ",sequence error";
                     }
-                    if (result != null)
-                    {
 
-                        result.FOLDERID = tagmodel.Folderid;
-                        result.SETID = tagmodel.Setid;
-                        result.GROUPID = tagmodel.Groupid;
-                        result.STEPDESC = tagmodel.StepDesc;
-                        result.SEQUENCE = tagmodel.Sequence;
-                        result.EXPECTEDRESULTS = tagmodel.Expectedresults;
-                        result.DIARY = tagmodel.Diary;
-                        entity.SaveChanges();
+                    //find list
+                    //var result = entity.T_TEST_DATASETTAG.Where(x => x.DATASETID == datasetid).FirstOrDefault();
+                    var result = entity.T_TEST_DATASETTAG.Any(x => x.DATASETID == datasetid);
+                    logger.Info(string.Format("result 9 result -->T_TEST_DATASETTAG {0} ", result));
+
+                    if (result)
+                    {
+                        //result.FOLDERID = tagmodel.Folderid;
+                        //result.SETID = tagmodel.Setid;
+                        //result.GROUPID = tagmodel.Groupid;
+                        //result.STEPDESC = tagmodel.StepDesc;
+                        //result.SEQUENCE = tagmodel.Sequence;
+                        //result.EXPECTEDRESULTS = tagmodel.Expectedresults;
+                        //result.DIARY = tagmodel.Diary;
+                        //logger.Info(string.Format("result 10 start -->T_TEST_DATASETTAG "));
+                        //entity.SaveChanges();
+                        //logger.Info(string.Format("result 10 end -->T_TEST_DATASETTAG "));
+                        OracleTransaction ltransaction;
+                        OracleConnection lconnection = new OracleConnection(lConnectionStr);
+
+                        lconnection.Open();
+                        ltransaction = lconnection.BeginTransaction();
+                        string lcmdquery = "UPDATE " + lSchema + ".T_TEST_DATASETTAG SET FOLDERID = :1, SETID = :2, GROUPID = :3, STEPDESC = :4, " +
+                            "SEQUENCE = :5, EXPECTEDRESULTS = :6, DIARY = :7 WHERE DATASETID = :8";
+                        using (var lcmd = lconnection.CreateCommand())
+                        {
+                            lcmd.CommandText = lcmdquery;
+
+                            OracleParameter FOLDERID_oparam = new OracleParameter();
+                            FOLDERID_oparam.OracleDbType = OracleDbType.Long;
+                            FOLDERID_oparam.Value = tagmodel.Folderid;
+
+                            OracleParameter SETID_oparam = new OracleParameter();
+                            SETID_oparam.OracleDbType = OracleDbType.Long;
+                            SETID_oparam.Value = tagmodel.Setid;
+
+                            OracleParameter GROUPID_oparam = new OracleParameter();
+                            GROUPID_oparam.OracleDbType = OracleDbType.Long;
+                            GROUPID_oparam.Value = tagmodel.Groupid;
+
+                            OracleParameter STEPDESC_oparam = new OracleParameter();
+                            STEPDESC_oparam.OracleDbType = OracleDbType.Varchar2;
+                            STEPDESC_oparam.Value = tagmodel.StepDesc;
+
+                            OracleParameter SEQUENCE_oparam = new OracleParameter();
+                            SEQUENCE_oparam.OracleDbType = OracleDbType.Decimal;
+                            SEQUENCE_oparam.Value = tagmodel.Sequence;
+
+                            OracleParameter EXPECTEDRESULTS_oparam = new OracleParameter();
+                            EXPECTEDRESULTS_oparam.OracleDbType = OracleDbType.Varchar2;
+                            EXPECTEDRESULTS_oparam.Value = tagmodel.Expectedresults;
+
+                            OracleParameter DIARY_oparam = new OracleParameter();
+                            DIARY_oparam.OracleDbType = OracleDbType.Varchar2;
+                            DIARY_oparam.Value = tagmodel.Diary;
+
+
+                            OracleParameter DATASETID_oparam = new OracleParameter();
+                            DATASETID_oparam.OracleDbType = OracleDbType.Long;
+                            DATASETID_oparam.Value = datasetid;
+
+                            lcmd.Parameters.Add(FOLDERID_oparam);
+                            lcmd.Parameters.Add(SETID_oparam);
+                            lcmd.Parameters.Add(GROUPID_oparam);
+                            lcmd.Parameters.Add(STEPDESC_oparam);
+                            lcmd.Parameters.Add(SEQUENCE_oparam);
+                            lcmd.Parameters.Add(EXPECTEDRESULTS_oparam);
+                            lcmd.Parameters.Add(DIARY_oparam);
+                            lcmd.Parameters.Add(DATASETID_oparam);
+
+                            lcmd.ExecuteNonQuery();
+
+                            ltransaction.Commit();
+                            lconnection.Close();
+                        }
                     }
                     else
                     {
                         if (tagmodel.Folderid != 0 || tagmodel.Sequence != null || tagmodel.Groupid != 0 || tagmodel.Setid != 0 || tagmodel.StepDesc != null || tagmodel.Expectedresults != null || tagmodel.Diary != null)
                         {
                             var dtmodel = new T_TEST_DATASETTAG();
+                            logger.Info(string.Format("result 11 start -->SEQ_T_TEST_DATASETTAG "));
                             dtmodel.T_TEST_DATASETTAG_ID = Helper.NextTestSuiteId("SEQ_T_TEST_DATASETTAG");
+                            logger.Info(string.Format("result 11 end -->SEQ_T_TEST_DATASETTAG "));
                             dtmodel.DATASETID = datasetid;
                             dtmodel.FOLDERID = tagmodel.Folderid;
                             dtmodel.SETID = tagmodel.Setid;
@@ -673,10 +817,11 @@ namespace MARS_Repository.Repositories
                             dtmodel.SEQUENCE = tagmodel.Sequence;
                             dtmodel.EXPECTEDRESULTS = tagmodel.Expectedresults;
                             dtmodel.DIARY = tagmodel.Diary;
+                            logger.Info(string.Format("result 12 start -->T_TEST_DATASETTAG "));
                             entity.T_TEST_DATASETTAG.Add(dtmodel);
                             entity.SaveChanges();
+                            logger.Info(string.Format("result 12 end -->T_TEST_DATASETTAG "));
                         }
-
                     }
                     logger.Info(string.Format("Add TestDataSet end | TestCaseId: {0} | DataSetName: {1} | UserName: {2}", testCaseId, DataSetName, Username));
                     return datasetid + ",success";
@@ -686,6 +831,10 @@ namespace MARS_Repository.Repositories
             {
                 logger.Error(string.Format("Error occured Dataset in AddTestDataSet method | UserName: {0}", Username));
                 ELogger.ErrorException(string.Format("Error occured Dataset in AddTestDataSet method | UserName: {0}", Username), ex);
+                ELogger.ErrorException(string.Format("Inner Error occured Dataset in AddTestDataSet method | UserName: {0}", Username), ex.InnerException);
+                ELogger.ErrorException(string.Format("Inner Error occured Dataset in AddTestDataSet method | UserName: {0}", Username), ex.InnerException.InnerException);
+                ELogger.ErrorException(string.Format("Inner Error occured Dataset in AddTestDataSet method | UserName: {0}", Username), ex.InnerException.InnerException.InnerException);
+                ELogger.ErrorException(string.Format("stack occured Dataset in AddTestDataSet method | UserName: {0}", ex.StackTrace), ex);
                 throw;
             }
         }
@@ -694,17 +843,45 @@ namespace MARS_Repository.Repositories
         {
             try
             {
+                var datasetids = entity.REL_TC_DATA_SUMMARY.Where(x => x.TEST_CASE_ID == TestCaseId).Select(x => x.DATA_SUMMARY_ID).ToList();
                 logger.Info(string.Format("Delete TestCase start | TestCaseId: {0} | UserName: {1}", TestCaseId, Username));
                 var flag = false;
                 entity.DeleteTestCase(TestCaseId);
+
+                var exsitDatasetIds = entity.REL_TC_DATA_SUMMARY.Where(a => datasetids.Any(b => a.DATA_SUMMARY_ID == b)).Select(x => x.DATA_SUMMARY_ID).ToList();
+                var deleteDatasetids = datasetids.Except(exsitDatasetIds).ToList();
+
+                foreach (var item in deleteDatasetids)
+                {
+                    var obj1 = entity.T_SHARED_OBJECT_POOL.Where(x => x.DATA_SUMMARY_ID == item).ToList();
+                    logger.Info(string.Format("Delete Dataset in T_SHARED_OBJECT_POOL start | TestCaseId: {0} | DataSetId: {1} | UserName: {2}", TestCaseId, item, Username));
+                    foreach (var itm in obj1)
+                    {
+                        entity.T_SHARED_OBJECT_POOL.Remove(itm);
+                    }
+
+                    entity.SaveChanges();
+                    logger.Info(string.Format("Delete  Dataset in T_SHARED_OBJECT_POOL End | TestCaseId: {0} | DataSetId: {1} | UserName: {2}", TestCaseId, item, Username));
+
+                    var obj = entity.T_TEST_DATA_SUMMARY.FirstOrDefault(x => x.DATA_SUMMARY_ID == item);
+                    logger.Info(string.Format("Delete Dataset start | TestCaseId: {0} | DataSetId: {1} | UserName: {2}", TestCaseId, item, Username));
+                    if (obj != null)
+                        entity.T_TEST_DATA_SUMMARY.Remove(obj);
+                    entity.SaveChanges();
+
+                    logger.Info(string.Format("Delete Dataset End | TestCaseId: {0} | DataSetId: {1} | UserName: {2}", TestCaseId, item, Username));
+                }
+
                 flag = true;
                 logger.Info(string.Format("Delete TestCase end | TestCaseId: {0} | UserName: {1}", TestCaseId, Username));
                 return flag;
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase in DeleteTestCase method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase in DeleteTestCase method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured TestCase in DeleteTestCase method | testcaseId: {0} | UserName: {1}", TestCaseId, Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase in DeleteTestCase method | testcaseId: {0} | UserName: {1}", TestCaseId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in DeleteTestCase method | testcaseId: {0} | UserName: {1}", TestCaseId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -780,15 +957,17 @@ namespace MARS_Repository.Repositories
                               ApplicationId = Convert.ToString(row.Field<string>("applicationid")),
                               Application = Convert.ToString(row.Field<string>("Applicationame")),
                               TotalCount = Convert.ToInt32(row.Field<decimal>("RESULT_COUNT"))
-                      }).ToList();
+                          }).ToList();
 
                 logger.Info(string.Format("ListAllTestCase end | UserName: {0}", Username));
                 return resultList;
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase in ListAllTestCase method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase in ListAllTestCase method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured TestCase in ListAllTestCase method | Connection string : {0} | Schema {1} | UserName: {2}", lconstring, schema, Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase in ListAllTestCase method | Connection string : {0} | Schema {1} | UserName: {2}", lconstring, schema, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in ListAllTestCase method | Connection string : {0} | Schema {1} | UserName: {2}", lconstring, schema, Username), ex.InnerException);
                 throw;
             }
         }
@@ -928,8 +1107,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase in AddEditTestCase method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase in AddEditTestCase method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured TestCase in AddEditTestCase method | TestCaseName: {0} | UserName: {1}", lEntity.TestCaseName, Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase in AddEditTestCase method | TestCaseName: {0} | UserName: {1}", lEntity.TestCaseName, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in AddEditTestCase method | TestCaseName: {0} | UserName: {1}", lEntity.TestCaseName, Username), ex.InnerException);
                 throw;
             }
         }
@@ -953,8 +1134,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase in UpdateDataSetName method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase in UpdateDataSetName method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured TestCase in UpdateDataSetName method | DataSet Id: {0} | DataSet Name : {1} | UserName: {1}", dataSetId, datasetName, Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase in UpdateDataSetName method | DataSet Id: {0} | DataSet Name : {1} | UserName: {1}", dataSetId, datasetName, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in UpdateDataSetName method | DataSet Id: {0} | DataSet Name : {1} | UserName: {1}", dataSetId, datasetName, Username), ex.InnerException);
                 throw;
             }
         }
@@ -974,8 +1157,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase in UpdateDataSetDescription method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase in UpdateDataSetDescription method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured TestCase in UpdateDataSetDescription method | DataSet Id: {0} | DataSet Desc : {1} | UserName: {1}", dataSetId, dataSetDescription, Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase in UpdateDataSetDescription method | DataSet Id: {0} | DataSet Desc : {1} | UserName: {1}", dataSetId, dataSetDescription, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in UpdateDataSetDescription method | DataSet Id: {0} | DataSet Desc : {1} | UserName: {1}", dataSetId, dataSetDescription, Username), ex.InnerException);
                 throw;
             }
         }
@@ -1056,12 +1241,13 @@ namespace MARS_Repository.Repositories
 
                     if (item.DATASETVALUE != null)
                     {
-                        if (item.DATASETVALUE.Contains("&amp;") || item.DATASETVALUE.Contains("~") || item.DATASETVALUE.Contains(@"\") || item.DATASETVALUE.Contains("&quot;"))
-                        {
-                            item.DATASETVALUE = item.DATASETVALUE.Replace("&amp;", "&");
-                            item.DATASETVALUE = item.DATASETVALUE.Replace("~", "##");
-                            item.DATASETVALUE = item.DATASETVALUE.Replace("&quot;", "\"");
-                        }
+                        item.DATASETVALUE = item.DATASETVALUE.Replace("&amp;", "&").Replace("&quot;", "\"").Replace("&lt;", "<").Replace("&gt;", ">").Replace("~", "##").Replace("&apos;", "'");
+                        //if (item.DATASETVALUE.Contains("&amp;") || item.DATASETVALUE.Contains("~") || item.DATASETVALUE.Contains(@"\") || item.DATASETVALUE.Contains("&quot;"))
+                        //{
+                        //    item.DATASETVALUE = item.DATASETVALUE.Replace("&amp;", "&");
+                        //    item.DATASETVALUE = item.DATASETVALUE.Replace("~", "##");
+                        //    item.DATASETVALUE = item.DATASETVALUE.Replace("&quot;", "\"");
+                        //}
                     }
                     if (item.parameter != null)
                     {
@@ -1070,13 +1256,15 @@ namespace MARS_Repository.Repositories
                             item.parameter = item.parameter.Replace("\\n", "\\n");
                             item.parameter = item.parameter.Replace("\"", "\"");
                         }
+                        item.parameter = item.parameter.Replace("&amp;", "&").Replace("&quot;", "\"").Replace("&lt;", "<").Replace("&gt;", ">").Replace("~", ",").Replace("&apos;", "'");
                     }
                     if (item.COMMENT != null)
                     {
                         if (item.COMMENT.Contains("\\n"))
                         {
-                            item.COMMENT = item.parameter.Replace("\\n", "\n");
+                            item.COMMENT = item.COMMENT.Replace("\\n", "\n");
                         }
+                        item.COMMENT = item.COMMENT.Replace("&amp;", "&").Replace("&quot;", "\"").Replace("&lt;", "<").Replace("&gt;", ">").Replace("~", ",").Replace("&apos;", "'");
                     }
                 }
 
@@ -1104,8 +1292,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase in GetTestCaseDetail method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase in GetTestCaseDetail method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured TestCase in GetTestCaseDetail method | TestCase Id: {0} | Connection String : {1} | Schema : {2} |  UserName: {3}", TestCaseId, lstrConn, schema, Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase in GetTestCaseDetail method | TestCase Id: {0} | Connection String : {1} | Schema : {2} |  UserName: {3}", TestCaseId, lstrConn, schema, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in GetTestCaseDetail method | TestCase Id: {0} | Connection String : {1} | Schema : {2} |  UserName: {3}", TestCaseId, lstrConn, schema, Username), ex.InnerException);
                 throw;
             }
         }
@@ -1257,8 +1447,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase in CheckObjectKeywordValidation method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase in CheckObjectKeywordValidation method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured TestCase in CheckObjectKeywordValidation method | testcaseId: {0} | UserName: {1}", lTestCaseId, Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase in CheckObjectKeywordValidation method | testcaseId: {0} | UserName: {1}", lTestCaseId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in CheckObjectKeywordValidation method | testcaseId: {0} | UserName: {1}", lTestCaseId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -1277,8 +1469,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase in CheckDuplicateTestCasenameSaveAs method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase in CheckDuplicateTestCasenameSaveAs method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured TestCase in CheckDuplicateTestCasenameSaveAs method | TestCase Id: {0} | TestCase Name : {1} | UserName: {2}", testcaseid, testcase, Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase in CheckDuplicateTestCasenameSaveAs method | TestCase Id: {0} | TestCase Name : {1} | UserName: {2}", testcaseid, testcase, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in CheckDuplicateTestCasenameSaveAs method | TestCase Id: {0} | TestCase Name : {1} | UserName: {2}", testcaseid, testcase, Username), ex.InnerException);
                 throw;
             }
         }
@@ -1298,8 +1492,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase in CheckDuplicateDatasetName method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase in CheckDuplicateDatasetName method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured TestCase in CheckDuplicateDatasetName method | DataSet: {0} | UserName: {1}", dataset, Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase in CheckDuplicateDatasetName method | DataSet: {0} | UserName: {1}", dataset, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in CheckDuplicateDatasetName method | DataSet: {0} | UserName: {1}", dataset, Username), ex.InnerException);
                 throw;
             }
         }
@@ -1427,8 +1623,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase in SaveAsTestcase method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase in SaveAsTestcase method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured TestCase in SaveAsTestcase method | ProjectId: {0} | TestSuite Id : {1} | TestCase Id : {2} | Testcase Name : {3} | Testcase Desc : {4} | Conn string : {5} | Schema : {6} | UserName: {7}", projectid, testsuiteid, oldtestcaseid, testcasename, testcasedesc, constring, schema, Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase in SaveAsTestcase method | ProjectId: {0} | TestSuite Id : {1} | TestCase Id : {2} | Testcase Name : {3} | Testcase Desc : {4} | Conn string : {5} | Schema : {6} | UserName: {7}", projectid, testsuiteid, oldtestcaseid, testcasename, testcasedesc, constring, schema, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in SaveAsTestcase method | ProjectId: {0} | TestSuite Id : {1} | TestCase Id : {2} | Testcase Name : {3} | Testcase Desc : {4} | Conn string : {5} | Schema : {6} | UserName: {7}", projectid, testsuiteid, oldtestcaseid, testcasename, testcasedesc, constring, schema, Username), ex.InnerException);
                 throw;
             }
         }
@@ -1578,11 +1776,13 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase in SaveAsTestCaseOneCopiedDataSet_Temp method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase in SaveAsTestCaseOneCopiedDataSet_Temp method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured TestCase in SaveAsTestCaseOneCopiedDataSet_Temp method | ProjectId: {0} | TestSuite Id : {1} | TestCase Id : {2} | Testcase Name : {3} | Testcase Desc : {4} | Conn string : {5} | Schema : {6} | Dataset Name : {7} | Suffix : {8} | UserName: {9}", projectid, testsuiteid, oldtestcaseid, testcasename, testcasedesc, constring, schema, datasetName, suffix, Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase in SaveAsTestCaseOneCopiedDataSet_Temp method | ProjectId: {0} | TestSuite Id : {1} | TestCase Id : {2} | Testcase Name : {3} | Testcase Desc : {4} | Conn string : {5} | Schema : {6} | Dataset Name : {7} | Suffix : {8} | UserName: {9}", projectid, testsuiteid, oldtestcaseid, testcasename, testcasedesc, constring, schema, datasetName, suffix, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in SaveAsTestCaseOneCopiedDataSet_Temp method | ProjectId: {0} | TestSuite Id : {1} | TestCase Id : {2} | Testcase Name : {3} | Testcase Desc : {4} | Conn string : {5} | Schema : {6} | Dataset Name : {7} | Suffix : {8} | UserName: {9}", projectid, testsuiteid, oldtestcaseid, testcasename, testcasedesc, constring, schema, datasetName, suffix, Username), ex.InnerException);
                 throw;
             }
-           
+
         }
 
         public string SaveAsTestCaseOneCopiedDataSet(string testcasename, long oldtestcaseid, string testcasedesc, string datasetName, long testsuiteid, long projectid, string suffix, string schema, string constring, string LoginName)
@@ -1599,8 +1799,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase in SaveAsTestCaseOneCopiedDataSet method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase in SaveAsTestCaseOneCopiedDataSet method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured TestCase in SaveAsTestCaseOneCopiedDataSet method | ProjectId: {0} | TestSuite Id : {1} | TestCase Id : {2} | Testcase Name : {3} | Testcase Desc : {4} | Conn string : {5} | Schema : {6} | Dataset Name : {7} | Suffix : {8} | UserName: {9}", projectid, testsuiteid, oldtestcaseid, testcasename, testcasedesc, constring, schema, datasetName, suffix, Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase in SaveAsTestCaseOneCopiedDataSet method | ProjectId: {0} | TestSuite Id : {1} | TestCase Id : {2} | Testcase Name : {3} | Testcase Desc : {4} | Conn string : {5} | Schema : {6} | Dataset Name : {7} | Suffix : {8} | UserName: {9}", projectid, testsuiteid, oldtestcaseid, testcasename, testcasedesc, constring, schema, datasetName, suffix, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in SaveAsTestCaseOneCopiedDataSet method | ProjectId: {0} | TestSuite Id : {1} | TestCase Id : {2} | Testcase Name : {3} | Testcase Desc : {4} | Conn string : {5} | Schema : {6} | Dataset Name : {7} | Suffix : {8} | UserName: {9}", projectid, testsuiteid, oldtestcaseid, testcasename, testcasedesc, constring, schema, datasetName, suffix, Username), ex.InnerException);
                 throw;
             }
         }
@@ -1776,8 +1978,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase in SaveAsTestCaseAllCopiedDataSet_Temp method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase in SaveAsTestCaseAllCopiedDataSet_Temp method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured TestCase in SaveAsTestCaseAllCopiedDataSet_Temp method | ProjectId: {0} | TestSuite Id : {1} | TestCase Id : {2} | Testcase Name : {3} | Testcase Desc : {4} | Conn string : {5} | Schema : {6} | Suffix : {7} | UserName: {8}", projectid, testsuiteid, oldtestcaseid, testcasename, testcasedesc, constring, schema, suffix, Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase in SaveAsTestCaseAllCopiedDataSet_Temp method | ProjectId: {0} | TestSuite Id : {1} | TestCase Id : {2} | Testcase Name : {3} | Testcase Desc : {4} | Conn string : {5} | Schema : {6} | Suffix : {7} | UserName: {8}", projectid, testsuiteid, oldtestcaseid, testcasename, testcasedesc, constring, schema, suffix, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in SaveAsTestCaseAllCopiedDataSet_Temp method | ProjectId: {0} | TestSuite Id : {1} | TestCase Id : {2} | Testcase Name : {3} | Testcase Desc : {4} | Conn string : {5} | Schema : {6} | Suffix : {7} | UserName: {8}", projectid, testsuiteid, oldtestcaseid, testcasename, testcasedesc, constring, schema, suffix, Username), ex.InnerException);
                 throw;
             }
         }
@@ -1795,8 +1999,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase in SaveAsTestCaseAllCopiedDataSet method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase in SaveAsTestCaseAllCopiedDataSet method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured TestCase in SaveAsTestCaseAllCopiedDataSet method | ProjectId: {0} | TestSuite Id : {1} | TestCase Id : {2} | Testcase Name : {3} | Testcase Desc : {4} | Conn string : {5} | Schema : {6} | Suffix : {7} | UserName: {8}", projectid, testsuiteid, oldtestcaseid, testcasename, testcasedesc, constring, schema, suffix, Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase in SaveAsTestCaseAllCopiedDataSet method | ProjectId: {0} | TestSuite Id : {1} | TestCase Id : {2} | Testcase Name : {3} | Testcase Desc : {4} | Conn string : {5} | Schema : {6} | Suffix : {7} | UserName: {8}", projectid, testsuiteid, oldtestcaseid, testcasename, testcasedesc, constring, schema, suffix, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in SaveAsTestCaseAllCopiedDataSet method | ProjectId: {0} | TestSuite Id : {1} | TestCase Id : {2} | Testcase Name : {3} | Testcase Desc : {4} | Conn string : {5} | Schema : {6} | Suffix : {7} | UserName: {8}", projectid, testsuiteid, oldtestcaseid, testcasename, testcasedesc, constring, schema, suffix, Username), ex.InnerException);
                 throw;
             }
         }
@@ -1866,11 +2072,13 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase in CreateAllDataset method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase in CreateAllDataset method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured TestCase in CreateAllDataset method | Conn string : {0} | UserName: {1}", constring, Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase in CreateAllDataset method | Conn string : {0} | UserName: {1}", constring, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in CreateAllDataset method | Conn string : {0} | UserName: {1}", constring, Username), ex.InnerException);
                 throw;
             }
-         
+
         }
 
         public void CreateAllDatasetMapping(string constring, List<REL_TC_DATA_SUMMARY> rEL_TCs)
@@ -1932,8 +2140,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase in CreateAllDatasetMapping method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase in CreateAllDatasetMapping method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured TestCase in CreateAllDatasetMapping method | Conn string : {0} | UserName: {1}", constring, Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase in CreateAllDatasetMapping method | Conn string : {0} | UserName: {1}", constring, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in CreateAllDatasetMapping method | Conn string : {0} | UserName: {1}", constring, Username), ex.InnerException);
                 throw;
             }
         }
@@ -1975,8 +2185,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase in convertsteps method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase in convertsteps method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured TestCase in convertsteps method | Old TestCase Id : {0} | New TestCase Id : {1} | Conn string : {2} | Schema : {3} | UserName: {4}", oldtestcaseid, newtestcaseid, constring, schema, Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase in convertsteps method | Old TestCase Id : {0} | New TestCase Id : {1} | Conn string : {2} | Schema : {3} | UserName: {4}", oldtestcaseid, newtestcaseid, constring, schema, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in convertsteps method | Old TestCase Id : {0} | New TestCase Id : {1} | Conn string : {2} | Schema : {3} | UserName: {4}", oldtestcaseid, newtestcaseid, constring, schema, Username), ex.InnerException);
                 throw;
             }
         }
@@ -2025,8 +2237,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase in GetTestCaseVersion method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase in GetTestCaseVersion method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured TestCase in GetTestCaseVersion method | testcaseId: {0} | UserName: {1}", TestCaseId, Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase in GetTestCaseVersion method | testcaseId: {0} | UserName: {1}", TestCaseId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in GetTestCaseVersion method | testcaseId: {0} | UserName: {1}", TestCaseId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -2035,7 +2249,7 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("Save TestCase Version start | TestCaseId: {0} | UserName: {1}", TestCaseId, Username));
+                logger.Info(string.Format("Save TestCase Version start | TestCaseId: {0} | UserId: {1} | UserName: {2}", TestCaseId, UserId, Username));
                 var ltbl = entity.T_TESTCASE_VERSION.Where(x => x.TESTCASEID == TestCaseId).FirstOrDefault();
                 if (ltbl != null)
                 {
@@ -2044,13 +2258,15 @@ namespace MARS_Repository.Repositories
                     ltbl.CREATETIME = DateTime.Now;
                     ltbl.ISAVAILABLE = 0;
                     entity.SaveChanges();
-                    logger.Info(string.Format("Save TestCase Version end | TestCaseId: {0} | UserName: {1}", TestCaseId, Username));
+                    logger.Info(string.Format("Save TestCase Version end | TestCaseId: {0} | UserId: {1} | UserName: {2}", TestCaseId, UserId, Username));
                 }
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase in CheckDuplicateTestCaseName method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase in CheckDuplicateTestCaseName method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured TestCase in CheckDuplicateTestCaseName method TestCaseId: {0} | UserId: {1} | UserName: {2}", TestCaseId, UserId, Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase in CheckDuplicateTestCaseName method TestCaseId: {0} | UserId: {1} | UserName: {2}", TestCaseId, UserId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in CheckDuplicateTestCaseName method TestCaseId: {0} | UserId: {1} | UserName: {2}", TestCaseId, UserId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -2059,15 +2275,17 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("Match TestCase Version start | TestCaseId: {0} | UserName: {1}", TestCaseId, Username));
+                logger.Info(string.Format("Match TestCase Version start | TestCaseId: {0} | VersionId: {1} | UserName: {2}", TestCaseId, VersionId, Username));
                 var lresult = entity.T_TESTCASE_VERSION.Any(x => x.TESTCASEID == TestCaseId && x.VERSIONID == VersionId);
-                logger.Info(string.Format("Match TestCase Version end | TestCaseId: {0} | UserName: {1}", TestCaseId, Username));
+                logger.Info(string.Format("Match TestCase Version end | TestCaseId: {0} | VersionId: {1} | UserName: {2}", TestCaseId, VersionId, Username));
                 return lresult;
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase in MatchTestCaseVersion method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase in MatchTestCaseVersion method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured TestCase in MatchTestCaseVersion method | TestCaseId: {0} | VersionId: {1} | UserName: {2}", TestCaseId, VersionId, Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase in MatchTestCaseVersion method | TestCaseId: {0} | VersionId: {1} | UserName: {2}", TestCaseId, VersionId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in MatchTestCaseVersion method | TestCaseId: {0} | VersionId: {1} | UserName: {2}", TestCaseId, VersionId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -2096,8 +2314,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase in UpdateIsAvailable method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase in UpdateIsAvailable method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured TestCase in UpdateIsAvailable method | testcaseId: {0} | UserName: {1}", TestCaseIds, Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase in UpdateIsAvailable method | testcaseId: {0} | UserName: {1}", TestCaseIds, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in UpdateIsAvailable method | testcaseId: {0} | UserName: {1}", TestCaseIds, Username), ex.InnerException);
                 throw;
             }
         }
@@ -2118,8 +2338,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured Logout in UpdateIsAvailableReload method | UserId: {0}", UserId));
-                ELogger.ErrorException(string.Format("Error occured Logout in UpdateIsAvailableReload method | UserId: {0}", UserId), ex);
+                logger.Error(string.Format("Error occured TestCase in UpdateIsAvailableReload method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase in UpdateIsAvailableReload method | UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in UpdateIsAvailableReload method | UserName: {0}", Username), ex.InnerException);
                 throw;
             }
         }
@@ -2184,8 +2406,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured dataset in CopyDataSet method | UserId: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured dataset in CopyDataSet method | UserId: {0}", Username), ex);
+                logger.Error(string.Format("Error occured TestCase in CopyDataSet method | TestCase Id : {0} | Dataset Id : {1} | Dataset Name : {2} | Dataset Desc : {3} | Conn string : {4} | Schema : {5} | UserName: {6}", testCaseId, olddatasetid, datasetname, datasetdesc, lstrConn, schema, Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase in CopyDataSet method |  TestCase Id : {0} | Dataset Id : {1} | Dataset Name : {2} | Dataset Desc : {3} | Conn string : {4} | Schema : {5} | UserName: {6}", testCaseId, olddatasetid, datasetname, datasetdesc, lstrConn, schema, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in CopyDataSet method |  TestCase Id : {0} | Dataset Id : {1} | Dataset Name : {2} | Dataset Desc : {3} | Conn string : {4} | Schema : {5} | UserName: {6}", testCaseId, olddatasetid, datasetname, datasetdesc, lstrConn, schema, Username), ex.InnerException);
                 throw;
             }
         }
@@ -2255,8 +2479,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase in ExecuteCheckValidationTestCase method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase in ExecuteCheckValidationTestCase method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured TestCase in ExecuteCheckValidationTestCase method | FeedProcess Id : {0} | Conn string : {1} | Schema : {2} | UserName: {3}", feedProcessId, lstrConn, schema, Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase in ExecuteCheckValidationTestCase method | FeedProcess Id : {0} | Conn string : {1} | Schema : {2} | UserName: {3}", feedProcessId, lstrConn, schema, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in ExecuteCheckValidationTestCase method |  FeedProcess Id : {0} | Conn string : {1} | Schema : {2} | UserName: {3}", feedProcessId, lstrConn, schema, Username), ex.InnerException);
                 throw;
             }
         }
@@ -2364,8 +2590,13 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in TestCase InsertStgTestcaseValidationTable method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured in TestCase InsertStgTestcaseValidationTable method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in TestCase InsertStgTestcaseValidationTable method | TestCaseId: {0} | UserName: {1}", testCaseId, Username));
+                ELogger.ErrorException(string.Format("Error occured in TestCase InsertStgTestcaseValidationTable method | TestCaseId: {0} | UserName: {1}", testCaseId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase InsertStgTestcaseValidationTable method | TestCaseId: {0} | UserName: {1}", testCaseId, Username), ex.InnerException);
+                if (ex.InnerException.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase InsertStgTestcaseValidationTable method | TestCaseId: {0} | UserName: {1}", testCaseId, Username), ex.InnerException.InnerException);
+
                 throw;
             }
         }
@@ -2385,8 +2616,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase in GetDatasetNamebyTestcaseId method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase in GetDatasetNamebyTestcaseId method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured TestCase in GetDatasetNamebyTestcaseId method | testcaseId: {0} | UserName: {1}", lTestcaseId, Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase in GetDatasetNamebyTestcaseId method | testcaseId: {0} | UserName: {1}", lTestcaseId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in GetDatasetNamebyTestcaseId method | testcaseId: {0} | UserName: {1}", lTestcaseId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -2395,14 +2628,14 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("InsertStgTestCaseSave start | TestCaseId: {0} | UserName: {1}", testCaseId, Username));
+                logger.Info(string.Format("InsertStgTestCaseSave start | TestCaseId: {0} | valFeedD: {1} | UserName: {2}", testCaseId, valFeedD, Username));
                 OracleTransaction ltransaction;
 
                 OracleConnection lconnection = new OracleConnection(lConnectionStr);
                 lconnection.Open();
                 ltransaction = lconnection.BeginTransaction();
 
-                string lcmdquery = "insert into TBLSTGTESTCASESAVE ( STEPSID,KEYWORD,OBJECT,PARAMETER,LCOMMENTS,ROWNUMBER,DATASETNAME,DATASETID,DATASETVALUE,DATA_SETTING_ID,SKIP,FEEDPROCESSDETAILID,TYPE,WHICHTABLE,TESTCASEID,TESTSUITEID) values(:1,:2,:3,:4,:5,:6,:7,:8,:9,:10,:11,:12,:13,:14,:15,:16)";
+                string lcmdquery = "insert into TBLSTGTESTCASESAVE ( STEPSID,KEYWORD,OBJECT,PARAMETER,LCOMMENTS,ROWNUMBER,DATASETNAME,DATASETID,DATASETVALUE,DATA_SETTING_ID,SKIP,FEEDPROCESSDETAILID,TYPE,WHICHTABLE,TESTCASEID,TESTSUITEID,ParentObj) values(:1,:2,:3,:4,:5,:6,:7,:8,:9,:10,:11,:12,:13,:14,:15,:16,:17)";
                 int[] ids = new int[dt.Rows.Count];
                 using (var lcmd = lconnection.CreateCommand())
                 {
@@ -2425,6 +2658,7 @@ namespace MARS_Repository.Repositories
                     string[] WhichTable_param = dt.AsEnumerable().Select(r => r.Field<string>("WhichTable")).ToArray();
                     string[] TestcaseId_param = dt.AsEnumerable().Select(r => r.Field<string>("TestcaseId")).ToArray();
                     string[] TestsuiteId_param = dt.AsEnumerable().Select(r => r.Field<string>("TestsuiteId")).ToArray();
+                    string[] ParentObj_param = dt.AsEnumerable().Select(r => r.Field<string>("ParentObj")).ToArray();
 
                     OracleParameter STEPSID_oparam = new OracleParameter();
                     STEPSID_oparam.OracleDbType = OracleDbType.Varchar2;
@@ -2490,6 +2724,10 @@ namespace MARS_Repository.Repositories
                     TestsuiteId_oparam.OracleDbType = OracleDbType.Varchar2;
                     TestsuiteId_oparam.Value = TestsuiteId_param;
 
+                    OracleParameter ParentObj_oparam = new OracleParameter();
+                    ParentObj_oparam.OracleDbType = OracleDbType.Varchar2;
+                    ParentObj_oparam.Value = ParentObj_param;
+
                     lcmd.Parameters.Add(STEPSID_oparam);
                     lcmd.Parameters.Add(KEYWORD_oparam);
                     lcmd.Parameters.Add(OBJECT_oparam);
@@ -2506,6 +2744,7 @@ namespace MARS_Repository.Repositories
                     lcmd.Parameters.Add(WhichTable_oparam);
                     lcmd.Parameters.Add(TestcaseId_oparam);
                     lcmd.Parameters.Add(TestsuiteId_oparam);
+                    lcmd.Parameters.Add(ParentObj_oparam);
 
                     try
                     {
@@ -2524,15 +2763,19 @@ namespace MARS_Repository.Repositories
                     entity.SP_SaveTestcase(valFeedD, int.Parse(testCaseId), op);
                     entity.SaveChanges();
                 }
-                logger.Info(string.Format("InsertStgTestCaseSave end | TestCaseId: {0} | UserName: {1}", testCaseId, Username));
+                logger.Info(string.Format("InsertStgTestCaseSave end | TestCaseId: {0} | valFeedD: {1} | UserName: {2}", testCaseId, valFeedD, Username));
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase in InsertStgTestCaseSave method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase in InsertStgTestCaseSave method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured TestCase in InsertStgTestCaseSave method | TestCaseId: {0} | valFeedD: {1} | UserName: {2}", testCaseId, valFeedD, Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase in InsertStgTestCaseSave method | TestCaseId: {0} | valFeedD: {1} | UserName: {2}", testCaseId, valFeedD, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in InsertStgTestCaseSave method | TestCaseId: {0} | valFeedD: {1} | UserName: {2}", testCaseId, valFeedD, Username), ex.InnerException);
+                if (ex.InnerException.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in InsertStgTestCaseSave method | TestCaseId: {0} | valFeedD: {1} | UserName: {2}", testCaseId, valFeedD, Username), ex.InnerException.InnerException);
+
                 throw;
             }
-        
         }
 
         public List<DataTagCommonViewModel> ListOfGroup()
@@ -2548,13 +2791,19 @@ namespace MARS_Repository.Repositories
                     IsActive = y.ACTIVE,
                     Active = y.ACTIVE == 1 ? "Y" : "N"
                 }).OrderBy(z => z.Name).ToList();
+                if (lList.Any())
+                {
+                    lList.RemoveAll(x => x.Name == null);
+                }
                 logger.Info(string.Format("ListOfGroup end | Username: {0}", Username));
                 return lList;
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase Repository in ListOfGroup method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase Repository in ListOfGroup method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in TestCase for ListOfGroup method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured in TestCase for ListOfGroup method | UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase for ListOfGroup method | UserName: {0}", Username), ex.InnerException);
                 throw;
             }
         }
@@ -2590,7 +2839,7 @@ namespace MARS_Repository.Repositories
                 {
                     logger.Info(string.Format("Edit Group start | Group: {0} | GroupId: {1} | UserName: {2}", lEntity.Name, lEntity.Id, Username));
                     var tbl = entity.T_TEST_GROUP.Find(lEntity.Id);
-                   
+
                     if (tbl != null)
                     {
                         tbl.DESCRIPTION = lEntity.Description;
@@ -2606,8 +2855,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured Group page in AddEditGroup method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured Group page in AddEditGroup method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in TestCase for AddEditGroup method | Group: {0} | GroupId: {1} | UserName: {2}", lEntity.Name, lEntity.Id, Username));
+                ELogger.ErrorException(string.Format("Error occured in TestCase for AddEditGroup method | Group: {0} | GroupId: {1} | UserName: {2}", lEntity.Name, lEntity.Id, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase for AddEditGroup method | Group: {0} | GroupId: {1} | UserName: {2}", lEntity.Name, lEntity.Id, Username), ex.InnerException);
                 throw;
             }
         }
@@ -2631,8 +2882,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured Group page in CheckDuplicateGroupNameExist method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured Group page in CheckDuplicateGroupNameExist method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in TestCase for CheckDuplicateGroupNameExist method | Group: {0} | GroupId: {1} | UserName: {2}", Name, Id, Username));
+                ELogger.ErrorException(string.Format("Error occured in TestCase for CheckDuplicateGroupNameExist method | Group: {0} | GroupId: {1} | UserName: {2}", Name, Id, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase for CheckDuplicateGroupNameExist method | Group: {0} | GroupId: {1} | UserName: {2}", Name, Id, Username), ex.InnerException);
                 throw;
             }
         }
@@ -2650,13 +2903,19 @@ namespace MARS_Repository.Repositories
                     IsActive = y.ACTIVE,
                     Active = y.ACTIVE == 1 ? "Y" : "N"
                 }).OrderBy(z => z.Name).ToList();
+                if (lList.Any())
+                {
+                    lList.RemoveAll(x => x.Name == null);
+                }
                 logger.Info(string.Format("ListOfSet end | Username: {0}", Username));
                 return lList;
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase Repository in ListOfSet method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase Repository in ListOfSet method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in TestCase for ListOfSet method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured in TestCase for ListOfSet method | UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase for ListOfSet method | UserName: {0}", Username), ex.InnerException);
                 throw;
             }
         }
@@ -2708,8 +2967,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured Set page in AddEditSet method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured Set page in AddEditSet method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in TestCase for AddEditSet method | Set: {0} | SetId: {1} | UserName: {2}", lEntity.Name, lEntity.Id, Username));
+                ELogger.ErrorException(string.Format("Error occured in TestCase for AddEditSet method | Set: {0} | SetId: {1} | UserName: {2}", lEntity.Name, lEntity.Id, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase for AddEditSet method | Set: {0} | SetId: {1} | UserName: {2}", lEntity.Name, lEntity.Id, Username), ex.InnerException);
                 throw;
             }
         }
@@ -2733,8 +2994,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured Set page in CheckDuplicateSetNameExist method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured Set page in CheckDuplicateSetNameExist method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in TestCase for CheckDuplicateSetNameExist method | Set: {0} | SetId: {1} | UserName: {2}", Name, Id, Username));
+                ELogger.ErrorException(string.Format("Error occured in TestCase for CheckDuplicateSetNameExist method | Set: {0} | SetId: {1} | UserName: {2}", Name, Id, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase for CheckDuplicateSetNameExist method | Set: {0} | SetId: {1} | UserName: {2}", Name, Id, Username), ex.InnerException);
                 throw;
             }
         }
@@ -2752,13 +3015,20 @@ namespace MARS_Repository.Repositories
                     IsActive = y.ACTIVE,
                     Active = y.ACTIVE == 1 ? "Y" : "N"
                 }).OrderBy(z => z.Name).ToList();
+
+                if (lList.Any())
+                {
+                    lList.RemoveAll(x => x.Name == null);
+                }
                 logger.Info(string.Format("ListOfFolder end | Username: {0}", Username));
                 return lList;
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase Repository in ListOfFolder method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase Repository in ListOfFolder method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in TestCase for ListOfFolder method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured in TestCase for ListOfFolder method | UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase for ListOfFolder method | UserName: {0}", Username), ex.InnerException);
                 throw;
             }
         }
@@ -2810,8 +3080,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured Folder page in AddEditFolder method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured Folder page in AddEditFolder method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in TestCase for AddEditFolder method | Folder: {0} | FolderId: {1} | UserName: {2}", lEntity.Name, lEntity.Id, Username));
+                ELogger.ErrorException(string.Format("Error occured in TestCase for AddEditFolder method | Folder: {0} | FolderId: {1} | UserName: {2}", lEntity.Name, lEntity.Id, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase for AddEditFolder method | Folder: {0} | FolderId: {1} | UserName: {2}", lEntity.Name, lEntity.Id, Username), ex.InnerException);
                 throw;
             }
         }
@@ -2835,8 +3107,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured Folder page in CheckDuplicateFolderNameExist method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured Folder page in CheckDuplicateFolderNameExist method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in TestCase for CheckDuplicateFolderNameExist method | Set: {0} | SetId: {1} | UserName: {2}", Name, Id, Username));
+                ELogger.ErrorException(string.Format("Error occured in TestCase for CheckDuplicateFolderNameExist method | Set: {0} | SetId: {1} | UserName: {2}", Name, Id, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase for CheckDuplicateFolderNameExist method | Set: {0} | SetId: {1} | UserName: {2}", Name, Id, Username), ex.InnerException);
                 throw;
             }
         }
@@ -2851,8 +3125,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase Repository in GetFolders method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase Repository in GetFolders method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in TestCase for GetFolders method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured in TestCase for GetFolders method | UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase for GetFolders method | UserName: {0}", Username), ex.InnerException);
                 throw;
             }
         }
@@ -2867,8 +3143,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase Repository in GetSets method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase Repository in GetSets method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in TestCase for GetSets method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured in TestCase for GetSets method | UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase for GetSets method | UserName: {0}", Username), ex.InnerException);
                 throw;
             }
         }
@@ -2883,8 +3161,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase Repository in GetGroups method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase Repository in GetGroups method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in TestCase for GetGroups method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured in TestCase for GetGroups method | UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase for GetGroups method | UserName: {0}", Username), ex.InnerException);
                 throw;
             }
         }
@@ -2922,8 +3202,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase Repository in GetTagDetails method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase Repository in GetTagDetails method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in TestCase for GetTagDetails method | DataSet Id: {0} | UserName: {1}", datasetid, Username));
+                ELogger.ErrorException(string.Format("Error occured in TestCase for GetTagDetails method | DataSet Id: {0} | UserName: {1}", datasetid, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase for GetTagDetails method | DataSet Id: {0} | UserName: {1}", datasetid, Username), ex.InnerException);
                 throw;
             }
         }
@@ -2944,8 +3226,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase Repository in GetDataSetName method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase Repository in GetDataSetName method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in TestCase for GetDataSetName method | DataSet Id: {0} | UserName: {1}", datasetid, Username));
+                ELogger.ErrorException(string.Format("Error occured in TestCase for GetDataSetName method | DataSet Id: {0} | UserName: {1}", datasetid, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase for GetDataSetName method | DataSet Id: {0} | UserName: {1}", datasetid, Username), ex.InnerException);
                 throw;
             }
         }
@@ -2966,12 +3250,14 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase Repository in DeleteTagProperties method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase Repository in DeleteTagProperties method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in TestCase for DeleteTagProperties method | DataSet Id: {0} | UserName: {1}", datasetid, Username));
+                ELogger.ErrorException(string.Format("Error occured in TestCase for DeleteTagProperties method | DataSet Id: {0} | UserName: {1}", datasetid, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase for DeleteTagProperties method | DataSet Id: {0} | UserName: {1}", datasetid, Username), ex.InnerException);
                 throw;
             }
         }
-        public bool CheckFolderSequenceMapping(long FolderId, long SequenceId,long datasetid)
+        public bool CheckFolderSequenceMapping(long FolderId, long SequenceId, long datasetid)
         {
             try
             {
@@ -2982,8 +3268,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase Repository in CheckFolderSequenceMapping method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase Repository in CheckFolderSequenceMapping method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in TestCase for CheckFolderSequenceMapping method | Folder Id : {0} | Sequesnce Id : {1} | DataSet Id: {2} | UserName: {3}", FolderId, SequenceId, datasetid, Username));
+                ELogger.ErrorException(string.Format("Error occured in TestCase for CheckFolderSequenceMapping method | Folder Id : {0} | Sequesnce Id : {1} | DataSet Id: {2} | UserName: {3}", FolderId, SequenceId, datasetid, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase for CheckFolderSequenceMapping method | Folder Id : {0} | Sequesnce Id : {1} | DataSet Id: {2} | UserName: {3}", FolderId, SequenceId, datasetid, Username), ex.InnerException);
                 throw;
             }
         }

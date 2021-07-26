@@ -37,8 +37,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured when User Grid page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured when User Grid page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in ConfiguratGridListionGrid for GridList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in ConfigurationGrid for GridList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in ConfigurationGrid for GridList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
             }
             return PartialView();
         }
@@ -113,8 +115,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured when User Grid page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured when User Grid page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in ConfiguratGridListionGrid for DataLoadGridList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in ConfigurationGrid for DataLoadGridList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in ConfigurationGrid for DataLoadGridList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
             }
             return Json(new
             {
@@ -144,8 +148,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured when User Grid page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured when User Grid page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in ConfigurationGrid for SaveAppGridWidth method | Name Id : {0} | UserName: {1}", appGridWidth.NameId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in ConfigurationGrid for SaveAppGridWidth method | Name Id : {0} | UserName: {1}", appGridWidth.NameId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in ConfigurationGrid for SaveAppGridWidth method | Name Id : {0} | UserName: {1}", appGridWidth.NameId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -227,8 +233,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured when User Grid page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured when User Grid page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in ConfigurationGrid for GetGridbyId method | Grid Id : {0} | Grid Name : {1} | UserName: {2}", Id, gridName, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in ConfigurationGrid for GetGridbyId method | Grid Id : {0} | Grid Name : {1} | UserName: {2}", Id, gridName, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in ConfigurationGrid for GetGridbyId method | Grid Id : {0} | Grid Name : {1} | UserName: {2}", Id, gridName, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -254,8 +262,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured when User Grid page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured when User Grid page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in ConfigurationGrid for SaveProjectGridWidth method | Name Id : {0} | UserName: {1}", projectGridWidth.NameId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in ConfigurationGrid for SaveProjectGridWidth method | Name Id : {0} | UserName: {1}", projectGridWidth.NameId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in ConfigurationGrid for SaveProjectGridWidth method | Name Id : {0} | UserName: {1}", projectGridWidth.NameId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -280,8 +290,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured when User Grid page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured when User Grid page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in ConfigurationGrid for SaveKeywordGridWidth method | Name Id : {0} | UserName: {1}", keywordGridWidth.NameId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in ConfigurationGrid for SaveKeywordGridWidth method | Name Id : {0} | UserName: {1}", keywordGridWidth.NameId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in ConfigurationGrid for SaveKeywordGridWidth method | Name Id : {0} | UserName: {1}", keywordGridWidth.NameId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -307,8 +319,11 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured when User Grid page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured when User Grid page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in ConfigurationGrid for SaveTestSuiteGridWidth method | Name Id : {0} | UserName: {1}", TSModel.NameId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in ConfigurationGrid for SaveTestSuiteGridWidth method | Name Id : {0} | UserName: {1}", TSModel.NameId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in ConfigurationGrid for SaveTestSuiteGridWidth method | Name Id : {0} | UserName: {1}", TSModel.NameId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -333,8 +348,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured when User Grid page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured when User Grid page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in ConfigurationGrid for SaveTestCaseGridWidth method | Name Id : {0} | UserName: {1}", TCModel.NameId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in ConfigurationGrid for SaveTestCaseGridWidth method | Name Id : {0} | UserName: {1}", TCModel.NameId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in ConfigurationGrid for SaveTestCaseGridWidth method | Name Id : {0} | UserName: {1}", TCModel.NameId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -359,8 +376,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured when User Grid page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured when User Grid page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in ConfigurationGrid for SaveObjectGridWidth method | Object Id : {0} | UserName: {1}", ObjModel.NameId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in ConfigurationGrid for SaveObjectGridWidth method | Object Id : {0} | UserName: {1}", ObjModel.NameId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in ConfigurationGrid for SaveObjectGridWidth method | Object Id : {0} | UserName: {1}", ObjModel.NameId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -385,8 +404,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured when User Grid page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured when User Grid page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in ConfigurationGrid for SaveVaribleGridWidth method | Name Id : {0} | UserName: {1}", variableGridWidth.NameId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in ConfigurationGrid for SaveVaribleGridWidth method | Name Id : {0} | UserName: {1}", variableGridWidth.NameId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in ConfigurationGrid for SaveVaribleGridWidth method | Name Id : {0} | UserName: {1}", variableGridWidth.NameId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -411,8 +432,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured when User Grid page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured when User Grid page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in ConfigurationGrid for SaveUserGridWidth method | Name Id : {0} | UserName: {1}", userGridWidth.NameId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in ConfigurationGrid for SaveUserGridWidth method | Name Id : {0} | UserName: {1}", userGridWidth.NameId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in ConfigurationGrid for SaveUserGridWidth method | Name Id : {0} | UserName: {1}", userGridWidth.NameId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -437,8 +460,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured when User Grid page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured when User Grid page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in ConfigurationGrid for SaveTestCasePqGridWidth method | Name Id : {0} | UserName: {1}", testcasePqGrid.GridId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in ConfigurationGrid for SaveTestCasePqGridWidth method | Name Id : {0} | UserName: {1}", testcasePqGrid.GridId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in ConfigurationGrid for SaveTestCasePqGridWidth method | Name Id : {0} | UserName: {1}", testcasePqGrid.GridId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -463,8 +488,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured when User Grid page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured when User Grid page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in ConfigurationGrid for SaveStoryboardPqGridWidth method | Name Id : {0} | UserName: {1}", storyboardPqGrid.GridId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in ConfigurationGrid for SaveStoryboardPqGridWidth method | Name Id : {0} | UserName: {1}", storyboardPqGrid.GridId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in ConfigurationGrid for SaveStoryboardPqGridWidth method | Name Id : {0} | UserName: {1}", storyboardPqGrid.GridId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -488,8 +515,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured when User Grid page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured when User Grid page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in ConfigurationGrid for SaveLeftPanelGridWidth method | Name Id : {0} | UserName: {1}", leftPanel.GridId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in ConfigurationGrid for SaveLeftPanelGridWidth method | Name Id : {0} | UserName: {1}", leftPanel.GridId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in ConfigurationGrid for SaveLeftPanelGridWidth method | Name Id : {0} | UserName: {1}", leftPanel.GridId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }

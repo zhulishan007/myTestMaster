@@ -82,8 +82,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in ProjectListByUserName method | Username: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured in ProjectListByUserName method | Username: {0}", Username), ex);
+                logger.Error(string.Format("Error occured GetTree in ProjectListByUserName method | UserId: {0} | Username: {1}", username, Username));
+                ELogger.ErrorException(string.Format("Error occured GetTree in GetRoleByUser method | UserId: {0} | Username: {1}", username, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured GetTree in GetRoleByUser method |UserId: {0} | Username: {1}", username, Username), ex.InnerException);
                 throw;
             }
         }
@@ -147,8 +149,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in GetProjectList method | UserId: {0}", lUserid));
-                ELogger.ErrorException(string.Format("Error occured in GetProjectList method | UserId: {0}", lUserid), ex);
+                logger.Error(string.Format("Error occured GetTree in GetProjectList method | UserId: {0} | Username: {1}", lUserid, Username));
+                ELogger.ErrorException(string.Format("Error occured GetTree in GetProjectList method | UserId: {0} | Username: {1}", lUserid, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in GetProjectList method | UserId: {0}", lUserid), ex.InnerException);
                 throw;
             }
         }
@@ -214,8 +218,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestSuite in GetTestSuiteList method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestSuite in GetTestSuiteList method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured GetTree in GetTestSuiteList method | ProjectId: {0} | Username: {1}", lProjectId, Username));
+                ELogger.ErrorException(string.Format("Error occured GetTree in GetTestSuiteList method | ProjectId: {0} | Username: {1}", lProjectId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured GetTestSuiteList in GetRoleByUser method |ProjectId: {0} | Username: {1}", lProjectId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -248,8 +254,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestSuite in GetTestSuiteList method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestSuite in GetTestSuiteList method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured GetTree in GetStoryboardList method | ProjectId: {0} | Username: {1}", lProjectId, Username));
+                ELogger.ErrorException(string.Format("Error occured GetTree in GetStoryboardList method | ProjectId: {0} | Username: {1}", lProjectId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured GetStoryboardList in GetRoleByUser method |ProjectId: {0} | Username: {1}", lProjectId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -258,7 +266,7 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("Get TestCase List start | ProjectId: {0} | TestSuiteId: {1} | UserName: {2}", lProjectId, lTestSuiteId,  Username));
+                logger.Info(string.Format("Get TestCase List start | ProjectId: {0} | TestSuiteId: {1} | UserName: {2}", lProjectId, lTestSuiteId, Username));
                 var lTestcaseTree = new List<TestCaseListByProject>();
 
                 var lList = from t1 in entity.T_TEST_PROJECT
@@ -302,8 +310,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase in GetTestCaseList method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase in GetTestCaseList method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured GetTree in GetTestCaseList method | ProjectId: {0} | TestSuiteId : {1} | Username: {2}", lProjectId, lTestSuiteId, Username));
+                ELogger.ErrorException(string.Format("Error occured GetTree in GetTestCaseList method | ProjectId: {0} | TestSuiteId : {1} | Username: {2}", lProjectId, lTestSuiteId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured GetTestCaseList in GetRoleByUser method | ProjectId: {0} | TestSuiteId : {1} | Username: {2}", lProjectId, lTestSuiteId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -335,8 +345,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase in GetDatasetCount method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase in GetDatasetCount method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured GetTree in GetDatasetCount method | ProjectId: {0} | TestSuiteId: {1} | TestCaseId: {2} | UserName: {3}", lProjectId, lTestSuiteId, TestCaseId, Username));
+                ELogger.ErrorException(string.Format("Error occured GetTree in GetDatasetCount method | ProjectId: {0} | TestSuiteId: {1} | TestCaseId: {2} | UserName: {3}", lProjectId, lTestSuiteId, TestCaseId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured GetTree in GetDatasetCount method | ProjectId: {0} | TestSuiteId: {1} | TestCaseId: {2} | UserName: {3}", lProjectId, lTestSuiteId, TestCaseId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -369,8 +381,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase in GetDatasetCount method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase in GetDatasetCount method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured GetTree in GetDataSetList method | ProjectId: {0} | TestSuiteId: {1} | TestCaseId: {2} | UserName: {3}", lProjectId, lTestSuiteId, lTestCaseId, Username));
+                ELogger.ErrorException(string.Format("Error occured GetTree in GetDataSetList method | ProjectId: {0} | TestSuiteId: {1} | TestCaseId: {2} | UserName: {3}", lProjectId, lTestSuiteId, lTestCaseId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured GetTree in GetDataSetList method | ProjectId: {0} | TestSuiteId: {1} | TestCaseId: {2} | UserName: {3}", lProjectId, lTestSuiteId, lTestCaseId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -399,8 +413,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestCase in GetDataSetListbyId method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestCase in GetDataSetListbyId method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured GetTree in GetDataSetListbyId method | TestCaseId: {0} | UserName: {1}", lTestCaseId, Username));
+                ELogger.ErrorException(string.Format("Error occured GetTree in GetDataSetList method | TestCaseId: {0} | UserName: {1}", lTestCaseId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured GetTree in GetDataSetList method | TestCaseId: {0} | UserName: {1}", lTestCaseId, Username), ex.InnerException);
                 throw;
             }
         }

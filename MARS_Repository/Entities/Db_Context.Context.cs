@@ -130,6 +130,11 @@ namespace MARS_Repository.Entities
         public DbSet<T_TEST_GROUP> T_TEST_GROUP { get; set; }
         public DbSet<T_TEST_SET> T_TEST_SET { get; set; }
         public DbSet<T_TEST_DATASETTAG> T_TEST_DATASETTAG { get; set; }
+        public DbSet<T_USER_CONFIGURATION> T_USER_CONFIGURATION { get; set; }
+        public DbSet<T_DATABASE_CONNECTIONS> T_DATABASE_CONNECTIONS { get; set; }
+        public DbSet<REL_DB_QUERY> REL_DB_QUERY { get; set; }
+        public DbSet<T_QUERY> T_QUERY { get; set; }
+        public DbSet<T_AXIS_LIST> T_AXIS_LIST { get; set; }
     
         public virtual int DeleteTestCase(Nullable<decimal> tESTCASEID)
         {
@@ -1033,6 +1038,32 @@ namespace MARS_Repository.Entities
                 new ObjectParameter("OLDBASELINE_HISTID", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_SAVEAS_RESULTSET", oLDCOMPARE_HISTIDParameter, oLDBASELINE_HISTIDParameter);
+        }
+    
+        public virtual int SP_CheckValidationStoryboard(Nullable<decimal> fEEDPROCESSID1, ObjectParameter rESULT)
+        {
+            var fEEDPROCESSID1Parameter = fEEDPROCESSID1.HasValue ?
+                new ObjectParameter("FEEDPROCESSID1", fEEDPROCESSID1) :
+                new ObjectParameter("FEEDPROCESSID1", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_CheckValidationStoryboard", fEEDPROCESSID1Parameter, rESULT);
+        }
+    
+        public virtual int SP_SaveStoryboard(Nullable<decimal> fEEDPROCESS_ID, Nullable<decimal> sTORYBOARDID, Nullable<decimal> pROJECTID, ObjectParameter rESULT)
+        {
+            var fEEDPROCESS_IDParameter = fEEDPROCESS_ID.HasValue ?
+                new ObjectParameter("FEEDPROCESS_ID", fEEDPROCESS_ID) :
+                new ObjectParameter("FEEDPROCESS_ID", typeof(decimal));
+    
+            var sTORYBOARDIDParameter = sTORYBOARDID.HasValue ?
+                new ObjectParameter("STORYBOARDID", sTORYBOARDID) :
+                new ObjectParameter("STORYBOARDID", typeof(decimal));
+    
+            var pROJECTIDParameter = pROJECTID.HasValue ?
+                new ObjectParameter("PROJECTID", pROJECTID) :
+                new ObjectParameter("PROJECTID", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_SaveStoryboard", fEEDPROCESS_IDParameter, sTORYBOARDIDParameter, pROJECTIDParameter, rESULT);
         }
     }
 }

@@ -149,7 +149,7 @@
         swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
-            type: 'warning',
+            icon: 'warning',
             showCancelButton: true,
             confirmButtonText: 'Yes, delete it!'
         }).then(function (result) {
@@ -163,13 +163,23 @@
                     contentType: "application/json;charset=utf-8",
                     dataType: "json",
                     success: function (result) {
-                        if (result == "success") {
+                        if (result.status == 1 && result.data == "success") {
                             ActiveUserTable.table().draw();
                             swal.fire(
                                 'Deleted!',
-                                'Pin tab has been deleted.',
+                                result.message,
                                 'success'
                             )
+                        }
+                        else if (result.status == 0) {
+                            swal.fire({
+                                "title": "",
+                                "text": result.message,
+                                "icon": "error",
+                                "onClose": function (e) {
+                                    console.log('on close event fired!');
+                                }
+                            });
                         }
                     },
                     error: function (x, y, z) {

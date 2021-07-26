@@ -331,7 +331,10 @@
         $("#existtestcasename").css("display", "none");
         $("#TCexampleModalLabel").text('');
         $("#TCexampleModalLabel").text('Add Test Case');
-      $("#AddEditTestCase").modal("show");
+        $("#AddEditTestCase").modal("show");
+        $('.modal-dialog').draggable({
+            handle: ".modal-header"
+        });
       $("#addedittestcase").attr("disabled", false);
         $("#hdnTestCaseId").val("");
         $("#testcasename").val("");
@@ -351,7 +354,10 @@
         $("#existtestcasename").css("display", "none");
         $("#TCexampleModalLabel").text('');
         $("#TCexampleModalLabel").text('Edit Test Case');
-      $("#AddEditTestCase").modal("show");
+        $("#AddEditTestCase").modal("show");
+        $('.modal-dialog').draggable({
+            handle: ".modal-header"
+        });
       $("#addedittestcase").attr("disabled", false);
         var lTestCaseId = Id;
         var Name = $(editObj).attr("data-name").replace(/###/g, "'");

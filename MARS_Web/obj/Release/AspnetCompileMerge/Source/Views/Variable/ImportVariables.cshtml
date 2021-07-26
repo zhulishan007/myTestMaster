@@ -12,7 +12,7 @@
                 swal.fire({
                     "title": "Test Suite has validation Occured.",
                     "text": "Please click on link to download error report.",
-                    "type": "warning",
+                    "icon": "warning",
                     "onClose": function (e) {
                         console.log('on close event fired!');
                     }
@@ -32,7 +32,7 @@
                     swal.fire({
                         "title": "Test Suite is imported successfully",
                         //"text": "Please click on link to download error report.",
-                        "type": "success",
+                        "icon": "success",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -52,7 +52,7 @@
                 swal.fire({
                     "title": "Error",
                     "text": "@lErrorMsg",
-                    "type": "error",
+                    "icon": "error",
                     "onClose": function (e) {
                         console.log('on close event fired!');
                     }
@@ -92,7 +92,7 @@
             </div>
             @Html.AntiForgeryToken()
             <div class="kt-portlet__body">
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-8">
                     <div></div>
                     <div class="custom-file ">
                         <input type="file" class="custom-file-input" id="variableupload" name="variableupload" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
@@ -132,7 +132,7 @@
                     swal.fire({
                         "title": "No files to import",
                         "text":"Please select a file to import",
-                        "type": "error",
+                        "icon": "error",
                         "allowOutsideClick": false,
                         "onClose": function (e) {
                             console.log('on close event fired!');
@@ -161,7 +161,7 @@
                         if (fresult[1] == "success") {
                             swal.fire({
                                 "title": "Variables imported successfully",
-                                "type": "success",
+                                "icon": "success",
                                 "allowOutsideClick": false,
                                 "onClose": function (e) {
                                     console.log('on close event fired!');
@@ -171,10 +171,12 @@
                             $("#downloadVariableFile").attr("href", "#");
                         }
                         else if (fresult[1] == "validation") {
+                            document.getElementById("variableupload").value = "";
+                            $('#variableupload').parents().find('.custom-file-label')[0].innerHTML = "Choose excel file";
                             swal.fire({
                                 "title": "Variable Import Validation Error",
                                 "text": "Please click on link to download error report.",
-                                "type": "warning",
+                                "icon": "warning",
                                 "allowOutsideClick": false,
                                 "onClose": function (e) {
                                     console.log('on close event fired!');
@@ -187,7 +189,7 @@
                             swal.fire({
                                 "title": "Excpetion occured",
                                 "text": "Please click on link to download error report.",
-                                "type": "error",
+                                "icon": "error",
                                 "allowOutsideClick": false,
                                 "onClose": function (e) {
                                     console.log('on close event fired!');

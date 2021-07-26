@@ -11,7 +11,7 @@
                 swal.fire({
                     "title": "Test Suite has validation Occured.",
                     "text": "Please click on link to download error report.",
-                    "type": "warning",
+                    "icon": "warning",
                     "onClose": function (e) {
                         console.log('on close event fired!');
                     }
@@ -31,7 +31,7 @@
                     swal.fire({
                         "title": "Test Suite is imported successfully",
                         //"text": "Please click on link to download error report.",
-                        "type": "success",
+                        "icon": "success",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -51,7 +51,7 @@
                 swal.fire({
                     "title": "Error",
                     "text": "@lErrorMsg",
-                    "type": "error",
+                    "icon": "error",
                     "onClose": function (e) {
                         console.log('on close event fired!');
                     }
@@ -96,27 +96,21 @@
                     </h3>
                 </div>
             </div>
-            @*@using (Html.BeginForm("ImportTestSuite", "TestSuite", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                {*@
             @Html.AntiForgeryToken()
             <div class="kt-portlet__body">
-                <div class="form-group col-md-4">
-                    @*<label>Import File</label>*@
+                <div class="form-group col-md-8">
                     <div></div>
                     <div class="custom-file ">
                         <input type="file" class="custom-file-input" id="storyboardupload" name="storyboardupload" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
                         <label class="custom-file-label " for="customFile" style="text-align: left;">Choose excel file</label>
                     </div>
                 </div>
-                @*@if (!string.IsNullOrEmpty(lFileName) && lFileName != ".xlsx")
-                    {*@
                 <div class="form-group col-md-4" style="display:none;" id="hdnDownloadStoryboradlink">
                     <div></div>
                     <div class="custom-file ">
                         <a href="#" id="downloadStoryboradFile"> Click here to download Validation File <i class="flaticon-download-1"></i>  </a>
                     </div>
                 </div>
-                @*}*@
             </div>
 
             <div class="kt-portlet__foot">
@@ -128,8 +122,6 @@
                     </div>
                 </div>
             </div>
-
-            @*}*@
         </div>
     </div>
 </div>
@@ -146,7 +138,7 @@
                     swal.fire({
                         "title": "No files to import",
                         "text": "Please select a file to import",
-                        "type": "error",
+                        "icon": "error",
                         "allowOutsideClick": false,
                         "onClose": function (e) {
                             console.log('on close event fired!');
@@ -178,7 +170,7 @@
                         if (fresult[1] == "success") {
                             swal.fire({
                                 "title": "Storyboard is imported successfully",
-                                "type": "success",
+                                "icon": "success",
                                 "allowOutsideClick": false,
                                 "onClose": function (e) {
                                     console.log('on close event fired!');
@@ -200,10 +192,12 @@
                             });
                         }
                         else if (fresult[1] == "validation") {
+                            document.getElementById("storyboardupload").value = "";
+                            $('#storyboardupload').parents().find('.custom-file-label')[0].innerHTML = "Choose excel file";
                             swal.fire({
                                 "title": "Storyboard validation",
                                 "text": "Please click on link to download error report.",
-                                "type": "warning",
+                                "icon": "warning",
                                 "allowOutsideClick": false,
                                 "onClose": function (e) {
                                     console.log('on close event fired!');
@@ -216,7 +210,7 @@
                             swal.fire({
                                 "title": "Exception occured.",
                                 "text": "Please click on link to download error report.",
-                                "type": "warning",
+                                "icon": "warning",
                                 "allowOutsideClick": false,
                                 "onClose": function (e) {
                                     console.log('on close event fired!');

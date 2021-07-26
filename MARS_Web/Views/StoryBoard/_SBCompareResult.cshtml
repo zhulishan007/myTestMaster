@@ -512,9 +512,12 @@
                         //    $("#CompareReportId" + ChistedId).val(Resultlist[Resultlist.length - 1].CompareReportId);
                         //}
                         for (i = 0; i < Resultlist.length; i++) {
+
                             if (DataTagjsonData.length > 1) {
                                 DataTagjsonData += ",";
                             }
+                          
+
                             StepNo = StepNo + 1;
                             DataTagjsonData += '{ "StepNo":"' + StepNo + '","Keyword":"' + Resultlist[i].Keyword + '", "BaselineStepId":"' + Resultlist[i].BaselineStepId + '", "CompareStepId":"' + Resultlist[i].CompareStepId + '", "InputValueSetting":"' + Resultlist[i].InputValueSetting +
                                 '", "BreturnValues": "' + Resultlist[i].BreturnValues + '", "CreturnValues": "' + Resultlist[i].CreturnValues + '", "COMMENT": "' + Resultlist[i].COMMENT
@@ -524,6 +527,11 @@
                         }
                     }
                     DataTagjsonData = DataTagjsonData + "]";
+                    DataTagjsonData = DataTagjsonData.replaceAll('\t',' ');
+                    DataTagjsonData = DataTagjsonData.replaceAll('\r',' ');
+                    DataTagjsonData = DataTagjsonData.replaceAll('\\\\',' ');
+                    DataTagjsonData = DataTagjsonData.replaceAll('\\',' ');
+                    
                     var SCRdata = JSON.parse(DataTagjsonData);
                     gridobj[lgridName].option("dataModel.data", SCRdata);
                     gridobj[lgridName].refreshDataAndView();

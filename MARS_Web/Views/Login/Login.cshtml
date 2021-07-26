@@ -394,6 +394,7 @@
                                     $("#kt_login_signin_submit_In").prop("disabled", false);
                                     stoploader();
                                     var type = "error";
+                                    result.message = result.message == null ? "Login failed: Please check Database configuration/Web config" : result.message;
                                     swal.fire({
                                         "title": "",
                                         "text": result.message,

@@ -41,7 +41,7 @@ namespace MARS_Web.Controllers
                 var lConnectionStr = SessionManager.APP;
                 lRep.UpdateIsAvailableReload((long)SessionManager.TESTER_ID);
                 ViewBag.Title = "Home Page";
-                if (TestcaseId == 0 && TestsuiteId == 0 && ProjectId == 0)
+               if (TestcaseId == 0 && TestsuiteId == 0 && ProjectId == 0)
                 {
                     ViewBag.TestcaseId = TestcaseId;
                     ViewBag.TestsuiteId = TestsuiteId;
@@ -75,8 +75,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Home page | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in Home page | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in Home for Index method | TestCase Id : {0} | TestSuite Id : {1} | Project Id : {2} | UserName: {3}", TestcaseId, TestsuiteId, ProjectId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Home for Index method | TestCase Id : {0} | TestSuite Id : {1} | Project Id : {2} | UserName: {3}", TestcaseId, TestsuiteId, ProjectId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Home for Index method | TestCase Id : {0} | TestSuite Id : {1} | Project Id : {2} | UserName: {3}", TestcaseId, TestsuiteId, ProjectId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
             }
             return View();
         }
@@ -107,7 +109,11 @@ namespace MARS_Web.Controllers
                     Session["ProjectId"] = ViewBag.ProjectId;
                     Session["StoryBoardId"] = ViewBag.StoryBoardId;
                 }
-
+                
+                var result = repo.GetActions(Storyboardid);
+                ViewBag.ActionList = JsonConvert.SerializeObject(result);
+                var testSuiteResult = repo.GetTestSuites(Projectid);
+                ViewBag.TestSuitesList = JsonConvert.SerializeObject(testSuiteResult);
                 var userid = SessionManager.TESTER_ID;
                 var repacc = new ConfigurationGridRepository();
                 repacc.Username = SessionManager.TESTER_LOGIN_NAME;
@@ -137,8 +143,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Storyborad | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in Storyborad | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in Home for PartialRightStoryboardGrid method | StoryBoard Id : {0} | Project Id : {1} | UserName: {2}", Storyboardid, Projectid, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Home for PartialRightStoryboardGrid method | StoryBoard Id : {0} | Project Id : {1} | UserName: {2}", Storyboardid, Projectid, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Home for PartialRightStoryboardGrid method | StoryBoard Id : {0} | Project Id : {1} | UserName: {2}", Storyboardid, Projectid, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
             }
             return PartialView("PartialRightStoryboardGrid");
         }
@@ -151,7 +159,10 @@ namespace MARS_Web.Controllers
                 ViewBag.WebAPIURL = ConfigurationManager.AppSettings["WebApiURL"];
                 ViewBag.Title = "Home Page";
                 var lRep = new TestCaseRepository();
+                var lKeyRepo = new KeywordRepository();
                 lRep.Username = SessionManager.TESTER_LOGIN_NAME;
+                var repObject = new ObjectRepository();
+                repObject.Username = SessionManager.TESTER_LOGIN_NAME;
                 if (TestcaseId == 0 && TestsuiteId == 0 && ProjectId == 0)
                 {
                     ViewBag.TestcaseId = TestcaseId;
@@ -171,6 +182,30 @@ namespace MARS_Web.Controllers
                     Session["TestcaseId"] = ViewBag.TestcaseId;
                     Session["ProjectId"] = ViewBag.ProjectId;
                 }
+                //Start - Put keywords in a viewbag
+
+                var lKeywordList = new List<string>();
+                lKeywordList.Add("pegwindow");
+                lKeywordList.Add("dbcompare");
+                lKeywordList.Add("copyexcelrangetoclipboard");
+                lKeywordList.Add("executecommand");
+                lKeywordList.Add("killapplication");
+                lKeywordList.Add("loop");
+                lKeywordList.Add("resumenext");
+                lKeywordList.Add("startapplication");
+                lKeywordList.Add("waitforseconds");
+
+                var keywordsResult = lKeyRepo.GetKeywords().Select(y => new KeywordList
+                {
+                    KeywordName = y.KEY_WORD_NAME
+                }).ToList();
+                var keywordsPegWindow = keywordsResult.Where(x => lKeywordList.Contains(x.KeywordName.ToLower().Trim())).ToList();
+                ViewBag.KeywordsList = JsonConvert.SerializeObject(keywordsResult);
+                ViewBag.KeywordsPegwindowList = JsonConvert.SerializeObject(keywordsPegWindow);
+
+                var lList = repObject.GetObjectsByPegWindowType(TestcaseId).OrderBy(y => y.ObjectName).ToList();
+                ViewBag.ObjectList = JsonConvert.SerializeObject(lList);
+
                 var userid = SessionManager.TESTER_ID;
                 var repacc = new ConfigurationGridRepository();
                 repacc.Username = SessionManager.TESTER_LOGIN_NAME;
@@ -189,8 +224,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Testcase | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in Testcase | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in Home for RightSideGridView method | TestCase Id : {0} | TestSuite Id : {1} | Project Id : {2} | UserName: {3}", TestcaseId, TestsuiteId, ProjectId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Home for RightSideGridView method | TestCase Id : {0} | TestSuite Id : {1} | Project Id : {2} | UserName: {3}", TestcaseId, TestsuiteId, ProjectId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Home for RightSideGridView method | TestCase Id : {0} | TestSuite Id : {1} | Project Id : {2} | UserName: {3}", TestcaseId, TestsuiteId, ProjectId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
             }
             return PartialView("RightSideGridView");
         }
@@ -202,6 +239,7 @@ namespace MARS_Web.Controllers
             try
             {
                 var lRep = new TestCaseRepository();
+                lRep.Username = SessionManager.TESTER_LOGIN_NAME;
                 var result = lRep.GetTSTCDSId(TestCasename, TestSuitname, Datasetname);
                 string[] fresult = result.Split(',');
 
@@ -210,8 +248,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in user page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in user page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in Home for GetTSTCDSName method | TestCase Name : {0} | TestSuite Name : {1} | DataSet Name : {2} | UserName: {3}", TestCasename, TestSuitname, Datasetname, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Home for GetTSTCDSName method | TestCase Name : {0} | TestSuite Name : {1} | DataSet Name : {2} | UserName: {3}", TestCasename, TestSuitname, Datasetname, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Home for GetTSTCDSName method | TestCase Name : {0} | TestSuite Name : {1} | DataSet Name : {2} | UserName: {3}", TestCasename, TestSuitname, Datasetname, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -246,8 +286,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Storyboard | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in Storyboard | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in Home for GetSBBreadcum method | StoryBoard Id : {0} | Project Id : {1} | UserName: {2}", lStoryboardId, lProjectId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Home for GetSBBreadcum method | StoryBoard Id : {0} | Project Id : {1} | UserName: {2}", lStoryboardId, lProjectId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Home for GetSBBreadcum method | StoryBoard Id : {0} | Project Id : {1} | UserName: {2}", lStoryboardId, lProjectId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }

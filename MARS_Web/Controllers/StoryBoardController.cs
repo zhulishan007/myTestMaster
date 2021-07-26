@@ -25,6 +25,7 @@ using MARSUtility;
 
 namespace MARS_Web.Controllers
 {
+    [SessionTimeout]
     public class StoryBoardController : Controller
     {
         MARSUtility.CommonHelper objcommon = new MARSUtility.CommonHelper();
@@ -49,8 +50,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured when stroyboard page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured when stroyboard page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for StoryBoardList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in StoryBoard for StoryBoardList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in StoryBoard for StoryBoardList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
             }
             return PartialView();
         }
@@ -86,8 +89,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Application page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in Application page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for AddEditStoryboard method | StoryBoard Id : {0} | UserName: {1}", model.Storyboardid, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in StoryBoard for AddEditStoryboard method | StoryBoard Id : {0} | UserName: {1}", model.Storyboardid, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in StoryBoard for AddEditStoryboard method | StoryBoard Id : {0} | UserName: {1}", model.Storyboardid, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -160,8 +165,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Delete Storyboard | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in Delete Storyboard | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for DeleteStoryboard method | StoryBoard Id : {0} | UserName: {1}", sid, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in StoryBoard for DeleteStoryboard method | StoryBoard Id : {0} | UserName: {1}", sid, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in StoryBoard for DeleteStoryboard method | StoryBoard Id : {0} | UserName: {1}", sid, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -184,8 +191,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Storyboard | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in Storyboard | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for CheckDuplicateStoryboardName method | StoryBoard Id : {0} | StoryBoard Name : {1} | UserName: {2}", storyboardid, storyboardname, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in StoryBoard for CheckDuplicateStoryboardName method | StoryBoard Id : {0} | StoryBoard Name : {1} | UserName: {2}", storyboardid, storyboardname, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in StoryBoard for CheckDuplicateStoryboardName method | StoryBoard Id : {0} | StoryBoard Name : {1} | UserName: {2}", storyboardid, storyboardname, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -219,12 +228,14 @@ namespace MARS_Web.Controllers
                     logger.Info(string.Format("Rename Storyboard  Modal close | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
                     logger.Info(string.Format("Rename Storyboard successfully | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
                 }
-                
+
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Rename Storyboard  | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in Rename Storyboard  | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for ChangeStoryboardName method | StoryBoard Id : {0} | StoryBoard Name : {1} | StoryBoard Desc : {2} | Project Id : {3} | UserName: {4}", storyboardid, storyboardname, storyboarddesc, projectid, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in StoryBoard for ChangeStoryboardName method | StoryBoard Id : {0} | StoryBoard Name : {1} | StoryBoard Desc : {2} | Project Id : {3} | UserName: {4}", storyboardid, storyboardname, storyboarddesc, projectid, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in StoryBoard for ChangeStoryboardName method | StoryBoard Id : {0} | StoryBoard Name : {1} | StoryBoard Desc : {2} | Project Id : {3} | UserName: {4}", storyboardid, storyboardname, storyboarddesc, projectid, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -288,9 +299,12 @@ namespace MARS_Web.Controllers
                 string lSchema = SessionManager.Schema;
                 var lConnectionStr = SessionManager.APP;
 
-                string lFileName = Storyboardname + "_" + Projectname + "_" + DateTime.Now.ToString("yyyyMMdd") + "_" + DateTime.Now.ToString("HHmmss") + ".xlsx";
+                Regex re = new Regex("[;\\/:*?\"<>|&']");
+                var SBName = re.Replace(Storyboardname, "_").Replace("\\", "&bs").Replace("/", "&fs").Replace("*", "&ast").Replace("[", "&ob").Replace("]", "&cb").Replace(":", "&col").Replace("?", "&qtn");
+
+                string lFileName = SBName + "_" + Projectname + "_" + DateTime.Now.ToString("yyyyMMdd") + "_" + DateTime.Now.ToString("HHmmss") + ".xlsx";
                 string FullPath = Path.Combine(System.Web.HttpContext.Current.Server.MapPath("~/TempExport/"), lFileName);
-                name = "Log_" + Storyboardname + "_Export" + DateTime.Now.ToString(" yyyy-MM-dd HH-mm-ss") + ".xlsx";
+                name = "Log_" + SBName + "_Export" + DateTime.Now.ToString(" yyyy-MM-dd HH-mm-ss") + ".xlsx";
 
                 strPath = Path.Combine(Server.MapPath("~/" + log_path), name);
                 try
@@ -307,6 +321,10 @@ namespace MARS_Web.Controllers
                 }
                 catch (Exception ex)
                 {
+                    logger.Error(string.Format("Error occured in StoryBoard for ExportStoryboard method | StoryBoard Id : {0} | Project Id : {1} | UserName: {2}", Storyboardid, Projectid, SessionManager.TESTER_LOGIN_NAME));
+                    ELogger.ErrorException(string.Format("Error occured in StoryBoard for ExportStoryboard method | StoryBoard Id : {0} | Project Id : {1} | UserName: {2}", Storyboardid, Projectid, SessionManager.TESTER_LOGIN_NAME), ex);
+                    if (ex.InnerException != null)
+                        ELogger.ErrorException(string.Format("InnerException : Error occured in StoryBoard for ExportStoryboard method | StoryBoard Id : {0} | Project Id : {1} | UserName: {2}", Storyboardid, Projectid, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                     int line;
                     string msg = ex.Message;
                     line = MARSUtility.dbtable.lineNo(ex);
@@ -390,6 +408,10 @@ namespace MARS_Web.Controllers
                 }
                 catch (Exception ex)
                 {
+                    logger.Error(string.Format("Error occured in StoryBoard for ExportStoryboardsByProject method | Project Id : {0} | UserName: {1}", projectid, SessionManager.TESTER_LOGIN_NAME));
+                    ELogger.ErrorException(string.Format("Error occured in StoryBoard for ExportStoryboardsByProject method | Project Id : {0} | UserName: {1}", projectid, SessionManager.TESTER_LOGIN_NAME), ex);
+                    if (ex.InnerException != null)
+                        ELogger.ErrorException(string.Format("InnerException : Error occured in StoryBoard for ExportStoryboardsByProject method | Project Id : {0} | UserName: {1}", projectid, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                     int line;
                     string msg = ex.Message;
                     line = MARSUtility.dbtable.lineNo(ex);
@@ -407,6 +429,7 @@ namespace MARS_Web.Controllers
         }
         public FileStreamResult ExportAllStoryboards()
         {
+
             string FullPath = "";
             string lSchema = SessionManager.Schema;
             var lConnectionStr = SessionManager.APP;
@@ -433,8 +456,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured when stroyboard page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured when stroyboard page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for ImportStoryboard method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in StoryBoard for ImportStoryboard method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in StoryBoard for ImportStoryboard method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
             }
             return PartialView();
         }
@@ -527,6 +552,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
+                logger.Error(string.Format("Error occured in StoryBoard for ImportStoryboards method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in StoryBoard for ImportStoryboards method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in StoryBoard for ImportStoryboards method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 int line;
                 string msg = ex.Message;
                 line = dbtable.lineNo(ex);
@@ -576,8 +605,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Storyborad | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in Storyborad | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for GetStoryBoardDetails method | StoryBoard Id : {0} | Project Id : {1} | UserName: {2}", sid, Pid, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in StoryBoard for GetStoryBoardDetails method | StoryBoard Id : {0} | Project Id : {1} | UserName: {2}", sid, Pid, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in StoryBoard for GetStoryBoardDetails method | StoryBoard Id : {0} | Project Id : {1} | UserName: {2}", sid, Pid, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -599,8 +630,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Storyborad | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in Storyborad | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for GetActionList method | StoryBoard Id : {0} | UserName: {0}", storyboardid, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in StoryBoard for GetActionList method | StoryBoard Id : {0} | UserName: {0}", storyboardid, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in StoryBoard for GetActionList method | StoryBoard Id : {0} | UserName: {0}", storyboardid, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -622,8 +655,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Storyborad | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in Storyborad | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for GetTestSuiteListInStoryboard method | Project Id : {0} | UserName: {0}", ProjectId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in StoryBoard for GetTestSuiteListInStoryboard method | Project Id : {0} | UserName: {0}", ProjectId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in StoryBoard for GetTestSuiteListInStoryboard method | Project Id : {0} | UserName: {0}", ProjectId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -633,6 +668,7 @@ namespace MARS_Web.Controllers
         //Loads Dropdown of TestCase column based on selected TestSuite in Storyboard grid 
         public ActionResult GetTestCaseListinStoryboard(GetTestCaseByTestSuite lgrid)
         {
+            logger.Info(string.Format("controller -->GetTestCaseListinStoryboard start "));
             ResultModel resultModel = new ResultModel();
             try
             {
@@ -643,24 +679,32 @@ namespace MARS_Web.Controllers
                 string pgrid = lgrid.grid;
                 long stepid = lgrid.stepid;
                 long projectid = lgrid.projectid;
+
                 int i = 1;
                 var obj = js.Deserialize<GetTestCaseByTestSuite[]>(pgrid);
-                foreach (var item in obj)
-                {
-                    if (stepid >= i)
-                    {
-                        lresult = repo.GetTestCaseList(projectid, item.testsuitename);
-                    }
-                    i++;
-                }
 
+                GetTestCaseByTestSuite testcase = obj[stepid - 1];
+                logger.Info(string.Format("controller-->call repo -->GetTestCaseListinStoryboard start "));
+                var lresult1 = repo.GetTestCaseList(projectid, testcase.testsuitename);
+                logger.Info(string.Format("controller-->call repo -->GetTestCaseListinStoryboard end "));
+                /*  foreach (var item in obj)
+                  {
+                      if (stepid >= i)
+                      {
+                          lresult = repo.GetTestCaseList(projectid, item.testsuitename);
+                      }
+                      i++;
+                  }*/
+                logger.Info(string.Format("controller -->GetTestCaseListinStoryboard end "));
                 resultModel.status = 1;
-                resultModel.data = lresult;
+                resultModel.data = lresult1;
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Storyborad | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in Storyborad | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for GetTestCaseListinStoryboard method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in StoryBoard for GetTestCaseListinStoryboard method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in StoryBoard for GetTestCaseListinStoryboard method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -682,21 +726,25 @@ namespace MARS_Web.Controllers
                 long projectid = lgrid.projectid;
                 int i = 1;
                 var obj = js.Deserialize<GetDatasetByTestcase[]>(pgrid);
-                foreach (var item in obj)
-                {
-                    if (stepid >= i)
-                    {
-                        lresult = repo.GetDataSetList(projectid, item.testsuitename, item.Testcasename);
-                    }
-                    i++;
-                }
+                GetDatasetByTestcase dataset = obj[stepid - 1];
+                var lresult1 = repo.GetDataSetList(projectid, dataset.testsuitename, dataset.Testcasename);
+                /* foreach (var item in obj)
+                 {
+                     if (stepid >= i)
+                     {
+                         lresult = repo.GetDataSetList(projectid, item.testsuitename, item.Testcasename);
+                     }
+                     i++;
+                 }*/
                 resultModel.status = 1;
-                resultModel.data = lresult;
+                resultModel.data = lresult1;
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Storyborad | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in Storyborad | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for GetDatasetList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in StoryBoard for GetDatasetList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in StoryBoard for GetDatasetList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -735,8 +783,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Storyborad | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in Storyborad | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for LoadDependency method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in StoryBoard for LoadDependency method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in StoryBoard for LoadDependency method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -744,7 +794,7 @@ namespace MARS_Web.Controllers
         }
 
         //Validates a storyboard grid on click of validate button and returns the result
-        public ActionResult ValidateStoryboard(string lGridJsonData, string lStoryboardId)
+        public ActionResult ValidateStoryboard(string lGridJsonData, string lStoryboardId, string lProjectId)
         {
             logger.Info(string.Format("Storyborad Check Validation start | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
             ResultModel resultModel = new ResultModel();
@@ -753,24 +803,46 @@ namespace MARS_Web.Controllers
             {
                 JavaScriptSerializer js = new JavaScriptSerializer();
                 var sbRep = new StoryBoardRepository();
+                sbRep.Username = SessionManager.TESTER_LOGIN_NAME;
 
                 //check Keyword  object linking
                 var lobj = js.Deserialize<StoryBoardResultModel[]>(lGridJsonData);
+                string lSchema = SessionManager.Schema;
+                var lConnectionStr = SessionManager.APP;
+                if (lobj.Count() > 0)
+                {
+                    string lreturnValues = sbRep.InsertFeedProcess();
 
-                var ValidationResult = sbRep.CheckSBGridValidation(lobj.ToList(), int.Parse(lStoryboardId));
-                ValidationResult = ValidationResult.Where(x => x.IsValid == false).ToList();
-                result = JsonConvert.SerializeObject(ValidationResult);
+                    var lvalFeed = lreturnValues.Split('~')[0];
+                    var lvalFeedD = lreturnValues.Split('~')[1];
 
-                resultModel.status = 1;
-                resultModel.data = result;
-                resultModel.message = "Storyboard validated successfully.";
-                logger.Info(string.Format("Storyborad Check Validation end | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                logger.Info(string.Format("Storyboard validated successfully. | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                    var ValidationResult = sbRep.InsertStgStoryboardValidationTable(lConnectionStr, lSchema, lobj, lStoryboardId, lvalFeed, lvalFeedD, lProjectId);
+
+
+                    //var ValidationResult = sbRep.CheckSBGridValidation(lobj.ToList(), int.Parse(lStoryboardId));
+                    //ValidationResult = ValidationResult.Where(x => x.IsValid == false).ToList();
+                    result = JsonConvert.SerializeObject(ValidationResult);
+
+                    resultModel.status = 1;
+                    resultModel.data = result;
+                    resultModel.message = "Storyboard validated successfully.";
+                    logger.Info(string.Format("Storyborad Check Validation end | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                    logger.Info(string.Format("Storyboard validated successfully. | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                }
+                else
+                {
+                    resultModel.status = 0;
+                    resultModel.message = "Cannot validate an empty storyboard.";
+                    logger.Info(string.Format("Cannot validate an empty storyboard. | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                    logger.Info(string.Format("Storyborad Check Validation end | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                }
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Storyborad | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in Storyborad | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for ValidateStoryboard method | StoryBoard Id : {0} | Project Id : {1} | GridJsonData : {2} | UserName: {3}", lStoryboardId, lProjectId, lGridJsonData, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in StoryBoard for ValidateStoryboard method | StoryBoard Id : {0} | Project Id : {1} | GridJsonData : {2} | UserName: {3}", lStoryboardId, lProjectId, lGridJsonData, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in StoryBoard for ValidateStoryboard method |  StoryBoard Id : {0} | Project Id : {1} | GridJsonData : {2} | UserName: {3}", lStoryboardId, lProjectId, lGridJsonData, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -778,9 +850,9 @@ namespace MARS_Web.Controllers
         }
 
         //Saves the storyboard grid after it is validated successfully
-        public ActionResult SaveStoryboardGrid(string lGridJsonData, string lStoryboardId, string lchangedGrid)
+        public ActionResult SaveStoryboardGrid(string lGridJsonData, string lStoryboardId, string lchangedGrid, string lProjectId)
         {
-            logger.Info(string.Format("Storyborad SaveAs Start | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+            logger.Info(string.Format("Storyborad Save Start | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
             ResultModel resultModel = new ResultModel();
             var result = "";
             try
@@ -790,48 +862,79 @@ namespace MARS_Web.Controllers
                 sbRep.Username = SessionManager.TESTER_LOGIN_NAME;
                 //check Keyword  object linking
                 var lobj = js.Deserialize<StoryBoardResultModel[]>(lGridJsonData);
-
-                var ValidationResult = sbRep.CheckSBGridValidation(lobj.ToList(), int.Parse(lStoryboardId));
-                ValidationResult = ValidationResult.Where(x => x.IsValid == false).ToList();
-
-                if (ValidationResult.Count() == 0)
+                string lSchema = SessionManager.Schema;
+                var lConnectionStr = SessionManager.APP;
+                if (lobj.Count() > 0)
                 {
-                    Dictionary<String, List<Object>> dlist = js.Deserialize<Dictionary<String, List<Object>>>(lchangedGrid);
+                    logger.Info(string.Format("Storyborad Saves 1 | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                    string lreturnValues = sbRep.InsertFeedProcess();
+                    logger.Info(string.Format("Storyborad Saves 2 | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                    var lvalFeed = lreturnValues.Split('~')[0];
+                    logger.Info(string.Format("Storyborad Saves 3 | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                    var lvalFeedD = lreturnValues.Split('~')[1];
+                    logger.Info(string.Format("Storyborad Saves 4 | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                    var ValidationResult = sbRep.InsertStgStoryboardValidationTable(lConnectionStr, lSchema, lobj, lStoryboardId, lvalFeed, lvalFeedD, lProjectId);
+                    logger.Info(string.Format("Storyborad Saves 5 | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                    // var ValidationResult = sbRep.CheckSBGridValidation(lobj.ToList(), int.Parse(lStoryboardId));
+                    //  ValidationResult = ValidationResult.Where(x => x.IsValid == false).ToList();
 
-                    if (dlist["deleteList"].Count > 0)
+                    if (ValidationResult.Count() == 0)
                     {
-                        var lDeletedSB = new List<long>();
-                        foreach (var d in dlist["deleteList"])
+                        Dictionary<String, List<Object>> dlist = js.Deserialize<Dictionary<String, List<Object>>>(lchangedGrid);
+
+                        if (dlist["deleteList"].Count > 0)
                         {
-                            var delete = (((System.Collections.Generic.Dictionary<string, object>)d).ToList());
-                            var lsbdetailId = delete.Where(x => x.Key == "detailid");
-                            if (!string.IsNullOrEmpty(Convert.ToString(lsbdetailId.FirstOrDefault().Value)))
+                            var lDeletedSB = new List<long>();
+                            foreach (var d in dlist["deleteList"])
                             {
-                                lDeletedSB.Add(Convert.ToInt32(lsbdetailId.FirstOrDefault().Value.ToString()));
+                                var delete = (((System.Collections.Generic.Dictionary<string, object>)d).ToList());
+                                var lsbdetailId = delete.Where(x => x.Key == "detailid");
+                                if (!string.IsNullOrEmpty(Convert.ToString(lsbdetailId.FirstOrDefault().Value)))
+                                {
+                                    lDeletedSB.Add(Convert.ToInt32(lsbdetailId.FirstOrDefault().Value.ToString()));
+                                }
+                            }
+                            if (lDeletedSB.Count() > 0)
+                            {
+                                logger.Info(string.Format("Storyborad Saves 6 | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                                sbRep.DeleteSBSteps(lDeletedSB);
+                                logger.Info(string.Format("Storyborad Saves 7 | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
                             }
                         }
-                        if (lDeletedSB.Count() > 0)
-                        {
-                            sbRep.DeleteSBSteps(lDeletedSB);
-                        }
+                        logger.Info(string.Format("Storyborad Saves 8 | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                        sbRep.SaveStoryboardGrid(int.Parse(lStoryboardId), lvalFeed, lProjectId);
+                        logger.Info(string.Format("Storyborad Saves 9 | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                        result = JsonConvert.SerializeObject(ValidationResult);
+                        logger.Info(string.Format("Storyborad Saves 10 | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
                     }
-                    sbRep.NewSaveAsStoryboardGrid(lobj.ToList(), int.Parse(lStoryboardId));
-                    result = JsonConvert.SerializeObject(ValidationResult);
-                }
+                    else
+                    {
+                        result = JsonConvert.SerializeObject(ValidationResult);
+                        logger.Info(string.Format("Storyborad Saves 11 | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                    }
+                    resultModel.status = 1;
+                    resultModel.data = result;
+                    resultModel.message = "Storyboard saved successfully.";
+                    logger.Info(string.Format("Storyborad Save end | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                    logger.Info(string.Format("Storyboard saved successfully. | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+            }
                 else
                 {
-                    result = JsonConvert.SerializeObject(ValidationResult);
-                }
-                resultModel.status = 1;
-                resultModel.data = result;
-                resultModel.message = "Storyboard saved successfully.";
-                logger.Info(string.Format("Storyborad SaveAs end | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                logger.Info(string.Format("Storyboard saved successfully. | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                resultModel.status = 0;
+                resultModel.message = "Cannot save an empty storyboard.";
+                logger.Info(string.Format("Cannot save an empty storyboard. | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                logger.Info(string.Format("Storyborad Check Validation end | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
             }
+        }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Storyborad | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in Storyborad | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for SaveStoryboardGrid method | StoryBoard Id : {0} | Project Id : {1} | GridJsonData : {2} | ChangedGrid : {3} | UserName: {4}", lStoryboardId, lProjectId, lGridJsonData, lchangedGrid, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in StoryBoard for SaveStoryboardGrid method |  StoryBoard Id : {0} | Project Id : {1} | GridJsonData : {2} | ChangedGrid : {3} | UserName: {4}", lStoryboardId, lProjectId, lGridJsonData, lchangedGrid, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in StoryBoard for SaveStoryboardGrid method |  StoryBoard Id : {0} | Project Id : {1} | GridJsonData : {2} | ChangedGrid : {3} | UserName: {4}", lStoryboardId, lProjectId, lGridJsonData, lchangedGrid, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+                if (ex.InnerException.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in StoryBoard for SaveStoryboardGrid method |  StoryBoard Id : {0} | Project Id : {1} | GridJsonData : {2} | ChangedGrid : {3} | UserName: {4}", lStoryboardId, lProjectId, lGridJsonData, lchangedGrid, SessionManager.TESTER_LOGIN_NAME), ex.InnerException.InnerException);
+
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -862,8 +965,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Storyboard | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in Storyboard | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for SaveAsStoryboard method | StoryBoard Id : {0} | StoryBoard Name : {1} | StoryBoard Desc : {2} | Project Id : {3} | UserName: {4}", oldstoryboardid, storyboardname, storyboarddesc, projectid, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in StoryBoard for SaveAsStoryboard method | StoryBoard Id : {0} | StoryBoard Name : {1} | StoryBoard Desc : {2} | Project Id : {3} | UserName: {4}", oldstoryboardid, storyboardname, storyboarddesc, projectid, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in StoryBoard for SaveAsStoryboard method | StoryBoard Id : {0} | StoryBoard Name : {1} | StoryBoard Desc : {2} | Project Id : {3} | UserName: {4}", oldstoryboardid, storyboardname, storyboarddesc, projectid, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -887,8 +992,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Storyboard | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in Storyboard | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for GetApplicationListByStoryboard method | StoryBoard Id : {0} | UserName: {1}", lStoryboardId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in StoryBoard for GetApplicationListByStoryboard method | StoryBoard Id : {0} | UserName: {1}", lStoryboardId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in StoryBoard for GetApplicationListByStoryboard method | StoryBoard Id : {0} | UserName: {1}", lStoryboardId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -1047,56 +1154,76 @@ namespace MARS_Web.Controllers
         #region SignalR Connect to refresh Pass/Fail of the Testcase in UI immediately after any changes occured in database
         public ActionResult SignalRConnect()
         {
+
+            logger.Info(string.Format("SignalRConnect start | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
             string logPath = WebConfigurationManager.AppSettings["LogPathLocation"];
             EmailHelper.logFilePath = System.Web.HttpContext.Current.Server.MapPath("~/" + logPath + "/");
             string lSchema = SessionManager.Schema;
-
             OracleConnection con = new OracleConnection(SessionManager.APP);
+            try
+            {
+                logger.Info(string.Format("for grant SignalRConnect start | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+                OracleCommand ecmd = new OracleCommand();
 
-            OracleCommand ecmd = new OracleCommand();
+                ecmd.CommandText = "grant change notification to " + lSchema;//where storyboard_detail_id = 10680
+                ecmd.Connection = con;
+                con.Open();
+                ecmd.ExecuteReader();
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in SignalRConnect Grant permission | Schema: {0}", lSchema));
+                ELogger.ErrorException(string.Format("Error occured in SignalRConnect Grant permission | Schema: {0}", lSchema), ex);
 
-            ecmd.CommandText = "grant change notification to " + lSchema;//where storyboard_detail_id = 10680
-            ecmd.Connection = con;
-            con.Open();
-            ecmd.ExecuteReader();
-            con.Close();
-            
-            OracleCommand cmd = new OracleCommand();
+            }
+            try
+            {
+                logger.Info(string.Format("After grant SignalRConnect start | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+                OracleCommand cmd = new OracleCommand();
 
-            cmd.CommandText = "select * from " + lSchema + ".T_PROJ_TEST_RESULT ";//where storyboard_detail_id = 10680
-            cmd.Connection = con;
-            con.Open();
-            OracleDependency dependency = new OracleDependency(cmd);
-            dependency.QueryBasedNotification = true;
-            cmd.Notification.IsNotifiedOnce = false;
-            dependency.OnChange += new OnChangeEventHandler(RefreshResult);
-            cmd.ExecuteReader();
+                cmd.CommandText = "select * from " + lSchema + ".T_PROJ_TEST_RESULT ";//where storyboard_detail_id = 10680
+                cmd.Connection = con;
+                con.Open();
+                OracleDependency dependency = new OracleDependency(cmd);
+                dependency.QueryBasedNotification = true;
+                cmd.Notification.IsNotifiedOnce = false;
+                dependency.OnChange += new OnChangeEventHandler(RefreshResult);
+                cmd.ExecuteReader();
 
-            EmailHelper.WriteMessage("Connect SignalR 1", EmailHelper.logFilePath, DateTime.Now.ToString(), "");
+                EmailHelper.WriteMessage("Connect SignalR 1", EmailHelper.logFilePath, DateTime.Now.ToString(), "");
 
 
-            // Updating emp table so that a notification can be received when
-            // the emp table is updated.
-            // Start a transaction to update emp table
-            //OracleTransaction txn = con.BeginTransaction();
-            //// Create a new command which will update emp table
-            //string updateCmdText =
-            //  "update T_PROJ_TEST_RESULT set RESULT_DESC = '1' where HIST_ID= 1181";
-            //OracleCommand updateCmd = new OracleCommand(updateCmdText, con);
-            //// Update the emp table
-            //updateCmd.ExecuteNonQuery();
-            //EmailHelper.WriteMessage("Connect SignalR 2", EmailHelper.logFilePath, DateTime.Now.ToString(), "");
-            ////When the transaction is committed, a notification will be sent from
-            ////the database
-            //txn.Commit();
-            ////con.Close();
-            //EmailHelper.WriteMessage("Connect SignalR 3", EmailHelper.logFilePath, DateTime.Now.ToString(), "");
-            //while (IsNotified == false)
-            //{
-            //    Thread.Sleep(100);
-            //}
-            con.Close();
-            return Json(false, JsonRequestBehavior.AllowGet);
+                // Updating emp table so that a notification can be received when
+                // the emp table is updated.
+                // Start a transaction to update emp table
+                //OracleTransaction txn = con.BeginTransaction();
+                //// Create a new command which will update emp table
+                //string updateCmdText =
+                //  "update T_PROJ_TEST_RESULT set RESULT_DESC = '1' where HIST_ID= 1181";
+                //OracleCommand updateCmd = new OracleCommand(updateCmdText, con);
+                //// Update the emp table
+                //updateCmd.ExecuteNonQuery();
+                //EmailHelper.WriteMessage("Connect SignalR 2", EmailHelper.logFilePath, DateTime.Now.ToString(), "");
+                ////When the transaction is committed, a notification will be sent from
+                ////the database
+                //txn.Commit();
+                ////con.Close();
+                //EmailHelper.WriteMessage("Connect SignalR 3", EmailHelper.logFilePath, DateTime.Now.ToString(), "");
+                //while (IsNotified == false)
+                //{
+                //    Thread.Sleep(100);
+                //}
+                con.Close();
+                logger.Info(string.Format("SignalRConnect end | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+                return Json(false, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in SignalRConnect | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in SignalRConnect | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                return Json("", JsonRequestBehavior.AllowGet);
+            }
         }
         static void RefreshResult(Object sender, OracleNotificationEventArgs args)
         {
@@ -1121,8 +1248,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured when Result set page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured when Result set page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for GetTestResult method | TestCase Id : {0} | StoryBoardDetail Id : {1} | StoryBoard Name : {2} | Run Order: {3} | UserName: {4}", TestCaseId, StoryboardDetailId, StoryboardName, RunOrder, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in StoryBoard for GetTestResult method | TestCase Id : {0} | StoryBoardDetail Id : {1} | StoryBoard Name : {2} | Run Order: {3} | UserName: {4}", TestCaseId, StoryboardDetailId, StoryboardName, RunOrder, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in StoryBoard for GetTestResult method | TestCase Id : {0} | StoryBoardDetail Id : {1} | StoryBoard Name : {2} | Run Order: {3} | UserName: {4}", TestCaseId, StoryboardDetailId, StoryboardName, RunOrder, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
             }
             return PartialView("_SBTestResult");
         }
@@ -1142,8 +1271,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured when Result set page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured when Result set page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for GetTestResultList method | TestCase Id : {0} | StoryBoardDetail Id : {1} | UserName: {2}", TestCaseId, StoryboardDetailId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in StoryBoard for GetTestResultList method | TestCase Id : {0} | StoryBoardDetail Id : {1} | UserName: {2}", TestCaseId, StoryboardDetailId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in StoryBoard for GetTestResultList method | TestCase Id : {0} | StoryBoardDetail Id : {1} | UserName: {2}", TestCaseId, StoryboardDetailId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -1179,14 +1310,16 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured when Result set page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured when Result set page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for GetCompareResultSet method | Baseline HistId : {0} | Comapre HistId : {1} | TestCaseId : {2} | SBDetailId : {3} | UserName: {4}", BhistedId, ChistedId, TestCaseId, StoryboardDetailId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in StoryBoard for GetCompareResultSet method | Baseline HistId : {0} | Comapre HistId : {1} | TestCaseId : {2} | SBDetailId : {3} | UserName: {4}", BhistedId, ChistedId, TestCaseId, StoryboardDetailId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in StoryBoard for GetCompareResultSet method |  Baseline HistId : {0} | Comapre HistId : {1} | TestCaseId : {2} | SBDetailId : {3} | UserName: {4}", BhistedId, ChistedId, TestCaseId, StoryboardDetailId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
             }
             return PartialView("_SBCompareResult");
         }
 
         //This method Get Compare ResultSet List by BhistedId and ChistedId
-        public ActionResult GetCompareResultList(long BhistedId, long ChistedId)
+        public JsonResult GetCompareResultList(long BhistedId, long ChistedId)
         {
             ResultModel resultModel = new ResultModel();
             try
@@ -1195,23 +1328,36 @@ namespace MARS_Web.Controllers
                 rep.Username = SessionManager.TESTER_LOGIN_NAME;
                 string lSchema = SessionManager.Schema;
                 var lConnectionStr = SessionManager.APP;
+                logger.Error(string.Format("called GetCompareResult SP {0} : {1}", BhistedId, ChistedId));
                 var lModel = rep.GetCompareResultList(lSchema, lConnectionStr, BhistedId, ChistedId);
+                logger.Error(string.Format("end  called GetCompareResult SP count :{0} ", lModel.Count()));
+
                 var jsonresult = JsonConvert.SerializeObject(lModel);
+                logger.Error(string.Format("done ckp  called GetCompareResult SP count :{0} ", lModel.Count()));
                 resultModel.status = 1;
                 resultModel.data = jsonresult;
+
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Result set | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in Result set | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for GetCompareResultSet method | Baseline HistId : {0} | Comapre HistId : {1} | UserName: {2}", BhistedId, ChistedId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in StoryBoard for GetCompareResultSet method | Baseline HistId : {0} | Comapre HistId : {1} | UserName: {2}", BhistedId, ChistedId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in StoryBoard for GetCompareResultSet method | Baseline HistId : {0} | Comapre HistId : {1} | UserName: {2}", BhistedId, ChistedId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
-            return Json(resultModel, JsonRequestBehavior.AllowGet);
+            return new JsonResult()
+            {
+                Data = resultModel,
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet,
+                MaxJsonLength = 86753090  // Use this value to set your maximum size for all of your Requests
+            };
+            // return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
 
         //Add/Update ResultData objects values
-        public ActionResult SaveSbResultData(string lgridchange, string lgrid, long BaselineReportId, long CompareReportId,long TestCaseId, long StoryboardDetailId)
+        public ActionResult SaveSbResultData(string lgridchange, string lgrid, long BaselineReportId, long CompareReportId, long TestCaseId, long StoryboardDetailId)
         {
             ResultModel resultModel = new ResultModel();
             try
@@ -1234,13 +1380,13 @@ namespace MARS_Web.Controllers
                 var lValidationList = new List<ValidatResultViewModel>();
                 if (lGridData.Count() > 0)
                 {
-                    var DuplicateDatatag = lGridData.GroupBy(x => x.InputValueSetting== null?"": Convert.ToString(x.InputValueSetting).ToUpper())
+                    var DuplicateDatatag = lGridData.GroupBy(x => x.InputValueSetting == null ? "" : Convert.ToString(x.InputValueSetting).ToUpper())
                                 .Where(g => g.Count() > 1)
                                 .Select(y => y.Key)
                                 .ToList();
-                    var DuplicateRows = lGridData.Where(x => DuplicateDatatag.Contains(x.InputValueSetting != null ? x.InputValueSetting.ToUpper():"")).ToList();
+                    var DuplicateRows = lGridData.Where(x => DuplicateDatatag.Contains(x.InputValueSetting != null ? x.InputValueSetting.ToUpper() : "")).ToList();
                     //DuplicateRows = DuplicateRows.Where(x => x.InputValueSetting != "" && x.InputValueSetting!=null).ToList();
-                    
+
                     lValidationList = DuplicateRows.Select(x => new ValidatResultViewModel { IsValid = false, pq_ri = x.pq_ri, ValidMsg = " Duplicate Data tag name. " }).ToList();
 
                     if (dlist["updateList"].Count > 0)
@@ -1425,8 +1571,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Result set | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in Result set | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for SaveSbResultData method | Baseline ReportId : {0} | Comapre ReportId : {1} | Change Grid : {2} | Grid : {3} | TestCaseId : {4} | StoryBoardId : {5} | UserName: {6}", BaselineReportId, CompareReportId, lgridchange, lgrid, TestCaseId, StoryboardDetailId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in StoryBoard for SaveSbResultData method |Baseline ReportId : {0} | Comapre ReportId : {1} | Change Grid : {2} | Grid : {3} | TestCaseId : {4} | StoryBoardId : {5} | UserName: {6}", BaselineReportId, CompareReportId, lgridchange, lgrid, TestCaseId, StoryboardDetailId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in StoryBoard for SaveSbResultData method | Baseline ReportId : {0} | Comapre ReportId : {1} | Change Grid : {2} | Grid : {3} | TestCaseId : {4} | StoryBoardId : {5} | UserName: {6}", BaselineReportId, CompareReportId, lgridchange, lgrid, TestCaseId, StoryboardDetailId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -1513,8 +1661,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Result set | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in Result set | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for ValidationSbResultData method | Change Grid : {0} | Grid : {1} | UserName: {2}", lgrid, lgridchange, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in StoryBoard for ValidationSbResultData method | Change Grid : {0} | Grid : {1} | UserName: {2}", lgrid, lgridchange, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in StoryBoard for ValidationSbResultData method | Change Grid : {0} | Grid : {1} | UserName: {2}", lgrid, lgridchange, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -1537,8 +1687,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Result set | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in Result set | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for SaveAsResultSet method | Baseline HistId : {0} | Comapre HistId : {1} | UserName: {2}", BhistedId, ChistedId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in StoryBoard for SaveAsResultSet method | Baseline HistId : {0} | Comapre HistId : {1} | UserName: {2}", BhistedId, ChistedId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in StoryBoard for SaveAsResultSet method | Baseline HistId : {0} | Comapre HistId : {1} | UserName: {2}", BhistedId, ChistedId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -1613,8 +1765,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Result set | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in Result set | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for SaveResultList method | HistId : {0} | Changed Grid : {1} | Latest TestMarkId : {2} | Testcase Id : {3} | StoryboardId : {4} | UserName: {5}", lhistedId, lchangedGrid, latestTestMarkId, TestCaseId, StoryboardDetailId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in StoryBoard for SaveResultList method | HistId : {0} | Changed Grid : {1} | Latest TestMarkId : {2} | Testcase Id : {3} | StoryboardId : {4} | UserName: {5}", lhistedId, lchangedGrid, latestTestMarkId, TestCaseId, StoryboardDetailId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in StoryBoard for SaveResultList method | HistId : {0} | Changed Grid : {1} | Latest TestMarkId : {2} | Testcase Id : {3} | StoryboardId : {4} | UserName: {5}", lhistedId, lchangedGrid, latestTestMarkId, TestCaseId, StoryboardDetailId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -1626,6 +1780,7 @@ namespace MARS_Web.Controllers
         public ActionResult GetStoryboardResultData(long lCompareHistId, long lBaselineHistId)
         {
             StoryBoardRepository repo = new StoryBoardRepository();
+            repo.Username = SessionManager.TESTER_LOGIN_NAME;
             string lSchema = SessionManager.Schema;
             var lConnectionStr = SessionManager.APP;
             var lresult = repo.GetStoryBoardResultData(lSchema, lConnectionStr, lCompareHistId, lBaselineHistId);
@@ -1635,7 +1790,7 @@ namespace MARS_Web.Controllers
 
         #region ResultSet Import/Export
         //This method will export ResultSet by Storyboard
-        public JsonResult ExportStoryboardResultSet(int Storyboardid, int Projectid,int Mode)
+        public JsonResult ExportStoryboardResultSet(int Storyboardid, int Projectid, int Mode)
         {
             string name = "Log__ResultSetExport" + DateTime.Now.ToString(" yyyy-MM-dd HH-mm-ss") + ".xlsx";
             string log_path = WebConfigurationManager.AppSettings["ExportLogPath"];
@@ -1699,7 +1854,7 @@ namespace MARS_Web.Controllers
                 try
                 {
                     MARSUtility.dbtable.errorlog("Export is started", "Export Storyboard ResultSet Excel", "", 0);
-                    var result = helper.ExportResultSet(Projectname, Storyboardname,Mode, FullPath, lSchema, lConnectionStr);
+                    var result = helper.ExportResultSet(Projectname, Storyboardname, Mode, FullPath, lSchema, lConnectionStr);
                     if (result == true)
                     {
                         MARSUtility.dbtable.errorlog("Export is completed", "Export storyboard ResultSet Excel", "", 0);
@@ -1710,6 +1865,10 @@ namespace MARS_Web.Controllers
                 }
                 catch (Exception ex)
                 {
+                    logger.Error(string.Format("Error occured in StoryBoard for ExportStoryboardResultSet method | StoryBoard Id: {0} | Project Id: {1} | Mode : {2} | UserName: {3}", Storyboardid, Projectid, Mode, SessionManager.TESTER_LOGIN_NAME));
+                    ELogger.ErrorException(string.Format("Error occured in StoryBoard for ExportStoryboardResultSet method | StoryBoard Id: {0} | Project Id: {1} | Mode : {2} | UserName: {3}", Storyboardid, Projectid, Mode, SessionManager.TESTER_LOGIN_NAME), ex);
+                    if (ex.InnerException != null)
+                        ELogger.ErrorException(string.Format("InnerException : Error occured in StoryBoard for ExportStoryboardResultSet method | StoryBoard Id: {0} | Project Id: {1} | Mode : {2} | UserName: {3}", Storyboardid, Projectid, Mode, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                     int line;
                     string msg = ex.Message;
                     line = MARSUtility.dbtable.lineNo(ex);
@@ -1777,12 +1936,12 @@ namespace MARS_Web.Controllers
             {
                 var projrepo = new ProjectRepository();
                 var Projectname = projrepo.GetProjectNameById(Convert.ToInt64(Projectid));
-                
+
                 string lSchema = SessionManager.Schema;
                 var lConnectionStr = SessionManager.APP;
 
                 var resultmode = Mode == 1 ? "BASELINE" : "COMPARE";
-                string lFileName = "RESULT" + "_" + resultmode.ToUpper() + "_" + Projectname  + DateTime.Now.ToString("yyyyMMdd") + "_" + DateTime.Now.ToString("HHmmss") + ".xlsx";
+                string lFileName = "RESULT" + "_" + resultmode.ToUpper() + "_" + Projectname + DateTime.Now.ToString("yyyyMMdd") + "_" + DateTime.Now.ToString("HHmmss") + ".xlsx";
                 string FullPath = Path.Combine(System.Web.HttpContext.Current.Server.MapPath("~/TempExport/"), lFileName);
                 name = "Log_" + Projectname + "_ResultSetExport" + DateTime.Now.ToString(" yyyy-MM-dd HH-mm-ss") + ".xlsx";
 
@@ -1801,6 +1960,10 @@ namespace MARS_Web.Controllers
                 }
                 catch (Exception ex)
                 {
+                    logger.Error(string.Format("Error occured in StoryBoard for ExportProjectResultSet method | Project Id: {0} | Mode : {2} | UserName: {3}", Projectid, Mode, SessionManager.TESTER_LOGIN_NAME));
+                    ELogger.ErrorException(string.Format("Error occured in StoryBoard for ExportProjectResultSet method |  Project Id: {0} | Mode : {2} | UserName: {3}", Projectid, Mode, SessionManager.TESTER_LOGIN_NAME), ex);
+                    if (ex.InnerException != null)
+                        ELogger.ErrorException(string.Format("InnerException : Error occured in StoryBoard for ExportProjectResultSet method | Project Id: {0} | Mode : {2} | UserName: {3}", Projectid, Mode, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                     int line;
                     string msg = ex.Message;
                     line = MARSUtility.dbtable.lineNo(ex);
@@ -1820,18 +1983,28 @@ namespace MARS_Web.Controllers
 
         public ActionResult ImportResultSet(int projectId = 0)
         {
-            var userId = SessionManager.TESTER_ID;
-            var repAcc = new ConfigurationGridRepository();
-            repAcc.Username = SessionManager.TESTER_LOGIN_NAME;
-            var Widthgridlst = repAcc.GetGridList((long)userId, GridNameList.ResizeLeftPanel);
-            var Rgriddata = GridHelper.GetLeftpanelgridwidth(Widthgridlst);
-            var repTree = new GetTreeRepository();
-            var lSchema = SessionManager.Schema;
-            var lConnectionStr = SessionManager.APP;
-            ViewBag.projectid = projectId == 0 ? "" : projectId.ToString();
-            var result = repTree.GetProjectList(SessionManager.TESTER_ID, lSchema, lConnectionStr);
-            ViewBag.projectlist = result.Select(c => new SelectListItem { Text = c.ProjectName, Value = c.ProjectId.ToString() }).OrderBy(x => x.Text).ToList();
-            ViewBag.width = Rgriddata.Resize == null ? ConfigurationManager.AppSettings["DefultLeftPanel"] + "px" : Rgriddata.Resize.Trim() + "px";
+            try
+            {
+                var userId = SessionManager.TESTER_ID;
+                var repAcc = new ConfigurationGridRepository();
+                repAcc.Username = SessionManager.TESTER_LOGIN_NAME;
+                var Widthgridlst = repAcc.GetGridList((long)userId, GridNameList.ResizeLeftPanel);
+                var Rgriddata = GridHelper.GetLeftpanelgridwidth(Widthgridlst);
+                var repTree = new GetTreeRepository();
+                var lSchema = SessionManager.Schema;
+                var lConnectionStr = SessionManager.APP;
+                ViewBag.projectid = projectId == 0 ? "" : projectId.ToString();
+                var result = repTree.GetProjectList(SessionManager.TESTER_ID, lSchema, lConnectionStr);
+                ViewBag.projectlist = result.Select(c => new SelectListItem { Text = c.ProjectName, Value = c.ProjectId.ToString() }).OrderBy(x => x.Text).ToList();
+                ViewBag.width = Rgriddata.Resize == null ? ConfigurationManager.AppSettings["DefultLeftPanel"] + "px" : Rgriddata.Resize.Trim() + "px";
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in StoryBoard for ImportResultSet method | Project Id: {0} | UserName: {1}", projectId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in StoryBoard for ImportResultSet method | Project Id: {0} | UserName: {1}", projectId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in StoryBoard for ImportResultSet method | Project Id: {0} | UserName: {1}", projectId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+            }
             return PartialView();
         }
 
@@ -1928,10 +2101,14 @@ namespace MARS_Web.Controllers
                     dbtable.errorlog("ProjectId/Mode is invalid.", "Import ResultSet Excel", "", 0);
                     objcommon.excel(MARSUtility.dbtable.dt_Log, strPath, "Export", "", "RESULTSET");
                     return Json(strPath + ",validation", JsonRequestBehavior.AllowGet);
-                }  
+                }
             }
             catch (Exception ex)
             {
+                logger.Error(string.Format("Error occured in StoryBoard for ImportResultSets method | Project Id: {0} | Mode : {1} | Name : {2} |  Desc : {3} | UserName: {4}", ProjectId, Mode, Name, Desc, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in StoryBoard for ImportResultSets method | Project Id: {0} | Mode : {1} | Name : {2} |  Desc : {3} | UserName: {4}", ProjectId, Mode, Name, Desc, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in StoryBoard for ImportResultSets method | Project Id: {0} | Mode : {1} | Name : {2} |  Desc : {3} | UserName: {4}", ProjectId, Mode, Name, Desc, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 int line;
                 string msg = ex.Message;
                 line = dbtable.lineNo(ex);
@@ -1941,6 +2118,99 @@ namespace MARS_Web.Controllers
                 return Json(strPath + ",exception", JsonRequestBehavior.AllowGet);
             }
             return Json(fileName, JsonRequestBehavior.AllowGet);
+        }
+
+        //This method will export All Storyborad
+        public JsonResult ExportAllStoryboradResultSet(int Projectid)
+        {
+            string name = "Log_Export" + DateTime.Now.ToString(" yyyy-MM-dd HH-mm-ss") + ".xlsx";
+            string log_path = WebConfigurationManager.AppSettings["ExportLogPath"];
+            string strPath = Path.Combine(Server.MapPath("~/" + log_path), name);
+            var helper = new MARSUtility.ExportExcel();
+            MARSUtility.dbtable.dt_Log = null;
+            DataTable td = new DataTable();
+            DataColumn sequence_counter = new DataColumn();
+            sequence_counter.AutoIncrement = true;
+            sequence_counter.AutoIncrementSeed = 1;
+            sequence_counter.AutoIncrementStep = 1;
+
+            td.Columns.Add(sequence_counter);
+            td.Columns.Add("TimeStamp");
+            td.Columns.Add("Message Type");
+            td.Columns.Add("Action");
+
+            td.Columns.Add("SpreadSheet cell Address");
+            td.Columns.Add("Validation Name");
+            td.Columns.Add("Validation Fail Description");
+            td.Columns.Add("Application Name");
+            td.Columns.Add("Project Name");
+            td.Columns.Add("StoryBoard Name");
+
+            td.Columns.Add("Test Suite Name");
+
+
+            td.Columns.Add("TestCase Name");
+            td.Columns.Add("Test step Number");
+
+            td.Columns.Add("Dataset Name");
+            td.Columns.Add("Dependancy");
+            td.Columns.Add("Run Order");
+
+
+            td.Columns.Add("Object Name");
+            td.Columns.Add("Comment");
+            td.Columns.Add("Error Description");
+            td.Columns.Add("Program Location");
+            td.Columns.Add("Tab Name");
+
+
+
+            MARSUtility.dbtable.dt_Log = td.Copy();
+            if (Projectid > 0)
+            {
+                var projrepo = new ProjectRepository();
+                var Projectname = projrepo.GetProjectNameById(Convert.ToInt64(Projectid));
+                var repo = new StoryBoardRepository();
+
+                string lSchema = SessionManager.Schema;
+                var lConnectionStr = SessionManager.APP;
+
+                string lFileName = Projectname + "_" + DateTime.Now.ToString("yyyyMMdd") + "_" + DateTime.Now.ToString("HHmmss") + ".xlsx";
+                string FullPath = Path.Combine(System.Web.HttpContext.Current.Server.MapPath("~/TempExport/"), lFileName);
+                name = "Log_" + Projectname + "_Export" + DateTime.Now.ToString(" yyyy-MM-dd HH-mm-ss") + ".xlsx";
+
+                strPath = Path.Combine(Server.MapPath("~/" + log_path), name);
+                try
+                {
+                    MARSUtility.dbtable.errorlog("Export is started", "Export Storyboard Excel", "", 0);
+                    var result = helper.ExportAllStoryboradByProjectExcel(Projectname, FullPath, lSchema, lConnectionStr);
+                    if (result == true)
+                    {
+                        MARSUtility.dbtable.errorlog("Export is completed", "Export storyboard Excel", "", 0);
+                        objcommon.excel(MARSUtility.dbtable.dt_Log, strPath, "Export", "", "STORYBOARD");
+                        MARSUtility.dbtable.dt_Log = null;
+                        return Json(lFileName, JsonRequestBehavior.AllowGet);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    logger.Error(string.Format("Error occured in StoryBoard for ExportAllStoryboradResultSet method | Project Id: {0} | UserName: {1}", Projectid, SessionManager.TESTER_LOGIN_NAME));
+                    ELogger.ErrorException(string.Format("Error occured in StoryBoard for ExportAllStoryboradResultSet method | Project Id: {0} | UserName: {1}", Projectid, SessionManager.TESTER_LOGIN_NAME), ex);
+                    if (ex.InnerException != null)
+                        ELogger.ErrorException(string.Format("InnerException : Error occured in StoryBoard for ExportAllStoryboradResultSet method | Project Id: {0} | UserName: {1}", Projectid, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+                    int line;
+                    string msg = ex.Message;
+                    line = MARSUtility.dbtable.lineNo(ex);
+                    MARSUtility.dbtable.errorlog("Export stopped", "Export Storyboard Excel", "", 0);
+                    objcommon.excel(MARSUtility.dbtable.dt_Log, strPath, "Export", "", "STORYBOARD");
+                    MARSUtility.dbtable.dt_Log = null;
+                    return Json(name, JsonRequestBehavior.AllowGet);
+                }
+                return Json(lFileName, JsonRequestBehavior.AllowGet);
+            }
+            MARSUtility.dbtable.errorlog("StoryboardId/ProjectId is invalid.", "Export Storyboard Excel", "", 0);
+            objcommon.excel(MARSUtility.dbtable.dt_Log, strPath, "Export", "", "STORYBOARD");
+            return Json(name, JsonRequestBehavior.AllowGet);
         }
         #endregion
 

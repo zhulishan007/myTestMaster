@@ -2,9 +2,11 @@ using MARS_Repository.Entities;
 using MARS_Repository.ViewModel;
 using NLog;
 using Oracle.ManagedDataAccess.Client;
+using Oracle.ManagedDataAccess.Types;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Objects;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,8 +31,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in stoaryborad GetStoryboardNameById method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured in stoaryborad GetStoryboardNameById method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for GetStoryboardNameById method | StoryBoardId: {0} | UserName: {1}", Storyboardid, Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in GetStoryboardNameById method | StoryBoardId: {0} | UserName: {1}", Storyboardid, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in GetStoryboardNameById method | StoryBoardId: {0} | UserName: {1}", Storyboardid, Username), ex.InnerException);
                 throw;
             }
         }
@@ -71,8 +75,11 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in stoaryborad AddEditStoryboard method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured in stoaryborad AddEditStoryboard method | UserName: {0}", Username), ex);
+
+                logger.Error(string.Format("Error occured in StoryBoard for AddEditStoryboard method | StoryBoardId: {0} | UserName: {1}", Model.Storyboardid, Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in AddEditStoryboard method | StoryBoardId: {0} | UserName: {1}", Model.Storyboardid, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in AddEditStoryboard method | StoryBoardId: {0} | UserName: {1}", Model.Storyboardid, Username), ex.InnerException);
                 throw;
             }
         }
@@ -145,14 +152,18 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in stoaryborad GetStoryboards method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured in stoaryborad GetStoryboards method | UserName: {0}", Username), ex);
+
+                logger.Error(string.Format("Error occured in StoryBoard for GetStoryboards method | ConnectionString: {0} | Schema : {1} | UserName: {2}", lconstring, schema, Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in GetStoryboards method | ConnectionString: {0} | Schema : {1} | UserName: {2}", lconstring, schema, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in GetStoryboards method | ConnectionString: {0} | Schema : {1} | UserName: {2}", lconstring, schema, Username), ex.InnerException);
                 throw;
             }
         }
         public static OracleConnection GetOracleConnection(string StrConnection)
         {
             return new OracleConnection(StrConnection);
+
         }
         public IList<StoryBoardResultModel> GetStoryBoardDetails(string schema, string lconstring, long Projectid, long Storyboardid)
         {
@@ -225,6 +236,73 @@ namespace MARS_Repository.Repositories
                       BHistid = row.Field<long?>("BHIST_ID"),
                       CHistid = row.Field<long?>("CHIST_ID")
                   }).ToList();
+                //cherish
+                //passing comma seprated histid
+                var BHistIds = "";
+                var CHistIds = "";
+                var lStatusResults = new List<StorybookResultViewModel>();
+                if (result.Count > 0)
+                {
+                    var lResultList = result.Where(x => x.BHistid > 0 && x.CHistid > 0).ToList();
+                    BHistIds = String.Join(",", lResultList.Select(p => p.BHistid));
+                    CHistIds = String.Join(",", lResultList.Select(p => p.CHistid));
+                    lStatusResults = GetCompareResultStatusListIds(schema, lconstring, BHistIds, CHistIds);// "61959,61930,61901,61903", "61944,61949,61952,61954");
+
+                }
+
+
+
+                foreach (var item in result)
+                {
+                    item.Bstart = item.BScriptstart == null ? "" : String.Format("{0:MM/dd/yyyy hh:mm tt}", item.BScriptstart);
+                    item.Cstart = item.CScriptstart == null ? "" : String.Format("{0:MM/dd/yyyy hh:mm tt}", item.CScriptstart);
+
+                    if(lStatusResults.Count > 0)
+                    {
+                        var lStepsResults = lStatusResults.Where(x => x.Run_Order == item.Run_order).ToList();
+                        if(lStepsResults.Count > 0)
+                        {
+                            var TrueCount = lStepsResults.Count(x => x.Result == "TRUE");
+                            var FalseCount = lStepsResults.Count(x => x.Result == "FALSE");
+                            var lBaseCountList = lStepsResults.Where(x => x.BCount != null).ToList();
+                            var lCompareCountList = lStepsResults.Where(x => x.CCount != null).ToList();
+                            long lBCount = 0;
+                            long lCCount = 0;
+                            if(lBaseCountList.Count() > 0)
+                            {
+                                lBCount = (long)lBaseCountList.FirstOrDefault().BCount;
+                            }
+                            if (lCompareCountList.Count() > 0)
+                            {
+                                lCCount = (long)lCompareCountList.FirstOrDefault().CCount;
+                            }
+                            var lPass = "PASS";
+                            if (TrueCount > 0 && FalseCount > 0)
+                            {
+                                lPass = "PARTIAL";
+                            }
+                            else if (TrueCount == 0 && FalseCount > 0)
+                            {
+                                lPass = "FAIL";
+                            }
+                            else if(lBCount == lCCount)
+                            {
+                                lPass = "PASS";
+                            }
+                            else
+                            {
+                                lPass = "PARTIAL";
+                            }
+                            item.CTestResult = lPass;
+                        }
+                    }
+                    //if (item.BHistid > 0 && item.CHistid > 0)
+                    //{
+                    //    var lResult = GetCompareResultStatusList(schema, lconstring, (long)item.BHistid, (long)item.CHistid);
+                    //    item.CTestResult = lResult;
+                    //}
+                }
+
                 if (result.Count() > 1)
                 {
                     result = result.Where(x => x.Run_order != 0).OrderBy(x => Convert.ToInt32(x.Run_order)).ToList();
@@ -234,11 +312,305 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured Storyborad in GetStoryBoardDetails method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured Storyborad in GetStoryBoardDetails method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for GetStoryBoardDetails method | ConnectionString: {0} | Schema : {1} | Project Id: {2} | StoryBoard Id: {3} | UserName: {4}", lconstring, schema, Projectid, Storyboardid, Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in GetStoryBoardDetails method | ConnectionString: {0} | Schema : {1} | Project Id: {2} | StoryBoard Id: {3} | UserName: {4}", lconstring, schema, Projectid, Storyboardid, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in GetStoryBoardDetails method | ConnectionString: {0} | Schema : {1} | Project Id: {2} | StoryBoard Id: {3} | UserName: {4}", lconstring, schema, Projectid, Storyboardid, Username), ex.InnerException);
                 throw;
             }
         }
+
+        public List<StorybookResultViewModel> GetCompareResultStatusListIds(string schema, string lconstring, string BhistedIds, string ChistedIds)
+        {
+            try
+            {
+                logger.Info(string.Format("Get Compare Status stroyborad ResultList Ids start | baseline histid: {0} | compare histid: {1} | UserName: {2}", BhistedIds, ChistedIds, Username));
+                DataSet lds = new DataSet();
+                DataTable ldt = new DataTable();
+
+                OracleConnection lconnection = GetOracleConnection(lconstring);
+                lconnection.Open();
+
+                OracleTransaction ltransaction;
+                ltransaction = lconnection.BeginTransaction();
+
+                OracleCommand lcmd;
+                lcmd = lconnection.CreateCommand();
+                lcmd.Transaction = ltransaction;
+
+                OracleClob cclob = new OracleClob(lconnection);
+                cclob.Write(ChistedIds.ToArray(), 0, ChistedIds.Length);
+
+                OracleClob bclob = new OracleClob(lconnection);
+                bclob.Write(BhistedIds.ToArray(), 0, BhistedIds.Length);
+
+                OracleParameter[] ladd_refer_image = new OracleParameter[3];
+                ladd_refer_image[0] = new OracleParameter("Compare_HISTIDs", OracleDbType.Clob);
+                ladd_refer_image[0].Value = cclob;
+               
+
+                ladd_refer_image[1] = new OracleParameter("Baseline_HISTIDs", OracleDbType.Clob);
+                ladd_refer_image[1].Value = bclob;
+
+                ladd_refer_image[2] = new OracleParameter("sl_cursor", OracleDbType.RefCursor);
+                ladd_refer_image[2].Direction = ParameterDirection.Output;
+
+                foreach (OracleParameter p in ladd_refer_image)
+                {
+                    lcmd.Parameters.Add(p);
+                }
+
+                lcmd.CommandText = schema + "." + "SP_GET_STORYBOARD_All_STEPS_RESULT";
+                lcmd.CommandType = CommandType.StoredProcedure;
+                OracleDataAdapter dataAdapter = new OracleDataAdapter(lcmd);
+                dataAdapter.Fill(lds);
+                var dt = new DataTable();
+                dt = lds.Tables[0];
+                IList<StorybookResultViewModel> result = dt.AsEnumerable().Select(row =>
+                  new StorybookResultViewModel
+                  {
+                      BCount = row.Field<decimal?>("BCount"),
+                      CCount = row.Field<decimal?>("CCount"),
+                      BreturnValues = row.Field<string>("Baseline_RETURN_VALUES"),
+                      CreturnValues = row.Field<string>("Compare_RETURN_VALUES"),
+                      Keyword = row.Field<string>("key_word_name"),
+                      COMMENT = row.Field<string>("COMMENT"),
+                      Run_Order = row.Field<long?>("Run_Order")
+                  }).ToList();
+                //need changes
+                result.ToList().ForEach(item =>
+                {
+                    item.CCount = item.CCount == null ? 0 : item.CCount;
+                    item.BCount = item.BCount == null ? 0 : item.BCount;
+                    item.BreturnValues = item.BreturnValues == null ? "" : item.BreturnValues.Trim();
+                    item.CreturnValues = item.CreturnValues == null ? "" : item.CreturnValues.Trim();
+                    item.COMMENT = item.COMMENT == null ? "" : item.COMMENT.Trim();
+
+                    if (item.Keyword == "CaptureValue")
+                        item.Result = "";
+                    else if (item.COMMENT.Contains("TOL:"))
+                    {
+                        var splitTOL = item.COMMENT.Split(' ');
+                        var lfun = splitTOL[0].Trim();
+                        var lparameter = splitTOL[1].Trim();
+
+                        bool flagDP = decimal.TryParse(lparameter, out decimal i);
+                        bool flagDB = decimal.TryParse(item.BreturnValues, out decimal j);
+                        bool flagDC = decimal.TryParse(item.CreturnValues, out decimal k);
+
+                        bool flagIP = int.TryParse(lparameter, out int ii);
+                        bool flagIB = int.TryParse(item.BreturnValues, out int jj);
+                        bool flagIC = int.TryParse(item.CreturnValues, out int kk);
+
+                        if (lfun.Contains("TOL_COMPARE") && (flagDP || flagIP) && (flagDB || flagIB) && (flagDC || flagIC))
+                        {
+                            item.BreturnValues = item.BreturnValues.Replace(",", "");
+                            item.CreturnValues = item.CreturnValues.Replace(",", "");
+                            lparameter = lparameter.Replace(",", "");
+                            try
+                            {
+                                if (Math.Abs((Convert.ToDecimal(item.BreturnValues) - Convert.ToDecimal(item.CreturnValues))) < Convert.ToDecimal(lparameter))
+                                {
+                                    item.Result = "TRUE";
+                                }
+                                else
+                                {
+                                    item.Result = "FALSE";
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                item.Result = "FALSE";
+                                logger.Error(string.Format("Tolerance value has not propered: Baseline value: {0} | Compare Value: {1} | Parameter value: {2}", item.BreturnValues, item.CreturnValues, lparameter));
+                                ELogger.ErrorException(string.Format("Error occured Tolerance value has not propered: Baseline value: {0} | Compare Value: {1} | Parameter value: {2}", item.BreturnValues, item.CreturnValues, lparameter), ex);
+                            }
+                        }
+                        else
+                        {
+                            item.Result = item.BreturnValues == item.CreturnValues ? "TRUE" : "FALSE";
+                        }
+                    }
+                    else
+                        item.Result = item.BreturnValues == item.CreturnValues ? "TRUE" : "FALSE";
+                });
+
+                var lList = result.ToList();
+                //var TrueCount = lList.Count(x => x.Result == "TRUE");
+                //var FalseCount = lList.Count(x => x.Result == "FALSE");
+                //var lPass = "PASS";
+                //if (TrueCount > 0 && FalseCount > 0)
+                //{
+                //    lPass = "PARTIAL";
+                //}
+                //else if (TrueCount == 0 && FalseCount > 0)
+                //{
+                //    lPass = "FAIL";
+                //}
+                //else
+                //{
+                //    lPass = "PASS";
+                //}
+                //logger.Info(string.Format("Count Result true {0} | false {1} | Result {2}", TrueCount, FalseCount, lPass));
+
+                logger.Info(string.Format("Get Compare stroyborad ResultList end | baseline histid: {0} | compare histid: {1} | UserName: {2}", BhistedIds, ChistedIds, Username));
+                return lList;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in StoryBoard for GetCompareResultStatusList method | ConnectionString: {0} | Schema : {1} | Baseline value: {2} | Compare Value: {3} | UserName: {4}", lconstring, schema, BhistedIds, ChistedIds, Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in GetCompareResultStatusList method | ConnectionString: {0} | Schema : {1} | Baseline value: {2} | Compare Value: {3} | UserName: {4}", lconstring, schema, BhistedIds, ChistedIds, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in GetCompareResultStatusList method | ConnectionString: {0} | Schema : {1} | Baseline value: {2} | Compare Value: {3} | UserName: {4}", lconstring, schema, BhistedIds, ChistedIds, Username), ex.InnerException);
+                throw;
+            }
+        }
+
+        public string GetCompareResultStatusList(string schema, string lconstring, long BhistedId, long ChistedId)
+        {
+            try
+            {
+                logger.Info(string.Format("Get Compare Status stroyborad ResultList start | baseline histid: {0} | compare histid: {1} | UserName: {2}", BhistedId, ChistedId, Username));
+                DataSet lds = new DataSet();
+                DataTable ldt = new DataTable();
+
+                OracleConnection lconnection = GetOracleConnection(lconstring);
+                lconnection.Open();
+
+                OracleTransaction ltransaction;
+                ltransaction = lconnection.BeginTransaction();
+
+                OracleCommand lcmd;
+                lcmd = lconnection.CreateCommand();
+                lcmd.Transaction = ltransaction;
+
+
+                OracleParameter[] ladd_refer_image = new OracleParameter[3];
+                ladd_refer_image[0] = new OracleParameter("Compare_HISTID", OracleDbType.Long);
+                ladd_refer_image[0].Value = ChistedId;
+
+                ladd_refer_image[1] = new OracleParameter("Baseline_HISTID", OracleDbType.Long);
+                ladd_refer_image[1].Value = BhistedId;
+
+                ladd_refer_image[2] = new OracleParameter("sl_cursor", OracleDbType.RefCursor);
+                ladd_refer_image[2].Direction = ParameterDirection.Output;
+
+                foreach (OracleParameter p in ladd_refer_image)
+                {
+                    lcmd.Parameters.Add(p);
+                }
+
+                lcmd.CommandText = schema + "." + "SP_GET_STORYBOARD_RESULT";
+                lcmd.CommandType = CommandType.StoredProcedure;
+                OracleDataAdapter dataAdapter = new OracleDataAdapter(lcmd);
+                dataAdapter.Fill(lds);
+                var dt = new DataTable();
+                dt = lds.Tables[0];
+                IList<TestResultViewModel> result = dt.AsEnumerable().Select(row =>
+                  new TestResultViewModel
+                  {
+                      BaselineStepId = row.Field<long?>("BaselineStepID"),
+                      CompareStepId = row.Field<long?>("CompareStepID"),
+                      BreturnValues = row.Field<string>("Baseline_RETURN_VALUES"),
+                      CreturnValues = row.Field<string>("Compare_RETURN_VALUES"),
+                      InputValueSetting = row.Field<string>("INPUT_VALUE_SETTING"),
+                      Keyword = row.Field<string>("key_word_name"),
+                      ActualInputData = row.Field<string>("ACTUAL_INPUT_DATA"),
+                      COMMENT = row.Field<string>("COMMENT")
+                  }).ToList();
+
+                result.ToList().ForEach(item =>
+                {
+                    item.BaselineStepId = item.BaselineStepId == null ? 0 : item.BaselineStepId;
+                    item.CompareStepId = item.CompareStepId == null ? 0 : item.CompareStepId;
+                    item.BreturnValues = item.BreturnValues == null ? "" : item.BreturnValues.Trim();
+                    item.CreturnValues = item.CreturnValues == null ? "" : item.CreturnValues.Trim();
+                    item.InputValueSetting = item.InputValueSetting == null ? "" : item.InputValueSetting.Trim();
+                    item.ActualInputData = item.ActualInputData == null ? "" : item.ActualInputData.Trim();
+                    item.COMMENT = item.COMMENT == null ? "" : item.COMMENT.Trim();
+
+                    if (item.Keyword == "CaptureValue")
+                        item.Result = "";
+                    else if (item.COMMENT.Contains("TOL:"))
+                    {
+                        var splitTOL = item.COMMENT.Split(' ');
+                        var lfun = splitTOL[0].Trim();
+                        var lparameter = splitTOL[1].Trim();
+
+                        bool flagDP = decimal.TryParse(lparameter, out decimal i);
+                        bool flagDB = decimal.TryParse(item.BreturnValues, out decimal j);
+                        bool flagDC = decimal.TryParse(item.CreturnValues, out decimal k);
+
+                        bool flagIP = int.TryParse(lparameter, out int ii);
+                        bool flagIB = int.TryParse(item.BreturnValues, out int jj);
+                        bool flagIC = int.TryParse(item.CreturnValues, out int kk);
+
+                        if (lfun.Contains("TOL_COMPARE") && (flagDP || flagIP) && (flagDB || flagIB) && (flagDC || flagIC))
+                        {
+                            item.BreturnValues = item.BreturnValues.Replace(",", "");
+                            item.CreturnValues = item.CreturnValues.Replace(",", "");
+                            lparameter = lparameter.Replace(",", "");
+                            try
+                            {
+                                if (Math.Abs((Convert.ToDecimal(item.BreturnValues) - Convert.ToDecimal(item.CreturnValues))) < Convert.ToDecimal(lparameter))
+                                {
+                                    item.Result = "TRUE";
+                                }
+                                else
+                                {
+                                    item.Result = "FALSE";
+                                }
+                            }
+                            catch (Exception ex)
+                            {
+                                item.Result = "FALSE";
+                                logger.Error(string.Format("Tolerance value has not propered: Baseline value: {0} | Compare Value: {1} | Parameter value: {2}", item.BreturnValues, item.CreturnValues, lparameter));
+                                ELogger.ErrorException(string.Format("Error occured Tolerance value has not propered: Baseline value: {0} | Compare Value: {1} | Parameter value: {2}", item.BreturnValues, item.CreturnValues, lparameter), ex);
+                            }
+                        }
+                        else
+                        {
+                            item.Result = item.BreturnValues == item.CreturnValues ? "TRUE" : "FALSE";
+                        }
+                    }
+                    else
+                        item.Result = item.BreturnValues == item.CreturnValues ? "TRUE" : "FALSE";
+                });
+
+                var lList = result.ToList();
+                //var lList = result.Where(x => !string.IsNullOrEmpty(x.BreturnValues) || !string.IsNullOrEmpty(x.CreturnValues)).ToList();
+                var TrueCount = lList.Count(x => x.Result == "TRUE");
+                var FalseCount = lList.Count(x => x.Result == "FALSE");
+                var lPass = "PASS";
+                if (TrueCount > 0 && FalseCount > 0)
+                {
+                    lPass = "PARTIAL";
+                }
+                else if (TrueCount == 0 && FalseCount > 0)
+                {
+                    lPass = "FAIL";
+                }
+                else
+                {
+                    lPass = "PASS";
+                }
+                logger.Info(string.Format("Count Result true {0} | false {1} | Result {2}", TrueCount, FalseCount, lPass));
+
+                logger.Info(string.Format("Get Compare stroyborad ResultList end | baseline histid: {0} | compare histid: {1} | UserName: {2}", BhistedId, ChistedId, Username));
+                return lPass;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in StoryBoard for GetCompareResultStatusList method | ConnectionString: {0} | Schema : {1} | Baseline value: {2} | Compare Value: {3} | UserName: {4}", lconstring, schema, BhistedId, ChistedId, Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in GetCompareResultStatusList method | ConnectionString: {0} | Schema : {1} | Baseline value: {2} | Compare Value: {3} | UserName: {4}", lconstring, schema, BhistedId, ChistedId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in GetCompareResultStatusList method | ConnectionString: {0} | Schema : {1} | Baseline value: {2} | Compare Value: {3} | UserName: {4}", lconstring, schema, BhistedId, ChistedId, Username), ex.InnerException);
+                throw;
+            }
+        }
+
+
+
+
         public List<SYSTEM_LOOKUP> GetActions(long sid)
         {
             try
@@ -259,12 +631,46 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured Storyborad in GetActions method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured Storyborad in GetActions method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for GetActions method | StoryBoardId: {0} | UserName: {1}", sid, Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in GetActions method | StoryBoardId: {0} | UserName: {1}", sid, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in GetActions method | StoryBoardId: {0} | UserName: {1}", sid, Username), ex.InnerException);
                 throw;
             }
         }
+        public List<TestSuiteListByProject> GetTestSuites(long lProjectId)
+        {
+            try
+            {
+                logger.Info(string.Format("Get Test Suites start | ProjectId: {0} | UserName: {1}", lProjectId, Username));
+                var lTestSuiteTree = new List<TestSuiteListByProject>();
+                var lresult = (from t1 in enty.T_TEST_PROJECT
+                               join t2 in enty.REL_TEST_SUIT_PROJECT on t1.PROJECT_ID equals t2.PROJECT_ID
+                               join t3 in enty.T_TEST_SUITE on t2.TEST_SUITE_ID equals t3.TEST_SUITE_ID
+                               where t1.PROJECT_ID == lProjectId
+                               select new TestSuiteListByProject
+                               {
+                                   ProjectId = t1.PROJECT_ID,
+                                   ProjectName = t1.PROJECT_NAME,
+                                   TestsuiteId = t3.TEST_SUITE_ID,
+                                   TestsuiteName = t3.TEST_SUITE_NAME,
+                                   TestCaseCount = 0,
+                                   TestSuiteDesc = t3.TEST_SUITE_DESCRIPTION
+                               }).Distinct().OrderBy(x => x.TestsuiteName).ToList();
 
+
+                logger.Info(string.Format("Get TestSuiteList end | ProjectId: {0} | UserName: {1}", lProjectId, Username));
+                return lresult;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in StoryBoard for GetTestSuites method | ProjectId: {0} | UserName: {1}", lProjectId, Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in GetTestSuites method | ProjectId: {0} | UserName: {1}", lProjectId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in GetTestSuites method | ProjectId: {0} | UserName: {1}", lProjectId, Username), ex.InnerException);
+                throw;
+            }
+        }
         public List<TestCaseListByProject> GetTestCaseList(long lProjectId, string TestSuitename)
         {
             try
@@ -272,6 +678,7 @@ namespace MARS_Repository.Repositories
                 logger.Info(string.Format("Get TestCase List start | TestSuitename: {0} | UserName: {1}", TestSuitename, Username));
                 var lTestcaseTree = new List<TestCaseListByProject>();
 
+                logger.Info(string.Format("Get TestCase List 1 | TestSuitename: {0} | UserName: {1}", TestSuitename, Username));
                 var lList = from t1 in enty.T_TEST_PROJECT
                             join t2 in enty.REL_TEST_SUIT_PROJECT on t1.PROJECT_ID equals t2.PROJECT_ID
                             join t3 in enty.T_TEST_SUITE on t2.TEST_SUITE_ID equals t3.TEST_SUITE_ID
@@ -290,8 +697,9 @@ namespace MARS_Repository.Repositories
                                 TestCaseDesc = t5.TEST_STEP_DESCRIPTION,
                                 DataSetCount = (long)t6.DATA_SUMMARY_ID
                             };
+                logger.Info(string.Format("Get TestCase List 2 | TestSuitename: {0} | UserName: {1}", TestSuitename, Username));
                 var lResult = lList.Distinct().ToList();
-
+                logger.Info(string.Format("Get TestCase List 3 | TestSuitename: {0} | UserName: {1}", TestSuitename, Username));
                 lResult = lResult.GroupBy(x => new { x.ProjectId, x.ProjectName, x.TestsuiteId, x.TestsuiteName, x.TestcaseId, x.TestcaseName, x.TestCaseDesc }).Select(gcs => new TestCaseListByProject()
                 {
                     ProjectId = gcs.Key.ProjectId,
@@ -303,18 +711,21 @@ namespace MARS_Repository.Repositories
                     TestCaseDesc = gcs.Key.TestCaseDesc,
                     DataSetCount = gcs.Count()
                 }).ToList();
-
+                logger.Info(string.Format("Get TestCase List 4 | TestSuitename: {0} | UserName: {1}", TestSuitename, Username));
                 if (lResult.Count() > 0)
                 {
                     lTestcaseTree = lResult.Distinct().OrderBy(x => x.TestcaseName).ToList();
                 }
+                logger.Info(string.Format("Get TestCase List 5 | TestSuitename: {0} | UserName: {1}", TestSuitename, Username));
                 logger.Info(string.Format("Get TestCase List end | TestSuitename: {0} | UserName: {1}", TestSuitename, Username));
                 return lTestcaseTree;
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured Storyborad in GetTestCaseList method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured Storyborad in GetTestCaseList method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for GetTestCaseList method | ProjectId: {0} | TestSuiteName : {1} | UserName: {2}", lProjectId, TestSuitename, Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in GetTestCaseList method | ProjectId: {0} | TestSuiteName : {1} | UserName: {2}", lProjectId, TestSuitename, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in GetTestCaseList method | ProjectId: {0} | TestSuiteName : {1} | UserName: {2}", lProjectId, TestSuitename, Username), ex.InnerException);
                 throw;
             }
         }
@@ -366,8 +777,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured Storyborad in GetDataSetList method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured Storyborad in GetDataSetList method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for GetTestCaseList method | ProjectId: {0} | TestSuiteName : {1} | TestCaseName : {2} | UserName: {3}", Projectid, TestSuitename, Testcasename, Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in GetTestCaseList method | ProjectId: {0} | TestSuiteName : {1} | TestCaseName : {2} | UserName: {3}", Projectid, TestSuitename, Testcasename, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in GetTestCaseList method | ProjectId: {0} | TestSuiteName : {1} | TestCaseName : {2} | UserName: {3}", Projectid, TestSuitename, Testcasename, Username), ex.InnerException);
                 throw;
             }
         }
@@ -382,8 +795,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in storyboard GetStoryboardById method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured in storyboard GetStoryboardById method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for GetStoryboardById method | StoryBoardId: {0} | UserName: {1}", Storyboardid, Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in GetStoryboardById method | StoryBoardId: {0} | UserName: {1}", Storyboardid, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in GetStoryboardById method | StoryBoardId: {0} | UserName: {1}", Storyboardid, Username), ex.InnerException);
                 throw;
             }
         }
@@ -416,8 +831,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in storyboard ChangeStoryboardName method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured in storyboard ChangeStoryboardName method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for ChangeStoryboardName method | StoryBoardId: {0} | StoryBoard Name : {1} | StoryBoardDesc : {2} | UserName: {3}", storyboardid, storyboardname, storyboarddesc, Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in ChangeStoryboardName method | StoryBoardId: {0} | StoryBoard Name : {1} | StoryBoardDesc : {2} | UserName: {3}", storyboardid, storyboardname, storyboarddesc, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in ChangeStoryboardName method | StoryBoardId: {0} | StoryBoard Name : {1} | StoryBoardDesc : {2} | UserName: {3}", storyboardid, storyboardname, storyboarddesc, Username), ex.InnerException);
                 throw;
             }
         }
@@ -432,8 +849,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in storyboard GetStoryboardNamebyId method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured in storyboard GetStoryboardNamebyId method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for GetStoryboardNamebyId method | StoryBoardId: {0} | UserName: {1}", storyboardid, Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in GetStoryboardNamebyId method | StoryBoardId: {0} | UserName: {1}", storyboardid, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in GetStoryboardNamebyId method | StoryBoardId: {0} | storyboardid: {1}", storyboardid, Username), ex.InnerException);
                 throw;
             }
         }
@@ -479,8 +898,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in storyboard DeleteStoryboard method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured in storyboard DeleteStoryboard method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for DeleteStoryboard method | StoryBoardId: {0} | UserName: {1}", storyboardid, Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in DeleteStoryboard method | StoryBoardId: {0} | UserName: {1}", storyboardid, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in DeleteStoryboard method | StoryBoardId: {0} | UserName: {1}", storyboardid, Username), ex.InnerException);
                 throw;
             }
         }
@@ -503,8 +924,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Storyboard CheckDuplicateStoryboardName method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured in Storyboard CheckDuplicateStoryboardName method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for CheckDuplicateStoryboardName method | StoryBoardId: {0} | StoryBoardName : {1} | UserName: {1}", storyboardid, storyboardname, Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in CheckDuplicateStoryboardName method | StoryBoardId: {0} | StoryBoardName : {1} | UserName: {1}", storyboardid, storyboardname, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in CheckDuplicateStoryboardName method | StoryBoardId: {0} | StoryBoardName : {1} | UserName: {1}", storyboardid, storyboardname, Username), ex.InnerException);
                 throw;
             }
         }
@@ -574,8 +997,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Storyboard GetTestResult method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured in Storyboard GetTestResult method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for GetTestResult method | StoryBoardId: {0} | TestCaseId : {1} | UserName: {1}", SBDetailId, TestCaseId, Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in GetTestResult method |StoryBoardId: {0} | TestCaseId : {1} | UserName: {1}", SBDetailId, TestCaseId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in GetTestResult method |StoryBoardId: {0} | TestCaseId : {1} | UserName: {1}", SBDetailId, TestCaseId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -697,7 +1122,7 @@ namespace MARS_Repository.Repositories
                                     item.Result = "FALSE";
                                 }
                             }
-                            catch(Exception ex)
+                            catch (Exception ex)
                             {
                                 item.Result = "FALSE";
                                 logger.Error(string.Format("Tolerance value has not propered: Baseline value: {0} | Compare Value: {1} | Parameter value: {2}", item.BreturnValues, item.CreturnValues, lparameter));
@@ -717,8 +1142,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured Storyborad in GetCompareResultList method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured Storyborad in GetCompareResultList method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for GetCompareResultList method | ConnectionString: {0} | Schema : {1} | Baseline value: {2} | Compare Value: {3} | UserName: {4}", lconstring, schema, BhistedId, ChistedId, Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in GetCompareResultList method | ConnectionString: {0} | Schema : {1} | Baseline value: {2} | Compare Value: {3} | UserName: {4}", lconstring, schema, BhistedId, ChistedId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in GetCompareResultList method | ConnectionString: {0} | Schema : {1} | Baseline value: {2} | Compare Value: {3} | UserName: {4}", lconstring, schema, BhistedId, ChistedId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -757,8 +1184,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured Storyborad in GetCompareResultList method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured Storyborad in GetCompareResultList method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for CreateTestReportId method | TestCaseId: {0} | StoryboardDetailId: {1} | Mode: {2} | UserName: {3}", TestCaseId, StoryboardDetailId, Mode, Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in CreateTestReportId method | TestCaseId: {0} | StoryboardDetailId: {1} | Mode: {2} | UserName: {3}", TestCaseId, StoryboardDetailId, Mode, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in CreateTestReportId method | TestCaseId: {0} | StoryboardDetailId: {1} | Mode: {2} | UserName: {3}", TestCaseId, StoryboardDetailId, Mode, Username), ex.InnerException);
                 throw;
             }
         }
@@ -775,8 +1204,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured Storyborad in SaveAsResultSet method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured Storyborad in SaveAsResultSet method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for SaveAsResultSet method | BaseLine HistId: {0} | Compare HistId: {1} | UserName: {2}", BhistedId, ChistedId, Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in SaveAsResultSet method | BaseLine HistId: {0} | Compare HistId: {1} | UserName: {2}", BhistedId, ChistedId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in SaveAsResultSet method | BaseLine HistId: {0} | Compare HistId: {1} | UserName: {2}", BhistedId, ChistedId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -793,8 +1224,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured Storyborad in updateresults method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured Storyborad in updateresults method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for updateresults method | Connection string : {0} | Schema: {1} | Feed Process Id : {2} | UserName: {3}", constring, schema, feedprocessdetailid, Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in updateresults method | Connection string : {0} | Schema: {1} | Feed Process Id : {2} | UserName: {3}", constring, schema, feedprocessdetailid, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in updateresults method |Connection string : {0} | Schema: {1} | Feed Process Id : {2} | UserName: {3}", constring, schema, feedprocessdetailid, Username), ex.InnerException);
                 throw;
             }
         }
@@ -879,12 +1312,14 @@ namespace MARS_Repository.Repositories
                     lcmd.ExecuteNonQuery();
                     flag = true;
                 }
-                catch (Exception lex)
+                catch (Exception ex)
                 {
                     flag = false;
                     ltransaction.Rollback();
-                    logger.Error(string.Format("Error occured Storyborad in InsertResultsInStgTbl method | UserName: {0}", Username));
-                    ELogger.ErrorException(string.Format("Error occured Storyborad in InsertResultsInStgTbl method | UserName: {0}", Username), lex);
+                    logger.Error(string.Format("Error occured in StoryBoard for InsertResultsInStgTbl method | Connection string : {0} | Schema: {1} | Feed Process Id : {2} | UserName: {3}", constring, schema, feedprocessdetailid, Username));
+                    ELogger.ErrorException(string.Format("Error occured StoryBoard in InsertResultsInStgTbl method | Connection string : {0} | Schema: {1} | Feed Process Id : {2} | UserName: {3}", constring, schema, feedprocessdetailid, Username), ex);
+                    if (ex.InnerException != null)
+                        ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in InsertResultsInStgTbl method | Connection string : {0} | Schema: {1} | Feed Process Id : {2} | UserName: {3}", constring, schema, feedprocessdetailid, Username), ex.InnerException);
                     throw;
                 }
                 logger.Info(string.Format("Insert ResultsIn StgTbl end | feedprocessdetailid: {0} | UserName: {1}", feedprocessdetailid, Username));
@@ -1044,8 +1479,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in stoaryborad OldCheckSBGridValidation method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured in stoaryborad OldCheckSBGridValidation method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for OldCheckSBGridValidation method | StoryBoardId: {0} | UserName: {1}", lStoryboardId, Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in OldCheckSBGridValidation method | StoryBoardId: {0} | UserName: {1}", lStoryboardId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in OldCheckSBGridValidation method | StoryBoardId: {0} | storyboardid: {1}", lStoryboardId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -1178,8 +1615,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured storyboard in CheckSBGridValidation method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured storyboard in CheckSBGridValidation method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for CheckSBGridValidation method | StoryBoardId: {0} | UserName: {1}", lStoryboardId, Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in CheckSBGridValidation method | StoryBoardId: {0} | UserName: {1}", lStoryboardId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in CheckSBGridValidation method | StoryBoardId: {0} | storyboardid: {1}", lStoryboardId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -1199,8 +1638,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured storyboard in CheckDuplicateStoryboardNameSaveAs method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured storyboard in CheckDuplicateStoryboardNameSaveAs method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for CheckDuplicateStoryboardName method | StoryBoardId: {0} | StoryBoardName : {1} | UserName: {2}", storyboardid, storyboardname, Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in CheckDuplicateStoryboardName method | StoryBoardId: {0} | StoryBoardName : {1} | UserName: {2}", storyboardid, storyboardname, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in CheckDuplicateStoryboardName method | StoryBoardId: {0} | StoryBoardName : {1} | UserName: {2}", storyboardid, storyboardname, Username), ex.InnerException);
                 throw;
             }
         }
@@ -1233,8 +1674,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured storyboard in DeleteResultsetstep method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured storyboard in DeleteResultsetstep method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for DeleteResultsetstep method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in DeleteResultsetstep method | UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in DeleteResultsetstep method | UserName: {0}", Username), ex.InnerException);
                 throw;
             }
         }
@@ -1394,8 +1837,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured storyboard in NewSaveAsStoryboardGrid method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured storyboard in NewSaveAsStoryboardGrid method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for NewSaveAsStoryboardGrid method | StoryBoardId: {0} | UserName: {1}", lStoryboardId, Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in NewSaveAsStoryboardGrid method | StoryBoardId: {0} | UserName: {1}", lStoryboardId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in NewSaveAsStoryboardGrid method | StoryBoardId: {0} | UserName: {1}", lStoryboardId, Username), ex.InnerException);
                 throw;
             }
 
@@ -1492,8 +1937,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in stoaryborad SaveAsStoryboardGrid method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured in stoaryborad SaveAsStoryboardGrid method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for SaveAsStoryboardGrid method | StoryBoardId: {0} | UserName: {1}", lStoryboardId, Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in SaveAsStoryboardGrid method | StoryBoardId: {0} | UserName: {1}", lStoryboardId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in SaveAsStoryboardGrid method | StoryBoardId: {0} | UserName: {1}", lStoryboardId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -1518,8 +1965,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in stoaryborad DeleteSBStep method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured in stoaryborad DeleteSBStep method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for DeleteSBStep method | StoryboardDetailId: {0} | UserName: {1}", lStoryboardDetailId, Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in DeleteSBStep method | StoryboardDetailId: {0} | UserName: {1}", lStoryboardDetailId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in DeleteSBStep method | StoryboardDetailId: {0} | UserName: {1}", lStoryboardDetailId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -1588,8 +2037,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured stoaryborad in ExportStoryboardList method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured stoaryborad in ExportStoryboardList method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for ExportStoryboardList method | StoryBoard Name: {0} | Project : {1} | Connection String : {2} | Schema : {3} | UserName: {4}", pstoryboard, pproject, lstrConn, schema, Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in ExportStoryboardList method | StoryBoard Name: {0} | Project : {1} | Connection String : {2} | Schema : {3} | UserName: {4}", pstoryboard, pproject, lstrConn, schema, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in ExportStoryboardList method | StoryBoard Name: {0} | Project : {1} | Connection String : {2} | Schema : {3} | UserName: {4}", pstoryboard, pproject, lstrConn, schema, Username), ex.InnerException);
                 throw;
             }
         }
@@ -1612,8 +2063,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured stoaryborad in DeleteSBSteps method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured stoaryborad in DeleteSBSteps method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for DeleteSBStep method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in DeleteSBStep method | UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in DeleteSBStep method | UserName: {0}", Username), ex.InnerException);
                 throw;
             }
         }
@@ -1642,8 +2095,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured stoaryborad in GetApplicationListByStoryboardId method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured stoaryborad in GetApplicationListByStoryboardId method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for GetApplicationListByStoryboardId method | StoryBoardId: {0} | UserName: {1}", lStoryboardId, Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in GetApplicationListByStoryboardId method | StoryBoardId: {0} | UserName: {1}", lStoryboardId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in GetApplicationListByStoryboardId method | StoryBoardId: {0} | UserName: {1}", lStoryboardId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -1761,8 +2216,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Storyborad SaveAs NewSaveAsStoryboard method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured in Storyborad SaveAs NewSaveAsStoryboard method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for NewSaveAsStoryboard method | Old StoryBoardId: {0} | StoryBoard Name : {1} | StoryBoard Desc : {2} | ProjectId : {3} | Connection string : {4} | Schema : {5} | UserName: {6}",oldsid, storyboardname, storyboarddesc, projectid, constring, schema, Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in NewSaveAsStoryboard method | Old StoryBoardId: {0} | StoryBoard Name : {1} | StoryBoard Desc : {2} | ProjectId : {3} | Connection string : {4} | Schema : {5} | UserName: {6}", oldsid, storyboardname, storyboarddesc, projectid, constring, schema, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in NewSaveAsStoryboard method | Old StoryBoardId: {0} | StoryBoard Name : {1} | StoryBoard Desc : {2} | ProjectId : {3} | Connection string : {4} | Schema : {5} | UserName: {6}", oldsid, storyboardname, storyboarddesc, projectid, constring, schema, Username), ex.InnerException);
                 throw;
             }
         }
@@ -1820,8 +2277,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in stoaryborad GetStoryBoardResultData method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured in stoaryborad GetStoryBoardResultData method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for GetStoryBoardResultData method | Baseline HistId: {0} | Compare HistId : {1} | Connection string : {2} | Schema : {3} | UserName: {4}", lBaselineHistId, lCompareHistId, lconstring, schema, Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in GetStoryBoardResultData method | Baseline HistId: {0} | Compare HistId : {1} | Connection string : {2} | Schema : {3} | UserName: {4}", lBaselineHistId, lCompareHistId, lconstring, schema, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in GetStoryBoardResultData method | Baseline HistId: {0} | Compare HistId : {1} | Connection string : {2} | Schema : {3} | UserName: {4}", lBaselineHistId, lCompareHistId, lconstring, schema, Username), ex.InnerException);
                 throw;
             }
         }
@@ -1850,8 +2309,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured storyboard in DeleteResultSets method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured storyboard in DeleteResultSets method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for DeleteResultSets method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in DeleteResultSets method | UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in DeleteResultSets method | UserName: {0}", Username), ex.InnerException);
                 throw;
             }
         }
@@ -1880,8 +2341,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured storyboard in ChangelatestTestMarkId method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured storyboard in ChangelatestTestMarkId method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for ChangelatestTestMarkId method | Hist Id: {0} | TestMark Id : {1} | UserName: {2}", lhistedId, latestTestMarkId, Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in ChangelatestTestMarkId method | Hist Id: {0} | TestMark Id : {1} | UserName: {2}", lhistedId, latestTestMarkId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in ChangelatestTestMarkId method | Hist Id: {0} | TestMark Id : {1} | UserName: {2}", lhistedId, latestTestMarkId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -1909,8 +2372,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured storyboard in ChangelatestTestMarkId method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured storyboard in ChangelatestTestMarkId method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for UpdateResultSets method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in UpdateResultSets method | UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in UpdateResultSets method | UserName: {0}", Username), ex.InnerException);
                 throw;
             }
         }
@@ -1930,8 +2395,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured Storyboard in GetTestReportId method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured Storyboard in GetTestReportId method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for GetTestReportId method | Hist Id : {0} | UserName: {1}", HistId, Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in GetTestReportId method | Hist Id : {0} | UserName: {1}", HistId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in GetTestReportId method | Hist Id : {0} | UserName: {1}", HistId, Username), ex.InnerException);
                 throw;
             }
             return TestReportId;
@@ -1988,8 +2455,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured Storyboard in GetPrimartTestResult method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured Storyboard in GetPrimartTestResult method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for GetPrimartTestResult method | Testcase Id: {0} | SBDetail Id : {1} | UserName: {2}", TestCaseId, SBDetailId, Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in GetPrimartTestResult method | Testcase Id: {0} | SBDetail Id : {1} | UserName: {2}", TestCaseId, SBDetailId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in GetPrimartTestResult method |Testcase Id: {0} | SBDetail Id : {1} | UserName: {2}", TestCaseId, SBDetailId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -2009,18 +2478,21 @@ namespace MARS_Repository.Repositories
             catch (Exception ex)
             {
                 flag = false;
-                logger.Error(string.Format("Error occured Storyboard in GetTestReportId method | UserName: {0} | HistId: {1} | Value: {2}", Username, lHistId,  lValue));
-                ELogger.ErrorException(string.Format("Error occured Storyboard in GetTestReportId method | UserName: {0} | HistId: {1} | Value: {2}", Username, lHistId, lValue), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for UpdateResult method | Hist Id: {0} | Value : {1} | UserName: {2}", lHistId, lValue, Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in UpdateResult method | Hist Id: {0} | Value : {1} | UserName: {2}", lHistId, lValue, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in UpdateResult method | Hist Id: {0} | Value : {1} | UserName: {2}", lHistId, lValue, Username), ex.InnerException);
                 throw;
             }
             return flag;
         }
 
-        public bool updatePrimaryResultStatus(long TestCaseId,long StoryboardDetailId,string lSchema, string lConnectionStr)
+        public bool updatePrimaryResultStatus(long TestCaseId, long StoryboardDetailId, string lSchema, string lConnectionStr)
         {
             logger.Info(string.Format("Update Primary Result start | TestCaseId: {0} | StoryboardDetailId: {1}", TestCaseId, StoryboardDetailId));
             var flag = false;
-            try {
+            try
+            {
                 var lPrimaryResultList = GetTestResult(TestCaseId, StoryboardDetailId);
                 long lPrimaryBaselineResultHistId = 0;
                 long lPrimaryCompareResultHistId = 0;
@@ -2067,16 +2539,325 @@ namespace MARS_Repository.Repositories
                     }
                 }
                 flag = true;
-               
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 flag = false;
-                logger.Error(string.Format("Error occured Storyboard in updatePrimaryResultStatus method | UserName: {0} | | TestCaseId: {1} | StoryboardDetailId: {2}", Username, TestCaseId, StoryboardDetailId));
-                ELogger.ErrorException(string.Format("Error occured Storyboard in updatePrimaryResultStatus method | UserName: {0} | | TestCaseId: {1} | StoryboardDetailId: {2}", Username, TestCaseId, StoryboardDetailId), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for updatePrimaryResultStatus method | TestCase Id: {0} | SBDetail Id : {1} | Connection string: {2} | Schema : {3} | UserName: {4}", TestCaseId, StoryboardDetailId, lConnectionStr, lSchema, Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in updatePrimaryResultStatus method | TestCase Id: {0} | SBDetail Id : {1} | Connection string: {2} | Schema : {3} | UserName: {4}", TestCaseId, StoryboardDetailId, lConnectionStr, lSchema, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in updatePrimaryResultStatus method | TestCase Id: {0} | SBDetail Id : {1} | Connection string: {2} | Schema : {3} | UserName: {4}", TestCaseId, StoryboardDetailId, lConnectionStr, lSchema, Username), ex.InnerException);
                 throw;
             }
             return flag;
+        }
+
+        public List<TestCaseValidationResultModel> InsertStgStoryboardValidationTable(string lConnectionStr, string lschema, StoryBoardResultModel[] lobj, string StoryboardId, string lvalFeed, string lvalFeedD, string lProjectId)
+        {
+            try
+            {
+                logger.Info(string.Format("Insert StgStoryboard ValidationTable start | StoryboardId: {0} | UserName: {1}", StoryboardId, Username));
+                OracleTransaction ltransaction;
+
+                OracleConnection lconnection = new OracleConnection(lConnectionStr);
+                lconnection.Open();
+                ltransaction = lconnection.BeginTransaction();
+
+                logger.Info(string.Format("Insert StgStoryboard ValidationTable 1 | StoryboardId: {0} | UserName: {1}", StoryboardId, Username));
+                string lcmdquery = "insert into TBLSTGSTORYBOARDVALID ( ROW_ID,RUN_ORDER,PROJECTID,ACTIONAME,STEPNAME,TESTSUITENAME,TESTCASENAME,DATASETNAME,DEPENDENCY,FEEDPROCESSID,FEEDPROCESSDETAILID,STORYBOARDDETAILID,STORYBOARDID) values(:1,:2,:3,:4,:5,:6,:7,:8,:9,:10,:11,:12,:13)";
+                int[] lids = new int[lobj.ToList().Count()];
+                var ValidationSteps = new List<TestCaseValidationResultModel>();
+                using (var lcmd = lconnection.CreateCommand())
+                {
+                    lcmd.CommandText = lcmdquery;
+                    lcmd.ArrayBindCount = lids.Length;
+
+                    string[] ROW_ID_param = lobj.ToList().Select(r => Convert.ToString(r.RowId)).ToArray();
+                    string[] RUN_ORDER_param = lobj.ToList().Select(r => Convert.ToString(r.Run_order)).ToArray();
+                    //string[] PROJECTID_param = lobj.ToList().Select(r => Convert.ToString(r.ProjectId)).ToArray();
+                    string[] PROJECTID_param = new string[lids.Length];
+                    for (int p = 0; p < lids.Length; p++)
+                    {
+                        PROJECTID_param[p] = lProjectId;
+                    }
+                    string[] ACTIONNAME_param = lobj.ToList().Select(r => Convert.ToString(r.ActionName)).ToArray();
+                    string[] STEPNAME_param = lobj.ToList().Select(r => Convert.ToString(r.StepName)).ToArray();
+                    string[] TESTSUITENAME_param = lobj.ToList().Select(r => Convert.ToString(r.TestSuiteName)).ToArray();
+                    string[] TESTCASENAME_param = lobj.ToList().Select(r => Convert.ToString(r.TestCaseName)).ToArray();
+                    string[] DATASETNAME_param = lobj.ToList().Select(r => Convert.ToString(r.DataSetName)).ToArray();
+                    string[] DEPENDENCY_param = lobj.ToList().Select(r => Convert.ToString(r.Dependency)).ToArray();
+                    string[] FEEDPROCESSID_param = new string[lids.Length];
+                    for (int p = 0; p < lids.Length; p++)
+                    {
+                        FEEDPROCESSID_param[p] = lvalFeed;
+                    }
+                    string[] FEEDPROCESSDETAILID_param = new string[lids.Length];
+                    for (int p = 0; p < lids.Length; p++)
+                    {
+                        FEEDPROCESSDETAILID_param[p] = lvalFeedD;
+                    }
+
+                    lobj.ToList().ForEach(item =>
+                    {
+                        item.storyboarddetailid = item.storyboarddetailid <= 0 ? null : item.storyboarddetailid;
+                    });
+
+                    string[] STORYBOARDDETAILID_param = lobj.ToList().Select(r => Convert.ToString(r.storyboarddetailid)).ToArray();
+                    string[] STORYBOARDID_param = new string[lids.Length];
+                    for (int p = 0; p < lids.Length; p++)
+                    {
+                        STORYBOARDID_param[p] = StoryboardId;
+                    }
+
+                    OracleParameter ROW_ID_oparam = new OracleParameter();
+                    ROW_ID_oparam.OracleDbType = OracleDbType.Varchar2;
+                    ROW_ID_oparam.Value = ROW_ID_param;
+
+                    OracleParameter RUN_ORDER_oparam = new OracleParameter();
+                    RUN_ORDER_oparam.OracleDbType = OracleDbType.Varchar2;
+                    RUN_ORDER_oparam.Value = RUN_ORDER_param;
+
+                    OracleParameter PROJECTID_oparam = new OracleParameter();
+                    PROJECTID_oparam.OracleDbType = OracleDbType.Varchar2;
+                    PROJECTID_oparam.Value = PROJECTID_param;
+
+                    OracleParameter ACTIONNAME_oparam = new OracleParameter();
+                    ACTIONNAME_oparam.OracleDbType = OracleDbType.Varchar2;
+                    ACTIONNAME_oparam.Value = ACTIONNAME_param;
+
+                    OracleParameter STEPNAME_oparam = new OracleParameter();
+                    STEPNAME_oparam.OracleDbType = OracleDbType.Varchar2;
+                    STEPNAME_oparam.Value = STEPNAME_param;
+
+                    OracleParameter TESTSUITENAME_oparam = new OracleParameter();
+                    TESTSUITENAME_oparam.OracleDbType = OracleDbType.Varchar2;
+                    TESTSUITENAME_oparam.Value = TESTSUITENAME_param;
+
+                    OracleParameter TESTCASENAME_oparam = new OracleParameter();
+                    TESTCASENAME_oparam.OracleDbType = OracleDbType.Varchar2;
+                    TESTCASENAME_oparam.Value = TESTCASENAME_param;
+
+                    OracleParameter DATASETNAME_oparam = new OracleParameter();
+                    DATASETNAME_oparam.OracleDbType = OracleDbType.Varchar2;
+                    DATASETNAME_oparam.Value = DATASETNAME_param;
+
+                    OracleParameter DEPENDENCY_oparam = new OracleParameter();
+                    DEPENDENCY_oparam.OracleDbType = OracleDbType.Varchar2;
+                    DEPENDENCY_oparam.Value = DEPENDENCY_param;
+
+                    OracleParameter FEEDPROCESSID_oparam = new OracleParameter();
+                    FEEDPROCESSID_oparam.OracleDbType = OracleDbType.Varchar2;
+                    FEEDPROCESSID_oparam.Value = FEEDPROCESSID_param;
+
+                    OracleParameter FEEDPROCESSDETAILID_oparam = new OracleParameter();
+                    FEEDPROCESSDETAILID_oparam.OracleDbType = OracleDbType.Varchar2;
+                    FEEDPROCESSDETAILID_oparam.Value = FEEDPROCESSDETAILID_param;
+
+                    OracleParameter STORYBOARDDETAILID_oparam = new OracleParameter();
+                    STORYBOARDDETAILID_oparam.OracleDbType = OracleDbType.Varchar2;
+                    STORYBOARDDETAILID_oparam.Value = STORYBOARDDETAILID_param;
+
+                    OracleParameter STORYBOARDID_oparam = new OracleParameter();
+                    STORYBOARDID_oparam.OracleDbType = OracleDbType.Varchar2;
+                    STORYBOARDID_oparam.Value = STORYBOARDID_param;
+
+                    lcmd.Parameters.Add(ROW_ID_oparam);
+                    lcmd.Parameters.Add(RUN_ORDER_oparam);
+                    lcmd.Parameters.Add(PROJECTID_oparam);
+                    lcmd.Parameters.Add(ACTIONNAME_oparam);
+                    lcmd.Parameters.Add(STEPNAME_oparam);
+                    lcmd.Parameters.Add(TESTSUITENAME_oparam);
+                    lcmd.Parameters.Add(TESTCASENAME_oparam);
+                    lcmd.Parameters.Add(DATASETNAME_oparam);
+                    lcmd.Parameters.Add(DEPENDENCY_oparam);
+                    lcmd.Parameters.Add(FEEDPROCESSID_oparam);
+                    lcmd.Parameters.Add(FEEDPROCESSDETAILID_oparam);
+                    lcmd.Parameters.Add(STORYBOARDDETAILID_oparam);
+                    lcmd.Parameters.Add(STORYBOARDID_oparam);
+                    try
+                    {
+                        logger.Info(string.Format("Insert StgStoryboard ValidationTable 2 | StoryboardId: {0} | UserName: {1}", StoryboardId, Username));
+                        lcmd.ExecuteNonQuery();
+                        logger.Info(string.Format("Insert StgStoryboard ValidationTable 3 | StoryboardId: {0} | UserName: {1}", StoryboardId, Username));
+                    }
+                    catch (Exception lex)
+                    {
+
+                        ltransaction.Rollback();
+
+                        throw new Exception(lex.Message);
+                    }
+
+                    ltransaction.Commit();
+                    lconnection.Close();
+                    logger.Info(string.Format("Insert  TBLSTGSTORYBOARDVALID end | StoryboardId: {0} | UserName: {1}", StoryboardId, Username));
+                    //check validation
+                    logger.Info(string.Format("Insert StgStoryboard ValidationTable 4 | StoryboardId: {0} | UserName: {1}", StoryboardId, Username));
+                    ValidationSteps = ExecuteCheckValidationStoryboard(int.Parse(lvalFeed), lschema, lConnectionStr);
+                    logger.Info(string.Format("Insert StgStoryboard ValidationTable 5 | StoryboardId: {0} | UserName: {1}", StoryboardId, Username));
+                    return ValidationSteps;
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in StoryBoard for InsertStgStoryboardValidationTable method | StoryBoard Id: {0} | Project Id : {1} | Feed Id : {2} | ValFeed {3} | Connection string: {4} | Schema : {5} | UserName: {6}", StoryboardId, lProjectId, lvalFeedD, lvalFeed, lConnectionStr, lschema, Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in InsertStgStoryboardValidationTable method | StoryBoard Id: {0} | Project Id : {1} | Feed Id : {2} | ValFeed {3} | Connection string: {4} | Schema : {5} | UserName: {6}", StoryboardId, lProjectId, lvalFeedD, lvalFeed, lConnectionStr, lschema, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in InsertStgStoryboardValidationTable method | StoryBoard Id: {0} | Project Id : {1} | Feed Id : {2} | ValFeed {3} | Connection string: {4} | Schema : {5} | UserName: {6}", StoryboardId, lProjectId, lvalFeedD, lvalFeed, lConnectionStr, lschema, Username), ex.InnerException);
+                if (ex.InnerException.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in InsertStgStoryboardValidationTable method | StoryBoard Id: {0} | Project Id : {1} | Feed Id : {2} | ValFeed {3} | Connection string: {4} | Schema : {5} | UserName: {6}", StoryboardId, lProjectId, lvalFeedD, lvalFeed, lConnectionStr, lschema, Username), ex.InnerException.InnerException);
+
+                throw;
+            }
+        }
+
+
+        public List<TestCaseValidationResultModel> ExecuteCheckValidationStoryboard(long feedProcessId, string schema, string lstrConn)
+        {
+            try
+            {
+                logger.Info(string.Format("ExecuteCheckValidationStoryboard start | feedProcessId: {0} | UserName: {1}", feedProcessId, Username));
+                ObjectParameter op = new ObjectParameter("RESULT", "");
+                enty.SP_CheckValidationStoryboard(feedProcessId, op);
+                enty.SaveChanges();
+
+                DataSet lds = new DataSet();
+                DataTable ldt = new DataTable();
+
+                OracleConnection pconnection = GetOracleConnection(lstrConn);
+                pconnection.Open();
+
+                OracleTransaction ptransaction;
+                ptransaction = pconnection.BeginTransaction();
+
+                OracleCommand pcmd;
+                pcmd = pconnection.CreateCommand();
+                pcmd.Transaction = ptransaction;
+
+                OracleParameter[] padd_refer_image = new OracleParameter[2];
+                padd_refer_image[0] = new OracleParameter("FEEDPROCESSID1", OracleDbType.Long);
+                padd_refer_image[0].Value = feedProcessId;
+
+                padd_refer_image[1] = new OracleParameter("sl_cursor", OracleDbType.RefCursor);
+                padd_refer_image[1].Direction = ParameterDirection.Output;
+
+                foreach (OracleParameter p in padd_refer_image)
+                {
+                    pcmd.Parameters.Add(p);
+                }
+
+                //The name of the Procedure responsible for inserting the data in the table.
+                pcmd.CommandText = schema + "." + "SP_GetStoryboardValidationResult";
+                pcmd.CommandType = CommandType.StoredProcedure;
+                OracleDataAdapter dataAdapter = new OracleDataAdapter(pcmd);
+                dataAdapter.Fill(lds);
+
+                var dt = new DataTable();
+                dt = lds.Tables[0];
+
+                List<TestCaseValidationResultModel> resultList = dt.AsEnumerable().Select(row =>
+                    new TestCaseValidationResultModel
+                    {
+                        ID = Convert.ToInt64(row.Field<decimal>("ID")),
+                        ISVALID = Convert.ToInt64(row.Field<decimal>("ISVALID")),
+                        FEEDPROCESSDETAILID = Convert.ToInt64(row.Field<decimal?>("FEEDPROCESSDETAILID")),
+                        FEEDPROCESSID = Convert.ToInt64(row.Field<decimal>("FEEDPROCESSID")),
+                        VALIDATIONMSG = row.Field<string>("VALIDATIONMSG"),
+                    }).ToList();
+
+                var lGroupResult = resultList.GroupBy(x => new { x.ID }).Select(g => new TestCaseValidationResultModel
+                {
+                    ID = g.Key.ID,
+                    VALIDATIONMSG = string.Join(",", g.Select(i => i.VALIDATIONMSG)),
+
+                }).OrderBy(z => z.ID).ToList();
+
+                logger.Info(string.Format("ExecuteCheckValidationStoryboard end | feedProcessId: {0} | UserName: {1}", feedProcessId, Username));
+                return lGroupResult;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in StoryBoard for ExecuteCheckValidationStoryboard method | Feed Process Id: {0} | Connection string: {1} | Schema : {2} | UserName: {3}", feedProcessId, lstrConn, schema, Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in ExecuteCheckValidationStoryboard method | Feed Process Id: {0} | Connection string: {1} | Schema : {2} | UserName: {3}", feedProcessId, lstrConn, schema, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in ExecuteCheckValidationStoryboard method | Feed Process Id: {0} | Connection string: {1} | Schema : {2} | UserName: {3}", feedProcessId, lstrConn, schema, Username), ex.InnerException);
+                throw;
+            }
+        }
+
+
+        public string InsertFeedProcess()
+        {
+            try
+            {
+                logger.Info(string.Format("Insert FeedProcess start | UserName: {0}", Username));
+                logger.Info(string.Format("TBLFEEDPROCESS_SEQ : Getting Storyboard Feed Process Id start | UserName: {0}", Username));
+                var feedprocessID = Helper.NextTestSuiteId("TBLFEEDPROCESS_SEQ");
+                logger.Info(string.Format("TBLFEEDPROCESS_SEQ : Getting Storyboard Feed Process Id end | Feed Process Id : {0} | UserName: {1}", feedprocessID, Username));
+
+                var ltbl = new TBLFEEDPROCESS();
+                ltbl.FEEDPROCESSID = feedprocessID;
+                ltbl.FEEDPROCESSSTATUS = "Insert-WebApp";
+                ltbl.FEEDRUNON = System.DateTime.Now;
+                ltbl.CREATEDBY = "WebApp";
+                ltbl.CREATEDON = System.DateTime.Now;
+
+
+                enty.TBLFEEDPROCESSes.Add(ltbl);
+                logger.Info(string.Format("Save Storyboard FeedProcess changes start | UserName: {0}", Username));
+                enty.SaveChanges();
+                logger.Info(string.Format("Save Storyboard FeedProcess changes end | UserName: {0}", Username));
+
+                logger.Info(string.Format("TBLFEEDPROCESSDETAILS_SEQ : Getting Storyboard Feed Process Detail Id start | UserName: {0}", Username));
+                var feedprocessDetailsID = Helper.NextTestSuiteId("TBLFEEDPROCESSDETAILS_SEQ");
+                logger.Info(string.Format("TBLFEEDPROCESSDETAILS_SEQ : Getting Storyboard Feed Process Detail Id end | Feed Process Detail Id : {0} | UserName: {1}", feedprocessDetailsID, Username));
+                
+                enty.TBLFEEDPROCESSDETAILS.Add(new TBLFEEDPROCESSDETAIL { CREATEDBY = "WebApp", FEEDPROCESSDETAILID = feedprocessDetailsID, CREATEDON = System.DateTime.Now, FEEDPROCESSID = feedprocessID, FEEDPROCESSSTATUS = "INPROGRESS", FILENAME = "WebAppImport", FILETYPE = "STORYBORAD" });
+
+                logger.Info(string.Format("Save Storyboard FeedProcessDetail changes start | UserName: {0}", Username));
+                enty.SaveChanges();
+                logger.Info(string.Format("Save Storyboard FeedProcessDetail changes end | UserName: {0}", Username));
+
+                //logger.Info(string.Format("Insert FeedProcess end | UserName: {0}", Username));
+                logger.Info(string.Format("Insert FeedProcess end | FeedProcess : {0} | UserName: {1}", ltbl, Username));
+
+                return Convert.ToString(feedprocessID) + "~" + Convert.ToString(feedprocessDetailsID);
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in StoryBoard for InsertFeedProcess method |  UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in InsertFeedProcess method | UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in InsertFeedProcess method | UserName: {0}", Username), ex.InnerException);
+                if (ex.InnerException.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in InsertFeedProcess method | UserName: {0}", Username), ex.InnerException.InnerException);
+                throw;
+            }
+        }
+
+        public void SaveStoryboardGrid(long lStoryboardId, string lFeedProceID, string lProjectId)
+        {
+            try
+            {
+                logger.Info(string.Format("SaveStoryboardGrid start in Repository | StoryboardId: {0} | UserName: {1}", lStoryboardId, Username));
+
+                ObjectParameter op = new ObjectParameter("RESULT", "");
+                enty.SP_SaveStoryboard(int.Parse(lFeedProceID), lStoryboardId, int.Parse(lProjectId), op);
+                enty.SaveChanges();
+
+                logger.Info(string.Format("SaveStoryboardGrid end in Repository | StoryboardId: {0} | UserName: {1}", lStoryboardId, Username));
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in StoryBoard for SaveStoryboardGrid method | StoryBoard Id: {0} | Project Id : {1} | Feed Process Id : {2} | UserName: {3}", lStoryboardId, lProjectId, lFeedProceID, Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in SaveStoryboardGrid method | StoryBoard Id: {0} | Project Id : {1} | Feed Process Id : {2} | UserName: {3}", lStoryboardId, lProjectId, lFeedProceID, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in SaveStoryboardGrid method | StoryBoard Id: {0} | Project Id : {1} | Feed Process Id : {2} | UserName: {3}", lStoryboardId, lProjectId, lFeedProceID, Username), ex.InnerException);
+                if (ex.InnerException.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in SaveStoryboardGrid method | StoryBoard Id: {0} | Project Id : {1} | Feed Process Id : {2} | UserName: {3}", lStoryboardId, lProjectId, lFeedProceID, Username), ex.InnerException.InnerException);
+                throw;
+            }
         }
     }
 }

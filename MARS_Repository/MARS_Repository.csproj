@@ -33,6 +33,42 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -48,7 +84,7 @@
       <HintPath>..\packages\NLog.4.7.4\lib\net45\NLog.dll</HintPath>
     </Reference>
     <Reference Include="Oracle.ManagedDataAccess, Version=4.122.19.1, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
-      <HintPath>..\packages\Oracle.ManagedDataAccess.19.3.0\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
+      <HintPath>..\packages\Oracle.ManagedDataAccess.19.11.0\lib\net40\Oracle.ManagedDataAccess.dll</HintPath>
     </Reference>
     <Reference Include="Oracle.ManagedDataAccess.EntityFramework, Version=6.122.19.1, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
       <HintPath>..\packages\Oracle.ManagedDataAccess.EntityFramework.19.3.0\lib\net45\Oracle.ManagedDataAccess.EntityFramework.dll</HintPath>
@@ -57,6 +93,10 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.CData.Sybase, Version=20.0.0.0, Culture=neutral, PublicKeyToken=f57f3fbecba6b076, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>SybaseDll\System.Data.CData.Sybase.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.IO.Compression" />
     <Reference Include="System.Runtime.Serialization" />
@@ -132,6 +172,9 @@
     <Compile Include="Entities\REL_APP_TESTSUITE.cs">
       <DependentUpon>Db_Context.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\REL_DB_QUERY.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\REL_OBJ_APP.cs">
       <DependentUpon>Db_Context.tt</DependentUpon>
     </Compile>
@@ -201,6 +244,9 @@
     <Compile Include="Entities\TMP_T_OBJ.cs">
       <DependentUpon>Db_Context.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\T_AXIS_LIST.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\T_BASELINE_DATA_DETAIL.cs">
       <DependentUpon>Db_Context.tt</DependentUpon>
     </Compile>
@@ -220,6 +266,9 @@
       <DependentUpon>Db_Context.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\T_COMPARE_QUERIES.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\T_DATABASE_CONNECTIONS.cs">
       <DependentUpon>Db_Context.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\T_DATA_SOURCE.cs">
@@ -256,6 +305,9 @@
       <DependentUpon>Db_Context.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\T_PROJ_TEST_RESULT.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\T_QUERY.cs">
       <DependentUpon>Db_Context.tt</DependentUpon>
     </Compile>
     <Compile Include="Entities\T_REGISTED_OBJECT.cs">
@@ -351,6 +403,9 @@
     <Compile Include="Entities\T_USER_ACTIVEPAGE.cs">
       <DependentUpon>Db_Context.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\T_USER_CONFIGURATION.cs">
+      <DependentUpon>Db_Context.tt</DependentUpon>
+    </Compile>
     <Compile Include="Entities\T_USER_MAPPING.cs">
       <DependentUpon>Db_Context.tt</DependentUpon>
     </Compile>
@@ -388,14 +443,17 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AccountRepository.cs" />
     <Compile Include="Repositories\ApplicationRepository.cs" />
+    <Compile Include="Repositories\ChartRepository.cs" />
     <Compile Include="Repositories\CompanyRepository.cs" />
     <Compile Include="Repositories\CompareParamRepository.cs" />
     <Compile Include="Repositories\ConfigurationGridRepository.cs" />
+    <Compile Include="Repositories\DatabaseConnectionRepository.cs" />
     <Compile Include="Repositories\EntitlementRepository.cs" />
     <Compile Include="Repositories\ObjectRepository.cs" />
     <Compile Include="Repositories\KeywordRepository.cs" />
     <Compile Include="Repositories\GetTreeRepository.cs" />
     <Compile Include="Repositories\ProjectRepository.cs" />
+    <Compile Include="Repositories\QueryRepository.cs" />
     <Compile Include="Repositories\StoryBoardRepository.cs" />
     <Compile Include="Repositories\TestCaseRepository.cs" />
     <Compile Include="Repositories\TestProjectRepository.cs" />
@@ -403,7 +461,9 @@
     <Compile Include="Repositories\VariableRepository.cs" />
     <Compile Include="ViewModel\ApplicationModel.cs" />
     <Compile Include="ViewModel\BaseModel.cs" />
+    <Compile Include="ViewModel\ChartViewModel.cs" />
     <Compile Include="ViewModel\CompareParam.cs" />
+    <Compile Include="ViewModel\DatabaseConnectionViewModel.cs" />
     <Compile Include="ViewModel\DataSummaryModel.cs" />
     <Compile Include="ViewModel\DataTagCommonViewModel.cs" />
     <Compile Include="ViewModel\DBconnectionViewModel.cs" />
@@ -417,6 +477,7 @@
     <Compile Include="ViewModel\PrivilegeViewModel.cs" />
     <Compile Include="ViewModel\ProjectByUser.cs" />
     <Compile Include="ViewModel\ProjectModel.cs" />
+    <Compile Include="ViewModel\QueryViewModel.cs" />
     <Compile Include="ViewModel\RelUserExePath.cs" />
     <Compile Include="ViewModel\RolePrivilegesMappingModel.cs" />
     <Compile Include="ViewModel\SaveTestcaseModel.cs" />
@@ -431,6 +492,7 @@
     <Compile Include="ViewModel\TestStepsModel.cs" />
     <Compile Include="ViewModel\TestSuiteModel.cs" />
     <Compile Include="ViewModel\TreeModel.cs" />
+    <Compile Include="ViewModel\UserConfigrationViewModel.cs" />
     <Compile Include="ViewModel\UserMasterModel.cs" />
     <Compile Include="ViewModel\UserModel.cs" />
     <Compile Include="ViewModel\UserRoleMappingViewModel.cs" />
@@ -448,7 +510,9 @@
     <None Include="Entities\Db_Context.edmx.diagram">
       <DependentUpon>Db_Context.edmx</DependentUpon>
     </None>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -464,6 +528,7 @@
       <DependentUpon>Db_Context.edmx</DependentUpon>
       <LastGenOutput>Db_Context.cs</LastGenOutput>
     </Content>
+    <Content Include="SybaseDll\System.Data.CData.Sybase.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

@@ -165,10 +165,9 @@
                     data: fileData,
                     success: function (result) {
                         var fresult = result.split(',');
-                        document.getElementById("testsuiteUpload").files[0].name = "";
+                        if (fresult[1] == "success") {
                         document.getElementById("testsuiteUpload").value = "";
                         $('#testsuiteUpload').parents().find('.custom-file-label')[0].innerHTML = "Choose excel file";
-                        if (fresult[1] == "success") {
                             swal.fire({
                                 "title": "Test Suite [" + TestSuiteName + "] imported successfully",
                                 //"text": "Please click on link to download error report.",
@@ -194,7 +193,6 @@
                             });
                         }
                         else if (fresult[1] == "validation") {
-                            document.getElementById("testsuiteUpload").files[0].name = "";
                             document.getElementById("testsuiteUpload").value = "";
                             $('#testsuiteUpload').parents().find('.custom-file-label')[0].innerHTML = "Choose excel file";
                             swal.fire({

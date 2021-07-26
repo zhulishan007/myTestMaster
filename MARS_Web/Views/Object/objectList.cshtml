@@ -146,7 +146,8 @@
                     <input type="hidden" id="hdnobjectid" name="hdnobjectid" />
                     <div class="form-group">
                         <label for="recipient-name" class="form-control-label">Object Name<span style="color:red">&nbsp;*</span></label>
-                        <input type="text" class="form-control" id="objecthappyname" name="objecthappyname" required onchange="CheckNameExist()" maxlength="256">
+                        @*<input type="text" class="form-control" id="objecthappyname" name="objecthappyname" required onchange="CheckNameExist()" maxlength="256">*@
+                        <input type="text" class="form-control" id="objecthappyname" name="objecthappyname" required maxlength="256">
                         <label id="existobjectname" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
                             Object Name already exist.
                         </label>
@@ -293,7 +294,8 @@
                     <input type="hidden" id="hdnobjectid" name="hdnobjectid" />
                     <div class="form-group">
                         <label for="recipient-name" class="form-control-label">Object Name<span style="color:red">&nbsp;*</span></label>
-                        <input type="text" class="form-control" id="saveasobjecthappyname" name="saveasobjecthappyname" required onchange="CheckNameExist()" maxlength="256">
+                        <input type="text" class="form-control" id="saveasobjecthappyname" name="saveasobjecthappyname" required maxlength="256">
+                        @*<input type="text" class="form-control" id="saveasobjecthappyname" name="saveasobjecthappyname" required onchange="CheckNameExist()" maxlength="256">*@
                         <label id="existobjectname" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
                             Object Name already exist.
                         </label>
@@ -412,6 +414,7 @@
                 dataType: "json",
                 success: function (result) {
                     if (result.status == 1) {
+                        RefreshCacheForObject();
                         if (result.message == "success") {
                             swal.fire({
                                 "title": "",
@@ -459,7 +462,6 @@
                             if (result.data.length > 0) {
                                 var resultstring = "";
                                 for (i = 0; i < result.data.length; i++) {
-
                                     resultstring = resultstring + result.data[i] + " , ";
                                 }
                                 swal.fire({
@@ -481,6 +483,7 @@
                                                 stoploader();
                                                 if (result.status == 1) {
                                                     if (result.data == "success") {
+                                                        RefreshCacheForObject();
                                                         swal.fire({
                                                             "title": "",
                                                             "text": "Objects copied successfully to: " + appname,
@@ -526,6 +529,7 @@
                                         stoploader();
                                         if (result.status == 1) {
                                             if (result.data == "success") {
+                                                RefreshCacheForObject();
                                                 swal.fire({
                                                     "title": "",
                                                     "text": "Objects copied successfully to: " + appname,
@@ -769,6 +773,10 @@
         var validator = $("#frmpegobject").validate();
         validator.resetForm();
         $("#AddPegwindowObject").modal("show");
+        $('.modal-dialog').draggable({
+            handle: ".modal-header"
+        });
+
         $("#pegobjecthappyname").val("");
         $("#pegapp").val("");
         $("#pegquickaccess").val("");
@@ -781,6 +789,10 @@
         validator.resetForm();
 
         $("#AddEditObject").modal("show");
+        $('.modal-dialog').draggable({
+            handle: ".modal-header"
+        });
+
         $("#app").prop("disabled", false);
         $("#objecthappyname").prop("disabled", false);
         $("#DrpPeg").prop("disabled", false);
@@ -849,6 +861,9 @@
     }
     function EditPopupShow(id, obj) {
         $("#AddEditObject").modal("show");
+        $('.modal-dialog').draggable({
+            handle: ".modal-header"
+        });
         var validator = $("#frmObject").validate();
         validator.resetForm();
         $("#DrpPeg").val("");
@@ -922,7 +937,10 @@
             }
 
         });
-        $("#DrpPeg option:contains(" + parent + ")").attr('selected', true);
+        $("#DrpPeg option:contains(" + parent + ")").filter(function () {
+            return $(this).text() === parent ? true : false;
+        }).attr('selected', true);
+      //  $("#DrpPeg option:contains(" + parent + ")").attr('selected', true);
         $("#DrpPeg").select2();
 
     }
@@ -985,6 +1003,7 @@
             dataType: "json",
             success: function (result) {
                 if (result.status == 1) {
+                    RefreshCacheForObject();
                     $("#AddEditObject").modal("hide");
                     swal.fire({
                         "title": "",
@@ -1055,6 +1074,7 @@
             dataType: "json",
             success: function (result) {
                 if (result.status == 1) {
+                    RefreshCacheForObject();
                     $("#AddPegwindowObject").modal("hide");
                     swal.fire({
                         "title": "",
@@ -1094,10 +1114,12 @@
             confirmButtonText: 'Yes, delete it!'
         }).then(function (result) {
             if (result.value == true) {
+                debugger;
                 var appid = $(obj).attr("data-app");
+                var parent = $(obj).attr("data-parent");
                 $.ajax({
                     url: "/Object/DeleteObject",
-                    data: JSON.stringify({ "objectid": id, "appid": appid }),
+                    data: JSON.stringify({ "objectid": id, "appid": appid, "parent": parent }),
                     type: "POST",
                     async: false,
                     contentType: "application/json;charset=utf-8",
@@ -1105,6 +1127,7 @@
                     success: function (result) {
                         if (result.status == 1) {
                             if (result.data == "success") {
+                                RefreshCacheForObject();
                                 swal.fire(
                                     'Deleted!',
                                     result.message,
@@ -1164,6 +1187,9 @@
         var validator = $("#frmsaveasobject").validate();
         validator.resetForm();
         $("#saveAsObject").modal("show");
+        $('.modal-dialog').draggable({
+            handle: ".modal-header"
+        });
         $("#saveasrequiredtype").css("display", "none");
         $("#saveasrequiredapp").css("display", "none");
         $("#saveasrequiredDrpPeg").css("display", "none");
@@ -1323,6 +1349,7 @@
             dataType: "json",
             success: function (result) {
                 if (result.status == 1) {
+                    RefreshCacheForObject();
                     $("#saveAsObject").modal("hide");
                     swal.fire({
                         "title": "",

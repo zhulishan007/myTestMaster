@@ -50,8 +50,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured when login page open"));
-                ELogger.ErrorException(string.Format("Error occured when login page open"), ex);
+                logger.Error(string.Format("Error occured in Login for Login method | isLogout : {0} | UserName: {1}", isLogout, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Login for Login method | isLogout : {0} | UserName: {1}", isLogout, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Login for Login method | isLogout : {0} | UserName: {1}", isLogout, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 return View();
             }
         }
@@ -59,15 +61,25 @@ namespace MARS_Web.Controllers
         public LoginCookieModel CheckCookie()
         {
             LoginCookieModel lModel = null;
-            string lUserName = string.Empty, lPassword = string.Empty, lconnection = string.Empty;
-            if (Request.Cookies["UserName"] != null)
-                lUserName = Request.Cookies["UserName"].Value;
-            if (Request.Cookies["Password"] != null)
-                lPassword = Request.Cookies["Password"].Value;
-            if (Request.Cookies["Dbconnection"] != null)
-                lconnection = Request.Cookies["Dbconnection"].Value;
-            if (!string.IsNullOrEmpty(lUserName) && !string.IsNullOrEmpty(lPassword) && !string.IsNullOrEmpty(lconnection))
-                lModel = new LoginCookieModel { LoginName = lUserName, Password = lPassword, Dbconnection = lconnection };
+            try
+            {
+                string lUserName = string.Empty, lPassword = string.Empty, lconnection = string.Empty;
+                if (Request.Cookies["UserName"] != null)
+                    lUserName = Request.Cookies["UserName"].Value;
+                if (Request.Cookies["Password"] != null)
+                    lPassword = Request.Cookies["Password"].Value;
+                if (Request.Cookies["Dbconnection"] != null)
+                    lconnection = Request.Cookies["Dbconnection"].Value;
+                if (!string.IsNullOrEmpty(lUserName) && !string.IsNullOrEmpty(lPassword) && !string.IsNullOrEmpty(lconnection))
+                    lModel = new LoginCookieModel { LoginName = lUserName, Password = lPassword, Dbconnection = lconnection };
+            }
+            catch(Exception ex)
+            {
+                logger.Error(string.Format("Error occured in Login for CheckCookie method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Login for CheckCookie method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Login for CheckCookie method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+            }
             return lModel;
         }
 
@@ -118,8 +130,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in login page | UserName: {0}", lUserLogin));
-                ELogger.ErrorException(string.Format("Error occured in login page | UserName: {0}", lUserLogin), ex);
+                logger.Error(string.Format("Error occured in Login for Login method | UserLogin : {0} | Password : {1} | Connection String : {2} | RememberMe : {3} | UserName: {4}", lUserLogin, lPassword, lconnection, lRememberme, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Login for Login method | UserLogin : {0} | Password : {1} | Connection String : {2} | RememberMe : {3} | UserName: {4}", lUserLogin, lPassword, lconnection, lRememberme, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Login for Login method | UserLogin : {0} | Password : {1} | Connection String : {2} | RememberMe : {3} | UserName: {4}", lUserLogin, lPassword, lconnection, lRememberme, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -173,9 +187,9 @@ namespace MARS_Web.Controllers
                             var repTree = new GetTreeRepository();
                             var lSchema = SessionManager.Schema;
                             var lConnectionStr = SessionManager.APP;
-                            Session["LeftProjectList"] = repTree.GetProjectList(lUser.TESTER_ID, lSchema, lConnectionStr);
-                            Session["PrivilegeList"] = Entitlementrepo.GetRolePrivilege((long)lUser.TESTER_ID);
-                            Session["RoleList"] = Entitlementrepo.GetRoleByUser((long)SessionManager.TESTER_ID);
+                            //Session["LeftProjectList"] = repTree.GetProjectList(lUser.TESTER_ID, lSchema, lConnectionStr);
+                            //Session["PrivilegeList"] = Entitlementrepo.GetRolePrivilege((long)lUser.TESTER_ID);
+                            //Session["RoleList"] = Entitlementrepo.GetRoleByUser((long)SessionManager.TESTER_ID);
                             lMsg = "Succefully Logged!!";
                             repTestCase.UpdateIsAvailableReload((long)lUser.TESTER_ID);
                         }
@@ -196,8 +210,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in login page | UserName: {0}", lUserLogin));
-                ELogger.ErrorException(string.Format("Error occured in login page | UserName: {0}", lUserLogin), ex);
+                logger.Error(string.Format("Error occured in Login for CheckCredential method | UserLogin : {0} | Password : {1} | Connection String : {2} | UserName: {3}", lUserLogin, lPassword, lconnection, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Login for CheckCredential method | UserLogin : {0} | Password : {1} | Connection String : {2} | UserName: {3}", lUserLogin, lPassword, lconnection, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Login for CheckCredential method | UserLogin : {0} | Password : {1} | Connection String : {2} | UserName: {3}", lUserLogin, lPassword, lconnection, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
             }
             return lMsg;
         }
@@ -240,7 +256,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                ELogger.ErrorException(string.Format("Error occured in login page | UserName: {0}", lUserLogin), ex);
+                logger.Error(string.Format("Error occured in Login for CheckUserExist method | UserLogin : {0} | Password : {1} | Connection String : {2} | UserName: {3}", lUserLogin, lPassword, lconnection, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Login for CheckUserExist method | UserLogin : {0} | Password : {1} | Connection String : {2} | UserName: {3}", lUserLogin, lPassword, lconnection, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Login for CheckUserExist method | UserLogin : {0} | Password : {1} | Connection String : {2} | UserName: {3}", lUserLogin, lPassword, lconnection, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -305,7 +324,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                ELogger.ErrorException(string.Format("Error occured in forgot password page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in Login for ForgotPsw method | Email : {0} | Connection String : {1} | UserName: {2}", lEmail, lConnection, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Login for ForgotPsw method | Email : {0} | Connection String : {1} | UserName: {2}", lEmail, lConnection, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Login for ForgotPsw method | Email : {0} | Connection String : {1} | UserName: {2}", lEmail, lConnection, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -318,6 +340,7 @@ namespace MARS_Web.Controllers
             {
                 string ipAddress = Request.UserHostAddress;
                 string MarsEnvironment = string.Empty;
+                string MarsTitle = string.Empty;
                 if (!string.IsNullOrEmpty(Connstring))
                 {
                     var connlist = Connstring.Split('/');
@@ -330,11 +353,15 @@ namespace MARS_Web.Controllers
                 {
                     DBEntities.ConnectionString = det.EntityConnString;
                     DBEntities.Schema = det.Schema;
+                    MarsTitle = "Mars - [" + det.Schema + "/" + det.Host + "]";
                 }
-
+                else
+                    MarsTitle = "Mars Revamp";
                 AccountRepository Accountrepo = new AccountRepository();
                 var lUser = Accountrepo.GetUserByEmail(UserEmail);
                 var lUserMappId = Accountrepo.GetUserMappingByUserId(lUser.TESTER_ID);
+
+                ViewBag.MarsTitle = MarsTitle;
                 if (lUserMappId != null)
                 {
                     if (lUserMappId.TEMP_KEY == TempKey)
@@ -355,7 +382,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                ELogger.ErrorException(string.Format("Error occured in Reset password page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in Login for ResetPassword method | Email : {0} | Connection String : {1} | TempKey : {2} | UserName: {3}", UserEmail, Connstring, TempKey, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Login for ResetPassword method | Email : {0} | Connection String : {1} | TempKey : {2} | UserName: {3}", UserEmail, Connstring, TempKey, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Login for ResetPassword method | Email : {0} | Connection String : {1} | TempKey : {2} | UserName: {3}", UserEmail, Connstring, TempKey, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 return null;
             }
         }
@@ -398,7 +428,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                ELogger.ErrorException(string.Format("Error occured in reset password page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in Login for ResetPwd method | Email : {0} | UserName: {1}", emailid, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Login for ResetPwd method | Email : {0} | UserName: {1}", emailid, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Login for ResetPwd method | Email : {0} | UserName: {1}", emailid, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -422,7 +455,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                ELogger.ErrorException(string.Format("Error occured Logout Time | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in Login for Logout method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Login for Logout method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Login for Logout method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 return RedirectToAction("Index", "Home");
             }
         }
@@ -445,8 +481,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured when User page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured when User page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in Login for LeftPanel method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Login for LeftPanel method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Login for LeftPanel method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
             }
 
             return PartialView(lProjectList);
@@ -465,8 +503,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured when User page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured when User page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in Login for LeftPanelTestSuite method | Project Id : {0} | UserName: {1}", ProjectId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Login for LeftPanelTestSuite method | Project Id : {0} | UserName: {1}", ProjectId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Login for LeftPanelTestSuite method | Project Id : {0} | UserName: {1}", ProjectId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
             }
             return PartialView(lTestSuiteList);
         }
@@ -485,8 +525,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured when User page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured when User page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in Login for LeftPanelTestCase method | Project Id : {0} | TestSuite Id : {1} | UserName: {2}", ProjectId, TestSuiteId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Login for LeftPanelTestCase method | Project Id : {0} | TestSuite Id : {1} | UserName: {2}", ProjectId, TestSuiteId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Login for LeftPanelTestCase method | Project Id : {0} | TestSuite Id : {1} | UserName: {2}", ProjectId, TestSuiteId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
             }
             return PartialView(lTestSuiteList);
         }
@@ -504,8 +546,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured when User page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured when User page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in Login for LeftPanelDataSet method | Project Id : {0} | TestSuite Id : {1} | TestCase Name : {2} | UserName: {3}", lProjectId, lTestSuiteId, lTestCaseId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Login for LeftPanelDataSet method |Project Id : {0} | TestSuite Id : {1} | TestCase Name : {2} | UserName: {3}", lProjectId, lTestSuiteId, lTestCaseId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Login for LeftPanelDataSet method |Project Id : {0} | TestSuite Id : {1} | TestCase Name : {2} | UserName: {3}", lProjectId, lTestSuiteId, lTestCaseId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
             }
             return PartialView(ldatasetlist);
         }
@@ -523,8 +567,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured when User page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured when User page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in Login for LeftPanelStoryboard method | Project Id : {0} | UserName: {1}", ProjectId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Login for LeftPanelStoryboard method | Project Id : {0} | UserName: {1}", ProjectId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Login for LeftPanelStoryboard method | Project Id : {0} | UserName: {1}", ProjectId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
             }
             return PartialView(lstoryboardlist);
         }
@@ -534,19 +580,29 @@ namespace MARS_Web.Controllers
         public List<DBconnectionViewModel> GetEncodingConnList(List<T_DBCONNECTION> dBconnections)
         {
             var data = new List<DBconnectionViewModel>();
-            foreach (var item in dBconnections)
+            try
             {
-                DBconnectionViewModel db = new DBconnectionViewModel();
-                db.connectionId = item.DBCONNECTION_ID;
-                db.DecodeMethod = item.DECODE_METHOD;
-                db.Databasename = item.DATABASENAME;
-                db.Host = PasswordHelper.DecodeMethod(item.HOST, item.DECODE_METHOD.Trim());
-                db.Port = PasswordHelper.DecodeMethod(item.PORT, item.DECODE_METHOD.Trim());
-                db.UserName = PasswordHelper.DecodeMethod(item.USERNAME, item.DECODE_METHOD.Trim());
-                db.Password = PasswordHelper.DecodeMethod(item.PASSWORD, item.DECODE_METHOD.Trim());
-                db.Service_Name = PasswordHelper.DecodeMethod(item.SERVICENAME, item.DECODE_METHOD.Trim());
-                db.Schema = PasswordHelper.DecodeMethod(item.SCHEMA, item.DECODE_METHOD.Trim());
-                data.Add(db);
+                foreach (var item in dBconnections)
+                {
+                    DBconnectionViewModel db = new DBconnectionViewModel();
+                    db.connectionId = item.DBCONNECTION_ID;
+                    db.DecodeMethod = item.DECODE_METHOD;
+                    db.Databasename = item.DATABASENAME;
+                    db.Host = PasswordHelper.DecodeMethod(item.HOST, item.DECODE_METHOD.Trim());
+                    db.Port = PasswordHelper.DecodeMethod(item.PORT, item.DECODE_METHOD.Trim());
+                    db.UserName = PasswordHelper.DecodeMethod(item.USERNAME, item.DECODE_METHOD.Trim());
+                    db.Password = PasswordHelper.DecodeMethod(item.PASSWORD, item.DECODE_METHOD.Trim());
+                    db.Service_Name = PasswordHelper.DecodeMethod(item.SERVICENAME, item.DECODE_METHOD.Trim());
+                    db.Schema = PasswordHelper.DecodeMethod(item.SCHEMA, item.DECODE_METHOD.Trim());
+                    data.Add(db);
+                }
+            }
+            catch(Exception ex)
+            {
+                logger.Error(string.Format("Error occured in Login for GetEncodingConnList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Login for GetEncodingConnList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Login for GetEncodingConnList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
             }
             return data;
         }
@@ -570,6 +626,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
+                logger.Error(string.Format("Error occured in Login for GetConnectionSting method | Connection : {0} | UserName: {1}", connection, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Login for GetConnectionSting method | Connection : {0} | UserName: {1}", connection, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Login for GetConnectionSting method | Connection : {0} | UserName: {1}", connection, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 return null;
             }
         }

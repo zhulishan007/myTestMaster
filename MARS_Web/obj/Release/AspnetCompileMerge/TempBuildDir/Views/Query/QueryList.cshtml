@@ -1,0 +1,585 @@
+﻿@using MARS_Repository.ViewModel
+@{
+    /**/
+
+    string EditConn = "false", DeleteConn = "false", TestConn = "false";
+    var PrivilegeList = Session["PrivilegeList"] as List<PrivilegeViewModel>;
+    if (PrivilegeList.Count > 0)
+    {
+        EditConn = PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Edit Query").ToString().ToLower();
+        DeleteConn = PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Delete Query").ToString().ToLower();
+    }
+}
+
+<input type="hidden" value="@EditConn" id="hdnEditConn" />
+<input type="hidden" value="@DeleteConn" id="hdnDeleteConn" />
+<input type="hidden" value="@TestConn" id="hdnTestConn" />
+<div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
+
+    <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+        <div class="kt-portlet kt-portlet--mobile">
+            <div class="kt-portlet__head kt-portlet__head--lg">
+                <div class="kt-portlet__head-label">
+                    <h3 class="kt-portlet__head-title" style="color:#1582ab">
+                        List Of All Queries
+                    </h3>
+                </div>
+                @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Add Query"))
+                {
+                    <div class="kt-portlet__head-toolbar">
+                        <div class="kt-portlet__head-wrapper">
+                            <div class="kt-portlet__head-actions">
+                                <button type="button" class="btn btn-brand btn-elevate btn-icon-sm" data-toggle="modal" onclick="AddQuery()" data-target="#kt_modal_4"><i class="la la-plus"></i>New Query</button>
+                                &nbsp;
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="modal fade" id="AddQueryModal" tabindex="-1" role="dialog" aria-labelledby="queryModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="queryModalLabel">Add Query</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="frmquery">
+                                <input type="hidden" id="hdnQueryId" name="hdnQueryId" />
+                                <div class="form-group">
+                                    <label for="recipient-name" class="form-control-label">Query Name<span style="color:red">&nbsp;*</span></label>
+                                    <input type="text" class="form-control" id="queryname" name="queryname" onchange="CheckNameExist()" maxlength="32">
+                                    <label id="existQueryName" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                        Query Name already exist.
+                                    </label>
+                                    <label id="queryValidate" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                        Query name can only consist Uppercase,Lowercase,numbers and Special characters(-,_,.,*,&,(,))
+                                    </label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-control-label">Query<span style="color:red">&nbsp;*</span></label>
+                                    <textarea class="form-control" id="queryDesc" name="queryDesc" rows="13"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-control-label">Database Name<span style="color:red">&nbsp;*</span></label>
+                                    <select class="form-control kt-select2" id="dbName" name="dbName">
+
+                                        @{var lDbList = ViewBag.databaseNameList as IEnumerable<DatabaseConnNameViewModel>;
+                                        <optgroup label="Database Names">
+                                            <option value="" style="display:none"></option>
+                                           
+                                            @foreach (var item in lDbList)
+                                            {
+                                                <option value="@item.ConnectionId">@item.ConnectionName</option>
+                                            }
+                                        </optgroup>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-control-label">Active</label>
+                                    <label class='kt-checkbox--brand' style="padding-left:1em"><input type="checkbox" id="isActive" name="isActive" checked></label>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" id="addquery" class="btn btn-outline-brand btn-elevate btn-pill" onclick="AddEditQuerySave()">Save</button>
+                            <button type="button" class="btn btn-outline-brand btn-elevate btn-pill" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="ShowQueryModal" tabindex="-1" role="dialog" aria-labelledby="queryModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="queryModalLabel">View Query</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="frmquery">
+                                <input type="hidden" id="hdnShowQueryId" name="hdnShowQueryId" />
+                                <div class="form-group">
+                                    <label class="form-control-label">Query Name</label>
+                                    <input type="text" class="form-control" id="showQName" name="showQName" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-control-label">Query</label>
+                                    <textarea class="form-control" id="showQDesc" name="showQDesc" rows="13" readonly></textarea>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-outline-brand btn-elevate btn-pill" data-dismiss="modal">OK</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="kt-portlet__body">
+                <table class="table table-striped- table-bordered table-hover table-checkable " id="QueryTable">
+                    <thead>
+                        <tr>
+                            <th>Query Name</th>
+                            <th style="color: #1c6081;background-color: #e9f5ff;font-weight: bold;">View Query</th>
+                            <th>Database Name</th>
+                            <th>Database Type</th>
+                            <th style="color: #1c6081;background-color: #e9f5ff;font-weight: bold;">Actions</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        </div>
+</div>
+
+<script>
+    startloader();
+    var QueryTable = function () {
+        $.fn.dataTable.Api.register('column().title()', function () {
+
+            return $(this.header()).text().trim();
+        });
+        var initQueryTable = function () {
+
+            var lEditConnDisplay = $("#hdnEditConn").val();
+            var lDeleteConnDisplay = $("#hdnDeleteConn").val();
+           
+            QueryTable = $('#QueryTable').DataTable({
+                responsive: false,
+                // Pagination settings
+                dom: `<'row'<'col-sm-12'tr>>
+                                                    <'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7 dataTables_pager'lp>>`,
+                // read more: https://datatables.net/examples/basic_init/dom.html
+
+                lengthMenu: [10, 100, 1000],
+                processing: true,
+                pageLength: 100,
+
+                language: {
+                    'lengthMenu': 'Display _MENU_',
+                    "processing": "<img  src='../assets/media/mars.gif' style='width:80px;'/>"
+                },
+                "scrollY": $(window).height() - 305,
+                searchDelay: 500,
+                //  processing: true,
+                serverSide: true,
+                ajax: {
+                    url: '/Query/DataLoad',
+                    type: 'POST',
+                    data: {
+                        // parameters for custom backend script demo
+                        columnsDef: [
+                            'QueryName', 'ConnectionName', 'ConnectionTypeString'],
+                    },
+                },
+
+                columns: [
+                    { data: 'QueryName', name: "QueryName", width: '20%', "targets": 0, autowidth: false },
+                    { data: 'ViewQuery', responsivePriority: -1, width: '10%', "targets": 1, autowidth: false },
+                    { data: 'ConnectionName', name: "ConnectionName", width: '10%', "targets": 2, autowidth: false },
+                    { data: 'ConnectionTypeString', name: "ConnectionTypeString", width: '10%', "targets": 3, autowidth: false },
+                    { data: 'Actions', responsivePriority: -1, width: '10%', "targets": 4, autowidth: false }
+                ],
+                initComplete: function () {
+                    var thisTable = this;
+                    var rowFilter = $('<tr class="filter"></tr>').appendTo($(QueryTable.table().header()));
+
+                    QueryTable.columns().every(function () {
+                        var column = this;
+                        var input;
+                        switch (column.title()) {
+                            case 'Query Name':
+                            case 'Database Name':
+                            case 'Database Type':
+                                input = $(`<input type="text" class="form-control form-control-sm form-filter kt-input" data-col-index="` + column.index() + `"/>`);
+                                $(input).keyup(function () {
+                                    var params = {};
+                                    $(rowFilter).find('.kt-input').each(function () {
+                                        var i = $(this).data('col-index');
+                                        if (params[i]) {
+                                            params[i] += '|' + $(this).val();
+                                        }
+                                        else {
+                                            params[i] = $(this).val();
+                                        }
+                                    });
+                                    $.each(params, function (i, val) {
+                                        QueryTable.column(i).search(val ? val : '', false, false);
+                                    });
+                                    QueryTable.table().draw();
+                                });
+                                break;
+                        }
+                        if (column.title() !== 'actions' || column.title !== 'View Query') {
+                            
+                            $(input).appendTo($('<th>').appendTo(rowFilter));
+                        }
+                    });
+                },
+                columnDefs: [
+                    {
+                        targets: -1,
+                        title: 'Actions',
+                        orderable: false,
+                        render: function (data, type, full, meta) {
+                            var qid = full.QueryId;
+                            var qName = full.QueryName;
+                            var qDesc = full.QueryDescription.replace(/'/g, "###");
+                            var cid = full.ConnectionId;
+                            var cName = full.ConnectionName.replace(/'/g, "###");
+                            var cType = full.ConnectionType;
+                            var qActive = full.IsActive;
+                           
+                            //lEditConnDisplay
+                            var lRenderHtml = "";
+                            if (lEditConnDisplay == "true") {
+                                lRenderHtml = " <a href='#' class='btn btn-sm btn-clean btn-icon btn-icon-md' title='View' data-qname='" + qName + "' data-qDesc='" + qDesc + "' data-cId='" + cid + "' data-cName='" + cName + "' data-cType='" + cType + "' data-active='" + qActive + "'onclick=AddEditQuery(" + qid + ",$(this)) ><i class='la la-edit'></i></a> ";
+                                
+                            }
+                            if (lDeleteConnDisplay == "true") {
+                                lRenderHtml = lRenderHtml + "<a href='#' class='btn btn-sm btn-clean btn-icon btn-icon-md' title='Delete' onclick='DeleteQuery(" + qid + ")' ><i class='la la-trash la-xs'></i></a>";
+                            }
+                          
+                            return lRenderHtml;
+                        },
+                    },
+                    {
+                        targets: 1,
+                        title: 'View Query',
+                        orderable: false,
+                        render: function (data, type, full, meta) {
+                            var qid = full.QueryId;
+                            var qName = full.QueryName;
+                            var qDesc = full.QueryDescription.replace(/'/g, "###");
+                            
+                            
+                            var lQueryDesc = " <a href = '#' class='btn btn-sm btn-clean btn-icon btn-icon-md' title = 'View' data-qname='" + qName + "' data-qDesc='" + qDesc + "'onclick = ShowQuery(" + qid + ",$(this))><i class='la la-binoculars'></i></a> ";
+                            return lQueryDesc;
+                        },
+                    }
+                ],
+            });
+        };
+        stoploader();
+        return {
+            init: function () {
+                initQueryTable();
+            },
+        };
+    }();
+    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+        $($.fn.dataTable.tables(true)).DataTable()
+            .columns.adjust();
+    });
+    jQuery(document).ready(function () {
+        QueryTable.init();
+    });
+    $(document).ready(function () {
+
+        $("#frmquery").validate({
+            rules: {
+                queryname: {
+                    required: true
+                },
+                queryDesc: {
+                    required: true
+                },
+                dbName: {
+                    required: true
+                }
+            },
+        });
+    });
+
+    function AddEditQuery(Id, editObj) {
+        
+        var validator = $("#frmquery").validate();
+        validator.resetForm();
+        $("#queryModalLabel").text('');
+        $("#queryModalLabel").text('Edit Query');
+        $("#addquery").prop("disabled", false);
+
+        $("#queryValidate").css("display", "none");
+        $("#AddQueryModal").modal("show");
+        $('.modal-dialog').draggable({
+            handle: ".modal-header"
+        });
+
+        var lQueryId = Id;
+        var QueryName = $(editObj).attr("data-qName").replace(/###/g, "'");
+        var QueryDesc = $(editObj).attr("data-qDesc").replace(/###/g, "'");
+        var ConnId = $(editObj).attr("data-cId");
+        var IsActive = $(editObj).attr("data-active");
+        var ConnName = $(editObj).attr("data-cName");
+        
+        $("#hdnQueryId").val(lQueryId);
+        $("#queryname").val(QueryName);
+        $("#queryDesc").val(QueryDesc);
+        
+        $("#dbName").val(ConnId);
+        $('#dbName').trigger('change');
+        console.log("Conn Id: " + ConnId);
+        var db = $("#dbName").val();
+        console.log(db);
+        if ($("#dbName").val() == null) {
+            console.log("I m inside null condition");
+            var data = {
+                id: ConnId,
+                text: ConnName
+            };
+
+            var newOption = new Option(data.text, data.id, false, true);
+            $('#dbName').append(newOption).trigger('change');
+            
+        }
+        if (IsActive == "1")
+            $("#isActive").prop('checked', true);
+        else
+            $("#isActive").prop('checked', false);
+       
+        //if (!$("#queryValidate").valid())
+        //    return false;
+    }
+
+    function AddQuery() {
+        $("#queryValidate").css("display", "none");
+        $("#addedconnection").attr("disabled", false);
+        $("#queryModalLabel").text('');
+        $("#queryModalLabel").text('Add Query');
+        $("#AddQueryModal").modal("show");
+        $('.modal-dialog').draggable({
+            handle: ".modal-header"
+        });
+        $("#hdnQueryId").val("");
+        $("#queryname").val("");
+        $("#dbName").val("");
+        $("#dbName").select2(
+        {
+            placeholder: "Database Connection",
+                allowClear: true
+        });
+        var validator = $("#frmquery").validate();
+        validator.resetForm();
+    }
+
+    //to save query in database
+    function AddEditQuerySave() {
+        $("#addquery").prop("disabled", true);
+        if (!$("#frmquery").valid()) {
+            $("#addquery").prop("disabled", false);
+            return false;
+        }
+        var lId = $("#hdnQueryId").val();
+        if (lId == null && lId == "")
+            lId = 0;
+        var regex = /^[a-zA-Z0-9-._(&)*  ]*$/;
+        var activeval = 0;
+
+        if ($("#isActive").is(":checked"))
+            activeval = 1;
+        
+        var QueryModel = {};
+        QueryModel.QueryId = lId,
+            QueryModel.QueryName = $("#queryname").val(),
+            QueryModel.QueryDescription = $("#queryDesc").val(),
+            QueryModel.ConnectionId = $("#dbName").val().toString(),
+            QueryModel.IsActive = activeval;
+
+        if (!regex.test(QueryModel.QueryName)) {
+            $("#queryname").val("");
+            $("#queryValidate").css("display", "block");
+            $("#addquery").attr("disabled", false);
+            return false;
+        }
+        $.ajax({
+            url: "/Query/AddEditQuery",
+            data: JSON.stringify(QueryModel),
+            type: "POST",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+               
+                if (result.status == 1 && result.data) {
+                    $("#AddQueryModal").modal("hide");
+                    
+                    swal.fire({
+                        "title": "",
+                        "text": result.message,
+                        "icon": "success",
+                        "onClose": function (e) {
+                            console.log('on close event fired!');
+                        }
+                    });
+                }
+                else if (result.status == 0) {
+                    swal.fire({
+                        "title": "",
+                        "text": result.message,
+                        "icon": "error",
+                        "onClose": function (e) {
+                            console.log('on close event fired!');
+                        }
+                    });
+                }
+                QueryTable.table().draw();
+            },
+            error: function (errormessage) {
+                alert(errormessage.responseText);
+            }
+        });
+        $("#addquery").attr("disabled", false);
+    }
+
+    //to check if the query name is unique
+    function CheckNameExist() {
+        var queryName = $("#queryname").val();
+        var queryId = $("#hdnQueryId").val();
+
+        $.ajax({
+            url: "/Query/CheckDuplicateQueryNameExist",
+            data: '{"queryName":"' + queryName + '","queryId":"' + queryId + '"}',
+            type: "POST",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                if (result.status == 1 && result.data) {
+                    $("#queryname").val("");
+                    $("#existQueryName").css("display", "block");
+                }
+                else if (result.status == 0) {
+                    swal.fire({
+                        "title": "",
+                        "text": result.message,
+                        "icon": "error",
+                        "onClose": function (e) {
+                            console.log('on close event fired!');
+                        }
+                    });
+                }
+            },
+        });
+    }
+
+    function DeleteQuery(id) {
+        swal.fire({
+            title: 'Please confirm.',
+            text: "This action can not be undone.",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!'
+        }).then(function (result) {
+            if (result.value == true) {
+                $.ajax({
+                    url: "/Query/DeleteQuery",
+                    data: JSON.stringify({ "QueryId": id }),
+                    type: "POST",
+                    async: false,
+                    contentType: "application/json;charset=utf-8",
+                    dataType: "json",
+                    success: function (result) {
+                        if (result.status == 1) {
+                            if (result.data == "success") {
+                                QueryTable.table().draw();
+                                swal.fire(
+                                    'Deleted!',
+                                    result.message,
+                                    'success'
+                                )
+                            }
+                            else {
+                                if (result.data.length > 0) {
+                                    var resultstring = "";
+                                    for (i = 0; i < result.data.length; i++) {
+
+                                        resultstring = resultstring + result.data[i] + " , ";
+                                    }
+                                    swal.fire(
+                                        'Deleted!',
+                                        'Cannot delete this query.' + "<br>" + resultstring,
+                                        'error'
+                                    )
+                                }
+                            }
+                        }
+                        else if (result.status == 0) {
+                            swal.fire({
+                                "title": "",
+                                "text": result.message,
+                                "icon": "error",
+                                "onClose": function (e) {
+                                    console.log('on close event fired!');
+                                }
+                            });
+                        }
+
+                    },
+                    error: function (x, y, z) {
+                        swal.fire(
+                            'Error while deleting',
+                            'error'
+                        )
+                    }
+                });
+            }
+        });
+    }
+
+    //show query on click of the View Query button in the grid
+    function ShowQuery(Id, editObj) {
+        console.log("Hi");
+       // var validator = $("#frmquery").validate();
+       // validator.resetForm();
+        $("#queryModalLabel").text('');
+        $("#queryModalLabel").text('View Query');
+       
+        $("#ShowQueryModal").modal("show");
+        $('.modal-dialog').draggable({
+            handle: ".modal-header"
+        });
+
+        var lQueryId = Id;
+        var QueryName = $(editObj).attr("data-qName").replace(/###/g, "'");
+        var QueryDesc = $(editObj).attr("data-qDesc").replace(/###/g, "'");
+        console.log(QueryDesc);
+        $("#hdnShowQueryId").val(lQueryId);
+        $("#showQName").val(QueryName);
+        $("#showQDesc").val(QueryDesc);
+       
+    }
+
+    function LoadQueryName() {
+        $.ajax({
+            url: "/Query/LoadQueryName",
+           // data: { appid: $("#appid").val() },
+            type: "POST",
+            contentType: "application/json;charset=utf-8",
+            dataType: "html",
+            success: function (result) {
+                $("#LoadObjecttbl").html("");
+                $("#LoadObjecttbl").html(result);
+                $("#hiddenobjectid").val("");
+                $('#selectall').prop("checked", false);
+                if (!$("#selectall").is(":checked")) {
+                    $('td input:checkbox').not(this).prop('checked', false);
+                }
+            },
+            error: function (errormessage) {
+                alert(errormessage.responseText);
+            }
+        });
+    }
+
+    $("#queryname").on('keyup', function () {
+        $("#existQueryName").css("display", "none");
+    });
+    $("#queryname").on('keyup', function () {
+        $("#queryValidate").css("display", "none");
+    });
+
+</script>
+
+
+
+
+

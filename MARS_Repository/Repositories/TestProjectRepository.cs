@@ -32,8 +32,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestProjectRepository in ChangeTestProjectName method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestProjectRepository in ChangeTestProjectName method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in TestProject for ChangeTestProjectName method | Project Id : {0} | Project Name : {1} | UserName: {2}", lTestProjectId, lTestProjectName, Username));
+                ELogger.ErrorException(string.Format("Error occured in TestProject for ChangeTestProjectName method | Project Id : {0} | Project Name : {1} | UserName: {2}", lTestProjectId, lTestProjectName, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestProject for ChangeTestProjectName method | Project Id : {0} | Project Name : {1} | UserName: {2}", lTestProjectId, lTestProjectName, Username), ex.InnerException);
                 throw;
             }
         }
@@ -58,8 +60,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured TestProjectRepository in CheckDuplicateTestProjectName method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured TestProjectRepository in CheckDuplicateTestProjectName method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in TestProject for CheckDuplicateTestProjectName method | Project Id : {0} | Project Name : {1} | UserName: {2}", lTestProjectId, lTestProjectName, Username));
+                ELogger.ErrorException(string.Format("Error occured in TestProject for CheckDuplicateTestProjectName method | Project Id : {0} | Project Name : {1} | UserName: {2}", lTestProjectId, lTestProjectName, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestProject for CheckDuplicateTestProjectName method | Project Id : {0} | Project Name : {1} | UserName: {2}", lTestProjectId, lTestProjectName, Username), ex.InnerException);
                 throw;
             }
         }
@@ -74,8 +78,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured storyborad in GetProjectNameById method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured storyborad in GetProjectNameById method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in TestProject for GetProjectNameById method | Project Id : {0} | UserName: {1}", ProjectId, Username));
+                ELogger.ErrorException(string.Format("Error occured in TestProject for GetProjectNameById method | Project Id : {0} | UserName: {1}", ProjectId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestProject for GetProjectNameById method | Project Id : {0} | UserName: {1}", ProjectId, Username), ex.InnerException);
                 throw;
             }
         }

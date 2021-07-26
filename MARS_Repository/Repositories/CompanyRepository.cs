@@ -25,9 +25,11 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured user page in GetCompanyList method | Username: {0} |", Username));
-                ELogger.ErrorException(string.Format("Error occured user page in GetCompanyList method | Username: {0}", Username), ex);
-                throw; ;
+                logger.Error(string.Format("Error occured User in GetCompanyList method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured User in GetCompanyList method | UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in GetCompanyList method | UserName: {0}", Username), ex.InnerException);
+                throw;
             }
            
         }

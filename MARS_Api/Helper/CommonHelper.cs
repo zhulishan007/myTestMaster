@@ -43,8 +43,8 @@ namespace MARS_Api.Helper
             {
                 var Headerval = headers.GetValues("Authorization").First();
                 var Headerarr = Headerval.Split(' ');
-                if(Headerarr.Any())
-                   token = Headerarr[1];
+                if (Headerarr.Any())
+                    token = Headerarr[1];
             }
             return token;
         }
@@ -67,35 +67,44 @@ namespace MARS_Api.Helper
         {
             MarsConfig mc = MarsConfig.Configure(MarsEnvironment);
             return mc.GetDatabaseConnectionDetails();
-        } 
+        }
         public static void SetConnectionString(HttpRequestMessage Request)
         {
-            string MarsEnvironment = string.Empty;
             string token = GetHeaderToken(Request);
-            var decodeVal = DecodeToken(token);
-            var dbConnResult = GetConnectionSting(decodeVal.DBConnection);
-
-            if(dbConnResult != null)
+            if (!string.IsNullOrEmpty(token))
             {
-                DBEntities.ConnectionString = dbConnResult.EntityConnString;
-                DBEntities.Schema = dbConnResult.Schema;
+                var decodeVal = DecodeToken(token);
+                var dbConnResult = GetConnectionSting(decodeVal.DBConnection);
+
+                if (dbConnResult != null)
+                {
+                    DBEntities.ConnectionString = dbConnResult.EntityConnString;
+                    DBEntities.Schema = dbConnResult.Schema;
+                }
+                else
+                    SetConnectionstring();
             }
             else
-            {
-                MarsConfig mc = MarsConfig.Configure(MarsEnvironment);
-                var defaultDb = mc.GetDefaultDatabase();
-                var Result = GetConnectionSting(defaultDb);
-                DBEntities.ConnectionString = Result.EntityConnString;
-                DBEntities.Schema = Result.Schema;
-            }
+                SetConnectionstring();
         }
+
+        public static void SetConnectionstring()
+        {
+            string MarsEnvironment = string.Empty;
+            MarsConfig mc = MarsConfig.Configure(MarsEnvironment);
+            var defaultDb = mc.GetDefaultDatabase();
+            var Result = GetConnectionSting(defaultDb);
+            DBEntities.ConnectionString = Result.EntityConnString;
+            DBEntities.Schema = Result.Schema;
+        }
+
         public static DatabaseConnectionDetails SetAppConnectionString(HttpRequestMessage Request)
         {
             string MarsEnvironment = string.Empty;
             string token = GetHeaderToken(Request);
             var decodeVal = DecodeToken(token);
             var Result = GetConnectionSting(decodeVal.DBConnection);
-            if(Result == null)
+            if (Result == null)
             {
                 MarsConfig mc = MarsConfig.Configure(MarsEnvironment);
                 var defaultDb = mc.GetDefaultDatabase();

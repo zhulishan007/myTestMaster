@@ -15,5 +15,6 @@ namespace MARS_Repository.ViewModel
         public string ValidationMsg { get; set; }
         public bool IsNotValid { get; set; }
         public int? pq_ri { get; set; }
+        public int? RUN_ORDER { get; set; }
     }
 }

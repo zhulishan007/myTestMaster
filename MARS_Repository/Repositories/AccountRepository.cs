@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using MARS_Repository.Entities;
 using NLog;
+using Oracle.ManagedDataAccess.Client;
 
 namespace MARS_Repository.Repositories
 {
@@ -32,8 +33,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured user page in GetAllUsers method | Username: {0} |", Username));
-                ELogger.ErrorException(string.Format("Error occured user page in GetAllUsers method | Username: {0}", Username), ex);
+                logger.Error(string.Format("Error occured User in GetAllUsers method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured User in GetAllUsers method | UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in GetAllUsers method | UserName: {0}", Username), ex.InnerException);
                 throw;
             }
         }
@@ -55,8 +58,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured user page in CheckLoginNameAndEmail method | Username: {0} |", Username));
-                ELogger.ErrorException(string.Format("Error occured user page in CheckLoginNameAndEmail method | Username: {0}", Username), ex);
+                logger.Error(string.Format("Error occured User in CheckLoginNameAndEmail method | Email Id : {0} | UserName: {1}", emailid, Username));
+                ELogger.ErrorException(string.Format("Error occured User in CheckLoginNameAndEmail method | Email Id : {0} | UserName: {1}", emailid, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in CheckLoginNameAndEmail method | Email Id : {0} | UserName: {1}", emailid, Username), ex.InnerException);
                 throw;
             }
         }
@@ -79,8 +84,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured user page in DeleteUserMapExePath method | Username: {0} |", Username));
-                ELogger.ErrorException(string.Format("Error occured user page in DeleteUserMapExePath method | Username: {0}", Username), ex);
+                logger.Error(string.Format("Error occured User in DeleteUserMapExePath method | User Id : {0} | UserName: {1}", userid, Username));
+                ELogger.ErrorException(string.Format("Error occured User in DeleteUserMapExePath method | User Id : {0} | UserName: {1}", userid, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in DeleteUserMapExePath method | User Id : {0} | UserName: {1}", userid, Username), ex.InnerException);
                 throw;
             }
         }
@@ -120,8 +127,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured user page in AddUserPath method | Username: {0} |", Username));
-                ELogger.ErrorException(string.Format("Error occured user page in AddUserPath method | Username: {0}", Username), ex);
+                logger.Error(string.Format("Error occured User in AddUserPath method | User Id : {0} | Relation Id : {1} | UserName: {2}", userid, relid, Username));
+                ELogger.ErrorException(string.Format("Error occured User in AddUserPath method | User Id : {0} | Relation Id : {1} | UserName: {2}", userid, relid, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in AddUserPath method | User Id : {0} | Relation Id : {1} | UserName: {2}", userid, relid, Username), ex.InnerException);
                 throw;
             }
         }
@@ -147,8 +156,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured user page in ListUserExePath method | Username: {0} |", Username));
-                ELogger.ErrorException(string.Format("Error occured user page in ListUserExePath method | Username: {0}", Username), ex);
+                logger.Error(string.Format("Error occured User in ListUserExePath method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured User in ListUserExePath method | UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in ListUserExePath method | UserName: {0}", Username), ex.InnerException);
                 throw;
             }
         }
@@ -173,8 +184,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured user page in GetUserExePath method | Username: {0} |", Username));
-                ELogger.ErrorException(string.Format("Error occured user page in GetUserExePath method | Username: {0}", Username), ex);
+                logger.Error(string.Format("Error occured User in GetUserExePath method | ParaUserName : {0} | UserName: {1}", lusername, Username));
+                ELogger.ErrorException(string.Format("Error occured User in GetUserExePath method | ParaUserName : {0} | UserName: {1}", lusername, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in GetUserExePath method | ParaUserName : {0} | UserName: {1}", lusername, Username), ex.InnerException);
                 throw;
             }
         }
@@ -189,8 +202,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured user page in GetUserById method | Username: {0} |", Username));
-                ELogger.ErrorException(string.Format("Error occured user page in GetUserById method | Username: {0}", Username), ex);
+                logger.Error(string.Format("Error occured User in GetUserById method | UserId : {0} | UserName: {1}", lUserId, Username));
+                ELogger.ErrorException(string.Format("Error occured User in GetUserById method | UserId : {0} | UserName: {1}", lUserId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in GetUserById method | UserId : {0} | UserName: {1}", lUserId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -228,8 +243,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured user page in GetUserMappingById method | Username: {0} |", Username));
-                ELogger.ErrorException(string.Format("Error occured user page in GetUserMappingById method | Username: {0}", Username), ex);
+                logger.Error(string.Format("Error occured User in GetUserMappingById method | UserId : {0} | UserName: {1}", lUserId, Username));
+                ELogger.ErrorException(string.Format("Error occured User in GetUserMappingById method | UserId : {0} | UserName: {1}", lUserId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in GetUserMappingById method | UserId : {0} | UserName: {1}", lUserId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -245,8 +262,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured forgot password page in GetUserByEmail | Email: {0}", lEmailId));
-                ELogger.ErrorException(string.Format("Error occured in login page in GetUserByEmail | Email: {0}", lEmailId), ex);
+                logger.Error(string.Format("Error occured User in GetUserByEmail method | Email Id : {0} | UserName: {1}", lEmailId, Username));
+                ELogger.ErrorException(string.Format("Error occured User in GetUserByEmail method | Email Id : {0} | UserName: {1}", lEmailId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in GetUserByEmail method | Email Id : {0} | UserName: {1}", lEmailId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -269,8 +288,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured user page in UpdateTempKey method | Username: {0} |", Username));
-                ELogger.ErrorException(string.Format("Error occured user page in UpdateTempKey method | Username: {0}", Username), ex);
+                logger.Error(string.Format("Error occured User in UpdateTempKey method | User Map Id : {0} | Temp Key : {1} | UserName: {2}", UserMapId, TempKey, Username));
+                ELogger.ErrorException(string.Format("Error occured User in UpdateTempKey method | User Map Id : {0} | Temp Key : {1} | UserName: {2}", UserMapId, TempKey, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in UpdateTempKey method | User Map Id : {0} | Temp Key : {1} | UserName: {2}", UserMapId, TempKey, Username), ex.InnerException);
                 throw;
             }
         }
@@ -293,8 +314,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured Reset page in GetUserMappingByUserId Method | UserId: {0}", UserId));
-                ELogger.ErrorException(string.Format("Error occured Reset page in GetUserMappingByUserId Method | UserId: {0}", UserId), ex);
+                logger.Error(string.Format("Error occured User in GetUserMappingByUserId method | User Id : {0} |  UserName: {1}", UserId, Username));
+                ELogger.ErrorException(string.Format("Error occured User in GetUserMappingByUserId method | User Id : {0} |  UserName: {1}", UserId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in GetUserMappingByUserId method | User Id : {0} | UserName: {1}", UserId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -306,10 +329,10 @@ namespace MARS_Repository.Repositories
                 logger.Info(string.Format("Get User Info start| UserName: {0}", lUserLogin));
                 var result = entity.T_TESTER_INFO.FirstOrDefault(x => x.TESTER_MAIL.ToLower().Trim() == lUserLogin.ToLower().Trim() || x.TESTER_LOGIN_NAME.ToLower().Trim() == lUserLogin.ToLower().Trim());
 
-                if(result != null)
+                if (result != null)
                 {
                     var checkIsDelete = entity.T_USER_MAPPING.Where(x => x.TESTER_ID == result.TESTER_ID).FirstOrDefault();
-                    if(checkIsDelete != null)
+                    if (checkIsDelete != null)
                     {
                         if (checkIsDelete.IS_DELETED == 1)
                         {
@@ -323,8 +346,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured login page in GetUserByEmailAndLoginName method | UserName: {0}", lUserLogin));
-                ELogger.ErrorException(string.Format("Error occured login page in GetUserByEmailAndLoginName method | UserName: {0}", lUserLogin), ex);
+                logger.Error(string.Format("Error occured User in GetUserByEmailAndLoginName method | Login Name : {0} |  UserName: {1}", lUserLogin, Username));
+                ELogger.ErrorException(string.Format("Error occured User in GetUserByEmailAndLoginName method | Login Name : {0} |  UserName: {1}", lUserLogin, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in GetUserByEmailAndLoginName method | Login Name : {0} | UserName: {1}", lUserLogin, Username), ex.InnerException);
                 throw;
             }
 
@@ -383,8 +408,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured user page in ListAllUsersWithProjectMapping method | Username: {0} |", Username));
-                ELogger.ErrorException(string.Format("Error occured user page in ListAllUsersWithProjectMapping method | Username: {0}", Username), ex);
+                logger.Error(string.Format("Error occured User in ListAllUsersWithProjectMapping method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured User in ListAllUsersWithProjectMapping method | UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in ListAllUsersWithProjectMapping method | UserName: {0}", Username), ex.InnerException);
                 throw;
             }
         }
@@ -434,8 +461,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured user page in ListAllUsers method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured user page in ListAllUsers method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured User in ListAllUsers method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured User in ListAllUsers method | UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in ListAllUsers method | UserName: {0}", Username), ex.InnerException);
                 throw;
             }
         }
@@ -459,8 +488,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured user page in ListAllActiveUsers method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured user page in ListAllActiveUsers method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured User in ListAllActiveUsers method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured User in ListAllActiveUsers method | UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in ListAllActiveUsers method | UserName: {0}", Username), ex.InnerException);
                 throw;
             }
         }
@@ -483,8 +514,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured user page in SetPagename method | Username: {0} |", Username));
-                ELogger.ErrorException(string.Format("Error occured user page in SetPagename method | Username: {0}", Username), ex);
+                logger.Error(string.Format("Error occured User in SetPagename method | Page Name : {0} | Page Id : {1} | UserName: {2}", pagename, PgId, Username));
+                ELogger.ErrorException(string.Format("Error occured User in SetPagename method | Page Name : {0} | Page Id : {1} | UserName: {2}", pagename, PgId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in SetPagename method | Page Name : {0} | Page Id : {1} | UserName: {2}", pagename, PgId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -543,8 +576,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured user page in CreateNewUser | Username: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured user page in CreateNewUser | Username: {0}", Username), ex);
+                logger.Error(string.Format("Error occured User in CreateNewUser method | Tested Id : {0} | UserName: {1}", t_TESTER.TESTER_ID, Username));
+                ELogger.ErrorException(string.Format("Error occured User in CreateNewUser method | Tested Id : {0} | UserName: {1}", t_TESTER.TESTER_ID, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in CreateNewUser method | Tested Id : {0} | UserName: {1}", t_TESTER.TESTER_ID, Username), ex.InnerException);
                 throw;
             }
         }
@@ -553,7 +588,7 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("ChangeUserPassword start | New Password: {0} | User id: {1} | Username: {2}", lNewPsw,lTesterId, Username));
+                logger.Info(string.Format("ChangeUserPassword start | New Password: {0} | User id: {1} | Username: {2}", lNewPsw, lTesterId, Username));
                 T_TESTER_INFO tester = new T_TESTER_INFO();
                 var lresult = entity.T_TESTER_INFO.Find(lTesterId);
                 if (lresult != null)
@@ -566,8 +601,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured user page in ChangeUserPassword method | Username: {0} |", Username));
-                ELogger.ErrorException(string.Format("Error occured user page in ChangeUserPassword method | Username: {0}", Username), ex);
+                logger.Error(string.Format("Error occured User in ChangeUserPassword method | Tested Id : {0} | UserName: {1}", lTesterId, Username));
+                ELogger.ErrorException(string.Format("Error occured User in ChangeUserPassword method | Tested Id : {0} | UserName: {1}", lTesterId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in ChangeUserPassword method | Tested Id : {0} | UserName: {1}", lTesterId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -609,8 +646,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured user page in CheckLoginNameExist | Username: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured user page in CheckLoginNameExist | Username: {0}", Username), ex);
+                logger.Error(string.Format("Error occured User in CheckLoginNameExist method | Tested Id : {0} | UserName: {1}", TesterId, Username));
+                ELogger.ErrorException(string.Format("Error occured User in CheckLoginNameExist method | Tested Id : {0} | UserName: {1}", TesterId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in CheckLoginNameExist method | Tested Id : {0} | UserName: {1}", TesterId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -651,8 +690,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured user page in CheckLoginEmailExist | Username: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured user page in CheckLoginEmailExist | Username: {0}", Username), ex);
+                logger.Error(string.Format("Error occured User in CheckLoginEmailExist method | Tested Id : {0} | UserName: {1}", TesterId, Username));
+                ELogger.ErrorException(string.Format("Error occured User in CheckLoginEmailExist method | Tested Id : {0} | UserName: {1}", TesterId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in CheckLoginEmailExist method | Tested Id : {0} | UserName: {1}", TesterId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -670,8 +711,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured user page in GetUserID method | Username: {0} |", Username));
-                ELogger.ErrorException(string.Format("Error occured user page in GetUserID method | Username: {0}", Username), ex);
+                logger.Error(string.Format("Error occured User in GetUserID method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured User in GetUserID method |  UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in GetUserID method |  UserName: {0}", Username), ex.InnerException);
                 throw;
             }
         }
@@ -686,8 +729,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured user page in GetUserId | User id: {0}", id));
-                ELogger.ErrorException(string.Format("Error occured user page in GetUserId | User id: {0}", id), ex);
+                logger.Error(string.Format("Error occured User in GetUserId method | UserId: {0} | UserName: {1}", id, Username));
+                ELogger.ErrorException(string.Format("Error occured User in GetUserId method | UserId: {0} | UserName: {1}", id, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in GetUserId method | UserId: {0} | UserName: {1}", id, Username), ex.InnerException);
                 throw;
             }
         }
@@ -718,8 +763,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in forgot password page | User id: {0} | tempkey: {1}", testerid, tempkey));
-                ELogger.ErrorException(string.Format("Error occured in forgot password page | User id: {0}| tempkey: {1}", testerid, tempkey), ex);
+                logger.Error(string.Format("Error occured User in SetTemporaryKey method | UserId: {0} | Temp Key {1} | UserName: {2}", testerid, tempkey, Username));
+                ELogger.ErrorException(string.Format("Error occured User in SetTemporaryKey method | UserId: {0} | Temp Key {1} | UserName: {2}", testerid, tempkey, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in SetTemporaryKey method | UserId: {0} | Temp Key {1} | UserName: {2}", testerid, tempkey, Username), ex.InnerException);
                 throw;
             }
         }
@@ -735,8 +782,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured user page in GetUserName method | Username: {0} |", Username));
-                ELogger.ErrorException(string.Format("Error occured user page in GetUserName method | Username: {0}", Username), ex);
+                logger.Error(string.Format("Error occured User in GetUserName method | UserId: {0} | UserName: {1}", id, Username));
+                ELogger.ErrorException(string.Format("Error occured User in GetUserName method | UserId: {0} | UserName: {1}", id, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in GetUserName method | UserId: {0} | UserName: {1}", id, Username), ex.InnerException);
                 throw;
             }
         }
@@ -785,8 +834,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured user page in DeleteUser method | Username: {0} |", Username));
-                ELogger.ErrorException(string.Format("Error occured user page in DeleteUser method | Username: {0}", Username), ex);
+                logger.Error(string.Format("Error occured User in DeleteUser method | UserId: {0} | UserName: {1}", id, Username));
+                ELogger.ErrorException(string.Format("Error occured User in DeleteUser method | UserId: {0} | UserName: {1}", id, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in DeleteUser method | UserId: {0} | UserName: {1}", id, Username), ex.InnerException);
                 throw;
             }
         }
@@ -806,8 +857,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured user page in CheckPinExist method | Username: {0} |", Username));
-                ELogger.ErrorException(string.Format("Error occured user page in CheckPinExist method | Username: {0}", Username), ex);
+                logger.Error(string.Format("Error occured User in CheckPinExist method | UserId: {0} | Data Id : {1} | Data Tab: {2} | Project Id: {3} | Username : {4}", useId, dataid, datatab, ProjectId, Username)); 
+                ELogger.ErrorException(string.Format("Error occured User in CheckPinExist method | UserId: {0} | Data Id : {1} | Data Tab: {2} | Project Id: {3} | Username : {4}", useId, dataid, datatab, ProjectId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in CheckPinExist method | UserId: {0} | Data Id : {1} | Data Tab: {2} | Project Id: {3} | Username : {4}", useId, dataid, datatab, ProjectId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -833,8 +886,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured user page in DeleteActiveUser method | Username: {0} |", Username));
-                ELogger.ErrorException(string.Format("Error occured user page in DeleteActiveUser method | Username: {0}", Username), ex);
+                logger.Error(string.Format("Error occured User in DeleteActiveUser method | UserId: {0} | UserName: {1}", id, Username));
+                ELogger.ErrorException(string.Format("Error occured User in DeleteActiveUser method | UserId: {0} | UserName: {1}", id, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in DeleteActiveUser method | UserId: {0} | UserName: {1}", id, Username), ex.InnerException);
                 throw;
             }
         }
@@ -850,8 +905,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured user page in GetStoryboradNameyId method | Username: {0} |", Username));
-                ELogger.ErrorException(string.Format("Error occured user page in GetStoryboradNameyId method | Username: {0}", Username), ex);
+                logger.Error(string.Format("Error occured User in GetStoryboradNameyId method | StoryBoard Id: {0} | UserName: {1}", sid, Username));
+                ELogger.ErrorException(string.Format("Error occured User in GetStoryboradNameyId method | StoryBoard Id: {0} | UserName: {1}", sid, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in GetStoryboradNameyId method | StoryBoard Id: {0} | UserName: {1}", sid, Username), ex.InnerException);
                 throw;
             }
         }
@@ -875,8 +932,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured user page in GetTestsuiteIdByTeastcaseId method | Username: {0} |", Username));
-                ELogger.ErrorException(string.Format("Error occured user page in GetTestsuiteIdByTeastcaseId method | Username: {0}", Username), ex);
+                logger.Error(string.Format("Error occured User in GetTestsuiteIdByTeastcaseId method | Testcase Id: {0} | UserName: {1}", Tid, Username));
+                ELogger.ErrorException(string.Format("Error occured User in GetTestsuiteIdByTeastcaseId method | Testcase Id: {0} | UserName: {1}", Tid, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in GetTestsuiteIdByTeastcaseId method | Testcase Id: {0} | UserName: {1}", Tid, Username), ex.InnerException);
                 throw;
             }
         }
@@ -925,8 +984,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured user page in AddDetelteActivateTab method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured user page in AddDetelteActivateTab method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured User in AddDetelteActivateTab method | UserId: {0} | Data Id : {1} | Data Tab: {2} | Project Id: {3} | Username : {4}", useId, dataid, datatab, ProjectId, Username));
+                ELogger.ErrorException(string.Format("Error occured User in AddDetelteActivateTab method | UserId: {0} | Data Id : {1} | Data Tab: {2} | Project Id: {3} | Username : {4}", useId, dataid, datatab, ProjectId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in AddDetelteActivateTab method | UserId: {0} | Data Id : {1} | Data Tab: {2} | Project Id: {3} | Username : {4}", useId, dataid, datatab, ProjectId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -942,8 +1003,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured user page in ActivePinListByUserId method | Username: {0} |", Username));
-                ELogger.ErrorException(string.Format("Error occured user page in ActivePinListByUserId method | Username: {0}", Username), ex);
+                logger.Error(string.Format("Error occured User in ActivePinListByUserId method | UserId: {0} | UserName: {1}", userId, Username));
+                ELogger.ErrorException(string.Format("Error occured User in ActivePinListByUserId method | UserId: {0} | UserName: {1}", userId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in ActivePinListByUserId method | UserId: {0} | UserName: {1}", userId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -976,8 +1039,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured user page in ListApplication method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured user page in ListApplication method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured User in ChangeUserStatus method | UserId: {0} | UserName: {1}", id, Username));
+                ELogger.ErrorException(string.Format("Error occured User in ChangeUserStatus method | UserId: {0} | UserName: {1}", id, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in ChangeUserStatus method | UserId: {0} | UserName: {1}", id, Username), ex.InnerException);
                 throw;
             }
         }
@@ -993,8 +1058,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured user page in GetConnectionList method | Username: {0} |", Username));
-                ELogger.ErrorException(string.Format("Error occured user page in GetConnectionList method | Username: {0}", Username), ex);
+                logger.Error(string.Format("Error occured User in GetConnectionList method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured User in GetConnectionList method | UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in GetConnectionList method | UserName: {0}", Username), ex.InnerException);
                 throw;
             }
         }
@@ -1049,8 +1116,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured user page in AddEditConnection method | Username: {0} |", Username));
-                ELogger.ErrorException(string.Format("Error occured user page in AddEditConnection method | Username: {0}", Username), ex);
+                logger.Error(string.Format("Error occured User in AddEditConnection method | ConnectionId : {0} | UserName: {1}", lEntity.connectionId,  Username));
+                ELogger.ErrorException(string.Format("Error occured User in AddEditConnection method | ConnectionId : {0} | UserName: {1}", lEntity.connectionId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in AddEditConnection method | ConnectionId : {0} | UserName: {1}", lEntity.connectionId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -1074,8 +1143,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured user page in CheckDuplicateConnectionExist method | Username: {0} |", Username));
-                ELogger.ErrorException(string.Format("Error occured user page in CheckDuplicateConnectionExist method | Username: {0}", Username), ex);
+                logger.Error(string.Format("Error occured User in CheckDuplicateConnectionExist method | ConnectionId : {0} | UserName: {1}", ConnectionId, Username));
+                ELogger.ErrorException(string.Format("Error occured User in CheckDuplicateConnectionExist method | ConnectionId : {0} | UserName: {1}", ConnectionId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in CheckDuplicateConnectionExist method | ConnectionId : {0} | UserName: {1}", ConnectionId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -1099,11 +1170,13 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured user page in DeletConnection method | Username: {0} |", Username));
-                ELogger.ErrorException(string.Format("Error occured user page in DeletConnection method | Username: {0}", Username), ex);
+                logger.Error(string.Format("Error occured User in DeletConnection method | ConnectionId : {0} | UserName: {1}", ConnectionId, Username));
+                ELogger.ErrorException(string.Format("Error occured User in DeletConnection method | ConnectionId : {0} | UserName: {1}", ConnectionId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in DeletConnection method | ConnectionId : {0} | UserName: {1}", ConnectionId, Username), ex.InnerException);
                 throw;
             }
-           
+
         }
 
         #region User Role Privilages
@@ -1115,13 +1188,15 @@ namespace MARS_Repository.Repositories
                 logger.Info(string.Format("GetAllRoles start | Username: {0}", Username));
                 var result = entity.T_TEST_ROLES.ToList();
                 logger.Info(string.Format("GetAllRoles end | Username: {0}", Username));
-                return result;               
+                return result;
 
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured user page in GetAllRoles method | Username: {0} |", Username));
-                ELogger.ErrorException(string.Format("Error occured user page in GetAllRoles method | Username: {0}", Username), ex);
+                logger.Error(string.Format("Error occured User in GetAllRoles method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured User in GetAllRoles method | UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in GetAllRoles method | UserName: {0}", Username), ex.InnerException);
                 throw;
             }
         }
@@ -1137,8 +1212,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured user page in GetRoleById method | Username: {0} |", Username));
-                ELogger.ErrorException(string.Format("Error occured user page in GetRoleById method | Username: {0}", Username), ex);
+                logger.Error(string.Format("Error occured User in GetRoleById method | RoleId : {0} | UserName: {1}", roleId, Username));
+                ELogger.ErrorException(string.Format("Error occured User in GetRoleById method | RoleId : {0} | UserName: {1}", roleId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in GetRoleById method | RoleId : {0} | UserName: {1}", roleId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -1154,8 +1231,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured user page in GetAllPrivileges method | Username: {0} |", Username));
-                ELogger.ErrorException(string.Format("Error occured user page in GetAllPrivileges method | Username: {0}", Username), ex);
+                logger.Error(string.Format("Error occured User in GetAllPrivileges method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured User in GetAllPrivileges method | UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in GetAllPrivileges method | UserName: {0}", Username), ex.InnerException);
                 throw;
             }
         }
@@ -1171,8 +1250,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured user page in GetAllPrivilegesRoleMapping method | Username: {0} |", Username));
-                ELogger.ErrorException(string.Format("Error occured user page in GetAllPrivilegesRoleMapping method | Username: {0}", Username), ex);
+                logger.Error(string.Format("Error occured User in GetAllPrivilegesRoleMapping method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured User in GetAllPrivilegesRoleMapping method | UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in GetAllPrivilegesRoleMapping method | UserName: {0}", Username), ex.InnerException);
                 throw;
             }
         }
@@ -1188,8 +1269,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured user page in GetAllUserRoleMapping method | Username: {0} |", Username));
-                ELogger.ErrorException(string.Format("Error occured user page in GetAllUserRoleMapping method | Username: {0}", Username), ex);
+                logger.Error(string.Format("Error occured User in GetAllUserRoleMapping method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured User in GetAllUserRoleMapping method | UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in GetAllUserRoleMapping method | UserName: {0}", Username), ex.InnerException);
                 throw;
             }
         }
@@ -1205,8 +1288,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured user page in GetUserRoleMappingByUserId method | Username: {0} |", Username));
-                ELogger.ErrorException(string.Format("Error occured user page in GetUserRoleMappingByUserId method | Username: {0}", Username), ex);
+                logger.Error(string.Format("Error occured User in GetUserRoleMappingByUserId method | UserId: {0} | UserName: {1}", userId, Username));
+                ELogger.ErrorException(string.Format("Error occured User in GetUserRoleMappingByUserId method | UserId: {0} | UserName: {1}", userId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in GetUserRoleMappingByUserId method | UserId: {0} | UserName: {1}", userId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -1222,8 +1307,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured user page in GetPrivilegesRoleMappingByPrivilegeRoleMappingId method | Username: {0} |", Username));
-                ELogger.ErrorException(string.Format("Error occured user page in GetPrivilegesRoleMappingByPrivilegeRoleMappingId method | Username: {0}", Username), ex);
+                logger.Error(string.Format("Error occured User in GetPrivilegesRoleMappingByPrivilegeRoleMappingId method | privilegeRoleMappingId: {0} | UserName: {1}", privilegeRoleMappingId, Username));
+                ELogger.ErrorException(string.Format("Error occured User in GetPrivilegesRoleMappingByPrivilegeRoleMappingId method | privilegeRoleMappingId: {0} | UserName: {1}", privilegeRoleMappingId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in GetPrivilegesRoleMappingByPrivilegeRoleMappingId method | privilegeRoleMappingId: {0} | UserName: {1}", privilegeRoleMappingId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -1239,8 +1326,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured user page in GetPrivilegesRoleMappingByRoleId method | Username: {0} |", Username));
-                ELogger.ErrorException(string.Format("Error occured user page in GetPrivilegesRoleMappingByRoleId method | Username: {0}", Username), ex);
+                logger.Error(string.Format("Error occured User in GetPrivilegesRoleMappingByRoleId method | RoleId: {0} | UserName: {1}", roleId, Username));
+                ELogger.ErrorException(string.Format("Error occured User in GetPrivilegesRoleMappingByRoleId method | RoleId: {0} | UserName: {1}", roleId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in GetPrivilegesRoleMappingByRoleId method | RoleId: {0} | UserName: {1}", roleId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -1298,8 +1387,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured PrivilegeRoleMapping page in AddEditPrivilageRoleMapping method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured PrivilegeRoleMapping page in AddEditPrivilageRoleMapping method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured User in AddEditPrivilageRoleMapping method | PrivilageRoleMappingId: {0} | UserName: {1}", privilegeRoleMappingEntity.PrivilegeRoleMappingId, Username));
+                ELogger.ErrorException(string.Format("Error occured User in AddEditPrivilageRoleMapping method | PrivilageRoleMappingId: {0} | UserName: {1}", privilegeRoleMappingEntity.PrivilegeRoleMappingId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in AddEditPrivilageRoleMapping method | PrivilageRoleMappingId: {0} | UserName: {1}", privilegeRoleMappingEntity.PrivilegeRoleMappingId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -1328,13 +1419,15 @@ namespace MARS_Repository.Repositories
                         PrivilegeName = item.PRIVILEGE_NAME
                     });
                 }
-                logger.Info(string.Format("GetPrivilegesByRoleId start | User id: {0} | Username: {1}", roleId, Username));
+                logger.Info(string.Format("GetPrivilegesByRoleId end | User id: {0} | Username: {1}", roleId, Username));
                 return privilegesList.Distinct().ToList();
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured user page in GetPrivilegesByRoleId method | Username: {0} |", Username));
-                ELogger.ErrorException(string.Format("Error occured user page in GetPrivilegesByRoleId method | Username: {0}", Username), ex);
+                logger.Error(string.Format("Error occured User in GetPrivilegesByRoleId method | RoleId: {0} | UserName: {1}", roleId, Username));
+                ELogger.ErrorException(string.Format("Error occured User in GetPrivilegesByRoleId method | RoleId: {0} | UserName: {1}", roleId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in GetPrivilegesByRoleId method | RoleId: {0} | UserName: {1}", roleId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -1360,8 +1453,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured PrivilegeRoleMapping page in DeletePrivilagesByRoleId method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured PrivilegeRoleMapping page in DeletePrivilagesByRoleId method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured User in DeletePrivilagesByRoleId method | RoleId: {0} | UserName: {1}", roleId, Username));
+                ELogger.ErrorException(string.Format("Error occured User in DeletePrivilagesByRoleId method | RoleId: {0} | UserName: {1}", roleId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in DeletePrivilagesByRoleId method | RoleId: {0} | UserName: {1}", roleId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -1386,10 +1481,335 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured user page in ConverUserModel method | Username: {0} |", Username));
-                ELogger.ErrorException(string.Format("Error occured user page in ConverUserModel method | Username: {0}", Username), ex);
+                logger.Error(string.Format("Error occured User in ConverUserModel method | TesterId: {0} | UserName: {1}", userModel.TESTER_ID, Username));
+                ELogger.ErrorException(string.Format("Error occured User in ConverUserModel method | TesterId: {0} | UserName: {1}", userModel.TESTER_ID, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in ConverUserModel method | TesterId: {0} | UserName: {1}", userModel.TESTER_ID, Username), ex.InnerException);
                 throw;
             }
+        }
+
+        public static OracleConnection GetOracleConnection(string StrConnection)
+        {
+            return new OracleConnection(StrConnection);
+        }
+
+        public List<UserConfigrationViewModel> GetUserConfigrationList(string schema, string lconstring)
+        {
+            try
+            {
+                logger.Info(string.Format("GetUserConfigrationList start | Username: {0}", Username));
+                DataSet lds = new DataSet();
+                OracleConnection lconnection = GetOracleConnection(lconstring);
+                lconnection.Open();
+
+                OracleTransaction ltransaction;
+                ltransaction = lconnection.BeginTransaction();
+
+                OracleCommand lcmd;
+                lcmd = lconnection.CreateCommand();
+                lcmd.Transaction = ltransaction;
+
+                OracleParameter[] ladd_refer_image = new OracleParameter[1];
+                ladd_refer_image[0] = new OracleParameter("sl_cursor", OracleDbType.RefCursor);
+                ladd_refer_image[0].Direction = ParameterDirection.Output;
+
+                foreach (OracleParameter p in ladd_refer_image)
+                {
+                    lcmd.Parameters.Add(p);
+                }
+
+                lcmd.CommandText = schema + "." + "SP_GET_USER_CONFIGURATION";
+                lcmd.CommandType = CommandType.StoredProcedure;
+                OracleDataAdapter dataAdapter = new OracleDataAdapter(lcmd);
+                dataAdapter.Fill(lds);
+                var dt = new DataTable();
+                dt = lds.Tables[0];
+                List<UserConfigrationViewModel> resultList = dt.AsEnumerable().Select(row =>
+                    new UserConfigrationViewModel
+                    {
+                        Id = row.Field<decimal>("USERCONFIGID"),
+                        MainKey = row.Field<string>("MAINKEY"),
+                        SubKey = row.Field<string>("SUBKEY"),
+                        UserId = row.Field<decimal?>("USERID"),
+                        MARSUserName = row.Field<string>("MARSUserName"),
+                        BLOBValue = row.Field<byte[]>("BLOBValuestr"),
+                        //BLOBValuestr = row.Field<string>("BLOBValuestr"),
+                        BLOBValueType = row.Field<short?>("BLOBVALUETYPE"),
+                        BLOBType = row.Field<string>("BLOBType"),
+                        Description = row.Field<string>("DESCRIPTION")
+
+                    }).ToList();
+
+                resultList.ForEach(item =>
+                {
+                    item.BLOBValuestr = item.BLOBValue == null ? "" : Encoding.UTF8.GetString(item.BLOBValue);
+                });
+                logger.Info(string.Format("GetUserConfigrationList end | Username: {0}", Username));
+                return resultList.ToList();
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured User in ConverUserModel method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured User in ConverUserModel method | UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in ConverUserModel method | UserName: {0}", Username), ex.InnerException);
+                throw;
+            }
+        }
+
+        public bool AddEditUserConfigration(UserConfigrationViewModel modelEntity, string lConnectionStr, string lSchema)
+        {
+            try
+            {
+                var flag = false;
+                OracleTransaction ltransaction;
+                OracleConnection lconnection = new OracleConnection(lConnectionStr);
+                if (modelEntity.Id == 0)
+                {
+                    logger.Info(string.Format("Add User Configration start | Mainkey: {0} | Username: {1}", modelEntity.MainKey, Username));
+                    long createId = Helper.NextTestSuiteId("T_SEQ_USERCONFIG");
+                  
+                    lconnection.Open();
+                    ltransaction = lconnection.BeginTransaction();
+                    string lcmdquery = "INSERT INTO " + lSchema + ".T_USER_CONFIGURATION(USERCONFIGID, MAINKEY, SUBKEY, USERID, BLOBVALUE, BLOBVALUETYPE, DESCRIPTION, CREATEDBY, CREATEDON) values(:1,:2,:3,:4,utl_raw.cast_to_raw(:5),:6,:7,:8,:9)";
+                    using (var lcmd = lconnection.CreateCommand())
+                    {
+                        lcmd.CommandText = lcmdquery;
+
+                        OracleParameter USERCONFIGID_oparam = new OracleParameter();
+                        USERCONFIGID_oparam.OracleDbType = OracleDbType.Long;
+                        USERCONFIGID_oparam.Value = createId;
+
+                        OracleParameter MAINKEY_oparam = new OracleParameter();
+                        MAINKEY_oparam.OracleDbType = OracleDbType.Varchar2;
+                        MAINKEY_oparam.Value = modelEntity.MainKey;
+
+                        OracleParameter SUBKEY_oparam = new OracleParameter();
+                        SUBKEY_oparam.OracleDbType = OracleDbType.Varchar2;
+                        SUBKEY_oparam.Value = modelEntity.SubKey;
+
+                        OracleParameter USERID_oparam = new OracleParameter();
+                        USERID_oparam.OracleDbType = OracleDbType.Long;
+                        USERID_oparam.Value = modelEntity.UserId;
+
+                        OracleParameter BLOBVALUE_oparam = new OracleParameter();
+                        BLOBVALUE_oparam.OracleDbType = OracleDbType.Varchar2;
+                        BLOBVALUE_oparam.Value = modelEntity.BLOBValuestr;
+
+                        OracleParameter BLOBVALUETYPE_oparam = new OracleParameter();
+                        BLOBVALUETYPE_oparam.OracleDbType = OracleDbType.Int16;
+                        BLOBVALUETYPE_oparam.Value = modelEntity.BLOBValueType;
+
+                        OracleParameter DESCRIPTION_oparam = new OracleParameter();
+                        DESCRIPTION_oparam.OracleDbType = OracleDbType.Varchar2;
+                        DESCRIPTION_oparam.Value = modelEntity.Description;
+
+                        OracleParameter CREATEDBY_oparam = new OracleParameter();
+                        CREATEDBY_oparam.OracleDbType = OracleDbType.Varchar2;
+                        CREATEDBY_oparam.Value = modelEntity.Create_Person;
+
+                        OracleParameter CREATEDON_oparam = new OracleParameter();
+                        CREATEDON_oparam.OracleDbType = OracleDbType.Date;
+                        CREATEDON_oparam.Value = DateTime.Now;
+
+                        lcmd.Parameters.Add(USERCONFIGID_oparam);
+                        lcmd.Parameters.Add(MAINKEY_oparam);
+                        lcmd.Parameters.Add(SUBKEY_oparam);
+                        lcmd.Parameters.Add(USERID_oparam);
+                        lcmd.Parameters.Add(BLOBVALUE_oparam);
+                        lcmd.Parameters.Add(BLOBVALUETYPE_oparam);
+                        lcmd.Parameters.Add(DESCRIPTION_oparam);
+                        lcmd.Parameters.Add(CREATEDBY_oparam);
+                        lcmd.Parameters.Add(CREATEDON_oparam);
+
+                        lcmd.ExecuteNonQuery();
+                        flag = true;
+
+                        logger.Info(string.Format("Add User Configration end | Mainkey: {0} | Username: {1}", modelEntity.MainKey, Username));
+                        ltransaction.Commit();
+                    }
+                }
+                else
+                {
+                    logger.Info(string.Format("Edit User Configration start | Mainkey: {0} | Username: {1}", modelEntity.MainKey, Username));
+                    lconnection.Open();
+                    ltransaction = lconnection.BeginTransaction();
+                    string lcmdquery = "UPDATE " + lSchema + ".T_USER_CONFIGURATION SET MAINKEY = :1, SUBKEY = :2, USERID = :3, BLOBVALUE = utl_raw.cast_to_raw(:4), " +
+                        "BLOBVALUETYPE = :5, DESCRIPTION = :6, MODIFYBY = :7, MODIFYON = :8 WHERE USERCONFIGID = :9";
+                    using (var lcmd = lconnection.CreateCommand())
+                    {
+                        lcmd.CommandText = lcmdquery;
+                        
+                        OracleParameter MAINKEY_oparam = new OracleParameter();
+                        MAINKEY_oparam.OracleDbType = OracleDbType.Varchar2;
+                        MAINKEY_oparam.Value = modelEntity.MainKey;
+
+                        OracleParameter SUBKEY_oparam = new OracleParameter();
+                        SUBKEY_oparam.OracleDbType = OracleDbType.Varchar2;
+                        SUBKEY_oparam.Value = modelEntity.SubKey;
+
+                        OracleParameter USERID_oparam = new OracleParameter();
+                        USERID_oparam.OracleDbType = OracleDbType.Long;
+                        USERID_oparam.Value = modelEntity.UserId;
+
+                        OracleParameter BLOBVALUE_oparam = new OracleParameter();
+                        BLOBVALUE_oparam.OracleDbType = OracleDbType.Varchar2;
+                        BLOBVALUE_oparam.Value = modelEntity.BLOBValuestr;
+
+                        OracleParameter BLOBVALUETYPE_oparam = new OracleParameter();
+                        BLOBVALUETYPE_oparam.OracleDbType = OracleDbType.Int16;
+                        BLOBVALUETYPE_oparam.Value = modelEntity.BLOBValueType;
+
+                        OracleParameter DESCRIPTION_oparam = new OracleParameter();
+                        DESCRIPTION_oparam.OracleDbType = OracleDbType.Varchar2;
+                        DESCRIPTION_oparam.Value = modelEntity.Description;
+
+                        OracleParameter MODIFYEDBY_oparam = new OracleParameter();
+                        MODIFYEDBY_oparam.OracleDbType = OracleDbType.Varchar2;
+                        MODIFYEDBY_oparam.Value = modelEntity.Create_Person;
+
+                        OracleParameter MODIFYEDON_oparam = new OracleParameter();
+                        MODIFYEDON_oparam.OracleDbType = OracleDbType.Date;
+                        MODIFYEDON_oparam.Value = DateTime.Now;
+
+                        OracleParameter USERCONFIGID_oparam = new OracleParameter();
+                        USERCONFIGID_oparam.OracleDbType = OracleDbType.Long;
+                        USERCONFIGID_oparam.Value = modelEntity.Id;
+
+                        lcmd.Parameters.Add(MAINKEY_oparam);
+                        lcmd.Parameters.Add(SUBKEY_oparam);
+                        lcmd.Parameters.Add(USERID_oparam);
+                        lcmd.Parameters.Add(BLOBVALUE_oparam);
+                        lcmd.Parameters.Add(BLOBVALUETYPE_oparam);
+                        lcmd.Parameters.Add(DESCRIPTION_oparam);
+                        lcmd.Parameters.Add(MODIFYEDBY_oparam);
+                        lcmd.Parameters.Add(MODIFYEDON_oparam);
+                        lcmd.Parameters.Add(USERCONFIGID_oparam);
+
+                        lcmd.ExecuteNonQuery();
+                        flag = true;
+
+                        logger.Info(string.Format("Edit User Configration end | Mainkey: {0} | Username: {1}", modelEntity.MainKey, Username));
+                        ltransaction.Commit();
+                    }
+                }
+
+                lconnection.Close();
+                return flag;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured User in AddEditUserConfigration method | UserId: {0} | UserName: {1}", modelEntity.Id,  Username));
+                ELogger.ErrorException(string.Format("Error occured User in AddEditUserConfigration method | UserId: {0} | UserName: {1}", modelEntity.Id, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in AddEditUserConfigration method | UserId: {0} | UserName: {1}", modelEntity.Id, Username), ex.InnerException);
+                throw;
+            }
+        }
+
+        public bool UpdateBolbValue(UserConfigrationViewModel modelEntity, string lConnectionStr, string lSchema)
+        {
+            try
+            {
+                var flag = false;
+                OracleTransaction ltransaction;
+                OracleConnection lconnection = new OracleConnection(lConnectionStr);
+               
+                    logger.Info(string.Format("Edit User BolbValue Configration start | Id: {0} | Username: {1}", modelEntity.Id, Username));
+                    lconnection.Open();
+                    ltransaction = lconnection.BeginTransaction();
+                    string lcmdquery = "UPDATE " + lSchema + ".T_USER_CONFIGURATION SET BLOBVALUE = utl_raw.cast_to_raw(:1), " +
+                        "MODIFYBY = :2, MODIFYON = :3 WHERE USERCONFIGID = :4";
+                    using (var lcmd = lconnection.CreateCommand())
+                    {
+                        lcmd.CommandText = lcmdquery;
+
+                        OracleParameter BLOBVALUE_oparam = new OracleParameter();
+                        BLOBVALUE_oparam.OracleDbType = OracleDbType.Varchar2;
+                        BLOBVALUE_oparam.Value = modelEntity.BLOBValuestr;
+
+                        OracleParameter MODIFYEDBY_oparam = new OracleParameter();
+                        MODIFYEDBY_oparam.OracleDbType = OracleDbType.Varchar2;
+                        MODIFYEDBY_oparam.Value = modelEntity.Create_Person;
+
+                        OracleParameter MODIFYEDON_oparam = new OracleParameter();
+                        MODIFYEDON_oparam.OracleDbType = OracleDbType.Date;
+                        MODIFYEDON_oparam.Value = DateTime.Now;
+
+                        OracleParameter USERCONFIGID_oparam = new OracleParameter();
+                        USERCONFIGID_oparam.OracleDbType = OracleDbType.Long;
+                        USERCONFIGID_oparam.Value = modelEntity.Id;
+
+                        lcmd.Parameters.Add(BLOBVALUE_oparam);
+                        lcmd.Parameters.Add(MODIFYEDBY_oparam);
+                        lcmd.Parameters.Add(MODIFYEDON_oparam);
+                        lcmd.Parameters.Add(USERCONFIGID_oparam);
+
+                        lcmd.ExecuteNonQuery();
+                        flag = true;
+
+                    logger.Info(string.Format("Edit User BolbValue Configration start | Id: {0} | Username: {1}", modelEntity.Id, Username));
+                    ltransaction.Commit();
+                    }
+
+                lconnection.Close();
+                return flag;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured User in UpdateBolbValue method | UserId: {0} | UserName: {1}", modelEntity.Id, Username));
+                ELogger.ErrorException(string.Format("Error occured User in UpdateBolbValue method | UserId: {0} | UserName: {1}", modelEntity.Id, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in UpdateBolbValue method | UserId: {0} | UserName: {1}", modelEntity.Id, Username), ex.InnerException);
+                throw;
+            }
+        }
+
+        public String GetUserConfigrationNameById(long Id)
+        {
+            try
+            {
+                logger.Info(string.Format("Get User ConfigrationName start | Id: {0} | Username: {1}", Id, Username));
+                var result = entity.T_USER_CONFIGURATION.FirstOrDefault(x => x.USERCONFIGID == Id).MAINKEY;
+                logger.Info(string.Format("Get User ConfigrationName end | Id: {0} | Username: {1}", Id, Username));
+                return result;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured User in GetUserConfigrationNameById method | UserId: {0} | UserName: {1}", Id, Username));
+                ELogger.ErrorException(string.Format("Error occured User in GetUserConfigrationNameById method | UserId: {0} | UserName: {1}", Id, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in GetUserConfigrationNameByIdmethod | UserId: {0} | UserName: {1}", Id, Username), ex.InnerException);
+                throw;
+            }
+        }
+
+        public bool DeleteUserConfigration(long Id)
+        {
+            try
+            {
+                logger.Info(string.Format("Delete User Configration start | Id: {0} | Username: {1}", Id, Username));
+                var flag = false;
+                var result = entity.T_USER_CONFIGURATION.FirstOrDefault(x => x.USERCONFIGID == Id);
+                if (result != null)
+                {
+                    entity.T_USER_CONFIGURATION.Remove(result);
+                    entity.SaveChanges();
+                    flag = true;
+                }
+                logger.Info(string.Format("Delete User Configration end | Id: {0} | Username: {1}", Id, Username));
+                return flag;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured User in DeleteUserConfigration method | UserId: {0} | UserName: {1}", Id, Username));
+                ELogger.ErrorException(string.Format("Error occured User in DeleteUserConfigration method | UserId: {0} | UserName: {1}", Id, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in DeleteUserConfigration | UserId: {0} | UserName: {1}", Id, Username), ex.InnerException);
+                throw;
+            }
+
         }
         #endregion
     }

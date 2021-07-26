@@ -16,10 +16,12 @@ using System.Data.Common;
 using NLog;
 using System.Configuration;
 using MARSUtility;
-
+using System.Net.Http;
+using System.Net.Http.Headers;
 
 namespace MARS_Web.Controllers
 {
+    [SessionTimeout]
     public class ObjectController : Controller
     {
         MARSUtility.CommonHelper objcommon = new MARSUtility.CommonHelper();
@@ -56,8 +58,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured when object page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured when object page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in Object for ObjectList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Object for ObjectList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Object for ObjectList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
             }
             return PartialView();
         }
@@ -76,8 +80,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in object page | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in object page | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in Object for ApplicationList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Object for ApplicationList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Object for ApplicationList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -99,7 +105,7 @@ namespace MARS_Web.Controllers
             string colOrderIndex = Request.Form.GetValues("order[0][column]")[0];
             var colOrder = Request.Form.GetValues("columns[" + colOrderIndex + "][name]").FirstOrDefault();
             string colDir = Request.Form.GetValues("order[0][dir]")[0];
-           
+
             string lSchema = SessionManager.Schema;
             var lConnectionStr = SessionManager.APP;
             startRec = startRec + 1;
@@ -132,8 +138,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in object page | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in object page | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in Object for DatLoad method | Application Id : {0} | UserName: {0}", appId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Object for DatLoad method | Application Id : {0} | UserName: {0}", appId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Object for DatLoad method | Application Id : {0} | UserName: {0}", appId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
             }
             return Json(new
             {
@@ -167,8 +175,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in object page | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in object page | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in Object for LoadPegwindow method | Application Id : {0} | UserName: {0}", ApplicationId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Object for LoadPegwindow method | Application Id : {0} | UserName: {0}", ApplicationId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Object for LoadPegwindow method | Application Id : {0} | UserName: {0}", ApplicationId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -204,8 +214,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in object page | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in object page | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in Object for AddEditObject method | Object Id : {0} | UserName: {0}", objmodel.ObjectId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Object for AddEditObject method | Object Id : {0} | UserName: {0}", objmodel.ObjectId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Object for AddEditObject method | Object Id : {0} | UserName: {0}", objmodel.ObjectId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -213,7 +225,7 @@ namespace MARS_Web.Controllers
         }
 
         //Delete the object data by objectid and appid
-        public JsonResult DeleteObject(long objectid, long appid)
+        public JsonResult DeleteObject(long objectid, long appid,string parent)
         {
             logger.Info(string.Format("Object Delete start | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
             ResultModel resultModel = new ResultModel();
@@ -239,7 +251,7 @@ namespace MARS_Web.Controllers
                         }
                     }
                     var objectname = repo.GetObjectName(objectid, appid);
-                    var result = repo.DeleteObject(objectid, appid);
+                    var result = repo.DeleteObject(objectid, appid, parent);
                     resultModel.data = pegwindowcheck;
                     resultModel.message = "'Object [" + objectname + "] has been deleted.'";
                     logger.Info(string.Format("Object Delete end | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
@@ -255,8 +267,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in object page | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in object page | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in Object for DeleteObject method | Object Id : {0} | Application Id : {1} | Parent : {2} | UserName: {3}", objectid, appid, parent, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Object for DeleteObject method | Object Id : {0} | Application Id : {1} | Parent : {2} | UserName: {3}", objectid, appid, parent, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Object for DeleteObject method | Object Id : {0} | Application Id : {1} | Parent : {2} | UserName: {3}", objectid, appid, parent, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -280,12 +294,14 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in object page | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in object page | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in Object for CheckConvertingObjectExists method | Object Name : {0} | Application Id : {1} | Parent : {2} | Object Type : {3} | UserName: {4}", objectname, appid, parentobj, objecttype, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Object for CheckConvertingObjectExists method | Object Name : {0} | Application Id : {1} | Parent : {2} | Object Type : {3} | UserName: {4}", objectname, appid, parentobj, objecttype, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Object for CheckConvertingObjectExists method | Object Name : {0} | Application Id : {1} | Parent : {2} | Object Type : {3} | UserName: {4}", objectname, appid, parentobj, objecttype, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
-          
+
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
 
@@ -306,8 +322,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in object page | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in object page | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in Object for CopyAllObjects method | Old App Id : {0} | New App Id : {1} | UserName: {2}", copyfromappid, copytoappid, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Object for CopyAllObjects method | Old App Id : {0} | New App Id : {1} | UserName: {2}", copyfromappid, copytoappid, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Object for CopyAllObjects method | Old App Id : {0} | New App Id : {1} | UserName: {2}", copyfromappid, copytoappid, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -331,8 +349,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in object page | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in object page | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in Object for CheckDuplicateObjectList method | Old App Id : {0} | New App Id : {1} | UserName: {2}", copyfromappid, copytoappid, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Object for CheckDuplicateObjectList method | Old App Id : {0} | New App Id : {1} | UserName: {2}", copyfromappid, copytoappid, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Object for CheckDuplicateObjectList method | Old App Id : {0} | New App Id : {1} | UserName: {2}", copyfromappid, copytoappid, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -357,8 +377,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in object page | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in object page | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in Object for CopyObjects method | Old Id : {0} | New Id: {1} | UserName: {2}", fromid, toid, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Object for CopyObjects method | Old Id : {0} | New Id: {1} | UserName: {2}", fromid, toid, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Object for CopyObjects method | Old Id : {0} | New Id: {1} | UserName: {2}", fromid, toid, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -380,8 +402,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in object page | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in object page | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in Object for GetObjectIdByApp method | Application Id : {0} | UserName: {0}", appid, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Object for GetObjectIdByApp method | Application Id : {0} | UserName: {0}", appid, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Object for GetObjectIdByApp method | Application Id : {0} | UserName: {0}", appid, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -394,19 +418,19 @@ namespace MARS_Web.Controllers
         //This method will export object
         public JsonResult ExportObject(string application)
         {
-           
+
             string name = "Log_Object_Export" + "_" + DateTime.Now.ToString(" yyyy-MM-dd HH-mm-ss") + ".xlsx";
             string lFileName = "Objects" + "_" + DateTime.Now.ToString("yyyyMMdd") + "_" + DateTime.Now.ToString("HHmmss") + ".xlsx";
             string log_path = WebConfigurationManager.AppSettings["ExportLogPath"];
             string strPath = Path.Combine(Server.MapPath("~/" + log_path), name);
             try
             {
-             
+
                 string FullPath = Path.Combine(System.Web.HttpContext.Current.Server.MapPath("~/TempExport/"), lFileName);
 
                 MARSUtility.ExportExcel excel = new MARSUtility.ExportExcel();
                 MARSUtility.ExportHelper exphelper = new MARSUtility.ExportHelper();
-                
+
 
                 string lSchema = SessionManager.Schema;
                 var lConnectionStr = SessionManager.APP;
@@ -453,18 +477,22 @@ namespace MARS_Web.Controllers
                 dbtable.dt_Log = td.Copy();
                 dbtable.errorlog("Export is started", "Export Object Excel", "", 0);
                 var result = excel.ExportObjectExcel(application, FullPath, lSchema, lConnectionStr);
-               
-                if (result==true)
+
+                if (result == true)
                 {
                     dbtable.errorlog("Export is completed", "Export Object Excel", "", 0);
                     objcommon.excel(dbtable.dt_Log, strPath, "Export", application, "OBJECT");
                     dbtable.dt_Log = null;
                     return Json(lFileName, JsonRequestBehavior.AllowGet);
                 }
-              
+
             }
             catch (Exception ex)
             {
+                logger.Error(string.Format("Error occured in Object for ExportObject method | Application : {0} | UserName: {1}", application, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Object for ExportObject method | Application : {0} | UserName: {1}", application, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Object for ExportObject method | Application : {0} | UserName: {1}", application, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 int line;
                 string msg = ex.Message;
                 line = dbtable.lineNo(ex);
@@ -473,19 +501,29 @@ namespace MARS_Web.Controllers
                 dbtable.dt_Log = null;
                 return Json(name, JsonRequestBehavior.AllowGet);
             }
-          
+
             return Json(lFileName, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult ImportObjects()
         {
-            var userId = SessionManager.TESTER_ID;
-            var repAcc = new ConfigurationGridRepository();
-            repAcc.Username = SessionManager.TESTER_LOGIN_NAME;
-            var Widthgridlst = repAcc.GetGridList((long)userId, GridNameList.ResizeLeftPanel);
-            var Rgriddata = GridHelper.GetLeftpanelgridwidth(Widthgridlst);
+            try
+            {
+                var userId = SessionManager.TESTER_ID;
+                var repAcc = new ConfigurationGridRepository();
+                repAcc.Username = SessionManager.TESTER_LOGIN_NAME;
+                var Widthgridlst = repAcc.GetGridList((long)userId, GridNameList.ResizeLeftPanel);
+                var Rgriddata = GridHelper.GetLeftpanelgridwidth(Widthgridlst);
 
-            ViewBag.width = Rgriddata.Resize == null ? ConfigurationManager.AppSettings["DefultLeftPanel"] + "px" : Rgriddata.Resize.Trim() + "px";
+                ViewBag.width = Rgriddata.Resize == null ? ConfigurationManager.AppSettings["DefultLeftPanel"] + "px" : Rgriddata.Resize.Trim() + "px";
+            }
+            catch(Exception ex)
+            {
+                logger.Error(string.Format("Error occured in Object for ImportObjects method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Object for ImportObjects method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Object for ImportObjects method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+            }
             return PartialView();
         }
 
@@ -493,11 +531,11 @@ namespace MARS_Web.Controllers
         public ActionResult ImportFile()
         {
             string fileName = string.Empty;
-           
+
             ViewBag.FileName = "";
             string name = "Log_Import" + DateTime.Now.ToString(" yyyy-MM-dd HH-mm-ss") + ".xlsx";
             string log_path = WebConfigurationManager.AppSettings["ImportLogPath"];
-           string strPath = Path.Combine(Server.MapPath("~/" + log_path), name);
+            string strPath = Path.Combine(Server.MapPath("~/" + log_path), name);
             try
             {
                 HttpFileCollectionBase files = Request.Files;
@@ -506,7 +544,7 @@ namespace MARS_Web.Controllers
                     HttpPostedFileBase variableupload = files[i];
                     if (variableupload != null)
                     {
-                       
+
                         string destinationPath = string.Empty;
                         string extension = string.Empty;
                         var uploadFileModel = new List<ObjectFile>();
@@ -517,10 +555,10 @@ namespace MARS_Web.Controllers
                         fileName = fileName + "_" + DateTime.Now.ToString("dd_mm_yyyy") + "_" + DateTime.Now.TimeOfDay.ToString("hh") + "_" + DateTime.Now.TimeOfDay.ToString("mm") + "_" + DateTime.Now.TimeOfDay.ToString("ss") + "" + extension;
                         destinationPath = Path.Combine(Server.MapPath("~/Import/"), fileName);
                         variableupload.SaveAs(destinationPath);
-                        
-                       // string TempFileLocation = WebConfigurationManager.AppSettings["VariableTemplateLocation"];
+
+                        // string TempFileLocation = WebConfigurationManager.AppSettings["VariableTemplateLocation"];
                         //name = "Log_"+ Path.GetFileNameWithoutExtension(variableupload.FileName) +"_Import" + DateTime.Now.ToString(" yyyy-MM-dd HH-mm-ss") + ".xlsx";
-                        
+
                         // strPath = Path.Combine(Server.MapPath("~/" + log_path), name);
                         string lSchema = SessionManager.Schema;
                         var lConnectionStr = SessionManager.APP;
@@ -576,14 +614,18 @@ namespace MARS_Web.Controllers
                             //fileName = ".xlsx";
                             dbtable.errorlog("Import is completed", "Import Object", "", 0);
                             objcommon.excel(dbtable.dt_Log, strPath, "Import", "", "OBJECT");
-                            return Json(fileName +",success", JsonRequestBehavior.AllowGet);
+                            return Json(fileName + ",success", JsonRequestBehavior.AllowGet);
                         }
-                    
+
                     }
                 }
             }
             catch (Exception ex)
             {
+                logger.Error(string.Format("Error occured in Object for ImportFile method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Object for ImportFile method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Object for ImportFile method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 int line;
                 string msg = ex.Message;
                 line = dbtable.lineNo(ex);
@@ -607,8 +649,8 @@ namespace MARS_Web.Controllers
             var result = "";
             var byteArray = System.IO.File.ReadAllBytes(path);
             var ms = new MemoryStream(byteArray);
-           
-              result = Path.GetFileName(path);
+
+            result = Path.GetFileName(path);
             return new FileStreamResult(ms, "application/ms-excel")
             {
                 FileDownloadName = result
@@ -624,18 +666,58 @@ namespace MARS_Web.Controllers
 
         public void setObjectGridWidth()
         {
-            var userId = SessionManager.TESTER_ID;
-            var repAcc = new ConfigurationGridRepository();
-            repAcc.Username = SessionManager.TESTER_LOGIN_NAME;
-            var gridlst = repAcc.GetGridList((long)userId, GridNameList.ObjectList);
-            var objgriddata = GridHelper.GetObjectwidth(gridlst);
+            try
+            {
+                var userId = SessionManager.TESTER_ID;
+                var repAcc = new ConfigurationGridRepository();
+                repAcc.Username = SessionManager.TESTER_LOGIN_NAME;
+                var gridlst = repAcc.GetGridList((long)userId, GridNameList.ObjectList);
+                var objgriddata = GridHelper.GetObjectwidth(gridlst);
 
-            ViewBag.namewidth = objgriddata.Name == null ? "20%" : objgriddata.Name.Trim() + '%';
-            ViewBag.internalAccesswidth = objgriddata.InternalAccess == null ? "30%" : objgriddata.InternalAccess.Trim() + '%';
-            ViewBag.typewidth = objgriddata.Type == null ? "10%" : objgriddata.Type.Trim() + '%';
-            ViewBag.pegwindowwidth = objgriddata.Pegwindow == null ? "20%" : objgriddata.Pegwindow.Trim() + '%';
-            ViewBag.actionswidth = objgriddata.Actions == null ? "10%" : objgriddata.Actions.Trim() + '%';
-            ViewBag.selectwidth = objgriddata.Select == null ? "10%" : objgriddata.Select.Trim() + '%';
+                ViewBag.namewidth = objgriddata.Name == null ? "20%" : objgriddata.Name.Trim() + '%';
+                ViewBag.internalAccesswidth = objgriddata.InternalAccess == null ? "30%" : objgriddata.InternalAccess.Trim() + '%';
+                ViewBag.typewidth = objgriddata.Type == null ? "10%" : objgriddata.Type.Trim() + '%';
+                ViewBag.pegwindowwidth = objgriddata.Pegwindow == null ? "20%" : objgriddata.Pegwindow.Trim() + '%';
+                ViewBag.actionswidth = objgriddata.Actions == null ? "10%" : objgriddata.Actions.Trim() + '%';
+                ViewBag.selectwidth = objgriddata.Select == null ? "10%" : objgriddata.Select.Trim() + '%';
+            }
+            catch(Exception ex)
+            {
+                logger.Error(string.Format("Error occured in Object for setObjectGridWidth method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Object for setObjectGridWidth method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Object for setObjectGridWidth method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+            }
+        }
+
+        public JsonResult RefreshCache()
+        {
+            logger.Info(string.Format("RefreshCache start | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+
+            string BaseURL = WebConfigurationManager.AppSettings["RefreshCacheURL"];
+           // string URL = "http://mars11.eastus.cloudapp.azure.com:8051/api/ListCompareConfig";
+            string URL = BaseURL + "/MarsEngine/RefreshCache?typeId=All&currentDBIdx=" + SessionManager.Schema;
+            try
+            {
+                HttpClient client = new HttpClient();
+                client.DefaultRequestHeaders.Accept.Add(
+                new MediaTypeWithQualityHeaderValue("application/json"));
+
+                HttpResponseMessage response = client.GetAsync(URL).Result;
+                if (response.IsSuccessStatusCode)
+                {
+                    var dataObjects = response.Content.ReadAsStringAsync().Result; 
+                }
+                logger.Info(string.Format("RefreshCache end | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in Object for RefreshCache method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Object for RefreshCache method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Object for RefreshCache method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+            }
+            return Json("", JsonRequestBehavior.AllowGet);
         }
     }
 }

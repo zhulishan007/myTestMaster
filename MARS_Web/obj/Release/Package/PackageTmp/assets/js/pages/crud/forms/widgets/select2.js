@@ -26,7 +26,9 @@ var KTSelect2 = function() {
         $('#kt_select2_2, #kt_select2_2_validate').select2({
             placeholder: "Select a state"
         });
-
+        $('#suDrpURole, #suDrpURole_validate').select2({
+            placeholder: "Select Roles"
+        });
         // multi select
         $('#kt_select2_3, #kt_select2_3_validate').select2({
             placeholder: "Select application",
@@ -208,6 +210,9 @@ var KTSelect2 = function() {
             });
             $('#DrpType_modal').select2({
                 placeholder: "Select Project",
+            });
+            $('#suDrpURole_modal').select2({
+                placeholder: "Select Role",
             });
             // basic
             $('#kt_select2_4_modal').select2({

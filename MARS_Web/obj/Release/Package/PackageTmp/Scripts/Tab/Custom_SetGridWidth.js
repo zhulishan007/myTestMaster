@@ -34,7 +34,7 @@
             },
             columns: [
                 { "data": 'GridName', "name": "Grid Name", width: '60%', "targets": 0, autowidth: false },
-                { data: 'Actions', responsivePriority: -1, width: '40%', "targets": 2, autowidth: false }
+                { data: 'Actions', responsivePriority: -1, width: '40%', "targets": 1, autowidth: false }
             ],
             initComplete: function () {
                 var thisTable = this;
@@ -208,226 +208,239 @@ function Editgrid(Id, obj) {
         contentType: "application/json;charset=utf-8",
         dataType: "HTML",
         success: function (result) {
-            if (GridName.toLowerCase().trim() == "application list") {
-                var appdata = JSON.parse(result);
-                $("#appNamewidth").val(appdata.Name == null ? "20" : appdata.Name);
-                $("#appDescriptionwidth").val(appdata.Description == null ? "20" : appdata.Description);
-                $("#appVersionwidth").val(appdata.Version == null ? "10" : appdata.Version);
-                $("#appExtrawidth").val(appdata.ExtraRequirement == null ? "20" : appdata.ExtraRequirement);
-                $("#appModewidth").val(appdata.Mode == null ? "10" : appdata.Mode);
-                $("#appExplorerBitwidth").val(appdata.ExplorerBits == null ? "10" : appdata.ExplorerBits);
-                $("#appActionswidth").val(appdata.Actions == null ? "10" : appdata.Actions);
+            result = JSON.parse(result);
+            if (result.status == 1) {
+                if (GridName.toLowerCase().trim() == "application list") {
+                    var appdata = result.data;
+                    $("#appNamewidth").val(appdata.Name == null ? "20" : appdata.Name);
+                    $("#appDescriptionwidth").val(appdata.Description == null ? "20" : appdata.Description);
+                    $("#appVersionwidth").val(appdata.Version == null ? "10" : appdata.Version);
+                    $("#appExtrawidth").val(appdata.ExtraRequirement == null ? "20" : appdata.ExtraRequirement);
+                    $("#appModewidth").val(appdata.Mode == null ? "10" : appdata.Mode);
+                    $("#appExplorerBitwidth").val(appdata.ExplorerBits == null ? "10" : appdata.ExplorerBits);
+                    $("#appActionswidth").val(appdata.Actions == null ? "10" : appdata.Actions);
 
-                $("#appNameid").val(appdata.NameId);
-                $("#appDescriptionid").val(appdata.DescriptionId);
-                $("#appVersionid").val(appdata.VersionId);
-                $("#appExtraid").val(appdata.ExtraRequirementId);
-                $("#appModeid").val(appdata.ModeId);
-                $("#appExplorerBitid").val(appdata.ExplorerBitsId);
-                $("#appActionsid").val(appdata.ActionsId);
-                $("#appGridid").val(appdata.GridId);
+                    $("#appNameid").val(appdata.NameId);
+                    $("#appDescriptionid").val(appdata.DescriptionId);
+                    $("#appVersionid").val(appdata.VersionId);
+                    $("#appExtraid").val(appdata.ExtraRequirementId);
+                    $("#appModeid").val(appdata.ModeId);
+                    $("#appExplorerBitid").val(appdata.ExplorerBitsId);
+                    $("#appActionsid").val(appdata.ActionsId);
+                    $("#appGridid").val(appdata.GridId);
 
-                stoploader();
-                $('#ResizeApplicationgrid').modal('show');
+                    stoploader();
+                    $('#ResizeApplicationgrid').modal('show');
+                }
+                else if (GridName.toLowerCase().trim() == "project list") {
+                    var prodata = result.data;
+                    $("#proNamewidth").val(prodata.Name == null ? "20" : prodata.Name);
+                    $("#proDescriptionwidth").val(prodata.Description == null ? "25" : prodata.Description);
+                    $("#proApplicationwidth").val(prodata.Application == null ? "25" : prodata.Application);
+                    $("#proStatuswidth").val(prodata.Status == null ? "20" : prodata.Status);
+                    $("#proActionswidth").val(prodata.Actions == null ? "10" : prodata.Actions);
+
+                    $("#proNameid").val(prodata.NameId);
+                    $("#proDescriptionid").val(prodata.DescriptionId);
+                    $("#proApplicationid").val(prodata.ApplicationId);
+                    $("#proStatusid").val(prodata.StatusId);
+                    $("#proActionsid").val(prodata.ActionsId);
+                    $("#proGridid").val(prodata.GridId);
+
+                    stoploader();
+                    $('#ResizeProjectgrid').modal('show');
+                }
+                else if (GridName.toLowerCase().trim() == "keyword list") {
+                    var keydata = result.data;
+                    $("#keyNamewidth").val(keydata.Name == null ? "30" : keydata.Name);
+                    $("#keyControlTypewidth").val(keydata.ControlType == null ? "40" : keydata.ControlType);
+                    $("#keyEntrywidth").val(keydata.EntryData == null ? "20" : keydata.EntryData);
+                    $("#keyActionswidth").val(keydata.Actions == null ? "10" : keydata.Actions);
+
+                    $("#keyNameid").val(keydata.NameId);
+                    $("#keyControlTypeid").val(keydata.ControlTypeId);
+                    $("#keyEntryid").val(keydata.EntryDataId);
+                    $("#keyActionsid").val(keydata.ActionsId);
+                    $("#keyGridid").val(keydata.GridId);
+
+                    stoploader();
+                    $('#ResizeKeywordgrid').modal('show');
+                }
+                else if (GridName.toLowerCase().trim() == "test suite list") {
+                    var TSdata = result.data;
+                    $("#TSNamewidth").val(TSdata.Name == null ? "20" : TSdata.Name);
+                    $("#TSDescriptionwidth").val(TSdata.Description == null ? "20" : TSdata.Description);
+                    $("#TSApplicationwidth").val(TSdata.Application == null ? "20" : TSdata.Application);
+                    $("#TSProjectwidth").val(TSdata.Project == null ? "30" : TSdata.Project);
+                    $("#TSActionswidth").val(TSdata.Actions == null ? "10" : TSdata.Actions);
+
+                    $("#TSNameid").val(TSdata.NameId);
+                    $("#TSDescriptionid").val(TSdata.DescriptionId);
+                    $("#TSApplicationid").val(TSdata.ApplicationId);
+                    $("#TSProjectid").val(TSdata.ProjectId);
+                    $("#TSActionsid").val(TSdata.ActionsId);
+                    $("#TSGridid").val(TSdata.GridId);
+
+                    stoploader();
+                    $('#ResizeTestSuitegrid').modal('show');
+                }
+                else if (GridName.toLowerCase().trim() == "test case list") {
+                    var TCdata = result.data;
+                    $("#TCNamewidth").val(TCdata.Name == null ? "20" : TCdata.Name);
+                    $("#TCDescriptionwidth").val(TCdata.Description == null ? "30" : TCdata.Description);
+                    $("#TCApplicationwidth").val(TCdata.Application == null ? "20" : TCdata.Application);
+                    $("#TCTestSuitewidth").val(TCdata.TestSuite == null ? "20" : TCdata.TestSuite);
+                    $("#TCActionswidth").val(TCdata.Actions == null ? "10" : TCdata.Actions);
+
+                    $("#TCNameid").val(TCdata.NameId);
+                    $("#TCDescriptionid").val(TCdata.DescriptionId);
+                    $("#TCApplicationid").val(TCdata.ApplicationId);
+                    $("#TCTestSuiteid").val(TCdata.TestSuiteId);
+                    $("#TCActionsid").val(TCdata.ActionsId);
+                    $("#TCGridid").val(TCdata.GridId);
+
+                    stoploader();
+                    $('#ResizeTestCasegrid').modal('show');
+                }
+                else if (GridName.toLowerCase().trim() == "object list") {
+                    var Objdata = result.data;
+                    $("#objNamewidth").val(Objdata.Name == null ? "20" : Objdata.Name);
+                    $("#objInternalAccesswidth").val(Objdata.InternalAccess == null ? "30" : Objdata.InternalAccess);
+                    $("#objTypewidth").val(Objdata.Type == null ? "10" : Objdata.Type);
+                    $("#objPegwindowwidth").val(Objdata.Pegwindow == null ? "20" : Objdata.Pegwindow);
+                    $("#objActionswidth").val(Objdata.Actions == null ? "10" : Objdata.Actions);
+                    $("#objSelectwidth").val(Objdata.Select == null ? "10" : Objdata.Select);
+
+                    $("#objNameid").val(Objdata.NameId);
+                    $("#objInternalAccessid").val(Objdata.InternalAccessId);
+                    $("#objTypeid").val(Objdata.TypeId);
+                    $("#objPegwindowid").val(Objdata.PegwindowId);
+                    $("#objActionsid").val(Objdata.ActionsId);
+                    $("#objSelectid").val(Objdata.SelectId);
+                    $("#objGridid").val(Objdata.GridId);
+
+                    stoploader();
+                    $('#ResizeObjectgrid').modal('show');
+                }
+                else if (GridName.toLowerCase().trim() == "variable list") {
+                    var Vardata = result.data;
+                    $("#VarNamewidth").val(Vardata.Name == null ? "30" : Vardata.Name);
+                    $("#VarTypewidth").val(Vardata.Type == null ? "20" : Vardata.Type);
+                    $("#VarValuewidth").val(Vardata.Value == null ? "20" : Vardata.Value);
+                    $("#VarStatuswidth").val(Vardata.Status == null ? "20" : Vardata.Status);
+                    $("#VarActionswidth").val(Vardata.Actions == null ? "10" : Vardata.Actions);
+
+                    $("#VarNameid").val(Vardata.NameId);
+                    $("#VarTypeid").val(Vardata.TypeId);
+                    $("#VarValueid").val(Vardata.ValueId);
+                    $("#VarStatusid").val(Vardata.StatusId);
+                    $("#VarActionsid").val(Vardata.ActionsId);
+                    $("#VarGridid").val(Vardata.GridId);
+
+                    stoploader();
+                    $('#ResizeVariablegrid').modal('show');
+                }
+                else if (GridName.toLowerCase().trim() == "user list") {
+                    var Userdata = result.data;
+                    $("#userFNamewidth").val(Userdata.FName == null ? "10" : Userdata.FName);
+                    $("#userMNamewidth").val(Userdata.MName == null ? "10" : Userdata.MName);
+                    $("#userLNamewidth").val(Userdata.LName == null ? "10" : Userdata.LName);
+                    $("#userNamewidth").val(Userdata.Name == null ? "10" : Userdata.Name);
+                    $("#userEmailwidth").val(Userdata.Email == null ? "20" : Userdata.Email);
+                    $("#userComwidth").val(Userdata.Company == null ? "20" : Userdata.Company);
+                    $("#userStatuswidth").val(Userdata.Status == null ? "10" : Userdata.Status);
+                    $("#userActionswidth").val(Userdata.Actions == null ? "10" : Userdata.Actions);
+
+                    $("#userFNameid").val(Userdata.FNameId);
+                    $("#userMNameid").val(Userdata.MNameId);
+                    $("#userLNameid").val(Userdata.LNameId);
+                    $("#userNameid").val(Userdata.NameId);
+                    $("#userEmailid").val(Userdata.EmailId);
+                    $("#userComid").val(Userdata.CompanyId);
+                    $("#userStatusid").val(Userdata.StatusId);
+                    $("#userActionsid").val(Userdata.ActionsId);
+                    $("#userGridid").val(Userdata.GridId);
+
+                    stoploader();
+                    $('#ResizeUsergrid').modal('show');
+                }
+                else if (GridName.toLowerCase().trim() == "test case page") {
+                    var Testcasedata = result.data;
+                    $("#TCPKeywordwidth").val(Testcasedata.Keyword == null ? "200" : Testcasedata.Keyword);
+                    $("#TCPObjectwidth").val(Testcasedata.Object == null ? "200" : Testcasedata.Object);
+                    $("#TCPParameterswidth").val(Testcasedata.Parameters == null ? "100" : Testcasedata.Parameters);
+                    $("#TCPCommentwidth").val(Testcasedata.Comment == null ? "100" : Testcasedata.Comment);
+
+                    $("#TCPKeywordid").val(Testcasedata.KeywordId);
+                    $("#TCPObjectid").val(Testcasedata.ObjectId);
+                    $("#TCPParametersid").val(Testcasedata.ParametersId);
+                    $("#TCPCommentid").val(Testcasedata.CommentId);
+                    $("#TCPGridid").val(Testcasedata.GridId);
+
+                    stoploader();
+                    $('#ResizeTestCasePagegrid').modal('show');
+                }
+                else if (GridName.toLowerCase().trim() == "storyboard page") {
+                    var Sdata = result.data;
+                    $("#SPActionwidth").val(Sdata.Action == null ? "70" : Sdata.Action);
+                    $("#SPStepswidth").val(Sdata.Steps == null ? "100" : Sdata.Steps);
+                    $("#SPTestSuitewidth").val(Sdata.TestSuite == null ? "180" : Sdata.TestSuite);
+                    $("#SPTestCasewidth").val(Sdata.TestCase == null ? "180" : Sdata.TestCase);
+                    $("#SPDatasetwidth").val(Sdata.Dataset == null ? "180" : Sdata.Dataset);
+                    $("#SPBaseResultwidth").val(Sdata.BResult == null ? "75" : Sdata.BResult);
+                    $("#SPBaseErrorCausewidth").val(Sdata.BErrorCause == null ? "75" : Sdata.BErrorCause);
+                    $("#SPBaseScriptStartswidth").val(Sdata.BScriptStart == null ? "75" : Sdata.BScriptStart);
+                    $("#SPBaseScriptDurationwidth").val(Sdata.BScriptDuration == null ? "75" : Sdata.BScriptDuration);
+                    $("#SPComResultwidth").val(Sdata.CResult == null ? "75" : Sdata.CResult);
+                    $("#SPComErrorCausewidth").val(Sdata.CErrorCause == null ? "75" : Sdata.CErrorCause);
+                    $("#SPComScriptStartwidth").val(Sdata.CScriptStart == null ? "75" : Sdata.CScriptStart);
+                    $("#SPComScriptDurationwidth").val(Sdata.CScriptDuration == null ? "75" : Sdata.CScriptDuration);
+                    $("#SPDependencywidth").val(Sdata.Dependency == null ? "50" : Sdata.Dependency);
+                    $("#SPDescriptionwidth").val(Sdata.Description == null ? "100" : Sdata.Description);
+
+                    $("#SPActionid").val(Sdata.ActionId);
+                    $("#SPStepsid").val(Sdata.StepsId);
+                    $("#SPTestSuiteid").val(Sdata.TestSuiteId);
+                    $("#SPTestCaseid").val(Sdata.TestCaseId);
+                    $("#SPDatasetid").val(Sdata.DatasetId);
+                    $("#SPBaseResultid").val(Sdata.BResultId);
+                    $("#SPBaseErrorCauseid").val(Sdata.BErrorCauseId);
+                    $("#SPBaseScriptStartsid").val(Sdata.BScriptStartId);
+                    $("#SPBaseScriptDurationsid").val(Sdata.BScriptDurationId);
+                    $("#SPComResultid").val(Sdata.CResultId);
+                    $("#SPComErrorCauseid").val(Sdata.CErrorCauseId);
+                    $("#SPComScriptStartid").val(Sdata.CScriptStartId);
+                    $("#SPComScriptDurationid").val(Sdata.CScriptDurationId);
+                    $("#SPDependencyid").val(Sdata.DependencyId);
+                    $("#SPDescriptionid").val(Sdata.DescriptionId);
+                    $("#SPGridid").val(Sdata.GridId);
+
+                    stoploader();
+                    $('#ResizeStoryboardPqgrid').modal('show');
+                }
+                else if (GridName.toLowerCase().trim() == "resize left panel") {
+                    var resizeval = result.data;
+                    $("#resizeid").val(resizeval.Resize);
+
+                    $("#RLeftGridid").val(resizeval.ResizeId);
+                    $("#RGridid").val(resizeval.GridId);
+
+                    stoploader();
+                    $('#ResizeLeftPanel').modal('show');
+                }
+                else
+                    stoploader();
+
+            } else if (result.status == 0) {
+                swal.fire({
+                    "title": "",
+                    "text": result.message,
+                    "icon": "error",
+                    "onClose": function (e) {
+                        console.log('on close event fired!');
+                    }
+                });
             }
-            else if (GridName.toLowerCase().trim() == "project list") {
-                var prodata = JSON.parse(result);
-                $("#proNamewidth").val(prodata.Name == null ? "20" : prodata.Name);
-                $("#proDescriptionwidth").val(prodata.Description == null ? "25" : prodata.Description);
-                $("#proApplicationwidth").val(prodata.Application == null ? "25" : prodata.Application);
-                $("#proStatuswidth").val(prodata.Status == null ? "20" : prodata.Status);
-                $("#proActionswidth").val(prodata.Actions == null ? "10" : prodata.Actions);
-
-                $("#proNameid").val(prodata.NameId);
-                $("#proDescriptionid").val(prodata.DescriptionId);
-                $("#proApplicationid").val(prodata.ApplicationId);
-                $("#proStatusid").val(prodata.StatusId);
-                $("#proActionsid").val(prodata.ActionsId);
-                $("#proGridid").val(prodata.GridId);
-
-                stoploader();
-                $('#ResizeProjectgrid').modal('show');
-            }
-            else if (GridName.toLowerCase().trim() == "keyword list") {
-                var keydata = JSON.parse(result);
-                $("#keyNamewidth").val(keydata.Name == null ? "30" : keydata.Name);
-                $("#keyControlTypewidth").val(keydata.ControlType == null ? "40" : keydata.ControlType);
-                $("#keyEntrywidth").val(keydata.EntryData == null ? "20" : keydata.EntryData);
-                $("#keyActionswidth").val(keydata.Actions == null ? "10" : keydata.Actions);
-
-                $("#keyNameid").val(keydata.NameId);
-                $("#keyControlTypeid").val(keydata.ControlTypeId);
-                $("#keyEntryid").val(keydata.EntryDataId);
-                $("#keyActionsid").val(keydata.ActionsId);
-                $("#keyGridid").val(keydata.GridId);
-
-                stoploader();
-                $('#ResizeKeywordgrid').modal('show');
-            }
-            else if (GridName.toLowerCase().trim() == "test suite list") {
-                var TSdata = JSON.parse(result);
-                $("#TSNamewidth").val(TSdata.Name == null ? "20" : TSdata.Name);
-                $("#TSDescriptionwidth").val(TSdata.Description == null ? "20" : TSdata.Description);
-                $("#TSApplicationwidth").val(TSdata.Application == null ? "20" : TSdata.Application);
-                $("#TSProjectwidth").val(TSdata.Project == null ? "30" : TSdata.Project);
-                $("#TSActionswidth").val(TSdata.Actions == null ? "10" : TSdata.Actions);
-
-                $("#TSNameid").val(TSdata.NameId);
-                $("#TSDescriptionid").val(TSdata.DescriptionId);
-                $("#TSApplicationid").val(TSdata.ApplicationId);
-                $("#TSProjectid").val(TSdata.ProjectId);
-                $("#TSActionsid").val(TSdata.ActionsId);
-                $("#TSGridid").val(TSdata.GridId);
-
-                stoploader();
-                $('#ResizeTestSuitegrid').modal('show');
-            }
-            else if (GridName.toLowerCase().trim() == "test case list") {
-                var TCdata = JSON.parse(result);
-                $("#TCNamewidth").val(TCdata.Name == null ? "20" : TCdata.Name);
-                $("#TCDescriptionwidth").val(TCdata.Description == null ? "30" : TCdata.Description);
-                $("#TCApplicationwidth").val(TCdata.Application == null ? "20" : TCdata.Application);
-                $("#TCTestSuitewidth").val(TCdata.TestSuite == null ? "20" : TCdata.TestSuite);
-                $("#TCActionswidth").val(TCdata.Actions == null ? "10" : TCdata.Actions);
-
-                $("#TCNameid").val(TCdata.NameId);
-                $("#TCDescriptionid").val(TCdata.DescriptionId);
-                $("#TCApplicationid").val(TCdata.ApplicationId);
-                $("#TCTestSuiteid").val(TCdata.TestSuiteId);
-                $("#TCActionsid").val(TCdata.ActionsId);
-                $("#TCGridid").val(TCdata.GridId);
-
-                stoploader();
-                $('#ResizeTestCasegrid').modal('show');
-            }
-            else if (GridName.toLowerCase().trim() == "object list") {
-                var Objdata = JSON.parse(result);
-                $("#objNamewidth").val(Objdata.Name == null ? "20" : Objdata.Name);
-                $("#objInternalAccesswidth").val(Objdata.InternalAccess == null ? "30" : Objdata.InternalAccess);
-                $("#objTypewidth").val(Objdata.Type == null ? "10" : Objdata.Type);
-                $("#objPegwindowwidth").val(Objdata.Pegwindow == null ? "20" : Objdata.Pegwindow);
-                $("#objActionswidth").val(Objdata.Actions == null ? "10" : Objdata.Actions);
-                $("#objSelectwidth").val(Objdata.Select == null ? "10" : Objdata.Select);
-
-                $("#objNameid").val(Objdata.NameId);
-                $("#objInternalAccessid").val(Objdata.InternalAccessId);
-                $("#objTypeid").val(Objdata.TypeId);
-                $("#objPegwindowid").val(Objdata.PegwindowId);
-                $("#objActionsid").val(Objdata.ActionsId);
-                $("#objSelectid").val(Objdata.SelectId);
-                $("#objGridid").val(Objdata.GridId);
-
-                stoploader();
-                $('#ResizeObjectgrid').modal('show');
-            }
-            else if (GridName.toLowerCase().trim() == "variable list") {
-                var Vardata = JSON.parse(result);
-                $("#VarNamewidth").val(Vardata.Name == null ? "30" : Vardata.Name);
-                $("#VarTypewidth").val(Vardata.Type == null ? "20" : Vardata.Type);
-                $("#VarValuewidth").val(Vardata.Value == null ? "20" : Vardata.Value);
-                $("#VarStatuswidth").val(Vardata.Status == null ? "20" : Vardata.Status);
-                $("#VarActionswidth").val(Vardata.Actions == null ? "10" : Vardata.Actions);
-
-                $("#VarNameid").val(Vardata.NameId);
-                $("#VarTypeid").val(Vardata.TypeId);
-                $("#VarValueid").val(Vardata.ValueId);
-                $("#VarStatusid").val(Vardata.StatusId);
-                $("#VarActionsid").val(Vardata.ActionsId);
-                $("#VarGridid").val(Vardata.GridId);
-
-                stoploader();
-                $('#ResizeVariablegrid').modal('show');
-            }
-            else if (GridName.toLowerCase().trim() == "user list") {
-                var Userdata = JSON.parse(result);
-                $("#userFNamewidth").val(Userdata.FName == null ? "10" : Userdata.FName);
-                $("#userMNamewidth").val(Userdata.MName == null ? "10" : Userdata.MName);
-                $("#userLNamewidth").val(Userdata.LName == null ? "10" : Userdata.LName);
-                $("#userNamewidth").val(Userdata.Name == null ? "10" : Userdata.Name);
-                $("#userEmailwidth").val(Userdata.Email == null ? "20" : Userdata.Email);
-                $("#userComwidth").val(Userdata.Company == null ? "20" : Userdata.Company);
-                $("#userStatuswidth").val(Userdata.Status == null ? "10" : Userdata.Status);
-                $("#userActionswidth").val(Userdata.Actions == null ? "10" : Userdata.Actions);
-
-                $("#userFNameid").val(Userdata.FNameId);
-                $("#userMNameid").val(Userdata.MNameId);
-                $("#userLNameid").val(Userdata.LNameId);
-                $("#userNameid").val(Userdata.NameId);
-                $("#userEmailid").val(Userdata.EmailId);
-                $("#userComid").val(Userdata.CompanyId);
-                $("#userStatusid").val(Userdata.StatusId);
-                $("#userActionsid").val(Userdata.ActionsId);
-                $("#userGridid").val(Userdata.GridId);
-
-                stoploader();
-                $('#ResizeUsergrid').modal('show');
-            }
-            else if (GridName.toLowerCase().trim() == "test case page") {
-                var Testcasedata = JSON.parse(result);
-                $("#TCPKeywordwidth").val(Testcasedata.Keyword == null ? "200" : Testcasedata.Keyword);
-                $("#TCPObjectwidth").val(Testcasedata.Object == null ? "200" : Testcasedata.Object);
-                $("#TCPParameterswidth").val(Testcasedata.Parameters == null ? "100" : Testcasedata.Parameters);
-                $("#TCPCommentwidth").val(Testcasedata.Comment == null ? "100" : Testcasedata.Comment);
-
-                $("#TCPKeywordid").val(Testcasedata.KeywordId);
-                $("#TCPObjectid").val(Testcasedata.ObjectId);
-                $("#TCPParametersid").val(Testcasedata.ParametersId);
-                $("#TCPCommentid").val(Testcasedata.CommentId);
-                $("#TCPGridid").val(Testcasedata.GridId);
-
-                stoploader();
-                $('#ResizeTestCasePagegrid').modal('show');
-            }
-            else if (GridName.toLowerCase().trim() == "storyboard page") {
-                var Sdata = JSON.parse(result);
-                $("#SPActionwidth").val(Sdata.Action == null ? "70" : Sdata.Action);
-                $("#SPStepswidth").val(Sdata.Steps == null ? "100" : Sdata.Steps);
-                $("#SPTestSuitewidth").val(Sdata.TestSuite == null ? "180" : Sdata.TestSuite);
-                $("#SPTestCasewidth").val(Sdata.TestCase == null ? "180" : Sdata.TestCase);
-                $("#SPDatasetwidth").val(Sdata.Dataset == null ? "180" : Sdata.Dataset);
-                $("#SPBaseResultwidth").val(Sdata.BResult == null ? "75" : Sdata.BResult);
-                $("#SPBaseErrorCausewidth").val(Sdata.BErrorCause == null ? "75" : Sdata.BErrorCause);
-                $("#SPBaseScriptStartswidth").val(Sdata.BScriptStart == null ? "75" : Sdata.BScriptStart);
-                $("#SPBaseScriptDurationwidth").val(Sdata.BScriptDuration == null ? "75" : Sdata.BScriptDuration);
-                $("#SPComResultwidth").val(Sdata.CResult == null ? "75" : Sdata.CResult);
-                $("#SPComErrorCausewidth").val(Sdata.CErrorCause == null ? "75" : Sdata.CErrorCause);
-                $("#SPComScriptStartwidth").val(Sdata.CScriptStart == null ? "75" : Sdata.CScriptStart);
-                $("#SPComScriptDurationwidth").val(Sdata.CScriptDuration == null ? "75" : Sdata.CScriptDuration);
-                $("#SPDependencywidth").val(Sdata.Dependency == null ? "50" : Sdata.Dependency);
-                $("#SPDescriptionwidth").val(Sdata.Description == null ? "100" : Sdata.Description);
-
-                $("#SPActionid").val(Sdata.ActionId);
-                $("#SPStepsid").val(Sdata.StepsId);
-                $("#SPTestSuiteid").val(Sdata.TestSuiteId);
-                $("#SPTestCaseid").val(Sdata.TestCaseId);
-                $("#SPDatasetid").val(Sdata.DatasetId);
-                $("#SPBaseResultid").val(Sdata.BResultId);
-                $("#SPBaseErrorCauseid").val(Sdata.BErrorCauseId);
-                $("#SPBaseScriptStartsid").val(Sdata.BScriptStartId);
-                $("#SPBaseScriptDurationsid").val(Sdata.BScriptDurationId);
-                $("#SPComResultid").val(Sdata.CResultId);
-                $("#SPComErrorCauseid").val(Sdata.CErrorCauseId);
-                $("#SPComScriptStartid").val(Sdata.CScriptStartId);
-                $("#SPComScriptDurationid").val(Sdata.CScriptDurationId);
-                $("#SPDependencyid").val(Sdata.DependencyId);
-                $("#SPDescriptionid").val(Sdata.DescriptionId);
-                $("#SPGridid").val(Sdata.GridId);
-
-                stoploader();
-                $('#ResizeStoryboardPqgrid').modal('show');
-            }
-            else if (GridName.toLowerCase().trim() == "resize left panel") {
-                var resizeval = JSON.parse(result);
-                $("#resizeid").val(resizeval.Resize);
-
-                $("#RLeftGridid").val(resizeval.ResizeId);
-                $("#RGridid").val(resizeval.GridId);
-
-                stoploader();
-                $('#ResizeLeftPanel').modal('show');
-            }
-            else
-                stoploader();
         }
     });
 }
@@ -520,17 +533,30 @@ function AppGridWidthSave() {
         contentType: "application/json;charset=utf-8",
         dataType: "HTML",
         success: function (result) {
-            if (result) {
-                stoploader();
-                swal.fire({
-                    "title": "",
-                    "text": "Successfully submitted Application Grid Width.",
-                    "type": "success",
-                    "onClose": function (e) {
-                        console.log('on close event fired!');
-                    }
-                });
-                $("#appGridthsave").prop("disabled", false);
+            result = JSON.parse(result);
+            if (result.status == 1) {
+                if (result.data == true) {
+                    stoploader();
+                    swal.fire({
+                        "title": "",
+                        "text": result.message,
+                        "icon": "success",
+                        "onClose": function (e) {
+                            console.log('on close event fired!');
+                        }
+                    });
+                    $("#appGridthsave").prop("disabled", false);
+                }
+                else if (result.status == 0) {
+                    swal.fire({
+                        "title": "",
+                        "text": result.message,
+                        "icon": "error",
+                        "onClose": function (e) {
+                            console.log('on close event fired!');
+                        }
+                    });
+                }
             }
         },
         error: function (x, y, z) {
@@ -614,17 +640,28 @@ function proGridWidthSave() {
         contentType: "application/json;charset=utf-8",
         dataType: "HTML",
         success: function (result) {
-            if (result) {
+            result = JSON.parse(result);
+            if (result.status == 1 && result.data == true) {
                 stoploader();
                 swal.fire({
                     "title": "",
-                    "text": "Successfully submitted Project Grid Width.",
-                    "type": "success",
+                    "text": result.message,
+                    "icon": "success",
                     "onClose": function (e) {
                         console.log('on close event fired!');
                     }
                 });
                 $("#proGridthsave").prop("disabled", false);
+            }
+            else if (result.status == 0) {
+                swal.fire({
+                    "title": "",
+                    "text": result.message,
+                    "icon": "error",
+                    "onClose": function (e) {
+                        console.log('on close event fired!');
+                    }
+                });
             }
         },
         error: function (x, y, z) {
@@ -699,17 +736,28 @@ function keyGridWidthSave() {
         contentType: "application/json;charset=utf-8",
         dataType: "HTML",
         success: function (result) {
-            if (result) {
+            result = JSON.parse(result);
+            if (result.status == 1 && result.data == true) {
                 stoploader();
                 swal.fire({
                     "title": "",
-                    "text": "Successfully submitted Keyword Grid Width.",
-                    "type": "success",
+                    "text": result.message,
+                    "icon": "success",
                     "onClose": function (e) {
                         console.log('on close event fired!');
                     }
                 });
                 $("#keyGridthsave").prop("disabled", false);
+            }
+            else if (result.status == 0) {
+                swal.fire({
+                    "title": "",
+                    "text": result.message,
+                    "icon": "error",
+                    "onClose": function (e) {
+                        console.log('on close event fired!');
+                    }
+                });
             }
         },
         error: function (x, y, z) {
@@ -792,17 +840,28 @@ function TSGridWidthSave() {
         contentType: "application/json;charset=utf-8",
         dataType: "HTML",
         success: function (result) {
-            if (result) {
+            result = JSON.parse(result);
+            if (result.status == 1 && result.data == true) {
                 stoploader();
                 swal.fire({
                     "title": "",
-                    "text": "Successfully submitted Test Suite Grid Width.",
-                    "type": "success",
+                    "text": result.message,
+                    "icon": "success",
                     "onClose": function (e) {
                         console.log('on close event fired!');
                     }
                 });
                 $("#TSGridthsave").prop("disabled", false);
+            }
+            else if (result.status == 0) {
+                swal.fire({
+                    "title": "",
+                    "text": result.message,
+                    "icon": "error",
+                    "onClose": function (e) {
+                        console.log('on close event fired!');
+                    }
+                });
             }
         },
         error: function (x, y, z) {
@@ -885,17 +944,28 @@ function TCGridWidthSave() {
         contentType: "application/json;charset=utf-8",
         dataType: "HTML",
         success: function (result) {
-            if (result) {
+            result = JSON.parse(result);
+            if (result.status == 1 && result.data == true) {
                 stoploader();
                 swal.fire({
                     "title": "",
-                    "text": "Successfully submitted Test Case Grid Width.",
-                    "type": "success",
+                    "text": result.message,
+                    "icon": "success",
                     "onClose": function (e) {
                         console.log('on close event fired!');
                     }
                 });
                 $("#TCGridthsave").prop("disabled", false);
+            }
+            else if (result.status == 0) {
+                swal.fire({
+                    "title": "",
+                    "text": result.message,
+                    "icon": "error",
+                    "onClose": function (e) {
+                        console.log('on close event fired!');
+                    }
+                });
             }
         },
         error: function (x, y, z) {
@@ -985,17 +1055,27 @@ function ObjGridWidthSave() {
         contentType: "application/json;charset=utf-8",
         dataType: "HTML",
         success: function (result) {
-            if (result) {
+            result = JSON.parse(result);
+            if (result.status == 1 && result.data == true) {
                 stoploader();
                 swal.fire({
                     "title": "",
-                    "text": "Successfully submitted Object Grid Width.",
-                    "type": "success",
+                    "text": result.message,
+                    "icon": "success",
                     "onClose": function (e) {
                         console.log('on close event fired!');
                     }
                 });
                 $("#objGridthsave").prop("disabled", false);
+            } else if (result.status == 0) {
+                swal.fire({
+                    "title": "",
+                    "text": result.message,
+                    "icon": "error",
+                    "onClose": function (e) {
+                        console.log('on close event fired!');
+                    }
+                });
             }
         },
         error: function (x, y, z) {
@@ -1078,17 +1158,27 @@ function VarGridWidthSave() {
         contentType: "application/json;charset=utf-8",
         dataType: "HTML",
         success: function (result) {
-            if (result) {
+            result = JSON.parse(result);
+            if (result.status == 1 && result.data == true) {
                 stoploader();
                 swal.fire({
                     "title": "",
-                    "text": "Successfully submitted Varible Grid Width.",
-                    "type": "success",
+                    "text": result.message,
+                    "icon": "success",
                     "onClose": function (e) {
                         console.log('on close event fired!');
                     }
                 });
                 $("#VarGridthsave").prop("disabled", false);
+            } else if (result.status == 0) {
+                swal.fire({
+                    "title": "",
+                    "text": result.message,
+                    "icon": "error",
+                    "onClose": function (e) {
+                        console.log('on close event fired!');
+                    }
+                });
             }
         },
         error: function (x, y, z) {
@@ -1196,17 +1286,27 @@ function userGridWidthSave() {
         contentType: "application/json;charset=utf-8",
         dataType: "HTML",
         success: function (result) {
-            if (result) {
+            result = JSON.parse(result);
+            if (result.status == 1 && result.data == true) {
                 stoploader();
                 swal.fire({
                     "title": "",
                     "text": "Successfully submitted Users Grid Width.",
-                    "type": "success",
+                    "icon": "success",
                     "onClose": function (e) {
                         console.log('on close event fired!');
                     }
                 });
                 $("#UserGridthsave").prop("disabled", false);
+            } else if (result.status == 0) {
+                swal.fire({
+                    "title": "",
+                    "text": result.message,
+                    "icon": "error",
+                    "onClose": function (e) {
+                        console.log('on close event fired!');
+                    }
+                });
             }
         },
         error: function (x, y, z) {
@@ -1271,17 +1371,27 @@ function TCPGridWidthSave() {
         contentType: "application/json;charset=utf-8",
         dataType: "HTML",
         success: function (result) {
-            if (result) {
+            result = JSON.parse(result);
+            if (result.status == 1 && result.data == true) {
                 stoploader();
                 swal.fire({
                     "title": "",
-                    "text": "Successfully submitted TestCase PqGrid Width.",
-                    "type": "success",
+                    "text": result.message,
+                    "icon": "success",
                     "onClose": function (e) {
                         console.log('on close event fired!');
                     }
                 });
                 $("#TCPGridthsave").prop("disabled", false);
+            } else if (result.status == 0) {
+                swal.fire({
+                    "title": "",
+                    "text": result.message,
+                    "icon": "error",
+                    "onClose": function (e) {
+                        console.log('on close event fired!');
+                    }
+                });
             }
         },
         error: function (x, y, z) {
@@ -1433,17 +1543,27 @@ function SPpqGridWidthSave() {
         contentType: "application/json;charset=utf-8",
         dataType: "HTML",
         success: function (result) {
-            if (result) {
+            result = JSON.parse(result);
+            if (result.status == 1 && result.data == true) {
                 stoploader();
                 swal.fire({
                     "title": "",
-                    "text": "Successfully submitted Storyboard PqGrid Width.",
-                    "type": "success",
+                    "text": result.message,
+                    "icon": "success",
                     "onClose": function (e) {
                         console.log('on close event fired!');
                     }
                 });
                 $("#SPpqGridthsave").prop("disabled", false);
+            } else if (result.status == 0) {
+                swal.fire({
+                    "title": "",
+                    "text": result.message,
+                    "icon": "error",
+                    "onClose": function (e) {
+                        console.log('on close event fired!');
+                    }
+                });
             }
         },
         error: function (x, y, z) {
@@ -1480,8 +1600,8 @@ function ResizeLeftPanel() {
         contentType: "application/json;charset=utf-8",
         dataType: "HTML",
         success: function (result) {
-            debugger
-            if (result) {
+            result = JSON.parse(result);
+            if (result.status == 1 && result.data == true) {
                 stoploader();
                 $(".kt-aside").css("width", lwidth + "px");
                 $("#kt_header").css("left", lwidth + "px");
@@ -1499,6 +1619,15 @@ function ResizeLeftPanel() {
                             var lStoryboardName = tabobj.attr("data-storyboardname");
                             setTimeout(function () { gridobj[".grid" + lStoryboardName].reset({ filter: true }); }, 500);
                         }
+                    }
+                });
+            } else if (result.status == 0) {
+                swal.fire({
+                    "title": "",
+                    "text": result.message,
+                    "icon": "error",
+                    "onClose": function (e) {
+                        console.log('on close event fired!');
                     }
                 });
             }

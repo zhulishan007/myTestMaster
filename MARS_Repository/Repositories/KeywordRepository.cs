@@ -34,8 +34,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured Testcase in GetKeywords method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured Testcase in GetKeywords method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in Keyword for in GetKeywords method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured in Keyword for in GetKeywords method | UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Keyword for in GetKeywords method | UserName: {0}", Username), ex.InnerException);
                 throw;
             }
         }
@@ -53,8 +55,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured Testcase in GetKeywordByName method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured Testcase in GetKeywordByName method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in Keyword for in GetKeywordByName method | Keyword Name : {0} | UserName: {1} ", lKeywordName, Username));
+                ELogger.ErrorException(string.Format("Error occured in Keyword for in GetKeywordByName method | Keyword Name : {0} | UserName: {1} ", lKeywordName, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Keyword for in GetKeywordByName method | Keyword Name : {0} | UserName: {1} ", lKeywordName, Username), ex.InnerException);
                 throw;
             }
         }
@@ -71,8 +75,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured KeywordRepository in CheckKeywordPegType method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured KeywordRepository in CheckKeywordPegType method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in Keyword for in CheckKeywordPegType method | Keyword Id : {0} | UserName: {1} ", lKeywordId, Username));
+                ELogger.ErrorException(string.Format("Error occured in Keyword for in CheckKeywordPegType method | Keyword Id : {0} | UserName: {1} ", lKeywordId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Keyword for in CheckKeywordPegType method | Keyword Id : {0} | UserName: {1} ", lKeywordId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -88,8 +94,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured KeywordRepository in ListOfKeywordType method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured KeywordRepository in ListOfKeywordType method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in Keyword for in ListOfKeywordType method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured in Keyword for in ListOfKeywordType method | UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Keyword for in ListOfKeywordType method | UserName: {0}", Username), ex.InnerException);
                 throw;
             }
         }
@@ -171,8 +179,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured KeywordRepository in ListAllKeyword method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured KeywordRepository in ListAllKeyword method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in Keyword for in ListAllKeyword method | Connection string : {0} | Schema : {1} | UserName: {2}", lconstring, schema, Username));
+                ELogger.ErrorException(string.Format("Error occured in Keyword for in ListAllKeyword method | Connection string : {0} | Schema : {1} | UserName: {2}", lconstring, schema, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Keyword for in ListAllKeyword method | UserName: {0}", Username), ex.InnerException);
                 throw;
             }
         }
@@ -195,8 +205,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured keyword page in CheckDuplicateKeywordNameExist method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured keyword page in CheckDuplicateKeywordNameExist method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in Keyword for in CheckDuplicateKeywordNameExist method | KeywordId : {0} | Keyword Name : {1} | UserName: {2}", KeywordId, keywordname, Username));
+                ELogger.ErrorException(string.Format("Error occured in Keyword for in CheckDuplicateKeywordNameExist method | KeywordId : {0} | Keyword Name : {1} | UserName: {2}", KeywordId, keywordname, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Keyword for in CheckDuplicateKeywordNameExist method | KeywordId : {0} | Keyword Name : {1} | UserName: {2}", KeywordId, keywordname, Username), ex.InnerException);
                 throw;
             }
         }
@@ -268,8 +280,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured keyword page in AddEditKeyword method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured keyword page in AddEditKeyword method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in Keyword for in AddEditKeyword method | Keyword Id : {0} | UserName: {1} ", lEntity.KeywordId, Username));
+                ELogger.ErrorException(string.Format("Error occured in Keyword for in AddEditKeyword method | Keyword Id : {0} | UserName: {1} ", lEntity.KeywordId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Keyword for in AddEditKeyword method | Keyword Id : {0} | UserName: {1} ", lEntity.KeywordId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -299,8 +313,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured keyword page in CheckTestCaseExistsInKeyword method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured keyword page in CheckTestCaseExistsInKeyword method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in Keyword for in CheckTestCaseExistsInKeyword method | Keyword Id : {0} | UserName: {1} ", Keywordid, Username));
+                ELogger.ErrorException(string.Format("Error occured in Keyword for in CheckTestCaseExistsInKeyword method | Keyword Id : {0} | UserName: {1} ", Keywordid, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Keyword for in CheckTestCaseExistsInKeyword method | Keyword Id : {0} | UserName: {1} ", Keywordid, Username), ex.InnerException);
                 throw;
             }
         }
@@ -330,8 +346,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured keyword page in DeleteKeyword method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured keyword page in DeleteKeyword method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in Keyword for in DeleteKeyword method | Keyword Id : {0} | UserName: {1} ", Keywordid, Username));
+                ELogger.ErrorException(string.Format("Error occured in Keyword for in DeleteKeyword method | Keyword Id : {0} | UserName: {1} ", Keywordid, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Keyword for in DeleteKeyword method | Keyword Id : {0} | UserName: {1} ", Keywordid, Username), ex.InnerException);
                 throw;
             }
         }
@@ -347,8 +365,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured keyword page in GetKeywordById method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured keyword page in GetKeywordById method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured in Keyword for in GetKeywordById method | Keyword Id : {0} | UserName: {1} ", Keywordid, Username));
+                ELogger.ErrorException(string.Format("Error occured in Keyword for in GetKeywordById method | Keyword Id : {0} | UserName: {1} ", Keywordid, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Keyword for in GetKeywordById method | Keyword Id : {0} | UserName: {1} ", Keywordid, Username), ex.InnerException);
                 throw;
             }
         }

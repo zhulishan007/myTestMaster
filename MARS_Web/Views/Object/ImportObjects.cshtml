@@ -159,7 +159,7 @@
                             document.getElementById("objectupload").value = "";
                             $('#objectupload').parents().find('.custom-file-label')[0].innerHTML = "Choose excel file";
                             if (fresult[1] == "success") {
-
+                                RefreshCacheForObject();
                                 swal.fire({
                                     "title": "Objects imported successfully",
                                     "icon": "success",

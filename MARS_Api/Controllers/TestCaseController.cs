@@ -1833,8 +1833,9 @@ namespace MARS_Api.Controllers
         public string AddEditDataset(long? Testcaseid, long? datasetid, string datasetname, string datasetdesc,DataSetTagModel model)
         {
             CommonHelper.SetConnectionString(Request);
+            var AppConnDetails = CommonHelper.SetAppConnectionString(Request);
             var testCaserepo = new TestCaseRepository();
-            var result = testCaserepo.AddTestDataSet(Testcaseid, datasetid, datasetname, datasetdesc,model);
+            var result = testCaserepo.AddTestDataSet(Testcaseid, datasetid, datasetname, datasetdesc,model, AppConnDetails.ConnString, AppConnDetails.Schema);
             string[] result1 = result.Split(',');
             var lresult = new
             {

@@ -290,6 +290,9 @@
       $("#addedapplication").prop("disabled", false);
         $("#applicationvalidate").css("display", "none");
         $("#AddApplication").modal("show");
+        $('.modal-dialog').draggable({
+            handle: ".modal-header"
+        });
         var lapplicationId = Id;
         var Name = $(editObj).attr("data-name").replace(/###/g, "'");
         var Desc = $(editObj).attr("data-des").replace(/###/g, "'");
@@ -317,6 +320,9 @@
         $("#appexampleModalLabel").text('');
         $("#appexampleModalLabel").text('Add Application');
         $("#AddApplication").modal("show");
+        $('.modal-dialog').draggable({
+            handle: ".modal-header"
+        });
         $("#hdnApplicationId").val("");
         $("#applicationname").val("");
         $("#applicationdesc").val("");

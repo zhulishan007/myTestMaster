@@ -41,8 +41,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured Entitlement Repository in GetAllUsers method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured Entitlement Repository in GetAllUsers method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured Entitlement in GetAllUsers method | Username: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured Entitlement in GetAllUsers method | Username: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured Entitlement in GetAllUsers method | Username: {0}", Username), ex.InnerException);
                 throw;
             }
         }
@@ -59,8 +61,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured user page in GetAllRoles method | Username: {0} |", Username));
-                ELogger.ErrorException(string.Format("Error occured user page in GetAllRoles method | Username: {0}", Username), ex);
+                logger.Error(string.Format("Error occured Entitlement in GetAllRoles method | Username: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured Entitlement in GetAllRoles method | Username: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured Entitlement in GetAllRoles method | Username: {0}", Username), ex.InnerException);
                 throw;
             }
         }
@@ -118,8 +122,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured Entitlement Repository in GetAllUsers method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured Entitlement Repository in GetAllUsers method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured Entitlement in ListOfUserRoleMapping method | Username: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured Entitlement in ListOfUserRoleMapping method | Username: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured Entitlement in ListOfUserRoleMapping method | Username: {0}", Username), ex.InnerException);
                 throw;
             }
         }
@@ -139,8 +145,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured User Role page in GetUserName method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured User Role page in GetUserName method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured Entitlement in GetUserName method |  UserId: {0} | Username: {1}", UserId, Username));
+                ELogger.ErrorException(string.Format("Error occured Entitlement in GetUserName method | UserId: {0} | Username: {1}", UserId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured Entitlement in GetUserName method |  UserId: {0} | Username: {1}", UserId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -200,8 +208,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured User Role page in AddEditUserRoleMapping method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured User Role page in AddEditUserRoleMapping method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured Entitlement in AddEditUserRoleMapping method |  RoleIds: {0} | Username: {1}", model.RoleId, Username));
+                ELogger.ErrorException(string.Format("Error occured Entitlement in AddEditUserRoleMapping method |  RoleIds: {0} | Username: {1}", model.RoleId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured Entitlement in AddEditUserRoleMapping method |  RoleIds: {0} | Username: {1}", model.RoleId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -227,8 +237,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured User Role page in DeleteUserRole method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured User Role page in DeleteUserRole method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured Entitlement in DeleteUserRole method |  UserId: {0} | Username: {1}", UserId, Username));
+                ELogger.ErrorException(string.Format("Error occured Entitlement in DeleteUserRole method |  UserId: {0} | Username: {1}", UserId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured Entitlement in DeleteUserRole method |  UserId: {0} | Username: {1}", UserId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -251,8 +263,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured User Role page in CheckExistOrNotUser method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured User Role page in CheckExistOrNotUser method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured Entitlement in CheckExistOrNotUser method |  UserId: {0} | Username: {1}", UserId, Username));
+                ELogger.ErrorException(string.Format("Error occured Entitlement in CheckExistOrNotUser method |  UserId: {0} | Username: {1}", UserId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured Entitlement in DeleteUserRole method |  UserId: {0} | Username: {1}", UserId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -278,8 +292,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured Create Role page in CreateRole method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured Create Role page in CreateRole method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured Entitlement in CreateRole method |  Role: {0} | Username: {1}", Role, Username));
+                ELogger.ErrorException(string.Format("Error occured Entitlement in CreateRole method |  Role: {0} | Username: {1}", Role, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured Entitlement in CreateRole method |  Role: {0} | Username: {1}", Role, Username), ex.InnerException);
                 throw;
             }
         }
@@ -296,8 +312,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured Create Role page in CheckRoleExist method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured Create Role page in CheckRoleExist method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured Entitlement in CheckRoleExist method |  Role: {0} | Username: {1}", Role, Username));
+                ELogger.ErrorException(string.Format("Error occured Entitlement in CheckRoleExist method |  Role: {0} | Username: {1}", Role, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured Entitlement in CheckRoleExist method |  Role: {0} | Username: {1}", Role, Username), ex.InnerException);
                 throw;
             }
         }
@@ -338,8 +356,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured User Role page in AddRole method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured User Role page in AddRole method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured Entitlement in AddRole method | User Id : {0} |Role: {1} | Username: {1}", UserId, RoleIds, Username));
+                ELogger.ErrorException(string.Format("Error occured Entitlement in AddRole method |  User Id : {0} |Role: {1} | Username: {1}", UserId, RoleIds, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured Entitlement in AddRole method | User Id : {0} |Role: {1} | Username: {1}", UserId, RoleIds, Username), ex.InnerException);
                 throw;
             }
         }
@@ -374,8 +394,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured Entitlement Repository in GetPriviledgebyRole method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured Entitlement Repository in GetPriviledgebyRole method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured Entitlement in GetPriviledgebyRole method |  Role: {0} | Username: {1}", RoleName, Username));
+                ELogger.ErrorException(string.Format("Error occured Entitlement in GetPriviledgebyRole method |  Role: {0} | Username: {1}", RoleName, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured Entitlement in GetPriviledgebyRole method |  Role: {0} | Username: {1}", RoleName, Username), ex.InnerException);
                 throw;
             }
         }
@@ -408,9 +430,11 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured Entitlement Repository in GetPriviledgebyRoleId method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured Entitlement Repository in GetPriviledgebyRoleId method | UserName: {0}", Username), ex);
-                throw;
+                logger.Error(string.Format("Error occured Entitlement in GetPriviledgebyRoleId method |  Role: {0} | Username: {1}", RoleId, Username));
+                ELogger.ErrorException(string.Format("Error occured Entitlement in GetPriviledgebyRoleId method |  Role: {0} | Username: {1}", RoleId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured Entitlement in GetPriviledgebyRoleId method |  Role: {0} | Username: {1}", RoleId, Username), ex.InnerException);
+                throw; ;
             }
         }
 
@@ -429,9 +453,11 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured User Role page in AddEdit GetRoleName method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured User Role page in GetRoleName method | UserName: {0}", Username), ex);
-                throw;
+                logger.Error(string.Format("Error occured Entitlement in GetRoleName method |  Role: {0} | Username: {1}", RoleId, Username));
+                ELogger.ErrorException(string.Format("Error occured Entitlement in GetRoleName method |  Role: {0} | Username: {1}", RoleId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured Entitlement in GetRoleName method |  Role: {0} | Username: {1}", RoleId, Username), ex.InnerException);
+                throw; ;
             }
         }
 
@@ -490,9 +516,11 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured Privilage Role page in AddEditPrivilageRoleMapping method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured Privilage Role page in AddEditPrivilageRoleMapping method | UserName: {0}", Username), ex);
-                throw;
+                logger.Error(string.Format("Error occured Entitlement in AddEditPrivilageRoleMapping method | PrivilegeIds: {0} | Username: {1}", model.PrivilegeId, Username));
+                ELogger.ErrorException(string.Format("Error occured Entitlement in AddEditPrivilageRoleMapping method | PrivilegeIds: {0} | Username: {1}", model.PrivilegeId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured Entitlement in AddEditPrivilageRoleMapping method |PrivilegeIds: {0} | Username: {1}", model.PrivilegeId, Username), ex.InnerException);
+                throw; 
             }
         }
         public List<PrivilegeViewModel> GetRolePrivilege(long UserId)
@@ -523,8 +551,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured Entitlement Repository in GetRolePrivilege method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured Entitlement Repository in GetRolePrivilege method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured Entitlement in GetRolePrivilege method | UserId: {0} | Username: {1}", UserId, Username));
+                ELogger.ErrorException(string.Format("Error occured Entitlement in GetRolePrivilege method | UserId: {0} | Username: {1}", UserId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured Entitlement in GetRolePrivilege method |UserId: {0} | Username: {1}", UserId, Username), ex.InnerException);
                 throw;
             }
         }
@@ -551,8 +581,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured Entitlement Repository in GetRoleByUser method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured Entitlement Repository in GetRoleByUser method | UserName: {0}", Username), ex);
+                logger.Error(string.Format("Error occured Entitlement in GetRoleByUser method | UserId: {0} | Username: {1}", UserId, Username));
+                ELogger.ErrorException(string.Format("Error occured Entitlement in GetRoleByUser method | UserId: {0} | Username: {1}", UserId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured Entitlement in GetRoleByUser method |UserId: {0} | Username: {1}", UserId, Username), ex.InnerException);
                 throw;
             }
         }

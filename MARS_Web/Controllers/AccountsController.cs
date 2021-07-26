@@ -50,8 +50,11 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured when User page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured when User page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in User for ListOfUsers method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in User for ListOfUsers method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in User for ListOfUsers method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+                throw;
             }
             return PartialView();
         }
@@ -196,8 +199,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured when user page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured when user page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in User for DataLoad method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in User for DataLoad method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in User for DataLoad method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
             }
             return Json(new
             {
@@ -241,8 +246,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in user page | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in user page | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in User for AddEditUser method | UserId: {0} | UserName: {1}", lid, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in User for AddEditUser method | UserId: {0} | UserName: {1}", lid, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in User for AddEditUser method | UserId: {0} | UserName: {1}", lid, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
             }
             return PartialView(lModel);
         }
@@ -324,10 +331,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in user page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in user page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
-                resultModel.status = 0;
-                resultModel.message = ex.Message.ToString();
+                logger.Error(string.Format("Error occured in User for AddEditUser method | UserId: {0} | UserName: {1}", userModel.TESTER_ID, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in User for AddEditUser method | UserId: {0} | UserName: {1}", userModel.TESTER_ID, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in User for AddEditUser method | UserId: {0} | UserName: {1}", userModel.TESTER_ID, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
             }
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
@@ -355,8 +362,11 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in user page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in user page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in User for DeleteUser method | UserId: {0} | UserName: {1}", id, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in User for DeleteUser method | UserId: {0} | UserName: {1}", id, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in User for DeleteUser method | UserId: {0} | UserName: {1}", id, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+                ELogger.ErrorException(string.Format("InnerException : Error occured in User for DeleteUser method | UserId: {0} | UserName: {1}", id, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -488,6 +498,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
+                logger.Error(string.Format("Error occured in User for LoadExePathList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in User for LoadExePathList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in User forLoadExePathList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 throw ex;
             }
         }
@@ -509,8 +523,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in user page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in user page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in User for CheckLoginNameExist method | LoginName: {0} | LoginId : {1} | UserName: {2}", lLoginName, lLoginId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in User for CheckLoginNameExist method | LoginName: {0} | LoginId : {1} | UserName: {2}", lLoginName, lLoginId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in User for CheckLoginNameExist method | LoginName: {0} | LoginId : {1} | UserName: {2}", lLoginName, lLoginId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -532,8 +548,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in user page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in user page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in User for CheckEmailExist method | LoginEmail: {0} | LoginId : {1} | UserName: {2}", lLoginEmail, lLoginId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in User for CheckEmailExist method | LoginEmail: {0} | LoginId : {1} | UserName: {2}", lLoginEmail, lLoginId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in User for CheckEmailExist method | LoginEmail: {0} | LoginId : {1} | UserName: {2}", lLoginEmail, lLoginId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -560,8 +578,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in user page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in user page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in User for ChangeUserStatus method | UserId: {0} | UserName: {1}", Id, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in User for ChangeUserStatus method | UserId: {0} | UserName: {1}", Id, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in User for ChangeUserStatus method | UserId: {0} | UserName: {1}", Id, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -583,8 +603,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured when User Active page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured when User Active page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in User for ListOfUsersActivePage method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in User for ListOfUsersActivePage method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in User for ListOfUsersActivePage method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
             }
             return PartialView();
         }
@@ -679,6 +701,11 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
+
+                logger.Error(string.Format("Error occured in User for DataLoadUserActivePage method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in User for DataLoadUserActivePage method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in User for DataLoadUserActivePage method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 throw ex;
             }
         }
@@ -699,8 +726,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in user active page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in user active page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in User for DeleteActiveUser method | UserId: {0} | UserName: {1}", id, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in User for DeleteActiveUser method | UserId: {0} | UserName: {1}", id, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in User for DeleteActiveUser method | UserId: {0} | UserName: {1}", id, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -724,8 +753,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in user active page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in user active page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured User in UserPinUnPinTab method | Data Id : {0} | Data Tab: {1} | Data Name : {2} | Project Id: {3} | Username : {4}", dataid, datatab, dataname, ProjectId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured User in UserPinUnPinTab method | Data Id : {0} | Data Tab: {1} | Data Name : {2} | Project Id: {3} | Username : {4}", dataid, datatab, dataname, ProjectId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in UserPinUnPinTab method | Data Id : {0} | Data Tab: {1} | Data Name : {2} | Project Id: {3} | Username : {4}", dataid, datatab, dataname, ProjectId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -748,8 +779,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in user active page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in user active page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured User in CheckPinExist method | Data Id : {0} | Data Tab: {1} | Project Id: {2} | Username : {3}", dataid, datatab, ProjectId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured User in CheckPinExist method | Data Id : {0} | Data Tab: {1} | Project Id: {2} | Username : {3}", dataid, datatab, ProjectId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in CheckPinExist method | Data Id : {0} | Data Tab: {1} | Project Id: {2} | Username : {3}", dataid, datatab, ProjectId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -772,8 +805,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in user page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in user page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured User in GetStoryboradNameyId method | StoryBoard Id : {0} | Username : {1}", StoryBoardid, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured User in GetStoryboradNameyId method | StoryBoard Id : {0} | Username : {1}", StoryBoardid, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in GetStoryboradNameyId method | StoryBoard Id : {0} | Username : {1}", StoryBoardid, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -794,8 +829,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in user page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in user page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured User in GetTestsuiteIdByTeastcaseId method | TestCase Id : {0} | Username : {1}", Tid, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured User in GetTestsuiteIdByTeastcaseId method | TestCase Id : {0} | Username : {1}", Tid, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in GetTestsuiteIdByTeastcaseId method | TestCase Id : {0} | Username : {1}", Tid, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -860,8 +897,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in PrivilegeRoleMapping page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in PrivilegeRoleMapping page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured User in AddEditPrivilageRoleMapping method | Privilege Id : {0} | Username : {1}", privilegeRoleMapviewmodel.PrivilegeId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured User in AddEditPrivilageRoleMapping method | Privilege Id : {0} | Username : {1}", privilegeRoleMapviewmodel.PrivilegeId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured User in AddEditPrivilageRoleMapping method | Privilege Id : {0} | Username : {1}", privilegeRoleMapviewmodel.PrivilegeId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -902,10 +941,284 @@ namespace MARS_Web.Controllers
         {
             var userId = SessionManager.TESTER_ID;
             AccountRepository repo = new AccountRepository();
-            var allRoles = repo.GetAllRoles().Select(c => new SelectListItem { Text = c.ROLE_NAME, Value = c.ROLE_ID.ToString() }).OrderBy(x => x.Text).ToList(); 
+            var allRoles = repo.GetAllRoles().Select(c => new SelectListItem { Text = c.ROLE_NAME, Value = c.ROLE_ID.ToString() }).OrderBy(x => x.Text).ToList();
             return Json(allRoles, JsonRequestBehavior.AllowGet);
         }
 
+        #endregion
+
+        #region User Configuration
+        [HttpPost]
+        public ActionResult UserConfigList()
+        {
+            try
+            {
+                var userId = SessionManager.TESTER_ID;
+                var repAcc = new ConfigurationGridRepository();
+                repAcc.Username = SessionManager.TESTER_LOGIN_NAME;
+                var Widthgridlst = repAcc.GetGridList((long)userId, GridNameList.ResizeLeftPanel);
+                var Rgriddata = GridHelper.GetLeftpanelgridwidth(Widthgridlst);
+                var repentil = new EntitlementRepository();
+                repentil.Username = SessionManager.TESTER_LOGIN_NAME;
+
+                var userlist = repentil.GetAllUsers();
+                ViewBag.userlist = userlist.Select(c => new SelectListItem { Text = c.UserName, Value = c.UserId.ToString() }).OrderBy(x => x.Text).ToList();
+                ViewBag.width = Rgriddata.Resize == null ? ConfigurationManager.AppSettings["DefultLeftPanel"] + "px" : Rgriddata.Resize.Trim() + "px";
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in User for UserConfigList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in User for UserConfigList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in User for UserConfigList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+            }
+            return PartialView();
+        }
+
+        [HttpPost]
+        public JsonResult UserConfigDataLoad()
+        {
+            //Get Repository
+            logger.Info(string.Format("User Configration list start | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+            var repAcc = new AccountRepository();
+            repAcc.Username = SessionManager.TESTER_LOGIN_NAME;
+            List<UserConfigrationViewModel> data = new List<UserConfigrationViewModel>();
+            int totalRecords = default(int);
+            int recFilter = default(int);
+            //Assign values in local userconfig
+            #region userconfig
+            string search = Request.Form.GetValues("search[value]")[0];
+            string draw = Request.Form.GetValues("draw")[0];
+            string order = Request.Form.GetValues("order[0][column]")[0];
+            string orderDir = Request.Form.GetValues("order[0][dir]")[0];
+            int startRec = Convert.ToInt32(Request.Form.GetValues("start")[0]);
+            int pageSize = Convert.ToInt32(Request.Form.GetValues("length")[0]);
+            string colOrderIndex = Request.Form.GetValues("order[0][column]")[0];
+            var colOrder = Request.Form.GetValues("columns[" + colOrderIndex + "][name]").FirstOrDefault();
+            string colDir = Request.Form.GetValues("order[0][dir]")[0];
+            string MainKeySearch = Request.Form.GetValues("columns[0][search][value]")[0];
+            string SubKeySearch = Request.Form.GetValues("columns[1][search][value]")[0];
+            string MARSUserNameSearch = Request.Form.GetValues("columns[2][search][value]")[0];
+            string BLOBValueTypeSearch = Request.Form.GetValues("columns[4][search][value]")[0];
+            string Descriptionsearch = Request.Form.GetValues("columns[5][search][value]")[0];
+            #endregion
+            try
+            {
+                //Get data from List userconfig
+                #region Getdata
+                string lSchema = SessionManager.Schema;
+                var lConnectionStr = SessionManager.APP;
+                data = repAcc.GetUserConfigrationList(lSchema, lConnectionStr);
+                #endregion
+
+                //Check userconfig Value 
+                #region CheckValues               
+                if (!string.IsNullOrEmpty(MainKeySearch))
+                {
+                    data = data.Where(x => !string.IsNullOrEmpty(x.MainKey) && x.MainKey.ToLower().Trim().Contains(MainKeySearch.ToLower().Trim())).ToList();
+                }
+                if (!string.IsNullOrEmpty(SubKeySearch))
+                {
+                    data = data.Where(p => !string.IsNullOrEmpty(p.SubKey) && p.SubKey.ToString().ToLower().Contains(SubKeySearch.ToLower())).ToList();
+                }
+                if (!string.IsNullOrEmpty(MARSUserNameSearch))
+                {
+                    data = data.Where(x => !string.IsNullOrEmpty(x.MARSUserName) && x.MARSUserName.ToLower().Trim().Contains(MARSUserNameSearch.ToLower().Trim())).ToList();
+                }
+                if (!string.IsNullOrEmpty(BLOBValueTypeSearch))
+                {
+                    data = data.Where(x => !string.IsNullOrEmpty(x.BLOBType) && x.BLOBType.ToLower().Trim().Contains(BLOBValueTypeSearch.ToLower().Trim())).ToList();
+                }
+                if (!string.IsNullOrEmpty(Descriptionsearch))
+                {
+                    data = data.Where(x => !string.IsNullOrEmpty(x.Description) && x.Description.ToLower().Trim().Contains(Descriptionsearch.ToLower().Trim())).ToList();
+                }
+                if (colDir == "desc")
+                {
+                    switch (colOrder)
+                    {
+                        case "MainKey":
+                            data = data.OrderByDescending(a => a.MainKey).ToList();
+                            break;
+                        case "SubKey":
+                            data = data.OrderByDescending(a => a.SubKey).ToList();
+                            break;
+                        case "MARSUserName":
+                            data = data.OrderByDescending(a => a.MARSUserName).ToList();
+                            break;
+                        case "BLOBValueType":
+                            data = data.OrderByDescending(a => a.BLOBType).ToList();
+                            break;
+                        case "Description":
+                            data = data.OrderByDescending(a => a.Description).ToList();
+                            break;
+                        default:
+                            data = data.OrderByDescending(a => a.MainKey).ToList();
+                            break;
+                    }
+                }
+                else
+                {
+                    switch (colOrder)
+                    {
+                        case "MainKey":
+                            data = data.OrderBy(a => a.MainKey).ToList();
+                            break;
+                        case "SubKey":
+                            data = data.OrderBy(a => a.SubKey).ToList();
+                            break;
+                        case "MARSUserName":
+                            data = data.OrderBy(a => a.MARSUserName).ToList();
+                            break;
+                        case "BLOBValueType":
+                            data = data.OrderBy(a => a.BLOBType).ToList();
+                            break;
+                        case "Description":
+                            data = data.OrderBy(a => a.Description).ToList();
+                            break;
+                        default:
+                            data = data.OrderBy(a => a.MainKey).ToList();
+                            break;
+                    }
+                }
+                #endregion
+
+                //Get Total Records
+                totalRecords = data.Count();
+
+                //Apply Search
+                if (!string.IsNullOrEmpty(search) &&
+                !string.IsNullOrWhiteSpace(search))
+                {
+                    data = data.Where(p => p.MainKey.ToString().ToLower().Contains(search.ToLower()) ||
+                    p.SubKey.ToString().ToLower().Contains(search.ToLower()) ||
+                    p.MARSUserName.ToString().ToLower().Contains(search.ToLower()) ||
+                    p.BLOBType.ToString().ToLower().Contains(search.ToLower()) ||
+                     p.Description.ToString().ToLower().Contains(search.ToLower())
+                    ).ToList();
+                }
+
+                recFilter = data.Count();
+                data = data.Skip(startRec).Take(pageSize).ToList();
+                logger.Info(string.Format("user configration list open end | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+                logger.Info(string.Format("user configration list open successfully | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in User for UserConfigDataLoad method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in User for UserConfigDataLoad method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in User for UserConfigDataLoad method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+            }
+            //Return Result in Json Formate
+            return Json(new
+            {
+                draw = Convert.ToInt32(draw),
+                recordsTotal = totalRecords,
+                recordsFiltered = recFilter,
+                data = data
+            }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult AddEditUserConfigration(UserConfigrationViewModel model)
+        {
+            logger.Info(string.Format("User Configration Add/Edit  Modal open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+            ResultModel resultModel = new ResultModel();
+            try
+            {
+                var repAcc = new AccountRepository();
+                var lSchema = SessionManager.Schema;
+                var lConnectionStr = SessionManager.APP;
+                repAcc.Username = SessionManager.TESTER_LOGIN_NAME;
+                model.Create_Person = SessionManager.TESTER_LOGIN_NAME;
+
+                var _addeditResult = repAcc.AddEditUserConfigration(model, lConnectionStr, lSchema);
+                resultModel.message = "Saved User Configration [" + model.MainKey + "].";
+                resultModel.data = _addeditResult;
+                resultModel.status = 1;
+
+                logger.Info(string.Format("User Configration Add/Edit  Modal close | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+                logger.Info(string.Format("User Configration Save successfully | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in User for AddEditUserConfigration method | UserId : {0} | UserName: {1}", model.UserId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in User for AddEditUserConfigration method | UserId : {0} | UserName: {1}", model.UserId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in User for AddEditUserConfigration method | UserId : {0} | UserName: {1}", model.UserId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+                resultModel.status = 0;
+                resultModel.message = ex.Message.ToString();
+            }
+            return Json(resultModel, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult UpdateBolbValue(UserConfigrationViewModel model)
+        {
+            ResultModel resultModel = new ResultModel();
+            try
+            {
+                var repAcc = new AccountRepository();
+                var lSchema = SessionManager.Schema;
+                var lConnectionStr = SessionManager.APP;
+                repAcc.Username = SessionManager.TESTER_LOGIN_NAME;
+                model.Create_Person = SessionManager.TESTER_LOGIN_NAME;
+
+                var _addeditResult = repAcc.UpdateBolbValue(model, lConnectionStr, lSchema);
+                resultModel.message = "Saved User Configration.";
+                resultModel.data = _addeditResult;
+                resultModel.status = 1;
+
+                logger.Info(string.Format("User Configration Save successfully | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in User for AddEditUserConfigration method | UserId : {0} | UserName: {1}", model.UserId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in User for AddEditUserConfigration method | UserId : {0} | UserName: {1}", model.UserId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in User for AddEditUserConfigration method | UserId : {0} | UserName: {1}", model.UserId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+                resultModel.status = 0;
+                resultModel.message = ex.Message.ToString();
+            }
+            return Json(resultModel, JsonRequestBehavior.AllowGet);
+        }
+
+
+        public ActionResult DeleteUserConfigration(long Id)
+        {
+            logger.Info(string.Format("User Configration Delete start | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+            ResultModel resultModel = new ResultModel();
+            try
+            {
+                var repAcc = new AccountRepository();
+                repAcc.Username = SessionManager.TESTER_LOGIN_NAME;
+                var _treerepository = new GetTreeRepository();
+
+                var miankey = repAcc.GetUserConfigrationNameById(Id);
+                var _deleteResult = repAcc.DeleteUserConfigration(Id);
+                var lSchema = SessionManager.Schema;
+                var lConnectionStr = SessionManager.APP;
+                Session["LeftProjectList"] = _treerepository.GetProjectList(SessionManager.TESTER_ID, lSchema, lConnectionStr);
+
+                resultModel.data = "success";
+                resultModel.message = "User Configration[" + miankey + "] has been deleted.";
+                resultModel.status = 1;
+
+                logger.Info(string.Format("User Configration Delete end | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+                logger.Info(string.Format("User Configration Delete successfully | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in User for DeleteUserConfigration method | UserConfigId : {0} | UserName: {1}", Id, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in User for DeleteUserConfigration method | UserConfigId : {0} | UserName: {1}", Id, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in User for DeleteUserConfigration method | UserConfigId : {0} | UserName: {1}", Id, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+                resultModel.status = 0;
+                resultModel.message = ex.Message.ToString();
+            }
+            return Json(resultModel, JsonRequestBehavior.AllowGet);
+        }
         #endregion
 
         //This method get dataset list by Id 
@@ -926,8 +1239,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in user page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in user page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in User for GetDataSetListbyId method | TestCase Id : {0} | UserName: {1}", lTestCaseId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in User for GetDataSetListbyId method | TestCase Id : {0} | UserName: {1}", lTestCaseId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in User for GetDataSetListbyId method | TestCase Id : {0} | UserName: {1}", lTestCaseId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }

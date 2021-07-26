@@ -19,6 +19,7 @@ using MARSUtility;
 
 namespace MARS_Web.Controllers
 {
+    [SessionTimeout]
     public class VariableController : Controller
     {
         MARSUtility.CommonHelper objcommon = new MARSUtility.CommonHelper();
@@ -53,8 +54,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured when variable page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured when variable page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in Variables for VariableList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Variables for VariableList method |UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Variables for VariableList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
             }
             return PartialView();
         }
@@ -111,8 +114,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in varible page  | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in varible page  | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in Variables for Dataload method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Variables for Dataload method |UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Variables for Dataload method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
             }
             //returns data
             return Json(new
@@ -134,17 +139,33 @@ namespace MARS_Web.Controllers
             {
                 VariableRepository repo = new VariableRepository();
                 repo.Username = SessionManager.TESTER_LOGIN_NAME;
-                var lresult = repo.AddEditVariable(model);
-                resultModel.message = "Successfully Saved variable [" + model.field_name + "]";
-                resultModel.data = lresult;
+                var result = string.Empty;
+
+                if (!string.IsNullOrEmpty(model.Table_name))
+                {
+                    result = repo.CheckVariable(model);
+                }
+                if(result == string.Empty)
+                {
+                    var lresult = repo.AddEditVariable(model);
+                    resultModel.message = "Successfully Saved variable [" + model.field_name + "]";
+                    resultModel.data = lresult;
+                    
+                    logger.Info(string.Format("Variable Add/Edit  Modal close | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+                    logger.Info(string.Format("Variable Save successfully | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+                }
+                else
+                {
+                    resultModel.message = result;
+                }
                 resultModel.status = 1;
-                logger.Info(string.Format("Variable Add/Edit  Modal close | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                logger.Info(string.Format("Variable Save successfully | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in varible page  | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in varible page  | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in Variables for AddEditVariableSave method | Variable Id : {0} | UserName: {1}", model.Lookupid, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Variables for AddEditVariableSave method |  Variable Id : {0} | UserName: {1}", model.Lookupid, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Variables for AddEditVariableSave method |  Variable Id : {0} | UserName: {1}", model.Lookupid, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -171,8 +192,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in varible page  | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in varible page  | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in Variables for DeleteVariable method | Variable Id : {0} | UserName: {1}", lookupid, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Variables for DeleteVariable method |  Variable Id : {0} | UserName: {1}", lookupid, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Variables for DeleteVariable method |  Variable Id : {1} | UserName: {1}", lookupid, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -197,12 +220,22 @@ namespace MARS_Web.Controllers
         public JsonResult GetBaselineCompare(int id)
         {
             ResultModel resultModel = new ResultModel();
-            resultModel.data = new List<SelectListItem> {
+            try
+            {
+                resultModel.data = new List<SelectListItem> {
                 new SelectListItem() { Text="BASELINE",Value="1"},
                 new SelectListItem() { Text="COMPARE",Value="2"},
                 new SelectListItem() { Text="",Value="0" }
             };
-            resultModel.status = 1;
+                resultModel.status = 1;
+            }
+            catch(Exception ex)
+            {
+                logger.Error(string.Format("Error occured in Variables for GetBaselineCompare method |  UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Variables for GetBaselineCompare method |UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Variables for GetBaselineCompare method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+            }
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
         #endregion
@@ -224,8 +257,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in varible page  | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in varible page  | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in Variables for CheckDuplicateVariableExist method | Variable Id: {0} | Variable Name : {1} | UserName: {0}", Varid, Varname, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Variables for CheckDuplicateVariableExist method | Variable Id: {0} | Variable Name : {1} | UserName: {0}", Varid, Varname, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Variables for CheckDuplicateVariableExist method | Variable Id: {0} | Variable Name : {1} | UserName: {0}", Varid, Varname, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -345,6 +380,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
+                logger.Error(string.Format("Error occured in Variables for Importvariable method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Variables for Importvariable method |UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Variables for Importvariable method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 int line;
                 string msg = ex.Message;
                 line = dbtable.lineNo(ex);
@@ -437,6 +476,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
+                logger.Error(string.Format("Error occured in Variables for ExportVariable method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Variables for ExportVariable method |UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Variables for ExportVariable method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 int line;
                 string msg = ex.Message;
                 line = dbtable.lineNo(ex);

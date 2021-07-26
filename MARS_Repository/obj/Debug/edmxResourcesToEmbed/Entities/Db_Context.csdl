@@ -2328,6 +2328,33 @@
     <EntitySet Name="T_TEST_GROUP" EntityType="Model.T_TEST_GROUP" />
     <EntitySet Name="T_TEST_SET" EntityType="Model.T_TEST_SET" />
     <EntitySet Name="T_TEST_DATASETTAG" EntityType="Model.T_TEST_DATASETTAG" />
+    <FunctionImport Name="SP_CheckValidationStoryboard">
+      <Parameter Name="FEEDPROCESSID1" Mode="In" Type="Decimal" />
+      <Parameter Name="RESULT" Mode="Out" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_SaveStoryboard">
+      <Parameter Name="FEEDPROCESS_ID" Mode="In" Type="Decimal" />
+      <Parameter Name="STORYBOARDID" Mode="In" Type="Decimal" />
+      <Parameter Name="PROJECTID" Mode="In" Type="Decimal" />
+      <Parameter Name="RESULT" Mode="Out" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="T_USER_CONFIGURATION" EntityType="Model.T_USER_CONFIGURATION" />
+    <EntitySet Name="T_DATABASE_CONNECTIONS" EntityType="Model.T_DATABASE_CONNECTIONS" />
+    <EntitySet Name="REL_DB_QUERY" EntityType="Model.REL_DB_QUERY" />
+    <AssociationSet Name="FK_DB_QUERY" Association="Model.FK_DB_QUERY">
+      <End Role="T_DATABASE_CONNECTIONS" EntitySet="T_DATABASE_CONNECTIONS" />
+      <End Role="REL_DB_QUERY" EntitySet="REL_DB_QUERY" />
+    </AssociationSet>
+    <EntitySet Name="T_QUERY" EntityType="Model.T_QUERY" />
+    <AssociationSet Name="T_QUERY_FK1" Association="Model.T_QUERY_FK1">
+      <End Role="T_DATABASE_CONNECTIONS" EntitySet="T_DATABASE_CONNECTIONS" />
+      <End Role="T_QUERY" EntitySet="T_QUERY" />
+    </AssociationSet>
+    <EntitySet Name="T_AXIS_LIST" EntityType="Model.T_AXIS_LIST" />
+    <AssociationSet Name="T_AXIS_LIST_FK1" Association="Model.T_AXIS_LIST_FK1">
+      <End Role="T_QUERY" EntitySet="T_QUERY" />
+      <End Role="T_AXIS_LIST" EntitySet="T_AXIS_LIST" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="T_USER_ACTIVEPAGE">
     <Key>
@@ -2499,4 +2526,124 @@
     <Property Name="DIARY" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
     <Property Name="SEQUENCE" Type="Decimal" Precision="38" Scale="0" />
   </EntityType>
+  <EntityType Name="T_USER_CONFIGURATION">
+    <Key>
+      <PropertyRef Name="USERCONFIGID" />
+    </Key>
+    <Property Name="USERCONFIGID" Type="Decimal" Nullable="false" Precision="38" Scale="0" />
+    <Property Name="MAINKEY" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="SUBKEY" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="USERID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="BLOBVALUE" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="BLOBVALUETYPE" Type="Int16" />
+    <Property Name="DESCRIPTION" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="CREATEDBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CREATEDON" Type="DateTime" />
+    <Property Name="MODIFYBY" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFYON" Type="DateTime" />
+    <Property Name="ISDELETE" Type="Int16" />
+  </EntityType>
+  <EntityType Name="T_DATABASE_CONNECTIONS">
+    <Key>
+      <PropertyRef Name="CONNECTION_ID" />
+    </Key>
+    <Property Name="CONNECTION_ID" Type="Int64" Nullable="false" />
+    <Property Name="CONNECTION_NAME" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="CONNECTION_TYPE" Type="Int16" />
+    <Property Name="HOST_NAME" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="PORT_NUMBER" Type="Int32" />
+    <Property Name="PROTOCOL" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="SERVICE_NAME" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="DB_SID" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="DB_USERNAME" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="DB_PASSWORD" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="CONNECTION_STRING" Type="String" MaxLength="1028" FixedLength="false" Unicode="false" />
+    <Property Name="ACTIVE" Type="Int16" />
+    <Property Name="CREATEDBY" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="CREATION_DATE" Type="DateTime" />
+    <Property Name="MODIFIEDBY" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFIED_DATE" Type="DateTime" />
+    <Property Name="IS_TESTED" Type="Int16" />
+    <Property Name="LAST_TESTED" Type="DateTime" />
+    <Property Name="ERROR_MESSAGE" Type="String" MaxLength="1028" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="REL_DB_QUERY" Relationship="Model.FK_DB_QUERY" FromRole="T_DATABASE_CONNECTIONS" ToRole="REL_DB_QUERY" />
+    <NavigationProperty Name="T_QUERY" Relationship="Model.T_QUERY_FK1" FromRole="T_DATABASE_CONNECTIONS" ToRole="T_QUERY" />
+  </EntityType>
+  <EntityType Name="REL_DB_QUERY">
+    <Key>
+      <PropertyRef Name="DB_QUERY_ID" />
+    </Key>
+    <Property Name="DB_QUERY_ID" Type="Int64" Nullable="false" />
+    <Property Name="QUERY_ID" Type="Int64" />
+    <Property Name="DATABASE_CONN_ID" Type="Int64" />
+    <NavigationProperty Name="T_DATABASE_CONNECTIONS" Relationship="Model.FK_DB_QUERY" FromRole="REL_DB_QUERY" ToRole="T_DATABASE_CONNECTIONS" />
+  </EntityType>
+  <Association Name="FK_DB_QUERY">
+    <End Type="Model.T_DATABASE_CONNECTIONS" Role="T_DATABASE_CONNECTIONS" Multiplicity="0..1" />
+    <End Type="Model.REL_DB_QUERY" Role="REL_DB_QUERY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_DATABASE_CONNECTIONS">
+        <PropertyRef Name="CONNECTION_ID" />
+      </Principal>
+      <Dependent Role="REL_DB_QUERY">
+        <PropertyRef Name="DATABASE_CONN_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="T_QUERY">
+    <Key>
+      <PropertyRef Name="QUERY_ID" />
+    </Key>
+    <Property Name="QUERY_ID" Type="Int64" Nullable="false" />
+    <Property Name="QUERY_NAME" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+    <Property Name="QUERY_DESC" Type="String" MaxLength="1028" FixedLength="false" Unicode="false" />
+    <Property Name="IS_ACTIVE" Type="Int16" />
+    <Property Name="CREATEDBY" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="CREATED_DATE" Type="DateTime" />
+    <Property Name="MODIFIEDBY" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="MODIFIED_DATE" Type="DateTime" />
+    <Property Name="CONN_ID" Type="Int64" />
+    <NavigationProperty Name="T_DATABASE_CONNECTIONS" Relationship="Model.T_QUERY_FK1" FromRole="T_QUERY" ToRole="T_DATABASE_CONNECTIONS" />
+    <NavigationProperty Name="T_AXIS_LIST" Relationship="Model.T_AXIS_LIST_FK1" FromRole="T_QUERY" ToRole="T_AXIS_LIST" />
+  </EntityType>
+  <Association Name="T_QUERY_FK1">
+    <End Type="Model.T_DATABASE_CONNECTIONS" Role="T_DATABASE_CONNECTIONS" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="Model.T_QUERY" Role="T_QUERY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_DATABASE_CONNECTIONS">
+        <PropertyRef Name="CONNECTION_ID" />
+      </Principal>
+      <Dependent Role="T_QUERY">
+        <PropertyRef Name="CONN_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="T_AXIS_LIST">
+    <Key>
+      <PropertyRef Name="AXIS_LIST_ID" />
+    </Key>
+    <Property Name="AXIS_LIST_ID" Type="Int64" Nullable="false" />
+    <Property Name="QUERY_ID" Type="Int64" />
+    <Property Name="COMMAND_TYPE_ID" Type="Int16" />
+    <Property Name="X_AXIS" Type="Int16" />
+    <Property Name="Y_AXIS" Type="Int16" />
+    <Property Name="Z_AXIS" Type="Int16" />
+    <NavigationProperty Name="T_QUERY" Relationship="Model.T_AXIS_LIST_FK1" FromRole="T_AXIS_LIST" ToRole="T_QUERY" />
+  </EntityType>
+  <Association Name="T_AXIS_LIST_FK1">
+    <End Type="Model.T_QUERY" Role="T_QUERY" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="Model.T_AXIS_LIST" Role="T_AXIS_LIST" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="T_QUERY">
+        <PropertyRef Name="QUERY_ID" />
+      </Principal>
+      <Dependent Role="T_AXIS_LIST">
+        <PropertyRef Name="QUERY_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

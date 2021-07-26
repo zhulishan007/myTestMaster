@@ -2051,25 +2051,27 @@ textarea.form-control {
       margin-bottom: 0; } }
 
 .btn {
-  display: inline-block;
-  font-weight: normal;
-  color: #212529;
-  text-align: center;
-  vertical-align: middle;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-  background-color: transparent;
-  border: 1px solid transparent;
-  padding: 0.65rem 1rem;
-  font-size: 1rem;
-  line-height: 1.5;
-  border-radius: 0.25rem;
-  -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out; }
+    display: inline-block;
+    font-weight: normal;
+    color: #4ca7ca;
+    /*color: #212529;*/
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: 0.65rem 1rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 0.25rem;
+    -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+}
   @media (prefers-reduced-motion: reduce) {
     .btn {
       -webkit-transition: none;
@@ -36829,6 +36831,43 @@ span.select2-container {
 
 @media (min-width: 1024px) {
     .modal-xl {
-        max-width: 1140px !important;
+        /*max-width: 1140px !important;*/
+        max-width: 964px !important;
     }
+}
+
+#keygroup {
+    margin-top:3px;
+}
+#keygroup label {
+    display: block;
+    margin-bottom: 20px;
+}
+.add_value_main_div {
+    overflow-x: auto;
+    width: 100%;
+    display: flex;
+}
+.add_value_main_div .add_value_single {
+    display: inline-block;
+}
+.add_value_main_div .add_value_single div input {
+    height: 30px;
+    padding: 2px 5px;
+    margin-bottom: 7px;
+}
+
+#showobj {
+    overflow-y: auto;
+    height: 500px;
+}
+
+#addvalcol > div, .add_value_single > div {
+    margin-bottom: 7px;
+}
+
+.modal.show {
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: rgba(0,0,0,0.5);
 }

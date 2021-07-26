@@ -280,6 +280,9 @@
         $("#projectvalidate").css("display", "none");
         $("#existPappName").css("display", "none");
         $("#AddProject").modal("show");
+        $('.modal-dialog').draggable({
+            handle: ".modal-header"
+        });
         $("#addedproject").attr("disabled", false);
         var lprojectId = Id;
         var Name = $(editObj).attr("data-name").replace(/###/g, "'");
@@ -305,6 +308,9 @@
         $("#projexampleModalLabel").text('');
         $("#projexampleModalLabel").text('Add Project');
         $("#AddProject").modal("show");
+        $('.modal-dialog').draggable({
+            handle: ".modal-header"
+        });
         $("#hdnProjectId").val("");
         $("#projectname").val("");
         $("#projectdesc").val("");

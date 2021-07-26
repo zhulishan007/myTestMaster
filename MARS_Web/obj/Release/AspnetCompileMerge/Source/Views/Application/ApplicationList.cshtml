@@ -1,3 +1,16 @@
+@using MARS_Repository.ViewModel
+@{
+    string EditApp = "false", DeleteApp = "false";
+    var PrivilegeList = Session["PrivilegeList"] as List<PrivilegeViewModel>;
+    if (PrivilegeList.Count > 0)
+    {
+        EditApp = PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Edit Application").ToString().ToLower();
+        DeleteApp = PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Delete Application").ToString().ToLower();
+    }
+}
+
+<input type="hidden" value="@EditApp" id="hdnEditApp" />
+<input type="hidden" value="@DeleteApp" id="hdnDeleteApp" />
 <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
     <div class="kt-subheader   kt-grid__item" id="kt_subheader" style="left: @ViewBag.width;">
         <div class="kt-container  kt-container--fluid ">
@@ -8,6 +21,10 @@
                     <a href="#" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-settings" style="color:#1c6081"></i></a>
                     <a href="#" class="kt-subheader__breadcrumbs-link" style="color:#1c6081">
                         Application
+                    </a>
+                    <i class="fa fa-angle-double-right" style="color:#1c6081"></i>
+                    <a href="#" class="kt-subheader__breadcrumbs-link" style="color:#1c6081">
+                        &nbsp;
                     </a>
                 </div>
             </div>
@@ -21,20 +38,23 @@
                         List Of All Application
                     </h3>
                 </div>
-                <div class="kt-portlet__head-toolbar">
-                    <div class="kt-portlet__head-wrapper">
-                        <div class="kt-portlet__head-actions">
-                            <button type="button" class="btn btn-brand btn-elevate btn-icon-sm" data-toggle="modal" onclick="AddApplication()" data-target="#kt_modal_4"><i class="la la-plus"></i>New Application</button>
-                            &nbsp;
+                @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Add Application"))
+                {
+                    <div class="kt-portlet__head-toolbar">
+                        <div class="kt-portlet__head-wrapper">
+                            <div class="kt-portlet__head-actions">
+                                <button type="button" class="btn btn-brand btn-elevate btn-icon-sm" data-toggle="modal" onclick="AddApplication()" data-target="#kt_modal_4"><i class="la la-plus"></i>New Application</button>
+                                &nbsp;
+                            </div>
                         </div>
                     </div>
-                </div>
+                }
             </div>
-            <div class="modal fade" id="AddApplication" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="AddApplication" tabindex="-1" role="dialog" aria-labelledby="appexampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Add Application</h5>
+                            <h5 class="modal-title" id="appexampleModalLabel">Add Application</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -113,12 +133,18 @@
     </div>
 </div>
 <script>
+
     var ApplicationTable = function () {
         $.fn.dataTable.Api.register('column().title()', function () {
 
                 return $(this.header()).text().trim();
             });
         var initApplicationtable = function () {
+           
+            var lEditAppdisplay = $("#hdnEditApp").val();
+            var lDeleteAppdisplay = $("#hdnDeleteApp").val();
+            
+            
             ApplicationTable = $('#applicationtable').DataTable({
                 responsive: false,
                 // Pagination settings
@@ -154,6 +180,7 @@
                     { data: 'Version', name: "Version", width: '@ViewBag.versionwidth', "targets": 2, autowidth: false },
                     { data: 'ExtraRequirement', name: "Extra Requirement", width: '@ViewBag.extraRequirementwidth', "targets": 3, autowidth: false },
                     { data: 'Mode', name: "Mode", width: '@ViewBag.modewidth', "targets": 4, autowidth: false },
+
                     { data: 'Bits', name: "MARS Explorer Bits", width: '@ViewBag.bitswidth', "targets": 5, autowidth: false },
                     { data: 'Actions', responsivePriority: -1, width: '@ViewBag.actionswidth', "targets": 6, autowidth: false }
                 ],
@@ -199,7 +226,7 @@
                     {
                         targets: -1,
                         title: 'Actions',
-                        orderable: false,
+                        orderable: false,                       
                         render: function (data, type, full, meta) {
                             var lid = full.ApplicationId;
                             var lName = full.ApplicationName.replace(/'/g, "###");
@@ -210,8 +237,15 @@
                             var lMode = full.Mode;
                             var lBits = full.Bits;
                             var lBitsId = full.BitsId;
-                            return " <a href='#' class='btn btn-sm btn-clean btn-icon btn-icon-md' title='View' data-name='" + lName + "' data-des='" + lDes + "' data-ver='" + lVersion + "' data-Extra='" + lExtraRequirement + "' data-Extraid='" + lExtraRequirementId + "' data-Mode='" + lMode + "' data-Bits='" + lBits + "' data-BitsId='" + lBitsId + "'onclick=AddEditApplication(" + lid + ",$(this)) ><i class='la la-edit'></i></a> " +
-                                "<a href='#' class='btn btn-sm btn-clean btn-icon btn-icon-md' title='Delete' onclick='AppDelete(" + lid + ")' ><i class='la la-trash la-xs'></i></a>";
+                            //lEditAppdisplay
+                            var lRenderHtml = "";
+                            if (lEditAppdisplay == "true") {
+                                lRenderHtml = " <a href='#' class='btn btn-sm btn-clean btn-icon btn-icon-md' title='View' data-name='" + lName + "' data-des='" + lDes + "' data-ver='" + lVersion + "' data-Extra='" + lExtraRequirement + "' data-Extraid='" + lExtraRequirementId + "' data-Mode='" + lMode + "' data-Bits='" + lBits + "' data-BitsId='" + lBitsId + "'onclick=AddEditApplication(" + lid + ",$(this)) ><i class='la la-edit'></i></a> ";
+                            }
+                            if (lDeleteAppdisplay == "true") {
+                                lRenderHtml = lRenderHtml + "<a href='#' class='btn btn-sm btn-clean btn-icon btn-icon-md' title='Delete' onclick='AppDelete(" + lid + ")' ><i class='la la-trash la-xs'></i></a>";
+                            }
+                            return lRenderHtml;
                         },
                     }
                 ],
@@ -239,7 +273,7 @@
                 },
 
                 applicationdesc: {
-                    required: true,
+                    required: true
                 },
                 applicationversion: {
                     required: true
@@ -251,11 +285,14 @@
     function AddEditApplication(Id, editObj) {
         var validator = $("#frmapplication").validate();
         validator.resetForm();
-        $("#exampleModalLabel").text('');
-      $("#exampleModalLabel").text('Edit Application');
+        $("#appexampleModalLabel").text('');
+      $("#appexampleModalLabel").text('Edit Application');
       $("#addedapplication").prop("disabled", false);
         $("#applicationvalidate").css("display", "none");
         $("#AddApplication").modal("show");
+        $('.modal-dialog').draggable({
+            handle: ".modal-header"
+        });
         var lapplicationId = Id;
         var Name = $(editObj).attr("data-name").replace(/###/g, "'");
         var Desc = $(editObj).attr("data-des").replace(/###/g, "'");
@@ -280,9 +317,12 @@
     function AddApplication() {
         $("#applicationvalidate").css("display", "none");
         $("#addedapplication").attr("disabled", false);
-        $("#exampleModalLabel").text('');
-        $("#exampleModalLabel").text('Add Application');
+        $("#appexampleModalLabel").text('');
+        $("#appexampleModalLabel").text('Add Application');
         $("#AddApplication").modal("show");
+        $('.modal-dialog').draggable({
+            handle: ".modal-header"
+        });
         $("#hdnApplicationId").val("");
         $("#applicationname").val("");
         $("#applicationdesc").val("");
@@ -297,7 +337,7 @@
         swal.fire({
             title: 'Please confirm.',
             text: "This action can not be undone.",
-            type: 'warning',
+            icon: 'warning',
             showCancelButton: true,
             confirmButtonText: 'Yes, delete it!'
         }).then(function (result) {
@@ -338,13 +378,13 @@
                             swal.fire({
                                 "title": "",
                                 "text": result.message,
-                                "type": "error",
+                                "icon": "error",
                                 "onClose": function (e) {
                                     console.log('on close event fired!');
                                 }
                             });
                         }
-                      
+
                     },
                     error: function (x, y, z) {
                         swal.fire(
@@ -395,7 +435,7 @@
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "success",
+                        "icon": "success",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -405,7 +445,7 @@
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "error",
+                        "icon": "error",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -438,7 +478,7 @@
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "error",
+                        "icon": "error",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }

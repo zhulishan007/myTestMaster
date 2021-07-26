@@ -1,4 +1,16 @@
+@using MARS_Repository.ViewModel
+@{
+    string EditTS = "false", DeleteTS = "false";
+    var PrivilegeList = Session["PrivilegeList"] as List<PrivilegeViewModel>;
+    if (PrivilegeList.Count > 0)
+    {
+        EditTS = PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Edit TestSuite").ToString().ToLower();
+        DeleteTS = PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Delete TestSuite").ToString().ToLower();
+    }
+}
 
+<input type="hidden" value="@EditTS" id="hdnEditTS" />
+<input type="hidden" value="@DeleteTS" id="hdnDeleteTS" />
 
 <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
     <div class="kt-subheader   kt-grid__item" id="kt_subheader" style="left: @ViewBag.width;">
@@ -11,7 +23,10 @@
                     <a href="#" class="kt-subheader__breadcrumbs-link" style="color:#1c6081">
                         Test Suite
                     </a>
-                    <!-- <span class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active">Active link</span> -->
+                    <i class="fa fa-angle-double-right" style="color:#1c6081"></i>
+                    <a href="#" class="kt-subheader__breadcrumbs-link" style="color:#1c6081">
+                        &nbsp;
+                    </a>
                 </div>
             </div>
         </div>
@@ -24,24 +39,23 @@
                         List Of All Test Suite
                     </h3>
                 </div>
-                <div class="kt-portlet__head-toolbar">
-                    <div class="kt-portlet__head-wrapper">
-                        <div class="kt-portlet__head-actions">
-                            <button type="button" class="btn btn-brand btn-elevate btn-icon-sm" data-toggle="modal" onclick="AddSuite()" data-target="#kt_modal_4"><i class="la la-plus"></i>New Test Suite</button>
-                            &nbsp;
-                            @*<a href="/Accounts/AddEditUser" class="btn btn-brand btn-elevate btn-icon-sm">
-                                    <i class="la la-plus"></i>
-                                    New Record
-                                </a>*@
+                @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Add TestSuite"))
+                {
+                    <div class="kt-portlet__head-toolbar">
+                        <div class="kt-portlet__head-wrapper">
+                            <div class="kt-portlet__head-actions">
+                                <button type="button" class="btn btn-brand btn-elevate btn-icon-sm" data-toggle="modal" onclick="AddSuite()" data-target="#kt_modal_4"><i class="la la-plus"></i>New Test Suite</button>
+                                &nbsp;
+                            </div>
                         </div>
                     </div>
+                }
                 </div>
-            </div>
-            <div class="modal fade" id="AddTestSuite" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="AddTestSuite" tabindex="-1" role="dialog" aria-labelledby="TSexampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Add Test Suite</h5>
+                            <h5 class="modal-title" id="TSexampleModalLabel">Add Test Suite</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -62,8 +76,8 @@
                                     <textarea class="form-control" id="testsuitedesc" name="testsuitedesc" maxlength="128"></textarea>
                                 </div>
 
-                                <div class="form-group"id="clssuiteApplication">
-                                    <label class="form-control-label" >Application<span style="color:red">&nbsp;*</span></label>
+                                <div class="form-group" id="clssuiteApplication">
+                                    <label class="form-control-label">Application<span style="color:red">&nbsp;*</span></label>
                                     <select class="form-control kt-select2" id="stDrpApplication" name="stDrpApplication" onchange="ChangeApplication()" multiple="multiple" style="border-color:#59c0e7 !important">
 
                                         @{var lAppsList = ViewBag.listApplications as IEnumerable<SelectListItem>;
@@ -101,8 +115,6 @@
                             <th>Description</th>
                             <th>Application</th>
                             <th>Project</th>
-                            @*<th>ApplicationId</th>
-                                <th>ProjectId</th>*@
                             <th style="color: #1c6081;background-color: #e9f5ff;font-weight: bold;">Actions</th>
                         </tr>
                     </thead>
@@ -126,6 +138,9 @@
         });
 
         var initTestSuiteTable = function () {
+            var lEditAppdisplay = $("#hdnEditTS").val();
+            var lDeleteAppdisplay = $("#hdnDeleteTS").val();
+
             TestSuitetable = $('#TestSuitetable').DataTable({
                 responsive: false,
 
@@ -215,9 +230,15 @@
                             var lProject = full.Project;
                             var lApplicationId = full.ApplicationId;
                             var lProjectid = full.ProjectId;
-                            return " <a href='#' class='btn btn-sm btn-clean btn-icon btn-icon-md' title='View' data-name='" + lName + "' data-des='" + lDes + "' data-app='" + lApplication + "' data-pro='" + lProject + "' data-appid='" + lApplicationId + "' data-Projectid='" + lProjectid + "' onclick=AddEditTestSuite(" + lid + ",$(this)) ><i class='la la-edit'></i></a> " +
-                                "<a href='#' class='btn btn-sm btn-clean btn-icon btn-icon-md' title='Delete' onclick='TestSuiteDelete(" + lid + ")' ><i class='la la-trash la-xs'></i></a>";
-                            //return "";
+                            
+                            var lRenderHtml = "";
+                            if (lEditAppdisplay == "true") {
+                                lRenderHtml = " <a href='#' class='btn btn-sm btn-clean btn-icon btn-icon-md' title='View' data-name='" + lName + "' data-des='" + lDes + "' data-app='" + lApplication + "' data-pro='" + lProject + "' data-appid='" + lApplicationId + "' data-Projectid='" + lProjectid + "' onclick=AddEditTestSuite(" + lid + ",$(this)) ><i class='la la-edit'></i></a> ";
+                            }
+                            if (lDeleteAppdisplay == "true") {
+                                lRenderHtml = lRenderHtml + "<a href='#' class='btn btn-sm btn-clean btn-icon btn-icon-md' title='Delete' onclick='TestSuiteDelete(" + lid + ")' ><i class='la la-trash la-xs'></i></a>";
+                            }
+                            return lRenderHtml;
                         },
                     }
                 ],
@@ -301,10 +322,13 @@
 
     });
     function AddEditTestSuite(Id, editObj) {
-        $("#exampleModalLabel").text('');
-        $("#exampleModalLabel").text('Edit Test Suite');
+        $("#TSexampleModalLabel").text('');
+        $("#TSexampleModalLabel").text('Edit Test Suite');
         $("#testsuitevalidate").css("display", "none");
         $("#AddTestSuite").modal("show");
+        $('.modal-dialog').draggable({
+            handle: ".modal-header"
+        });
         $("#addedittestsuite").attr("disabled", false);
         $("#existtestsuitename").css("display", "none");
         var lTestSuiteId = Id;
@@ -321,8 +345,6 @@
         $("#stDrpApplication").select2();
         $("#DrpProject").html("");
         $("#DrpProject").select2();
-        //$("#txtName").val(Name);
-        //$("#txtDesc").val(Desc);
         $.ajax({
             url: "/TestSuite/GetProjectByApplicaton",
             data: '{"ApplicationId":"' + AppId + '"}',
@@ -331,38 +353,40 @@
             contentType: "application/json;charset=utf-8",
             dataType: "json",
             success: function (result) {
+                if (result.status == 1) {
+                    var lTempApplication = "";
+                    var optionString = "";
 
-                // "<optgroup label='Applications'><option value='test'>test</option></optgroup>";
-                var lTempApplication = "";
-                var optionString = "";
-
-                for (i = 0; i < result.length; i++) {
-                    if (result[i].ApplicationName != lTempApplication && lTempApplication != "") {
-                        optionString = optionString + "</optgroup>";
+                    for (i = 0; i < result.data.length; i++) {
+                        if (result.data[i].ApplicationName != lTempApplication && lTempApplication != "") {
+                            optionString = optionString + "</optgroup>";
+                        }
+                        if (result.data[i].ApplicationName != lTempApplication) {
+                        }
+                        var optionValue = result.data[i].ProjectId;
+                        var optionText = result.data[i].ProjectName;
+                        optionString = optionString + " <option value='" + optionValue + "'>" + optionText + "</option>";
                     }
-                    if (result[i].ApplicationName != lTempApplication) {
-                        //optionString = optionString + "<optgroup label='Applications:" + result[i].ApplicationName + "'>";
-                        //  lTempApplication = result[i].ApplicationName;
-                    }
-                    var optionValue = result[i].ProjectId;
-                    var optionText = result[i].ProjectName;
-                    optionString = optionString + " <option value='" + optionValue + "'>" + optionText + "</option>";
-
+                    $("#DrpProject").append($(optionString));
+                    $("#DrpProject").select2();
                 }
-
-                $("#DrpProject").append($(optionString));
-                $("#DrpProject").select2();
-                // $("#DrpTestSuite").innerHTML = ldrpHtml;
-
-            },
+                else if (result.status == 0) {
+                    swal.fire({
+                        "title": "",
+                        "text": result.message,
+                        "icon": "error",
+                        "onClose": function (e) {
+                            console.log('on close event fired!');
+                        }
+                    });
+                }
+            }
         });
 
         $("#DrpProject").val(Projectid.split(","));
         $("#DrpProject").select2();
         if (!$("#frmtestsuite").valid())
             return false;
-        //$("#DrpProject").val(lTestSuiteId.split(","));
-        //$("#DrpProject").select2();
     }
     function ChangeApplication() {
 
@@ -378,30 +402,39 @@
             dataType: "json",
             async: false,
             success: function (result) {
-                var lTempApplication = "";
-                var optionString = "";
-                optionString = optionString + " <option value=0></option>";
-                for (i = 0; i < result.length; i++) {
-                    if (result[i].ApplicationName != lTempApplication && lTempApplication != "") {
-                        optionString = optionString + "</optgroup>";
+                if (result.status == 1) {
+                    var lTempApplication = "";
+                    var optionString = "";
+                    optionString = optionString + " <option value=0></option>";
+                    for (i = 0; i < result.data.length; i++) {
+                        if (result.data[i].ApplicationName != lTempApplication && lTempApplication != "") {
+                            optionString = optionString + "</optgroup>";
+                        }
+                        if (result.data[i].ApplicationName != lTempApplication) {
+                            optionString = optionString + "<optgroup label='Projects:'>";
+                            lTempApplication = result.data[i].ApplicationName;
+                        }
+                        var optionValue = result.data[i].ProjectId;
+                        var optionText = result.data[i].ProjectName;
+                        optionString = optionString + " <option value='" + optionValue + "'>" + optionText + "</option>";
                     }
-                    if (result[i].ApplicationName != lTempApplication) {
-                        optionString = optionString + "<optgroup label='Projects:'>";
-                        lTempApplication = result[i].ApplicationName;
-                    }
-                    var optionValue = result[i].ProjectId;
-                    var optionText = result[i].ProjectName;
-                    optionString = optionString + " <option value='" + optionValue + "'>" + optionText + "</option>";
 
+                    $("#DrpProject").append($(optionString));
+                    $("#DrpProject").select2();
 
+                    $("#DrpProject").val(ProjectIds.split(","));
+                    $("#DrpProject").select2();
                 }
-
-
-                $("#DrpProject").append($(optionString));
-                $("#DrpProject").select2();
-
-                $("#DrpProject").val(ProjectIds.split(","));
-                $("#DrpProject").select2();
+                else if (result.status == 0) {
+                    swal.fire({
+                        "title": "",
+                        "text": result.message,
+                        "icon": "error",
+                        "onClose": function (e) {
+                            console.log('on close event fired!');
+                        }
+                    });
+                }
             },
             error: function (errormessage) {
                 alert(errormessage.responseText);
@@ -411,10 +444,12 @@
     function AddSuite() {
 
         $("#addedittestsuite").attr("disabled", false);
-        $("#exampleModalLabel").text('');
-        $("#exampleModalLabel").text('Add Test Suite');
+        $("#TSexampleModalLabel").text('');
+        $("#TSexampleModalLabel").text('Add Test Suite');
         $("#AddTestSuite").modal("show");
-
+        $('.modal-dialog').draggable({
+            handle: ".modal-header"
+        });
         $("#existtestsuitename").css("display", "none");
         $("#hdnTestSuiteId").val("");
         $("#testsuitename").val("");
@@ -461,7 +496,7 @@
         swal.fire({
             title: 'Please confirm.',
             text: "This action can not be undone.",
-            type: 'warning',
+            icon: 'warning',
             showCancelButton: true,
             confirmButtonText: 'Yes, delete it!'
         }).then(function (result) {
@@ -502,7 +537,7 @@
                             swal.fire({
                                 "title": "",
                                 "text": result.message,
-                                "type": "error",
+                                "icon": "error",
                                 "onClose": function (e) {
                                     console.log('on close event fired!');
                                 }
@@ -582,7 +617,7 @@
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "success",
+                        "icon": "success",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -606,7 +641,7 @@
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "error",
+                        "icon": "error",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }
@@ -641,7 +676,7 @@
                     swal.fire({
                         "title": "",
                         "text": result.message,
-                        "type": "error",
+                        "icon": "error",
                         "onClose": function (e) {
                             console.log('on close event fired!');
                         }

@@ -28,8 +28,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured CompareParamRepositoryin ListCompareConfig method | Username: {0} |", Username));
-                ELogger.ErrorException(string.Format("Error occured CompareParamRepository in ListCompareConfig method | Username: {0}", Username), ex);
+                logger.Error(string.Format("Error occured CompareParamRepository in ListCompareConfig method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured CompareParamRepository in ListCompareConfig method | UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured CompareParamRepository in ListCompareConfig method | UserName: {0}", Username), ex.InnerException);
                 throw;
             }
         }
@@ -59,8 +61,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured CompareParamRepositoryin AddorEditCompareconfig method | Username: {0} |", Username));
-                ELogger.ErrorException(string.Format("Error occured CompareParamRepository in AddorEditCompareconfig method | Username: {0}", Username), ex);
+                logger.Error(string.Format("Error occured AddorEditCompareconfig in ListCompareConfig method | DataSource Name: {0} | UserName: {1}", name, Username));
+                ELogger.ErrorException(string.Format("Error occured AddorEditCompareconfig in ListCompareConfig method | DataSource Name: {0} | UserName: {1}", name, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured AddorEditCompareconfig in ListCompareConfig method | DataSource Name: {0} | UserName: {1}", name, Username), ex.InnerException);
                 throw;
             }
         }
@@ -86,8 +90,10 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured CompareParamRepositoryin DeleteCompareConfig method | Username: {0} |", Username));
-                ELogger.ErrorException(string.Format("Error occured CompareParamRepository in DeleteCompareConfig method | Username: {0}", Username), ex);
+                logger.Error(string.Format("Error occured DeleteCompareConfig in ListCompareConfig method | DataSource Name: {0} | UserName: {1}", id, Username));
+                ELogger.ErrorException(string.Format("Error occured DeleteCompareConfig in ListCompareConfig method | DataSource Name: {0} | UserName: {1}", id, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured DeleteCompareConfig in ListCompareConfig method | DataSource Name: {0} | UserName: {1}", id, Username), ex.InnerException);
                 throw;
             }
         }

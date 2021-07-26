@@ -30,8 +30,8 @@
     {
         Storyboardname = Storyboardname.Replace(' ', '_');
     }
-    var lstoryboardgrid = ".grid" + Storyboardname.Replace('/', '_').Replace('(', '_').Replace(')', '_').Replace('.', '_').Replace('*', '_').Replace('&', '_');
-    var classgrid = "grid" + Storyboardname.Replace('/', '_').Replace('(', '_').Replace(')', '_').Replace('.', '_').Replace('*', '_').Replace('&', '_');
+    var lstoryboardgrid = ".gridSB" + Storyboardname.Replace('/', '_').Replace('(', '_').Replace(')', '_').Replace('.', '_').Replace('*', '_').Replace('&', '_');
+    var classgrid = "gridSB" + Storyboardname.Replace('/', '_').Replace('(', '_').Replace(')', '_').Replace('.', '_').Replace('*', '_').Replace('&', '_');
 
     var ExButtonstyle = "none";
     var ExResultButtonstyle = "none";
@@ -69,7 +69,6 @@
     }
 
 </style>
-
 @if (ViewBag.ProjectId != null && ViewBag.StoryBoardId != null && ViewBag.ProjectId != 0 && ViewBag.StoryBoardId != 0)
 {
     <script>
@@ -130,8 +129,8 @@
                     });
             }
         });
-        dt.push({
-            title: "RUN_ORDER", copy: false, hidden: true, dataType: "int", dataIndx: "RUN_ORDER", align: "center", menuInHide: true, sortable: false,
+    dt.push({
+        title: "RUN_ORDER", copy: false, hidden: true, dataType: "int", dataIndx: "RUN_ORDER", align: "center", menuInHide: false, sortable: false,
         });
         dt.push({
             title: "StoryboardDetailId", copy: false, hidden: true, dataType: "int", dataIndx: "detailid", align: "center", menuInHide: true, sortable: false,
@@ -173,38 +172,45 @@
                     var List = [];
                     var rowindx = ui.rowIndx;
                     var sid = @ViewBag.StoryBoardId;
-                    $.ajax({
-                   url: "/StoryBoard/GetActionList",
-                   type: "POST",
-                   data: '{storyboardid: ' + sid + '}',
-                   contentType: "application/json;charset=utf-8",
-                   dataType: "json",
-                   async: false,
-                        success: function (result) {
-                            if (result.status == 1) {
-                                if (result.data != null && result.data.length > 0) {
-                                    actions.push({ "value": "", "text": "" });
-                                    for (var i = 0; i < result.data.length; i++) {
-                                        actions.push({ "value": result.data[i].DISPLAY_NAME, "text": result.data[i].DISPLAY_NAME });
-                                    }
-                                    List = actions;
-                                    actions = [];
-                                }
-                            }
-                            else if (result.status == 0) {
-                                swal.fire({
-                                    "title": "",
-                                    "text": result.message,
-                                    "icon": "error",
-                                    "onClose": function (e) {
-                                        console.log('on close event fired!');
-                                    }
-                                });
-                            }
-                   },
-                   error(a, b, c) {
-                   }
+                    var actionlist = @Html.Raw(ViewBag.ActionList);
+                    actions.push({ "value": "", "text": "" });
+                    $.each(actionlist, function (key, value) {
+                        actions.push({ "value": value.DISPLAY_NAME, "text": value.DISPLAY_NAME });
                     });
+                    List = actions;
+                    actions = [];
+                   // $.ajax({
+                   //url: "/StoryBoard/GetActionList",
+                   //type: "POST",
+                   //data: '{storyboardid: ' + sid + '}',
+                   //contentType: "application/json;charset=utf-8",
+                   //dataType: "json",
+                   //async: false,
+                   //     success: function (result) {
+                   //         if (result.status == 1) {
+                   //             if (result.data != null && result.data.length > 0) {
+                   //                 actions.push({ "value": "", "text": "" });
+                   //                 for (var i = 0; i < result.data.length; i++) {
+                   //                     actions.push({ "value": result.data[i].DISPLAY_NAME, "text": result.data[i].DISPLAY_NAME });
+                   //                 }
+                   //                 List = actions;
+                   //                 actions = [];
+                   //             }
+                   //         }
+                   //         else if (result.status == 0) {
+                   //             swal.fire({
+                   //                 "title": "",
+                   //                 "text": result.message,
+                   //                 "icon": "error",
+                   //                 "onClose": function (e) {
+                   //                     console.log('on close event fired!');
+                   //                 }
+                   //             });
+                   //         }
+                   //},
+                   //error(a, b, c) {
+                   //}
+                   // });
                     return List;
                 }
             },
@@ -231,38 +237,46 @@
                     var List = [];
                     var rowindx = ui.rowIndx;
                     var Projectid = @ViewBag.ProjectId;
-                    $.ajax({
-                        url: "/StoryBoard/GetTestSuiteListInStoryboard",
-                   type: "POST",
-                   data: '{ProjectId: ' + Projectid + '}',
-                   contentType: "application/json;charset=utf-8",
-                   dataType: "json",
-                   async: false,
-                   success: function (result) {
-                       if (result.status == 1) {
-                           if (result.data != null && result.data.length > 0) {
-                               testsuites.push({ "value": "", "text": "" });
-                               for (var i = 0; i < result.data.length; i++) {
-                                   testsuites.push({ "value": result.data[i].TestsuiteName, "text": result.data[i].TestsuiteName });
-                               }
-                               List = testsuites;
-                               testsuites = [];
-                           }
-                       }
-                       else if (result.status == 0) {
-                           swal.fire({
-                               "title": "",
-                               "text": result.message,
-                               "icon": "error",
-                               "onClose": function (e) {
-                                   console.log('on close event fired!');
-                               }
-                           });
-                       }
-                   },
-                   error(a, b, c) {
-                   }
+                    //Rutvi
+                     var testsuiteList = @Html.Raw(ViewBag.TestSuitesList);
+                    testsuites.push({ "value": "", "text": "" });
+                    $.each(testsuiteList, function (key, value) {
+                        testsuites.push({ "value": value.TestsuiteName, "text": value.TestsuiteName });
                     });
+                    List = testsuites;
+                    testsuites = [];
+                   // $.ajax({
+                   //     url: "/StoryBoard/GetTestSuiteListInStoryboard",
+                   //type: "POST",
+                   //data: '{ProjectId: ' + Projectid + '}',
+                   //contentType: "application/json;charset=utf-8",
+                   //dataType: "json",
+                   //async: false,
+                   //success: function (result) {
+                   //    if (result.status == 1) {
+                   //        if (result.data != null && result.data.length > 0) {
+                   //            testsuites.push({ "value": "", "text": "" });
+                   //            for (var i = 0; i < result.data.length; i++) {
+                   //                testsuites.push({ "value": result.data[i].TestsuiteName, "text": result.data[i].TestsuiteName });
+                   //            }
+                   //            List = testsuites;
+                   //            testsuites = [];
+                   //        }
+                   //    }
+                   //    else if (result.status == 0) {
+                   //        swal.fire({
+                   //            "title": "",
+                   //            "text": result.message,
+                   //            "icon": "error",
+                   //            "onClose": function (e) {
+                   //                console.log('on close event fired!');
+                   //            }
+                   //        });
+                   //    }
+                   //},
+                   //error(a, b, c) {
+                   //}
+                   // });
                     return List;
                 }
             },
@@ -645,7 +659,7 @@
                         cls: "floatRight btn btn-brand btn-elevate btn-icon-sm",
                         cls: "floatRight btn btn-brand btn-elevate btn-icon-sm", listener: function () {
                             //append empty row at the end.
-                            validate("@lstoryboardgrid",@ViewBag.StoryBoardId );
+                            validate("@lstoryboardgrid",@ViewBag.StoryBoardId, @ViewBag.ProjectId );
                         }
                     },
 
@@ -698,15 +712,21 @@
                         }
                     },
                     {
-                        type: 'button', label: '', attr: 'title="Reload"', cls: 'btn btn-brand btn-elevate btn-icon-sm bgImage ', icon: "flaticon2-reload", listener: function () {
-                            var lStoryboardName = "";
-                            if (gridobj['.gridMTP_STRB'].pdata[0] != undefined) {
+                        type: 'button', label: '', attr: 'title="Reload"', cls: 'btn btn-brand btn-elevate btn-icon-sm bgImage ', icon: "flaticon2-reload",
+                        listener: function () {
+                           var lStoryboardName = "";
+                            if (gridobj['@lstoryboardgrid'].pdata[0] != undefined) {
                                 lStoryboardName = gridobj['@lstoryboardgrid'].pdata[0].Storyboardname;
                             } else {
                                 lStoryboardName = "@lstoryboardgrid".replace(".grid", "");
                             }
-                                
-                            swal.fire({
+                            var changesArray = gridobj['@lstoryboardgrid'].getChanges({ format: "byVal" });
+                           if (changesArray.updateList.length == 0 && changesArray.addList.length == 0 && changesArray.deleteList.length == 0 && changesArray.oldList.length == 0) {
+                                ReloadStoryboard('@lstoryboardgrid',@ViewBag.ProjectId,@ViewBag.StoryBoardId);
+
+                            }
+                            else {
+                                swal.fire({
                                 title: '',
                                 text: "All changes in [" + lStoryboardName +"] will be discarded.  Please confirm",
                                 icon: 'warning',
@@ -716,10 +736,10 @@
                                 if (result.value == true) {
                                     ReloadStoryboard('@lstoryboardgrid',@ViewBag.ProjectId,@ViewBag.StoryBoardId);
                                 }
-                            });
+                        });
+                            }
                         },
                     },
-
                     {
                         type: 'button',
                         attr: 'title="Wrap"',
@@ -944,208 +964,207 @@
         }
 
 
-        function ReloadStoryboard(sbgrid,ProjectId,SBId)
-        {
+        function ReloadStoryboard(sbgrid, ProjectId, SBId) {
             data = [];
-              $.ajax({
+            $.ajax({
 
-                  url: "/StoryBoard/GetStoryBoardDetails?Pid=" + ProjectId + "&sid=" + SBId,
-            type: "GET",
-            contentType: "application/json;charset=utf-8",
-            dataType: "json",
-                  success: function (result) {
-                      if (result.status == 1) {
+                url: "/StoryBoard/GetStoryBoardDetails?Pid=" + ProjectId + "&sid=" + SBId,
+                type: "GET",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    if (result.status == 1) {
 
-                          jsonData = "[";
+                        jsonData = "[";
 
-                          var bhistid = "";
-                          var chistid = "";
-                          var suiteid = "";
-                          var projectid = "";
-                          var caseid = "";
-                          var datasetid = "";
-                          var detailid = "";
-                          var actionname = "";
-                          var stepname = "";
-                          var suitename = "";
-                          var casename = "";
-                          var datasetname = "";
-                          var dependency = "";
-                          var btestresult = "";
-                          var berrcause = "";
-                          var bscriptstart = "";
-                          var bscriptend = "";
-                          var ctestresult = "";
-                          var cerrcause = "";
-                          var cscriptstart = "";
-                          var cscriptend = "";
-                          var description = "";
-						  
-						 // result.data = result.data.replace("\\","\\\\");
+                        var bhistid = "";
+                        var chistid = "";
+                        var suiteid = "";
+                        var projectid = "";
+                        var caseid = "";
+                        var datasetid = "";
+                        var detailid = "";
+                        var actionname = "";
+                        var stepname = "";
+                        var suitename = "";
+                        var casename = "";
+                        var datasetname = "";
+                        var dependency = "";
+                        var btestresult = "";
+                        var berrcause = "";
+                        var bscriptstart = "";
+                        var bscriptend = "";
+                        var ctestresult = "";
+                        var cerrcause = "";
+                        var cscriptstart = "";
+                        var cscriptend = "";
+                        var description = "";
 
-                          result.data = JSON.parse(result.data);
-                          if (result.data.length > 0) {
-                              for (i = 0; i < result.data.length; i++) {
-                                  if (i != 0) {
-                                      jsonData += ",";
-                                  }
-                                  bhistid = result.data[i].BHistid;
-                                  chistid = result.data[i].CHistid;
-                                  suiteid = result.data[i].Suiteid;
-                                  projectid = result.data[i].ProjectId;
-                                  storyboardid = result.data[i].Storyboardid;
-                                  storyboardname = result.data[i].Storyboardname;
-                                  caseid = result.data[i].Caseid;
-                                  datasetid = result.data[i].Datasetid;
-                                  detailid = result.data[i].storyboarddetailid;
-                                  if (result.data[i].ActionName != null) {
-                                      actionname = result.data[i].ActionName;
-                                  }
-                                  if (result.data[i].StepName != null) {
-                                      stepname = result.data[i].StepName;
-                                  } else {
-                                      stepname = "";
-                                  }
-                                  if (result.data[i].TestSuiteName != null) {
-                                      suitename = result.data[i].TestSuiteName;
-                                  }
-                                  if (result.data[i].TestCaseName != null) {
-                                      casename = result.data[i].TestCaseName;
-                                  }
-                                  if (result.data[i].DataSetName != null) {
-                                      datasetname = result.data[i].DataSetName;
-                                  }
+                        // result.data = result.data.replace("\\","\\\\");
+                        result.data = result.data.replace(/\\"/g, '"dquote');
+                        result.data = JSON.parse(result.data);
+                        if (result.data.length > 0) {
+                            for (i = 0; i < result.data.length; i++) {
+                                if (i != 0) {
+                                    jsonData += ",";
+                                }
+                                bhistid = result.data[i].BHistid;
+                                chistid = result.data[i].CHistid;
+                                suiteid = result.data[i].Suiteid;
+                                projectid = result.data[i].ProjectId;
+                                storyboardid = result.data[i].Storyboardid;
+                                storyboardname = result.data[i].Storyboardname;
+                                caseid = result.data[i].Caseid;
+                                datasetid = result.data[i].Datasetid;
+                                detailid = result.data[i].storyboarddetailid;
+                                if (result.data[i].ActionName != null) {
+                                    actionname = result.data[i].ActionName;
+                                }
+                                if (result.data[i].StepName != null) {
+                                    stepname = result.data[i].StepName;
+                                } else {
+                                    stepname = "";
+                                }
+                                if (result.data[i].TestSuiteName != null) {
+                                    suitename = result.data[i].TestSuiteName;
+                                }
+                                if (result.data[i].TestCaseName != null) {
+                                    casename = result.data[i].TestCaseName;
+                                }
+                                if (result.data[i].DataSetName != null) {
+                                    datasetname = result.data[i].DataSetName;
+                                }
 
-                                  if (result.data[i].Dependency != null) {
-                                      dependency = result.data[i].Dependency;
-                                  }
-                                  if (result.data[i].BTestResult != null) {
-                                      btestresult = result.data[i].BTestResult;
-                                  }
-                                  else {
-                                      btestresult = "";
-                                  }
-                                  if (result.data[i].BErrorcause != null) {
-                                      berrcause = result.data[i].BErrorcause;
-                                      berrcause = berrcause.trim();
-                                      
-                                      berrcause = berrcause.replace("	", "");
-                                      
-                                  }
-                                  else {
-                                      berrcause = "";
-                                  }
-                                  if (result.data[i].BScriptstart != null) {
-                                      bscriptstart = result.data[i].BScriptstart;
-                                  }
-                                  else {
-                                      bscriptstart = "";
-                                  }
-                                  if (result.data[i].BScriptend != null && result.data[i].BScriptstart != null) {
+                                if (result.data[i].Dependency != null) {
+                                    dependency = result.data[i].Dependency;
+                                }
+                                if (result.data[i].BTestResult != null) {
+                                    btestresult = result.data[i].BTestResult;
+                                }
+                                else {
+                                    btestresult = "";
+                                }
+                                if (result.data[i].BErrorcause != null) {
+                                    berrcause = result.data[i].BErrorcause;
+                                    berrcause = berrcause.trim();
 
-                                      var time_hour = "", time_mins = "", time_secs = "";
-                                      var bEnd = new Date(result.data[i].BScriptend);
-                                      var bStart = new Date(result.data[i].BScriptstart);
+                                    berrcause = berrcause.replace("	", "");
 
-                                      var res = Math.abs(bEnd - bStart) / 1000;
-                                      var hours = Math.floor(res / 3600) % 24;
-                                      var minutes = Math.floor(res / 60) % 60;
-                                      var seconds = res % 60;
+                                }
+                                else {
+                                    berrcause = "";
+                                }
+                                if (result.data[i].BScriptstart != null && result.data[i].Bstart != null) {
+                                    bscriptstart = result.data[i].Bstart.replaceAll('-', '/');
+                                }
+                                else {
+                                    bscriptstart = "";
+                                }
+                                if (result.data[i].BScriptend != null && result.data[i].BScriptstart != null) {
 
-                                      if (hours < 10) { time_hour = "0" + hours + ":"; } else { time_hour = hours + ":"; };
-                                      if (minutes < 10) { time_mins = "0" + minutes + ":"; } else { time_mins = minutes + ":"; };
-                                      if (seconds < 10) { time_secs = "0" + seconds } else { time_secs = seconds };
+                                    var time_hour = "", time_mins = "", time_secs = "";
+                                    var bEnd = new Date(result.data[i].BScriptend);
+                                    var bStart = new Date(result.data[i].BScriptstart);
 
-                                      bscriptend = time_hour + time_mins + time_secs;
-                                  }
-                                  else {
-                                      bscriptend = "";
-                                  }
-                                  if (result.data[i].CTestResult != null) {
-                                      ctestresult = result.data[i].CTestResult;
-                                  }
-                                  else {
-                                      ctestresult = "";
-                                  }
-                                  if (result.data[i].CErrorcause != null) {
-                                      cerrcause = result.data[i].CErrorcause;
-                                      cerrcause = cerrcause.trim();
-                                      cerrcause = cerrcause.replace("	", "");
-                                  }
-                                  else {
-                                      cerrcause = "";
-                                  }
-                                  if (result.data[i].CScriptstart != null) {
-                                      cscriptstart = result.data[i].CScriptstart;
-                                  }
-                                  else {
-                                      cscriptstart = "";
-                                  }
-                                  if (result.data[i].CScriptend != null && result.data[i].CScriptstart != null) {
+                                    var res = Math.abs(bEnd - bStart) / 1000;
+                                    var hours = Math.floor(res / 3600) % 24;
+                                    var minutes = Math.floor(res / 60) % 60;
+                                    var seconds = res % 60;
 
-                                      var time_hour = "", time_mins = "", time_secs = "";
-                                      var cEnd = new Date(result.data[i].CScriptend);
-                                      var cStart = new Date(result.data[i].CScriptstart);
+                                    if (hours < 10) { time_hour = "0" + hours + ":"; } else { time_hour = hours + ":"; };
+                                    if (minutes < 10) { time_mins = "0" + minutes + ":"; } else { time_mins = minutes + ":"; };
+                                    if (seconds < 10) { time_secs = "0" + seconds } else { time_secs = seconds };
 
-                                      var res = Math.abs(cEnd - cStart) / 1000;
-                                      var hours = Math.floor(res / 3600) % 24;
-                                      var minutes = Math.floor(res / 60) % 60;
-                                      var seconds = res % 60;
+                                    bscriptend = time_hour + time_mins + time_secs;
+                                }
+                                else {
+                                    bscriptend = "";
+                                }
+                                if (result.data[i].CTestResult != null) {
+                                    ctestresult = result.data[i].CTestResult;
+                                }
+                                else {
+                                    ctestresult = "";
+                                }
+                                if (result.data[i].CErrorcause != null) {
+                                    cerrcause = result.data[i].CErrorcause;
+                                    cerrcause = cerrcause.trim();
+                                    cerrcause = cerrcause.replace("	", "");
+                                }
+                                else {
+                                    cerrcause = "";
+                                }
+                                if (result.data[i].CScriptstart != null && result.data[i].Cstart != null) {
+                                    cscriptstart = result.data[i].Cstart.replaceAll('-', '/');
+                                }
+                                else {
+                                    cscriptstart = "";
+                                }
+                                if (result.data[i].CScriptend != null && result.data[i].CScriptstart != null) {
 
-                                      if (hours < 10) { time_hour = "0" + hours + ":"; } else { time_hour = hours + ":"; };
-                                      if (minutes < 10) { time_mins = "0" + minutes + ":"; } else { time_mins = minutes + ":"; };
-                                      if (seconds < 10) { time_secs = "0" + seconds } else { time_secs = seconds };
+                                    var time_hour = "", time_mins = "", time_secs = "";
+                                    var cEnd = new Date(result.data[i].CScriptend);
+                                    var cStart = new Date(result.data[i].CScriptstart);
 
-                                      cscriptend = time_hour + time_mins + time_secs;
-                                  }
-                                  else {
-                                      cscriptend = "";
-                                  }
+                                    var res = Math.abs(cEnd - cStart) / 1000;
+                                    var hours = Math.floor(res / 3600) % 24;
+                                    var minutes = Math.floor(res / 60) % 60;
+                                    var seconds = res % 60;
 
-                                  if (result.data[i].Description != null) {
-                                      description = result.data[i].Description;
-                                      description = description.trim().replace(/\s+/g, " ");//replace("-","_");
-                                  }
-                                  else {
-                                      description = "";
-                                  }
-                                  jsonData += '{"actions":"' + actionname + '",  "StoryboardId":"' + storyboardid + '",  "Storyboardname":"' + storyboardname + '",  "ProjectId":"' + projectid + '","steps":"' + stepname + '", "bhistid":"' + bhistid + '","chistid":"' + chistid + '", "suiteid":"' + suiteid + '", "caseid":"' + caseid + '", "datasetid":"' + datasetid + '", "detailid":"' + detailid + '", "testsuite":"'
-                                      + suitename + '", "testcase":"' + casename + '", "dataset":"' + datasetname + '", "btestresult": "' + btestresult + '", "berrcause": "' + berrcause + '", "bscriptstart": "' + bscriptstart + '", "bscriptend": "' + bscriptend + '","ctestresult": "' + ctestresult + '", "cerrcause": "' + cerrcause + '", "cscriptstart": "' + cscriptstart + '", "cscriptend": "' + cscriptend + '","dependson": "' + dependency + '", "desc": "' + description + '", "RUN_ORDER": "' + result.data[i].Run_order + '"';
-                                  jsonData += "}";
-                              }
-                              jsonData += "]";
-							  debugger;
-								//jsonData = jsonData.replace("\\","\\\\");
-                              jsonData = jsonData.replaceAll("\\\\r", " ");
-                              jsonData = jsonData.replaceAll("\\\\n", " ");
-                              data = JSON.parse(jsonData);
-                          }
+                                    if (hours < 10) { time_hour = "0" + hours + ":"; } else { time_hour = hours + ":"; };
+                                    if (minutes < 10) { time_mins = "0" + minutes + ":"; } else { time_mins = minutes + ":"; };
+                                    if (seconds < 10) { time_secs = "0" + seconds } else { time_secs = seconds };
 
-                          gridobj[sbgrid].option("dataModel.data", data);
-                          gridobj[sbgrid].refreshDataAndView()
+                                    cscriptend = time_hour + time_mins + time_secs;
+                                }
+                                else {
+                                    cscriptend = "";
+                                }
 
-                          stoploader();
-                      }
-                      else if (result.status == 0) {
-                          swal.fire({
-                              "title": "",
-                              "text": result.message,
-                              "icon": "error",
-                              "onClose": function (e) {
-                                  console.log('on close event fired!');
-                              }
-                          });
-                  }
-            },
-                  error: function (errormessage) {
-                      //alert(errormessage.responseText);
-                  }
-         });
+                                if (result.data[i].Description != null) {
+                                    description = result.data[i].Description;
+                                    description = description.trim().replace(/\s+/g, " ");//replace("-","_");
+                                }
+                                else {
+                                    description = "";
+                                }
+                                jsonData += '{"actions":"' + actionname + '",  "StoryboardId":"' + storyboardid + '",  "Storyboardname":"' + storyboardname + '",  "ProjectId":"' + projectid + '","steps":"' + stepname + '", "bhistid":"' + bhistid + '","chistid":"' + chistid + '", "suiteid":"' + suiteid + '", "caseid":"' + caseid + '", "datasetid":"' + datasetid + '", "detailid":"' + detailid + '", "testsuite":"'
+                                    + suitename + '", "testcase":"' + casename + '", "dataset":"' + datasetname + '", "btestresult": "' + btestresult + '", "berrcause": "' + berrcause + '", "bscriptstart": "' + bscriptstart + '", "bscriptend": "' + bscriptend + '","ctestresult": "' + ctestresult + '", "cerrcause": "' + cerrcause + '", "cscriptstart": "' + cscriptstart + '", "cscriptend": "' + cscriptend + '","dependson": "' + dependency + '", "desc": "' + description + '", "RUN_ORDER": "' + result.data[i].Run_order + '"';
+                                jsonData += "}";
+                            }
+                            jsonData += "]";
+                            //jsonData = jsonData.replace
+
+                            jsonData = jsonData.replaceAll("\\\\r", " ");
+                            jsonData = jsonData.replaceAll("\\\\n", " ");
+                            jsonData = jsonData.replace(/"dquote/g, '\\"');
+                            data = JSON.parse(jsonData);
+                        }
+
+                        gridobj[sbgrid].option("dataModel.data", data);
+                        gridobj[sbgrid].refreshDataAndView()
+
+                        stoploader();
+                    }
+                    else if (result.status == 0) {
+                        swal.fire({
+                            "title": "",
+                            "text": result.message,
+                            "icon": "error",
+                            "onClose": function (e) {
+                                console.log('on close event fired!');
+                            }
+                        });
+                    }
+                },
+                error: function (errormessage) {
+                    //alert(errormessage.responseText);
+                }
+            });
         }
         function ReloadStoryboardResult(sbgrid, ProjectId, SBId)
         {
               $.ajax({
-
                   url: "/StoryBoard/GetStoryBoardDetails?Pid=" + ProjectId + "&sid=" + SBId,
             type: "GET",
             contentType: "application/json;charset=utf-8",
@@ -1163,8 +1182,8 @@
                           var cerrcause = "";
                           var cscriptstart = "";
                           var cscriptend = "";
-						  debugger;
 						  //result.data = result.data.replace("\\","\\\\");
+                          result.data = result.data.replace(/\\"/g, '"dquote');
                           result.data = JSON.parse(result.data);
                           if (result.data.length > 0) {
                               for (i = 0; i < result.data.length; i++) {
@@ -1190,8 +1209,8 @@
                                   else {
                                       berrcause = "";
                                   }
-                                  if (result.data[i].BScriptstart != null) {
-                                      bscriptstart = result.data[i].BScriptstart;
+                                  if (result.data[i].BScriptstart != null && result.data[i].Bstart != null) {
+                                      bscriptstart = result.data[i].Bstart.replaceAll('-','/');
                                   }
                                   else {
                                       bscriptstart = "";
@@ -1233,8 +1252,8 @@
                                   else {
                                       cerrcause = "";
                                   }
-                                  if (result.data[i].CScriptstart != null) {
-                                      cscriptstart = result.data[i].CScriptstart;
+                                  if (result.data[i].CScriptstart != null && result.data[i].Cstart != null) {
+                                      cscriptstart = result.data[i].Cstart.replaceAll('-', '/');
                                   }
                                   else {
                                       cscriptstart = "";
@@ -1269,9 +1288,10 @@
                                   jsonData += "}";
                               }
                               jsonData += "]";
-							  debugger;
+
                               jsonData = jsonData.replaceAll("\\\\r", " ");
                               jsonData = jsonData.replaceAll("\\\\n", " ");
+                              jsonData = jsonData.replace(/"dquote/g, '\\"');
                               data = JSON.parse(jsonData);
                           }
 
@@ -1381,7 +1401,7 @@
         }
 
 
-        function validate(sbgrid,sbid)
+        function validate(sbgrid,sbid,ProjectId)
         {
             startloader();
             gridobj[sbgrid].reset({ filter: true });
@@ -1400,14 +1420,47 @@
                 return false;
             }
             var flag1 = false;
-            console.log(sbgrid);
             gridobj[sbgrid].setSelection(null);
+            var tempSB = [];
+            var tempSBValidation = [];
+            var flag2 = false;
             for (i = 0; i < gridobj[sbgrid].pdata.length; i++) {
                 if (gridobj[sbgrid].pdata[i].actions == undefined || gridobj[sbgrid].pdata[i].actions == "" || gridobj[sbgrid].pdata[i].actions =="null" || gridobj[sbgrid].pdata[i].testsuite == undefined || gridobj[sbgrid].pdata[i].testsuite == "" || gridobj[sbgrid].pdata[i].testsuite == "null" || gridobj[sbgrid].pdata[i].testcase == undefined || gridobj[sbgrid].pdata[i].testcase == "" || gridobj[sbgrid].pdata[i].testcase == "null" || gridobj[sbgrid].pdata[i].dataset == undefined || gridobj[sbgrid].pdata[i].dataset == "" || gridobj[sbgrid].pdata[i].dataset == "null") {
                     gridobj[sbgrid].setSelection({ rowIndx: i, focus: true });
                     flag1 = true;
                 }
+                if (gridobj[sbgrid].pdata[i].dependson != "" && gridobj[sbgrid].pdata[i].dependson != "None" && gridobj[sbgrid].pdata[i].dependson != undefined) {
+                    if ($.inArray(gridobj[sbgrid].pdata[i].dependson, tempSB) === -1) {
+                        tempSBValidation.push({ "Row_Id": gridobj[sbgrid].pdata[i].pq_ri, "Steps": " Dependency [" + gridobj[sbgrid].pdata[i].dependson + "] is not valid." });
+                        flag2 = true;
+                    }
+                }
+                if (gridobj[sbgrid].pdata[i].steps != "" && gridobj[sbgrid].pdata[i].steps != undefined) {
+                    if ($.inArray(gridobj[sbgrid].pdata[i].steps, tempSB) === -1) {
+                        tempSB.push(gridobj[sbgrid].pdata[i].steps);
+                    } else {
+                        tempSBValidation.push({ "Row_Id": gridobj[sbgrid].pdata[i].pq_ri, "Steps": " Duplicate Step names [" + gridobj[sbgrid].pdata[i].steps + "] are not allowed." });
+                        flag2 = true;
+                    }
+                }
             }
+
+            if (flag2) {
+                stoploader();
+                var svalidationmsgs = "<table cellborder='0' cellspacing='2' cellpadding='4'>";
+                $("#ValidationMessageLabel").html("");
+                for (var i = 0; i < tempSBValidation.length; i++) {
+                    var lrowid = tempSBValidation[i].Row_Id;
+                    gridobj[sbgrid].setSelection({ rowIndx: lrowid, focus: true });
+                    gridobj[sbgrid].Range({ r1: lrowid, r2: lrowid }).comment(tempSBValidation[i].Steps);
+                    svalidationmsgs += "<tr><td style='width: 80px;'>Row: " + (lrowid + 1) + "</td><td align='left'>" + tempSBValidation[i].Steps + "</td></tr>";
+                }
+                svalidationmsgs += "</table>";
+                $("#ValidationMessageLabel").html(svalidationmsgs);
+                $("#ValidateMsgModel").modal("toggle");
+                return false;
+            }
+
             if (flag1) {
                 stoploader();
                 swal.fire({
@@ -1421,11 +1474,14 @@
                 return false;
             }
 
+
+
             var pStoryboardArray = [];
             $.each(gridobj[sbgrid].pdata, function (key, value) {
                 pStoryboardArray.push({
                     "RowId": key, "Run_order": value.RUN_ORDER, "ProjectId": value.ProjectId, "ActionName": value.actions, "StepName": value.steps,
-                    "TestSuiteName": value.testsuite, "TestCaseName": value.testcase, "DataSetName": value.dataset, "Dependency": value.dependson
+                    "TestSuiteName": value.testsuite, "TestCaseName": value.testcase, "DataSetName": value.dataset, "Dependency": value.dependson,
+                    "storyboarddetailid": value.detailid
                 });
             });
 
@@ -1439,7 +1495,7 @@
                     //gridobj[sbgrid].showLoading("Saving Data");
                 },
                 url: "/StoryBoard/ValidateStoryboard",
-                data: { lGridJsonData: JSON.stringify(pStoryboardArray), lStoryboardId:sbid  },
+                data: { lGridJsonData: JSON.stringify(pStoryboardArray), lStoryboardId:sbid ,lProjectId: ProjectId },
                 success: function (result) {
                     if (result.status == 1) {
                         if (result.data == "[]") {
@@ -1459,10 +1515,10 @@
                             var lobject = JSON.parse(result.data);
                             $("#ValidationMessageLabel").html("");
                             for (var i = 0; i < lobject.length; i++) {
-                                var lrowid = lobject[i].RowId;
+                                var lrowid = lobject[i].ID;
                                 gridobj[sbgrid].setSelection({ rowIndx: lrowid, focus: true });
-                                gridobj[sbgrid].Range({ r1: lrowid, r2: lrowid }).comment(lobject[i].ValidationMsg);
-                                validationmsgs += "<tr><td style='width: 80px;'>Row: " + (lrowid + 1) + "</td><td align='left'>" + lobject[i].ValidationMsg + "</td></tr>";
+                                gridobj[sbgrid].Range({ r1: lrowid, r2: lrowid }).comment(lobject[i].VALIDATIONMSG);
+                                validationmsgs += "<tr><td style='width: 80px;'>Row: " + (lrowid + 1) + "</td><td align='left'>" + lobject[i].VALIDATIONMSG + "</td></tr>";
                             }
                             validationmsgs += "</table>";
                             $("#ValidationMessageLabel").html(validationmsgs);
@@ -1487,7 +1543,7 @@
             });
         }
 
-        function saveChanges(sbgrid,ProjectId,sbid)
+        function saveChanges(sbgrid, ProjectId, sbid)
         {
             startloader();
             gridobj[sbgrid].reset({ filter: true });
@@ -1507,14 +1563,46 @@
                 return false;
             }
             var flag1 = false;
-
+            var tempSB = [];
+            var tempSBValidation = [];
+            var flag2 = false;
             gridobj[sbgrid].setSelection(null);
             for (i = 0; i < gridobj[sbgrid].pdata.length; i++) {
                 if (gridobj[sbgrid].pdata[i].actions == undefined || gridobj[sbgrid].pdata[i].actions == "" || gridobj[sbgrid].pdata[i].actions =="null" || gridobj[sbgrid].pdata[i].testsuite == undefined || gridobj[sbgrid].pdata[i].testsuite == "" || gridobj[sbgrid].pdata[i].testsuite == "null" || gridobj[sbgrid].pdata[i].testcase == undefined || gridobj[sbgrid].pdata[i].testcase == "" || gridobj[sbgrid].pdata[i].testcase == "null" || gridobj[sbgrid].pdata[i].dataset == undefined || gridobj[sbgrid].pdata[i].dataset == "" || gridobj[sbgrid].pdata[i].dataset == "null") {
                     gridobj[sbgrid].setSelection({ rowIndx: i, focus: true });
                     flag1 = true;
                 }
+                if (gridobj[sbgrid].pdata[i].dependson != "" && gridobj[sbgrid].pdata[i].dependson != "None" &&   gridobj[sbgrid].pdata[i].dependson != undefined) {
+                    if ($.inArray(gridobj[sbgrid].pdata[i].dependson, tempSB) === -1) {
+                        tempSBValidation.push({ "Row_Id": gridobj[sbgrid].pdata[i].pq_ri, "Steps": " Dependency [" + gridobj[sbgrid].pdata[i].dependson + "] is not valid." });
+                        flag2 = true;
+                    }
+                }
+                if (gridobj[sbgrid].pdata[i].steps != "" &&   gridobj[sbgrid].pdata[i].steps != undefined) {
+                    if ($.inArray(gridobj[sbgrid].pdata[i].steps, tempSB) === -1) {
+                        tempSB.push(gridobj[sbgrid].pdata[i].steps);
+                    } else {
+                        tempSBValidation.push({ "Row_Id": gridobj[sbgrid].pdata[i].pq_ri, "Steps": " Duplicate Step names [" + gridobj[sbgrid].pdata[i].steps + "] are not allowed." });
+                        flag2 = true;
+                    }
+                }
             }
+            if (flag2) {
+                stoploader();
+                var svalidationmsgs = "<table cellborder='0' cellspacing='2' cellpadding='4'>";
+                $("#ValidationMessageLabel").html("");
+                for (var i = 0; i < tempSBValidation.length; i++) {
+                    var lrowid = tempSBValidation[i].Row_Id;
+                    gridobj[sbgrid].setSelection({ rowIndx: lrowid, focus: true });
+                    gridobj[sbgrid].Range({ r1: lrowid, r2: lrowid }).comment(tempSBValidation[i].Steps);
+                    svalidationmsgs += "<tr><td style='width: 80px;'>Row: " + (lrowid + 1) + "</td><td align='left'>" + tempSBValidation[i].Steps + "</td></tr>";
+                }
+                svalidationmsgs += "</table>";
+                $("#ValidationMessageLabel").html(svalidationmsgs);
+                $("#ValidateMsgModel").modal("toggle");
+                return false;
+            }
+
           if (flag1) {
               sbvalidmsg = true;
               stoploader();
@@ -1533,7 +1621,11 @@
             var pStoryboardArray = [];
             $.each(gridobj[sbgrid].pdata, function (key, value) {
 
-                pStoryboardArray.push({ "RowId": key, "Run_order": value.RUN_ORDER, "ProjectId": ProjectId, "ActionName": value.actions, "StepName": value.steps, "TestSuiteName": value.testsuite, "TestCaseName": value.testcase, "DataSetName": value.dataset, "Dependency": value.dependson, "storyboarddetailid": value.detailid});
+                pStoryboardArray.push({
+                    "RowId": key, "Run_order": value.RUN_ORDER, "ProjectId": ProjectId, "ActionName": value.actions,
+                    "StepName": value.steps, "TestSuiteName": value.testsuite, "TestCaseName": value.testcase, "DataSetName": value.dataset,
+                    "Dependency": value.dependson, "storyboarddetailid": value.detailid
+                });
             });
 
             changes = gridobj[sbgrid].getChanges({ format: "byVal" });
@@ -1547,9 +1639,9 @@
                     //gridobj[sbgrid].showLoading("Saving Data");
                 },
                 url: "/StoryBoard/SaveStoryboardGrid",
-                data: { lGridJsonData: JSON.stringify(pStoryboardArray), lStoryboardId: sbid , lchangedGrid: JSON.stringify(changes) },
+                data: { lGridJsonData: JSON.stringify(pStoryboardArray), lStoryboardId: sbid, lchangedGrid: JSON.stringify(changes), lProjectId: ProjectId },
                 success: function (result) {
-                    if (result.status == 1) {
+                     if (result.status == 1) {
                         if (result.data == "[]") {
                             swal.fire({
                                 "title": "",
@@ -1567,10 +1659,12 @@
                             gridobj[sbgrid].history({ method: 'reset' });
                             gridobj[sbgrid].setSelection(null);
                             sbvalidmsg = false;
-                            for (i = 0; i < gridobj[sbgrid].pdata.length; i++) {
-                                gridobj[sbgrid].Range({ r1: i, r2: i }).comment("");
-                            }
-                            ReloadStoryboard(sbgrid, ProjectId, sbid);
+
+                            ////for (i = 0; i < gridobj[sbgrid].pdata.length; i++) {
+                            //    gridobj[sbgrid].Range({ r1: i, r2: i }).comment("");
+                            //}
+                           
+                         ReloadStoryboard(sbgrid, ProjectId, sbid);
                         }
                         else {
                             sbvalidmsg = true;
@@ -1578,10 +1672,10 @@
                             var lobject = JSON.parse(result.data);
                             $("#ValidationMessageLabel").html("");
                             for (var i = 0; i < lobject.length; i++) {
-                                var lrowid = lobject[i].RowId;
+                                var lrowid = lobject[i].ID;
                                 gridobj[sbgrid].setSelection({ rowIndx: lrowid, focus: true });
-                                gridobj[sbgrid].Range({ r1: lrowid, r2: lrowid }).comment(lobject[i].ValidationMsg);
-                                validationmsgs += "<tr><td style='width: 80px;'>Row: " + (lrowid + 1) + "</td><td align='left'>" + lobject[i].ValidationMsg + "</td></tr>";
+                                gridobj[sbgrid].Range({ r1: lrowid, r2: lrowid }).comment(lobject[i].VALIDATIONMSG);
+                                validationmsgs += "<tr><td style='width: 80px;'>Row: " + (lrowid + 1) + "</td><td align='left'>" + lobject[i].VALIDATIONMSG + "</td></tr>";
                             }
                             validationmsgs += "</table>";
                             $("#ValidationMessageLabel").html(validationmsgs);
@@ -1612,6 +1706,9 @@
             $('#hdnEStoryboardId').val(sbid);
             $('#hdnEProjectId').val(ProjectId);
             $('#ResultSetExport').modal("show");
+            $('.modal-dialog').draggable({
+                handle: ".modal-header"
+            });
         }
 
         function ExportResultSet() {
@@ -1669,6 +1766,7 @@
     <div id="grid" class="@classgrid" style="margin:auto;padding:0px 10px;"></div>
 </div>
 <script>
+
    $(document).ready(function () {
        var lProjectId = $("#hdnSProjectId").val();
        var lstoryboardid = $("#hdnSBId").val();
