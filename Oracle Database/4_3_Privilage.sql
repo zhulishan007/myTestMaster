@@ -1,0 +1,12 @@
+
+declare lRoleId Number;
+begin
+select Role_ID into lRoleId from T_TEST_ROLES where upper(ROLE_NAME) = 'ADMIN';
+
+
+
+insert into T_TEST_PRIVILEGE_ROLE_MAPPING (PRIVILEGE_ROLE_MAP_ID,PRIVILEGE_ID,ROLE_ID,ISACTIVE,CREATOR,CREATOR_DATE)
+select REL_PRIVILEGE_ROLE_MAPPING.nextval,PRIVILEGE_ID, lRoleId,1,'Admin',(SELECT SYSDATE FROM DUAL)
+from T_TEST_PRIVILEGE tester ;
+commit;
+end;
