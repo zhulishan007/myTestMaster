@@ -56,7 +56,14 @@ namespace MARS_Web.Controllers
 
                 //to load databaseNames in the dropdown
                 var db_repo = new DatabaseConnectionRepository();
+                db_repo.Username = SessionManager.TESTER_LOGIN_NAME;
                 var dbNames = db_repo.GetDatabaseNames();
+                //start : query list on Page Load
+                var query_repo = new QueryRepository();
+                query_repo.Username = SessionManager.TESTER_LOGIN_NAME;
+                var queryNames = query_repo.GetQueryNames();
+                ViewBag.queryList = queryNames;
+                //end : query list on Page Load
                 ViewBag.databaseNameList = dbNames;
 
             }
@@ -84,16 +91,22 @@ namespace MARS_Web.Controllers
                 ChartRepository chartRepository = new ChartRepository();
                 ChartViewModel chartViewModel = new ChartViewModel();
 
-                var connectionViewModel = connectionRepository.GetConnectionById(Int64.Parse(ConnId));
+                //to fetch the query to be executed.
+                QueryRepository queryRepository = new QueryRepository();
+                queryRepository.Username = SessionManager.TESTER_LOGIN_NAME;
+                var query = queryRepository.GetQueryById(Int64.Parse(QueryId));
+                DatabaseConnectionViewModel connectionViewModel = null;
+                if (ConnId == "") //if no connection is selected
+                {
+                    connectionViewModel = connectionRepository.GetConnectionById(query.ConnectionId);
+                }
+                else
+                {
+                    connectionViewModel = connectionRepository.GetConnectionById(Int64.Parse(ConnId));
+                }
 
                 //to fetch the connection string
                 string sConnString = helper.GetConnectionString(connectionViewModel);
-
-
-                //to fetch the query to be executed.
-                QueryRepository queryRepository = new QueryRepository();
-
-                var query = queryRepository.GetQueryById(Int64.Parse(QueryId));
 
                 //check no of parameters for the query
                 if (helper.getParameterCount(ChartType, query.QueryDescription))
@@ -106,7 +119,7 @@ namespace MARS_Web.Controllers
                         string chartName = "";
                         string str_json = "";
                         AxisDataViewModel axisDataModel = chartRepository.AxisDataExists(Int64.Parse(QueryId), Int16.Parse(ChartType));
-                        int x_index =-1, y_index =-1, z_index = -1;
+                        int x_index = -1, y_index = -1, z_index = -1;
                         if (axisDataModel != null)
                         {
                             x_index = (int)axisDataModel.xAxis;
@@ -119,8 +132,8 @@ namespace MARS_Web.Controllers
                         else
                         {
                             z_index = helper.IsIntegerColumnPresent(res);
-                           int i = 0;
-                            if(i == z_index)
+                            int i = 0;
+                            if (i == z_index)
                             {
                                 i++;
                             }
@@ -142,12 +155,62 @@ namespace MARS_Web.Controllers
                             str_json = chartRepository.CreateBarChart(res, x_index, y_index, z_index);
                             chartName = "BarChart";
                         }
-                        else
+                        else if (ChartType == "3")
                         {
                             chartViewModel = chartRepository.CreateThreeDChart(res, x_index, y_index, z_index);
                             str_json = JsonConvert.SerializeObject(chartViewModel, Formatting.Indented);
                             chartName = "ThreeDChart";
+                            
                         }
+                        else if(ChartType == "4")
+                        {
+                            str_json = chartRepository.CreateBasicLineChart(res, x_index, z_index, y_index);
+                            ViewBag.X_Start = getXAxis(res, x_index);
+                            chartName = "BasicLineChart";
+                        }
+                        else if (ChartType == "5")
+                        {
+                            str_json = chartRepository.CreateBasicLineChart(res, x_index, z_index, y_index);
+                            ViewBag.X_Start = getXAxis(res, x_index);
+                            chartName = "SplineLineChart";
+                            
+                        }
+                        else if (ChartType == "6")
+                        {
+                            str_json = chartRepository.CreateBasicLineChart(res, x_index, z_index, y_index);
+                            ViewBag.X_Start = getXAxis(res, x_index);
+                            chartName = "AreaSpline";
+                        }
+                        else if (ChartType == "7")
+                        {
+                            DataTable dt = res.Tables[0];
+                            //ViewBag.categories = chartRepository.CreateBasicColumnChartcetegories(res, y_index);
+                            //str_json = chartRepository.CreateBasicColumnChart(res, x_index, z_index, y_index);
+                            str_json = chartRepository.CreateBasicLineChart(res, x_index, z_index, y_index);
+                            ViewBag.X_Start = getXAxis(res, x_index);
+                            chartName = "BasicColumn";
+                            resultModel.message = "X Column of the chart should be DateTime";
+                        }
+                        else if (ChartType == "8")
+                        {
+                            str_json = chartRepository.CreateBasicLineChart(res, x_index, z_index, y_index);
+                            ViewBag.X_Start = getXAxis(res, x_index);
+                            chartName = "StackedBar";
+                        }
+                        else if (ChartType == "9")
+                        {
+                            str_json = chartRepository.CreateBasicLineChart(res, x_index, z_index, y_index);
+                            ViewBag.X_Start = getXAxis(res, x_index);
+                            chartName = "StackedColumnPercent";
+                        }
+                        else if (ChartType == "10")
+                        {
+                            str_json = chartRepository.CreateBasicLineChart(res, x_index, z_index, y_index);
+                            ViewBag.X_Start = getXAxis(res, x_index);
+                            chartName = "PercentageArea";
+                        }
+                        
+
                         ViewBag.axis = str_json;
                         resultModel.data = ConvertViewToString(chartName, null);
                         resultModel.status = 1;
@@ -179,6 +242,32 @@ namespace MARS_Web.Controllers
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
 
+        public string getXAxis(DataSet res, int x_index)
+        {
+            var arr_x = (from r in res.Tables[0].AsEnumerable()
+                         orderby r[x_index]
+                         select r[x_index]).Distinct().ToArray();
+            string array_x = "[";
+            //var settings = new JsonSerializerSettings { DateFormatString = "yyyy-MM-ddTHH:mm:ss" };
+
+            foreach (var item in arr_x)
+            {
+                //DateTime temp;
+                //if (DateTime.TryParse(item.ToString(), out temp))
+                //{
+                //    array_x += JsonConvert.SerializeObject(DateTime.Now, settings) + ",";
+
+                //}
+                //else
+                //{
+                //    array_x += "\"" + item + "\",";
+                //}
+                array_x += "\"" + item + "\",";
+            }
+            array_x = array_x.Substring(0, array_x.Length - 1);
+            array_x += "]";
+            return array_x;
+        }
         private string ConvertViewToString(string viewName, object model)
         {
             StringWriter writer = null;
@@ -242,7 +331,11 @@ namespace MARS_Web.Controllers
                     List<AxisViewModel> x_axis = new List<AxisViewModel>();
                     List<AxisViewModel> y_axis = new List<AxisViewModel>();
                     List<AxisViewModel> z_axis = new List<AxisViewModel>();
-                    string[] acceptedTypes = { "Decimal", "Double", "Int16", "Int32", "Int64" };
+                    string[] acceptedTypes;
+                    if(Int32.Parse(ChartType) < 3)
+                        acceptedTypes = new string[] { "Decimal", "Double", "Int16", "Int32", "Int64", "DateTime" };
+                    else
+                     acceptedTypes = new string[] { "Decimal", "Double", "Int16", "Int32", "Int64" };
                     for (int i = 0; i < dataColumns.Count; i++)
                     {
                         if (axisDataViewModel == null || axisDataViewModel.xAxis != i) //check if it is selected

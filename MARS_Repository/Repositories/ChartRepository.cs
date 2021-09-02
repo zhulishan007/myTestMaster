@@ -1,5 +1,6 @@
 ﻿using MARS_Repository.Entities;
 using MARS_Repository.ViewModel;
+using Newtonsoft.Json;
 using NLog;
 using System;
 using System.Collections.Generic;
@@ -171,6 +172,142 @@ namespace MARS_Repository.Repositories
             return str_json;
         }
 
+        public string CreateBasicLineChart(DataSet dataSet, int x_index, int y_index, int axis_label)
+        {
+            //ChartViewModel chartViewModel = new ChartViewModel();
+            string str_json = null;
+            try
+            {
+                if (dataSet != null)
+                {
+
+                    DataTable dataTable = dataSet.Tables[0];
+                    var dt_enum = dataTable.AsEnumerable();
+
+                    var label_names = (from r in dt_enum
+                                       select r[axis_label]).Distinct().ToArray();
+
+                    var x_axis = (from r in dt_enum
+                                  orderby r[x_index]
+                                  select r[x_index]).Distinct().ToArray();
+
+                    // var y_axis = (from r in dt_enum
+                    //              select r[1]).Distinct().ToArray();
+
+                    var y_axis = new object();
+                    str_json = "[";
+
+                    for (int l = 0; l < label_names.Length; l++)
+                    {
+
+                        label_names[l] = label_names[l].ToString().Trim();
+
+                        str_json += "{\"name\": \"" + label_names[l] + "\", \"data\" : [";
+                        //   y_axis[y] = y_axis[y].ToString().Trim();
+                        foreach (var item_xaxis in x_axis)
+                        {
+                            y_axis = dt_enum.Where(s => s[x_index].ToString().Trim().Equals(item_xaxis.ToString().Trim()))
+                            .Where(s => s[axis_label].ToString().Trim().Equals(label_names[l].ToString().Trim()))
+                            .Select(s => s[y_index]).FirstOrDefault();
+                            if (y_axis != null)
+                            {
+                                 str_json += y_axis.ToString().Replace("/", "//") + ",";
+                            }
+                            else
+                            {
+                                str_json += "0,";
+                            }
+                        }
+                        str_json = str_json.Substring(0, str_json.Length - 1);
+
+
+                        str_json += "]},";
+                    }
+                    str_json = str_json.Substring(0, str_json.Length - 1);
+                    str_json += "]";
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in Chart for CreatePieChart method | DataSet : {0} | xIndex: {1} | zIndex : {2} | Username : {3} ", dataSet, x_index, y_index, Username));
+                ELogger.ErrorException(string.Format("Error occured in Chart for CreatePieChart method | DataSet : {0} |  xIndex: {1} | zIndex : {2} | Username : {3} ", dataSet, x_index, y_index, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Chart for CreatePieChart method | DataSet : {0} |  xIndex: {1} | zIndex : {2} | Username : {3} ", dataSet, x_index, y_index, Username), ex.InnerException);
+                throw;
+            }
+            return str_json;
+        }
+
+        public string CreateSplineChart(DataSet dataSet, int x_index, int y_index, int axis_label)
+        {
+            //ChartViewModel chartViewModel = new ChartViewModel();
+            string str_json = null;
+            try
+            {
+                if (dataSet != null)
+                {
+
+                    DataTable dataTable = dataSet.Tables[0];
+                    var dt_enum = dataTable.AsEnumerable();
+
+                    var label_names = (from r in dt_enum
+                                       select r[axis_label]).Distinct().ToArray();
+
+                    var x_axis = (from r in dt_enum
+                                  orderby r[x_index]
+                                  select r[x_index]).Distinct().ToArray();
+
+                    var y_axis = new object();
+                    str_json = "[";
+
+                    for (int l = 0; l < label_names.Length; l++)
+                    {
+
+                        label_names[l] = label_names[l].ToString().Trim();
+
+                        str_json += "{\"name\": " + label_names[l] + ", \"data\" :[";
+                        //   y_axis[y] = y_axis[y].ToString().Trim();
+                        foreach (DateTime item_xaxis in x_axis)
+                        {
+
+                            //str_json += "[Date.UTC(" + item_xaxis.Year + "," + item_xaxis.Month + "," + item_xaxis.Day + "),";
+                            str_json += "[" + item_xaxis.ToUniversalTime() + ",";
+                            y_axis = dt_enum.Where(s => s[x_index].ToString().Trim().Equals(item_xaxis.ToString().Trim()))
+                            .Where(s => s[axis_label].ToString().Trim().Equals(label_names[l].ToString().Trim()))
+                            .Select(s => s[y_index]).FirstOrDefault();
+                            if (y_axis != null)
+                            {
+                                str_json += "\"" + y_axis.ToString().Replace("/", "//") + "\"],";
+                            }
+                            else
+                            {
+                                str_json += "\"0\"],";
+                            }
+
+                        }
+                        str_json = str_json.Substring(0, str_json.Length - 1);
+
+
+                        str_json += "]},";
+                    }
+                    str_json = str_json.Substring(0, str_json.Length - 1);
+                    str_json += "]";
+
+
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in Chart for CreatePieChart method | DataSet : {0} | xIndex: {1} | zIndex : {2} | Username : {3} ", dataSet, x_index, y_index, Username));
+                ELogger.ErrorException(string.Format("Error occured in Chart for CreatePieChart method | DataSet : {0} |  xIndex: {1} | zIndex : {2} | Username : {3} ", dataSet, x_index, y_index, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Chart for CreatePieChart method | DataSet : {0} |  xIndex: {1} | zIndex : {2} | Username : {3} ", dataSet, x_index, y_index, Username), ex.InnerException);
+                throw;
+            }
+            return str_json;
+        }
 
         public bool SaveAxisData(AxisDataViewModel axisDataViewModel)
         {
@@ -267,5 +404,129 @@ namespace MARS_Repository.Repositories
             }
 
         }
+
+        public string CreateBasicColumnChart(DataSet dataSet, int x_index, int y_index, int axis_label)
+        {
+            //ChartViewModel chartViewModel = new ChartViewModel();
+            string str_json = null;
+            try
+            {
+                if (dataSet != null)
+                {
+
+                    DataTable dataTable = dataSet.Tables[0];
+                    var dt_enum = dataTable.AsEnumerable();
+
+                    var label_names = (from r in dt_enum
+                                       select r[axis_label]).Distinct().ToArray();
+
+                    var x_axis = (from r in dt_enum
+                                  orderby r[x_index]
+                                  select r[x_index]).Distinct().ToArray();
+
+                    var y_axis = new object();
+                    str_json = "[";
+
+                    //
+                    //for (int l = 0; l < label_names.Length; l++)
+                    //{
+
+                    //    label_names[l] = label_names[l].ToString().Trim();
+
+                    //    str_json += "{\"name\": " + label_names[l] + ", \"data\" :[";
+                    //    //   y_axis[y] = y_axis[y].ToString().Trim();
+                    //    foreach (DateTime item_xaxis in x_axis)
+                    //    {
+
+                    //        //str_json += "[Date.UTC(" + item_xaxis.Year + "," + item_xaxis.Month + "," + item_xaxis.Day + "),";
+                    //        str_json += "[" + item_xaxis.ToUniversalTime() + ",";
+                    //        y_axis = dt_enum.Where(s => s[x_index].ToString().Trim().Equals(item_xaxis.ToString().Trim()))
+                    //        .Where(s => s[axis_label].ToString().Trim().Equals(label_names[l].ToString().Trim()))
+                    //        .Select(s => s[y_index]).FirstOrDefault();
+                    //        if (y_axis != null)
+                    //        {
+                    //            str_json += y_axis.ToString().Replace("/", "//") + "],";
+                    //        }
+                    //        else
+                    //        {
+                    //            str_json += "0],";
+                    //        }
+
+                    //    }
+                    //    str_json = str_json.Substring(0, str_json.Length - 1);
+
+
+                    //    str_json += "]},";
+                    //}
+
+                    for (int l = 0; l < x_axis.Length; l++)
+                    {
+
+                        x_axis[l] = x_axis[l].ToString().Trim();
+
+                        str_json += "{\"name\": \"" + x_axis[l] + "\",\"data\" :[";
+                        foreach (var item in label_names)
+                        {
+                            y_axis = dt_enum.Where(s => s[x_index].ToString().Trim().Equals(x_axis[l].ToString().Trim()))
+                            .Where(s => s[axis_label].ToString().Trim().Equals(item.ToString().Trim()))
+                            .Select(s => s[y_index]).FirstOrDefault();
+                            if (y_axis != null)
+                            {
+                                str_json += y_axis.ToString().Replace("/", "//") + ",";
+                            }
+                            else
+                            {
+                                str_json += "0,";
+                            }
+                        }
+                        str_json = str_json.Substring(0, str_json.Length - 1);
+                        str_json += "]},";
+                    }
+
+                    str_json = str_json.Substring(0, str_json.Length - 1);
+                    str_json += "]";
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in Chart for CreateBasicColumnChart method | DataSet : {0} | xIndex: {1} | zIndex : {2} | Username : {3} ", dataSet, x_index, y_index, Username));
+                ELogger.ErrorException(string.Format("Error occured in Chart for CreateBasicColumnChart method | DataSet : {0} |  xIndex: {1} | zIndex : {2} | Username : {3} ", dataSet, x_index, y_index, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Chart for CreateBasicColumnChart method | DataSet : {0} |  xIndex: {1} | zIndex : {2} | Username : {3} ", dataSet, x_index, y_index, Username), ex.InnerException);
+                throw;
+            }
+            return str_json;
+        }
+
+
+        public string CreateBasicColumnChartcetegories(DataSet dataSet, int axis_label)
+        {
+            //ChartViewModel chartViewModel = new ChartViewModel();
+            string str = String.Empty;
+            try
+            {
+                if (dataSet != null)
+                {
+
+                    DataTable dataTable = dataSet.Tables[0];
+                    var dt_enum = dataTable.AsEnumerable();
+
+                    var label_names = (from r in dt_enum
+                                       select r[axis_label]).Distinct().ToArray();
+
+                    str = "[\"" + string.Join("\",\"", label_names) + "\"]";
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in Chart for CreateBasicColumnChartcetegories method | DataSet : {0} | Username : {1} ", dataSet, Username));
+                ELogger.ErrorException(string.Format("Error occured in Chart for CreateBasicColumnChartcetegories method | DataSet : {0} | Username : {1} ", dataSet,  Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Chart for CreateBasicColumnChartcetegories method | DataSet : {0} | Username : {1} ", dataSet, Username), ex);
+                throw;
+            }
+            return str;
+        }
+
     }
 }

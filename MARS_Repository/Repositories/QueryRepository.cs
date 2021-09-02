@@ -273,20 +273,62 @@ namespace MARS_Repository.Repositories
             }
         }
 
+        public List<QueryNameViewModel> GetQueryNames()
+        {
+            try
+            {
+                logger.Info(string.Format("GetQueryNamess start | UserName: {0}", Username));
+                var queryNameList = (from x in enty.T_QUERY
+                                     where x.IS_ACTIVE == 1
+                                     select new QueryNameViewModel
+                                     {
+                                         QueryId = x.QUERY_ID,
+                                         QueryName = x.QUERY_NAME
+                                     }).ToList();
+                logger.Info(string.Format("GetQueryNames end | UserName: {0}", Username));
+                return queryNameList;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in Query for GetQueryNames method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured in Query for GetQueryNames method | UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Query for GetQueryNames method | UserName: {0}", Username), ex.InnerException);
+                throw;
+            }
+        }
+
         //to check if a query contains exactly 2 or 3 columns
         public bool CheckColumnCount(string strQuery, int[] required)
         {
             try
             {
-                strQuery = strQuery.ToLower();
+                 strQuery = strQuery.ToLower();
                 string[] separator = { "select", "from" };
                 string[] strArray = strQuery.Split(separator, StringSplitOptions.RemoveEmptyEntries);
                 string[] strColumns = strArray[0].Split(',');
                 //for pie chart - 2 parameters, for bar and 3d chart - 3 parameters
-                for (int i = 0; i < required.Length; i++)
+                int count = 0; bool flag = false;
+                for (int i = 0; i < strColumns.Length; i++)
                 {
-                    if (strColumns.Length == required[i])
-                        return true;
+                    if(flag)
+                    {
+                        count++;
+                    }
+                    if(strColumns[i].Contains("("))
+                    {
+                        flag = true;
+                   }
+                    if(strColumns[i].Contains(")"))
+                    {
+                        flag = false;
+                    }
+                    for(int j =0; j < required.Length; j++)
+                    {
+                        if (strColumns.Length - count == required[j])
+                            return true;
+                    }
+                    
                    
                 }
                 return false;

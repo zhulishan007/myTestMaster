@@ -5,7 +5,7 @@
 <script src="~/Charts/js/x3dom-full.js"></script>
 <link rel="stylesheet" href="~/Charts/css/x3dom.css" />
 <script>
-
+   
     // Select chartholder
     var chartHolder = d3.select("#chartholder");
        
@@ -19,7 +19,7 @@
     //console.log("myData end");
     // Declare the chart component
     var myChart = d3.x3d.chart.barChartMultiSeries();
-
+   
     // Attach chart and data to the chartholder
     chartHolder.datum(graphdata).call(myChart);
    
@@ -29,154 +29,7 @@
         var json_axis = @Html.Raw(Json.Encode(@ViewBag.axis));
         //console.log(json_axis);
         return JSON.parse(json_axis);
-        //return [
-        //    {
-        //        "key": "SWAPTION",
-        //        "values": [
-        //            {
-        //                "key": "CITI",
-        //                "value": 5
-        //            },
-        //            {
-        //                "key": "CHASE",
-        //                "value": 10
-        //            },
-        //            {
-        //                "key": "NORTHERN",
-        //                "value": 8
-        //            },
-        //            {
-        //                "key": "BOA",
-        //                "value": 1
-        //            },
-        //            {
-        //                "key": "BOE",
-        //                "value": 2
-        //            },
-        //            {
-        //                "key": "NATWEST",
-        //                "value": 4
-        //            }
-        //        ]
-        //    },
-        //    {
-        //        "key": "FXSPOT",
-        //        "values": [
-        //            {
-        //                "key": "CITI",
-        //                "value": 3
-        //            },
-        //            {
-        //                "key": "CHASE",
-        //                "value": 8
-        //            },
-        //            {
-        //                "key": "NORTHERN",
-        //                "value": 4
-        //            },
-        //            {
-        //                "key": "BOA",
-        //                "value": 2
-        //            },
-        //            {
-        //                "key": "BOE",
-        //                "value": 1
-        //            },
-        //            {
-        //                "key": "NATWEST",
-        //                "value": 6
-        //            }
-        //        ]
-        //    },
-        //    {
-        //        "key": "EXOTIC",
-        //        "values": [
-        //            {
-        //                "key": "CITI",
-        //                "value": 6
-        //            },
-        //            {
-        //                "key": "CHASE",
-        //                "value": 10
-        //            },
-        //            {
-        //                "key": "NORTHERN",
-        //                "value": 3
-        //            },
-        //            {
-        //                "key": "BOA",
-        //                "value": 4
-        //            },
-        //            {
-        //                "key": "BOE",
-        //                "value": 7
-        //            },
-        //            {
-        //                "key": "NATWEST",
-        //                "value": 8
-        //            }
-        //        ]
-        //    },
-        //    {
-        //        "key": "BOND",
-        //        "values": [
-        //            {
-        //                "key": "CITI",
-        //                "value": 3
-        //            },
-        //            {
-        //                "key": "CHASE",
-        //                "value": 4
-        //            },
-        //            {
-        //                "key": "NORTHERN",
-        //                "value": 1
-        //            },
-        //            {
-        //                "key": "BOA",
-        //                "value": 10
-        //            },
-        //            {
-        //                "key": "BOE",
-        //                "value": 7
-        //            },
-        //            {
-        //                "key": "NATWEST",
-        //                "value": 8
-        //            }
-        //        ]
-        //    },
-        //    {
-        //        "key": "SWAP",
-        //        "values": [
-        //            {
-        //                "key": "CITI",
-        //                "value": 2
-        //            },
-        //            {
-        //                "key": "CHASE",
-        //                "value": 7
-        //            },
-        //            {
-        //                "key": "NORTHERN",
-        //                "value": 1
-        //            },
-        //            {
-        //                "key": "BOA",
-        //                "value": 3
-        //            },
-        //            {
-        //                "key": "BOE",
-        //                "value": 9
-        //            },
-        //            {
-        //                "key": "NATWEST",
-        //                "value": 1
-        //            }
-        //        ]
-        //    },
-
-        //];
+       
     }
 </script>
 

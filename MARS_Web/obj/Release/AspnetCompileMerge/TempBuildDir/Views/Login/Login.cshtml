@@ -348,7 +348,13 @@
                     "password": lPassword,
                     "Scope": connList[0],
                 };
-               
+                @*$.ajax({
+                   url: "@WebAPIURL/api/token",
+                    data: data,
+                    type: "POST",
+                    success: function (data) {
+                        accesstoken = data.access_token;
+                        if (accesstoken != "") {*@
                             $.ajax({
                                 url: "/Login/Login",
                                 data: { lUserLogin: lEmail, lPassword: lPassword, lconnection: lconnection, lRememberme: lChkRememberMe, accesstoken: accesstoken },
@@ -375,7 +381,43 @@
                                         }
                                 },
                             });
-                       
+                //        }
+                //    },
+                //    error: function (requestObject, error, errorThrown) {
+                //        $.ajax({
+                //            url: "/Login/CheckUserExist",
+                //            data: { lUserLogin: lEmail, lPassword: lPassword, lconnection: connList[0] },
+                //            type: "POST",
+                //            dataType: "json",
+                //            success: function (result) {
+                //                if (result.status == 1) {
+                //                    $("#kt_login_signin_submit_In").prop("disabled", false);
+                //                    stoploader();
+                //                    var type = "error";
+                //                    result.message = result.message == null ? "Login failed: Please check Database configuration/Web config" : result.message;
+                //                    swal.fire({
+                //                        "title": "",
+                //                        "text": result.message,
+                //                        "icon": type,
+                //                        "onClose": function (e) {
+                //                            console.log('on close event fired!');
+                //                        }
+                //                    });
+                //                }
+                //                else if (result.status == 0) {
+                //                    swal.fire({
+                //                        "title": "",
+                //                        "text": result.message,
+                //                        "icon": "error",
+                //                        "onClose": function (e) {
+                //                            console.log('on close event fired!');
+                //                        }
+                //                    });
+                //                }
+                //            },
+                //        });
+                //    }
+                //});
             }
         });
 

@@ -1608,6 +1608,18 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="T_AXIS_LIST">
+      <EntityTypeMapping TypeName="Model.T_AXIS_LIST">
+        <MappingFragment StoreEntitySet="T_AXIS_LIST">
+          <ScalarProperty Name="Z_AXIS" ColumnName="Z_AXIS" />
+          <ScalarProperty Name="Y_AXIS" ColumnName="Y_AXIS" />
+          <ScalarProperty Name="X_AXIS" ColumnName="X_AXIS" />
+          <ScalarProperty Name="COMMAND_TYPE_ID" ColumnName="COMMAND_TYPE_ID" />
+          <ScalarProperty Name="QUERY_ID" ColumnName="QUERY_ID" />
+          <ScalarProperty Name="AXIS_LIST_ID" ColumnName="AXIS_LIST_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="T_QUERY">
       <EntityTypeMapping TypeName="Model.T_QUERY">
         <MappingFragment StoreEntitySet="T_QUERY">
@@ -1620,18 +1632,6 @@
           <ScalarProperty Name="QUERY_DESC" ColumnName="QUERY_DESC" />
           <ScalarProperty Name="QUERY_NAME" ColumnName="QUERY_NAME" />
           <ScalarProperty Name="QUERY_ID" ColumnName="QUERY_ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="T_AXIS_LIST">
-      <EntityTypeMapping TypeName="Model.T_AXIS_LIST">
-        <MappingFragment StoreEntitySet="T_AXIS_LIST">
-          <ScalarProperty Name="Z_AXIS" ColumnName="Z_AXIS" />
-          <ScalarProperty Name="Y_AXIS" ColumnName="Y_AXIS" />
-          <ScalarProperty Name="X_AXIS" ColumnName="X_AXIS" />
-          <ScalarProperty Name="COMMAND_TYPE_ID" ColumnName="COMMAND_TYPE_ID" />
-          <ScalarProperty Name="QUERY_ID" ColumnName="QUERY_ID" />
-          <ScalarProperty Name="AXIS_LIST_ID" ColumnName="AXIS_LIST_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

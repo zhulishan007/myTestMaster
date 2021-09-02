@@ -886,8 +886,8 @@
             },
             contextMenu: {
                 on: true,
-                items: function (evt, ui) {
-                    return (SBbodyItems(ui,@ViewBag.ProjectId));
+                    items: function (evt, ui) {
+                    return (SBbodyItems(ui,@ViewBag.ProjectId,@ViewBag.StoryBoardId));
                 }
             }
         };

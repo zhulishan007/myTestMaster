@@ -13,59 +13,59 @@ using AuthorizeAttribute = MARS_Api.Provider.AuthorizeAttribute;
 
 namespace MARS_Api.Controllers
 {
-  [EnableCors(origins: "*", headers: "*", methods: "*")]
-  [Authorize]
-  public class ApplicationController : ApiController
-  {
-    [Route("api/CheckDuplicateApplicationNameExist")]
-    [AcceptVerbs("GET", "POST")]
-    public bool CheckDuplicateApplicationNameExist(string applicationname, long? ApplicationId)
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
+    [Authorize]
+    public class ApplicationController : ApiController
     {
-      CommonHelper.SetConnectionString(Request);
-      applicationname = applicationname.Trim();
-      var _apprepository = new ApplicationRepository();
-      var result=_apprepository.CheckDuplicateApplicationNameExist(applicationname, ApplicationId);
-      return result;
-    }
+        [Route("api/CheckDuplicateApplicationNameExist")]
+        [AcceptVerbs("GET", "POST")]
+        public bool CheckDuplicateApplicationNameExist(string applicationname, long? ApplicationId)
+        {
+            CommonHelper.SetConnectionString(Request);
+            applicationname = applicationname.Trim();
+            var _apprepository = new ApplicationRepository();
+            var result = _apprepository.CheckDuplicateApplicationNameExist(applicationname, ApplicationId);
+            return result;
+        }
 
-    [HttpPost]
-    [Route("api/AddEditApplication")]
-    [AcceptVerbs("GET", "POST")]
-    public bool AddEditApplication(ApplicationViewModel applicationviewmodel,string loginname)
-    {
-      CommonHelper.SetConnectionString(Request);
-      var _apprepository = new ApplicationRepository();
+        [HttpPost]
+        [Route("api/AddEditApplication")]
+        [AcceptVerbs("GET", "POST")]
+        public bool AddEditApplication(ApplicationViewModel applicationviewmodel, string loginname)
+        {
+            CommonHelper.SetConnectionString(Request);
+            var _apprepository = new ApplicationRepository();
 
-      applicationviewmodel.Create_Person = loginname;
-      var _addeditResult = _apprepository.AddEditApplication(applicationviewmodel);
-      return _addeditResult;
-    }
+            applicationviewmodel.Create_Person = loginname;
+            var _addeditResult = _apprepository.AddEditApplication(applicationviewmodel);
+            return _addeditResult;
+        }
 
-    //Delete the Application object data by applicationID
-    [Route("api/DeletApplication")]
-    [AcceptVerbs("GET", "POST")]
-    public BaseModel DeletApplication(long ApplicationId)
-    {
-      CommonHelper.SetConnectionString(Request);
-      var _apprepository = new ApplicationRepository();
-      var _treerepository = new GetTreeRepository();
-      BaseModel baseModel = new BaseModel();
-      var lflag = _apprepository.CheckTestCaseExistsInAppliction(ApplicationId);
+        //Delete the Application object data by applicationID
+        [Route("api/DeletApplication")]
+        [AcceptVerbs("GET", "POST")]
+        public BaseModel DeletApplication(long ApplicationId)
+        {
+            CommonHelper.SetConnectionString(Request);
+            var _apprepository = new ApplicationRepository();
+            var _treerepository = new GetTreeRepository();
+            BaseModel baseModel = new BaseModel();
+            var lflag = _apprepository.CheckTestCaseExistsInAppliction(ApplicationId);
 
-      if (lflag.Count <= 0)
-      {
-        var _deleteResult = _apprepository.DeleteApplication(ApplicationId);
-        baseModel.status = 1;
-        baseModel.message = "success";
-      }
-      else
-      {
-        baseModel.status = 1;
-        baseModel.data = lflag;
-        baseModel.message = "error";
-      }
-      return baseModel;
-    }
+            if (lflag.Count <= 0)
+            {
+                var _deleteResult = _apprepository.DeleteApplication(ApplicationId);
+                baseModel.status = 1;
+                baseModel.message = "success";
+            }
+            else
+            {
+                baseModel.status = 1;
+                baseModel.data = lflag;
+                baseModel.message = "error";
+            }
+            return baseModel;
+        }
 
         [Route("api/ApplicationDataLoad")]
         [AcceptVerbs("GET", "POST")]

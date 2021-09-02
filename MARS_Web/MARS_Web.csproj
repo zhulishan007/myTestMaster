@@ -63,7 +63,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\MARS_Utility\MARSUtility\bin\Debug\MARSUtility.dll</HintPath>
     </Reference>
-    <Reference Include="MARS_Repository">
+    <Reference Include="MARS_Repository, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\MARS_Repository\bin\Debug\MARS_Repository.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -1802,6 +1803,13 @@
     <Content Include="Views\Chart\PieChart.cshtml" />
     <Content Include="Views\Chart\PieChart3D.cshtml" />
     <Content Include="Views\CompareConfig\ImportCompareConfig.cshtml" />
+    <Content Include="Views\Chart\BasicColumn.cshtml" />
+    <Content Include="Views\Chart\AreaSpline.cshtml" />
+    <Content Include="Views\Chart\BasicLineChart.cshtml" />
+    <Content Include="Views\Chart\SplineLineChart.cshtml" />
+    <Content Include="Views\Chart\PercentageArea.cshtml" />
+    <Content Include="Views\Chart\StackedBar.cshtml" />
+    <Content Include="Views\Chart\StackedColumnPercent.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="assets\css\charts\" />

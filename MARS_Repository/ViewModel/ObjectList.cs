@@ -54,4 +54,10 @@ namespace MARS_Repository.ViewModel
         public string ENUM_TYPE { get; set; }
         public string SQL { get; set; }
     }
+
+    public class ObjectIds
+    {
+        public long ObjectId { get; set; }
+        public decimal ObjectNameID { get; set; }
+    }
 }

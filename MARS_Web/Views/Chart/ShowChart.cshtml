@@ -122,7 +122,20 @@
                             </select>
                         </div>
                         <div class="col-md-3 col-sm-12">
-                            <select class="form-control " id="drpQuery"></select>
+                            <select class="form-control " id="drpQuery">
+                                @* start : query list on page load*@
+                                @{var lQueryList = ViewBag.queryList as IEnumerable<QueryNameViewModel>;
+                                    <optgroup label="Database Names">
+                                        <option value="" style="display:none"></option>
+
+                                        @foreach (var item in lQueryList)
+                                        {
+                                            <option value="@item.QueryId">@item.QueryName</option>
+                                        }
+                                    </optgroup>
+                                }
+                                @* end : query list on page load*@
+                            </select>
                         </div>
                         <div class="col-md-3 col-sm-12">
                             <select class="form-control kt-select2 " id="drpChartType">
@@ -130,12 +143,19 @@
                                 <option value="1">Pie Chart</option>
                                 <option value="2">Bar Chart</option>
                                 <option value="3">3D Chart</option>
+                                <option value="4">Basic Line Chart</option>
+                                <option value="5">Spline Line Chart</option>
+                                <option value="6">Spline Area Chart</option>
+                                <option value="7">Basic Column Chart</option>
+                                <option value="8">Stacked Bar Chart</option>
+                                <option value="9">Stacked Percent Chart</option>
+                                <option value="10">Percentage Area Chart</option>
                             </select>
                         </div>
                         <div class="col-md-3 col-sm-12">
                             <button type="button" class="btn btn-brand btn-elevate btn-icon-sm" id="btnRun" onclick="DisplayChart()"><i class="la la-play"></i>Run</button>
                             <button type="button" class="btn btn-brand btn-elevate btn-icon-sm" id="btnReload" onclick="ReloadChart()"><i class="la la-refresh"></i>Reload</button>
-                            @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Add Axis"))
+                            @if(PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Add Axis"))
                             {
                                 <button type="button" class="btn btn-brand btn-elevate btn-icon-sm" id="btnSetData" onclick="LoadAxisData()"><i class="la la-cog"></i></button>
                             }
@@ -356,13 +376,27 @@
                         $('.modal-dialog').draggable({
                             handle: ".modal-header"
                         });
-                        
+
+                        var x_result, y_result, z_result;
+                        x_result = result.data["xaxis"];
+                        y_result = result.data["yaxis"];
+                        z_result = result.data["zaxis"];
                         //For pie chart, 2 parameters
                         if (lChartType == "1") {
                             $("#lblAxisZ").text('Y Axis');
                             $("#lblAxisY").css("display", "none");
                             $("#drpYAxis").css("display", "none");
                             $("#drpYAxis").prop("disabled", true);
+                            y_result = result.data["yaxis"];
+                            z_result = result.data["zaxis"];
+                        }
+                        else if (parseInt(lChartType) > 3)
+                        {
+                            console.log("i m in 2d charts");
+                            $("#lblAxisZ").text('Label');
+                            y_result = result.data["zaxis"];
+                            z_result = result.data["yaxis"];
+
                         }
                         else {
                             $("#lblAxisY").text('Y Axis');
@@ -370,7 +404,10 @@
                             $("#lblAxisY").css("display", "block");
                             $("#drpYAxis").css("display", "block");
                             $("#drpYAxis").prop("disabled", false);
+                            y_result = result.data["yaxis"];
+                            z_result = result.data["zaxis"];
                         }
+                        
                         //if data already exist
                         $("#hdnAxisId").val(result.status);
                         //clear the drop downs
@@ -378,9 +415,8 @@
                         $("#drpYAxis").html("");
                         $("#drpZAxis").html("");
 
-                        var x_result = result.data["xaxis"];
-                        var y_result = result.data["yaxis"];
-                        var z_result = result.data["zaxis"];
+                        
+                        
 
                         //Fill the x axis data
                         var optionStringX = "<optgroup>";
@@ -456,6 +492,7 @@
     }
 
     function SaveAxisData() {
+        var lChartType = $("#drpChartType").val();
         console.log(!($("#drpYAxis").prop('disabled')));
         if (!$("#frmaxis").valid()) {
             return false;
@@ -464,10 +501,17 @@
         AxisModel.axisId = $("#hdnAxisId").val();
         AxisModel.queryId = $("#hdnQueryId").val();
         AxisModel.chartType = $("#hdnChartType").val();
-        AxisModel.xAxis = $("#drpXAxis").val();
-        AxisModel.yAxis = $("#drpYAxis").val();
-        AxisModel.zAxis = $("#drpZAxis").val();
-     
+        if (parseInt(lChartType) > 3) {
+            AxisModel.xAxis = $("#drpXAxis").val();
+            AxisModel.yAxis = $("#drpZAxis").val();
+            AxisModel.zAxis = $("#drpYAxis").val();
+            console.log(AxisModel.xaxis + ", " + AxisModel.yAxis + ", " + AxisModel.zaxis);
+        }
+        else {
+            AxisModel.xAxis = $("#drpXAxis").val();
+            AxisModel.yAxis = $("#drpYAxis").val();
+            AxisModel.zAxis = $("#drpZAxis").val();
+        }
         $.ajax({
             url: "/Chart/SaveAxisData",
             data: JSON.stringify(AxisModel),

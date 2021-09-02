@@ -133,8 +133,8 @@ namespace MARS_Repository.Entities
         public DbSet<T_USER_CONFIGURATION> T_USER_CONFIGURATION { get; set; }
         public DbSet<T_DATABASE_CONNECTIONS> T_DATABASE_CONNECTIONS { get; set; }
         public DbSet<REL_DB_QUERY> REL_DB_QUERY { get; set; }
-        public DbSet<T_QUERY> T_QUERY { get; set; }
         public DbSet<T_AXIS_LIST> T_AXIS_LIST { get; set; }
+        public DbSet<T_QUERY> T_QUERY { get; set; }
     
         public virtual int DeleteTestCase(Nullable<decimal> tESTCASEID)
         {
@@ -271,7 +271,7 @@ namespace MARS_Repository.Entities
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_EXPORT_VARIABLE");
         }
     
-        public virtual int SP_GETTESTCASEDETAIL(Nullable<decimal> tESTSUITEID, Nullable<decimal> tESTCASEID)
+        public virtual int SP_GETTESTCASEDETAIL(Nullable<decimal> tESTSUITEID, Nullable<decimal> tESTCASEID, Nullable<decimal> dATASETID)
         {
             var tESTSUITEIDParameter = tESTSUITEID.HasValue ?
                 new ObjectParameter("TESTSUITEID", tESTSUITEID) :
@@ -281,7 +281,11 @@ namespace MARS_Repository.Entities
                 new ObjectParameter("TESTCASEID", tESTCASEID) :
                 new ObjectParameter("TESTCASEID", typeof(decimal));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_GETTESTCASEDETAIL", tESTSUITEIDParameter, tESTCASEIDParameter);
+            var dATASETIDParameter = dATASETID.HasValue ?
+                new ObjectParameter("DATASETID", dATASETID) :
+                new ObjectParameter("DATASETID", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_GETTESTCASEDETAIL", tESTSUITEIDParameter, tESTCASEIDParameter, dATASETIDParameter);
         }
     
         public virtual int SP_GET_LEFTPANELPROJECTLIST(Nullable<decimal> uSERID)

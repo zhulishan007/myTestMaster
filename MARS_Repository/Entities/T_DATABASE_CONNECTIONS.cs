@@ -17,7 +17,6 @@ namespace MARS_Repository.Entities
         public T_DATABASE_CONNECTIONS()
         {
             this.REL_DB_QUERY = new HashSet<REL_DB_QUERY>();
-            this.T_QUERY = new HashSet<T_QUERY>();
         }
     
         public long CONNECTION_ID { get; set; }
@@ -41,6 +40,5 @@ namespace MARS_Repository.Entities
         public string ERROR_MESSAGE { get; set; }
     
         public virtual ICollection<REL_DB_QUERY> REL_DB_QUERY { get; set; }
-        public virtual ICollection<T_QUERY> T_QUERY { get; set; }
     }
 }

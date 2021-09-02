@@ -378,8 +378,7 @@ function DisplayTestCaseGrid(Tid, Pid, Default) {
     });
 }
 
-function PartialRightGridTestCaseFromStoryboard(TestcaseId, TestsuiteId, ProjectId, Datasetname, TestCaseName, Activetab) {
-
+function PartialRightGridTestCaseFromStoryboard(TestcaseId, TestsuiteId, ProjectId, Datasetname, TestCaseName, Activetab, storyboradId, lstoryboardname) {
     var lTestCaseId = TestcaseId;
     var lTestsuiteId = TestsuiteId;
     var lProjectId = ProjectId;
@@ -391,7 +390,7 @@ function PartialRightGridTestCaseFromStoryboard(TestcaseId, TestsuiteId, Project
     startloader();
     $.ajax({
         url: "/Home/RightSideGridView",
-        data: '{"TestcaseId":"' + TestcaseId + '","TestsuiteId":"' + TestsuiteId + '","ProjectId":"' + ProjectId + '","VisibleDataset":"' + Datasetname + '"}',
+        data: '{"TestcaseId":"' + TestcaseId + '","TestsuiteId":"' + TestsuiteId + '","ProjectId":"' + ProjectId + '","VisibleDataset":"' + Datasetname + '", "storyboradId":"' + storyboradId + '" ,"storyboardname":"' + lstoryboardname + '"}',
         type: "POST",
         contentType: "application/json;charset=utf-8",
         dataType: "HTML",

@@ -125,8 +125,8 @@ namespace MARS_Repository.Repositories
             try
             {
                 logger.Info(string.Format("Get Object By Parent start | PegObjectId: {0} | TestcaseId: {1} | UserName: {2}", lPegObjectId, testcaseId, Username));
-                var lPegObjectName = entity.T_REGISTED_OBJECT.Where(x => x.OBJECT_NAME_ID == lPegObjectId && x.TYPE_ID==1).FirstOrDefault().OBJECT_TYPE;
-               
+                var lPegObjectName = entity.T_REGISTED_OBJECT.Where(x => x.OBJECT_NAME_ID == lPegObjectId && x.TYPE_ID == 1).FirstOrDefault().OBJECT_TYPE;
+
                 var lAppId = entity.REL_APP_TESTCASE.Where(x => x.TEST_CASE_ID == testcaseId).FirstOrDefault().APPLICATION_ID;
 
                 var linkedObject = (from k in entity.T_OBJECT_NAMEINFO
@@ -226,7 +226,7 @@ namespace MARS_Repository.Repositories
                         description = Convert.ToString(row.Field<string>("description")),
                         autocheckerror = Convert.ToInt16(row.Field<short?>("checkerror")),
                         Totalcount = Convert.ToInt32(row.Field<decimal>("RESULT_COUNT"))
-                }).ToList();
+                    }).ToList();
 
                 logger.Info(string.Format("Get object list end | ApplicationId: {0} | Username: {1}", appid, Username));
                 return resultList;
@@ -352,7 +352,7 @@ namespace MARS_Repository.Repositories
             {
                 if (model.ObjectId == 0)
                 {
-                    logger.Info(string.Format("Add object start | ApplicationId: {0} | Object: {1} | Username: {2}", model.applicationid, model.ObjectName,Username));
+                    logger.Info(string.Format("Add object start | ApplicationId: {0} | Object: {1} | Username: {2}", model.applicationid, model.ObjectName, Username));
 
                     var objectexist = entity.T_OBJECT_NAMEINFO.Where(x => x.OBJECT_HAPPY_NAME.Trim() == model.ObjectName.Trim()).FirstOrDefault();
                     var objnameinfo = new T_OBJECT_NAMEINFO();
@@ -374,7 +374,7 @@ namespace MARS_Repository.Repositories
                         {
                             model.description = "";
                         }
-                       
+
                         objnameinfo.OBJECT_NAME_ID = Helper.NextTestSuiteId("SEQ_MARS_OBJECT_ID");
                         objnameinfo.OBJECT_HAPPY_NAME = model.ObjectName;
                         objnameinfo.OBJNAME_DESCRIPTION = model.description;
@@ -529,7 +529,7 @@ namespace MARS_Repository.Repositories
                 throw;
             }
         }
-        public string DeleteObject(long id, long appid,string parent)
+        public string DeleteObject(long id, long appid, string parent)
         {
             try
             {
@@ -569,7 +569,7 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("Get ObjectName start | objectid: {0} | applicationId: {1} | Username: {2}", id, appid,Username));
+                logger.Info(string.Format("Get ObjectName start | objectid: {0} | applicationId: {1} | Username: {2}", id, appid, Username));
                 var result = entity.T_OBJECT_NAMEINFO.Find(id).OBJECT_HAPPY_NAME;
                 logger.Info(string.Format("Get ObjectName end | objectid: {0} | Username: {1}", id, Username));
                 return result;
@@ -614,7 +614,7 @@ namespace MARS_Repository.Repositories
                 throw;
             }
         }
-        public string CopyAllObjects(long copyfromappid, long copytoappid,string schema,string lstrConn)
+        public string CopyAllObjects(long copyfromappid, long copytoappid, string schema, string lstrConn)
         {
             try
             {
@@ -663,7 +663,7 @@ namespace MARS_Repository.Repositories
                 throw;
             }
         }
-        public string CopyObjects(List<long> model, long fromid, long toid,string lstrConn,string schema)
+        public string CopyObjects(List<long> model, long fromid, long toid, string lstrConn, string schema)
         {
             try
             {
@@ -707,7 +707,7 @@ namespace MARS_Repository.Repositories
                 logger.Info(string.Format("Copy Objects end | Old ApplicationId: {0} | New ApplicationId: {1} | Username: {2}", fromid, toid, Username));
                 return "success";
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 logger.Error(string.Format("Error occured in Object for CopyObjects method | Old ApplicationId: {0} | New ApplicationId: {1} | Connection String : {2} | Schema : {3} | Username: {4}", fromid, toid, lstrConn, schema, Username));
                 ELogger.ErrorException(string.Format("Error occured in Object for CopyObjects method | Old ApplicationId: {0} | New ApplicationId: {1} | Connection String : {2} | Schema : {3} | Username: {4}", fromid, toid, lstrConn, schema, Username), ex);
@@ -716,7 +716,7 @@ namespace MARS_Repository.Repositories
                 throw;
             }
         }
-       
+
         public bool CheckObjectExists(string objectname, long appid, string objecttype, long? typeid)
         {
             try
@@ -745,7 +745,7 @@ namespace MARS_Repository.Repositories
                 throw;
             }
         }
-        public string CheckConvertingObjectExists(string objectname, long appid, string parentobj,string objecttype)
+        public string CheckConvertingObjectExists(string objectname, long appid, string parentobj, string objecttype)
         {
             try
             {
@@ -804,10 +804,10 @@ namespace MARS_Repository.Repositories
                 throw;
             }
         }
-        public List<string> DuplicateObjectList(long copyfromappid, long copytoappid,string lstrConn,string schema)
+        public List<string> DuplicateObjectList(long copyfromappid, long copytoappid, string lstrConn, string schema)
         {
             var objects = new List<string>();
-          
+
             try
             {
                 logger.Info(string.Format("Duplicate Object List start | Old ApplicationId: {0} | New ApplicationId: {1} | Username: {2}", copyfromappid, copytoappid, Username));
@@ -880,6 +880,32 @@ namespace MARS_Repository.Repositories
                 ELogger.ErrorException(string.Format("Error occured in Object for GetObjectId method | Application Id : {0} | UserName: {1}", appid, Username), ex);
                 if (ex.InnerException != null)
                     ELogger.ErrorException(string.Format("InnerException : Error occured in Object for GetObjectId Method | Application Id : {0} | UserName: {1}", appid, Username), ex.InnerException);
+                throw;
+            }
+        }
+
+        public ObjectIds GetPegObjectIdByObjectName(string lObjectName)
+        {
+            try
+            {
+                logger.Info(string.Format("Get Peg Objects start | lObjectName: {0} | UserName: {1}", lObjectName, Username));
+                var result = (from k in entity.T_REGISTED_OBJECT
+                             join obj_n in entity.T_OBJECT_NAMEINFO on k.OBJECT_NAME_ID equals obj_n.OBJECT_NAME_ID
+                             where k.OBJECT_HAPPY_NAME.ToUpper() == lObjectName.ToUpper()
+                             orderby k.OBJECT_HAPPY_NAME
+                             select new ObjectIds
+                             { ObjectId = (long)k.OBJECT_ID, ObjectNameID = (decimal)k.OBJECT_NAME_ID }).FirstOrDefault();
+
+                logger.Info(string.Format("Get Peg Objects end | lObjectName: {0} | UserName: {1}", lObjectName, Username));
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in Object for GetPegObjectIdByObjectNameId method | lObjectName : {0} | UserName: {1}", lObjectName, Username));
+                ELogger.ErrorException(string.Format("Error occured in Object for GetPegObjectIdByObjectNameId method | lObjectName : {0} | UserName: {1}", lObjectName , Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Object for GetPegObjectIdByObjectNameId method | lObjectName : {0} | UserName: {1}", lObjectName , Username), ex.InnerException);
                 throw;
             }
         }

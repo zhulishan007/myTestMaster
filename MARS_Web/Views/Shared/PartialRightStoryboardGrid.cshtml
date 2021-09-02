@@ -706,9 +706,10 @@
                         cls: 'floatRight btn btn-brand btn-icon-sm ENGINEExportRoleHide',
                         label: '',
                         listener: function () {
+                            debugger
                             var lStoryboardName = gridobj['@lstoryboardgrid'].pdata[0].Storyboardname;
                             var lStoryboardId = gridobj['@lstoryboardgrid'].pdata[0].StoryboardId;
-                            ExecuteEnginePopup(lStoryboardName, lStoryboardId);
+                            ExecuteEnginePopup(lStoryboardName, lStoryboardId ,'@ViewBag.applicationlst');
                         }
                     },
                     {
@@ -886,8 +887,8 @@
             },
             contextMenu: {
                 on: true,
-                items: function (evt, ui) {
-                    return (SBbodyItems(ui,@ViewBag.ProjectId));
+                    items: function (evt, ui) {
+                    return (SBbodyItems(ui,@ViewBag.ProjectId,@ViewBag.StoryBoardId));
                 }
             }
         };

@@ -23,5 +23,7 @@ namespace MARS_Repository.Entities
         public string SERVICENAME { get; set; }
         public string DECODE_METHOD { get; set; }
         public string SCHEMA { get; set; }
+    
+        public virtual T_QUERY T_QUERY { get; set; }
     }
 }

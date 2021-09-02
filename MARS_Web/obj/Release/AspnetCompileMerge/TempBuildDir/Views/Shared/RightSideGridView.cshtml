@@ -1,4 +1,5 @@
-@using MARS_Repository.ViewModel
+@using MARS_Repository.ViewModel;
+@using System.Configuration;
 @{
     var lTestCaseName = ViewBag.TestCaseName;
     //if (!String.IsNullOrEmpty(lTestCaseName))
@@ -25,6 +26,8 @@
     {
         TCSaveButtonStyle = "block";
     }
+    var MarsengineURL = ConfigurationManager.AppSettings["MarsengineURL"];
+
 }
 <style>
       .TCExportButton{
@@ -38,7 +41,8 @@
 && ViewBag.TestcaseId != 0 && ViewBag.TestsuiteId != 0 && ViewBag.ProjectId != 0
 )
 {
-<script>
+    <script>
+      var selectChange = "";
       var undonum;
    var draggedRow;
         var lheight = $(window).height();
@@ -506,10 +510,13 @@
                     title: "hdnISAVAILABLE", copy: false, dataType: "int", dataIndx: "ISAVAILABLE", hidden: true, menuInHide: true, sortable: false
                 });
 
-
                     $.ajax({
-                        url: "/TestCase/GetTestCaseDetails?testcaseId=@ViewBag.TestcaseId",
+                        url: "/TestCase/GetTestCaseDetails",
                         type: "GET",
+                        data: {
+                            testcaseId: @ViewBag.TestcaseId,
+                            dataset : "@ViewBag.VisibleDataset"
+                        },
                         contentType: "application/json;charset=utf-8",
                         async: false,
                         dataType: "json",
@@ -564,7 +571,7 @@
                                             IsHidden = true;
                                             IsCopy = false;
                                             //copy: false,
-                                            
+
                                         }
                                         if (pDatasetName != "") {
                                             if (OTitle.toUpperCase() == pDatasetName.toUpperCase()) {
@@ -831,11 +838,20 @@
                hoverMode: 'row',
                resizable: true,
                dataModel: { data: data, recIndx: "stepsID" },
+               selectChange: function (evt, ui) {
+                   console.log('selectChange', ui);
+                   selectChange = ui;
+                   // $("#select_change_div").html(JSON.stringify(address));
+               },
                contextMenu: {
                    on: true,
-                   head: true,
-                   items: function (evt, ui) {
+                   //head: true,
+                   headItems: function (evt, ui) {
                        return (ui.$th ? tcheadItems.call(this, evt, ui,"@lTestCasegrid",@ViewBag.TestcaseId) : bodyItems.call(this, evt, ui));
+                   }
+                   ,
+                   cellItems: function (evt, ui) {
+                       return (TCbodyItems("@lTestCasegrid",@ViewBag.TestcaseId,@ViewBag.TestsuiteId, @ViewBag.TCstoryboradId, '@ViewBag.TCstoryboardname','@ViewBag.TCApplicationList'));
                    }
                },
                //create: function (evt, ui) {
@@ -1258,8 +1274,8 @@
                             attr: 'title="Copy"',
                            cls: 'btn btn-brand btn-icon-sm ',
                            label: '',
-                           listener: function () {
-                               this.copy();
+               listener: function () {
+                   this.copy();
                            }
                }, {
                    type: 'button',
@@ -1271,7 +1287,18 @@
                    listener: function () {
                        this.paste();
                    }
-               }
+               },
+               @*{
+                        type: 'button',
+                        //icon: '',
+                        icon: 'execute',
+                        attr: 'title="Execute Engine"',
+                        cls: 'floatRight btn btn-brand btn-icon-sm ENGINEExportRoleHide',
+                        label: '',
+                        listener: function () {
+                            ExecuteEngineTC("@lTestCasegrid", @ViewBag.TestcaseId,@ViewBag.TestsuiteId, @ViewBag.TCstoryboradId,'@ViewBag.TCstoryboardname');
+                        }
+                    }*@
                    ]
                },
                complete: function () {
@@ -1322,10 +1349,13 @@
 
 
         function ReloadDataGrid(tcgrid, tcid, tsid, Visibledatasetname) {
-
             $.ajax({
-                url: "/TestCase/GetTestCaseDetails?testcaseId=" + tcid,
+                url: "/TestCase/GetTestCaseDetails",
                 type: "GET",
+                data: {
+                            testcaseId: tcid,
+                    dataset : Visibledatasetname
+                        },
                 contentType: "application/json;charset=utf-8",
                 dataType: "json",
                 success: function (result) {
@@ -1869,13 +1899,11 @@
            },
            labelIndx: "text",
            options: function (ui) {
-               debugger
                var List = [];
                var lGridList = [];
                for (i = 0; i < gridobj[tcgrid].pdata.length; i++) {
                    lGridList.push({ "Id": i + 1,"StepId": gridobj[tcgrid].pdata[i].stepsID, "Keyword": gridobj[tcgrid].pdata[i].keyword, "Object": gridobj[tcgrid].pdata[i].object });
                }
-               debugger
 
                if (ui.rowData.keyword == "PegWindow") {
                    var objectlist = @Html.Raw(ViewBag.ObjectList);
@@ -1985,8 +2013,12 @@
                 });
 
               $.ajax({
-                        url: "/TestCase/GetTestCaseDetails?testcaseId="+tcid,
-                        type: "GET",
+                  url: "/TestCase/GetTestCaseDetails",
+                  type: "GET",
+                  data: {
+                      testcaseId: tcid,
+                      dataset: Visibledatasetname
+                  },
                         contentType: "application/json;charset=utf-8",
                         async: false,
                         dataType: "json",
@@ -2566,7 +2598,7 @@
                             });
                         }
 
-                      
+
                         return List;
                     }
                 },
@@ -2610,8 +2642,12 @@
             });
 
             $.ajax({
-                url: "/TestCase/GetTestCaseDetails?testcaseId=" + tcid,
+                url: "/TestCase/GetTestCaseDetails",
                 type: "GET",
+                data: {
+                    testcaseId: tcid,
+                    dataset: Visibledatasetname
+                },
                 contentType: "application/json;charset=utf-8",
                 async: false,
                 dataType: "json",
@@ -3289,7 +3325,6 @@
                            TestSuiteId: tsid
                        },
                    }).done(function (result) {
-                       debugger;
                        stoploader();
                        //if (result.status == 1) {
                            window.location = "/TestSuite/DownloadExcel?FileName=" + result;
@@ -4195,8 +4230,274 @@
            "title": "Validations",
            "html": message
        });
-   }
-</script>
+    }
+
+        function ExecuteEngineTC(tcgrid, tcid, tsid, sid, sname) {
+            debugger
+            startloader();
+            var gridlst = [];
+            if (selectChange != "") {
+                var sChange = selectChange.selection._areas;
+                console.log('test', sChange);
+            $.each(sChange, function (key, value) {
+                debugger
+                var index = value.firstR;
+                var srow = gridobj[tcgrid].pdata[index];
+                debugger
+                if (srow.keyword != "PegWindow") {
+                    var pgridlist = gridobj[tcgrid].pdata.filter(({ RUN_ORDER, keyword }) => RUN_ORDER < Number(srow.RUN_ORDER) && keyword === "PegWindow");
+                    var pegwindowRow = pgridlist[pgridlist.length - 1];
+                    var pegRowInselect = gridlst.find(({ RUN_ORDER }) => RUN_ORDER === pegwindowRow.RUN_ORDER);
+                    if (pegRowInselect == undefined) {
+                        gridlst.push(pegwindowRow);
+                    }
+                }
+                gridlst.push(srow);
+            });
+
+            $.ajax({
+                dataType: "json",
+                type: "POST",
+                async: true,
+                beforeSend: function (jqXHR, settings) {
+                },
+                url: "/TestCase/ExecuteTestCase",
+                data: { lGrid: JSON.stringify(gridlst), lTestCaseId: tcid, lTestSuiteId: tsid, storyboradId: sid, storyborad: sname },
+                success: function (result) {
+                    if (result.status == 1) {
+                        $("#txtareacopy").val(result.data.TcJson);
+                        $("#hdnExeTCguid").val(result.data.guid);
+                        $("#hdnExeTCStoryboardId").val(sid);
+                        $("#hdnExeTCStoryboardName").val(sname);
+
+                        var ldrpString = "";
+                        $.each(result.data.applications, function (key, value) {
+                            ldrpString = ldrpString + "<option value=" + value.ApplicationId + "> " + value.ApplicationName + "</option>";
+                        });
+                        $("#drpExeAppTC").html("");
+                        $("#drpExeAppTC").html(ldrpString);
+                        $("#txtareacopy").css("display", "none");
+                        $("#ExecutePopupTC").modal("toggle");
+                    }
+                    else if (result.status == 0) {
+                        swal.fire({
+                            "title": "",
+                            "text": result.message,
+                            "icon": "error",
+                            "onClose": function (e) {
+                                console.log('on close event fired!');
+                            }
+                        });
+                    }
+                },
+                complete: function (result) {
+                     stoploader();
+                }
+            });
+            } else {
+                stoploader();
+            swal.fire({
+                "title": "",
+                "text": "Please select Testcase row step.",
+                "icon": "warning",
+                "onClose": function (e) {
+                    console.log('on close event fired!');
+                }
+            });
+        }
+    }
+
+        function TCbodyItems(tcgrid, tcid, tsid, sid, sname, applist) {
+            var applistobj = JSON.parse(applist.replaceAll('&quot;', '"'));
+            var bodyItem = [];
+                 
+            //startloader();
+            var gridlst = [];
+            var engineURI = "";
+            var lLoginUser = "";
+            var lDataBase = "";
+            var lguid = "";
+            if (selectChange != "") {
+                var sChange = selectChange.selection._areas;
+                $.each(sChange, function (key, value) {
+                    var index = value.firstR;
+                    var srow = gridobj[tcgrid].pdata[index];
+                    if (srow != undefined) {
+                        if (srow.keyword != "PegWindow") {
+                            var pgridlist = gridobj[tcgrid].pdata.filter(({ RUN_ORDER, keyword }) => RUN_ORDER < Number(srow.RUN_ORDER) && keyword === "PegWindow");
+                            var pegwindowRow = pgridlist[pgridlist.length - 1];
+                            var pegRowInselect = gridlst.find(({ RUN_ORDER }) => RUN_ORDER === pegwindowRow.RUN_ORDER);
+                            if (pegRowInselect == undefined) {
+                                gridlst.push(pegwindowRow);
+                            }
+                        }
+                        var RowInselect = gridlst.find(({ RUN_ORDER }) => RUN_ORDER === srow.RUN_ORDER);
+                        if (RowInselect == undefined) {
+                            gridlst.push(srow);
+                        }
+                    }
+                });
+                if (gridlst.length > 0) {
+                    $.ajax({
+                        dataType: "json",
+                        type: "POST",
+                        async: false,
+                        url: "/TestCase/ExecuteTestCase",
+                        data: { lGrid: JSON.stringify(gridlst), lTestCaseId: tcid, lTestSuiteId: tsid, storyboradId: sid, storyborad: sname },
+                        success: function (result) {
+                            if (result.status == 1) {
+                                $("#txtareacopy").val(result.data.TcJson);
+                                 lLoginUser = result.data.user;
+                                 lDataBase = result.data.database;
+                                 lguid = result.data.guid;
+                            }
+                            else if (result.status == 0) {
+                                swal.fire({
+                                    "title": "",
+                                    "text": result.message,
+                                    "icon": result.data == 0 ? "warning" : "error",
+                                    "onClose": function (e) {
+                                        console.log('on close event fired!');
+                                    }
+                                });
+                            }
+                        },
+                        complete: function (result) {
+                            //stoploader();
+                        }
+                    });
+   
+                }
+                else {
+                    //stoploader();
+                    swal.fire({
+                        "title": "",
+                        "text": "Please select Testcase row step.",
+                        "icon": "warning",
+                        "onClose": function (e) {
+                            console.log('on close event fired!');
+                        }
+                    });
+                }
+            } else {
+                //stoploader();
+                swal.fire({
+                    "title": "",
+                    "text": "Please select Testcase row step.",
+                    "icon": "warning",
+                    "onClose": function (e) {
+                        console.log('on close event fired!');
+                    }
+                });
+                }
+
+
+            $.each(applistobj, function (key, value) {
+                var appobj = {
+                    name: 'Execute temp steps...on ' + value.ApplicationName,
+                    cls: 'VIEWTESTCASERoleHide',
+                    action: function (evt, ui) {
+                        engineURI = window.location.origin + '@MarsengineURL' + "?userName=" + lLoginUser + "&command=-FromClipboard&storyBoadName=" + sname + "&storyBoardId=" + sid + "&app=" + value.ApplicationId + "&guid=" + lguid + "&currentDB=" + lDataBase;
+                        $("#txtareacopy").css("display", "block");
+                        $("#txtareacopy")[0].select();
+                        window.document.execCommand("Copy");
+                        $("#txtareacopy").css("display", "none");
+                        if (engineURI != "")
+                            window.open(engineURI);
+                    }
+                };
+                bodyItem.push(appobj);
+            })
+            return bodyItem;
+        }
+
+        function TCexecutestep(tcgrid, tcid, tsid, sid, sname, appnameid) {
+            startloader();
+            var gridlst = [];
+            var engineURI = "";
+            if (selectChange != "") {
+                var sChange = selectChange.selection._areas;
+                console.log('test', sChange);
+                $.each(sChange, function (key, value) {
+                    var index = value.firstR;
+                    var srow = gridobj[tcgrid].pdata[index];
+                    if (srow != undefined) {
+                        if (srow.keyword != "PegWindow") {
+                            var pgridlist = gridobj[tcgrid].pdata.filter(({ RUN_ORDER, keyword }) => RUN_ORDER < Number(srow.RUN_ORDER) && keyword === "PegWindow");
+                            var pegwindowRow = pgridlist[pgridlist.length - 1];
+                            var pegRowInselect = gridlst.find(({ RUN_ORDER }) => RUN_ORDER === pegwindowRow.RUN_ORDER);
+                            if (pegRowInselect == undefined) {
+                                gridlst.push(pegwindowRow);
+                            }
+                        }
+                        var RowInselect = gridlst.find(({ RUN_ORDER }) => RUN_ORDER === srow.RUN_ORDER);
+                        if (RowInselect == undefined) {
+                            gridlst.push(srow);
+                        }
+                    }
+                });
+                if (gridlst.length > 0) {
+                    $.ajax({
+                        dataType: "json",
+                        type: "POST",
+                        async: true,
+                        url: "/TestCase/ExecuteTestCase",
+                        data: { lGrid: JSON.stringify(gridlst), lTestCaseId: tcid, lTestSuiteId: tsid, storyboradId: sid, storyborad: sname },
+                        success: function (result) {
+                            if (result.status == 1) {
+                                $("#txtareacopy").val(result.data.TcJson);
+                                stoploader();
+                                //$("#txtareacopy").css("display", "block");
+                                //$("#txtareacopy")[0].select();
+                                //window.document.execCommand("Copy");
+                               
+                                var lLoginUser = result.data.user;
+                                var lDataBase = result.data.database;
+                                var lguid = result.data.guid;
+                                //$("#txtareacopy").css("display", "none");
+                                engineURI = window.location.origin + '@MarsengineURL' + "?userName=" + lLoginUser + "&command=-FromClipboard&storyBoadName=" + sname + "&storyBoardId=" + sid + "&app=" + appnameid + "&guid=" + lguid + "&currentDB=" + lDataBase;
+                            }
+                            else if (result.status == 0) {
+                                swal.fire({
+                                    "title": "",
+                                    "text": result.message,
+                                    "icon": result.data == 0 ? "warning" : "error",
+                                    "onClose": function (e) {
+                                        console.log('on close event fired!');
+                                    }
+                                });
+                            }
+                        },
+                        complete: function (result) {
+                            stoploader();
+                        }
+                    });
+   
+                }
+                else {
+                    stoploader();
+                    swal.fire({
+                        "title": "",
+                        "text": "Please select Testcase row step.",
+                        "icon": "warning",
+                        "onClose": function (e) {
+                            console.log('on close event fired!');
+                        }
+                    });
+                }
+            } else {
+                stoploader();
+                swal.fire({
+                    "title": "",
+                    "text": "Please select Testcase row step.",
+                    "icon": "warning",
+                    "onClose": function (e) {
+                        console.log('on close event fired!');
+                    }
+                });
+            }
+        }
+    </script>
 }
 
 @{

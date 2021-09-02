@@ -38,6 +38,7 @@
     {
         ADDDATASETROLEStyle = "block";
     }
+    
 }
 
 <!DOCTYPE html>
@@ -207,7 +208,6 @@
     @*<script src="~/assets/js/pages/components/extended/dual-listbox.js"></script>*@
     <script src="~/Scripts/jquery.signalR-2.4.1.js"></script>
     <script src="~/signalr/hubs"></script>
-
     @*<script src="https://code.highcharts.com/highcharts.js"></script>
         <script src="https://code.highcharts.com/highcharts-3d.js"></script>*@
     <script>
@@ -391,6 +391,7 @@
                                         </div>
                                     </li>
                                 }
+                                <textarea class="form-control" id="txtareacopy" style="display:none;"></textarea>
 
                                 @if (PrivilegeList.Select(y => y.MODULE).ToList().Contains("Storyboard") && PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Import Storyboard"))
                                 {
@@ -404,12 +405,11 @@
                                                             <i class="fa fa-file-import"></i>
                                                         </span><span class="kt-menu__link-text">Import</span>
                                                     </a>
-
                                                 </li>
+                                             </ul>
                                         </div>
                                     </li>
                                 }
-
                                 @if (PrivilegeList.Select(y => y.MODULE).ToList().Contains("Variable"))
                                 {
                                     <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
@@ -612,14 +612,14 @@
                                                         </a>
                                                     </li>
                                                 }
-                                                
+
                                             </ul>
                                         </div>
                                     </li>
                                 }
-                                @*@if (PrivilegeList.Select(y => y.MODULE).ToList().Contains("Display Chart"))
-        {*@
-                                @*<li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
+                                @if (PrivilegeList.Select(y => y.MODULE).ToList().Contains("Display Chart"))
+        {
+                                <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
                 <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
                     <span class="kt-menu__link-text">Charts</span>
                     <i class="kt-menu__ver-arrow la la-angle-right"></i>
@@ -653,7 +653,7 @@
                     </li>
                 </ul>
             </div>
-        </li>*@
+        </li>
                             </ul>
                         </div>
                     </div>
@@ -798,28 +798,28 @@
                             </a>
                         }
                         @*<a href="#" onclick=UserexecutionEnginePathList("0") class="kt-notification__item">
-            <div class="kt-notification__item-icon">
-                <i class="fa fa-route"></i>
-            </div>
-            <div class="kt-notification__item-details">
-                <div class="kt-notification__item-title">
-                    <span class="kt-header__topbar-icon" data-skin="brand" data-container="body" data-toggle="kt-popover" data-placement="bottom" data-content="Location of the MARS Engine on the client's machine." data-original-title="" title="">Engine Path</span>
-                </div>
-            </div>
-        </a>*@
-                        @*<a href="#" onclick="PartialConnectionList()" class="kt-notification__item">
-            <div class="kt-notification__item-icon">
-                <i class="fa fa-users"></i>
-            </div>
-            <div class="kt-notification__item-details">
-                <div class="kt-notification__item-title">
-                    Database Connection
-                </div>
-                <div class="kt-notification__item-time">
-                    DB Connection
-                </div>
-            </div>
-        </a>*@
+                                <div class="kt-notification__item-icon">
+                                    <i class="fa fa-route"></i>
+                                </div>
+                                <div class="kt-notification__item-details">
+                                    <div class="kt-notification__item-title">
+                                        <span class="kt-header__topbar-icon" data-skin="brand" data-container="body" data-toggle="kt-popover" data-placement="bottom" data-content="Location of the MARS Engine on the client's machine." data-original-title="" title="">Engine Path</span>
+                                    </div>
+                                </div>
+                            </a>*@
+                        <a href="#" onclick="PartialConnectionList()" class="kt-notification__item">
+                                <div class="kt-notification__item-icon">
+                                    <i class="fa fa-users"></i>
+                                </div>
+                                <div class="kt-notification__item-details">
+                                    <div class="kt-notification__item-title">
+                                        Database Connection
+                                    </div>
+                                    <div class="kt-notification__item-time">
+                                        DB Connection
+                                    </div>
+                                </div>
+                            </a>
                         @if (PrivilegeList.Select(y => y.MODULE).ToList().Contains("Assign Project") && PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Edit Assign Project"))
                         {
                             <a href="#" onclick=partialRightOpenProjectList("0") class="kt-notification__item">
@@ -834,15 +834,15 @@
                             </a>
                         }
                         @*<a href="#" onclick="OpenResizeLeftPanelPopup()" class="kt-notification__item">
-            <div class="kt-notification__item-icon">
-                <i class="flaticon2-arrow-1"></i>
-            </div>
-            <div class="kt-notification__item-details">
-                <div class="kt-notification__item-title">
-                    <span class="kt-header__topbar-icon" data-skin="brand" data-container="body" data-toggle="kt-popover" data-placement="bottom" data-content="Set width in Left Panel" data-original-title="" title="">Resize Left Panel</span>
-                </div>
-            </div>
-        </a>*@
+                                <div class="kt-notification__item-icon">
+                                    <i class="flaticon2-arrow-1"></i>
+                                </div>
+                                <div class="kt-notification__item-details">
+                                    <div class="kt-notification__item-title">
+                                        <span class="kt-header__topbar-icon" data-skin="brand" data-container="body" data-toggle="kt-popover" data-placement="bottom" data-content="Set width in Left Panel" data-original-title="" title="">Resize Left Panel</span>
+                                    </div>
+                                </div>
+                            </a>*@
 
                         @if (RoleList.Select(y => y.ROLE_NAME.Trim().ToLower()).ToList().Contains("admin"))
                         {
@@ -953,28 +953,28 @@
                             </a>
                         }
                         @if (PrivilegeList.Select(y => y.MODULE).ToList().Contains("Display Chart"))
-                        {
-                            <a href="javascript:;" onclick=window.open("/Chart/ChartIndex") class="kt-notification__item">
-                                <div class="kt-notification__item-icon">
-                                    <i class="fa fa-chart-area"></i>
-                                </div>
-                                <div class="kt-notification__item-details">
-                                    <div class="kt-notification__item-title">
-                                        <span class="kt-header__topbar-icon" data-skin="brand" data-container="body" data-toggle="kt-popover" data-placement="bottom" data-content="User Configuration" data-original-title="" title="">Charts</span>
+                            {
+                                <a href="javascript:;" onclick=window.open("/Chart/ChartIndex") class="kt-notification__item">
+                                    <div class="kt-notification__item-icon">
+                                        <i class="fa fa-chart-area"></i>
                                     </div>
-                                </div>
-                            </a>
-                        }
+                                    <div class="kt-notification__item-details">
+                                        <div class="kt-notification__item-title">
+                                            <span class="kt-header__topbar-icon" data-skin="brand" data-container="body" data-toggle="kt-popover" data-placement="bottom" data-content="User Configuration" data-original-title="" title="">Charts</span>
+                                        </div>
+                                    </div>
+                                </a>
+                            }
                         <a href="~/Download/DownloadFile.pdf" class="kt-notification__item" target="_blank">
-                                <div class="kt-notification__item-icon">
-                                    <i class="fa fa-file-download"></i>
+                            <div class="kt-notification__item-icon">
+                                <i class="fa fa-file-download"></i>
+                            </div>
+                            <div class="kt-notification__item-details">
+                                <div class="kt-notification__item-title">
+                                    <span class="kt-header__topbar-icon" data-skin="brand" data-container="body" data-toggle="kt-popover" data-placement="bottom" data-content="User Configuration" data-original-title="" title="">Download File</span>
                                 </div>
-                                <div class="kt-notification__item-details">
-                                    <div class="kt-notification__item-title">
-                                        <span class="kt-header__topbar-icon" data-skin="brand" data-container="body" data-toggle="kt-popover" data-placement="bottom" data-content="User Configuration" data-original-title="" title="">Download File</span>
-                                    </div>
-                                </div>
-                            </a>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -1560,8 +1560,6 @@
                         <div class="form-group" style="margin-bottom: 1rem;">
                             <label for="name" class="form-control-label">Test On Applcation:</label>
                             <select class="form-control" id="drpExeApp" style="width: 260px;height: 32px;"></select>
-
-
                         </div>
                         <div class="form-group" style="margin-bottom: 1rem;">
                             <label for="name" class="form-control-label">Test Execution Mode:</label>
@@ -1656,6 +1654,35 @@
             </div>
         </div>
     </div>
+
+    @*<div class="modal fade" id="ExecutePopupTC" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title" style="margin-top: 2px;" id="exampleModalLabel">Execute Engine</h6>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <input type="hidden" id="hdnExeTCStoryboardId">
+                        <input type="hidden" id="hdnExeTCStoryboardName">
+                        <input type="hidden" id="hdnExeTCLoginUName" value="@SessionManager.TESTER_LOGIN_NAME">
+                        <input type="hidden" id="hdnExeTCguid">
+                        <div class="form-group" style="margin-bottom: 1rem;">
+                            <label for="name" class="form-control-label">Test On Applcation:</label>
+                            <select class="form-control" id="drpExeAppTC" style="width: 260px;height: 32px;"></select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary .btn-copy" onclick="ExecuteEngineTCstep('@SessionManager.Schema')">Execute TestCase</button>
+                </div>
+            </div>
+        </div>
+    </div>*@
+    
+
     @*<div class="modal fade" id="ResizeLeftPanel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -2124,8 +2151,8 @@
                 async: false,
                 success: function (d) {
                     $(obj).next(".kt-menu__submenu").html(d); //replaces previous HTML with action
-                }                
-            });            
+                }
+            });
         }
         function GetVariable(ProjectId, obj) {
             $.ajax({
@@ -2293,7 +2320,7 @@
                     var flag = false;
                   $(obj).parent().next(".kt-menu__submenu").html(d);
                 }
-            });           
+            });
         }
 
         function Get(ProjectId, TestsuiteId, obj) {
@@ -2766,39 +2793,48 @@
             $("#TestCaseerror").css("display", "none");
         });
 
-        function ExecuteEnginePopup( lStoryboardName, lStoryboardId) {
-
+        function ExecuteEnginePopup(lStoryboardName, lStoryboardId, applst) {
+            var applistobj = JSON.parse(applst.replaceAll('&quot;', '"'));
             $("#hdnExeStoryboardId").val(lStoryboardId);
             $("#hdnExeStoryboardName").val(lStoryboardName);
-            $.ajax({
-                url: "/StoryBoard/GetApplicationListByStoryboard",
-                type: "POST",
-                data: '{"lStoryboardId":"' + lStoryboardId + '"}',
-                contentType: "application/json;charset=utf-8",
-                dataType: "json",
-                success: function (result) {
 
-                    if (result.status == 1) {
-                        var ldrpString = "";
-                        $.each(result.data, function (key, value) {
-                            ldrpString = ldrpString+ "<option value=" + value.ApplicationId + "> " + value.ApplicationName + "</option>";
-                        });
-                        $("#drpExeApp").html("");
-                        $("#drpExeApp").html(ldrpString);
-                        $("#ExecutePopup").modal("toggle");
-                    }
-                    else if (result.status == 0) {
-                        swal.fire({
-                            "title": "",
-                            "text": result.message,
-                            "icon": "error",
-                            "onClose": function (e) {
-                                console.log('on close event fired!');
-                            }
-                        });
-                    }
-                },
+            var ldrpString = "";
+            $.each(applistobj, function (key, value) {
+                ldrpString = ldrpString + "<option value=" + value.ApplicationId + "> " + value.ApplicationName + "</option>";
             });
+            $("#drpExeApp").html("");
+            $("#drpExeApp").html(ldrpString);
+            $("#ExecutePopup").modal("toggle");
+
+            //$.ajax({
+            //    url: "/StoryBoard/GetApplicationListByStoryboard",
+            //    type: "POST",
+            //    data: '{"lStoryboardId":"' + lStoryboardId + '"}',
+            //    contentType: "application/json;charset=utf-8",
+            //    dataType: "json",
+            //    success: function (result) {
+
+            //        if (result.status == 1) {
+            //            var ldrpString = "";
+            //            $.each(result.data, function (key, value) {
+            //                ldrpString = ldrpString+ "<option value=" + value.ApplicationId + "> " + value.ApplicationName + "</option>";
+            //            });
+            //            $("#drpExeApp").html("");
+            //            $("#drpExeApp").html(ldrpString);
+            //            $("#ExecutePopup").modal("toggle");
+            //        }
+            //        else if (result.status == 0) {
+            //            swal.fire({
+            //                "title": "",
+            //                "text": result.message,
+            //                "icon": "error",
+            //                "onClose": function (e) {
+            //                    console.log('on close event fired!');
+            //                }
+            //            });
+            //        }
+            //    },
+            //});
         }
 
         function startloader() {
@@ -2875,7 +2911,7 @@
             });
         });
 
-        function SBbodyItems(ui, ProjectId) {
+        function SBbodyItems(ui, ProjectId, storyboradId) {
             var ltestsuiteId;
             var ltestcaseId;
             var ltestsuitename = ui.rowData.testsuite;
@@ -2883,7 +2919,8 @@
             var ldatasetName = ui.rowData.dataset;
             var lstoryboardname = ui.rowData.Storyboardname;
             var lrun_order = ui.rowData.RUN_ORDER;
-            if (ltestsuitename != undefined && ltestsuitename != "" && ltestsuitename != null && lTestCaseName != undefined && lTestCaseName != "" && lTestCaseName != null && ldatasetName != undefined && ldatasetName != "" && ldatasetName != null) {
+            if (ltestsuitename != undefined && ltestsuitename != "" && ltestsuitename != null && lTestCaseName != undefined && lTestCaseName != "" && lTestCaseName != null && ldatasetName != undefined && ldatasetName != "" && ldatasetName != null
+                && lstoryboardname != undefined && lstoryboardname != "" && storyboradId != undefined && storyboradId != "") {
                 //$.ajax({
 
                 //    url: "/Home/GetTSTCDSName",
@@ -2929,7 +2966,7 @@
                                             ltestsuiteId = result.data[0];
                                             ltestcaseId = result.data[1];
                                         }
-                                        PartialRightGridTestCaseFromStoryboard(ltestcaseId, ltestsuiteId, lProjectId, ldatasetName, lTestCaseName, null);
+                                        PartialRightGridTestCaseFromStoryboard(ltestcaseId, ltestsuiteId, lProjectId, ldatasetName, lTestCaseName, null, storyboradId, lstoryboardname);
                                     } else if (result.status == 0) {
                                         swal.fire({
                                             "title": "",
@@ -3975,6 +4012,7 @@
                 ]
         }
         function folderChange(obj) {
+            debugger
             var folderid = $("#tagfolderid").val();
             $("#tagsequencerequired").css("display", "none");
             $("#tagsequencenumber").css("display", "none");

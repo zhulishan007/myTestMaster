@@ -33,3 +33,17 @@
     window.open(engineURI);
     ///added End 
 }
+
+function ExecuteEngineTCstep(lDataBase, MarsengineURL) {
+    $("#txtareacopy").css("display", "block");
+    $("#txtareacopy")[0].select();
+    window.document.execCommand("Copy");
+    var lStoryboardId = $("#hdnExeTCStoryboardId").val();
+    var lStoryboardName = $("#hdnExeTCStoryboardName").val();
+    var lLoginUser = $("#hdnExeTCLoginUName").val();
+    var lAppIds = $("#drpExeAppTC").val();
+    var lguid = $("#hdnExeTCguid").val(); 
+    $("#ExecutePopupTC").modal("toggle");
+    var engineURI = window.location.origin + MarsengineURL + "?userName=" + lLoginUser + "&command=-FromClipboard&storyBoadName=" + lStoryboardName + "&storyBoardId=" + lStoryboardId + "&app=" + lAppIds + "&guid=" + lguid + "&currentDB=" + lDataBase;
+    window.open(engineURI);
+}

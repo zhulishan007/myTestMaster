@@ -36,23 +36,52 @@ namespace MarsApi.Controllers
         //Add or edit Test Suite
         [Route("api/AddEditTestSuite")]
         [AcceptVerbs("GET", "POST")]
-        public bool AddEditTestSuite(TestSuiteModel lModel)
+        public ResultModel AddEditTestSuite(TestSuiteModel lModel)
         {
             CommonHelper.SetConnectionString(Request);
+            ResultModel resultModel = new ResultModel();
             var testsuiterepo = new TestSuiteRepository();
-            var result = testsuiterepo.AddEditTestSuite(lModel);
-            return result;
+           // var lresult = testsuiterepo.AddEditTestSuite(lModel);
+            var flag = lModel.TestSuiteId == 0 ? "added" : "Saved";
+            var result = testsuiterepo.CheckTestSuiteInStoryboardByProject(lModel.TestSuiteId, lModel.ProjectId);
+            if (result.Count <= 0)
+            {
+                var editresult = testsuiterepo.AddEditTestSuite(lModel);
+                resultModel.data = editresult;
+                resultModel.message = "Successfully " + flag + " Test Case.";
+            }
+            else
+            {
+                resultModel.data = result;
+                resultModel.message = "Test suite already exist in storyboard";
+            }
+            
+                return resultModel;
         }
 
         //Change Test Suite Name
         [Route("api/ChangeTestSuiteName")]
         [AcceptVerbs("GET", "POST")]
-        public string ChangeTestSuiteName(string TestSuiteName, string testsuitedesc, long TestSuiteId)
+        public ResultModel ChangeTestSuiteName(string TestSuiteName, string testsuitedesc, long TestSuiteId)
         {
             CommonHelper.SetConnectionString(Request);
+            ResultModel resultModel = new ResultModel();
             var testsuiterepo = new TestSuiteRepository();
-            var lResult = testsuiterepo.ChangeTestSuiteName(TestSuiteName, testsuitedesc, TestSuiteId);
-            return lResult;
+           // var lResult = testsuiterepo.ChangeTestSuiteName(TestSuiteName, testsuitedesc, TestSuiteId);
+           
+           var result = testsuiterepo.CheckDuplicateTestSuiteName(TestSuiteName, TestSuiteId);
+            if (result)
+            {
+                resultModel.data = result;
+                resultModel.message = "Test Suite name already exist";
+            }
+            else
+            {
+                var renamecase = testsuiterepo.ChangeTestSuiteName(TestSuiteName, testsuitedesc, TestSuiteId);
+                resultModel.data = renamecase;
+                resultModel.message = "Test Suite name successfully changed";
+            }
+            return resultModel;
         }
 
         //Check whether duplicate TestSuite exists or not

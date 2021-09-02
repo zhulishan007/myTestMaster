@@ -404,7 +404,7 @@
             return false;
         }
         if (ojectidarray.length > 0) {
-            startloader();
+            //startloader();
             $.ajax({
                 url: "/Object/CopyObjects",
                 data: JSON.stringify({ model: ojectidarray, fromid: appid, toid: convertappid }),
@@ -449,7 +449,7 @@
         }
         else {
             if ($("#selectall").is(":checked")) {
-                startloader();
+                //startloader();
                 $.ajax({
                     url: "/Object/CheckDuplicateObjectList",
                     data: JSON.stringify({ copyfromappid: appid, copytoappid: convertappid }),
@@ -471,6 +471,7 @@
                                     showCancelButton: true,
                                     confirmButtonText: 'Yes,copy!!'
                                 }).then(function (result) {
+                                    startloader();
                                     if (result.value == true) {
                                         $.ajax({
                                             url: "/Object/CopyAllObjects",

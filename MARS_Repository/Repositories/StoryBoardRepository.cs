@@ -360,7 +360,7 @@ namespace MARS_Repository.Repositories
                     lcmd.Parameters.Add(p);
                 }
 
-                lcmd.CommandText = schema + "." + "SP_GET_STORYBOARD_All_STEPS_RESULT";
+                lcmd.CommandText = schema + "." + "SP_GET_SB_All_STEPS_RESULT";
                 lcmd.CommandType = CommandType.StoredProcedure;
                 OracleDataAdapter dataAdapter = new OracleDataAdapter(lcmd);
                 dataAdapter.Fill(lds);
@@ -875,10 +875,10 @@ namespace MARS_Repository.Repositories
                         foreach (var item in result)
                         {
                             enty.T_STORYBOARD_DATASET_SETTING.Remove(item);
-                            enty.SaveChanges();
+                            //enty.SaveChanges();
                         }
                         enty.T_PROJ_TC_MGR.Remove(a);
-                        enty.SaveChanges();
+                        //enty.SaveChanges();
                     }
 
                     var shistory = enty.T_STORYBOARD_HISTORY.Where(x => x.STORYBOARD_ID == storyboard.STORYBOARD_ID).ToList();
@@ -886,7 +886,7 @@ namespace MARS_Repository.Repositories
                     foreach (var r in shistory)
                     {
                         enty.T_STORYBOARD_HISTORY.Remove(r);
-                        enty.SaveChanges();
+                        //enty.SaveChanges();
                     }
 
                     enty.T_STORYBOARD_SUMMARY.Remove(storyboard);
@@ -1168,7 +1168,7 @@ namespace MARS_Repository.Repositories
                 tblPTR.RESULT_DESC = "Manual";
                 tblPTR.TEST_RESULT = 1;
                 enty.T_PROJ_TEST_RESULT.Add(tblPTR);
-                enty.SaveChanges();
+                //enty.SaveChanges();
 
                 var tblreport = new T_TEST_REPORT();
                 var Id = Helper.NextTestSuiteId("SEQ_TESTRESULT_ID");
@@ -1659,14 +1659,15 @@ namespace MARS_Repository.Repositories
                     if (result != null)
                     {
                         enty.T_TEST_REPORT_STEPS.Remove(result);
-                        enty.SaveChanges();
+                        //enty.SaveChanges();
                     }
                     var obj = enty.REL_TEST_REPORT_STEPS_COMMENT.FirstOrDefault(x => x.TEST_REPORT_STEP_ID == id);
                     if (obj != null)
                     {
                         enty.REL_TEST_REPORT_STEPS_COMMENT.Remove(obj);
-                        enty.SaveChanges();
+                        //enty.SaveChanges();
                     }
+                    enty.SaveChanges();
                     flag = true;
                 }
                 logger.Info(string.Format("Delete Resultset step end | UserName: {0}", Username));
@@ -1740,7 +1741,6 @@ namespace MARS_Repository.Repositories
                     });
                     enty.SaveChanges();
                 }
-
                 //Add new steps
                 var lNewSB = lModel.Where(y => y.storyboarddetailid <= 0 || y.storyboarddetailid == null).ToList();
 
@@ -1889,11 +1889,11 @@ namespace MARS_Repository.Repositories
                         ltblMGR.RUN_TYPE = lRunTypeValue.VALUE;
                         ltblMGR.ALIAS_NAME = item.StepName;
 
-                        enty.SaveChanges();
+                        //enty.SaveChanges();
 
                         var ltblSBSetting = enty.T_STORYBOARD_DATASET_SETTING.FirstOrDefault(x => x.STORYBOARD_DETAIL_ID == item.storyboarddetailid);
                         ltblSBSetting.DATA_SUMMARY_ID = lDataSet.DATA_SUMMARY_ID;
-                        enty.SaveChanges();
+                        //enty.SaveChanges();
                     }
                     else
                     {
@@ -1920,7 +1920,7 @@ namespace MARS_Repository.Repositories
                         tblprj.RECORD_VERSION = null;
                         tblprj.ALIAS_NAME = item.StepName;
                         enty.T_PROJ_TC_MGR.Add(tblprj);
-                        enty.SaveChanges();
+                        //enty.SaveChanges();
 
 
                         var tblsetting = new T_STORYBOARD_DATASET_SETTING();
@@ -1928,9 +1928,9 @@ namespace MARS_Repository.Repositories
                         tblsetting.STORYBOARD_DETAIL_ID = lStoryboardDetailId;
                         tblsetting.DATA_SUMMARY_ID = lDataSet.DATA_SUMMARY_ID;
                         enty.T_STORYBOARD_DATASET_SETTING.Add(tblsetting);
-                        enty.SaveChanges();
+                        //enty.SaveChanges();
                     }
-
+                    enty.SaveChanges();
                     RunOrder++;
                 }
                 logger.Info(string.Format("SaveAsStoryboardGrid end | StoryboardId: {0} | Username: {1}", lStoryboardId, Username));
@@ -2134,7 +2134,7 @@ namespace MARS_Repository.Repositories
                 tbl.LATEST_VERISON = null;
                 tbl.ASSIGNED_PROJECT_ID = projectid;
                 enty.T_STORYBOARD_SUMMARY.Add(tbl);
-                enty.SaveChanges();
+                //enty.SaveChanges();
 
                 var lresult = (from t in enty.T_PROJ_TC_MGR
                                where t.STORYBOARD_ID == oldsid
@@ -2191,7 +2191,7 @@ namespace MARS_Repository.Repositories
                 {
                     enty.T_PROJ_TC_MGR.Add(item);
                 }
-                enty.SaveChanges();
+               // enty.SaveChanges();
 
 
 
@@ -2296,8 +2296,9 @@ namespace MARS_Repository.Repositories
                     foreach (var item in lDeleteResultSetsList)
                     {
                         enty.DeleteResultSets(item);
-                        enty.SaveChanges();
+                        //enty.SaveChanges();
                     }
+                    enty.SaveChanges();
                     lflag = true;
                 }
                 catch (Exception ex)
@@ -2748,7 +2749,7 @@ namespace MARS_Repository.Repositories
                 }
 
                 //The name of the Procedure responsible for inserting the data in the table.
-                pcmd.CommandText = schema + "." + "SP_GetStoryboardValidationResult";
+                pcmd.CommandText = schema + "." + "SP_GetSBValidationResult";
                 pcmd.CommandType = CommandType.StoredProcedure;
                 OracleDataAdapter dataAdapter = new OracleDataAdapter(pcmd);
                 dataAdapter.Fill(lds);
@@ -2806,7 +2807,7 @@ namespace MARS_Repository.Repositories
 
                 enty.TBLFEEDPROCESSes.Add(ltbl);
                 logger.Info(string.Format("Save Storyboard FeedProcess changes start | UserName: {0}", Username));
-                enty.SaveChanges();
+                //enty.SaveChanges();
                 logger.Info(string.Format("Save Storyboard FeedProcess changes end | UserName: {0}", Username));
 
                 logger.Info(string.Format("TBLFEEDPROCESSDETAILS_SEQ : Getting Storyboard Feed Process Detail Id start | UserName: {0}", Username));
