@@ -309,30 +309,444 @@ ORA-00600: internal error code, arguments: [4882], [0x7FF6D5E4CA30], [0x7FF6DBDB
                InnerException:
              Additional Info:Error occured in Chart for LoadAxisData method | Connection Id : 81 | Query Id :  | Chart Type : 7 | UserName: Regr4
                    
-                   --------------------- Error(2021-09-02 13:13:39.7507)CS-DC-15-------------------- 
+                   --------------------- Error(2021-09-06 19:38:52.5832)CS-DC-15-------------------- 
                    
                    Exception Type:System.NullReferenceException
                    Exception Message:Object reference not set to an instance of an object.
                    Stack Trace:
                    Source:MARS_Web
                InnerException:
-             Additional Info:Error occured in TestCase controller for SaveTestCase method | UserName: Regr4
+             Additional Info:Error occured in Chart for DisplayChart method | Connection Id :  | Query Id : 82 | Chart Type : 3 | UserName: Regr4
                    
-                   --------------------- Error(2021-09-02 13:14:01.8933)CS-DC-15-------------------- 
-                   
-                   Exception Type:System.NullReferenceException
-                   Exception Message:Object reference not set to an instance of an object.
-                   Stack Trace:
-                   Source:MARS_Web
-               InnerException:
-             Additional Info:Error occured in TestCase controller for SaveTestCase method | UserName: Regr4
-                   
-                   --------------------- Error(2021-09-02 13:15:24.9914)CS-DC-15-------------------- 
+                   --------------------- Error(2021-09-06 19:39:00.9324)CS-DC-15-------------------- 
                    
                    Exception Type:System.NullReferenceException
                    Exception Message:Object reference not set to an instance of an object.
                    Stack Trace:
                    Source:MARS_Web
                InnerException:
-             Additional Info:Error occured in TestCase controller for SaveTestCase method | UserName: Regr4
+             Additional Info:Error occured in Chart for DisplayChart method | Connection Id :  | Query Id : 82 | Chart Type : 3 | UserName: Regr4
+                   
+                   --------------------- Error(2021-09-06 19:39:10.8265)CS-DC-15-------------------- 
+                   
+                   Exception Type:Oracle.ManagedDataAccess.Client.OracleException
+                   Exception Message:ORA-06550: line 1, column 7:
+PLS-00201: identifier 'GEN_MARS_34.SP_GET_DBCONNECTION' must be declared
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+                   Stack Trace:
+                   Source:Oracle Data Provider for .NET, Managed Driver
+               InnerException:
+             Additional Info:Error occured Account in GetDBConnectionList method | UserName: Regr4
+                   
+                   --------------------- Error(2021-09-06 19:39:10.8265)CS-DC-15-------------------- 
+                   
+                   Exception Type:Oracle.ManagedDataAccess.Client.OracleException
+                   Exception Message:ORA-06550: line 1, column 7:
+PLS-00201: identifier 'GEN_MARS_34.SP_GET_DBCONNECTION' must be declared
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+                   Stack Trace:
+                   Source:Oracle Data Provider for .NET, Managed Driver
+               InnerException:
+             Additional Info:Error occured in Database Connection for DataLoad method | UserName: Regr4
+                   
+                   --------------------- Error(2021-09-07 09:57:12.4241)CS-DC-15-------------------- 
+                   
+                   Exception Type:Oracle.ManagedDataAccess.Client.OracleException
+                   Exception Message:ORA-06550: line 1, column 7:
+PLS-00201: identifier 'GEN_MARS_34.SP_GET_DBCONNECTION' must be declared
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+                   Stack Trace:
+                   Source:Oracle Data Provider for .NET, Managed Driver
+               InnerException:
+             Additional Info:Error occured Account in GetDBConnectionList method | UserName: Regr4
+                   
+                   --------------------- Error(2021-09-07 09:57:12.4370)CS-DC-15-------------------- 
+                   
+                   Exception Type:Oracle.ManagedDataAccess.Client.OracleException
+                   Exception Message:ORA-06550: line 1, column 7:
+PLS-00201: identifier 'GEN_MARS_34.SP_GET_DBCONNECTION' must be declared
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+                   Stack Trace:
+                   Source:Oracle Data Provider for .NET, Managed Driver
+               InnerException:
+             Additional Info:Error occured in Database Connection for DataLoad method | UserName: Regr4
+                   
+                   --------------------- Error(2021-09-07 09:59:01.2417)CS-DC-15-------------------- 
+                   
+                   Exception Type:Oracle.ManagedDataAccess.Client.OracleException
+                   Exception Message:ORA-00904: "DATABASE_VALUE": invalid identifier
+                   Stack Trace:
+                   Source:Oracle Data Provider for .NET, Managed Driver
+               InnerException:
+             Additional Info:Error occured in Database Connection for AddEditConnection method | Connection id :0 | Connection Name: ORACLE GEN_MARS_4 | UserName: 0
+                   
+                   --------------------- Error(2021-09-07 09:59:01.2547)CS-DC-15-------------------- 
+                   
+                   Exception Type:Oracle.ManagedDataAccess.Client.OracleException
+                   Exception Message:ORA-00904: "DATABASE_VALUE": invalid identifier
+                   Stack Trace:
+                   Source:Oracle Data Provider for .NET, Managed Driver
+               InnerException:
+             Additional Info:Error occured in Database Connection for AddEditConnection method | Connection Id : 0 | UserName: Regr4
+                   
+                   --------------------- Error(2021-09-07 09:59:01.4722)CS-DC-15-------------------- 
+                   
+                   Exception Type:Oracle.ManagedDataAccess.Client.OracleException
+                   Exception Message:ORA-06550: line 1, column 7:
+PLS-00201: identifier 'GEN_MARS_34.SP_GET_DBCONNECTION' must be declared
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+                   Stack Trace:
+                   Source:Oracle Data Provider for .NET, Managed Driver
+               InnerException:
+             Additional Info:Error occured Account in GetDBConnectionList method | UserName: Regr4
+                   
+                   --------------------- Error(2021-09-07 09:59:01.4832)CS-DC-15-------------------- 
+                   
+                   Exception Type:Oracle.ManagedDataAccess.Client.OracleException
+                   Exception Message:ORA-06550: line 1, column 7:
+PLS-00201: identifier 'GEN_MARS_34.SP_GET_DBCONNECTION' must be declared
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+                   Stack Trace:
+                   Source:Oracle Data Provider for .NET, Managed Driver
+               InnerException:
+             Additional Info:Error occured in Database Connection for DataLoad method | UserName: Regr4
+                   
+                   --------------------- Error(2021-09-07 09:59:56.1692)CS-DC-15-------------------- 
+                   
+                   Exception Type:Oracle.ManagedDataAccess.Client.OracleException
+                   Exception Message:ORA-00904: "DATABASE_VALUE": invalid identifier
+                   Stack Trace:
+                   Source:Oracle Data Provider for .NET, Managed Driver
+               InnerException:
+             Additional Info:Error occured in Database Connection for AddEditConnection method | Connection id :0 | Connection Name: ORACLE GEN_MARS_4 | UserName: 0
+                   
+                   --------------------- Error(2021-09-07 09:59:56.1822)CS-DC-15-------------------- 
+                   
+                   Exception Type:Oracle.ManagedDataAccess.Client.OracleException
+                   Exception Message:ORA-00904: "DATABASE_VALUE": invalid identifier
+                   Stack Trace:
+                   Source:Oracle Data Provider for .NET, Managed Driver
+               InnerException:
+             Additional Info:Error occured in Database Connection for AddEditConnection method | Connection Id : 0 | UserName: Regr4
+                   
+                   --------------------- Error(2021-09-07 09:59:56.3786)CS-DC-15-------------------- 
+                   
+                   Exception Type:Oracle.ManagedDataAccess.Client.OracleException
+                   Exception Message:ORA-06550: line 1, column 7:
+PLS-00201: identifier 'GEN_MARS_34.SP_GET_DBCONNECTION' must be declared
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+                   Stack Trace:
+                   Source:Oracle Data Provider for .NET, Managed Driver
+               InnerException:
+             Additional Info:Error occured Account in GetDBConnectionList method | UserName: Regr4
+                   
+                   --------------------- Error(2021-09-07 09:59:56.3894)CS-DC-15-------------------- 
+                   
+                   Exception Type:Oracle.ManagedDataAccess.Client.OracleException
+                   Exception Message:ORA-06550: line 1, column 7:
+PLS-00201: identifier 'GEN_MARS_34.SP_GET_DBCONNECTION' must be declared
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+                   Stack Trace:
+                   Source:Oracle Data Provider for .NET, Managed Driver
+               InnerException:
+             Additional Info:Error occured in Database Connection for DataLoad method | UserName: Regr4
+                   
+                   --------------------- Error(2021-09-07 10:00:57.8926)CS-DC-15-------------------- 
+                   
+                   Exception Type:Oracle.ManagedDataAccess.Client.OracleException
+                   Exception Message:ORA-00904: "DATABASE_VALUE": invalid identifier
+                   Stack Trace:
+                   Source:Oracle Data Provider for .NET, Managed Driver
+               InnerException:
+             Additional Info:Error occured in Database Connection for AddEditConnection method | Connection id :0 | Connection Name: ORACLE GEN_MARS_4 | UserName: 0
+                   
+                   --------------------- Error(2021-09-07 10:00:57.9071)CS-DC-15-------------------- 
+                   
+                   Exception Type:Oracle.ManagedDataAccess.Client.OracleException
+                   Exception Message:ORA-00904: "DATABASE_VALUE": invalid identifier
+                   Stack Trace:
+                   Source:Oracle Data Provider for .NET, Managed Driver
+               InnerException:
+             Additional Info:Error occured in Database Connection for AddEditConnection method | Connection Id : 0 | UserName: Regr4
+                   
+                   --------------------- Error(2021-09-07 10:00:58.0956)CS-DC-15-------------------- 
+                   
+                   Exception Type:Oracle.ManagedDataAccess.Client.OracleException
+                   Exception Message:ORA-06550: line 1, column 7:
+PLS-00201: identifier 'GEN_MARS_34.SP_GET_DBCONNECTION' must be declared
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+                   Stack Trace:
+                   Source:Oracle Data Provider for .NET, Managed Driver
+               InnerException:
+             Additional Info:Error occured Account in GetDBConnectionList method | UserName: Regr4
+                   
+                   --------------------- Error(2021-09-07 10:00:58.0956)CS-DC-15-------------------- 
+                   
+                   Exception Type:Oracle.ManagedDataAccess.Client.OracleException
+                   Exception Message:ORA-06550: line 1, column 7:
+PLS-00201: identifier 'GEN_MARS_34.SP_GET_DBCONNECTION' must be declared
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+                   Stack Trace:
+                   Source:Oracle Data Provider for .NET, Managed Driver
+               InnerException:
+             Additional Info:Error occured in Database Connection for DataLoad method | UserName: Regr4
+                   
+                   --------------------- Error(2021-09-07 10:26:13.3125)CS-DC-15-------------------- 
+                   
+                   Exception Type:Oracle.ManagedDataAccess.Client.OracleException
+                   Exception Message:ORA-00904: "DATABASE_VALUE": invalid identifier
+                   Stack Trace:
+                   Source:Oracle Data Provider for .NET, Managed Driver
+               InnerException:
+             Additional Info:Error occured in Database Connection for AddEditConnection method | Connection id :0 | Connection Name: ORACLE GEN_MARS_4 | UserName: 0
+                   
+                   --------------------- Error(2021-09-07 10:26:15.8892)CS-DC-15-------------------- 
+                   
+                   Exception Type:Oracle.ManagedDataAccess.Client.OracleException
+                   Exception Message:ORA-00904: "DATABASE_VALUE": invalid identifier
+                   Stack Trace:
+                   Source:Oracle Data Provider for .NET, Managed Driver
+               InnerException:
+             Additional Info:Error occured in Database Connection for AddEditConnection method | Connection Id : 0 | UserName: Regr4
+                   
+                   --------------------- Error(2021-09-07 10:26:16.0985)CS-DC-15-------------------- 
+                   
+                   Exception Type:Oracle.ManagedDataAccess.Client.OracleException
+                   Exception Message:ORA-06550: line 1, column 7:
+PLS-00201: identifier 'GEN_MARS_34.SP_GET_DBCONNECTION' must be declared
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+                   Stack Trace:
+                   Source:Oracle Data Provider for .NET, Managed Driver
+               InnerException:
+             Additional Info:Error occured Account in GetDBConnectionList method | UserName: Regr4
+                   
+                   --------------------- Error(2021-09-07 10:26:16.1098)CS-DC-15-------------------- 
+                   
+                   Exception Type:Oracle.ManagedDataAccess.Client.OracleException
+                   Exception Message:ORA-06550: line 1, column 7:
+PLS-00201: identifier 'GEN_MARS_34.SP_GET_DBCONNECTION' must be declared
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+                   Stack Trace:
+                   Source:Oracle Data Provider for .NET, Managed Driver
+               InnerException:
+             Additional Info:Error occured in Database Connection for DataLoad method | UserName: Regr4
+                   
+                   --------------------- Error(2021-09-07 10:27:04.4589)CS-DC-15-------------------- 
+                   
+                   Exception Type:Oracle.ManagedDataAccess.Client.OracleException
+                   Exception Message:ORA-00904: "DATABASE_VALUE": invalid identifier
+                   Stack Trace:
+                   Source:Oracle Data Provider for .NET, Managed Driver
+               InnerException:
+             Additional Info:Error occured in Database Connection for AddEditConnection method | Connection id :0 | Connection Name: ORACLE GEN_MARS_4 | UserName: 0
+                   
+                   --------------------- Error(2021-09-07 12:47:48.3593)CS-DC-15-------------------- 
+                   
+                   Exception Type:Oracle.ManagedDataAccess.Client.OracleException
+                   Exception Message:ORA-06550: line 1, column 7:
+PLS-00201: identifier 'GEN_MARS_34.SP_GET_DBCONNECTION' must be declared
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+                   Stack Trace:
+                   Source:Oracle Data Provider for .NET, Managed Driver
+               InnerException:
+             Additional Info:Error occured Account in GetDBConnectionList method | UserName: Regr4
+                   
+                   --------------------- Error(2021-09-07 12:47:48.3730)CS-DC-15-------------------- 
+                   
+                   Exception Type:Oracle.ManagedDataAccess.Client.OracleException
+                   Exception Message:ORA-06550: line 1, column 7:
+PLS-00201: identifier 'GEN_MARS_34.SP_GET_DBCONNECTION' must be declared
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+                   Stack Trace:
+                   Source:Oracle Data Provider for .NET, Managed Driver
+               InnerException:
+             Additional Info:Error occured in Database Connection for DataLoad method | UserName: Regr4
+                   
+                   --------------------- Error(2021-09-07 12:48:24.7559)CS-DC-15-------------------- 
+                   
+                   Exception Type:Oracle.ManagedDataAccess.Client.OracleException
+                   Exception Message:ORA-06550: line 1, column 7:
+PLS-00201: identifier 'GEN_MARS_34.SP_GET_DBCONNECTION' must be declared
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+                   Stack Trace:
+                   Source:Oracle Data Provider for .NET, Managed Driver
+               InnerException:
+             Additional Info:Error occured Account in GetDBConnectionList method | UserName: Regr4
+                   
+                   --------------------- Error(2021-09-07 12:48:24.7652)CS-DC-15-------------------- 
+                   
+                   Exception Type:Oracle.ManagedDataAccess.Client.OracleException
+                   Exception Message:ORA-06550: line 1, column 7:
+PLS-00201: identifier 'GEN_MARS_34.SP_GET_DBCONNECTION' must be declared
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+                   Stack Trace:
+                   Source:Oracle Data Provider for .NET, Managed Driver
+               InnerException:
+             Additional Info:Error occured in Database Connection for DataLoad method | UserName: Regr4
+                   
+                   --------------------- Error(2021-09-07 12:48:40.7638)CS-DC-15-------------------- 
+                   
+                   Exception Type:Oracle.ManagedDataAccess.Client.OracleException
+                   Exception Message:ORA-06550: line 1, column 7:
+PLS-00201: identifier 'GEN_MARS_34.SP_GET_DBCONNECTION' must be declared
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+                   Stack Trace:
+                   Source:Oracle Data Provider for .NET, Managed Driver
+               InnerException:
+             Additional Info:Error occured Account in GetDBConnectionList method | UserName: Regr4
+                   
+                   --------------------- Error(2021-09-07 12:48:40.7638)CS-DC-15-------------------- 
+                   
+                   Exception Type:Oracle.ManagedDataAccess.Client.OracleException
+                   Exception Message:ORA-06550: line 1, column 7:
+PLS-00201: identifier 'GEN_MARS_34.SP_GET_DBCONNECTION' must be declared
+ORA-06550: line 1, column 7:
+PL/SQL: Statement ignored
+                   Stack Trace:
+                   Source:Oracle Data Provider for .NET, Managed Driver
+               InnerException:
+             Additional Info:Error occured in Database Connection for DataLoad method | UserName: Regr4
+                   
+                   --------------------- Error(2021-09-07 14:02:00.3924)CS-DC-15-------------------- 
+                   
+                   Exception Type:System.Data.Entity.Infrastructure.DbUpdateException
+                   Exception Message:An error occurred while updating the entries. See the inner exception for details.
+                   Stack Trace:
+                   Source:EntityFramework
+               InnerException:
+             Additional Info:Error occured in Query for AddEditQuery method | Query Id : 101 | UserName: Regr4
+                   
+                   --------------------- Error(2021-09-07 14:02:00.4689)CS-DC-15-------------------- 
+                   
+                   Exception Type:System.Data.UpdateException
+                   Exception Message:An error occurred while updating the entries. See the inner exception for details.
+                   Stack Trace:
+                   Source:System.Data.Entity
+               InnerException:
+             Additional Info:InnerException : Error occured in Query for AddEditQuery method | Query Id : 101 | UserName: Regr4
+                   
+                   --------------------- Error(2021-09-07 14:02:00.4879)CS-DC-15-------------------- 
+                   
+                   Exception Type:System.Data.Entity.Infrastructure.DbUpdateException
+                   Exception Message:An error occurred while updating the entries. See the inner exception for details.
+                   Stack Trace:
+                   Source:EntityFramework
+               InnerException:
+             Additional Info:Error occured in Query for AddEditQuery method | Query Id : 101 | UserName: Regr4
+                   
+                   --------------------- Error(2021-09-07 14:02:00.4879)CS-DC-15-------------------- 
+                   
+                   Exception Type:System.Data.UpdateException
+                   Exception Message:An error occurred while updating the entries. See the inner exception for details.
+                   Stack Trace:
+                   Source:System.Data.Entity
+               InnerException:
+             Additional Info:InnerException : Error occured in Query for AddEditQuery method | Query Id : 101 | UserName: Regr4
+                   
+                   --------------------- Error(2021-09-07 14:02:05.9632)CS-DC-15-------------------- 
+                   
+                   Exception Type:System.Data.Entity.Infrastructure.DbUpdateException
+                   Exception Message:An error occurred while updating the entries. See the inner exception for details.
+                   Stack Trace:
+                   Source:EntityFramework
+               InnerException:
+             Additional Info:Error occured in Query for AddEditQuery method | Query Id : 102 | UserName: Regr4
+                   
+                   --------------------- Error(2021-09-07 14:02:05.9632)CS-DC-15-------------------- 
+                   
+                   Exception Type:System.Data.UpdateException
+                   Exception Message:An error occurred while updating the entries. See the inner exception for details.
+                   Stack Trace:
+                   Source:System.Data.Entity
+               InnerException:
+             Additional Info:InnerException : Error occured in Query for AddEditQuery method | Query Id : 102 | UserName: Regr4
+                   
+                   --------------------- Error(2021-09-07 14:02:05.9732)CS-DC-15-------------------- 
+                   
+                   Exception Type:System.Data.Entity.Infrastructure.DbUpdateException
+                   Exception Message:An error occurred while updating the entries. See the inner exception for details.
+                   Stack Trace:
+                   Source:EntityFramework
+               InnerException:
+             Additional Info:Error occured in Query for AddEditQuery method | Query Id : 102 | UserName: Regr4
+                   
+                   --------------------- Error(2021-09-07 14:02:05.9732)CS-DC-15-------------------- 
+                   
+                   Exception Type:System.Data.UpdateException
+                   Exception Message:An error occurred while updating the entries. See the inner exception for details.
+                   Stack Trace:
+                   Source:System.Data.Entity
+               InnerException:
+             Additional Info:InnerException : Error occured in Query for AddEditQuery method | Query Id : 102 | UserName: Regr4
+                   
+                   --------------------- Error(2021-09-07 14:03:31.2693)CS-DC-15-------------------- 
+                   
+                   Exception Type:System.Data.Entity.Infrastructure.DbUpdateException
+                   Exception Message:An error occurred while updating the entries. See the inner exception for details.
+                   Stack Trace:
+                   Source:EntityFramework
+               InnerException:
+             Additional Info:Error occured in Query for AddEditQuery method | Query Id : 103 | UserName: Regr4
+                   
+                   --------------------- Error(2021-09-07 14:03:31.2693)CS-DC-15-------------------- 
+                   
+                   Exception Type:System.Data.UpdateException
+                   Exception Message:An error occurred while updating the entries. See the inner exception for details.
+                   Stack Trace:
+                   Source:System.Data.Entity
+               InnerException:
+             Additional Info:InnerException : Error occured in Query for AddEditQuery method | Query Id : 103 | UserName: Regr4
+                   
+                   --------------------- Error(2021-09-07 14:03:31.2803)CS-DC-15-------------------- 
+                   
+                   Exception Type:System.Data.Entity.Infrastructure.DbUpdateException
+                   Exception Message:An error occurred while updating the entries. See the inner exception for details.
+                   Stack Trace:
+                   Source:EntityFramework
+               InnerException:
+             Additional Info:Error occured in Query for AddEditQuery method | Query Id : 103 | UserName: Regr4
+                   
+                   --------------------- Error(2021-09-07 14:03:31.2803)CS-DC-15-------------------- 
+                   
+                   Exception Type:System.Data.UpdateException
+                   Exception Message:An error occurred while updating the entries. See the inner exception for details.
+                   Stack Trace:
+                   Source:System.Data.Entity
+               InnerException:
+             Additional Info:InnerException : Error occured in Query for AddEditQuery method | Query Id : 103 | UserName: Regr4
+                   
+                   --------------------- Error(2021-09-07 14:09:42.2619)CS-DC-15-------------------- 
+                   
+                   Exception Type:System.NullReferenceException
+                   Exception Message:Object reference not set to an instance of an object.
+                   Stack Trace:
+                   Source:MARS_Web
+               InnerException:
+             Additional Info:Error occured in Chart for DisplayChart method | Connection Id :  | Query Id : 81 | Chart Type : 1 | UserName: Regr4
+                   
+                   --------------------- Error(2021-09-07 14:09:46.9948)CS-DC-15-------------------- 
+                   
+                   Exception Type:System.NullReferenceException
+                   Exception Message:Object reference not set to an instance of an object.
+                   Stack Trace:
+                   Source:MARS_Web
+               InnerException:
+             Additional Info:Error occured in Chart for DisplayChart method | Connection Id :  | Query Id : 81 | Chart Type : 1 | UserName: Regr4
                    

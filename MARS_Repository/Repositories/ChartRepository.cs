@@ -211,7 +211,7 @@ namespace MARS_Repository.Repositories
                             .Select(s => s[y_index]).FirstOrDefault();
                             if (y_axis != null)
                             {
-                                 str_json += y_axis.ToString().Replace("/", "//") + ",";
+                                str_json += y_axis.ToString().Replace("/", "//") + ",";
                             }
                             else
                             {
@@ -499,7 +499,7 @@ namespace MARS_Repository.Repositories
         }
 
 
-        public string CreateBasicColumnChartcetegories(DataSet dataSet, int axis_label)
+        public string CreateBasicColumnChart(DataSet dataSet, int axis_label)
         {
             //ChartViewModel chartViewModel = new ChartViewModel();
             string str = String.Empty;
@@ -520,7 +520,7 @@ namespace MARS_Repository.Repositories
             catch (Exception ex)
             {
                 logger.Error(string.Format("Error occured in Chart for CreateBasicColumnChartcetegories method | DataSet : {0} | Username : {1} ", dataSet, Username));
-                ELogger.ErrorException(string.Format("Error occured in Chart for CreateBasicColumnChartcetegories method | DataSet : {0} | Username : {1} ", dataSet,  Username), ex);
+                ELogger.ErrorException(string.Format("Error occured in Chart for CreateBasicColumnChartcetegories method | DataSet : {0} | Username : {1} ", dataSet, Username), ex);
                 if (ex.InnerException != null)
                     ELogger.ErrorException(string.Format("InnerException : Error occured in Chart for CreateBasicColumnChartcetegories method | DataSet : {0} | Username : {1} ", dataSet, Username), ex);
                 throw;
@@ -528,5 +528,162 @@ namespace MARS_Repository.Repositories
             return str;
         }
 
+        public List<string> CreateTabularData(DataSet dataSet, int x_index, int y_index, int z_index)
+        {
+            List<string> strResult = new List<string>();
+            List<ChartTableViewModel> lstChartModel = new List<ChartTableViewModel>();
+            string str_json = null;
+            string rowdata = "[";
+            string colHeader = "";
+            try
+            {
+
+                if (dataSet != null)
+                {
+
+                    DataTable dataTable = dataSet.Tables[0];
+                    var dt_enum = dataTable.AsEnumerable();
+                    if (y_index == -1) //pie chart - 2 parameters
+                    {
+                        var x_axis = (from r in dt_enum
+                                      select r[x_index]).Distinct().ToArray();
+
+                        object[] z_axis = new object[x_axis.Length];
+                        rowdata += "{";
+                        for (int x = 0; x < x_axis.Length; x++)
+                        {
+
+                            ChartTableViewModel tableData = new ChartTableViewModel();
+                            tableData.xvalue = x_axis[x].ToString().Trim();
+                            z_axis[x] = dt_enum.Where(s => s[x_index].ToString().Trim().Equals(tableData.xvalue.ToString().Trim()))
+                                .Select(s => s[z_index]).FirstOrDefault();
+                           
+                            if (z_axis[x] != null || z_axis[x].ToString() != "null")
+                            {
+                                tableData.zvalue = z_axis[x].ToString().Trim();
+                            }
+                            else
+                            {
+                                tableData.zvalue = "0";
+                            }
+                            tableData.zvalue = z_axis[x].ToString().Trim();
+                            rowdata += "\"" + x_axis[x].ToString().Trim() + "\":\"" + tableData.zvalue + "\",";
+                            lstChartModel.Add(tableData);
+
+                        }
+                        rowdata = rowdata.Substring(0, rowdata.Length - 1);
+                        rowdata += "},";
+                        colHeader = string.Join(",", lstChartModel.Select(x => x.xvalue).Distinct().ToList());
+                    }
+                    else // 3 paramter charts
+                    {
+                        var x_axis = (from r in dt_enum
+                                      select r[x_index]).Distinct().ToArray();
+                        var y_axis = (from r in dt_enum
+                                      select r[y_index]).Distinct().ToArray();
+
+                        object[,] z_axis = new object[x_axis.Length, y_axis.Length];
+                        for (int x = 0; x < x_axis.Length; x++)
+                        {
+                            rowdata += "{\"blank\" : \"" + x_axis[x].ToString().Trim() + "\",";
+                            for (int y = 0; y < y_axis.Length; y++)
+                            {
+                                ChartTableViewModel tableData = new ChartTableViewModel();
+                                tableData.xvalue = x_axis[x].ToString().Trim();
+                                tableData.yvalue = y_axis[y].ToString().Trim();
+                                z_axis[x, y] = dt_enum.Where(s => s[x_index].ToString().Trim().Equals(tableData.xvalue.ToString().Trim()))
+                                    .Where(s => s[y_index].ToString().Trim().Equals(tableData.yvalue.ToString().Trim()))
+                                    .Select(s => s[z_index]).FirstOrDefault();
+                                if (z_axis[x, y] != null)
+                                {
+                                    tableData.zvalue = z_axis[x, y].ToString().Trim();
+                                }
+                                else
+                                {
+                                    tableData.zvalue = "0";
+                                }
+                                rowdata += "\"" + y_axis[y].ToString().Trim() + "\":\"" + tableData.zvalue + "\",";
+
+                                lstChartModel.Add(tableData);
+                            }
+                            rowdata = rowdata.Substring(0, rowdata.Length - 1);
+                            rowdata += "},";
+                        }
+                       
+                        colHeader = string.Join(",", lstChartModel.Select(x => x.yvalue).Distinct().ToList());
+                    }
+
+                    rowdata = rowdata.Substring(0, rowdata.Length - 1);
+                    rowdata += "]";
+
+                    strResult.Add(rowdata);
+                    strResult.Add(colHeader);
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in Chart for CreateBarChart method | DataSet : {0} | xIndex: {1} | yIndex : {2} | zIndex : {3} | Username : {4} ", dataSet, x_index, y_index, z_index, Username));
+                ELogger.ErrorException(string.Format("Error occured in Chart for CreateBarChart method | DataSet : {0} | xIndex: {1} | yIndex : {2} | zIndex : {3} | Username : {4} ", dataSet, x_index, y_index, z_index, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Chart for CreateBarChart method | DataSet : {0} | xIndex: {1} | yIndex : {2} | zIndex : {3} | Username : {4} ", dataSet, x_index, y_index, z_index, Username), ex.InnerException);
+                throw;
+            }
+            return strResult;
+        }
+        /* public List<ChartTableViewModel> CreateTabularData(DataSet dataSet, int x_index, int y_index, int z_index)
+         {
+             List<ChartTableViewModel> lstChartModel = new List<ChartTableViewModel>();
+             string str_json = null;
+             try
+             {
+
+                 if (dataSet != null)
+                 {
+
+                     DataTable dataTable = dataSet.Tables[0];
+                     var dt_enum = dataTable.AsEnumerable();
+                     var x_axis = (from r in dt_enum
+                                   select r[x_index]).Distinct().ToArray();
+                     var y_axis = (from r in dt_enum
+                                   select r[y_index]).Distinct().ToArray();
+
+                     object[,] z_axis = new object[x_axis.Length, y_axis.Length];
+
+                     for (int x = 0; x < x_axis.Length; x++)
+                     {
+
+
+                         for (int y = 0; y < y_axis.Length; y++)
+                         {
+                             ChartTableViewModel tableData = new ChartTableViewModel();
+                             tableData.xvalue = x_axis[x].ToString().Trim();
+                             tableData.yvalue = y_axis[y].ToString().Trim();
+                             z_axis[x, y] = dt_enum.Where(s => s[x_index].ToString().Trim().Equals(tableData.xvalue.ToString().Trim()))
+                                 .Where(s => s[y_index].ToString().Trim().Equals(tableData.yvalue.ToString().Trim()))
+                                 .Select(s => s[z_index]).FirstOrDefault();
+                             if (z_axis[x, y] != null)
+                             {
+                                 tableData.zvalue = z_axis[x, y].ToString().Trim();
+                             }
+                             else
+                             {
+                                 tableData.zvalue = "0";
+                             }
+                             lstChartModel.Add(tableData);
+                         }
+
+                     }
+                 }
+             }
+             catch (Exception ex)
+             {
+                 logger.Error(string.Format("Error occured in Chart for CreateBarChart method | DataSet : {0} | xIndex: {1} | yIndex : {2} | zIndex : {3} | Username : {4} ", dataSet, x_index, y_index, z_index, Username));
+                 ELogger.ErrorException(string.Format("Error occured in Chart for CreateBarChart method | DataSet : {0} | xIndex: {1} | yIndex : {2} | zIndex : {3} | Username : {4} ", dataSet, x_index, y_index, z_index, Username), ex);
+                 if (ex.InnerException != null)
+                     ELogger.ErrorException(string.Format("InnerException : Error occured in Chart for CreateBarChart method | DataSet : {0} | xIndex: {1} | yIndex : {2} | zIndex : {3} | Username : {4} ", dataSet, x_index, y_index, z_index, Username), ex.InnerException);
+                 throw;
+             }
+             return lstChartModel;
+         }*/
     }
 }

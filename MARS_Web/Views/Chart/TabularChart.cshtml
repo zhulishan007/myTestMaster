@@ -1,0 +1,66 @@
+﻿
+
+
+<script>
+    $(document).ready(function () {
+        var tbuobj = [];
+        var dt = [];
+        var Array = "@Html.Raw(@ViewBag.headerList)";
+        var data1 = @Html.Raw(@ViewBag.rowData);
+        var ColHeader = Array.split(',');
+        
+        if ($("#drpChartType").val() != 1) {
+            dt.push({
+                title: 'blank', width: 100, dataType: "string", dataIndx: 'blank'
+
+            });
+        }
+        ColHeader.forEach(function (item) {
+            console.log(item);
+            dt.push({
+                title: item, width: 100, dataType: "string", dataIndx: item
+             });
+        });
+
+        var data = data1;
+
+        var tbuobj = {
+        scrollModel: {autoFit: true },
+            showTitle: false,
+            resizable: true,
+            
+            //showHeader: false,
+            height: 400,
+            
+         
+            colModel: dt,
+            dataModel: {data: data },
+           //showToolbar: false,
+            toolbar: {
+        items: [
+                    {
+        type: 'select',
+                        label: 'Select number of frozen rows: ',
+                        cls: 'frozen',
+                        options: [0, 1, 2, 3, 4, 5, 6, 7, 8],
+                        listener: function (evt) {
+        this.option("freezeRows", $(evt.target).val());
+                            this.refresh();
+                        }
+                    },
+                    {type: 'separator' },
+                    {
+        type: 'checkbox',
+                        attr: 'id="sort_all_chk"',
+                        label: 'Exclude frozen rows while sorting'
+                    }
+                ]
+            }
+        };
+        gridchart["chart"] = pq.grid("#grdShowTable", tbuobj);
+        gridchart["chart"].refreshDataAndView(); 
+    });
+</script>
+
+
+

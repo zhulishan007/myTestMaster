@@ -19,5 +19,7 @@ namespace MARS_Repository.ViewModel
         public string Schema { get; set; }
         public string Entities { get; set; }
         public string App { get; set; }
+        public string DatabaseValue { get; set; }
+        public byte[] DatabaseValueByte { get; set; }
     }
 }

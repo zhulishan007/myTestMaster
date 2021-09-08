@@ -10,6 +10,7 @@ using System.Data.Objects;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace MARS_Repository.Repositories
 {
@@ -2106,112 +2107,119 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("New SaveAs Storyboard start | storyboardname: {0} | UserName: {1}", storyboardname, Username));
-                if (!string.IsNullOrEmpty(storyboardname))
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    storyboardname = storyboardname.Trim();
-                }
-                var lflag = "success";
-                var result = CheckDuplicateStoryboardNameSaveAs(storyboardname, oldsid);
-                if (result == true)
-                {
-                    var sresult = enty.T_STORYBOARD_SUMMARY.Find(oldsid);
-
-                    if (sresult.STORYBOARD_NAME == storyboardname && sresult.DESCRIPTION != storyboarddesc)
+                    logger.Info(string.Format("New SaveAs Storyboard start | storyboardname: {0} | UserName: {1}", storyboardname, Username));
+                    if (!string.IsNullOrEmpty(storyboardname))
                     {
-                        lflag = "description cannot be changed";
+                        storyboardname = storyboardname.Trim();
+                    }
+                    var lflag = "success";
+                    var result = CheckDuplicateStoryboardNameSaveAs(storyboardname, oldsid);
+                    if (result == true)
+                    {
+                        var sresult = enty.T_STORYBOARD_SUMMARY.Find(oldsid);
+
+                        if (sresult.STORYBOARD_NAME == storyboardname && sresult.DESCRIPTION != storyboarddesc)
+                        {
+                            lflag = "description cannot be changed";
+                            return lflag;
+                        }
+
+                        lflag = "error";
                         return lflag;
                     }
+                    var tbl = new T_STORYBOARD_SUMMARY();
+                    tbl.STORYBOARD_ID = Helper.NextTestSuiteId("T_TEST_STEPS_SEQ");
+                    tbl.STORYBOARD_NAME = storyboardname;
+                    tbl.DESCRIPTION = storyboarddesc;
+                    tbl.CREATE_TIME = DateTime.Now;
+                    tbl.LATEST_VERISON = null;
+                    tbl.ASSIGNED_PROJECT_ID = projectid;
+                    enty.T_STORYBOARD_SUMMARY.Add(tbl);
+                    //enty.SaveChanges();
 
-                    lflag = "error";
-                    return lflag;
-                }
-                var tbl = new T_STORYBOARD_SUMMARY();
-                tbl.STORYBOARD_ID = Helper.NextTestSuiteId("T_TEST_STEPS_SEQ");
-                tbl.STORYBOARD_NAME = storyboardname;
-                tbl.DESCRIPTION = storyboarddesc;
-                tbl.CREATE_TIME = DateTime.Now;
-                tbl.LATEST_VERISON = null;
-                tbl.ASSIGNED_PROJECT_ID = projectid;
-                enty.T_STORYBOARD_SUMMARY.Add(tbl);
-                //enty.SaveChanges();
+                    var lresult = (from t in enty.T_PROJ_TC_MGR
+                                   where t.STORYBOARD_ID == oldsid
+                                   select new InsertStoryboardModel
+                                   {
+                                       PROJECT_ID = t.PROJECT_ID,
+                                       TEST_SUITE_ID = t.TEST_SUITE_ID,
+                                       TEST_CASE_ID = t.TEST_CASE_ID,
+                                       RUN_TYPE = t.RUN_TYPE,
+                                       RUN_ORDER = t.RUN_ORDER,
+                                       DEPENDS_ON = t.DEPENDS_ON,
+                                       LATEST_TEST_MARK_ID = t.LATEST_TEST_MARK_ID,
+                                       RECORD_VERSION = t.RECORD_VERSION,
+                                       ALIAS_NAME = t.ALIAS_NAME,
+                                       STORYBOARD_DETAIL_ID = 0
+                                   }).ToList();
 
-                var lresult = (from t in enty.T_PROJ_TC_MGR
-                               where t.STORYBOARD_ID == oldsid
-                               select new InsertStoryboardModel
-                               {
-                                   PROJECT_ID = t.PROJECT_ID,
-                                   TEST_SUITE_ID = t.TEST_SUITE_ID,
-                                   TEST_CASE_ID = t.TEST_CASE_ID,
-                                   RUN_TYPE = t.RUN_TYPE,
-                                   RUN_ORDER = t.RUN_ORDER,
-                                   DEPENDS_ON = t.DEPENDS_ON,
-                                   LATEST_TEST_MARK_ID = t.LATEST_TEST_MARK_ID,
-                                   RECORD_VERSION = t.RECORD_VERSION,
-                                   ALIAS_NAME = t.ALIAS_NAME,
-                                   STORYBOARD_DETAIL_ID = 0
-                               }).ToList();
-
-                foreach (var item in lresult)
-                {
-                    item.STORYBOARD_DETAIL_ID = (long)Helper.NextTestSuiteId("T_TEST_STEPS_SEQ");
-                }
-                var AddSb = (from addresult in lresult
-                             select new
-                             {
-                                 storyboarddetailid = addresult.STORYBOARD_DETAIL_ID,
-                                 storyboardid = tbl.STORYBOARD_ID,
-                                 addresult.PROJECT_ID,
-                                 addresult.TEST_SUITE_ID,
-                                 addresult.TEST_CASE_ID,
-                                 addresult.RUN_TYPE,
-                                 addresult.RUN_ORDER,
-                                 addresult.DEPENDS_ON,
-                                 addresult.LATEST_TEST_MARK_ID,
-                                 addresult.RECORD_VERSION,
-                                 addresult.ALIAS_NAME
-                             }).ToList();
-
-                var saveitems = (from addsb in AddSb
-                                 select new T_PROJ_TC_MGR
+                    foreach (var item in lresult)
+                    {
+                        item.STORYBOARD_DETAIL_ID = (long)Helper.NextTestSuiteId("T_TEST_STEPS_SEQ");
+                    }
+                    var AddSb = (from addresult in lresult
+                                 select new
                                  {
-                                     STORYBOARD_DETAIL_ID = (long)addsb.storyboarddetailid,
-                                     STORYBOARD_ID = addsb.storyboardid,
-                                     PROJECT_ID = addsb.PROJECT_ID,
-                                     TEST_SUITE_ID = addsb.TEST_SUITE_ID,
-                                     TEST_CASE_ID = addsb.TEST_CASE_ID,
-                                     RUN_TYPE = addsb.RUN_TYPE,
-                                     RUN_ORDER = addsb.RUN_ORDER,
-                                     DEPENDS_ON = addsb.DEPENDS_ON,
-                                     LATEST_TEST_MARK_ID = addsb.LATEST_TEST_MARK_ID,
-                                     RECORD_VERSION = addsb.RECORD_VERSION,
-                                     ALIAS_NAME = addsb.ALIAS_NAME
+                                     storyboarddetailid = addresult.STORYBOARD_DETAIL_ID,
+                                     storyboardid = tbl.STORYBOARD_ID,
+                                     addresult.PROJECT_ID,
+                                     addresult.TEST_SUITE_ID,
+                                     addresult.TEST_CASE_ID,
+                                     addresult.RUN_TYPE,
+                                     addresult.RUN_ORDER,
+                                     addresult.DEPENDS_ON,
+                                     addresult.LATEST_TEST_MARK_ID,
+                                     addresult.RECORD_VERSION,
+                                     addresult.ALIAS_NAME
                                  }).ToList();
-                foreach (var item in saveitems)
-                {
-                    enty.T_PROJ_TC_MGR.Add(item);
+
+                    var saveitems = (from addsb in AddSb
+                                     select new T_PROJ_TC_MGR
+                                     {
+                                         STORYBOARD_DETAIL_ID = (long)addsb.storyboarddetailid,
+                                         STORYBOARD_ID = addsb.storyboardid,
+                                         PROJECT_ID = addsb.PROJECT_ID,
+                                         TEST_SUITE_ID = addsb.TEST_SUITE_ID,
+                                         TEST_CASE_ID = addsb.TEST_CASE_ID,
+                                         RUN_TYPE = addsb.RUN_TYPE,
+                                         RUN_ORDER = addsb.RUN_ORDER,
+                                         DEPENDS_ON = addsb.DEPENDS_ON,
+                                         LATEST_TEST_MARK_ID = addsb.LATEST_TEST_MARK_ID,
+                                         RECORD_VERSION = addsb.RECORD_VERSION,
+                                         ALIAS_NAME = addsb.ALIAS_NAME
+                                     }).ToList();
+                    foreach (var item in saveitems)
+                    {
+                        enty.T_PROJ_TC_MGR.Add(item);
+                    }
+                    // enty.SaveChanges();
+
+
+
+                    var lSBDataSettingList = (from sb in AddSb
+                                              join t1 in enty.T_PROJ_TC_MGR on sb.RUN_ORDER equals t1.RUN_ORDER
+                                              join t2 in enty.T_STORYBOARD_DATASET_SETTING on t1.STORYBOARD_DETAIL_ID equals t2.STORYBOARD_DETAIL_ID
+                                              where t1.STORYBOARD_ID == oldsid
+                                              select new T_STORYBOARD_DATASET_SETTING
+                                              {
+                                                  SETTING_ID = Helper.NextTestSuiteId("T_TEST_STEPS_SEQ"),
+                                                  STORYBOARD_DETAIL_ID = sb.storyboarddetailid,
+                                                  DATA_SUMMARY_ID = t2.DATA_SUMMARY_ID
+                                              }
+                                              ).ToList();
+                    foreach (var item in lSBDataSettingList)
+                    {
+                        enty.T_STORYBOARD_DATASET_SETTING.Add(item);
+                    }
+                    enty.SaveChanges();
+
+                    scope.Complete();
+                    logger.Info(string.Format("New SaveAs Storyboard end | storyboardname: {0} | UserName: {1}", storyboardname, Username));
                 }
-               // enty.SaveChanges();
 
-
-
-                var lSBDataSettingList = (from sb in AddSb
-                                          join t1 in enty.T_PROJ_TC_MGR on sb.RUN_ORDER equals t1.RUN_ORDER
-                                          join t2 in enty.T_STORYBOARD_DATASET_SETTING on t1.STORYBOARD_DETAIL_ID equals t2.STORYBOARD_DETAIL_ID
-                                          where t1.STORYBOARD_ID == oldsid
-                                          select new T_STORYBOARD_DATASET_SETTING
-                                          {
-                                              SETTING_ID = Helper.NextTestSuiteId("T_TEST_STEPS_SEQ"),
-                                              STORYBOARD_DETAIL_ID = sb.storyboarddetailid,
-                                              DATA_SUMMARY_ID = t2.DATA_SUMMARY_ID
-                                          }
-                                          ).ToList();
-                foreach (var item in lSBDataSettingList)
-                {
-                    enty.T_STORYBOARD_DATASET_SETTING.Add(item);
-                }
-                enty.SaveChanges();
-                logger.Info(string.Format("New SaveAs Storyboard end | storyboardname: {0} | UserName: {1}", storyboardname, Username));
+                   
                 return "success";
             }
             catch (Exception ex)

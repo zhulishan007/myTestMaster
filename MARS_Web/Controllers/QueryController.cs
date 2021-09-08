@@ -51,6 +51,7 @@ namespace MARS_Web.Controllers
             //Get Repository
             logger.Info(string.Format("Query list open start | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
             var query_repo = new QueryRepository();
+            var dbconn_repo = new DatabaseConnectionRepository();
             query_repo.Username = SessionManager.TESTER_LOGIN_NAME;
             List<QueryGridViewModel> data = new List<QueryGridViewModel>();
             int totalRecords = default(int);
@@ -76,6 +77,29 @@ namespace MARS_Web.Controllers
                 //Get data from List Connection Object
                 #region Getdata
                 data = query_repo.GetQueryList();
+                DatabaseConnectionViewModel dbConnectionViewModel = new DatabaseConnectionViewModel();
+                DatabaseConnectionRepository conn_repo = new DatabaseConnectionRepository();
+                ChartHelper chartHelper = new ChartHelper();
+
+                for(int i =0; i < data.Count; i++)
+                {
+                    dbConnectionViewModel = conn_repo.GetDBConnectionListById(data[i].ConnectionId, SessionManager.APP, SessionManager.Schema);
+                    dbConnectionViewModel = chartHelper.GetConnectionDetails(dbConnectionViewModel);
+                    data[i].ConnectionType = dbConnectionViewModel.ConnectionType;
+                    switch (data[i].ConnectionType)
+                    {
+                        case 1:
+                            data[i].ConnectionTypeString = "Oracle";
+                            break;
+                        case 2:
+                            data[i].ConnectionTypeString = "SQL Server";
+                            break;
+                        case 3:
+                            data[i].ConnectionTypeString = "SyBase";
+                            break;
+                    }
+                }
+
                 #endregion
 
                 //Check Variables Value 

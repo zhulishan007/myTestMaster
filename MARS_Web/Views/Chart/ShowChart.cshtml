@@ -65,49 +65,12 @@
             <div class="kt-portlet__body">
                 @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Display Chart"))
                 {
-                <input type="hidden" id="hdnReloadData" />
-                <form id="frmchart">
-                    @*<table class="table-width">
-                        <tr></tr>
-                        <tr>
-                            <td>
-                                <select class="form-control kt-select2" id="drpConnection" onchange="LoadQueryNames()">
-                                    @{var lDbList = ViewBag.databaseNameList as IEnumerable<DatabaseConnNameViewModel>;
-                                        <optgroup label="Database Names">
-                                            <option value="" style="display:none"></option>
-
-                                            @foreach (var item in lDbList)
-                                            {
-                                                <option value="@item.ConnectionId">@item.ConnectionName</option>
-                                            }
-                                        </optgroup>
-                                    }
-                                </select>
-                            </td>
-                            <td>
-                                <select class="form-control " id="drpQuery"></select>
-                            </td>
-                            <td>
-                                <select class="form-control kt-select2 " id="drpChartType">
-                                    <option value="" style="display:none"></option>
-                                    <option value="1">Pie Chart</option>
-                                    <option value="2">Bar Chart</option>
-                                    <option value="3">3D Chart</option>
-                                </select>
-                            </td>
-                            <td>
-
-                                <button type="button" class="btn btn-brand btn-elevate btn-icon-sm"  id="btnRun" onclick="DisplayChart()"><i class="la la-play"></i>Run</button>
-                                <button type="button" class="btn btn-brand btn-elevate btn-icon-sm" id="btnReload" onclick="ReloadChart()"><i class="la la-refresh"></i>Reload</button>
-                                @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Add Axis"))
-                                {
-                                    <button type="button" class="btn btn-brand btn-elevate btn-icon-sm" id="btnSetData" onclick="LoadAxisData()"><i class="la la-cog"></i></button>
-                                }
-                            </td>
-                        </tr>
-                    </table>*@
-                    <div class="row">
-                        <div class="col-md-3 col-sm-12">
+                    <input type="hidden" id="hdnReloadData" />
+                    <form id="frmchart">
+                        @*<table class="table-width">
+                    <tr></tr>
+                    <tr>
+                        <td>
                             <select class="form-control kt-select2" id="drpConnection" onchange="LoadQueryNames()">
                                 @{var lDbList = ViewBag.databaseNameList as IEnumerable<DatabaseConnNameViewModel>;
                                     <optgroup label="Database Names">
@@ -120,53 +83,105 @@
                                     </optgroup>
                                 }
                             </select>
-                        </div>
-                        <div class="col-md-3 col-sm-12">
-                            <select class="form-control " id="drpQuery">
-                                @* start : query list on page load*@
-                                @{var lQueryList = ViewBag.queryList as IEnumerable<QueryNameViewModel>;
-                                    <optgroup label="Database Names">
-                                        <option value="" style="display:none"></option>
-
-                                        @foreach (var item in lQueryList)
-                                        {
-                                            <option value="@item.QueryId">@item.QueryName</option>
-                                        }
-                                    </optgroup>
-                                }
-                                @* end : query list on page load*@
-                            </select>
-                        </div>
-                        <div class="col-md-3 col-sm-12">
+                        </td>
+                        <td>
+                            <select class="form-control " id="drpQuery"></select>
+                        </td>
+                        <td>
                             <select class="form-control kt-select2 " id="drpChartType">
                                 <option value="" style="display:none"></option>
                                 <option value="1">Pie Chart</option>
                                 <option value="2">Bar Chart</option>
                                 <option value="3">3D Chart</option>
-                                <option value="4">Basic Line Chart</option>
-                                <option value="5">Spline Line Chart</option>
-                                <option value="6">Spline Area Chart</option>
-                                <option value="7">Basic Column Chart</option>
-                                <option value="8">Stacked Bar Chart</option>
-                                <option value="9">Stacked Percent Chart</option>
-                                <option value="10">Percentage Area Chart</option>
                             </select>
-                        </div>
-                        <div class="col-md-3 col-sm-12">
-                            <button type="button" class="btn btn-brand btn-elevate btn-icon-sm" id="btnRun" onclick="DisplayChart()"><i class="la la-play"></i>Run</button>
+                        </td>
+                        <td>
+
+                            <button type="button" class="btn btn-brand btn-elevate btn-icon-sm"  id="btnRun" onclick="DisplayChart()"><i class="la la-play"></i>Run</button>
                             <button type="button" class="btn btn-brand btn-elevate btn-icon-sm" id="btnReload" onclick="ReloadChart()"><i class="la la-refresh"></i>Reload</button>
-                            @if(PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Add Axis"))
+                            @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Add Axis"))
                             {
                                 <button type="button" class="btn btn-brand btn-elevate btn-icon-sm" id="btnSetData" onclick="LoadAxisData()"><i class="la la-cog"></i></button>
                             }
-                        </div>
+                        </td>
+                    </tr>
+                </table>*@
+                        <div class="row">
+                            <div class="col-md-3 col-sm-12">
+                                <select class="form-control kt-select2" id="drpConnection" onchange="LoadQueryNames()">
+                                    @{var lDbList = ViewBag.databaseNameList as IEnumerable<DatabaseConnNameViewModel>;
+                                        <optgroup label="Database Names">
+                                            <option value="" style="display:none"></option>
+
+                                            @foreach (var item in lDbList)
+                                            {
+                                                <option value="@item.ConnectionId">@item.ConnectionName</option>
+                                            }
+                                        </optgroup>
+                                    }
+                                </select>
+                            </div>
+                            <div class="col-md-3 col-sm-12">
+                                <select class="form-control " id="drpQuery">
+                                    @* start : query list on page load*@
+                                    @{var lQueryList = ViewBag.queryList as IEnumerable<QueryNameViewModel>;
+                                        <optgroup label="Query Names">
+                                            <option value="" style="display:none"></option>
+
+                                            @foreach (var item in lQueryList)
+                                            {
+                                                <option value="@item.QueryId">@item.QueryName</option>
+                                            }
+                                        </optgroup>
+                                    }
+                                    @* end : query list on page load*@
+                                </select>
+                            </div>
+                            <div class="col-md-3 col-sm-12">
+                                <select class="form-control kt-select2 " id="drpChartType">
+                                    <option value="" style="display:none"></option>
+                                    <option value="1">Pie Chart</option>
+                                    <option value="2">Bar 3D Chart</option>
+                                    <option value="3">Surface 3D Chart</option>
+                                    <option value="4">Basic Line Chart</option>
+                                    <option value="5">Spline Line Chart</option>
+                                    <option value="6">Spline Area Chart</option>
+                                    <option value="7">Basic Column Chart</option>
+                                    <option value="8">Stacked Bar Chart</option>
+                                    <option value="9">Stacked Percent Chart</option>
+                                    <option value="10">Percentage Area Chart</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 col-sm-12">
+                                <button type="button" class="btn btn-brand btn-elevate btn-icon-sm" id="btnRun" onclick="DisplayChart()"><i class="la la-play"></i>Run</button>
+                                <button type="button" class="btn btn-brand btn-elevate btn-icon-sm" id="btnReload" onclick="ReloadChart()"><i class="la la-refresh"></i>Reload</button>
+                                @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Add Axis"))
+                                {
+                                    <button type="button" class="btn btn-brand btn-elevate btn-icon-sm" id="btnSetData" onclick="LoadAxisData()"><i class="la la-cog"></i></button>
+                                }
+
+                                <label class="checkbox btn btn-brand btn-elevate btn-icon-sm" style="margin-bottom: 0">
+                                    <input type="checkbox" name="chkShowGraph" id="chkShowGraph" checked />
+                                    <span></span>
+                                    Graph
+                                </label>
+
+                                @*<label class="form-control-label">Graphs</label>
+                        <label class='kt-checkbox--brand' style="padding-left:1em"><input type="checkbox" id="isActive" name="isActive" checked></label>*@
+
+                            </div>
+
                         </div>
                     </form>
                     <div id="chartholder" style="align-self: center">
 
                     </div>
-                 }
-                </div>
+                    <div id="grdShowTable" style="margin:auto">
+
+
+                   </div>
+                }
+            </div>
         </div>
     </div>
     
@@ -277,30 +292,41 @@
     }
 
     function DisplayChart() {
-        
+        startloader();
         if (!$("#frmchart").valid()) {
             return false;
         };
-       // startloader();
         var connId = $("#drpConnection").val();
         var queryId = $("#drpQuery").val();
         var chartType = $("#drpChartType").val();
+        var showGraph = $("#chkShowGraph").prop("checked");
         $.ajax({
             url: "/Chart/DisplayChart",
-            data: '{"ConnId":"' + connId + '", "QueryId":"' + queryId + '", "ChartType":"' + chartType + '"}',
+            data: '{"ConnId":"' + connId + '", "QueryId":"' + queryId + '", "ChartType":"' + chartType + '", "ShowGraph":"' + showGraph + '"}',
             type: "POST",
-            async: false,
+            //async: false,
             contentType: "application/json;charset=utf-8",
             dataType: "json",
             success: function (result) {
-                
                 $("#chartholder").empty();
-                $("#chart_div").empty();
-                
+                if (showGraph == true) {
+                    $("#chartholder").css("display", "block");
+                    $("#grdShowTable").css("display", "none");
+                }
+                else {
+                    $("#chartholder").css("display", "none");
+                    $("#grdShowTable").css("display", "block");
+                }
+                //$("#chartholder").empty();
+              //  $("#grdShowTable").empty();
+                //$("#chart_div").empty();
+                //$("#chart_div").remove();
+               // $("#chartholder").removeChild($("#grdShowTable"));
+              //  $("#grdShowTable").removeChild();
                 if (result.status == 1) {
-                   
                     var ldiv = '<div id="chart_div">' + result.data + '</div>';
                     $(".divtablist").append(ldiv);
+                    
                     $("#hdnReloadData").val(result.data);
                 }
                 else {
@@ -314,12 +340,16 @@
                         }
                     });
                 }
+
+                //stoploader();
             },
             error: function (errormessage) {
                 alert(errormessage.responseText);
+            },
+            complete: function (result) {
+                stoploader();
             }
         });
-       // stoploader();
     }
 
     function ReloadChart() {
@@ -336,7 +366,7 @@
             
         }
         else {
-            console.log("Hi i m here");
+          //  console.log("Hi i m here");
             DisplayChart();
         }
         
@@ -559,6 +589,11 @@
        
        
     }
+
+    $("#chkShowGraph").change(function () {
+        DisplayChart();
+    });
+  
 
 </script>
 

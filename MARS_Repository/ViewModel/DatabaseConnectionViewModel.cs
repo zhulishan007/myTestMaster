@@ -27,7 +27,7 @@ namespace MARS_Repository.ViewModel
         public bool IsTested { get; set; }
         public DateTime LastTested { get; set; }
         public string ErrorMessage { get; set; }
-
+        public string DatabaseValueJson { get; set; }
     }
 
     public class DatabaseConnNameViewModel

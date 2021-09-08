@@ -193,7 +193,7 @@ namespace MARS_Repository.Repositories
                 List<QueryGridViewModel> queryList = new List<QueryGridViewModel>();
 
                 var query = (from q in enty.T_QUERY
-                             join db in enty.T_DATABASE_CONNECTIONS on q.CONN_ID equals db.CONNECTION_ID
+                             join db in enty.T_DBCONNECTION on q.CONN_ID equals db.DBCONNECTION_ID
 
                              select new QueryGridViewModel
                              {
@@ -201,9 +201,9 @@ namespace MARS_Repository.Repositories
                                  QueryName = q.QUERY_NAME,
                                  QueryDescription = q.QUERY_DESC,
                                  IsActive = q.IS_ACTIVE,
-                                 ConnectionId = db.CONNECTION_ID,
-                                 ConnectionName = db.CONNECTION_NAME,
-                                 ConnectionType = db.CONNECTION_TYPE
+                                 ConnectionId = db.DBCONNECTION_ID,
+                                 ConnectionName = db.DATABASENAME,
+                                // ConnectionType = db.CONNECTION_TYPE
 
                              }).ToList();
 
@@ -216,20 +216,21 @@ namespace MARS_Repository.Repositories
                     queryGridViewModel.IsActive = item.IsActive;
                     queryGridViewModel.ConnectionId = item.ConnectionId;
                     queryGridViewModel.ConnectionName = item.ConnectionName;
-                    queryGridViewModel.ConnectionType = item.ConnectionType;
+                   
+                    //queryGridViewModel.ConnectionType = item.ConnectionType;
 
-                    switch (queryGridViewModel.ConnectionType)
-                    {
-                        case 1:
-                            queryGridViewModel.ConnectionTypeString = "Oracle";
-                            break;
-                        case 2:
-                            queryGridViewModel.ConnectionTypeString = "SQL Server";
-                            break;
-                        case 3:
-                            queryGridViewModel.ConnectionTypeString = "SyBase";
-                            break;
-                    }
+                    //switch (queryGridViewModel.ConnectionType)
+                    //{
+                    //    case 1:
+                    //        queryGridViewModel.ConnectionTypeString = "Oracle";
+                    //        break;
+                    //    case 2:
+                    //        queryGridViewModel.ConnectionTypeString = "SQL Server";
+                    //        break;
+                    //    case 3:
+                    //        queryGridViewModel.ConnectionTypeString = "SyBase";
+                    //        break;
+                    //}
                     queryList.Add(queryGridViewModel);
                 }
                 logger.Info(string.Format("Get Query List end | UserName: {0}", Username));
@@ -349,7 +350,7 @@ namespace MARS_Repository.Repositories
             {
                 logger.Info(string.Format("Get GetQueryById start | QueryId: {0} | Username: {1}", queryId, Username));
                 var result = (from q in enty.T_QUERY
-                              join db in enty.T_DATABASE_CONNECTIONS on q.CONN_ID equals db.CONNECTION_ID
+                              join db in enty.T_DBCONNECTION on q.CONN_ID equals db.DBCONNECTION_ID
                               where q.QUERY_ID == queryId
                               select new QueryGridViewModel
                               {
@@ -357,9 +358,9 @@ namespace MARS_Repository.Repositories
                                   QueryName = q.QUERY_NAME,
                                   QueryDescription = q.QUERY_DESC,
                                   IsActive = q.IS_ACTIVE,
-                                  ConnectionId = db.CONNECTION_ID,
-                                  ConnectionName = db.CONNECTION_NAME,
-                                  ConnectionType = db.CONNECTION_TYPE
+                                  ConnectionId = db.DBCONNECTION_ID,
+                                  ConnectionName = db.DATABASENAME,
+                                  //ConnectionType = db.CONNECTION_TYPE
 
                               }).FirstOrDefault();
                 logger.Info(string.Format("Get GetQueryById end | QueryId: {0} | Username: {1}", queryId, Username));

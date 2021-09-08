@@ -65,7 +65,7 @@ namespace MARS_Web.Controllers
             {
                 logger.Error(string.Format("Error occured in TestCase controller for TestCaseList method | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
                 ELogger.ErrorException(string.Format("Error occured in TestCase controller for TestCaseList method | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
-                if (ex.InnerException != null)
+                if(ex.InnerException != null)
                     ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for TestCaseList method | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
             }
             return PartialView("");
@@ -127,7 +127,7 @@ namespace MARS_Web.Controllers
             {
                 logger.Error(string.Format("Error occured in TestCase controller for DataLoad method | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
                 ELogger.ErrorException(string.Format("Error occured in TestCase controller for DataLoad method | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
-                if (ex.InnerException != null)
+                if(ex.InnerException != null)
                     ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for DataLoad method | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
 
                 throw ex;
@@ -162,7 +162,7 @@ namespace MARS_Web.Controllers
             {
                 logger.Error(string.Format("Error occured in TestCase controller for DeleteTestCase method | TestCaseId: {0} | UserName: {1}", TestCaseId, SessionManager.TESTER_LOGIN_NAME));
                 ELogger.ErrorException(string.Format("Error occured in TestCase controller for DeleteTestCase method | TestCaseId: {0} | UserName: {1}", TestCaseId, SessionManager.TESTER_LOGIN_NAME), ex);
-                if (ex.InnerException != null)
+                if(ex.InnerException != null)
                     ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for DeleteTestCase method | TestCaseId: {0} | UserName: {1}", TestCaseId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
@@ -213,8 +213,8 @@ namespace MARS_Web.Controllers
                 logger.Error(string.Format("Error occured in TestCase controller for AddEditTestCase method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
                 ELogger.ErrorException(string.Format("Error occured in TestCase controller for AddEditTestCase method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
 
-                if (ex.InnerException != null)
-                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for AddEditTestCase method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+                if(ex.InnerException != null)
+                   ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for AddEditTestCase method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -240,8 +240,8 @@ namespace MARS_Web.Controllers
             {
                 logger.Error(string.Format("Error occured in TestCase controller for GetTestSuiteByApplicaton method | ApplicationId: {0} | UserName: {1}", ApplicationId, SessionManager.TESTER_LOGIN_NAME));
                 ELogger.ErrorException(string.Format("Error occured in TestCase controller for GetTestSuiteByApplicaton method | ApplicationId: {0} | UserName: {1}", ApplicationId, SessionManager.TESTER_LOGIN_NAME), ex);
-                if (ex.InnerException != null)
-                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for GetTestSuiteByApplicaton method | ApplicationId: {0} | UserName: {1}", ApplicationId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+                if(ex.InnerException != null)
+                     ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for GetTestSuiteByApplicaton method | ApplicationId: {0} | UserName: {1}", ApplicationId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -304,8 +304,8 @@ namespace MARS_Web.Controllers
             {
                 logger.Error(string.Format("Error occured in TestCase controller for MoveTestCase method | projectId: {0} | TestSuiteId: {1} | TestCaseId : {2} | UserName: {3}", lprojectId, lsuiteId, caseId, SessionManager.TESTER_LOGIN_NAME));
                 ELogger.ErrorException(string.Format("Error occured in TestCase controller for MoveTestCase method | projectId: {0} | TestSuiteId: {1} | TestCaseId : {2} | UserName: {3}", lprojectId, lsuiteId, caseId, SessionManager.TESTER_LOGIN_NAME), ex);
-                if (ex.InnerException != null)
-                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for MoveTestCase method | projectId: {0} | TestSuiteId: {1} | TestCaseId : {2} | UserName: {3}", lprojectId, lsuiteId, caseId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+                if(ex.InnerException != null)
+                   ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for MoveTestCase method | projectId: {0} | TestSuiteId: {1} | TestCaseId : {2} | UserName: {3}", lprojectId, lsuiteId, caseId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -337,7 +337,7 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in TestCase controller for ChangeTestCaseName method | TestCaseName: {0} | TestCaseId: {1} | TestCaseDesc : {2} | UserName: {3}", TestCaseName, TestCaseId, TestCaseDes, SessionManager.TESTER_LOGIN_NAME));
+                logger.Error(string.Format("Error occured in TestCase controller for ChangeTestCaseName method | TestCaseName: {0} | TestCaseId: {1} | TestCaseDesc : {2} | UserName: {3}", TestCaseName, TestCaseId,  TestCaseDes, SessionManager.TESTER_LOGIN_NAME));
                 ELogger.ErrorException(string.Format("Error occured in TestCase controller for ChangeTestCaseName method | TestCaseName: {0} | TestCaseId: {1} | TestCaseDesc : {2} | UserName: {3}", TestCaseName, TestCaseId, TestCaseDes, SessionManager.TESTER_LOGIN_NAME), ex);
                 if (ex.InnerException != null)
                     ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for ChangeTestCaseName method | TestCaseName: {0} | TestCaseId: {1} | TestCaseDesc : {2} | UserName: {3}", TestCaseName, TestCaseId, TestCaseDes, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
@@ -577,7 +577,7 @@ namespace MARS_Web.Controllers
                             var lRun_Order = "";
                             foreach (var item in updates)
                             {
-                                var lflag = true;
+                               var lflag = true;
                                 if (item.Key == "keyword")
                                 {
                                     lKeyword = Convert.ToString(item.Value);
@@ -881,9 +881,9 @@ namespace MARS_Web.Controllers
                         return Json(resultModel, JsonRequestBehavior.AllowGet);
                     }
                     //insert into Stging table
-                    if (dt != null)
+                    if(dt != null)
                     {
-                        if (dt.Rows.Count > 0)
+                        if(dt.Rows.Count > 0)
                         {
                             for (int i = 0; i < dt.Rows.Count; i++)
                             {
@@ -908,10 +908,10 @@ namespace MARS_Web.Controllers
                                     }
                                 }
                             }
-
+                           
                         }
                     }
-
+                    
                     EmailHelper.WriteMessage("Start Save Testcase", EmailHelper.logFilePath, DateTime.Now.ToString(), "");
                     repTC.InsertStgTestCaseSave(lConnectionStr, lSchema, dt, lTestCaseId, int.Parse(valFeedD));
                     EmailHelper.WriteMessage("Complete Save Testcase", EmailHelper.logFilePath, DateTime.Now.ToString(), "");
@@ -933,9 +933,9 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in TestCase controller for SaveTestCase method | TestCaseId: {0} | TestSuiteId: {1} | UserName: {2}", lTestCaseId, lTestSuiteId, SessionManager.TESTER_LOGIN_NAME));
+                logger.Error(string.Format("Error occured in TestCase controller for SaveTestCase method | TestCaseId: {0} | TestSuiteId: {1} | UserName: {2}",  lTestCaseId, lTestSuiteId, SessionManager.TESTER_LOGIN_NAME));
                 ELogger.ErrorException(string.Format("Error occured in TestCase controller for SaveTestCase method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
-                if (ex.InnerException != null)
+                if(ex.InnerException != null)
                     ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for SaveTestCase method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 if (ex.InnerException.InnerException != null)
                     ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for SaveTestCase method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException.InnerException);
@@ -945,7 +945,7 @@ namespace MARS_Web.Controllers
             }
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
-
+     
         public ActionResult SaveTestCase_History(string lJson, string testCaseId, string testSuiteId, string pKeywordObject = "", string steps = "",
              string DeleteColumnsList = "", string SkipColumns = "", string Version = "")
         {
@@ -1840,7 +1840,7 @@ namespace MARS_Web.Controllers
                 logger.Error(string.Format("Error occured in TestCase controller for ValidateTestCase method | TestCaseId: {0} | pKeywordObject: {1} | TestSuiteId: {2} | UserName: {3}", testCaseId, pKeywordObject, testSuiteId, SessionManager.TESTER_LOGIN_NAME));
                 ELogger.ErrorException(string.Format("Error occured in TestCase controller for ValidateTestCase method | TestCaseId: {0} | pKeywordObject: {1} | TestSuiteId: {2} | UserName: {3}", testCaseId, pKeywordObject, testSuiteId, SessionManager.TESTER_LOGIN_NAME), ex);
                 if (ex.InnerException != null)
-                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for ValidateTestCase method | TestCaseId: {0} | pKeywordObject: {1} | TestSuiteId: {2} | UserName: {3}", testCaseId, pKeywordObject, testSuiteId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for ValidateTestCase method | TestCaseId: {0} | pKeywordObject: {1} | TestSuiteId: {2} | UserName: {3}", testCaseId ,  pKeywordObject, testSuiteId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
 
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
@@ -1907,8 +1907,8 @@ namespace MARS_Web.Controllers
                     lKeywordList.Add("resumenext");
                     lKeywordList.Add("startapplication");
                     lKeywordList.Add("waitforseconds");
-
-
+                    
+                    
                     lList = repKeyword.GetKeywords().Where(x => lKeywordList.Contains(x.KEY_WORD_NAME.ToLower().Trim())).Select(y => new KeywordList
                     {
                         KeywordId = y.KEY_WORD_ID,
@@ -2034,7 +2034,7 @@ namespace MARS_Web.Controllers
                 var plist = js.Deserialize<List<Object>>(lGrid);
 
                 var test = ((System.Collections.Generic.Dictionary<string, object>)plist[0]).ToList().Count;
-                if (((System.Collections.Generic.Dictionary<string, object>)plist[0]).ToList().Count < 14)
+                if(((System.Collections.Generic.Dictionary<string, object>)plist[0]).ToList().Count < 14)
                 {
                     foreach (var d in plist)
                     {
@@ -2243,7 +2243,7 @@ namespace MARS_Web.Controllers
                 logger.Error(string.Format("Error occured in TestCase controller for CheckDatasetExistsInStoryboard method | datasetid: {0} | UserName: {1}", datasetid, SessionManager.TESTER_LOGIN_NAME));
                 ELogger.ErrorException(string.Format("Error occured in TestCase controller for CheckDatasetExistsInStoryboard method | datasetid: {0} | UserName: {1}", datasetid, SessionManager.TESTER_LOGIN_NAME), ex);
                 if (ex.InnerException != null)
-                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for CheckDatasetExistsInStoryboard method | datasetid: {0} | UserName: {1}", datasetid, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for CheckDatasetExistsInStoryboard method | datasetid: {0} | UserName: {1}",  datasetid, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
 
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
@@ -2393,9 +2393,9 @@ namespace MARS_Web.Controllers
                 logger.Error(string.Format("Error occured in TestCase controller for SaveAsTestCase method | testcasename: {0} | OldTestCaseId: {1} | testcasedesc: {2} | testsuiteid: {3} | projectid: {4} | optionval: {5} | datasetName: {6} | suffix: {7} | UserName: {8}", testcasename, oldtestcaseid, testcasedesc, testsuiteid, projectid, optionval, datasetName, suffix, SessionManager.TESTER_LOGIN_NAME));
                 ELogger.ErrorException(string.Format("Error occured in TestCase controller for SaveAsTestCase method | testcasename: {0} | OldTestCaseId: {1} | testcasedesc: {2} | testsuiteid: {3} | projectid: {4} | optionval: {5} | datasetName: {6} | suffix: {7} | UserName: {8}", testcasename, oldtestcaseid, testcasedesc, testsuiteid, projectid, optionval, datasetName, suffix, SessionManager.TESTER_LOGIN_NAME), ex);
                 if (ex.InnerException != null)
-                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for SaveAsTestCase method | testcasename: {0} | OldTestCaseId: {1} | testcasedesc: {2} | testsuiteid: {3} | projectid: {4} | optionval: {5} | datasetName: {6} | suffix: {7} | UserName: {8}", testcasename, oldtestcaseid, testcasedesc, testsuiteid, projectid, optionval, datasetName, suffix, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for SaveAsTestCase method | testcasename: {0} | OldTestCaseId: {1} | testcasedesc: {2} | testsuiteid: {3} | projectid: {4} | optionval: {5} | datasetName: {6} | suffix: {7} | UserName: {8}", testcasename, oldtestcaseid, testcasedesc, testsuiteid, projectid, optionval, datasetName , suffix, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
 
-                if (ex.InnerException.InnerException != null)
+                if(ex.InnerException.InnerException != null)
                     ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for SaveAsTestCase method | testcasename: {0} | OldTestCaseId: {1} | testcasedesc: {2} | testsuiteid: {3} | projectid: {4} | optionval: {5} | datasetName: {6} | suffix: {7} | UserName: {8}", testcasename, oldtestcaseid, testcasedesc, testsuiteid, projectid, optionval, datasetName, suffix, SessionManager.TESTER_LOGIN_NAME), ex.InnerException.InnerException);
 
                 resultModel.status = 0;
@@ -2574,7 +2574,7 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in TestCase controller for CheckDuplicateGroupNameExist method | Name: {0} | Id: {1} | Username: {2}", Name, Id, SessionManager.TESTER_LOGIN_NAME));
+                logger.Error(string.Format("Error occured in TestCase controller for CheckDuplicateGroupNameExist method | Name: {0} | Id: {1} | Username: {2}", Name,Id, SessionManager.TESTER_LOGIN_NAME));
                 ELogger.ErrorException(string.Format("Error occured in TestCase controller for CheckDuplicateGroupNameExist method | Name: {0} | Id: {1} | Username: {2}", Name, Id, SessionManager.TESTER_LOGIN_NAME), ex);
                 if (ex.InnerException != null)
                     ELogger.ErrorException(string.Format("InnerException : Error occured  in TestCase controller for CheckDuplicateGroupNameExist method | Name: {0} | Id: {1} | Username: {2}", Name, Id, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
@@ -2977,7 +2977,7 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in TestCase controller for GetDatasetTagDetails method | datasetid: {0} | Username: {1}", datasetid, SessionManager.TESTER_LOGIN_NAME));
+                logger.Error(string.Format("Error occured in TestCase controller for GetDatasetTagDetails method | datasetid: {0} | Username: {1}", datasetid,SessionManager.TESTER_LOGIN_NAME));
                 ELogger.ErrorException(string.Format("Error occured in TestCase controller for GetDatasetTagDetails method | datasetid: {0} | Username: {1}", datasetid, SessionManager.TESTER_LOGIN_NAME), ex);
                 if (ex.InnerException != null)
                     ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for GetDatasetTagDetails method | datasetid: {0} | Username: {1}", datasetid, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
@@ -3007,7 +3007,7 @@ namespace MARS_Web.Controllers
 
                 throw;
             }
-
+            
         }
 
         //Check Folder Sequence already exist or not
@@ -3026,7 +3026,7 @@ namespace MARS_Web.Controllers
                 logger.Error(string.Format("Error occured in TestCase controller for CheckFolderSequenceMapping method | FolderId: {0} | SequenceId: {1} | DatasetId: {2} | Username: {3}", FolderId, SequenceId, DatasetId, SessionManager.TESTER_LOGIN_NAME));
                 ELogger.ErrorException(string.Format("Error occured in TestCase controller for CheckFolderSequenceMapping method | FolderId: {0} | SequenceId: {1} | DatasetId: {2} | Username: {3}", FolderId, SequenceId, DatasetId, SessionManager.TESTER_LOGIN_NAME), ex);
                 if (ex.InnerException != null)
-                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for CheckFolderSequenceMapping method | FolderId: {0} | SequenceId: {1} | DatasetId: {2} | Username: {3}", FolderId, SequenceId, DatasetId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for CheckFolderSequenceMapping method | FolderId: {0} | SequenceId: {1} | DatasetId: {2} | Username: {3}", FolderId, SequenceId,DatasetId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
 
                 throw;
             }

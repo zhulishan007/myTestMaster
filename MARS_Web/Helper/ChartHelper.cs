@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 
 namespace MARS_Web.Helper
 {
@@ -90,6 +91,57 @@ namespace MARS_Web.Helper
                 return true;
             }
             return false;
+        }
+
+        public DatabaseConnectionViewModel GetConnectionDetails(DatabaseConnectionViewModel dbConnectionModel)
+        {
+            try
+            {
+                
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                // var lapp = enty.T_DATABASE_CONNECTIONS.ToList();
+                //List<DatabaseConnectionViewModel> resultList = new List<DatabaseConnectionViewModel>();
+               
+                    DatabaseConnectionViewModel objDbConnViewModel = new DatabaseConnectionViewModel();
+                    objDbConnViewModel.ConnectionId = dbConnectionModel.ConnectionId;
+                    objDbConnViewModel.ConnectionName = dbConnectionModel.ConnectionName;
+                    objDbConnViewModel.DatabaseValueJson = dbConnectionModel.DatabaseValueJson;
+
+                    DatabaseConnectionViewModel objDbConn = js.Deserialize<DatabaseConnectionViewModel>(objDbConnViewModel.DatabaseValueJson);
+                if (objDbConn != null)
+                {
+                    objDbConnViewModel.ConnectionType = objDbConn.ConnectionType;
+                    objDbConnViewModel.ConnectionTypeString = "";
+                    switch (objDbConnViewModel.ConnectionType)
+                    {
+                        case 1:
+                            objDbConnViewModel.ConnectionTypeString = "Oracle";
+                            break;
+                        case 2:
+                            objDbConnViewModel.ConnectionTypeString = "SQL Server";
+                            break;
+                        case 3:
+                            objDbConnViewModel.ConnectionTypeString = "SyBase";
+                            break;
+                    }
+                    objDbConnViewModel.Host = objDbConn.Host == null || objDbConn.Host == "null" ? "" : objDbConn.Host;
+                    objDbConnViewModel.Port = objDbConn.Port == null ? 0 : objDbConn.Port;
+                    objDbConnViewModel.Protocol = objDbConn.Protocol == null || objDbConn.Protocol == "null" ? "" : objDbConn.Protocol;
+                    objDbConnViewModel.ServiceName = objDbConn.ServiceName == null || objDbConn.ServiceName == "null" ? "" : objDbConn.ServiceName;
+                    objDbConnViewModel.Sid = objDbConn.Sid == null || objDbConn.Sid == "null" ? "" : objDbConn.Sid;
+                    objDbConnViewModel.UserId = (objDbConn.UserId == null || objDbConn.UserId == "null") ? "" : objDbConn.UserId;
+                    objDbConnViewModel.Password = objDbConn.Password == null || objDbConn.Password == "null" ? "" : objDbConn.Password;
+                    objDbConnViewModel.IsActive = objDbConn.IsActive == null ? 0 : objDbConn.IsActive;
+
+                }
+
+                return objDbConnViewModel;
+            }
+            catch (Exception ex)
+            {
+               
+                throw;
+            }
         }
 
     }
