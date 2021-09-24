@@ -25,14 +25,10 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                using (TransactionScope scope = new TransactionScope())
-                {
-                    logger.Info(string.Format("Get StoryboardName Id start | Storyboardid: {0} | Username: {1}", Storyboardid, Username));
-                    var storyboarname = enty.T_STORYBOARD_SUMMARY.FirstOrDefault(x => x.STORYBOARD_ID == Storyboardid).STORYBOARD_NAME;
-                    logger.Info(string.Format("Get StoryboardName Id end | Storyboardid: {0} | Username: {1}", Storyboardid, Username));
-                    scope.Complete();
-                    return storyboarname;
-                }
+                logger.Info(string.Format("Get StoryboardName Id start | Storyboardid: {0} | Username: {1}", Storyboardid, Username));
+                var storyboarname = enty.T_STORYBOARD_SUMMARY.FirstOrDefault(x => x.STORYBOARD_ID == Storyboardid).STORYBOARD_NAME;
+                logger.Info(string.Format("Get StoryboardName Id end | Storyboardid: {0} | Username: {1}", Storyboardid, Username));
+                return storyboarname;
             }
             catch (Exception ex)
             {
@@ -621,23 +617,19 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                using (TransactionScope scope = new TransactionScope())
+                logger.Info(string.Format("Get Actions start | storyboradId: {0} | UserName: {1}", sid, Username));
+                var lresult = new List<SYSTEM_LOOKUP>();
+                var result = enty.SYSTEM_LOOKUP.Where(x => x.FIELD_NAME == "RUN_TYPE" && x.TABLE_NAME == "T_PROJ_TC_MGR").ToList();
+                foreach (var item in result)
                 {
-                    logger.Info(string.Format("Get Actions start | storyboradId: {0} | UserName: {1}", sid, Username));
-                    var lresult = new List<SYSTEM_LOOKUP>();
-                    var result = enty.SYSTEM_LOOKUP.Where(x => x.FIELD_NAME == "RUN_TYPE" && x.TABLE_NAME == "T_PROJ_TC_MGR").ToList();
-                    foreach (var item in result)
+                    lresult = result.ToList();
+                    if (item.DISPLAY_NAME == "FAILUE")
                     {
-                        lresult = result.ToList();
-                        if (item.DISPLAY_NAME == "FAILUE")
-                        {
-                            lresult.Remove(item);
-                        }
+                        lresult.Remove(item);
                     }
-                    logger.Info(string.Format("Get Actions end | storyboradId: {0} | UserName: {1}", sid, Username));
-                    scope.Complete();
-                    return lresult;
                 }
+                logger.Info(string.Format("Get Actions end | storyboradId: {0} | UserName: {1}", sid, Username));
+                return lresult;
             }
             catch (Exception ex)
             {
@@ -652,8 +644,6 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                using (TransactionScope scope = new TransactionScope())
-                {
                     logger.Info(string.Format("Get Test Suites start | ProjectId: {0} | UserName: {1}", lProjectId, Username));
                     var lTestSuiteTree = new List<TestSuiteListByProject>();
                     var lresult = (from t1 in enty.T_TEST_PROJECT
@@ -672,9 +662,7 @@ namespace MARS_Repository.Repositories
 
 
                     logger.Info(string.Format("Get TestSuiteList end | ProjectId: {0} | UserName: {1}", lProjectId, Username));
-                    scope.Complete();
                     return lresult;
-                }
             }
             catch (Exception ex)
             {
@@ -689,8 +677,6 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                using (TransactionScope scope = new TransactionScope())
-                {
                     logger.Info(string.Format("Get TestCase List start | TestSuitename: {0} | UserName: {1}", TestSuitename, Username));
                     var lTestcaseTree = new List<TestCaseListByProject>();
 
@@ -734,9 +720,7 @@ namespace MARS_Repository.Repositories
                     }
                     logger.Info(string.Format("Get TestCase List 5 | TestSuitename: {0} | UserName: {1}", TestSuitename, Username));
                     logger.Info(string.Format("Get TestCase List end | TestSuitename: {0} | UserName: {1}", TestSuitename, Username));
-                    scope.Complete();
                     return lTestcaseTree;
-                }
             }
             catch (Exception ex)
             {
@@ -752,8 +736,6 @@ namespace MARS_Repository.Repositories
             logger.Info(string.Format("Get DataSet List start | Projectid: {0} | TestSuitename: {1} | Testcasename: {2} | UserName: {3}", Projectid, TestSuitename, Testcasename, Username));
             try
             {
-                using (TransactionScope scope = new TransactionScope())
-                {
                     var lDatasettree = new List<DataSetListByTestCase>();
                     var lList = from t1 in enty.T_TEST_PROJECT
                                 join t2 in enty.REL_TEST_SUIT_PROJECT on t1.PROJECT_ID equals t2.PROJECT_ID
@@ -793,9 +775,7 @@ namespace MARS_Repository.Repositories
                         lDatasettree = lResult.Distinct().OrderBy(x => x.TestcaseName).ToList();
                     }
                     logger.Info(string.Format("Get DataSet List end | Projectid: {0} | TestSuitename: {1} | Testcasename: {2} | UserName: {3}", Projectid, TestSuitename, Testcasename, Username));
-                    scope.Complete();
                     return lDatasettree;
-                }
             }
             catch (Exception ex)
             {
@@ -810,14 +790,10 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                using (TransactionScope scope = new TransactionScope())
-                {
                     logger.Info(string.Format("Get Storyboard start | Storyboardid: {0} | UserName: {1}", Storyboardid, Username));
                     var lstoryboardname = enty.T_STORYBOARD_SUMMARY.FirstOrDefault(x => x.STORYBOARD_ID == Storyboardid).STORYBOARD_NAME;
                     logger.Info(string.Format("Get Storyboard end | Storyboardid: {0} | UserName: {1}", Storyboardid, Username));
-                    scope.Complete();
                     return lstoryboardname;
-                }
             }
             catch (Exception ex)
             {
@@ -872,14 +848,10 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                using (TransactionScope scope = new TransactionScope())
-                {
                     logger.Info(string.Format("Get StoryboardName start | storyboardid: {0} | UserName: {1}", storyboardid, Username));
                     var storyboard = enty.T_STORYBOARD_SUMMARY.FirstOrDefault(x => x.STORYBOARD_ID == storyboardid).STORYBOARD_NAME;
                     logger.Info(string.Format("Get StoryboardName end | storyboardid: {0} | UserName: {1}", storyboardid, Username));
-                    scope.Complete();
                     return storyboard;
-                }
             }
             catch (Exception ex)
             {
@@ -947,8 +919,6 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                using (TransactionScope scope = new TransactionScope())
-                {
                     logger.Info(string.Format("Check Duplicate StoryboardName start | storyboardname: {0} | UserName: {1}", storyboardname, Username));
                     var lresult = false;
                     if (storyboardid != null)
@@ -960,9 +930,7 @@ namespace MARS_Repository.Repositories
                         lresult = enty.T_STORYBOARD_SUMMARY.Any(x => x.STORYBOARD_NAME.ToLower().Trim() == storyboardname.ToLower().Trim());
                     }
                     logger.Info(string.Format("Check Duplicate StoryboardName end | storyboardname: {0} | UserName: {1}", storyboardname, Username));
-                    scope.Complete();
                     return lresult;
-                }
             }
             catch (Exception ex)
             {
@@ -978,8 +946,6 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                using (TransactionScope scope = new TransactionScope())
-                {
                     logger.Info(string.Format("Get TestResult start | TestCaseId: {0} | SBDetailId: {1} | UserName: {2}", TestCaseId, SBDetailId, Username));
                     List<TestResultModel> listresult = new List<TestResultModel>();
                     var lList = enty.T_PROJ_TEST_RESULT.Where(x => x.TEST_CASE_ID == TestCaseId && x.STORYBOARD_DETAIL_ID == SBDetailId).Select(y => new TestResultModel
@@ -1037,9 +1003,7 @@ namespace MARS_Repository.Repositories
                         });
                     }
                     logger.Info(string.Format("Get TestResult end | TestCaseId: {0} | SBDetailId: {1} | UserName: {2}", TestCaseId, SBDetailId, Username));
-                    scope.Complete();
                     return lList;
-                }
             }
             catch (Exception ex)
             {
@@ -1693,8 +1657,6 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                using (TransactionScope scope = new TransactionScope())
-                {
                     logger.Info(string.Format("Check Duplicate StoryboardName SaveAs start | storyboardname: {0} | UserName: {1}", storyboardname, Username));
                     var lresult = false;
                     if (storyboardid != 0)
@@ -1702,9 +1664,7 @@ namespace MARS_Repository.Repositories
                         lresult = enty.T_STORYBOARD_SUMMARY.Any(x => x.STORYBOARD_NAME.ToLower().Trim() == storyboardname.ToLower().Trim());
                     }
                     logger.Info(string.Format("Check Duplicate StoryboardName SaveAs end | storyboardname: {0} | UserName: {1}", storyboardname, Username));
-                    scope.Complete();
                     return lresult;
-                }
             }
             catch (Exception ex)
             {
@@ -2498,8 +2458,6 @@ namespace MARS_Repository.Repositories
             long TestReportId = 0;
             try
             {
-                using (TransactionScope scope = new TransactionScope())
-                {
                     logger.Info(string.Format("Get TestReportId start | HistId: {0} | Username: {1}", HistId, Username));
                     var lList = enty.T_TEST_REPORT.Where(x => x.HIST_ID == HistId).ToList();
                     if (lList.Count() > 0)
@@ -2507,8 +2465,6 @@ namespace MARS_Repository.Repositories
                         TestReportId = lList.FirstOrDefault().TEST_REPORT_ID;
                     }
                     logger.Info(string.Format("Get TestReportId end | HistId: {0} | Username: {1}", HistId, Username));
-                    scope.Complete();
-                }
             }
             catch (Exception ex)
             {
@@ -2525,8 +2481,6 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                using (TransactionScope scope = new TransactionScope())
-                {
                     logger.Info(string.Format("Get Primart TestResult start | TestCaseId: {0} | SBDetailId: {1} | Username: {2}", TestCaseId, SBDetailId, Username));
                     List<TestResultModel> listresult = new List<TestResultModel>();
                     var lList = enty.T_PROJ_TEST_RESULT.Where(x => x.TEST_CASE_ID == TestCaseId && x.STORYBOARD_DETAIL_ID == SBDetailId).Select(y => new TestResultModel
@@ -2570,9 +2524,7 @@ namespace MARS_Repository.Repositories
                     List<TestResultModel> listprimaryresult = new List<TestResultModel>();
                     listprimaryresult = lList.Where(x => x.IsMark).ToList();
                     logger.Info(string.Format("Get Primart TestResult end | TestCaseId: {0} | SBDetailId: {1} | Username: {2}", TestCaseId, SBDetailId, Username));
-                    scope.Complete();
                     return listprimaryresult;
-                }
             }
             catch (Exception ex)
             {

@@ -27,18 +27,14 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                using (TransactionScope scope = new TransactionScope())
-                {
-                    logger.Info(string.Format("GetTSTCDSId start | TestCaseName: {0} | TestSuitname: {1} | Datasetname: {2} | UserName: {3}", TestCasename, TestSuitname, Datasetname, Username));
-                    var llist = new List<string>();
-                    var suiteid = entity.T_TEST_SUITE.FirstOrDefault(x => x.TEST_SUITE_NAME == TestSuitname).TEST_SUITE_ID;
-                    var caseid = entity.T_TEST_CASE_SUMMARY.FirstOrDefault(x => x.TEST_CASE_NAME == TestCasename).TEST_CASE_ID;
-                    var datasetid = entity.T_TEST_DATA_SUMMARY.FirstOrDefault(x => x.ALIAS_NAME == Datasetname).DATA_SUMMARY_ID;
+                logger.Info(string.Format("GetTSTCDSId start | TestCaseName: {0} | TestSuitname: {1} | Datasetname: {2} | UserName: {3}", TestCasename, TestSuitname, Datasetname, Username));
+                var llist = new List<string>();
+                var suiteid = entity.T_TEST_SUITE.FirstOrDefault(x => x.TEST_SUITE_NAME == TestSuitname).TEST_SUITE_ID;
+                var caseid = entity.T_TEST_CASE_SUMMARY.FirstOrDefault(x => x.TEST_CASE_NAME == TestCasename).TEST_CASE_ID;
+                var datasetid = entity.T_TEST_DATA_SUMMARY.FirstOrDefault(x => x.ALIAS_NAME == Datasetname).DATA_SUMMARY_ID;
 
-                    logger.Info(string.Format("GetTSTCDSId end | TestCaseName: {0} | TestSuitname: {1} | Datasetname: {2} | UserName: {3}", TestCasename, TestSuitname, Datasetname, Username));
-                    scope.Complete();
-                    return suiteid + "," + caseid + "," + datasetid;
-                }
+                logger.Info(string.Format("GetTSTCDSId end | TestCaseName: {0} | TestSuitname: {1} | Datasetname: {2} | UserName: {3}", TestCasename, TestSuitname, Datasetname, Username));
+                return suiteid + "," + caseid + "," + datasetid;
             }
             catch (Exception ex)
             {
@@ -54,22 +50,18 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                using (TransactionScope scope = new TransactionScope())
+                logger.Info(string.Format("Check TestCase TestSuite Rel start | testcaseId: {0} | testsuiteid: {1} | UserName: {2}", testcaseId, testsuiteid, Username));
+                var flag = false;
+                var lStoryboardList = entity.T_PROJ_TC_MGR.Where(x => x.TEST_CASE_ID == testcaseId).ToList();
+                foreach (var item in lStoryboardList)
                 {
-                    logger.Info(string.Format("Check TestCase TestSuite Rel start | testcaseId: {0} | testsuiteid: {1} | UserName: {2}", testcaseId, testsuiteid, Username));
-                    var flag = false;
-                    var lStoryboardList = entity.T_PROJ_TC_MGR.Where(x => x.TEST_CASE_ID == testcaseId).ToList();
-                    foreach (var item in lStoryboardList)
+                    if (item.TEST_SUITE_ID != testsuiteid)
                     {
-                        if (item.TEST_SUITE_ID != testsuiteid)
-                        {
-                            flag = true;
-                        }
+                        flag = true;
                     }
-                    logger.Info(string.Format("Check TestCase TestSuite Rel end | testcaseId: {0} | testsuiteid: {1} | UserName: {2}", testcaseId, testsuiteid, Username));
-                    scope.Complete();
-                    return flag;
                 }
+                logger.Info(string.Format("Check TestCase TestSuite Rel end | testcaseId: {0} | testsuiteid: {1} | UserName: {2}", testcaseId, testsuiteid, Username));
+                return flag;
             }
             catch (Exception ex)
             {
@@ -112,22 +104,18 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                using (TransactionScope scope = new TransactionScope())
+                logger.Info(string.Format("Check Duplicate TestCaseName start | TestCaseName: {0} | lTestCaseId: {1} | UserName: {2}", lTestCaseName, lTestCaseId, Username));
+                var lresult = false;
+                if (lTestCaseId != null)
                 {
-                    logger.Info(string.Format("Check Duplicate TestCaseName start | TestCaseName: {0} | lTestCaseId: {1} | UserName: {2}", lTestCaseName, lTestCaseId, Username));
-                    var lresult = false;
-                    if (lTestCaseId != null)
-                    {
-                        lresult = entity.T_TEST_CASE_SUMMARY.Any(x => x.TEST_CASE_ID != lTestCaseId && x.TEST_CASE_NAME.ToLower().Trim() == lTestCaseName.ToLower().Trim());
-                    }
-                    else
-                    {
-                        lresult = entity.T_TEST_CASE_SUMMARY.Any(x => x.TEST_CASE_NAME.ToLower().Trim() == lTestCaseName.ToLower().Trim());
-                    }
-                    logger.Info(string.Format("Check Duplicate TestCaseName end | TestCaseName: {0} | lTestCaseId: {1} | UserName: {2}", lTestCaseName, lTestCaseId, Username));
-                    scope.Complete();
-                    return lresult;
+                    lresult = entity.T_TEST_CASE_SUMMARY.Any(x => x.TEST_CASE_ID != lTestCaseId && x.TEST_CASE_NAME.ToLower().Trim() == lTestCaseName.ToLower().Trim());
                 }
+                else
+                {
+                    lresult = entity.T_TEST_CASE_SUMMARY.Any(x => x.TEST_CASE_NAME.ToLower().Trim() == lTestCaseName.ToLower().Trim());
+                }
+                logger.Info(string.Format("Check Duplicate TestCaseName end | TestCaseName: {0} | lTestCaseId: {1} | UserName: {2}", lTestCaseName, lTestCaseId, Username));
+                return lresult;
             }
             catch (Exception ex)
             {
@@ -142,22 +130,18 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                using (TransactionScope scope = new TransactionScope())
+                logger.Info(string.Format("Check Duplicate Dataset start | Datasetname: {0} | datasetid: {1} | UserName: {2}", lDatasetname, ldatasetid, Username));
+                var lresult = false;
+                if (ldatasetid != null)
                 {
-                    logger.Info(string.Format("Check Duplicate Dataset start | Datasetname: {0} | datasetid: {1} | UserName: {2}", lDatasetname, ldatasetid, Username));
-                    var lresult = false;
-                    if (ldatasetid != null)
-                    {
-                        lresult = entity.T_TEST_DATA_SUMMARY.Any(x => x.DATA_SUMMARY_ID != ldatasetid && x.ALIAS_NAME.ToLower().Trim() == lDatasetname.ToLower().Trim());
-                    }
-                    else
-                    {
-                        lresult = entity.T_TEST_DATA_SUMMARY.Any(x => x.ALIAS_NAME.ToLower().Trim() == lDatasetname.ToLower().Trim());
-                    }
-                    logger.Info(string.Format("Check Duplicate Dataset end | Datasetname: {0} | datasetid: {1} | UserName: {2}", lDatasetname, ldatasetid, Username));
-                    scope.Complete();
-                    return lresult;
+                    lresult = entity.T_TEST_DATA_SUMMARY.Any(x => x.DATA_SUMMARY_ID != ldatasetid && x.ALIAS_NAME.ToLower().Trim() == lDatasetname.ToLower().Trim());
                 }
+                else
+                {
+                    lresult = entity.T_TEST_DATA_SUMMARY.Any(x => x.ALIAS_NAME.ToLower().Trim() == lDatasetname.ToLower().Trim());
+                }
+                logger.Info(string.Format("Check Duplicate Dataset end | Datasetname: {0} | datasetid: {1} | UserName: {2}", lDatasetname, ldatasetid, Username));
+                return lresult;
             }
             catch (Exception ex)
             {
@@ -223,28 +207,24 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                using (TransactionScope scope = new TransactionScope())
+                logger.Info(string.Format("Check TestCase Exists In Storyboard start | testcaseId: {0} | UserName: {1}", testcaseId, Username));
+                List<string> storyboarname = new List<string>();
+                var lStoryboardList = entity.T_PROJ_TC_MGR.Where(x => x.TEST_CASE_ID == testcaseId).ToList();
+
+                if (lStoryboardList.Count() > 0)
                 {
-                    logger.Info(string.Format("Check TestCase Exists In Storyboard start | testcaseId: {0} | UserName: {1}", testcaseId, Username));
-                    List<string> storyboarname = new List<string>();
-                    var lStoryboardList = entity.T_PROJ_TC_MGR.Where(x => x.TEST_CASE_ID == testcaseId).ToList();
-
-                    if (lStoryboardList.Count() > 0)
+                    foreach (var item in lStoryboardList)
                     {
-                        foreach (var item in lStoryboardList)
-                        {
-                            var sname = entity.T_STORYBOARD_SUMMARY.Find(item.STORYBOARD_ID);
+                        var sname = entity.T_STORYBOARD_SUMMARY.Find(item.STORYBOARD_ID);
 
-                            storyboarname.Add(sname.STORYBOARD_NAME);
-                            storyboarname = (from w in storyboarname select w).Distinct().ToList();
-                        }
-                        logger.Info(string.Format("Check TestCase Exists In Storyboard end | testcaseId: {0} | UserName: {1}", testcaseId, Username));
-                        return storyboarname;
+                        storyboarname.Add(sname.STORYBOARD_NAME);
+                        storyboarname = (from w in storyboarname select w).Distinct().ToList();
                     }
                     logger.Info(string.Format("Check TestCase Exists In Storyboard end | testcaseId: {0} | UserName: {1}", testcaseId, Username));
-                    scope.Complete();
                     return storyboarname;
                 }
+                logger.Info(string.Format("Check TestCase Exists In Storyboard end | testcaseId: {0} | UserName: {1}", testcaseId, Username));
+                return storyboarname;
             }
             catch (Exception ex)
             {
@@ -259,14 +239,10 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                using (TransactionScope scope = new TransactionScope())
-                {
-                    logger.Info(string.Format("Get TestcaseName start | testcaseId: {0} | UserName: {1}", caseId, Username));
-                    var lcaseName = entity.T_TEST_CASE_SUMMARY.FirstOrDefault(x => x.TEST_CASE_ID == caseId).TEST_CASE_NAME;
-                    logger.Info(string.Format("Get TestcaseName end | testcaseId: {0} | UserName: {1}", caseId, Username));
-                    scope.Complete();
-                    return lcaseName;
-                }
+                logger.Info(string.Format("Get TestcaseName start | testcaseId: {0} | UserName: {1}", caseId, Username));
+                var lcaseName = entity.T_TEST_CASE_SUMMARY.FirstOrDefault(x => x.TEST_CASE_ID == caseId).TEST_CASE_NAME;
+                logger.Info(string.Format("Get TestcaseName end | testcaseId: {0} | UserName: {1}", caseId, Username));
+                return lcaseName;
             }
             catch (Exception ex)
             {
@@ -388,21 +364,16 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                using (TransactionScope scope = new TransactionScope())
+                logger.Info(string.Format(" Validation start | feedprocessid: {0} | UserName: {1}", feedprocessid, Username));
+                if (entity.TBLLOGREPORTs.Where(x => x.FEEDPROCESSID == feedprocessid).Count() == 0)
                 {
-                    logger.Info(string.Format(" Validation start | feedprocessid: {0} | UserName: {1}", feedprocessid, Username));
-                    if (entity.TBLLOGREPORTs.Where(x => x.FEEDPROCESSID == feedprocessid).Count() == 0)
-                    {
-                        logger.Info(string.Format(" Validation end | feedprocessid: {0} | UserName: {1}", feedprocessid, Username));
-                        scope.Complete();
-                        return "Success";
-                    }
-                    else
-                    {
-                        logger.Info(string.Format(" Validation end | feedprocessid: {0} | UserName: {1}", feedprocessid, Username));
-                        scope.Complete();
-                        return "Validation Failed";
-                    }
+                    logger.Info(string.Format(" Validation end | feedprocessid: {0} | UserName: {1}", feedprocessid, Username));
+                    return "Success";
+                }
+                else
+                {
+                    logger.Info(string.Format(" Validation end | feedprocessid: {0} | UserName: {1}", feedprocessid, Username));
+                    return "Validation Failed";
                 }
             }
             catch (Exception ex)
@@ -418,14 +389,10 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                using (TransactionScope scope = new TransactionScope())
-                {
-                    logger.Info(string.Format("get Testcase Validation start | feedprocessid: {0} | UserName: {1}", feedprocessid, Username));
-                    var result = entity.TBLLOGREPORTs.Where(x => x.FEEDPROCESSID == feedprocessid).ToList();
-                    logger.Info(string.Format("get Testcase Validation end | feedprocessid: {0} | UserName: {1}", feedprocessid, Username));
-                    scope.Complete();
-                    return result;
-                }
+                logger.Info(string.Format("get Testcase Validation start | feedprocessid: {0} | UserName: {1}", feedprocessid, Username));
+                var result = entity.TBLLOGREPORTs.Where(x => x.FEEDPROCESSID == feedprocessid).ToList();
+                logger.Info(string.Format("get Testcase Validation end | feedprocessid: {0} | UserName: {1}", feedprocessid, Username));
+                return result;
             }
             catch (Exception ex)
             {
@@ -593,14 +560,10 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                using (TransactionScope scope = new TransactionScope())
-                {
-                    logger.Info(string.Format("Get TestCaseName start | TestCaseId: {0} | UserName: {1}", CaseId, Username));
-                    var lCaseName = entity.T_TEST_CASE_SUMMARY.FirstOrDefault(x => x.TEST_CASE_ID == CaseId).TEST_CASE_NAME;
-                    logger.Info(string.Format("Get TestCaseName end | TestCaseId: {0} | UserName: {1}", CaseId, Username));
-                    scope.Complete();
-                    return lCaseName;
-                }
+                logger.Info(string.Format("Get TestCaseName start | TestCaseId: {0} | UserName: {1}", CaseId, Username));
+                var lCaseName = entity.T_TEST_CASE_SUMMARY.FirstOrDefault(x => x.TEST_CASE_ID == CaseId).TEST_CASE_NAME;
+                logger.Info(string.Format("Get TestCaseName end | TestCaseId: {0} | UserName: {1}", CaseId, Username));
+                return lCaseName;
             }
             catch (Exception ex)
             {
@@ -642,32 +605,28 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                using (TransactionScope scope = new TransactionScope())
+                logger.Info(string.Format("Check Dataset In Storyboard start | DatasetId: {0} | UserName: {1}", datasetid, Username));
+                var result = entity.T_STORYBOARD_DATASET_SETTING.Where(x => x.DATA_SUMMARY_ID == datasetid).ToList();
+                List<string> llist = new List<string>();
+                var resultitem = new List<T_STORYBOARD_SUMMARY>();
+                if (result.Count > 0)
                 {
-                    logger.Info(string.Format("Check Dataset In Storyboard start | DatasetId: {0} | UserName: {1}", datasetid, Username));
-                    var result = entity.T_STORYBOARD_DATASET_SETTING.Where(x => x.DATA_SUMMARY_ID == datasetid).ToList();
-                    List<string> llist = new List<string>();
-                    var resultitem = new List<T_STORYBOARD_SUMMARY>();
-                    if (result.Count > 0)
+                    foreach (var item in result)
                     {
-                        foreach (var item in result)
+                        resultitem = (from t in entity.T_STORYBOARD_SUMMARY
+                                      join t1 in entity.T_PROJ_TC_MGR on t.STORYBOARD_ID equals t1.STORYBOARD_ID
+                                      join t2 in entity.T_STORYBOARD_DATASET_SETTING on t1.STORYBOARD_DETAIL_ID equals t2.STORYBOARD_DETAIL_ID
+                                      where t2.STORYBOARD_DETAIL_ID == item.STORYBOARD_DETAIL_ID
+                                      select t).ToList();
+                        foreach (var itm in resultitem)
                         {
-                            resultitem = (from t in entity.T_STORYBOARD_SUMMARY
-                                          join t1 in entity.T_PROJ_TC_MGR on t.STORYBOARD_ID equals t1.STORYBOARD_ID
-                                          join t2 in entity.T_STORYBOARD_DATASET_SETTING on t1.STORYBOARD_DETAIL_ID equals t2.STORYBOARD_DETAIL_ID
-                                          where t2.STORYBOARD_DETAIL_ID == item.STORYBOARD_DETAIL_ID
-                                          select t).ToList();
-                            foreach (var itm in resultitem)
-                            {
-                                llist.Add(itm.STORYBOARD_NAME);
-                            }
-                            llist = llist.Distinct().ToList();
+                            llist.Add(itm.STORYBOARD_NAME);
                         }
+                        llist = llist.Distinct().ToList();
                     }
-                    logger.Info(string.Format("Check Dataset In Storyboard end | DatasetId: {0} | UserName: {1}", datasetid, Username));
-                    scope.Complete();
-                    return llist;
                 }
+                logger.Info(string.Format("Check Dataset In Storyboard end | DatasetId: {0} | UserName: {1}", datasetid, Username));
+                return llist;
             }
             catch (Exception ex)
             {
@@ -1579,18 +1538,14 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                using (TransactionScope scope = new TransactionScope())
+                logger.Info(string.Format("CheckDuplicateTestCasenameSaveAs start | testcase: {0} | UserName: {1}", testcase, Username));
+                var lresult = false;
+                if (testcaseid != 0)
                 {
-                    logger.Info(string.Format("CheckDuplicateTestCasenameSaveAs start | testcase: {0} | UserName: {1}", testcase, Username));
-                    var lresult = false;
-                    if (testcaseid != 0)
-                    {
-                        lresult = entity.T_TEST_CASE_SUMMARY.Any(x => x.TEST_CASE_NAME.ToLower().Trim() == testcase.ToLower().Trim());
-                    }
-                    logger.Info(string.Format("CheckDuplicateTestCasenameSaveAs end | testcase: {0} | UserName: {1}", testcase, Username));
-                    scope.Complete();
-                    return lresult;
+                    lresult = entity.T_TEST_CASE_SUMMARY.Any(x => x.TEST_CASE_NAME.ToLower().Trim() == testcase.ToLower().Trim());
                 }
+                logger.Info(string.Format("CheckDuplicateTestCasenameSaveAs end | testcase: {0} | UserName: {1}", testcase, Username));
+                return lresult;
             }
             catch (Exception ex)
             {
@@ -1606,18 +1561,14 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                using (TransactionScope scope = new TransactionScope())
+                logger.Info(string.Format("CheckDuplicateDatasetName start | dataset: {0} | UserName: {1}", dataset, Username));
+                var lresult = false;
+                if (!string.IsNullOrEmpty(dataset))
                 {
-                    logger.Info(string.Format("CheckDuplicateDatasetName start | dataset: {0} | UserName: {1}", dataset, Username));
-                    var lresult = false;
-                    if (!string.IsNullOrEmpty(dataset))
-                    {
-                        lresult = entity.T_TEST_DATA_SUMMARY.Any(x => x.ALIAS_NAME.ToLower().Trim() == dataset.ToLower().Trim());
-                    }
-                    logger.Info(string.Format("CheckDuplicateDatasetName end | dataset: {0} | UserName: {1}", dataset, Username));
-                    scope.Complete();
-                    return lresult;
+                    lresult = entity.T_TEST_DATA_SUMMARY.Any(x => x.ALIAS_NAME.ToLower().Trim() == dataset.ToLower().Trim());
                 }
+                logger.Info(string.Format("CheckDuplicateDatasetName end | dataset: {0} | UserName: {1}", dataset, Username));
+                return lresult;
             }
             catch (Exception ex)
             {
@@ -2435,14 +2386,10 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                using (TransactionScope scope = new TransactionScope())
-                {
-                    logger.Info(string.Format("Match TestCase Version start | TestCaseId: {0} | VersionId: {1} | UserName: {2}", TestCaseId, VersionId, Username));
-                    var lresult = entity.T_TESTCASE_VERSION.Any(x => x.TESTCASEID == TestCaseId && x.VERSIONID == VersionId);
-                    logger.Info(string.Format("Match TestCase Version end | TestCaseId: {0} | VersionId: {1} | UserName: {2}", TestCaseId, VersionId, Username));
-                    scope.Complete();
-                    return lresult;
-                }
+                logger.Info(string.Format("Match TestCase Version start | TestCaseId: {0} | VersionId: {1} | UserName: {2}", TestCaseId, VersionId, Username));
+                var lresult = entity.T_TESTCASE_VERSION.Any(x => x.TESTCASEID == TestCaseId && x.VERSIONID == VersionId);
+                logger.Info(string.Format("Match TestCase Version end | TestCaseId: {0} | VersionId: {1} | UserName: {2}", TestCaseId, VersionId, Username));
+                return lresult;
             }
             catch (Exception ex)
             {
@@ -2524,61 +2471,61 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                  logger.Info(string.Format("Copy DataSet start | datasetname: {0} | UserName: {1}", datasetname, Username));
-                    if (!string.IsNullOrEmpty(datasetname) || !string.IsNullOrEmpty(datasetdesc))
-                    {
-                        datasetname = datasetname.Trim();
-                        datasetdesc = datasetdesc.Trim();
-                    }
-                    var lDataSummary = new T_TEST_DATA_SUMMARY();
-                    lDataSummary.DATA_SUMMARY_ID = Helper.NextTestSuiteId("T_TEST_STEPS_SEQ");
-                    lDataSummary.ALIAS_NAME = datasetname;
-                    lDataSummary.DESCRIPTION_INFO = datasetdesc;
-                    entity.T_TEST_DATA_SUMMARY.Add(lDataSummary);
-                    //rutvi
-                    //entity.SaveChanges();
-                    var ldatasetid = lDataSummary.DATA_SUMMARY_ID;
+                logger.Info(string.Format("Copy DataSet start | datasetname: {0} | UserName: {1}", datasetname, Username));
+                if (!string.IsNullOrEmpty(datasetname) || !string.IsNullOrEmpty(datasetdesc))
+                {
+                    datasetname = datasetname.Trim();
+                    datasetdesc = datasetdesc.Trim();
+                }
+                var lDataSummary = new T_TEST_DATA_SUMMARY();
+                lDataSummary.DATA_SUMMARY_ID = Helper.NextTestSuiteId("T_TEST_STEPS_SEQ");
+                lDataSummary.ALIAS_NAME = datasetname;
+                lDataSummary.DESCRIPTION_INFO = datasetdesc;
+                entity.T_TEST_DATA_SUMMARY.Add(lDataSummary);
+                //rutvi
+                //entity.SaveChanges();
+                var ldatasetid = lDataSummary.DATA_SUMMARY_ID;
 
-                    var lRelTCDataSet = new REL_TC_DATA_SUMMARY();
-                    lRelTCDataSet.ID = Helper.NextTestSuiteId("T_TEST_STEPS_SEQ");
-                    lRelTCDataSet.TEST_CASE_ID = testCaseId;
-                    lRelTCDataSet.DATA_SUMMARY_ID = lDataSummary.DATA_SUMMARY_ID;
-                    entity.REL_TC_DATA_SUMMARY.Add(lRelTCDataSet);
-                    entity.SaveChanges();
-                    DataSet lds = new DataSet();
-                    DataTable ldt = new DataTable();
+                var lRelTCDataSet = new REL_TC_DATA_SUMMARY();
+                lRelTCDataSet.ID = Helper.NextTestSuiteId("T_TEST_STEPS_SEQ");
+                lRelTCDataSet.TEST_CASE_ID = testCaseId;
+                lRelTCDataSet.DATA_SUMMARY_ID = lDataSummary.DATA_SUMMARY_ID;
+                entity.REL_TC_DATA_SUMMARY.Add(lRelTCDataSet);
+                entity.SaveChanges();
+                DataSet lds = new DataSet();
+                DataTable ldt = new DataTable();
 
-                    OracleConnection lconnection = GetOracleConnection(lstrConn);
-                    lconnection.Open();
+                OracleConnection lconnection = GetOracleConnection(lstrConn);
+                lconnection.Open();
 
-                    OracleTransaction ltransaction;
-                    ltransaction = lconnection.BeginTransaction();
+                OracleTransaction ltransaction;
+                ltransaction = lconnection.BeginTransaction();
 
-                    OracleCommand lcmd;
-                    lcmd = lconnection.CreateCommand();
-                    lcmd.Transaction = ltransaction;
+                OracleCommand lcmd;
+                lcmd = lconnection.CreateCommand();
+                lcmd.Transaction = ltransaction;
 
 
-                    //var testsuiteid = entity.REL_TEST_CASE_TEST_SUITE.FirstOrDefault(x => x.TEST_CASE_ID == TestCaseId).TEST_SUITE_ID;
-                    OracleParameter[] ladd_refer_image = new OracleParameter[2];
-                    ladd_refer_image[0] = new OracleParameter("OLDDATASETID", OracleDbType.Long);
-                    ladd_refer_image[0].Value = olddatasetid;
+                //var testsuiteid = entity.REL_TEST_CASE_TEST_SUITE.FirstOrDefault(x => x.TEST_CASE_ID == TestCaseId).TEST_SUITE_ID;
+                OracleParameter[] ladd_refer_image = new OracleParameter[2];
+                ladd_refer_image[0] = new OracleParameter("OLDDATASETID", OracleDbType.Long);
+                ladd_refer_image[0].Value = olddatasetid;
 
-                    ladd_refer_image[1] = new OracleParameter("NEWDATASETID", OracleDbType.Long);
-                    ladd_refer_image[1].Value = ldatasetid;
+                ladd_refer_image[1] = new OracleParameter("NEWDATASETID", OracleDbType.Long);
+                ladd_refer_image[1].Value = ldatasetid;
 
-                    foreach (OracleParameter p in ladd_refer_image)
-                    {
-                        lcmd.Parameters.Add(p);
-                    }
+                foreach (OracleParameter p in ladd_refer_image)
+                {
+                    lcmd.Parameters.Add(p);
+                }
 
-                    //The name of the Procedure responsible for inserting the data in the table.
-                    lcmd.CommandText = schema + "." + "SP_COPYDATASETS";
-                    lcmd.CommandType = CommandType.StoredProcedure;
-                    OracleDataAdapter dataAdapter = new OracleDataAdapter(lcmd);
-                    dataAdapter.Fill(lds);
-                    logger.Info(string.Format("Copy DataSet end | datasetname: {0} | UserName: {1}", datasetname, Username));
-                    return "success," + ldatasetid;
+                //The name of the Procedure responsible for inserting the data in the table.
+                lcmd.CommandText = schema + "." + "SP_COPYDATASETS";
+                lcmd.CommandType = CommandType.StoredProcedure;
+                OracleDataAdapter dataAdapter = new OracleDataAdapter(lcmd);
+                dataAdapter.Fill(lds);
+                logger.Info(string.Format("Copy DataSet end | datasetname: {0} | UserName: {1}", datasetname, Username));
+                return "success," + ldatasetid;
             }
             catch (Exception ex)
             {
@@ -2781,8 +2728,6 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                //using (TransactionScope scope = new TransactionScope())
-                //{
                 logger.Info(string.Format("GetDatasetNamebyTestcaseId start | TestCaseId: {0} | UserName: {1}", lTestcaseId, Username));
                 var lDatasetName = from u in entity.T_TEST_DATA_SUMMARY
                                    join ds in entity.REL_TC_DATA_SUMMARY on u.DATA_SUMMARY_ID equals ds.DATA_SUMMARY_ID
@@ -2790,9 +2735,7 @@ namespace MARS_Repository.Repositories
                                    select new DataSummaryModel { Data_Summary_Name = u.ALIAS_NAME, DATA_SUMMARY_ID = u.DATA_SUMMARY_ID };
 
                 logger.Info(string.Format("GetDatasetNamebyTestcaseId end | TestCaseId: {0} | UserName: {1}", lTestcaseId, Username));
-                //scope.Complete();
                 return lDatasetName.ToList();
-                //}
             }
             catch (Exception ex)
             {
@@ -2962,25 +2905,21 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                using (TransactionScope scope = new TransactionScope())
+                logger.Info(string.Format("ListOfGroup start | Username: {0}", Username));
+                var lList = entity.T_TEST_GROUP.Select(y => new DataTagCommonViewModel
                 {
-                    logger.Info(string.Format("ListOfGroup start | Username: {0}", Username));
-                    var lList = entity.T_TEST_GROUP.Select(y => new DataTagCommonViewModel
-                    {
-                        Id = y.GROUPID,
-                        Name = y.GROUPNAME,
-                        Description = y.DESCRIPTION,
-                        IsActive = y.ACTIVE,
-                        Active = y.ACTIVE == 1 ? "Y" : "N"
-                    }).OrderBy(z => z.Name).ToList();
-                    if (lList.Any())
-                    {
-                        lList.RemoveAll(x => x.Name == null);
-                    }
-                    logger.Info(string.Format("ListOfGroup end | Username: {0}", Username));
-                    scope.Complete();
-                    return lList;
+                    Id = y.GROUPID,
+                    Name = y.GROUPNAME,
+                    Description = y.DESCRIPTION,
+                    IsActive = y.ACTIVE,
+                    Active = y.ACTIVE == 1 ? "Y" : "N"
+                }).OrderBy(z => z.Name).ToList();
+                if (lList.Any())
+                {
+                    lList.RemoveAll(x => x.Name == null);
                 }
+                logger.Info(string.Format("ListOfGroup end | Username: {0}", Username));
+                return lList;
             }
             catch (Exception ex)
             {
@@ -3055,22 +2994,18 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                using (TransactionScope scope = new TransactionScope())
+                logger.Info(string.Format("Check Duplicate Group Name Exist start | Group: {0} | GroupId: {1} | UserName: {2}", Name, Id, Username));
+                var lresult = false;
+                if (Id != null)
                 {
-                    logger.Info(string.Format("Check Duplicate Group Name Exist start | Group: {0} | GroupId: {1} | UserName: {2}", Name, Id, Username));
-                    var lresult = false;
-                    if (Id != null)
-                    {
-                        lresult = entity.T_TEST_GROUP.Any(x => x.GROUPID != Id && x.GROUPNAME.ToLower().Trim() == Name.ToLower().Trim());
-                    }
-                    else
-                    {
-                        lresult = entity.T_TEST_GROUP.Any(x => x.GROUPNAME.ToLower().Trim() == Name.ToLower().Trim());
-                    }
-                    logger.Info(string.Format("Check Duplicate Group Name Exist end | Group: {0} | GroupId: {1} | UserName: {2}", Name, Id, Username));
-                    scope.Complete();
-                    return lresult;
+                    lresult = entity.T_TEST_GROUP.Any(x => x.GROUPID != Id && x.GROUPNAME.ToLower().Trim() == Name.ToLower().Trim());
                 }
+                else
+                {
+                    lresult = entity.T_TEST_GROUP.Any(x => x.GROUPNAME.ToLower().Trim() == Name.ToLower().Trim());
+                }
+                logger.Info(string.Format("Check Duplicate Group Name Exist end | Group: {0} | GroupId: {1} | UserName: {2}", Name, Id, Username));
+                return lresult;
             }
             catch (Exception ex)
             {
@@ -3086,25 +3021,21 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                using (TransactionScope scope = new TransactionScope())
+                logger.Info(string.Format("ListOfSet start | Username: {0}", Username));
+                var lList = entity.T_TEST_SET.Select(y => new DataTagCommonViewModel
                 {
-                    logger.Info(string.Format("ListOfSet start | Username: {0}", Username));
-                    var lList = entity.T_TEST_SET.Select(y => new DataTagCommonViewModel
-                    {
-                        Id = y.SETID,
-                        Name = y.SETNAME,
-                        Description = y.DESCRIPTION,
-                        IsActive = y.ACTIVE,
-                        Active = y.ACTIVE == 1 ? "Y" : "N"
-                    }).OrderBy(z => z.Name).ToList();
-                    if (lList.Any())
-                    {
-                        lList.RemoveAll(x => x.Name == null);
-                    }
-                    logger.Info(string.Format("ListOfSet end | Username: {0}", Username));
-                    scope.Complete();
-                    return lList;
+                    Id = y.SETID,
+                    Name = y.SETNAME,
+                    Description = y.DESCRIPTION,
+                    IsActive = y.ACTIVE,
+                    Active = y.ACTIVE == 1 ? "Y" : "N"
+                }).OrderBy(z => z.Name).ToList();
+                if (lList.Any())
+                {
+                    lList.RemoveAll(x => x.Name == null);
                 }
+                logger.Info(string.Format("ListOfSet end | Username: {0}", Username));
+                return lList;
             }
             catch (Exception ex)
             {
@@ -3179,22 +3110,18 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                using (TransactionScope scope = new TransactionScope())
+                logger.Info(string.Format("Check Duplicate Set Name Exist start | Set: {0} | SetId: {1} | UserName: {2}", Name, Id, Username));
+                var lresult = false;
+                if (Id != null)
                 {
-                    logger.Info(string.Format("Check Duplicate Set Name Exist start | Set: {0} | SetId: {1} | UserName: {2}", Name, Id, Username));
-                    var lresult = false;
-                    if (Id != null)
-                    {
-                        lresult = entity.T_TEST_SET.Any(x => x.SETID != Id && x.SETNAME.ToLower().Trim() == Name.ToLower().Trim());
-                    }
-                    else
-                    {
-                        lresult = entity.T_TEST_SET.Any(x => x.SETNAME.ToLower().Trim() == Name.ToLower().Trim());
-                    }
-                    logger.Info(string.Format("Check Duplicate Set Name Exist end | Set: {0} | SetId: {1} | UserName: {2}", Name, Id, Username));
-                    scope.Complete();
-                    return lresult;
+                    lresult = entity.T_TEST_SET.Any(x => x.SETID != Id && x.SETNAME.ToLower().Trim() == Name.ToLower().Trim());
                 }
+                else
+                {
+                    lresult = entity.T_TEST_SET.Any(x => x.SETNAME.ToLower().Trim() == Name.ToLower().Trim());
+                }
+                logger.Info(string.Format("Check Duplicate Set Name Exist end | Set: {0} | SetId: {1} | UserName: {2}", Name, Id, Username));
+                return lresult;
             }
             catch (Exception ex)
             {
@@ -3210,26 +3137,22 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                using (TransactionScope scope = new TransactionScope())
+                logger.Info(string.Format("ListOfFolder start | Username: {0}", Username));
+                var lList = entity.T_TEST_FOLDER.Select(y => new DataTagCommonViewModel
                 {
-                    logger.Info(string.Format("ListOfFolder start | Username: {0}", Username));
-                    var lList = entity.T_TEST_FOLDER.Select(y => new DataTagCommonViewModel
-                    {
-                        Id = y.FOLDERID,
-                        Name = y.FOLDERNAME,
-                        Description = y.DESCRIPTION,
-                        IsActive = y.ACTIVE,
-                        Active = y.ACTIVE == 1 ? "Y" : "N"
-                    }).OrderBy(z => z.Name).ToList();
+                    Id = y.FOLDERID,
+                    Name = y.FOLDERNAME,
+                    Description = y.DESCRIPTION,
+                    IsActive = y.ACTIVE,
+                    Active = y.ACTIVE == 1 ? "Y" : "N"
+                }).OrderBy(z => z.Name).ToList();
 
-                    if (lList.Any())
-                    {
-                        lList.RemoveAll(x => x.Name == null);
-                    }
-                    logger.Info(string.Format("ListOfFolder end | Username: {0}", Username));
-                    scope.Complete();
-                    return lList;
+                if (lList.Any())
+                {
+                    lList.RemoveAll(x => x.Name == null);
                 }
+                logger.Info(string.Format("ListOfFolder end | Username: {0}", Username));
+                return lList;
             }
             catch (Exception ex)
             {
@@ -3304,22 +3227,18 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                using (TransactionScope scope = new TransactionScope())
+                logger.Info(string.Format("Check Duplicate Folder Name Exist start | Folder: {0} | FolderId: {1} | UserName: {2}", Name, Id, Username));
+                var lresult = false;
+                if (Id != null)
                 {
-                    logger.Info(string.Format("Check Duplicate Folder Name Exist start | Folder: {0} | FolderId: {1} | UserName: {2}", Name, Id, Username));
-                    var lresult = false;
-                    if (Id != null)
-                    {
-                        lresult = entity.T_TEST_FOLDER.Any(x => x.FOLDERID != Id && x.FOLDERNAME.ToLower().Trim() == Name.ToLower().Trim());
-                    }
-                    else
-                    {
-                        lresult = entity.T_TEST_FOLDER.Any(x => x.FOLDERNAME.ToLower().Trim() == Name.ToLower().Trim());
-                    }
-                    logger.Info(string.Format("Check Duplicate Folder Name Exist end | Folder: {0} | FolderId: {1} | UserName: {2}", Name, Id, Username));
-                    scope.Complete();
-                    return lresult;
+                    lresult = entity.T_TEST_FOLDER.Any(x => x.FOLDERID != Id && x.FOLDERNAME.ToLower().Trim() == Name.ToLower().Trim());
                 }
+                else
+                {
+                    lresult = entity.T_TEST_FOLDER.Any(x => x.FOLDERNAME.ToLower().Trim() == Name.ToLower().Trim());
+                }
+                logger.Info(string.Format("Check Duplicate Folder Name Exist end | Folder: {0} | FolderId: {1} | UserName: {2}", Name, Id, Username));
+                return lresult;
             }
             catch (Exception ex)
             {
@@ -3334,14 +3253,10 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                using (TransactionScope scope = new TransactionScope())
-                {
-                    logger.Info(string.Format("GetFolders start | Username: {0}", Username));
-                    var folders = entity.T_TEST_FOLDER.Where(y => y.ACTIVE == 1).Distinct().ToList();
-                    logger.Info(string.Format("GetFolders end | Username: {0}", Username));
-                    scope.Complete();
-                    return folders;
-                }
+                logger.Info(string.Format("GetFolders start | Username: {0}", Username));
+                var folders = entity.T_TEST_FOLDER.Where(y => y.ACTIVE == 1).Distinct().ToList();
+                logger.Info(string.Format("GetFolders end | Username: {0}", Username));
+                return folders;
             }
             catch (Exception ex)
             {
@@ -3356,14 +3271,10 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                using (TransactionScope scope = new TransactionScope())
-                {
-                    logger.Info(string.Format("GetSets start | Username: {0}", Username));
-                    var sets = entity.T_TEST_SET.Where(y => y.ACTIVE == 1).Distinct().ToList();
-                    logger.Info(string.Format("GetSets end | Username: {0}", Username));
-                    scope.Complete();
-                    return sets;
-                }
+                logger.Info(string.Format("GetSets start | Username: {0}", Username));
+                var sets = entity.T_TEST_SET.Where(y => y.ACTIVE == 1).Distinct().ToList();
+                logger.Info(string.Format("GetSets end | Username: {0}", Username));
+                return sets;
             }
             catch (Exception ex)
             {
@@ -3378,14 +3289,10 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                using (TransactionScope scope = new TransactionScope())
-                {
-                    logger.Info(string.Format("GetGroups start | Username: {0}", Username));
-                    var groups = entity.T_TEST_GROUP.Where(y => y.ACTIVE == 1).Distinct().ToList();
-                    logger.Info(string.Format("GetGroups end | Username: {0}", Username));
-                    scope.Complete();
-                    return groups;
-                }
+                logger.Info(string.Format("GetGroups start | Username: {0}", Username));
+                var groups = entity.T_TEST_GROUP.Where(y => y.ACTIVE == 1).Distinct().ToList();
+                logger.Info(string.Format("GetGroups end | Username: {0}", Username));
+                return groups;
             }
             catch (Exception ex)
             {
@@ -3400,37 +3307,33 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                using (TransactionScope scope = new TransactionScope())
-                {
-                    logger.Info(string.Format("GetTagDetails start | datasetid: {0} | Username: {1}", datasetid, Username));
-                    var tags = (from k in entity.T_TEST_DATASETTAG
-                                join k1 in entity.T_TEST_GROUP on k.GROUPID equals k1.GROUPID into grp
-                                from k2 in grp.DefaultIfEmpty()
-                                join k3 in entity.T_TEST_FOLDER on k.FOLDERID equals k3.FOLDERID into fold
-                                from k4 in fold.DefaultIfEmpty()
-                                join k5 in entity.T_TEST_SET on k.SETID equals k5.SETID into set
-                                from k6 in set.DefaultIfEmpty()
+                logger.Info(string.Format("GetTagDetails start | datasetid: {0} | Username: {1}", datasetid, Username));
+                var tags = (from k in entity.T_TEST_DATASETTAG
+                            join k1 in entity.T_TEST_GROUP on k.GROUPID equals k1.GROUPID into grp
+                            from k2 in grp.DefaultIfEmpty()
+                            join k3 in entity.T_TEST_FOLDER on k.FOLDERID equals k3.FOLDERID into fold
+                            from k4 in fold.DefaultIfEmpty()
+                            join k5 in entity.T_TEST_SET on k.SETID equals k5.SETID into set
+                            from k6 in set.DefaultIfEmpty()
 
-                                where k.DATASETID == datasetid
-                                select new DataSetTagModel
-                                {
-                                    Group = k2.GROUPNAME == null ? "" : k2.GROUPNAME,
-                                    Set = k6.SETNAME == null ? "" : k6.SETNAME,
-                                    Folder = k4.FOLDERNAME == null ? "" : k4.FOLDERNAME,
-                                    Sequence = k.SEQUENCE == null ? 0 : k.SEQUENCE,
-                                    Expectedresults = k.EXPECTEDRESULTS == null ? "" : k.EXPECTEDRESULTS,
-                                    Diary = k.DIARY == null ? "" : k.DIARY,
-                                    Datasetid = k.DATASETID == null ? 0 : k.DATASETID,
-                                    Tagid = k.T_TEST_DATASETTAG_ID,
-                                    StepDesc = k.STEPDESC == null ? "" : k.STEPDESC,
+                            where k.DATASETID == datasetid
+                            select new DataSetTagModel
+                            {
+                                Group = k2.GROUPNAME == null ? "" : k2.GROUPNAME,
+                                Set = k6.SETNAME == null ? "" : k6.SETNAME,
+                                Folder = k4.FOLDERNAME == null ? "" : k4.FOLDERNAME,
+                                Sequence = k.SEQUENCE == null ? 0 : k.SEQUENCE,
+                                Expectedresults = k.EXPECTEDRESULTS == null ? "" : k.EXPECTEDRESULTS,
+                                Diary = k.DIARY == null ? "" : k.DIARY,
+                                Datasetid = k.DATASETID == null ? 0 : k.DATASETID,
+                                Tagid = k.T_TEST_DATASETTAG_ID,
+                                StepDesc = k.STEPDESC == null ? "" : k.STEPDESC,
 
-                                }
+                            }
 
-                         ).ToList();
-                    logger.Info(string.Format("GetTagDetails end | datasetid: {0} | Username: {1}", datasetid, Username));
-                    scope.Complete();
-                    return tags;
-                }
+                     ).ToList();
+                logger.Info(string.Format("GetTagDetails end | datasetid: {0} | Username: {1}", datasetid, Username));
+                return tags;
             }
             catch (Exception ex)
             {
@@ -3445,20 +3348,16 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                using (TransactionScope scope = new TransactionScope())
+                logger.Info(string.Format("GetDataSetName start | datasetid: {0} | Username: {1}", datasetid, Username));
+                var dataset = entity.T_TEST_DATA_SUMMARY.Where(x => x.DATA_SUMMARY_ID == datasetid).Select(x => new DataSummaryModel
                 {
-                    logger.Info(string.Format("GetDataSetName start | datasetid: {0} | Username: {1}", datasetid, Username));
-                    var dataset = entity.T_TEST_DATA_SUMMARY.Where(x => x.DATA_SUMMARY_ID == datasetid).Select(x => new DataSummaryModel
-                    {
-                        DATA_SUMMARY_ID = x.DATA_SUMMARY_ID,
-                        Data_Summary_Name = x.ALIAS_NAME,
-                        Dataset_desc = x.DESCRIPTION_INFO
-                    }
-            ).Distinct().ToList();
-                    logger.Info(string.Format("GetDataSetName end | datasetid: {0} | Username: {1}", datasetid, Username));
-                    scope.Complete();
-                    return dataset;
+                    DATA_SUMMARY_ID = x.DATA_SUMMARY_ID,
+                    Data_Summary_Name = x.ALIAS_NAME,
+                    Dataset_desc = x.DESCRIPTION_INFO
                 }
+        ).Distinct().ToList();
+                logger.Info(string.Format("GetDataSetName end | datasetid: {0} | Username: {1}", datasetid, Username));
+                return dataset;
             }
             catch (Exception ex)
             {
@@ -3501,14 +3400,10 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                using (TransactionScope scope = new TransactionScope())
-                {
-                    logger.Info(string.Format("CheckFolderSequenceMapping start | datasetid: {0} | FolderId: {1} | SequenceId: {2} | Username: {2}", datasetid, FolderId, SequenceId, Username));
-                    bool result = entity.T_TEST_DATASETTAG.Any(x => x.FOLDERID == FolderId && x.SEQUENCE == SequenceId && x.DATASETID != datasetid);
-                    logger.Info(string.Format("CheckFolderSequenceMapping end | datasetid: {0} | FolderId: {1} | SequenceId: {2} | Username: {2}", datasetid, FolderId, SequenceId, Username));
-                    scope.Complete();
-                    return result;
-                }
+                logger.Info(string.Format("CheckFolderSequenceMapping start | datasetid: {0} | FolderId: {1} | SequenceId: {2} | Username: {2}", datasetid, FolderId, SequenceId, Username));
+                bool result = entity.T_TEST_DATASETTAG.Any(x => x.FOLDERID == FolderId && x.SEQUENCE == SequenceId && x.DATASETID != datasetid);
+                logger.Info(string.Format("CheckFolderSequenceMapping end | datasetid: {0} | FolderId: {1} | SequenceId: {2} | Username: {2}", datasetid, FolderId, SequenceId, Username));
+                return result;
             }
             catch (Exception ex)
             {
@@ -3524,23 +3419,19 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                using (TransactionScope scope = new TransactionScope())
-                {
-                    logger.Info(string.Format("Get ApplicationList By TestcaseId start | TestcaseId: {0} | Username: {1}", TestcaseId, Username));
-                    var lAppList = new List<ApplicationModel>();
-                    var lList = from u in entity.REL_APP_TESTCASE
-                                join r in entity.T_REGISTERED_APPS on u.APPLICATION_ID equals r.APPLICATION_ID
-                                where u.TEST_CASE_ID == TestcaseId
-                                select new ApplicationModel
-                                {
-                                    ApplicationId = r.APPLICATION_ID,
-                                    ApplicationName = r.APP_SHORT_NAME
-                                };
-                    lAppList = lList.ToList();
-                    logger.Info(string.Format("Get ApplicationList By TestcaseId end | TestcaseId: {0} | Username: {1}", TestcaseId, Username));
-                    scope.Complete();
-                    return lAppList;
-                }
+                logger.Info(string.Format("Get ApplicationList By TestcaseId start | TestcaseId: {0} | Username: {1}", TestcaseId, Username));
+                var lAppList = new List<ApplicationModel>();
+                var lList = from u in entity.REL_APP_TESTCASE
+                            join r in entity.T_REGISTERED_APPS on u.APPLICATION_ID equals r.APPLICATION_ID
+                            where u.TEST_CASE_ID == TestcaseId
+                            select new ApplicationModel
+                            {
+                                ApplicationId = r.APPLICATION_ID,
+                                ApplicationName = r.APP_SHORT_NAME
+                            };
+                lAppList = lList.ToList();
+                logger.Info(string.Format("Get ApplicationList By TestcaseId end | TestcaseId: {0} | Username: {1}", TestcaseId, Username));
+                return lAppList;
             }
             catch (Exception ex)
             {
@@ -3556,8 +3447,6 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                //using (TransactionScope scope = new TransactionScope())
-                //{
                 logger.Info(string.Format("GetDatasetId start | Dataset: {0} | Username: {1}", Dataset, Username));
                 long DatasetId = 0;
                 if (!string.IsNullOrEmpty(Dataset))
@@ -3565,12 +3454,9 @@ namespace MARS_Repository.Repositories
                     var obj = entity.T_TEST_DATA_SUMMARY.Where(x => x.ALIAS_NAME == Dataset).FirstOrDefault();
                     if (obj != null)
                         DatasetId = obj.DATA_SUMMARY_ID;
-
                 }
                 logger.Info(string.Format("GetDatasetId end | Dataset: {0} | Username: {1}", Dataset, Username));
-                //scope.Complete();
                 return DatasetId;
-                //}
             }
             catch (Exception ex)
             {
