@@ -529,23 +529,43 @@ namespace MARS_Repository.Repositories
             {
                 logger.Info(string.Format("GetRolePrivilege start | UserId: {0} | Username: {1}", UserId, Username));
                 var lPriviledgeUserList = new List<PrivilegeViewModel>();
-                var lRoleList = entity.T_TEST_USER_ROLE_MAPPING.Where(x => x.USER_ID == UserId).ToList();
-                if (lRoleList.Count() > 0)
+                #region tiger,reduce db op
+                var rp = from r in entity.T_TEST_USER_ROLE_MAPPING
+                         from x in entity.T_TEST_PRIVILEGE_ROLE_MAPPING
+                         from p in entity.T_TEST_PRIVILEGE
+                         where r.USER_ID == UserId
+                         && x.ROLE_ID == r.ROLE_ID
+                         && x.PRIVILEGE_ID == p.PRIVILEGE_ID
+                         select p;
+                foreach (var y in rp)
                 {
-                    var lRoleIds = lRoleList.Select(x => x.ROLE_ID).ToList();
-                    var lPrivilegeList = entity.T_TEST_PRIVILEGE_ROLE_MAPPING.Where(x => lRoleIds.Contains(x.ROLE_ID)).ToList();
-                    if (lPrivilegeList.Count() > 0)
-                    {
-                        var lPrivilegeIds = lPrivilegeList.Select(x => x.PRIVILEGE_ID).ToList();
-                        lPriviledgeUserList = entity.T_TEST_PRIVILEGE.Where(x => lPrivilegeIds.Contains(x.PRIVILEGE_ID)).Select(y => new PrivilegeViewModel
-                        {
-                            PRIVILEGE_ID = y.PRIVILEGE_ID,
-                            DESCRIPTION = y.DESCRIPTION,
-                            MODULE = y.MODULE,
-                            PRIVILEGE_NAME = y.PRIVILEGE_NAME
-                        }).ToList();
-                    }
+                    lPriviledgeUserList.Add(new PrivilegeViewModel() {
+                        PRIVILEGE_ID = y.PRIVILEGE_ID,
+                        DESCRIPTION = y.DESCRIPTION,
+                        MODULE = y.MODULE,
+                        PRIVILEGE_NAME = y.PRIVILEGE_NAME
+                    });
                 }
+                /// old code
+                //var lRoleList = entity.T_TEST_USER_ROLE_MAPPING.Where(x => x.USER_ID == UserId).ToList();
+                //if (lRoleList.Count() > 0)
+                //{
+                //    var lRoleIds = lRoleList.Select(x => x.ROLE_ID).ToList();
+                //    var lPrivilegeList = entity.T_TEST_PRIVILEGE_ROLE_MAPPING.Where(x => lRoleIds.Contains(x.ROLE_ID)).ToList();
+                //    if (lPrivilegeList.Count() > 0)
+                //    {
+                //        var lPrivilegeIds = lPrivilegeList.Select(x => x.PRIVILEGE_ID).ToList();
+                //        lPriviledgeUserList = entity.T_TEST_PRIVILEGE.Where(x => lPrivilegeIds.Contains(x.PRIVILEGE_ID)).Select(y => new PrivilegeViewModel
+                //        {
+                //            PRIVILEGE_ID = y.PRIVILEGE_ID,
+                //            DESCRIPTION = y.DESCRIPTION,
+                //            MODULE = y.MODULE,
+                //            PRIVILEGE_NAME = y.PRIVILEGE_NAME
+                //        }).ToList();
+                //    }
+                //}
+                /// old code 
+                #endregion
                 logger.Info(string.Format("GetRolePrivilege end | UserId: {0} | Username: {1}", UserId, Username));
                 return lPriviledgeUserList;
             }
