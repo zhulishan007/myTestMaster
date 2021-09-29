@@ -10,6 +10,7 @@ using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 
 namespace MARS_Web.Controllers
 {
@@ -91,6 +92,8 @@ namespace MARS_Web.Controllers
                 logger.Info(string.Format("open storyborad start | Projectid: {0} | Storyboardid: {1} | Username: {2}", Projectid, Storyboardid, SessionManager.TESTER_LOGIN_NAME));
                 StoryBoardRepository repo = new StoryBoardRepository();
                 repo.Username = SessionManager.TESTER_LOGIN_NAME;
+                var lAppList = repo.GetApplicationListByStoryboardId(Storyboardid);
+                ViewBag.applicationlst = JsonConvert.SerializeObject(lAppList);
                 ViewBag.Accesstoken = SessionManager.Accesstoken;
                 ViewBag.WebAPIURL = ConfigurationManager.AppSettings["WebApiURL"];
                 ViewBag.Title = "Home Page";
@@ -150,7 +153,7 @@ namespace MARS_Web.Controllers
             }
             return PartialView("PartialRightStoryboardGrid");
         }
-        public ActionResult RightSideGridView(int TestcaseId = 0, int TestsuiteId = 0, int ProjectId = 0, string VisibleDataset = "")
+        public ActionResult RightSideGridView(int TestcaseId = 0, int TestsuiteId = 0, int ProjectId = 0, string VisibleDataset = "", int storyboradId = 0, string storyboardname = "")
         {
             try
             {
@@ -163,6 +166,7 @@ namespace MARS_Web.Controllers
                 lRep.Username = SessionManager.TESTER_LOGIN_NAME;
                 var repObject = new ObjectRepository();
                 repObject.Username = SessionManager.TESTER_LOGIN_NAME;
+                JavaScriptSerializer js = new JavaScriptSerializer();
                 if (TestcaseId == 0 && TestsuiteId == 0 && ProjectId == 0)
                 {
                     ViewBag.TestcaseId = TestcaseId;
@@ -173,11 +177,14 @@ namespace MARS_Web.Controllers
                 }
                 else
                 {
+                    ViewBag.TCstoryboradId = storyboradId;
+                    ViewBag.TCstoryboardname = storyboardname;
                     ViewBag.TestcaseId = TestcaseId;
                     ViewBag.TestsuiteId = TestsuiteId;
                     ViewBag.VisibleDataset = VisibleDataset;
                     ViewBag.ProjectId = ProjectId;
                     ViewBag.TestCaseName = lRep.GetTestCaseNameById(TestcaseId);
+                    ViewBag.TCApplicationList = js.Serialize(lRep.GetApplicationListByTestcaseId(TestcaseId));
                     Session["TestsuiteId"] = ViewBag.TestsuiteId;
                     Session["TestcaseId"] = ViewBag.TestcaseId;
                     Session["ProjectId"] = ViewBag.ProjectId;

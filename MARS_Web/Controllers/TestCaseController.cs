@@ -376,7 +376,7 @@ namespace MARS_Web.Controllers
         #region PQGrid functionality of TestCase Grid
 
         //Loads all the steps of TestCase grid by TestCaseId
-        public ActionResult GetTestCaseDetails(int testcaseId)
+        public ActionResult GetTestCaseDetails(int testcaseId, string dataset)
         {
             ResultModel resultModel = new ResultModel();
             try
@@ -386,7 +386,8 @@ namespace MARS_Web.Controllers
                 string lSchema = SessionManager.Schema;
                 var lConnectionStr = SessionManager.APP;
 
-                var result = tc.GetTestCaseDetail(testcaseId, lSchema, lConnectionStr, (long)SessionManager.TESTER_ID);
+                var datasetId = tc.GetDatasetId(dataset);
+                var result = tc.GetTestCaseDetail(testcaseId, lSchema, lConnectionStr, (long)SessionManager.TESTER_ID, datasetId);
 
                 var json = JsonConvert.SerializeObject(result);
                 resultModel.status = 1;
@@ -576,7 +577,7 @@ namespace MARS_Web.Controllers
                             var lRun_Order = "";
                             foreach (var item in updates)
                             {
-                                var lflag = true;
+                               var lflag = true;
                                 if (item.Key == "keyword")
                                 {
                                     lKeyword = Convert.ToString(item.Value);
@@ -613,20 +614,21 @@ namespace MARS_Web.Controllers
                                     {
                                         foreach (var dataset in lDatasetnameList)
                                         {
-                                            var lForSkipValue = updates.Any(x => x.Key == dataset.Data_Summary_Name);
+                                            var lForSkipValue = updates.Any(x => x.Key.Replace("&amp;", "&") == dataset.Data_Summary_Name);
                                             var lSplitDatasetname = false;
                                             var lDatasetname = "";
                                             if (!lForSkipValue)
                                             {
-                                                if (Convert.ToString(item.Key).Contains("skip_"))
+                                                if (Convert.ToString(item.Key.Replace("&amp;", "&")).Contains("skip_"))
                                                 {
                                                     lDatasetname = Convert.ToString(item.Key).Split(new string[] { "skip_" }, StringSplitOptions.None)[1];
-                                                    if (!updates.Any(x => x.Key == lDatasetname))
+                                                    lDatasetname = lDatasetname.Replace("&amp;", "&");
+                                                    if (!updates.Any(x => x.Key.Replace("&amp;", "&") == lDatasetname))
                                                         lSplitDatasetname = true;
                                                 }
                                             }
 
-                                            if (dataset.Data_Summary_Name == Convert.ToString(item.Key) || (lSplitDatasetname && dataset.Data_Summary_Name == lDatasetname))
+                                            if (dataset.Data_Summary_Name == Convert.ToString(item.Key.Replace("&amp;", "&")) || (lSplitDatasetname && dataset.Data_Summary_Name == lDatasetname))
                                             {
 
                                                 DataRow dr = dt.NewRow();
@@ -641,17 +643,17 @@ namespace MARS_Web.Controllers
                                                 dr["FEEDPROCESSDETAILID"] = valFeedD;
                                                 dr["Type"] = "Update";
 
-                                                if (updates.Any(x => x.Key == "DataSettingId_" + dataset.Data_Summary_Name))
+                                                if (updates.Any(x => x.Key.Replace("&amp;", "&") == "DataSettingId_" + dataset.Data_Summary_Name))
                                                 {
-                                                    dr["Data_Setting_Id"] = Convert.ToString(updates.FirstOrDefault(x => x.Key == "DataSettingId_" + dataset.Data_Summary_Name).Value) == "undefined" ? "0" : Convert.ToString(updates.FirstOrDefault(x => x.Key == "DataSettingId_" + dataset.Data_Summary_Name).Value);
+                                                    dr["Data_Setting_Id"] = Convert.ToString(updates.FirstOrDefault(x => x.Key.Replace("&amp;", "&") == "DataSettingId_" + dataset.Data_Summary_Name).Value) == "undefined" ? "0" : Convert.ToString(updates.FirstOrDefault(x => x.Key == "DataSettingId_" + dataset.Data_Summary_Name).Value);
                                                 }
-                                                if (updates.Any(x => x.Key == dataset.Data_Summary_Name))
+                                                if (updates.Any(x => x.Key.Replace("&amp;", "&") == dataset.Data_Summary_Name))
                                                 {
-                                                    dr["DATASETVALUE"] = Convert.ToString(updates.FirstOrDefault(x => x.Key == dataset.Data_Summary_Name).Value.ToString().Trim());
+                                                    dr["DATASETVALUE"] = Convert.ToString(updates.FirstOrDefault(x => x.Key.Replace("&amp;", "&") == dataset.Data_Summary_Name).Value.ToString().Trim());
                                                 }
-                                                if (updates.Any(x => x.Key == "skip_" + dataset.Data_Summary_Name))
+                                                if (updates.Any(x => x.Key.Replace("&amp;", "&") == "skip_" + dataset.Data_Summary_Name))
                                                 {
-                                                    var skipValue = Convert.ToString(updates.FirstOrDefault(x => x.Key == "skip_" + dataset.Data_Summary_Name).Value);
+                                                    var skipValue = Convert.ToString(updates.FirstOrDefault(x => x.Key.Replace("&amp;", "&") == "skip_" + dataset.Data_Summary_Name).Value);
                                                     if (skipValue.ToUpper().Trim() == "TRUE")
                                                         dr["SKIP"] = "4";
                                                     else
@@ -755,20 +757,20 @@ namespace MARS_Web.Controllers
                                     {
                                         foreach (var dataset in lDatasetnameList)
                                         {
-                                            var lForSkipValue = adds.Any(x => x.Key == dataset.Data_Summary_Name);
+                                            var lForSkipValue = adds.Any(x => x.Key.Replace("&amp;", "&") == dataset.Data_Summary_Name);
                                             var lSplitDatasetname = false;
                                             var lDatasetname = "";
                                             if (!lForSkipValue)
                                             {
                                                 if (Convert.ToString(item.Key).Contains("skip_"))
                                                 {
-                                                    lDatasetname = Convert.ToString(item.Key).Split(new string[] { "skip_" }, StringSplitOptions.None)[1];
+                                                    lDatasetname = Convert.ToString(item.Key.Replace("&amp;", "&")).Split(new string[] { "skip_" }, StringSplitOptions.None)[1];
                                                     if (!adds.Any(x => x.Key == lDatasetname))
                                                         lSplitDatasetname = true;
                                                 }
                                             }
 
-                                            if (dataset.Data_Summary_Name == Convert.ToString(item.Key) || (lSplitDatasetname && dataset.Data_Summary_Name == lDatasetname))
+                                            if (dataset.Data_Summary_Name == Convert.ToString(item.Key.Replace("&amp;", "&")) || (lSplitDatasetname && dataset.Data_Summary_Name == lDatasetname))
                                             {
 
                                                 DataRow dr = dt.NewRow();
@@ -783,17 +785,17 @@ namespace MARS_Web.Controllers
                                                 dr["FEEDPROCESSDETAILID"] = valFeedD;
                                                 dr["Type"] = "Update";
 
-                                                if (adds.Any(x => x.Key == "DataSettingId_" + dataset.Data_Summary_Name))
+                                                if (adds.Any(x => x.Key.Replace("&amp;", "&") == "DataSettingId_" + dataset.Data_Summary_Name))
                                                 {
-                                                    dr["Data_Setting_Id"] = Convert.ToString(adds.FirstOrDefault(x => x.Key == "DataSettingId_" + dataset.Data_Summary_Name).Value) == "undefined" ? "0" : Convert.ToString(adds.FirstOrDefault(x => x.Key == "DataSettingId_" + dataset.Data_Summary_Name).Value);
+                                                    dr["Data_Setting_Id"] = Convert.ToString(adds.FirstOrDefault(x => x.Key.Replace("&amp;", "&") == "DataSettingId_" + dataset.Data_Summary_Name).Value) == "undefined" ? "0" : Convert.ToString(adds.FirstOrDefault(x => x.Key == "DataSettingId_" + dataset.Data_Summary_Name).Value);
                                                 }
-                                                if (adds.Any(x => x.Key == dataset.Data_Summary_Name))
+                                                if (adds.Any(x => x.Key.Replace("&amp;", "&") == dataset.Data_Summary_Name))
                                                 {
-                                                    dr["DATASETVALUE"] = Convert.ToString(adds.FirstOrDefault(x => x.Key == dataset.Data_Summary_Name).Value.ToString().Trim());
+                                                    dr["DATASETVALUE"] = Convert.ToString(adds.FirstOrDefault(x => x.Key.Replace("&amp;", "&") == dataset.Data_Summary_Name).Value.ToString().Trim());
                                                 }
-                                                if (adds.Any(x => x.Key == "skip_" + dataset.Data_Summary_Name))
+                                                if (adds.Any(x => x.Key.Replace("&amp;", "&") == "skip_" + dataset.Data_Summary_Name))
                                                 {
-                                                    var skipValue = Convert.ToString(adds.FirstOrDefault(x => x.Key == "skip_" + dataset.Data_Summary_Name).Value);
+                                                    var skipValue = Convert.ToString(adds.FirstOrDefault(x => x.Key.Replace("&amp;", "&") == "skip_" + dataset.Data_Summary_Name).Value);
                                                     if (skipValue.ToUpper().Trim() == "TRUE")
                                                         dr["SKIP"] = "4";
                                                     else
@@ -943,7 +945,7 @@ namespace MARS_Web.Controllers
             }
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
-
+     
         public ActionResult SaveTestCase_History(string lJson, string testCaseId, string testSuiteId, string pKeywordObject = "", string steps = "",
              string DeleteColumnsList = "", string SkipColumns = "", string Version = "")
         {
@@ -2014,79 +2016,73 @@ namespace MARS_Web.Controllers
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
 
-        //[HttpPost]
-        //public ActionResult GetObjectsList(GetObjectList ObjectList)
-        //{
-        //    ResultModel resultModel = new ResultModel();
-        //    try
-        //    {
-        //        var repObject = new ObjectRepository();
-        //        repObject.Username = SessionManager.TESTER_LOGIN_NAME;
-        //        var repKeyword = new KeywordRepository();
-        //        repKeyword.Username = SessionManager.TESTER_LOGIN_NAME;
-        //        var lList = new List<ObjectList>();
+        [HttpPost]
+        public ActionResult ExecuteTestCase(string lGrid, string lTestCaseId, string lTestSuiteId, long storyboradId, string storyborad)
+        {
+            ResultModel resultModel = new ResultModel();
+            try
+            {
+                TestcaseJsonModel testcaseJson = new TestcaseJsonModel();
+                TestCaseRepository repTC = new TestCaseRepository();
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                List<TestcaseJsonViewModel> tcJson = new List<TestcaseJsonViewModel>();
+                KeywordRepository repKeyword = new KeywordRepository();
+                ObjectRepository repObject = new ObjectRepository();
+                repObject.Username = SessionManager.TESTER_LOGIN_NAME;
+                repTC.Username = SessionManager.TESTER_LOGIN_NAME;
+                repKeyword.Username = SessionManager.TESTER_LOGIN_NAME;
+                var plist = js.Deserialize<List<Object>>(lGrid);
 
-        //        JavaScriptSerializer js = new JavaScriptSerializer();
-        //        string lGrid = ObjectList.Grid;
-        //        int stepId = ObjectList.stepId;
-        //        int lTestCaseId = ObjectList.TestCaseId;
+                var test = ((System.Collections.Generic.Dictionary<string, object>)plist[0]).ToList().Count;
+                if(((System.Collections.Generic.Dictionary<string, object>)plist[0]).ToList().Count < 14)
+                {
+                    foreach (var d in plist)
+                    {
+                        TestcaseJsonViewModel tcJsonView = new TestcaseJsonViewModel();
+                        var stp = ((System.Collections.Generic.Dictionary<string, object>)d).ToList();
+                        tcJsonView.k_n = stp[1].Value.ToString();
+                        tcJsonView.obj = stp[2].Value.ToString();
+                        tcJsonView.ord = Convert.ToInt32(stp[5].Value);
+                        tcJsonView.para = stp[3].Value.ToString();
+                        tcJsonView.data = stp[9].Value.ToString();
 
-        //        var lobj = js.Deserialize<KeywordObjectLink[]>(lGrid);
+                        var KeyList = repKeyword.GetKeywordByName(tcJsonView.k_n);
+                        tcJsonView.k = KeyList != null ? KeyList.KEY_WORD_ID : 0;
 
-        //        int lPegStepId = 0;
-        //        decimal lPegObjectId = 0;
-        //        long llinkedKeywordId = 0;
-        //        lobj.Where(c => c.Keyword == null).ToList().ForEach(x => { x.Keyword = ""; });
+                        var Obj = repObject.GetPegObjectIdByObjectName(tcJsonView.obj);
+                        tcJsonView.objN_Id = Obj != null ? Obj.ObjectNameID : 0;
+                        tcJsonView.o_Id = Obj != null ? Obj.ObjectId : 0;
+                        tcJson.Add(tcJsonView);
+                    }
+                    tcJson = tcJson.OrderBy(x => x.ord).ToList();
+                    testcaseJson.TcJson = js.Serialize(tcJson);
+                    testcaseJson.guid = Guid.NewGuid();
+                    testcaseJson.user = SessionManager.TESTER_LOGIN_NAME;
+                    testcaseJson.database = SessionManager.Schema;
 
-        //        var lPegKeywordList = lobj.Where(x => x.Keyword.ToLower() == "pegwindow").ToList();
-        //        var lSelectedGrid = lPegKeywordList.Where(x => x.Id == stepId).ToList();
-        //        if (lPegKeywordList.Count() > 0)
-        //        {
-        //            if (stepId < lPegKeywordList.First().Id)
-        //            {
-        //                lList = new List<ObjectList>();
-
-        //            }
-        //            else if (lSelectedGrid.Count() > 0)
-        //            {
-        //                lList = repObject.GetObjectsByPegWindowType(lTestCaseId).OrderBy(y => y.ObjectName).ToList();
-        //            }
-        //            else
-        //            {
-        //                var lPegKeywordNameList = lobj.Where(x => x.Id == stepId).ToList();
-        //                var lPegKeywordName = lPegKeywordNameList.First().Keyword;
-        //                var lLinkedKeyList = repKeyword.GetKeywordByName(lPegKeywordName);
-        //                if (lLinkedKeyList != null)
-        //                {
-        //                    llinkedKeywordId = lLinkedKeyList.KEY_WORD_ID;
-        //                    var lPegObjectName = lPegKeywordList.Where(x => x.Id < stepId).OrderByDescending(y => y.Id).First().Object;
-
-        //                    //var lPegObj = repObject.GetObjectByObjectName(lPegObjectName);
-        //                    var lPegObj = repObject.GetPegObjectByObjectName(lPegObjectName);
-        //                    if (lPegObj != null)
-        //                    {
-        //                        lPegObjectId = lPegObj.OBJECT_NAME_ID;
-        //                        lList = repObject.GetObjectByParent(lTestCaseId, lPegObjectId, llinkedKeywordId).Select(y => new ObjectList
-        //                        {
-        //                            ObjectId = y.OBJECT_NAME_ID,
-        //                            ObjectName = y.OBJECT_HAPPY_NAME
-        //                        }).OrderBy(y => y.ObjectName).ToList();
-        //                    }
-        //                }
-        //            }
-        //        }
-        //        resultModel.status = 1;
-        //        resultModel.data = lList;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        logger.Error(string.Format("Error occured in Testcase | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-        //        ELogger.ErrorException(string.Format("Error occured in Testcase | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
-        //        resultModel.status = 0;
-        //        resultModel.message = ex.Message.ToString();
-        //    }
-        //    return Json(resultModel, JsonRequestBehavior.AllowGet);
-        //}
+                    var testcaseId = Convert.ToInt64(lTestCaseId);
+                    //testcaseJson.applications = repTC.GetApplicationListByTestcaseId(testcaseId);
+                    resultModel.data = testcaseJson;
+                    resultModel.status = 1;
+                }
+                else
+                {
+                    resultModel.data = 0;
+                    resultModel.status = 0;
+                    resultModel.message = "Execute Testcase steps not working with multiple datasets";
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in StoryBoard for Testcase method | StoryBoard Id : {0} | UserName: {1}", lTestCaseId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in StoryBoard for Testcase method | StoryBoard Id : {0} | UserName: {1}", lTestCaseId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Testcase for ExecuteTestCase method | StoryBoard Id : {0} | UserName: {1}", lTestCaseId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+                resultModel.status = 0;
+                resultModel.message = ex.Message.ToString();
+            }
+            return Json(resultModel, JsonRequestBehavior.AllowGet);
+        }
 
         #endregion
 

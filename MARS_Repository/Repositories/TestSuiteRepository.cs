@@ -12,6 +12,7 @@ using System.Data;
 using MARS_Repository.Entities;
 using Oracle.ManagedDataAccess.Client;
 using NLog;
+using System.Transactions;
 
 namespace MARS_Repository.Repositories
 {
@@ -163,96 +164,100 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                if (!string.IsNullOrEmpty(lEntity.TestSuiteName))
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    lEntity.TestSuiteName = lEntity.TestSuiteName.Trim();
-                }
-                var flag = false;
-                if (lEntity.TestSuiteId == 0)
-                {
-                    logger.Info(string.Format("Add TestSuite start | TestSuiteName: {0} | UserName: {1}", lEntity.TestSuiteName, Username));
-                    var tbl = new T_TEST_SUITE();
-                    tbl.TEST_SUITE_ID = Helper.NextTestSuiteId("T_TEST_SUITE_SEQ");
-                    tbl.TEST_SUITE_NAME = lEntity.TestSuiteName;
-                    tbl.TEST_SUITE_DESCRIPTION = lEntity.TestSuiteDescription;
-                    lEntity.TestSuiteId = tbl.TEST_SUITE_ID;
-                    enty.T_TEST_SUITE.Add(tbl);
-                    enty.SaveChanges();
-
-                    logger.Info(string.Format("Add TestSuite end | TestSuiteName: {0} | UserName: {1}", lEntity.TestSuiteName, Username));
-                    flag = true;
-                }
-                else
-                {
-                    logger.Info(string.Format("Edit TestSuite start | TestSuiteName: {0} | UserName: {1}", lEntity.TestSuiteName, Username));
-                    var tbl = enty.T_TEST_SUITE.Find(lEntity.TestSuiteId);
-                    #region Testcase and Application Mapping Delete
-                    var lAppList = enty.REL_APP_TESTSUITE.Where(x => x.TEST_SUITE_ID == lEntity.TestSuiteId).ToList();
-                    foreach (var item in lAppList)
+                    if (!string.IsNullOrEmpty(lEntity.TestSuiteName))
                     {
-                        enty.REL_APP_TESTSUITE.Remove(item);
+                        lEntity.TestSuiteName = lEntity.TestSuiteName.Trim();
                     }
-
-                    #endregion
-
-
-                    #region Testcase and TestSuite Mapping Delete
-                    var lTCTSList = enty.REL_TEST_SUIT_PROJECT.Where(x => x.TEST_SUITE_ID == lEntity.TestSuiteId).ToList();
-                    foreach (var item in lTCTSList)
+                    var flag = false;
+                    if (lEntity.TestSuiteId == 0)
                     {
-                        enty.REL_TEST_SUIT_PROJECT.Remove(item);
-                    }
-                    enty.SaveChanges();
-                    #endregion
-                    if (tbl != null)
-                    {
+                        logger.Info(string.Format("Add TestSuite start | TestSuiteName: {0} | UserName: {1}", lEntity.TestSuiteName, Username));
+                        var tbl = new T_TEST_SUITE();
+                        tbl.TEST_SUITE_ID = Helper.NextTestSuiteId("T_TEST_SUITE_SEQ");
                         tbl.TEST_SUITE_NAME = lEntity.TestSuiteName;
                         tbl.TEST_SUITE_DESCRIPTION = lEntity.TestSuiteDescription;
+                        lEntity.TestSuiteId = tbl.TEST_SUITE_ID;
+                        enty.T_TEST_SUITE.Add(tbl);
                         enty.SaveChanges();
+
+                        logger.Info(string.Format("Add TestSuite end | TestSuiteName: {0} | UserName: {1}", lEntity.TestSuiteName, Username));
+                        flag = true;
                     }
-                    logger.Info(string.Format("Edit TestSuite end | TestSuiteName: {0} | UserName: {1}", lEntity.TestSuiteName, Username));
-                    flag = true;
-                }
-                if (!string.IsNullOrEmpty(lEntity.ApplicationId))
-                {
-
-                    var lAppSplit = lEntity.ApplicationId.Split(',').Select(Int64.Parse).ToList();
-
-                    if (lAppSplit.Count() > 0)
+                    else
                     {
-                        lAppSplit = lAppSplit.Distinct().ToList();
-                        foreach (var item in lAppSplit)
+                        logger.Info(string.Format("Edit TestSuite start | TestSuiteName: {0} | UserName: {1}", lEntity.TestSuiteName, Username));
+                        var tbl = enty.T_TEST_SUITE.Find(lEntity.TestSuiteId);
+                        #region Testcase and Application Mapping Delete
+                        var lAppList = enty.REL_APP_TESTSUITE.Where(x => x.TEST_SUITE_ID == lEntity.TestSuiteId).ToList();
+                        foreach (var item in lAppList)
                         {
-                            var lApptbl = new REL_APP_TESTSUITE();
-                            lApptbl.APPLICATION_ID = item;
-                            lApptbl.TEST_SUITE_ID = lEntity.TestSuiteId;
-                            lApptbl.RELATIONSHIP_ID = Helper.NextTestSuiteId("REL_APP_TESTSUITE_SEQ");
-                            enty.REL_APP_TESTSUITE.Add(lApptbl);
+                            enty.REL_APP_TESTSUITE.Remove(item);
+                        }
+
+                        #endregion
+
+
+                        #region Testcase and TestSuite Mapping Delete
+                        var lTCTSList = enty.REL_TEST_SUIT_PROJECT.Where(x => x.TEST_SUITE_ID == lEntity.TestSuiteId).ToList();
+                        foreach (var item in lTCTSList)
+                        {
+                            enty.REL_TEST_SUIT_PROJECT.Remove(item);
+                        }
+                        enty.SaveChanges();
+                        #endregion
+                        if (tbl != null)
+                        {
+                            tbl.TEST_SUITE_NAME = lEntity.TestSuiteName;
+                            tbl.TEST_SUITE_DESCRIPTION = lEntity.TestSuiteDescription;
                             enty.SaveChanges();
                         }
+                        logger.Info(string.Format("Edit TestSuite end | TestSuiteName: {0} | UserName: {1}", lEntity.TestSuiteName, Username));
+                        flag = true;
                     }
-                    if (!string.IsNullOrEmpty(lEntity.ProjectId))
+                    if (!string.IsNullOrEmpty(lEntity.ApplicationId))
                     {
-                        var lProjectSplit = lEntity.ProjectId.Split(',').Select(Int64.Parse).ToList();
-                        if (lProjectSplit.Count() > 0)
+
+                        var lAppSplit = lEntity.ApplicationId.Split(',').Select(Int64.Parse).ToList();
+
+                        if (lAppSplit.Count() > 0)
                         {
-
-                            lProjectSplit = lProjectSplit.Distinct().ToList();
-                            foreach (var item in lProjectSplit)
+                            lAppSplit = lAppSplit.Distinct().ToList();
+                            foreach (var item in lAppSplit)
                             {
-                                var lTSTC = new REL_TEST_SUIT_PROJECT();
-                                lTSTC.TEST_SUITE_ID = lEntity.TestSuiteId;
-                                lTSTC.PROJECT_ID = item;
-                                lTSTC.RELATIONSHIP_ID = Helper.NextTestSuiteId("REL_TEST_SUIT_PROJECT_SEQ");
-                                enty.REL_TEST_SUIT_PROJECT.Add(lTSTC);
+                                var lApptbl = new REL_APP_TESTSUITE();
+                                lApptbl.APPLICATION_ID = item;
+                                lApptbl.TEST_SUITE_ID = lEntity.TestSuiteId;
+                                lApptbl.RELATIONSHIP_ID = Helper.NextTestSuiteId("REL_APP_TESTSUITE_SEQ");
+                                enty.REL_APP_TESTSUITE.Add(lApptbl);
                                 enty.SaveChanges();
-
                             }
                         }
+                        if (!string.IsNullOrEmpty(lEntity.ProjectId))
+                        {
+                            var lProjectSplit = lEntity.ProjectId.Split(',').Select(Int64.Parse).ToList();
+                            if (lProjectSplit.Count() > 0)
+                            {
+
+                                lProjectSplit = lProjectSplit.Distinct().ToList();
+                                foreach (var item in lProjectSplit)
+                                {
+                                    var lTSTC = new REL_TEST_SUIT_PROJECT();
+                                    lTSTC.TEST_SUITE_ID = lEntity.TestSuiteId;
+                                    lTSTC.PROJECT_ID = item;
+                                    lTSTC.RELATIONSHIP_ID = Helper.NextTestSuiteId("REL_TEST_SUIT_PROJECT_SEQ");
+                                    enty.REL_TEST_SUIT_PROJECT.Add(lTSTC);
+                                    enty.SaveChanges();
+
+                                }
+                            }
+                        }
+                        flag = true;
                     }
-                    flag = true;
+                    scope.Complete();
+                    return flag;
                 }
-                return flag;
             }
             catch (Exception ex)
             {
@@ -267,16 +272,20 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("Change TestSuiteName start | TestSuiteName : {0}| UserName: {1}", lTestSuiteName, Username));
-                if (!string.IsNullOrEmpty(lTestSuiteName))
-                    lTestSuiteName = lTestSuiteName.Trim();
+                using (TransactionScope scope = new TransactionScope())
+                {
+                    logger.Info(string.Format("Change TestSuiteName start | TestSuiteName : {0}| UserName: {1}", lTestSuiteName, Username));
+                    if (!string.IsNullOrEmpty(lTestSuiteName))
+                        lTestSuiteName = lTestSuiteName.Trim();
 
-                var lTestSuite = enty.T_TEST_SUITE.Find(lTestSuiteId);
-                lTestSuite.TEST_SUITE_NAME = lTestSuiteName;
-                lTestSuite.TEST_SUITE_DESCRIPTION = testsuitedesc;
-                enty.SaveChanges();
-                logger.Info(string.Format("Change TestSuiteName end | TestSuiteName : {0}| UserName: {1}", lTestSuiteName, Username));
-                return "success";
+                    var lTestSuite = enty.T_TEST_SUITE.Find(lTestSuiteId);
+                    lTestSuite.TEST_SUITE_NAME = lTestSuiteName;
+                    lTestSuite.TEST_SUITE_DESCRIPTION = testsuitedesc;
+                    enty.SaveChanges();
+                    logger.Info(string.Format("Change TestSuiteName end | TestSuiteName : {0}| UserName: {1}", lTestSuiteName, Username));
+                    scope.Complete();
+                    return "success";
+                }
             }
             catch (Exception ex)
             {
@@ -337,41 +346,45 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("Delete TestSuite start | TestSuiteId: {0} | UserName: {1}", TestSuiteId, Username));
-                var flag = false;
-
-                var testSuite = enty.T_TEST_SUITE.FirstOrDefault(x => x.TEST_SUITE_ID == TestSuiteId);
-                if (testSuite != null)
+                using (TransactionScope scope = new TransactionScope())
                 {
+                    logger.Info(string.Format("Delete TestSuite start | TestSuiteId: {0} | UserName: {1}", TestSuiteId, Username));
+                    var flag = false;
 
-                    var RelAppTS = enty.REL_APP_TESTSUITE.Where(x => x.TEST_SUITE_ID == testSuite.TEST_SUITE_ID).ToList();
-                    foreach (var a in RelAppTS)
+                    var testSuite = enty.T_TEST_SUITE.FirstOrDefault(x => x.TEST_SUITE_ID == TestSuiteId);
+                    if (testSuite != null)
                     {
-                        enty.REL_APP_TESTSUITE.Remove(a);
+
+                        var RelAppTS = enty.REL_APP_TESTSUITE.Where(x => x.TEST_SUITE_ID == testSuite.TEST_SUITE_ID).ToList();
+                        foreach (var a in RelAppTS)
+                        {
+                            enty.REL_APP_TESTSUITE.Remove(a);
+                            enty.SaveChanges();
+                        }
+
+                        var RelPTS = enty.REL_TEST_SUIT_PROJECT.Where(x => x.TEST_SUITE_ID == testSuite.TEST_SUITE_ID).ToList();
+
+                        foreach (var r in RelPTS)
+                        {
+                            enty.REL_TEST_SUIT_PROJECT.Remove(r);
+                            enty.SaveChanges();
+                        }
+
+                        var RelTCTS = enty.REL_TEST_CASE_TEST_SUITE.Where(x => x.TEST_SUITE_ID == testSuite.TEST_SUITE_ID).ToList();
+
+                        foreach (var r in RelTCTS)
+                        {
+                            enty.REL_TEST_CASE_TEST_SUITE.Remove(r);
+                            enty.SaveChanges();
+                        }
+                        enty.T_TEST_SUITE.Remove(testSuite);
                         enty.SaveChanges();
+                        flag = true;
                     }
-
-                    var RelPTS = enty.REL_TEST_SUIT_PROJECT.Where(x => x.TEST_SUITE_ID == testSuite.TEST_SUITE_ID).ToList();
-
-                    foreach (var r in RelPTS)
-                    {
-                        enty.REL_TEST_SUIT_PROJECT.Remove(r);
-                        enty.SaveChanges();
-                    }
-
-                    var RelTCTS = enty.REL_TEST_CASE_TEST_SUITE.Where(x => x.TEST_SUITE_ID == testSuite.TEST_SUITE_ID).ToList();
-
-                    foreach (var r in RelTCTS)
-                    {
-                        enty.REL_TEST_CASE_TEST_SUITE.Remove(r);
-                        enty.SaveChanges();
-                    }
-                    enty.T_TEST_SUITE.Remove(testSuite);
-                    enty.SaveChanges();
-                    flag = true;
+                    logger.Info(string.Format("Delete TestSuite end | TestSuiteId: {0} | UserName: {1}", TestSuiteId, Username));
+                    scope.Complete();
+                    return flag;
                 }
-                logger.Info(string.Format("Delete TestSuite end | TestSuiteId: {0} | UserName: {1}", TestSuiteId, Username));
-                return flag;
             }
             catch (Exception ex)
             {

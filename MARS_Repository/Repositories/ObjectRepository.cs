@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 using MARS_Repository.Entities;
 using MARS_Repository.ViewModel;
 using NLog;
@@ -125,8 +126,8 @@ namespace MARS_Repository.Repositories
             try
             {
                 logger.Info(string.Format("Get Object By Parent start | PegObjectId: {0} | TestcaseId: {1} | UserName: {2}", lPegObjectId, testcaseId, Username));
-                var lPegObjectName = entity.T_REGISTED_OBJECT.Where(x => x.OBJECT_NAME_ID == lPegObjectId && x.TYPE_ID==1).FirstOrDefault().OBJECT_TYPE;
-               
+                var lPegObjectName = entity.T_REGISTED_OBJECT.Where(x => x.OBJECT_NAME_ID == lPegObjectId && x.TYPE_ID == 1).FirstOrDefault().OBJECT_TYPE;
+
                 var lAppId = entity.REL_APP_TESTCASE.Where(x => x.TEST_CASE_ID == testcaseId).FirstOrDefault().APPLICATION_ID;
 
                 var linkedObject = (from k in entity.T_OBJECT_NAMEINFO
@@ -226,7 +227,7 @@ namespace MARS_Repository.Repositories
                         description = Convert.ToString(row.Field<string>("description")),
                         autocheckerror = Convert.ToInt16(row.Field<short?>("checkerror")),
                         Totalcount = Convert.ToInt32(row.Field<decimal>("RESULT_COUNT"))
-                }).ToList();
+                    }).ToList();
 
                 logger.Info(string.Format("Get object list end | ApplicationId: {0} | Username: {1}", appid, Username));
                 return resultList;
@@ -350,99 +351,103 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                if (model.ObjectId == 0)
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    logger.Info(string.Format("Add object start | ApplicationId: {0} | Object: {1} | Username: {2}", model.applicationid, model.ObjectName,Username));
-
-                    var objectexist = entity.T_OBJECT_NAMEINFO.Where(x => x.OBJECT_HAPPY_NAME.Trim() == model.ObjectName.Trim()).FirstOrDefault();
-                    var objnameinfo = new T_OBJECT_NAMEINFO();
-                    if (objectexist != null)
+                    if (model.ObjectId == 0)
                     {
-                        objnameinfo.OBJECT_NAME_ID = objectexist.OBJECT_NAME_ID;
-                        if (objectexist.PEGWINDOW_MARK == null)
+                        logger.Info(string.Format("Add object start | ApplicationId: {0} | Object: {1} | Username: {2}", model.applicationid, model.ObjectName, Username));
+
+                        var objectexist = entity.T_OBJECT_NAMEINFO.Where(x => x.OBJECT_HAPPY_NAME.Trim() == model.ObjectName.Trim()).FirstOrDefault();
+                        var objnameinfo = new T_OBJECT_NAMEINFO();
+                        if (objectexist != null)
                         {
-                            if (model.ObjectName.ToLower() == model.ObjectParent.ToLower())
+                            objnameinfo.OBJECT_NAME_ID = objectexist.OBJECT_NAME_ID;
+                            if (objectexist.PEGWINDOW_MARK == null)
                             {
-                                objectexist.PEGWINDOW_MARK = 1;
-                                entity.SaveChanges();
+                                if (model.ObjectName.ToLower() == model.ObjectParent.ToLower())
+                                {
+                                    objectexist.PEGWINDOW_MARK = 1;
+                                    entity.SaveChanges();
+                                }
                             }
                         }
+                        else
+                        {
+                            if (model.description == null)
+                            {
+                                model.description = "";
+                            }
+
+                            objnameinfo.OBJECT_NAME_ID = Helper.NextTestSuiteId("SEQ_MARS_OBJECT_ID");
+                            objnameinfo.OBJECT_HAPPY_NAME = model.ObjectName;
+                            objnameinfo.OBJNAME_DESCRIPTION = model.description;
+                            if (model.ObjectName.ToLower() == model.ObjectParent.ToLower())
+                                objnameinfo.PEGWINDOW_MARK = 1;
+                            else
+                                objnameinfo.PEGWINDOW_MARK = null;
+                            entity.T_OBJECT_NAMEINFO.Add(objnameinfo);
+                            entity.SaveChanges();
+                        }
+
+
+                        if (model.EnumType == null)
+
+                            model.EnumType = "";
+
+                        if (model.Quickaccess == null)
+                        {
+                            model.Quickaccess = "";
+                        }
+                        var registerdobject = new T_REGISTED_OBJECT();
+                        registerdobject.OBJECT_ID = Helper.NextTestSuiteId("SEQ_MARS_OBJECT_ID");
+                        registerdobject.OBJECT_HAPPY_NAME = model.ObjectName;
+                        registerdobject.APPLICATION_ID = model.applicationid;
+                        registerdobject.TYPE_ID = model.ObjectType;
+                        registerdobject.QUICK_ACCESS = model.Quickaccess;
+                        registerdobject.OBJECT_TYPE = model.ObjectParent;
+                        registerdobject.ENUM_TYPE = model.EnumType;
+                        registerdobject.OBJECT_NAME_ID = objnameinfo.OBJECT_NAME_ID;
+                        registerdobject.IS_CHECKERROR_OBJ = model.autocheckerror;
+                        entity.T_REGISTED_OBJECT.Add(registerdobject);
+                        entity.SaveChanges();
+                        logger.Info(string.Format("Add object end | ApplicationId: {0} | Object: {1} | Username: {2}", model.applicationid, model.ObjectName, Username));
                     }
                     else
                     {
-                        if (model.description == null)
-                        {
-                            model.description = "";
-                        }
-                       
-                        objnameinfo.OBJECT_NAME_ID = Helper.NextTestSuiteId("SEQ_MARS_OBJECT_ID");
-                        objnameinfo.OBJECT_HAPPY_NAME = model.ObjectName;
-                        objnameinfo.OBJNAME_DESCRIPTION = model.description;
-                        if (model.ObjectName.ToLower() == model.ObjectParent.ToLower())
-                            objnameinfo.PEGWINDOW_MARK = 1;
-                        else
-                            objnameinfo.PEGWINDOW_MARK = null;
-                        entity.T_OBJECT_NAMEINFO.Add(objnameinfo);
-                        entity.SaveChanges();
-                    }
-
-
-                    if (model.EnumType == null)
-
-                        model.EnumType = "";
-
-                    if (model.Quickaccess == null)
-                    {
-                        model.Quickaccess = "";
-                    }
-                    var registerdobject = new T_REGISTED_OBJECT();
-                    registerdobject.OBJECT_ID = Helper.NextTestSuiteId("SEQ_MARS_OBJECT_ID");
-                    registerdobject.OBJECT_HAPPY_NAME = model.ObjectName;
-                    registerdobject.APPLICATION_ID = model.applicationid;
-                    registerdobject.TYPE_ID = model.ObjectType;
-                    registerdobject.QUICK_ACCESS = model.Quickaccess;
-                    registerdobject.OBJECT_TYPE = model.ObjectParent;
-                    registerdobject.ENUM_TYPE = model.EnumType;
-                    registerdobject.OBJECT_NAME_ID = objnameinfo.OBJECT_NAME_ID;
-                    registerdobject.IS_CHECKERROR_OBJ = model.autocheckerror;
-                    entity.T_REGISTED_OBJECT.Add(registerdobject);
-                    entity.SaveChanges();
-                    logger.Info(string.Format("Add object end | ApplicationId: {0} | Object: {1} | Username: {2}", model.applicationid, model.ObjectName, Username));
-                }
-                else
-                {
-                    logger.Info(string.Format("Edit object start | ApplicationId: {0} | Object: {1} | ObjectId: {2} | Username: {3}", model.applicationid, model.ObjectName, model.ObjectId, Username));
-                    var result = entity.T_OBJECT_NAMEINFO.Find(model.ObjectId);
-                    if (result != null)
-                    {
-
-                        result.OBJECT_HAPPY_NAME = model.ObjectName;
-                        result.OBJNAME_DESCRIPTION = model.description;
-                        if (model.ObjectName.ToLower() == model.ObjectParent.ToLower())
-                            result.PEGWINDOW_MARK = 1;
-                        else
-                            result.PEGWINDOW_MARK = null;
-
-                        entity.SaveChanges();
-
-                        var registeredobject = entity.T_REGISTED_OBJECT.Where(x => x.OBJECT_NAME_ID == model.ObjectId && x.APPLICATION_ID == model.applicationid && x.OBJECT_TYPE.ToLower().Trim() == model.ObjectParent.ToLower().Trim()).ToList();
-                        foreach (var itm in registeredobject)
+                        logger.Info(string.Format("Edit object start | ApplicationId: {0} | Object: {1} | ObjectId: {2} | Username: {3}", model.applicationid, model.ObjectName, model.ObjectId, Username));
+                        var result = entity.T_OBJECT_NAMEINFO.Find(model.ObjectId);
+                        if (result != null)
                         {
 
-                            itm.OBJECT_HAPPY_NAME = model.ObjectName;
-                            itm.APPLICATION_ID = model.applicationid;
-                            itm.TYPE_ID = model.ObjectType;
-                            itm.QUICK_ACCESS = model.Quickaccess;
-                            itm.OBJECT_TYPE = model.ObjectParent;
-                            itm.ENUM_TYPE = model.EnumType;
-                            itm.OBJECT_NAME_ID = model.ObjectId;
-                            itm.IS_CHECKERROR_OBJ = model.autocheckerror;
+                            result.OBJECT_HAPPY_NAME = model.ObjectName;
+                            result.OBJNAME_DESCRIPTION = model.description;
+                            if (model.ObjectName.ToLower() == model.ObjectParent.ToLower())
+                                result.PEGWINDOW_MARK = 1;
+                            else
+                                result.PEGWINDOW_MARK = null;
+
                             entity.SaveChanges();
+
+                            var registeredobject = entity.T_REGISTED_OBJECT.Where(x => x.OBJECT_NAME_ID == model.ObjectId && x.APPLICATION_ID == model.applicationid && x.OBJECT_TYPE.ToLower().Trim() == model.ObjectParent.ToLower().Trim()).ToList();
+                            foreach (var itm in registeredobject)
+                            {
+
+                                itm.OBJECT_HAPPY_NAME = model.ObjectName;
+                                itm.APPLICATION_ID = model.applicationid;
+                                itm.TYPE_ID = model.ObjectType;
+                                itm.QUICK_ACCESS = model.Quickaccess;
+                                itm.OBJECT_TYPE = model.ObjectParent;
+                                itm.ENUM_TYPE = model.EnumType;
+                                itm.OBJECT_NAME_ID = model.ObjectId;
+                                itm.IS_CHECKERROR_OBJ = model.autocheckerror;
+                                entity.SaveChanges();
+                            }
                         }
+                        logger.Info(string.Format("Edit object start | ApplicationId: {0} | Object: {1} | ObjectId: {2} | Username: {3}", model.applicationid, model.ObjectName, model.ObjectId, Username));
                     }
-                    logger.Info(string.Format("Edit object start | ApplicationId: {0} | Object: {1} | ObjectId: {2} | Username: {3}", model.applicationid, model.ObjectName, model.ObjectId, Username));
+                    scope.Complete();
+                    return "success";
                 }
-                return "success";
             }
             catch (Exception ex)
             {
@@ -529,31 +534,35 @@ namespace MARS_Repository.Repositories
                 throw;
             }
         }
-        public string DeleteObject(long id, long appid,string parent)
+        public string DeleteObject(long id, long appid, string parent)
         {
             try
             {
-                logger.Info(string.Format("Delete Object start | objectid: {0} | applicationId: {1} | Username: {2}", id, appid, Username));
-                var result = entity.T_OBJECT_NAMEINFO.Find(id);
-                if (result != null)
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    var regobj = entity.T_REGISTED_OBJECT.Where(x => x.OBJECT_NAME_ID == id && x.APPLICATION_ID == appid && x.OBJECT_TYPE.ToLower().Trim() == parent.ToLower().Trim()).ToList();
-                    foreach (var itm in regobj)
+                    logger.Info(string.Format("Delete Object start | objectid: {0} | applicationId: {1} | Username: {2}", id, appid, Username));
+                    var result = entity.T_OBJECT_NAMEINFO.Find(id);
+                    if (result != null)
                     {
-                        var app = entity.REL_OBJ_APP.Where(x => x.OBJECT_ID == itm.OBJECT_ID).ToList();
-                        foreach (var i in app)
+                        var regobj = entity.T_REGISTED_OBJECT.Where(x => x.OBJECT_NAME_ID == id && x.APPLICATION_ID == appid && x.OBJECT_TYPE.ToLower().Trim() == parent.ToLower().Trim()).ToList();
+                        foreach (var itm in regobj)
                         {
-                            entity.REL_OBJ_APP.Remove(i);
+                            var app = entity.REL_OBJ_APP.Where(x => x.OBJECT_ID == itm.OBJECT_ID).ToList();
+                            foreach (var i in app)
+                            {
+                                entity.REL_OBJ_APP.Remove(i);
+                                entity.SaveChanges();
+                            }
+                            entity.T_REGISTED_OBJECT.Remove(itm);
                             entity.SaveChanges();
                         }
-                        entity.T_REGISTED_OBJECT.Remove(itm);
-                        entity.SaveChanges();
                     }
+                    //entity.T_OBJECT_NAMEINFO.Remove(result);
+                    //entity.SaveChanges();
+                    logger.Info(string.Format("Delete Object end | objectid: {0} | applicationId: {1} | Username: {2}", id, appid, Username));
+                    scope.Complete();
+                    return "success";
                 }
-                //entity.T_OBJECT_NAMEINFO.Remove(result);
-                //entity.SaveChanges();
-                logger.Info(string.Format("Delete Object end | objectid: {0} | applicationId: {1} | Username: {2}", id, appid, Username));
-                return "success";
             }
             catch (Exception ex)
             {
@@ -569,7 +578,7 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("Get ObjectName start | objectid: {0} | applicationId: {1} | Username: {2}", id, appid,Username));
+                logger.Info(string.Format("Get ObjectName start | objectid: {0} | applicationId: {1} | Username: {2}", id, appid, Username));
                 var result = entity.T_OBJECT_NAMEINFO.Find(id).OBJECT_HAPPY_NAME;
                 logger.Info(string.Format("Get ObjectName end | objectid: {0} | Username: {1}", id, Username));
                 return result;
@@ -614,7 +623,7 @@ namespace MARS_Repository.Repositories
                 throw;
             }
         }
-        public string CopyAllObjects(long copyfromappid, long copytoappid,string schema,string lstrConn)
+        public string CopyAllObjects(long copyfromappid, long copytoappid, string schema, string lstrConn)
         {
             try
             {
@@ -663,7 +672,7 @@ namespace MARS_Repository.Repositories
                 throw;
             }
         }
-        public string CopyObjects(List<long> model, long fromid, long toid,string lstrConn,string schema)
+        public string CopyObjects(List<long> model, long fromid, long toid, string lstrConn, string schema)
         {
             try
             {
@@ -707,7 +716,7 @@ namespace MARS_Repository.Repositories
                 logger.Info(string.Format("Copy Objects end | Old ApplicationId: {0} | New ApplicationId: {1} | Username: {2}", fromid, toid, Username));
                 return "success";
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 logger.Error(string.Format("Error occured in Object for CopyObjects method | Old ApplicationId: {0} | New ApplicationId: {1} | Connection String : {2} | Schema : {3} | Username: {4}", fromid, toid, lstrConn, schema, Username));
                 ELogger.ErrorException(string.Format("Error occured in Object for CopyObjects method | Old ApplicationId: {0} | New ApplicationId: {1} | Connection String : {2} | Schema : {3} | Username: {4}", fromid, toid, lstrConn, schema, Username), ex);
@@ -716,7 +725,7 @@ namespace MARS_Repository.Repositories
                 throw;
             }
         }
-       
+
         public bool CheckObjectExists(string objectname, long appid, string objecttype, long? typeid)
         {
             try
@@ -745,7 +754,7 @@ namespace MARS_Repository.Repositories
                 throw;
             }
         }
-        public string CheckConvertingObjectExists(string objectname, long appid, string parentobj,string objecttype)
+        public string CheckConvertingObjectExists(string objectname, long appid, string parentobj, string objecttype)
         {
             try
             {
@@ -804,10 +813,10 @@ namespace MARS_Repository.Repositories
                 throw;
             }
         }
-        public List<string> DuplicateObjectList(long copyfromappid, long copytoappid,string lstrConn,string schema)
+        public List<string> DuplicateObjectList(long copyfromappid, long copytoappid, string lstrConn, string schema)
         {
             var objects = new List<string>();
-          
+
             try
             {
                 logger.Info(string.Format("Duplicate Object List start | Old ApplicationId: {0} | New ApplicationId: {1} | Username: {2}", copyfromappid, copytoappid, Username));
@@ -880,6 +889,32 @@ namespace MARS_Repository.Repositories
                 ELogger.ErrorException(string.Format("Error occured in Object for GetObjectId method | Application Id : {0} | UserName: {1}", appid, Username), ex);
                 if (ex.InnerException != null)
                     ELogger.ErrorException(string.Format("InnerException : Error occured in Object for GetObjectId Method | Application Id : {0} | UserName: {1}", appid, Username), ex.InnerException);
+                throw;
+            }
+        }
+
+        public ObjectIds GetPegObjectIdByObjectName(string lObjectName)
+        {
+            try
+            {
+                logger.Info(string.Format("Get Peg Objects start | lObjectName: {0} | UserName: {1}", lObjectName, Username));
+                var result = (from k in entity.T_REGISTED_OBJECT
+                             join obj_n in entity.T_OBJECT_NAMEINFO on k.OBJECT_NAME_ID equals obj_n.OBJECT_NAME_ID
+                             where k.OBJECT_HAPPY_NAME.ToUpper() == lObjectName.ToUpper()
+                             orderby k.OBJECT_HAPPY_NAME
+                             select new ObjectIds
+                             { ObjectId = (long)k.OBJECT_ID, ObjectNameID = (decimal)k.OBJECT_NAME_ID }).FirstOrDefault();
+
+                logger.Info(string.Format("Get Peg Objects end | lObjectName: {0} | UserName: {1}", lObjectName, Username));
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in Object for GetPegObjectIdByObjectNameId method | lObjectName : {0} | UserName: {1}", lObjectName, Username));
+                ELogger.ErrorException(string.Format("Error occured in Object for GetPegObjectIdByObjectNameId method | lObjectName : {0} | UserName: {1}", lObjectName , Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Object for GetPegObjectIdByObjectNameId method | lObjectName : {0} | UserName: {1}", lObjectName , Username), ex.InnerException);
                 throw;
             }
         }

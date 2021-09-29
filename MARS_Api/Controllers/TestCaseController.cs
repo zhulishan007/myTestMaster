@@ -43,34 +43,47 @@ namespace MARS_Api.Controllers
         //Get Testcase details
         [Route("api/GetTestCaseDetails")]
         [AcceptVerbs("GET", "POST")]
-        public List<TestCaseResult> GetTestCaseDetails(int testcaseId, int testsuiteid, long UserId)
+        public List<TestCaseResult> GetTestCaseDetails(int testcaseId, int testsuiteid, long UserId, string dataset)
         {
             CommonHelper.SetConnectionString(Request);
             var AppConnDetails = CommonHelper.SetAppConnectionString(Request);
             TestCaseRepository tc = new TestCaseRepository();
-            //string luser = WebConfigurationManager.AppSettings["User"];
-            //string lpassword = WebConfigurationManager.AppSettings["Password"];
-            //string ldataSource = WebConfigurationManager.AppSettings["DataSource"];
-            //string lSchema = WebConfigurationManager.AppSettings["Schema"];
-            //var lConnectionStr = "Data Source=" + ldataSource + ";User Id=" + luser + ";Password=" + lpassword + ";";
-
-            //var result = tc.GetTestCaseDetail(testcaseId, testsuiteid, lSchema, lConnectionStr, UserId).ToList();
-            var result = tc.GetTestCaseDetail(testcaseId, AppConnDetails.Schema, AppConnDetails.ConnString, UserId).ToList();
-            //var result = tc.GetTestCaseDetails(testcaseId, testsuiteid);
-            // var json = JsonConvert.SerializeObject(result).ToList();
-
+            var datasetId = tc.GetDatasetId(dataset);
+            var result = tc.GetTestCaseDetail(testcaseId, AppConnDetails.Schema, AppConnDetails.ConnString, UserId, datasetId).ToList();
             return result;
         }
 
         //Change TestCase name
         [Route("api/ChangeTestCaseName")]
         [AcceptVerbs("GET", "POST")]
-        public string ChangeTestCaseName(string TestCaseName, long TestCaseId, string TestCaseDes)
+        public ResultModel ChangeTestCaseName(string TestCaseName, long TestCaseId, string TestCaseDes)
         {
             CommonHelper.SetConnectionString(Request);
-            var testCaserepo = new TestCaseRepository();
-            var value = testCaserepo.ChangeTestCaseName(TestCaseName, TestCaseId, TestCaseDes);
-            return value;
+            ResultModel resultModel = new ResultModel();
+            try
+            {
+                var testCaserepo = new TestCaseRepository();
+                testCaserepo.Username = SessionManager.TESTER_LOGIN_NAME;
+                var result = testCaserepo.CheckDuplicateTestCaseName(TestCaseName, TestCaseId);
+                if (result)
+                {
+                    resultModel.data = result;
+                    resultModel.message = "Test Case name already exist";
+                }
+                else
+                {
+                    var renamecase = testCaserepo.ChangeTestCaseName(TestCaseName, TestCaseId, TestCaseDes);
+                    resultModel.data = renamecase;
+                    resultModel.message = "Test Case name successfully changed";
+                }
+                resultModel.status = 1;
+            }
+            catch (Exception ex)
+            {
+                resultModel.status = 0;
+                resultModel.message = ex.Message.ToString();
+            }
+            return resultModel;
         }
 
         //Check whether duplicate TestCase name exists or not
@@ -83,9 +96,6 @@ namespace MARS_Api.Controllers
             var value = testCaserepo.CheckDuplicateTestCaseName(TestCaseName, TestCaseId);
             return value;
         }
-        // GET: TestCase
-        //TestCaseRepository tc = new TestCaseRepository();
-
 
         [AcceptVerbs("GET", "POST")]
         [Route("api/ValidateTestCase")]
@@ -96,18 +106,15 @@ namespace MARS_Api.Controllers
             try
             {
                 CommonHelper.SetConnectionString(Request);
+                var AppConnDetails = CommonHelper.SetAppConnectionString(Request);
                 JavaScriptSerializer js = new JavaScriptSerializer();
                 TestCaseRepository tc = new TestCaseRepository();
 
                 decimal testcaseId = int.Parse(testCaseId);
                 decimal testsuiteid = int.Parse(testSuiteId);
-
-
                 //check Keyword  object linking
                 var lobj = js.Deserialize<KeywordObjectLink[]>(pKeywordObject);
-                var ValidationResult = tc.CheckObjectKeywordValidation(lobj.ToList(), int.Parse(testCaseId));
-
-                var ValidationSteps = ValidationResult.Where(x => x.IsNotValid == true).ToList();
+                var ValidationSteps = tc.InsertStgTestcaseValidationTable(AppConnDetails.ConnString, AppConnDetails.Schema, lobj, testCaseId);
                 result = JsonConvert.SerializeObject(ValidationSteps);
             }
             catch (Exception ex)
@@ -588,1060 +595,536 @@ namespace MARS_Api.Controllers
         [Route("api/SaveTestCase")]
         [AcceptVerbs("GET", "POST")]
         //Save TestCase grid
-        public string SaveTestCase(string lJson, string testCaseId, string testSuiteId, long UserId, string pKeywordObject = "", string steps = "", string NewColumnsList = "",
-               string ExistDataSetRenameList = "", string DeleteColumnsList = "", string SkipColumns = "", string Version = "")
+        public ResultModel SaveTestCase(string lGrid, string lChanges, string lTestCaseId, string lTestSuiteId, long UserId,
+                string lDeleteColumnsList = "", string lVersion = "")
         {
-            // string filepath = System.Web.HttpContext.Current.Server.MapPath("~/AppData/Log.txt");  //Text File Path
+            CommonHelper.SetConnectionString(Request);
+            var AppConnDetails = CommonHelper.SetAppConnectionString(Request);
+            var repTC = new TestCaseRepository();
+            repTC.Username = SessionManager.TESTER_LOGIN_NAME;
+            ResultModel resultModel = new ResultModel();
             try
             {
-                var AppConnDetails = CommonHelper.SetAppConnectionString(Request);
-                CommonHelper.SetConnectionString(Request);
                 JavaScriptSerializer js = new JavaScriptSerializer();
-                TestCaseRepository tc = new TestCaseRepository();
-                decimal testcaseId = int.Parse(testCaseId);
-                decimal testsuiteid = int.Parse(testSuiteId);
+                decimal testcaseId = int.Parse(lTestCaseId);
+                decimal testsuiteid = int.Parse(lTestSuiteId);
                 var lUserId = SessionManager.TESTER_ID;
 
                 //check Keyword  object linking
-                var lobj = js.Deserialize<KeywordObjectLink[]>(pKeywordObject);
-                var ValidationResult = tc.CheckObjectKeywordValidation(lobj.ToList(), int.Parse(testCaseId));
+                var lobj = js.Deserialize<KeywordObjectLink[]>(lGrid);
+                if (lobj.ToList().Count() == 0)
+                {
+                    resultModel.message = "You can not delete all steps.";
+                    resultModel.status = 1;
+                    return resultModel;
+                }
 
-                var ValidationSteps = ValidationResult.Where(x => x.IsNotValid == true).ToList();
+                OracleTransaction ltransaction;
+                var ValidationSteps = repTC.InsertStgTestcaseValidationTable(AppConnDetails.ConnString, AppConnDetails.Schema, lobj, lTestCaseId);
+                OracleConnection lconnection = new OracleConnection(AppConnDetails.ConnString);
 
                 if (ValidationSteps.Count() == 0)
                 {
-
-                    if (!String.IsNullOrEmpty(Version))
+                    Dictionary<String, List<Object>> plist = js.Deserialize<Dictionary<String, List<Object>>>(lChanges);
+                    if (plist["updateList"].Count == 0 && lVersion == "1")
                     {
-                        var lflag = tc.MatchTestCaseVersion(int.Parse(testCaseId), Convert.ToInt64(Version));
-                        if (!lflag)
+                        if (plist["deleteList"].Count > 0)
                         {
-                            return "Another User Edited this Test Case. Please reload selected TestCase and Make changes.";
-                        }
-                    }
 
-
-                    SkipColumns = SkipColumns.Replace("\\", "\\\\");
-                    // var query = tc.GetTestCaseDetails(testcaseId, testsuiteid);
-                    var skipData = js.Deserialize<Dictionary<String, List<Object>>>(SkipColumns);
-
-                    #region <<Update Steps Region>>
-                    Dictionary<String, List<Object>> dlist = js.Deserialize<Dictionary<String, List<Object>>>(lJson);
-                    if (steps != "")
-                    {
-                        List<Object> stps = js.Deserialize<List<Object>>(steps);
-                        if (stps != null)
-                        {
-                            foreach (var s in stps)
+                            var pVersion = string.Empty;
+                            foreach (var d in plist["deleteList"])
                             {
-                                if (s != null)
+                                if (string.IsNullOrEmpty(lVersion))
                                 {
-                                    var stp = (((System.Collections.Generic.Dictionary<string, object>)s).ToList());
-                                    //if (stp[1].Value.ToString() != stp[2].Value.ToString())
-                                    //{
-                                    var stepsid = stp.Where(x => x.Key == "stepsid");
-                                    var stepid = Convert.ToInt32(stepsid.FirstOrDefault().Value.ToString());
-                                    // var stepid = int.Parse(stp[0].Value.ToString());
-                                    if (stepid > 0)
+                                    var versionList = (((System.Collections.Generic.Dictionary<string, object>)d).ToList());
+                                    var versionId = versionList.Where(x => x.Key == "hdnVERSION");
+                                    if (!string.IsNullOrEmpty(versionId.FirstOrDefault().Value.ToString()))
                                     {
-                                        var newRun_Order = int.Parse(stp[1].Value.ToString());
-                                        tc.UpdateStepID(stepid, int.Parse(stp[1].Value.ToString()));
+                                        pVersion = versionId.FirstOrDefault().Value.ToString();
+                                        lVersion = pVersion;
                                     }
-                                    // }
+                                }
+                                else
+                                {
+                                    break;
                                 }
                             }
                         }
                     }
-                    #endregion
-                    #region <<Update Data Set Name and Description>>
-                    //var datasets = js.Deserialize<List<Object>>(ExistDataSetRenameList);
-                    //if (datasets != null)
-                    //{
-                    //    foreach (var d in datasets)
-                    //    {
-                    //        var ds = (((System.Collections.Generic.Dictionary<string, object>)d).ToList());
-                    //        if (ds.Count() > 3)
-                    //        {
-                    //            if (ds[0].Value.ToString() != ds[1].Value.ToString())
-                    //            {
-                    //                tc.updateDataSetName(ds[1].Value.ToString(), long.Parse(ds[3].Value.ToString()));
-                    //            }
-                    //            tc.updateDataSetDescription(ds[2].Value.ToString(), long.Parse(ds[3].Value.ToString()));
-                    //        }
-                    //    }
-                    //}                    //var datasets = js.Deserialize<List<Object>>(ExistDataSetRenameList);
-                    //if (datasets != null)
-                    //{
-                    //    foreach (var d in datasets)
-                    //    {
-                    //        var ds = (((System.Collections.Generic.Dictionary<string, object>)d).ToList());
-                    //        if (ds.Count() > 3)
-                    //        {
-                    //            if (ds[0].Value.ToString() != ds[1].Value.ToString())
-                    //            {
-                    //                tc.updateDataSetName(ds[1].Value.ToString(), long.Parse(ds[3].Value.ToString()));
-                    //            }
-                    //            tc.updateDataSetDescription(ds[2].Value.ToString(), long.Parse(ds[3].Value.ToString()));
-                    //        }
-                    //    }
-                    //}
-                    #endregion
 
-                    if (DeleteColumnsList != "")
+                    if (!String.IsNullOrEmpty(lVersion))
                     {
-                        List<Object> DataSet = js.Deserialize<List<Object>>(DeleteColumnsList);
+                        var lflag = repTC.MatchTestCaseVersion(int.Parse(lTestCaseId), Convert.ToInt64(lVersion));
+                        if (!lflag)
+                        {
+                            resultModel.message = "Another User Edited this Test Case. Please reload selected TestCase and Make changes.";
+                            resultModel.data = "Another User Edited this Test Case. Please reload selected TestCase and Make changes.";
+                            resultModel.status = 1;
+                            return resultModel;
+                        }
+                    }
+
+                    if (lDeleteColumnsList != "")
+                    {
+                        List<Object> DataSet = js.Deserialize<List<Object>>(lDeleteColumnsList);
                         foreach (var d in DataSet)
                         {
+
                             var stp = (((System.Collections.Generic.Dictionary<string, object>)d).ToList());
-                            tc.DeleteRelTestCaseDataSummary(long.Parse(testCaseId), long.Parse(stp[1].Value.ToString()));
+                            repTC.DeleteRelTestCaseDataSummary(long.Parse(lTestCaseId), long.Parse(stp[2].Value.ToString()));
                         }
                     }
-
-                    //if (NewColumnsList != "")
-                    //{
-                    //    List<Object> DataSet = js.Deserialize<List<Object>>(NewColumnsList);
-                    //    foreach (var d in DataSet)
-                    //    {
-                    //        var stp = (((System.Collections.Generic.Dictionary<string, object>)d).ToList());
-                    //        if (stp.Count() > 2)
-                    //        {
-                    //            tc.AddTestDataSet(long.Parse(testCaseId), stp[1].Value.ToString(), stp[2].Value.ToString());
-                    //        }
-                    //        else
-                    //        {
-                    //            tc.AddTestDataSet(long.Parse(testCaseId), stp[1].Value.ToString(), "");
-                    //        }
-                    //    }
-                    //}
-
-
-
-                    ///<summary>
-                    /// Remove Step
-                    ///</summary>
-                    if (dlist["deleteList"].Count > 0)
+                    var lUpdateRownumber = js.Deserialize<SaveTestcaseModel[]>(lGrid);
+                    var minStepId = lUpdateRownumber.Where(x => x.stepsID != null).Min(x => Convert.ToInt32(x.stepsID));
+                    if (minStepId > 0)
                     {
-                        foreach (var d in dlist["deleteList"])
-                        {
-                            var delete = (((System.Collections.Generic.Dictionary<string, object>)d).ToList());
-                            var stepid = delete.Where(x => x.Key == "stepsID");
-                            if (!string.IsNullOrEmpty(stepid.FirstOrDefault().Value.ToString()))
-                            {
-                                tc.DeleteStep(Convert.ToInt32(stepid.FirstOrDefault().Value.ToString()));
-                            }
-                        }
-
-                        tc.UpdateSteps(int.Parse(testCaseId));
+                        minStepId = 1;
                     }
-
-                    ///<summary>
-                    /// Update Test case
-                    ///</summary>
-
-                    string returnValues = tc.InsertFeedProcess();
-
-                    var valFeed = returnValues.Split('~')[0];
-                    var valFeedD = returnValues.Split('~')[1];
-
-                    //string luser = WebConfigurationManager.AppSettings["User"];
-                    //string lpassword = WebConfigurationManager.AppSettings["Password"];
-                    //string ldataSource = WebConfigurationManager.AppSettings["DataSource"];
-                    //string lSchema = WebConfigurationManager.AppSettings["Schema"];
-                    //var lConnectionStr = "Data Source=" + ldataSource + ";User Id=" + luser + ";Password=" + lpassword + ";";
-                    //string lSchema = SessionManager.Schema;
-                    //var lConnectionStr = SessionManager.APP;
-                    //var query = tc.GetTestCaseDetail(Convert.ToInt64(testcaseId), Convert.ToInt64(testsuiteid), lSchema, lConnectionStr, (long)SessionManager.TESTER_ID);
-                    var query = tc.GetTestCaseDetail(Convert.ToInt64(testcaseId), AppConnDetails.Schema, AppConnDetails.ConnString, (long)SessionManager.TESTER_ID);
-
+                    var lDatasetnameList = repTC.GetDatasetNamebyTestcaseId(int.Parse(lTestCaseId));
+                    var maxOrderNumber = lUpdateRownumber.Where(x => x.stepsID != null).Max(x => Convert.ToInt32(x.pq_ri));
                     DataTable dt = new DataTable();
-                    dt.Columns.Add("TESTSUITENAME");
-                    dt.Columns.Add("TESTCASENAME");
-                    dt.Columns.Add("TESTCASEDESCRIPTION");
-                    dt.Columns.Add("DATASETMODE");
+                    dt.Columns.Add("STEPSID");
                     dt.Columns.Add("KEYWORD");
                     dt.Columns.Add("OBJECT");
                     dt.Columns.Add("PARAMETER");
                     dt.Columns.Add("COMMENTS");
-                    dt.Columns.Add("DATASETNAME");
-                    dt.Columns.Add("DATASETVALUE");
                     dt.Columns.Add("ROWNUMBER");
-                    dt.Columns.Add("FEEDPROCESSDETAILID");
-                    dt.Columns.Add("TABNAME");
-                    dt.Columns.Add("APPLICATION");
-                    dt.Columns.Add("SKIP");
-                    dt.Columns.Add("DATASETDESCRIPTION");
-                    dt.Columns.Add("STEPSID");
-                    dt.Columns.Add("Data_Setting_Id");
+
+                    dt.Columns.Add("DATASETNAME");
                     dt.Columns.Add("DATASETID");
 
-                    DataTable ddt = new DataTable();
-                    ddt.Columns.Add("TESTSUITENAME");
-                    ddt.Columns.Add("TESTCASENAME");
-                    ddt.Columns.Add("TESTCASEDESCRIPTION");
-                    ddt.Columns.Add("DATASETMODE");
-                    ddt.Columns.Add("KEYWORD");
-                    ddt.Columns.Add("OBJECT");
-                    ddt.Columns.Add("PARAMETER");
-                    ddt.Columns.Add("COMMENTS");
-                    ddt.Columns.Add("DATASETNAME");
-                    ddt.Columns.Add("DATASETVALUE");
-                    ddt.Columns.Add("ROWNUMBER");
-                    ddt.Columns.Add("FEEDPROCESSDETAILID");
-                    ddt.Columns.Add("TABNAME");
-                    ddt.Columns.Add("APPLICATION");
-                    ddt.Columns.Add("SKIP");
-                    ddt.Columns.Add("DATASETDESCRIPTION");
-                    ddt.Columns.Add("STEPSID");
-                    ddt.Columns.Add("DATA_SETTING_ID");
-                    ddt.Columns.Add("DATASETID");
-                    int rowCounter = -1;
+                    dt.Columns.Add("DATASETVALUE");
+                    dt.Columns.Add("Data_Setting_Id");
+                    dt.Columns.Add("SKIP");
 
-                    var lskipData = js.Deserialize<Dictionary<String, List<Object>>>(SkipColumns);
-                    if (dlist["updateList"].Count > 0 || dlist["addList"].Count > 0 || lskipData.Count > 0)
+                    dt.Columns.Add("FEEDPROCESSDETAILID");
+                    dt.Columns.Add("Type");
+                    dt.Columns.Add("WhichTable");
+
+                    dt.Columns.Add("TestcaseId");
+                    dt.Columns.Add("TestsuiteId");
+                    dt.Columns.Add("ParentObj");
+
+                    string returnValues = repTC.InsertFeedProcess();
+                    var valFeed = returnValues.Split('~')[0];
+                    var valFeedD = returnValues.Split('~')[1];
+                    //delete rows
+                    var lDeleteSteps = plist["deleteList"];
+                    if (lDeleteSteps.Count > 0)
                     {
-                        if (query != null && query.Count > 0)
+                        foreach (var d in lDeleteSteps)
                         {
-                            foreach (var q in query)
+                            var delete = (((System.Collections.Generic.Dictionary<string, object>)d).ToList());
+                            var stepIds = delete.Where(x => x.Key == "stepsID");
+                            if (!string.IsNullOrEmpty(stepIds.FirstOrDefault().Value.ToString()))
                             {
-                                rowCounter++;
-                                string DATASETNAME = q.DATASETNAME;
-                                string DATASETID = q.DATASETIDS;
-                                string DATASETVALUE = q.DATASETVALUE;
-                                string SKIP = q.SKIP;
-                                string[] datasetnames1 = DATASETNAME.Split(',');
-                                if (q.DATASETVALUE == null)
+                                DataRow dr = dt.NewRow();
+                                dr["STEPSID"] = stepIds.FirstOrDefault().Value.ToString();
+                                dr["FEEDPROCESSDETAILID"] = valFeedD;
+                                dr["Type"] = "Delete";
+                                dr["TestcaseId"] = lTestCaseId;
+                                dr["TestsuiteId"] = lTestSuiteId;
+                                dt.Rows.Add(dr);
+                            }
+                        }
+                    }
+
+                    var lOldList = plist["oldList"];
+                    //update value
+                    var lUpdateSteps = plist["updateList"];
+                    if (lUpdateSteps.Count > 0)
+                    {
+                        int Rowid = 0;
+                        foreach (var d in lUpdateSteps)
+                        {
+                            var updates = (((System.Collections.Generic.Dictionary<string, object>)d).ToList());
+                            var lflagAdded = false;
+                            var lKeyword = "";
+                            var lObject = "";
+                            var lComment = "";
+                            var lParameter = "";
+                            var lstepsID = "";
+                            var lRun_Order = "";
+                            foreach (var item in updates)
+                            {
+                                var lflag = true;
+                                if (item.Key == "keyword")
                                 {
-                                    for (int i = 0; i < datasetnames1.Length; i++)
-                                    {
-                                        datasetnames1[i] = datasetnames1[i];//.Replace("_", " ");  cherish
-                                    }
-                                    DATASETVALUE = DATASETVALUE == null ? "" : DATASETVALUE;
-                                    foreach (var xy in datasetnames1)
-                                    {
-                                        if (DATASETVALUE != null)
-                                            DATASETVALUE += ",";
-
-                                    }
+                                    lKeyword = Convert.ToString(item.Value);
+                                    lflag = false;
                                 }
-                                string DataSettingIds = q.Data_Setting_Id;
-                                //if (datasetnames1.Length < ((updates.Count - 5) / 2))
-                                //{
-                                //    for (int i = 6; i < updates.Count; i++)
-                                //    {
+                                if (item.Key == "object")
+                                {
+                                    lObject = Convert.ToString(item.Value);
+                                    lflag = false;
+                                }
+                                if (item.Key == "comment")
+                                {
+                                    lComment = Convert.ToString(item.Value);
+                                    lflag = false;
+                                }
+                                if (item.Key == "parameters")
+                                {
+                                    lParameter = Convert.ToString(item.Value);
+                                    lflag = false;
+                                }
+                                if (item.Key == "stepsID")
+                                {
+                                    lstepsID = Convert.ToString(item.Value);
+                                    lflag = false;
+                                }
+                                if (item.Key == "RUN_ORDER")
+                                {
+                                    lRun_Order = Convert.ToString(item.Value);
+                                    lflag = false;
+                                }
+                                if (lflag && !string.IsNullOrEmpty(lstepsID))
+                                {
+                                    if (Convert.ToInt32(lstepsID) > 0)
+                                    {
+                                        foreach (var dataset in lDatasetnameList)
+                                        {
+                                            var lForSkipValue = updates.Any(x => x.Key.Replace("&amp;", "&") == dataset.Data_Summary_Name);
+                                            var lSplitDatasetname = false;
+                                            var lDatasetname = "";
+                                            if (!lForSkipValue)
+                                            {
+                                                if (Convert.ToString(item.Key.Replace("&amp;", "&")).Contains("skip_"))
+                                                {
+                                                    lDatasetname = Convert.ToString(item.Key).Split(new string[] { "skip_" }, StringSplitOptions.None)[1];
+                                                    lDatasetname = lDatasetname.Replace("&amp;", "&");
+                                                    if (!updates.Any(x => x.Key.Replace("&amp;", "&") == lDatasetname))
+                                                        lSplitDatasetname = true;
+                                                }
+                                            }
 
-                                //        if ((!updates[i].Key.StartsWith("skip")) && (!datasetnames1.Contains(updates[i].Key.Replace("_", " "))))
-                                //        {
-                                //            if (DATASETNAME != "")
-                                //            {
-                                //                DATASETNAME += ",";
-                                //            }
-                                //            DATASETNAME += updates[i].Key;
+                                            if (dataset.Data_Summary_Name == Convert.ToString(item.Key.Replace("&amp;", "&")) || (lSplitDatasetname && dataset.Data_Summary_Name == lDatasetname))
+                                            {
 
-                                //            if (SKIP != "")
-                                //            {
-                                //                SKIP += ",";
-                                //            }
-                                //            var rowskip = (((System.Collections.Generic.List<object>)skipData[rowCounter.ToString()]).ToList())[0];
-                                //            if (rowskip != null)
-                                //            {
-                                //                var sk = (((System.Collections.Generic.Dictionary<string, object>)rowskip).ToList());
-                                //                if (sk != null)
-                                //                {
-                                //                    SKIP += sk[((i - 6) / 2)].Value.ToString();
-                                //                }
-                                //                else
-                                //                {
-                                //                    SKIP += "0"; // put skip data set value
-                                //                }
-                                //            }
-                                //            else
-                                //            {
-                                //                SKIP += "0"; // put skip data set value
-                                //            }
+                                                DataRow dr = dt.NewRow();
+                                                dr["STEPSID"] = lstepsID;
+                                                dr["KEYWORD"] = lKeyword;
+                                                dr["OBJECT"] = lObject;
+                                                dr["PARAMETER"] = lParameter;
+                                                dr["COMMENTS"] = lComment;
+                                                dr["ROWNUMBER"] = lRun_Order;
+                                                dr["DATASETNAME"] = dataset.Data_Summary_Name;
+                                                dr["DATASETID"] = dataset.DATA_SUMMARY_ID;
+                                                dr["FEEDPROCESSDETAILID"] = valFeedD;
+                                                dr["Type"] = "Update";
 
-                                //            if (DATASETVALUE != "")
-                                //            {
-                                //                DATASETVALUE += ",";
-                                //            }
-                                //            if (updates.Count >= i && updates[i].Value != null)
-                                //            {
-                                //                DATASETVALUE += updates[i].Value.ToString();
-                                //            }
-                                //            else
-                                //            {
-                                //                DATASETVALUE += "";
-                                //            }
-                                //        }
-                                //    }
-                                //}
-                                string[] datasetnames = DATASETNAME.Split(',');
-                                string[] datasetids = DATASETID.Split(',');
-                                string[] skips = SKIP != null ? SKIP.Split(',') : null;
+                                                if (updates.Any(x => x.Key.Replace("&amp;", "&") == "DataSettingId_" + dataset.Data_Summary_Name))
+                                                {
+                                                    dr["Data_Setting_Id"] = Convert.ToString(updates.FirstOrDefault(x => x.Key.Replace("&amp;", "&") == "DataSettingId_" + dataset.Data_Summary_Name).Value) == "undefined" ? "0" : Convert.ToString(updates.FirstOrDefault(x => x.Key == "DataSettingId_" + dataset.Data_Summary_Name).Value);
+                                                }
+                                                if (updates.Any(x => x.Key.Replace("&amp;", "&") == dataset.Data_Summary_Name))
+                                                {
+                                                    dr["DATASETVALUE"] = Convert.ToString(updates.FirstOrDefault(x => x.Key.Replace("&amp;", "&") == dataset.Data_Summary_Name).Value.ToString().Trim());
+                                                }
+                                                if (updates.Any(x => x.Key.Replace("&amp;", "&") == "skip_" + dataset.Data_Summary_Name))
+                                                {
+                                                    var skipValue = Convert.ToString(updates.FirstOrDefault(x => x.Key.Replace("&amp;", "&") == "skip_" + dataset.Data_Summary_Name).Value);
+                                                    if (skipValue.ToUpper().Trim() == "TRUE")
+                                                        dr["SKIP"] = "4";
+                                                    else
+                                                        dr["SKIP"] = "0";
+                                                }
 
-                                string[] datasetvalues = DATASETVALUE != null ? DATASETVALUE.Split(',') : null;
-                                string[] datasetDescription = q.DATASETDESCRIPTION != null ? q.DATASETDESCRIPTION.Split(',') : null;
-                                string[] DataSettingId = DataSettingIds != null ? DataSettingIds.Split(',') : null;
-                                for (int i = 0; i < datasetnames.Length; i++)
+
+                                                if (((System.Collections.Generic.Dictionary<string, object>)lOldList[Rowid]).Keys.Count == 0)
+                                                {
+                                                    dr["WhichTable"] = "RUN_ORDER";
+                                                }
+                                                dr["TestcaseId"] = lTestCaseId;
+                                                dr["TestsuiteId"] = lTestSuiteId;
+                                                dt.Rows.Add(dr);
+                                                lflagAdded = true;
+
+                                            }
+                                        }
+                                    }
+
+
+                                }
+                            }
+
+                            if (!lflagAdded && !string.IsNullOrEmpty(lstepsID))
+                            {
+                                if (Convert.ToInt32(lstepsID) > 0)
                                 {
                                     DataRow dr = dt.NewRow();
-                                    dr["STEPSID"] = q.STEPS_ID.ToString();
-                                    dr["TESTSUITENAME"] = q.test_suite_name.ToString();
-                                    dr["TESTCASENAME"] = q.test_case_name.ToString();
-                                    dr["TESTCASEDESCRIPTION"] = q.test_step_description != null ? q.test_step_description.ToString() : "";
-                                    dr["DATASETMODE"] = "";
-                                    dr["KEYWORD"] = q.key_word_name != null ? q.key_word_name.ToString() : "";
-                                    dr["OBJECT"] = q.object_happy_name != null ? q.object_happy_name.ToString() : "";
-                                    dr["PARAMETER"] = q.parameter != null ? q.parameter.ToString() : "";
-                                    dr["COMMENTS"] = q.COMMENT != null ? q.COMMENT.ToString() : "";
-                                    dr["DATASETNAME"] = datasetnames[i].ToString();
-                                    dr["DATASETID"] = datasetids[i].ToString();
-
-                                    if (DataSettingId != null && DataSettingId.Length > 0 && DataSettingId.Length > i)
-                                    {
-                                        dr["DATA_SETTING_ID"] = DataSettingId[i].ToString();
-                                    }
-                                    else
-                                    {
-                                        dr["DATA_SETTING_ID"] = null;
-                                    }
-
-
-                                    if (skips != null && skips.Length > 0 && skips.Length >= i)
-                                    {
-                                        dr["SKIP"] = skips[i].ToString();
-                                    }
-                                    else
-                                    {
-                                        dr["SKIP"] = "";
-                                    }
-                                    if (datasetvalues != null && datasetvalues.Length > 0 && datasetvalues.Length >= i)
-                                    {
-                                        if (datasetvalues.Count() > i)
-                                        {
-                                            dr["DATASETVALUE"] = datasetvalues[i].ToString();
-                                        }
-                                        else
-                                        {
-                                            dr["DATASETVALUE"] = "";
-                                        }
-                                    }
-                                    else
-                                    {
-                                        dr["DATASETVALUE"] = "";
-                                    }
-                                    dr["ROWNUMBER"] = q.RUN_ORDER.ToString();
-                                    dr["FEEDPROCESSDETAILID"] = 0;
-                                    dr["TABNAME"] = "WebApp";
-                                    dr["APPLICATION"] = q.Application.ToString();
-                                    //if (datasetDescription.Length > i)
-                                    //{
-                                    dr["DATASETDESCRIPTION"] = datasetDescription[i];
-                                    //}
-                                    //else {
-                                    //    dr["DATASETDESCRIPTION"] = "";
-                                    // }
+                                    dr["STEPSID"] = lstepsID;
+                                    dr["KEYWORD"] = lKeyword;
+                                    dr["OBJECT"] = lObject;
+                                    dr["PARAMETER"] = lParameter;
+                                    dr["COMMENTS"] = lComment;
+                                    dr["ROWNUMBER"] = lRun_Order;
+                                    dr["DATASETNAME"] = "";
+                                    dr["DATASETID"] = "";
                                     dr["FEEDPROCESSDETAILID"] = valFeedD;
-                                    dt.Rows.Add(dr);
-                                }
+                                    dr["Type"] = "Update";
 
-                            }
-
-
-                            // Merge updated list from web application to the datatable
-
-                        }
-
-                    }
-
-                    if (dlist["updateList"].Count > 0)//dlist["addList"].Count > 0
-                    {
-                        var update = dlist["updateList"][0];
-                        var updates = (((System.Collections.Generic.Dictionary<string, object>)update).ToList());
-
-
-
-
-                        // get test case id from the ljson and get all data set records
-
-
-                        if (dlist.Count > 0)
-                        {
-                            if (dlist["updateList"].Count > 0)
-                            {
-                                // var a = dlist["updateList"][0];
-                                // string stepId = (((System.Collections.Generic.Dictionary<string, object>)a).FirstOrDefault()).Value.ToString();
-                                //if (stepId != "")
-                                //{
-                                //    if (testCaseId != "" && testSuiteId != "")
-                                //    {
-
-                                //    }
-                                //}
-                                if (dt.Rows.Count > 0)
-                                {
-                                    foreach (var d in dlist["updateList"])
+                                    if (((System.Collections.Generic.Dictionary<string, object>)lOldList[Rowid]).Keys.Count == 0)
                                     {
-                                        updates = (((System.Collections.Generic.Dictionary<string, object>)d).ToList());
-
-                                        string stepsID = "";
-                                        string lKeyword = "";
-                                        string lObject = "";
-                                        string lParameter = "";
-                                        string lComment = "";
-
-
-
-                                        foreach (var item in updates)
-                                        {
-                                            if (item.Key == "keyword")
-                                            {
-                                                lKeyword = Convert.ToString(item.Value);
-                                            }
-                                            if (item.Key == "object")
-                                            {
-                                                lObject = Convert.ToString(item.Value);
-                                            }
-                                            if (item.Key == "comment")
-                                            {
-                                                lComment = Convert.ToString(item.Value);
-                                            }
-                                            if (item.Key == "parameters")
-                                            {
-                                                lParameter = Convert.ToString(item.Value);
-                                            }
-                                            if (item.Key == "stepsID")
-                                            {
-                                                stepsID = Convert.ToString(item.Value);
-                                            }
-                                        }
-                                        for (int i = 0; i < dt.Rows.Count; i++)
-                                        {
-                                            if (dt.Rows[i]["STEPSID"].ToString() == stepsID)
-                                            {
-                                                dt.Rows[i]["COMMENTS"] = lComment;
-                                                dt.Rows[i]["PARAMETER"] = lParameter;
-                                                dt.Rows[i]["OBJECT"] = lObject;
-                                                dt.Rows[i]["KEYWORD"] = lKeyword;
-                                                string DATASETNAME = query.FirstOrDefault().DATASETNAME;
-                                                if (!string.IsNullOrEmpty(DATASETNAME))
-                                                {
-                                                    string[] datasetnamesArray = query.FirstOrDefault().DATASETNAME.Split(',');
-                                                    foreach (var item in datasetnamesArray)
-                                                    {
-                                                        if (dt.Rows[i]["DATASETNAME"].ToString().ToUpper() == item.ToUpper())
-                                                        {
-                                                            foreach (var up in updates)
-                                                            {
-
-                                                                //  if (up.Key.ToUpper().Replace("_", " ") == item.ToUpper()) cherish
-                                                                if (up.Key.ToUpper().Replace("&AMP;", "&").Replace("\\", "\\\\") == item.ToUpper().Replace("&AMP;", "&").Replace("\\", "\\\\"))
-                                                                {
-                                                                    if (up.Value != null)
-                                                                    {
-                                                                        dt.Rows[i]["DATASETVALUE"] = up.Value.ToString();
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                        dt.Rows[i]["DATASETVALUE"] = "";
-                                                                    }
-
-                                                                    //var lSkipList = updates.Where(x => x.Key.ToUpper() == "SKIP_" + item.ToUpper()).ToList();
-                                                                    //if (lSkipList.Count() > 0)
-                                                                    // {
-                                                                    //     dt.Rows[i]["SKIP"] = lSkipList.FirstOrDefault().Value.ToString().ToUpper() == "TRUE" ? 4 : 0;
-                                                                    //}
-                                                                    //else
-                                                                    //{
-                                                                    //   dt.Rows[i]["SKIP"] = 0;
-                                                                    //}
-                                                                }
-                                                                else if (up.Key.ToUpper().Replace("&AMP;", "&") == "SKIP_" + item.ToUpper().Replace("&AMP;", "&"))
-                                                                {
-                                                                    dt.Rows[i]["SKIP"] = up.Value.ToString().ToUpper() == "TRUE" ? 4 : 0;
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-
-
-                                        //    string DATASETNAME = query.FirstOrDefault().DATASETNAME;
-                                        //if (!string.IsNullOrEmpty(DATASETNAME))
-                                        //{
-                                        //    string[] datasetnamesArray = query.FirstOrDefault().DATASETNAME.Split(',');
-                                        //    foreach (var datasetName in datasetnamesArray) {
-                                        //        foreach (var item in updates)
-                                        //        {
-                                        //            if (item.Key.ToUpper() == datasetName.ToUpper())
-                                        //            {
-
-                                        //            }
-                                        //        }
-                                        //     }
-                                        //}
-                                        //shivam code
-                                        //for (int i = 0; i < dt.Rows.Count; i++)
-                                        //{
-                                        //    if (dt.Rows[i]["STEPSID"].ToString() == stepsID)
-                                        //    {
-                                        //        for (int k = 6; k < updates.Count; k++)
-                                        //        {
-                                        //            datasetname = updates[k].Key.ToString();
-                                        //            if (datasetname.Replace("_", " ") == dt.Rows[i]["DATASETNAME"].ToString().Replace("_", " "))
-                                        //            {
-                                        //                if (updates[k - 1].Key.ToString().ToLower().StartsWith("skip"))
-                                        //                {
-                                        //                    dt.Rows[i]["SKIP"] = updates[k - 1].Value.ToString() == "True" ? "4" : updates[k - 1].Value.ToString() == "4" ? "4" : "0";
-                                        //                }
-                                        //                if (updates.Count >= k && updates[k].Value != null)
-                                        //                {
-                                        //                    dt.Rows[i]["DATASETVALUE"] = updates[k].Value.ToString();
-                                        //                }
-                                        //                else
-                                        //                {
-                                        //                    dt.Rows[i]["DATASETVALUE"] = "";
-                                        //                }
-
-                                        //                dt.Rows[i]["COMMENTS"] = comment;
-                                        //                dt.Rows[i]["PARAMETER"] = parameters;
-
-                                        //                dt.Rows[i]["OBJECT"] = obj;
-                                        //                dt.Rows[i]["KEYWORD"] = keyword;
-                                        //            }
-                                        //        }
-                                        //    }
-                                        //}
+                                        dr["WhichTable"] = "RUN_ORDER";
                                     }
 
+                                    dr["TestcaseId"] = lTestCaseId;
+                                    dr["TestsuiteId"] = lTestSuiteId;
 
+                                    dt.Rows.Add(dr);
+                                    lflagAdded = true;
                                 }
                             }
+                            Rowid++;
                         }
                     }
-
-                    if (dlist["addList"].Count > 0)
+                    var lAddSteps = plist["addList"];
+                    if (lAddSteps.Count > 0)
                     {
-                        var addList = dlist["addList"][0];
-                        var addsList = (((System.Collections.Generic.Dictionary<string, object>)addList).ToList());
-
-
-                        if (addsList.Count > 0)
+                        int Rowid = 0;
+                        foreach (var d in lAddSteps)
                         {
-                            var lastdtRownumber = dt.Rows.Count;
-                            var newrowid = 1;
-                            foreach (var d in dlist["addList"])
+                            var adds = (((System.Collections.Generic.Dictionary<string, object>)d).ToList());
+                            var lflagAdded = false;
+                            var lKeyword = "";
+                            var lObject = "";
+                            var lComment = "";
+                            var lParameter = "";
+
+                            var lstepsID = Convert.ToString(adds.FirstOrDefault(x => x.Key == "stepsID").Value);
+                            var lRun_Order = Convert.ToString(Convert.ToInt32(adds.FirstOrDefault(x => x.Key == "pq_ri").Value) + 1);
+                            if (string.IsNullOrEmpty(lstepsID) || Convert.ToInt32(lstepsID) <= 0)
                             {
-                                newrowid = newrowid - 1;
-                                var add = (((System.Collections.Generic.Dictionary<string, object>)d).ToList());
-                                string lKeyword = "", lObject = "", lComment = "", lParameter = "";
-                                foreach (var item in add)
+                                foreach (var item in adds)
                                 {
+                                    var lflag = true;
                                     if (item.Key == "keyword")
                                     {
-                                        lKeyword = item.Value.ToString();
+                                        lKeyword = Convert.ToString(item.Value);
+                                        lflag = false;
                                     }
-                                    if (item.Key == "object" && item.Value != null)
+                                    if (item.Key == "object")
                                     {
-                                        lObject = item.Value.ToString();
+                                        lObject = Convert.ToString(item.Value);
+                                        lflag = false;
                                     }
-                                    if (item.Key == "comment" && item.Value != null)
+                                    if (item.Key == "comment")
                                     {
-                                        lComment = item.Value.ToString();
+                                        lComment = Convert.ToString(item.Value);
+                                        lflag = false;
+                                    }
+                                    if (item.Key == "parameters")
+                                    {
+                                        lParameter = Convert.ToString(item.Value);
+                                        lflag = false;
+                                    }
 
-                                    }
-                                    if (item.Key == "parameters" && item.Value != null)
+                                    if (lflag)
                                     {
-                                        lParameter = item.Value.ToString();
-
-                                    }
-                                }
-                                string DATASETNAME = query.FirstOrDefault().DATASETNAME;
-                                if (!string.IsNullOrEmpty(DATASETNAME))
-                                {
-                                    string[] datasetnamesArray = query.FirstOrDefault().DATASETNAME.Split(',');
-                                    for (int i = 0; i < datasetnamesArray.Length; i++)
-                                    {
-                                        datasetnamesArray[i] = datasetnamesArray[i];
-                                    }
-                                    lastdtRownumber = lastdtRownumber + 1;
-                                    string[] datasetDescription = query.FirstOrDefault().DATASETDESCRIPTION != null ? query.FirstOrDefault().DATASETDESCRIPTION.Split(',') : null;
-                                    string[] datasetid = query.FirstOrDefault().DATASETIDS != null ? query.FirstOrDefault().DATASETIDS.Split(',') : null;
-                                    int datSetDec = 0;
-                                    foreach (var datasetName in datasetnamesArray)
-                                    {
-                                        DataRow dr = dt.NewRow();
-                                        dr["STEPSID"] = newrowid;
-                                        dr["TESTSUITENAME"] = query.FirstOrDefault().test_suite_name.ToString();
-                                        dr["TESTCASENAME"] = query.FirstOrDefault().test_case_name.ToString();
-                                        dr["TESTCASEDESCRIPTION"] = query.FirstOrDefault().test_step_description != null ? query.FirstOrDefault().test_step_description.ToString() : "";
-                                        dr["DATASETNAME"] = datasetName;
-                                        foreach (var item in add)
+                                        foreach (var dataset in lDatasetnameList)
                                         {
-                                            // if (item.Key.ToUpper().Replace("_", " ") == datasetName.ToUpper().Replace("_", " ")) cherish
-                                            if (item.Key.ToUpper() == datasetName.ToUpper())
+                                            var lForSkipValue = adds.Any(x => x.Key.Replace("&amp;", "&") == dataset.Data_Summary_Name);
+                                            var lSplitDatasetname = false;
+                                            var lDatasetname = "";
+                                            if (!lForSkipValue)
                                             {
-                                                if (item.Value != null)
+                                                if (Convert.ToString(item.Key).Contains("skip_"))
                                                 {
-                                                    dr["DATASETVALUE"] = item.Value.ToString();
+                                                    lDatasetname = Convert.ToString(item.Key.Replace("&amp;", "&")).Split(new string[] { "skip_" }, StringSplitOptions.None)[1];
+                                                    if (!adds.Any(x => x.Key == lDatasetname))
+                                                        lSplitDatasetname = true;
                                                 }
-                                                //var lSkipList = add.Where(x => x.Key.ToUpper() == "SKIP_" + datasetName.ToUpper()).ToList();
-                                                //if(lSkipList.Count() > 0)
-                                                //{
-                                                //    dr["skip"] = lSkipList.FirstOrDefault().Value.ToString().ToUpper() == "TRUE" ? 4 : 0; 
-                                                //}
-                                                //else
-                                                //{
-                                                //    dr["skip"] = 0;
-                                                //}
                                             }
-                                            //else if (item.Key.ToUpper().Replace("_", " ") == "SKIP " + datasetName.ToUpper().Replace("_", " ")) cherish
-                                            else if (item.Key.ToUpper() == "SKIP_" + datasetName.ToUpper())
-                                            {
-                                                dr["skip"] = item.Value.ToString().ToUpper() == "TRUE" ? 4 : 0;
-                                            }
-                                        }
 
-                                        dr["KEYWORD"] = lKeyword;// q.key_word_name != null ? q.key_word_name.ToString() : "";
-                                        dr["OBJECT"] = lObject;//q.object_happy_name != null ? q.object_happy_name.ToString() : "";
-                                        dr["PARAMETER"] = lParameter;// q.parameter != null ? q.parameter.ToString() : "";
-                                        dr["COMMENTS"] = lComment;// q.COMMENT != null ? q.COMMENT.ToString() : "";
-                                        dr["ROWNUMBER"] = lastdtRownumber;//q.RUN_ORDER.ToString();
-                                        dr["FEEDPROCESSDETAILID"] = 0;
-                                        dr["TABNAME"] = "WebApp";
-                                        dr["APPLICATION"] = query.FirstOrDefault().Application.ToString();
-                                        //dr["DATASETDESCRIPTION"] = query.FirstOrDefault().test_step_description != null ? query.FirstOrDefault().test_step_description.ToString() : "";
-                                        dr["DATASETDESCRIPTION"] = datasetDescription[datSetDec];
-                                        dr["DATASETID"] = datasetid[datSetDec];
-                                        dr["FEEDPROCESSDETAILID"] = valFeedD;
-                                        dt.Rows.Add(dr);
-                                        datSetDec++;
-                                    }
-                                }
-
-
-
-
-                                //if (q.DATASETVALUE == null)
-                                //{
-                                //    for (int i = 0; i < datasetnames1.Length; i++)
-                                //    {
-                                //        datasetnames1[i] = datasetnames1[i].Replace("_", " ");
-                                //    }
-                                //    DATASETVALUE = DATASETVALUE == null ? "" : DATASETVALUE;
-                                //    foreach (var xy in datasetnames1)
-                                //    {
-                                //        if (DATASETVALUE != null)
-                                //            DATASETVALUE += ",";
-
-                                //    }
-                                //}
-
-
-                                //dr["DATASETNAME"] = datasetnames[i].ToString();
-                                // if (skips != null && skips.Length > 0 && skips.Length >= i)
-                                // {
-                                //     dr["SKIP"] = skips[i].ToString();
-                                // }
-                                // else
-                                // {
-                                //     dr["SKIP"] = "";
-                                // }
-                                // if (datasetvalues != null && datasetvalues.Length > 0 && datasetvalues.Length >= i)
-                                // {
-                                //     if (datasetvalues.Count() > i)
-                                //     {
-                                //         dr["DATASETVALUE"] = datasetvalues[i].ToString();
-                                //     }
-                                //     else
-                                //     {
-                                //         dr["DATASETVALUE"] = "";
-                                //     }
-                                // }
-                                // else
-                                // {
-                                //     dr["DATASETVALUE"] = "";
-                                // }
-
-
-
-
-
-                            }
-                        }
-                    }
-
-                    //for new add list
-
-                    if (steps != "")
-                    {
-                        List<Object> stps = js.Deserialize<List<Object>>(steps);
-                        if (stps != null)
-                        {
-                            foreach (var s in stps)
-                            {
-                                if (s != null)
-                                {
-                                    var stp = (((System.Collections.Generic.Dictionary<string, object>)s).ToList());
-                                    //if (stp[1].Value.ToString() != stp[2].Value.ToString())
-                                    //{
-                                    var stepid = int.Parse(stp[0].Value.ToString());
-                                    //if (stepid > 0)
-                                    //{
-                                    var newRun_Order = int.Parse(stp[1].Value.ToString());
-                                    var stepsID = stp[0].Value.ToString();
-                                    tc.UpdateStepID(int.Parse(stp[0].Value.ToString()), int.Parse(stp[1].Value.ToString()));
-                                    foreach (DataRow dr in dt.Rows)
-                                    {
-                                        if (dr["STEPSID"].ToString() == stepsID)
-                                        {
-                                            dr["ROWNUMBER"] = newRun_Order;
-                                            ddt.Rows.Add(dr.ItemArray);
-                                        }
-                                    }
-                                    //for (int i = 0; i < dt.Rows.Count; i++)
-                                    //{
-                                    //    if (dt.Rows[i]["STEPSID"].ToString() == stepsID) {
-                                    //        ddt.Rows.Add(dt.Rows[i]);
-                                    //    }                                    //}
-                                    //}
-
-                                    // }
-                                }
-                            }
-                        }
-                    }
-
-
-
-
-                    if (lskipData.Count > 0)
-                    {
-
-                        if (NewColumnsList != "")
-                        {
-                            List<Object> DataSet = js.Deserialize<List<Object>>(NewColumnsList);
-                            foreach (var d in DataSet)
-                            {
-                                var stp = (((System.Collections.Generic.Dictionary<string, object>)d).ToList());
-                                //tc.AddTestDataSet(long.Parse(testCaseId), stp[1].Value.ToString(), stp[2].Value.ToString());
-                                int k = 1;
-                                foreach (var item in lskipData)
-                                {
-
-                                    foreach (Dictionary<string, object> skipColumn in item.Value)
-                                    {
-                                        foreach (KeyValuePair<string, object> skipitem in skipColumn)
-                                        {
-                                            if (skipitem.Key.ToString() == "skip_" + stp[1].Value.ToString())
+                                            if (dataset.Data_Summary_Name == Convert.ToString(item.Key.Replace("&amp;", "&")) || (lSplitDatasetname && dataset.Data_Summary_Name == lDatasetname))
                                             {
 
-                                                DataRow dr = ddt.AsEnumerable().Where(r => r.Field<string>("ROWNUMBER") == k.ToString()
-                                                && r.Field<string>("DATASETNAME").Replace("&amp;", "&") == stp[1].Value.ToString()
-                                                ).FirstOrDefault();
-                                                if (dr != null)
+                                                DataRow dr = dt.NewRow();
+                                                dr["STEPSID"] = string.IsNullOrEmpty(lstepsID) ? Convert.ToString(Convert.ToInt32(minStepId) - 1) : lstepsID;
+                                                dr["KEYWORD"] = lKeyword;
+                                                dr["OBJECT"] = lObject;
+                                                dr["PARAMETER"] = lParameter;
+                                                dr["COMMENTS"] = lComment;
+                                                dr["ROWNUMBER"] = lRun_Order;
+                                                dr["DATASETNAME"] = dataset.Data_Summary_Name;
+                                                dr["DATASETID"] = dataset.DATA_SUMMARY_ID;
+                                                dr["FEEDPROCESSDETAILID"] = valFeedD;
+                                                dr["Type"] = "Update";
+
+                                                if (adds.Any(x => x.Key.Replace("&amp;", "&") == "DataSettingId_" + dataset.Data_Summary_Name))
                                                 {
-                                                    dr["SKIP"] = skipitem.Value.ToString(); //changes the Product_name
+                                                    dr["Data_Setting_Id"] = Convert.ToString(adds.FirstOrDefault(x => x.Key.Replace("&amp;", "&") == "DataSettingId_" + dataset.Data_Summary_Name).Value) == "undefined" ? "0" : Convert.ToString(adds.FirstOrDefault(x => x.Key == "DataSettingId_" + dataset.Data_Summary_Name).Value);
                                                 }
-                                                //var lData = ddt.AsEnumerable().Where(r => r.Field<string>("ROWNUMBER") == k.ToString());
-                                                //for (int i = 0; i < lData.Count(); i++)
-                                                //{
+                                                if (adds.Any(x => x.Key.Replace("&amp;", "&") == dataset.Data_Summary_Name))
+                                                {
+                                                    dr["DATASETVALUE"] = Convert.ToString(adds.FirstOrDefault(x => x.Key.Replace("&amp;", "&") == dataset.Data_Summary_Name).Value.ToString().Trim());
+                                                }
+                                                if (adds.Any(x => x.Key.Replace("&amp;", "&") == "skip_" + dataset.Data_Summary_Name))
+                                                {
+                                                    var skipValue = Convert.ToString(adds.FirstOrDefault(x => x.Key.Replace("&amp;", "&") == "skip_" + dataset.Data_Summary_Name).Value);
+                                                    if (skipValue.ToUpper().Trim() == "TRUE")
+                                                        dr["SKIP"] = "4";
+                                                    else
+                                                        dr["SKIP"] = "0";
+                                                }
 
-
-
-                                                //}
+                                                dr["TestcaseId"] = lTestCaseId;
+                                                dr["TestsuiteId"] = lTestSuiteId;
+                                                dt.Rows.Add(dr);
+                                                lflagAdded = true;
                                             }
                                         }
-
                                     }
-
-                                    k++;
                                 }
 
+                                if (!lflagAdded)
+                                {
+                                    DataRow dr = dt.NewRow();
+                                    dr["STEPSID"] = string.IsNullOrEmpty(lstepsID) ? Convert.ToString(Convert.ToInt32(minStepId) - 1) : lstepsID;
+                                    dr["KEYWORD"] = lKeyword;
+                                    dr["OBJECT"] = lObject;
+                                    dr["PARAMETER"] = lParameter;
+                                    dr["COMMENTS"] = lComment;
+                                    dr["ROWNUMBER"] = lRun_Order;
+                                    dr["DATASETNAME"] = "";
+                                    dr["DATASETID"] = "";
+                                    dr["FEEDPROCESSDETAILID"] = valFeedD;
+                                    dr["Type"] = "Update";
+
+                                    dr["TestcaseId"] = lTestCaseId;
+                                    dr["TestsuiteId"] = lTestSuiteId;
+
+                                    dt.Rows.Add(dr);
+                                    lflagAdded = true;
+                                }
+                                minStepId--;
                             }
                         }
-
-
-
-
                     }
 
-
-                    //-------------------------------------------------------------
-                    // Save the values to the database in staging table
-                    //-------------------------------------------------------------
-                    if (ddt.Rows.Count > 0)
+                    foreach (var item in lUpdateRownumber)
                     {
-
-                        OracleTransaction ltransaction;
-                        //luser = WebConfigurationManager.AppSettings["User"];
-                        //lpassword = WebConfigurationManager.AppSettings["Password"];
-                        //ldataSource = WebConfigurationManager.AppSettings["DataSource"];
-                        //lSchema = WebConfigurationManager.AppSettings["Schema"];
-                        //lConnectionStr = "Data Source=" + ldataSource + ";User Id=" + luser + ";Password=" + lpassword + ";";
-                        //lSchema = SessionManager.Schema;
-                        //lConnectionStr = SessionManager.APP;
-                        OracleConnection lconnection = new OracleConnection(AppConnDetails.ConnString);
-                        lconnection.Open();
-                        ltransaction = lconnection.BeginTransaction();
-
-
-
-                        //string cmdquery = @"insert into TBLSTGTESTCASE ( TESTSUITENAME,TESTCASENAME,TESTCASEDESCRIPTION,DATASETMODE,KEYWORD,OBJECT,PARAMETER,COMMENTS,DATASETNAME,DATASETVALUE,ROWNUMBER,FEEDPROCESSDETAILID,TABNAME,APPLICATION,ID,CREATEDON,SKIP,DATASETDESCRIPTION) values(TESTSUITENAME,TESTCASENAME,TESTCASEDESCRIPTION,DATASETMODE,KEYWORD,OBJECT,PARAMETER,COMMENTS,DATASETNAME,DATASETVALUE,ROWNUMBER,FEEDPROCESSDETAILID,TABNAME,APPLICATION,NEWCOUNT_ID,CURRENTDATE,SKIP,DATASETDESCRIPTION)";
-                        string cmdquery = "insert into TBLSTGWEBTESTCASE ( TESTSUITENAME,TESTCASENAME,TESTCASEDESCRIPTION,DATASETMODE,KEYWORD,OBJECT,PARAMETER,COMMENTS,DATASETNAME,DATASETVALUE,ROWNUMBER,FEEDPROCESSDETAILID,TABNAME,APPLICATION,ID,CREATEDON,SKIP,DATASETDESCRIPTION,STEPSID,TESTSUITEID,TESTCASEID,DATA_SETTING_ID,DATASETID) values(:1,:2,:3,:4,:5,:6,:7,:8,:9,:10,:11,:12,:13,:14,:15,:16,:17,:18,:19,:20,:21,:22,:23)";
-                        //string cmdquery = "insert into TBLSTGWEBTESTCASE ( TESTSUITENAME,TESTCASENAME,TESTCASEDESCRIPTION,DATASETMODE,KEYWORD,OBJECT,PARAMETER,COMMENTS,DATASETNAME,DATASETVALUE,ROWNUMBER,FEEDPROCESSDETAILID,TABNAME,APPLICATION,ID,CREATEDON,SKIP,DATASETDESCRIPTION,STEPSID) values(:1,:2,:3,:4,:5,:6,:7,:8,:9,:10,:11,:12,:13,:14,:15,:16,:17,:18,:19)";
-                        int[] ids = new int[ddt.Rows.Count];
-
-                        using (var lcmd = lconnection.CreateCommand())
+                        if (Convert.ToInt32(item.stepsID) > 0)
                         {
-                            lcmd.CommandText = cmdquery;
-                            // lcmd.CommandType = CommandType.Text;                          
-
-                            //  lcmd.Transaction = ltransaction;
-                            // In order to use ArrayBinding, the ArrayBindCount property
-                            // of OracleCommand object must be set to the number of records to be inserted
-                            lcmd.ArrayBindCount = ids.Length;
-
-
-
-                            string[] TESTSUITENAME_param = ddt.AsEnumerable().Select(r => r.Field<string>("TESTSUITENAME")).ToArray();
-                            string[] TESTCASENAME_param = ddt.AsEnumerable().Select(r => r.Field<string>("TESTCASENAME")).ToArray();
-                            string[] TESTCASEDESCRIPTION_param = ddt.AsEnumerable().Select(r => r.Field<string>("TESTCASEDESCRIPTION")).ToArray();
-                            string[] DATASETMODE_param = ddt.AsEnumerable().Select(r => r.Field<string>("DATASETMODE")).ToArray();
-                            string[] KEYWORD_param = ddt.AsEnumerable().Select(r => r.Field<string>("KEYWORD")).ToArray();
-                            string[] OBJECT_param = ddt.AsEnumerable().Select(r => r.Field<string>("OBJECT")).ToArray();
-                            string[] PARAMETER_param = ddt.AsEnumerable().Select(r => r.Field<string>("PARAMETER")).ToArray();
-                            string[] COMMENTS_param = ddt.AsEnumerable().Select(r => r.Field<string>("COMMENTS")).ToArray();
-                            string[] DATASETNAME_param = ddt.AsEnumerable().Select(r => r.Field<string>("DATASETNAME")).ToArray();
-                            string[] DATASETVALUE_param = ddt.AsEnumerable().Select(r => r.Field<string>("DATASETVALUE")).ToArray();
-                            string[] ROWNUMBER_param = ddt.AsEnumerable().Select(r => r.Field<string>("ROWNUMBER")).ToArray(); ;
-
-                            string[] FEEDPROCESSDETAILID_param = ddt.AsEnumerable().Select(r => r.Field<string>("FEEDPROCESSDETAILID")).ToArray();
-                            string[] TABNAME_param = ddt.AsEnumerable().Select(r => r.Field<string>("TABNAME")).ToArray();
-                            string[] APPLICATION_param = ddt.AsEnumerable().Select(r => r.Field<string>("APPLICATION")).ToArray();
-
-                            string[] ID_param = new string[ids.Length];
-                            for (int p = 0; p < ids.Length; p++)
-                            {
-                                ID_param[p] = "1";
-                            }
-
-                            DateTime[] CREATEDON_param = new DateTime[ids.Length];
-                            for (int p = 0; p < ids.Length; p++)
-                            {
-                                CREATEDON_param[p] = DateTime.Now;
-                            }
-
-                            string[] SKIP_param = ddt.AsEnumerable().Select(r => r.Field<string>("SKIP")).ToArray();
-                            string[] DATASETDESCRIPTION_param = ddt.AsEnumerable().Select(r => r.Field<string>("DATASETDESCRIPTION")).ToArray();
-
-                            string[] STEPSID_param = ddt.AsEnumerable().Select(r => r.Field<string>("STEPSID")).ToArray();
-
-
-                            string[] TESTSUITEID_param = new string[ids.Length];
-                            for (int p = 0; p < ids.Length; p++)
-                            {
-                                TESTSUITEID_param[p] = Convert.ToString(testsuiteid);
-                            }
-
-                            string[] TESTCASEID_param = new string[ids.Length];
-                            for (int p = 0; p < ids.Length; p++)
-                            {
-                                TESTCASEID_param[p] = Convert.ToString(testcaseId);
-                            }
-
-                            string[] DATA_SETTING_ID_param = ddt.AsEnumerable().Select(r => r.Field<string>("DATA_SETTING_ID")).ToArray();
-                            string[] DATASETID_param = ddt.AsEnumerable().Select(r => r.Field<string>("DATASETID")).ToArray();
-
-                            OracleParameter TESTSUITENAME_oparam = new OracleParameter();
-                            TESTSUITENAME_oparam.OracleDbType = OracleDbType.Varchar2;
-                            TESTSUITENAME_oparam.Value = TESTSUITENAME_param;
-
-                            OracleParameter TESTCASENAME_oparam = new OracleParameter();
-                            TESTCASENAME_oparam.OracleDbType = OracleDbType.Varchar2;
-                            TESTCASENAME_oparam.Value = TESTCASENAME_param;
-
-                            OracleParameter TESTCASEDESCRIPTION_oparam = new OracleParameter();
-                            TESTCASEDESCRIPTION_oparam.OracleDbType = OracleDbType.Varchar2;
-                            TESTCASEDESCRIPTION_oparam.Value = TESTCASEDESCRIPTION_param;
-
-                            OracleParameter DATASETMODE_oparam = new OracleParameter();
-                            DATASETMODE_oparam.OracleDbType = OracleDbType.Varchar2;
-                            DATASETMODE_oparam.Value = DATASETMODE_param;
-
-                            OracleParameter KEYWORD_oparam = new OracleParameter();
-                            KEYWORD_oparam.OracleDbType = OracleDbType.Varchar2;
-                            KEYWORD_oparam.Value = KEYWORD_param;
-
-                            OracleParameter OBJECT_oparam = new OracleParameter();
-                            OBJECT_oparam.OracleDbType = OracleDbType.Varchar2;
-                            OBJECT_oparam.Value = OBJECT_param;
-
-                            OracleParameter PARAMETER_oparam = new OracleParameter();
-                            PARAMETER_oparam.OracleDbType = OracleDbType.Varchar2;
-                            PARAMETER_oparam.Value = PARAMETER_param;
-
-                            OracleParameter COMMENTS_oparam = new OracleParameter();
-                            COMMENTS_oparam.OracleDbType = OracleDbType.Varchar2;
-                            COMMENTS_oparam.Value = COMMENTS_param;
-
-                            OracleParameter DATASETNAME_oparam = new OracleParameter();
-                            DATASETNAME_oparam.OracleDbType = OracleDbType.Varchar2;
-                            DATASETNAME_oparam.Value = DATASETNAME_param;
-
-                            OracleParameter DATASETVALUE_oparam = new OracleParameter();
-                            DATASETVALUE_oparam.OracleDbType = OracleDbType.Varchar2;
-                            DATASETVALUE_oparam.Value = DATASETVALUE_param;
-
-                            OracleParameter ROWNUMBER_oparam = new OracleParameter();
-                            ROWNUMBER_oparam.OracleDbType = OracleDbType.Varchar2;
-                            ROWNUMBER_oparam.Value = ROWNUMBER_param;
-
-                            OracleParameter FEEDPROCESSDETAILID_oparam = new OracleParameter();
-                            FEEDPROCESSDETAILID_oparam.OracleDbType = OracleDbType.Varchar2;
-                            FEEDPROCESSDETAILID_oparam.Value = FEEDPROCESSDETAILID_param;
-
-                            OracleParameter TABNAME_oparam = new OracleParameter();
-                            TABNAME_oparam.OracleDbType = OracleDbType.Varchar2;
-                            TABNAME_oparam.Value = TABNAME_param;
-
-                            OracleParameter APPLICATION_oparam = new OracleParameter();
-                            APPLICATION_oparam.OracleDbType = OracleDbType.Varchar2;
-                            APPLICATION_oparam.Value = APPLICATION_param;
-
-                            OracleParameter ID_oparam = new OracleParameter();
-                            ID_oparam.OracleDbType = OracleDbType.Varchar2;
-                            ID_oparam.Value = ID_param;
-
-                            OracleParameter CREATEDON_oparam = new OracleParameter();
-                            CREATEDON_oparam.OracleDbType = OracleDbType.Date;
-                            CREATEDON_oparam.Value = CREATEDON_param;
-
-                            OracleParameter SKIP_oparam = new OracleParameter();
-                            SKIP_oparam.OracleDbType = OracleDbType.Varchar2;
-                            SKIP_oparam.Value = SKIP_param;
-
-                            OracleParameter DATASETDESCRIPTION_oparam = new OracleParameter();
-                            DATASETDESCRIPTION_oparam.OracleDbType = OracleDbType.Varchar2;
-                            DATASETDESCRIPTION_oparam.Value = DATASETDESCRIPTION_param;
-
-                            OracleParameter STEPSID_oparam = new OracleParameter();
-                            STEPSID_oparam.OracleDbType = OracleDbType.Varchar2;
-                            STEPSID_oparam.Value = STEPSID_param;
-
-
-                            OracleParameter TESTSUITEID_oparam = new OracleParameter();
-                            TESTSUITEID_oparam.OracleDbType = OracleDbType.Varchar2;
-                            TESTSUITEID_oparam.Value = TESTSUITEID_param;
-
-                            OracleParameter TESTCASEID_oparam = new OracleParameter();
-                            TESTCASEID_oparam.OracleDbType = OracleDbType.Varchar2;
-                            TESTCASEID_oparam.Value = TESTCASEID_param;
-
-                            OracleParameter DATA_SETTING_ID_oparam = new OracleParameter();
-                            DATA_SETTING_ID_oparam.OracleDbType = OracleDbType.Varchar2;
-                            DATA_SETTING_ID_oparam.Value = DATA_SETTING_ID_param;
-
-                            OracleParameter DATASETID_oparam = new OracleParameter();
-                            DATASETID_oparam.OracleDbType = OracleDbType.Varchar2;
-                            DATASETID_oparam.Value = DATASETID_param;
-
-
-
-                            lcmd.Parameters.Add(TESTSUITENAME_oparam);
-                            lcmd.Parameters.Add(TESTCASENAME_oparam);
-                            lcmd.Parameters.Add(TESTCASEDESCRIPTION_oparam);
-                            lcmd.Parameters.Add(DATASETMODE_oparam);
-                            lcmd.Parameters.Add(KEYWORD_oparam);
-                            lcmd.Parameters.Add(OBJECT_oparam);
-                            lcmd.Parameters.Add(PARAMETER_oparam);
-                            lcmd.Parameters.Add(COMMENTS_oparam);
-                            lcmd.Parameters.Add(DATASETNAME_oparam);
-                            lcmd.Parameters.Add(DATASETVALUE_oparam);
-                            lcmd.Parameters.Add(ROWNUMBER_oparam);
-                            lcmd.Parameters.Add(FEEDPROCESSDETAILID_oparam);
-                            lcmd.Parameters.Add(TABNAME_oparam);
-                            lcmd.Parameters.Add(APPLICATION_oparam);
-                            lcmd.Parameters.Add(ID_oparam);
-                            lcmd.Parameters.Add(CREATEDON_oparam);
-                            lcmd.Parameters.Add(SKIP_oparam);
-                            lcmd.Parameters.Add(DATASETDESCRIPTION_oparam);
-                            lcmd.Parameters.Add(STEPSID_oparam);
-                            lcmd.Parameters.Add(TESTSUITEID_oparam);
-                            lcmd.Parameters.Add(TESTCASEID_oparam);
-                            lcmd.Parameters.Add(DATA_SETTING_ID_oparam);
-                            lcmd.Parameters.Add(DATASETID_oparam);
-                            //int result = 
-
-                            //if (result == bulkData.Count)
-                            //    returnValue = true;
-                            try
-                            {
-
-                                lcmd.ExecuteNonQuery();
-                            }
-                            catch (Exception lex)
-                            {
-
-                                ltransaction.Rollback();
-
-                                throw new Exception(lex.Message);
-                            }
-
-                            ltransaction.Commit();
-                            lconnection.Close();
-
+                            DataRow dr = dt.NewRow();
+                            dr["STEPSID"] = Convert.ToString(item.stepsID);
+                            dr["FEEDPROCESSDETAILID"] = valFeedD;
+                            dr["ROWNUMBER"] = Convert.ToString(Convert.ToInt32(item.pq_ri) + 1);
+                            dr["Type"] = "UpdateRowNumber";
+                            dr["TestcaseId"] = lTestCaseId;
+                            dr["TestsuiteId"] = lTestSuiteId;
+                            dt.Rows.Add(dr);
                         }
-
-                        var ret = tc.SaveData(int.Parse(valFeed), AppConnDetails.ConnString, AppConnDetails.Schema);
-
-                        if (ret == "not saved")
-                        {
-
-                            var r = tc.GetValidations(int.Parse(valFeed));
-
-                            var result = JsonConvert.SerializeObject(r);
-
-                            return result;
-                        }
-                        else
-                        {
-
-                            tc.SaveTestCaseVersion(int.Parse(testCaseId), (long)SessionManager.TESTER_ID);
-
-                            return "success";
-                        }
-
                     }
+
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        if (Convert.ToInt32(Convert.ToString(dt.Rows[i]["STEPSID"])) <= 0)
+                        {
+                            dt.Rows[i]["Type"] = "Add";
+                        }
+
+                        if (lUpdateRownumber.Any(x => x.stepsID == Convert.ToString(dt.Rows[i]["STEPSID"])))
+                        {
+                            dt.Rows[i]["ROWNUMBER"] = Convert.ToString(Convert.ToInt32(lUpdateRownumber.FirstOrDefault(x => x.stepsID == Convert.ToString(dt.Rows[i]["STEPSID"])).pq_ri) + 1);
+                        }
+
+                        if (Convert.ToString(dt.Rows[i]["SKIP"]) != "4")
+                        {
+                            dt.Rows[i]["SKIP"] = "0";
+                        }
+                    }
+                    if (dt.Rows.Count == 0)
+                    {
+                        resultModel.message = "No change in Testcase";
+                        resultModel.status = 1;
+                        return resultModel;
+                    }
+                    //insert into Stging table
+                    if (dt != null)
+                    {
+                        if (dt.Rows.Count > 0)
+                        {
+                            for (int i = 0; i < dt.Rows.Count; i++)
+                            {
+                                var row = dt.Rows[i];
+                                if (Convert.ToString(row.ItemArray[12]) == "Update" || Convert.ToString(row.ItemArray[12]) == "Add")
+                                {
+                                    var ParentObject = string.Empty;
+                                    var rowNumber = Convert.ToInt32(row.ItemArray[5]);
+                                    var lGridObjList = lobj.Where(x => x.pq_ri < rowNumber).ToList();
+                                    if (lGridObjList != null)
+                                    {
+                                        foreach (var item in lGridObjList.OrderByDescending(x => x.pq_ri))
+                                        {
+                                            if (item.Keyword.ToLower().Trim() == "pegwindow")
+                                            {
+                                                ParentObject = item.Object;
+                                                //row.ItemArray[16] = ParentObject;
+                                                dt.Rows[i][16] = ParentObject;
+                                                break;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    repTC.InsertStgTestCaseSave(AppConnDetails.ConnString, AppConnDetails.Schema, dt, lTestCaseId, int.Parse(valFeedD));
+                    repTC.SaveTestCaseVersion(int.Parse(lTestCaseId), (long)SessionManager.TESTER_ID);
+
+                    resultModel.data = "success";
                 }
                 else
                 {
                     var result = JsonConvert.SerializeObject(ValidationSteps);
-                    return result;
+                    resultModel.data = result;
                 }
-                //-------------------------------------------------------------
+                resultModel.message = "Test Case saved.";
+                resultModel.status = 1;
             }
             catch (Exception ex)
             {
-                throw ex;
+                resultModel.status = 0;
+                resultModel.message = ex.Message.ToString();
             }
-            return "";
+            return resultModel;
         }
 
         //Delete Test case
         [Route("api/DeleteTestCase")]
         [AcceptVerbs("GET", "POST")]
-        public bool DeleteTestCase(long TestCaseId)
+        public ResultModel DeleteTestCase(long TestCaseId)
         {
             CommonHelper.SetConnectionString(Request);
-            var testCaserepo = new TestCaseRepository();
-            var lResult = testCaserepo.DeleteTestCase(TestCaseId);
-            //Session["TestCaseDeleteMsg"] = "Successfully TestCase Deleted.";
-            // Session["TestcaseId"] = null;
-            //Session["TestsuiteId"] = null;
-            //Session["ProjectId"] = null;
-            return lResult;
+            ResultModel resultModel = new ResultModel();
+            try
+            {
+                var testCaserepo = new TestCaseRepository();
+                testCaserepo.Username = SessionManager.TESTER_LOGIN_NAME;
+                //Checks if the testcase is present in the storyboard
+                var lflag = testCaserepo.CheckTestCaseExistsInStoryboard(TestCaseId);
+                if (lflag.Count <= 0)
+                {
+                    var lResult = testCaserepo.DeleteTestCase(TestCaseId);
+                    resultModel.data = lResult;
+                    resultModel.message = "Test Case Deleted Successfully";
+                }
+                else
+                {
+                    resultModel.data = lflag;
+                    resultModel.message = "Test Case exist in storyboard";
+                }
+                resultModel.status = 1;
+            }
+            catch (Exception ex)
+            {
+                resultModel.status = 0;
+                resultModel.message = ex.Message.ToString();
+            }
+            return resultModel;
         }
 
         //Get TestSuite list based on application name
@@ -1664,14 +1147,48 @@ namespace MARS_Api.Controllers
         [Route("api/AddEditTestCase")]
         [HttpPost]
         [AcceptVerbs("GET", "POST")]
-        public bool AddEditTestCase(TestCaseModel lModel)
+        public ResultModel AddEditTestCase(TestCaseModel lModel)
         {
             CommonHelper.SetConnectionString(Request);
-            var repTestSuite = new TestCaseRepository();
-            var lResult =
-                 repTestSuite.AddEditTestCase(lModel, SessionManager.TESTER_LOGIN_NAME);
-
-            return lResult;
+            ResultModel resultModel = new ResultModel();
+            try
+            {
+                var repTestSuite = new TestCaseRepository();
+                repTestSuite.Username = SessionManager.TESTER_LOGIN_NAME;
+                var repTree = new GetTreeRepository();
+                repTree.Username = SessionManager.TESTER_LOGIN_NAME;
+                var rel = repTestSuite.CheckTestCaseTestSuiteRel(lModel.TestCaseId, Convert.ToInt32(lModel.TestSuiteId));
+                var flag = lModel.TestCaseId == 0 ? "added" : "Saved";
+                if (rel == true)
+                {
+                    //checks if the testcase is present in the storyboard
+                    var result = repTestSuite.CheckTestCaseExistsInStoryboard(lModel.TestCaseId);
+                    if (result.Count <= 0)
+                    {
+                        var editresult = repTestSuite.AddEditTestCase(lModel, SessionManager.TESTER_LOGIN_NAME);
+                        resultModel.data = editresult;
+                        resultModel.message = "Successfully " + flag + " Test Case.";
+                    }
+                    else
+                    {
+                        resultModel.data = result;
+                        resultModel.message = "Testcase already exist in storyboard";
+                    }
+                }
+                else
+                {
+                    var fresult = repTestSuite.AddEditTestCase(lModel, SessionManager.TESTER_LOGIN_NAME);
+                    resultModel.data = fresult;
+                    resultModel.message = "Successfully " + flag + " Test Case.";
+                }
+                resultModel.status = 1;
+            }
+            catch (Exception ex)
+            {
+                resultModel.status = 0;
+                resultModel.message = ex.Message.ToString();
+            }
+            return resultModel;
         }
 
         //Get keyword list
@@ -1684,10 +1201,13 @@ namespace MARS_Api.Controllers
 
             var lobj = js.Deserialize<KeywordObjectLink[]>(lGrid);
             var repKeyword = new KeywordRepository();
+            repKeyword.Username = SessionManager.TESTER_LOGIN_NAME;
             var lList = new List<KeywordList>();
-
+            int lstepId = stepId;
             var lPegStepId = 0;
             int i = 1;
+
+            //to find the first peg window
             foreach (var item in lobj)
             {
                 if (!string.IsNullOrEmpty(item.Keyword))
@@ -1695,14 +1215,14 @@ namespace MARS_Api.Controllers
                     if (item.Keyword.ToLower() == "pegwindow" && lPegStepId == 0)
                     {
                         lPegStepId = i;
+                        break;
                     }
                 }
+
                 i++;
             }
-
-
-
-            if (stepId == 1 || stepId < lPegStepId || lPegStepId == 0)
+            //Loads keyword dropdown If it is first step
+            if (lstepId == 1 || lstepId < lPegStepId || lPegStepId == 0)
             {
                 var lKeywordList = new List<string>();
                 lKeywordList.Add("pegwindow");
@@ -1715,12 +1235,14 @@ namespace MARS_Api.Controllers
                 lKeywordList.Add("startapplication");
                 lKeywordList.Add("waitforseconds");
 
+
                 lList = repKeyword.GetKeywords().Where(x => lKeywordList.Contains(x.KEY_WORD_NAME.ToLower().Trim())).Select(y => new KeywordList
                 {
                     KeywordId = y.KEY_WORD_ID,
                     KeywordName = y.KEY_WORD_NAME
                 }).ToList();
             }
+            //Loads keyword dropdown for rest of the steps
             else
             {
                 lList = repKeyword.GetKeywords().Select(y => new KeywordList
@@ -1740,89 +1262,48 @@ namespace MARS_Api.Controllers
         {
             CommonHelper.SetConnectionString(Request);
             JavaScriptSerializer js = new JavaScriptSerializer();
-
-            var lobj = js.Deserialize<KeywordObjectLink[]>(lGrid);
             var repObject = new ObjectRepository();
             var repKeyword = new KeywordRepository();
             var lList = new List<ObjectList>();
 
-            long lPegKeywordId = 0;
+            var lobj = js.Deserialize<KeywordObjectLink[]>(lGrid);
+
             int lPegStepId = 0;
-            int i = 1;
             decimal lPegObjectId = 0;
             long llinkedKeywordId = 0;
-            foreach (var item in lobj)
+            lobj.Where(c => c.Keyword == null).ToList().ForEach(x => { x.Keyword = ""; });
+
+            var lPegKeywordList = lobj.Where(x => x.Keyword.ToLower() == "pegwindow").ToList();
+            //var lSelectedGrid = lPegKeywordList.Where(x => x.Id == stepId).ToList();
+            if (lPegKeywordList.Count() > 0)
             {
-                var tblKeyword = repKeyword.GetKeywordByName(item.Keyword);
-                if (tblKeyword != null)
+                if (stepId < lPegKeywordList.First().Id)
                 {
-                    if (stepId >= i)
+                    lList = new List<ObjectList>();
+                }
+                else
+                {
+                    var lPegKeywordNameList = lobj.Where(x => x.Id == stepId).ToList();
+                    var lPegKeywordName = lPegKeywordNameList.First().Keyword;
+                    var lLinkedKeyList = repKeyword.GetKeywordByName(lPegKeywordName);
+                    if (lLinkedKeyList != null)
                     {
+                        llinkedKeywordId = lLinkedKeyList.KEY_WORD_ID;
+                        var lPegObjectName = lPegKeywordList.Where(x => x.Id < stepId).OrderByDescending(y => y.Id).First().Object;
 
-                        // var lKeywordPegType = repKeyword.CheckKeywordPegType(tblKeyword.KEY_WORD_ID);
-                        var lKeywordPegType = false;
-                        if (!string.IsNullOrEmpty(item.Keyword))
+                        var lPegObj = repObject.GetPegObjectByObjectName(lPegObjectName);
+                        if (lPegObj != null)
                         {
-                            if (item.Keyword.ToLower() == "pegwindow")
+                            lPegObjectId = lPegObj.OBJECT_NAME_ID;
+                            lList = repObject.GetObjectByParent(lTestCaseId, lPegObjectId, llinkedKeywordId).Select(y => new ObjectList
                             {
-                                lKeywordPegType = true;
-                            }
+                                ObjectId = y.OBJECT_NAME_ID,
+                                ObjectName = y.OBJECT_HAPPY_NAME
+                            }).OrderBy(y => y.ObjectName).ToList();
                         }
-                        if (lKeywordPegType)
-                        {
-                            lPegKeywordId = tblKeyword.KEY_WORD_ID;
-                            if (!string.IsNullOrEmpty(item.Object))
-                            {
-                                lPegObjectId = repObject.GetObjectByObjectName(item.Object).OBJECT_NAME_ID;
-                            }
-                            lPegStepId = i;
-                        }
-                    }
-
-                    if (stepId == i)
-                    {
-                        llinkedKeywordId = tblKeyword.KEY_WORD_ID;
                     }
                 }
-                i++;
             }
-
-            if (lPegStepId == 0)
-            {
-                lList = new List<ObjectList>();
-            }
-            else if (lPegStepId == stepId)
-            {
-                lList = repObject.GetObjectsByPegWindowType(lTestCaseId).OrderBy(y => y.ObjectName).ToList();
-
-            }
-            else if (lPegStepId < stepId)
-            {
-                lList = repObject.GetObjectByParent(lTestCaseId, lPegObjectId, llinkedKeywordId).Select(y => new ObjectList
-                {
-                    ObjectId = y.OBJECT_NAME_ID,
-                    ObjectName = y.OBJECT_HAPPY_NAME
-                }).OrderBy(y => y.ObjectName).ToList();
-
-            }
-
-
-            //if (lPegStepId > 0 || stepId < lPegStepId || lPegStepId == 0)
-            //{
-            //    lList = repObject.GetObjectsByPegWindowType(lTestCaseId).Select(y => new ObjectList
-            //    {
-            //        ObjectId = y.OBJECT_NAME_ID,
-            //        ObjectName = y.OBJECT_HAPPY_NAME
-            //    }).ToList();
-            //}
-            //else
-            //{
-            //    lList = repObject.GetObjects(lTestCaseId).Select(y => new ObjectList
-            //    {
-            //        ObjectId = y.OBJECT_NAME_ID,
-            //        ObjectName = y.OBJECT_HAPPY_NAME
-            //    }).ToList();
-            //}
 
             return lList;
         }
@@ -1830,12 +1311,12 @@ namespace MARS_Api.Controllers
         [Route("api/AddEditDataset")]
         [HttpPost]
         [AcceptVerbs("GET", "POST")]
-        public string AddEditDataset(long? Testcaseid, long? datasetid, string datasetname, string datasetdesc,DataSetTagModel model)
+        public string AddEditDataset(long? Testcaseid, long? datasetid, string datasetname, string datasetdesc, DataSetTagModel model)
         {
             CommonHelper.SetConnectionString(Request);
             var AppConnDetails = CommonHelper.SetAppConnectionString(Request);
             var testCaserepo = new TestCaseRepository();
-            var result = testCaserepo.AddTestDataSet(Testcaseid, datasetid, datasetname, datasetdesc,model, AppConnDetails.ConnString, AppConnDetails.Schema);
+            var result = testCaserepo.AddTestDataSet(Testcaseid, datasetid, datasetname, datasetdesc, model, AppConnDetails.ConnString, AppConnDetails.Schema);
             string[] result1 = result.Split(',');
             var lresult = new
             {
@@ -1971,11 +1452,28 @@ namespace MARS_Api.Controllers
 
         [Route("api/SaveAsTestCase")]
         [AcceptVerbs("GET", "POST")]
-        public string SaveAsTestCase(string testcasename, long oldtestcaseid, string testcasedesc, long testsuiteid, long projectid)
+        public string SaveAsTestCase(string testcasename, long oldtestcaseid, string testcasedesc, long testsuiteid, long projectid, string optionval, string datasetName = "", string suffix = "")
         {
+            CommonHelper.SetConnectionString(Request);
             var AppConnDetails = CommonHelper.SetAppConnectionString(Request);
             var repo = new TestCaseRepository();
-            var result = repo.SaveAsTestcase(testcasename, oldtestcaseid, testcasedesc, testsuiteid, projectid, AppConnDetails.Schema, AppConnDetails.ConnString, AppConnDetails.Login);
+            var result = string.Empty;
+            if (!string.IsNullOrEmpty(suffix))
+            {
+                suffix = suffix.Trim();
+            }
+            if (optionval == "1")
+            {
+                result = repo.SaveAsTestcase(testcasename, oldtestcaseid, testcasedesc, testsuiteid, projectid, AppConnDetails.Schema, AppConnDetails.ConnString, SessionManager.TESTER_LOGIN_NAME);
+            }
+            else if (optionval == "2")
+            {
+                result = repo.SaveAsTestCaseOneCopiedDataSet(testcasename, oldtestcaseid, testcasedesc, datasetName, testsuiteid, projectid, suffix, AppConnDetails.Schema, AppConnDetails.ConnString, SessionManager.TESTER_LOGIN_NAME);
+            }
+            else if (optionval == "3")
+            {
+                result = repo.SaveAsTestCaseAllCopiedDataSet(testcasename, oldtestcaseid, testcasedesc, testsuiteid, projectid, suffix, AppConnDetails.Schema, AppConnDetails.ConnString, SessionManager.TESTER_LOGIN_NAME);
+            }
             return result;
         }
 
@@ -1983,9 +1481,584 @@ namespace MARS_Api.Controllers
         [AcceptVerbs("GET", "POST")]
         public bool UpdateIsAvailable(string TestCaseIds)
         {
+            CommonHelper.SetConnectionString(Request);
             var rep = new TestCaseRepository();
             rep.UpdateIsAvailable(TestCaseIds);
             return true;
+        }
+
+        [Route("api/GetDataSetCount")]
+        [AcceptVerbs("GET", "POST")]
+        public ResultModel GetDataSetCount(long ProjectId, long TestSuiteId, long TestCaseId)
+        {
+            CommonHelper.SetConnectionString(Request);
+            ResultModel resultModel = new ResultModel();
+            try
+            {
+                var repo = new GetTreeRepository();
+                repo.Username = SessionManager.TESTER_LOGIN_NAME;
+                var result = repo.GetDatasetCount(ProjectId, TestSuiteId, TestCaseId);
+                resultModel.data = result;
+                resultModel.status = 1;
+            }
+            catch (Exception ex)
+            {
+                resultModel.status = 0;
+                resultModel.message = ex.Message.ToString();
+            }
+            return resultModel;
+        }
+
+        [Route("api/CopyDataSet")]
+        [AcceptVerbs("GET", "POST")]
+        public ResultModel CopyDataSet(long? testcaseid, long? oldDatasetid, string datasetname, string datasetdescription = "")
+        {
+            CommonHelper.SetConnectionString(Request);
+            ResultModel resultModel = new ResultModel();
+            var AppConnDetails = CommonHelper.SetAppConnectionString(Request);
+            try
+            {
+                TestCaseRepository repo = new TestCaseRepository();
+                repo.Username = SessionManager.TESTER_LOGIN_NAME;
+                var result = repo.CheckDuplicateDataset(datasetname, null);
+                if (result)
+                {
+                    resultModel.message = "Duplicate";
+                    resultModel.data = "Duplicate";
+                }
+                else
+                {
+                    var lresult = repo.CopyDataSet(testcaseid, oldDatasetid, datasetname, datasetdescription, AppConnDetails.ConnString, AppConnDetails.Schema);
+                    string[] result1 = lresult.Split(',');
+                    var fresult = new
+                    {
+                        datasetId = result1[1],
+                        msg = result1[0]
+                    };
+                    resultModel.message = fresult.msg == "success" ? "Dataset [" + datasetname + "] added successfully." : "Dataset  [" + datasetname + "] is already present in the System";
+                    resultModel.data = fresult;
+                }
+                resultModel.status = 1;
+            }
+            catch (Exception ex)
+            {
+                resultModel.status = 0;
+                resultModel.message = ex.Message.ToString();
+            }
+            return resultModel;
+        }
+
+        [Route("api/GetTestSuiteByproject")]
+        [AcceptVerbs("GET", "POST")]
+        public ResultModel GetTestSuiteByproject(long ProjectId)
+        {
+            CommonHelper.SetConnectionString(Request);
+            ResultModel resultModel = new ResultModel();
+            try
+            {
+                var repTree = new GetTreeRepository();
+                var lTestSuiteList = repTree.GetTestSuiteList(ProjectId);
+                resultModel.data = lTestSuiteList;
+                resultModel.status = 1;
+            }
+            catch (Exception ex)
+            {
+                resultModel.status = 0;
+                resultModel.message = ex.Message.ToString();
+            }
+            return resultModel;
+        }
+
+        //This method will load all the data and filter them
+        [Route("api/GroupDataLoad")]
+        [AcceptVerbs("GET", "POST")]
+        public BaseModel GroupDataLoad([FromBody]SearchModel searchModel)
+        {
+            CommonHelper.SetConnectionString(Request);
+            BaseModel baseModel = new BaseModel();
+            try
+            {
+                var repo = new TestCaseRepository();
+                int colOrderIndex = default(int);
+                int recordsTotal = default(int);
+                string colDir = string.Empty;
+                var colOrder = string.Empty;
+                string NameSearch = string.Empty;
+                string DescSearch = string.Empty;
+
+                string search = searchModel.search.value;
+                var draw = searchModel.draw;
+                if (searchModel.order.Any())
+                {
+                    string order = searchModel.order.FirstOrDefault().column.ToString();
+                    string orderDir = searchModel.order.FirstOrDefault().dir.ToString();
+
+                    colOrderIndex = searchModel.order.FirstOrDefault().column;
+                    colDir = searchModel.order.FirstOrDefault().dir.ToString();
+                }
+
+                int startRec = searchModel.start;
+                int pageSize = searchModel.length;
+
+                if (searchModel.columns.Any())
+                {
+                    colOrder = searchModel.columns[colOrderIndex].name;
+
+                    NameSearch = searchModel.columns[0].search.value;
+                    DescSearch = searchModel.columns[1].search.value;
+                }
+
+                var data = repo.ListOfGroup();
+
+                if (!string.IsNullOrEmpty(NameSearch))
+                {
+                    data = data.Where(x => !string.IsNullOrEmpty(x.Name) && x.Name.ToLower().Trim().Contains(NameSearch.ToLower().Trim())).ToList();
+                }
+                if (!string.IsNullOrEmpty(DescSearch))
+                {
+                    data = data.Where(p => !string.IsNullOrEmpty(p.Description) && p.Description.ToString().ToLower().Contains(DescSearch.ToLower())).ToList();
+                }
+                if (colDir == "desc")
+                {
+                    switch (colOrder)
+                    {
+                        case "Name":
+                            data = data.OrderByDescending(a => a.Name).ToList();
+                            break;
+                        case "Description":
+                            data = data.OrderByDescending(a => a.Description).ToList();
+                            break;
+                        default:
+                            data = data.OrderByDescending(a => a.Name).ToList();
+                            break;
+                    }
+                }
+                else
+                {
+                    switch (colOrder)
+                    {
+                        case "Name":
+                            data = data.OrderBy(a => a.Name).ToList();
+                            break;
+                        case "Description":
+                            data = data.OrderBy(a => a.Description).ToList();
+                            break;
+                        default:
+                            data = data.OrderBy(a => a.Name).ToList();
+                            break;
+                    }
+                }
+
+                int totalRecords = data.Count();
+                if (!string.IsNullOrEmpty(search) &&
+                !string.IsNullOrWhiteSpace(search))
+                {
+                    // Apply search   
+                    data = data.Where(p => p.Name.ToString().ToLower().Contains(search.ToLower()) ||
+                    p.Description.ToString().ToLower().Contains(search.ToLower())
+                    ).ToList();
+                }
+                int recFilter = data.Count();
+                data = data.Skip(startRec).Take(pageSize).ToList();
+
+                baseModel.data = data;
+                baseModel.status = 1;
+                baseModel.message = "Success";
+                baseModel.recordsTotal = recordsTotal;
+                baseModel.recordsFiltered = recFilter;
+                baseModel.draw = draw;
+            }
+            catch (Exception ex)
+            {
+                baseModel.data = null;
+                baseModel.status = 0;
+                baseModel.message = "Error : " + ex.ToString();
+            }
+            return baseModel;
+        }
+
+        //Add/Update Group values
+        [HttpPost]
+        [Route("api/AddEditGroup")]
+        [AcceptVerbs("GET", "POST")]
+        public ResultModel AddEditGroup(DataTagCommonViewModel model)
+        {
+            CommonHelper.SetConnectionString(Request);
+            ResultModel resultModel = new ResultModel();
+            try
+            {
+                var repo = new TestCaseRepository();
+                var _addeditResult = repo.AddEditGroup(model);
+
+                resultModel.message = "Saved [" + model.Name + "] Group.";
+                resultModel.data = _addeditResult;
+                resultModel.status = 1;
+            }
+            catch (Exception ex)
+            {
+                resultModel.status = 0;
+                resultModel.message = ex.Message.ToString();
+            }
+            return resultModel;
+        }
+
+        //Check Group name already exist or not
+        [Route("api/CheckDuplicateGroupNameExist")]
+        [AcceptVerbs("GET", "POST")]
+        public ResultModel CheckDuplicateGroupNameExist(string Name, long? Id)
+        {
+            CommonHelper.SetConnectionString(Request);
+            ResultModel resultModel = new ResultModel();
+            try
+            {
+                Name = Name.Trim();
+                var repo = new TestCaseRepository();
+                var result = repo.CheckDuplicateGroupNameExist(Name, Id);
+                resultModel.message = "success";
+                resultModel.data = result;
+                resultModel.status = 1;
+            }
+            catch (Exception ex)
+            {
+                resultModel.status = 0;
+                resultModel.message = ex.Message.ToString();
+            }
+            return resultModel;
+        }
+
+        //This method will load all the data and filter them
+        [HttpPost]
+        [Route("api/SetDataLoad")]
+        [AcceptVerbs("GET", "POST")]
+        public BaseModel SetDataLoad([FromBody]SearchModel searchModel)
+        {
+            CommonHelper.SetConnectionString(Request);
+            BaseModel baseModel = new BaseModel();
+            try
+            {
+                var repo = new TestCaseRepository();
+                int colOrderIndex = default(int);
+                int recordsTotal = default(int);
+                string colDir = string.Empty;
+                var colOrder = string.Empty;
+                string NameSearch = string.Empty;
+                string DescSearch = string.Empty;
+
+                string search = searchModel.search.value;
+                var draw = searchModel.draw;
+                if (searchModel.order.Any())
+                {
+                    string order = searchModel.order.FirstOrDefault().column.ToString();
+                    string orderDir = searchModel.order.FirstOrDefault().dir.ToString();
+
+                    colOrderIndex = searchModel.order.FirstOrDefault().column;
+                    colDir = searchModel.order.FirstOrDefault().dir.ToString();
+                }
+
+                int startRec = searchModel.start;
+                int pageSize = searchModel.length;
+
+                if (searchModel.columns.Any())
+                {
+                    colOrder = searchModel.columns[colOrderIndex].name;
+
+                    NameSearch = searchModel.columns[0].search.value;
+                    DescSearch = searchModel.columns[1].search.value;
+                }
+
+                var data = repo.ListOfSet();
+
+                if (!string.IsNullOrEmpty(NameSearch))
+                {
+                    data = data.Where(x => !string.IsNullOrEmpty(x.Name) && x.Name.ToLower().Trim().Contains(NameSearch.ToLower().Trim())).ToList();
+                }
+                if (!string.IsNullOrEmpty(DescSearch))
+                {
+                    data = data.Where(p => !string.IsNullOrEmpty(p.Description) && p.Description.ToString().ToLower().Contains(DescSearch.ToLower())).ToList();
+                }
+                if (colDir == "desc")
+                {
+                    switch (colOrder)
+                    {
+                        case "Name":
+                            data = data.OrderByDescending(a => a.Name).ToList();
+                            break;
+                        case "Description":
+                            data = data.OrderByDescending(a => a.Description).ToList();
+                            break;
+                        default:
+                            data = data.OrderByDescending(a => a.Name).ToList();
+                            break;
+                    }
+                }
+                else
+                {
+                    switch (colOrder)
+                    {
+                        case "Name":
+                            data = data.OrderBy(a => a.Name).ToList();
+                            break;
+                        case "Description":
+                            data = data.OrderBy(a => a.Description).ToList();
+                            break;
+                        default:
+                            data = data.OrderBy(a => a.Name).ToList();
+                            break;
+                    }
+                }
+
+                int totalRecords = data.Count();
+                if (!string.IsNullOrEmpty(search) &&
+                !string.IsNullOrWhiteSpace(search))
+                {
+                    // Apply search   
+                    data = data.Where(p => p.Name.ToString().ToLower().Contains(search.ToLower()) ||
+                    p.Description.ToString().ToLower().Contains(search.ToLower())
+                    ).ToList();
+                }
+                int recFilter = data.Count();
+                data = data.Skip(startRec).Take(pageSize).ToList();
+
+                baseModel.data = data;
+                baseModel.status = 1;
+                baseModel.message = "Success";
+                baseModel.recordsTotal = recordsTotal;
+                baseModel.recordsFiltered = recFilter;
+                baseModel.draw = draw;
+            }
+            catch (Exception ex)
+            {
+                baseModel.data = null;
+                baseModel.status = 0;
+                baseModel.message = "Error : " + ex.ToString();
+            }
+            return baseModel;
+        }
+
+        //Add/Update Set values
+        [HttpPost]
+        [Route("api/AddEditSet")]
+        [AcceptVerbs("GET", "POST")]
+        public ResultModel AddEditSet(DataTagCommonViewModel model)
+        {
+            ResultModel resultModel = new ResultModel();
+            try
+            {
+                var repo = new TestCaseRepository();
+                var _addeditResult = repo.AddEditSet(model);
+
+                resultModel.message = "Saved [" + model.Name + "] Set.";
+                resultModel.data = _addeditResult;
+                resultModel.status = 1;
+            }
+            catch (Exception ex)
+            {
+                resultModel.status = 0;
+                resultModel.message = ex.Message.ToString();
+            }
+            return resultModel;
+        }
+
+        //Check Set name already exist or not
+        [Route("api/CheckDuplicateSetNameExist")]
+        [AcceptVerbs("GET", "POST")]
+        public ResultModel CheckDuplicateSetNameExist(string Name, long? Id)
+        {
+            ResultModel resultModel = new ResultModel();
+            try
+            {
+                Name = Name.Trim();
+                var repo = new TestCaseRepository();
+                var result = repo.CheckDuplicateSetNameExist(Name, Id);
+                resultModel.message = "success";
+                resultModel.data = result;
+                resultModel.status = 1;
+            }
+            catch (Exception ex)
+            {
+                resultModel.status = 0;
+                resultModel.message = ex.Message.ToString();
+            }
+            return resultModel;
+        }
+
+        //This method will load all the data and filter them
+        [HttpPost]
+        [Route("api/FolderDataLoad")]
+        [AcceptVerbs("GET", "POST")]
+        public BaseModel FolderDataLoad([FromBody]SearchModel searchModel)
+        {
+            CommonHelper.SetConnectionString(Request);
+            BaseModel baseModel = new BaseModel();
+            try
+            {
+                var repo = new TestCaseRepository();
+                int colOrderIndex = default(int);
+                int recordsTotal = default(int);
+                string colDir = string.Empty;
+                var colOrder = string.Empty;
+                string NameSearch = string.Empty;
+                string DescSearch = string.Empty;
+
+                string search = searchModel.search.value;
+                var draw = searchModel.draw;
+                if (searchModel.order.Any())
+                {
+                    string order = searchModel.order.FirstOrDefault().column.ToString();
+                    string orderDir = searchModel.order.FirstOrDefault().dir.ToString();
+
+                    colOrderIndex = searchModel.order.FirstOrDefault().column;
+                    colDir = searchModel.order.FirstOrDefault().dir.ToString();
+                }
+
+                int startRec = searchModel.start;
+                int pageSize = searchModel.length;
+
+                if (searchModel.columns.Any())
+                {
+                    colOrder = searchModel.columns[colOrderIndex].name;
+
+                    NameSearch = searchModel.columns[0].search.value;
+                    DescSearch = searchModel.columns[1].search.value;
+                }
+
+                var data = repo.ListOfSet();
+
+                if (!string.IsNullOrEmpty(NameSearch))
+                {
+                    data = data.Where(x => !string.IsNullOrEmpty(x.Name) && x.Name.ToLower().Trim().Contains(NameSearch.ToLower().Trim())).ToList();
+                }
+                if (!string.IsNullOrEmpty(DescSearch))
+                {
+                    data = data.Where(p => !string.IsNullOrEmpty(p.Description) && p.Description.ToString().ToLower().Contains(DescSearch.ToLower())).ToList();
+                }
+                if (colDir == "desc")
+                {
+                    switch (colOrder)
+                    {
+                        case "Name":
+                            data = data.OrderByDescending(a => a.Name).ToList();
+                            break;
+                        case "Description":
+                            data = data.OrderByDescending(a => a.Description).ToList();
+                            break;
+                        default:
+                            data = data.OrderByDescending(a => a.Name).ToList();
+                            break;
+                    }
+                }
+                else
+                {
+                    switch (colOrder)
+                    {
+                        case "Name":
+                            data = data.OrderBy(a => a.Name).ToList();
+                            break;
+                        case "Description":
+                            data = data.OrderBy(a => a.Description).ToList();
+                            break;
+                        default:
+                            data = data.OrderBy(a => a.Name).ToList();
+                            break;
+                    }
+                }
+
+                int totalRecords = data.Count();
+                if (!string.IsNullOrEmpty(search) &&
+                !string.IsNullOrWhiteSpace(search))
+                {
+                    // Apply search   
+                    data = data.Where(p => p.Name.ToString().ToLower().Contains(search.ToLower()) ||
+                    p.Description.ToString().ToLower().Contains(search.ToLower())
+                    ).ToList();
+                }
+                int recFilter = data.Count();
+                data = data.Skip(startRec).Take(pageSize).ToList();
+
+                baseModel.data = data;
+                baseModel.status = 1;
+                baseModel.message = "Success";
+                baseModel.recordsTotal = recordsTotal;
+                baseModel.recordsFiltered = recFilter;
+                baseModel.draw = draw;
+            }
+            catch (Exception ex)
+            {
+                baseModel.data = null;
+                baseModel.status = 0;
+                baseModel.message = "Error : " + ex.ToString();
+            }
+            return baseModel;
+        }
+
+        //Add/Update Folder values
+        [HttpPost]
+        [Route("api/AddEditFolder")]
+        [AcceptVerbs("GET", "POST")]
+        public ResultModel AddEditFolder(DataTagCommonViewModel model)
+        {
+            ResultModel resultModel = new ResultModel();
+            try
+            {
+                var repo = new TestCaseRepository();
+                var _addeditResult = repo.AddEditFolder(model);
+
+                resultModel.message = "Saved [" + model.Name + "] Folder.";
+                resultModel.data = _addeditResult;
+                resultModel.status = 1;
+
+            }
+            catch (Exception ex)
+            {
+                resultModel.status = 0;
+                resultModel.message = ex.Message.ToString();
+            }
+            return resultModel;
+        }
+
+        //Check Folder name already exist or not
+        [Route("api/CheckDuplicateFolderNameExist")]
+        [AcceptVerbs("GET", "POST")]
+        public ResultModel CheckDuplicateFolderNameExist(string Name, long? Id)
+        {
+            ResultModel resultModel = new ResultModel();
+            try
+            {
+                Name = Name.Trim();
+                var repo = new TestCaseRepository();
+                var result = repo.CheckDuplicateFolderNameExist(Name, Id);
+                resultModel.message = "success";
+                resultModel.data = result;
+                resultModel.status = 1;
+            }
+            catch (Exception ex)
+            {
+                resultModel.status = 0;
+                resultModel.message = ex.Message.ToString();
+            }
+            return resultModel;
+        }
+
+        //Delete the DatasetTag data by datasetid
+        [HttpPost]
+        [Route("api/DeleteDatSetTag")]
+        [AcceptVerbs("GET", "POST")]
+        public string DeleteDatSetTag(long datasetid)
+        {
+            TestCaseRepository repo = new TestCaseRepository();
+            var result = repo.DeleteTagProperties(datasetid);
+            return result;
+        }
+
+        //Check Folder Sequence already exist or not
+        [HttpPost]
+        [Route("api/CheckFolderSequenceMapping")]
+        [AcceptVerbs("GET", "POST")]
+        public bool CheckFolderSequenceMapping(long FolderId, long SequenceId, long DatasetId)
+        {
+                var repo = new TestCaseRepository();
+                var result = repo.CheckFolderSequenceMapping(FolderId, SequenceId, DatasetId);
+                return result;
         }
     }
 }

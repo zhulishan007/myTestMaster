@@ -20,7 +20,5 @@ namespace MARS_Repository.Entities
         public Nullable<short> X_AXIS { get; set; }
         public Nullable<short> Y_AXIS { get; set; }
         public Nullable<short> Z_AXIS { get; set; }
-    
-        public virtual T_QUERY T_QUERY { get; set; }
     }
 }

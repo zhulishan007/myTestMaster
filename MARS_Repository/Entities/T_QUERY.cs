@@ -14,11 +14,6 @@ namespace MARS_Repository.Entities
     
     public partial class T_QUERY
     {
-        public T_QUERY()
-        {
-            this.T_AXIS_LIST = new HashSet<T_AXIS_LIST>();
-        }
-    
         public long QUERY_ID { get; set; }
         public string QUERY_NAME { get; set; }
         public string QUERY_DESC { get; set; }
@@ -29,7 +24,6 @@ namespace MARS_Repository.Entities
         public Nullable<System.DateTime> MODIFIED_DATE { get; set; }
         public Nullable<long> CONN_ID { get; set; }
     
-        public virtual T_DATABASE_CONNECTIONS T_DATABASE_CONNECTIONS { get; set; }
-        public virtual ICollection<T_AXIS_LIST> T_AXIS_LIST { get; set; }
+        public virtual T_DBCONNECTION T_DBCONNECTION { get; set; }
     }
 }

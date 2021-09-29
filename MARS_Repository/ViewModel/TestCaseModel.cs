@@ -15,8 +15,8 @@ namespace MARS_Repository.ViewModel
         public string ApplicationId { get; set; }
         public string TestSuite { get; set; }
         public string TestSuiteId { get; set; }
-       public int TotalCount { get; set; }
-  }
+        public int TotalCount { get; set; }
+    }
     public class DataSetTagModel
     {
         public long? Tagid { get; set; }
@@ -33,5 +33,31 @@ namespace MARS_Repository.ViewModel
         public long? Datasetid { get; set; }
         public string datasetname { get; set; }
         public string datasetdescription { get; set; }
+    }
+
+    public class TestcaseJsonViewModel
+    {
+        public int ord { get; set; }
+        public string k_n { get; set; }
+        public long k { get; set; }
+        public string obj { get; set; }
+        public decimal objN_Id { get; set; }
+        public long o_Id { get; set; }
+        public string para { get; set; }
+        public string data { get; set; }
+
+    }
+
+    public class TestcaseJsonModel
+    {
+        public TestcaseJsonModel()
+        {
+            applications = new List<ApplicationModel>();
+        }
+        public List<ApplicationModel> applications { get; set; }
+        public string TcJson { get; set; }
+        public Guid guid { get; set; }
+        public string user { get; set; }
+        public string database { get; set; }
     }
 }

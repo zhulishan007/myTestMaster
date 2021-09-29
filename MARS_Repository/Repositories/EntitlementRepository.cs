@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace MARS_Repository.Repositories
 {
@@ -157,54 +158,57 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                var flag = false;
-                List<string> roleid = new List<string>();
-                logger.Info(string.Format("Add User Role start | RoleIds: {0} | Username: {1}", model.RoleId, Username));
-
-                if (!string.IsNullOrEmpty(model.RoleId))
-                    roleid = model.RoleId.Split(',').ToList();
-
-                var userlst = entity.T_TEST_USER_ROLE_MAPPING.Where(x => x.USER_ID == model.UserId).ToList();
-                if (userlst.Count > 0)
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    foreach (var user in userlst)
+                    var flag = false;
+                    List<string> roleid = new List<string>();
+                    logger.Info(string.Format("Add User Role start | RoleIds: {0} | Username: {1}", model.RoleId, Username));
+
+                    if (!string.IsNullOrEmpty(model.RoleId))
+                        roleid = model.RoleId.Split(',').ToList();
+
+                    var userlst = entity.T_TEST_USER_ROLE_MAPPING.Where(x => x.USER_ID == model.UserId).ToList();
+                    if (userlst.Count > 0)
                     {
-                        var checkExistOrNot = roleid.Any(x => x == Convert.ToString(user.ROLE_ID));
-                        if (!checkExistOrNot)
+                        foreach (var user in userlst)
                         {
-                            var Id = Convert.ToDecimal(user.ROLE_ID);
-                            var userroletbl = entity.T_TEST_USER_ROLE_MAPPING.Where(x => x.USER_ID == model.UserId && x.ROLE_ID == Id).FirstOrDefault();
-                            if (userroletbl != null)
+                            var checkExistOrNot = roleid.Any(x => x == Convert.ToString(user.ROLE_ID));
+                            if (!checkExistOrNot)
                             {
-                                entity.T_TEST_USER_ROLE_MAPPING.Remove(userroletbl);
-                                entity.SaveChanges();
+                                var Id = Convert.ToDecimal(user.ROLE_ID);
+                                var userroletbl = entity.T_TEST_USER_ROLE_MAPPING.Where(x => x.USER_ID == model.UserId && x.ROLE_ID == Id).FirstOrDefault();
+                                if (userroletbl != null)
+                                {
+                                    entity.T_TEST_USER_ROLE_MAPPING.Remove(userroletbl);
+                                    entity.SaveChanges();
+                                }
                             }
                         }
                     }
-                }
 
-                foreach (var item in roleid)
-                {
-                    var Id = Convert.ToDecimal(item);
-                    var userroletbl = entity.T_TEST_USER_ROLE_MAPPING.Where(x => x.USER_ID == model.UserId && x.ROLE_ID == Id).FirstOrDefault();
-                    if (userroletbl == null)
+                    foreach (var item in roleid)
                     {
-                        var UserRoleModel = new T_TEST_USER_ROLE_MAPPING();
-                        UserRoleModel.USER_ROLE_MAP_ID = Helper.NextTestSuiteId("REL_T_TEST_USER_ROLE_MAPPING");
-                        UserRoleModel.USER_ID = model.UserId;
-                        UserRoleModel.ROLE_ID = Convert.ToDecimal(item);
-                        UserRoleModel.ISACTIVE = 1;
-                        UserRoleModel.CREATOR = model.Create_Person;
-                        UserRoleModel.CREATOR_DATE = DateTime.Now;
+                        var Id = Convert.ToDecimal(item);
+                        var userroletbl = entity.T_TEST_USER_ROLE_MAPPING.Where(x => x.USER_ID == model.UserId && x.ROLE_ID == Id).FirstOrDefault();
+                        if (userroletbl == null)
+                        {
+                            var UserRoleModel = new T_TEST_USER_ROLE_MAPPING();
+                            UserRoleModel.USER_ROLE_MAP_ID = Helper.NextTestSuiteId("REL_T_TEST_USER_ROLE_MAPPING");
+                            UserRoleModel.USER_ID = model.UserId;
+                            UserRoleModel.ROLE_ID = Convert.ToDecimal(item);
+                            UserRoleModel.ISACTIVE = 1;
+                            UserRoleModel.CREATOR = model.Create_Person;
+                            UserRoleModel.CREATOR_DATE = DateTime.Now;
 
-                        entity.T_TEST_USER_ROLE_MAPPING.Add(UserRoleModel);
-                        entity.SaveChanges();
+                            entity.T_TEST_USER_ROLE_MAPPING.Add(UserRoleModel);
+                            entity.SaveChanges();
+                        }
                     }
+                    logger.Info(string.Format("Add User Role end | RoleIds: {0} | Username: {1}", model.RoleId, Username));
+                    flag = true;
+                    scope.Complete();
+                    return flag;
                 }
-                logger.Info(string.Format("Add User Role end | RoleIds: {0} | Username: {1}", model.RoleId, Username));
-                flag = true;
-
-                return flag;
             }
             catch (Exception ex)
             {
@@ -220,20 +224,24 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("Delete User Role start | UserId: {0} | Username: {1}", UserId, Username));
-                var flag = false;
-                var result = entity.T_TEST_USER_ROLE_MAPPING.Where(x => x.USER_ID == UserId).ToList();
-                if (result.Count > 0)
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    foreach (var item in result)
+                    logger.Info(string.Format("Delete User Role start | UserId: {0} | Username: {1}", UserId, Username));
+                    var flag = false;
+                    var result = entity.T_TEST_USER_ROLE_MAPPING.Where(x => x.USER_ID == UserId).ToList();
+                    if (result.Count > 0)
                     {
-                        entity.T_TEST_USER_ROLE_MAPPING.Remove(item);
-                        entity.SaveChanges();
+                        foreach (var item in result)
+                        {
+                            entity.T_TEST_USER_ROLE_MAPPING.Remove(item);
+                            entity.SaveChanges();
+                        }
+                        flag = true;
                     }
-                    flag = true;
+                    logger.Info(string.Format("Delete User Role end | UserId: {0} | Username: {1}", UserId, Username));
+                    scope.Complete();
+                    return flag;
                 }
-                logger.Info(string.Format("Delete User Role end | UserId: {0} | Username: {1}", UserId, Username));
-                return flag;
             }
             catch (Exception ex)
             {
@@ -275,20 +283,24 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("Create Role start | UserId: {0} | Role: {1}", Username, Role));
-                var flag = false;
-                var lRoleModel = new T_TEST_ROLES();
-                lRoleModel.ROLE_ID = Helper.NextTestSuiteId("SEQ_T_TEST_ROLES"); 
-                lRoleModel.ROLE_NAME = Role;
-                lRoleModel.CREATOR = Username;
-                lRoleModel.ISACTIVE = 1;
-                lRoleModel.CREATOR_DATE = DateTime.Now;
+                using (TransactionScope scope = new TransactionScope())
+                {
+                    logger.Info(string.Format("Create Role start | UserId: {0} | Role: {1}", Username, Role));
+                    var flag = false;
+                    var lRoleModel = new T_TEST_ROLES();
+                    lRoleModel.ROLE_ID = Helper.NextTestSuiteId("SEQ_T_TEST_ROLES");
+                    lRoleModel.ROLE_NAME = Role;
+                    lRoleModel.CREATOR = Username;
+                    lRoleModel.ISACTIVE = 1;
+                    lRoleModel.CREATOR_DATE = DateTime.Now;
 
-                entity.T_TEST_ROLES.Add(lRoleModel);
-                entity.SaveChanges();
-                flag = true;
-                logger.Info(string.Format("Create Role end  | Username: {0}", Username));
-                return flag;
+                    entity.T_TEST_ROLES.Add(lRoleModel);
+                    entity.SaveChanges();
+                    flag = true;
+                    logger.Info(string.Format("Create Role end  | Username: {0}", Username));
+                    scope.Complete();
+                    return flag;
+                }
             }
             catch (Exception ex)
             {
@@ -324,35 +336,38 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                var flag = false;
-                List<string> roleid = new List<string>();
-                logger.Info(string.Format("Add User Role start | RoleIds: {0} | Username: {1}", RoleIds, Username));
-
-                if (!string.IsNullOrEmpty(RoleIds))
-                    roleid = RoleIds.Split(',').ToList();
-
-                foreach (var item in roleid)
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    var Id = Convert.ToDecimal(item);
-                    var userroletbl = entity.T_TEST_USER_ROLE_MAPPING.Where(x => x.USER_ID == UserId && x.ROLE_ID == Id).FirstOrDefault();
-                    if (userroletbl == null)
+                    var flag = false;
+                    List<string> roleid = new List<string>();
+                    logger.Info(string.Format("Add User Role start | RoleIds: {0} | Username: {1}", RoleIds, Username));
+
+                    if (!string.IsNullOrEmpty(RoleIds))
+                        roleid = RoleIds.Split(',').ToList();
+
+                    foreach (var item in roleid)
                     {
-                        var UserRoleModel = new T_TEST_USER_ROLE_MAPPING();
-                        UserRoleModel.USER_ROLE_MAP_ID = Helper.NextTestSuiteId("REL_T_TEST_USER_ROLE_MAPPING");
-                        UserRoleModel.USER_ID = UserId;
-                        UserRoleModel.ROLE_ID = Convert.ToDecimal(item);
-                        UserRoleModel.ISACTIVE = 1;
-                        UserRoleModel.CREATOR = Username;
-                        UserRoleModel.CREATOR_DATE = DateTime.Now;
+                        var Id = Convert.ToDecimal(item);
+                        var userroletbl = entity.T_TEST_USER_ROLE_MAPPING.Where(x => x.USER_ID == UserId && x.ROLE_ID == Id).FirstOrDefault();
+                        if (userroletbl == null)
+                        {
+                            var UserRoleModel = new T_TEST_USER_ROLE_MAPPING();
+                            UserRoleModel.USER_ROLE_MAP_ID = Helper.NextTestSuiteId("REL_T_TEST_USER_ROLE_MAPPING");
+                            UserRoleModel.USER_ID = UserId;
+                            UserRoleModel.ROLE_ID = Convert.ToDecimal(item);
+                            UserRoleModel.ISACTIVE = 1;
+                            UserRoleModel.CREATOR = Username;
+                            UserRoleModel.CREATOR_DATE = DateTime.Now;
 
-                        entity.T_TEST_USER_ROLE_MAPPING.Add(UserRoleModel);
-                        entity.SaveChanges();
+                            entity.T_TEST_USER_ROLE_MAPPING.Add(UserRoleModel);
+                            entity.SaveChanges();
+                        }
                     }
+                    logger.Info(string.Format("Add User Role end | RoleIds: {0} | Username: {1}", RoleIds, Username));
+                    flag = true;
+                    scope.Complete();
+                    return flag;
                 }
-                logger.Info(string.Format("Add User Role end | RoleIds: {0} | Username: {1}", RoleIds, Username));
-                flag = true;
-
-                return flag;
             }
             catch (Exception ex)
             {
@@ -465,54 +480,57 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                var flag = false;
-                List<string> privilegeid = new List<string>();
-                logger.Info(string.Format("Add Privilage for Role start | PrivilegeIds: {0} | Username: {1}", model.PrivilegeId, Username));
-
-                if (!string.IsNullOrEmpty(model.PrivilegeId))
-                    privilegeid = model.PrivilegeId.Split(',').ToList();
-
-                var roleprivilagelst = entity.T_TEST_PRIVILEGE_ROLE_MAPPING.Where(x => x.ROLE_ID == model.RoleId).ToList();
-                if (roleprivilagelst.Count > 0)
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    foreach (var role in roleprivilagelst)
+                    var flag = false;
+                    List<string> privilegeid = new List<string>();
+                    logger.Info(string.Format("Add Privilage for Role start | PrivilegeIds: {0} | Username: {1}", model.PrivilegeId, Username));
+
+                    if (!string.IsNullOrEmpty(model.PrivilegeId))
+                        privilegeid = model.PrivilegeId.Split(',').ToList();
+
+                    var roleprivilagelst = entity.T_TEST_PRIVILEGE_ROLE_MAPPING.Where(x => x.ROLE_ID == model.RoleId).ToList();
+                    if (roleprivilagelst.Count > 0)
                     {
-                        var checkExistOrNot = privilegeid.Any(x => x == Convert.ToString(role.PRIVILEGE_ID));
-                        if (!checkExistOrNot)
+                        foreach (var role in roleprivilagelst)
                         {
-                            var Id = Convert.ToDecimal(role.PRIVILEGE_ID);
-                            var privilageroletbl = entity.T_TEST_PRIVILEGE_ROLE_MAPPING.Where(x => x.ROLE_ID == model.RoleId && x.PRIVILEGE_ID == Id).FirstOrDefault();
-                            if (privilageroletbl != null)
+                            var checkExistOrNot = privilegeid.Any(x => x == Convert.ToString(role.PRIVILEGE_ID));
+                            if (!checkExistOrNot)
                             {
-                                entity.T_TEST_PRIVILEGE_ROLE_MAPPING.Remove(privilageroletbl);
-                                entity.SaveChanges();
+                                var Id = Convert.ToDecimal(role.PRIVILEGE_ID);
+                                var privilageroletbl = entity.T_TEST_PRIVILEGE_ROLE_MAPPING.Where(x => x.ROLE_ID == model.RoleId && x.PRIVILEGE_ID == Id).FirstOrDefault();
+                                if (privilageroletbl != null)
+                                {
+                                    entity.T_TEST_PRIVILEGE_ROLE_MAPPING.Remove(privilageroletbl);
+                                    entity.SaveChanges();
+                                }
                             }
                         }
                     }
-                }
 
-                foreach (var item in privilegeid)
-                {
-                    var Id = Convert.ToDecimal(item);
-                    var privilageroletbl = entity.T_TEST_PRIVILEGE_ROLE_MAPPING.Where(x => x.ROLE_ID == model.RoleId && x.PRIVILEGE_ID == Id).FirstOrDefault();
-                    if (privilageroletbl == null)
+                    foreach (var item in privilegeid)
                     {
-                        var PrivilageRoleModel = new T_TEST_PRIVILEGE_ROLE_MAPPING();
-                        PrivilageRoleModel.PRIVILEGE_ROLE_MAP_ID = Helper.NextTestSuiteId("REL_PRIVILEGE_ROLE_MAPPING");
-                        PrivilageRoleModel.ROLE_ID = model.RoleId;
-                        PrivilageRoleModel.PRIVILEGE_ID = Convert.ToDecimal(item);
-                        PrivilageRoleModel.ISACTIVE = 1;
-                        PrivilageRoleModel.CREATOR = Username;
-                        PrivilageRoleModel.CREATOR_DATE = DateTime.Now;
+                        var Id = Convert.ToDecimal(item);
+                        var privilageroletbl = entity.T_TEST_PRIVILEGE_ROLE_MAPPING.Where(x => x.ROLE_ID == model.RoleId && x.PRIVILEGE_ID == Id).FirstOrDefault();
+                        if (privilageroletbl == null)
+                        {
+                            var PrivilageRoleModel = new T_TEST_PRIVILEGE_ROLE_MAPPING();
+                            PrivilageRoleModel.PRIVILEGE_ROLE_MAP_ID = Helper.NextTestSuiteId("REL_PRIVILEGE_ROLE_MAPPING");
+                            PrivilageRoleModel.ROLE_ID = model.RoleId;
+                            PrivilageRoleModel.PRIVILEGE_ID = Convert.ToDecimal(item);
+                            PrivilageRoleModel.ISACTIVE = 1;
+                            PrivilageRoleModel.CREATOR = Username;
+                            PrivilageRoleModel.CREATOR_DATE = DateTime.Now;
 
-                        entity.T_TEST_PRIVILEGE_ROLE_MAPPING.Add(PrivilageRoleModel);
-                        entity.SaveChanges();
+                            entity.T_TEST_PRIVILEGE_ROLE_MAPPING.Add(PrivilageRoleModel);
+                            entity.SaveChanges();
+                        }
                     }
+                    logger.Info(string.Format("Add Privilage for Role end | PrivilegeIds: {0} | Username: {1}", model.PrivilegeId, Username));
+                    flag = true;
+                    scope.Complete();
+                    return flag;
                 }
-                logger.Info(string.Format("Add Privilage for Role end | PrivilegeIds: {0} | Username: {1}", model.PrivilegeId, Username));
-                flag = true;
-
-                return flag;
             }
             catch (Exception ex)
             {

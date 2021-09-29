@@ -27,11 +27,11 @@ namespace MARS_Api.Controllers
         {
             CommonHelper.SetConnectionString(Request);
             //ViewBag.Header = "Add User";
-            var repCompany = new CompanyRepository();
+            //var repCompany = new CompanyRepository();
             var Accountrepo = new AccountRepository();
             //var lModel = new T_TESTER_INFO();
-            var lModel = new UserModel();
-            var lCompanyList = repCompany.GetCompanyList();
+            UserModel lModel = new UserModel();
+            //var lCompanyList = repCompany.GetCompanyList();
             // var companylist = lCompanyList.Select(c => new SelectListItem { Text = c.COMPANY_NAME, Value = c.COMPANY_ID.ToString() }).ToList();
             // ViewBag.listCompany = companylist;
             if (lid != null)
@@ -45,53 +45,151 @@ namespace MARS_Api.Controllers
         //List existing users
         [Route("api/DataLoad")]
         [AcceptVerbs("GET", "POST")]
-        public List<UserModel> DataLoad()
+        public BaseModel DataLoad([FromBody]SearchModel searchModel)
         {
+            CommonHelper.SetConnectionString(Request);
+            var AppConnDetails = CommonHelper.SetAppConnectionString(Request);
+            BaseModel baseModel = new BaseModel();
             try
             {
-                CommonHelper.SetConnectionString(Request);
-                var repAcc = new AccountRepository();
-                var data = new List<UserModel>();
 
+                int colOrderIndex = default(int);
+                int recordsTotal = default(int);
+                string colDir = string.Empty;
+                var colOrder = string.Empty;
+                string NameSearch = string.Empty;
+                string ControlTypeSearch = string.Empty;
+                string EntryFileSearch = string.Empty;
+                string orderDir = string.Empty;
+                var repAcc = new AccountRepository();
+
+                string search = searchModel.search.value;
+                var draw = searchModel.draw;
+                if (searchModel.order.Any())
+                {
+                    string order = searchModel.order.FirstOrDefault().column.ToString();
+                    orderDir = searchModel.order.FirstOrDefault().dir.ToString();
+
+                    colOrderIndex = searchModel.order.FirstOrDefault().column;
+                    colDir = searchModel.order.FirstOrDefault().dir.ToString();
+                }
+
+                int startRec = searchModel.start;
+                int pageSize = searchModel.length;
+
+                if (searchModel.columns.Any())
+                {
+                    colOrder = searchModel.columns[colOrderIndex].name;
+
+                    NameSearch = searchModel.columns[0].search.value;
+                    ControlTypeSearch = searchModel.columns[1].search.value;
+                    EntryFileSearch = searchModel.columns[2].search.value;
+                }
+
+                var data = new List<UserModel>();
                 data = repAcc.ListAllUsers().ToList();
-                return data;
+                int totalRecords = data.Count();
+                int recFilter = 0;
+                baseModel.data = data;
+                baseModel.status = 1;
+                baseModel.message = "Success";
+                baseModel.recordsTotal = recordsTotal;
+                baseModel.recordsFiltered = recFilter;
+                baseModel.draw = draw;
             }
             catch (Exception ex)
             {
-                throw ex;
+                baseModel.data = null;
+                baseModel.status = 0;
+                baseModel.message = "Error : " + ex.ToString();
             }
+
+            return baseModel;
         }
         //Add or Edit a User
         [HttpPost]
         [Route("api/AddEditUser")]
         [AcceptVerbs("GET", "POST")]
-        public bool AddEditUser(T_TESTER_INFO t_TESTER)
+        public BaseModel AddEditUser(UserModel userModel)
         {
-            bool flag = false;
-            CommonHelper.SetConnectionString(Request);
+
+            BaseModel baseModel = new BaseModel();
             var Accountrepo = new AccountRepository();
-            var repCompany = new CompanyRepository();
-            var lCompanyList = repCompany.GetCompanyList();
-            //var companylist = lCompanyList.Select(c => new SelectListItem { Text = c.COMPANY_NAME, Value = c.COMPANY_ID.ToString() }).ToList();
+            var repentil = new EntitlementRepository();
+            var t_TESTER = Accountrepo.ConverUserModel(userModel);
             var lchecked = t_TESTER.AVAILABLE_MARK;
             t_TESTER.AVAILABLE_MARK = null;
 
             if (t_TESTER.TESTER_ID == 0)
             {
                 t_TESTER.TESTER_PWD = PasswordHelper.EncodeString(t_TESTER.TESTER_PWD);
-            }
-            if (t_TESTER.TESTER_ID == 0)
-            {
+                var result = Accountrepo.CheckLoginEmailExist(t_TESTER.TESTER_MAIL, t_TESTER.TESTER_ID);
+                if (result)
+                {
+                    baseModel.status = 1;
+                    baseModel.message = "Email [" + t_TESTER.TESTER_MAIL + "] already exists";
+                }
+
+                var loginresult = Accountrepo.CheckLoginNameExist(t_TESTER.TESTER_LOGIN_NAME, t_TESTER.TESTER_ID);
+                if (loginresult)
+                {
+                    baseModel.status = 1;
+                    baseModel.message = "User name [" + t_TESTER.TESTER_LOGIN_NAME + "] already exists.";
+                }
                 t_TESTER = Accountrepo.CreateNewUser(t_TESTER, lchecked);
-                flag = true;
+                //role save
+                if (!string.IsNullOrEmpty(userModel.RoleIds))
+                {
+                    var roleresult = repentil.AddRole(t_TESTER.TESTER_ID, userModel.RoleIds);
+                }
+
+                baseModel.message = "User created successfully.";
+                baseModel.status = 1;
+                baseModel.data = true;
             }
             else
             {
+                var result = Accountrepo.CheckLoginEmailExist(t_TESTER.TESTER_MAIL, t_TESTER.TESTER_ID);
+                if (result)
+                {
+                    baseModel.status = 1;
+                    baseModel.message = "Email invalid";
+                }
                 t_TESTER = Accountrepo.CreateNewUser(t_TESTER, lchecked);
-                flag = true;
+                baseModel.message = "User Updated successfully.";
+                baseModel.status = 1;
+                baseModel.data = true;
             }
-            return flag;
+
+            return baseModel;
         }
+        //public bool AddEditUser(T_TESTER_INFO t_TESTER)
+        //{
+        //    bool flag = false;
+        //    CommonHelper.SetConnectionString(Request);
+        //    var Accountrepo = new AccountRepository();
+        //    //var repCompany = new CompanyRepository();
+        //    //var lCompanyList = repCompany.GetCompanyList();
+        //    //var companylist = lCompanyList.Select(c => new SelectListItem { Text = c.COMPANY_NAME, Value = c.COMPANY_ID.ToString() }).ToList();
+        //    var lchecked = t_TESTER.AVAILABLE_MARK;
+        //    t_TESTER.AVAILABLE_MARK = null;
+
+        //    if (t_TESTER.TESTER_ID == 0)
+        //    {
+        //        t_TESTER.TESTER_PWD = PasswordHelper.EncodeString(t_TESTER.TESTER_PWD);
+        //    }
+        //    if (t_TESTER.TESTER_ID == 0)
+        //    {
+        //        t_TESTER = Accountrepo.CreateNewUser(t_TESTER, lchecked);
+        //        flag = true;
+        //    }
+        //    else
+        //    {
+        //        t_TESTER = Accountrepo.CreateNewUser(t_TESTER, lchecked);
+        //        flag = true;
+        //    }
+        //    return flag;
+        //}
 
         //Check whether Tester_Login_Name exists or not
         [HttpPost]
@@ -473,6 +571,224 @@ namespace MARS_Api.Controllers
             }
 
             return baseModel;
+        }
+
+        //This method will load all the data and filter them
+        [Route("api/DataLoadUserActivePage")]
+        [AcceptVerbs("GET", "POST")]
+        public BaseModel DataLoadUserActivePage([FromBody]SearchModel searchModel)
+        {
+            CommonHelper.SetConnectionString(Request);
+            BaseModel baseModel = new BaseModel();
+            try
+            {
+                int colOrderIndex = default(int);
+                int recordsTotal = default(int);
+                string colDir = string.Empty;
+                var colOrder = string.Empty;
+                string UserNameSearch = string.Empty;
+                string PageNameSearch = string.Empty;
+                var repAcc = new AccountRepository();
+
+                string search = searchModel.search.value;
+                var draw = searchModel.draw;
+                if (searchModel.order.Any())
+                {
+                    string order = searchModel.order.FirstOrDefault().column.ToString();
+                    string orderDir = searchModel.order.FirstOrDefault().dir.ToString();
+
+                    colOrderIndex = searchModel.order.FirstOrDefault().column;
+                    colDir = searchModel.order.FirstOrDefault().dir.ToString();
+                }
+
+                int startRec = searchModel.start;
+                int pageSize = searchModel.length;
+
+                if (searchModel.columns.Any())
+                {
+                    colOrder = searchModel.columns[colOrderIndex].name;
+
+                    UserNameSearch = searchModel.columns[0].search.value;
+                    PageNameSearch = searchModel.columns[1].search.value;
+
+                }
+                var data = repAcc.ListAllActiveUsers();
+
+                if (!string.IsNullOrEmpty(UserNameSearch))
+                {
+                    data = data.Where(x => !string.IsNullOrEmpty(x.UserName) && x.UserName.ToLower().Trim().Contains(UserNameSearch.ToLower().Trim())).ToList();
+                }
+                if (!string.IsNullOrEmpty(PageNameSearch))
+                {
+                    data = data.Where(p => !string.IsNullOrEmpty(p.PageName) && p.PageName.ToString().ToLower().Contains(PageNameSearch.ToLower())).ToList();
+                }
+
+                if (colDir == "desc")
+                {
+                    switch (colOrder)
+                    {
+                        case "User Name":
+                            data = data.OrderByDescending(a => a.UserName).ToList();
+                            break;
+                        case "Page Name":
+                            data = data.OrderByDescending(a => a.PageName).ToList();
+                            break;
+                        default:
+                            data = data.OrderByDescending(a => a.UserName).ToList();
+                            break;
+                    }
+                }
+                else
+                {
+                    switch (colOrder)
+                    {
+                        case "User Name":
+                            data = data.OrderBy(a => a.UserName).ToList();
+                            break;
+                        case "Page Name":
+                            data = data.OrderBy(a => a.PageName).ToList();
+                            break;
+                        default:
+                            data = data.OrderBy(a => a.UserName).ToList();
+                            break;
+                    }
+
+                }
+
+                int totalRecords = data.Count();
+                if (!string.IsNullOrEmpty(search) &&
+                !string.IsNullOrWhiteSpace(search))
+                {
+                    // Apply search   
+                    data = data.Where(p => (!string.IsNullOrEmpty(p.UserName) && p.UserName.ToLower().Contains(search.ToLower())) ||
+                                           (!string.IsNullOrEmpty(p.PageName) && p.PageName.ToString().ToLower().Contains(search.ToLower()))
+                                            ).ToList();
+                }
+                int recFilter = data.Count();
+                data = data.Skip(startRec).Take(pageSize).ToList();
+
+                baseModel.data = data;
+                baseModel.status = 1;
+                baseModel.message = "Success";
+                baseModel.recordsTotal = recordsTotal;
+                baseModel.recordsFiltered = recFilter;
+                baseModel.draw = draw;
+            }
+            catch (Exception ex)
+            {
+                baseModel.data = null;
+                baseModel.status = 0;
+                baseModel.message = "Error : " + ex.ToString();
+            }
+
+            return baseModel;
+        }
+
+        //Delete the Active User object data by ID
+        [Route("api/DeleteActiveUser")]
+        [AcceptVerbs("GET", "POST")]
+        public ResultModel DeleteActiveUser(long id)
+        {
+            CommonHelper.SetConnectionString(Request);
+            ResultModel resultModel = new ResultModel();
+            try
+            {
+                AccountRepository repo = new AccountRepository();
+                var lresult = repo.DeleteActiveUser(id);
+
+                resultModel.message = "Pin tab has been deleted.";
+                resultModel.data = "success";
+                resultModel.status = 1;
+            }
+            catch (Exception ex)
+            {
+                resultModel.status = 0;
+                resultModel.message = ex.Message.ToString();
+            }
+            return resultModel;
+        }
+
+        //Add/Delete User Pin/UnPin objects values
+        [Route("api/UserPinUnPinTab")]
+        [AcceptVerbs("GET", "POST")]
+        public ResultModel UserPinUnPinTab(string datatab, long dataid, string dataname, string linkText, long ProjectId)
+        {
+            CommonHelper.SetConnectionString(Request);
+            ResultModel resultModel = new ResultModel();
+            try
+            {
+                var userName = SessionManager.TESTER_LOGIN_NAME;
+                var userId = (long)SessionManager.TESTER_ID;
+                AccountRepository repo = new AccountRepository();
+                var lresult = repo.AddDetelteActivateTab(userId, userName, datatab, dataid, dataname, linkText, ProjectId);
+
+                resultModel.data = lresult;
+                resultModel.status = 1;
+            }
+            catch (Exception ex)
+            {
+                resultModel.status = 0;
+                resultModel.message = ex.Message.ToString();
+            }
+            return resultModel;
+        }
+
+        //check Pin tab already exist or not 
+        [Route("api/CheckPinExist")]
+        [AcceptVerbs("GET", "POST")]
+        public bool CheckPinExist(string datatab, long dataid, long ProjectId)
+        {
+            CommonHelper.SetConnectionString(Request);
+            AccountRepository repo = new AccountRepository();
+            var userId = SessionManager.TESTER_ID;
+            var lresult = repo.CheckPinExist(userId, datatab, dataid, ProjectId);
+            return lresult;
+        }
+
+        //This method get all storyboard
+        [Route("api/GetStoryboradNameyId")]
+        [AcceptVerbs("GET", "POST")]
+        public string GetStoryboradNameyId(long StoryBoardid)
+        {
+            CommonHelper.SetConnectionString(Request);
+            AccountRepository repo = new AccountRepository();
+            var list = repo.GetStoryboradNameyId(StoryBoardid);
+            var lresult = list != null ? list.STORYBOARD_NAME : "";
+            return lresult;
+        }
+
+        //This method get all TestsuiteId by TeastcaseId
+        [Route("api/GetTestsuiteIdByTeastcaseId")]
+        [AcceptVerbs("GET", "POST")]
+        public TestCaseTestSuiteModel GetTestsuiteIdByTeastcaseId(long Tid)
+        {
+            CommonHelper.SetConnectionString(Request);
+            AccountRepository repo = new AccountRepository();
+            var lresult = repo.GetTestsuiteIdByTeastcaseId(Tid);
+            return lresult;
+        }
+
+        //This method get dataset list by Id 
+        [Route("api/GetDataSetListbyId")]
+        [AcceptVerbs("GET", "POST")]
+        public ResultModel GetDataSetListbyId(long lTestCaseId)
+        {
+            CommonHelper.SetConnectionString(Request);
+            ResultModel resultModel = new ResultModel();
+            try
+            {
+                var repTree = new GetTreeRepository();
+                var ldatasetlist = repTree.GetDataSetListbyId(lTestCaseId);
+
+                resultModel.data = ldatasetlist;
+                resultModel.status = 1;
+            }
+            catch (Exception ex)
+            {
+                resultModel.status = 0;
+                resultModel.message = ex.Message.ToString();
+            }
+            return resultModel;
         }
     }
     public class Data

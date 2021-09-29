@@ -379,7 +379,7 @@ warning 6002: The table/view 'GEN_MARS_4.MV_TC_DATASUMMARY' does not have a prim
           <Property Name="TABLE_NAME" Type="varchar2" MaxLength="32" />
           <Property Name="FIELD_NAME" Type="varchar2" MaxLength="32" />
           <Property Name="VALUE" Type="number" Precision="2" Scale="0" />
-          <Property Name="DISPLAY_NAME" Type="varchar2" MaxLength="64" />
+          <Property Name="DISPLAY_NAME" Type="varchar2" MaxLength="256" />
           <Property Name="STATUS" Type="number" Precision="2" Scale="0" />
         </EntityType>
         <EntityType Name="T_AXIS_LIST">
@@ -500,7 +500,7 @@ warning 6002: The table/view 'GEN_MARS_4.MV_TC_DATASUMMARY' does not have a prim
           <Property Name="HOST_NAME" Type="varchar2" MaxLength="128" />
           <Property Name="PORT_NUMBER" Type="number" Precision="8" Scale="0" />
           <Property Name="PROTOCOL" Type="varchar2" MaxLength="16" />
-          <Property Name="SERVICE_NAME" Type="varchar2" MaxLength="64" />
+          <Property Name="SERVICE_NAME" Type="varchar2" MaxLength="128" />
           <Property Name="DB_SID" Type="varchar2" MaxLength="64" />
           <Property Name="DB_USERNAME" Type="varchar2" MaxLength="32" />
           <Property Name="DB_PASSWORD" Type="varchar2" MaxLength="32" />
@@ -832,9 +832,9 @@ warning 6002: The table/view 'GEN_MARS_4.T_REGISTED_OBJECT_TEST' does not have a
           <Property Name="GROUPID" Type="number" Precision="16" Scale="0" />
           <Property Name="SETID" Type="number" Precision="16" Scale="0" />
           <Property Name="FOLDERID" Type="number" Precision="16" Scale="0" />
-          <Property Name="EXPECTEDRESULTS" Type="varchar2" MaxLength="256" />
-          <Property Name="STEPDESC" Type="varchar2" MaxLength="256" />
-          <Property Name="DIARY" Type="varchar2" MaxLength="256" />
+          <Property Name="EXPECTEDRESULTS" Type="varchar2" MaxLength="4000" />
+          <Property Name="STEPDESC" Type="varchar2" MaxLength="4000" />
+          <Property Name="DIARY" Type="varchar2" MaxLength="4000" />
           <Property Name="SEQUENCE" Type="number" Precision="38" Scale="0" />
         </EntityType>
         <EntityType Name="T_TEST_ENUM">
@@ -2058,31 +2058,17 @@ warning 6002: The table/view 'GEN_MARS_4.V_USER_COMPANY' does not have a primary
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="T_AXIS_LIST_FK1">
-          <End Role="T_QUERY" Type="Self.T_QUERY" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="T_AXIS_LIST" Type="Self.T_AXIS_LIST" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="T_QUERY">
-              <PropertyRef Name="QUERY_ID" />
-            </Principal>
-            <Dependent Role="T_AXIS_LIST">
-              <PropertyRef Name="QUERY_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="T_QUERY_FK1">
-          <End Role="T_DATABASE_CONNECTIONS" Type="Self.T_DATABASE_CONNECTIONS" Multiplicity="0..1">
+          <End Role="T_DBCONNECTION" Type="Self.T_DBCONNECTION" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="T_QUERY" Type="Self.T_QUERY" Multiplicity="*" />
+          <End Role="T_QUERY" Type="Self.T_QUERY" Multiplicity="0..1" />
           <ReferentialConstraint>
-            <Principal Role="T_DATABASE_CONNECTIONS">
-              <PropertyRef Name="CONNECTION_ID" />
+            <Principal Role="T_DBCONNECTION">
+              <PropertyRef Name="DBCONNECTION_ID" />
             </Principal>
             <Dependent Role="T_QUERY">
-              <PropertyRef Name="CONN_ID" />
+              <PropertyRef Name="QUERY_ID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -2121,12 +2107,15 @@ warning 6002: The table/view 'GEN_MARS_4.V_USER_COMPANY' does not have a primary
         </Function>
         <Function Name="CONCATENATE_DATASETDESCRIPTION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN_MARS_4" ReturnType="clob">
           <Parameter Name="TEST_CASE_ID1" Type="number" Mode="In" />
+          <Parameter Name="DATA_SET_ID" Type="number" Mode="In" />
         </Function>
         <Function Name="CONCATENATE_DATASETIDS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN_MARS_4" ReturnType="clob">
           <Parameter Name="TEST_CASE_ID1" Type="number" Mode="In" />
+          <Parameter Name="DATA_SET_ID" Type="number" Mode="In" />
         </Function>
         <Function Name="CONCATENATE_DATASETNAMES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN_MARS_4" ReturnType="clob">
           <Parameter Name="TEST_CASE_ID1" Type="number" Mode="In" />
+          <Parameter Name="DATA_SET_ID" Type="number" Mode="In" />
         </Function>
         <Function Name="CONCATENATE_KEYWORD_TYPE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN_MARS_4" ReturnType="clob">
           <Parameter Name="KEYWORDID" Type="number" Mode="In" />
@@ -2144,14 +2133,17 @@ warning 6002: The table/view 'GEN_MARS_4.V_USER_COMPANY' does not have a primary
         <Function Name="CONCATENATE_TESTSTEPDATASETID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN_MARS_4" ReturnType="clob">
           <Parameter Name="TEST_CASE_ID1" Type="number" Mode="In" />
           <Parameter Name="STEPS_ID1" Type="number" Mode="In" />
+          <Parameter Name="DATA_SET_ID" Type="number" Mode="In" />
         </Function>
         <Function Name="CONCATENATE_TESTSTEPDATAVALUE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN_MARS_4" ReturnType="clob">
           <Parameter Name="TEST_CASE_ID1" Type="number" Mode="In" />
           <Parameter Name="STEPS_ID1" Type="number" Mode="In" />
+          <Parameter Name="DATA_SET_ID" Type="number" Mode="In" />
         </Function>
         <Function Name="CONCATENATE_TESTSTEPSKIP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN_MARS_4" ReturnType="clob">
           <Parameter Name="TEST_CASE_ID1" Type="number" Mode="In" />
           <Parameter Name="STEPS_ID1" Type="number" Mode="In" />
+          <Parameter Name="DATA_SET_ID" Type="number" Mode="In" />
         </Function>
         <Function Name="CONCATENATE_TESTSTEPVALUE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN_MARS_4" ReturnType="clob">
           <Parameter Name="TEST_CASE_ID1" Type="number" Mode="In" />
@@ -2219,6 +2211,7 @@ warning 6002: The table/view 'GEN_MARS_4.V_USER_COMPANY' does not have a primary
         <Function Name="SP_GETTESTCASEDETAIL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN_MARS_4">
           <Parameter Name="TESTSUITEID" Type="number" Mode="In" />
           <Parameter Name="TESTCASEID" Type="number" Mode="In" />
+          <Parameter Name="DATASETID" Type="number" Mode="In" />
         </Function>
         <Function Name="SP_GETTESTCASEVALIDATIONRESULT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN_MARS_4">
           <Parameter Name="FEEDPROCESSID1" Type="number" Mode="In" />
@@ -3233,12 +3226,8 @@ FROM "GEN_MARS_4"."V_USER_COMPANY" "V_USER_COMPANY"</DefiningQuery>
             <End Role="T_TEST_BATCH" EntitySet="T_TEST_BATCH" />
             <End Role="T_BAT_RESULT" EntitySet="T_BAT_RESULT" />
           </AssociationSet>
-          <AssociationSet Name="T_AXIS_LIST_FK1" Association="Self.T_AXIS_LIST_FK1">
-            <End Role="T_QUERY" EntitySet="T_QUERY" />
-            <End Role="T_AXIS_LIST" EntitySet="T_AXIS_LIST" />
-          </AssociationSet>
           <AssociationSet Name="T_QUERY_FK1" Association="Self.T_QUERY_FK1">
-            <End Role="T_DATABASE_CONNECTIONS" EntitySet="T_DATABASE_CONNECTIONS" />
+            <End Role="T_DBCONNECTION" EntitySet="T_DBCONNECTION" />
             <End Role="T_QUERY" EntitySet="T_QUERY" />
           </AssociationSet>
           <AssociationSet Name="T_TESTER_INFO_COMPANY_FK" Association="Self.T_TESTER_INFO_COMPANY_FK">
@@ -3487,6 +3476,7 @@ FROM "GEN_MARS_4"."V_USER_COMPANY" "V_USER_COMPANY"</DefiningQuery>
           <Property Name="SERVICENAME" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
           <Property Name="DECODE_METHOD" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
           <Property Name="SCHEMA" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="T_QUERY" Relationship="Model.T_QUERY_FK1" FromRole="T_DBCONNECTION" ToRole="T_QUERY" />
         </EntityType>
         <EntityType Name="T_DIC_RELATION_KEYWORD">
           <Key>
@@ -5339,6 +5329,7 @@ FROM "GEN_MARS_4"."V_USER_COMPANY" "V_USER_COMPANY"</DefiningQuery>
           <FunctionImport Name="SP_GETTESTCASEDETAIL">
             <Parameter Name="TESTSUITEID" Mode="In" Type="Decimal" />
             <Parameter Name="TESTCASEID" Mode="In" Type="Decimal" />
+            <Parameter Name="DATASETID" Mode="In" Type="Decimal" />
           </FunctionImport>
           <FunctionImport Name="SP_GET_LEFTPANELPROJECTLIST">
           <Parameter Name="USERID" Mode="In" Type="Decimal" />
@@ -5595,15 +5586,11 @@ FROM "GEN_MARS_4"."V_USER_COMPANY" "V_USER_COMPANY"</DefiningQuery>
             <End Role="T_DATABASE_CONNECTIONS" EntitySet="T_DATABASE_CONNECTIONS" />
             <End Role="REL_DB_QUERY" EntitySet="REL_DB_QUERY" />
           </AssociationSet>
+          <EntitySet Name="T_AXIS_LIST" EntityType="Model.T_AXIS_LIST" />
           <EntitySet Name="T_QUERY" EntityType="Model.T_QUERY" />
           <AssociationSet Name="T_QUERY_FK1" Association="Model.T_QUERY_FK1">
-            <End Role="T_DATABASE_CONNECTIONS" EntitySet="T_DATABASE_CONNECTIONS" />
+            <End Role="T_DBCONNECTION" EntitySet="T_DBCONNECTION" />
             <End Role="T_QUERY" EntitySet="T_QUERY" />
-          </AssociationSet>
-          <EntitySet Name="T_AXIS_LIST" EntityType="Model.T_AXIS_LIST" />
-          <AssociationSet Name="T_AXIS_LIST_FK1" Association="Model.T_AXIS_LIST_FK1">
-            <End Role="T_QUERY" EntitySet="T_QUERY" />
-            <End Role="T_AXIS_LIST" EntitySet="T_AXIS_LIST" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="T_USER_ACTIVEPAGE">
@@ -5817,7 +5804,6 @@ FROM "GEN_MARS_4"."V_USER_COMPANY" "V_USER_COMPANY"</DefiningQuery>
           <Property Name="LAST_TESTED" Type="DateTime" />
           <Property Name="ERROR_MESSAGE" Type="String" MaxLength="1028" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="REL_DB_QUERY" Relationship="Model.FK_DB_QUERY" FromRole="T_DATABASE_CONNECTIONS" ToRole="REL_DB_QUERY" />
-          <NavigationProperty Name="T_QUERY" Relationship="Model.T_QUERY_FK1" FromRole="T_DATABASE_CONNECTIONS" ToRole="T_QUERY" />
         </EntityType>
         <EntityType Name="REL_DB_QUERY">
           <Key>
@@ -5840,6 +5826,17 @@ FROM "GEN_MARS_4"."V_USER_COMPANY" "V_USER_COMPANY"</DefiningQuery>
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="T_AXIS_LIST">
+          <Key>
+            <PropertyRef Name="AXIS_LIST_ID" />
+          </Key>
+          <Property Name="AXIS_LIST_ID" Type="Int64" Nullable="false" />
+          <Property Name="QUERY_ID" Type="Int64" />
+          <Property Name="COMMAND_TYPE_ID" Type="Int16" />
+          <Property Name="X_AXIS" Type="Int16" />
+          <Property Name="Y_AXIS" Type="Int16" />
+          <Property Name="Z_AXIS" Type="Int16" />
+        </EntityType>
         <EntityType Name="T_QUERY">
           <Key>
             <PropertyRef Name="QUERY_ID" />
@@ -5853,45 +5850,18 @@ FROM "GEN_MARS_4"."V_USER_COMPANY" "V_USER_COMPANY"</DefiningQuery>
           <Property Name="MODIFIEDBY" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
           <Property Name="MODIFIED_DATE" Type="DateTime" />
           <Property Name="CONN_ID" Type="Int64" />
-          <NavigationProperty Name="T_DATABASE_CONNECTIONS" Relationship="Model.T_QUERY_FK1" FromRole="T_QUERY" ToRole="T_DATABASE_CONNECTIONS" />
-          <NavigationProperty Name="T_AXIS_LIST" Relationship="Model.T_AXIS_LIST_FK1" FromRole="T_QUERY" ToRole="T_AXIS_LIST" />
+          <NavigationProperty Name="T_DBCONNECTION" Relationship="Model.T_QUERY_FK1" FromRole="T_QUERY" ToRole="T_DBCONNECTION" />
         </EntityType>
         <Association Name="T_QUERY_FK1">
-          <End Type="Model.T_DATABASE_CONNECTIONS" Role="T_DATABASE_CONNECTIONS" Multiplicity="0..1">
+          <End Type="Model.T_DBCONNECTION" Role="T_DBCONNECTION" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Type="Model.T_QUERY" Role="T_QUERY" Multiplicity="*" />
+          <End Type="Model.T_QUERY" Role="T_QUERY" Multiplicity="0..1" />
           <ReferentialConstraint>
-            <Principal Role="T_DATABASE_CONNECTIONS">
-              <PropertyRef Name="CONNECTION_ID" />
+            <Principal Role="T_DBCONNECTION">
+              <PropertyRef Name="DBCONNECTION_ID" />
             </Principal>
             <Dependent Role="T_QUERY">
-              <PropertyRef Name="CONN_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="T_AXIS_LIST">
-          <Key>
-            <PropertyRef Name="AXIS_LIST_ID" />
-          </Key>
-          <Property Name="AXIS_LIST_ID" Type="Int64" Nullable="false" />
-          <Property Name="QUERY_ID" Type="Int64" />
-          <Property Name="COMMAND_TYPE_ID" Type="Int16" />
-          <Property Name="X_AXIS" Type="Int16" />
-          <Property Name="Y_AXIS" Type="Int16" />
-          <Property Name="Z_AXIS" Type="Int16" />
-          <NavigationProperty Name="T_QUERY" Relationship="Model.T_AXIS_LIST_FK1" FromRole="T_AXIS_LIST" ToRole="T_QUERY" />
-        </EntityType>
-        <Association Name="T_AXIS_LIST_FK1">
-          <End Type="Model.T_QUERY" Role="T_QUERY" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Type="Model.T_AXIS_LIST" Role="T_AXIS_LIST" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="T_QUERY">
-              <PropertyRef Name="QUERY_ID" />
-            </Principal>
-            <Dependent Role="T_AXIS_LIST">
               <PropertyRef Name="QUERY_ID" />
             </Dependent>
           </ReferentialConstraint>
@@ -7509,6 +7479,18 @@ FROM "GEN_MARS_4"."V_USER_COMPANY" "V_USER_COMPANY"</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="T_AXIS_LIST">
+            <EntityTypeMapping TypeName="Model.T_AXIS_LIST">
+              <MappingFragment StoreEntitySet="T_AXIS_LIST">
+                <ScalarProperty Name="Z_AXIS" ColumnName="Z_AXIS" />
+                <ScalarProperty Name="Y_AXIS" ColumnName="Y_AXIS" />
+                <ScalarProperty Name="X_AXIS" ColumnName="X_AXIS" />
+                <ScalarProperty Name="COMMAND_TYPE_ID" ColumnName="COMMAND_TYPE_ID" />
+                <ScalarProperty Name="QUERY_ID" ColumnName="QUERY_ID" />
+                <ScalarProperty Name="AXIS_LIST_ID" ColumnName="AXIS_LIST_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="T_QUERY">
             <EntityTypeMapping TypeName="Model.T_QUERY">
               <MappingFragment StoreEntitySet="T_QUERY">
@@ -7521,18 +7503,6 @@ FROM "GEN_MARS_4"."V_USER_COMPANY" "V_USER_COMPANY"</DefiningQuery>
                 <ScalarProperty Name="QUERY_DESC" ColumnName="QUERY_DESC" />
                 <ScalarProperty Name="QUERY_NAME" ColumnName="QUERY_NAME" />
                 <ScalarProperty Name="QUERY_ID" ColumnName="QUERY_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="T_AXIS_LIST">
-            <EntityTypeMapping TypeName="Model.T_AXIS_LIST">
-              <MappingFragment StoreEntitySet="T_AXIS_LIST">
-                <ScalarProperty Name="Z_AXIS" ColumnName="Z_AXIS" />
-                <ScalarProperty Name="Y_AXIS" ColumnName="Y_AXIS" />
-                <ScalarProperty Name="X_AXIS" ColumnName="X_AXIS" />
-                <ScalarProperty Name="COMMAND_TYPE_ID" ColumnName="COMMAND_TYPE_ID" />
-                <ScalarProperty Name="QUERY_ID" ColumnName="QUERY_ID" />
-                <ScalarProperty Name="AXIS_LIST_ID" ColumnName="AXIS_LIST_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

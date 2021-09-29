@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using MARS_Repository.Entities;
 using NLog;
 using Oracle.ManagedDataAccess.Client;
+using System.Transactions;
 
 namespace MARS_Repository.Repositories
 {
@@ -69,18 +70,23 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("DeleteUserMapExePath start | User id: {0} | Username: {1}", userid, Username));
-                var flag = false;
-                var result = entity.T_RELATION_USER_ENGINEPATH.FirstOrDefault(x => x.RELATIONID == userid);
-                if (result != null)
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    entity.T_RELATION_USER_ENGINEPATH.Remove(result);
-                    entity.SaveChanges();
-                    flag = true;
+                    logger.Info(string.Format("DeleteUserMapExePath start | User id: {0} | Username: {1}", userid, Username));
+                    var flag = false;
+                    var result = entity.T_RELATION_USER_ENGINEPATH.FirstOrDefault(x => x.RELATIONID == userid);
+                    if (result != null)
+                    {
+                        entity.T_RELATION_USER_ENGINEPATH.Remove(result);
+                        entity.SaveChanges();
+                        flag = true;
+                        scope.Complete();
+                        return flag;
+                    }
+                    logger.Info(string.Format("DeleteUserMapExePath end | User id: {0} | Username: {1}", userid, Username));
+                    scope.Complete();
                     return flag;
                 }
-                logger.Info(string.Format("DeleteUserMapExePath end | User id: {0} | Username: {1}", userid, Username));
-                return flag;
             }
             catch (Exception ex)
             {
@@ -95,35 +101,39 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("AddUserPath start | User id: {0} | Username: {1}", userid, Username));
-                if (relid == 0)
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    var result = entity.T_RELATION_USER_ENGINEPATH.Where(x => x.USERID == userid).ToList();
-                    if (result.Count == 0)
+                    logger.Info(string.Format("AddUserPath start | User id: {0} | Username: {1}", userid, Username));
+                    if (relid == 0)
                     {
-                        var userpath = new T_RELATION_USER_ENGINEPATH();
-                        userpath.RELATIONID = Helper.NextTestSuiteId("SEQ_REL_USER_ENGINEPATH");
-                        userpath.USERID = userid;
-                        userpath.ENGINEPATH = exepath;
-                        entity.T_RELATION_USER_ENGINEPATH.Add(userpath);
-                        entity.SaveChanges();
-                        logger.Info(string.Format("AddUserPath end | User id: {0} | Username: {1}", userid, Username));
-                        return "success";
+                        var result = entity.T_RELATION_USER_ENGINEPATH.Where(x => x.USERID == userid).ToList();
+                        if (result.Count == 0)
+                        {
+                            var userpath = new T_RELATION_USER_ENGINEPATH();
+                            userpath.RELATIONID = Helper.NextTestSuiteId("SEQ_REL_USER_ENGINEPATH");
+                            userpath.USERID = userid;
+                            userpath.ENGINEPATH = exepath;
+                            entity.T_RELATION_USER_ENGINEPATH.Add(userpath);
+                            entity.SaveChanges();
+                            logger.Info(string.Format("AddUserPath end | User id: {0} | Username: {1}", userid, Username));
+                            return "success";
+                        }
                     }
-                }
-                else
-                {
-                    var lresult = entity.T_RELATION_USER_ENGINEPATH.Find(relid);
-                    if (lresult != null)
+                    else
                     {
-                        lresult.ENGINEPATH = exepath;
-                        entity.SaveChanges();
-                        logger.Info(string.Format("AddUserPath end | User id: {0} | Username: {1}", userid, Username));
-                        return "success";
+                        var lresult = entity.T_RELATION_USER_ENGINEPATH.Find(relid);
+                        if (lresult != null)
+                        {
+                            lresult.ENGINEPATH = exepath;
+                            entity.SaveChanges();
+                            logger.Info(string.Format("AddUserPath end | User id: {0} | Username: {1}", userid, Username));
+                            return "success";
+                        }
                     }
+                    logger.Info(string.Format("AddUserPath end | User id: {0} | Username: {1}", userid, Username));
+                    scope.Complete();
+                    return "error";
                 }
-                logger.Info(string.Format("AddUserPath end | User id: {0} | Username: {1}", userid, Username));
-                return "error";
             }
             catch (Exception ex)
             {
@@ -274,17 +284,21 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("UpdateTempKey start | UserMapId: {0} | Username: {1}", UserMapId, Username));
-                var table = entity.T_USER_MAPPING.Find(UserMapId);
-                if (table != null)
+                using (TransactionScope scope = new TransactionScope())
                 {
+                    logger.Info(string.Format("UpdateTempKey start | UserMapId: {0} | Username: {1}", UserMapId, Username));
+                    var table = entity.T_USER_MAPPING.Find(UserMapId);
+                    if (table != null)
+                    {
 
-                    table.TEMP_KEY = TempKey;
+                        table.TEMP_KEY = TempKey;
 
-                    entity.SaveChanges();
+                        entity.SaveChanges();
+                    }
+                    logger.Info(string.Format("UpdateTempKey end | UserMapId: {0} | Username: {1}", UserMapId, Username));
+                    scope.Complete();
+                    return table;
                 }
-                logger.Info(string.Format("UpdateTempKey end | UserMapId: {0} | Username: {1}", UserMapId, Username));
-                return table;
             }
             catch (Exception ex)
             {
@@ -546,54 +560,57 @@ namespace MARS_Repository.Repositories
         {
             try
             {
+                using (TransactionScope scope = new TransactionScope())
+                {
 
-                T_TESTER_INFO tester = new T_TESTER_INFO();
-                var lresult = entity.T_TESTER_INFO.Find(t_TESTER.TESTER_ID);
-                var result = entity.T_USER_MAPPING.Where(x => x.TESTER_ID == t_TESTER.TESTER_ID).ToList();
-                if (lresult != null)
-                {
-                    logger.Info(string.Format("Edit New User start | New User Name: {0} | Username: {1}", t_TESTER.TESTER_LOGIN_NAME, Username));
-                    lresult.TESTER_NAME_F = t_TESTER.TESTER_NAME_F;
-                    lresult.TESTER_NAME_M = t_TESTER.TESTER_NAME_M;
-                    lresult.TESTER_NAME_LAST = t_TESTER.TESTER_NAME_LAST;
-                    lresult.TESTER_MAIL = t_TESTER.TESTER_MAIL;
-                    lresult.TESTER_LOGIN_NAME = t_TESTER.TESTER_LOGIN_NAME;
-                    lresult.COMPANY_ID = t_TESTER.COMPANY_ID;
-                    entity.SaveChanges();
-                    logger.Info(string.Format("Edit New User end | New User Name: {0} | Username: {1}", t_TESTER.TESTER_LOGIN_NAME, Username));
-                }
-                else
-                {
-                    logger.Info(string.Format("Create New User start | New User Name: {0} | Username: {1}", t_TESTER.TESTER_LOGIN_NAME, Username));
-                    ObjectParameter outparam = new ObjectParameter("v_NEXTVAL", typeof(Int32));
-                    var projectId = entity.GETNEXT_VAL(USER_SEQ, outparam);
-                    var lUserId = long.Parse(outparam.Value.ToString());
-                    t_TESTER.TESTER_ID = lUserId;
+                    T_TESTER_INFO tester = new T_TESTER_INFO();
+                    var lresult = entity.T_TESTER_INFO.Find(t_TESTER.TESTER_ID);
+                    var result = entity.T_USER_MAPPING.Where(x => x.TESTER_ID == t_TESTER.TESTER_ID).ToList();
+                    if (lresult != null)
+                    {
+                        logger.Info(string.Format("Edit New User start | New User Name: {0} | Username: {1}", t_TESTER.TESTER_LOGIN_NAME, Username));
+                        lresult.TESTER_NAME_F = t_TESTER.TESTER_NAME_F;
+                        lresult.TESTER_NAME_M = t_TESTER.TESTER_NAME_M;
+                        lresult.TESTER_NAME_LAST = t_TESTER.TESTER_NAME_LAST;
+                        lresult.TESTER_MAIL = t_TESTER.TESTER_MAIL;
+                        lresult.TESTER_LOGIN_NAME = t_TESTER.TESTER_LOGIN_NAME;
+                        lresult.COMPANY_ID = t_TESTER.COMPANY_ID;
+                        entity.SaveChanges();
+                        logger.Info(string.Format("Edit New User end | New User Name: {0} | Username: {1}", t_TESTER.TESTER_LOGIN_NAME, Username));
+                    }
+                    else
+                    {
+                        logger.Info(string.Format("Create New User start | New User Name: {0} | Username: {1}", t_TESTER.TESTER_LOGIN_NAME, Username));
+                        ObjectParameter outparam = new ObjectParameter("v_NEXTVAL", typeof(Int32));
+                        var projectId = entity.GETNEXT_VAL(USER_SEQ, outparam);
+                        var lUserId = long.Parse(outparam.Value.ToString());
+                        t_TESTER.TESTER_ID = lUserId;
 
-                    entity.T_TESTER_INFO.Add(t_TESTER);
-                    entity.SaveChanges();
-                    logger.Info(string.Format("Create New User end | New User Name: {0} | Username: {1}", t_TESTER.TESTER_LOGIN_NAME, Username));
+                        entity.T_TESTER_INFO.Add(t_TESTER);
+                        entity.SaveChanges();
+                        logger.Info(string.Format("Create New User end | New User Name: {0} | Username: {1}", t_TESTER.TESTER_LOGIN_NAME, Username));
+                    }
+                    if (result.Count() > 0)
+                    {
+                        var lusermodel = entity.T_USER_MAPPING.Where(x => x.TESTER_ID == t_TESTER.TESTER_ID).FirstOrDefault();
+                        lusermodel.STATUS = lchecked;
+                        entity.SaveChanges();
+                    }
+                    else
+                    {
+                        ObjectParameter outparam = new ObjectParameter("v_NEXTVAL", typeof(Int32));
+                        var projectId = entity.GETNEXT_VAL(USER_SEQ, outparam);
+                        var lUserId = long.Parse(outparam.Value.ToString());
+                        T_USER_MAPPING mapper = new T_USER_MAPPING();
+                        mapper.USER_MAPPING_ID = lUserId;
+                        mapper.STATUS = lchecked;
+                        mapper.TESTER_ID = t_TESTER.TESTER_ID;
+                        entity.T_USER_MAPPING.Add(mapper);
+                        entity.SaveChanges();
+                    }
+                    scope.Complete();
+                    return t_TESTER;
                 }
-                if (result.Count() > 0)
-                {
-                    var lusermodel = entity.T_USER_MAPPING.Where(x => x.TESTER_ID == t_TESTER.TESTER_ID).FirstOrDefault();
-                    lusermodel.STATUS = lchecked;
-                    entity.SaveChanges();
-                }
-                else
-                {
-                    ObjectParameter outparam = new ObjectParameter("v_NEXTVAL", typeof(Int32));
-                    var projectId = entity.GETNEXT_VAL(USER_SEQ, outparam);
-                    var lUserId = long.Parse(outparam.Value.ToString());
-                    T_USER_MAPPING mapper = new T_USER_MAPPING();
-                    mapper.USER_MAPPING_ID = lUserId;
-                    mapper.STATUS = lchecked;
-                    mapper.TESTER_ID = t_TESTER.TESTER_ID;
-                    entity.T_USER_MAPPING.Add(mapper);
-                    entity.SaveChanges();
-                }
-
-                return t_TESTER;
             }
             catch (Exception ex)
             {
@@ -609,16 +626,20 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("ChangeUserPassword start | New Password: {0} | User id: {1} | Username: {2}", lNewPsw, lTesterId, Username));
-                T_TESTER_INFO tester = new T_TESTER_INFO();
-                var lresult = entity.T_TESTER_INFO.Find(lTesterId);
-                if (lresult != null)
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    lresult.TESTER_PWD = lNewPsw;
-                    entity.SaveChanges();
+                    logger.Info(string.Format("ChangeUserPassword start | New Password: {0} | User id: {1} | Username: {2}", lNewPsw, lTesterId, Username));
+                    T_TESTER_INFO tester = new T_TESTER_INFO();
+                    var lresult = entity.T_TESTER_INFO.Find(lTesterId);
+                    if (lresult != null)
+                    {
+                        lresult.TESTER_PWD = lNewPsw;
+                        entity.SaveChanges();
+                    }
+                    logger.Info(string.Format("ChangeUserPassword end | New Password: {0} | User id: {1} | Username: {2}", lNewPsw, lTesterId, Username));
+                    scope.Complete();
+                    return lresult;
                 }
-                logger.Info(string.Format("ChangeUserPassword end | New Password: {0} | User id: {1} | Username: {2}", lNewPsw, lTesterId, Username));
-                return lresult;
             }
             catch (Exception ex)
             {
@@ -761,26 +782,30 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("SetTemporaryKey start | testerid: {0} | tempkey: {1}", testerid, tempkey));
-                T_USER_MAPPING User = new T_USER_MAPPING();
-                var ruser = GetUserId(testerid);
-                if (ruser != null)
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    ruser.TEMP_KEY = tempkey;
-                    entity.SaveChanges();
+                    logger.Info(string.Format("SetTemporaryKey start | testerid: {0} | tempkey: {1}", testerid, tempkey));
+                    T_USER_MAPPING User = new T_USER_MAPPING();
+                    var ruser = GetUserId(testerid);
+                    if (ruser != null)
+                    {
+                        ruser.TEMP_KEY = tempkey;
+                        entity.SaveChanges();
+                    }
+                    else
+                    {
+                        ObjectParameter outparam = new ObjectParameter("v_NEXTVAL", typeof(Int32));
+                        var projectId = entity.GETNEXT_VAL(USER_SEQ, outparam);
+                        var lUserId = long.Parse(outparam.Value.ToString());
+                        User.USER_MAPPING_ID = lUserId;
+                        User.TESTER_ID = testerid;
+                        User.TEMP_KEY = tempkey;
+                        entity.T_USER_MAPPING.Add(User);
+                        entity.SaveChanges();
+                    }
+                    scope.Complete();
+                    logger.Info(string.Format("SetTemporaryKey end | User id: {0} | tempkey: {1}", testerid, tempkey));
                 }
-                else
-                {
-                    ObjectParameter outparam = new ObjectParameter("v_NEXTVAL", typeof(Int32));
-                    var projectId = entity.GETNEXT_VAL(USER_SEQ, outparam);
-                    var lUserId = long.Parse(outparam.Value.ToString());
-                    User.USER_MAPPING_ID = lUserId;
-                    User.TESTER_ID = testerid;
-                    User.TEMP_KEY = tempkey;
-                    entity.T_USER_MAPPING.Add(User);
-                    entity.SaveChanges();
-                }
-                logger.Info(string.Format("SetTemporaryKey end | User id: {0} | tempkey: {1}", testerid, tempkey));
             }
             catch (Exception ex)
             {
@@ -814,44 +839,48 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("Delete User start | User id: {0} | Username: {1}", id, Username));
-                var rUser = new T_USER_MAPPING();
-                var lUser = new T_TESTER_INFO();
-                if (id > 0)
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    lUser = GetUserById(id);
-                    rUser = GetUserId(id);
+                    logger.Info(string.Format("Delete User start | User id: {0} | Username: {1}", id, Username));
+                    var rUser = new T_USER_MAPPING();
+                    var lUser = new T_TESTER_INFO();
+                    if (id > 0)
+                    {
+                        lUser = GetUserById(id);
+                        rUser = GetUserId(id);
 
-                    if (lUser != null && rUser != null)
-                    {
-                        var list = entity.REL_PROJECT_USER.Where(x => x.USER_ID == id).ToList();
-                        foreach (var item in list)
+                        if (lUser != null && rUser != null)
                         {
-                            entity.REL_PROJECT_USER.Remove(item);
+                            var list = entity.REL_PROJECT_USER.Where(x => x.USER_ID == id).ToList();
+                            foreach (var item in list)
+                            {
+                                entity.REL_PROJECT_USER.Remove(item);
+                                entity.SaveChanges();
+                            }
+                            rUser.TESTER_ID = lUser.TESTER_ID;
+                            rUser.IS_DELETED = 1;
                             entity.SaveChanges();
                         }
-                        rUser.TESTER_ID = lUser.TESTER_ID;
-                        rUser.IS_DELETED = 1;
-                        entity.SaveChanges();
-                    }
-                    else
-                    {
-                        if (rUser == null)
+                        else
                         {
-                            ObjectParameter outparam = new ObjectParameter("v_NEXTVAL", typeof(Int32));
-                            var projectId = entity.GETNEXT_VAL(USER_SEQ, outparam);
-                            var lUserId = long.Parse(outparam.Value.ToString());
-                            var lmappingtable = new T_USER_MAPPING();
-                            lmappingtable.USER_MAPPING_ID = lUserId;
-                            lmappingtable.TESTER_ID = lUser.TESTER_ID;
-                            lmappingtable.IS_DELETED = 1;
-                            entity.T_USER_MAPPING.Add(lmappingtable);
-                            entity.SaveChanges();
+                            if (rUser == null)
+                            {
+                                ObjectParameter outparam = new ObjectParameter("v_NEXTVAL", typeof(Int32));
+                                var projectId = entity.GETNEXT_VAL(USER_SEQ, outparam);
+                                var lUserId = long.Parse(outparam.Value.ToString());
+                                var lmappingtable = new T_USER_MAPPING();
+                                lmappingtable.USER_MAPPING_ID = lUserId;
+                                lmappingtable.TESTER_ID = lUser.TESTER_ID;
+                                lmappingtable.IS_DELETED = 1;
+                                entity.T_USER_MAPPING.Add(lmappingtable);
+                                entity.SaveChanges();
+                            }
                         }
                     }
+                    logger.Info(string.Format("Delete User end | User id: {0} | Username: {1}", id, Username));
+                    scope.Complete();
+                    return lUser;
                 }
-                logger.Info(string.Format("Delete User end | User id: {0} | Username: {1}", id, Username));
-                return lUser;
             }
             catch (Exception ex)
             {
@@ -890,20 +919,24 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("Delete Active User start | User id: {0} | Username: {1}", id, Username));
-                var lUser = new T_USER_ACTIVEPAGE();
-                if (id > 0)
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    var list = entity.T_USER_ACTIVEPAGE.Where(x => x.ACTIVEPAGE_ID == id).ToList();
-                    foreach (var item in list)
+                    logger.Info(string.Format("Delete Active User start | User id: {0} | Username: {1}", id, Username));
+                    var lUser = new T_USER_ACTIVEPAGE();
+                    if (id > 0)
                     {
-                        entity.T_USER_ACTIVEPAGE.Remove(item);
-                        entity.SaveChanges();
+                        var list = entity.T_USER_ACTIVEPAGE.Where(x => x.ACTIVEPAGE_ID == id).ToList();
+                        foreach (var item in list)
+                        {
+                            entity.T_USER_ACTIVEPAGE.Remove(item);
+                            entity.SaveChanges();
+                        }
+                        lUser = entity.T_USER_ACTIVEPAGE.FirstOrDefault(x => x.ACTIVEPAGE_ID == id);
                     }
-                    lUser = entity.T_USER_ACTIVEPAGE.FirstOrDefault(x => x.ACTIVEPAGE_ID == id);
+                    logger.Info(string.Format("Delete Active User end | User id: {0} | Username: {1}", id, Username));
+                    scope.Complete();
+                    return lUser;
                 }
-                logger.Info(string.Format("Delete Active User end | User id: {0} | Username: {1}", id, Username));
-                return lUser;
             }
             catch (Exception ex)
             {
@@ -965,43 +998,47 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                string result = string.Empty;
-                logger.Info(string.Format("Change Activate Tab start | UserId: {0} | UserName: {1}", useId, Username));
-                if (linkText.Trim() == "Pin Tab")
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    var pagename = dataid == 0 ? dataname : datatab;
-                    var user = entity.T_USER_ACTIVEPAGE.Where(x => x.USER_ID == useId && x.PAGE_NAME.Trim() == pagename.Trim() && x.PAGE_ID == dataid && x.PROJECT_ID == ProjectId).FirstOrDefault();
-                    if (user == null)
+                    string result = string.Empty;
+                    logger.Info(string.Format("Change Activate Tab start | UserId: {0} | UserName: {1}", useId, Username));
+                    if (linkText.Trim() == "Pin Tab")
                     {
-                        var lUser = new T_USER_ACTIVEPAGE();
-                        lUser.ACTIVEPAGE_ID = Helper.NextTestSuiteId("T_ACTIVEUSERPAGE_SEQ");
-                        lUser.USER_ID = useId;
-                        lUser.PAGE_ID = dataid;
-                        lUser.PROJECT_ID = ProjectId;
-                        lUser.PAGE_NAME = dataid == 0 ? dataname : datatab;
-                        lUser.CREATEDBY = userName;
-                        lUser.CREATEDDATE = DateTime.Now;
-                        entity.T_USER_ACTIVEPAGE.Add(lUser);
-                        entity.SaveChanges();
+                        var pagename = dataid == 0 ? dataname : datatab;
+                        var user = entity.T_USER_ACTIVEPAGE.Where(x => x.USER_ID == useId && x.PAGE_NAME.Trim() == pagename.Trim() && x.PAGE_ID == dataid && x.PROJECT_ID == ProjectId).FirstOrDefault();
+                        if (user == null)
+                        {
+                            var lUser = new T_USER_ACTIVEPAGE();
+                            lUser.ACTIVEPAGE_ID = Helper.NextTestSuiteId("T_ACTIVEUSERPAGE_SEQ");
+                            lUser.USER_ID = useId;
+                            lUser.PAGE_ID = dataid;
+                            lUser.PROJECT_ID = ProjectId;
+                            lUser.PAGE_NAME = dataid == 0 ? dataname : datatab;
+                            lUser.CREATEDBY = userName;
+                            lUser.CREATEDDATE = DateTime.Now;
+                            entity.T_USER_ACTIVEPAGE.Add(lUser);
+                            entity.SaveChanges();
+                        }
+                        result = "Successfully AddPin";
                     }
-                    result = "Successfully AddPin";
-                }
-                else if (linkText.Trim() == "UnPin Tab")
-                {
-                    var pagename = dataid == 0 ? dataname : datatab;
-                    var list = entity.T_USER_ACTIVEPAGE.Where(x => x.USER_ID == useId && x.PAGE_NAME.Trim() == pagename.Trim() && x.PAGE_ID == dataid && x.PROJECT_ID == ProjectId).ToList();
-                    foreach (var item in list)
+                    else if (linkText.Trim() == "UnPin Tab")
                     {
-                        entity.T_USER_ACTIVEPAGE.Remove(item);
-                        entity.SaveChanges();
-                    }
-                    list = entity.T_USER_ACTIVEPAGE.Where(x => x.USER_ID == useId && x.PAGE_NAME.Trim() == pagename.Trim() && x.PAGE_ID == dataid && x.PROJECT_ID == ProjectId).ToList();
+                        var pagename = dataid == 0 ? dataname : datatab;
+                        var list = entity.T_USER_ACTIVEPAGE.Where(x => x.USER_ID == useId && x.PAGE_NAME.Trim() == pagename.Trim() && x.PAGE_ID == dataid && x.PROJECT_ID == ProjectId).ToList();
+                        foreach (var item in list)
+                        {
+                            entity.T_USER_ACTIVEPAGE.Remove(item);
+                            entity.SaveChanges();
+                        }
+                        list = entity.T_USER_ACTIVEPAGE.Where(x => x.USER_ID == useId && x.PAGE_NAME.Trim() == pagename.Trim() && x.PAGE_ID == dataid && x.PROJECT_ID == ProjectId).ToList();
 
-                    if (list.Count == 0)
-                        result = "Successfully Remove Pin";
+                        if (list.Count == 0)
+                            result = "Successfully Remove Pin";
+                    }
+                    logger.Info(string.Format("Change Activate Tab end | UserId: {0} | UserName: {1}", useId, Username));
+                    scope.Complete();
+                    return result;
                 }
-                logger.Info(string.Format("Change Activate Tab end | UserId: {0} | UserName: {1}", useId, Username));
-                return result;
             }
             catch (Exception ex)
             {
@@ -1036,27 +1073,31 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("Change User Status start | UserId: {0} | UserName: {1}", id, Username));
-                var result = GetUserId(id);
-                if (result != null)
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    result.STATUS = check;
-                    entity.SaveChanges();
+                    logger.Info(string.Format("Change User Status start | UserId: {0} | UserName: {1}", id, Username));
+                    var result = GetUserId(id);
+                    if (result != null)
+                    {
+                        result.STATUS = check;
+                        entity.SaveChanges();
+                    }
+                    else
+                    {
+                        ObjectParameter outparam = new ObjectParameter("v_NEXTVAL", typeof(Int32));
+                        var projectId = entity.GETNEXT_VAL(USER_SEQ, outparam);
+                        var lUserId = long.Parse(outparam.Value.ToString());
+                        T_USER_MAPPING mapper = new T_USER_MAPPING();
+                        mapper.USER_MAPPING_ID = lUserId;
+                        mapper.STATUS = check;
+                        mapper.TESTER_ID = id;
+                        entity.T_USER_MAPPING.Add(mapper);
+                        entity.SaveChanges();
+                    }
+                    logger.Info(string.Format("Change User Status end | UserId: {0} | UserName: {1}", id, Username));
+                    scope.Complete();
+                    return new T_USER_MAPPING();
                 }
-                else
-                {
-                    ObjectParameter outparam = new ObjectParameter("v_NEXTVAL", typeof(Int32));
-                    var projectId = entity.GETNEXT_VAL(USER_SEQ, outparam);
-                    var lUserId = long.Parse(outparam.Value.ToString());
-                    T_USER_MAPPING mapper = new T_USER_MAPPING();
-                    mapper.USER_MAPPING_ID = lUserId;
-                    mapper.STATUS = check;
-                    mapper.TESTER_ID = id;
-                    entity.T_USER_MAPPING.Add(mapper);
-                    entity.SaveChanges();
-                }
-                logger.Info(string.Format("Change User Status end | UserId: {0} | UserName: {1}", id, Username));
-                return new T_USER_MAPPING();
             }
             catch (Exception ex)
             {
@@ -1091,36 +1132,20 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("AddEditConnection start | Username: {0}", Username));
-                if (!string.IsNullOrEmpty(lEntity.UserName))
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    lEntity.UserName = lEntity.UserName.Trim();
-                    lEntity.Password = lEntity.Password.Trim();
-                }
-                var flag = false;
-                if (lEntity.connectionId == 0)
-                {
-                    var tbl = new T_DBCONNECTION();
-                    tbl.DBCONNECTION_ID = Helper.NextTestSuiteId("SEQ_T_DBCONNECTION");
-                    tbl.DATABASENAME = "metadata=res://*/Entities.Db_Context.csdl|res://*/Entities.Db_Context.ssdl|res://*/Entities.Db_Context.msl;provider=Oracle.ManagedDataAccess.Client;provider connection string=\"DATA SOURCE={0};PASSWORD={1};USER ID={2}\"";
-                    tbl.USERNAME = lEntity.UserName;
-                    tbl.PASSWORD = lEntity.Password;
-                    tbl.PORT = lEntity.Port;
-                    tbl.HOST = lEntity.Host;
-                    tbl.SERVICENAME = lEntity.Service_Name;
-                    tbl.SCHEMA = lEntity.Schema;
-                    tbl.DECODE_METHOD = lEntity.DecodeMethod;
-                    lEntity.connectionId = tbl.DBCONNECTION_ID;
-                    entity.T_DBCONNECTION.Add(tbl);
-                    entity.SaveChanges();
-                    flag = true;
-                }
-                else
-                {
-                    var tbl = entity.T_DBCONNECTION.Find(lEntity.connectionId);
-
-                    if (tbl != null)
+                    logger.Info(string.Format("AddEditConnection start | Username: {0}", Username));
+                    if (!string.IsNullOrEmpty(lEntity.UserName))
                     {
+                        lEntity.UserName = lEntity.UserName.Trim();
+                        lEntity.Password = lEntity.Password.Trim();
+                    }
+                    var flag = false;
+                    if (lEntity.connectionId == 0)
+                    {
+                        var tbl = new T_DBCONNECTION();
+                        tbl.DBCONNECTION_ID = Helper.NextTestSuiteId("SEQ_T_DBCONNECTION");
+                        tbl.DATABASENAME = "metadata=res://*/Entities.Db_Context.csdl|res://*/Entities.Db_Context.ssdl|res://*/Entities.Db_Context.msl;provider=Oracle.ManagedDataAccess.Client;provider connection string=\"DATA SOURCE={0};PASSWORD={1};USER ID={2}\"";
                         tbl.USERNAME = lEntity.UserName;
                         tbl.PASSWORD = lEntity.Password;
                         tbl.PORT = lEntity.Port;
@@ -1128,12 +1153,32 @@ namespace MARS_Repository.Repositories
                         tbl.SERVICENAME = lEntity.Service_Name;
                         tbl.SCHEMA = lEntity.Schema;
                         tbl.DECODE_METHOD = lEntity.DecodeMethod;
+                        lEntity.connectionId = tbl.DBCONNECTION_ID;
+                        entity.T_DBCONNECTION.Add(tbl);
                         entity.SaveChanges();
+                        flag = true;
                     }
-                    flag = true;
+                    else
+                    {
+                        var tbl = entity.T_DBCONNECTION.Find(lEntity.connectionId);
+
+                        if (tbl != null)
+                        {
+                            tbl.USERNAME = lEntity.UserName;
+                            tbl.PASSWORD = lEntity.Password;
+                            tbl.PORT = lEntity.Port;
+                            tbl.HOST = lEntity.Host;
+                            tbl.SERVICENAME = lEntity.Service_Name;
+                            tbl.SCHEMA = lEntity.Schema;
+                            tbl.DECODE_METHOD = lEntity.DecodeMethod;
+                            entity.SaveChanges();
+                        }
+                        flag = true;
+                    }
+                    logger.Info(string.Format("AddEditConnection end | Username: {0}", Username));
+                    scope.Complete();
+                    return flag;
                 }
-                logger.Info(string.Format("AddEditConnection end | Username: {0}", Username));
-                return flag;
             }
             catch (Exception ex)
             {
@@ -1176,18 +1221,21 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("DeletConnection start | ConnectionId: {0} | Username: {1}", ConnectionId, Username));
-                var flag = false;
-                var result = entity.T_DBCONNECTION.FirstOrDefault(x => x.DBCONNECTION_ID == ConnectionId);
-                if (result != null)
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    entity.T_DBCONNECTION.Remove(result);
-                    entity.SaveChanges();
-                    flag = true;
+                    logger.Info(string.Format("DeletConnection start | ConnectionId: {0} | Username: {1}", ConnectionId, Username));
+                    var flag = false;
+                    var result = entity.T_DBCONNECTION.FirstOrDefault(x => x.DBCONNECTION_ID == ConnectionId);
+                    if (result != null)
+                    {
+                        entity.T_DBCONNECTION.Remove(result);
+                        entity.SaveChanges();
+                        flag = true;
+                    }
+                    logger.Info(string.Format("DeletConnection end | ConnectionId: {0} | Username: {1}", ConnectionId, Username));
+                    scope.Complete();
+                    return flag;
                 }
-                logger.Info(string.Format("DeletConnection end | ConnectionId: {0} | Username: {1}", ConnectionId, Username));
-
-                return flag;
             }
             catch (Exception ex)
             {
@@ -1359,52 +1407,56 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                bool flag = false;
-                if (privilegeRoleMappingEntity.PrivilegeRoleMappingId == 0)
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    logger.Info(string.Format("Add PrivilegeRoleMapping start | Application: {0} | Username: {1}", "PrivilegeRoleMapping", Username));
-                    if (privilegeRoleMappingEntity.PrivilegeListModel.Count > 0)
+                    bool flag = false;
+                    if (privilegeRoleMappingEntity.PrivilegeRoleMappingId == 0)
                     {
-                        foreach (var item in privilegeRoleMappingEntity.PrivilegeListModel)
+                        logger.Info(string.Format("Add PrivilegeRoleMapping start | Application: {0} | Username: {1}", "PrivilegeRoleMapping", Username));
+                        if (privilegeRoleMappingEntity.PrivilegeListModel.Count > 0)
                         {
-                            var privilegeRoleMappingTbl = new T_TEST_PRIVILEGE_ROLE_MAPPING();
-                            privilegeRoleMappingTbl.PRIVILEGE_ROLE_MAP_ID = Helper.NextTestSuiteId("REL_PRIVILEGE_ROLE_MAPPING");
-                            privilegeRoleMappingTbl.ROLE_ID = privilegeRoleMappingEntity.RoleId;
-                            privilegeRoleMappingTbl.PRIVILEGE_ID = item.PrivilegeId;
-                            privilegeRoleMappingTbl.ISACTIVE = item.IsActive.Value;
-                            privilegeRoleMappingTbl.CREATOR = Username;
-                            privilegeRoleMappingTbl.CREATOR_DATE = DateTime.Now;
+                            foreach (var item in privilegeRoleMappingEntity.PrivilegeListModel)
+                            {
+                                var privilegeRoleMappingTbl = new T_TEST_PRIVILEGE_ROLE_MAPPING();
+                                privilegeRoleMappingTbl.PRIVILEGE_ROLE_MAP_ID = Helper.NextTestSuiteId("REL_PRIVILEGE_ROLE_MAPPING");
+                                privilegeRoleMappingTbl.ROLE_ID = privilegeRoleMappingEntity.RoleId;
+                                privilegeRoleMappingTbl.PRIVILEGE_ID = item.PrivilegeId;
+                                privilegeRoleMappingTbl.ISACTIVE = item.IsActive.Value;
+                                privilegeRoleMappingTbl.CREATOR = Username;
+                                privilegeRoleMappingTbl.CREATOR_DATE = DateTime.Now;
 
-                            entity.T_TEST_PRIVILEGE_ROLE_MAPPING.Add(privilegeRoleMappingTbl);
-                            entity.SaveChanges();
+                                entity.T_TEST_PRIVILEGE_ROLE_MAPPING.Add(privilegeRoleMappingTbl);
+                                entity.SaveChanges();
+                            }
+                            flag = true;
+                            logger.Info(string.Format("Add PrivilegeRoleMapping end | Application: {0} | Username: {1}", "PrivilegeRoleMapping", Username));
                         }
-                        flag = true;
-                        logger.Info(string.Format("Add PrivilegeRoleMapping end | Application: {0} | Username: {1}", "PrivilegeRoleMapping", Username));
+                        else
+                        {
+                            flag = false;
+                            logger.Info(string.Format("Add PrivilegeRoleMapping privilege not present. end | Application: {0} | Username: {1}", "PrivilegeRoleMapping", Username));
+                        }
                     }
                     else
                     {
-                        flag = false;
-                        logger.Info(string.Format("Add PrivilegeRoleMapping privilege not present. end | Application: {0} | Username: {1}", "PrivilegeRoleMapping", Username));
-                    }
-                }
-                else
-                {
-                    var privilegeRoleMappingTbl = entity.T_TEST_PRIVILEGE_ROLE_MAPPING.Find(privilegeRoleMappingEntity.PrivilegeRoleMappingId);
-                    logger.Info(string.Format("Edit PrivilegeRoleMapping start | Application: {0} | PrivilegeRoleMappingId: {1} | Username: {2}", "PrivilegeRoleMapping", privilegeRoleMappingEntity.PrivilegeRoleMappingId, Username));
-                    if (privilegeRoleMappingTbl != null)
-                    {
-                        foreach (var item in privilegeRoleMappingEntity.PrivilegeListModel)
+                        var privilegeRoleMappingTbl = entity.T_TEST_PRIVILEGE_ROLE_MAPPING.Find(privilegeRoleMappingEntity.PrivilegeRoleMappingId);
+                        logger.Info(string.Format("Edit PrivilegeRoleMapping start | Application: {0} | PrivilegeRoleMappingId: {1} | Username: {2}", "PrivilegeRoleMapping", privilegeRoleMappingEntity.PrivilegeRoleMappingId, Username));
+                        if (privilegeRoleMappingTbl != null)
                         {
-                            privilegeRoleMappingTbl.ROLE_ID = privilegeRoleMappingEntity.RoleId;
-                            privilegeRoleMappingTbl.PRIVILEGE_ID = item.PrivilegeId;
-                            privilegeRoleMappingTbl.ISACTIVE = item.IsActive.Value;
-                            entity.SaveChanges();
+                            foreach (var item in privilegeRoleMappingEntity.PrivilegeListModel)
+                            {
+                                privilegeRoleMappingTbl.ROLE_ID = privilegeRoleMappingEntity.RoleId;
+                                privilegeRoleMappingTbl.PRIVILEGE_ID = item.PrivilegeId;
+                                privilegeRoleMappingTbl.ISACTIVE = item.IsActive.Value;
+                                entity.SaveChanges();
+                            }
                         }
+                        flag = true;
+                        logger.Info(string.Format("Edit PrivilegeRoleMapping end | Application: {0} |PrivilegeRoleMappingId: {1} | Username: {2}", "PrivilegeRoleMapping", privilegeRoleMappingEntity.PrivilegeRoleMappingId, Username));
                     }
-                    flag = true;
-                    logger.Info(string.Format("Edit PrivilegeRoleMapping end | Application: {0} |PrivilegeRoleMappingId: {1} | Username: {2}", "PrivilegeRoleMapping", privilegeRoleMappingEntity.PrivilegeRoleMappingId, Username));
+                    scope.Complete();
+                    return flag;
                 }
-                return flag;
             }
             catch (Exception ex)
             {
@@ -1457,20 +1509,24 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("Delete PrivilegeRoleMapping start | RoleId: {0} | Username: {1}", roleId, Username));
-                var flag = false;
-                var result = entity.T_TEST_PRIVILEGE_ROLE_MAPPING.Where(x => x.ROLE_ID == roleId).ToList();
-                if (result != null && result.Count > 0)
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    foreach (var item in result)
+                    logger.Info(string.Format("Delete PrivilegeRoleMapping start | RoleId: {0} | Username: {1}", roleId, Username));
+                    var flag = false;
+                    var result = entity.T_TEST_PRIVILEGE_ROLE_MAPPING.Where(x => x.ROLE_ID == roleId).ToList();
+                    if (result != null && result.Count > 0)
                     {
-                        entity.T_TEST_PRIVILEGE_ROLE_MAPPING.Remove(item);
-                        entity.SaveChanges();
+                        foreach (var item in result)
+                        {
+                            entity.T_TEST_PRIVILEGE_ROLE_MAPPING.Remove(item);
+                            entity.SaveChanges();
+                        }
+                        flag = true;
                     }
-                    flag = true;
+                    logger.Info(string.Format("Delete PrivilegeRoleMapping end | RoleId: {0} | Username: {1}", roleId, Username));
+                    scope.Complete();
+                    return flag;
                 }
-                logger.Info(string.Format("Delete PrivilegeRoleMapping end | RoleId: {0} | Username: {1}", roleId, Username));
-                return flag;
             }
             catch (Exception ex)
             {
@@ -1810,17 +1866,21 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("Delete User Configration start | Id: {0} | Username: {1}", Id, Username));
-                var flag = false;
-                var result = entity.T_USER_CONFIGURATION.FirstOrDefault(x => x.USERCONFIGID == Id);
-                if (result != null)
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    entity.T_USER_CONFIGURATION.Remove(result);
-                    entity.SaveChanges();
-                    flag = true;
+                    logger.Info(string.Format("Delete User Configration start | Id: {0} | Username: {1}", Id, Username));
+                    var flag = false;
+                    var result = entity.T_USER_CONFIGURATION.FirstOrDefault(x => x.USERCONFIGID == Id);
+                    if (result != null)
+                    {
+                        entity.T_USER_CONFIGURATION.Remove(result);
+                        entity.SaveChanges();
+                        flag = true;
+                    }
+                    logger.Info(string.Format("Delete User Configration end | Id: {0} | Username: {1}", Id, Username));
+                    scope.Complete();
+                    return flag;
                 }
-                logger.Info(string.Format("Delete User Configration end | Id: {0} | Username: {1}", Id, Username));
-                return flag;
             }
             catch (Exception ex)
             {

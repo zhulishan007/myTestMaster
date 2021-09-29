@@ -10,6 +10,7 @@ using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 
 namespace MARS_Web.Controllers
 {
@@ -82,12 +83,19 @@ namespace MARS_Web.Controllers
             {
                 var _connrepository = new DatabaseConnectionRepository();
                 _connrepository.Username = SessionManager.TESTER_LOGIN_NAME;
-                connectionviewmodel.CreatedBy = SessionManager.TESTER_LOGIN_NAME;
-                connectionviewmodel.CreatedOn = DateTime.Now;
-                connectionviewmodel.ModifiedBy = "";
-                //                connectionviewmodel.ModifiedOn = "";
+                //connectionviewmodel.CreatedBy = SessionManager.TESTER_LOGIN_NAME;
+                //connectionviewmodel.CreatedOn = DateTime.Now;
+                //connectionviewmodel.ModifiedBy = "";
+                //connectionviewmodel.ModifiedOn = "";
+                string jsonString;
 
-                var _addeditResult = _connrepository.AddEditConnection(connectionviewmodel);
+                jsonString = "{ \"ConnectionType\": \"" + connectionviewmodel.ConnectionType + "\",\"Host\": \"" + connectionviewmodel.Host +
+                    "\",\"Port\": \"" + connectionviewmodel.Port + "\",\"Protocol\": \"" + connectionviewmodel.Protocol +
+                    "\", \"ServiceName\": \"" + connectionviewmodel.ServiceName + "\", \"Sid\": \"" + connectionviewmodel.Sid + 
+                    "\",\"UserId\": \"" + connectionviewmodel.UserId + "\",\"Password\": \"" + connectionviewmodel.Password + 
+                    "\",\"IsActive\": \"" + connectionviewmodel.IsActive + "\"}";
+                connectionviewmodel.DatabaseValueJson = jsonString;
+                var _addeditResult = _connrepository.AddEditConnection(connectionviewmodel, SessionManager.APP, SessionManager.Schema);
                 var _treerepository = new GetTreeRepository();
                 var lSchema = SessionManager.Schema;
                 var lConnectionStr = SessionManager.APP;
@@ -191,7 +199,8 @@ namespace MARS_Web.Controllers
             {
                 //Get data from List Connection Object
                 #region Getdata
-                data = _connrepository.GetConnectionList();
+                data = _connrepository.GetDBConnectionList(SessionManager.APP, SessionManager.Schema);
+                data =  GetConnectionList(data);
                 #endregion
 
                 //Check Variables Value 
@@ -335,6 +344,67 @@ namespace MARS_Web.Controllers
                 data = data
             }, JsonRequestBehavior.AllowGet);
         }
+
+        public List<DatabaseConnectionViewModel> GetConnectionList(List<DatabaseConnectionViewModel> connList)
+        {
+            try
+            {
+                logger.Info(string.Format("Get Connection List start | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                // var lapp = enty.T_DATABASE_CONNECTIONS.ToList();
+                List<DatabaseConnectionViewModel> resultList = new List<DatabaseConnectionViewModel>();
+                foreach (var item in connList)
+                {
+                    DatabaseConnectionViewModel objDbConnViewModel = new DatabaseConnectionViewModel();
+                    objDbConnViewModel.ConnectionId = item.ConnectionId;
+                    objDbConnViewModel.ConnectionName = item.ConnectionName;
+                    objDbConnViewModel.DatabaseValueJson = item.DatabaseValueJson;
+
+                    DatabaseConnectionViewModel objDbConn = js.Deserialize<DatabaseConnectionViewModel>(objDbConnViewModel.DatabaseValueJson);
+                    if (objDbConn != null)
+                    {
+                        objDbConnViewModel.ConnectionType = objDbConn.ConnectionType;
+                        objDbConnViewModel.ConnectionTypeString = "";
+                        switch (objDbConnViewModel.ConnectionType)
+                        {
+                            case 1:
+                                objDbConnViewModel.ConnectionTypeString = "Oracle";
+                                break;
+                            case 2:
+                                objDbConnViewModel.ConnectionTypeString = "SQL Server";
+                                break;
+                            case 3:
+                                objDbConnViewModel.ConnectionTypeString = "SyBase";
+                                break;
+                        }
+                        objDbConnViewModel.Host = objDbConn.Host == null || objDbConn.Host == "null" ? "" : objDbConn.Host;
+                        objDbConnViewModel.Port = objDbConn.Port == null ? 0 : objDbConn.Port;
+                        objDbConnViewModel.Protocol = objDbConn.Protocol == null || objDbConn.Protocol == "null" ? "" : objDbConn.Protocol;
+                        objDbConnViewModel.ServiceName = objDbConn.ServiceName == null || objDbConn.ServiceName == "null" ? "" : objDbConn.ServiceName;
+                        objDbConnViewModel.Sid = objDbConn.Sid == null || objDbConn.Sid == "null" ? "" : objDbConn.Sid;
+                        objDbConnViewModel.UserId = (objDbConn.UserId == null || objDbConn.UserId == "null") ? "" : objDbConn.UserId;
+                        objDbConnViewModel.Password = objDbConn.Password == null || objDbConn.Password == "null" ? "" : objDbConn.Password;
+                        objDbConnViewModel.IsActive = objDbConn.IsActive == null ? 0 : objDbConn.IsActive;
+                    }
+
+
+                    resultList.Add(objDbConnViewModel);
+                }
+                logger.Info(string.Format("Get Application List end | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+
+                return resultList;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in Database Connection for GetConnectionList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Database Connection for GetConnectionList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Database Connection for GetConnectionList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+                throw;
+            }
+        }
+
+       
         #region Checks whether the Connection already exists in the system or not
         //Check Connection name already exist or not
         public JsonResult CheckDuplicateConnectionNameExist(string connectionName, long? connectionId)
@@ -397,10 +467,10 @@ namespace MARS_Web.Controllers
                 testSucess = _connrepository.TestConnection(sConnString, connectionviewmodel);
                 connectionviewmodel.IsTested = true;
                 connectionviewmodel.LastTested = DateTime.Now;
-                if (connectionviewmodel.ConnectionId != 0)
-                {
-                    _connrepository.UpdateTestConnection(connectionviewmodel);
-                }
+                //if (connectionviewmodel.ConnectionId != 0)
+                //{
+                //    _connrepository.UpdateTestConnection(connectionviewmodel);
+                //}
                 resultModel.message = testSucess ? "Connection Tested." : "Connection Failed";
                 resultModel.data = testSucess;
                 resultModel.status = testSucess ? 1 : 0;

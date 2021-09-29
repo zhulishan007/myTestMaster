@@ -13,6 +13,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace MARS_Repository.Repositories
 {
@@ -28,54 +29,58 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                if (!string.IsNullOrEmpty(queryViewModel.QueryName))
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    queryViewModel.QueryName = queryViewModel.QueryName.Trim();
-                }
-                var flag = false;
-                if (queryViewModel.QueryId == 0)
-                {
-                    logger.Info(string.Format("Add query start | Query: {0} | Username: {1}", queryViewModel.QueryName, Username));
-
-                    var RegisterTbl = new T_QUERY();
-                    RegisterTbl.QUERY_ID = Helper.NextTestSuiteId("T_QUERY_SEQ"); ;
-                    RegisterTbl.QUERY_NAME = queryViewModel.QueryName;
-                    RegisterTbl.QUERY_DESC = queryViewModel.QueryDescription.Replace("'", "''");
-                    RegisterTbl.CREATED_DATE = DateTime.Now;
-                    RegisterTbl.CREATEDBY = Username;
-                    RegisterTbl.IS_ACTIVE = queryViewModel.IsActive;
-                    RegisterTbl.MODIFIEDBY = Username;
-                    RegisterTbl.MODIFIED_DATE = DateTime.Now;
-                    RegisterTbl.CONN_ID = queryViewModel.ConnectionId;
-                    RegisterTbl.IS_ACTIVE = queryViewModel.IsActive;
-                    queryViewModel.QueryId = RegisterTbl.QUERY_ID;
-                    enty.T_QUERY.Add(RegisterTbl);
-                    enty.SaveChanges();
-
-                    flag = true;
-                    logger.Info(string.Format("Add query end | Query: {0} | Username: {1}", queryViewModel.QueryName, Username));
-
-                }
-                else
-                {
-                    var RegisterTbl = enty.T_QUERY.Find(queryViewModel.QueryId);
-                    //var RelTbl = enty.REL_DB_QUERY.FirstOrDefault(x => x.QUERY_ID == queryViewModel.QueryId);
-                    logger.Info(string.Format("Edit query start | Query: {0} | Query Id: {1} | Username: {2}", queryViewModel.QueryId, queryViewModel.QueryName, Username));
-                    if (RegisterTbl != null)
+                    if (!string.IsNullOrEmpty(queryViewModel.QueryName))
                     {
+                        queryViewModel.QueryName = queryViewModel.QueryName.Trim();
+                    }
+                    var flag = false;
+                    if (queryViewModel.QueryId == 0)
+                    {
+                        logger.Info(string.Format("Add query start | Query: {0} | Username: {1}", queryViewModel.QueryName, Username));
+
+                        var RegisterTbl = new T_QUERY();
+                        RegisterTbl.QUERY_ID = Helper.NextTestSuiteId("T_QUERY_SEQ"); ;
                         RegisterTbl.QUERY_NAME = queryViewModel.QueryName;
-                        RegisterTbl.QUERY_DESC = queryViewModel.QueryDescription.Replace("'", "''"); ;
+                        RegisterTbl.QUERY_DESC = queryViewModel.QueryDescription.Replace("'", "''");
+                        RegisterTbl.CREATED_DATE = DateTime.Now;
+                        RegisterTbl.CREATEDBY = Username;
+                        RegisterTbl.IS_ACTIVE = queryViewModel.IsActive;
                         RegisterTbl.MODIFIEDBY = Username;
                         RegisterTbl.MODIFIED_DATE = DateTime.Now;
-                        RegisterTbl.IS_ACTIVE = queryViewModel.IsActive;
                         RegisterTbl.CONN_ID = queryViewModel.ConnectionId;
+                        RegisterTbl.IS_ACTIVE = queryViewModel.IsActive;
+                        queryViewModel.QueryId = RegisterTbl.QUERY_ID;
+                        enty.T_QUERY.Add(RegisterTbl);
                         enty.SaveChanges();
 
+                        flag = true;
+                        logger.Info(string.Format("Add query end | Query: {0} | Username: {1}", queryViewModel.QueryName, Username));
+
                     }
-                    flag = true;
-                    logger.Info(string.Format("Edit query connection end | Query: {0} | QueryId: {1} | Username: {2}", queryViewModel.QueryName, queryViewModel.QueryId, Username));
+                    else
+                    {
+                        var RegisterTbl = enty.T_QUERY.Find(queryViewModel.QueryId);
+                        //var RelTbl = enty.REL_DB_QUERY.FirstOrDefault(x => x.QUERY_ID == queryViewModel.QueryId);
+                        logger.Info(string.Format("Edit query start | Query: {0} | Query Id: {1} | Username: {2}", queryViewModel.QueryId, queryViewModel.QueryName, Username));
+                        if (RegisterTbl != null)
+                        {
+                            RegisterTbl.QUERY_NAME = queryViewModel.QueryName;
+                            RegisterTbl.QUERY_DESC = queryViewModel.QueryDescription.Replace("'", "''"); ;
+                            RegisterTbl.MODIFIEDBY = Username;
+                            RegisterTbl.MODIFIED_DATE = DateTime.Now;
+                            RegisterTbl.IS_ACTIVE = queryViewModel.IsActive;
+                            RegisterTbl.CONN_ID = queryViewModel.ConnectionId;
+                            enty.SaveChanges();
+
+                        }
+                        flag = true;
+                        logger.Info(string.Format("Edit query connection end | Query: {0} | QueryId: {1} | Username: {2}", queryViewModel.QueryName, queryViewModel.QueryId, Username));
+                    }
+                    scope.Complete();
+                    return flag;
                 }
-                return flag;
             }
             catch (Exception ex)
             {
@@ -91,15 +96,19 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("Delete Query start | QueryId: {0} | Username: {1}", queryId, Username));
-                var flag = false;
-                var item = enty.T_QUERY.FirstOrDefault(x => x.QUERY_ID == queryId);
-                enty.T_QUERY.Remove(item);
-                enty.SaveChanges();
-                flag = true;
+                using (TransactionScope scope = new TransactionScope())
+                {
+                    logger.Info(string.Format("Delete Query start | QueryId: {0} | Username: {1}", queryId, Username));
+                    var flag = false;
+                    var item = enty.T_QUERY.FirstOrDefault(x => x.QUERY_ID == queryId);
+                    enty.T_QUERY.Remove(item);
+                    enty.SaveChanges();
+                    flag = true;
 
-                logger.Info(string.Format("Delete Query end | QueryId: {0} | Username: {1}", queryId, Username));
-                return flag;
+                    logger.Info(string.Format("Delete Query end | QueryId: {0} | Username: {1}", queryId, Username));
+                    scope.Complete();
+                    return flag;
+                }
             }
             catch (Exception ex)
             {
@@ -193,7 +202,7 @@ namespace MARS_Repository.Repositories
                 List<QueryGridViewModel> queryList = new List<QueryGridViewModel>();
 
                 var query = (from q in enty.T_QUERY
-                             join db in enty.T_DATABASE_CONNECTIONS on q.CONN_ID equals db.CONNECTION_ID
+                             join db in enty.T_DBCONNECTION on q.CONN_ID equals db.DBCONNECTION_ID
 
                              select new QueryGridViewModel
                              {
@@ -201,9 +210,9 @@ namespace MARS_Repository.Repositories
                                  QueryName = q.QUERY_NAME,
                                  QueryDescription = q.QUERY_DESC,
                                  IsActive = q.IS_ACTIVE,
-                                 ConnectionId = db.CONNECTION_ID,
-                                 ConnectionName = db.CONNECTION_NAME,
-                                 ConnectionType = db.CONNECTION_TYPE
+                                 ConnectionId = db.DBCONNECTION_ID,
+                                 ConnectionName = db.DATABASENAME,
+                                // ConnectionType = db.CONNECTION_TYPE
 
                              }).ToList();
 
@@ -216,20 +225,21 @@ namespace MARS_Repository.Repositories
                     queryGridViewModel.IsActive = item.IsActive;
                     queryGridViewModel.ConnectionId = item.ConnectionId;
                     queryGridViewModel.ConnectionName = item.ConnectionName;
-                    queryGridViewModel.ConnectionType = item.ConnectionType;
+                   
+                    //queryGridViewModel.ConnectionType = item.ConnectionType;
 
-                    switch (queryGridViewModel.ConnectionType)
-                    {
-                        case 1:
-                            queryGridViewModel.ConnectionTypeString = "Oracle";
-                            break;
-                        case 2:
-                            queryGridViewModel.ConnectionTypeString = "SQL Server";
-                            break;
-                        case 3:
-                            queryGridViewModel.ConnectionTypeString = "SyBase";
-                            break;
-                    }
+                    //switch (queryGridViewModel.ConnectionType)
+                    //{
+                    //    case 1:
+                    //        queryGridViewModel.ConnectionTypeString = "Oracle";
+                    //        break;
+                    //    case 2:
+                    //        queryGridViewModel.ConnectionTypeString = "SQL Server";
+                    //        break;
+                    //    case 3:
+                    //        queryGridViewModel.ConnectionTypeString = "SyBase";
+                    //        break;
+                    //}
                     queryList.Add(queryGridViewModel);
                 }
                 logger.Info(string.Format("Get Query List end | UserName: {0}", Username));
@@ -273,20 +283,62 @@ namespace MARS_Repository.Repositories
             }
         }
 
+        public List<QueryNameViewModel> GetQueryNames()
+        {
+            try
+            {
+                logger.Info(string.Format("GetQueryNamess start | UserName: {0}", Username));
+                var queryNameList = (from x in enty.T_QUERY
+                                     where x.IS_ACTIVE == 1
+                                     select new QueryNameViewModel
+                                     {
+                                         QueryId = x.QUERY_ID,
+                                         QueryName = x.QUERY_NAME
+                                     }).ToList();
+                logger.Info(string.Format("GetQueryNames end | UserName: {0}", Username));
+                return queryNameList;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in Query for GetQueryNames method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured in Query for GetQueryNames method | UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Query for GetQueryNames method | UserName: {0}", Username), ex.InnerException);
+                throw;
+            }
+        }
+
         //to check if a query contains exactly 2 or 3 columns
         public bool CheckColumnCount(string strQuery, int[] required)
         {
             try
             {
-                strQuery = strQuery.ToLower();
+                 strQuery = strQuery.ToLower();
                 string[] separator = { "select", "from" };
                 string[] strArray = strQuery.Split(separator, StringSplitOptions.RemoveEmptyEntries);
                 string[] strColumns = strArray[0].Split(',');
                 //for pie chart - 2 parameters, for bar and 3d chart - 3 parameters
-                for (int i = 0; i < required.Length; i++)
+                int count = 0; bool flag = false;
+                for (int i = 0; i < strColumns.Length; i++)
                 {
-                    if (strColumns.Length == required[i])
-                        return true;
+                    if(flag)
+                    {
+                        count++;
+                    }
+                    if(strColumns[i].Contains("("))
+                    {
+                        flag = true;
+                   }
+                    if(strColumns[i].Contains(")"))
+                    {
+                        flag = false;
+                    }
+                    for(int j =0; j < required.Length; j++)
+                    {
+                        if (strColumns.Length - count == required[j])
+                            return true;
+                    }
+                    
                    
                 }
                 return false;
@@ -307,7 +359,7 @@ namespace MARS_Repository.Repositories
             {
                 logger.Info(string.Format("Get GetQueryById start | QueryId: {0} | Username: {1}", queryId, Username));
                 var result = (from q in enty.T_QUERY
-                              join db in enty.T_DATABASE_CONNECTIONS on q.CONN_ID equals db.CONNECTION_ID
+                              join db in enty.T_DBCONNECTION on q.CONN_ID equals db.DBCONNECTION_ID
                               where q.QUERY_ID == queryId
                               select new QueryGridViewModel
                               {
@@ -315,9 +367,9 @@ namespace MARS_Repository.Repositories
                                   QueryName = q.QUERY_NAME,
                                   QueryDescription = q.QUERY_DESC,
                                   IsActive = q.IS_ACTIVE,
-                                  ConnectionId = db.CONNECTION_ID,
-                                  ConnectionName = db.CONNECTION_NAME,
-                                  ConnectionType = db.CONNECTION_TYPE
+                                  ConnectionId = db.DBCONNECTION_ID,
+                                  ConnectionName = db.DATABASENAME,
+                                  //ConnectionType = db.CONNECTION_TYPE
 
                               }).FirstOrDefault();
                 logger.Info(string.Format("Get GetQueryById end | QueryId: {0} | Username: {1}", queryId, Username));

@@ -144,10 +144,9 @@
         <EntityTypeShape EntityType="Model.T_DATABASE_CONNECTIONS" Width="1.5" PointX="31.375" PointY="0.75" />
         <EntityTypeShape EntityType="Model.REL_DB_QUERY" Width="1.5" PointX="33.625" PointY="2.25" />
         <AssociationConnector Association="Model.FK_DB_QUERY" />
-        <EntityTypeShape EntityType="Model.T_QUERY" Width="1.5" PointX="33.625" PointY="4.75" />
-        <AssociationConnector Association="Model.T_QUERY_FK1" />
         <EntityTypeShape EntityType="Model.T_AXIS_LIST" Width="1.5" PointX="35.875" PointY="5.125" />
-        <AssociationConnector Association="Model.T_AXIS_LIST_FK1" />
+        <EntityTypeShape EntityType="Model.T_QUERY" Width="1.5" PointX="20" PointY="0.75" />
+        <AssociationConnector Association="Model.T_QUERY_FK1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

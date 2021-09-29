@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace MARS_Repository.Repositories
 {
@@ -156,51 +157,25 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                if (!string.IsNullOrEmpty(AppModelEntity.ApplicationName))
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    AppModelEntity.ApplicationName = AppModelEntity.ApplicationName.Trim();
-                }
-                var flag = false;
-                if (AppModelEntity.ApplicationId == 0)
-                {
-                    logger.Info(string.Format("Add application start | Application: {0} | Username: {1}", AppModelEntity.ApplicationName, Username));
-
-                    var RegisterTbl = new T_REGISTERED_APPS();
-                    RegisterTbl.APPLICATION_ID = Helper.NextTestSuiteId("T_REGISTERED_APPS_SEQ");
-                    RegisterTbl.APP_SHORT_NAME = AppModelEntity.ApplicationName;
-                    RegisterTbl.PROCESS_IDENTIFIER = AppModelEntity.Description;
-                    RegisterTbl.VERSION = AppModelEntity.Version;
-                    RegisterTbl.RECORD_CREATE_PERSON = AppModelEntity.Create_Person;
-                    RegisterTbl.EXTRAREQUIREMENT = AppModelEntity.ExtraRequirement;
-                    RegisterTbl.RECORD_CREATE_DATE = DateTime.Now;
-                    if (!string.IsNullOrEmpty(AppModelEntity.Mode))
-                        RegisterTbl.ISBASELINE = (AppModelEntity.Mode == "Baseline" ? 1 : 0);
-                    else
-                        RegisterTbl.ISBASELINE = null;
-
-                    if (!string.IsNullOrEmpty(AppModelEntity.BitsId))
-                        RegisterTbl.IS64BIT = Convert.ToInt32(AppModelEntity.BitsId);
-                    else
-                        RegisterTbl.IS64BIT = null;
-
-                    AppModelEntity.ApplicationId = RegisterTbl.APPLICATION_ID;
-                    enty.T_REGISTERED_APPS.Add(RegisterTbl);
-                    enty.SaveChanges();
-
-                    flag = true;
-                    logger.Info(string.Format("Add application end | Application: {0} | Username: {1}", AppModelEntity.ApplicationName, Username));
-
-                }
-                else
-                {
-                    var RegisterTbl = enty.T_REGISTERED_APPS.Find(AppModelEntity.ApplicationId);
-                    logger.Info(string.Format("Edit application start | Application: {0} | ApplicationId: {1} | Username: {2}", AppModelEntity.ApplicationName, AppModelEntity.ApplicationId, Username));
-                    if (RegisterTbl != null)
+                    if (!string.IsNullOrEmpty(AppModelEntity.ApplicationName))
                     {
+                        AppModelEntity.ApplicationName = AppModelEntity.ApplicationName.Trim();
+                    }
+                    var flag = false;
+                    if (AppModelEntity.ApplicationId == 0)
+                    {
+                        logger.Info(string.Format("Add application start | Application: {0} | Username: {1}", AppModelEntity.ApplicationName, Username));
+
+                        var RegisterTbl = new T_REGISTERED_APPS();
+                        RegisterTbl.APPLICATION_ID = Helper.NextTestSuiteId("T_REGISTERED_APPS_SEQ");
                         RegisterTbl.APP_SHORT_NAME = AppModelEntity.ApplicationName;
                         RegisterTbl.PROCESS_IDENTIFIER = AppModelEntity.Description;
                         RegisterTbl.VERSION = AppModelEntity.Version;
+                        RegisterTbl.RECORD_CREATE_PERSON = AppModelEntity.Create_Person;
                         RegisterTbl.EXTRAREQUIREMENT = AppModelEntity.ExtraRequirement;
+                        RegisterTbl.RECORD_CREATE_DATE = DateTime.Now;
                         if (!string.IsNullOrEmpty(AppModelEntity.Mode))
                             RegisterTbl.ISBASELINE = (AppModelEntity.Mode == "Baseline" ? 1 : 0);
                         else
@@ -210,12 +185,42 @@ namespace MARS_Repository.Repositories
                             RegisterTbl.IS64BIT = Convert.ToInt32(AppModelEntity.BitsId);
                         else
                             RegisterTbl.IS64BIT = null;
+
+                        AppModelEntity.ApplicationId = RegisterTbl.APPLICATION_ID;
+                        enty.T_REGISTERED_APPS.Add(RegisterTbl);
                         enty.SaveChanges();
+
+                        flag = true;
+                        logger.Info(string.Format("Add application end | Application: {0} | Username: {1}", AppModelEntity.ApplicationName, Username));
+
                     }
-                    flag = true;
-                    logger.Info(string.Format("Edit application end | Application: {0} | ApplicationId: {1} | Username: {2}", AppModelEntity.ApplicationName, AppModelEntity.ApplicationId, Username));
+                    else
+                    {
+                        var RegisterTbl = enty.T_REGISTERED_APPS.Find(AppModelEntity.ApplicationId);
+                        logger.Info(string.Format("Edit application start | Application: {0} | ApplicationId: {1} | Username: {2}", AppModelEntity.ApplicationName, AppModelEntity.ApplicationId, Username));
+                        if (RegisterTbl != null)
+                        {
+                            RegisterTbl.APP_SHORT_NAME = AppModelEntity.ApplicationName;
+                            RegisterTbl.PROCESS_IDENTIFIER = AppModelEntity.Description;
+                            RegisterTbl.VERSION = AppModelEntity.Version;
+                            RegisterTbl.EXTRAREQUIREMENT = AppModelEntity.ExtraRequirement;
+                            if (!string.IsNullOrEmpty(AppModelEntity.Mode))
+                                RegisterTbl.ISBASELINE = (AppModelEntity.Mode == "Baseline" ? 1 : 0);
+                            else
+                                RegisterTbl.ISBASELINE = null;
+
+                            if (!string.IsNullOrEmpty(AppModelEntity.BitsId))
+                                RegisterTbl.IS64BIT = Convert.ToInt32(AppModelEntity.BitsId);
+                            else
+                                RegisterTbl.IS64BIT = null;
+                            enty.SaveChanges();
+                        }
+                        flag = true;
+                        logger.Info(string.Format("Edit application end | Application: {0} | ApplicationId: {1} | Username: {2}", AppModelEntity.ApplicationName, AppModelEntity.ApplicationId, Username));
+                    }
+                    scope.Complete();
+                    return flag;
                 }
-                return flag;
             }
             catch (Exception ex)
             {
@@ -263,42 +268,46 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("Delete Application start | ApplicationId: {0} | Username: {1}", ApplicationId, Username));
-                var flag = false;
-                var result = enty.T_REGISTERED_APPS.FirstOrDefault(x => x.APPLICATION_ID == ApplicationId);
-                if (result != null)
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    var relappprj = enty.REL_APP_PROJ.Where(x => x.APPLICATION_ID == ApplicationId).ToList();
-                    foreach (var item in relappprj)
+                    logger.Info(string.Format("Delete Application start | ApplicationId: {0} | Username: {1}", ApplicationId, Username));
+                    var flag = false;
+                    var result = enty.T_REGISTERED_APPS.FirstOrDefault(x => x.APPLICATION_ID == ApplicationId);
+                    if (result != null)
                     {
-                        enty.REL_APP_PROJ.Remove(item);
-                        enty.SaveChanges();
-                    }
-                    var relsuiteprj = enty.REL_APP_TESTSUITE.Where(x => x.APPLICATION_ID == ApplicationId).ToList();
-                    foreach (var item in relsuiteprj)
-                    {
-                        enty.REL_APP_TESTSUITE.Remove(item);
-                        enty.SaveChanges();
-                    }
-                    var reltestcaseprj = enty.REL_APP_TESTCASE.Where(x => x.APPLICATION_ID == ApplicationId).ToList();
-                    foreach (var item in reltestcaseprj)
-                    {
-                        enty.REL_APP_TESTCASE.Remove(item);
-                        enty.SaveChanges();
-                    }
-                    var relobjprj = enty.REL_OBJ_APP.Where(x => x.APPLICATION_ID == ApplicationId).ToList();
-                    foreach (var item in relobjprj)
-                    {
-                        enty.REL_OBJ_APP.Remove(item);
-                        enty.SaveChanges();
-                    }
+                        var relappprj = enty.REL_APP_PROJ.Where(x => x.APPLICATION_ID == ApplicationId).ToList();
+                        foreach (var item in relappprj)
+                        {
+                            enty.REL_APP_PROJ.Remove(item);
+                            enty.SaveChanges();
+                        }
+                        var relsuiteprj = enty.REL_APP_TESTSUITE.Where(x => x.APPLICATION_ID == ApplicationId).ToList();
+                        foreach (var item in relsuiteprj)
+                        {
+                            enty.REL_APP_TESTSUITE.Remove(item);
+                            enty.SaveChanges();
+                        }
+                        var reltestcaseprj = enty.REL_APP_TESTCASE.Where(x => x.APPLICATION_ID == ApplicationId).ToList();
+                        foreach (var item in reltestcaseprj)
+                        {
+                            enty.REL_APP_TESTCASE.Remove(item);
+                            enty.SaveChanges();
+                        }
+                        var relobjprj = enty.REL_OBJ_APP.Where(x => x.APPLICATION_ID == ApplicationId).ToList();
+                        foreach (var item in relobjprj)
+                        {
+                            enty.REL_OBJ_APP.Remove(item);
+                            enty.SaveChanges();
+                        }
 
-                    enty.T_REGISTERED_APPS.Remove(result);
-                    enty.SaveChanges();
-                    flag = true;
+                        enty.T_REGISTERED_APPS.Remove(result);
+                        enty.SaveChanges();
+                        flag = true;
+                    }
+                    logger.Info(string.Format("Delete Application end | ApplicationId: {0} | Username: {1}", ApplicationId, Username));
+                    scope.Complete();
+                    return flag;
                 }
-                logger.Info(string.Format("Delete Application end | ApplicationId: {0} | Username: {1}", ApplicationId, Username));
-                return flag;
             }
             catch (Exception ex)
             {

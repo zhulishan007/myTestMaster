@@ -12,6 +12,7 @@ using Oracle.ManagedDataAccess.Client;
 using System.IO;
 using MARS_Repository.Entities;
 using NLog;
+using System.Transactions;
 
 namespace MARS_Repository.Repositories
 {
@@ -75,16 +76,20 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("Change TestCaseName start | TestCaseName: {0} | lTestCaseId: {1} | UserName: {2}", lTestCaseName, lTestCaseId, Username));
-                if (!string.IsNullOrEmpty(lTestCaseName))
-                    lTestCaseName = lTestCaseName.Trim();
+                using (TransactionScope scope = new TransactionScope())
+                {
+                    logger.Info(string.Format("Change TestCaseName start | TestCaseName: {0} | lTestCaseId: {1} | UserName: {2}", lTestCaseName, lTestCaseId, Username));
+                    if (!string.IsNullOrEmpty(lTestCaseName))
+                        lTestCaseName = lTestCaseName.Trim();
 
-                var lTestCase = entity.T_TEST_CASE_SUMMARY.Find(lTestCaseId);
-                lTestCase.TEST_CASE_NAME = lTestCaseName;
-                lTestCase.TEST_STEP_DESCRIPTION = TestCaseDes;
-                entity.SaveChanges();
-                logger.Info(string.Format("Change TestCaseName end | TestCaseName: {0} | lTestCaseId: {1} | UserName: {2}", lTestCaseName, lTestCaseId, Username));
-                return "success";
+                    var lTestCase = entity.T_TEST_CASE_SUMMARY.Find(lTestCaseId);
+                    lTestCase.TEST_CASE_NAME = lTestCaseName;
+                    lTestCase.TEST_STEP_DESCRIPTION = TestCaseDes;
+                    entity.SaveChanges();
+                    logger.Info(string.Format("Change TestCaseName end | TestCaseName: {0} | lTestCaseId: {1} | UserName: {2}", lTestCaseName, lTestCaseId, Username));
+                    scope.Complete();
+                    return "success";
+                }
             }
             catch (Exception ex)
             {
@@ -151,36 +156,41 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("Insert FeedProcess start | UserName: {0}", Username));
+                using (TransactionScope scope = new TransactionScope())
+                {
+                    logger.Info(string.Format("Insert FeedProcess start | UserName: {0}", Username));
 
-                logger.Info(string.Format("TBLFEEDPROCESS_SEQ : Getting TestCase Feed Process Id start | UserName: {0}", Username));
-                var feedprocessID = Helper.NextTestSuiteId("TBLFEEDPROCESS_SEQ");
-                logger.Info(string.Format("TBLFEEDPROCESS_SEQ : Getting TestCase Feed Process Id end | Feed Process Id : {0} | UserName: {1}", feedprocessID, Username));
+                    logger.Info(string.Format("TBLFEEDPROCESS_SEQ : Getting TestCase Feed Process Id start | UserName: {0}", Username));
+                    var feedprocessID = Helper.NextTestSuiteId("TBLFEEDPROCESS_SEQ");
+                    logger.Info(string.Format("TBLFEEDPROCESS_SEQ : Getting TestCase Feed Process Id end | Feed Process Id : {0} | UserName: {1}", feedprocessID, Username));
 
-                var ltbl = new TBLFEEDPROCESS();
-                ltbl.FEEDPROCESSID = feedprocessID;
-                ltbl.FEEDPROCESSSTATUS = "Insert-WebApp";
-                ltbl.FEEDRUNON = System.DateTime.Now;
-                ltbl.CREATEDBY = "WebApp";
-                ltbl.CREATEDON = System.DateTime.Now;
+                    var ltbl = new TBLFEEDPROCESS();
+                    ltbl.FEEDPROCESSID = feedprocessID;
+                    ltbl.FEEDPROCESSSTATUS = "Insert-WebApp";
+                    ltbl.FEEDRUNON = System.DateTime.Now;
+                    ltbl.CREATEDBY = "WebApp";
+                    ltbl.CREATEDON = System.DateTime.Now;
 
-                entity.TBLFEEDPROCESSes.Add(ltbl);
-                logger.Info(string.Format("Save TestCase FeedProcess changes start | UserName: {0}", Username));
-                entity.SaveChanges();
-                logger.Info(string.Format("Save TestCase FeedProcess changes end | UserName: {0}", Username));
+                    entity.TBLFEEDPROCESSes.Add(ltbl);
+                    logger.Info(string.Format("Save TestCase FeedProcess changes start | UserName: {0}", Username));
+                    //rutvi
+                    //entity.SaveChanges();
+                    logger.Info(string.Format("Save TestCase FeedProcess changes end | UserName: {0}", Username));
 
-                logger.Info(string.Format("TBLFEEDPROCESSDETAILS_SEQ : Getting TestCase Feed Process Detail Id start | UserName: {0}", Username));
-                var feedprocessDetailsID = Helper.NextTestSuiteId("TBLFEEDPROCESSDETAILS_SEQ");
-                logger.Info(string.Format("TBLFEEDPROCESSDETAILS_SEQ : Getting TestCase Feed Process Detail Id end | Feed Process Detail Id : {0} | UserName: {1}", feedprocessDetailsID, Username));
+                    logger.Info(string.Format("TBLFEEDPROCESSDETAILS_SEQ : Getting TestCase Feed Process Detail Id start | UserName: {0}", Username));
+                    var feedprocessDetailsID = Helper.NextTestSuiteId("TBLFEEDPROCESSDETAILS_SEQ");
+                    logger.Info(string.Format("TBLFEEDPROCESSDETAILS_SEQ : Getting TestCase Feed Process Detail Id end | Feed Process Detail Id : {0} | UserName: {1}", feedprocessDetailsID, Username));
 
-                entity.TBLFEEDPROCESSDETAILS.Add(new TBLFEEDPROCESSDETAIL { CREATEDBY = "WebApp", FEEDPROCESSDETAILID = feedprocessDetailsID, CREATEDON = System.DateTime.Now, FEEDPROCESSID = feedprocessID, FEEDPROCESSSTATUS = "INPROGRESS", FILENAME = "WebAppImport", FILETYPE = "TESTCASE" });
+                    entity.TBLFEEDPROCESSDETAILS.Add(new TBLFEEDPROCESSDETAIL { CREATEDBY = "WebApp", FEEDPROCESSDETAILID = feedprocessDetailsID, CREATEDON = System.DateTime.Now, FEEDPROCESSID = feedprocessID, FEEDPROCESSSTATUS = "INPROGRESS", FILENAME = "WebAppImport", FILETYPE = "TESTCASE" });
 
-                logger.Info(string.Format("Save TestCase FeedProcessDetail changes start | UserName: {0}", Username));
-                entity.SaveChanges();
-                logger.Info(string.Format("Save TestCase FeedProcessDetail changes end | UserName: {0}", Username));
+                    logger.Info(string.Format("Save TestCase FeedProcessDetail changes start | UserName: {0}", Username));
+                    entity.SaveChanges();
+                    logger.Info(string.Format("Save TestCase FeedProcessDetail changes end | UserName: {0}", Username));
 
-                logger.Info(string.Format("Insert FeedProcess end | UserName: {0}", Username));
-                return Convert.ToString(feedprocessID) + "~" + Convert.ToString(feedprocessDetailsID);
+                    logger.Info(string.Format("Insert FeedProcess end | UserName: {0}", Username));
+                    scope.Complete();
+                    return Convert.ToString(feedprocessID) + "~" + Convert.ToString(feedprocessDetailsID);
+                }
             }
             catch (Exception ex)
             {
@@ -248,15 +258,19 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("Move TestCase start | testcaseId: {0} | testsuiteid: {1} | UserName: {2}", testcaseid, testsuiteid, Username));
-                var result = entity.REL_TEST_CASE_TEST_SUITE.FirstOrDefault(x => x.TEST_CASE_ID == testcaseid);
-                if (result != null)
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    result.TEST_CASE_ID = testcaseid;
-                    result.TEST_SUITE_ID = testsuiteid;
-                    entity.SaveChanges();
-                    logger.Info(string.Format("Move TestCase end | testcaseId: {0} | testsuiteid: {1} | UserName: {2}", testcaseid, testsuiteid, Username));
-                    return "success";
+                    logger.Info(string.Format("Move TestCase start | testcaseId: {0} | testsuiteid: {1} | UserName: {2}", testcaseid, testsuiteid, Username));
+                    var result = entity.REL_TEST_CASE_TEST_SUITE.FirstOrDefault(x => x.TEST_CASE_ID == testcaseid);
+                    if (result != null)
+                    {
+                        result.TEST_CASE_ID = testcaseid;
+                        result.TEST_SUITE_ID = testsuiteid;
+                        entity.SaveChanges();
+                        logger.Info(string.Format("Move TestCase end | testcaseId: {0} | testsuiteid: {1} | UserName: {2}", testcaseid, testsuiteid, Username));
+                        scope.Complete();
+                        return "success";
+                    }
                 }
                 logger.Info(string.Format("Move TestCase end | testcaseId: {0} | testsuiteid: {1} | UserName: {2}", testcaseid, testsuiteid, Username));
                 return "error";
@@ -274,12 +288,16 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("ValidateSave start | feedprocessid: {0} | UserName: {1}", feedprocessid, Username));
-                ObjectParameter op = new ObjectParameter("RESULT", "");
-                entity.USP_MAPPING_VALIDATION(feedprocessid, op);
-                entity.SaveChanges();
-                logger.Info(string.Format("ValidateSave end | feedprocessid: {0} | UserName: {1}", feedprocessid, Username));
-                return "validated";
+                using (TransactionScope scope = new TransactionScope())
+                {
+                    logger.Info(string.Format("ValidateSave start | feedprocessid: {0} | UserName: {1}", feedprocessid, Username));
+                    ObjectParameter op = new ObjectParameter("RESULT", "");
+                    entity.USP_MAPPING_VALIDATION(feedprocessid, op);
+                    entity.SaveChanges();
+                    logger.Info(string.Format("ValidateSave end | feedprocessid: {0} | UserName: {1}", feedprocessid, Username));
+                    scope.Complete();
+                    return "validated";
+                }
             }
             catch (Exception ex)
             {
@@ -389,31 +407,38 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("Delete Step start | stepID: {0} | UserName: {1}", stepID, Username));
-                var testReport = entity.T_TEST_REPORT_STEPS.Where(x => x.STEPS_ID == stepID).ToList();
-
-                foreach (var v in testReport)
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    entity.T_TEST_REPORT_STEPS.Remove(v);
-                }
-                entity.SaveChanges();
+                    logger.Info(string.Format("Delete Step start | stepID: {0} | UserName: {1}", stepID, Username));
+                    var testReport = entity.T_TEST_REPORT_STEPS.Where(x => x.STEPS_ID == stepID).ToList();
 
-                var stepsSettings = entity.TEST_DATA_SETTING.Where(x => x.STEPS_ID == stepID).ToList();
+                    foreach (var v in testReport)
+                    {
+                        entity.T_TEST_REPORT_STEPS.Remove(v);
+                    }
+                    //rutvi
+                    //entity.SaveChanges();
 
-                foreach (var v in stepsSettings)
-                {
-                    entity.TEST_DATA_SETTING.Remove(v);
-                }
-                entity.SaveChanges();
+                    var stepsSettings = entity.TEST_DATA_SETTING.Where(x => x.STEPS_ID == stepID).ToList();
 
-                var tStep = entity.T_TEST_STEPS.Where(x => x.STEPS_ID == stepID).ToList();
-                foreach (var t in tStep)
-                {
-                    entity.T_TEST_STEPS.Remove(t);
+                    foreach (var v in stepsSettings)
+                    {
+                        entity.TEST_DATA_SETTING.Remove(v);
+                    }
+                    //rutvi
+                    //entity.SaveChanges();
+
+                    var tStep = entity.T_TEST_STEPS.Where(x => x.STEPS_ID == stepID).ToList();
+                    foreach (var t in tStep)
+                    {
+                        entity.T_TEST_STEPS.Remove(t);
+                    }
+
+                    entity.SaveChanges();
+                    logger.Info(string.Format("Delete Step end | stepID: {0} | UserName: {1}", stepID, Username));
+                    scope.Complete();
+                    return "success";
                 }
-                entity.SaveChanges();
-                logger.Info(string.Format("Delete Step end | stepID: {0} | UserName: {1}", stepID, Username));
-                return "success";
             }
             catch (Exception ex)
             {
@@ -430,37 +455,41 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("AddStep start | TestCaseId: {0} | TestSuiteId: {1} | UserName: {2}", TestCaseId, TestSuiteId, Username));
-                var lKeyword = entity.T_KEYWORD.Where(x => x.KEY_WORD_NAME.ToUpper() == lKeywordName.ToUpper()).ToList();
-                long lKeywordId = 0;
-                if (lKeyword.Count() > 0)
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    lKeywordId = lKeyword.FirstOrDefault().KEY_WORD_ID;
+                    logger.Info(string.Format("AddStep start | TestCaseId: {0} | TestSuiteId: {1} | UserName: {2}", TestCaseId, TestSuiteId, Username));
+                    var lKeyword = entity.T_KEYWORD.Where(x => x.KEY_WORD_NAME.ToUpper() == lKeywordName.ToUpper()).ToList();
+                    long lKeywordId = 0;
+                    if (lKeyword.Count() > 0)
+                    {
+                        lKeywordId = lKeyword.FirstOrDefault().KEY_WORD_ID;
+                    }
+
+                    var lObject = entity.T_REGISTED_OBJECT.Where(x => x.OBJECT_HAPPY_NAME.ToUpper() == lObjectName.ToUpper()).ToList();
+                    long lObjectNameId = 0;
+                    long lObjectId = 0;
+                    if (lObject.Count() > 0)
+                    {
+                        lObjectId = lObject.FirstOrDefault().OBJECT_ID;
+                        lObjectNameId = (long)lObject.FirstOrDefault().OBJECT_NAME_ID;
+                    }
+
+                    var ltbl = new T_TEST_STEPS();
+                    ltbl.STEPS_ID = Helper.NextTestSuiteId("T_TEST_STEPS_SEQ");
+                    ltbl.TEST_CASE_ID = TestCaseId;
+                    ltbl.RUN_ORDER = RunOrder;
+                    ltbl.KEY_WORD_ID = lKeywordId;
+                    ltbl.OBJECT_ID = lObjectId;
+                    ltbl.OBJECT_NAME_ID = lObjectNameId;
+                    ltbl.COLUMN_ROW_SETTING = lParameter;
+                    ltbl.COMMENT = lComment;
+                    entity.T_TEST_STEPS.Add(ltbl);
+                    entity.SaveChanges();
+
+                    logger.Info(string.Format("AddStep end | TestCaseId: {0} | TestSuiteId: {1} | UserName: {2}", TestCaseId, TestSuiteId, Username));
+                    scope.Complete();
+                    return "success";
                 }
-
-                var lObject = entity.T_REGISTED_OBJECT.Where(x => x.OBJECT_HAPPY_NAME.ToUpper() == lObjectName.ToUpper()).ToList();
-                long lObjectNameId = 0;
-                long lObjectId = 0;
-                if (lObject.Count() > 0)
-                {
-                    lObjectId = lObject.FirstOrDefault().OBJECT_ID;
-                    lObjectNameId = (long)lObject.FirstOrDefault().OBJECT_NAME_ID;
-                }
-
-                var ltbl = new T_TEST_STEPS();
-                ltbl.STEPS_ID = Helper.NextTestSuiteId("T_TEST_STEPS_SEQ");
-                ltbl.TEST_CASE_ID = TestCaseId;
-                ltbl.RUN_ORDER = RunOrder;
-                ltbl.KEY_WORD_ID = lKeywordId;
-                ltbl.OBJECT_ID = lObjectId;
-                ltbl.OBJECT_NAME_ID = lObjectNameId;
-                ltbl.COLUMN_ROW_SETTING = lParameter;
-                ltbl.COMMENT = lComment;
-                entity.T_TEST_STEPS.Add(ltbl);
-                entity.SaveChanges();
-
-                logger.Info(string.Format("AddStep end | TestCaseId: {0} | TestSuiteId: {1} | UserName: {2}", TestCaseId, TestSuiteId, Username));
-                return "success";
             }
             catch (Exception ex)
             {
@@ -476,17 +505,21 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("Update Steps start | TestcaseId: {0} | UserName: {1}", testcaseId, Username));
-                var steps = entity.T_TEST_STEPS.OrderBy(x => x.RUN_ORDER).Where(x => x.TEST_CASE_ID == testcaseId).ToList();
-
-                int counter = 1;
-                foreach (var st in steps)
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    st.RUN_ORDER = counter;
-                    counter++;
+                    logger.Info(string.Format("Update Steps start | TestcaseId: {0} | UserName: {1}", testcaseId, Username));
+                    var steps = entity.T_TEST_STEPS.OrderBy(x => x.RUN_ORDER).Where(x => x.TEST_CASE_ID == testcaseId).ToList();
+
+                    int counter = 1;
+                    foreach (var st in steps)
+                    {
+                        st.RUN_ORDER = counter;
+                        counter++;
+                    }
+                    entity.SaveChanges();
+                    logger.Info(string.Format("Update Steps end | TestcaseId: {0} | UserName: {1}", testcaseId, Username));
+                    scope.Complete();
                 }
-                entity.SaveChanges();
-                logger.Info(string.Format("Update Steps end | TestcaseId: {0} | UserName: {1}", testcaseId, Username));
             }
             catch (Exception ex)
             {
@@ -501,14 +534,18 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("Update StepID start | stepsId: {0} | UserName: {1}", stepsId, Username));
-                var step = entity.T_TEST_STEPS.Find(stepsId);
-                if (step != null)
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    step.RUN_ORDER = RUN_ORDER;
+                    logger.Info(string.Format("Update StepID start | stepsId: {0} | UserName: {1}", stepsId, Username));
+                    var step = entity.T_TEST_STEPS.Find(stepsId);
+                    if (step != null)
+                    {
+                        step.RUN_ORDER = RUN_ORDER;
+                    }
+                    entity.SaveChanges();
+                    logger.Info(string.Format("Update StepID end | stepsId: {0} | UserName: {1}", stepsId, Username));
+                    scope.Complete();
                 }
-                entity.SaveChanges();
-                logger.Info(string.Format("Update StepID end | stepsId: {0} | UserName: {1}", stepsId, Username));
             }
             catch (Exception ex)
             {
@@ -541,15 +578,19 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("UpdateRunOrder start | stepId: {0} | newRun_Order: {1} | UserName: {2}", stepId, newRun_Order, Username));
-                var step = entity.T_TEST_STEPS.Where(x => x.STEPS_ID == stepId).FirstOrDefault();
-                if (step != null)
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    step.RUN_ORDER = newRun_Order;
-                    entity.SaveChanges();
+                    logger.Info(string.Format("UpdateRunOrder start | stepId: {0} | newRun_Order: {1} | UserName: {2}", stepId, newRun_Order, Username));
+                    var step = entity.T_TEST_STEPS.Where(x => x.STEPS_ID == stepId).FirstOrDefault();
+                    if (step != null)
+                    {
+                        step.RUN_ORDER = newRun_Order;
+                        entity.SaveChanges();
+                    }
+                    logger.Info(string.Format("UpdateRunOrder end | stepId: {0} | newRun_Order: {1} | UserName: {2}", stepId, newRun_Order, Username));
+                    scope.Complete();
+                    return "success";
                 }
-                logger.Info(string.Format("UpdateRunOrder end | stepId: {0} | newRun_Order: {1} | UserName: {2}", stepId, newRun_Order, Username));
-                return "success";
             }
             catch (Exception ex)
             {
@@ -600,69 +641,75 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("Delete RelTestCaseDataSummary start | TestCaseId: {0} | dataSetId: {1} | UserName: {2}", testCaseId, dataSetId, Username));
-                var dataseting = (from setting in entity.TEST_DATA_SETTING
-                                  where dataSetId == setting.DATA_SUMMARY_ID
-                                  select setting);
-
-                foreach (var item in dataseting)
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    entity.TEST_DATA_SETTING.Remove(item);
-                    entity.SaveChanges();
-                }
+                    logger.Info(string.Format("Delete RelTestCaseDataSummary start | TestCaseId: {0} | dataSetId: {1} | UserName: {2}", testCaseId, dataSetId, Username));
+                    var dataseting = (from setting in entity.TEST_DATA_SETTING
+                                      where dataSetId == setting.DATA_SUMMARY_ID
+                                      select setting);
 
-                var relTcDataSummary = (from rt in entity.REL_TC_DATA_SUMMARY
-                                        where rt.TEST_CASE_ID == testCaseId && rt.DATA_SUMMARY_ID == dataSetId
-                                        select rt).FirstOrDefault();
-                if (relTcDataSummary != null)
-                    entity.REL_TC_DATA_SUMMARY.Remove(relTcDataSummary);
-                entity.SaveChanges();
-
-                var datasetobjlist = entity.REL_TC_DATA_SUMMARY.Where(x => x.DATA_SUMMARY_ID == dataSetId).ToList();
-
-                if (!datasetobjlist.Any())
-                {
-                    var obj1 = entity.T_SHARED_OBJECT_POOL.Where(x => x.DATA_SUMMARY_ID == dataSetId).ToList();
-                    logger.Info(string.Format("Delete Dataset in T_SHARED_OBJECT_POOL start | DataSetId: {0} | UserName: {1}", dataSetId, Username));
-                    foreach (var itm in obj1)
+                    foreach (var item in dataseting)
                     {
-                        entity.T_SHARED_OBJECT_POOL.Remove(itm);
+                        entity.TEST_DATA_SETTING.Remove(item);
+                        //rutvi
+                        //entity.SaveChanges();
                     }
-                    logger.Info(string.Format("Delete Dataset in T_SHARED_OBJECT_POOL end | DataSetId: {0} | UserName: {1}", dataSetId, Username));
+
+                    var relTcDataSummary = (from rt in entity.REL_TC_DATA_SUMMARY
+                                            where rt.TEST_CASE_ID == testCaseId && rt.DATA_SUMMARY_ID == dataSetId
+                                            select rt).FirstOrDefault();
+                    if (relTcDataSummary != null)
+                        entity.REL_TC_DATA_SUMMARY.Remove(relTcDataSummary);
                     entity.SaveChanges();
 
-                    var datasetobj = entity.T_TEST_DATA_SUMMARY.Where(x => x.DATA_SUMMARY_ID == dataSetId).FirstOrDefault();
+                    var datasetobjlist = entity.REL_TC_DATA_SUMMARY.Where(x => x.DATA_SUMMARY_ID == dataSetId).ToList();
 
-                    logger.Info(string.Format("Delete Dataset  start | DataSetId: {0} | UserName: {1}", dataSetId, Username));
-                    if (datasetobj != null)
-                        entity.T_TEST_DATA_SUMMARY.Remove(datasetobj);
+                    if (!datasetobjlist.Any())
+                    {
+                        var obj1 = entity.T_SHARED_OBJECT_POOL.Where(x => x.DATA_SUMMARY_ID == dataSetId).ToList();
+                        logger.Info(string.Format("Delete Dataset in T_SHARED_OBJECT_POOL start | DataSetId: {0} | UserName: {1}", dataSetId, Username));
+                        foreach (var itm in obj1)
+                        {
+                            entity.T_SHARED_OBJECT_POOL.Remove(itm);
+                        }
+                        logger.Info(string.Format("Delete Dataset in T_SHARED_OBJECT_POOL end | DataSetId: {0} | UserName: {1}", dataSetId, Username));
+                        //entity.SaveChanges();
+
+                        var datasetobj = entity.T_TEST_DATA_SUMMARY.Where(x => x.DATA_SUMMARY_ID == dataSetId).FirstOrDefault();
+
+                        logger.Info(string.Format("Delete Dataset  start | DataSetId: {0} | UserName: {1}", dataSetId, Username));
+                        if (datasetobj != null)
+                            entity.T_TEST_DATA_SUMMARY.Remove(datasetobj);
+                        entity.SaveChanges();
+
+                        logger.Info(string.Format("Delete Dataset  end | DataSetId: {0} | UserName: {1}", dataSetId, Username));
+                    }
+
+                    var sharedObject = (from rt in entity.T_SHARED_OBJECT_POOL
+                                        where rt.DATA_SUMMARY_ID == dataSetId
+                                        select rt);
+                    foreach (var item in sharedObject)
+                    {
+                        entity.T_SHARED_OBJECT_POOL.Remove(item);
+                        //rutiv
+                        //entity.SaveChanges();
+                    }
+
+
+                    var datasummary = (from rt in entity.T_TEST_DATA_SUMMARY
+                                       where rt.DATA_SUMMARY_ID == dataSetId
+                                       select rt).FirstOrDefault();
+                    if (datasummary != null)
+                        entity.T_TEST_DATA_SUMMARY.Remove(datasummary);
                     entity.SaveChanges();
 
-                    logger.Info(string.Format("Delete Dataset  end | DataSetId: {0} | UserName: {1}", dataSetId, Username));
+
+
+                    // entity.SaveChanges();
+                    logger.Info(string.Format("Delete RelTestCaseDataSummary end | TestCaseId: {0} | dataSetId: {1} | UserName: {2}", testCaseId, dataSetId, Username));
+                    scope.Complete();
+                    return "success";
                 }
-
-                var sharedObject = (from rt in entity.T_SHARED_OBJECT_POOL
-                                    where rt.DATA_SUMMARY_ID == dataSetId
-                                    select rt);
-                foreach (var item in sharedObject)
-                {
-                    entity.T_SHARED_OBJECT_POOL.Remove(item);
-                    entity.SaveChanges();
-                }
-
-
-                var datasummary = (from rt in entity.T_TEST_DATA_SUMMARY
-                                   where rt.DATA_SUMMARY_ID == dataSetId
-                                   select rt).FirstOrDefault();
-                if (datasummary != null)
-                    entity.T_TEST_DATA_SUMMARY.Remove(datasummary);
-                entity.SaveChanges();
-
-
-
-                entity.SaveChanges();
-                logger.Info(string.Format("Delete RelTestCaseDataSummary end | TestCaseId: {0} | dataSetId: {1} | UserName: {2}", testCaseId, dataSetId, Username));
-                return "success";
             }
             catch (Exception ex)
             {
@@ -696,12 +743,13 @@ namespace MARS_Repository.Repositories
                     {
                         DataSetDesc = "";
                     }
+
                     var lDataSummary = new T_TEST_DATA_SUMMARY();
                     lDataSummary.DATA_SUMMARY_ID = Helper.NextTestSuiteId("T_TEST_STEPS_SEQ");
                     lDataSummary.ALIAS_NAME = DataSetName;
                     lDataSummary.DESCRIPTION_INFO = DataSetDesc;
                     entity.T_TEST_DATA_SUMMARY.Add(lDataSummary);
-                    entity.SaveChanges();
+                    //entity.SaveChanges();// -- check
                     var ldatasetid = lDataSummary.DATA_SUMMARY_ID;
 
                     var lRelTCDataSet = new REL_TC_DATA_SUMMARY();
@@ -710,8 +758,10 @@ namespace MARS_Repository.Repositories
                     lRelTCDataSet.DATA_SUMMARY_ID = lDataSummary.DATA_SUMMARY_ID;
                     entity.REL_TC_DATA_SUMMARY.Add(lRelTCDataSet);
                     entity.SaveChanges();
+
                     logger.Info(string.Format("Add TestDataSet end | TestCaseId: {0} | DataSetName: {1} | UserName: {2}", testCaseId, DataSetName, Username));
                     return ldatasetid + ",success";
+
                 }
                 else
                 {
@@ -742,64 +792,70 @@ namespace MARS_Repository.Repositories
                         //logger.Info(string.Format("result 10 start -->T_TEST_DATASETTAG "));
                         //entity.SaveChanges();
                         //logger.Info(string.Format("result 10 end -->T_TEST_DATASETTAG "));
-                        OracleTransaction ltransaction;
-                        OracleConnection lconnection = new OracleConnection(lConnectionStr);
 
+                        //changed oracle connection to context connection
+                        //OracleTransaction ltransaction;
+                        //OracleConnection lconnection = new OracleConnection(lConnectionStr);
+                        var lconnection = entity.Database.Connection;
                         lconnection.Open();
-                        ltransaction = lconnection.BeginTransaction();
-                        string lcmdquery = "UPDATE " + lSchema + ".T_TEST_DATASETTAG SET FOLDERID = :1, SETID = :2, GROUPID = :3, STEPDESC = :4, " +
-                            "SEQUENCE = :5, EXPECTEDRESULTS = :6, DIARY = :7 WHERE DATASETID = :8";
-                        using (var lcmd = lconnection.CreateCommand())
+                        using (var ltransaction = lconnection.BeginTransaction())
                         {
-                            lcmd.CommandText = lcmdquery;
+                            string lcmdquery = "UPDATE " + lSchema + ".T_TEST_DATASETTAG SET FOLDERID = :1, SETID = :2, GROUPID = :3, STEPDESC = :4, " +
+                                "SEQUENCE = :5, EXPECTEDRESULTS = :6, DIARY = :7 WHERE DATASETID = :8";
 
-                            OracleParameter FOLDERID_oparam = new OracleParameter();
-                            FOLDERID_oparam.OracleDbType = OracleDbType.Long;
-                            FOLDERID_oparam.Value = tagmodel.Folderid;
+                            using (var lcmd = lconnection.CreateCommand())
+                            {
+                                lcmd.CommandText = lcmdquery;
 
-                            OracleParameter SETID_oparam = new OracleParameter();
-                            SETID_oparam.OracleDbType = OracleDbType.Long;
-                            SETID_oparam.Value = tagmodel.Setid;
+                                OracleParameter FOLDERID_oparam = new OracleParameter();
+                                FOLDERID_oparam.OracleDbType = OracleDbType.Long;
+                                FOLDERID_oparam.Value = tagmodel.Folderid;
 
-                            OracleParameter GROUPID_oparam = new OracleParameter();
-                            GROUPID_oparam.OracleDbType = OracleDbType.Long;
-                            GROUPID_oparam.Value = tagmodel.Groupid;
+                                OracleParameter SETID_oparam = new OracleParameter();
+                                SETID_oparam.OracleDbType = OracleDbType.Long;
+                                SETID_oparam.Value = tagmodel.Setid;
 
-                            OracleParameter STEPDESC_oparam = new OracleParameter();
-                            STEPDESC_oparam.OracleDbType = OracleDbType.Varchar2;
-                            STEPDESC_oparam.Value = tagmodel.StepDesc;
+                                OracleParameter GROUPID_oparam = new OracleParameter();
+                                GROUPID_oparam.OracleDbType = OracleDbType.Long;
+                                GROUPID_oparam.Value = tagmodel.Groupid;
 
-                            OracleParameter SEQUENCE_oparam = new OracleParameter();
-                            SEQUENCE_oparam.OracleDbType = OracleDbType.Decimal;
-                            SEQUENCE_oparam.Value = tagmodel.Sequence;
+                                OracleParameter STEPDESC_oparam = new OracleParameter();
+                                STEPDESC_oparam.OracleDbType = OracleDbType.Varchar2;
+                                STEPDESC_oparam.Value = tagmodel.StepDesc;
 
-                            OracleParameter EXPECTEDRESULTS_oparam = new OracleParameter();
-                            EXPECTEDRESULTS_oparam.OracleDbType = OracleDbType.Varchar2;
-                            EXPECTEDRESULTS_oparam.Value = tagmodel.Expectedresults;
+                                OracleParameter SEQUENCE_oparam = new OracleParameter();
+                                SEQUENCE_oparam.OracleDbType = OracleDbType.Decimal;
+                                SEQUENCE_oparam.Value = tagmodel.Sequence;
 
-                            OracleParameter DIARY_oparam = new OracleParameter();
-                            DIARY_oparam.OracleDbType = OracleDbType.Varchar2;
-                            DIARY_oparam.Value = tagmodel.Diary;
+                                OracleParameter EXPECTEDRESULTS_oparam = new OracleParameter();
+                                EXPECTEDRESULTS_oparam.OracleDbType = OracleDbType.Varchar2;
+                                EXPECTEDRESULTS_oparam.Value = tagmodel.Expectedresults;
+
+                                OracleParameter DIARY_oparam = new OracleParameter();
+                                DIARY_oparam.OracleDbType = OracleDbType.Varchar2;
+                                DIARY_oparam.Value = tagmodel.Diary;
 
 
-                            OracleParameter DATASETID_oparam = new OracleParameter();
-                            DATASETID_oparam.OracleDbType = OracleDbType.Long;
-                            DATASETID_oparam.Value = datasetid;
+                                OracleParameter DATASETID_oparam = new OracleParameter();
+                                DATASETID_oparam.OracleDbType = OracleDbType.Long;
+                                DATASETID_oparam.Value = datasetid;
 
-                            lcmd.Parameters.Add(FOLDERID_oparam);
-                            lcmd.Parameters.Add(SETID_oparam);
-                            lcmd.Parameters.Add(GROUPID_oparam);
-                            lcmd.Parameters.Add(STEPDESC_oparam);
-                            lcmd.Parameters.Add(SEQUENCE_oparam);
-                            lcmd.Parameters.Add(EXPECTEDRESULTS_oparam);
-                            lcmd.Parameters.Add(DIARY_oparam);
-                            lcmd.Parameters.Add(DATASETID_oparam);
+                                lcmd.Parameters.Add(FOLDERID_oparam);
+                                lcmd.Parameters.Add(SETID_oparam);
+                                lcmd.Parameters.Add(GROUPID_oparam);
+                                lcmd.Parameters.Add(STEPDESC_oparam);
+                                lcmd.Parameters.Add(SEQUENCE_oparam);
+                                lcmd.Parameters.Add(EXPECTEDRESULTS_oparam);
+                                lcmd.Parameters.Add(DIARY_oparam);
+                                lcmd.Parameters.Add(DATASETID_oparam);
 
-                            lcmd.ExecuteNonQuery();
+                                lcmd.ExecuteNonQuery();
 
-                            ltransaction.Commit();
-                            lconnection.Close();
+                                ltransaction.Commit();
+                                lconnection.Close();
+                            }
                         }
+
                     }
                     else
                     {
@@ -843,38 +899,42 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                var datasetids = entity.REL_TC_DATA_SUMMARY.Where(x => x.TEST_CASE_ID == TestCaseId).Select(x => x.DATA_SUMMARY_ID).ToList();
-                logger.Info(string.Format("Delete TestCase start | TestCaseId: {0} | UserName: {1}", TestCaseId, Username));
-                var flag = false;
-                entity.DeleteTestCase(TestCaseId);
-
-                var exsitDatasetIds = entity.REL_TC_DATA_SUMMARY.Where(a => datasetids.Any(b => a.DATA_SUMMARY_ID == b)).Select(x => x.DATA_SUMMARY_ID).ToList();
-                var deleteDatasetids = datasetids.Except(exsitDatasetIds).ToList();
-
-                foreach (var item in deleteDatasetids)
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    var obj1 = entity.T_SHARED_OBJECT_POOL.Where(x => x.DATA_SUMMARY_ID == item).ToList();
-                    logger.Info(string.Format("Delete Dataset in T_SHARED_OBJECT_POOL start | TestCaseId: {0} | DataSetId: {1} | UserName: {2}", TestCaseId, item, Username));
-                    foreach (var itm in obj1)
+                    var datasetids = entity.REL_TC_DATA_SUMMARY.Where(x => x.TEST_CASE_ID == TestCaseId).Select(x => x.DATA_SUMMARY_ID).ToList();
+                    logger.Info(string.Format("Delete TestCase start | TestCaseId: {0} | UserName: {1}", TestCaseId, Username));
+                    var flag = false;
+                    entity.DeleteTestCase(TestCaseId);
+
+                    var exsitDatasetIds = entity.REL_TC_DATA_SUMMARY.Where(a => datasetids.Any(b => a.DATA_SUMMARY_ID == b)).Select(x => x.DATA_SUMMARY_ID).ToList();
+                    var deleteDatasetids = datasetids.Except(exsitDatasetIds).ToList();
+
+                    foreach (var item in deleteDatasetids)
                     {
-                        entity.T_SHARED_OBJECT_POOL.Remove(itm);
+                        var obj1 = entity.T_SHARED_OBJECT_POOL.Where(x => x.DATA_SUMMARY_ID == item).ToList();
+                        logger.Info(string.Format("Delete Dataset in T_SHARED_OBJECT_POOL start | TestCaseId: {0} | DataSetId: {1} | UserName: {2}", TestCaseId, item, Username));
+                        foreach (var itm in obj1)
+                        {
+                            entity.T_SHARED_OBJECT_POOL.Remove(itm);
+                        }
+                        //rutvi
+                        //entity.SaveChanges();
+                        logger.Info(string.Format("Delete  Dataset in T_SHARED_OBJECT_POOL End | TestCaseId: {0} | DataSetId: {1} | UserName: {2}", TestCaseId, item, Username));
+
+                        var obj = entity.T_TEST_DATA_SUMMARY.FirstOrDefault(x => x.DATA_SUMMARY_ID == item);
+                        logger.Info(string.Format("Delete Dataset start | TestCaseId: {0} | DataSetId: {1} | UserName: {2}", TestCaseId, item, Username));
+                        if (obj != null)
+                            entity.T_TEST_DATA_SUMMARY.Remove(obj);
+                        entity.SaveChanges();
+
+                        logger.Info(string.Format("Delete Dataset End | TestCaseId: {0} | DataSetId: {1} | UserName: {2}", TestCaseId, item, Username));
                     }
 
-                    entity.SaveChanges();
-                    logger.Info(string.Format("Delete  Dataset in T_SHARED_OBJECT_POOL End | TestCaseId: {0} | DataSetId: {1} | UserName: {2}", TestCaseId, item, Username));
-
-                    var obj = entity.T_TEST_DATA_SUMMARY.FirstOrDefault(x => x.DATA_SUMMARY_ID == item);
-                    logger.Info(string.Format("Delete Dataset start | TestCaseId: {0} | DataSetId: {1} | UserName: {2}", TestCaseId, item, Username));
-                    if (obj != null)
-                        entity.T_TEST_DATA_SUMMARY.Remove(obj);
-                    entity.SaveChanges();
-
-                    logger.Info(string.Format("Delete Dataset End | TestCaseId: {0} | DataSetId: {1} | UserName: {2}", TestCaseId, item, Username));
+                    flag = true;
+                    logger.Info(string.Format("Delete TestCase end | TestCaseId: {0} | UserName: {1}", TestCaseId, Username));
+                    scope.Complete();
+                    return flag;
                 }
-
-                flag = true;
-                logger.Info(string.Format("Delete TestCase end | TestCaseId: {0} | UserName: {1}", TestCaseId, Username));
-                return flag;
             }
             catch (Exception ex)
             {
@@ -976,133 +1036,144 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                if (!string.IsNullOrEmpty(lEntity.TestCaseName))
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    lEntity.TestCaseName = lEntity.TestCaseName.Trim();
-                }
-                var flag = false;
-                if (lEntity.TestCaseId == 0)
-                {
-                    logger.Info(string.Format("Add TestCase start | TestCaseName: {0} | UserName: {1}", lEntity.TestCaseName, Username));
-                    var tbl = new T_TEST_CASE_SUMMARY();
-                    tbl.TEST_CASE_ID = Helper.NextTestSuiteId("T_TEST_CASE_SUMMARY_SEQ");
-                    tbl.TEST_CASE_NAME = lEntity.TestCaseName;
-                    tbl.TEST_STEP_DESCRIPTION = lEntity.TestCaseDescription;
-                    tbl.TEST_STEP_CREATE_TIME = DateTime.Now;
-                    tbl.TEST_STEP_CREATOR = LoginName;
-                    lEntity.TestCaseId = tbl.TEST_CASE_ID;
-
-                    entity.T_TEST_CASE_SUMMARY.Add(tbl);
-                    entity.SaveChanges();
-                    logger.Info(string.Format("Add TestCase end | TestCaseName: {0} | UserName: {1}", lEntity.TestCaseName, Username));
-                    #region insert for default Dataset
-
-                    var tblDataSummary = new T_TEST_DATA_SUMMARY();
-                    tblDataSummary.ALIAS_NAME = lEntity.TestCaseName;
-                    tblDataSummary.DATA_SUMMARY_ID = Helper.NextTestSuiteId("T_TEST_STEPS_SEQ");
-                    tblDataSummary.SHARE_MARK = 1;
-                    tblDataSummary.STATUS = 0;
-                    tblDataSummary.CREATE_TIME = DateTime.Now;
-                    entity.T_TEST_DATA_SUMMARY.Add(tblDataSummary);
-                    entity.SaveChanges();
-
-
-                    var tblMapping = new REL_TC_DATA_SUMMARY();
-                    tblMapping.ID = Helper.NextTestSuiteId("T_TEST_STEPS_SEQ");
-                    tblMapping.TEST_CASE_ID = tbl.TEST_CASE_ID;
-                    tblMapping.DATA_SUMMARY_ID = tblDataSummary.DATA_SUMMARY_ID;
-                    entity.REL_TC_DATA_SUMMARY.Add(tblMapping);
-                    entity.SaveChanges();
-
-
-                    var tblStep = new T_TEST_STEPS();
-                    tblStep.STEPS_ID = Helper.NextTestSuiteId("T_TEST_STEPS_SEQ");
-                    tblStep.RUN_ORDER = 1;
-                    tblStep.TEST_CASE_ID = tbl.TEST_CASE_ID;
-                    entity.T_TEST_STEPS.Add(tblStep);
-                    entity.SaveChanges();
-                    #endregion
-
-                    flag = true;
-                }
-                else
-                {
-                    logger.Info(string.Format("Edit TestCase start | TestCaseName: {0} | UserName: {1}", lEntity.TestCaseName, Username));
-                    var tbl = entity.T_TEST_CASE_SUMMARY.Find(lEntity.TestCaseId);
-                    if (tbl != null)
+                    if (!string.IsNullOrEmpty(lEntity.TestCaseName))
                     {
+                        lEntity.TestCaseName = lEntity.TestCaseName.Trim();
+                    }
+                    var flag = false;
+                    if (lEntity.TestCaseId == 0)
+                    {
+                        logger.Info(string.Format("Add TestCase start | TestCaseName: {0} | UserName: {1}", lEntity.TestCaseName, Username));
+                        var tbl = new T_TEST_CASE_SUMMARY();
+                        tbl.TEST_CASE_ID = Helper.NextTestSuiteId("T_TEST_CASE_SUMMARY_SEQ");
                         tbl.TEST_CASE_NAME = lEntity.TestCaseName;
                         tbl.TEST_STEP_DESCRIPTION = lEntity.TestCaseDescription;
+                        tbl.TEST_STEP_CREATE_TIME = DateTime.Now;
+                        tbl.TEST_STEP_CREATOR = LoginName;
+                        lEntity.TestCaseId = tbl.TEST_CASE_ID;
+
+                        entity.T_TEST_CASE_SUMMARY.Add(tbl);
+                        //rutvi
+                        //entity.SaveChanges();
+                        logger.Info(string.Format("Add TestCase end | TestCaseName: {0} | UserName: {1}", lEntity.TestCaseName, Username));
+                        #region insert for default Dataset
+
+                        var tblDataSummary = new T_TEST_DATA_SUMMARY();
+                        tblDataSummary.ALIAS_NAME = lEntity.TestCaseName;
+                        tblDataSummary.DATA_SUMMARY_ID = Helper.NextTestSuiteId("T_TEST_STEPS_SEQ");
+                        tblDataSummary.SHARE_MARK = 1;
+                        tblDataSummary.STATUS = 0;
+                        tblDataSummary.CREATE_TIME = DateTime.Now;
+                        entity.T_TEST_DATA_SUMMARY.Add(tblDataSummary);
+                        //rutvi
+                        //entity.SaveChanges();
+
+
+                        var tblMapping = new REL_TC_DATA_SUMMARY();
+                        tblMapping.ID = Helper.NextTestSuiteId("T_TEST_STEPS_SEQ");
+                        tblMapping.TEST_CASE_ID = tbl.TEST_CASE_ID;
+                        tblMapping.DATA_SUMMARY_ID = tblDataSummary.DATA_SUMMARY_ID;
+                        entity.REL_TC_DATA_SUMMARY.Add(tblMapping);
+                        //rutvi
+                        //entity.SaveChanges();
+
+
+                        var tblStep = new T_TEST_STEPS();
+                        tblStep.STEPS_ID = Helper.NextTestSuiteId("T_TEST_STEPS_SEQ");
+                        tblStep.RUN_ORDER = 1;
+                        tblStep.TEST_CASE_ID = tbl.TEST_CASE_ID;
+                        entity.T_TEST_STEPS.Add(tblStep);
                         entity.SaveChanges();
-
-                        #region Testcase and Application Mapping Delete
-                        var lAppList = entity.REL_APP_TESTCASE.Where(x => x.TEST_CASE_ID == lEntity.TestCaseId).ToList();
-                        foreach (var item in lAppList)
-                        {
-                            entity.REL_APP_TESTCASE.Remove(item);
-                        }
-
                         #endregion
 
-                        #region Testcase and TestSuite Mapping Delete
-                        var lTCTSList = entity.REL_TEST_CASE_TEST_SUITE.Where(x => x.TEST_CASE_ID == lEntity.TestCaseId).ToList();
-                        foreach (var item in lTCTSList)
-                        {
-                            entity.REL_TEST_CASE_TEST_SUITE.Remove(item);
-                        }
-                        entity.SaveChanges();
-                        #endregion
-                        logger.Info(string.Format("Edit TestCase end | TestCaseName: {0} | UserName: {1}", lEntity.TestCaseName, Username));
+                        flag = true;
                     }
-                    flag = true;
-                }
-
-                #region Testcase and Application Mapping Adding
-                if (!string.IsNullOrEmpty(lEntity.ApplicationId))
-                {
-
-                    var lAppSplit = lEntity.ApplicationId.Split(',').Select(Int64.Parse).ToList();
-
-                    if (lAppSplit.Count() > 0)
+                    else
                     {
-                        lAppSplit = lAppSplit.Distinct().ToList();
-                        foreach (var item in lAppSplit)
+                        logger.Info(string.Format("Edit TestCase start | TestCaseName: {0} | UserName: {1}", lEntity.TestCaseName, Username));
+                        var tbl = entity.T_TEST_CASE_SUMMARY.Find(lEntity.TestCaseId);
+                        if (tbl != null)
                         {
-                            var lApptbl = new REL_APP_TESTCASE();
-                            lApptbl.APPLICATION_ID = item;
-                            lApptbl.TEST_CASE_ID = lEntity.TestCaseId;
-                            lApptbl.RELATIONSHIP_ID = Helper.NextTestSuiteId("REL_APP_TESTCASE_SEQ");
-                            entity.REL_APP_TESTCASE.Add(lApptbl);
-                            entity.SaveChanges();
-                        }
-                    }
-                    if (!string.IsNullOrEmpty(lEntity.TestSuiteId))
-                    {
-                        var lTestSuiteSplit = lEntity.TestSuiteId.Split(',').Select(Int64.Parse).ToList();
-                        if (lTestSuiteSplit.Count() > 0)
-                        {
-                            lTestSuiteSplit = lTestSuiteSplit.Distinct().ToList();
-                            foreach (var item in lTestSuiteSplit)
+                            tbl.TEST_CASE_NAME = lEntity.TestCaseName;
+                            tbl.TEST_STEP_DESCRIPTION = lEntity.TestCaseDescription;
+                            //rutvi
+                            //entity.SaveChanges();
+
+                            #region Testcase and Application Mapping Delete
+                            var lAppList = entity.REL_APP_TESTCASE.Where(x => x.TEST_CASE_ID == lEntity.TestCaseId).ToList();
+                            foreach (var item in lAppList)
                             {
-                                if (item != 0)
-                                {
+                                entity.REL_APP_TESTCASE.Remove(item);
+                            }
 
+                            #endregion
 
-                                    var lTSTC = new REL_TEST_CASE_TEST_SUITE();
-                                    lTSTC.TEST_CASE_ID = lEntity.TestCaseId;
-                                    lTSTC.TEST_SUITE_ID = item;
-                                    lTSTC.RELATIONSHIP_ID = Helper.NextTestSuiteId("REL_TEST_CASE_TEST_SUITE_SEQ");
-                                    entity.REL_TEST_CASE_TEST_SUITE.Add(lTSTC);
-                                    entity.SaveChanges();
-                                }
+                            #region Testcase and TestSuite Mapping Delete
+                            var lTCTSList = entity.REL_TEST_CASE_TEST_SUITE.Where(x => x.TEST_CASE_ID == lEntity.TestCaseId).ToList();
+                            foreach (var item in lTCTSList)
+                            {
+                                entity.REL_TEST_CASE_TEST_SUITE.Remove(item);
+                            }
+                            entity.SaveChanges();
+                            #endregion
+                            logger.Info(string.Format("Edit TestCase end | TestCaseName: {0} | UserName: {1}", lEntity.TestCaseName, Username));
+                        }
+                        flag = true;
+                    }
+
+                    #region Testcase and Application Mapping Adding
+                    if (!string.IsNullOrEmpty(lEntity.ApplicationId))
+                    {
+
+                        var lAppSplit = lEntity.ApplicationId.Split(',').Select(Int64.Parse).ToList();
+
+                        if (lAppSplit.Count() > 0)
+                        {
+                            lAppSplit = lAppSplit.Distinct().ToList();
+                            foreach (var item in lAppSplit)
+                            {
+                                var lApptbl = new REL_APP_TESTCASE();
+                                lApptbl.APPLICATION_ID = item;
+                                lApptbl.TEST_CASE_ID = lEntity.TestCaseId;
+                                lApptbl.RELATIONSHIP_ID = Helper.NextTestSuiteId("REL_APP_TESTCASE_SEQ");
+                                entity.REL_APP_TESTCASE.Add(lApptbl);
+                                //rutvi
+                                // entity.SaveChanges(); 
                             }
                         }
+                        if (!string.IsNullOrEmpty(lEntity.TestSuiteId))
+                        {
+                            var lTestSuiteSplit = lEntity.TestSuiteId.Split(',').Select(Int64.Parse).ToList();
+                            if (lTestSuiteSplit.Count() > 0)
+                            {
+                                lTestSuiteSplit = lTestSuiteSplit.Distinct().ToList();
+                                foreach (var item in lTestSuiteSplit)
+                                {
+                                    if (item != 0)
+                                    {
+
+
+                                        var lTSTC = new REL_TEST_CASE_TEST_SUITE();
+                                        lTSTC.TEST_CASE_ID = lEntity.TestCaseId;
+                                        lTSTC.TEST_SUITE_ID = item;
+                                        lTSTC.RELATIONSHIP_ID = Helper.NextTestSuiteId("REL_TEST_CASE_TEST_SUITE_SEQ");
+                                        entity.REL_TEST_CASE_TEST_SUITE.Add(lTSTC);
+                                        //rutvi
+                                        //entity.SaveChanges();
+                                    }
+                                }
+                            }
+
+                        }
+                        entity.SaveChanges();
+
+                        flag = true;
                     }
-
-
-                    flag = true;
+                    scope.Complete();
+                    return flag;
                 }
-                return flag;
                 #endregion
             }
             catch (Exception ex)
@@ -1118,19 +1189,23 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("UpdateDataSetName start | datasetName: {0} | UserName: {1}", datasetName, Username));
-                if (!string.IsNullOrEmpty(datasetName))
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    datasetName = datasetName.Trim();
+                    logger.Info(string.Format("UpdateDataSetName start | datasetName: {0} | UserName: {1}", datasetName, Username));
+                    if (!string.IsNullOrEmpty(datasetName))
+                    {
+                        datasetName = datasetName.Trim();
+                    }
+                    var ds = entity.T_TEST_DATA_SUMMARY.Where(x => x.DATA_SUMMARY_ID == dataSetId).SingleOrDefault();
+                    if (ds != null)
+                    {
+                        ds.ALIAS_NAME = datasetName;
+                    }
+                    entity.SaveChanges();
+                    logger.Info(string.Format("UpdateDataSetName end | datasetName: {0} | UserName: {1}", datasetName, Username));
+                    scope.Complete();
+                    return "success";
                 }
-                var ds = entity.T_TEST_DATA_SUMMARY.Where(x => x.DATA_SUMMARY_ID == dataSetId).SingleOrDefault();
-                if (ds != null)
-                {
-                    ds.ALIAS_NAME = datasetName;
-                }
-                entity.SaveChanges();
-                logger.Info(string.Format("UpdateDataSetName end | datasetName: {0} | UserName: {1}", datasetName, Username));
-                return "success";
             }
             catch (Exception ex)
             {
@@ -1145,15 +1220,19 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("UpdateDataSetDescription start | dataSetId: {0} | UserName: {1}", dataSetId, Username));
-                var ds = entity.T_TEST_DATA_SUMMARY.Where(x => x.DATA_SUMMARY_ID == dataSetId).SingleOrDefault();
-                if (ds != null)
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    ds.DESCRIPTION_INFO = dataSetDescription;
+                    logger.Info(string.Format("UpdateDataSetDescription start | dataSetId: {0} | UserName: {1}", dataSetId, Username));
+                    var ds = entity.T_TEST_DATA_SUMMARY.Where(x => x.DATA_SUMMARY_ID == dataSetId).SingleOrDefault();
+                    if (ds != null)
+                    {
+                        ds.DESCRIPTION_INFO = dataSetDescription;
+                    }
+                    entity.SaveChanges();
+                    logger.Info(string.Format("UpdateDataSetDescription end | dataSetId: {0} | UserName: {1}", dataSetId, Username));
+                    scope.Complete();
+                    return "success";
                 }
-                entity.SaveChanges();
-                logger.Info(string.Format("UpdateDataSetDescription end | dataSetId: {0} | UserName: {1}", dataSetId, Username));
-                return "success";
             }
             catch (Exception ex)
             {
@@ -1164,7 +1243,7 @@ namespace MARS_Repository.Repositories
                 throw;
             }
         }
-        public IList<TestCaseResult> GetTestCaseDetail(long TestCaseId, string schema, string lstrConn, long UserId)
+        public IList<TestCaseResult> GetTestCaseDetail(long TestCaseId, string schema, string lstrConn, long UserId, long datasetId = 0)
         {
             try
             {
@@ -1184,17 +1263,18 @@ namespace MARS_Repository.Repositories
 
 
                 var testsuiteid = entity.REL_TEST_CASE_TEST_SUITE.FirstOrDefault(x => x.TEST_CASE_ID == TestCaseId).TEST_SUITE_ID;
-                OracleParameter[] ladd_refer_image = new OracleParameter[3];
+                OracleParameter[] ladd_refer_image = new OracleParameter[4];
                 ladd_refer_image[0] = new OracleParameter("TESTSUITEID", OracleDbType.Long);
                 ladd_refer_image[0].Value = testsuiteid;
 
                 ladd_refer_image[1] = new OracleParameter("TESTCASEID", OracleDbType.Long);
                 ladd_refer_image[1].Value = TestCaseId;
 
-                ladd_refer_image[2] = new OracleParameter("sl_cursor", OracleDbType.RefCursor);
-                ladd_refer_image[2].Direction = ParameterDirection.Output;
+                ladd_refer_image[2] = new OracleParameter("DATASETID", OracleDbType.Long);
+                ladd_refer_image[2].Value = datasetId;
 
-
+                ladd_refer_image[3] = new OracleParameter("sl_cursor", OracleDbType.RefCursor);
+                ladd_refer_image[3].Direction = ParameterDirection.Output;
 
                 foreach (OracleParameter p in ladd_refer_image)
                 {
@@ -1505,121 +1585,128 @@ namespace MARS_Repository.Repositories
             logger.Info(string.Format("SaveAs Testcase start | Oldtestcaseid: {0} | Testcasename: {1} | UserName: {2}", oldtestcaseid, testcasename, Username));
             try
             {
-                if (!string.IsNullOrEmpty(testcasename))
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    testcasename = testcasename.Trim();
-                }
-
-                var lflag = "success";
-                var result = CheckDuplicateTestCasenameSaveAs(testcasename, oldtestcaseid);
-                if (result == true)
-                {
-                    var sresult = entity.T_TEST_CASE_SUMMARY.Find(oldtestcaseid);
-                    if (sresult.TEST_CASE_NAME == testcasename && sresult.TEST_STEP_DESCRIPTION != testcasedesc)
+                    if (!string.IsNullOrEmpty(testcasename))
                     {
-                        lflag = "description cannot be changed";
+                        testcasename = testcasename.Trim();
+                    }
+
+                    var lflag = "success";
+                    var result = CheckDuplicateTestCasenameSaveAs(testcasename, oldtestcaseid);
+                    if (result == true)
+                    {
+                        var sresult = entity.T_TEST_CASE_SUMMARY.Find(oldtestcaseid);
+                        if (sresult.TEST_CASE_NAME == testcasename && sresult.TEST_STEP_DESCRIPTION != testcasedesc)
+                        {
+                            lflag = "description cannot be changed";
+                            return lflag;
+                        }
+                        lflag = "error";
                         return lflag;
                     }
-                    lflag = "error";
-                    return lflag;
-                }
-                var tbl = new T_TEST_CASE_SUMMARY();
-                tbl.TEST_CASE_ID = Helper.NextTestSuiteId("T_TEST_CASE_SUMMARY_SEQ");
-                tbl.TEST_CASE_NAME = testcasename;
-                tbl.TEST_STEP_DESCRIPTION = testcasedesc;
-                tbl.TEST_STEP_CREATE_TIME = DateTime.Now;
-                tbl.TEST_STEP_CREATOR = LoginName;
-                entity.T_TEST_CASE_SUMMARY.Add(tbl);
-                entity.SaveChanges();
+                    var tbl = new T_TEST_CASE_SUMMARY();
+                    tbl.TEST_CASE_ID = Helper.NextTestSuiteId("T_TEST_CASE_SUMMARY_SEQ");
+                    tbl.TEST_CASE_NAME = testcasename;
+                    tbl.TEST_STEP_DESCRIPTION = testcasedesc;
+                    tbl.TEST_STEP_CREATE_TIME = DateTime.Now;
+                    tbl.TEST_STEP_CREATOR = LoginName;
+                    entity.T_TEST_CASE_SUMMARY.Add(tbl);
+                    //rutvi
+                    //entity.SaveChanges();
 
-                var lTSTC = new REL_TEST_CASE_TEST_SUITE();
-                lTSTC.TEST_CASE_ID = tbl.TEST_CASE_ID;
-                lTSTC.TEST_SUITE_ID = testsuiteid;
-                lTSTC.RELATIONSHIP_ID = Helper.NextTestSuiteId("REL_TEST_CASE_TEST_SUITE_SEQ");
-                entity.REL_TEST_CASE_TEST_SUITE.Add(lTSTC);
-                entity.SaveChanges();
+                    var lTSTC = new REL_TEST_CASE_TEST_SUITE();
+                    lTSTC.TEST_CASE_ID = tbl.TEST_CASE_ID;
+                    lTSTC.TEST_SUITE_ID = testsuiteid;
+                    lTSTC.RELATIONSHIP_ID = Helper.NextTestSuiteId("REL_TEST_CASE_TEST_SUITE_SEQ");
+                    entity.REL_TEST_CASE_TEST_SUITE.Add(lTSTC);
+                    //rutvi
+                    //entity.SaveChanges();
 
-                var resultdataset = from t1 in entity.T_TEST_PROJECT
-                                    join t2 in entity.REL_TEST_SUIT_PROJECT on t1.PROJECT_ID equals t2.PROJECT_ID
-                                    join t3 in entity.T_TEST_SUITE on t2.TEST_SUITE_ID equals t3.TEST_SUITE_ID
-                                    join t4 in entity.REL_TEST_CASE_TEST_SUITE on t2.TEST_SUITE_ID equals t4.TEST_SUITE_ID
-                                    join t5 in entity.T_TEST_CASE_SUMMARY on t4.TEST_CASE_ID equals t5.TEST_CASE_ID
-                                    join t6 in entity.REL_TC_DATA_SUMMARY on t5.TEST_CASE_ID equals t6.TEST_CASE_ID
-                                    join t7 in entity.T_TEST_DATA_SUMMARY on t6.DATA_SUMMARY_ID equals t7.DATA_SUMMARY_ID
-                                    where t1.PROJECT_ID == projectid && t3.TEST_SUITE_ID == testsuiteid && t5.TEST_CASE_ID == oldtestcaseid
-                                    select new DataSetListByTestCase
-                                    {
-                                        Datasetid = t7.DATA_SUMMARY_ID,
-                                        Datasetname = t7.ALIAS_NAME
-                                    };
-                var tblDataSummary = new T_TEST_DATA_SUMMARY();
-                tblDataSummary.ALIAS_NAME = testcasename;
-                tblDataSummary.DATA_SUMMARY_ID = Helper.NextTestSuiteId("T_TEST_STEPS_SEQ");
-                tblDataSummary.SHARE_MARK = 1;
-                tblDataSummary.STATUS = 0;
-                tblDataSummary.CREATE_TIME = DateTime.Now;
-                entity.T_TEST_DATA_SUMMARY.Add(tblDataSummary);
-                entity.SaveChanges();
+                    var resultdataset = from t1 in entity.T_TEST_PROJECT
+                                        join t2 in entity.REL_TEST_SUIT_PROJECT on t1.PROJECT_ID equals t2.PROJECT_ID
+                                        join t3 in entity.T_TEST_SUITE on t2.TEST_SUITE_ID equals t3.TEST_SUITE_ID
+                                        join t4 in entity.REL_TEST_CASE_TEST_SUITE on t2.TEST_SUITE_ID equals t4.TEST_SUITE_ID
+                                        join t5 in entity.T_TEST_CASE_SUMMARY on t4.TEST_CASE_ID equals t5.TEST_CASE_ID
+                                        join t6 in entity.REL_TC_DATA_SUMMARY on t5.TEST_CASE_ID equals t6.TEST_CASE_ID
+                                        join t7 in entity.T_TEST_DATA_SUMMARY on t6.DATA_SUMMARY_ID equals t7.DATA_SUMMARY_ID
+                                        where t1.PROJECT_ID == projectid && t3.TEST_SUITE_ID == testsuiteid && t5.TEST_CASE_ID == oldtestcaseid
+                                        select new DataSetListByTestCase
+                                        {
+                                            Datasetid = t7.DATA_SUMMARY_ID,
+                                            Datasetname = t7.ALIAS_NAME
+                                        };
+                    var tblDataSummary = new T_TEST_DATA_SUMMARY();
+                    tblDataSummary.ALIAS_NAME = testcasename;
+                    tblDataSummary.DATA_SUMMARY_ID = Helper.NextTestSuiteId("T_TEST_STEPS_SEQ");
+                    tblDataSummary.SHARE_MARK = 1;
+                    tblDataSummary.STATUS = 0;
+                    tblDataSummary.CREATE_TIME = DateTime.Now;
+                    entity.T_TEST_DATA_SUMMARY.Add(tblDataSummary);
+                    //rutvi
+                    //entity.SaveChanges();
 
 
-                var tblMapping = new REL_TC_DATA_SUMMARY();
-                tblMapping.ID = Helper.NextTestSuiteId("T_TEST_STEPS_SEQ");
-                tblMapping.TEST_CASE_ID = tbl.TEST_CASE_ID;
-                tblMapping.DATA_SUMMARY_ID = tblDataSummary.DATA_SUMMARY_ID;
-                entity.REL_TC_DATA_SUMMARY.Add(tblMapping);
-                entity.SaveChanges();
-
-                var resultteststeps = from t in entity.T_TEST_STEPS
-                                      where t.TEST_CASE_ID == oldtestcaseid
-                                      select new
-                                      {
-                                          t.RUN_ORDER,
-                                          t.COLUMN_ROW_SETTING,
-                                          t.COMMENT,
-                                          t.IS_RUNNABLE,
-                                          t.KEY_WORD_ID,
-                                          t.OBJECT_ID,
-                                          t.OBJECT_NAME_ID,
-                                          t.STEPS_ID,
-                                          t.TEST_CASE_ID,
-                                          t.VALUE_SETTING
-                                      };
-                var lresultteststeps = resultteststeps.ToList();
-                foreach (var item in lresultteststeps)
-                {
-                    var tblStep = new T_TEST_STEPS();
-                    tblStep.STEPS_ID = Helper.NextTestSuiteId("T_TEST_STEPS_SEQ");
-                    tblStep.RUN_ORDER = item.RUN_ORDER;
-                    tblStep.TEST_CASE_ID = tbl.TEST_CASE_ID;
-                    tblStep.COLUMN_ROW_SETTING = item.COLUMN_ROW_SETTING;
-                    tblStep.COMMENT = item.COMMENT;
-                    tblStep.IS_RUNNABLE = item.IS_RUNNABLE;
-                    tblStep.KEY_WORD_ID = item.KEY_WORD_ID;
-                    tblStep.OBJECT_ID = item.OBJECT_ID;
-                    tblStep.OBJECT_NAME_ID = item.OBJECT_NAME_ID;
-                    tblStep.VALUE_SETTING = item.VALUE_SETTING;
-                    entity.T_TEST_STEPS.Add(tblStep);
+                    var tblMapping = new REL_TC_DATA_SUMMARY();
+                    tblMapping.ID = Helper.NextTestSuiteId("T_TEST_STEPS_SEQ");
+                    tblMapping.TEST_CASE_ID = tbl.TEST_CASE_ID;
+                    tblMapping.DATA_SUMMARY_ID = tblDataSummary.DATA_SUMMARY_ID;
+                    entity.REL_TC_DATA_SUMMARY.Add(tblMapping);
                     entity.SaveChanges();
-                }
 
-                var resultapp = from t in entity.T_TEST_SUITE
-                                join t2 in entity.REL_APP_TESTSUITE on t.TEST_SUITE_ID equals t2.TEST_SUITE_ID
-                                join t3 in entity.T_REGISTERED_APPS on t2.APPLICATION_ID equals t3.APPLICATION_ID
-                                where t.TEST_SUITE_ID == testsuiteid
-                                select t3.APPLICATION_ID;
-                var lresultApp = resultapp.Distinct().ToList();
-                foreach (var item in lresultApp)
-                {
-                    var lApptbl = new REL_APP_TESTCASE();
-                    lApptbl.APPLICATION_ID = item;
-                    lApptbl.TEST_CASE_ID = tbl.TEST_CASE_ID;
-                    lApptbl.RELATIONSHIP_ID = Helper.NextTestSuiteId("REL_APP_TESTCASE_SEQ");
-                    entity.REL_APP_TESTCASE.Add(lApptbl);
-                    entity.SaveChanges();
-                }
+                    var resultteststeps = from t in entity.T_TEST_STEPS
+                                          where t.TEST_CASE_ID == oldtestcaseid
+                                          select new
+                                          {
+                                              t.RUN_ORDER,
+                                              t.COLUMN_ROW_SETTING,
+                                              t.COMMENT,
+                                              t.IS_RUNNABLE,
+                                              t.KEY_WORD_ID,
+                                              t.OBJECT_ID,
+                                              t.OBJECT_NAME_ID,
+                                              t.STEPS_ID,
+                                              t.TEST_CASE_ID,
+                                              t.VALUE_SETTING
+                                          };
+                    var lresultteststeps = resultteststeps.ToList();
+                    foreach (var item in lresultteststeps)
+                    {
+                        var tblStep = new T_TEST_STEPS();
+                        tblStep.STEPS_ID = Helper.NextTestSuiteId("T_TEST_STEPS_SEQ");
+                        tblStep.RUN_ORDER = item.RUN_ORDER;
+                        tblStep.TEST_CASE_ID = tbl.TEST_CASE_ID;
+                        tblStep.COLUMN_ROW_SETTING = item.COLUMN_ROW_SETTING;
+                        tblStep.COMMENT = item.COMMENT;
+                        tblStep.IS_RUNNABLE = item.IS_RUNNABLE;
+                        tblStep.KEY_WORD_ID = item.KEY_WORD_ID;
+                        tblStep.OBJECT_ID = item.OBJECT_ID;
+                        tblStep.OBJECT_NAME_ID = item.OBJECT_NAME_ID;
+                        tblStep.VALUE_SETTING = item.VALUE_SETTING;
+                        entity.T_TEST_STEPS.Add(tblStep);
+                        entity.SaveChanges();
+                    }
 
-                logger.Info(string.Format("SaveAs Testcase end | Oldtestcaseid: {0} | Testcasename: {1} | UserName: {2}", oldtestcaseid, testcasename, Username));
-                return "success";
+                    var resultapp = from t in entity.T_TEST_SUITE
+                                    join t2 in entity.REL_APP_TESTSUITE on t.TEST_SUITE_ID equals t2.TEST_SUITE_ID
+                                    join t3 in entity.T_REGISTERED_APPS on t2.APPLICATION_ID equals t3.APPLICATION_ID
+                                    where t.TEST_SUITE_ID == testsuiteid
+                                    select t3.APPLICATION_ID;
+                    var lresultApp = resultapp.Distinct().ToList();
+                    foreach (var item in lresultApp)
+                    {
+                        var lApptbl = new REL_APP_TESTCASE();
+                        lApptbl.APPLICATION_ID = item;
+                        lApptbl.TEST_CASE_ID = tbl.TEST_CASE_ID;
+                        lApptbl.RELATIONSHIP_ID = Helper.NextTestSuiteId("REL_APP_TESTCASE_SEQ");
+                        entity.REL_APP_TESTCASE.Add(lApptbl);
+                        entity.SaveChanges();
+                    }
+
+                    logger.Info(string.Format("SaveAs Testcase end | Oldtestcaseid: {0} | Testcasename: {1} | UserName: {2}", oldtestcaseid, testcasename, Username));
+                    scope.Complete();
+                    return "success";
+                }
             }
             catch (Exception ex)
             {
@@ -1635,144 +1722,148 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                // add new coding
-                if (!string.IsNullOrEmpty(testcasename))
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    testcasename = testcasename.Trim();
-                }
-
-                var lflag = "success";
-                // check testcase 
-                var result = CheckDuplicateTestCasenameSaveAs(testcasename, oldtestcaseid);
-                if (result == true)
-                {
-                    var sresult = entity.T_TEST_CASE_SUMMARY.Find(oldtestcaseid);
-                    if (sresult.TEST_CASE_NAME == testcasename && sresult.TEST_STEP_DESCRIPTION != testcasedesc)
+                    // add new coding
+                    if (!string.IsNullOrEmpty(testcasename))
                     {
-                        lflag = "description cannot be changed";
+                        testcasename = testcasename.Trim();
+                    }
+
+                    var lflag = "success";
+                    // check testcase 
+                    var result = CheckDuplicateTestCasenameSaveAs(testcasename, oldtestcaseid);
+                    if (result == true)
+                    {
+                        var sresult = entity.T_TEST_CASE_SUMMARY.Find(oldtestcaseid);
+                        if (sresult.TEST_CASE_NAME == testcasename && sresult.TEST_STEP_DESCRIPTION != testcasedesc)
+                        {
+                            lflag = "description cannot be changed";
+                            return lflag;
+                        }
+                        lflag = "error";
                         return lflag;
                     }
-                    lflag = "error";
-                    return lflag;
-                }
 
-                var datasetwithsuffix = datasetName.Trim() + suffix.Trim();
-                var datasetresult = CheckDuplicateDatasetName(datasetwithsuffix);
+                    var datasetwithsuffix = datasetName.Trim() + suffix.Trim();
+                    var datasetresult = CheckDuplicateDatasetName(datasetwithsuffix);
 
-                if (datasetresult == true)
-                {
-                    lflag = "This dataset already exist";
-                    return lflag;
-                }
+                    if (datasetresult == true)
+                    {
+                        lflag = "This dataset already exist";
+                        return lflag;
+                    }
 
-                // create testcase
-                var tbl = new T_TEST_CASE_SUMMARY();
-                tbl.TEST_CASE_ID = Helper.NextTestSuiteId("T_TEST_CASE_SUMMARY_SEQ");
-                tbl.TEST_CASE_NAME = testcasename;
-                tbl.TEST_STEP_DESCRIPTION = testcasedesc;
-                tbl.TEST_STEP_CREATE_TIME = DateTime.Now;
-                tbl.TEST_STEP_CREATOR = LoginName;
-                entity.T_TEST_CASE_SUMMARY.Add(tbl);
-                entity.SaveChanges();
+                    // create testcase
+                    var tbl = new T_TEST_CASE_SUMMARY();
+                    tbl.TEST_CASE_ID = Helper.NextTestSuiteId("T_TEST_CASE_SUMMARY_SEQ");
+                    tbl.TEST_CASE_NAME = testcasename;
+                    tbl.TEST_STEP_DESCRIPTION = testcasedesc;
+                    tbl.TEST_STEP_CREATE_TIME = DateTime.Now;
+                    tbl.TEST_STEP_CREATOR = LoginName;
+                    entity.T_TEST_CASE_SUMMARY.Add(tbl);
+                    //rutvi
+                    //entity.SaveChanges();
 
 
-                // create reletion testcase and testsuite 
-                var lTSTC = new REL_TEST_CASE_TEST_SUITE();
-                lTSTC.TEST_CASE_ID = tbl.TEST_CASE_ID;
-                lTSTC.TEST_SUITE_ID = testsuiteid;
-                lTSTC.RELATIONSHIP_ID = Helper.NextTestSuiteId("REL_TEST_CASE_TEST_SUITE_SEQ");
-                entity.REL_TEST_CASE_TEST_SUITE.Add(lTSTC);
-                entity.SaveChanges();
-
-                // create dataset 
-                var tblDataSummary = new T_TEST_DATA_SUMMARY();
-                tblDataSummary.ALIAS_NAME = datasetwithsuffix;
-                tblDataSummary.DATA_SUMMARY_ID = Helper.NextTestSuiteId("T_TEST_STEPS_SEQ");
-                tblDataSummary.SHARE_MARK = 1;
-                tblDataSummary.STATUS = 0;
-                tblDataSummary.CREATE_TIME = DateTime.Now;
-                entity.T_TEST_DATA_SUMMARY.Add(tblDataSummary);
-                entity.SaveChanges();
-
-                var tblMapping = new REL_TC_DATA_SUMMARY();
-                tblMapping.ID = Helper.NextTestSuiteId("T_TEST_STEPS_SEQ");
-                tblMapping.TEST_CASE_ID = tbl.TEST_CASE_ID;
-                tblMapping.DATA_SUMMARY_ID = tblDataSummary.DATA_SUMMARY_ID;
-                entity.REL_TC_DATA_SUMMARY.Add(tblMapping);
-                entity.SaveChanges();
-
-                var resultteststeps = from t in entity.T_TEST_STEPS
-                                      where t.TEST_CASE_ID == oldtestcaseid
-                                      select new
-                                      {
-                                          t.RUN_ORDER,
-                                          t.COLUMN_ROW_SETTING,
-                                          t.COMMENT,
-                                          t.IS_RUNNABLE,
-                                          t.KEY_WORD_ID,
-                                          t.OBJECT_ID,
-                                          t.OBJECT_NAME_ID,
-                                          t.STEPS_ID,
-                                          t.TEST_CASE_ID,
-                                          t.VALUE_SETTING
-                                      };
-                var lresultteststeps = resultteststeps.ToList();
-                foreach (var item in lresultteststeps)
-                {
-                    var tblStep = new T_TEST_STEPS();
-                    tblStep.STEPS_ID = Helper.NextTestSuiteId("T_TEST_STEPS_SEQ");
-                    tblStep.RUN_ORDER = item.RUN_ORDER;
-                    tblStep.TEST_CASE_ID = tbl.TEST_CASE_ID;
-                    tblStep.COLUMN_ROW_SETTING = item.COLUMN_ROW_SETTING;
-                    tblStep.COMMENT = item.COMMENT;
-                    tblStep.IS_RUNNABLE = item.IS_RUNNABLE;
-                    tblStep.KEY_WORD_ID = item.KEY_WORD_ID;
-                    tblStep.OBJECT_ID = item.OBJECT_ID;
-                    tblStep.OBJECT_NAME_ID = item.OBJECT_NAME_ID;
-                    tblStep.VALUE_SETTING = item.VALUE_SETTING;
-                    entity.T_TEST_STEPS.Add(tblStep);
+                    // create reletion testcase and testsuite 
+                    var lTSTC = new REL_TEST_CASE_TEST_SUITE();
+                    lTSTC.TEST_CASE_ID = tbl.TEST_CASE_ID;
+                    lTSTC.TEST_SUITE_ID = testsuiteid;
+                    lTSTC.RELATIONSHIP_ID = Helper.NextTestSuiteId("REL_TEST_CASE_TEST_SUITE_SEQ");
+                    entity.REL_TEST_CASE_TEST_SUITE.Add(lTSTC);
                     entity.SaveChanges();
 
-                    // get data value form Test_data_setting using stepid and datasummeryid
-                    var olddatasummarydata = entity.T_TEST_DATA_SUMMARY.Where(x => x.ALIAS_NAME.Trim() == datasetName.Trim()).FirstOrDefault();
-                    var datavalue = entity.TEST_DATA_SETTING.Where(x => x.STEPS_ID == item.STEPS_ID && x.DATA_SUMMARY_ID == olddatasummarydata.DATA_SUMMARY_ID).FirstOrDefault();
+                    // create dataset 
+                    var tblDataSummary = new T_TEST_DATA_SUMMARY();
+                    tblDataSummary.ALIAS_NAME = datasetwithsuffix;
+                    tblDataSummary.DATA_SUMMARY_ID = Helper.NextTestSuiteId("T_TEST_STEPS_SEQ");
+                    tblDataSummary.SHARE_MARK = 1;
+                    tblDataSummary.STATUS = 0;
+                    tblDataSummary.CREATE_TIME = DateTime.Now;
+                    entity.T_TEST_DATA_SUMMARY.Add(tblDataSummary);
+                    entity.SaveChanges();
 
-                    if (datavalue != null)
+                    var tblMapping = new REL_TC_DATA_SUMMARY();
+                    tblMapping.ID = Helper.NextTestSuiteId("T_TEST_STEPS_SEQ");
+                    tblMapping.TEST_CASE_ID = tbl.TEST_CASE_ID;
+                    tblMapping.DATA_SUMMARY_ID = tblDataSummary.DATA_SUMMARY_ID;
+                    entity.REL_TC_DATA_SUMMARY.Add(tblMapping);
+                    entity.SaveChanges();
+
+                    var resultteststeps = from t in entity.T_TEST_STEPS
+                                          where t.TEST_CASE_ID == oldtestcaseid
+                                          select new
+                                          {
+                                              t.RUN_ORDER,
+                                              t.COLUMN_ROW_SETTING,
+                                              t.COMMENT,
+                                              t.IS_RUNNABLE,
+                                              t.KEY_WORD_ID,
+                                              t.OBJECT_ID,
+                                              t.OBJECT_NAME_ID,
+                                              t.STEPS_ID,
+                                              t.TEST_CASE_ID,
+                                              t.VALUE_SETTING
+                                          };
+                    var lresultteststeps = resultteststeps.ToList();
+                    foreach (var item in lresultteststeps)
                     {
-                        // add datavalue
-                        var tbldatasetting = new TEST_DATA_SETTING();
-                        tbldatasetting.DATA_SETTING_ID = Helper.NextTestSuiteId("T_TEST_STEPS_SEQ");
-                        tbldatasetting.STEPS_ID = tblStep.STEPS_ID;
-                        tbldatasetting.DATA_SUMMARY_ID = tblDataSummary.DATA_SUMMARY_ID;
-                        tbldatasetting.LOOP_ID = datavalue.LOOP_ID;
-                        tbldatasetting.DATA_VALUE = datavalue.DATA_VALUE;
-                        tbldatasetting.POOL_ID = datavalue.POOL_ID;
-                        tbldatasetting.VALUE_OR_OBJECT = datavalue.VALUE_OR_OBJECT;
-                        tbldatasetting.VERSION = datavalue.VERSION;
-                        tbldatasetting.DATA_DIRECTION = datavalue.DATA_DIRECTION;
-                        tbldatasetting.CREATE_TIME = DateTime.Now; ;
-                        entity.TEST_DATA_SETTING.Add(tbldatasetting);
+                        var tblStep = new T_TEST_STEPS();
+                        tblStep.STEPS_ID = Helper.NextTestSuiteId("T_TEST_STEPS_SEQ");
+                        tblStep.RUN_ORDER = item.RUN_ORDER;
+                        tblStep.TEST_CASE_ID = tbl.TEST_CASE_ID;
+                        tblStep.COLUMN_ROW_SETTING = item.COLUMN_ROW_SETTING;
+                        tblStep.COMMENT = item.COMMENT;
+                        tblStep.IS_RUNNABLE = item.IS_RUNNABLE;
+                        tblStep.KEY_WORD_ID = item.KEY_WORD_ID;
+                        tblStep.OBJECT_ID = item.OBJECT_ID;
+                        tblStep.OBJECT_NAME_ID = item.OBJECT_NAME_ID;
+                        tblStep.VALUE_SETTING = item.VALUE_SETTING;
+                        entity.T_TEST_STEPS.Add(tblStep);
+                        entity.SaveChanges();
+
+                        // get data value form Test_data_setting using stepid and datasummeryid
+                        var olddatasummarydata = entity.T_TEST_DATA_SUMMARY.Where(x => x.ALIAS_NAME.Trim() == datasetName.Trim()).FirstOrDefault();
+                        var datavalue = entity.TEST_DATA_SETTING.Where(x => x.STEPS_ID == item.STEPS_ID && x.DATA_SUMMARY_ID == olddatasummarydata.DATA_SUMMARY_ID).FirstOrDefault();
+
+                        if (datavalue != null)
+                        {
+                            // add datavalue
+                            var tbldatasetting = new TEST_DATA_SETTING();
+                            tbldatasetting.DATA_SETTING_ID = Helper.NextTestSuiteId("T_TEST_STEPS_SEQ");
+                            tbldatasetting.STEPS_ID = tblStep.STEPS_ID;
+                            tbldatasetting.DATA_SUMMARY_ID = tblDataSummary.DATA_SUMMARY_ID;
+                            tbldatasetting.LOOP_ID = datavalue.LOOP_ID;
+                            tbldatasetting.DATA_VALUE = datavalue.DATA_VALUE;
+                            tbldatasetting.POOL_ID = datavalue.POOL_ID;
+                            tbldatasetting.VALUE_OR_OBJECT = datavalue.VALUE_OR_OBJECT;
+                            tbldatasetting.VERSION = datavalue.VERSION;
+                            tbldatasetting.DATA_DIRECTION = datavalue.DATA_DIRECTION;
+                            tbldatasetting.CREATE_TIME = DateTime.Now; ;
+                            entity.TEST_DATA_SETTING.Add(tbldatasetting);
+                            entity.SaveChanges();
+                        }
+                    }
+
+                    var resultapp = from t in entity.T_TEST_SUITE
+                                    join t2 in entity.REL_APP_TESTSUITE on t.TEST_SUITE_ID equals t2.TEST_SUITE_ID
+                                    join t3 in entity.T_REGISTERED_APPS on t2.APPLICATION_ID equals t3.APPLICATION_ID
+                                    where t.TEST_SUITE_ID == testsuiteid
+                                    select t3.APPLICATION_ID;
+                    var lresultApp = resultapp.Distinct().ToList();
+                    foreach (var item in lresultApp)
+                    {
+                        var lApptbl = new REL_APP_TESTCASE();
+                        lApptbl.APPLICATION_ID = item;
+                        lApptbl.TEST_CASE_ID = tbl.TEST_CASE_ID;
+                        lApptbl.RELATIONSHIP_ID = Helper.NextTestSuiteId("REL_APP_TESTCASE_SEQ");
+                        entity.REL_APP_TESTCASE.Add(lApptbl);
                         entity.SaveChanges();
                     }
+                    scope.Complete();
+                    return "success";
                 }
-
-                var resultapp = from t in entity.T_TEST_SUITE
-                                join t2 in entity.REL_APP_TESTSUITE on t.TEST_SUITE_ID equals t2.TEST_SUITE_ID
-                                join t3 in entity.T_REGISTERED_APPS on t2.APPLICATION_ID equals t3.APPLICATION_ID
-                                where t.TEST_SUITE_ID == testsuiteid
-                                select t3.APPLICATION_ID;
-                var lresultApp = resultapp.Distinct().ToList();
-                foreach (var item in lresultApp)
-                {
-                    var lApptbl = new REL_APP_TESTCASE();
-                    lApptbl.APPLICATION_ID = item;
-                    lApptbl.TEST_CASE_ID = tbl.TEST_CASE_ID;
-                    lApptbl.RELATIONSHIP_ID = Helper.NextTestSuiteId("REL_APP_TESTCASE_SEQ");
-                    entity.REL_APP_TESTCASE.Add(lApptbl);
-                    entity.SaveChanges();
-                }
-
-                return "success";
             }
             catch (Exception ex)
             {
@@ -1790,12 +1881,16 @@ namespace MARS_Repository.Repositories
             logger.Info(string.Format("SaveAs TestCas eOne Copied DataSet start | Oldtestcaseid: {0} | Testcasename: {1} | DatasetName: {2} | UserName: {3}", oldtestcaseid, testcasename, datasetName, Username));
             try
             {
-                ObjectParameter RESULT = new ObjectParameter("RESULT", typeof(string));
+                using (TransactionScope scope = new TransactionScope())
+                {
+                    ObjectParameter RESULT = new ObjectParameter("RESULT", typeof(string));
 
-                var lresult = entity.SP_SavaAs_TestCase_One_Dataset(oldtestcaseid, testcasename, testcasedesc, testsuiteid, projectid, datasetName, suffix, LoginName, RESULT);
+                    var lresult = entity.SP_SavaAs_TestCase_One_Dataset(oldtestcaseid, testcasename, testcasedesc, testsuiteid, projectid, datasetName, suffix, LoginName, RESULT);
 
-                logger.Info(string.Format("SaveAs TestCas eOne Copied DataSet end | Oldtestcaseid: {0} | Testcasename: {1} | DatasetName: {2} | UserName: {3}", oldtestcaseid, testcasename, datasetName, Username));
-                return RESULT.Value.ToString();
+                    logger.Info(string.Format("SaveAs TestCas eOne Copied DataSet end | Oldtestcaseid: {0} | Testcasename: {1} | DatasetName: {2} | UserName: {3}", oldtestcaseid, testcasename, datasetName, Username));
+                    scope.Complete();
+                    return RESULT.Value.ToString();
+                }
             }
             catch (Exception ex)
             {
@@ -1811,170 +1906,174 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                // add new coding
-                if (!string.IsNullOrEmpty(testcasename))
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    testcasename = testcasename.Trim();
-                }
-
-                var lflag = "success";
-                // check testcase 
-                var result = CheckDuplicateTestCasenameSaveAs(testcasename, oldtestcaseid);
-                if (result == true)
-                {
-                    var sresult = entity.T_TEST_CASE_SUMMARY.Find(oldtestcaseid);
-                    if (sresult.TEST_CASE_NAME == testcasename && sresult.TEST_STEP_DESCRIPTION != testcasedesc)
+                    // add new coding
+                    if (!string.IsNullOrEmpty(testcasename))
                     {
-                        lflag = "description cannot be changed";
+                        testcasename = testcasename.Trim();
+                    }
+
+                    var lflag = "success";
+                    // check testcase 
+                    var result = CheckDuplicateTestCasenameSaveAs(testcasename, oldtestcaseid);
+                    if (result == true)
+                    {
+                        var sresult = entity.T_TEST_CASE_SUMMARY.Find(oldtestcaseid);
+                        if (sresult.TEST_CASE_NAME == testcasename && sresult.TEST_STEP_DESCRIPTION != testcasedesc)
+                        {
+                            lflag = "description cannot be changed";
+                            return lflag;
+                        }
+                        lflag = "error";
                         return lflag;
                     }
-                    lflag = "error";
-                    return lflag;
-                }
 
-                //check dublicate dataset
-                var resultdataset = from t1 in entity.T_TEST_PROJECT
-                                    join t2 in entity.REL_TEST_SUIT_PROJECT on t1.PROJECT_ID equals t2.PROJECT_ID
-                                    join t3 in entity.T_TEST_SUITE on t2.TEST_SUITE_ID equals t3.TEST_SUITE_ID
-                                    join t4 in entity.REL_TEST_CASE_TEST_SUITE on t2.TEST_SUITE_ID equals t4.TEST_SUITE_ID
-                                    join t5 in entity.T_TEST_CASE_SUMMARY on t4.TEST_CASE_ID equals t5.TEST_CASE_ID
-                                    join t6 in entity.REL_TC_DATA_SUMMARY on t5.TEST_CASE_ID equals t6.TEST_CASE_ID
-                                    join t7 in entity.T_TEST_DATA_SUMMARY on t6.DATA_SUMMARY_ID equals t7.DATA_SUMMARY_ID
-                                    where t1.PROJECT_ID == projectid && t3.TEST_SUITE_ID == testsuiteid && t5.TEST_CASE_ID == oldtestcaseid
-                                    select new DataSetListByTestCase
-                                    {
-                                        Datasetid = t7.DATA_SUMMARY_ID,
-                                        Datasetname = t7.ALIAS_NAME
-                                    };
-                var datasetlst = resultdataset.ToList();
-                var datasetlstwithsuffix = datasetlst.Select(x => x.Datasetname.Trim() + suffix.Trim()).ToList();
-                var checkdublicatedataset = entity.T_TEST_DATA_SUMMARY.ToList().Where(a => datasetlstwithsuffix.Any(b => a.ALIAS_NAME.Trim() == b.Trim()));
+                    //check dublicate dataset
+                    var resultdataset = from t1 in entity.T_TEST_PROJECT
+                                        join t2 in entity.REL_TEST_SUIT_PROJECT on t1.PROJECT_ID equals t2.PROJECT_ID
+                                        join t3 in entity.T_TEST_SUITE on t2.TEST_SUITE_ID equals t3.TEST_SUITE_ID
+                                        join t4 in entity.REL_TEST_CASE_TEST_SUITE on t2.TEST_SUITE_ID equals t4.TEST_SUITE_ID
+                                        join t5 in entity.T_TEST_CASE_SUMMARY on t4.TEST_CASE_ID equals t5.TEST_CASE_ID
+                                        join t6 in entity.REL_TC_DATA_SUMMARY on t5.TEST_CASE_ID equals t6.TEST_CASE_ID
+                                        join t7 in entity.T_TEST_DATA_SUMMARY on t6.DATA_SUMMARY_ID equals t7.DATA_SUMMARY_ID
+                                        where t1.PROJECT_ID == projectid && t3.TEST_SUITE_ID == testsuiteid && t5.TEST_CASE_ID == oldtestcaseid
+                                        select new DataSetListByTestCase
+                                        {
+                                            Datasetid = t7.DATA_SUMMARY_ID,
+                                            Datasetname = t7.ALIAS_NAME
+                                        };
+                    var datasetlst = resultdataset.ToList();
+                    var datasetlstwithsuffix = datasetlst.Select(x => x.Datasetname.Trim() + suffix.Trim()).ToList();
+                    var checkdublicatedataset = entity.T_TEST_DATA_SUMMARY.ToList().Where(a => datasetlstwithsuffix.Any(b => a.ALIAS_NAME.Trim() == b.Trim()));
 
-                if (checkdublicatedataset.Count() > 0)
-                {
-                    lflag = "This dataset already exist";
-                    return lflag;
-                }
-                // create testcase
-                var tbl = new T_TEST_CASE_SUMMARY();
-                tbl.TEST_CASE_ID = Helper.NextTestSuiteId("T_TEST_CASE_SUMMARY_SEQ");
-                tbl.TEST_CASE_NAME = testcasename;
-                tbl.TEST_STEP_DESCRIPTION = testcasedesc;
-                tbl.TEST_STEP_CREATE_TIME = DateTime.Now;
-                tbl.TEST_STEP_CREATOR = LoginName;
-                entity.T_TEST_CASE_SUMMARY.Add(tbl);
-                entity.SaveChanges();
+                    if (checkdublicatedataset.Count() > 0)
+                    {
+                        lflag = "This dataset already exist";
+                        return lflag;
+                    }
+                    // create testcase
+                    var tbl = new T_TEST_CASE_SUMMARY();
+                    tbl.TEST_CASE_ID = Helper.NextTestSuiteId("T_TEST_CASE_SUMMARY_SEQ");
+                    tbl.TEST_CASE_NAME = testcasename;
+                    tbl.TEST_STEP_DESCRIPTION = testcasedesc;
+                    tbl.TEST_STEP_CREATE_TIME = DateTime.Now;
+                    tbl.TEST_STEP_CREATOR = LoginName;
+                    entity.T_TEST_CASE_SUMMARY.Add(tbl);
+                    //rutvi
+                    //entity.SaveChanges();
 
-                // create reletion testcase and testsuite 
-                var lTSTC = new REL_TEST_CASE_TEST_SUITE();
-                lTSTC.TEST_CASE_ID = tbl.TEST_CASE_ID;
-                lTSTC.TEST_SUITE_ID = testsuiteid;
-                lTSTC.RELATIONSHIP_ID = Helper.NextTestSuiteId("REL_TEST_CASE_TEST_SUITE_SEQ");
-                entity.REL_TEST_CASE_TEST_SUITE.Add(lTSTC);
-                entity.SaveChanges();
-
-                //create all dataset
-                var objdataset = datasetlstwithsuffix.ToList().Select(a => new T_TEST_DATA_SUMMARY
-                {
-                    ALIAS_NAME = a.Trim(),
-                    DATA_SUMMARY_ID = Helper.NextTestSuiteId("T_TEST_STEPS_SEQ"),
-                    SHARE_MARK = 1,
-                    STATUS = 0,
-                    CREATE_TIME = DateTime.Now
-                }).ToList();
-                CreateAllDataset(constring, objdataset);
-
-                //create all dataset mapping
-                var objdatasetmapping = objdataset.ToList().Select(a => new REL_TC_DATA_SUMMARY
-                {
-                    ID = Helper.NextTestSuiteId("T_TEST_STEPS_SEQ"),
-                    TEST_CASE_ID = tbl.TEST_CASE_ID,
-                    DATA_SUMMARY_ID = a.DATA_SUMMARY_ID,
-                    CREATE_TIME = DateTime.Now
-                }).ToList();
-                CreateAllDatasetMapping(constring, objdatasetmapping);
-
-                //get old step 
-                // create sp and then get stepid using new testcaseid
-
-                var resultteststeps = from t in entity.T_TEST_STEPS
-                                      where t.TEST_CASE_ID == oldtestcaseid
-                                      select new
-                                      {
-                                          t.RUN_ORDER,
-                                          t.COLUMN_ROW_SETTING,
-                                          t.COMMENT,
-                                          t.IS_RUNNABLE,
-                                          t.KEY_WORD_ID,
-                                          t.OBJECT_ID,
-                                          t.OBJECT_NAME_ID,
-                                          t.STEPS_ID,
-                                          t.TEST_CASE_ID,
-                                          t.VALUE_SETTING
-                                      };
-                var lresultteststeps = resultteststeps.ToList();
-
-                foreach (var item in lresultteststeps)
-                {
-                    var tblStep = new T_TEST_STEPS();
-                    tblStep.STEPS_ID = Helper.NextTestSuiteId("T_TEST_STEPS_SEQ");
-                    tblStep.RUN_ORDER = item.RUN_ORDER;
-                    tblStep.TEST_CASE_ID = tbl.TEST_CASE_ID;
-                    tblStep.COLUMN_ROW_SETTING = item.COLUMN_ROW_SETTING;
-                    tblStep.COMMENT = item.COMMENT;
-                    tblStep.IS_RUNNABLE = item.IS_RUNNABLE;
-                    tblStep.KEY_WORD_ID = item.KEY_WORD_ID;
-                    tblStep.OBJECT_ID = item.OBJECT_ID;
-                    tblStep.OBJECT_NAME_ID = item.OBJECT_NAME_ID;
-                    tblStep.VALUE_SETTING = item.VALUE_SETTING;
-                    entity.T_TEST_STEPS.Add(tblStep);
+                    // create reletion testcase and testsuite 
+                    var lTSTC = new REL_TEST_CASE_TEST_SUITE();
+                    lTSTC.TEST_CASE_ID = tbl.TEST_CASE_ID;
+                    lTSTC.TEST_SUITE_ID = testsuiteid;
+                    lTSTC.RELATIONSHIP_ID = Helper.NextTestSuiteId("REL_TEST_CASE_TEST_SUITE_SEQ");
+                    entity.REL_TEST_CASE_TEST_SUITE.Add(lTSTC);
                     entity.SaveChanges();
 
-                    //old dataset 
-                    foreach (var dataset in datasetlst)
+                    //create all dataset
+                    var objdataset = datasetlstwithsuffix.ToList().Select(a => new T_TEST_DATA_SUMMARY
                     {
-                        // get old datasetid 
-                        var olddataset = entity.T_TEST_DATA_SUMMARY.Where(x => x.ALIAS_NAME.Trim() == dataset.Datasetname.Trim()).FirstOrDefault();
-                        var datavalue = entity.TEST_DATA_SETTING.Where(x => x.STEPS_ID == item.STEPS_ID && x.DATA_SUMMARY_ID == olddataset.DATA_SUMMARY_ID).FirstOrDefault();
+                        ALIAS_NAME = a.Trim(),
+                        DATA_SUMMARY_ID = Helper.NextTestSuiteId("T_TEST_STEPS_SEQ"),
+                        SHARE_MARK = 1,
+                        STATUS = 0,
+                        CREATE_TIME = DateTime.Now
+                    }).ToList();
+                    CreateAllDataset(constring, objdataset);
 
-                        //get new datasetid
-                        var newdataset = entity.T_TEST_DATA_SUMMARY.Where(x => x.ALIAS_NAME.Trim() == dataset.Datasetname.Trim() + suffix.Trim()).FirstOrDefault();
+                    //create all dataset mapping
+                    var objdatasetmapping = objdataset.ToList().Select(a => new REL_TC_DATA_SUMMARY
+                    {
+                        ID = Helper.NextTestSuiteId("T_TEST_STEPS_SEQ"),
+                        TEST_CASE_ID = tbl.TEST_CASE_ID,
+                        DATA_SUMMARY_ID = a.DATA_SUMMARY_ID,
+                        CREATE_TIME = DateTime.Now
+                    }).ToList();
+                    CreateAllDatasetMapping(constring, objdatasetmapping);
 
-                        // add datavalue
-                        var tbldatasetting = new TEST_DATA_SETTING();
-                        tbldatasetting.DATA_SETTING_ID = Helper.NextTestSuiteId("T_TEST_STEPS_SEQ");
-                        tbldatasetting.STEPS_ID = tblStep.STEPS_ID;
-                        tbldatasetting.DATA_SUMMARY_ID = newdataset.DATA_SUMMARY_ID;
-                        tbldatasetting.LOOP_ID = datavalue.LOOP_ID;
-                        tbldatasetting.DATA_VALUE = datavalue.DATA_VALUE;
-                        tbldatasetting.POOL_ID = datavalue.POOL_ID;
-                        tbldatasetting.VALUE_OR_OBJECT = datavalue.VALUE_OR_OBJECT;
-                        tbldatasetting.VERSION = datavalue.VERSION;
-                        tbldatasetting.DATA_DIRECTION = datavalue.DATA_DIRECTION;
-                        tbldatasetting.CREATE_TIME = DateTime.Now; ;
-                        entity.TEST_DATA_SETTING.Add(tbldatasetting);
+                    //get old step 
+                    // create sp and then get stepid using new testcaseid
+
+                    var resultteststeps = from t in entity.T_TEST_STEPS
+                                          where t.TEST_CASE_ID == oldtestcaseid
+                                          select new
+                                          {
+                                              t.RUN_ORDER,
+                                              t.COLUMN_ROW_SETTING,
+                                              t.COMMENT,
+                                              t.IS_RUNNABLE,
+                                              t.KEY_WORD_ID,
+                                              t.OBJECT_ID,
+                                              t.OBJECT_NAME_ID,
+                                              t.STEPS_ID,
+                                              t.TEST_CASE_ID,
+                                              t.VALUE_SETTING
+                                          };
+                    var lresultteststeps = resultteststeps.ToList();
+
+                    foreach (var item in lresultteststeps)
+                    {
+                        var tblStep = new T_TEST_STEPS();
+                        tblStep.STEPS_ID = Helper.NextTestSuiteId("T_TEST_STEPS_SEQ");
+                        tblStep.RUN_ORDER = item.RUN_ORDER;
+                        tblStep.TEST_CASE_ID = tbl.TEST_CASE_ID;
+                        tblStep.COLUMN_ROW_SETTING = item.COLUMN_ROW_SETTING;
+                        tblStep.COMMENT = item.COMMENT;
+                        tblStep.IS_RUNNABLE = item.IS_RUNNABLE;
+                        tblStep.KEY_WORD_ID = item.KEY_WORD_ID;
+                        tblStep.OBJECT_ID = item.OBJECT_ID;
+                        tblStep.OBJECT_NAME_ID = item.OBJECT_NAME_ID;
+                        tblStep.VALUE_SETTING = item.VALUE_SETTING;
+                        entity.T_TEST_STEPS.Add(tblStep);
+                        entity.SaveChanges();
+
+                        //old dataset 
+                        foreach (var dataset in datasetlst)
+                        {
+                            // get old datasetid 
+                            var olddataset = entity.T_TEST_DATA_SUMMARY.Where(x => x.ALIAS_NAME.Trim() == dataset.Datasetname.Trim()).FirstOrDefault();
+                            var datavalue = entity.TEST_DATA_SETTING.Where(x => x.STEPS_ID == item.STEPS_ID && x.DATA_SUMMARY_ID == olddataset.DATA_SUMMARY_ID).FirstOrDefault();
+
+                            //get new datasetid
+                            var newdataset = entity.T_TEST_DATA_SUMMARY.Where(x => x.ALIAS_NAME.Trim() == dataset.Datasetname.Trim() + suffix.Trim()).FirstOrDefault();
+
+                            // add datavalue
+                            var tbldatasetting = new TEST_DATA_SETTING();
+                            tbldatasetting.DATA_SETTING_ID = Helper.NextTestSuiteId("T_TEST_STEPS_SEQ");
+                            tbldatasetting.STEPS_ID = tblStep.STEPS_ID;
+                            tbldatasetting.DATA_SUMMARY_ID = newdataset.DATA_SUMMARY_ID;
+                            tbldatasetting.LOOP_ID = datavalue.LOOP_ID;
+                            tbldatasetting.DATA_VALUE = datavalue.DATA_VALUE;
+                            tbldatasetting.POOL_ID = datavalue.POOL_ID;
+                            tbldatasetting.VALUE_OR_OBJECT = datavalue.VALUE_OR_OBJECT;
+                            tbldatasetting.VERSION = datavalue.VERSION;
+                            tbldatasetting.DATA_DIRECTION = datavalue.DATA_DIRECTION;
+                            tbldatasetting.CREATE_TIME = DateTime.Now; ;
+                            entity.TEST_DATA_SETTING.Add(tbldatasetting);
+                            entity.SaveChanges();
+                        }
+                    }
+
+                    //reletion netween testsuite and application
+                    var resultapp = from t in entity.T_TEST_SUITE
+                                    join t2 in entity.REL_APP_TESTSUITE on t.TEST_SUITE_ID equals t2.TEST_SUITE_ID
+                                    join t3 in entity.T_REGISTERED_APPS on t2.APPLICATION_ID equals t3.APPLICATION_ID
+                                    where t.TEST_SUITE_ID == testsuiteid
+                                    select t3.APPLICATION_ID;
+                    var lresultApp = resultapp.Distinct().ToList();
+                    foreach (var item in lresultApp)
+                    {
+                        var lApptbl = new REL_APP_TESTCASE();
+                        lApptbl.APPLICATION_ID = item;
+                        lApptbl.TEST_CASE_ID = tbl.TEST_CASE_ID;
+                        lApptbl.RELATIONSHIP_ID = Helper.NextTestSuiteId("REL_APP_TESTCASE_SEQ");
+                        entity.REL_APP_TESTCASE.Add(lApptbl);
                         entity.SaveChanges();
                     }
+                    scope.Complete();
+                    return "success";
                 }
-
-                //reletion netween testsuite and application
-                var resultapp = from t in entity.T_TEST_SUITE
-                                join t2 in entity.REL_APP_TESTSUITE on t.TEST_SUITE_ID equals t2.TEST_SUITE_ID
-                                join t3 in entity.T_REGISTERED_APPS on t2.APPLICATION_ID equals t3.APPLICATION_ID
-                                where t.TEST_SUITE_ID == testsuiteid
-                                select t3.APPLICATION_ID;
-                var lresultApp = resultapp.Distinct().ToList();
-                foreach (var item in lresultApp)
-                {
-                    var lApptbl = new REL_APP_TESTCASE();
-                    lApptbl.APPLICATION_ID = item;
-                    lApptbl.TEST_CASE_ID = tbl.TEST_CASE_ID;
-                    lApptbl.RELATIONSHIP_ID = Helper.NextTestSuiteId("REL_APP_TESTCASE_SEQ");
-                    entity.REL_APP_TESTCASE.Add(lApptbl);
-                    entity.SaveChanges();
-                }
-
-                return "success";
             }
             catch (Exception ex)
             {
@@ -1990,12 +2089,16 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("SaveAs TestCase All Copied DataSet start | Oldtestcaseid: {0} | Testcasename: {1} | UserName: {2}", oldtestcaseid, testcasename, Username));
-                ObjectParameter RESULT = new ObjectParameter("RESULT", typeof(string));
-                var lresult = entity.SP_SavaAs_TestCase_AllDataset(oldtestcaseid, testcasename, testcasedesc, testsuiteid, projectid, suffix, LoginName, RESULT);
+                using (TransactionScope scope = new TransactionScope())
+                {
+                    logger.Info(string.Format("SaveAs TestCase All Copied DataSet start | Oldtestcaseid: {0} | Testcasename: {1} | UserName: {2}", oldtestcaseid, testcasename, Username));
+                    ObjectParameter RESULT = new ObjectParameter("RESULT", typeof(string));
+                    var lresult = entity.SP_SavaAs_TestCase_AllDataset(oldtestcaseid, testcasename, testcasedesc, testsuiteid, projectid, suffix, LoginName, RESULT);
 
-                logger.Info(string.Format("SaveAs TestCase All Copied DataSet end | Oldtestcaseid: {0} | Testcasename: {1} | UserName: {2}", oldtestcaseid, testcasename, Username));
-                return RESULT.Value.ToString();
+                    logger.Info(string.Format("SaveAs TestCase All Copied DataSet end | Oldtestcaseid: {0} | Testcasename: {1} | UserName: {2}", oldtestcaseid, testcasename, Username));
+                    scope.Complete();
+                    return RESULT.Value.ToString();
+                }
             }
             catch (Exception ex)
             {
@@ -2197,43 +2300,47 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("GetTestCaseVersion start | TestCaseId: {0} | UserId: {1} | UserName: {2}", TestCaseId, UserId, Username));
-                var ltbl = entity.T_TESTCASE_VERSION.Where(x => x.TESTCASEID == (long)TestCaseId).FirstOrDefault();
-                if (ltbl != null)
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    if ((ltbl.ISAVAILABLE == 1 && ltbl.CREATETIME < DateTime.Now.AddMinutes(-10)) || ltbl.CREATORID == 0)
+                    logger.Info(string.Format("GetTestCaseVersion start | TestCaseId: {0} | UserId: {1} | UserName: {2}", TestCaseId, UserId, Username));
+                    var ltbl = entity.T_TESTCASE_VERSION.Where(x => x.TESTCASEID == (long)TestCaseId).FirstOrDefault();
+                    if (ltbl != null)
                     {
-                        ltbl.CREATORID = UserId;
-                        ltbl.CREATETIME = DateTime.Now;
+                        if ((ltbl.ISAVAILABLE == 1 && ltbl.CREATETIME < DateTime.Now.AddMinutes(-10)) || ltbl.CREATORID == 0)
+                        {
+                            ltbl.CREATORID = UserId;
+                            ltbl.CREATETIME = DateTime.Now;
+                        }
+                        ltbl.ISAVAILABLE = 1;
+                        entity.SaveChanges();
                     }
-                    ltbl.ISAVAILABLE = 1;
-                    entity.SaveChanges();
-                }
-                else
-                {
-                    var TC_Version = new T_TESTCASE_VERSION();
-                    TC_Version.CREATETIME = DateTime.Now;
-                    TC_Version.CREATORID = UserId;
-                    TC_Version.TESTCASEID = TestCaseId;
-                    TC_Version.ISAVAILABLE = 1;
-                    TC_Version.TC_VERSION_ID = Helper.NextTestSuiteId("T_TEST_CASE_SUMMARY_SEQ"); ;
-                    TC_Version.VERSIONID = 1;
-                    entity.T_TESTCASE_VERSION.Add(TC_Version);
-                    entity.SaveChanges();
-                }
+                    else
+                    {
+                        var TC_Version = new T_TESTCASE_VERSION();
+                        TC_Version.CREATETIME = DateTime.Now;
+                        TC_Version.CREATORID = UserId;
+                        TC_Version.TESTCASEID = TestCaseId;
+                        TC_Version.ISAVAILABLE = 1;
+                        TC_Version.TC_VERSION_ID = Helper.NextTestSuiteId("T_TEST_CASE_SUMMARY_SEQ"); ;
+                        TC_Version.VERSIONID = 1;
+                        entity.T_TESTCASE_VERSION.Add(TC_Version);
+                        entity.SaveChanges();
+                    }
 
-                var lResult = entity.T_TESTCASE_VERSION.Where(x => x.TESTCASEID == TestCaseId).Select(y => new TestCase_Version_Model
-                {
-                    TESTCASEID = (long)y.TESTCASEID,
-                    TC_VERSION_ID = y.TC_VERSION_ID,
-                    CREATORID = y.CREATORID,
-                    CREATETIME = y.CREATETIME,
-                    ISAVAILABLE = y.CREATORID == UserId ? 0 : y.CREATORID == 0 ? 0 : y.ISAVAILABLE,
-                    VERSION = y.VERSIONID
-                }).FirstOrDefault();
+                    var lResult = entity.T_TESTCASE_VERSION.Where(x => x.TESTCASEID == TestCaseId).Select(y => new TestCase_Version_Model
+                    {
+                        TESTCASEID = (long)y.TESTCASEID,
+                        TC_VERSION_ID = y.TC_VERSION_ID,
+                        CREATORID = y.CREATORID,
+                        CREATETIME = y.CREATETIME,
+                        ISAVAILABLE = y.CREATORID == UserId ? 0 : y.CREATORID == 0 ? 0 : y.ISAVAILABLE,
+                        VERSION = y.VERSIONID
+                    }).FirstOrDefault();
 
-                logger.Info(string.Format("GetTestCaseVersion end | TestCaseId: {0} | UserId: {1} | UserName: {2}", TestCaseId, UserId, Username));
-                return lResult;
+                    logger.Info(string.Format("GetTestCaseVersion end | TestCaseId: {0} | UserId: {1} | UserName: {2}", TestCaseId, UserId, Username));
+                    scope.Complete();
+                    return lResult;
+                }
             }
             catch (Exception ex)
             {
@@ -2249,16 +2356,20 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("Save TestCase Version start | TestCaseId: {0} | UserId: {1} | UserName: {2}", TestCaseId, UserId, Username));
-                var ltbl = entity.T_TESTCASE_VERSION.Where(x => x.TESTCASEID == TestCaseId).FirstOrDefault();
-                if (ltbl != null)
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    ltbl.VERSIONID = ltbl.VERSIONID + 1;
-                    ltbl.CREATORID = 0;
-                    ltbl.CREATETIME = DateTime.Now;
-                    ltbl.ISAVAILABLE = 0;
-                    entity.SaveChanges();
-                    logger.Info(string.Format("Save TestCase Version end | TestCaseId: {0} | UserId: {1} | UserName: {2}", TestCaseId, UserId, Username));
+                    logger.Info(string.Format("Save TestCase Version start | TestCaseId: {0} | UserId: {1} | UserName: {2}", TestCaseId, UserId, Username));
+                    var ltbl = entity.T_TESTCASE_VERSION.Where(x => x.TESTCASEID == TestCaseId).FirstOrDefault();
+                    if (ltbl != null)
+                    {
+                        ltbl.VERSIONID = ltbl.VERSIONID + 1;
+                        ltbl.CREATORID = 0;
+                        ltbl.CREATETIME = DateTime.Now;
+                        ltbl.ISAVAILABLE = 0;
+                        entity.SaveChanges();
+                        logger.Info(string.Format("Save TestCase Version end | TestCaseId: {0} | UserId: {1} | UserName: {2}", TestCaseId, UserId, Username));
+                    }
+                    scope.Complete();
                 }
             }
             catch (Exception ex)
@@ -2294,23 +2405,29 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("Update Is Available start | TestCaseId: {0} | UserName: {1}", TestCaseIds, Username));
-                var TestCaseArray = TestCaseIds.Split(',').ToList();
-                foreach (var item in TestCaseArray)
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    if (!string.IsNullOrEmpty(item))
+                    logger.Info(string.Format("Update Is Available start | TestCaseId: {0} | UserName: {1}", TestCaseIds, Username));
+                    var TestCaseArray = TestCaseIds.Split(',').ToList();
+                    foreach (var item in TestCaseArray)
                     {
-                        var lTestCaseId = Convert.ToInt64(item);
-                        var tbl = entity.T_TESTCASE_VERSION.Where(x => x.TESTCASEID == lTestCaseId).FirstOrDefault();
-                        if (tbl != null)
+                        if (!string.IsNullOrEmpty(item))
                         {
-                            tbl.ISAVAILABLE = 0;
-                            tbl.CREATORID = 0;
-                            entity.SaveChanges();
+                            var lTestCaseId = Convert.ToInt64(item);
+                            var tbl = entity.T_TESTCASE_VERSION.Where(x => x.TESTCASEID == lTestCaseId).FirstOrDefault();
+                            if (tbl != null)
+                            {
+                                tbl.ISAVAILABLE = 0;
+                                tbl.CREATORID = 0;
+
+                            }
                         }
                     }
+
+                    entity.SaveChanges();
+                    logger.Info(string.Format("Update Is Available end | TestCaseId: {0} | UserName: {1}", TestCaseIds, Username));
+                    scope.Complete();
                 }
-                logger.Info(string.Format("Update Is Available end | TestCaseId: {0} | UserName: {1}", TestCaseIds, Username));
             }
             catch (Exception ex)
             {
@@ -2326,15 +2443,20 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("Update UserId start | UserId: {0}", UserId));
-                var tblList = entity.T_TESTCASE_VERSION.Where(x => x.CREATORID == UserId).ToList();
-                foreach (var item in tblList)
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    item.ISAVAILABLE = 0;
-                    item.CREATORID = 0;
+                    logger.Info(string.Format("Update UserId start | UserId: {0}", UserId));
+                    var tblList = entity.T_TESTCASE_VERSION.Where(x => x.CREATORID == UserId).ToList();
+                    foreach (var item in tblList)
+                    {
+                        item.ISAVAILABLE = 0;
+                        item.CREATORID = 0;
+                        //entity.SaveChanges();
+                    }
                     entity.SaveChanges();
+                    logger.Info(string.Format("Update UserId end | UserId: {0}", UserId));
+                    scope.Complete();
                 }
-                logger.Info(string.Format("Update UserId end | UserId: {0}", UserId));
             }
             catch (Exception ex)
             {
@@ -2360,7 +2482,8 @@ namespace MARS_Repository.Repositories
                 lDataSummary.ALIAS_NAME = datasetname;
                 lDataSummary.DESCRIPTION_INFO = datasetdesc;
                 entity.T_TEST_DATA_SUMMARY.Add(lDataSummary);
-                entity.SaveChanges();
+                //rutvi
+                //entity.SaveChanges();
                 var ldatasetid = lDataSummary.DATA_SUMMARY_ID;
 
                 var lRelTCDataSet = new REL_TC_DATA_SUMMARY();
@@ -2812,46 +2935,50 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                if (!string.IsNullOrEmpty(lEntity.Name))
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    lEntity.Name = lEntity.Name.Trim();
-                }
-                var flag = false;
-                if (lEntity.Id == 0)
-                {
-                    logger.Info(string.Format("Add Group start | Group: {0} | UserName: {1}", lEntity.Name, Username));
-                    var tbl = new T_TEST_GROUP();
-                    tbl.GROUPID = Helper.NextTestSuiteId("SEQ_T_TEST_GROUP");
-                    tbl.GROUPNAME = lEntity.Name;
-                    tbl.DESCRIPTION = lEntity.Description;
-                    tbl.ACTIVE = lEntity.IsActive;
-                    tbl.CREATION_DATE = DateTime.Now;
-                    tbl.UPDATE_DATE = DateTime.Now;
-                    tbl.CREATION_USER = Username;
-                    tbl.UPDATE_CREATION_USER = Username;
-                    lEntity.Id = tbl.GROUPID;
-                    entity.T_TEST_GROUP.Add(tbl);
-                    entity.SaveChanges();
-                    flag = true;
-                    logger.Info(string.Format("Add Group end | Group: {0} | UserName: {1}", lEntity.Name, Username));
-                }
-                else
-                {
-                    logger.Info(string.Format("Edit Group start | Group: {0} | GroupId: {1} | UserName: {2}", lEntity.Name, lEntity.Id, Username));
-                    var tbl = entity.T_TEST_GROUP.Find(lEntity.Id);
-
-                    if (tbl != null)
+                    if (!string.IsNullOrEmpty(lEntity.Name))
                     {
+                        lEntity.Name = lEntity.Name.Trim();
+                    }
+                    var flag = false;
+                    if (lEntity.Id == 0)
+                    {
+                        logger.Info(string.Format("Add Group start | Group: {0} | UserName: {1}", lEntity.Name, Username));
+                        var tbl = new T_TEST_GROUP();
+                        tbl.GROUPID = Helper.NextTestSuiteId("SEQ_T_TEST_GROUP");
+                        tbl.GROUPNAME = lEntity.Name;
                         tbl.DESCRIPTION = lEntity.Description;
                         tbl.ACTIVE = lEntity.IsActive;
+                        tbl.CREATION_DATE = DateTime.Now;
                         tbl.UPDATE_DATE = DateTime.Now;
+                        tbl.CREATION_USER = Username;
                         tbl.UPDATE_CREATION_USER = Username;
+                        lEntity.Id = tbl.GROUPID;
+                        entity.T_TEST_GROUP.Add(tbl);
                         entity.SaveChanges();
+                        flag = true;
+                        logger.Info(string.Format("Add Group end | Group: {0} | UserName: {1}", lEntity.Name, Username));
                     }
-                    flag = true;
-                    logger.Info(string.Format("Edit Group end | Group: {0} | GroupId: {1} | UserName: {2}", lEntity.Name, lEntity.Id, Username));
+                    else
+                    {
+                        logger.Info(string.Format("Edit Group start | Group: {0} | GroupId: {1} | UserName: {2}", lEntity.Name, lEntity.Id, Username));
+                        var tbl = entity.T_TEST_GROUP.Find(lEntity.Id);
+
+                        if (tbl != null)
+                        {
+                            tbl.DESCRIPTION = lEntity.Description;
+                            tbl.ACTIVE = lEntity.IsActive;
+                            tbl.UPDATE_DATE = DateTime.Now;
+                            tbl.UPDATE_CREATION_USER = Username;
+                            entity.SaveChanges();
+                        }
+                        flag = true;
+                        logger.Info(string.Format("Edit Group end | Group: {0} | GroupId: {1} | UserName: {2}", lEntity.Name, lEntity.Id, Username));
+                    }
+                    scope.Complete();
+                    return flag;
                 }
-                return flag;
             }
             catch (Exception ex)
             {
@@ -2924,46 +3051,50 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                if (!string.IsNullOrEmpty(lEntity.Name))
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    lEntity.Name = lEntity.Name.Trim();
-                }
-                var flag = false;
-                if (lEntity.Id == 0)
-                {
-                    logger.Info(string.Format("Add Set start | Set: {0} | UserName: {1}", lEntity.Name, Username));
-                    var tbl = new T_TEST_SET();
-                    tbl.SETID = Helper.NextTestSuiteId("SEQ_T_TEST_SET");
-                    tbl.SETNAME = lEntity.Name;
-                    tbl.DESCRIPTION = lEntity.Description;
-                    tbl.ACTIVE = lEntity.IsActive;
-                    tbl.CREATION_DATE = DateTime.Now;
-                    tbl.UPDATE_DATE = DateTime.Now;
-                    tbl.CREATION_USER = Username;
-                    tbl.UPDATE_CREATION_USER = Username;
-                    lEntity.Id = tbl.SETID;
-                    entity.T_TEST_SET.Add(tbl);
-                    entity.SaveChanges();
-                    flag = true;
-                    logger.Info(string.Format("Add Set end | Set: {0} | UserName: {1}", lEntity.Name, Username));
-                }
-                else
-                {
-                    logger.Info(string.Format("Edit Set start | Set: {0} | SetId: {1} | UserName: {2}", lEntity.Name, lEntity.Id, Username));
-                    var tbl = entity.T_TEST_SET.Find(lEntity.Id);
-
-                    if (tbl != null)
+                    if (!string.IsNullOrEmpty(lEntity.Name))
                     {
+                        lEntity.Name = lEntity.Name.Trim();
+                    }
+                    var flag = false;
+                    if (lEntity.Id == 0)
+                    {
+                        logger.Info(string.Format("Add Set start | Set: {0} | UserName: {1}", lEntity.Name, Username));
+                        var tbl = new T_TEST_SET();
+                        tbl.SETID = Helper.NextTestSuiteId("SEQ_T_TEST_SET");
+                        tbl.SETNAME = lEntity.Name;
                         tbl.DESCRIPTION = lEntity.Description;
                         tbl.ACTIVE = lEntity.IsActive;
+                        tbl.CREATION_DATE = DateTime.Now;
                         tbl.UPDATE_DATE = DateTime.Now;
+                        tbl.CREATION_USER = Username;
                         tbl.UPDATE_CREATION_USER = Username;
+                        lEntity.Id = tbl.SETID;
+                        entity.T_TEST_SET.Add(tbl);
                         entity.SaveChanges();
+                        flag = true;
+                        logger.Info(string.Format("Add Set end | Set: {0} | UserName: {1}", lEntity.Name, Username));
                     }
-                    flag = true;
-                    logger.Info(string.Format("Edit Set end | Set: {0} | SetId: {1} | UserName: {2}", lEntity.Name, lEntity.Id, Username));
+                    else
+                    {
+                        logger.Info(string.Format("Edit Set start | Set: {0} | SetId: {1} | UserName: {2}", lEntity.Name, lEntity.Id, Username));
+                        var tbl = entity.T_TEST_SET.Find(lEntity.Id);
+
+                        if (tbl != null)
+                        {
+                            tbl.DESCRIPTION = lEntity.Description;
+                            tbl.ACTIVE = lEntity.IsActive;
+                            tbl.UPDATE_DATE = DateTime.Now;
+                            tbl.UPDATE_CREATION_USER = Username;
+                            entity.SaveChanges();
+                        }
+                        flag = true;
+                        logger.Info(string.Format("Edit Set end | Set: {0} | SetId: {1} | UserName: {2}", lEntity.Name, lEntity.Id, Username));
+                    }
+                    scope.Complete();
+                    return flag;
                 }
-                return flag;
             }
             catch (Exception ex)
             {
@@ -3037,46 +3168,50 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                if (!string.IsNullOrEmpty(lEntity.Name))
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    lEntity.Name = lEntity.Name.Trim();
-                }
-                var flag = false;
-                if (lEntity.Id == 0)
-                {
-                    logger.Info(string.Format("Add Folder start | Folder: {0} | UserName: {1}", lEntity.Name, Username));
-                    var tbl = new T_TEST_FOLDER();
-                    tbl.FOLDERID = Helper.NextTestSuiteId("SEQ_T_TEST_FOLDER");
-                    tbl.FOLDERNAME = lEntity.Name;
-                    tbl.DESCRIPTION = lEntity.Description;
-                    tbl.ACTIVE = lEntity.IsActive;
-                    tbl.CREATION_DATE = DateTime.Now;
-                    tbl.UPDATE_DATE = DateTime.Now;
-                    tbl.CREATION_USER = Username;
-                    tbl.UPDATE_CREATION_USER = Username;
-                    lEntity.Id = tbl.FOLDERID;
-                    entity.T_TEST_FOLDER.Add(tbl);
-                    entity.SaveChanges();
-                    flag = true;
-                    logger.Info(string.Format("Add Folder end | Folder: {0} | UserName: {1}", lEntity.Name, Username));
-                }
-                else
-                {
-                    logger.Info(string.Format("Edit Folder start | Folder: {0} | FolderId: {1} | UserName: {2}", lEntity.Name, lEntity.Id, Username));
-                    var tbl = entity.T_TEST_FOLDER.Find(lEntity.Id);
-
-                    if (tbl != null)
+                    if (!string.IsNullOrEmpty(lEntity.Name))
                     {
+                        lEntity.Name = lEntity.Name.Trim();
+                    }
+                    var flag = false;
+                    if (lEntity.Id == 0)
+                    {
+                        logger.Info(string.Format("Add Folder start | Folder: {0} | UserName: {1}", lEntity.Name, Username));
+                        var tbl = new T_TEST_FOLDER();
+                        tbl.FOLDERID = Helper.NextTestSuiteId("SEQ_T_TEST_FOLDER");
+                        tbl.FOLDERNAME = lEntity.Name;
                         tbl.DESCRIPTION = lEntity.Description;
                         tbl.ACTIVE = lEntity.IsActive;
+                        tbl.CREATION_DATE = DateTime.Now;
                         tbl.UPDATE_DATE = DateTime.Now;
+                        tbl.CREATION_USER = Username;
                         tbl.UPDATE_CREATION_USER = Username;
+                        lEntity.Id = tbl.FOLDERID;
+                        entity.T_TEST_FOLDER.Add(tbl);
                         entity.SaveChanges();
+                        flag = true;
+                        logger.Info(string.Format("Add Folder end | Folder: {0} | UserName: {1}", lEntity.Name, Username));
                     }
-                    flag = true;
-                    logger.Info(string.Format("Edit Folder end | Folder: {0} | FolderId: {1} | UserName: {2}", lEntity.Name, lEntity.Id, Username));
+                    else
+                    {
+                        logger.Info(string.Format("Edit Folder start | Folder: {0} | FolderId: {1} | UserName: {2}", lEntity.Name, lEntity.Id, Username));
+                        var tbl = entity.T_TEST_FOLDER.Find(lEntity.Id);
+
+                        if (tbl != null)
+                        {
+                            tbl.DESCRIPTION = lEntity.Description;
+                            tbl.ACTIVE = lEntity.IsActive;
+                            tbl.UPDATE_DATE = DateTime.Now;
+                            tbl.UPDATE_CREATION_USER = Username;
+                            entity.SaveChanges();
+                        }
+                        flag = true;
+                        logger.Info(string.Format("Edit Folder end | Folder: {0} | FolderId: {1} | UserName: {2}", lEntity.Name, lEntity.Id, Username));
+                    }
+                    scope.Complete();
+                    return flag;
                 }
-                return flag;
             }
             catch (Exception ex)
             {
@@ -3220,7 +3355,7 @@ namespace MARS_Repository.Repositories
                     Data_Summary_Name = x.ALIAS_NAME,
                     Dataset_desc = x.DESCRIPTION_INFO
                 }
-       ).Distinct().ToList();
+        ).Distinct().ToList();
                 logger.Info(string.Format("GetDataSetName end | datasetid: {0} | Username: {1}", datasetid, Username));
                 return dataset;
             }
@@ -3238,15 +3373,19 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("DeleteTagProperties start | datasetid: {0} | Username: {1}", datasetid, Username));
-                var result = entity.T_TEST_DATASETTAG.Where(x => x.DATASETID == datasetid).FirstOrDefault();
-                if (result != null)
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    entity.T_TEST_DATASETTAG.Remove(result);
-                    entity.SaveChanges();
+                    logger.Info(string.Format("DeleteTagProperties start | datasetid: {0} | Username: {1}", datasetid, Username));
+                    var result = entity.T_TEST_DATASETTAG.Where(x => x.DATASETID == datasetid).FirstOrDefault();
+                    if (result != null)
+                    {
+                        entity.T_TEST_DATASETTAG.Remove(result);
+                        entity.SaveChanges();
+                    }
+                    logger.Info(string.Format("DeleteTagProperties end | datasetid: {0} | Username: {1}", datasetid, Username));
+                    scope.Complete();
+                    return "success";
                 }
-                logger.Info(string.Format("DeleteTagProperties end | datasetid: {0} | Username: {1}", datasetid, Username));
-                return "success";
             }
             catch (Exception ex)
             {
@@ -3272,6 +3411,59 @@ namespace MARS_Repository.Repositories
                 ELogger.ErrorException(string.Format("Error occured in TestCase for CheckFolderSequenceMapping method | Folder Id : {0} | Sequesnce Id : {1} | DataSet Id: {2} | UserName: {3}", FolderId, SequenceId, datasetid, Username), ex);
                 if (ex.InnerException != null)
                     ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase for CheckFolderSequenceMapping method | Folder Id : {0} | Sequesnce Id : {1} | DataSet Id: {2} | UserName: {3}", FolderId, SequenceId, datasetid, Username), ex.InnerException);
+                throw;
+            }
+        }
+
+        public List<ApplicationModel> GetApplicationListByTestcaseId(long TestcaseId)
+        {
+            try
+            {
+                logger.Info(string.Format("Get ApplicationList By TestcaseId start | TestcaseId: {0} | Username: {1}", TestcaseId, Username));
+                var lAppList = new List<ApplicationModel>();
+                var lList = from u in entity.REL_APP_TESTCASE
+                            join r in entity.T_REGISTERED_APPS on u.APPLICATION_ID equals r.APPLICATION_ID
+                            where u.TEST_CASE_ID == TestcaseId
+                            select new ApplicationModel
+                            {
+                                ApplicationId = r.APPLICATION_ID,
+                                ApplicationName = r.APP_SHORT_NAME
+                            };
+                lAppList = lList.ToList();
+                logger.Info(string.Format("Get ApplicationList By TestcaseId end | TestcaseId: {0} | Username: {1}", TestcaseId, Username));
+                return lAppList;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in TestcaseId for GetApplicationListByTestcaseId method | TestcaseId: {0} | UserName: {1}", TestcaseId, Username));
+                ELogger.ErrorException(string.Format("Error occured TestcaseId in GetApplicationListByTestcaseId method | TestcaseId: {0} | UserName: {1}", TestcaseId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestcaseId in GetApplicationListByTestcaseId method | TestcaseId: {0} | UserName: {1}", TestcaseId, Username), ex.InnerException);
+                throw;
+            }
+        }
+
+        public long GetDatasetId(string Dataset)
+        {
+            try
+            {
+                logger.Info(string.Format("GetDatasetId start | Dataset: {0} | Username: {1}", Dataset, Username));
+                long DatasetId = 0;
+                if (!string.IsNullOrEmpty(Dataset))
+                {
+                    var obj = entity.T_TEST_DATA_SUMMARY.Where(x => x.ALIAS_NAME == Dataset).FirstOrDefault();
+                    if (obj != null)
+                        DatasetId = obj.DATA_SUMMARY_ID;
+                }
+                logger.Info(string.Format("GetDatasetId end | Dataset: {0} | Username: {1}", Dataset, Username));
+                return DatasetId;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in TestcaseId for GetDatasetId method | Dataset: {0} | UserName: {1}", Dataset, Username));
+                ELogger.ErrorException(string.Format("Error occured TestcaseId in GetDatasetId method | Dataset: {0} | UserName: {1}", Dataset, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestcaseId in GetDatasetId method | Dataset: {0} | UserName: {1}", Dataset, Username), ex.InnerException);
                 throw;
             }
         }
