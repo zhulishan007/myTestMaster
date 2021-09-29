@@ -6,6 +6,7 @@ using System.Data.EntityClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 using MARS_Repository.Entities;
 using MARS_Repository.ViewModel;
 using NLog;
@@ -46,7 +47,7 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("Get Keyword start | KeywordName: {0} | UserName: {1}", lKeywordName,Username));
+                logger.Info(string.Format("Get Keyword start | KeywordName: {0} | UserName: {1}", lKeywordName, Username));
                 var result = (from k in entity.T_KEYWORD
                               where k.KEY_WORD_NAME == lKeywordName
                               select k).ToList<T_KEYWORD>().FirstOrDefault();
@@ -217,66 +218,70 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                if (!string.IsNullOrEmpty(lEntity.KeywordName))
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    lEntity.KeywordName = lEntity.KeywordName.Trim();
-                }
-                var flag = false;
-                if (lEntity.KeywordId == 0)
-                {
-                    logger.Info(string.Format("Add Keyword start | Keyword: {0} | UserName: {1}", lEntity.KeywordName, Username));
-                    var tbl = new T_KEYWORD();
-                    tbl.KEY_WORD_ID = Helper.NextTestSuiteId("T_KEYWORD_SEQ");
-                    tbl.KEY_WORD_NAME = lEntity.KeywordName;
-                    tbl.ENTRY_IN_DATA_FILE = lEntity.EntryFile;
-                    lEntity.KeywordId = tbl.KEY_WORD_ID;
-                    entity.T_KEYWORD.Add(tbl);
-                    entity.SaveChanges();
-                    flag = true;
-                    logger.Info(string.Format("Add Keyword end | Keyword: {0} | UserName: {1}", lEntity.KeywordName, Username));
-                }
-                else
-                {
-                    logger.Info(string.Format("Edit Keyword start | Keyword: {0} | KeywordId: {1} | UserName: {2}", lEntity.KeywordName, lEntity.KeywordId, Username));
-                    var tbl = entity.T_KEYWORD.Find(lEntity.KeywordId);
-                    #region Type Mapping Delete
-                    var ltypeList = entity.T_DIC_RELATION_KEYWORD.Where(x => x.KEY_WORD_ID == lEntity.KeywordId).ToList();
-                    foreach (var item in ltypeList)
+                    if (!string.IsNullOrEmpty(lEntity.KeywordName))
                     {
-                        entity.T_DIC_RELATION_KEYWORD.Remove(item);
+                        lEntity.KeywordName = lEntity.KeywordName.Trim();
                     }
-                    entity.SaveChanges();
-                    #endregion
-
-                    if (tbl != null)
+                    var flag = false;
+                    if (lEntity.KeywordId == 0)
                     {
+                        logger.Info(string.Format("Add Keyword start | Keyword: {0} | UserName: {1}", lEntity.KeywordName, Username));
+                        var tbl = new T_KEYWORD();
+                        tbl.KEY_WORD_ID = Helper.NextTestSuiteId("T_KEYWORD_SEQ");
                         tbl.KEY_WORD_NAME = lEntity.KeywordName;
                         tbl.ENTRY_IN_DATA_FILE = lEntity.EntryFile;
+                        lEntity.KeywordId = tbl.KEY_WORD_ID;
+                        entity.T_KEYWORD.Add(tbl);
                         entity.SaveChanges();
+                        flag = true;
+                        logger.Info(string.Format("Add Keyword end | Keyword: {0} | UserName: {1}", lEntity.KeywordName, Username));
                     }
-                    flag = true;
-                    logger.Info(string.Format("Edit Keyword end | Keyword: {0} | KeywordId: {1} | UserName: {2}", lEntity.KeywordName, lEntity.KeywordId, Username));
-                }
-                if (!string.IsNullOrEmpty(lEntity.ControlTypeId))
-                {
-                    var lTypeSplit = lEntity.ControlTypeId.Split(',').Select(Int64.Parse).ToList();
-
-                    if (lTypeSplit.Count() > 0)
+                    else
                     {
-                        lTypeSplit = lTypeSplit.Distinct().ToList();
-                        foreach (var item in lTypeSplit)
+                        logger.Info(string.Format("Edit Keyword start | Keyword: {0} | KeywordId: {1} | UserName: {2}", lEntity.KeywordName, lEntity.KeywordId, Username));
+                        var tbl = entity.T_KEYWORD.Find(lEntity.KeywordId);
+                        #region Type Mapping Delete
+                        var ltypeList = entity.T_DIC_RELATION_KEYWORD.Where(x => x.KEY_WORD_ID == lEntity.KeywordId).ToList();
+                        foreach (var item in ltypeList)
                         {
-                            var ltypetbl = new T_DIC_RELATION_KEYWORD();
-                            ltypetbl.TYPE_ID = item;
-                            ltypetbl.KEY_WORD_ID = lEntity.KeywordId;
-                            ltypetbl.RELATION_ID = Helper.NextTestSuiteId("T_DIC_RELATION_KEYWORD_SEQ");
-                            entity.T_DIC_RELATION_KEYWORD.Add(ltypetbl);
+                            entity.T_DIC_RELATION_KEYWORD.Remove(item);
+                        }
+                        entity.SaveChanges();
+                        #endregion
+
+                        if (tbl != null)
+                        {
+                            tbl.KEY_WORD_NAME = lEntity.KeywordName;
+                            tbl.ENTRY_IN_DATA_FILE = lEntity.EntryFile;
                             entity.SaveChanges();
                         }
+                        flag = true;
+                        logger.Info(string.Format("Edit Keyword end | Keyword: {0} | KeywordId: {1} | UserName: {2}", lEntity.KeywordName, lEntity.KeywordId, Username));
                     }
-                    flag = true;
+                    if (!string.IsNullOrEmpty(lEntity.ControlTypeId))
+                    {
+                        var lTypeSplit = lEntity.ControlTypeId.Split(',').Select(Int64.Parse).ToList();
+
+                        if (lTypeSplit.Count() > 0)
+                        {
+                            lTypeSplit = lTypeSplit.Distinct().ToList();
+                            foreach (var item in lTypeSplit)
+                            {
+                                var ltypetbl = new T_DIC_RELATION_KEYWORD();
+                                ltypetbl.TYPE_ID = item;
+                                ltypetbl.KEY_WORD_ID = lEntity.KeywordId;
+                                ltypetbl.RELATION_ID = Helper.NextTestSuiteId("T_DIC_RELATION_KEYWORD_SEQ");
+                                entity.T_DIC_RELATION_KEYWORD.Add(ltypetbl);
+                                entity.SaveChanges();
+                            }
+                        }
+                        flag = true;
+                    }
+                    scope.Complete();
+                    return flag;
                 }
-                return flag;
             }
             catch (Exception ex)
             {
@@ -325,24 +330,28 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("Delete Keyword start | KeywordId: {0} | UserName: {1}", Keywordid, Username));
-                var flag = false;
-                var result = entity.T_KEYWORD.FirstOrDefault(x => x.KEY_WORD_ID == Keywordid);
-                if (result != null)
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    var reltypeorj = entity.T_DIC_RELATION_KEYWORD.Where(x => x.KEY_WORD_ID == Keywordid).ToList();
-                    foreach (var item in reltypeorj)
+                    logger.Info(string.Format("Delete Keyword start | KeywordId: {0} | UserName: {1}", Keywordid, Username));
+                    var flag = false;
+                    var result = entity.T_KEYWORD.FirstOrDefault(x => x.KEY_WORD_ID == Keywordid);
+                    if (result != null)
                     {
-                        entity.T_DIC_RELATION_KEYWORD.Remove(item);
-                        entity.SaveChanges();
-                    }
+                        var reltypeorj = entity.T_DIC_RELATION_KEYWORD.Where(x => x.KEY_WORD_ID == Keywordid).ToList();
+                        foreach (var item in reltypeorj)
+                        {
+                            entity.T_DIC_RELATION_KEYWORD.Remove(item);
+                            entity.SaveChanges();
+                        }
 
-                    entity.T_KEYWORD.Remove(result);
-                    entity.SaveChanges();
-                    flag = true;
+                        entity.T_KEYWORD.Remove(result);
+                        entity.SaveChanges();
+                        flag = true;
+                    }
+                    logger.Info(string.Format("Delete Keyword end | KeywordId: {0} | UserName: {1}", Keywordid, Username));
+                    scope.Complete();
+                    return flag;
                 }
-                logger.Info(string.Format("Delete Keyword end | KeywordId: {0} | UserName: {1}", Keywordid, Username));
-                return flag;
             }
             catch (Exception ex)
             {

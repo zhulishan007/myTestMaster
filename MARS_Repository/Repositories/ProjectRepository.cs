@@ -8,6 +8,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace MARS_Repository.Repositories
 {
@@ -58,37 +59,41 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("SaveProjectByUserId start | User id: {0} | Username: {1}", userid, Username));
-                foreach (var item in model)
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    if (item.ProjectExists == 0)
+                    logger.Info(string.Format("SaveProjectByUserId start | User id: {0} | Username: {1}", userid, Username));
+                    foreach (var item in model)
                     {
-                        var result = enty.REL_PROJECT_USER.Where(x => x.USER_ID == userid && x.PROJECT_ID == item.ProjectId).ToList();
-                        if (result != null)
+                        if (item.ProjectExists == 0)
                         {
-                            foreach (var itm in result)
+                            var result = enty.REL_PROJECT_USER.Where(x => x.USER_ID == userid && x.PROJECT_ID == item.ProjectId).ToList();
+                            if (result != null)
                             {
-                                enty.REL_PROJECT_USER.Remove(itm);
+                                foreach (var itm in result)
+                                {
+                                    enty.REL_PROJECT_USER.Remove(itm);
+                                    enty.SaveChanges();
+                                }
+                            }
+                        }
+                        else
+                        {
+                            var lresult = enty.REL_PROJECT_USER.Where(x => x.USER_ID == userid && x.PROJECT_ID == item.ProjectId).ToList();
+                            if (lresult.Count <= 0)
+                            {
+                                var tbl = new REL_PROJECT_USER();
+                                tbl.RELATION_ID = Helper.NextTestSuiteId("SEQ_REL_PROJECT_USER");
+                                tbl.PROJECT_ID = item.ProjectId;
+                                tbl.USER_ID = userid;
+                                enty.REL_PROJECT_USER.Add(tbl);
                                 enty.SaveChanges();
                             }
                         }
                     }
-                    else
-                    {
-                        var lresult = enty.REL_PROJECT_USER.Where(x => x.USER_ID == userid && x.PROJECT_ID == item.ProjectId).ToList();
-                        if (lresult.Count <= 0)
-                        {
-                            var tbl = new REL_PROJECT_USER();
-                            tbl.RELATION_ID = Helper.NextTestSuiteId("SEQ_REL_PROJECT_USER");
-                            tbl.PROJECT_ID = item.ProjectId;
-                            tbl.USER_ID = userid;
-                            enty.REL_PROJECT_USER.Add(tbl);
-                            enty.SaveChanges();
-                        }
-                    }
+                    logger.Info(string.Format("SaveProjectByUserId end | User id: {0} | Username: {1}", userid, Username));
+                    scope.Complete();
+                    return "success";
                 }
-                logger.Info(string.Format("SaveProjectByUserId end | User id: {0} | Username: {1}", userid, Username));
-                return "success";
             }
             catch (Exception ex)
             {
@@ -104,20 +109,25 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("DeleteProjectUserMapping start | User id: {0} | Username: {1}", uid, Username));
-                var result = enty.REL_PROJECT_USER.Where(x => x.USER_ID == uid).ToList();
-                if (result.Count > 0)
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    foreach (var item in result)
+                    logger.Info(string.Format("DeleteProjectUserMapping start | User id: {0} | Username: {1}", uid, Username));
+                    var result = enty.REL_PROJECT_USER.Where(x => x.USER_ID == uid).ToList();
+                    if (result.Count > 0)
                     {
-                        enty.REL_PROJECT_USER.Remove(item);
-                        enty.SaveChanges();
+                        foreach (var item in result)
+                        {
+                            enty.REL_PROJECT_USER.Remove(item);
+                            enty.SaveChanges();
+                        }
+                        logger.Info(string.Format("DeleteProjectUserMapping end | User id: {0} | Username: {1}", uid, Username));
+                        scope.Complete();
+                        return "success";
                     }
                     logger.Info(string.Format("DeleteProjectUserMapping end | User id: {0} | Username: {1}", uid, Username));
-                    return "success";
+                    scope.Complete();
+                    return "error";
                 }
-                logger.Info(string.Format("DeleteProjectUserMapping end | User id: {0} | Username: {1}", uid, Username));
-                return "error";
             }
             catch (Exception ex)
             {
@@ -163,15 +173,19 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("Change ProjectName start | ProjectName: {0} | UserName: {1}", lProjectName, Username));
-                var lresult = false;
-                var lProject = enty.T_TEST_PROJECT.Find(lProjectId);
-                lProject.PROJECT_NAME = lProjectName;
-                lProject.PROJECT_DESCRIPTION = lProjectdesc;
-                enty.SaveChanges();
-                lresult = true;
-                logger.Info(string.Format("Change ProjectName end | ProjectName: {0} | UserName: {1}", lProjectName, Username));
-                return lresult;
+                using (TransactionScope scope = new TransactionScope())
+                {
+                    logger.Info(string.Format("Change ProjectName start | ProjectName: {0} | UserName: {1}", lProjectName, Username));
+                    var lresult = false;
+                    var lProject = enty.T_TEST_PROJECT.Find(lProjectId);
+                    lProject.PROJECT_NAME = lProjectName;
+                    lProject.PROJECT_DESCRIPTION = lProjectdesc;
+                    enty.SaveChanges();
+                    lresult = true;
+                    logger.Info(string.Format("Change ProjectName end | ProjectName: {0} | UserName: {1}", lProjectName, Username));
+                    scope.Complete();
+                    return lresult;
+                }
             }
             catch (Exception ex)
             {
@@ -330,56 +344,60 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("Delete Project start | projectid: {0} | Username: {1}", projectid, Username));
-                var flag = false;
-                var result = enty.T_TEST_PROJECT.FirstOrDefault(x => x.PROJECT_ID == projectid);
-                if (result != null)
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    var relappprj = enty.REL_APP_PROJ.Where(x => x.PROJECT_ID == projectid).ToList();
-                    foreach (var item in relappprj)
+                    logger.Info(string.Format("Delete Project start | projectid: {0} | Username: {1}", projectid, Username));
+                    var flag = false;
+                    var result = enty.T_TEST_PROJECT.FirstOrDefault(x => x.PROJECT_ID == projectid);
+                    if (result != null)
                     {
-                        enty.REL_APP_PROJ.Remove(item);
-                        enty.SaveChanges();
-                    }
-                    var relsuiteprj = enty.REL_TEST_SUIT_PROJECT.Where(x => x.PROJECT_ID == projectid).ToList();
-                    foreach (var item in relsuiteprj)
-                    {
-                        enty.REL_TEST_SUIT_PROJECT.Remove(item);
-                        enty.SaveChanges();
-                    }
-                    var dp = (from p in enty.T_STORYBOARD_DATASET_SETTING
-                              from s in enty.T_PROJ_TC_MGR
-                              where p.STORYBOARD_DETAIL_ID == s.STORYBOARD_DETAIL_ID
-                              && s.PROJECT_ID == projectid
-                              select p).ToList();
-                    foreach (var itm in dp)
-                    {
-                        enty.T_STORYBOARD_DATASET_SETTING.Remove(itm);
-                        enty.SaveChanges();
-                    }
-                    var q = (from p in enty.T_PROJ_TC_MGR
-                             where p.PROJECT_ID == projectid
-                             select p).ToList();
-                    foreach (var itm in q)
-                    {
-                        enty.T_PROJ_TC_MGR.Remove(itm);
-                        enty.SaveChanges();
-                    }
+                        var relappprj = enty.REL_APP_PROJ.Where(x => x.PROJECT_ID == projectid).ToList();
+                        foreach (var item in relappprj)
+                        {
+                            enty.REL_APP_PROJ.Remove(item);
+                            enty.SaveChanges();
+                        }
+                        var relsuiteprj = enty.REL_TEST_SUIT_PROJECT.Where(x => x.PROJECT_ID == projectid).ToList();
+                        foreach (var item in relsuiteprj)
+                        {
+                            enty.REL_TEST_SUIT_PROJECT.Remove(item);
+                            enty.SaveChanges();
+                        }
+                        var dp = (from p in enty.T_STORYBOARD_DATASET_SETTING
+                                  from s in enty.T_PROJ_TC_MGR
+                                  where p.STORYBOARD_DETAIL_ID == s.STORYBOARD_DETAIL_ID
+                                  && s.PROJECT_ID == projectid
+                                  select p).ToList();
+                        foreach (var itm in dp)
+                        {
+                            enty.T_STORYBOARD_DATASET_SETTING.Remove(itm);
+                            enty.SaveChanges();
+                        }
+                        var q = (from p in enty.T_PROJ_TC_MGR
+                                 where p.PROJECT_ID == projectid
+                                 select p).ToList();
+                        foreach (var itm in q)
+                        {
+                            enty.T_PROJ_TC_MGR.Remove(itm);
+                            enty.SaveChanges();
+                        }
 
-                    var dpr = (from p in enty.T_PROJECT_DATA_SOURCE
-                               where p.PROJECT_ID == projectid
-                               select p).ToList();
-                    foreach (var itm in dpr)
-                    {
-                        enty.T_PROJECT_DATA_SOURCE.Remove(itm);
+                        var dpr = (from p in enty.T_PROJECT_DATA_SOURCE
+                                   where p.PROJECT_ID == projectid
+                                   select p).ToList();
+                        foreach (var itm in dpr)
+                        {
+                            enty.T_PROJECT_DATA_SOURCE.Remove(itm);
+                            enty.SaveChanges();
+                        }
+                        flag = true;
+                        enty.T_TEST_PROJECT.Remove(result);
                         enty.SaveChanges();
                     }
-                    flag = true;
-                    enty.T_TEST_PROJECT.Remove(result);
-                    enty.SaveChanges();
+                    logger.Info(string.Format("Delete Project end | projectid: {0} | Username: {1}", projectid, Username));
+                    scope.Complete();
+                    return flag;
                 }
-                logger.Info(string.Format("Delete Project end | projectid: {0} | Username: {1}", projectid, Username));
-                return flag;
             }
             catch (Exception ex)
             {
@@ -484,71 +502,75 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                if (!string.IsNullOrEmpty(lEntity.ProjectName))
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    lEntity.ProjectName = lEntity.ProjectName.Trim();
-                }
-                var flag = false;
-                if (lEntity.ProjectId == 0)
-                {
-                    logger.Info(string.Format("Add Project start | Project: {0} | Username: {1}", lEntity.ProjectName, Username));
-                    var tbl = new T_TEST_PROJECT();
-                    tbl.PROJECT_ID = Helper.NextTestSuiteId("T_TEST_PROJECT_SEQ");
-                    tbl.PROJECT_NAME = lEntity.ProjectName;
-                    tbl.PROJECT_DESCRIPTION = lEntity.ProjectDescription;
-                    tbl.STATUS = Convert.ToInt16(lEntity.Status);
-                    tbl.CREATOR = lEntity.CarectorName;
-                    tbl.CREATE_DATE = DateTime.Now;
-                    lEntity.ProjectId = tbl.PROJECT_ID;
-                    enty.T_TEST_PROJECT.Add(tbl);
-                    enty.SaveChanges();
-                    flag = true;
-                    logger.Info(string.Format("Add Project end | Project: {0} | Username: {1}", lEntity.ProjectName, Username));
-                }
-                else
-                {
-                    logger.Info(string.Format("Edit Project start | Project: {0} | ProjectId: {1} | Username: {2}", lEntity.ProjectName, lEntity.ProjectId, Username));
-                    var tbl = enty.T_TEST_PROJECT.Find(lEntity.ProjectId);
-                    #region Application Mapping Delete
-                    var lAppList = enty.REL_APP_PROJ.Where(x => x.PROJECT_ID == lEntity.ProjectId).ToList();
-                    foreach (var item in lAppList)
+                    if (!string.IsNullOrEmpty(lEntity.ProjectName))
                     {
-                        enty.REL_APP_PROJ.Remove(item);
+                        lEntity.ProjectName = lEntity.ProjectName.Trim();
                     }
-                    enty.SaveChanges();
-                    logger.Info(string.Format("Edit Project end | Project: {0} | ProjectId: {1} | Username: {2}", lEntity.ProjectName, lEntity.ProjectId, Username));
-                    #endregion
-
-                    if (tbl != null)
+                    var flag = false;
+                    if (lEntity.ProjectId == 0)
                     {
+                        logger.Info(string.Format("Add Project start | Project: {0} | Username: {1}", lEntity.ProjectName, Username));
+                        var tbl = new T_TEST_PROJECT();
+                        tbl.PROJECT_ID = Helper.NextTestSuiteId("T_TEST_PROJECT_SEQ");
                         tbl.PROJECT_NAME = lEntity.ProjectName;
                         tbl.PROJECT_DESCRIPTION = lEntity.ProjectDescription;
                         tbl.STATUS = Convert.ToInt16(lEntity.Status);
+                        tbl.CREATOR = lEntity.CarectorName;
+                        tbl.CREATE_DATE = DateTime.Now;
+                        lEntity.ProjectId = tbl.PROJECT_ID;
+                        enty.T_TEST_PROJECT.Add(tbl);
                         enty.SaveChanges();
+                        flag = true;
+                        logger.Info(string.Format("Add Project end | Project: {0} | Username: {1}", lEntity.ProjectName, Username));
                     }
-                    flag = true;
-                }
-                if (!string.IsNullOrEmpty(lEntity.ApplicationId))
-                {
-                    var lAppSplit = lEntity.ApplicationId.Split(',').Select(Int64.Parse).ToList();
-
-                    if (lAppSplit.Count() > 0)
+                    else
                     {
-                        lAppSplit = lAppSplit.Distinct().ToList();
-                        foreach (var item in lAppSplit)
+                        logger.Info(string.Format("Edit Project start | Project: {0} | ProjectId: {1} | Username: {2}", lEntity.ProjectName, lEntity.ProjectId, Username));
+                        var tbl = enty.T_TEST_PROJECT.Find(lEntity.ProjectId);
+                        #region Application Mapping Delete
+                        var lAppList = enty.REL_APP_PROJ.Where(x => x.PROJECT_ID == lEntity.ProjectId).ToList();
+                        foreach (var item in lAppList)
                         {
-                            var lApptbl = new REL_APP_PROJ();
-                            lApptbl.APPLICATION_ID = item;
-                            lApptbl.PROJECT_ID = lEntity.ProjectId;
-                            lApptbl.RELATIONSHIP_ID = Helper.NextTestSuiteId("REL_APP_PROJ_SEQ");
-                            enty.REL_APP_PROJ.Add(lApptbl);
+                            enty.REL_APP_PROJ.Remove(item);
+                        }
+                        enty.SaveChanges();
+                        logger.Info(string.Format("Edit Project end | Project: {0} | ProjectId: {1} | Username: {2}", lEntity.ProjectName, lEntity.ProjectId, Username));
+                        #endregion
+
+                        if (tbl != null)
+                        {
+                            tbl.PROJECT_NAME = lEntity.ProjectName;
+                            tbl.PROJECT_DESCRIPTION = lEntity.ProjectDescription;
+                            tbl.STATUS = Convert.ToInt16(lEntity.Status);
                             enty.SaveChanges();
                         }
+                        flag = true;
                     }
+                    if (!string.IsNullOrEmpty(lEntity.ApplicationId))
+                    {
+                        var lAppSplit = lEntity.ApplicationId.Split(',').Select(Int64.Parse).ToList();
 
-                    flag = true;
+                        if (lAppSplit.Count() > 0)
+                        {
+                            lAppSplit = lAppSplit.Distinct().ToList();
+                            foreach (var item in lAppSplit)
+                            {
+                                var lApptbl = new REL_APP_PROJ();
+                                lApptbl.APPLICATION_ID = item;
+                                lApptbl.PROJECT_ID = lEntity.ProjectId;
+                                lApptbl.RELATIONSHIP_ID = Helper.NextTestSuiteId("REL_APP_PROJ_SEQ");
+                                enty.REL_APP_PROJ.Add(lApptbl);
+                                enty.SaveChanges();
+                            }
+                        }
+
+                        flag = true;
+                    }
+                    scope.Complete();
+                    return flag;
                 }
-                return flag;
             }
             catch (Exception ex)
             {

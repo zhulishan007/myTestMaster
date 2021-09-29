@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace MARS_Repository.Repositories
 {
@@ -20,15 +21,19 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("Change TestProjectName start | ProjectId: {0} | UserName: {1}", lTestProjectId, Username));
-                var lresult = false;
-                var lTestProject = enty.T_TEST_PROJECT.Find(lTestProjectId);
-                lTestProject.PROJECT_NAME = lTestProjectName;
-                enty.SaveChanges();
-                lresult = true;
+                using (TransactionScope scope = new TransactionScope())
+                {
+                    logger.Info(string.Format("Change TestProjectName start | ProjectId: {0} | UserName: {1}", lTestProjectId, Username));
+                    var lresult = false;
+                    var lTestProject = enty.T_TEST_PROJECT.Find(lTestProjectId);
+                    lTestProject.PROJECT_NAME = lTestProjectName;
+                    enty.SaveChanges();
+                    lresult = true;
 
-                logger.Info(string.Format("Change TestProjectName end | ProjectId: {0} | UserName: {1}", lTestProjectId, Username));
-                return lresult;
+                    logger.Info(string.Format("Change TestProjectName end | ProjectId: {0} | UserName: {1}", lTestProjectId, Username));
+                    scope.Complete();
+                    return lresult;
+                }
             }
             catch (Exception ex)
             {

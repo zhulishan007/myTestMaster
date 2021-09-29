@@ -8,6 +8,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace MARS_Repository.Repositories
 {
@@ -250,17 +251,21 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("Delete Variable start | VariableId: {0} | Username: {1}", lid, Username));
-                var flag = false;
-                var lresult = GetVariableNameById(lid);
-                if (lresult != null)
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    entity.SYSTEM_LOOKUP.Remove(lresult);
-                    entity.SaveChanges();
-                    flag = true;
+                    logger.Info(string.Format("Delete Variable start | VariableId: {0} | Username: {1}", lid, Username));
+                    var flag = false;
+                    var lresult = GetVariableNameById(lid);
+                    if (lresult != null)
+                    {
+                        entity.SYSTEM_LOOKUP.Remove(lresult);
+                        entity.SaveChanges();
+                        flag = true;
+                    }
+                    logger.Info(string.Format("Delete Variable end | VariableId: {0} | Username: {1}", lid, Username));
+                    scope.Complete();
+                    return flag;
                 }
-                logger.Info(string.Format("Delete Variable end | VariableId: {0} | Username: {1}", lid, Username));
-                return flag;
             }
             catch (Exception ex)
             {
@@ -275,53 +280,57 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                var lresult = entity.SYSTEM_LOOKUP.Find(lookup.Lookupid);
-                if (lookup != null)
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    if (lookup.Table_name == "2")
+                    var lresult = entity.SYSTEM_LOOKUP.Find(lookup.Lookupid);
+                    if (lookup != null)
                     {
-                        lookup.Table_name = "MODAL_VAR";
-                    }
-                    else if (lookup.Table_name == "1")
-                    {
-                        lookup.Table_name = "GLOBAL_VAR";
-                    }
-                    else if (lookup.Table_name == "3")
-                    {
-                        lookup.Table_name = "LOOP_VAR";
-                    }
-                    var lflag = CheckDuplicateVariableName(lookup.Lookupid, lookup.field_name);
-                    if (lresult == null)
-                    {
-                        logger.Info(string.Format("Add variable start | variable: {0} | Username: {1}", lookup.field_name, Username));
-                        SYSTEM_LOOKUP tbl = new SYSTEM_LOOKUP();
-                        var lookupID = Helper.NextTestSuiteId("SYSTEM_LOOKUP_SEQ");
-                        tbl.LOOKUP_ID = lookupID;
-                        tbl.FIELD_NAME = lookup.field_name;
-                        tbl.DISPLAY_NAME = lookup.Display_name;
-                        tbl.TABLE_NAME = lookup.Table_name;
-                        tbl.STATUS = lookup.status;
-                        tbl.VALUE = lookup.value;
-                        entity.SYSTEM_LOOKUP.Add(tbl);
-                        entity.SaveChanges();
+                        if (lookup.Table_name == "2")
+                        {
+                            lookup.Table_name = "MODAL_VAR";
+                        }
+                        else if (lookup.Table_name == "1")
+                        {
+                            lookup.Table_name = "GLOBAL_VAR";
+                        }
+                        else if (lookup.Table_name == "3")
+                        {
+                            lookup.Table_name = "LOOP_VAR";
+                        }
+                        var lflag = CheckDuplicateVariableName(lookup.Lookupid, lookup.field_name);
+                        if (lresult == null)
+                        {
+                            logger.Info(string.Format("Add variable start | variable: {0} | Username: {1}", lookup.field_name, Username));
+                            SYSTEM_LOOKUP tbl = new SYSTEM_LOOKUP();
+                            var lookupID = Helper.NextTestSuiteId("SYSTEM_LOOKUP_SEQ");
+                            tbl.LOOKUP_ID = lookupID;
+                            tbl.FIELD_NAME = lookup.field_name;
+                            tbl.DISPLAY_NAME = lookup.Display_name;
+                            tbl.TABLE_NAME = lookup.Table_name;
+                            tbl.STATUS = lookup.status;
+                            tbl.VALUE = lookup.value;
+                            entity.SYSTEM_LOOKUP.Add(tbl);
+                            entity.SaveChanges();
 
-                        logger.Info(string.Format("Add variable end | variable: {0} | Username: {1}", lookup.field_name, Username));
-                        return "success";
-                    }
-                    else
-                    {
-                        logger.Info(string.Format("Edit variable start | variable: {0} | variableId: {1} | Username: {2}", lookup.field_name, lookup.Lookupid, Username));
+                            logger.Info(string.Format("Add variable end | variable: {0} | Username: {1}", lookup.field_name, Username));
+                            return "success";
+                        }
+                        else
+                        {
+                            logger.Info(string.Format("Edit variable start | variable: {0} | variableId: {1} | Username: {2}", lookup.field_name, lookup.Lookupid, Username));
 
-                        lresult.FIELD_NAME = lookup.field_name;
-                        lresult.DISPLAY_NAME = lookup.Display_name;
-                        lresult.STATUS = lookup.status;
-                        lresult.VALUE = lookup.value;
-                        lresult.TABLE_NAME = lookup.Table_name;
-                        entity.SaveChanges();
-                        logger.Info(string.Format("Edit variable end | variable: {0} | variableId: {1} | Username: {2}", lookup.field_name, lookup.Lookupid, Username));
+                            lresult.FIELD_NAME = lookup.field_name;
+                            lresult.DISPLAY_NAME = lookup.Display_name;
+                            lresult.STATUS = lookup.status;
+                            lresult.VALUE = lookup.value;
+                            lresult.TABLE_NAME = lookup.Table_name;
+                            entity.SaveChanges();
+                            logger.Info(string.Format("Edit variable end | variable: {0} | variableId: {1} | Username: {2}", lookup.field_name, lookup.Lookupid, Username));
+                        }
                     }
+                    scope.Complete();
+                    return "success";
                 }
-                return "success";
             }
             catch (Exception ex)
             {
@@ -331,7 +340,6 @@ namespace MARS_Repository.Repositories
                     ELogger.ErrorException(string.Format("InnerException : Error occured in Variable for AddEditVariable method | VariableId : {0} | UserName: {1}", lookup.Lookupid, Username), ex.InnerException);
                 throw;
             }
-
         }
 
         public string CheckVariable(VariableModel lookup)

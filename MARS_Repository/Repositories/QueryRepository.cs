@@ -13,6 +13,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace MARS_Repository.Repositories
 {
@@ -28,54 +29,58 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                if (!string.IsNullOrEmpty(queryViewModel.QueryName))
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    queryViewModel.QueryName = queryViewModel.QueryName.Trim();
-                }
-                var flag = false;
-                if (queryViewModel.QueryId == 0)
-                {
-                    logger.Info(string.Format("Add query start | Query: {0} | Username: {1}", queryViewModel.QueryName, Username));
-
-                    var RegisterTbl = new T_QUERY();
-                    RegisterTbl.QUERY_ID = Helper.NextTestSuiteId("T_QUERY_SEQ"); ;
-                    RegisterTbl.QUERY_NAME = queryViewModel.QueryName;
-                    RegisterTbl.QUERY_DESC = queryViewModel.QueryDescription.Replace("'", "''");
-                    RegisterTbl.CREATED_DATE = DateTime.Now;
-                    RegisterTbl.CREATEDBY = Username;
-                    RegisterTbl.IS_ACTIVE = queryViewModel.IsActive;
-                    RegisterTbl.MODIFIEDBY = Username;
-                    RegisterTbl.MODIFIED_DATE = DateTime.Now;
-                    RegisterTbl.CONN_ID = queryViewModel.ConnectionId;
-                    RegisterTbl.IS_ACTIVE = queryViewModel.IsActive;
-                    queryViewModel.QueryId = RegisterTbl.QUERY_ID;
-                    enty.T_QUERY.Add(RegisterTbl);
-                    enty.SaveChanges();
-
-                    flag = true;
-                    logger.Info(string.Format("Add query end | Query: {0} | Username: {1}", queryViewModel.QueryName, Username));
-
-                }
-                else
-                {
-                    var RegisterTbl = enty.T_QUERY.Find(queryViewModel.QueryId);
-                    //var RelTbl = enty.REL_DB_QUERY.FirstOrDefault(x => x.QUERY_ID == queryViewModel.QueryId);
-                    logger.Info(string.Format("Edit query start | Query: {0} | Query Id: {1} | Username: {2}", queryViewModel.QueryId, queryViewModel.QueryName, Username));
-                    if (RegisterTbl != null)
+                    if (!string.IsNullOrEmpty(queryViewModel.QueryName))
                     {
+                        queryViewModel.QueryName = queryViewModel.QueryName.Trim();
+                    }
+                    var flag = false;
+                    if (queryViewModel.QueryId == 0)
+                    {
+                        logger.Info(string.Format("Add query start | Query: {0} | Username: {1}", queryViewModel.QueryName, Username));
+
+                        var RegisterTbl = new T_QUERY();
+                        RegisterTbl.QUERY_ID = Helper.NextTestSuiteId("T_QUERY_SEQ"); ;
                         RegisterTbl.QUERY_NAME = queryViewModel.QueryName;
-                        RegisterTbl.QUERY_DESC = queryViewModel.QueryDescription.Replace("'", "''"); ;
+                        RegisterTbl.QUERY_DESC = queryViewModel.QueryDescription.Replace("'", "''");
+                        RegisterTbl.CREATED_DATE = DateTime.Now;
+                        RegisterTbl.CREATEDBY = Username;
+                        RegisterTbl.IS_ACTIVE = queryViewModel.IsActive;
                         RegisterTbl.MODIFIEDBY = Username;
                         RegisterTbl.MODIFIED_DATE = DateTime.Now;
-                        RegisterTbl.IS_ACTIVE = queryViewModel.IsActive;
                         RegisterTbl.CONN_ID = queryViewModel.ConnectionId;
+                        RegisterTbl.IS_ACTIVE = queryViewModel.IsActive;
+                        queryViewModel.QueryId = RegisterTbl.QUERY_ID;
+                        enty.T_QUERY.Add(RegisterTbl);
                         enty.SaveChanges();
 
+                        flag = true;
+                        logger.Info(string.Format("Add query end | Query: {0} | Username: {1}", queryViewModel.QueryName, Username));
+
                     }
-                    flag = true;
-                    logger.Info(string.Format("Edit query connection end | Query: {0} | QueryId: {1} | Username: {2}", queryViewModel.QueryName, queryViewModel.QueryId, Username));
+                    else
+                    {
+                        var RegisterTbl = enty.T_QUERY.Find(queryViewModel.QueryId);
+                        //var RelTbl = enty.REL_DB_QUERY.FirstOrDefault(x => x.QUERY_ID == queryViewModel.QueryId);
+                        logger.Info(string.Format("Edit query start | Query: {0} | Query Id: {1} | Username: {2}", queryViewModel.QueryId, queryViewModel.QueryName, Username));
+                        if (RegisterTbl != null)
+                        {
+                            RegisterTbl.QUERY_NAME = queryViewModel.QueryName;
+                            RegisterTbl.QUERY_DESC = queryViewModel.QueryDescription.Replace("'", "''"); ;
+                            RegisterTbl.MODIFIEDBY = Username;
+                            RegisterTbl.MODIFIED_DATE = DateTime.Now;
+                            RegisterTbl.IS_ACTIVE = queryViewModel.IsActive;
+                            RegisterTbl.CONN_ID = queryViewModel.ConnectionId;
+                            enty.SaveChanges();
+
+                        }
+                        flag = true;
+                        logger.Info(string.Format("Edit query connection end | Query: {0} | QueryId: {1} | Username: {2}", queryViewModel.QueryName, queryViewModel.QueryId, Username));
+                    }
+                    scope.Complete();
+                    return flag;
                 }
-                return flag;
             }
             catch (Exception ex)
             {
@@ -91,15 +96,19 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("Delete Query start | QueryId: {0} | Username: {1}", queryId, Username));
-                var flag = false;
-                var item = enty.T_QUERY.FirstOrDefault(x => x.QUERY_ID == queryId);
-                enty.T_QUERY.Remove(item);
-                enty.SaveChanges();
-                flag = true;
+                using (TransactionScope scope = new TransactionScope())
+                {
+                    logger.Info(string.Format("Delete Query start | QueryId: {0} | Username: {1}", queryId, Username));
+                    var flag = false;
+                    var item = enty.T_QUERY.FirstOrDefault(x => x.QUERY_ID == queryId);
+                    enty.T_QUERY.Remove(item);
+                    enty.SaveChanges();
+                    flag = true;
 
-                logger.Info(string.Format("Delete Query end | QueryId: {0} | Username: {1}", queryId, Username));
-                return flag;
+                    logger.Info(string.Format("Delete Query end | QueryId: {0} | Username: {1}", queryId, Username));
+                    scope.Complete();
+                    return flag;
+                }
             }
             catch (Exception ex)
             {
