@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace MARS_Repository.Repositories
 {
@@ -40,24 +41,28 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("AddorEditCompareconfig start | Username: {0}", Username));
-                var datasource = (from o in entity.T_DATA_SOURCE
-                                  where o.DATA_SOURCE_NAME == name
-                                  && o.DATA_SOURCE_TYPE == datatype
-                                  select o).FirstOrDefault();
-                if (datasource == null)
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    datasource = new T_DATA_SOURCE();
-                    datasource.DATA_SOURCE_NAME = name;
-                    datasource.DATA_SOURCE_ID = Helper.NextTestSuiteId("T_TEST_STEPS_SEQ");
-                    datasource.DATA_SOURCE_TYPE = datatype;
-                    entity.T_DATA_SOURCE.Add(datasource);
-                }
-                datasource.DETAILS = data;
-                entity.SaveChanges();
+                    logger.Info(string.Format("AddorEditCompareconfig start | Username: {0}", Username));
+                    var datasource = (from o in entity.T_DATA_SOURCE
+                                      where o.DATA_SOURCE_NAME == name
+                                      && o.DATA_SOURCE_TYPE == datatype
+                                      select o).FirstOrDefault();
+                    if (datasource == null)
+                    {
+                        datasource = new T_DATA_SOURCE();
+                        datasource.DATA_SOURCE_NAME = name;
+                        datasource.DATA_SOURCE_ID = Helper.NextTestSuiteId("T_TEST_STEPS_SEQ");
+                        datasource.DATA_SOURCE_TYPE = datatype;
+                        entity.T_DATA_SOURCE.Add(datasource);
+                    }
+                    datasource.DETAILS = data;
+                    entity.SaveChanges();
 
-                logger.Info(string.Format("AddorEditCompareconfig end | Username: {0}", Username));
-                return "success";
+                    logger.Info(string.Format("AddorEditCompareconfig end | Username: {0}", Username));
+                    scope.Complete();
+                    return "success";
+                }
             }
             catch (Exception ex)
             {
@@ -73,20 +78,24 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("DeleteCompareConfig start | Username: {0}", Username));
-                var dataSource = (from o in entity.T_DATA_SOURCE
-                                  where o.DATA_SOURCE_NAME == id
-                                  && o.DATA_SOURCE_TYPE == dataType
-                                  select o).FirstOrDefault();
-                if (dataSource != null)
+                using (TransactionScope scope = new TransactionScope())
                 {
-                    entity.T_DATA_SOURCE.Remove(dataSource);
-                    entity.SaveChanges();
+                    logger.Info(string.Format("DeleteCompareConfig start | Username: {0}", Username));
+                    var dataSource = (from o in entity.T_DATA_SOURCE
+                                      where o.DATA_SOURCE_NAME == id
+                                      && o.DATA_SOURCE_TYPE == dataType
+                                      select o).FirstOrDefault();
+                    if (dataSource != null)
+                    {
+                        entity.T_DATA_SOURCE.Remove(dataSource);
+                        entity.SaveChanges();
+                        logger.Info(string.Format("DeleteCompareConfig end | Username: {0}", Username));
+                        return "success";
+                    }
                     logger.Info(string.Format("DeleteCompareConfig end | Username: {0}", Username));
-                    return "success";
+                    scope.Complete();
+                    return "error";
                 }
-                logger.Info(string.Format("DeleteCompareConfig end | Username: {0}", Username));
-                return "error";
             }
             catch (Exception ex)
             {
