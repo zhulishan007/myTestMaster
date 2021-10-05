@@ -1,4 +1,5 @@
 ﻿using MARS_Repository.ViewModel;
+using MARS_Web.MarsUtility;
 using Newtonsoft.Json;
 using NLog;
 using System;
@@ -7,9 +8,126 @@ using System.Linq;
 using System.Web;
 using System.Xml;
 using System.Xml.Linq;
+using System.Xml.Serialization;
 
 namespace MARS_Web.Helper
 {
+
+    public class MarsRESTFulLink
+    {
+        private static MarsLog Logger = MarsLog.GetLogger(Mars_LogType._normal, typeof(MarsRESTFulLink));
+        private static MarsLog Elogger = MarsLog.GetLogger(Mars_LogType._errLog, typeof(MarsRESTFulLink));
+
+        private const string cnst_targetXmlNodeName = "MarsRESTFulLink";
+        public string HostName;
+        public int Port;
+
+        public static bool WriteToXmlNode(MarsRESTFulLink inst, XmlDocument targetXml, ref string strError, ref string strStack)
+        {
+            Logger.LogBegin("WriteToXmlNode");
+            try
+            {
+                if (inst == null)
+                {
+                    strError = "object is null";
+                    strStack = Environment.StackTrace;
+                    return false;
+                }
+                if (targetXml == null)
+                {
+                    strError = "no available XmlDoc";
+                    strStack = Environment.StackTrace;
+                    return false;
+                }
+                XmlNodeList targetElement = targetXml.GetElementsByTagName(cnst_targetXmlNodeName);
+                XmlElement targetElementOne = null;
+                XmlWriter w = null;
+                if ((targetElement == null) || (targetElement.Count <= 0))
+                {
+                    targetElementOne = targetXml.CreateElement(cnst_targetXmlNodeName);
+                    w = targetElementOne.CreateNavigator().AppendChild();
+                }
+                else
+                {
+                    if (targetElement[0].NodeType != XmlNodeType.Element)
+                    {
+                        strError = $"node MarsRestful is not an element, it is [{targetElement[0].NodeType}]";
+                        strStack = Environment.StackTrace;
+                        return false;
+                    }
+                    targetElementOne = (XmlElement)targetElement[0];
+                    w = targetElementOne.CreateNavigator().AppendChild();
+                }
+
+                new XmlSerializer(inst.GetType()).Serialize(w, inst);
+                w.Close();
+                return true;
+            }
+            catch (Exception e)
+            {
+                Elogger.Error(e.Message, e);
+                return false;
+            }
+            finally
+            {
+                Logger.LogEnd();
+            }
+            
+        }
+
+        public static MarsRESTFulLink LoadFromXmlConfig(XmlDocument sourceXml, ref bool isOk, ref string strError, ref string strStack, ref string strAdv)
+        {
+            Logger.LogBegin("LoadFromXmlConfig");
+            try
+            {
+                XmlNodeList targetElement = sourceXml.GetElementsByTagName(cnst_targetXmlNodeName);
+                if ((targetElement == null) || (targetElement.Count <= 0))
+                {
+                    strAdv = $"Please check Marsconfig.xml, and macke sure, there is a node {cnst_targetXmlNodeName}";
+                    strError = $"no {cnst_targetXmlNodeName} find from Marsconfig.xml.";
+                    strAdv = Environment.StackTrace;
+                    isOk = false;
+                    return null;
+                }
+                XmlNode n = targetElement[0];
+                if (n.NodeType != XmlNodeType.Element)
+                {
+                    strAdv = $"Please check Marsconfig.xml, and macke sure, there is a element node {cnst_targetXmlNodeName}";
+                    strError = $"no Element Node {cnst_targetXmlNodeName} find from Marsconfig.xml.";
+                    strAdv = Environment.StackTrace;
+                    isOk = false;
+                    return null;
+                }
+                
+                var r = new XmlNodeReader(n);
+                //x.CreateNavigator()
+                var o = new XmlSerializer(typeof(MarsRESTFulLink)).Deserialize(r);
+                if ((o == null)||((o as MarsRESTFulLink)==null))
+                {
+                    strAdv = $"Make sure the xml node {cnst_targetXmlNodeName} is right format";
+                    strError = "Can't convert XmlNode to Mars RESTful linker object";
+                    strStack = Environment.StackTrace;
+                    isOk = false;
+                    return null;
+                }
+                isOk = true;
+                return o as MarsRESTFulLink;
+            }
+            catch(Exception e)
+            {
+                strStack = e.StackTrace;
+                strAdv = "Contact Marquis";
+                Logger.Error(strError = e.Message, e);
+                isOk = false;
+                return null;
+            }
+            finally
+            {
+                Logger.LogEnd();
+            }
+        }
+    }
+
     public class MarsConfig
     {
         private string marsConfigFile;
@@ -20,6 +138,8 @@ namespace MARS_Web.Helper
         private static MarsConfig marsConfigInstance;
 
         private static XDocument marsConfig;
+
+        public static MarsRESTFulLink restfulInfo { get; set; }
 
         public Dictionary<string, string> AppSettings { get; set; }
         public MarsConfig()
@@ -42,6 +162,12 @@ namespace MARS_Web.Helper
         {
             marsConfigInstance = new MarsConfig(marsConfigFile, marsEnvironment);
             marsConfig = XDocument.Load(marsConfigFile);
+
+            bool isOk = false;
+            string strError = "", strAdv = "", strStack = "";
+            XmlDocument x = new XmlDocument();
+            x.Load(marsConfigFile);
+            restfulInfo = MarsRESTFulLink.LoadFromXmlConfig(x, ref isOk, ref strError, ref strStack, ref strAdv);
 
             return marsConfigInstance;
         }

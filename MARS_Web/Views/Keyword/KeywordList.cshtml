@@ -134,12 +134,12 @@
 
             var lEditKeydisplay = $("#hdnEditKey").val();
             var lDeleteKeydisplay = $("#hdnDeleteKey").val();
-            KeywordTable = $('#Keywordtable').DataTable({
                 responsive: false,
 
                 // Pagination settings
                 dom: `<'row'<'col-sm-12'tr>>
                                         <'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7 dataTables_pager'lp>>`,
+
                 // read more: https://datatables.net/examples/basic_init/dom.html
 
                 lengthMenu: [10, 100, 1000],
@@ -151,6 +151,7 @@
                     "processing": "<img  src='../assets/media/mars.gif'style='width:80px;'/>"
                 },
                 "scrollY": $(window).height() - 305,
+            KeywordTable = $('#Keywordtable').DataTable({
                 searchDelay: 500,
                 //  processing: true,
                 serverSide: true,

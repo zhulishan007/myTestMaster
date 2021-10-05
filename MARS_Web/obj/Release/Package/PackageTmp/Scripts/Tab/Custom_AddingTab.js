@@ -19,6 +19,19 @@ function RecusrsiveTab1(name) {
     }
     return ltmpstoryboard;
 }
+
+function errorDealForAjaxError(result, strUrl) {
+    try {
+        if (result.status == 404) {
+            Alert("no such resource :[" + strUrl + "]");
+        } else {
+            alter("can't navigate the URL [" + strUrl + "] with error\r\n\t" + result.statusText);
+        }
+    } catch (e) {
+
+    }
+}
+
 function OpenReport() {
     $.ajax({
         url: "/Home/TestProjectList",
@@ -775,7 +788,7 @@ function PartialRightSideAplicationGrid(Default) {
         url: "/Application/ApplicationList",
         type: "POST",
         contentType: "application/json;charset=utf-8",
-        dataType: "HTML",
+        dataType: "HTML",       
         success: function (result) {
             //CheckAtiveTabStatus();
             var lflag = false;
@@ -828,6 +841,71 @@ function PartialRightSideAplicationGrid(Default) {
         },
     });
 }
+
+         
+function PartialRightReportManagementGrid(Default) {    
+    $.ajax({
+        url: "/ReportManagement/ReportManagementMainView",
+        type: "POST",
+        contentType: "application/json;charset=utf-8",
+        dataType: "HTML",
+        error: function (result) {            
+            alert("url" + result);
+            REperrorDealForAjaxError(result, url);
+        },
+        success: function (result) {
+            // CheckAtiveTabStatus();
+            // CheckAtiveTabStatus();
+            var lflag = false;
+            $('.ULtablist li').each(function (index, value) {
+                if ($(value).children().first().attr("data-target") == "#tabReportlist") {
+                    lflag = true;
+                }
+            });
+            var ltab = "";
+            if (Default == "1") {
+                ltab = '<li class="nav-item context-menu-tab"><a data-pin="true" href="#tabReportlist"  class="nav-link active context-tab" data-tab="ReportManagementMainView" data-id="0" data-name="ReportManagementMainView" data-toggle="tab" href="#" data-target="#tabReportlist" onclick="ActiveTab($(this))"><img alt="Keyword List" class="tab_icons_img" src="/assets/media/icons/keyword.png"> Data source Management</a><i class="fa fa-times-circle tab_close" style="cursor:pointer" onclick="closetab($(this))"></i></li>';
+            } else {
+                ltab = '<li class="nav-item context-menu-tab"><a data-pin="false" href="#tabReportlist"  class="nav-link active context-tab" data-tab="ReportManagementMainView" data-id="0" data-name="ReportManagementMainView" data-toggle="tab" href="#" data-target="#tabReportlist" onclick="ActiveTab($(this))"><img alt="Keyword List" class="tab_icons_img" src="/assets/media/icons/keyword.png">Datasource Management</a><i class="fa fa-times-circle tab_close" style="cursor:pointer" onclick="closetab($(this))"></i></li>';
+            }
+            var ldiv = '<div class="tab-pane active div" id="tabReportlist" role="tabpanel">' + result + '</div>';
+
+            if (lflag) {
+                $('.ULtablist li').each(function (index, value) {
+                    if ($(value).children().first().attr("data-target") == "#tabReportlist") {
+                        $(value).children().first().addClass("active");
+                    } else {
+                        $(value).children().first().removeClass("active");
+                    }
+                });
+                $('.divtablist div').each(function (index, value) {
+                    if ($(value).first().attr("id") == "tabReportlist") {
+                        $(value).addClass("active");
+                    } else {
+                        $(value).removeClass("active");
+                    }
+                });
+            }
+            else {
+
+                $(".ULtablist").append(ltab);
+                $(".divtablist").append(ldiv);
+                $('.ULtablist li').each(function (index, value) {
+                    if ($(value).children().first().attr("data-target") != "#tabReportlist") {
+                        $(value).children().first().removeClass("active");
+                    }
+                });
+                $('.divtablist div').each(function (index, value) {
+                    if ($(value).first().attr("id") != "tabReportlist") {
+                        $(value).removeClass("active");
+                    }
+                });
+            }
+            stoploader();
+        },
+    });
+}
+
 function PartialRightSideKeywordGrid(Default) {
     $.ajax({
         url: "/Keyword/KeywordList",

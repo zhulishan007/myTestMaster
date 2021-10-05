@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+﻿// T4 code generation is enabled for model 'C:\Users\gengf\Source\Repos\MARS_Revamp\MARS_Repository\Entities\Db_Context.edmx'. 
+=======
 ﻿// T4 code generation is enabled for model 'D:\Foram\Cherish\Project\MARS_Repository\Entities\Db_Context.edmx'. 
+>>>>>>> eace40a4729b0f08c93f65267b32991a6c11167e
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.
