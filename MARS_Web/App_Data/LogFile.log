@@ -54874,3 +54874,213 @@ WHERE (((LTRIM(RTRIM(LOWER("Extent1"."TESTER_MAIL")))) = :p__linq__0) OR ((LOWER
                    
                    Additional Info:[END] at [ln:126] , 2021-08-20 00:06:22 084
                   
+                   --------------------- Info(2021-10-13 17:26:33.5073)CS-DC-15-------------------- 
+                   
+                   Additional Info:[BEGIN] at [ln:80] LoadFromXmlConfig, 2021-10-13 17:26:33 509
+                  
+                   --------------------- Info(2021-10-13 17:26:33.5462)CS-DC-15-------------------- 
+                   
+                   Additional Info:[END] at [ln:126] , 2021-10-13 17:26:33 546
+                  
+                   --------------------- Info(2021-10-13 17:31:16.8692)CS-DC-15-------------------- 
+                   
+                   Additional Info:[BEGIN] at [ln:80] LoadFromXmlConfig, 2021-10-13 17:31:16 869
+                  
+                   --------------------- Info(2021-10-13 17:31:16.8692)CS-DC-15-------------------- 
+                   
+                   Additional Info:[END] at [ln:126] , 2021-10-13 17:31:16 870
+                  
+                   --------------------- Info(2021-10-13 17:31:16.8692)CS-DC-15-------------------- 
+                   
+                   Additional Info:Get Database Connection Details start | Database: GEN_MARS_34
+                  
+                   --------------------- Info(2021-10-13 17:31:16.8692)CS-DC-15-------------------- 
+                   
+                   Additional Info:Get Database Connection Details end | Database: GEN_MARS_34
+                  
+                   --------------------- Info(2021-10-13 17:31:17.3307)CS-DC-15-------------------- 
+                   
+                   Additional Info:Get User Info start| UserName: Regr4
+                  
+                   --------------------- Info(2021-10-13 17:31:17.6293)CS-DC-15-------------------- 
+                   
+                   Additional Info:SELECT 
+1 AS "C1", 
+"Extent1"."TESTER_ID" AS "TESTER_ID", 
+"Extent1"."TESTER_NAME_LAST" AS "TESTER_NAME_LAST", 
+"Extent1"."TESTER_NAME_M" AS "TESTER_NAME_M", 
+"Extent1"."TESTER_NAME_F" AS "TESTER_NAME_F", 
+"Extent1"."TESTER_LOGIN_NAME" AS "TESTER_LOGIN_NAME", 
+"Extent1"."TESTER_PWD" AS "TESTER_PWD", 
+"Extent1"."AVAILABLE_MARK" AS "AVAILABLE_MARK", 
+"Extent1"."TESTER_MAIL" AS "TESTER_MAIL", 
+"Extent1"."TESTER_NUMBER" AS "TESTER_NUMBER", 
+"Extent1"."COMPANY_ID" AS "COMPANY_ID", 
+"Extent1"."CREATOR_NAME" AS "CREATOR_NAME", 
+"Extent1"."CREATE_TIME" AS "CREATE_TIME", 
+"Extent1"."TESTER_DESC" AS "TESTER_DESC", 
+"Extent2"."USER_MAPPING_ID" AS "USER_MAPPING_ID", 
+"Extent2"."TESTER_ID" AS "TESTER_ID1", 
+"Extent2"."TEMP_KEY" AS "TEMP_KEY", 
+"Extent2"."IS_DELETED" AS "IS_DELETED", 
+"Extent2"."STATUS" AS "STATUS"
+FROM  "GEN_MARS_34"."T_TESTER_INFO" "Extent1"
+LEFT OUTER JOIN "GEN_MARS_34"."T_USER_MAPPING" "Extent2" ON "Extent1"."TESTER_ID" = "Extent2"."TESTER_ID"
+WHERE (((LTRIM(RTRIM(LOWER("Extent1"."TESTER_MAIL")))) = :p__linq__0) OR ((LOWER("Extent1"."TESTER_LOGIN_NAME")) = :p__linq__1))
+                  
+                   --------------------- Info(2021-10-13 17:31:18.1814)CS-DC-15-------------------- 
+                   
+                   Additional Info:Get User Info end| UserName: Regr4
+                  
+                   --------------------- Info(2021-10-13 17:31:18.2572)CS-DC-15-------------------- 
+                   
+                   Additional Info:Get ProjectList start | UserId: 68
+                  
+                   --------------------- Info(2021-10-13 17:31:18.3749)CS-DC-15-------------------- 
+                   
+                   Additional Info:Get ProjectList end | UserId: 68
+                  
+                   --------------------- Info(2021-10-13 17:31:18.3749)CS-DC-15-------------------- 
+                   
+                   Additional Info:GetRolePrivilege start | UserId: 68 | Username: 
+                  
+                   --------------------- Info(2021-10-13 17:31:18.6359)CS-DC-15-------------------- 
+                   
+                   Additional Info:GetRolePrivilege end | UserId: 68 | Username: 
+                  
+                   --------------------- Info(2021-10-13 17:31:18.6359)CS-DC-15-------------------- 
+                   
+                   Additional Info:GetRoleByUser start | UserId: 68 | Username: 
+                  
+                   --------------------- Info(2021-10-13 17:31:18.8364)CS-DC-15-------------------- 
+                   
+                   Additional Info:GetRoleByUser end | UserId: 68 | Username: 
+                  
+                   --------------------- Info(2021-10-13 17:31:18.8364)CS-DC-15-------------------- 
+                   
+                   Additional Info:Update UserId start | UserId: 68
+                  
+                   --------------------- Info(2021-10-13 17:31:19.0700)CS-DC-15-------------------- 
+                   
+                   Additional Info:Update UserId end | UserId: 68
+                  
+                   --------------------- Info(2021-10-13 17:31:19.0700)CS-DC-15-------------------- 
+                   
+                   Additional Info:User Login successfully | UserName: Regr4 | Password: Regr4 | DataBase: GEN_MARS_34 | Ip Address: ::1
+                  
+                   --------------------- Info(2021-10-13 17:31:19.4745)CS-DC-15-------------------- 
+                   
+                   Additional Info:Update UserId start | UserId: 68
+                  
+                   --------------------- Info(2021-10-13 17:31:19.6909)CS-DC-15-------------------- 
+                   
+                   Additional Info:Update UserId end | UserId: 68
+                  
+                   --------------------- Info(2021-10-13 17:31:19.7016)CS-DC-15-------------------- 
+                   
+                   Additional Info:ActivePinListByUserId start | User id: 68 | Username: 
+                  
+                   --------------------- Info(2021-10-13 17:31:19.9113)CS-DC-15-------------------- 
+                   
+                   Additional Info:ActivePinListByUserId end | User id: 68 | Username: 
+                  
+                   --------------------- Info(2021-10-13 17:31:20.0190)CS-DC-15-------------------- 
+                   
+                   Additional Info:Get GridList start | UseName: Regr4
+                  
+                   --------------------- Info(2021-10-13 17:31:20.3269)CS-DC-15-------------------- 
+                   
+                   Additional Info:Get GridList end | UseName: Regr4
+                  
+                   --------------------- Info(2021-10-13 17:31:20.3269)CS-DC-15-------------------- 
+                   
+                   Additional Info:GetRolePrivilege start | UserId: 68 | Username: Regr4
+                  
+                   --------------------- Info(2021-10-13 17:31:20.5413)CS-DC-15-------------------- 
+                   
+                   Additional Info:GetRolePrivilege end | UserId: 68 | Username: Regr4
+                  
+                   --------------------- Info(2021-10-13 17:31:20.5413)CS-DC-15-------------------- 
+                   
+                   Additional Info:GetRoleByUser start | UserId: 68 | Username: Regr4
+                  
+                   --------------------- Info(2021-10-13 17:31:20.7473)CS-DC-15-------------------- 
+                   
+                   Additional Info:GetRoleByUser end | UserId: 68 | Username: Regr4
+                  
+                   --------------------- Info(2021-10-13 17:31:20.7473)CS-DC-15-------------------- 
+                   
+                   Additional Info:Get ProjectList start | UserId: 68
+                  
+                   --------------------- Info(2021-10-13 17:31:20.8401)CS-DC-15-------------------- 
+                   
+                   Additional Info:Get ProjectList end | UserId: 68
+                  
+                   --------------------- Info(2021-10-13 17:31:23.8879)CS-DC-15-------------------- 
+                   
+                   Additional Info:SignalRConnect start | Username: Regr4
+                  
+                   --------------------- Info(2021-10-13 17:31:23.8879)CS-DC-15-------------------- 
+                   
+                   Additional Info:for grant SignalRConnect start | Username: Regr4
+                  
+                   --------------------- Info(2021-10-13 17:31:23.9897)CS-DC-15-------------------- 
+                   
+                   Additional Info:After grant SignalRConnect start | Username: Regr4
+                  
+                   --------------------- Info(2021-10-13 17:31:24.1213)CS-DC-15-------------------- 
+                   
+                   Additional Info:SignalRConnect end | Username: Regr4
+                  
+                   --------------------- Info(2021-10-13 17:34:37.5905)CS-DC-15-------------------- 
+                   
+                   Additional Info:List Application start | UserName: Regr4
+                  
+                   --------------------- Info(2021-10-13 17:34:37.8219)CS-DC-15-------------------- 
+                   
+                   Additional Info:List Application end | UserName: Regr4
+                  
+                   --------------------- Info(2021-10-13 17:34:37.8219)CS-DC-15-------------------- 
+                   
+                   Additional Info:Load Object Type start | Username: Regr4
+                  
+                   --------------------- Info(2021-10-13 17:34:38.0633)CS-DC-15-------------------- 
+                   
+                   Additional Info:Load Object Type end | Username: Regr4
+                  
+                   --------------------- Info(2021-10-13 17:34:38.1191)CS-DC-15-------------------- 
+                   
+                   Additional Info:Get GridList start | UseName: Regr4
+                  
+                   --------------------- Info(2021-10-13 17:34:38.4113)CS-DC-15-------------------- 
+                   
+                   Additional Info:Get GridList end | UseName: Regr4
+                  
+                   --------------------- Info(2021-10-13 17:34:38.4692)CS-DC-15-------------------- 
+                   
+                   Additional Info:Get GridList start | UseName: Regr4
+                  
+                   --------------------- Info(2021-10-13 17:34:38.7842)CS-DC-15-------------------- 
+                   
+                   Additional Info:Get GridList end | UseName: Regr4
+                  
+                   --------------------- Info(2021-10-13 17:34:39.4142)CS-DC-15-------------------- 
+                   
+                   Additional Info:Object list open start | Username: Regr4
+                  
+                   --------------------- Info(2021-10-13 17:34:39.4790)CS-DC-15-------------------- 
+                   
+                   Additional Info:Get object list start | ApplicationId: 0 | Username: Regr4
+                  
+                   --------------------- Info(2021-10-13 17:34:39.5774)CS-DC-15-------------------- 
+                   
+                   Additional Info:Get object list end | ApplicationId: 0 | Username: Regr4
+                  
+                   --------------------- Info(2021-10-13 17:34:39.5774)CS-DC-15-------------------- 
+                   
+                   Additional Info:Object list open end | Username: Regr4
+                  
+                   --------------------- Info(2021-10-13 17:34:39.5774)CS-DC-15-------------------- 
+                   
+                   Additional Info:Object list open successfully | Username: Regr4
+                  

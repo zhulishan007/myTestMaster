@@ -38,7 +38,7 @@
     {
         ADDDATASETROLEStyle = "block";
     }
-    
+
 }
 
 <!DOCTYPE html>
@@ -406,7 +406,7 @@
                                                         </span><span class="kt-menu__link-text">Import</span>
                                                     </a>
                                                 </li>
-                                             </ul>
+                                            </ul>
                                         </div>
                                     </li>
                                 }
@@ -471,27 +471,6 @@
                                                 </li>
                                             </ul>
                                         </div>
-                                    </li>
-                                }
-
-                                @if (PrivilegeList.Select(y => y.MODULE).ToList().Contains("Report Management"))
-                                {
-                                    <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
-                                        <a href="javascript:;" class="kt-menu__link kt-menu__toggle" onclick='PartialRightReportManagementGrid("0")'>
-                                            <span class="kt-menu__link-text">Report Management</span>
-                                            <i class="kt-menu__ver-arrow la la-angle-right"></i>
-                                        </a>
-                                        @*<div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
-                                            <ul class="kt-menu__subnav">
-                                                <li class="kt-menu__item " aria-haspopup="true">
-                                                    <a href="javascript:;" onclick='PartialRightReportManagementGrid("0")' class="kt-menu__link ">
-                                                        <span class="kt-menu__link-icon">
-                                                            <i class="flaticon-list-2"></i>
-                                                        </span><span class="kt-menu__link-text">List</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>*@
                                     </li>
                                 }
 
@@ -639,42 +618,42 @@
                                     </li>
                                 }
                                 @if (PrivilegeList.Select(y => y.MODULE).ToList().Contains("Display Chart"))
-        {
+                                {
+                                    <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
+                                        <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
+                                            <span class="kt-menu__link-text">Charts</span>
+                                            <i class="kt-menu__ver-arrow la la-angle-right"></i>
+                                        </a>
+                                        <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
+                                            <ul class="kt-menu__subnav">
+                                                <li class="kt-menu__item " aria-haspopup="true">
+                                                    <a href="javascript:;" onclick=window.open("/Chart/ChartIndex") class="kt-menu__link ">
+                                                        <span class="kt-menu__link-icon">
+                                                            <i class="flaticon-list-2"></i>
+                                                        </span><span class="kt-menu__link-text">3D Charts</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                }
                                 <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
-                <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
-                    <span class="kt-menu__link-text">Charts</span>
-                    <i class="kt-menu__ver-arrow la la-angle-right"></i>
-                </a>
-                <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
-                    <ul class="kt-menu__subnav">
-                        <li class="kt-menu__item " aria-haspopup="true">
-                            <a href="javascript:;" onclick=window.open("/Chart/ChartIndex") class="kt-menu__link ">
-                                <span class="kt-menu__link-icon">
-                                    <i class="flaticon-list-2"></i>
-                                </span><span class="kt-menu__link-text">3D Charts</span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-        }
-        <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
-            <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
-                <span class="kt-menu__link-text">Download</span>
-                <i class="kt-menu__ver-arrow la la-angle-right"></i>
-            </a>
-            <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
-                <ul class="kt-menu__subnav">
-                    <li class="kt-menu__item " aria-haspopup="true">
-                        <a href="~/Download/DownloadFile.pdf" class="kt-menu__link " target="_blank">
-                            <span class="kt-menu__link-icon">
-                                <i class="fa fa-file-pdf"></i>
-                            </span><span class="kt-menu__link-text">Download File</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </li>
+                                    <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
+                                        <span class="kt-menu__link-text">Download</span>
+                                        <i class="kt-menu__ver-arrow la la-angle-right"></i>
+                                    </a>
+                                    <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
+                                        <ul class="kt-menu__subnav">
+                                            <li class="kt-menu__item " aria-haspopup="true">
+                                                <a href="~/Download/DownloadFile.pdf" class="kt-menu__link " target="_blank">
+                                                    <span class="kt-menu__link-icon">
+                                                        <i class="fa fa-file-pdf"></i>
+                                                    </span><span class="kt-menu__link-text">Download File</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -773,18 +752,12 @@
                 </div>
                 <!-- end:: Header -->
                 @RenderBody()
-
                 <!-- begin:: Footer -->
-                @*<div class="kt-footer  kt-grid__item kt-grid kt-grid--desktop kt-grid--ver-desktop" id="kt_footer">
-                        <div class="kt-container  kt-container--fluid ">
-
-                            <div class="kt-footer__menu">
-                                <a href="#" target="_blank" class="kt-footer__menu-link kt-link">About</a>
-                                <a href="#" target="_blank" class="kt-footer__menu-link kt-link">Team</a>
-                                <a href="#" target="_blank" class="kt-footer__menu-link kt-link">Contact</a>
-                            </div>
-                        </div>
-                    </div>*@
+                <div class="kt-footer  kt-grid__item kt-grid kt-grid--desktop kt-grid--ver-desktop" id="kt_footer">
+                    <div class="kt-container  kt-container--fluid ">
+                        <p>&copy; @DateTime.Now.Year - MARS Revamp</p>
+                    </div>
+                </div>
                 <!-- end:: Footer -->
             </div>
         </div>
@@ -829,18 +802,18 @@
                                 </div>
                             </a>*@
                         <a href="#" onclick="PartialConnectionList()" class="kt-notification__item">
-                                <div class="kt-notification__item-icon">
-                                    <i class="fa fa-users"></i>
+                            <div class="kt-notification__item-icon">
+                                <i class="fa fa-users"></i>
+                            </div>
+                            <div class="kt-notification__item-details">
+                                <div class="kt-notification__item-title">
+                                    Database Connection
                                 </div>
-                                <div class="kt-notification__item-details">
-                                    <div class="kt-notification__item-title">
-                                        Database Connection
-                                    </div>
-                                    <div class="kt-notification__item-time">
-                                        DB Connection
-                                    </div>
+                                <div class="kt-notification__item-time">
+                                    DB Connection
                                 </div>
-                            </a>
+                            </div>
+                        </a>
                         @if (PrivilegeList.Select(y => y.MODULE).ToList().Contains("Assign Project") && PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Edit Assign Project"))
                         {
                             <a href="#" onclick=partialRightOpenProjectList("0") class="kt-notification__item">
@@ -974,18 +947,18 @@
                             </a>
                         }
                         @if (PrivilegeList.Select(y => y.MODULE).ToList().Contains("Display Chart"))
-                            {
-                                <a href="javascript:;" onclick=window.open("/Chart/ChartIndex") class="kt-notification__item">
-                                    <div class="kt-notification__item-icon">
-                                        <i class="fa fa-chart-area"></i>
+                        {
+                            <a href="javascript:;" onclick=window.open("/Chart/ChartIndex") class="kt-notification__item">
+                                <div class="kt-notification__item-icon">
+                                    <i class="fa fa-chart-area"></i>
+                                </div>
+                                <div class="kt-notification__item-details">
+                                    <div class="kt-notification__item-title">
+                                        <span class="kt-header__topbar-icon" data-skin="brand" data-container="body" data-toggle="kt-popover" data-placement="bottom" data-content="User Configuration" data-original-title="" title="">Charts</span>
                                     </div>
-                                    <div class="kt-notification__item-details">
-                                        <div class="kt-notification__item-title">
-                                            <span class="kt-header__topbar-icon" data-skin="brand" data-container="body" data-toggle="kt-popover" data-placement="bottom" data-content="User Configuration" data-original-title="" title="">Charts</span>
-                                        </div>
-                                    </div>
-                                </a>
-                            }
+                                </div>
+                            </a>
+                        }
                         <a href="~/Download/DownloadFile.pdf" class="kt-notification__item" target="_blank">
                             <div class="kt-notification__item-icon">
                                 <i class="fa fa-file-download"></i>
@@ -1677,32 +1650,32 @@
     </div>
 
     @*<div class="modal fade" id="ExecutePopupTC" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display: none;">
-        <div class="modal-dialog modal-sm" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h6 class="modal-title" style="margin-top: 2px;" id="exampleModalLabel">Execute Engine</h6>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <input type="hidden" id="hdnExeTCStoryboardId">
-                        <input type="hidden" id="hdnExeTCStoryboardName">
-                        <input type="hidden" id="hdnExeTCLoginUName" value="@SessionManager.TESTER_LOGIN_NAME">
-                        <input type="hidden" id="hdnExeTCguid">
-                        <div class="form-group" style="margin-bottom: 1rem;">
-                            <label for="name" class="form-control-label">Test On Applcation:</label>
-                            <select class="form-control" id="drpExeAppTC" style="width: 260px;height: 32px;"></select>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary .btn-copy" onclick="ExecuteEngineTCstep('@SessionManager.Schema')">Execute TestCase</button>
+            <div class="modal-dialog modal-sm" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h6 class="modal-title" style="margin-top: 2px;" id="exampleModalLabel">Execute Engine</h6>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <input type="hidden" id="hdnExeTCStoryboardId">
+                            <input type="hidden" id="hdnExeTCStoryboardName">
+                            <input type="hidden" id="hdnExeTCLoginUName" value="@SessionManager.TESTER_LOGIN_NAME">
+                            <input type="hidden" id="hdnExeTCguid">
+                            <div class="form-group" style="margin-bottom: 1rem;">
+                                <label for="name" class="form-control-label">Test On Applcation:</label>
+                                <select class="form-control" id="drpExeAppTC" style="width: 260px;height: 32px;"></select>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary .btn-copy" onclick="ExecuteEngineTCstep('@SessionManager.Schema')">Execute TestCase</button>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>*@
-    
+        </div>*@
+
 
     @*<div class="modal fade" id="ResizeLeftPanel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">

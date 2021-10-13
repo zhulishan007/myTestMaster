@@ -11,22 +11,41 @@
         display: table-cell;
     }
 
-    #clsappobject span {
+    .clsappobject span.select2-selection {
         width: 182px;
         height: 37px;
+        font-size: 13px;
     }
 
-    #appid {
-        margin-left: 10px;
+        .clsappobject span.select2-selection .select2-selection__rendered {
+            font-weight: normal;
+            text-align: left;
+        }
+
+    .select2-results__options li {
+        color: #595d6e;
     }
+
+    .dropobject {
+        align-items: center;
+    }
+
+        .dropobject label {
+            padding-right: 15px;
+        }
+
+    /*#appid {
+        margin-left: 10px;
+    }*/
 
     #convertobjectid {
-        margin-left: 20px;
+        margin: 20px;
+        /*margin-left: 20px;*/
     }
 
-    #convertappid {
+    /*#convertappid {
         margin-left: 20px;
-    }
+    }*/
 </style>
 @using MARS_Repository.ViewModel
 @{
@@ -61,23 +80,33 @@
 
                     <div class="modal-body">
 
-                        <div class="form-group row">
+                        <div class="form-group row dropobject">
                             <input type="hidden" id="hiddenobjectid" />
 
                             <label class="Column">Application </label>
-                            <div class="Column" id="clsappobject">
-                                <select class="form-control kt-select2" id="appid" name="appid" style="width: 182px;" onchange="loadData()">
+                            <div class="Column clsappobject" >
 
+                                <select class="form-control kt-select2" id="appid" name="appid" onchange="loadData()">
+                                    <option value="0" style="visibility:hidden"></option>
                                     @{var lAppList = ViewBag.applist as IEnumerable<SelectListItem>;
-                                        <optgroup label="Applications">
-                                            <option value="0" style="visibility:hidden"></option>
-                                            @foreach (var item in lAppList)
-                                            {
-                                                <option value="@item.Value">@item.Text</option>
-                                            }
-                                        </optgroup>
+                                        foreach (var item in lAppList)
+                                        {
+                                            <option value="@item.Value">@item.Text</option>
+                                        }
                                     }
                                 </select>
+                                @*<select class="form-control kt-select2" id="appid" name="appid" style="width: 182px;" onchange="loadData()">
+
+                                        @{var lAppList = ViewBag.applist as IEnumerable<SelectListItem>;
+                                            <optgroup label="Applications">
+                                                <option value="0" style="visibility:hidden"></option>
+                                                @foreach (var item in lAppList)
+                                                {
+                                                    <option value="@item.Value">@item.Text</option>
+                                                }
+                                            </optgroup>
+                                        }
+                                    </select>*@
                             </div>
                             @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Convert To App Object"))
                             {
@@ -85,8 +114,8 @@
                                     <button type="button" id="convertobjectid" class="btn btn-outline-brand btn-elevate btn-pill Column convert_app" onclick="ConvertObject()">Convert To</button>
                                 </div>
                             }
-                                <div class="Column">
-                                    <select class="form-control kt-select2" id="convertappid" name="convertappid" onchange="emptyObjectArray()" style="width: 182px;">
+                                <div class="Column clsappobject">
+                                    @*<select class="form-control kt-select2" id="convertappid" name="convertappid" onchange="emptyObjectArray()" style="width: 182px;">
                                         @{var AppList = ViewBag.applist as IEnumerable<SelectListItem>;
                                             <optgroup label="Applications">
                                                 <option value="0" style="visibility:hidden"></option>
@@ -96,9 +125,19 @@
                                                 }
                                             </optgroup>
                                         }
+                                    </select>*@
+
+                                    <select class="form-control kt-select2" id="convertappid" name="convertappid" onchange="emptyObjectArray()">
+                                        <option value="0" style="visibility:hidden"></option>
+                                        @{var AppList = ViewBag.applist as IEnumerable<SelectListItem>;
+                                            foreach (var item in lAppList)
+                                            {
+                                                <option value="@item.Value">@item.Text</option>
+                                            }
+                                        }
                                     </select>
                                 </div>
-                            </div>
+                        </div>
 
                     </div>
                 </div>
@@ -122,7 +161,7 @@
                                 Insert Pegwindow Object
                             </a>
                         }
-                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -941,7 +980,7 @@
         $("#DrpPeg option:contains(" + parent + ")").filter(function () {
             return $(this).text() === parent ? true : false;
         }).attr('selected', true);
-      //  $("#DrpPeg option:contains(" + parent + ")").attr('selected', true);
+        //  $("#DrpPeg option:contains(" + parent + ")").attr('selected', true);
         $("#DrpPeg").select2();
 
     }
@@ -1383,5 +1422,10 @@
     }
     $("#objecthappyname").on('keyup', function () {
         $("#existobjectname").css("display", "none");
+    });
+
+
+    $(document).ready(function () {
+        $('.kt-select2').select2();
     });
 </script>
