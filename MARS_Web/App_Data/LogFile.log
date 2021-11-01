@@ -55084,3 +55084,781 @@ WHERE (((LTRIM(RTRIM(LOWER("Extent1"."TESTER_MAIL")))) = :p__linq__0) OR ((LOWER
                    
                    Additional Info:Object list open successfully | Username: Regr4
                   
+                   --------------------- Info(2021-11-01 11:39:05.2936)TIGERHP-------------------- 
+                   
+                   Additional Info:[BEGIN] at [ln:80] LoadFromXmlConfig, 2021-11-01 11:39:05 295
+                  
+                   --------------------- Info(2021-11-01 11:39:05.3276)TIGERHP-------------------- 
+                   
+                   Additional Info:[END] at [ln:126] , 2021-11-01 11:39:05 327
+                  
+                   --------------------- Info(2021-11-01 11:39:31.9592)TIGERHP-------------------- 
+                   
+                   Additional Info:[BEGIN] at [ln:80] LoadFromXmlConfig, 2021-11-01 11:39:31 958
+                  
+                   --------------------- Info(2021-11-01 11:39:31.9592)TIGERHP-------------------- 
+                   
+                   Additional Info:[END] at [ln:126] , 2021-11-01 11:39:31 961
+                  
+                   --------------------- Info(2021-11-01 11:39:31.9592)TIGERHP-------------------- 
+                   
+                   Additional Info:Get Database Connection Details start | Database: GEN_MARS_5
+                  
+                   --------------------- Error(2021-11-01 11:39:31.9592)TIGERHP-------------------- 
+                   
+                   Additional Info:Error occured in GetDatabaseConnectionDetails
+                  
+                   --------------------- Error(2021-11-01 11:39:31.9774)TIGERHP-------------------- 
+                   
+                   Additional Info:GEN_MARS_5 database does not exist. | UserName: admin | Password: admin | DataBase: GEN_MARS_5 | Ip Address: ::1
+                  
+                   --------------------- Info(2021-11-01 11:39:38.3480)TIGERHP-------------------- 
+                   
+                   Additional Info:[BEGIN] at [ln:80] LoadFromXmlConfig, 2021-11-01 11:39:38 348
+                  
+                   --------------------- Info(2021-11-01 11:39:38.3480)TIGERHP-------------------- 
+                   
+                   Additional Info:[END] at [ln:126] , 2021-11-01 11:39:38 349
+                  
+                   --------------------- Info(2021-11-01 11:39:38.3480)TIGERHP-------------------- 
+                   
+                   Additional Info:Get Database Connection Details start | Database: GEN_MARS_5
+                  
+                   --------------------- Error(2021-11-01 11:39:38.3480)TIGERHP-------------------- 
+                   
+                   Additional Info:Error occured in GetDatabaseConnectionDetails
+                  
+                   --------------------- Error(2021-11-01 11:39:38.3480)TIGERHP-------------------- 
+                   
+                   Additional Info:GEN_MARS_5 database does not exist. | UserName: admin | Password: admin | DataBase: GEN_MARS_5 | Ip Address: ::1
+                  
+                   --------------------- Info(2021-11-01 11:39:51.0853)TIGERHP-------------------- 
+                   
+                   Additional Info:[BEGIN] at [ln:80] LoadFromXmlConfig, 2021-11-01 11:39:51 085
+                  
+                   --------------------- Info(2021-11-01 11:39:51.0853)TIGERHP-------------------- 
+                   
+                   Additional Info:[END] at [ln:126] , 2021-11-01 11:39:51 086
+                  
+                   --------------------- Info(2021-11-01 11:39:51.0853)TIGERHP-------------------- 
+                   
+                   Additional Info:Get Database Connection Details start | Database: GEN_MARS_5
+                  
+                   --------------------- Error(2021-11-01 11:39:51.0853)TIGERHP-------------------- 
+                   
+                   Additional Info:Error occured in GetDatabaseConnectionDetails
+                  
+                   --------------------- Error(2021-11-01 11:39:51.0962)TIGERHP-------------------- 
+                   
+                   Additional Info:GEN_MARS_5 database does not exist. | UserName: admin | Password: admin | DataBase: GEN_MARS_5 | Ip Address: ::1
+                  
+                   --------------------- Info(2021-11-01 11:42:06.3996)TIGERHP-------------------- 
+                   
+                   Additional Info:[BEGIN] at [ln:80] LoadFromXmlConfig, 2021-11-01 11:42:06 401
+                  
+                   --------------------- Info(2021-11-01 11:42:06.4320)TIGERHP-------------------- 
+                   
+                   Additional Info:[END] at [ln:126] , 2021-11-01 11:42:06 432
+                  
+                   --------------------- Info(2021-11-01 11:42:17.7786)TIGERHP-------------------- 
+                   
+                   Additional Info:[BEGIN] at [ln:80] LoadFromXmlConfig, 2021-11-01 11:42:17 778
+                  
+                   --------------------- Info(2021-11-01 11:42:17.7786)TIGERHP-------------------- 
+                   
+                   Additional Info:[END] at [ln:126] , 2021-11-01 11:42:17 781
+                  
+                   --------------------- Info(2021-11-01 11:42:17.7832)TIGERHP-------------------- 
+                   
+                   Additional Info:Get Database Connection Details start | Database: GEN_MARS_34
+                  
+                   --------------------- Info(2021-11-01 11:42:17.7832)TIGERHP-------------------- 
+                   
+                   Additional Info:Get Database Connection Details end | Database: GEN_MARS_34
+                  
+                   --------------------- Info(2021-11-01 11:42:25.4125)TIGERHP-------------------- 
+                   
+                   Additional Info:Get User Info start| UserName: admin
+                  
+                   --------------------- Info(2021-11-01 11:42:25.9266)TIGERHP-------------------- 
+                   
+                   Additional Info:SELECT 
+1 AS "C1", 
+"Extent1"."TESTER_ID" AS "TESTER_ID", 
+"Extent1"."TESTER_NAME_LAST" AS "TESTER_NAME_LAST", 
+"Extent1"."TESTER_NAME_M" AS "TESTER_NAME_M", 
+"Extent1"."TESTER_NAME_F" AS "TESTER_NAME_F", 
+"Extent1"."TESTER_LOGIN_NAME" AS "TESTER_LOGIN_NAME", 
+"Extent1"."TESTER_PWD" AS "TESTER_PWD", 
+"Extent1"."AVAILABLE_MARK" AS "AVAILABLE_MARK", 
+"Extent1"."TESTER_MAIL" AS "TESTER_MAIL", 
+"Extent1"."TESTER_NUMBER" AS "TESTER_NUMBER", 
+"Extent1"."COMPANY_ID" AS "COMPANY_ID", 
+"Extent1"."CREATOR_NAME" AS "CREATOR_NAME", 
+"Extent1"."CREATE_TIME" AS "CREATE_TIME", 
+"Extent1"."TESTER_DESC" AS "TESTER_DESC", 
+"Extent2"."USER_MAPPING_ID" AS "USER_MAPPING_ID", 
+"Extent2"."TESTER_ID" AS "TESTER_ID1", 
+"Extent2"."TEMP_KEY" AS "TEMP_KEY", 
+"Extent2"."IS_DELETED" AS "IS_DELETED", 
+"Extent2"."STATUS" AS "STATUS"
+FROM  "GEN_MARS_34"."T_TESTER_INFO" "Extent1"
+LEFT OUTER JOIN "GEN_MARS_34"."T_USER_MAPPING" "Extent2" ON "Extent1"."TESTER_ID" = "Extent2"."TESTER_ID"
+WHERE (((LTRIM(RTRIM(LOWER("Extent1"."TESTER_MAIL")))) = :p__linq__0) OR ((LOWER("Extent1"."TESTER_LOGIN_NAME")) = :p__linq__1))
+                  
+                   --------------------- Error(2021-11-01 11:42:28.5438)TIGERHP-------------------- 
+                   
+                   Additional Info:Error occured User in GetUserByEmailAndLoginName method | Login Name : admin |  UserName: 
+                  
+                   --------------------- Info(2021-11-01 11:42:28.5579)TIGERHP-------------------- 
+                   
+                   Additional Info:Get User Info end| UserName: admin
+                  
+                   --------------------- Error(2021-11-01 11:42:28.5579)TIGERHP-------------------- 
+                   
+                   Additional Info:User Name does not exist in system | UserName: admin | Password: admin | DataBase: GEN_MARS_34 | Ip Address: ::1
+                  
+                   --------------------- Info(2021-11-01 11:42:34.7343)TIGERHP-------------------- 
+                   
+                   Additional Info:[BEGIN] at [ln:80] LoadFromXmlConfig, 2021-11-01 11:42:34 734
+                  
+                   --------------------- Info(2021-11-01 11:42:34.7343)TIGERHP-------------------- 
+                   
+                   Additional Info:[END] at [ln:126] , 2021-11-01 11:42:34 735
+                  
+                   --------------------- Info(2021-11-01 11:42:34.7375)TIGERHP-------------------- 
+                   
+                   Additional Info:Get Database Connection Details start | Database: GEN_MARS_5
+                  
+                   --------------------- Error(2021-11-01 11:42:40.0785)TIGERHP-------------------- 
+                   
+                   Additional Info:Error occured in GetDatabaseConnectionDetails
+                  
+                   --------------------- Info(2021-11-01 11:44:29.5201)TIGERHP-------------------- 
+                   
+                   Additional Info:[BEGIN] at [ln:80] LoadFromXmlConfig, 2021-11-01 11:44:29 519
+                  
+                   --------------------- Info(2021-11-01 11:44:29.5478)TIGERHP-------------------- 
+                   
+                   Additional Info:[END] at [ln:126] , 2021-11-01 11:44:29 547
+                  
+                   --------------------- Info(2021-11-01 11:44:50.5675)TIGERHP-------------------- 
+                   
+                   Additional Info:[BEGIN] at [ln:80] LoadFromXmlConfig, 2021-11-01 11:44:50 567
+                  
+                   --------------------- Info(2021-11-01 11:44:50.5675)TIGERHP-------------------- 
+                   
+                   Additional Info:[END] at [ln:126] , 2021-11-01 11:44:50 569
+                  
+                   --------------------- Info(2021-11-01 11:44:50.5675)TIGERHP-------------------- 
+                   
+                   Additional Info:Get Database Connection Details start | Database: GEN_MARS_5
+                  
+                   --------------------- Info(2021-11-01 11:48:02.9737)TIGERHP-------------------- 
+                   
+                   Additional Info:[BEGIN] at [ln:80] LoadFromXmlConfig, 2021-11-01 11:48:02 975
+                  
+                   --------------------- Info(2021-11-01 11:48:03.0010)TIGERHP-------------------- 
+                   
+                   Additional Info:[END] at [ln:126] , 2021-11-01 11:48:03 001
+                  
+                   --------------------- Info(2021-11-01 11:49:18.9535)TIGERHP-------------------- 
+                   
+                   Additional Info:[BEGIN] at [ln:80] LoadFromXmlConfig, 2021-11-01 11:49:18 953
+                  
+                   --------------------- Info(2021-11-01 11:49:41.3311)TIGERHP-------------------- 
+                   
+                   Additional Info:[END] at [ln:126] , 2021-11-01 11:49:41 331
+                  
+                   --------------------- Info(2021-11-01 11:52:07.9790)TIGERHP-------------------- 
+                   
+                   Additional Info:[BEGIN] at [ln:80] LoadFromXmlConfig, 2021-11-01 11:52:07 982
+                  
+                   --------------------- Info(2021-11-01 11:52:08.0207)TIGERHP-------------------- 
+                   
+                   Additional Info:[END] at [ln:126] , 2021-11-01 11:52:08 020
+                  
+                   --------------------- Info(2021-11-01 11:52:30.2661)TIGERHP-------------------- 
+                   
+                   Additional Info:[BEGIN] at [ln:80] LoadFromXmlConfig, 2021-11-01 11:52:30 266
+                  
+                   --------------------- Info(2021-11-01 11:52:30.2699)TIGERHP-------------------- 
+                   
+                   Additional Info:[END] at [ln:126] , 2021-11-01 11:52:30 269
+                  
+                   --------------------- Info(2021-11-01 11:52:30.2699)TIGERHP-------------------- 
+                   
+                   Additional Info:Get Database Connection Details start | Database: GEN_MARS_5
+                  
+                   --------------------- Info(2021-11-01 11:52:36.1466)TIGERHP-------------------- 
+                   
+                   Additional Info:Get Database Connection Details end | Database: GEN_MARS_5
+                  
+                   --------------------- Info(2021-11-01 11:52:48.8894)TIGERHP-------------------- 
+                   
+                   Additional Info:Get User Info start| UserName: admin
+                  
+                   --------------------- Info(2021-11-01 11:52:49.3458)TIGERHP-------------------- 
+                   
+                   Additional Info:SELECT 
+1 AS "C1", 
+"Extent1"."TESTER_ID" AS "TESTER_ID", 
+"Extent1"."TESTER_NAME_LAST" AS "TESTER_NAME_LAST", 
+"Extent1"."TESTER_NAME_M" AS "TESTER_NAME_M", 
+"Extent1"."TESTER_NAME_F" AS "TESTER_NAME_F", 
+"Extent1"."TESTER_LOGIN_NAME" AS "TESTER_LOGIN_NAME", 
+"Extent1"."TESTER_PWD" AS "TESTER_PWD", 
+"Extent1"."AVAILABLE_MARK" AS "AVAILABLE_MARK", 
+"Extent1"."TESTER_MAIL" AS "TESTER_MAIL", 
+"Extent1"."TESTER_NUMBER" AS "TESTER_NUMBER", 
+"Extent1"."COMPANY_ID" AS "COMPANY_ID", 
+"Extent1"."CREATOR_NAME" AS "CREATOR_NAME", 
+"Extent1"."CREATE_TIME" AS "CREATE_TIME", 
+"Extent1"."TESTER_DESC" AS "TESTER_DESC", 
+"Extent2"."USER_MAPPING_ID" AS "USER_MAPPING_ID", 
+"Extent2"."TESTER_ID" AS "TESTER_ID1", 
+"Extent2"."TEMP_KEY" AS "TEMP_KEY", 
+"Extent2"."IS_DELETED" AS "IS_DELETED", 
+"Extent2"."STATUS" AS "STATUS"
+FROM  "GEN_MARS_5"."T_TESTER_INFO" "Extent1"
+LEFT OUTER JOIN "GEN_MARS_5"."T_USER_MAPPING" "Extent2" ON "Extent1"."TESTER_ID" = "Extent2"."TESTER_ID"
+WHERE (((LTRIM(RTRIM(LOWER("Extent1"."TESTER_MAIL")))) = :p__linq__0) OR ((LOWER("Extent1"."TESTER_LOGIN_NAME")) = :p__linq__1))
+                  
+                   --------------------- Error(2021-11-01 11:52:51.8639)TIGERHP-------------------- 
+                   
+                   Additional Info:Error occured User in GetUserByEmailAndLoginName method | Login Name : admin |  UserName: 
+                  
+                   --------------------- Info(2021-11-01 11:52:51.8770)TIGERHP-------------------- 
+                   
+                   Additional Info:Get User Info end| UserName: admin
+                  
+                   --------------------- Error(2021-11-01 11:52:51.8770)TIGERHP-------------------- 
+                   
+                   Additional Info:User Name does not exist in system | UserName: admin | Password: admin | DataBase: GEN_MARS_5 | Ip Address: ::1
+                  
+                   --------------------- Info(2021-11-01 12:31:26.8565)TIGERHP-------------------- 
+                   
+                   Additional Info:[BEGIN] at [ln:80] LoadFromXmlConfig, 2021-11-01 12:31:26 858
+                  
+                   --------------------- Info(2021-11-01 12:31:26.9028)TIGERHP-------------------- 
+                   
+                   Additional Info:[END] at [ln:126] , 2021-11-01 12:31:26 902
+                  
+                   --------------------- Info(2021-11-01 12:31:46.2045)TIGERHP-------------------- 
+                   
+                   Additional Info:[BEGIN] at [ln:80] LoadFromXmlConfig, 2021-11-01 12:31:46 204
+                  
+                   --------------------- Info(2021-11-01 12:31:46.2045)TIGERHP-------------------- 
+                   
+                   Additional Info:[END] at [ln:126] , 2021-11-01 12:31:46 206
+                  
+                   --------------------- Info(2021-11-01 12:31:46.2045)TIGERHP-------------------- 
+                   
+                   Additional Info:Get Database Connection Details start | Database: GEN_MARS
+                  
+                   --------------------- Info(2021-11-01 12:31:47.1283)TIGERHP-------------------- 
+                   
+                   Additional Info:Get Database Connection Details end | Database: GEN_MARS
+                  
+                   --------------------- Info(2021-11-01 12:31:47.9173)TIGERHP-------------------- 
+                   
+                   Additional Info:Get User Info start| UserName: admin
+                  
+                   --------------------- Info(2021-11-01 12:31:48.5235)TIGERHP-------------------- 
+                   
+                   Additional Info:SELECT 
+1 AS "C1", 
+"Extent1"."TESTER_ID" AS "TESTER_ID", 
+"Extent1"."TESTER_NAME_LAST" AS "TESTER_NAME_LAST", 
+"Extent1"."TESTER_NAME_M" AS "TESTER_NAME_M", 
+"Extent1"."TESTER_NAME_F" AS "TESTER_NAME_F", 
+"Extent1"."TESTER_LOGIN_NAME" AS "TESTER_LOGIN_NAME", 
+"Extent1"."TESTER_PWD" AS "TESTER_PWD", 
+"Extent1"."AVAILABLE_MARK" AS "AVAILABLE_MARK", 
+"Extent1"."TESTER_MAIL" AS "TESTER_MAIL", 
+"Extent1"."TESTER_NUMBER" AS "TESTER_NUMBER", 
+"Extent1"."COMPANY_ID" AS "COMPANY_ID", 
+"Extent1"."CREATOR_NAME" AS "CREATOR_NAME", 
+"Extent1"."CREATE_TIME" AS "CREATE_TIME", 
+"Extent1"."TESTER_DESC" AS "TESTER_DESC", 
+"Extent2"."USER_MAPPING_ID" AS "USER_MAPPING_ID", 
+"Extent2"."TESTER_ID" AS "TESTER_ID1", 
+"Extent2"."TEMP_KEY" AS "TEMP_KEY", 
+"Extent2"."IS_DELETED" AS "IS_DELETED", 
+"Extent2"."STATUS" AS "STATUS"
+FROM  "GEN_MARS"."T_TESTER_INFO" "Extent1"
+LEFT OUTER JOIN "GEN_MARS"."T_USER_MAPPING" "Extent2" ON "Extent1"."TESTER_ID" = "Extent2"."TESTER_ID"
+WHERE (((LTRIM(RTRIM(LOWER("Extent1"."TESTER_MAIL")))) = :p__linq__0) OR ((LOWER("Extent1"."TESTER_LOGIN_NAME")) = :p__linq__1))
+                  
+                   --------------------- Error(2021-11-01 12:31:49.5641)TIGERHP-------------------- 
+                   
+                   Additional Info:Error occured User in GetUserByEmailAndLoginName method | Login Name : admin |  UserName: 
+                  
+                   --------------------- Info(2021-11-01 12:31:49.5799)TIGERHP-------------------- 
+                   
+                   Additional Info:Get User Info end| UserName: admin
+                  
+                   --------------------- Error(2021-11-01 12:31:49.5799)TIGERHP-------------------- 
+                   
+                   Additional Info:User Name does not exist in system | UserName: admin | Password: admin | DataBase: GEN_MARS | Ip Address: ::1
+                  
+                   --------------------- Info(2021-11-01 12:33:26.1382)TIGERHP-------------------- 
+                   
+                   Additional Info:[BEGIN] at [ln:80] LoadFromXmlConfig, 2021-11-01 12:33:26 138
+                  
+                   --------------------- Info(2021-11-01 12:33:26.1382)TIGERHP-------------------- 
+                   
+                   Additional Info:[END] at [ln:126] , 2021-11-01 12:33:26 139
+                  
+                   --------------------- Info(2021-11-01 12:33:26.7295)TIGERHP-------------------- 
+                   
+                   Additional Info:Get Database Connection Details start | Database: GEN_MARS
+                  
+                   --------------------- Info(2021-11-01 12:33:49.9208)TIGERHP-------------------- 
+                   
+                   Additional Info:Get Database Connection Details end | Database: GEN_MARS
+                  
+                   --------------------- Info(2021-11-01 12:34:20.3581)TIGERHP-------------------- 
+                   
+                   Additional Info:Get User Info start| UserName: admin
+                  
+                   --------------------- Info(2021-11-01 12:34:20.5950)TIGERHP-------------------- 
+                   
+                   Additional Info:SELECT 
+1 AS "C1", 
+"Extent1"."TESTER_ID" AS "TESTER_ID", 
+"Extent1"."TESTER_NAME_LAST" AS "TESTER_NAME_LAST", 
+"Extent1"."TESTER_NAME_M" AS "TESTER_NAME_M", 
+"Extent1"."TESTER_NAME_F" AS "TESTER_NAME_F", 
+"Extent1"."TESTER_LOGIN_NAME" AS "TESTER_LOGIN_NAME", 
+"Extent1"."TESTER_PWD" AS "TESTER_PWD", 
+"Extent1"."AVAILABLE_MARK" AS "AVAILABLE_MARK", 
+"Extent1"."TESTER_MAIL" AS "TESTER_MAIL", 
+"Extent1"."TESTER_NUMBER" AS "TESTER_NUMBER", 
+"Extent1"."COMPANY_ID" AS "COMPANY_ID", 
+"Extent1"."CREATOR_NAME" AS "CREATOR_NAME", 
+"Extent1"."CREATE_TIME" AS "CREATE_TIME", 
+"Extent1"."TESTER_DESC" AS "TESTER_DESC", 
+"Extent2"."USER_MAPPING_ID" AS "USER_MAPPING_ID", 
+"Extent2"."TESTER_ID" AS "TESTER_ID1", 
+"Extent2"."TEMP_KEY" AS "TEMP_KEY", 
+"Extent2"."IS_DELETED" AS "IS_DELETED", 
+"Extent2"."STATUS" AS "STATUS"
+FROM  "GEN_MARS"."T_TESTER_INFO" "Extent1"
+LEFT OUTER JOIN "GEN_MARS"."T_USER_MAPPING" "Extent2" ON "Extent1"."TESTER_ID" = "Extent2"."TESTER_ID"
+WHERE (((LTRIM(RTRIM(LOWER("Extent1"."TESTER_MAIL")))) = :p__linq__0) OR ((LOWER("Extent1"."TESTER_LOGIN_NAME")) = :p__linq__1))
+                  
+                   --------------------- Error(2021-11-01 12:34:20.7921)TIGERHP-------------------- 
+                   
+                   Additional Info:Error occured User in GetUserByEmailAndLoginName method | Login Name : admin |  UserName: 
+                  
+                   --------------------- Info(2021-11-01 12:34:20.7921)TIGERHP-------------------- 
+                   
+                   Additional Info:Get User Info end| UserName: admin
+                  
+                   --------------------- Info(2021-11-01 12:34:31.7305)TIGERHP-------------------- 
+                   
+                   Additional Info:Get User Info start| UserName: admin
+                  
+                   --------------------- Info(2021-11-01 12:34:50.3172)TIGERHP-------------------- 
+                   
+                   Additional Info:SELECT 
+1 AS "C1", 
+"Extent1"."TESTER_ID" AS "TESTER_ID", 
+"Extent1"."TESTER_NAME_LAST" AS "TESTER_NAME_LAST", 
+"Extent1"."TESTER_NAME_M" AS "TESTER_NAME_M", 
+"Extent1"."TESTER_NAME_F" AS "TESTER_NAME_F", 
+"Extent1"."TESTER_LOGIN_NAME" AS "TESTER_LOGIN_NAME", 
+"Extent1"."TESTER_PWD" AS "TESTER_PWD", 
+"Extent1"."AVAILABLE_MARK" AS "AVAILABLE_MARK", 
+"Extent1"."TESTER_MAIL" AS "TESTER_MAIL", 
+"Extent1"."TESTER_NUMBER" AS "TESTER_NUMBER", 
+"Extent1"."COMPANY_ID" AS "COMPANY_ID", 
+"Extent1"."CREATOR_NAME" AS "CREATOR_NAME", 
+"Extent1"."CREATE_TIME" AS "CREATE_TIME", 
+"Extent1"."TESTER_DESC" AS "TESTER_DESC", 
+"Extent2"."USER_MAPPING_ID" AS "USER_MAPPING_ID", 
+"Extent2"."TESTER_ID" AS "TESTER_ID1", 
+"Extent2"."TEMP_KEY" AS "TEMP_KEY", 
+"Extent2"."IS_DELETED" AS "IS_DELETED", 
+"Extent2"."STATUS" AS "STATUS"
+FROM  "GEN_MARS"."T_TESTER_INFO" "Extent1"
+LEFT OUTER JOIN "GEN_MARS"."T_USER_MAPPING" "Extent2" ON "Extent1"."TESTER_ID" = "Extent2"."TESTER_ID"
+WHERE (((LTRIM(RTRIM(LOWER("Extent1"."TESTER_MAIL")))) = :p__linq__0) OR ((LOWER("Extent1"."TESTER_LOGIN_NAME")) = :p__linq__1))
+                  
+                   --------------------- Info(2021-11-01 14:21:10.9567)TIGERHP-------------------- 
+                   
+                   Additional Info:[BEGIN] at [ln:80] LoadFromXmlConfig, 2021-11-01 14:21:10 959
+                  
+                   --------------------- Info(2021-11-01 14:21:11.0031)TIGERHP-------------------- 
+                   
+                   Additional Info:[END] at [ln:126] , 2021-11-01 14:21:11 003
+                  
+                   --------------------- Info(2021-11-01 14:44:34.9558)TIGERHP-------------------- 
+                   
+                   Additional Info:[BEGIN] at [ln:80] LoadFromXmlConfig, 2021-11-01 14:44:34 957
+                  
+                   --------------------- Info(2021-11-01 14:44:34.9875)TIGERHP-------------------- 
+                   
+                   Additional Info:[END] at [ln:126] , 2021-11-01 14:44:34 987
+                  
+                   --------------------- Info(2021-11-01 14:45:08.9681)TIGERHP-------------------- 
+                   
+                   Additional Info:[BEGIN] at [ln:80] LoadFromXmlConfig, 2021-11-01 14:45:08 968
+                  
+                   --------------------- Info(2021-11-01 14:45:08.9681)TIGERHP-------------------- 
+                   
+                   Additional Info:[END] at [ln:126] , 2021-11-01 14:45:08 970
+                  
+                   --------------------- Info(2021-11-01 14:45:08.9681)TIGERHP-------------------- 
+                   
+                   Additional Info:Get Database Connection Details start | Database: GEN_MARS_5
+                  
+                   --------------------- Info(2021-11-01 14:45:10.2126)TIGERHP-------------------- 
+                   
+                   Additional Info:Get Database Connection Details end | Database: GEN_MARS_5
+                  
+                   --------------------- Info(2021-11-01 14:45:11.1878)TIGERHP-------------------- 
+                   
+                   Additional Info:Get User Info start| UserName: admin
+                  
+                   --------------------- Info(2021-11-01 14:45:11.8962)TIGERHP-------------------- 
+                   
+                   Additional Info:SELECT 
+1 AS "C1", 
+"Extent1"."TESTER_ID" AS "TESTER_ID", 
+"Extent1"."TESTER_NAME_LAST" AS "TESTER_NAME_LAST", 
+"Extent1"."TESTER_NAME_M" AS "TESTER_NAME_M", 
+"Extent1"."TESTER_NAME_F" AS "TESTER_NAME_F", 
+"Extent1"."TESTER_LOGIN_NAME" AS "TESTER_LOGIN_NAME", 
+"Extent1"."TESTER_PWD" AS "TESTER_PWD", 
+"Extent1"."AVAILABLE_MARK" AS "AVAILABLE_MARK", 
+"Extent1"."TESTER_MAIL" AS "TESTER_MAIL", 
+"Extent1"."TESTER_NUMBER" AS "TESTER_NUMBER", 
+"Extent1"."COMPANY_ID" AS "COMPANY_ID", 
+"Extent1"."CREATOR_NAME" AS "CREATOR_NAME", 
+"Extent1"."CREATE_TIME" AS "CREATE_TIME", 
+"Extent1"."TESTER_DESC" AS "TESTER_DESC", 
+"Extent2"."USER_MAPPING_ID" AS "USER_MAPPING_ID", 
+"Extent2"."TESTER_ID" AS "TESTER_ID1", 
+"Extent2"."TEMP_KEY" AS "TEMP_KEY", 
+"Extent2"."IS_DELETED" AS "IS_DELETED", 
+"Extent2"."STATUS" AS "STATUS"
+FROM  "GEN_MARS_5"."T_TESTER_INFO" "Extent1"
+LEFT OUTER JOIN "GEN_MARS_5"."T_USER_MAPPING" "Extent2" ON "Extent1"."TESTER_ID" = "Extent2"."TESTER_ID"
+WHERE (((LTRIM(RTRIM(LOWER("Extent1"."TESTER_MAIL")))) = :p__linq__0) OR ((LOWER("Extent1"."TESTER_LOGIN_NAME")) = :p__linq__1))
+                  
+                   --------------------- Error(2021-11-01 14:45:33.3888)TIGERHP-------------------- 
+                   
+                   Additional Info:Error occured User in GetUserByEmailAndLoginName method | Login Name : admin |  UserName: 
+                  
+                   --------------------- Info(2021-11-01 14:45:33.4017)TIGERHP-------------------- 
+                   
+                   Additional Info:Get User Info end| UserName: admin
+                  
+                   --------------------- Error(2021-11-01 14:45:33.4017)TIGERHP-------------------- 
+                   
+                   Additional Info:User Name does not exist in system | UserName: admin | Password: admin | DataBase: GEN_MARS_5 | Ip Address: ::1
+                  
+                   --------------------- Info(2021-11-01 14:45:58.3440)TIGERHP-------------------- 
+                   
+                   Additional Info:[BEGIN] at [ln:80] LoadFromXmlConfig, 2021-11-01 14:45:58 344
+                  
+                   --------------------- Info(2021-11-01 14:45:58.3440)TIGERHP-------------------- 
+                   
+                   Additional Info:[END] at [ln:126] , 2021-11-01 14:45:58 346
+                  
+                   --------------------- Info(2021-11-01 14:45:58.9081)TIGERHP-------------------- 
+                   
+                   Additional Info:Get Database Connection Details start | Database: GEN_MARS_5
+                  
+                   --------------------- Info(2021-11-01 14:46:26.6580)TIGERHP-------------------- 
+                   
+                   Additional Info:Get Database Connection Details end | Database: GEN_MARS_5
+                  
+                   --------------------- Info(2021-11-01 14:46:52.6276)TIGERHP-------------------- 
+                   
+                   Additional Info:Get User Info start| UserName: admin
+                  
+                   --------------------- Info(2021-11-01 14:46:55.8650)TIGERHP-------------------- 
+                   
+                   Additional Info:SELECT 
+1 AS "C1", 
+"Extent1"."TESTER_ID" AS "TESTER_ID", 
+"Extent1"."TESTER_NAME_LAST" AS "TESTER_NAME_LAST", 
+"Extent1"."TESTER_NAME_M" AS "TESTER_NAME_M", 
+"Extent1"."TESTER_NAME_F" AS "TESTER_NAME_F", 
+"Extent1"."TESTER_LOGIN_NAME" AS "TESTER_LOGIN_NAME", 
+"Extent1"."TESTER_PWD" AS "TESTER_PWD", 
+"Extent1"."AVAILABLE_MARK" AS "AVAILABLE_MARK", 
+"Extent1"."TESTER_MAIL" AS "TESTER_MAIL", 
+"Extent1"."TESTER_NUMBER" AS "TESTER_NUMBER", 
+"Extent1"."COMPANY_ID" AS "COMPANY_ID", 
+"Extent1"."CREATOR_NAME" AS "CREATOR_NAME", 
+"Extent1"."CREATE_TIME" AS "CREATE_TIME", 
+"Extent1"."TESTER_DESC" AS "TESTER_DESC", 
+"Extent2"."USER_MAPPING_ID" AS "USER_MAPPING_ID", 
+"Extent2"."TESTER_ID" AS "TESTER_ID1", 
+"Extent2"."TEMP_KEY" AS "TEMP_KEY", 
+"Extent2"."IS_DELETED" AS "IS_DELETED", 
+"Extent2"."STATUS" AS "STATUS"
+FROM  "GEN_MARS_5"."T_TESTER_INFO" "Extent1"
+LEFT OUTER JOIN "GEN_MARS_5"."T_USER_MAPPING" "Extent2" ON "Extent1"."TESTER_ID" = "Extent2"."TESTER_ID"
+WHERE (((LTRIM(RTRIM(LOWER("Extent1"."TESTER_MAIL")))) = :p__linq__0) OR ((LOWER("Extent1"."TESTER_LOGIN_NAME")) = :p__linq__1))
+                  
+                   --------------------- Error(2021-11-01 15:03:42.4703)TIGERHP-------------------- 
+                   
+                   Additional Info:Error occured User in GetUserByEmailAndLoginName method | Login Name : admin |  UserName: 
+                  
+                   --------------------- Info(2021-11-01 15:03:42.4874)TIGERHP-------------------- 
+                   
+                   Additional Info:Get User Info end| UserName: admin
+                  
+                   --------------------- Error(2021-11-01 15:03:42.4874)TIGERHP-------------------- 
+                   
+                   Additional Info:User Name does not exist in system | UserName: admin | Password: admin | DataBase: GEN_MARS_5 | Ip Address: ::1
+                  
+                   --------------------- Info(2021-11-01 15:38:59.1279)TIGERHP-------------------- 
+                   
+                   Additional Info:[BEGIN] at [ln:80] LoadFromXmlConfig, 2021-11-01 15:38:59 131
+                  
+                   --------------------- Info(2021-11-01 15:38:59.1695)TIGERHP-------------------- 
+                   
+                   Additional Info:[END] at [ln:126] , 2021-11-01 15:38:59 169
+                  
+                   --------------------- Info(2021-11-01 15:39:39.1965)TIGERHP-------------------- 
+                   
+                   Additional Info:[BEGIN] at [ln:80] LoadFromXmlConfig, 2021-11-01 15:39:39 196
+                  
+                   --------------------- Info(2021-11-01 15:39:39.1986)TIGERHP-------------------- 
+                   
+                   Additional Info:[END] at [ln:126] , 2021-11-01 15:39:39 198
+                  
+                   --------------------- Info(2021-11-01 15:39:39.1986)TIGERHP-------------------- 
+                   
+                   Additional Info:Get Database Connection Details start | Database: GEN_MARS_5
+                  
+                   --------------------- Info(2021-11-01 15:39:45.5497)TIGERHP-------------------- 
+                   
+                   Additional Info:Get Database Connection Details end | Database: GEN_MARS_5
+                  
+                   --------------------- Info(2021-11-01 15:39:46.9131)TIGERHP-------------------- 
+                   
+                   Additional Info:Get User Info start| UserName: admin
+                  
+                   --------------------- Info(2021-11-01 15:39:47.3452)TIGERHP-------------------- 
+                   
+                   Additional Info:SELECT 
+1 AS "C1", 
+"Extent1"."TESTER_ID" AS "TESTER_ID", 
+"Extent1"."TESTER_NAME_LAST" AS "TESTER_NAME_LAST", 
+"Extent1"."TESTER_NAME_M" AS "TESTER_NAME_M", 
+"Extent1"."TESTER_NAME_F" AS "TESTER_NAME_F", 
+"Extent1"."TESTER_LOGIN_NAME" AS "TESTER_LOGIN_NAME", 
+"Extent1"."TESTER_PWD" AS "TESTER_PWD", 
+"Extent1"."AVAILABLE_MARK" AS "AVAILABLE_MARK", 
+"Extent1"."TESTER_MAIL" AS "TESTER_MAIL", 
+"Extent1"."TESTER_NUMBER" AS "TESTER_NUMBER", 
+"Extent1"."COMPANY_ID" AS "COMPANY_ID", 
+"Extent1"."CREATOR_NAME" AS "CREATOR_NAME", 
+"Extent1"."CREATE_TIME" AS "CREATE_TIME", 
+"Extent1"."TESTER_DESC" AS "TESTER_DESC", 
+"Extent2"."USER_MAPPING_ID" AS "USER_MAPPING_ID", 
+"Extent2"."TESTER_ID" AS "TESTER_ID1", 
+"Extent2"."TEMP_KEY" AS "TEMP_KEY", 
+"Extent2"."IS_DELETED" AS "IS_DELETED", 
+"Extent2"."STATUS" AS "STATUS"
+FROM  "GEN_MARS_5"."T_TESTER_INFO" "Extent1"
+LEFT OUTER JOIN "GEN_MARS_5"."T_USER_MAPPING" "Extent2" ON "Extent1"."TESTER_ID" = "Extent2"."TESTER_ID"
+WHERE (((LTRIM(RTRIM(LOWER("Extent1"."TESTER_MAIL")))) = :p__linq__0) OR ((LOWER("Extent1"."TESTER_LOGIN_NAME")) = :p__linq__1))
+                  
+                   --------------------- Error(2021-11-01 15:39:50.1368)TIGERHP-------------------- 
+                   
+                   Additional Info:Error occured User in GetUserByEmailAndLoginName method | Login Name : admin |  UserName: 
+                  
+                   --------------------- Info(2021-11-01 15:39:50.1368)TIGERHP-------------------- 
+                   
+                   Additional Info:Get User Info end| UserName: admin
+                  
+                   --------------------- Error(2021-11-01 15:39:50.1368)TIGERHP-------------------- 
+                   
+                   Additional Info:User Name does not exist in system | UserName: admin | Password: admin | DataBase: GEN_MARS_5 | Ip Address: ::1
+                  
+                   --------------------- Info(2021-11-01 15:40:27.8577)TIGERHP-------------------- 
+                   
+                   Additional Info:[BEGIN] at [ln:80] LoadFromXmlConfig, 2021-11-01 15:40:27 857
+                  
+                   --------------------- Info(2021-11-01 15:40:27.8577)TIGERHP-------------------- 
+                   
+                   Additional Info:[END] at [ln:126] , 2021-11-01 15:40:27 861
+                  
+                   --------------------- Info(2021-11-01 15:40:27.8696)TIGERHP-------------------- 
+                   
+                   Additional Info:Get Database Connection Details start | Database: GEN_MARS_5
+                  
+                   --------------------- Info(2021-11-01 15:40:54.4978)TIGERHP-------------------- 
+                   
+                   Additional Info:Get Database Connection Details end | Database: GEN_MARS_5
+                  
+                   --------------------- Info(2021-11-01 15:41:29.9344)TIGERHP-------------------- 
+                   
+                   Additional Info:Get User Info start| UserName: admin
+                  
+                   --------------------- Info(2021-11-01 15:41:30.1471)TIGERHP-------------------- 
+                   
+                   Additional Info:SELECT 
+1 AS "C1", 
+"Extent1"."TESTER_ID" AS "TESTER_ID", 
+"Extent1"."TESTER_NAME_LAST" AS "TESTER_NAME_LAST", 
+"Extent1"."TESTER_NAME_M" AS "TESTER_NAME_M", 
+"Extent1"."TESTER_NAME_F" AS "TESTER_NAME_F", 
+"Extent1"."TESTER_LOGIN_NAME" AS "TESTER_LOGIN_NAME", 
+"Extent1"."TESTER_PWD" AS "TESTER_PWD", 
+"Extent1"."AVAILABLE_MARK" AS "AVAILABLE_MARK", 
+"Extent1"."TESTER_MAIL" AS "TESTER_MAIL", 
+"Extent1"."TESTER_NUMBER" AS "TESTER_NUMBER", 
+"Extent1"."COMPANY_ID" AS "COMPANY_ID", 
+"Extent1"."CREATOR_NAME" AS "CREATOR_NAME", 
+"Extent1"."CREATE_TIME" AS "CREATE_TIME", 
+"Extent1"."TESTER_DESC" AS "TESTER_DESC", 
+"Extent2"."USER_MAPPING_ID" AS "USER_MAPPING_ID", 
+"Extent2"."TESTER_ID" AS "TESTER_ID1", 
+"Extent2"."TEMP_KEY" AS "TEMP_KEY", 
+"Extent2"."IS_DELETED" AS "IS_DELETED", 
+"Extent2"."STATUS" AS "STATUS"
+FROM  "GEN_MARS_5"."T_TESTER_INFO" "Extent1"
+LEFT OUTER JOIN "GEN_MARS_5"."T_USER_MAPPING" "Extent2" ON "Extent1"."TESTER_ID" = "Extent2"."TESTER_ID"
+WHERE (((LTRIM(RTRIM(LOWER("Extent1"."TESTER_MAIL")))) = :p__linq__0) OR ((LOWER("Extent1"."TESTER_LOGIN_NAME")) = :p__linq__1))
+                  
+                   --------------------- Error(2021-11-01 15:41:32.5460)TIGERHP-------------------- 
+                   
+                   Additional Info:Error occured User in GetUserByEmailAndLoginName method | Login Name : admin |  UserName: 
+                  
+                   --------------------- Info(2021-11-01 15:41:32.5460)TIGERHP-------------------- 
+                   
+                   Additional Info:Get User Info end| UserName: admin
+                  
+                   --------------------- Info(2021-11-01 15:42:05.9168)TIGERHP-------------------- 
+                   
+                   Additional Info:[BEGIN] at [ln:80] LoadFromXmlConfig, 2021-11-01 15:42:05 916
+                  
+                   --------------------- Info(2021-11-01 15:42:05.9168)TIGERHP-------------------- 
+                   
+                   Additional Info:[END] at [ln:126] , 2021-11-01 15:42:05 918
+                  
+                   --------------------- Info(2021-11-01 15:42:06.5035)TIGERHP-------------------- 
+                   
+                   Additional Info:Get Database Connection Details start | Database: GEN_MARS_5
+                  
+                   --------------------- Info(2021-11-01 15:42:19.9085)TIGERHP-------------------- 
+                   
+                   Additional Info:Get Database Connection Details end | Database: GEN_MARS_5
+                  
+                   --------------------- Info(2021-11-01 15:42:41.7365)TIGERHP-------------------- 
+                   
+                   Additional Info:Get User Info start| UserName: admin
+                  
+                   --------------------- Info(2021-11-01 15:42:46.5006)TIGERHP-------------------- 
+                   
+                   Additional Info:SELECT 
+1 AS "C1", 
+"Extent1"."TESTER_ID" AS "TESTER_ID", 
+"Extent1"."TESTER_NAME_LAST" AS "TESTER_NAME_LAST", 
+"Extent1"."TESTER_NAME_M" AS "TESTER_NAME_M", 
+"Extent1"."TESTER_NAME_F" AS "TESTER_NAME_F", 
+"Extent1"."TESTER_LOGIN_NAME" AS "TESTER_LOGIN_NAME", 
+"Extent1"."TESTER_PWD" AS "TESTER_PWD", 
+"Extent1"."AVAILABLE_MARK" AS "AVAILABLE_MARK", 
+"Extent1"."TESTER_MAIL" AS "TESTER_MAIL", 
+"Extent1"."TESTER_NUMBER" AS "TESTER_NUMBER", 
+"Extent1"."COMPANY_ID" AS "COMPANY_ID", 
+"Extent1"."CREATOR_NAME" AS "CREATOR_NAME", 
+"Extent1"."CREATE_TIME" AS "CREATE_TIME", 
+"Extent1"."TESTER_DESC" AS "TESTER_DESC", 
+"Extent2"."USER_MAPPING_ID" AS "USER_MAPPING_ID", 
+"Extent2"."TESTER_ID" AS "TESTER_ID1", 
+"Extent2"."TEMP_KEY" AS "TEMP_KEY", 
+"Extent2"."IS_DELETED" AS "IS_DELETED", 
+"Extent2"."STATUS" AS "STATUS"
+FROM  "GEN_MARS_5"."T_TESTER_INFO" "Extent1"
+LEFT OUTER JOIN "GEN_MARS_5"."T_USER_MAPPING" "Extent2" ON "Extent1"."TESTER_ID" = "Extent2"."TESTER_ID"
+WHERE (((LTRIM(RTRIM(LOWER("Extent1"."TESTER_MAIL")))) = :p__linq__0) OR ((LOWER("Extent1"."TESTER_LOGIN_NAME")) = :p__linq__1))
+                  
+                   --------------------- Error(2021-11-01 15:52:25.8530)TIGERHP-------------------- 
+                   
+                   Additional Info:Error occured User in GetUserByEmailAndLoginName method | Login Name : admin |  UserName: 
+                  
+                   --------------------- Info(2021-11-01 15:52:25.8546)TIGERHP-------------------- 
+                   
+                   Additional Info:Get User Info end| UserName: admin
+                  
+                   --------------------- Error(2021-11-01 15:52:25.8721)TIGERHP-------------------- 
+                   
+                   Additional Info:User Name does not exist in system | UserName: admin | Password: admin | DataBase: GEN_MARS_5 | Ip Address: ::1
+                  
+                   --------------------- Info(2021-11-01 15:52:57.5369)TIGERHP-------------------- 
+                   
+                   Additional Info:[BEGIN] at [ln:80] LoadFromXmlConfig, 2021-11-01 15:52:57 536
+                  
+                   --------------------- Info(2021-11-01 15:52:57.5369)TIGERHP-------------------- 
+                   
+                   Additional Info:[END] at [ln:126] , 2021-11-01 15:52:57 538
+                  
+                   --------------------- Info(2021-11-01 15:52:58.1578)TIGERHP-------------------- 
+                   
+                   Additional Info:Get Database Connection Details start | Database: GEN_MARS_5
+                  
+                   --------------------- Info(2021-11-01 15:53:16.2645)TIGERHP-------------------- 
+                   
+                   Additional Info:Get Database Connection Details end | Database: GEN_MARS_5
+                  
+                   --------------------- Info(2021-11-01 15:53:33.8225)TIGERHP-------------------- 
+                   
+                   Additional Info:Get User Info start| UserName: admin
+                  
+                   --------------------- Info(2021-11-01 15:53:36.9177)TIGERHP-------------------- 
+                   
+                   Additional Info:SELECT 
+1 AS "C1", 
+"Extent1"."TESTER_ID" AS "TESTER_ID", 
+"Extent1"."TESTER_NAME_LAST" AS "TESTER_NAME_LAST", 
+"Extent1"."TESTER_NAME_M" AS "TESTER_NAME_M", 
+"Extent1"."TESTER_NAME_F" AS "TESTER_NAME_F", 
+"Extent1"."TESTER_LOGIN_NAME" AS "TESTER_LOGIN_NAME", 
+"Extent1"."TESTER_PWD" AS "TESTER_PWD", 
+"Extent1"."AVAILABLE_MARK" AS "AVAILABLE_MARK", 
+"Extent1"."TESTER_MAIL" AS "TESTER_MAIL", 
+"Extent1"."TESTER_NUMBER" AS "TESTER_NUMBER", 
+"Extent1"."COMPANY_ID" AS "COMPANY_ID", 
+"Extent1"."CREATOR_NAME" AS "CREATOR_NAME", 
+"Extent1"."CREATE_TIME" AS "CREATE_TIME", 
+"Extent1"."TESTER_DESC" AS "TESTER_DESC", 
+"Extent2"."USER_MAPPING_ID" AS "USER_MAPPING_ID", 
+"Extent2"."TESTER_ID" AS "TESTER_ID1", 
+"Extent2"."TEMP_KEY" AS "TEMP_KEY", 
+"Extent2"."IS_DELETED" AS "IS_DELETED", 
+"Extent2"."STATUS" AS "STATUS"
+FROM  "GEN_MARS_5"."T_TESTER_INFO" "Extent1"
+LEFT OUTER JOIN "GEN_MARS_5"."T_USER_MAPPING" "Extent2" ON "Extent1"."TESTER_ID" = "Extent2"."TESTER_ID"
+WHERE (((LTRIM(RTRIM(LOWER("Extent1"."TESTER_MAIL")))) = :p__linq__0) OR ((LOWER("Extent1"."TESTER_LOGIN_NAME")) = :p__linq__1))
+                  
+                   --------------------- Info(2021-11-01 15:53:42.5292)TIGERHP-------------------- 
+                   
+                   Additional Info:Get User Info end| UserName: admin
+                  
+                   --------------------- Info(2021-11-01 15:54:11.0264)TIGERHP-------------------- 
+                   
+                   Additional Info:Get ProjectList start | UserId: 1
+                  
+                   --------------------- Info(2021-11-01 15:54:11.7666)TIGERHP-------------------- 
+                   
+                   Additional Info:Get ProjectList end | UserId: 1
+                  
+                   --------------------- Info(2021-11-01 15:54:12.1255)TIGERHP-------------------- 
+                   
+                   Additional Info:GetRolePrivilege start | UserId: 1 | Username: 
+                  
+                   --------------------- Info(2021-11-01 15:54:12.9201)TIGERHP-------------------- 
+                   
+                   Additional Info:GetRolePrivilege end | UserId: 1 | Username: 
+                  
