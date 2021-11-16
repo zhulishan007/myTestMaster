@@ -84,6 +84,7 @@
                             </form>
                         </div>
                         <div class="modal-footer">
+                            <button type="button" id="editFolder" class="btn btn-outline-brand btn-elevate btn-pill" onclick="EditFolder()" style="display:none">Edit Data Sets</button>
                             <button type="button" id="addedFolder" class="btn btn-outline-brand btn-elevate btn-pill" onclick="AddEditFolderSave()">Save</button>
                             <button type="button" class="btn btn-outline-brand btn-elevate btn-pill" data-dismiss="modal">Cancel</button>
                         </div>
@@ -234,6 +235,7 @@
     });
 
     function AddFolder() {
+        $("#editFolder").css("display", "none");
         $("#Foldervalidate").css("display", "none");
         $("#Foldername").prop("disabled", false);
         $("#addedFolder").attr("disabled", false);
@@ -261,6 +263,7 @@
         $("#Foldername").prop("disabled", true);
         $("#addedFolder").prop("disabled", false);
         $("#Foldervalidate").css("display", "none");
+        $("#editFolder").css("display", "block");
 
         var lId = Id;
         var Name = $(editObj).attr("data-name").replace(/###/g, "'");
@@ -378,6 +381,86 @@
                 }
             },
         });
+    }
+
+    function EditFolder() {
+        var lId = $("#hdnFolderId").val();
+        var name = $("#Foldername").val();
+        startloader();
+        $.ajax({
+            url: "/TestCase/GetFolderDatasetList",
+            data: '{"lId":"' + lId + '","name":"' + name + '"}',
+            type: "POST",
+            contentType: "application/json;charset=utf-8",
+            dataType: "HTML",
+            success: function (result) {
+                $("#AddFolder").modal("hide");
+                var lflag = false;
+                name = name.replace(/ /g, '_');
+                var ltabName = "#tab" + name;
+                var ltabIdName = "tab" + name;
+                $('.ULtablist li').each(function (index, value) {
+                    if ($(value).children().first().attr("data-target") == ltabName) {
+                        if ($(value).children().first().attr("data-tab") == "FolderDataSet") {
+                            lflag = true;
+                        }
+                    }
+                });
+                var ltab = "";
+                //if (Default == "1") {
+                //    ltab = '<li class="nav-item context-menu-tab" ><a title="StoryboardName: ' + StoryboardName + ' Row: ' + RunOrder +' " data-pin="true" href="' + ltabName + '" class="nav-link active context-tab" data-tab="DataTag" data-testcaseid="' + lTestCaseId + '" data-storyboarddetailid="' + lStoryboardDetailId + '" data-baseid="' + BhistedId + '" data-compareid="' + ChistedId + '" data-storyboard="' + StoryboardName + '" data-runorder="' + RunOrder + '" data-name="' + name + '" data-toggle="tab" data-target="' + ltabName + '" onclick="ActiveTab($(this))"><img alt="DataTag" class="tab_icons_img" src="/assets/media/icons/rs.png">' + name + '</a><i class="fa fa-times-circle tab_close" style="cursor:pointer" onclick="closetab($(this))"></i></li>';
+                //} else {
+                //    ltab = '<li class="nav-item context-menu-tab" ><a title="StoryboardName: ' + StoryboardName + ' Row: ' + RunOrder +' " data-pin="false" href="' + ltabName + '" class="nav-link active context-tab" data-tab="DataTag" data-testcaseid="' + lTestCaseId + '" data-storyboarddetailid="' + lStoryboardDetailId + '" data-baseid="' + BhistedId + '" data-compareid="' + ChistedId + '" data-storyboard="' + StoryboardName + '" data-runorder="' + RunOrder + '" data-name="' + name + '" data-toggle="tab" data-target="' + ltabName + '" onclick="ActiveTab($(this))"><img alt="DataTag" class="tab_icons_img" src="/assets/media/icons/rs.png">' + name + '</a><i class="fa fa-times-circle tab_close" style="cursor:pointer" onclick="closetab($(this))"></i></li>';
+                //}
+
+                ltab = '<li class="nav-item context-menu-tab" ><a title="FolderName: ' + name + ' " data-pin="false" href="' + ltabName + '" class="nav-link active context-tab" data-tab="FolderDataSet" data-folderid="' + lId + '" data-name="' + name + '" data-toggle="tab" data-target="' + ltabName + '" onclick="ActiveTab($(this))"><img alt="FolderDataSet" class="tab_icons_img" src="/assets/media/icons/FD.png">' + name + '</a><i class="fa fa-times-circle tab_close" style="cursor:pointer" onclick="closetab($(this))"></i></li>';
+                var ldiv = '<div class="tab-pane active div" id="' + ltabIdName + '" role="tabpanel">' + result + '</div>';
+
+                if (lflag) {
+                    //if (Activetab != null) {
+                        var lParentli = $(Activetab).parent();
+                        var ltab = '<li class="nav-item context-menu-tab" ><a title="FolderName: ' + name + ' " data-pin="false" href="' + ltabName + '" class="nav-link active context-tab" data-tab="FolderDataSet" data-folderid="' + lId + '" data-name="' + name + '" data-toggle="tab" data-target="' + ltabName + '" onclick="ActiveTab($(this))"><img alt="FolderDataSet" class="tab_icons_img" src="/assets/media/icons/FL.png">' + name + '</a><i class="fa fa-times-circle tab_close" style="cursor:pointer" onclick="closetab($(this))"></i></li>';
+                        var ldiv = result;
+                        var lId = "tab" + name;
+                        var lGridDiv = $(".divtablist").find("#" + lId);
+                        $(lParentli).html("");
+                        $(lParentli).html(ltab);
+                        $(lGridDiv).html("");
+                        $(lGridDiv).html(ldiv);
+                    //}
+                    $('.ULtablist li').each(function (index, value) {
+                        if ($(value).children().first().attr("data-target") == ltabName) {
+                            $(value).children().first().addClass("active");
+                        } else {
+                            $(value).children().first().removeClass("active");
+                        }
+                    });
+                    $('.divtablist div').each(function (index, value) {
+                        if ($(value).first().attr("id") == ltabIdName) {
+                            $(value).addClass("active");
+                        } else {
+                            $(value).removeClass("active");
+                        }
+                    });
+                }
+                else {
+                    $(".ULtablist").append(ltab);
+                    $(".divtablist").append(ldiv);
+                    $('.ULtablist li').each(function (index, value) {
+                        if ($(value).children().first().attr("data-target") != "#tab" + name) {
+                            $(value).children().first().removeClass("active");
+                        }
+                    });
+                    $('.divtablist div').each(function (index, value) {
+                        if ($(value).first().attr("id") != "tab" + name) {
+                            $(value).removeClass("active");
+                        }
+                    });
+                }
+                stoploader();
+            },
+        });
+
     }
 
     $("#Foldername").on('keyup', function () {

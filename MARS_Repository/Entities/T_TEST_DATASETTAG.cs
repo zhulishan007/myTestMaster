@@ -16,12 +16,12 @@ namespace MARS_Repository.Entities
     {
         public long T_TEST_DATASETTAG_ID { get; set; }
         public Nullable<long> DATASETID { get; set; }
-        public Nullable<long> GROUPID { get; set; }
-        public Nullable<long> SETID { get; set; }
-        public Nullable<long> FOLDERID { get; set; }
+        public string GROUPID { get; set; }
+        public string SETID { get; set; }
+        public string FOLDERID { get; set; }
         public string EXPECTEDRESULTS { get; set; }
         public string STEPDESC { get; set; }
         public string DIARY { get; set; }
-        public Nullable<decimal> SEQUENCE { get; set; }
+        public Nullable<long> SEQUENCE { get; set; }
     }
 }

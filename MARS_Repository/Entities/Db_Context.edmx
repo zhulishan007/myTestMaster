@@ -527,6 +527,7 @@ warning 6002: The table/view 'GEN_MARS_4.MV_TC_DATASUMMARY' does not have a prim
           <Property Name="SERVICENAME" Type="varchar2" MaxLength="64" />
           <Property Name="DECODE_METHOD" Type="varchar2" MaxLength="64" />
           <Property Name="SCHEMA" Type="varchar2" MaxLength="64" />
+          <Property Name="DATABASE_VALUE" Type="blob" />
         </EntityType>
         <EntityType Name="T_DIC_RELATION_KEYWORD">
           <Key>
@@ -829,13 +830,13 @@ warning 6002: The table/view 'GEN_MARS_4.T_REGISTED_OBJECT_TEST' does not have a
           </Key>
           <Property Name="T_TEST_DATASETTAG_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
           <Property Name="DATASETID" Type="number" Precision="16" Scale="0" />
-          <Property Name="GROUPID" Type="number" Precision="16" Scale="0" />
-          <Property Name="SETID" Type="number" Precision="16" Scale="0" />
-          <Property Name="FOLDERID" Type="number" Precision="16" Scale="0" />
+          <Property Name="GROUPID" Type="varchar2" MaxLength="64" />
+          <Property Name="SETID" Type="varchar2" MaxLength="64" />
+          <Property Name="FOLDERID" Type="varchar2" MaxLength="64" />
           <Property Name="EXPECTEDRESULTS" Type="varchar2" MaxLength="4000" />
           <Property Name="STEPDESC" Type="varchar2" MaxLength="4000" />
           <Property Name="DIARY" Type="varchar2" MaxLength="4000" />
-          <Property Name="SEQUENCE" Type="number" Precision="38" Scale="0" />
+          <Property Name="SEQUENCE" Type="number" Precision="16" Scale="0" />
         </EntityType>
         <EntityType Name="T_TEST_ENUM">
           <Key>
@@ -2155,6 +2156,12 @@ warning 6002: The table/view 'GEN_MARS_4.V_USER_COMPANY' does not have a primary
         <Function Name="CONCATENATE_TS_TC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN_MARS_4" ReturnType="clob">
           <Parameter Name="TESTCASEID" Type="number" Mode="In" />
         </Function>
+        <Function Name="DELETEFOLDERDATASET" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN_MARS_4">
+          <Parameter Name="FEEDPROCESSDETAILID" Type="varchar2" Mode="In" />
+        </Function>
+        <Function Name="DeleteDatsSets" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN_MARS_4">
+          <Parameter Name="DATASETID" Type="number" Mode="In" />
+        </Function>
         <Function Name="DeleteResultSets" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN_MARS_4">
           <Parameter Name="HISTID" Type="number" Mode="In" />
         </Function>
@@ -2358,6 +2365,9 @@ warning 6002: The table/view 'GEN_MARS_4.V_USER_COMPANY' does not have a primary
         <Function Name="SP_SAVEAS_RESULTSET" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN_MARS_4">
           <Parameter Name="OLDCOMPARE_HISTID" Type="number" Mode="In" />
           <Parameter Name="OLDBASELINE_HISTID" Type="number" Mode="In" />
+        </Function>
+        <Function Name="SP_SAVE_FOLDER_DATASET" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN_MARS_4">
+          <Parameter Name="FEEDDETAILID" Type="varchar2" Mode="In" />
         </Function>
         <Function Name="SP_SAVE_SB_RESULTS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN_MARS_4">
           <Parameter Name="FEEDDETAILID" Type="varchar2" Mode="In" />
@@ -3477,6 +3487,7 @@ FROM "GEN_MARS_4"."V_USER_COMPANY" "V_USER_COMPANY"</DefiningQuery>
           <Property Name="DECODE_METHOD" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
           <Property Name="SCHEMA" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="T_QUERY" Relationship="Model.T_QUERY_FK1" FromRole="T_DBCONNECTION" ToRole="T_QUERY" />
+          <Property Name="DATABASE_VALUE" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="T_DIC_RELATION_KEYWORD">
           <Key>
@@ -5568,7 +5579,6 @@ FROM "GEN_MARS_4"."V_USER_COMPANY" "V_USER_COMPANY"</DefiningQuery>
           <EntitySet Name="T_TEST_FOLDER" EntityType="Model.T_TEST_FOLDER" />
           <EntitySet Name="T_TEST_GROUP" EntityType="Model.T_TEST_GROUP" />
           <EntitySet Name="T_TEST_SET" EntityType="Model.T_TEST_SET" />
-          <EntitySet Name="T_TEST_DATASETTAG" EntityType="Model.T_TEST_DATASETTAG" />
           <FunctionImport Name="SP_CheckValidationStoryboard">
             <Parameter Name="FEEDPROCESSID1" Mode="In" Type="Decimal" />
             <Parameter Name="RESULT" Mode="Out" Type="String" />
@@ -5592,6 +5602,16 @@ FROM "GEN_MARS_4"."V_USER_COMPANY" "V_USER_COMPANY"</DefiningQuery>
             <End Role="T_DBCONNECTION" EntitySet="T_DBCONNECTION" />
             <End Role="T_QUERY" EntitySet="T_QUERY" />
           </AssociationSet>
+          <FunctionImport Name="SP_SAVE_FOLDER_DATASET">
+          <Parameter Name="FEEDDETAILID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteDatsSets">
+          <Parameter Name="DATASETID" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <EntitySet Name="T_TEST_DATASETTAG" EntityType="Model.T_TEST_DATASETTAG" />
+          <FunctionImport Name="DELETEFOLDERDATASET">
+            <Parameter Name="FEEDPROCESSDETAILID" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="T_USER_ACTIVEPAGE">
           <Key>
@@ -5749,20 +5769,6 @@ FROM "GEN_MARS_4"."V_USER_COMPANY" "V_USER_COMPANY"</DefiningQuery>
           <Property Name="CREATION_USER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="UPDATE_CREATION_USER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="T_TEST_DATASETTAG">
-          <Key>
-            <PropertyRef Name="T_TEST_DATASETTAG_ID" />
-          </Key>
-          <Property Name="T_TEST_DATASETTAG_ID" Type="Int64" Nullable="false" />
-          <Property Name="DATASETID" Type="Int64" />
-          <Property Name="GROUPID" Type="Int64" />
-          <Property Name="SETID" Type="Int64" />
-          <Property Name="FOLDERID" Type="Int64" />
-          <Property Name="EXPECTEDRESULTS" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
-          <Property Name="STEPDESC" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
-          <Property Name="DIARY" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
-          <Property Name="SEQUENCE" Type="Decimal" Precision="38" Scale="0" />
-        </EntityType>
         <EntityType Name="T_USER_CONFIGURATION">
           <Key>
             <PropertyRef Name="USERCONFIGID" />
@@ -5866,6 +5872,20 @@ FROM "GEN_MARS_4"."V_USER_COMPANY" "V_USER_COMPANY"</DefiningQuery>
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="T_TEST_DATASETTAG">
+          <Key>
+            <PropertyRef Name="T_TEST_DATASETTAG_ID" />
+          </Key>
+          <Property Name="T_TEST_DATASETTAG_ID" Type="Int64" Nullable="false" />
+          <Property Name="DATASETID" Type="Int64" />
+          <Property Name="GROUPID" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="SETID" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="FOLDERID" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="EXPECTEDRESULTS" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="STEPDESC" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="DIARY" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="SEQUENCE" Type="Int64" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -6104,6 +6124,7 @@ FROM "GEN_MARS_4"."V_USER_COMPANY" "V_USER_COMPANY"</DefiningQuery>
           <EntitySetMapping Name="T_DBCONNECTION">
             <EntityTypeMapping TypeName="Model.T_DBCONNECTION">
               <MappingFragment StoreEntitySet="T_DBCONNECTION">
+                <ScalarProperty Name="DATABASE_VALUE" ColumnName="DATABASE_VALUE" />
                 <ScalarProperty Name="DBCONNECTION_ID" ColumnName="DBCONNECTION_ID" />
                 <ScalarProperty Name="DATABASENAME" ColumnName="DATABASENAME" />
                 <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
@@ -7410,21 +7431,6 @@ FROM "GEN_MARS_4"."V_USER_COMPANY" "V_USER_COMPANY"</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="T_TEST_DATASETTAG">
-            <EntityTypeMapping TypeName="Model.T_TEST_DATASETTAG">
-              <MappingFragment StoreEntitySet="T_TEST_DATASETTAG">
-                <ScalarProperty Name="SEQUENCE" ColumnName="SEQUENCE" />
-                <ScalarProperty Name="DIARY" ColumnName="DIARY" />
-                <ScalarProperty Name="STEPDESC" ColumnName="STEPDESC" />
-                <ScalarProperty Name="EXPECTEDRESULTS" ColumnName="EXPECTEDRESULTS" />
-                <ScalarProperty Name="FOLDERID" ColumnName="FOLDERID" />
-                <ScalarProperty Name="SETID" ColumnName="SETID" />
-                <ScalarProperty Name="GROUPID" ColumnName="GROUPID" />
-                <ScalarProperty Name="DATASETID" ColumnName="DATASETID" />
-                <ScalarProperty Name="T_TEST_DATASETTAG_ID" ColumnName="T_TEST_DATASETTAG_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="SP_CheckValidationStoryboard" FunctionName="Model.Store.SP_CheckValidationStoryboard" />
           <FunctionImportMapping FunctionImportName="SP_SaveStoryboard" FunctionName="Model.Store.SP_SaveStoryboard" />
           <EntitySetMapping Name="T_USER_CONFIGURATION">
@@ -7506,6 +7512,24 @@ FROM "GEN_MARS_4"."V_USER_COMPANY" "V_USER_COMPANY"</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_SAVE_FOLDER_DATASET" FunctionName="Model.Store.SP_SAVE_FOLDER_DATASET" />
+          <FunctionImportMapping FunctionImportName="DeleteDatsSets" FunctionName="Model.Store.DeleteDatsSets" />
+          <EntitySetMapping Name="T_TEST_DATASETTAG">
+            <EntityTypeMapping TypeName="Model.T_TEST_DATASETTAG">
+              <MappingFragment StoreEntitySet="T_TEST_DATASETTAG">
+                <ScalarProperty Name="SEQUENCE" ColumnName="SEQUENCE" />
+                <ScalarProperty Name="DIARY" ColumnName="DIARY" />
+                <ScalarProperty Name="STEPDESC" ColumnName="STEPDESC" />
+                <ScalarProperty Name="EXPECTEDRESULTS" ColumnName="EXPECTEDRESULTS" />
+                <ScalarProperty Name="FOLDERID" ColumnName="FOLDERID" />
+                <ScalarProperty Name="SETID" ColumnName="SETID" />
+                <ScalarProperty Name="GROUPID" ColumnName="GROUPID" />
+                <ScalarProperty Name="DATASETID" ColumnName="DATASETID" />
+                <ScalarProperty Name="T_TEST_DATASETTAG_ID" ColumnName="T_TEST_DATASETTAG_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="DELETEFOLDERDATASET" FunctionName="Model.Store.DELETEFOLDERDATASET" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

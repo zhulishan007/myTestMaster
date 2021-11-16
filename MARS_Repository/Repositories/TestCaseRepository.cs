@@ -769,7 +769,7 @@ namespace MARS_Repository.Repositories
                     ds.DESCRIPTION_INFO = DataSetDesc;
                     entity.SaveChanges();
 
-                    var seqcheck = entity.T_TEST_DATASETTAG.Where(x => x.FOLDERID == tagmodel.Folderid && x.SEQUENCE == tagmodel.Sequence && x.DATASETID != datasetid).ToList();
+                    var seqcheck = entity.T_TEST_DATASETTAG.Where(x => x.FOLDERID == tagmodel.Folderid.ToString() && x.SEQUENCE == tagmodel.Sequence && x.DATASETID != datasetid).ToList();
                     if (seqcheck.Count > 0)
                     {
                         return datasetid + ",sequence error";
@@ -866,11 +866,11 @@ namespace MARS_Repository.Repositories
                             dtmodel.T_TEST_DATASETTAG_ID = Helper.NextTestSuiteId("SEQ_T_TEST_DATASETTAG");
                             logger.Info(string.Format("result 11 end -->SEQ_T_TEST_DATASETTAG "));
                             dtmodel.DATASETID = datasetid;
-                            dtmodel.FOLDERID = tagmodel.Folderid;
-                            dtmodel.SETID = tagmodel.Setid;
-                            dtmodel.GROUPID = tagmodel.Groupid;
+                            dtmodel.FOLDERID = tagmodel.Folderid.ToString();
+                            dtmodel.SETID = tagmodel.Setid.ToString();
+                            dtmodel.GROUPID = tagmodel.Groupid.ToString();
                             dtmodel.STEPDESC = tagmodel.StepDesc;
-                            dtmodel.SEQUENCE = tagmodel.Sequence;
+                            dtmodel.SEQUENCE = (long)tagmodel.Sequence;
                             dtmodel.EXPECTEDRESULTS = tagmodel.Expectedresults;
                             dtmodel.DIARY = tagmodel.Diary;
                             logger.Info(string.Format("result 12 start -->T_TEST_DATASETTAG "));
@@ -1840,7 +1840,7 @@ namespace MARS_Repository.Repositories
                             tbldatasetting.VALUE_OR_OBJECT = datavalue.VALUE_OR_OBJECT;
                             tbldatasetting.VERSION = datavalue.VERSION;
                             tbldatasetting.DATA_DIRECTION = datavalue.DATA_DIRECTION;
-                            tbldatasetting.CREATE_TIME = DateTime.Now; ;
+                            tbldatasetting.CREATE_TIME = DateTime.Now;
                             entity.TEST_DATA_SETTING.Add(tbldatasetting);
                             entity.SaveChanges();
                         }
@@ -3309,11 +3309,11 @@ namespace MARS_Repository.Repositories
             {
                 logger.Info(string.Format("GetTagDetails start | datasetid: {0} | Username: {1}", datasetid, Username));
                 var tags = (from k in entity.T_TEST_DATASETTAG
-                            join k1 in entity.T_TEST_GROUP on k.GROUPID equals k1.GROUPID into grp
+                            join k1 in entity.T_TEST_GROUP on Convert.ToInt64(k.GROUPID) equals k1.GROUPID into grp
                             from k2 in grp.DefaultIfEmpty()
-                            join k3 in entity.T_TEST_FOLDER on k.FOLDERID equals k3.FOLDERID into fold
+                            join k3 in entity.T_TEST_FOLDER on Convert.ToInt64(k.FOLDERID) equals k3.FOLDERID into fold
                             from k4 in fold.DefaultIfEmpty()
-                            join k5 in entity.T_TEST_SET on k.SETID equals k5.SETID into set
+                            join k5 in entity.T_TEST_SET on Convert.ToInt64(k.SETID) equals k5.SETID into set
                             from k6 in set.DefaultIfEmpty()
 
                             where k.DATASETID == datasetid
@@ -3401,7 +3401,7 @@ namespace MARS_Repository.Repositories
             try
             {
                 logger.Info(string.Format("CheckFolderSequenceMapping start | datasetid: {0} | FolderId: {1} | SequenceId: {2} | Username: {2}", datasetid, FolderId, SequenceId, Username));
-                bool result = entity.T_TEST_DATASETTAG.Any(x => x.FOLDERID == FolderId && x.SEQUENCE == SequenceId && x.DATASETID != datasetid);
+                bool result = entity.T_TEST_DATASETTAG.Any(x => x.FOLDERID == FolderId.ToString() && x.SEQUENCE == SequenceId && x.DATASETID != datasetid);
                 logger.Info(string.Format("CheckFolderSequenceMapping end | datasetid: {0} | FolderId: {1} | SequenceId: {2} | Username: {2}", datasetid, FolderId, SequenceId, Username));
                 return result;
             }
@@ -3464,6 +3464,384 @@ namespace MARS_Repository.Repositories
                 ELogger.ErrorException(string.Format("Error occured TestcaseId in GetDatasetId method | Dataset: {0} | UserName: {1}", Dataset, Username), ex);
                 if (ex.InnerException != null)
                     ELogger.ErrorException(string.Format("InnerException : Error occured TestcaseId in GetDatasetId method | Dataset: {0} | UserName: {1}", Dataset, Username), ex.InnerException);
+                throw;
+            }
+        }
+
+        public IList<FolderDatasetViewModel> GetFolderDatasetList(string schema, string lconstring, long FolderId)
+        {
+            try
+            {
+                logger.Info(string.Format("Get Folder Dataset List start | FolderId: {0} | UserName: {1}", FolderId, Username));
+                DataSet lds = new DataSet();
+                DataTable ldt = new DataTable();
+
+                OracleConnection lconnection = GetOracleConnection(lconstring);
+                lconnection.Open();
+
+                OracleTransaction ltransaction;
+                ltransaction = lconnection.BeginTransaction();
+
+                OracleCommand lcmd;
+                lcmd = lconnection.CreateCommand();
+                lcmd.Transaction = ltransaction;
+
+
+                OracleParameter[] ladd_refer_image = new OracleParameter[2];
+                ladd_refer_image[0] = new OracleParameter("FolderId", OracleDbType.Long);
+                ladd_refer_image[0].Value = FolderId;
+
+                ladd_refer_image[1] = new OracleParameter("sl_cursor", OracleDbType.RefCursor);
+                ladd_refer_image[1].Direction = ParameterDirection.Output;
+
+                foreach (OracleParameter p in ladd_refer_image)
+                {
+                    lcmd.Parameters.Add(p);
+                }
+
+                lcmd.CommandText = schema + "." + "SP_GET_FOLDERDATASETLIST";
+                lcmd.CommandType = CommandType.StoredProcedure;
+                OracleDataAdapter dataAdapter = new OracleDataAdapter(lcmd);
+                dataAdapter.Fill(lds);
+                var dt = new DataTable();
+                dt = lds.Tables[0];
+                List<FolderDatasetViewModel> result = dt.AsEnumerable().Select(row =>
+                  new FolderDatasetViewModel
+                  {
+                      DataSetId = row.Field<long?>("DATA_SUMMARY_ID"),
+                      DatasetName = row.Field<string>("ALIAS_NAME"),
+                      DatasetDesc = row.Field<string>("DESCRIPTION_INFO"),
+                      TestCase = row.Field<string>("TEST_CASE_NAME"),
+                      TestCaseId = row.Field<long?>("TEST_CASE_ID"),
+                      TestSuite = row.Field<string>("TEST_SUITE_NAME"),
+                      TestSuiteId = row.Field<long?>("TEST_SUITE_ID"),
+                      Storyboard = row.Field<string>("STORYBOARD_NAME"),
+                      ProjectIds = row.Field<string>("ASSIGNED_PROJECT_ID"),
+                      ProjectName = row.Field<string>("PROJECT_NAME"),
+                      SEQ = row.Field<long?>("sequence")
+                  }).OrderBy(x => x.SEQ).ToList();
+
+                result.ForEach(item =>
+                {
+                    item.DatasetDesc = item.DatasetDesc == null || item.DatasetDesc == "null" ? "" : item.DatasetDesc;
+                    item.Storyboard = item.Storyboard == null || item.Storyboard == "null" ? "" : item.Storyboard;
+                    item.ProjectName = item.ProjectName == null || item.ProjectName == "null" ? "" : item.ProjectName;
+                    item.SEQ = item.SEQ == null ? 0 : item.SEQ;
+                });
+                logger.Info(string.Format("Get Folder Dataset List end | FolderId: {0} | UserName: {1}", FolderId, Username));
+                return result;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in StoryBoard for GetFolderDatasetList method | ConnectionString: {0} | Schema : {1} | FolderId: {2} | UserName: {3}", lconstring, schema, FolderId, Username));
+                ELogger.ErrorException(string.Format("Error occured in StoryBoard for GetFolderDatasetList method | ConnectionString: {0} | Schema : {1} | FolderId: {2} | UserName: {3}", lconstring, schema, FolderId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in StoryBoard for GetFolderDatasetList method | ConnectionString: {0} | Schema : {1} | FolderId: {2} | UserName: {3}", lconstring, schema, FolderId, Username), ex.InnerException);
+                throw;
+            }
+        }
+
+        public IList<FolderDatasetViewModel> GetDatasets(string schema, string lconstring)
+        {
+            try
+            {
+                logger.Info(string.Format("Get Dataset List start | UserName: {0}", Username));
+                DataSet lds = new DataSet();
+                DataTable ldt = new DataTable();
+
+                OracleConnection lconnection = GetOracleConnection(lconstring);
+                lconnection.Open();
+
+                OracleTransaction ltransaction;
+                ltransaction = lconnection.BeginTransaction();
+
+                OracleCommand lcmd;
+                lcmd = lconnection.CreateCommand();
+                lcmd.Transaction = ltransaction;
+
+
+                OracleParameter[] ladd_refer_image = new OracleParameter[1];
+
+                ladd_refer_image[0] = new OracleParameter("sl_cursor", OracleDbType.RefCursor);
+                ladd_refer_image[0].Direction = ParameterDirection.Output;
+
+                foreach (OracleParameter p in ladd_refer_image)
+                {
+                    lcmd.Parameters.Add(p);
+                }
+
+                lcmd.CommandText = schema + "." + "SP_GET_DATASETLIST";
+                lcmd.CommandType = CommandType.StoredProcedure;
+                OracleDataAdapter dataAdapter = new OracleDataAdapter(lcmd);
+                dataAdapter.Fill(lds);
+                var dt = new DataTable();
+                dt = lds.Tables[0];
+                List<FolderDatasetViewModel> result = dt.AsEnumerable().Select(row =>
+                  new FolderDatasetViewModel
+                  {
+                      DataSetId = row.Field<long?>("DATA_SUMMARY_ID"),
+                      DatasetName = row.Field<string>("ALIAS_NAME"),
+                      DatasetDesc = row.Field<string>("DESCRIPTION_INFO"),
+                      TestCase = row.Field<string>("TEST_CASE_NAME"),
+                      TestCaseId = row.Field<long?>("TEST_CASE_ID"),
+                      TestSuite = row.Field<string>("TEST_SUITE_NAME"),
+                      TestSuiteId = row.Field<long?>("TEST_SUITE_ID"),
+                      Storyboard = row.Field<string>("STORYBOARD_NAME"),
+                      ProjectIds = row.Field<string>("ASSIGNED_PROJECT_ID"),
+                      ProjectName = row.Field<string>("PROJECT_NAME"),
+                  }).ToList();
+
+                result.ForEach(item =>
+                {
+                    item.DatasetDesc = item.DatasetDesc == null || item.DatasetDesc == "null" ? "" : item.DatasetDesc;
+                    item.Storyboard = item.Storyboard == null || item.Storyboard == "null" ? "" : item.Storyboard;
+                    item.ProjectName = item.ProjectName == null || item.ProjectName == "null" ? "" : item.ProjectName;
+                });
+
+                logger.Info(string.Format("Get Dataset List end | UserName: {0}", Username));
+                return result;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in TestCase for GetDatasets method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured in TestCase for GetDatasets method | UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase for GetDatasets method | UserName: {0}", Username), ex.InnerException);
+                throw;
+            }
+        }
+
+        public bool InsertFolderDatasetInStgTbl(string constring, string schema, DataTable dt, long feedprocessdetailid)
+        {
+            logger.Info(string.Format("Insert FolderDataset StgTbl start | feedprocessdetailid: {0} | UserName: {1}", feedprocessdetailid, Username));
+            bool flag = false;
+
+            dt = dt.AsEnumerable().Distinct(DataRowComparer.Default).CopyToDataTable();
+
+            OracleTransaction ltransaction;
+
+            OracleConnection lconnection = new OracleConnection(constring);
+            lconnection.Open();
+            ltransaction = lconnection.BeginTransaction();
+            string lcmdquery = "insert into TBLSTGFOLDERDATASET ( FEEDPROCESSDETAILID,FOLDERID,DATASETID,DATASETNAME,DESCRIPTION,TESTCASE,TESTSUITE,STORYBOARDS,SEQ) values(:1,:2,:3,:4,:5,:6,:7,:8,:9)";
+            int[] ids = new int[dt.Rows.Count];
+            using (var lcmd = lconnection.CreateCommand())
+            {
+                lcmd.CommandText = lcmdquery;
+                lcmd.ArrayBindCount = ids.Length;
+                string[] FEEDPROCESSDETAILID_param = dt.AsEnumerable().Select(r => r.Field<string>("FEEDPROCESSDETAILID")).ToArray();
+                string[] FOLDERID_param = dt.AsEnumerable().Select(r => r.Field<string>("FOLDERID")).ToArray();
+                string[] DATASETID_param = dt.AsEnumerable().Select(r => r.Field<string>("DATASETID")).ToArray();
+                string[] DATASETNAME_param = dt.AsEnumerable().Select(r => r.Field<string>("DATASETNAME")).ToArray();
+                string[] DESCRIPTION_param = dt.AsEnumerable().Select(r => r.Field<string>("DESCRIPTION")).ToArray();
+                string[] TESTCASE_param = dt.AsEnumerable().Select(r => r.Field<string>("TESTCASE")).ToArray();
+                string[] TESTSUITE_param = dt.AsEnumerable().Select(r => r.Field<string>("TESTSUITE")).ToArray();
+                string[] STORYBOARDS_param = dt.AsEnumerable().Select(r => r.Field<string>("STORYBOARDS")).ToArray();
+                string[] SEQ_param = dt.AsEnumerable().Select(r => r.Field<string>("SEQ")).ToArray();
+
+                OracleParameter FEEDPROCESSDETAILID_oparam = new OracleParameter();
+                FEEDPROCESSDETAILID_oparam.OracleDbType = OracleDbType.Varchar2;
+                FEEDPROCESSDETAILID_oparam.Value = FEEDPROCESSDETAILID_param;
+
+                OracleParameter FOLDERID_oparam = new OracleParameter();
+                FOLDERID_oparam.OracleDbType = OracleDbType.Varchar2;
+                FOLDERID_oparam.Value = FOLDERID_param;
+
+                OracleParameter DATASETID_oparam = new OracleParameter();
+                DATASETID_oparam.OracleDbType = OracleDbType.Varchar2;
+                DATASETID_oparam.Value = DATASETID_param;
+
+                OracleParameter DATASETNAME_oparam = new OracleParameter();
+                DATASETNAME_oparam.OracleDbType = OracleDbType.Varchar2;
+                DATASETNAME_oparam.Value = DATASETNAME_param;
+
+                OracleParameter DESCRIPTION_oparam = new OracleParameter();
+                DESCRIPTION_oparam.OracleDbType = OracleDbType.Varchar2;
+                DESCRIPTION_oparam.Value = DESCRIPTION_param;
+
+                OracleParameter TESTCASE_oparam = new OracleParameter();
+                TESTCASE_oparam.OracleDbType = OracleDbType.Varchar2;
+                TESTCASE_oparam.Value = TESTCASE_param;
+
+                OracleParameter TESTSUITE_oparam = new OracleParameter();
+                TESTSUITE_oparam.OracleDbType = OracleDbType.Varchar2;
+                TESTSUITE_oparam.Value = TESTSUITE_param;
+
+                OracleParameter STORYBOARDS_oparam = new OracleParameter();
+                STORYBOARDS_oparam.OracleDbType = OracleDbType.Varchar2;
+                STORYBOARDS_oparam.Value = STORYBOARDS_param;
+
+                OracleParameter SEQ_oparam = new OracleParameter();
+                SEQ_oparam.OracleDbType = OracleDbType.Varchar2;
+                SEQ_oparam.Value = SEQ_param;
+
+
+                lcmd.Parameters.Add(FEEDPROCESSDETAILID_oparam);
+                lcmd.Parameters.Add(FOLDERID_oparam);
+                lcmd.Parameters.Add(DATASETID_oparam);
+                lcmd.Parameters.Add(DATASETNAME_oparam);
+                lcmd.Parameters.Add(DESCRIPTION_oparam);
+                lcmd.Parameters.Add(TESTCASE_oparam);
+                lcmd.Parameters.Add(TESTSUITE_oparam);
+                lcmd.Parameters.Add(STORYBOARDS_oparam);
+                lcmd.Parameters.Add(SEQ_oparam);
+                try
+                {
+                    lcmd.ExecuteNonQuery();
+                    flag = true;
+                }
+                catch (Exception ex)
+                {
+                    flag = false;
+                    ltransaction.Rollback();
+                    logger.Error(string.Format("Error occured in Testcase for InsertFolderDatasetInStgTbl method | Connection string : {0} | Schema: {1} | Feed Process Id : {2} | UserName: {3}", constring, schema, feedprocessdetailid, Username));
+                    ELogger.ErrorException(string.Format("Error occured Testcase in InsertFolderDatasetInStgTbl method | Connection string : {0} | Schema: {1} | Feed Process Id : {2} | UserName: {3}", constring, schema, feedprocessdetailid, Username), ex);
+                    if (ex.InnerException != null)
+                        ELogger.ErrorException(string.Format("InnerException : Error occured Testcase in InsertFolderDatasetInStgTbl method | Connection string : {0} | Schema: {1} | Feed Process Id : {2} | UserName: {3}", constring, schema, feedprocessdetailid, Username), ex.InnerException);
+                    throw;
+                }
+                logger.Info(string.Format("Insert FolderDataset StgTbl end | feedprocessdetailid: {0} | UserName: {1}", feedprocessdetailid, Username));
+                ltransaction.Commit();
+                lconnection.Close();
+            }
+            return flag;
+        }
+
+        public bool updateFolderDataset(string constring, string schema, string feedprocessdetailid)
+        {
+            try
+            {
+                using (TransactionScope scope = new TransactionScope())
+                {
+                    logger.Info(string.Format("update folder Dataset start | feedprocessdetailid: {0} | UserName: {1}", feedprocessdetailid, Username));
+                    var result = entity.SP_SAVE_FOLDER_DATASET(feedprocessdetailid);
+                    entity.SaveChanges();
+                    logger.Info(string.Format("update folder Dataset end | feedprocessdetailid: {0} | UserName: {1}", feedprocessdetailid, Username));
+                    scope.Complete();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in TestCase for folderDataset method | Connection string : {0} | Schema: {1} | Feed Process Id : {2} | UserName: {3}", constring, schema, feedprocessdetailid, Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase in folderDataset method | Connection string : {0} | Schema: {1} | Feed Process Id : {2} | UserName: {3}", constring, schema, feedprocessdetailid, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in folderDataset method |Connection string : {0} | Schema: {1} | Feed Process Id : {2} | UserName: {3}", constring, schema, feedprocessdetailid, Username), ex.InnerException);
+                throw;
+            }
+        }
+
+        public bool DeleteFolderDatasetStep(List<long> list)
+        {
+            try
+            {
+                using (TransactionScope scope = new TransactionScope())
+                {
+                    logger.Info(string.Format("Delete FolderDataset step start | UserName: {0}", Username));
+                    var flag = false;
+                    foreach (var id in list)
+                    {
+                        var obj = entity.T_TEST_DATASETTAG.Where(x => x.DATASETID == id).FirstOrDefault();
+
+                        if (obj != null)
+                            entity.T_TEST_DATASETTAG.Remove(obj);
+
+                        //entity.DeleteDatsSets(id);
+                        entity.SaveChanges();
+                    }
+                    flag = true;
+                    logger.Info(string.Format("Delete FolderDataset step end | UserName: {0}", Username));
+                    scope.Complete();
+                    return flag;
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in Testcase for DeleteFolderDatasetStep method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured Testcase in DeleteFolderDatasetStep method | UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured Testcase in DeleteFolderDatasetStep method | UserName: {0}", Username), ex.InnerException);
+                throw;
+            }
+        }
+
+
+        public List<FolderDataSetViewModel> ReSequenceFolderDataset(List<FolderDataSetViewModel> gridlist)
+        {
+            try
+            {
+                List<FolderDataSetViewModel> folderDataSets = new List<FolderDataSetViewModel>();
+                var emptySeqList = gridlist.Where(x => string.IsNullOrEmpty(x.SEQ)).ToList();
+                var sortbySeqList = gridlist.Where(x => !string.IsNullOrEmpty(x.SEQ)).OrderBy(x => x.SEQ).ToList();
+                sortbySeqList.AddRange(emptySeqList);
+                int SEQ = 0;
+
+                foreach (var item in sortbySeqList)
+                {
+                    FolderDataSetViewModel folderData = new FolderDataSetViewModel();
+                    folderData.DataSetId = item.DataSetId;
+                    folderData.DatasetName = item.DatasetName;
+                    folderData.DatasetDesc = item.DatasetDesc == null ? "" : item.DatasetDesc;
+                    folderData.TestCase = item.TestCase == null ? "" : item.TestCase;
+                    folderData.TestSuite = item.TestSuite == null ? "" : item.TestSuite;
+                    folderData.ProjectIds = item.ProjectIds == null ? "" : item.ProjectIds;
+                    folderData.Storyboard = item.Storyboard == null ? "" : item.Storyboard;
+
+                    SEQ = SEQ + 10;
+                    folderData.SEQ = SEQ.ToString();
+                    folderDataSets.Add(folderData);
+                }
+                return folderDataSets;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in Testcase for ReSequenceFolderDataset method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured Testcase in ReSequenceFolderDataset method | UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured Testcase in ReSequenceFolderDataset method | UserName: {0}", Username), ex.InnerException);
+                throw;
+            }
+        }
+
+        public bool DeleteFolderDataset(string constring, string schema, string feedprocessdetailid)
+        {
+            try
+            {
+                using (TransactionScope scope = new TransactionScope())
+                {
+                    logger.Info(string.Format("Delete folder Dataset start | feedprocessdetailid: {0} | UserName: {1}", feedprocessdetailid, Username));
+                    // var result = entity.DELETEFOLDERDATASET(feedprocessdetailid);
+                    // entity.SaveChanges();
+                    //OracleConnection lconnection = GetOracleConnection(constring);
+                    //lconnection.Open();
+                    //OracleTransaction ltransaction;
+                    //ltransaction = lconnection.BeginTransaction();
+
+                    //OracleCommand lcmd;
+                    //lcmd = lconnection.CreateCommand();
+
+
+                    var cmdText = "delete  T_TEST_DATASETTAG where DATASETID not in (select TO_NUMBER(DATASETID) from TBLSTGFOLDERDATASET where FEEDPROCESSDETAILID = "+ feedprocessdetailid + ")";
+                    using (OracleConnection conn = new OracleConnection(constring))
+                    using (OracleCommand cmd = new OracleCommand(cmdText, conn))
+                    {
+                        conn.Open();
+                        
+                        cmd.ExecuteNonQuery();
+                    }
+
+
+                    logger.Info(string.Format("Delete folder Dataset end | feedprocessdetailid: {0} | UserName: {1}", feedprocessdetailid, Username));
+                    scope.Complete();
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in TestCase for DeleteFolderDataset method | Connection string : {0} | Schema: {1} | Feed Process Id : {2} | UserName: {3}", constring, schema, feedprocessdetailid, Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase in DeleteFolderDataset method | Connection string : {0} | Schema: {1} | Feed Process Id : {2} | UserName: {3}", constring, schema, feedprocessdetailid, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in DeleteFolderDataset method |Connection string : {0} | Schema: {1} | Feed Process Id : {2} | UserName: {3}", constring, schema, feedprocessdetailid, Username), ex.InnerException);
                 throw;
             }
         }

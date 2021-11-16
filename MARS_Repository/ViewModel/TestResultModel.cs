@@ -93,4 +93,19 @@ namespace MARS_Repository.ViewModel
         public long BaseHistId { get; set; }
         public long CompareHistId { get; set; }
     }
+
+    public class FolderDataSetViewModel
+    {
+        public long? DataSetId { get; set; }
+        public string DatasetName { get; set; }
+        public string DatasetDesc { get; set; }
+        public string TestCase { get; set; }
+        public string TestSuite { get; set; }
+        public string ProjectIds { get; set; }
+        public string Storyboard { get; set; }
+        public string SEQ { get; set; }
+        public int? pq_ri { get; set; }
+        public bool? IsValid { get; set; }
+        public string ValidMsg { get; set; }
+    }
 }

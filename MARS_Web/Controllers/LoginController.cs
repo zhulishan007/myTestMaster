@@ -187,9 +187,9 @@ namespace MARS_Web.Controllers
                             var repTree = new GetTreeRepository();
                             var lSchema = SessionManager.Schema;
                             var lConnectionStr = SessionManager.APP;
-                            Session["LeftProjectList"] = repTree.GetProjectList(lUser.TESTER_ID, lSchema, lConnectionStr);
-                            Session["PrivilegeList"] = Entitlementrepo.GetRolePrivilege((long)lUser.TESTER_ID);
-                            Session["RoleList"] = Entitlementrepo.GetRoleByUser((long)SessionManager.TESTER_ID);
+                            //Session["LeftProjectList"] = repTree.GetProjectList(lUser.TESTER_ID, lSchema, lConnectionStr);
+                            //Session["PrivilegeList"] = Entitlementrepo.GetRolePrivilege((long)lUser.TESTER_ID);
+                            //Session["RoleList"] = Entitlementrepo.GetRoleByUser((long)SessionManager.TESTER_ID);
                             lMsg = "Succefully Logged!!";
                             repTestCase.UpdateIsAvailableReload((long)lUser.TESTER_ID);
                         }

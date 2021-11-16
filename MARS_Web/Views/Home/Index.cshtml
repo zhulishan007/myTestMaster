@@ -12,6 +12,7 @@
     var RoleList = Session["RoleList"] as List<RoleViewModel>;
     if (PrivilegeList.Count > 0)
     {
+       
         ShowApp = PrivilegeList.Select(y => y.MODULE).ToList().Contains("Application").ToString().ToLower();
         ShowPro = PrivilegeList.Select(y => y.MODULE).ToList().Contains("Project").ToString().ToLower();
         ShowTSImp = PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Import TestSuite").ToString().ToLower();
@@ -70,6 +71,7 @@
 <input type="hidden" value="@ShowSet" id="hdnShowSet" />
 <input type="hidden" value="@ShowFolder" id="hdnShowFolder" />
 <input type="hidden" value="@ShowConfig" id="hdnShowConfig" />
+<input type="hidden" value="jenkins integration" id="hdnJekins" />
 
 <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
     <div class="kt-portlet">
@@ -84,13 +86,17 @@
             </div>
             <div class="tab-content divtablist">
                 <div class="tab-pane active div" id="default" role="tabpanel">
+
                     @Html.Partial("RightSideGridView")
+
+
                     @*<div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
                             <div id="rightsideView">
                                 @Html.Partial("RightSideGridView")
                             </div>
 
                         </div>*@
+
 
                 </div>
             </div>
@@ -121,11 +127,15 @@
     var lhdnShowSetdisplay = $("#hdnShowSet").val();
     var lhdnShowFolderdisplay = $("#hdnShowFolder").val();
     var lhdnShowConfigdisplay = $("#hdnShowConfig").val();
+    var lhdnShowjekins = $("#hdnJekins").val();
 
     setTimeout(function () {
         $.each(statesAvailable, function (key, value) {
             if (value.PAGE_NAME.trim() == "ProjectsList" && lShowProdisplay == "true") {
                 PartialRightSideProjectGrid("1");
+            }
+            else if (value.PAGE_NAME.trim() == "JenkinsIntegration" && lhdnShowjekins == "true") {
+                PartialRightSideJenkinsIntegrationGrid("1");
             }
             else if (value.PAGE_NAME.trim() == "ApplicationList" && lShowAppdisplay == "true") {
                 PartialRightSideAplicationGrid("1");

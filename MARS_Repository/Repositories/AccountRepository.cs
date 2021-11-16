@@ -341,38 +341,22 @@ namespace MARS_Repository.Repositories
             try
             {
                 logger.Info(string.Format("Get User Info start| UserName: {0}", lUserLogin));
-                string l = lUserLogin.ToLower().Trim();
-                //var result = entity.T_TESTER_INFO.FirstOrDefault(x => x.TESTER_MAIL.ToLower().Trim() == lUserLogin.ToLower().Trim() || x.TESTER_LOGIN_NAME.ToLower().Trim() == lUserLogin.ToLower().Trim());
-                var p = from q in entity.T_TESTER_INFO
-                        join x in entity.T_USER_MAPPING                         
-                        on q.TESTER_ID equals x.TESTER_ID
-                        into m                        
-                        from z in m.DefaultIfEmpty()
-                        where  
-                        //m.IS_DELETED != 1
-                        //&& m.TESTER_ID == q.TESTER_ID
-                        //&& 
-                        (q.TESTER_MAIL.ToLower().Trim() == l
-                        || (q.TESTER_LOGIN_NAME.ToLower() == l))
-                        select new { q, z };
-                logger.Info(p.ToString());
-                var d = p.FirstOrDefault();
-                if ((d.z != null) && (d.z.IS_DELETED == 1))
-                    return null;
-                //var result = p.FirstOrDefault( );
-                //if (result != null)
-                //{
-                //    var checkIsDelete = entity.T_USER_MAPPING.Where(x => x.TESTER_ID == result.TESTER_ID).FirstOrDefault();
-                //    if (checkIsDelete != null)
-                //    {
-                //        if (checkIsDelete.IS_DELETED == 1)
-                //        {
-                //            result = null;
-                //        }
-                //    }
-                //}
-               
-                return d.q;
+                var result = entity.T_TESTER_INFO.FirstOrDefault(x => x.TESTER_MAIL.ToLower().Trim() == lUserLogin.ToLower().Trim() || x.TESTER_LOGIN_NAME.ToLower().Trim() == lUserLogin.ToLower().Trim());
+
+                if (result != null)
+                {
+                    var checkIsDelete = entity.T_USER_MAPPING.Where(x => x.TESTER_ID == result.TESTER_ID).FirstOrDefault();
+                    if (checkIsDelete != null)
+                    {
+                        if (checkIsDelete.IS_DELETED == 1)
+                        {
+                            result = null;
+                        }
+                    }
+                }
+
+                logger.Info(string.Format("Get User Info end| UserName: {0}", lUserLogin));
+                return result;
             }
             catch (Exception ex)
             {
@@ -380,12 +364,7 @@ namespace MARS_Repository.Repositories
                 ELogger.ErrorException(string.Format("Error occured User in GetUserByEmailAndLoginName method | Login Name : {0} |  UserName: {1}", lUserLogin, Username), ex);
                 if (ex.InnerException != null)
                     ELogger.ErrorException(string.Format("InnerException : Error occured User in GetUserByEmailAndLoginName method | Login Name : {0} | UserName: {1}", lUserLogin, Username), ex.InnerException);
-                //throw;
-                return null;
-            }
-            finally
-            {
-                logger.Info(string.Format("Get User Info end| UserName: {0}", lUserLogin));
+                throw;
             }
 
         }

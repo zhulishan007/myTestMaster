@@ -3310,5 +3310,298 @@ namespace MARS_Web.Controllers
             public string FilePath { get; set; }
         }
         #endregion
+
+        [HttpPost]
+        public ActionResult GetFolderDatasetList(long lId,string name)
+        {
+            try
+            {
+                var userid = SessionManager.TESTER_ID;
+                var repacc = new ConfigurationGridRepository();
+                var lRep = new TestCaseRepository();
+                lRep.Username = SessionManager.TESTER_LOGIN_NAME;
+                repacc.Username = SessionManager.TESTER_LOGIN_NAME;
+                var Widthgridlst = repacc.GetGridList((long)userid, GridNameList.ResizeLeftPanel);
+                var Rgriddata = GridHelper.GetLeftpanelgridwidth(Widthgridlst);
+                string lSchema = SessionManager.Schema;
+                var lConnectionStr = SessionManager.APP;
+                var lList = lRep.GetDatasets(lSchema, lConnectionStr);
+                ViewBag.datasetlist = JsonConvert.SerializeObject(lList);
+
+                ViewBag.width = Rgriddata.Resize == null ? ConfigurationManager.AppSettings["DefultLeftPanel"] + "px" : Rgriddata.Resize.Trim() + "px";
+                ViewBag.FolderName = name;
+                ViewBag.FolderId = lId;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in Testcase for GetFolderDatasetList method | FolderId : {0} | UserName: {1}", lId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Testcase for GetFolderDatasetList method | FolderId : {0} | UserName: {1}", lId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("Error occured in Testcase for GetFolderDatasetList method | FolderId : {0} | UserName: {1}", lId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+            }
+            return PartialView("_FolderDataSetList");
+        }
+
+        public JsonResult GetFolderDatasetList(long FolderId)
+        {
+            ResultModel resultModel = new ResultModel();
+            try
+            {
+                var rep = new TestCaseRepository();
+                rep.Username = SessionManager.TESTER_LOGIN_NAME;
+                string lSchema = SessionManager.Schema;
+                var lConnectionStr = SessionManager.APP;
+                var lModel = rep.GetFolderDatasetList(lSchema, lConnectionStr, FolderId);
+
+                var jsonresult = JsonConvert.SerializeObject(lModel);
+                resultModel.status = 1;
+                resultModel.data = jsonresult;
+
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in Testcase for GetFolderDatasetList method | FolderId : {0} | UserName: {1}", FolderId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in Testcase for GetFolderDatasetList method | FolderId : {0} | UserName: {1}", FolderId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("Error occured in Testcase for GetFolderDatasetList method | FolderId : {0} | UserName: {1}", FolderId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+                resultModel.status = 0;
+                resultModel.message = ex.Message.ToString();
+            }
+            return new JsonResult()
+            {
+                Data = resultModel,
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet,
+                MaxJsonLength = 86753090  // Use this value to set your maximum size for all of your Requests
+            };
+        }
+
+        public ActionResult SaveFolderDatasetData(string lgridchange, string lgrid, long FolderId)
+        {
+            ResultModel resultModel = new ResultModel();
+            try
+            {
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                var lGridData = js.Deserialize<List<FolderDataSetViewModel>>(lgrid);
+                var valFeedD = string.Empty;
+                var repo = new TestCaseRepository();
+                repo.Username = SessionManager.TESTER_LOGIN_NAME;
+                string lSchema = SessionManager.Schema;
+                var lConnectionStr = SessionManager.APP;
+                var stgresult = false;
+
+                Dictionary<String, List<Object>> dlist = js.Deserialize<Dictionary<String, List<Object>>>(lgridchange);
+                //ValidatResultViewModel
+                var lValidationList = new List<FolderDataSetViewModel>();
+                if (lGridData.Count() > 0)
+                {
+                    var dataset = lGridData.Where(x => x.DataSetId == null).ToList();
+                    lValidationList.AddRange(dataset.Select(x => new FolderDataSetViewModel { IsValid = false, pq_ri = x.pq_ri, ValidMsg = " Please Select Dataset" }).ToList());
+
+                    var description = lGridData.Where(x => x.DatasetDesc == null).ToList();
+                    lValidationList.AddRange(description.Select(x => new FolderDataSetViewModel { IsValid = false, pq_ri = x.pq_ri, ValidMsg = " Please add Dataset Description" }).ToList());
+
+                    //var seq = lGridData.Where(x => x.SEQ == null).ToList();
+                    //lValidationList.AddRange(seq.Select(x => new FolderDataSetViewModel { IsValid = false, pq_ri = x.pq_ri, ValidMsg = " PLease add SEQ" }).ToList());
+
+                    var DuplicateDataset = lGridData.GroupBy(x => x.DatasetName == null ? "" : Convert.ToString(x.DatasetName).ToUpper())
+                                .Where(g => g.Count() > 1)
+                                .Select(y => y.Key)
+                                .ToList();
+                    var DuplicateRows = lGridData.Where(x => DuplicateDataset.Contains(x.DatasetName != null ? x.DatasetName.ToUpper() : "")).ToList();
+
+                    lValidationList.AddRange(DuplicateRows.Select(x => new FolderDataSetViewModel { IsValid = false, pq_ri = x.pq_ri, ValidMsg = " Duplicate DataSet name " }).ToList());
+
+
+                    lGridData.ForEach(item =>
+                    {
+                        item.IsValid = int.TryParse(item.SEQ, out int result);
+                    });
+                    lValidationList.AddRange(lGridData.Where(x => x.IsValid == false).Select(x => new FolderDataSetViewModel { IsValid = false, pq_ri = x.pq_ri, ValidMsg = "Please add Correct SEQ. Only numaric value allow" }).ToList());
+
+                    var DuplicateSeq = lGridData.GroupBy(x => x.SEQ)
+                                                    .Where(g => g.Count() > 1)
+                                                    .Select(y => y.Key)
+                                                    .ToList();
+                    var DuplicateSeqRows = lGridData.Where(x => DuplicateSeq.Contains(x.SEQ)).ToList();
+                    lValidationList.AddRange(DuplicateSeqRows.Select(x => new FolderDataSetViewModel { IsValid = false, pq_ri = x.pq_ri, ValidMsg = " Duplicate SEQ " }).ToList());
+
+                }
+                if (lValidationList.Count() > 0)
+                {
+                    var lValidationResult = lValidationList.OrderBy(x => x.pq_ri).GroupBy(x => new { x.pq_ri, x.IsValid }).Select(g => new { g.Key.pq_ri, g.Key.IsValid, ValidMsg = string.Join(", ", g.Select(i => i.ValidMsg)) }).ToList();
+                    var result = JsonConvert.SerializeObject(lValidationResult.OrderBy(x => x.pq_ri));
+                    resultModel.data = result;
+                    resultModel.message = "validation";
+                    resultModel.status = 0;
+                    return Json(resultModel, JsonRequestBehavior.AllowGet);
+                }
+
+                string returnValues = repo.InsertFeedProcess();
+             var valFeed = returnValues.Split('~')[0];
+                valFeedD = returnValues.Split('~')[1];
+                DataTable dt = new DataTable();
+                dt.Columns.Add("FEEDPROCESSDETAILID");
+                dt.Columns.Add("FOLDERID");
+                dt.Columns.Add("DATASETID");
+                dt.Columns.Add("DATASETNAME");
+                dt.Columns.Add("DESCRIPTION");
+                dt.Columns.Add("TESTCASE");
+                dt.Columns.Add("TESTSUITE");
+                dt.Columns.Add("STORYBOARDS");
+                dt.Columns.Add("SEQ");
+
+                //if(reSeqFlag > 0)
+                //{
+                    if(lGridData.Count() > 0)
+                    {
+                        foreach (var item in lGridData)
+                        {
+                            DataRow dr = dt.NewRow();
+                            dr["FEEDPROCESSDETAILID"] = valFeedD;
+                            dr["FOLDERID"] = Convert.ToString(FolderId);
+                            dr["DATASETID"] = Convert.ToString(item.DataSetId);
+                            dr["DATASETNAME"] = Convert.ToString(item.DatasetName);
+                            dr["DESCRIPTION"] = Convert.ToString(item.DatasetDesc);
+                            dr["TESTCASE"] = Convert.ToString(item.TestCase);
+                            dr["TESTSUITE"] = Convert.ToString(item.TestSuite);
+                            dr["STORYBOARDS"] = Convert.ToString(item.Storyboard);
+                            dr["SEQ"] = Convert.ToString(item.SEQ);
+                            dt.Rows.Add(dr);
+                        }
+                        stgresult = repo.InsertFolderDatasetInStgTbl(lConnectionStr, lSchema, dt, int.Parse(valFeedD));
+                        if (stgresult == true)
+                        {
+                            var fresult = repo.updateFolderDataset(lConnectionStr, lSchema, valFeedD);
+                            //Delete Step
+                            repo.DeleteFolderDataset(lConnectionStr, lSchema, valFeedD);
+                        }
+                    }
+                //}
+                //else
+                //{
+                //    if (dlist["updateList"].Count > 0)
+                //    {
+
+                //        foreach (var d in dlist["updateList"])
+                //        {
+                //            var update = (((System.Collections.Generic.Dictionary<string, object>)d).ToList());
+                //            var DataSetId = update.Where(x => x.Key == "DataSetId");
+                //            var DatasetName = update.Where(x => x.Key == "DatasetName");
+                //            var DatasetDesc = update.Where(x => x.Key == "DatasetDesc");
+                //            var TestCase = update.Where(x => x.Key == "TestCase");
+                //            var TestSuite = update.Where(x => x.Key == "TestSuite");
+                //            var Storyboard = update.Where(x => x.Key == "Storyboard");
+                //            var SEQ = update.Where(x => x.Key == "SEQ");
+                //            DataRow dr = dt.NewRow();
+                //            dr["FEEDPROCESSDETAILID"] = valFeedD;
+                //            dr["FOLDERID"] = Convert.ToString(FolderId);
+                //            dr["DATASETID"] = Convert.ToString(DataSetId.FirstOrDefault().Value);
+                //            dr["DATASETNAME"] = Convert.ToString(DatasetName.FirstOrDefault().Value);
+                //            dr["DESCRIPTION"] = Convert.ToString(DatasetDesc.FirstOrDefault().Value);
+                //            dr["TESTCASE"] = Convert.ToString(TestCase.FirstOrDefault().Value);
+                //            dr["TESTSUITE"] = Convert.ToString(TestSuite.FirstOrDefault().Value);
+                //            dr["STORYBOARDS"] = Convert.ToString(Storyboard.FirstOrDefault().Value);
+                //            dr["SEQ"] = Convert.ToString(SEQ.FirstOrDefault().Value);
+                //            dt.Rows.Add(dr);
+                //        }
+                //    }
+
+                //    if (dlist["addList"].Count > 0)
+                //    {
+                //        foreach (var d in dlist["addList"])
+                //        {
+                //            var update = (((System.Collections.Generic.Dictionary<string, object>)d).ToList());
+                //            var DataSetId = update.Where(x => x.Key == "DataSetId");
+                //            var DatasetName = update.Where(x => x.Key == "DatasetName");
+                //            var DatasetDesc = update.Where(x => x.Key == "DatasetDesc");
+                //            var TestCase = update.Where(x => x.Key == "TestCase");
+                //            var TestSuite = update.Where(x => x.Key == "TestSuite");
+                //            var Storyboard = update.Where(x => x.Key == "Storyboard");
+                //            var SEQ = update.Where(x => x.Key == "SEQ");
+                //            DataRow dr = dt.NewRow();
+                //            dr["FEEDPROCESSDETAILID"] = valFeedD;
+                //            dr["FOLDERID"] = Convert.ToString(FolderId);
+                //            dr["DATASETID"] = Convert.ToString(DataSetId.FirstOrDefault().Value);
+                //            dr["DATASETNAME"] = Convert.ToString(DatasetName.FirstOrDefault().Value);
+                //            dr["DESCRIPTION"] = Convert.ToString(DatasetDesc.FirstOrDefault().Value);
+                //            dr["TESTCASE"] = Convert.ToString(TestCase.FirstOrDefault().Value);
+                //            dr["TESTSUITE"] = Convert.ToString(TestSuite.FirstOrDefault().Value);
+                //            dr["STORYBOARDS"] = Convert.ToString(Storyboard.FirstOrDefault().Value);
+                //            dr["SEQ"] = Convert.ToString(SEQ.FirstOrDefault().Value);
+                //            dt.Rows.Add(dr);
+                //        }
+                //    }
+                //    if (dlist["addList"].Count > 0 || dlist["updateList"].Count > 0)
+                //    {
+                //        stgresult = repo.InsertFolderDatasetInStgTbl(lConnectionStr, lSchema, dt, int.Parse(valFeedD));
+                //        if (stgresult == true)
+                //        {
+                //            var fresult = repo.updateFolderDataset(lConnectionStr, lSchema, valFeedD);
+                //        }
+                //    }
+
+                //    if (dlist["deleteList"].Count > 0)
+                //    {
+                //        var list = new List<long>();
+                //        foreach (var d in dlist["deleteList"])
+                //        {
+                //            var update = (((System.Collections.Generic.Dictionary<string, object>)d).ToList());
+                //            var DataSetId = update.Where(x => x.Key == "DataSetId").FirstOrDefault().Value;
+                //            if (DataSetId != null)
+                //                list.Add(Convert.ToInt64(DataSetId));
+                //        }
+                //        var result = repo.DeleteFolderDatasetStep(list);
+                //    }
+                //}
+
+                resultModel.message = "success";
+                resultModel.status = 1;
+                //resultModel.data = histIdViewModel;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in testcase for SaveFolderDatasetData method | FolderId : {0} | UserName: {1}", FolderId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in testcase for SaveFolderDatasetData method | FolderId : {0} | UserName: {1}", FolderId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in testcase for SaveFolderDatasetData method | FolderId : {0} | UserName: {1}", FolderId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+                resultModel.status = 0;
+                resultModel.message = ex.Message.ToString();
+            }
+            return Json(resultModel, JsonRequestBehavior.AllowGet);
+        }
+
+
+        public ActionResult ReSequenceFolderDataset(string lgrid)
+        {
+            ResultModel resultModel = new ResultModel();
+            try
+            {
+                JavaScriptSerializer js = new JavaScriptSerializer();
+                var lGridData = js.Deserialize<List<FolderDataSetViewModel>>(lgrid);
+                var valFeedD = string.Empty;
+                var repo = new TestCaseRepository();
+                repo.Username = SessionManager.TESTER_LOGIN_NAME;
+                string lSchema = SessionManager.Schema;
+                var lConnectionStr = SessionManager.APP;
+
+                var gridlist = JsonConvert.DeserializeObject<List<FolderDataSetViewModel>>(lgrid);
+                var result = repo.ReSequenceFolderDataset(gridlist);
+
+                resultModel.message = "success";
+                resultModel.status = 1;
+                resultModel.data = JsonConvert.SerializeObject(result);
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in testcase for ReSequenceFolderDataset method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in testcase for ReSequenceFolderDataset method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in testcase for ReSequenceFolderDataset method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+                resultModel.status = 0;
+                resultModel.message = ex.Message.ToString();
+            }
+            return Json(resultModel, JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

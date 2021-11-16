@@ -385,7 +385,6 @@ function ExportReportDatasetTag() {
 }
 
 function ExportProjectAllStoryboard(objstoryboard) {
-    debugger
     var pid = $(objstoryboard).attr("data-project-id");
     if (pid != null && pid != "") {
         startloader();

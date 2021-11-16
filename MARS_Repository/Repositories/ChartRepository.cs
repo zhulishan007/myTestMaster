@@ -386,7 +386,7 @@ namespace MARS_Repository.Repositories
                                                    zAxis = q.Z_AXIS
                                                }).FirstOrDefault();
 
-                    logger.Info(string.Format("AxisDataExists end | Query: {0} | ChartType: {1} |Username: {2}", queryId, chartType, Username));
+                    logger.Info(string.Format("AxisDataExists end | Query: {0} | ChartType: {1} | Username: {2}", queryId, chartType, Username));
                     scope.Complete();
                     return model;
                 }

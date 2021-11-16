@@ -129,12 +129,12 @@ namespace MARS_Repository.Entities
         public DbSet<T_TEST_FOLDER> T_TEST_FOLDER { get; set; }
         public DbSet<T_TEST_GROUP> T_TEST_GROUP { get; set; }
         public DbSet<T_TEST_SET> T_TEST_SET { get; set; }
-        public DbSet<T_TEST_DATASETTAG> T_TEST_DATASETTAG { get; set; }
         public DbSet<T_USER_CONFIGURATION> T_USER_CONFIGURATION { get; set; }
         public DbSet<T_DATABASE_CONNECTIONS> T_DATABASE_CONNECTIONS { get; set; }
         public DbSet<REL_DB_QUERY> REL_DB_QUERY { get; set; }
         public DbSet<T_AXIS_LIST> T_AXIS_LIST { get; set; }
         public DbSet<T_QUERY> T_QUERY { get; set; }
+        public DbSet<T_TEST_DATASETTAG> T_TEST_DATASETTAG { get; set; }
     
         public virtual int DeleteTestCase(Nullable<decimal> tESTCASEID)
         {
@@ -1068,6 +1068,33 @@ namespace MARS_Repository.Entities
                 new ObjectParameter("PROJECTID", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_SaveStoryboard", fEEDPROCESS_IDParameter, sTORYBOARDIDParameter, pROJECTIDParameter, rESULT);
+        }
+    
+        public virtual int SP_SAVE_FOLDER_DATASET(string fEEDDETAILID)
+        {
+            var fEEDDETAILIDParameter = fEEDDETAILID != null ?
+                new ObjectParameter("FEEDDETAILID", fEEDDETAILID) :
+                new ObjectParameter("FEEDDETAILID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_SAVE_FOLDER_DATASET", fEEDDETAILIDParameter);
+        }
+    
+        public virtual int DeleteDatsSets(Nullable<decimal> dATASETID)
+        {
+            var dATASETIDParameter = dATASETID.HasValue ?
+                new ObjectParameter("DATASETID", dATASETID) :
+                new ObjectParameter("DATASETID", typeof(decimal));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteDatsSets", dATASETIDParameter);
+        }
+    
+        public virtual int DELETEFOLDERDATASET(string fEEDPROCESSDETAILID)
+        {
+            var fEEDPROCESSDETAILIDParameter = fEEDPROCESSDETAILID != null ?
+                new ObjectParameter("FEEDPROCESSDETAILID", fEEDPROCESSDETAILID) :
+                new ObjectParameter("FEEDPROCESSDETAILID", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DELETEFOLDERDATASET", fEEDPROCESSDETAILIDParameter);
         }
     }
 }

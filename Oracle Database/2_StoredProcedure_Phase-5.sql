@@ -3122,3 +3122,245 @@ BEGIN
 stm := 'select con.DBCONNECTION_ID, nvl(con.DATABASENAME, '''') as DATABASENAME, nvl(con.SCHEMA, '''') as SCHEMA, con.DATABASE_VALUE as BLOBValuestr from T_DBCONNECTION con';
 OPEN sl_cursor FOR  stm;
 END SP_GET_DBCONNECTION;
+
+
+/
+create or replace PROCEDURE   SP_GET_FOLDERDATASETLIST (
+FolderId IN number,
+sl_cursor OUT SYS_REFCURSOR
+)
+IS
+stm VARCHAR2(30000);
+BEGIN
+     stm := '
+     select   DATA_SUMMARY_ID, ALIAS_NAME, DESCRIPTION_INFO,TEST_CASE_ID, TEST_CASE_NAME, TEST_SUITE_NAME,TEST_SUITE_ID,
+REGEXP_REPLACE(Listagg(STORYBOARD_NAME, '','') Within Group (Order By STORYBOARD_NAME), ''(^|,)([^,]*)(,\2)+'',''\1\2'') STORYBOARD_NAME,
+REGEXP_REPLACE(Listagg(ASSIGNED_PROJECT_ID, '','') Within Group (Order By ASSIGNED_PROJECT_ID), ''(^|,)([^,]*)(,\2)+'',''\1\2'') ASSIGNED_PROJECT_ID,
+REGEXP_REPLACE(Listagg(PROJECT_NAME, '','') Within Group (Order By PROJECT_NAME), ''(^|,)([^,]*)(,\2)+'',''\1\2'') PROJECT_NAME,
+sequence from(
+select  DATASET.DATA_SUMMARY_ID ,DATASET.ALIAS_NAME, DATASET.DESCRIPTION_INFO ,TC.TEST_CASE_ID,
+TC.TEST_CASE_NAME, SUITS.TEST_SUITE_NAME,SUITS.TEST_SUITE_ID, SB.STORYBOARD_NAME, SB.ASSIGNED_PROJECT_ID,TP.PROJECT_NAME, TD.sequence from T_TEST_FOLDER tf 
+join T_TEST_DATASETTAG td on TD.FOLDERID = TF.FOLDERID
+ JOIN t_test_data_summary dataset ON dataset.data_summary_id = TD.DATASETID
+ join REL_TC_DATA_SUMMARY rc on RC.DATA_SUMMARY_ID = DATASET.DATA_SUMMARY_ID
+ join t_test_case_summary tc on TC.TEST_CASE_ID = RC.TEST_CASE_ID
+ join REL_TEST_CASE_TEST_SUITE rtc on RTC.TEST_CASE_ID = TC.TEST_CASE_ID
+ join t_test_suite suits on SUITS.TEST_SUITE_ID = RTC.TEST_SUITE_ID
+ left join T_PROJ_TC_MGR mgr on MGR.TEST_CASE_ID= TC.TEST_CASE_ID
+ left join T_STORYBOARD_SUMMARY sb on MGR.STORYBOARD_ID = SB.STORYBOARD_ID
+ join T_TEST_PROJECT tp on SB.ASSIGNED_PROJECT_ID = TP.PROJECT_ID
+ where TF.FOLDERID='||  FolderId ||')
+ group by DATA_SUMMARY_ID, ALIAS_NAME,DESCRIPTION_INFO,TEST_CASE_ID, TEST_CASE_NAME, TEST_SUITE_NAME,TEST_SUITE_ID, sequence '
+    ;
+    OPEN sl_cursor FOR  stm ;
+END;
+/
+create or replace PROCEDURE   SP_GET_DATASETLIST (
+sl_cursor OUT SYS_REFCURSOR
+)
+IS
+stm VARCHAR2(30000);
+BEGIN
+     stm := '
+   select   DATA_SUMMARY_ID, ALIAS_NAME, DESCRIPTION_INFO,TEST_CASE_ID, TEST_CASE_NAME, TEST_SUITE_NAME,TEST_SUITE_ID,
+REGEXP_REPLACE(Listagg(STORYBOARD_NAME, '','') Within Group (Order By STORYBOARD_NAME), ''(^|,)([^,]*)(,\2)+'',''\1\2'') STORYBOARD_NAME,
+REGEXP_REPLACE(Listagg(ASSIGNED_PROJECT_ID, '','') Within Group (Order By ASSIGNED_PROJECT_ID), ''(^|,)([^,]*)(,\2)+'',''\1\2'') ASSIGNED_PROJECT_ID,
+REGEXP_REPLACE(Listagg(PROJECT_NAME, '','') Within Group (Order By PROJECT_NAME), ''(^|,)([^,]*)(,\2)+'',''\1\2'') PROJECT_NAME
+from(
+select  DATASET.DATA_SUMMARY_ID ,DATASET.ALIAS_NAME, DATASET.DESCRIPTION_INFO ,TC.TEST_CASE_ID,
+TC.TEST_CASE_NAME, SUITS.TEST_SUITE_NAME,SUITS.TEST_SUITE_ID, SB.STORYBOARD_NAME, SB.ASSIGNED_PROJECT_ID,TP.PROJECT_NAME from t_test_data_summary dataset 
+ join REL_TC_DATA_SUMMARY rc on RC.DATA_SUMMARY_ID = DATASET.DATA_SUMMARY_ID
+ join t_test_case_summary tc on TC.TEST_CASE_ID = RC.TEST_CASE_ID
+ join REL_TEST_CASE_TEST_SUITE rtc on RTC.TEST_CASE_ID = TC.TEST_CASE_ID
+ join t_test_suite suits on SUITS.TEST_SUITE_ID = RTC.TEST_SUITE_ID
+ left join T_PROJ_TC_MGR mgr on MGR.TEST_CASE_ID= TC.TEST_CASE_ID
+ left join T_STORYBOARD_SUMMARY sb on MGR.STORYBOARD_ID = SB.STORYBOARD_ID
+ join T_TEST_PROJECT tp on SB.ASSIGNED_PROJECT_ID = TP.PROJECT_ID)
+ group by DATA_SUMMARY_ID, ALIAS_NAME,DESCRIPTION_INFO,TEST_CASE_ID, TEST_CASE_NAME, TEST_SUITE_NAME,TEST_SUITE_ID'
+    ;
+    OPEN sl_cursor FOR  stm ;
+END;
+
+
+/
+
+
+create or replace PROCEDURE SP_SAVE_FOLDER_DATASET
+(
+feeddetailid in varchar2
+)AS 
+BEGIN
+
+--update description-----
+UPDATE t_test_data_summary TD SET (TD.DESCRIPTION_INFO)= (
+SELECT TBL.DESCRIPTION FROM TBLSTGFOLDERDATASET tbl  
+WHERE  TBL.FEEDPROCESSDETAILID=feeddetailid AND TBL.DATASETID = TD.DATA_SUMMARY_ID
+)
+ WHERE EXISTS ( SELECT TBL.DESCRIPTION FROM TBLSTGFOLDERDATASET tbl  
+WHERE  TBL.FEEDPROCESSDETAILID=feeddetailid AND TBL.DATASETID = TD.DATA_SUMMARY_ID);
+  
+  --update seq-----
+UPDATE T_TEST_DATASETTAG TD SET (TD.sequence)= (
+SELECT TBL.SEQ FROM TBLSTGFOLDERDATASET tbl  
+WHERE  TBL.FEEDPROCESSDETAILID=feeddetailid AND TBL.FOLDERID = TD.FOLDERID and TBL.DATASETID = TD.DATASETID
+)
+ WHERE EXISTS ( SELECT TBL.SEQ FROM TBLSTGFOLDERDATASET tbl  
+WHERE  TBL.FEEDPROCESSDETAILID=feeddetailid AND TBL.FOLDERID = TD.FOLDERID and TBL.DATASETID = TD.DATASETID);
+
+---insert new dataset in folder-----
+insert into T_TEST_DATASETTAG (T_TEST_DATASETTAG_ID,DATASETID,FOLDERID,sequence)
+select SEQ_T_TEST_DATASETTAG.nextval,TBL.DATASETID,TBL.FOLDERID,TBL.SEQ
+from TBLSTGFOLDERDATASET tbl 
+left join T_TEST_DATASETTAG td on  TBL.DATASETID = TD.DATASETID
+where TBL.FEEDPROCESSDETAILID=feeddetailid and TD.DATASETID is null and TD.FOLDERID is null;
+
+
+---------update folder and sequence-----------
+
+UPDATE T_TEST_DATASETTAG TD SET (TD.FOLDERID ,TD.sequence)= (
+SELECT TBL.FOLDERID, TBL.SEQ FROM TBLSTGFOLDERDATASET tbl  
+  WHERE  TBL.FEEDPROCESSDETAILID=feeddetailid AND TBL.DATASETID = TD.DATASETID
+)
+ WHERE EXISTS ( SELECT TBL.FOLDERID,TBL.SEQ FROM TBLSTGFOLDERDATASET tbl  
+WHERE  TBL.FEEDPROCESSDETAILID=feeddetailid AND TBL.DATASETID = TD.DATASETID);
+
+
+END SP_SAVE_FOLDER_DATASET;
+
+/
+
+create or replace procedure SP_GET_STORYBOARD_RESULT(
+Compare_HISTID in NUMBER,
+Baseline_HISTID in NUMBER,
+--StoryboardDetailID in NUMBER,
+sl_cursor OUT SYS_REFCURSOR
+)
+is
+stm VARCHAR2(30000);
+begin
+
+
+
+
+
+stm := '';
+    stm := '
+   select baseline.ID,compare.ID, baseline.TEST_REPORT_STEP_ID as BaselineStepID,
+   compare.TEST_REPORT_STEP_ID as CompareStepID,
+    baseline.test_report_Id as BaselineReportID,
+   compare.test_report_Id as CompareReportID,
+baseline.steps_id,
+baseline.BEGIN_TIME,
+baseline.END_TIME,
+baseline.RUNNING_RESULT,
+baseline.RETURN_VALUES as Baseline_RETURN_VALUES,
+compare.RETURN_VALUES as Compare_RETURN_VALUES,
+baseline.RUNNING_RESULT_INFO,
+COALESCE(baseline.INPUT_VALUE_SETTING,compare.INPUT_VALUE_SETTING) as INPUT_VALUE_SETTING ,
+baseline.ACTUAL_INPUT_DATA,
+baseline.DATA_ORDER,
+ '''' as info_pic,
+baseline.ADVICE,
+baseline.STACKINFO, baseline.key_word_name,
+baseline."COMMENT" as BaselineComment ,
+compare."COMMENT" as CompareComment,
+COALESCE(baseline.DSCOMMENT,compare.DSCOMMENT) as "COMMENT" ,
+
+ Case When nvl(compare.TEST_REPORT_STEP_ID,0) <= 0 and baseline.TEST_REPORT_STEP_ID > 0  Then baseline.TEST_REPORT_STEP_ID
+      When compare.TEST_REPORT_STEP_ID > 0 and nvl(baseline.TEST_REPORT_STEP_ID,0) <= 0  Then compare.TEST_REPORT_STEP_ID 
+
+      When baseline.TEST_REPORT_STEP_ID > 0 and baseline.TEST_REPORT_STEP_ID < compare.TEST_REPORT_STEP_ID  Then baseline.TEST_REPORT_STEP_ID
+
+      When compare.TEST_REPORT_STEP_ID > 0  and compare.TEST_REPORT_STEP_ID < baseline.TEST_REPORT_STEP_ID Then compare.TEST_REPORT_STEP_ID 
+            Else baseline.TEST_REPORT_STEP_ID
+            End As ColumnOrder
+
+
+from
+(select repstep.TEST_REPORT_STEP_ID,
+repstep.steps_id,
+repstep.BEGIN_TIME,
+repstep.END_TIME,
+repstep.RUNNING_RESULT,
+repstep.RETURN_VALUES,
+repstep.RUNNING_RESULT_INFO,
+repstep.INPUT_VALUE_SETTING,
+repstep.ACTUAL_INPUT_DATA,
+repstep.DATA_ORDER,
+'''' as info_pic,
+repstep.ADVICE,
+repstep.STACKINFO,
+t_keyword.key_word_name, 
+relstepcomment."COMMENT",
+relstepcomment.ID,
+rep.test_report_Id,
+step."COMMENT" as DSCOMMENT
+from t_test_report rep
+inner join t_test_report_steps repstep on rep.test_report_id=repstep.test_report_id
+left join t_test_steps step on repstep.steps_id=step.steps_id
+left join t_keyword on step.key_word_id=t_keyword.key_word_id
+inner join t_proj_test_result prjres on rep.hist_id=prjres.hist_id
+left join REL_TEST_REPORT_STEPS_COMMENT relstepcomment on repstep.TEST_REPORT_STEP_ID = relstepcomment.TEST_REPORT_STEP_ID
+    and prjres.test_mode = relstepcomment.test_mode
+where prjres.hist_id ='||Baseline_HISTID||'
+and (t_keyword.key_word_name in (''CaptureAndCompare'',''CaptureValue'',''CaptureAndCompareByKey'') or repstep.steps_id is null) and prjres.test_mode=1) baseline
+full outer join
+(
+select repstep.TEST_REPORT_STEP_ID,
+repstep.steps_id,
+repstep.BEGIN_TIME,
+repstep.END_TIME,
+repstep.RUNNING_RESULT,
+repstep.RETURN_VALUES,
+repstep.RUNNING_RESULT_INFO,
+repstep.INPUT_VALUE_SETTING,
+repstep.ACTUAL_INPUT_DATA,
+repstep.DATA_ORDER,
+'''' as info_pic,
+repstep.ADVICE,
+repstep.STACKINFO ,
+relstepcomment."COMMENT",
+relstepcomment.ID,
+rep.test_report_Id,
+step."COMMENT" as DSCOMMENT
+from t_test_report rep
+inner join t_test_report_steps repstep on rep.test_report_id=repstep.test_report_id
+left join t_test_steps step on repstep.steps_id=step.steps_id
+left join t_keyword on step.key_word_id=t_keyword.key_word_id
+inner join t_proj_test_result prjres on rep.hist_id=prjres.hist_id
+left join REL_TEST_REPORT_STEPS_COMMENT relstepcomment on repstep.TEST_REPORT_STEP_ID = relstepcomment.TEST_REPORT_STEP_ID and prjres.test_mode = relstepcomment.test_mode
+where prjres.hist_id ='|| Compare_HISTID ||'
+and (t_keyword.key_word_name in (''CaptureAndCompare'',''CaptureValue'',''CaptureAndCompareByKey'')
+or repstep.steps_id is null) and prjres.test_mode=0 ) compare 
+on 
+--nvl(baseline.steps_id,0)=nvl(compare.steps_id,0)
+--and 
+nvl(baseline.input_value_setting,''null1'')=nvl(compare.input_value_setting,''null1'')
+
+ where nvl(baseline.input_value_setting,''null1'') != ''SKIP'' and nvl(compare.input_value_setting,''null1'') != ''SKIP''
+
+order by ColumnOrder
+';
+     OPEN sl_cursor FOR  stm ; 
+end;
+
+/
+
+create or replace PROCEDURE "DELETEFOLDERDATASET" (
+FEEDPROCESSDETAILID in number
+)
+IS
+
+Begin
+
+  
+  
+  delete T_TEST_DATASETTAG where T_TEST_DATASETTAG_ID in (
+  select td.T_TEST_DATASETTAG_ID from T_TEST_DATASETTAG td
+  left join  (select * from TBLSTGFOLDERDATASET where FEEDPROCESSDETAILID= FEEDPROCESSDETAILID) tbl on 
+  td.DATASETID = tbl.DATASETID and td.FOLDERID = tbl.FOLDERID  
+  where tbl.FEEDPROCESSDETAILID is null);
+
+  commit;
+
+End DELETEFOLDERDATASET;

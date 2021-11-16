@@ -510,8 +510,9 @@
                                     showCancelButton: true,
                                     confirmButtonText: 'Yes,copy!!'
                                 }).then(function (result) {
+                                    debugger
+                                    if (result.isConfirmed == true) {
                                     startloader();
-                                    if (result.value == true) {
                                         $.ajax({
                                             url: "/Object/CopyAllObjects",
                                             data: JSON.stringify({ copyfromappid: appid, copytoappid: convertappid }),
@@ -539,6 +540,7 @@
                                                     }
                                                 }
                                                 else if (result.status == 0) {
+                                                    debugger
                                                     swal.fire({
                                                         "title": "",
                                                         "text": result.message,
@@ -558,6 +560,7 @@
                                 });
                             }
                             else {
+                                startloader();
                                 $.ajax({
                                     url: "/Object/CopyAllObjects",
                                     data: JSON.stringify({ copyfromappid: appid, copytoappid: convertappid }),
