@@ -14,4 +14,14 @@ namespace MARS_Repository.ViewModel
         public Nullable<short> IsActive { get; set; }
         public string Active { get; set; }
     }
+
+    public class FilterModelView
+    {
+        public long Id { get; set; }
+        public string Name { get; set; }
+        public string ProjectIds { get; set; }
+        public string Project { get; set; }
+        public string StoryboradIds { get; set; }
+        public string Storyborad { get; set; }
+    }
 }

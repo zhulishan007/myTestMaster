@@ -102,6 +102,7 @@ namespace MARS_Repository.ViewModel
         public string TestCase { get; set; }
         public string TestSuite { get; set; }
         public string ProjectIds { get; set; }
+        public string ProjectName { get; set; }
         public string Storyboard { get; set; }
         public string SEQ { get; set; }
         public int? pq_ri { get; set; }

@@ -640,7 +640,7 @@
                                 }
 
                                 @*@if (PrivilegeList.Select(y => y.MODULE).ToList().Contains("Project"))
-        {*@
+                                    {*@
                                 <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
                                     <a href="javascript:;" class="kt-menu__link kt-menu__toggle" onclick=PartialRightSideJenkinsIntegrationGrid("1")>
                                         <span class="kt-menu__link-text">Jenkins Integration</span>
@@ -805,15 +805,15 @@
                             </a>
                         }
                         @*<a href="#" onclick=UserexecutionEnginePathList("0") class="kt-notification__item">
-                                <div class="kt-notification__item-icon">
-                                    <i class="fa fa-route"></i>
-                                </div>
-                                <div class="kt-notification__item-details">
-                                    <div class="kt-notification__item-title">
-                                        <span class="kt-header__topbar-icon" data-skin="brand" data-container="body" data-toggle="kt-popover" data-placement="bottom" data-content="Location of the MARS Engine on the client's machine." data-original-title="" title="">Engine Path</span>
-                                    </div>
-                                </div>
-                            </a>*@
+            <div class="kt-notification__item-icon">
+                <i class="fa fa-route"></i>
+            </div>
+            <div class="kt-notification__item-details">
+                <div class="kt-notification__item-title">
+                    <span class="kt-header__topbar-icon" data-skin="brand" data-container="body" data-toggle="kt-popover" data-placement="bottom" data-content="Location of the MARS Engine on the client's machine." data-original-title="" title="">Engine Path</span>
+                </div>
+            </div>
+        </a>*@
                         <a href="#" onclick="PartialConnectionList()" class="kt-notification__item">
                             <div class="kt-notification__item-icon">
                                 <i class="fa fa-users"></i>
@@ -841,15 +841,15 @@
                             </a>
                         }
                         @*<a href="#" onclick="OpenResizeLeftPanelPopup()" class="kt-notification__item">
-                                <div class="kt-notification__item-icon">
-                                    <i class="flaticon2-arrow-1"></i>
-                                </div>
-                                <div class="kt-notification__item-details">
-                                    <div class="kt-notification__item-title">
-                                        <span class="kt-header__topbar-icon" data-skin="brand" data-container="body" data-toggle="kt-popover" data-placement="bottom" data-content="Set width in Left Panel" data-original-title="" title="">Resize Left Panel</span>
-                                    </div>
-                                </div>
-                            </a>*@
+            <div class="kt-notification__item-icon">
+                <i class="flaticon2-arrow-1"></i>
+            </div>
+            <div class="kt-notification__item-details">
+                <div class="kt-notification__item-title">
+                    <span class="kt-header__topbar-icon" data-skin="brand" data-container="body" data-toggle="kt-popover" data-placement="bottom" data-content="Set width in Left Panel" data-original-title="" title="">Resize Left Panel</span>
+                </div>
+            </div>
+        </a>*@
 
                         @if (RoleList.Select(y => y.ROLE_NAME.Trim().ToLower()).ToList().Contains("admin"))
                         {
@@ -972,6 +972,16 @@
                                 </div>
                             </a>
                         }
+                        <a href="#" onclick=RightSideFilterList("0") class="kt-notification__item">
+                            <div class="kt-notification__item-icon">
+                                <i class="flaticon-list-2"></i>
+                            </div>
+                            <div class="kt-notification__item-details">
+                                <div class="kt-notification__item-title">
+                                    <span class="kt-header__topbar-icon" data-skin="brand" data-container="body" data-toggle="kt-popover" data-placement="bottom" data-content="Filter List" data-original-title="" title="">Filter List</span>
+                                </div>
+                            </div>
+                        </a>
                         <a href="~/Download/DownloadFile.pdf" class="kt-notification__item" target="_blank">
                             <div class="kt-notification__item-icon">
                                 <i class="fa fa-file-download"></i>
@@ -1716,6 +1726,31 @@
     @{
         var authenticationSettings = System.Configuration.ConfigurationManager.GetSection("system.web/authentication") as System.Web.Configuration.AuthenticationSection;
     }
+
+
+    <div class="modal fade" id="FdFilter" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span>Select Filter</span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="fdfilter">
+                        <div class="form-group">
+                            <label class="form-control-label">Filter </label>
+                            <select class="form-control kt-select2" id="DrpfdFilter" name="DrpfdFilter" multiple="multiple"></select>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" id="savefilter"  class="btn btn-primary" onclick="ExportReportDatasetTag()">Export</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!--ENd:: Chat-->
     <!-- begin::Global Config(global config for global JS sciprts) -->
     <script>
@@ -4086,6 +4121,51 @@
                 success: function (result) {
                 },
                 error: function (x, y, z) {
+                }
+            });
+        }
+        function OpenExportFilter() {
+            debugger
+            startloader();
+            $.ajax({
+                url: "/TestCase/RunStoryboardForFolder",
+                //data: '{"folderId":"' + folderId + '"}',
+                type: "POST",
+                contentType: "application/json;charFolder=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    if (result.status == 1) {
+                        var filterlist = JSON.parse(result.data);
+                        $("#DrpfdFilter").html('');
+                        var optionString = "";
+                        optionString = optionString + " <option value=0></option>";
+                        for (i = 0; i < filterlist.length; i++) {
+
+                            var optionValue = filterlist[i].FILTER_ID;
+                            var optionText = filterlist[i].FILTER_NAME;
+                            optionString = optionString + " <option value='" + optionValue + "'>" + optionText + "</option>";
+                        }
+
+                        $("#DrpfdFilter").append($(optionString));
+                        $("#DrpfdFilter").select2();
+
+
+                        $("#FdFilter").modal("show");
+                    }
+                    else if (result.status == 0) {
+                        swal.fire({
+                            "title": "",
+                            "text": result.message,
+                            "icon": "error",
+                            "onClose": function (e) {
+                                console.log('on close event fired!');
+                            }
+                        });
+                    }
+                    stoploader();
+                },
+                error: function (errormessage) {
+                    alert(errormessage.responFolderext);
                 }
             });
         }

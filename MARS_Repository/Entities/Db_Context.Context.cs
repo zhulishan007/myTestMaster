@@ -9,29 +9,29 @@
 
 namespace MARS_Repository.Entities
 {
-    using System;
-    using System.Data.Common;
-    using System.Data.Entity;
-    using System.Data.Entity.Infrastructure;
-    using System.Data.Objects;
-    using System.Data.Objects.DataClasses;
-    using System.Linq;
-    
-    public partial class DBEntities : DbContext
+using System;
+using System.Data.Common;
+using System.Data.Entity;
+using System.Data.Entity.Infrastructure;
+using System.Data.Objects;
+using System.Data.Objects.DataClasses;
+using System.Linq;
+
+public partial class DBEntities : DbContext
+{
+    public static string ConnectionString { get; set; }
+    public static string Schema { get; set; }
+    public DBEntities()
+         : base(ConnectionString)
     {
-        public static string ConnectionString { get; set; }
-        public static string Schema { get; set; }
-        public DBEntities()
-             : base(ConnectionString)
-        {
-        }
-        public DBEntities(DbConnection dbCnn) : base(dbCnn, false)
-        {
-            ((IObjectContextAdapter)this).ObjectContext.CommandTimeout = 3600;
+    }
+    public DBEntities(DbConnection dbCnn) : base(dbCnn, false)
+    {
+        ((IObjectContextAdapter)this).ObjectContext.CommandTimeout = 3600;
 
-        }
+    }
 
-        public DbSet<ErrorLog> ErrorLogs { get; set; }
+    public DbSet<ErrorLog> ErrorLogs { get; set; }
         public DbSet<LOGREPORT> LOGREPORTs { get; set; }
         public DbSet<REL_APP_BASELINECOMPARE> REL_APP_BASELINECOMPARE { get; set; }
         public DbSet<REL_APP_PROJ> REL_APP_PROJ { get; set; }
@@ -135,6 +135,8 @@ namespace MARS_Repository.Entities
         public DbSet<T_AXIS_LIST> T_AXIS_LIST { get; set; }
         public DbSet<T_QUERY> T_QUERY { get; set; }
         public DbSet<T_TEST_DATASETTAG> T_TEST_DATASETTAG { get; set; }
+        public DbSet<T_FOLDER_FILTER> T_FOLDER_FILTER { get; set; }
+        public DbSet<REL_FOLDER_FILTER> REL_FOLDER_FILTER { get; set; }
     
         public virtual int DeleteTestCase(Nullable<decimal> tESTCASEID)
         {

@@ -12,7 +12,7 @@
 }
 
 <input type="hidden" value="@EditFolder" id="hdnEditFolder" />
-  
+
 <div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
     <div class="kt-subheader   kt-grid__item" id="kt_subheader" style="left: @ViewBag.width;">
         <div class="kt-container  kt-container--fluid ">
@@ -41,15 +41,15 @@
                     </h3>
                 </div>
                 @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Add Folder"))
-                    {
-                <div class="kt-portlet__head-toolbar">
-                    <div class="kt-portlet__head-wrapper">
-                        <div class="kt-portlet__head-actions">
-                            <button type="button" class="btn btn-brand btn-elevate btn-icon-sm" data-toggle="modal" onclick="AddFolder()" data-target="#kt_modal_4"><i class="la la-plus"></i>New Folder</button>
-                            &nbsp;
+                {
+                    <div class="kt-portlet__head-toolbar">
+                        <div class="kt-portlet__head-wrapper">
+                            <div class="kt-portlet__head-actions">
+                                <button type="button" class="btn btn-brand btn-elevate btn-icon-sm" data-toggle="modal" onclick="AddFolder()" data-target="#kt_modal_4"><i class="la la-plus"></i>New Folder</button>
+                                &nbsp;
+                            </div>
                         </div>
                     </div>
-                </div>
                 }
             </div>
             <div class="modal fade" id="AddFolder" tabindex="-1" role="dialog" aria-labelledby="fexampleModalLabel" aria-hidden="true">
@@ -79,12 +79,11 @@
                                 <br />
                                 <div class="form-group">
                                     <label for="message-text" class="form-control-label">Active</label>
-                                    <label class='kt-checkbox kt-checkbox--brand'><input type='checkbox' id='Folderactive' name='Folderactive' checked/>&nbsp;<span></span></label>
+                                    <label class='kt-checkbox kt-checkbox--brand'><input type='checkbox' id='Folderactive' name='Folderactive' checked />&nbsp;<span></span></label>
                                 </div>
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" id="editFolder" class="btn btn-outline-brand btn-elevate btn-pill" onclick="EditFolder()" style="display:none">Edit Data Sets</button>
                             <button type="button" id="addedFolder" class="btn btn-outline-brand btn-elevate btn-pill" onclick="AddEditFolderSave()">Save</button>
                             <button type="button" class="btn btn-outline-brand btn-elevate btn-pill" data-dismiss="modal">Cancel</button>
                         </div>
@@ -106,6 +105,83 @@
         </div>
     </div>
 </div>
+
+@*<div class="modal fade" id="AddStoryboardFolder" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display: none;">
+        <div class="modal-dialog modal-sm" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span>Add Storyboard</span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="addSBFolder">
+                        <div class="form-group">
+                            <label class="form-control-label">Project Name<span style="color:red">&nbsp;*</span> </label>
+                            <div id="clsTypeSb">
+                                <select class="form-control kt-select2" id="fprojectname" name="fprojectname" style="width: 262px;" required>
+                                    <option value="0"></option>
+                                    @{ var ltype = ViewBag.ProjectList as IEnumerable<SelectListItem>;
+
+                                        foreach (var item in ltype)
+                                        {
+                                            <option value="@item.Value">@item.Text</option>
+                                        }
+                                    }
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="name" class="form-control-label">Storyboard Name<span style="color:red">&nbsp;*</span></label>
+                            <input type="text" class="form-control" id="SBname" name="SBname" maxlength="64">
+                            <label id="contextstoryboarderror" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">Storyboard already exists.</label>
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="form-control-label">Storyboard Description<span style="color:red">&nbsp;*</span></label>
+                            <textarea class="form-control" id="SBDesc" name="SBDesc" required maxlength="128"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" id="saveSBFolder" class="btn btn-primary" onclick="StoryboardSaveFolder()">Save</button>
+                </div>
+            </div>
+        </div>
+    </div*@>
+
+
+<div class="modal fade" id="RunFolder" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span>Run Folder</span>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="runFolder">
+                    <input type="hidden" class="form-control" id="fId" name="fId">
+                    <div class="form-group">
+                        <label for="name" class="form-control-label">Folder Name</label>
+                        <input type="text" class="form-control" id="fname" name="fname" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label">Filter <span style="color:red">&nbsp;*</span></label>
+                        <select class="form-control kt-select2" id="DrpFilter" name="DrpFilter"></select>
+                    </div>
+                    <label id="requiredfilter" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                        This field is required
+                    </label>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="RunFolder()">Run</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 <script>
 
     var FolderTable = function () {
@@ -199,8 +275,12 @@
                             var lActive = full.IsActive;
                             var lRenderHtml = "";
                             if (lEditFolderdisplay == "true") {
-                            lRenderHtml = " <a href='#' class='btn btn-sm btn-clean btn-icon btn-icon-md' title='View' data-name='" + lName + "' data-des='" + lDes + "' data-act='" + lActive + "'onclick=AddEditFolder(" + lid + ",$(this)) ><i class='la la-edit'></i></a> ";
-                             }
+                                lRenderHtml = " <a href='#' class='btn btn-sm btn-clean btn-icon btn-icon-md' title='Edit' data-name='" + lName + "' data-des='" + lDes + "' data-act='" + lActive + "'onclick=AddEditFolder(" + lid + ",$(this)) ><i class='la la-edit'></i></a>";
+
+                            }
+                            lRenderHtml = lRenderHtml + "<a href='#' class='btn btn-sm btn-clean btn-icon btn-icon-md' title='Run' data-name='" + lName + "' data-des='" + lDes + "' data-act='" + lActive + "'onclick=OpenFilterForRunFolder(" + lid + ",$(this)) ><i class='fa fa-caret-square-right'></i></a>";
+                            lRenderHtml = lRenderHtml + "<a href='#' class='btn btn-sm btn-clean btn-icon btn-icon-md' title='Create Storyborad' data-name='" + lName + "' data-des='" + lDes + "' data-act='" + lActive + "'onclick=CreateSBFolder(" + lid + ",$(this)) ><i class='flaticon-add-circular-button'></i></a>";
+                            lRenderHtml = lRenderHtml + "<a href='#' class='btn btn-sm btn-clean btn-icon btn-icon-md' title='Edit DataSet' data-name='" + lName + "' data-des='" + lDes + "' data-act='" + lActive + "'onclick=EditFolder(" + lid + ",$(this)) ><i class='flaticon-edit'></i></a>";
                             return lRenderHtml;
                         },
                     }
@@ -232,9 +312,25 @@
                 }
             },
         });
+
+        $("#frmFilter").validate({
+            rules: {
+                filname: {
+                    required: true
+                },
+                fprojectname: {
+                    required: true
+                },
+                fsbname: {
+                    required: true
+                }
+            },
+        });
     });
 
     function AddFolder() {
+        $("#createSBFolder").css("display", "none");
+        $("#runFolder").css("display", "none");
         $("#editFolder").css("display", "none");
         $("#Foldervalidate").css("display", "none");
         $("#Foldername").prop("disabled", false);
@@ -263,6 +359,8 @@
         $("#Foldername").prop("disabled", true);
         $("#addedFolder").prop("disabled", false);
         $("#Foldervalidate").css("display", "none");
+        $("#createSBFolder").css("display", "block");
+        $("#runFolder").css("display", "block");
         $("#editFolder").css("display", "block");
 
         var lId = Id;
@@ -383,9 +481,8 @@
         });
     }
 
-    function EditFolder() {
-        var lId = $("#hdnFolderId").val();
-        var name = $("#Foldername").val();
+    function EditFolder(lId, obj) {
+        var name = obj[0].dataset.name;
         startloader();
         $.ajax({
             url: "/TestCase/GetFolderDatasetList",
@@ -418,15 +515,15 @@
 
                 if (lflag) {
                     //if (Activetab != null) {
-                        var lParentli = $(Activetab).parent();
-                        var ltab = '<li class="nav-item context-menu-tab" ><a title="FolderName: ' + name + ' " data-pin="false" href="' + ltabName + '" class="nav-link active context-tab" data-tab="FolderDataSet" data-folderid="' + lId + '" data-name="' + name + '" data-toggle="tab" data-target="' + ltabName + '" onclick="ActiveTab($(this))"><img alt="FolderDataSet" class="tab_icons_img" src="/assets/media/icons/FL.png">' + name + '</a><i class="fa fa-times-circle tab_close" style="cursor:pointer" onclick="closetab($(this))"></i></li>';
-                        var ldiv = result;
-                        var lId = "tab" + name;
-                        var lGridDiv = $(".divtablist").find("#" + lId);
-                        $(lParentli).html("");
-                        $(lParentli).html(ltab);
-                        $(lGridDiv).html("");
-                        $(lGridDiv).html(ldiv);
+                    //var lParentli = $(Activetab).parent();
+                    var ltab = '<li class="nav-item context-menu-tab" ><a title="FolderName: ' + name + ' " data-pin="false" href="' + ltabName + '" class="nav-link active context-tab" data-tab="FolderDataSet" data-folderid="' + lId + '" data-name="' + name + '" data-toggle="tab" data-target="' + ltabName + '" onclick="ActiveTab($(this))"><img alt="FolderDataSet" class="tab_icons_img" src="/assets/media/icons/FL.png">' + name + '</a><i class="fa fa-times-circle tab_close" style="cursor:pointer" onclick="closetab($(this))"></i></li>';
+                    var ldiv = result;
+                    var lId = "tab" + name;
+                    var lGridDiv = $(".divtablist").find("#" + lId);
+                    //$(lParentli).html("");
+                    //$(lParentli).html(ltab);
+                    $(lGridDiv).html("");
+                    $(lGridDiv).html(ldiv);
                     //}
                     $('.ULtablist li').each(function (index, value) {
                         if ($(value).children().first().attr("data-target") == ltabName) {
@@ -460,9 +557,226 @@
                 stoploader();
             },
         });
-
     }
 
+    function CreateSBFolder(Id,obj) {
+        var fName = obj[0].dataset.name;
+        startloader();
+        $.ajax({
+            url: "/TestCase/CreateStoryboardForFolder",
+            data: '{"folderId":"' + Id + '","fName":"' + fName + '"}',
+            type: "POST",
+            contentType: "application/json;charFolder=utf-8",
+            dataType: "json",
+            success: function (result) {
+                if (result.status == 1 && result.data) {
+                    //$("#AddStoryboardFolder").modal("hide");
+                    $("#AddFolder").modal("hide");
+                    swal.fire({
+                        "title": "",
+                        "text": result.message,
+                        "icon": "success",
+                        "onClose": function (e) {
+                            console.log('on close event fired!');
+                        }
+                    });
+
+                    $.ajax({
+                        url: "/Login/LeftPanel",
+                        type: "POST",
+                        contentType: "application/json;charset=utf-8",
+                        dataType: "HTML",
+                        success: function (result) {
+                            $("#leftProjectList").html("");
+                            $("#leftProjectList").html(result);
+                        }
+                    });
+
+                }
+                else if (result.status == 0) {
+                    swal.fire({
+                        "title": "",
+                        "text": result.message,
+                        "icon": "error",
+                        "onClose": function (e) {
+                            console.log('on close event fired!');
+                        }
+                    });
+                }
+                stoploader();
+            },
+            error: function (errormessage) {
+                alert(errormessage.responFolderext);
+            }
+        });
+    }
+
+    function OpenFilterForRunFolder(Id, obj) {
+        var fName = obj[0].dataset.name;
+        $("#requiredfilter").css("display", "none");
+        startloader();
+        $.ajax({
+            url: "/TestCase/RunStoryboardForFolder",
+            data: '{"folderId":"' + Id + '"}',
+            type: "POST",
+            contentType: "application/json;charFolder=utf-8",
+            dataType: "json",
+            success: function (result) {
+                if (result.status == 1) {
+                    var filterlist = JSON.parse(result.data);
+                    $("#fname").val(fName);
+                    $("#fId").val(Id);
+                    $("#DrpFilter").html('');
+                    var optionString = "";
+                    optionString = optionString + " <option value=0></option>";
+                    for (i = 0; i < filterlist.length; i++) {
+
+                        var optionValue = filterlist[i].FILTER_ID;
+                        var optionText = filterlist[i].FILTER_NAME;
+                        optionString = optionString + " <option value='" + optionValue + "'>" + optionText + "</option>";
+                    }
+
+                    $("#DrpFilter").append($(optionString));
+                    $("#DrpFilter").select2();
+
+                    $("#DrpFilter").val(result.message);
+                    $("#DrpFilter").select2();
+
+                    $("#RunFolder").modal("show");
+                }
+                else if (result.status == 0) {
+                    swal.fire({
+                        "title": "",
+                        "text": result.message,
+                        "icon": "error",
+                        "onClose": function (e) {
+                            console.log('on close event fired!');
+                        }
+                    });
+                }
+                stoploader();
+            },
+            error: function (errormessage) {
+                alert(errormessage.responFolderext);
+            }
+        });
+    }
+   
+    function RunFolder() {
+       var fID =  $("#fId").val();
+        var FilterId = $("#DrpFilter").val();
+        var fname = $("#fname").val();
+       
+        if (FilterId == "0") {
+            $("#requiredfilter").css("display", "block");
+            return false;
+        }
+        startloader();
+        $.ajax({
+            url: "/TestCase/SaveFolderForFilter",
+            data: '{"FolderID":"' + fID + '","FilterId":"' + FilterId + '","Fname":"' + fname +'"}',
+            type: "POST",
+            contentType: "application/json;charFolder=utf-8",
+            dataType: "json",
+            success: function (result) {
+                if (result.status == 1) {
+                    
+                    $("#RunFolder").modal("hide");
+                    $.ajax({
+                        url: "/TestCase/FolderRun",
+                        type: "POST",
+                        data: JSON.stringify(result.data),
+                        contentType: "application/json;charset=utf-8",
+                        dataType: "HTML",
+                        success: function (result) {
+                            var lflag = false;
+                            var name = fname;
+                            fname = "RUN_" + fname;
+                            fname = fname.replace(/ /g, '_');
+                            var ltabName = "#tab" + fname;
+                            var ltabIdName = "tab" + fname;
+                            $('.ULtablist li').each(function (index, value) {
+                                if ($(value).children().first().attr("data-target") == ltabName) {
+                                    if ($(value).children().first().attr("data-tab") == "FolderRun") {
+                                        lflag = true;
+                                    }
+                                }
+                            });
+                            var ltab = "";
+                            //if (Default == "1") {
+                            //    ltab = '<li class="nav-item context-menu-tab" ><a title="StoryboardName: ' + StoryboardName + ' Row: ' + RunOrder +' " data-pin="true" href="' + ltabName + '" class="nav-link active context-tab" data-tab="DataTag" data-testcaseid="' + lTestCaseId + '" data-storyboarddetailid="' + lStoryboardDetailId + '" data-baseid="' + BhistedId + '" data-compareid="' + ChistedId + '" data-storyboard="' + StoryboardName + '" data-runorder="' + RunOrder + '" data-name="' + name + '" data-toggle="tab" data-target="' + ltabName + '" onclick="ActiveTab($(this))"><img alt="DataTag" class="tab_icons_img" src="/assets/media/icons/rs.png">' + name + '</a><i class="fa fa-times-circle tab_close" style="cursor:pointer" onclick="closetab($(this))"></i></li>';
+                            //} else {
+                            //    ltab = '<li class="nav-item context-menu-tab" ><a title="StoryboardName: ' + StoryboardName + ' Row: ' + RunOrder +' " data-pin="false" href="' + ltabName + '" class="nav-link active context-tab" data-tab="DataTag" data-testcaseid="' + lTestCaseId + '" data-storyboarddetailid="' + lStoryboardDetailId + '" data-baseid="' + BhistedId + '" data-compareid="' + ChistedId + '" data-storyboard="' + StoryboardName + '" data-runorder="' + RunOrder + '" data-name="' + name + '" data-toggle="tab" data-target="' + ltabName + '" onclick="ActiveTab($(this))"><img alt="DataTag" class="tab_icons_img" src="/assets/media/icons/rs.png">' + name + '</a><i class="fa fa-times-circle tab_close" style="cursor:pointer" onclick="closetab($(this))"></i></li>';
+                            //}
+
+                            ltab = '<li class="nav-item context-menu-tab" ><a title="FolderName: ' + name + ' " data-pin="false" href="' + ltabName + '" class="nav-link active context-tab" data-tab="FolderRun" data-name="' + fname + '" data-toggle="tab" data-target="' + ltabName + '" onclick="ActiveTab($(this))"><img alt="FolderRun" class="tab_icons_img" src="/assets/media/icons/FD.png">' + fname + '</a><i class="fa fa-times-circle tab_close" style="cursor:pointer" onclick="closetab($(this))"></i></li>';
+                            var ldiv = '<div class="tab-pane active div" id="' + ltabIdName + '" role="tabpanel">' + result + '</div>';
+
+                            if (lflag) {
+                                //if (Activetab != null) {
+                                //var lParentli = $(Activetab).parent();
+                                var ltab = '<li class="nav-item context-menu-tab" ><a title="FolderName: ' + name + ' " data-pin="false" href="' + ltabName + '" class="nav-link active context-tab" data-tab="FolderRun" data-name="' + fname + '" data-toggle="tab" data-target="' + ltabName + '" onclick="ActiveTab($(this))"><img alt="FolderRun" class="tab_icons_img" src="/assets/media/icons/FL.png">' + fname + '</a><i class="fa fa-times-circle tab_close" style="cursor:pointer" onclick="closetab($(this))"></i></li>';
+                                var ldiv = result;
+                                var lId = "tab" + fname;
+                                var lGridDiv = $(".divtablist").find("#" + lId);
+                                //$(lParentli).html("");
+                                //$(lParentli).html(ltab);
+                                $(lGridDiv).html("");
+                                $(lGridDiv).html(ldiv);
+                                //}
+                                $('.ULtablist li').each(function (index, value) {
+                                    if ($(value).children().first().attr("data-target") == ltabName) {
+                                        $(value).children().first().addClass("active");
+                                    } else {
+                                        $(value).children().first().removeClass("active");
+                                    }
+                                });
+                                $('.divtablist div').each(function (index, value) {
+                                    if ($(value).first().attr("id") == ltabIdName) {
+                                        $(value).addClass("active");
+                                    } else {
+                                        $(value).removeClass("active");
+                                    }
+                                });
+                            }
+                            else {
+                                $(".ULtablist").append(ltab);
+                                $(".divtablist").append(ldiv);
+                                $('.ULtablist li').each(function (index, value) {
+                                    if ($(value).children().first().attr("data-target") != "#tab" + fname) {
+                                        $(value).children().first().removeClass("active");
+                                    }
+                                });
+                                $('.divtablist div').each(function (index, value) {
+                                    if ($(value).first().attr("id") != "tab" + fname) {
+                                        $(value).removeClass("active");
+                                    }
+                                });
+                            }
+                            stoploader();
+                        },
+                    });
+                }
+                else if (result.status == 0) {
+                        swal.fire({
+                            "title": "",
+                            "text": result.message,
+                            "icon": "error",
+                            "onClose": function (e) {
+                                console.log('on close event fired!');
+                            }
+                        });
+                }
+                stoploader();
+            },
+            error: function (errormessage) {
+                alert(errormessage.responFolderext);
+            }
+        });
+    }
+    $("#DrpFilter").change(function () {
+        $("#requiredfilter").css("display", "none");
+    });
     $("#Foldername").on('keyup', function () {
         $("#existFoldername").css("display", "none");
     });

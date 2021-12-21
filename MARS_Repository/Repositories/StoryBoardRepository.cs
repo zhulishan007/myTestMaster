@@ -644,25 +644,25 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                    logger.Info(string.Format("Get Test Suites start | ProjectId: {0} | UserName: {1}", lProjectId, Username));
-                    var lTestSuiteTree = new List<TestSuiteListByProject>();
-                    var lresult = (from t1 in enty.T_TEST_PROJECT
-                                   join t2 in enty.REL_TEST_SUIT_PROJECT on t1.PROJECT_ID equals t2.PROJECT_ID
-                                   join t3 in enty.T_TEST_SUITE on t2.TEST_SUITE_ID equals t3.TEST_SUITE_ID
-                                   where t1.PROJECT_ID == lProjectId
-                                   select new TestSuiteListByProject
-                                   {
-                                       ProjectId = t1.PROJECT_ID,
-                                       ProjectName = t1.PROJECT_NAME,
-                                       TestsuiteId = t3.TEST_SUITE_ID,
-                                       TestsuiteName = t3.TEST_SUITE_NAME,
-                                       TestCaseCount = 0,
-                                       TestSuiteDesc = t3.TEST_SUITE_DESCRIPTION
-                                   }).Distinct().OrderBy(x => x.TestsuiteName).ToList();
+                logger.Info(string.Format("Get Test Suites start | ProjectId: {0} | UserName: {1}", lProjectId, Username));
+                var lTestSuiteTree = new List<TestSuiteListByProject>();
+                var lresult = (from t1 in enty.T_TEST_PROJECT
+                               join t2 in enty.REL_TEST_SUIT_PROJECT on t1.PROJECT_ID equals t2.PROJECT_ID
+                               join t3 in enty.T_TEST_SUITE on t2.TEST_SUITE_ID equals t3.TEST_SUITE_ID
+                               where t1.PROJECT_ID == lProjectId
+                               select new TestSuiteListByProject
+                               {
+                                   ProjectId = t1.PROJECT_ID,
+                                   ProjectName = t1.PROJECT_NAME,
+                                   TestsuiteId = t3.TEST_SUITE_ID,
+                                   TestsuiteName = t3.TEST_SUITE_NAME,
+                                   TestCaseCount = 0,
+                                   TestSuiteDesc = t3.TEST_SUITE_DESCRIPTION
+                               }).Distinct().OrderBy(x => x.TestsuiteName).ToList();
 
 
-                    logger.Info(string.Format("Get TestSuiteList end | ProjectId: {0} | UserName: {1}", lProjectId, Username));
-                    return lresult;
+                logger.Info(string.Format("Get TestSuiteList end | ProjectId: {0} | UserName: {1}", lProjectId, Username));
+                return lresult;
             }
             catch (Exception ex)
             {
@@ -677,50 +677,50 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                    logger.Info(string.Format("Get TestCase List start | TestSuitename: {0} | UserName: {1}", TestSuitename, Username));
-                    var lTestcaseTree = new List<TestCaseListByProject>();
+                logger.Info(string.Format("Get TestCase List start | TestSuitename: {0} | UserName: {1}", TestSuitename, Username));
+                var lTestcaseTree = new List<TestCaseListByProject>();
 
-                    logger.Info(string.Format("Get TestCase List 1 | TestSuitename: {0} | UserName: {1}", TestSuitename, Username));
-                    var lList = from t1 in enty.T_TEST_PROJECT
-                                join t2 in enty.REL_TEST_SUIT_PROJECT on t1.PROJECT_ID equals t2.PROJECT_ID
-                                join t3 in enty.T_TEST_SUITE on t2.TEST_SUITE_ID equals t3.TEST_SUITE_ID
-                                join t4 in enty.REL_TEST_CASE_TEST_SUITE on t2.TEST_SUITE_ID equals t4.TEST_SUITE_ID
-                                join t5 in enty.T_TEST_CASE_SUMMARY on t4.TEST_CASE_ID equals t5.TEST_CASE_ID
-                                join t6 in enty.REL_TC_DATA_SUMMARY on t5.TEST_CASE_ID equals t6.TEST_CASE_ID
-                                where t1.PROJECT_ID == lProjectId && t3.TEST_SUITE_NAME == TestSuitename
-                                select new TestCaseListByProject
-                                {
-                                    ProjectId = t1.PROJECT_ID,
-                                    ProjectName = t1.PROJECT_NAME,
-                                    TestcaseId = t5.TEST_CASE_ID,
-                                    TestcaseName = t5.TEST_CASE_NAME,
-                                    TestsuiteId = t3.TEST_SUITE_ID,
-                                    TestsuiteName = t3.TEST_SUITE_NAME,
-                                    TestCaseDesc = t5.TEST_STEP_DESCRIPTION,
-                                    DataSetCount = (long)t6.DATA_SUMMARY_ID
-                                };
-                    logger.Info(string.Format("Get TestCase List 2 | TestSuitename: {0} | UserName: {1}", TestSuitename, Username));
-                    var lResult = lList.Distinct().ToList();
-                    logger.Info(string.Format("Get TestCase List 3 | TestSuitename: {0} | UserName: {1}", TestSuitename, Username));
-                    lResult = lResult.GroupBy(x => new { x.ProjectId, x.ProjectName, x.TestsuiteId, x.TestsuiteName, x.TestcaseId, x.TestcaseName, x.TestCaseDesc }).Select(gcs => new TestCaseListByProject()
-                    {
-                        ProjectId = gcs.Key.ProjectId,
-                        ProjectName = gcs.Key.ProjectName,
-                        TestsuiteId = gcs.Key.TestsuiteId,
-                        TestsuiteName = gcs.Key.TestsuiteName,
-                        TestcaseId = gcs.Key.TestcaseId,
-                        TestcaseName = gcs.Key.TestcaseName,
-                        TestCaseDesc = gcs.Key.TestCaseDesc,
-                        DataSetCount = gcs.Count()
-                    }).ToList();
-                    logger.Info(string.Format("Get TestCase List 4 | TestSuitename: {0} | UserName: {1}", TestSuitename, Username));
-                    if (lResult.Count() > 0)
-                    {
-                        lTestcaseTree = lResult.Distinct().OrderBy(x => x.TestcaseName).ToList();
-                    }
-                    logger.Info(string.Format("Get TestCase List 5 | TestSuitename: {0} | UserName: {1}", TestSuitename, Username));
-                    logger.Info(string.Format("Get TestCase List end | TestSuitename: {0} | UserName: {1}", TestSuitename, Username));
-                    return lTestcaseTree;
+                logger.Info(string.Format("Get TestCase List 1 | TestSuitename: {0} | UserName: {1}", TestSuitename, Username));
+                var lList = from t1 in enty.T_TEST_PROJECT
+                            join t2 in enty.REL_TEST_SUIT_PROJECT on t1.PROJECT_ID equals t2.PROJECT_ID
+                            join t3 in enty.T_TEST_SUITE on t2.TEST_SUITE_ID equals t3.TEST_SUITE_ID
+                            join t4 in enty.REL_TEST_CASE_TEST_SUITE on t2.TEST_SUITE_ID equals t4.TEST_SUITE_ID
+                            join t5 in enty.T_TEST_CASE_SUMMARY on t4.TEST_CASE_ID equals t5.TEST_CASE_ID
+                            join t6 in enty.REL_TC_DATA_SUMMARY on t5.TEST_CASE_ID equals t6.TEST_CASE_ID
+                            where t1.PROJECT_ID == lProjectId && t3.TEST_SUITE_NAME == TestSuitename
+                            select new TestCaseListByProject
+                            {
+                                ProjectId = t1.PROJECT_ID,
+                                ProjectName = t1.PROJECT_NAME,
+                                TestcaseId = t5.TEST_CASE_ID,
+                                TestcaseName = t5.TEST_CASE_NAME,
+                                TestsuiteId = t3.TEST_SUITE_ID,
+                                TestsuiteName = t3.TEST_SUITE_NAME,
+                                TestCaseDesc = t5.TEST_STEP_DESCRIPTION,
+                                DataSetCount = (long)t6.DATA_SUMMARY_ID
+                            };
+                logger.Info(string.Format("Get TestCase List 2 | TestSuitename: {0} | UserName: {1}", TestSuitename, Username));
+                var lResult = lList.Distinct().ToList();
+                logger.Info(string.Format("Get TestCase List 3 | TestSuitename: {0} | UserName: {1}", TestSuitename, Username));
+                lResult = lResult.GroupBy(x => new { x.ProjectId, x.ProjectName, x.TestsuiteId, x.TestsuiteName, x.TestcaseId, x.TestcaseName, x.TestCaseDesc }).Select(gcs => new TestCaseListByProject()
+                {
+                    ProjectId = gcs.Key.ProjectId,
+                    ProjectName = gcs.Key.ProjectName,
+                    TestsuiteId = gcs.Key.TestsuiteId,
+                    TestsuiteName = gcs.Key.TestsuiteName,
+                    TestcaseId = gcs.Key.TestcaseId,
+                    TestcaseName = gcs.Key.TestcaseName,
+                    TestCaseDesc = gcs.Key.TestCaseDesc,
+                    DataSetCount = gcs.Count()
+                }).ToList();
+                logger.Info(string.Format("Get TestCase List 4 | TestSuitename: {0} | UserName: {1}", TestSuitename, Username));
+                if (lResult.Count() > 0)
+                {
+                    lTestcaseTree = lResult.Distinct().OrderBy(x => x.TestcaseName).ToList();
+                }
+                logger.Info(string.Format("Get TestCase List 5 | TestSuitename: {0} | UserName: {1}", TestSuitename, Username));
+                logger.Info(string.Format("Get TestCase List end | TestSuitename: {0} | UserName: {1}", TestSuitename, Username));
+                return lTestcaseTree;
             }
             catch (Exception ex)
             {
@@ -736,46 +736,46 @@ namespace MARS_Repository.Repositories
             logger.Info(string.Format("Get DataSet List start | Projectid: {0} | TestSuitename: {1} | Testcasename: {2} | UserName: {3}", Projectid, TestSuitename, Testcasename, Username));
             try
             {
-                    var lDatasettree = new List<DataSetListByTestCase>();
-                    var lList = from t1 in enty.T_TEST_PROJECT
-                                join t2 in enty.REL_TEST_SUIT_PROJECT on t1.PROJECT_ID equals t2.PROJECT_ID
-                                join t3 in enty.T_TEST_SUITE on t2.TEST_SUITE_ID equals t3.TEST_SUITE_ID
-                                join t4 in enty.REL_TEST_CASE_TEST_SUITE on t2.TEST_SUITE_ID equals t4.TEST_SUITE_ID
-                                join t5 in enty.T_TEST_CASE_SUMMARY on t4.TEST_CASE_ID equals t5.TEST_CASE_ID
-                                join t6 in enty.REL_TC_DATA_SUMMARY on t5.TEST_CASE_ID equals t6.TEST_CASE_ID
-                                join t7 in enty.T_TEST_DATA_SUMMARY on t6.DATA_SUMMARY_ID equals t7.DATA_SUMMARY_ID
-                                where t1.PROJECT_ID == Projectid && t3.TEST_SUITE_NAME == TestSuitename && t5.TEST_CASE_NAME == Testcasename
-                                select new DataSetListByTestCase
-                                {
-                                    ProjectId = t1.PROJECT_ID,
-                                    ProjectName = t1.PROJECT_NAME,
-                                    TestcaseId = t5.TEST_CASE_ID,
-                                    TestcaseName = t5.TEST_CASE_NAME,
-                                    TestsuiteId = t3.TEST_SUITE_ID,
-                                    TestsuiteName = t3.TEST_SUITE_NAME,
-                                    Datasetid = t7.DATA_SUMMARY_ID,
-                                    Datasetname = t7.ALIAS_NAME
-                                };
-                    var lResult = lList.Distinct().ToList();
+                var lDatasettree = new List<DataSetListByTestCase>();
+                var lList = from t1 in enty.T_TEST_PROJECT
+                            join t2 in enty.REL_TEST_SUIT_PROJECT on t1.PROJECT_ID equals t2.PROJECT_ID
+                            join t3 in enty.T_TEST_SUITE on t2.TEST_SUITE_ID equals t3.TEST_SUITE_ID
+                            join t4 in enty.REL_TEST_CASE_TEST_SUITE on t2.TEST_SUITE_ID equals t4.TEST_SUITE_ID
+                            join t5 in enty.T_TEST_CASE_SUMMARY on t4.TEST_CASE_ID equals t5.TEST_CASE_ID
+                            join t6 in enty.REL_TC_DATA_SUMMARY on t5.TEST_CASE_ID equals t6.TEST_CASE_ID
+                            join t7 in enty.T_TEST_DATA_SUMMARY on t6.DATA_SUMMARY_ID equals t7.DATA_SUMMARY_ID
+                            where t1.PROJECT_ID == Projectid && t3.TEST_SUITE_NAME == TestSuitename && t5.TEST_CASE_NAME == Testcasename
+                            select new DataSetListByTestCase
+                            {
+                                ProjectId = t1.PROJECT_ID,
+                                ProjectName = t1.PROJECT_NAME,
+                                TestcaseId = t5.TEST_CASE_ID,
+                                TestcaseName = t5.TEST_CASE_NAME,
+                                TestsuiteId = t3.TEST_SUITE_ID,
+                                TestsuiteName = t3.TEST_SUITE_NAME,
+                                Datasetid = t7.DATA_SUMMARY_ID,
+                                Datasetname = t7.ALIAS_NAME
+                            };
+                var lResult = lList.Distinct().ToList();
 
-                    lResult = lResult.GroupBy(x => new { x.ProjectId, x.ProjectName, x.TestsuiteId, x.TestsuiteName, x.TestcaseId, x.TestcaseName, x.Datasetid, x.Datasetname }).Select(gcs => new DataSetListByTestCase()
-                    {
-                        ProjectId = gcs.Key.ProjectId,
-                        ProjectName = gcs.Key.ProjectName,
-                        TestsuiteId = gcs.Key.TestsuiteId,
-                        TestsuiteName = gcs.Key.TestsuiteName,
-                        TestcaseId = gcs.Key.TestcaseId,
-                        TestcaseName = gcs.Key.TestcaseName,
-                        Datasetid = gcs.Key.Datasetid,
-                        Datasetname = gcs.Key.Datasetname
-                    }).ToList();
+                lResult = lResult.GroupBy(x => new { x.ProjectId, x.ProjectName, x.TestsuiteId, x.TestsuiteName, x.TestcaseId, x.TestcaseName, x.Datasetid, x.Datasetname }).Select(gcs => new DataSetListByTestCase()
+                {
+                    ProjectId = gcs.Key.ProjectId,
+                    ProjectName = gcs.Key.ProjectName,
+                    TestsuiteId = gcs.Key.TestsuiteId,
+                    TestsuiteName = gcs.Key.TestsuiteName,
+                    TestcaseId = gcs.Key.TestcaseId,
+                    TestcaseName = gcs.Key.TestcaseName,
+                    Datasetid = gcs.Key.Datasetid,
+                    Datasetname = gcs.Key.Datasetname
+                }).ToList();
 
-                    if (lResult.Count() > 0)
-                    {
-                        lDatasettree = lResult.Distinct().OrderBy(x => x.TestcaseName).ToList();
-                    }
-                    logger.Info(string.Format("Get DataSet List end | Projectid: {0} | TestSuitename: {1} | Testcasename: {2} | UserName: {3}", Projectid, TestSuitename, Testcasename, Username));
-                    return lDatasettree;
+                if (lResult.Count() > 0)
+                {
+                    lDatasettree = lResult.Distinct().OrderBy(x => x.TestcaseName).ToList();
+                }
+                logger.Info(string.Format("Get DataSet List end | Projectid: {0} | TestSuitename: {1} | Testcasename: {2} | UserName: {3}", Projectid, TestSuitename, Testcasename, Username));
+                return lDatasettree;
             }
             catch (Exception ex)
             {
@@ -790,10 +790,10 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                    logger.Info(string.Format("Get Storyboard start | Storyboardid: {0} | UserName: {1}", Storyboardid, Username));
-                    var lstoryboardname = enty.T_STORYBOARD_SUMMARY.FirstOrDefault(x => x.STORYBOARD_ID == Storyboardid).STORYBOARD_NAME;
-                    logger.Info(string.Format("Get Storyboard end | Storyboardid: {0} | UserName: {1}", Storyboardid, Username));
-                    return lstoryboardname;
+                logger.Info(string.Format("Get Storyboard start | Storyboardid: {0} | UserName: {1}", Storyboardid, Username));
+                var lstoryboardname = enty.T_STORYBOARD_SUMMARY.FirstOrDefault(x => x.STORYBOARD_ID == Storyboardid).STORYBOARD_NAME;
+                logger.Info(string.Format("Get Storyboard end | Storyboardid: {0} | UserName: {1}", Storyboardid, Username));
+                return lstoryboardname;
             }
             catch (Exception ex)
             {
@@ -848,10 +848,10 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                    logger.Info(string.Format("Get StoryboardName start | storyboardid: {0} | UserName: {1}", storyboardid, Username));
-                    var storyboard = enty.T_STORYBOARD_SUMMARY.FirstOrDefault(x => x.STORYBOARD_ID == storyboardid).STORYBOARD_NAME;
-                    logger.Info(string.Format("Get StoryboardName end | storyboardid: {0} | UserName: {1}", storyboardid, Username));
-                    return storyboard;
+                logger.Info(string.Format("Get StoryboardName start | storyboardid: {0} | UserName: {1}", storyboardid, Username));
+                var storyboard = enty.T_STORYBOARD_SUMMARY.FirstOrDefault(x => x.STORYBOARD_ID == storyboardid).STORYBOARD_NAME;
+                logger.Info(string.Format("Get StoryboardName end | storyboardid: {0} | UserName: {1}", storyboardid, Username));
+                return storyboard;
             }
             catch (Exception ex)
             {
@@ -919,18 +919,18 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                    logger.Info(string.Format("Check Duplicate StoryboardName start | storyboardname: {0} | UserName: {1}", storyboardname, Username));
-                    var lresult = false;
-                    if (storyboardid != null)
-                    {
-                        lresult = enty.T_STORYBOARD_SUMMARY.Any(x => x.STORYBOARD_ID != storyboardid && x.STORYBOARD_NAME.ToLower().Trim() == storyboardname.ToLower().Trim());
-                    }
-                    else
-                    {
-                        lresult = enty.T_STORYBOARD_SUMMARY.Any(x => x.STORYBOARD_NAME.ToLower().Trim() == storyboardname.ToLower().Trim());
-                    }
-                    logger.Info(string.Format("Check Duplicate StoryboardName end | storyboardname: {0} | UserName: {1}", storyboardname, Username));
-                    return lresult;
+                logger.Info(string.Format("Check Duplicate StoryboardName start | storyboardname: {0} | UserName: {1}", storyboardname, Username));
+                var lresult = false;
+                if (storyboardid != null)
+                {
+                    lresult = enty.T_STORYBOARD_SUMMARY.Any(x => x.STORYBOARD_ID != storyboardid && x.STORYBOARD_NAME.ToLower().Trim() == storyboardname.ToLower().Trim());
+                }
+                else
+                {
+                    lresult = enty.T_STORYBOARD_SUMMARY.Any(x => x.STORYBOARD_NAME.ToLower().Trim() == storyboardname.ToLower().Trim());
+                }
+                logger.Info(string.Format("Check Duplicate StoryboardName end | storyboardname: {0} | UserName: {1}", storyboardname, Username));
+                return lresult;
             }
             catch (Exception ex)
             {
@@ -946,64 +946,64 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                    logger.Info(string.Format("Get TestResult start | TestCaseId: {0} | SBDetailId: {1} | UserName: {2}", TestCaseId, SBDetailId, Username));
-                    List<TestResultModel> listresult = new List<TestResultModel>();
-                    var lList = enty.T_PROJ_TEST_RESULT.Where(x => x.TEST_CASE_ID == TestCaseId && x.STORYBOARD_DETAIL_ID == SBDetailId).Select(y => new TestResultModel
-                    {
-                        BeginTime = y.TEST_BEGIN_TIME,
-                        EndTime = y.TEST_END_TIME,
-                        CreatTime = y.CREATE_TIME,
-                        HistId = y.HIST_ID,
-                        ResultAliasName = y.RESULT_ALIAS_NAME,
-                        ResultDesc = y.RESULT_DESC,
-                        StoryboardDetailId = y.STORYBOARD_DETAIL_ID,
-                        TestCaseId = y.TEST_CASE_ID,
-                        TestModeId = y.TEST_MODE,
-                        TestMode = y.TEST_MODE == 1 ? "BaseLine" : "Comparison",
-                        TestResult = y.TEST_RESULT,
-                        TestResultInText = y.TEST_RESULT_IN_TEXT,
-                        LatestTestMarkId = y.LATEST_TEST_MARK_ID
+                logger.Info(string.Format("Get TestResult start | TestCaseId: {0} | SBDetailId: {1} | UserName: {2}", TestCaseId, SBDetailId, Username));
+                List<TestResultModel> listresult = new List<TestResultModel>();
+                var lList = enty.T_PROJ_TEST_RESULT.Where(x => x.TEST_CASE_ID == TestCaseId && x.STORYBOARD_DETAIL_ID == SBDetailId).Select(y => new TestResultModel
+                {
+                    BeginTime = y.TEST_BEGIN_TIME,
+                    EndTime = y.TEST_END_TIME,
+                    CreatTime = y.CREATE_TIME,
+                    HistId = y.HIST_ID,
+                    ResultAliasName = y.RESULT_ALIAS_NAME,
+                    ResultDesc = y.RESULT_DESC,
+                    StoryboardDetailId = y.STORYBOARD_DETAIL_ID,
+                    TestCaseId = y.TEST_CASE_ID,
+                    TestModeId = y.TEST_MODE,
+                    TestMode = y.TEST_MODE == 1 ? "BaseLine" : "Comparison",
+                    TestResult = y.TEST_RESULT,
+                    TestResultInText = y.TEST_RESULT_IN_TEXT,
+                    LatestTestMarkId = y.LATEST_TEST_MARK_ID
 
-                    }).OrderBy(z => z.HistId).ToList();
+                }).OrderBy(z => z.HistId).ToList();
 
-                    lList.ForEach(item =>
+                lList.ForEach(item =>
+                {
+                    item.ResultAliasName = item.ResultAliasName == null || item.ResultAliasName == "null" ? "" : item.ResultAliasName;
+                    item.ResultDesc = item.ResultDesc == null || item.ResultDesc == "null" ? "" : item.ResultDesc;
+                });
+                var maxBaselineMarkIds = lList.Where(x => x.TestModeId == 1).ToList();
+                var maxCompareMarkIds = lList.Where(x => x.TestModeId != 1).ToList();
+                long maxBaselineMarkId = 0;
+                long maxCompareMarkId = 0;
+                if (maxBaselineMarkIds.Count() > 0)
+                {
+                    maxBaselineMarkId = (long)(maxBaselineMarkIds.Max(x => x.LatestTestMarkId));
+                    //lList.Where(x => x.LatestTestMarkId == maxBaselineMarkId && x.TestModeId == 1).ToList().ForEach(item =>
+                    //{
+                    //    item.IsMark = true;
+                    //});
+
+                    var maxHistId = lList.Where(x => x.LatestTestMarkId == maxBaselineMarkId && x.TestModeId == 1).Max(y => y.HistId);
+                    lList.Where(x => x.LatestTestMarkId == maxBaselineMarkId && x.TestModeId == 1 && x.HistId == maxHistId).ToList().ForEach(item =>
                     {
-                        item.ResultAliasName = item.ResultAliasName == null || item.ResultAliasName == "null" ? "" : item.ResultAliasName;
-                        item.ResultDesc = item.ResultDesc == null || item.ResultDesc == "null" ? "" : item.ResultDesc;
+                        item.IsMark = true;
                     });
-                    var maxBaselineMarkIds = lList.Where(x => x.TestModeId == 1).ToList();
-                    var maxCompareMarkIds = lList.Where(x => x.TestModeId != 1).ToList();
-                    long maxBaselineMarkId = 0;
-                    long maxCompareMarkId = 0;
-                    if (maxBaselineMarkIds.Count() > 0)
+                }
+                if (maxCompareMarkIds.Count() > 0)
+                {
+                    maxCompareMarkId = (long)(maxCompareMarkIds.Max(x => x.LatestTestMarkId));
+                    //lList.Where(x => x.LatestTestMarkId == maxCompareMarkId && x.TestModeId != 1).ToList().ForEach(item =>
+                    //{
+                    //    item.IsMark = true;
+                    //});
+                    var maxHistId = lList.Where(x => x.LatestTestMarkId == maxCompareMarkId && x.TestModeId != 1).Max(y => y.HistId);
+                    lList.Where(x => x.LatestTestMarkId == maxCompareMarkId && x.TestModeId != 1 && x.HistId == maxHistId).ToList().ForEach(item =>
                     {
-                        maxBaselineMarkId = (long)(maxBaselineMarkIds.Max(x => x.LatestTestMarkId));
-                        //lList.Where(x => x.LatestTestMarkId == maxBaselineMarkId && x.TestModeId == 1).ToList().ForEach(item =>
-                        //{
-                        //    item.IsMark = true;
-                        //});
-
-                        var maxHistId = lList.Where(x => x.LatestTestMarkId == maxBaselineMarkId && x.TestModeId == 1).Max(y => y.HistId);
-                        lList.Where(x => x.LatestTestMarkId == maxBaselineMarkId && x.TestModeId == 1 && x.HistId == maxHistId).ToList().ForEach(item =>
-                        {
-                            item.IsMark = true;
-                        });
-                    }
-                    if (maxCompareMarkIds.Count() > 0)
-                    {
-                        maxCompareMarkId = (long)(maxCompareMarkIds.Max(x => x.LatestTestMarkId));
-                        //lList.Where(x => x.LatestTestMarkId == maxCompareMarkId && x.TestModeId != 1).ToList().ForEach(item =>
-                        //{
-                        //    item.IsMark = true;
-                        //});
-                        var maxHistId = lList.Where(x => x.LatestTestMarkId == maxCompareMarkId && x.TestModeId != 1).Max(y => y.HistId);
-                        lList.Where(x => x.LatestTestMarkId == maxCompareMarkId && x.TestModeId != 1 && x.HistId == maxHistId).ToList().ForEach(item =>
-                        {
-                            item.IsMark = true;
-                        });
-                    }
-                    logger.Info(string.Format("Get TestResult end | TestCaseId: {0} | SBDetailId: {1} | UserName: {2}", TestCaseId, SBDetailId, Username));
-                    return lList;
+                        item.IsMark = true;
+                    });
+                }
+                logger.Info(string.Format("Get TestResult end | TestCaseId: {0} | SBDetailId: {1} | UserName: {2}", TestCaseId, SBDetailId, Username));
+                return lList;
             }
             catch (Exception ex)
             {
@@ -1657,14 +1657,14 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                    logger.Info(string.Format("Check Duplicate StoryboardName SaveAs start | storyboardname: {0} | UserName: {1}", storyboardname, Username));
-                    var lresult = false;
-                    if (storyboardid != 0)
-                    {
-                        lresult = enty.T_STORYBOARD_SUMMARY.Any(x => x.STORYBOARD_NAME.ToLower().Trim() == storyboardname.ToLower().Trim());
-                    }
-                    logger.Info(string.Format("Check Duplicate StoryboardName SaveAs end | storyboardname: {0} | UserName: {1}", storyboardname, Username));
-                    return lresult;
+                logger.Info(string.Format("Check Duplicate StoryboardName SaveAs start | storyboardname: {0} | UserName: {1}", storyboardname, Username));
+                var lresult = false;
+                if (storyboardid != 0)
+                {
+                    lresult = enty.T_STORYBOARD_SUMMARY.Any(x => x.STORYBOARD_NAME.ToLower().Trim() == storyboardname.ToLower().Trim());
+                }
+                logger.Info(string.Format("Check Duplicate StoryboardName SaveAs end | storyboardname: {0} | UserName: {1}", storyboardname, Username));
+                return lresult;
             }
             catch (Exception ex)
             {
@@ -2458,13 +2458,13 @@ namespace MARS_Repository.Repositories
             long TestReportId = 0;
             try
             {
-                    logger.Info(string.Format("Get TestReportId start | HistId: {0} | Username: {1}", HistId, Username));
-                    var lList = enty.T_TEST_REPORT.Where(x => x.HIST_ID == HistId).ToList();
-                    if (lList.Count() > 0)
-                    {
-                        TestReportId = lList.FirstOrDefault().TEST_REPORT_ID;
-                    }
-                    logger.Info(string.Format("Get TestReportId end | HistId: {0} | Username: {1}", HistId, Username));
+                logger.Info(string.Format("Get TestReportId start | HistId: {0} | Username: {1}", HistId, Username));
+                var lList = enty.T_TEST_REPORT.Where(x => x.HIST_ID == HistId).ToList();
+                if (lList.Count() > 0)
+                {
+                    TestReportId = lList.FirstOrDefault().TEST_REPORT_ID;
+                }
+                logger.Info(string.Format("Get TestReportId end | HistId: {0} | Username: {1}", HistId, Username));
             }
             catch (Exception ex)
             {
@@ -2481,50 +2481,50 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                    logger.Info(string.Format("Get Primart TestResult start | TestCaseId: {0} | SBDetailId: {1} | Username: {2}", TestCaseId, SBDetailId, Username));
-                    List<TestResultModel> listresult = new List<TestResultModel>();
-                    var lList = enty.T_PROJ_TEST_RESULT.Where(x => x.TEST_CASE_ID == TestCaseId && x.STORYBOARD_DETAIL_ID == SBDetailId).Select(y => new TestResultModel
-                    {
-                        HistId = y.HIST_ID,
-                        StoryboardDetailId = y.STORYBOARD_DETAIL_ID,
-                        TestCaseId = y.TEST_CASE_ID,
-                        TestModeId = y.TEST_MODE,
-                        TestMode = y.TEST_MODE == 1 ? "BaseLine" : "Comparison",
-                        TestResult = y.TEST_RESULT,
-                        LatestTestMarkId = y.LATEST_TEST_MARK_ID
-                    }).OrderBy(z => z.HistId).ToList();
+                logger.Info(string.Format("Get Primart TestResult start | TestCaseId: {0} | SBDetailId: {1} | Username: {2}", TestCaseId, SBDetailId, Username));
+                List<TestResultModel> listresult = new List<TestResultModel>();
+                var lList = enty.T_PROJ_TEST_RESULT.Where(x => x.TEST_CASE_ID == TestCaseId && x.STORYBOARD_DETAIL_ID == SBDetailId).Select(y => new TestResultModel
+                {
+                    HistId = y.HIST_ID,
+                    StoryboardDetailId = y.STORYBOARD_DETAIL_ID,
+                    TestCaseId = y.TEST_CASE_ID,
+                    TestModeId = y.TEST_MODE,
+                    TestMode = y.TEST_MODE == 1 ? "BaseLine" : "Comparison",
+                    TestResult = y.TEST_RESULT,
+                    LatestTestMarkId = y.LATEST_TEST_MARK_ID
+                }).OrderBy(z => z.HistId).ToList();
 
-                    lList.ForEach(item =>
+                lList.ForEach(item =>
+                {
+                    item.ResultAliasName = item.ResultAliasName == null || item.ResultAliasName == "null" ? "" : item.ResultAliasName;
+                    item.ResultDesc = item.ResultDesc == null || item.ResultDesc == "null" ? "" : item.ResultDesc;
+                });
+                var maxBaselineMarkIds = lList.Where(x => x.TestModeId == 1).ToList();
+                var maxCompareMarkIds = lList.Where(x => x.TestModeId != 1).ToList();
+                long maxBaselineMarkId = 0;
+                long maxCompareMarkId = 0;
+                if (maxBaselineMarkIds.Count() > 0)
+                {
+                    maxBaselineMarkId = (long)(maxBaselineMarkIds.Max(x => x.LatestTestMarkId));
+                    var maxHistId = lList.Where(x => x.LatestTestMarkId == maxBaselineMarkId && x.TestModeId == 1).Max(y => y.HistId);
+                    lList.Where(x => x.LatestTestMarkId == maxBaselineMarkId && x.TestModeId == 1 && x.HistId == maxHistId).ToList().ForEach(item =>
                     {
-                        item.ResultAliasName = item.ResultAliasName == null || item.ResultAliasName == "null" ? "" : item.ResultAliasName;
-                        item.ResultDesc = item.ResultDesc == null || item.ResultDesc == "null" ? "" : item.ResultDesc;
+                        item.IsMark = true;
                     });
-                    var maxBaselineMarkIds = lList.Where(x => x.TestModeId == 1).ToList();
-                    var maxCompareMarkIds = lList.Where(x => x.TestModeId != 1).ToList();
-                    long maxBaselineMarkId = 0;
-                    long maxCompareMarkId = 0;
-                    if (maxBaselineMarkIds.Count() > 0)
+                }
+                if (maxCompareMarkIds.Count() > 0)
+                {
+                    maxCompareMarkId = (long)(maxCompareMarkIds.Max(x => x.LatestTestMarkId));
+                    var maxHistId = lList.Where(x => x.LatestTestMarkId == maxCompareMarkId && x.TestModeId != 1).Max(y => y.HistId);
+                    lList.Where(x => x.LatestTestMarkId == maxCompareMarkId && x.TestModeId != 1 && x.HistId == maxHistId).ToList().ForEach(item =>
                     {
-                        maxBaselineMarkId = (long)(maxBaselineMarkIds.Max(x => x.LatestTestMarkId));
-                        var maxHistId = lList.Where(x => x.LatestTestMarkId == maxBaselineMarkId && x.TestModeId == 1).Max(y => y.HistId);
-                        lList.Where(x => x.LatestTestMarkId == maxBaselineMarkId && x.TestModeId == 1 && x.HistId == maxHistId).ToList().ForEach(item =>
-                        {
-                            item.IsMark = true;
-                        });
-                    }
-                    if (maxCompareMarkIds.Count() > 0)
-                    {
-                        maxCompareMarkId = (long)(maxCompareMarkIds.Max(x => x.LatestTestMarkId));
-                        var maxHistId = lList.Where(x => x.LatestTestMarkId == maxCompareMarkId && x.TestModeId != 1).Max(y => y.HistId);
-                        lList.Where(x => x.LatestTestMarkId == maxCompareMarkId && x.TestModeId != 1 && x.HistId == maxHistId).ToList().ForEach(item =>
-                        {
-                            item.IsMark = true;
-                        });
-                    }
-                    List<TestResultModel> listprimaryresult = new List<TestResultModel>();
-                    listprimaryresult = lList.Where(x => x.IsMark).ToList();
-                    logger.Info(string.Format("Get Primart TestResult end | TestCaseId: {0} | SBDetailId: {1} | Username: {2}", TestCaseId, SBDetailId, Username));
-                    return listprimaryresult;
+                        item.IsMark = true;
+                    });
+                }
+                List<TestResultModel> listprimaryresult = new List<TestResultModel>();
+                listprimaryresult = lList.Where(x => x.IsMark).ToList();
+                logger.Info(string.Format("Get Primart TestResult end | TestCaseId: {0} | SBDetailId: {1} | Username: {2}", TestCaseId, SBDetailId, Username));
+                return listprimaryresult;
             }
             catch (Exception ex)
             {
@@ -2943,6 +2943,287 @@ namespace MARS_Repository.Repositories
                     ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in SaveStoryboardGrid method | StoryBoard Id: {0} | Project Id : {1} | Feed Process Id : {2} | UserName: {3}", lStoryboardId, lProjectId, lFeedProceID, Username), ex.InnerException);
                 if (ex.InnerException.InnerException != null)
                     ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in SaveStoryboardGrid method | StoryBoard Id: {0} | Project Id : {1} | Feed Process Id : {2} | UserName: {3}", lStoryboardId, lProjectId, lFeedProceID, Username), ex.InnerException.InnerException);
+                throw;
+            }
+        }
+
+        //public bool CreateStoryboradForFolder(long folderId, string proId, string SBName, string SBDesc)
+        //{
+        //    try
+        //    {
+        //        logger.Info(string.Format("CreateStoryboradForFolder start | folderId: {0} | proId: {1} | SBName: {2} | SBName: {3} | UserName: {4}", folderId, proId, SBName, SBDesc, Username));
+        //        var lresult = false;
+        //        var folder = folderId.ToString();
+        //        long pro = long.Parse(proId);
+        //        //T_STORYBOARD_SUMMARY summary = new T_STORYBOARD_SUMMARY();
+        //        //var storyboardid = Helper.NextTestSuiteId("T_TEST_STEPS_SEQ");
+        //        //summary.STORYBOARD_ID = storyboardid;
+        //        //summary.STORYBOARD_NAME = SBName;
+        //        //summary.DESCRIPTION = SBDesc;
+        //        //summary.ASSIGNED_PROJECT_ID = Convert.ToInt64(proId);
+        //        //enty.T_STORYBOARD_SUMMARY.Add(summary);
+        //        //enty.SaveChanges();
+        //        var datasets = (from df in enty.T_TEST_DATASETTAG
+        //                       join u in enty.T_TEST_DATA_SUMMARY on df.DATASETID equals u.DATA_SUMMARY_ID
+        //                       join ds in enty.REL_TC_DATA_SUMMARY on u.DATA_SUMMARY_ID equals ds.DATA_SUMMARY_ID
+        //                       join tc in enty.T_TEST_CASE_SUMMARY on ds.TEST_CASE_ID equals tc.TEST_CASE_ID
+        //                       join rtc in enty.REL_TEST_CASE_TEST_SUITE on tc.TEST_CASE_ID equals rtc.TEST_CASE_ID
+        //                       join suits in enty.T_TEST_SUITE on rtc.TEST_SUITE_ID equals suits.TEST_SUITE_ID
+        //                       join rtp in enty.REL_TEST_SUIT_PROJECT on suits.TEST_SUITE_ID equals rtp.TEST_SUITE_ID
+        //                       where df.FOLDERID == folder 
+        //                       select  suits.TEST_SUITE_ID).Distinct().ToList();
+
+        //        foreach (var item in datasets)
+        //        {
+        //            var testsuite = enty.REL_TEST_SUIT_PROJECT.Where(x => x.TEST_SUITE_ID == item && x.PROJECT_ID == pro).FirstOrDefault();
+        //            if(testsuite == null)
+        //            {
+        //                var lTSTC = new REL_TEST_SUIT_PROJECT();
+        //                lTSTC.TEST_SUITE_ID = item;
+        //                lTSTC.PROJECT_ID = pro;
+        //                lTSTC.RELATIONSHIP_ID = Helper.NextTestSuiteId("REL_TEST_SUIT_PROJECT_SEQ");
+        //                enty.REL_TEST_SUIT_PROJECT.Add(lTSTC);
+        //            }
+        //                enty.SaveChanges();
+        //        }
+        //        //
+        //        //var dataset = (from df in enty.T_TEST_DATASETTAG
+        //        //               join u in enty.T_TEST_DATA_SUMMARY on df.DATASETID equals u.DATA_SUMMARY_ID
+        //        //               join ds in enty.REL_TC_DATA_SUMMARY on u.DATA_SUMMARY_ID equals ds.DATA_SUMMARY_ID
+        //        //               join tc in enty.T_TEST_CASE_SUMMARY on ds.TEST_CASE_ID equals tc.TEST_CASE_ID
+        //        //               join rtc in enty.REL_TEST_CASE_TEST_SUITE on tc.TEST_CASE_ID equals rtc.TEST_CASE_ID
+        //        //               join suits in enty.T_TEST_SUITE on rtc.TEST_SUITE_ID equals suits.TEST_SUITE_ID
+        //        //               join rtp in enty.REL_TEST_SUIT_PROJECT on suits.TEST_SUITE_ID equals rtp.TEST_SUITE_ID
+        //        //               where df.FOLDERID == folder && rtp.PROJECT_ID == pro
+        //        //               select suits.TEST_SUITE_ID).ToList();
+        //        //select new DataSummaryModel { Data_Summary_Name = u.ALIAS_NAME, DATA_SUMMARY_ID = u.DATA_SUMMARY_ID }).Distinct().ToList();
+
+
+
+        //        logger.Info(string.Format("CreateStoryboradForFolder end | folderId: {0} | proId: {1} | SBName: {2} | SBName: {3} | UserName: {4}", folderId, proId, SBName, SBDesc, Username));
+        //        return lresult;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        logger.Error(string.Format("Error occured in StoryBoard for CreateStoryboradForFolder method | folderId: {0} | proId: {1} | SBName: {2} | SBName: {3} | UserName: {4}", folderId, proId, SBName, SBDesc, Username));
+        //        ELogger.ErrorException(string.Format("Error occured StoryBoard in CreateStoryboradForFolder method | folderId: {0} | proId: {1} | SBName: {2} | SBName: {3} | UserName: {4}", folderId, proId, SBName, SBDesc, Username), ex);
+        //        if (ex.InnerException != null)
+        //            ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in CreateStoryboradForFolder method | folderId: {0} | proId: {1} | SBName: {2} | SBName: {3} | UserName: {4}", folderId, proId, SBName, SBDesc, Username), ex.InnerException);
+        //        throw;
+        //    }
+        //}
+
+
+        public bool CreateStoryboradForFolder(long folderId, string fName, string lSchema, string lConnectionStr, string lvalFeed, string lvalFeedD)
+        {
+            try
+            {
+                logger.Info(string.Format("CreateStoryboradForFolder start | folderId: {0} | fName: {1} | UserName: {2}", folderId, fName, Username));
+                var lresult = false;
+                var folder = folderId.ToString();
+                long ProjectId = 0;
+                long storyboardid = 0;
+                var project = enty.T_TEST_PROJECT.Where(x => x.PROJECT_NAME == "Project Zero").FirstOrDefault();
+
+                if (project == null)
+                {
+                    var tbl = new T_TEST_PROJECT();
+                    tbl.PROJECT_ID = Helper.NextTestSuiteId("T_TEST_PROJECT_SEQ");
+                    tbl.PROJECT_NAME = "Project Zero";
+                    tbl.PROJECT_DESCRIPTION = "Project Zero";
+                    tbl.STATUS = 2;
+                    tbl.CREATOR = Username;
+                    tbl.CREATE_DATE = DateTime.Now;
+                    ProjectId = tbl.PROJECT_ID;
+                    enty.T_TEST_PROJECT.Add(tbl);
+                    enty.SaveChanges();
+
+                    var applicationlist = enty.T_REGISTERED_APPS.ToList();
+                    foreach (var app in applicationlist)
+                    {
+                        var IsExistPro = enty.REL_APP_PROJ.Where(x => x.PROJECT_ID == ProjectId).FirstOrDefault();
+                        if (IsExistPro == null)
+                        {
+                            var lApptbl = new REL_APP_PROJ();
+                            lApptbl.APPLICATION_ID = app.APPLICATION_ID;
+                            lApptbl.PROJECT_ID = ProjectId;
+                            lApptbl.RELATIONSHIP_ID = Helper.NextTestSuiteId("REL_APP_PROJ_SEQ");
+                            enty.REL_APP_PROJ.Add(lApptbl);
+                            enty.SaveChanges();
+                        }
+                    }
+                }
+                else
+                    ProjectId = project.PROJECT_ID;
+
+                //create new storyborad
+                var IsExistSB = enty.T_STORYBOARD_SUMMARY.Where(x => x.ASSIGNED_PROJECT_ID == ProjectId && x.STORYBOARD_NAME == fName + "_Project Zero").FirstOrDefault();
+                if (IsExistSB == null)
+                {
+                    T_STORYBOARD_SUMMARY summary = new T_STORYBOARD_SUMMARY();
+                    storyboardid = Helper.NextTestSuiteId("T_TEST_STEPS_SEQ");
+                    summary.STORYBOARD_ID = storyboardid;
+                    summary.STORYBOARD_NAME = fName + "_Project Zero";
+                    summary.DESCRIPTION = fName + "_Project Zero";
+                    summary.ASSIGNED_PROJECT_ID = ProjectId;
+                    enty.T_STORYBOARD_SUMMARY.Add(summary);
+                    enty.SaveChanges();
+                }
+                else
+                {
+                    storyboardid = IsExistSB.STORYBOARD_ID;
+                    var SBstep = enty.T_PROJ_TC_MGR.Where(x => x.STORYBOARD_ID == storyboardid).Select(x => x.STORYBOARD_DETAIL_ID).ToList();
+                    DeleteSBSteps(SBstep);
+                }
+
+                var datasets = (from df in enty.T_TEST_DATASETTAG
+                                join u in enty.T_TEST_DATA_SUMMARY on df.DATASETID equals u.DATA_SUMMARY_ID
+                                join ds in enty.REL_TC_DATA_SUMMARY on u.DATA_SUMMARY_ID equals ds.DATA_SUMMARY_ID
+                                join tc in enty.T_TEST_CASE_SUMMARY on ds.TEST_CASE_ID equals tc.TEST_CASE_ID
+                                join rtc in enty.REL_TEST_CASE_TEST_SUITE on tc.TEST_CASE_ID equals rtc.TEST_CASE_ID
+                                join suits in enty.T_TEST_SUITE on rtc.TEST_SUITE_ID equals suits.TEST_SUITE_ID
+                                join rtp in enty.REL_TEST_SUIT_PROJECT on suits.TEST_SUITE_ID equals rtp.TEST_SUITE_ID
+                                where df.FOLDERID == folder 
+                                select new FolderDatasetViewModel
+                                {
+                                    DatasetName = u.ALIAS_NAME,
+                                    TestCase = tc.TEST_CASE_NAME,
+                                    TestSuite = suits.TEST_SUITE_NAME,
+                                    TestSuiteId = suits.TEST_SUITE_ID,
+                                    SEQ = df.SEQUENCE
+                                }
+                                ).Distinct().OrderBy(x => x.SEQ).ToList();
+
+                foreach (var item in datasets)
+                {
+                    var testsuite = enty.REL_TEST_SUIT_PROJECT.Where(x => x.TEST_SUITE_ID == item.TestSuiteId && x.PROJECT_ID == ProjectId).FirstOrDefault();
+                    if (testsuite == null)
+                    {
+                        var lTSTC = new REL_TEST_SUIT_PROJECT();
+                        lTSTC.TEST_SUITE_ID = item.TestSuiteId;
+                        lTSTC.PROJECT_ID = ProjectId;
+                        lTSTC.RELATIONSHIP_ID = Helper.NextTestSuiteId("REL_TEST_SUIT_PROJECT_SEQ");
+                        enty.REL_TEST_SUIT_PROJECT.Add(lTSTC);
+                        enty.SaveChanges();
+                    }
+                }
+
+                if(datasets.Count > 0)
+                {
+                    OracleTransaction ltransaction;
+
+                    OracleConnection lconnection = new OracleConnection(lConnectionStr);
+                    lconnection.Open();
+                    ltransaction = lconnection.BeginTransaction();
+
+                    string lcmdquery = "insert into TBLSTGSTORYBOARDVALID ( ROW_ID,RUN_ORDER,PROJECTID,ACTIONAME,TESTSUITENAME,TESTCASENAME,DATASETNAME,FEEDPROCESSID,FEEDPROCESSDETAILID,STORYBOARDID) values(:1,:2,:3,:4,:5,:6,:7,:8,:9,:10)";
+                    using (var lcmd = lconnection.CreateCommand())
+                    {
+                        lcmd.CommandText = lcmdquery;
+                        lcmd.ArrayBindCount = datasets.Count;
+
+                        string[] ROW_ID_param = new string[datasets.Count];
+                        string[] RUN_ORDER_param = new string[datasets.Count];
+                        string[] PROJECTID_param = new string[datasets.Count];
+                        string[] ACTIONNAME_param = new string[datasets.Count];
+                        string[] FEEDPROCESSID_param = new string[datasets.Count];
+                        string[] FEEDPROCESSDETAILID_param = new string[datasets.Count];
+                        string[] STORYBOARDID_param = new string[datasets.Count];
+                        string[] TESTSUITENAME_param = datasets.ToList().Select(r => Convert.ToString(r.TestSuite)).ToArray();
+                        string[] TESTCASENAME_param = datasets.ToList().Select(r => Convert.ToString(r.TestCase)).ToArray();
+                        string[] DATASETNAME_param = datasets.ToList().Select(r => Convert.ToString(r.DatasetName)).ToArray();
+                        for (int i = 0; i < datasets.Count; i++)
+                        {
+                            ROW_ID_param[i] = Convert.ToString(i);
+                            RUN_ORDER_param[i] = Convert.ToString(i + 1);
+                            PROJECTID_param[i] = Convert.ToString(ProjectId);
+                            ACTIONNAME_param[i] = "RUN";
+                            FEEDPROCESSID_param[i] = lvalFeed;
+                            FEEDPROCESSDETAILID_param[i] = lvalFeedD;
+                            STORYBOARDID_param[i] = Convert.ToString(storyboardid);
+                        }
+
+                        OracleParameter ROW_ID_oparam = new OracleParameter();
+                        ROW_ID_oparam.OracleDbType = OracleDbType.Varchar2;
+                        ROW_ID_oparam.Value = ROW_ID_param;
+
+                        OracleParameter RUN_ORDER_oparam = new OracleParameter();
+                        RUN_ORDER_oparam.OracleDbType = OracleDbType.Varchar2;
+                        RUN_ORDER_oparam.Value = RUN_ORDER_param;
+
+                        OracleParameter PROJECTID_oparam = new OracleParameter();
+                        PROJECTID_oparam.OracleDbType = OracleDbType.Varchar2;
+                        PROJECTID_oparam.Value = PROJECTID_param;
+
+                        OracleParameter ACTIONNAME_oparam = new OracleParameter();
+                        ACTIONNAME_oparam.OracleDbType = OracleDbType.Varchar2;
+                        ACTIONNAME_oparam.Value = ACTIONNAME_param;
+
+                        //OracleParameter STEPNAME_oparam = new OracleParameter();
+                        //STEPNAME_oparam.OracleDbType = OracleDbType.Varchar2;
+                        //STEPNAME_oparam.Value = STEPNAME_param;
+
+                        OracleParameter TESTSUITENAME_oparam = new OracleParameter();
+                        TESTSUITENAME_oparam.OracleDbType = OracleDbType.Varchar2;
+                        TESTSUITENAME_oparam.Value = TESTSUITENAME_param;
+
+                        OracleParameter TESTCASENAME_oparam = new OracleParameter();
+                        TESTCASENAME_oparam.OracleDbType = OracleDbType.Varchar2;
+                        TESTCASENAME_oparam.Value = TESTCASENAME_param;
+
+                        OracleParameter DATASETNAME_oparam = new OracleParameter();
+                        DATASETNAME_oparam.OracleDbType = OracleDbType.Varchar2;
+                        DATASETNAME_oparam.Value = DATASETNAME_param;
+
+                        OracleParameter FEEDPROCESSID_oparam = new OracleParameter();
+                        FEEDPROCESSID_oparam.OracleDbType = OracleDbType.Varchar2;
+                        FEEDPROCESSID_oparam.Value = FEEDPROCESSID_param;
+
+                        OracleParameter FEEDPROCESSDETAILID_oparam = new OracleParameter();
+                        FEEDPROCESSDETAILID_oparam.OracleDbType = OracleDbType.Varchar2;
+                        FEEDPROCESSDETAILID_oparam.Value = FEEDPROCESSDETAILID_param;
+
+                        OracleParameter STORYBOARDID_oparam = new OracleParameter();
+                        STORYBOARDID_oparam.OracleDbType = OracleDbType.Varchar2;
+                        STORYBOARDID_oparam.Value = STORYBOARDID_param;
+
+                        lcmd.Parameters.Add(ROW_ID_oparam);
+                        lcmd.Parameters.Add(RUN_ORDER_oparam);
+                        lcmd.Parameters.Add(PROJECTID_oparam);
+                        lcmd.Parameters.Add(ACTIONNAME_oparam);
+                        lcmd.Parameters.Add(TESTSUITENAME_oparam);
+                        lcmd.Parameters.Add(TESTCASENAME_oparam);
+                        lcmd.Parameters.Add(DATASETNAME_oparam);
+                        lcmd.Parameters.Add(FEEDPROCESSID_oparam);
+                        lcmd.Parameters.Add(FEEDPROCESSDETAILID_oparam);
+                        lcmd.Parameters.Add(STORYBOARDID_oparam);
+                        try
+                        {
+                            lcmd.ExecuteNonQuery();
+                        }
+                        catch (Exception lex)
+                        {
+                            ltransaction.Rollback();
+                            throw new Exception(lex.Message);
+                        }
+
+                        ltransaction.Commit();
+                        lconnection.Close();
+
+                        SaveStoryboardGrid(storyboardid, lvalFeed, Convert.ToString(ProjectId));
+                        lresult = true;
+                        logger.Info(string.Format("CreateStoryboradForFolder end | folderId: {0} | fName: {1} | UserName: {2}", folderId, fName, Username));
+                        
+                    }
+                }
+                return lresult;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in StoryBoard for CreateStoryboradForFolder method | folderId: {0} | | fName: {1} | UserName: {2}", folderId, fName, Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in CreateStoryboradForFolder method | folderId: {0} | fName: {1} | UserName: {2}", folderId, fName, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in CreateStoryboradForFolder method | folderId: {0} | fName: {1} | UserName: {2}", folderId, fName, Username), ex.InnerException);
                 throw;
             }
         }

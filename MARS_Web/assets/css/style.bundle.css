@@ -14071,7 +14071,18 @@ code {
   position: relative;
   padding: 0.65rem 3rem 0.65rem 1rem;
   line-height: 1.5; }
-  .select2-container--default .select2-selection--single .select2-selection__rendered .select2-selection__clear {
+
+    .select2-container--default .select2-selection--single #select2-drpObjecttype-container {
+        position: relative;
+        padding: 1.65rem 3rem 0.65rem 1rem !important;
+        line-height: 1.5;
+    }
+    /*.select2-container--default .select2-selection--single #select2-DrpFilter-container {
+        position: relative;
+        padding: 1.65rem 3rem 1.25rem 1rem !important;
+        line-height: 1.5;
+    }*/
+.select2-container--default .select2-selection--single .select2-selection__rendered .select2-selection__clear {
     border: 0;
     position: absolute;
     top: 50%;
@@ -14088,7 +14099,8 @@ code {
     left: auto;
     right: 1.85rem;
     margin-right: 0.4rem;
-    margin-top: -1rem; }
+    margin-top: -1rem;
+}
 
 .select2-container--default .select2-selection--multiple .select2-selection__rendered {
   padding: 0.37rem 1rem;

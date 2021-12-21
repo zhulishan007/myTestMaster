@@ -2670,3 +2670,57 @@ function RightSideUserConfigList(Default) {
     });
 }
 
+function RightSideFilterList(Default) {
+    $.ajax({
+        url: "/TestCase/FilterList",
+        type: "POST",
+        contentType: "application/json;charset=utf-8",
+        dataType: "HTML",
+        success: function (result) {
+            var lflag = false;
+            $('.ULtablist li').each(function (index, value) {
+                if ($(value).children().first().attr("data-target") == "#tabfilterlist") {
+                    lflag = true;
+                }
+            });
+            var ltab = "";
+            if (Default == "1") {
+                ltab = '<li class="nav-item context-menu-tab"><a data-pin="true" class="nav-link active context-tab" data-tab="Filter" data-id="0" data-name="Filter" data-toggle="tab" href="#" data-target="#tabfilterlist" onclick="ActiveTab($(this))"><img alt="Filter" class="tab_icons_img" src="/assets/media/icons/FL.png"/>Filter List</a><i class="fa fa-times-circle tab_close" style="cursor:pointer" onclick="closetab($(this))" ></i></li>';
+            } else {
+                ltab = '<li class="nav-item context-menu-tab"><a data-pin="false" class="nav-link active context-tab" data-tab="Filter" data-id="0" data-name="Filter" data-toggle="tab" href="#" data-target="#tabfilterlist" onclick="ActiveTab($(this))"><img alt="Filter" class="tab_icons_img" src="/assets/media/icons/FL.png"/>Filter List</a><i class="fa fa-times-circle tab_close" style="cursor:pointer" onclick="closetab($(this))" ></i></li>';
+            }
+            var ldiv = '<div class="tab-pane active div" id="tabfilterlist" role="tabpanel">' + result + '</div>';
+
+            if (lflag) {
+                $('.ULtablist li').each(function (index, value) {
+                    if ($(value).children().first().attr("data-target") == "#tabfilterlist") {
+                        $(value).children().first().addClass("active");
+                    } else {
+                        $(value).children().first().removeClass("active");
+                    }
+                });
+                $('.divtablist div').each(function (index, value) {
+                    if ($(value).first().attr("id") == "tabfilterlist") {
+                        $(value).addClass("active");
+                    } else {
+                        $(value).removeClass("active");
+                    }
+                });
+            }
+            else {
+                $(".ULtablist").append(ltab);
+                $(".divtablist").append(ldiv);
+                $('.ULtablist li').each(function (index, value) {
+                    if ($(value).children().first().attr("data-target") != "#tabfilterlist") {
+                        $(value).children().first().removeClass("active");
+                    }
+                });
+                $('.divtablist div').each(function (index, value) {
+                    if ($(value).first().attr("id") != "tabfilterlist") {
+                        $(value).removeClass("active");
+                    }
+                });
+            }
+        }
+    });
+}

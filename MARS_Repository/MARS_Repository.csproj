@@ -169,6 +169,7 @@
     <Compile Include="Entities\REL_DB_QUERY.cs">
       <DependentUpon>Db_Context.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\REL_FOLDER_FILTER.cs" />
     <Compile Include="Entities\REL_OBJ_APP.cs">
       <DependentUpon>Db_Context.tt</DependentUpon>
     </Compile>
@@ -274,6 +275,7 @@
     <Compile Include="Entities\T_DIC_RELATION_KEYWORD.cs">
       <DependentUpon>Db_Context.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entities\T_FOLDER_FILTER.cs" />
     <Compile Include="Entities\T_GRIDLIST.cs">
       <DependentUpon>Db_Context.tt</DependentUpon>
     </Compile>
@@ -462,6 +464,7 @@
     <Compile Include="ViewModel\DataSummaryModel.cs" />
     <Compile Include="ViewModel\DataTagCommonViewModel.cs" />
     <Compile Include="ViewModel\DBconnectionViewModel.cs" />
+    <Compile Include="ViewModel\FolderDatasetViewModel.cs" />
     <Compile Include="ViewModel\GetKeywordList.cs" />
     <Compile Include="ViewModel\GetObjectList.cs" />
     <Compile Include="ViewModel\GetTestCaseByTestSuite.cs" />

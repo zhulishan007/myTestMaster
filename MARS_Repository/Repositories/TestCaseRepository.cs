@@ -3541,7 +3541,7 @@ namespace MARS_Repository.Repositories
             }
         }
 
-        public IList<FolderDatasetViewModel> GetDatasets(string schema, string lconstring)
+        public FolderDatasetViewModel GetDataset(string schema, string lconstring, long datasetId)
         {
             try
             {
@@ -3560,10 +3560,12 @@ namespace MARS_Repository.Repositories
                 lcmd.Transaction = ltransaction;
 
 
-                OracleParameter[] ladd_refer_image = new OracleParameter[1];
+                OracleParameter[] ladd_refer_image = new OracleParameter[2];
+                ladd_refer_image[0] = new OracleParameter("DatasetId", OracleDbType.Long);
+                ladd_refer_image[0].Value = datasetId;
 
-                ladd_refer_image[0] = new OracleParameter("sl_cursor", OracleDbType.RefCursor);
-                ladd_refer_image[0].Direction = ParameterDirection.Output;
+                ladd_refer_image[1] = new OracleParameter("sl_cursor", OracleDbType.RefCursor);
+                ladd_refer_image[1].Direction = ParameterDirection.Output;
 
                 foreach (OracleParameter p in ladd_refer_image)
                 {
@@ -3576,7 +3578,7 @@ namespace MARS_Repository.Repositories
                 dataAdapter.Fill(lds);
                 var dt = new DataTable();
                 dt = lds.Tables[0];
-                List<FolderDatasetViewModel> result = dt.AsEnumerable().Select(row =>
+                FolderDatasetViewModel result = dt.AsEnumerable().Select(row =>
                   new FolderDatasetViewModel
                   {
                       DataSetId = row.Field<long?>("DATA_SUMMARY_ID"),
@@ -3589,17 +3591,39 @@ namespace MARS_Repository.Repositories
                       Storyboard = row.Field<string>("STORYBOARD_NAME"),
                       ProjectIds = row.Field<string>("ASSIGNED_PROJECT_ID"),
                       ProjectName = row.Field<string>("PROJECT_NAME"),
-                  }).ToList();
+                  }).FirstOrDefault();
 
-                result.ForEach(item =>
-                {
-                    item.DatasetDesc = item.DatasetDesc == null || item.DatasetDesc == "null" ? "" : item.DatasetDesc;
-                    item.Storyboard = item.Storyboard == null || item.Storyboard == "null" ? "" : item.Storyboard;
-                    item.ProjectName = item.ProjectName == null || item.ProjectName == "null" ? "" : item.ProjectName;
-                });
+                result.DatasetDesc = result.DatasetDesc == null || result.DatasetDesc == "null" ? "" : result.DatasetDesc;
+                result.Storyboard = result.Storyboard == null || result.Storyboard == "null" ? "" : result.Storyboard;
+                result.ProjectName = result.ProjectName == null || result.ProjectName == "null" ? "" : result.ProjectName;
 
                 logger.Info(string.Format("Get Dataset List end | UserName: {0}", Username));
                 return result;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in TestCase for GetDataset method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured in TestCase for GetDataset method | UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase for GetDataset method | UserName: {0}", Username), ex.InnerException);
+                throw;
+            }
+        }
+
+        public IList<DataSummaryModel> GetDatasets()
+        {
+            try
+            {
+                logger.Info(string.Format("Get Dataset List start | UserName: {0}", Username));
+
+                var dataset = (from u in entity.T_TEST_DATA_SUMMARY
+                               join ds in entity.REL_TC_DATA_SUMMARY on u.DATA_SUMMARY_ID equals ds.DATA_SUMMARY_ID
+                               join tc in entity.T_TEST_CASE_SUMMARY on ds.TEST_CASE_ID equals tc.TEST_CASE_ID
+                               select new DataSummaryModel { Data_Summary_Name = u.ALIAS_NAME, DATA_SUMMARY_ID = u.DATA_SUMMARY_ID }).Distinct().ToList();
+
+                logger.Info(string.Format("Get Dataset List 123 | list: {0}", dataset));
+                logger.Info(string.Format("Get Dataset List end | UserName: {0}", Username));
+                return dataset;
             }
             catch (Exception ex)
             {
@@ -3610,7 +3634,6 @@ namespace MARS_Repository.Repositories
                 throw;
             }
         }
-
         public bool InsertFolderDatasetInStgTbl(string constring, string schema, DataTable dt, long feedprocessdetailid)
         {
             logger.Info(string.Format("Insert FolderDataset StgTbl start | feedprocessdetailid: {0} | UserName: {1}", feedprocessdetailid, Username));
@@ -3785,6 +3808,7 @@ namespace MARS_Repository.Repositories
                     folderData.TestCase = item.TestCase == null ? "" : item.TestCase;
                     folderData.TestSuite = item.TestSuite == null ? "" : item.TestSuite;
                     folderData.ProjectIds = item.ProjectIds == null ? "" : item.ProjectIds;
+                    folderData.ProjectName = item.ProjectName == null ? "" : item.ProjectName;
                     folderData.Storyboard = item.Storyboard == null ? "" : item.Storyboard;
 
                     SEQ = SEQ + 10;
@@ -3803,30 +3827,20 @@ namespace MARS_Repository.Repositories
             }
         }
 
-        public bool DeleteFolderDataset(string constring, string schema, string feedprocessdetailid)
+        public bool DeleteFolderDataset(string constring, string schema, string feedprocessdetailid, long FolderId)
         {
             try
             {
                 using (TransactionScope scope = new TransactionScope())
                 {
                     logger.Info(string.Format("Delete folder Dataset start | feedprocessdetailid: {0} | UserName: {1}", feedprocessdetailid, Username));
-                    // var result = entity.DELETEFOLDERDATASET(feedprocessdetailid);
-                    // entity.SaveChanges();
-                    //OracleConnection lconnection = GetOracleConnection(constring);
-                    //lconnection.Open();
-                    //OracleTransaction ltransaction;
-                    //ltransaction = lconnection.BeginTransaction();
-
-                    //OracleCommand lcmd;
-                    //lcmd = lconnection.CreateCommand();
-
-
-                    var cmdText = "delete  T_TEST_DATASETTAG where DATASETID not in (select TO_NUMBER(DATASETID) from TBLSTGFOLDERDATASET where FEEDPROCESSDETAILID = "+ feedprocessdetailid + ")";
+                   
+                    var cmdText = "delete  T_TEST_DATASETTAG where DATASETID not in (select TO_NUMBER(DATASETID) from TBLSTGFOLDERDATASET where FEEDPROCESSDETAILID = " + feedprocessdetailid + ") and folderid= " + FolderId;
                     using (OracleConnection conn = new OracleConnection(constring))
                     using (OracleCommand cmd = new OracleCommand(cmdText, conn))
                     {
                         conn.Open();
-                        
+
                         cmd.ExecuteNonQuery();
                     }
 
@@ -3845,5 +3859,292 @@ namespace MARS_Repository.Repositories
                 throw;
             }
         }
+
+        public IList<T_FOLDER_FILTER> GetFilterList()
+        {
+            try
+            {
+                logger.Info(string.Format("GetFilterList start | UserName: {0}", Username));
+                var List = entity.T_FOLDER_FILTER.Distinct().ToList();
+                logger.Info(string.Format("GetFilterList end | UserName: {0}", Username));
+                return List;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in TestCase for GetFilterList method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured in TestCase for GetFilterList method | UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase for GetFilterList method | UserName: {0}", Username), ex.InnerException);
+                throw;
+            }
+        }
+
+        public List<StoryboardModel> GetStoryboardById(string ProjectIds)
+        {
+            try
+            {
+                logger.Info(string.Format("GetStoryboardById start | ProjectIds: {0} | UserName: {1}", ProjectIds, Username));
+                List<StoryboardModel> List = new List<StoryboardModel>();
+                var ids = ProjectIds.Split(',');
+                foreach (var id in ids)
+                {
+                    long Id = long.Parse(id);
+                    var lResult = (from t2 in entity.T_STORYBOARD_SUMMARY
+                                  join t1 in entity.T_TEST_PROJECT on t2.ASSIGNED_PROJECT_ID equals t1.PROJECT_ID
+                                  where t2.ASSIGNED_PROJECT_ID == Id && t2.STORYBOARD_NAME != null
+                                  select new StoryboardModel
+                                  {
+                                      Storyboardid = t2.STORYBOARD_ID,
+                                      Storyboardname = t2.STORYBOARD_NAME,
+                                  }).ToList();
+                 
+                    List.AddRange(lResult);
+                }
+                logger.Info(string.Format("GetStoryboardById end | ProjectIds: {0} | UserName: {1}", ProjectIds, Username));
+                return List;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in TestCase for GetStoryboardById method | ProjectIds: {0} | UserName: {1}", ProjectIds, Username));
+                ELogger.ErrorException(string.Format("Error occured in TestCase for GetStoryboardById method | ProjectIds: {0} | UserName: {1}", ProjectIds, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase for GetStoryboardById method | ProjectIds: {0} | UserName: {1}", ProjectIds, Username), ex.InnerException);
+                throw;
+            }
+        }
+
+        public bool CheckDuplicateFilterName(string Name)
+        {
+            try
+            {
+                logger.Info(string.Format("Check Duplicate StoryboardName start | Filtername: {0} | UserName: {1}", Name, Username));
+                var lresult = entity.T_FOLDER_FILTER.Any(x => x.FILTER_NAME.ToLower().Trim() == Name.ToLower().Trim());
+                logger.Info(string.Format("Check Duplicate StoryboardName end | Filtername: {0} | UserName: {1}", Name, Username));
+                return lresult;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in StoryBoard for CheckDuplicateFilterName method | Filtername: {0} | UserName: {1}", Name, Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in CheckDuplicateFilterName method | Filtername: {0} | UserName: {1}", Name, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in CheckDuplicateFilterName method | Filtername: {0} | UserName: {1}", Name, Username), ex.InnerException);
+                throw;
+            }
+        }
+
+        public bool SaveFolderFilter(string ProjectIds, string SBIds, string filtername,int Id)
+        {
+            try
+            {
+                using (TransactionScope scope = new TransactionScope())
+                {
+                    logger.Info(string.Format("SaveFolderFilter start | filtername: {0} | ProjectIds: {1} | SBIds: {2} | UserName: {3}", filtername, ProjectIds, SBIds, Username));
+                    var flag = false;
+                    if(Id > 0)
+                    {
+                        var filter = entity.T_FOLDER_FILTER.Where(x => x.FILTER_ID == Id).FirstOrDefault();
+                        if(filter != null)
+                        {
+                            filter.FILTER_NAME = filtername;
+                            filter.PROJECT_IDS = ProjectIds;
+                            filter.STORYBOARD_IDS = SBIds;
+                            entity.SaveChanges();
+                            flag = true;
+                        }
+                    }
+                    else
+                    {
+                        T_FOLDER_FILTER filter = new T_FOLDER_FILTER();
+                        var filterID = Helper.NextTestSuiteId("SEQ_T_FOLDER_FILTER");
+                        filter.FILTER_ID = filterID;
+                        filter.FILTER_NAME = filtername;
+                        filter.PROJECT_IDS = ProjectIds;
+                        filter.STORYBOARD_IDS = SBIds;
+                        entity.T_FOLDER_FILTER.Add(filter);
+                        entity.SaveChanges();
+                        flag = true;
+                    }
+                    
+                    logger.Info(string.Format("SaveFolderFilter end | filtername: {0} | ProjectIds: {1} | SBIds: {2} | UserName: {3}", filtername, ProjectIds, SBIds, Username));
+                    scope.Complete();
+                    return flag;
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in Testcase for SaveFolderFilter method | filtername: {0} | ProjectIds: {1} | SBIds: {2} | UserName: {3}", filtername, ProjectIds, SBIds, Username));
+                ELogger.ErrorException(string.Format("Error occured Testcase in SaveFolderFilter method | filtername: {0} | ProjectIds: {1} | SBIds: {2} | UserName: {3}", filtername, ProjectIds, SBIds, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured Testcase in SaveFolderFilter method | filtername: {0} | ProjectIds: {1} | SBIds: {2} | UserName: {3}", filtername, ProjectIds, SBIds, Username), ex.InnerException);
+                throw;
+            }
+        }
+
+        public T_FOLDER_FILTER GetFilter(long filterID)
+        {
+            try
+            {
+                logger.Info(string.Format("GetFilterList start | UserName: {0}", Username));
+                var result = entity.T_FOLDER_FILTER.Where(x => x.FILTER_ID == filterID).FirstOrDefault();
+                logger.Info(string.Format("GetFilterList end | UserName: {0}", Username));
+                return result;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in TestCase for GetFilterList method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured in TestCase for GetFilterList method | UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase for GetFilterList method | UserName: {0}", Username), ex.InnerException);
+                throw;
+            }
+        }
+
+        public bool SaveFolderForFilter(long FolderID, long FilterId)
+        {
+            try
+            {
+                using (TransactionScope scope = new TransactionScope())
+                {
+                    logger.Info(string.Format("SaveFolderFilter start | FolderID: {0} | FilterId: {1} | UserName: {2}", FolderID, FilterId, Username));
+                    var flag = false;
+                    var filterIsExist = entity.REL_FOLDER_FILTER.Where(x => x.FOLDER_ID == FolderID).FirstOrDefault();
+                    if(filterIsExist == null)
+                    {
+                        REL_FOLDER_FILTER filter = new REL_FOLDER_FILTER();
+                        var filterID = Helper.NextTestSuiteId("SEQ_REL_FOLDER_FILTER");
+                        filter.REL_FOLDER_FILTER_ID = filterID;
+                        filter.FOLDER_ID = FolderID;
+                        filter.FILTER_ID = FilterId;
+                        entity.REL_FOLDER_FILTER.Add(filter);
+                        entity.SaveChanges();
+                        flag = true;
+                    }
+                    else
+                    {
+                        filterIsExist.FOLDER_ID = FolderID;
+                        filterIsExist.FILTER_ID = FilterId;
+                        entity.SaveChanges();
+                        flag = true;
+                    }
+                    logger.Info(string.Format("SaveFolderFilter end | FolderID: {0} | FilterId: {1} | UserName: {2}", FolderID, FilterId, Username));
+                    scope.Complete();
+                    return flag;
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in Testcase for SaveFolderFilter method | FolderID: {0} | FilterId: {1} | UserName: {2}", FolderID, FilterId, Username));
+                ELogger.ErrorException(string.Format("Error occured Testcase in SaveFolderFilter method | FolderID: {0} | FilterId: {1} | UserName: {2}", FolderID, FilterId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured Testcase in SaveFolderFilter method | FolderID: {0} | FilterId: {1} | UserName: {2}", FolderID, FilterId, Username), ex.InnerException);
+                throw;
+            }
+        }
+
+        public string GetFilterByFolderId(long FolderID)
+        {
+            try
+            {
+                logger.Info(string.Format("GetFilterByFolderId start | FolderID : {0} | UserName: {1}", FolderID, Username));
+                var lResult = (from t2 in entity.T_FOLDER_FILTER
+                               join t1 in entity.REL_FOLDER_FILTER on t2.FILTER_ID equals t1.FILTER_ID
+                               where t1.FOLDER_ID == FolderID && t2.FILTER_NAME != null
+                               select  t2.FILTER_ID).FirstOrDefault();
+
+                string result = lResult.ToString();
+                logger.Info(string.Format("GetFilterByFolderId end | FolderID : {0} | UserName: {1}", FolderID, Username));
+                return result;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in TestCase for GetFilterByFolderId method | FolderID : {0} | UserName: {1}", FolderID, Username));
+                ELogger.ErrorException(string.Format("Error occured in TestCase for GetFilterByFolderId method | FolderID : {0} | UserName: {1}", FolderID, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase for GetFilterByFolderId method | FolderID : {0} | UserName: {1}", FolderID, Username), ex.InnerException);
+                throw;
+            }
+        }
+
+        public List<FilterModelView> GetFolderFilterList()
+        {
+            try
+            {
+                logger.Info(string.Format("GetFilterList start | UserName: {0}",  Username));
+                var folderlist = entity.T_FOLDER_FILTER.Select(x => new FilterModelView
+                {
+                    Id = x.FILTER_ID,
+                    Name = x.FILTER_NAME,
+                    ProjectIds = x.PROJECT_IDS,
+                    StoryboradIds = x.STORYBOARD_IDS,
+                }
+        ).ToList();
+
+                folderlist.ToList().ForEach(item =>
+                {
+                    item.Project = "";
+                    item.Storyborad = "";
+                    if (!string.IsNullOrEmpty(item.ProjectIds))
+                    {
+                        List<int> projectId = item.ProjectIds.Split(',').Select(int.Parse).ToList();
+                        var projectList = entity.T_TEST_PROJECT.Where(a => projectId.Any(b => a.PROJECT_ID == b)).Select(x => x.PROJECT_NAME).ToList();
+                        if (projectList.Any())
+                            item.Project = String.Join(",", projectList);
+                    }
+
+                    if (!string.IsNullOrEmpty(item.StoryboradIds))
+                    {
+                        List<int> storyboradId = item.StoryboradIds.Split(',').Select(int.Parse).ToList();
+                        var storyboradList = entity.T_STORYBOARD_SUMMARY.Where(a => storyboradId.Any(b => a.STORYBOARD_ID == b)).Select(x => x.STORYBOARD_NAME).ToList();
+                        if (storyboradList.Any())
+                            item.Storyborad = String.Join(",", storyboradList);
+                    }
+                });
+                
+                logger.Info(string.Format("GetFilterList start | UserName: {0}", Username));
+                return folderlist;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in TestCase for GetFilterList method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured in TestCase for GetFilterList method | UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase for GetFilterList method | UserName: {0}", Username), ex.InnerException);
+                throw;
+            }
+        }
+
+        public bool DeleteFilter(int Id)
+        {
+            try
+            {
+                bool result = false;
+                using (TransactionScope scope = new TransactionScope())
+                {
+                    logger.Info(string.Format("Delete Filter start | FilterId: {0} | UserName: {1}", Id, Username));
+                    
+                    var filter = entity.T_FOLDER_FILTER.Where(x => x.FILTER_ID == Id).FirstOrDefault();
+                    if(filter != null)
+                    {
+                        entity.T_FOLDER_FILTER.Remove(filter);
+                        result = true;
+                    }
+
+                    entity.SaveChanges();
+                    logger.Info(string.Format("Delete Filter end | FilterId: {0} | UserName: {1}", Id, Username));
+                    scope.Complete();
+                    return result;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                logger.Error(string.Format("Error occured TestCase in DeleteFilter method | Filter Id : {0} | UserName: {1}", Id, Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase in DeleteFilter method | Filter Id : {0} | UserName: {1}", Id, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in DeleteFilter method | Filter Id : {0} | UserName: {1}", Id, Username), ex.InnerException);
+                throw;
+            }
+        }
+
     }
 }

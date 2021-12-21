@@ -321,6 +321,14 @@ warning 6002: The table/view 'GEN_MARS_4.MV_TC_DATASUMMARY' does not have a prim
           <Property Name="QUERY_ID" Type="number" Precision="16" Scale="0" />
           <Property Name="DATABASE_CONN_ID" Type="number" Precision="16" Scale="0" />
         </EntityType>
+        <EntityType Name="REL_FOLDER_FILTER">
+          <Key>
+            <PropertyRef Name="REL_FOLDER_FILTER_ID" />
+          </Key>
+          <Property Name="REL_FOLDER_FILTER_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+          <Property Name="FOLDER_ID" Type="number" Precision="16" Scale="0" />
+          <Property Name="FILTER_ID" Type="number" Precision="16" Scale="0" />
+        </EntityType>
         <EntityType Name="REL_OBJ_APP">
           <Key>
             <PropertyRef Name="RELATIONSHIP_ID" />
@@ -536,6 +544,15 @@ warning 6002: The table/view 'GEN_MARS_4.MV_TC_DATASUMMARY' does not have a prim
           <Property Name="RELATION_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
           <Property Name="TYPE_ID" Type="number" Precision="16" Scale="0" />
           <Property Name="KEY_WORD_ID" Type="number" Precision="16" Scale="0" />
+        </EntityType>
+        <EntityType Name="T_FOLDER_FILTER">
+          <Key>
+            <PropertyRef Name="FILTER_ID" />
+          </Key>
+          <Property Name="FILTER_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+          <Property Name="FILTER_NAME" Type="varchar2" MaxLength="250" />
+          <Property Name="PROJECT_IDS" Type="varchar2" MaxLength="2000" />
+          <Property Name="STORYBOARD_IDS" Type="varchar2" MaxLength="2000" />
         </EntityType>
         <EntityType Name="T_GRIDLIST">
           <Key>
@@ -2451,6 +2468,7 @@ warning 6002: The table/view 'GEN_MARS_4.V_USER_COMPANY' does not have a primary
           <EntitySet Name="REL_APP_TESTCASE" EntityType="Self.REL_APP_TESTCASE" Schema="GEN_MARS_4" store:Type="Tables" />
           <EntitySet Name="REL_APP_TESTSUITE" EntityType="Self.REL_APP_TESTSUITE" Schema="GEN_MARS_4" store:Type="Tables" />
           <EntitySet Name="REL_DB_QUERY" EntityType="Self.REL_DB_QUERY" Schema="GEN_MARS_4" store:Type="Tables" />
+          <EntitySet Name="REL_FOLDER_FILTER" EntityType="Self.REL_FOLDER_FILTER" Schema="GEN_MARS_4" store:Type="Tables" />
           <EntitySet Name="REL_OBJ_APP" EntityType="Self.REL_OBJ_APP" Schema="GEN_MARS_4" store:Type="Tables" />
           <EntitySet Name="REL_PROJECT_USER" EntityType="Self.REL_PROJECT_USER" Schema="GEN_MARS_4" store:Type="Tables" />
           <EntitySet Name="REL_TC_DATA_SUMMARY" EntityType="Self.REL_TC_DATA_SUMMARY" Schema="GEN_MARS_4" store:Type="Tables" />
@@ -2470,6 +2488,7 @@ warning 6002: The table/view 'GEN_MARS_4.V_USER_COMPANY' does not have a primary
           <EntitySet Name="T_DATABASE_CONNECTIONS" EntityType="Self.T_DATABASE_CONNECTIONS" Schema="GEN_MARS_4" store:Type="Tables" />
           <EntitySet Name="T_DBCONNECTION" EntityType="Self.T_DBCONNECTION" Schema="GEN_MARS_4" store:Type="Tables" />
           <EntitySet Name="T_DIC_RELATION_KEYWORD" EntityType="Self.T_DIC_RELATION_KEYWORD" Schema="GEN_MARS_4" store:Type="Tables" />
+          <EntitySet Name="T_FOLDER_FILTER" EntityType="Self.T_FOLDER_FILTER" Schema="GEN_MARS_4" store:Type="Tables" />
           <EntitySet Name="T_GRIDLIST" EntityType="Self.T_GRIDLIST" Schema="GEN_MARS_4" store:Type="Tables" />
           <EntitySet Name="T_GUI_COMPONENT_TYPE_DIC" EntityType="Self.T_GUI_COMPONENT_TYPE_DIC" Schema="GEN_MARS_4" store:Type="Tables" />
           <EntitySet Name="T_KEYWORD" EntityType="Self.T_KEYWORD" Schema="GEN_MARS_4" store:Type="Tables" />
@@ -5610,8 +5629,10 @@ FROM "GEN_MARS_4"."V_USER_COMPANY" "V_USER_COMPANY"</DefiningQuery>
           </FunctionImport>
           <EntitySet Name="T_TEST_DATASETTAG" EntityType="Model.T_TEST_DATASETTAG" />
           <FunctionImport Name="DELETEFOLDERDATASET">
-            <Parameter Name="FEEDPROCESSDETAILID" Mode="In" Type="String" />
+          <Parameter Name="FEEDPROCESSDETAILID" Mode="In" Type="String" />
           </FunctionImport>
+          <EntitySet Name="T_FOLDER_FILTER" EntityType="Model.T_FOLDER_FILTER" />
+          <EntitySet Name="REL_FOLDER_FILTER" EntityType="Model.REL_FOLDER_FILTER" />
         </EntityContainer>
         <EntityType Name="T_USER_ACTIVEPAGE">
           <Key>
@@ -5885,6 +5906,23 @@ FROM "GEN_MARS_4"."V_USER_COMPANY" "V_USER_COMPANY"</DefiningQuery>
           <Property Name="STEPDESC" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
           <Property Name="DIARY" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
           <Property Name="SEQUENCE" Type="Int64" />
+        </EntityType>
+        <EntityType Name="T_FOLDER_FILTER">
+          <Key>
+            <PropertyRef Name="FILTER_ID" />
+          </Key>
+          <Property Name="FILTER_ID" Type="Int64" Nullable="false" />
+          <Property Name="FILTER_NAME" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="PROJECT_IDS" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="STORYBOARD_IDS" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="REL_FOLDER_FILTER">
+          <Key>
+            <PropertyRef Name="REL_FOLDER_FILTER_ID" />
+          </Key>
+          <Property Name="REL_FOLDER_FILTER_ID" Type="Int64" Nullable="false" />
+          <Property Name="FOLDER_ID" Type="Int64" />
+          <Property Name="FILTER_ID" Type="Int64" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -7530,6 +7568,25 @@ FROM "GEN_MARS_4"."V_USER_COMPANY" "V_USER_COMPANY"</DefiningQuery>
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="DELETEFOLDERDATASET" FunctionName="Model.Store.DELETEFOLDERDATASET" />
+          <EntitySetMapping Name="T_FOLDER_FILTER">
+            <EntityTypeMapping TypeName="Model.T_FOLDER_FILTER">
+              <MappingFragment StoreEntitySet="T_FOLDER_FILTER">
+                <ScalarProperty Name="STORYBOARD_IDS" ColumnName="STORYBOARD_IDS" />
+                <ScalarProperty Name="PROJECT_IDS" ColumnName="PROJECT_IDS" />
+                <ScalarProperty Name="FILTER_NAME" ColumnName="FILTER_NAME" />
+                <ScalarProperty Name="FILTER_ID" ColumnName="FILTER_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="REL_FOLDER_FILTER">
+            <EntityTypeMapping TypeName="Model.REL_FOLDER_FILTER">
+              <MappingFragment StoreEntitySet="REL_FOLDER_FILTER">
+                <ScalarProperty Name="FILTER_ID" ColumnName="FILTER_ID" />
+                <ScalarProperty Name="FOLDER_ID" ColumnName="FOLDER_ID" />
+                <ScalarProperty Name="REL_FOLDER_FILTER_ID" ColumnName="REL_FOLDER_FILTER_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

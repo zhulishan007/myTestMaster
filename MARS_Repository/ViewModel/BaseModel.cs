@@ -22,4 +22,10 @@ namespace MARS_Repository.ViewModel
         public dynamic data { get; set; }
         public string message { get; set; }
     }
+
+    public class PathViewModel
+    {
+        public string LogPath { get; set; }
+        public string ReportPath { get; set; }
+    }
 }

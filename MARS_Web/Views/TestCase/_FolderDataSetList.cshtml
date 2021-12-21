@@ -5,7 +5,7 @@
     var lid = "grid" + Convert.ToString(FolderId);
     var classgridobj = "grid" + FolderName.Replace('/', '_').Replace('(', '_').Replace(')', '_').Replace('.', '_').Replace('*', '_').Replace('&', '_').Replace(' ', '_');
     var lgridName = ".grid" + FolderName.Replace('/', '_').Replace('(', '_').Replace(')', '_').Replace('.', '_').Replace('*', '_').Replace('&', '_').Replace(' ', '_');
-   
+
 }
 
 <script>
@@ -14,6 +14,8 @@
     var fgrid;
     var lheight = $(window).height();
     var datasets = [];
+    var itemlistObj = {};
+
     //var reSeqFlag = 0;
     folderdt.push({
         title: "", copy: false, editable: false, minWidth: 40, maxWidth: 40, sortable: false, dataIndx: "IsEdit",
@@ -29,7 +31,7 @@
                 .bind("click", function () {
                     debugger
                     return EditRow(rowIndx, grid);
-                        
+
                     });
         }
     });
@@ -62,7 +64,7 @@
                                  }
                              }
                          });
-                       
+
                     });
             }
     });
@@ -94,11 +96,11 @@
                var datasetlist = @Html.Raw(ViewBag.datasetlist);
                datasets.push({ "value": "", "text": "" });
                $.each(datasetlist, function (key, value) {
-                   datasets.push({ "value": value.DatasetName, "text": value.DatasetName });
+                   datasets.push({ "value": value.Data_Summary_Name, "text": value.Data_Summary_Name });
                     });
                List = datasets;
-               
-                  
+
+
                     return List;
 
            }
@@ -113,22 +115,13 @@
                     return false;
                 }
             }
-        } 
+        }
     });
 
     folderdt.push({
         title: "Description", copy: false, dataType: "string", dataIndx: "DatasetDesc", align: "center",
         menuInHide: true, sortable: false
-        //render: function (ui) {
-        //    var rowData = ui.rowData;
-        //    if (rowData != undefined) {
-        //        debugger;
-        //        if (rowData.DatasetName != undefined) {
-        //            return itemlistObj[rowData.DatasetName].DatasetDesc;
-        //        }
-        //    }
-        //},
-        
+
     });
     folderdt.push({
         title: "TestCaseId", copy: false, editable: false, hidden: true, menuInHide: true, sortable: false, dataType: "int", dataIndx: "TestCaseId", align: "center",
@@ -152,11 +145,7 @@
         title: "SEQ", copy: false,  dataType: "int", dataIndx: "SEQ", align: "center", menuInHide: true, sortable: false,
     });
 
-    var datasetlist = @Html.Raw(ViewBag.datasetlist);
-    var itemlistObj = {};
-    datasetlist.forEach(function (item) {
-        itemlistObj[item.DatasetName] = item;
-    })
+
 
 
     var folderobj = {
@@ -173,10 +162,44 @@
         cellSave: function (evt, ui) {
             debugger;
             if (ui.dataIndx == "DatasetName") {
-                var desc = itemlistObj[ui.rowData.DatasetName].DatasetDesc;
-                this.updateRow({
-                    rowIndx: ui.rowIndx,
-                    newRow: { 'DatasetDesc': desc}
+                debugger
+                var Row = this;
+                var DatasetName = ui.value;
+                debugger
+                //startloader();
+                $.ajax({
+                    url: "/TestCase/GetFolderDatasetDetails",
+                    data: '{"DatasetName":"' + DatasetName + '"}',
+                    type: "POST",
+                    contentType: "application/json;charFolder=utf-8",
+                    dataType: "json",
+                    success: function (result) {
+                        debugger
+                        itemlistObj = {};
+                        if (result.status == 1) {
+                            var datasetlist = JSON.parse(result.data);
+                            itemlistObj[datasetlist.DatasetName] = datasetlist;
+                            var desc = itemlistObj[ui.rowData.DatasetName].DatasetDesc;
+                            Row.updateRow({
+                                rowIndx: ui.rowIndx,
+                                newRow: { 'DatasetDesc': desc }
+                            });
+                        }
+                        else if (result.status == 0) {
+                            swal.fire({
+                                "title": "",
+                                "text": result.message,
+                                "icon": "error",
+                                "onClose": function (e) {
+                                    console.log('on close event fired!');
+                                }
+                            });
+                        }
+                        //stoploader();
+                    },
+                    error: function (errormessage) {
+                        alert(errormessage.responFolderext);
+                    }
                 });
             }
         },
@@ -185,7 +208,7 @@
         track: { on: true },
         dataModel: { recIndx: "DataSetId" },
         virtualX: true,
-        
+
         selectionModel: { type: 'cell' },
         collapsible: { on: false, toggle: false },
         columnBorders: true,
@@ -218,31 +241,56 @@
         },
         formulas: [
             ["DataSetId", function (rd) {
-                return rd.DatasetName ? itemlistObj[rd.DatasetName].DataSetId : "";
+                debugger
+                if (!jQuery.isEmptyObject(itemlistObj))
+                    return rd.DatasetName == undefined ? "" : itemlistObj[rd.DatasetName].DataSetId;
+                else
+                    return rd.DataSetId == undefined ? "" : rd.DataSetId;
             }],
-            //["DatasetDesc", function (rd) {
-            //    return rd.DatasetName ? itemlistObj[rd.DatasetName].DatasetDesc : "";
-            //}],
             ["TestCase", function (rd) {
-                return rd.DatasetName ? itemlistObj[rd.DatasetName].TestCase : "";
+                if (!jQuery.isEmptyObject(itemlistObj))
+                    return rd.DatasetName == undefined ? "" : itemlistObj[rd.DatasetName].TestCase;
+                else
+                    return rd.TestCase == undefined ? "" : rd.TestCase;
             }],
             ["TestCaseId", function (rd) {
-                return rd.DatasetName ? itemlistObj[rd.DatasetName].TestCaseId : "";
+                if (!jQuery.isEmptyObject(itemlistObj))
+                  return rd.DatasetName == undefined ? "" : itemlistObj[rd.DatasetName].TestCaseId;
+                else
+                    return rd.TestCaseId == undefined ? "" : rd.TestCaseId;
             }],
             ["TestSuite", function (rd) {
-                return rd.DatasetName ? itemlistObj[rd.DatasetName].TestSuite : "";
+                if (!jQuery.isEmptyObject(itemlistObj))
+                    return rd.DatasetName == undefined ? "" : itemlistObj[rd.DatasetName].TestSuite;
+                else
+                    return rd.TestSuite == undefined ? "" : rd.TestSuite;
             }],
             ["TestSuiteId", function (rd) {
-                return rd.DatasetName ? itemlistObj[rd.DatasetName].TestSuiteId : "";
+                if (!jQuery.isEmptyObject(itemlistObj))
+                    return rd.DatasetName == undefined ? "" : itemlistObj[rd.DatasetName].TestSuiteId;
+                else
+                    return rd.TestSuiteId == undefined ? "" : rd.TestSuiteId;
             }],
             ["Storyboard", function (rd) {
-                return rd.DatasetName ? itemlistObj[rd.DatasetName].Storyboard : "";
+                if (!jQuery.isEmptyObject(itemlistObj))
+                    return rd.DatasetName == undefined ? "" : itemlistObj[rd.DatasetName].Storyboard;
+                else
+                    return rd.Storyboard == undefined ? "" : rd.Storyboard;
             }],
             ["ProjectIds", function (rd) {
-                return rd.DatasetName ? itemlistObj[rd.DatasetName].ProjectIds : "";
+                if (!jQuery.isEmptyObject(itemlistObj))
+                    return rd.DatasetName == undefined ? "" : itemlistObj[rd.DatasetName].ProjectIds;
+                else
+                    return rd.ProjectIds == undefined ? "" : rd.ProjectIds;
             }],
             ["ProjectName", function (rd) {
-                return rd.DatasetName ? itemlistObj[rd.DatasetName].ProjectName : "";
+                if (!jQuery.isEmptyObject(itemlistObj)) {
+                    var projctname = rd.DatasetName == undefined ? "" : itemlistObj[rd.DatasetName].ProjectName;
+                    itemlistObj = {};
+                    return projctname;
+                }
+                else
+                    return rd.ProjectName == undefined ? "" : rd.ProjectName;
             }]
         ],
         reactive: false,
@@ -276,7 +324,7 @@
                         label: '',
                     cls: "floatRight btn btn-brand btn-elevate btn-icon-sm SAVERESULTBUTTON", listener: function () {
                             //append empty row at the end.
-                        SaveFolderDataSet('@lgridName', @FolderId);
+                        SaveFolderDataSet('@lgridName', @FolderId,'@FolderName');
                         }
                 },
                  {
@@ -424,7 +472,7 @@
 
     function ReloadFolderDatasetList(lgridName, FolderId) {
         $.ajax({
-            url: "/TestCase/GetFolderDatasetList?FolderId=" + FolderId,
+            url: "/TestCase/GetFolderDatasets?FolderId=" + FolderId,
             type: "GET",
             contentType: "application/json;charset=utf-8",
             dataType: "json",
@@ -476,12 +524,11 @@
         });
     }
 
-    function SaveFolderDataSet(lgridName, folderId) {
-        debugger
+    function SaveFolderDataSet(lgridName, folderId,fName) {
         startloader();
         var changes;
         changes = gridobj[lgridName].getChanges({ format: "byVal" });
-        
+
         gridobj[lgridName].setSelection(null);
         $.ajax({
             dataType: "json",
@@ -490,12 +537,11 @@
             url: "/TestCase/SaveFolderDatasetData",
             data: { lgridchange: JSON.stringify(changes), lgrid: JSON.stringify(gridobj[lgridName].pdata), FolderId: folderId/*, reSeqFlag: reSeqFlag*/ },
             success: function (result) {
-                debugger
                 if (result.status == 1) {
                     if (result.message == "success") {
                         swal.fire({
                             "title": "",
-                            "text": " Data Saved successfully.",
+                            "text": " Filter Name [" + fName + "] Saved successfully.",
                             "icon": "success",
                             "onClose": function (e) {
                                 console.log('on close event fired!');

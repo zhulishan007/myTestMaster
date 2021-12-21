@@ -373,13 +373,18 @@ function ImportDatasetTag(Default) {
 }
 
 function ExportReportDatasetTag() {
+    //var filterID = $("#DrpfdFilter").val();
+
     startloader();
     $.ajax({
         url: '/TestCase/ExportDatasetTagReport', //call your controller and action
         contentType: "application/json; charset=utf-8",
+        //data: '{"filterID":"' + filterID + '"}',
+        type: "POST",
         dataType: "json"
     }).done(function (result) {
         stoploader();
+        //$("#FdFilter").modal("hide");
         window.location = "/TestSuite/DownloadExcel?FileName=" + result;
     });
 }
