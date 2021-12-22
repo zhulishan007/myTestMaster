@@ -1,0 +1,479 @@
+@*@{
+        ViewBag.Title = "VariableList";
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }*@
+<style>
+    #clsTypeSb span {
+        border-color: #d1e6ef;
+        height: 37px;
+    }
+</style>
+<div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
+    <div class="kt-subheader   kt-grid__item" id="kt_subheader">
+        <div class="kt-container  kt-container--fluid ">
+            <div class="kt-subheader__main">
+
+                <span class="kt-subheader__separator kt-hidden"></span>
+                <div class="kt-subheader__breadcrumbs">
+                    <a href="#" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-settings" style="color:#1c6081"></i></a>
+                    <a href="#" class="kt-subheader__breadcrumbs-link" style="color:#1c6081">
+                        Storyboard
+                    </a>
+                    <i class="fa fa-angle-double-right" style="color:#1c6081"></i>
+                    <a href="#" class="kt-subheader__breadcrumbs-link" style="color:#1c6081">
+                        &nbsp;
+                    </a>
+
+
+                    <!-- <span class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active">Active link</span> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+        <div class="kt-portlet kt-portlet--mobile">
+            <div class="kt-portlet__head kt-portlet__head--lg">
+                <div class="kt-portlet__head-label">
+                    <h3 class="kt-portlet__head-title" style="color:#1582ab">
+                        List Of All Storyboards
+                    </h3>
+                </div>
+                <div class="kt-portlet__head-toolbar">
+                    <div class="kt-portlet__head-wrapper">
+                        <div class="kt-portlet__head-actions">
+
+                            &nbsp;
+                            <a href="#" onclick="AddStoryboard()" class="btn btn-brand btn-elevate btn-icon-sm">
+                                <i class="la la-plus"></i>
+                                New Storyboard
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="kt-portlet__body">
+                <table class="table table-striped- table-bordered table-hover table-checkable " id="Storyboardtable">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Project Name</th>
+                            @*<th>ApplicationId</th>
+                                <th>TestSuiteId</th>*@
+                            <th style="color: #1c6081;background-color: #e9f5ff;font-weight: bold;">Actions</th>
+                        </tr>
+                    </thead>
+
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="AddEditStoryboard" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Storyboard</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="frmAddEditStoryboard">
+                    <input type="hidden" id="hdnstoryboardid" name="hdnstoryboardid" />
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Storyboard Name<span style="color:red">&nbsp;*</span></label>
+                        <input type="text" class="form-control" id="storyboardname" name="storyboardname" required onchange="CheckduplicateStoryboardExists()" maxlength="64">
+                        <label id="existstoryboardname" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                            Storyboard already exist.
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="form-control-label">Storyboard Description<span style="color:red">&nbsp;*</span></label>
+                        <textarea class="form-control" id="storyboardesc" name="storyboardesc" required maxlength="128"></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label class="form-control-label">Project Name<span style="color:red">&nbsp;*</span> </label>
+                      <div id="clsTypeSb">
+                        <select class="form-control kt-select2" id="sprojectname" name="sprojectname" style="width: 749px;" required>
+                          <option value="0"></option>
+                          @{ var ltype = ViewBag.Projectname as IEnumerable<SelectListItem>;
+
+                            foreach (var item in ltype)
+                            {
+                              <option value="@item.Value">@item.Text</option>
+                            }
+                          }
+                        </select>
+                      </div>
+                      <label id="requiredpsb" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                        This is required field
+                      </label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="addeditstoryboard" class="btn btn-outline-brand btn-elevate btn-pill" onclick="AddEditStoryboardSave()">Save</button>
+                <button type="button" class="btn btn-outline-brand btn-elevate btn-pill" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var SBtable;
+    var Storyboardtable = function () {
+        $.fn.dataTable.Api.register('column().title()', function () {
+            return $(this.header()).text().trim();
+        });
+
+        var initStoryboardtable = function () {
+            SBtable = $('#Storyboardtable').DataTable({
+                responsive: false,
+
+                // Pagination settings
+                dom: `<'row'<'col-sm-12'tr>>
+                                        <'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7 dataTables_pager'lp>>`,
+                // read more: https://datatables.net/examples/basic_init/dom.html
+
+                lengthMenu: [10, 100, 1000],
+                processing: true,
+                pageLength: 100,
+
+                language: {
+                    'lengthMenu': 'Display _MENU_',
+                    "processing": "<img  src='../assets/media/mars.gif' style='width:80px;'/>"
+                },
+
+                searchDelay: 500,
+                //  processing: true,
+                serverSide: true,
+                ajax: {
+
+                    url: '/StoryBoard/DataLoad',
+                    type: 'POST',
+                    data: {
+                        // parameters for custom backend script demo
+                        columnsDef: [
+                            'Storyboardname', 'StoryboardDescription', 'Projectname', 'Actions',],
+                    },
+                },
+                "scrollY": $(window).height() - 305,
+                columns: [
+                    { data: 'Storyboardname', name: "Name", autowidth: false },
+                    { data: 'StoryboardDescription', name: "Description", autowidth: false },
+                    { data: 'Projectname', name: "Project Name", autowidth: false },
+                    //  { data: 'Actions', responsivePriority: -1, width: "120px" }
+                    //{ data: 'ApplicationId', name: "ApplicationId" },
+                    //{ data: 'TestSuiteId', name: "TestSuiteId" },
+                    { data: 'Actions', responsivePriority: -1, width: "120px", autowidth: false }
+                ],
+                initComplete: function () {
+
+                    var thisTable = this;
+                    var rowFilter = $('<tr class="filter"></tr>').appendTo($(SBtable.table().header()));
+
+                    SBtable.columns().every(function () {
+                        var column = this;
+                        var input;
+                        switch (column.title()) {
+                            case 'Name':
+                            case 'Description':
+                            case 'Project Name':
+                                //   case 'Status':
+                                input = $(`<input type="text" class="form-control form-control-sm form-filter kt-input" data-col-index="` + column.index() + `"/>`);
+                                $(input).keyup(function () {
+                                    var params = {};
+                                    $(rowFilter).find('.kt-input').each(function () {
+                                        var i = $(this).data('col-index');
+                                        if (params[i]) {
+                                            params[i] += '|' + $(this).val();
+                                        }
+                                        else {
+                                            params[i] = $(this).val();
+                                        }
+                                    });
+                                    $.each(params, function (i, val) {
+                                        // apply search params to datatable
+                                        SBtable.column(i).search(val ? val : '', false, false);
+                                    });
+                                    SBtable.table().draw();
+                                });
+                                break;
+                        }
+
+                        if (column.title() !== 'actions') {
+                            $(input).appendTo($('<th>').appendTo(rowFilter));
+                        }
+                    });
+
+                    // hide search column for responsive table
+                    //var hideSearchColumnResponsive = function () {
+                    //    thisTable.api().columns().every(function () {
+                    //        var column = this
+                    //        if (column.responsiveHidden()) {
+                    //            $(rowFilter).find('th').eq(column.index()).show();
+                    //        } else {
+                    //            $(rowFilter).find('th').eq(column.index()).hide();
+                    //        }
+                    //    })
+                    //};
+
+                    //// init on datatable load
+                    //hideSearchColumnResponsive();
+                    //// recheck on window resize
+                    //window.onresize = hideSearchColumnResponsive;
+                },
+                columnDefs: [
+                    {
+                        targets: -1,
+                        title: 'Actions',
+                        orderable: false,
+                        render: function (data, type, full, meta) {
+
+                            var lid = full.Storyboardid;
+                            var sname = full.Storyboardname;
+                            var sdesc = full.StoryboardDescription;
+
+                            var pname = full.Projectname;
+                            var pid = full.ProjectId;
+                            return " <a href='#' class='btn btn-sm btn-clean btn-icon btn-icon-md' title='View'  data-name='" + sname + "' data-desc='" + sdesc + "'  data-project='" + pname + "'  data-projectid='" + pid + "' onclick=AddEditStoryboardShow(" + lid + ",$(this))><i class='la la-edit' ></i></a> " +
+                                "<a href='#' class='btn btn-sm btn-clean btn-icon btn-icon-md' title='Delete' onclick=DeleteStoryboardFromList(" + lid + ") ><i class='la la-trash la-xs'></i></a>";
+                        },
+                    }
+                ],
+            });
+        };
+        return {
+            //main function to initiate the module
+            init: function () {
+                initStoryboardtable();
+            },
+
+        };
+    }();
+    $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+        $($.fn.dataTable.tables(true)).DataTable()
+            .columns.adjust();
+    });
+    jQuery(document).ready(function () {
+        Storyboardtable.init();
+    });
+    $(document).ready(function () {
+
+        $("#frmAddEditStoryboard").validate({
+            rules: {
+                storyboardname: {
+                    required: true
+                },
+
+                storyboardesc: {
+                    required: true,
+                },
+              sprojectname: {
+                required:true
+              }
+            },
+        });
+    });
+    function CheckduplicateStoryboardExists() {
+        var storyboardid = $("#hdnstoryboardid").val();
+        if (storyboardid == null || storyboardid == "") {
+            storyboardid = 0;
+        }
+        var storyboardname = $("#storyboardname").val();
+        if (storyboardname != "" && storyboardname != null) {
+            $.ajax({
+              url: "/Storyboard/CheckDuplicateStoryboardName",
+                // data: { 'lLoginName': pLoginName, 'lLoginId': TESTER_ID },
+                data: '{"storyboardname":"' + storyboardname + '","storyboardid":"' + storyboardid + '"}',
+                type: "POST",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    if (result == true) {
+                        $("#storyboardname").val("");
+                        $("#existstoryboardname").css("display", "block");
+                    }
+                },
+            });
+        }
+    }
+    $("#storyboardname").on('keyup', function () {
+        $("#existstoryboardname").css("display", "none");
+    });
+    function AddEditStoryboardShow(Id, editobj) {
+        var validator = $("#frmAddEditStoryboard").validate();
+      validator.resetForm();
+      $("#addeditstoryboard").attr("disabled", false);
+      $("#existstoryboardname").css("display", "none");
+      $("#requiredpsb").css("display", "none");
+        $("#addeditstoryboard").css("display", "block");
+        $("#exampleModalLabel").text('');
+        $("#exampleModalLabel").text('Edit Storyboard');
+        $("#AddEditStoryboard").modal("show");
+        var storyboardid = Id;
+
+        var Storyboardname = $(editobj).attr("data-name");
+        var Storyboardesc = $(editobj).attr("data-desc");
+        var Projectname = $(editobj).attr("data-project");
+        var projectid = $(editobj).attr("data-projectid");
+        $("#hdnstoryboardid").val(storyboardid);
+        $("#storyboardname").val(Storyboardname);
+        $("#storyboardesc").val(Storyboardesc);
+        $("#sprojectname").val(projectid);
+        $("#sprojectname").select2();
+
+    }
+  function AddStoryboard() {
+    $("#requiredpsb").css("display", "none");
+        $("#existstoryboardname").css("display", "none");
+        $("#exampleModalLabel").text('');
+        $("#exampleModalLabel").text('Add Storyboard');
+        $("#AddEditStoryboard").modal("show");
+        $("#hdnstoryboardid").val("");
+        $("#storyboardname").val("");
+        $("#storyboardsec").val("");
+        $("#sprojectname").val("");
+        $("#sprojectname").select2();
+        var validator = $("#frmAddEditStoryboard").validate();
+        validator.resetForm();
+        //var validator = $("#frmAddEditTestCase").validate();
+        //validator.resetForm();
+    }
+  function AddEditStoryboardSave() {
+      if (!$("#frmAddEditStoryboard").valid()) {
+        if ($("#sprojectname").val() == "0") {
+          $("#requiredpsb").css("display", "block");
+          $("#addeditstoryboard").attr("disabled", false);
+          return false
+        }
+          //var validationobj = $("#clsTypeSb").find("#sprojectname-error");
+          //  if (validationobj.length > 0) {
+          //    $("#clsTypeSb").find("#sprojectname-error").remove();
+          //    validationHTML = "<div id='sprojectname-error' class='error invalid-feedback ' >This field is required.</div>";
+          //      $("#clsTypeSb").append(validationHTML);
+          //  }
+            return false;
+
+      }
+      if ($("#sprojectname").val() == "0") {
+        $("#requiredpsb").css("display", "block");
+        return false;
+    }
+    $("#addeditstoryboard").attr("disabled", true);
+        var Id = $("#hdnstoryboardid").val();
+        if (Id == null || Id == "")
+            Id = 0;
+        var Storyboardmodel = {};
+        Storyboardmodel.Storyboardid = Id;
+        Storyboardmodel.Storyboardname = $("#storyboardname").val();
+        Storyboardmodel.StoryboardDescription = $("#storyboardesc").val();
+      Storyboardmodel.ProjectId = $("#sprojectname").val().toString();
+      var storyboradname = $("#storyboardname").val();
+        $.ajax({
+            url: "/Storyboard/AddEditStoryboard",
+            data: JSON.stringify(Storyboardmodel),
+            type: "POST",
+            contentType: "application/json;charset=utf-8",
+            dataType: "json",
+            success: function (result) {
+                //setTimeout(function () {
+                //    for (var i = 0; i < 1000; i++) {
+                //        console.log(i)
+                //    }
+
+                //    $save.removeClass("kt-spinner kt-spinner--v2 kt-spinner--md kt-spinner--info")
+                //}, 30);
+              $("#AddEditStoryboard").modal("hide");
+              $("#addeditstoryboard").attr("disabled", false);
+                swal.fire({
+                    "title": "",
+                    "text": "Successfully added Storyboard[ " + storyboradname+"]",
+                    "icon": "success",
+                    "onClose": function (e) {
+                        console.log('on close event fired!');
+                    }
+                });
+                SBtable.table().draw();
+
+                $.ajax({
+                    url: "/Login/LeftPanel",
+                    // data: { 'lLoginName': pLoginName, 'lLoginId': TESTER_ID },
+
+                    type: "POST",
+                    contentType: "application/json;charset=utf-8",
+                    dataType: "HTML",
+                    success: function (result) {
+                        $("#leftProjectList").html("");
+                        $("#leftProjectList").html(result);
+
+
+                    }
+                });
+                //$("#AddEditStoryboard").attr("disabled", false);
+            },
+            error: function (errormessage) {
+                alert(errormessage.responseText);
+            }
+        });
+
+    }
+    function DeleteStoryboardFromList(Id) {
+
+        //var storyboarid = Id;
+        //if (storyboarid == null) {
+        //    storyboarid = 0;
+        //}
+        swal.fire({
+            title: 'Please confirm.',
+            text: "This action can not be undone.",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!'
+        }).then(function (result) {
+            if (result.value == true) {
+                $.ajax({
+                    url: "/Storyboard/DeleteStoryboard",
+                    data: '{"sid":"' + Id + '"}',
+                    type: "POST",
+                    async: false,
+                    contentType: "application/json;charset=utf-8",
+                    dataType: "json",
+                    success: function (result) {
+                        SBtable.table().draw();
+                        if (result.Status) {
+                            SBtable.table().draw();
+                            swal.fire(
+                                'Deleted!',
+                                'Storyboard is deleted.',
+                                'success'
+
+                            )
+
+                        }
+
+                    },
+                    error: function (x, y, z) {
+                        swal.fire(
+                            'Error while deleting Storyboard',
+                            'error'
+
+                        )
+
+                    }
+                });
+            }
+
+        });
+    }
+
+
+
+</script>
+<script src="~/assets/js/pages/crud/forms/widgets/select2.js" type="text/javascript"></script>
+<script src="~/assets/js/pages/components/extended/sweetalert2.js" type="text/javascript"></script>
+
+
+
+

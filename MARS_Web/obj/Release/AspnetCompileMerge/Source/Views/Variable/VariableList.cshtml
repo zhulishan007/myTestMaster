@@ -1,0 +1,643 @@
+<style>
+    #clsType span {
+        border-color: #d1e6ef;
+        height: 37px;
+    }
+
+    #clsstatus span {
+        height: 37px;
+    }
+</style>
+@using MARS_Repository.ViewModel
+@{
+    string EditVar = "false", DeleteVar = "false";
+    var PrivilegeList = Session["PrivilegeList"] as List<PrivilegeViewModel>;
+    if (PrivilegeList.Count > 0)
+    {
+        EditVar = PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Edit Variable").ToString().ToLower();
+        DeleteVar = PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Delete Variable").ToString().ToLower();
+    }
+}
+
+<input type="hidden" value="@EditVar" id="hdnEditVar" />
+<input type="hidden" value="@DeleteVar" id="hdnDeleteVar" />
+<div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
+    <div class="kt-subheader   kt-grid__item" id="kt_subheader" style="left: @ViewBag.width;">
+        <div class="kt-container  kt-container--fluid ">
+            <div class="kt-subheader__main">
+
+                <span class="kt-subheader__separator kt-hidden"></span>
+                <div class="kt-subheader__breadcrumbs">
+                    <a href="#" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-settings" style="color:#1c6081"></i></a>
+                    <a href="#" class="kt-subheader__breadcrumbs-link" style="color:#1c6081">
+                        Variable
+                    </a>
+                    <i class="fa fa-angle-double-right" style="color:#1c6081"></i>
+                    <a href="#" class="kt-subheader__breadcrumbs-link" style="color:#1c6081">
+                        &nbsp;
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+        <div class="kt-portlet kt-portlet--mobile">
+            <div class="kt-portlet__head kt-portlet__head--lg">
+                <div class="kt-portlet__head-label">
+                    <h3 class="kt-portlet__head-title" style="color:#1582ab">
+                        List Of All Variables
+                    </h3>
+                </div>
+                @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Add Variable"))
+                {
+                    <div class="kt-portlet__head-toolbar">
+                        <div class="kt-portlet__head-wrapper">
+                            <div class="kt-portlet__head-actions">
+                                &nbsp;
+                                <a href="#" onclick="AddVariable()" class="btn btn-brand btn-elevate btn-icon-sm">
+                                    <i class="la la-plus"></i>
+                                    New Variable
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                }
+                </div>
+
+            <div class="kt-portlet__body">
+                <table class="table table-striped- table-bordered table-hover table-checkable " id="VariableTable">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Type</th>
+                            <th>Value</th>
+                            <th>Status</th>
+                            <th style="color: #1c6081;background-color: #e9f5ff;font-weight: bold;">Actions</th>
+                        </tr>
+                    </thead>
+
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="AddEditVariable" tabindex="-1" role="dialog" aria-labelledby="vexampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="vexampleModalLabel">Variable</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="frmAddEditVariable">
+                    <input type="hidden" id="hdnlookupid" name="hdnlookupid" />
+                    <div class="form-group">
+                        <label for="recipient-name" class="form-control-label">Variable Name<span style="color:red">&nbsp;*</span></label>
+                        <input type="text" class="form-control" id="fieldname" name="fieldname" required  maxlength="32">
+                        @*<input type="text" class="form-control" id="fieldname" name="fieldname" required onchange="CheckVarNameExist()" maxlength="32">*@
+                        <label id="existvarname" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                            Variable already exist.
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <label for="message-text" class="form-control-label">Value<span style="color:red">&nbsp;*</span></label>
+                        <textarea class="form-control" id="displayname" name="displayname" required maxlength="64"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-control-label">Type <span style="color:red">&nbsp;*</span></label>
+                        <div id="clsType">
+                            <select class="form-control" id="DrpType" name="DrpType" onchange="LoadBaselinecompare()"></select>
+                        </div>
+                        <label id="requiredtype" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                            This field is required
+                        </label>
+                    </div>
+                    <div class="kt-portlet__body">
+                        <div class="form-group">
+                            <label class="form-control-label">Status</label>
+                            <div id="clsstatus">
+                                <select class="form-control" id="DrpStatus" name="DrpStatus"></select>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="addeditvariable" class="btn btn-outline-brand btn-elevate btn-pill" onclick="AddEditVariable()">Save</button>
+                <button type="button" class="btn btn-outline-brand btn-elevate btn-pill" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var Vtable;
+    var Vtimeout = null;               
+   
+        var VariableTable = function () {
+            $.fn.dataTable.Api.register('column().title()', function () {
+                return $(this.header()).text().trim();
+            });
+
+            var initVariableTable = function () {
+                var lEditVardisplay = $("#hdnEditVar").val();
+                var lDeleteVardisplay = $("#hdnDeleteVar").val();
+
+                Vtable = $('#VariableTable').DataTable({
+                    responsive: false,
+
+                    // Pagination settings
+                    dom: `<'row'<'col-sm-12'tr>>
+                                        <'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7 dataTables_pager'lp>>`,
+                    // read more: https://datatables.net/examples/basic_init/dom.html
+
+                    lengthMenu: [10, 100, 1000],
+                    processing: true,
+                    pageLength: 100,
+
+                    language: {
+                        'lengthMenu': 'Display _MENU_',
+                        "processing": "<img  src='../assets/media/mars.gif' style='width:80px;'/>"
+                    },
+                    "scrollY": $(window).height() - 305,
+                    searchDelay: 500,
+                    //  processing: true,
+                    serverSide: true,
+                    ajax: {
+                        url: '/Variable/DataLoad',
+                        type: 'POST',
+                        data: {
+                            // parameters for custom backend script demo
+                            columnsDef: [
+                                'field_name', 'Table_name', 'Display_name', 'Status', 'Actions',],
+                        },
+                    },
+                    columns: [
+                        { data: 'field_name', name: "Name", width: '@ViewBag.namewidth', "targets": 0,autohide: false },
+                        { data: 'Table_name', name: "Type", width: '@ViewBag.typewidth', "targets": 1,autohide: false },
+                        { data: 'Display_name', name: "Value", width: '@ViewBag.valuewidth', "targets": 2, autohide: false },
+                        { data: 'Statusvalue', name: "Status", width: '@ViewBag.statuswidth', "targets": 3,autohide: false },
+                        { data: 'Actions', responsivePriority: -1, width: '@ViewBag.actionswidth', "targets": 4, autohide: false }
+                    ],
+                    initComplete: function () {
+                        var thisTable = this;
+                        var rowFilter = $('<tr class="filter"></tr>').appendTo($(Vtable.table().header()));
+
+                        Vtable.columns().every(function () {
+                            var column = this;
+                            var input;
+                            switch (column.title()) {
+                                case 'Name':
+                                case 'Type':
+                                case 'Value':
+                                case 'Status':
+                                    input = $(`<input type="text" class="form-control form-control-sm form-filter kt-input" data-col-index="` + column.index() + `"/>`);
+                                    $(input).keyup(function () {
+                                        clearTimeout(Vtimeout);
+
+                                        Vtimeout = setTimeout(function () {
+                                            var params = {};
+
+
+                                            $(rowFilter).find('.kt-input').each(function () {
+                                                var i = $(this).data('col-index');
+                                                if (params[i]) {
+                                                    params[i] += '|' + $(this).val();
+                                                }
+                                                else {
+                                                    params[i] = $(this).val();
+                                                }
+                                            });
+                                            $.each(params, function (i, val) {
+                                                Vtable.column(i).search(val ? val : '', false, false);
+                                            });
+                                            Vtable.table().draw();
+                                        }, 500);
+
+                                        
+                                           
+                                        
+                                    });
+                                    $(input).keydown(function () {  clearTimeout(Vtimeout); });
+                                    break;
+                            }
+
+                            if (column.title() !== 'actions') {
+                                $(input).appendTo($('<th>').appendTo(rowFilter));
+                            }
+                        });
+                    },
+                    columnDefs: [
+                        {
+                            targets: -1,
+                            title: 'Actions',
+                            orderable: false,
+                            render: function (data, type, full, meta) {
+                                var lid = full.Lookupid;
+                                var lName = full.field_name;
+                                var tablename = full.Table_name;
+
+                                var Displayname = full.Display_name;
+                                var Status = full.Statusvalue;
+                               
+                                var lRenderHtml = "";
+                                if (lEditVardisplay == "true") {
+                                    lRenderHtml = " <a href='#' class='btn btn-sm btn-clean btn-icon btn-icon-md' title='Edit'  data-name='" + lName + "' data-tablename='" + tablename + "'  data-display='" + Displayname + "' data-status='" + Status + "' onclick=AddEditVariableShow(" + lid + ",$(this))><i class='la la-edit' ></i></a> ";
+                                }
+                                if (lDeleteVardisplay == "true") {
+                                    lRenderHtml = lRenderHtml + "<a href='#' class='btn btn-sm btn-clean btn-icon btn-icon-md' title='Delete' data-Varname='" + lName + "' onclick=DeleteVariable(" + lid + ",$(this)) ><i class='la la-trash la-xs'></i></a>";
+                                }
+                                return lRenderHtml;
+                            },
+                        }
+                    ],
+                });
+            };
+            return {
+                init: function () {
+                    initVariableTable();
+                },
+            };
+        }();
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+            $($.fn.dataTable.tables(true)).DataTable()
+                .columns.adjust();
+        });
+        jQuery(document).ready(function () {
+            VariableTable.init();
+        });
+        $(document).ready(function () {
+
+            $("#frmAddEditVariable").validate({
+                rules: {
+                    fieldname: {
+                        required: true
+                    },
+
+                    displayname: {
+                        required: true,
+                    },
+                    DrpType: {
+                        required: true
+                    }
+                },
+            });
+        });
+        $('#DrpType').on('changed.bs.DrpType', function () {
+            validator.element($(this)); // validate element
+        });
+
+        function AddEditVariableShow(Id, editobj) {
+            var tableid;
+            var Statusid;
+            var validator = $("#frmAddEditVariable").validate();
+            validator.resetForm();
+            $("#requiredtype").css("display", "none");
+            $("#existvarname").css("display", "none");
+            $("#addeditvariable").css("display", "block");
+            $("#vexampleModalLabel").text('');
+            $("#vexampleModalLabel").text('Edit Variable');
+            $("#AddEditVariable").modal("show");
+            $('.modal-dialog').draggable({
+                handle: ".modal-header"
+            });
+          $("#addeditvariable").attr("disabled", false);
+            var lvariableId = Id;
+            var Name = $(editobj).attr("data-name");
+            var tablename = $(editobj).attr("data-tablename");
+            if (tablename == "GLOBAL_VAR") {
+                tableid = 1;
+            }
+            else if (tablename == "MODAL_VAR") {
+                tableid = 2;
+            }
+            else if (tablename == "LOOP_VAR") {
+                tableid = 3;
+            }
+            var displayname = $(editobj).attr("data-display");
+            var Status = $(editobj).attr("data-status");
+            if (Status == "BASELINE") {
+                Statusid = 1;
+            }
+            else if (Status == "COMPARE") {
+                Statusid = 2;
+            }
+            else {
+                Statusid = 0;
+            }
+            $("#hdnlookupid").val(lvariableId);
+            $("#fieldname").val(Name);
+            $("#displayname").val(displayname);
+            $("#DrpType").val(tableid);
+            $("#DrpType").html("");
+            $("#DrpType").select2();
+            $("#DrpStatus").html("");
+            $.ajax({
+              url: "/Variable/LoadTableName",
+                type: "GET",
+                async: false,
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    if (result) {
+                        var optionString = "";
+                        optionString = optionString + " <option value='0'></option>";
+                        for (i = 0; i < result.length; i++) {
+                            var statustext = result[i].Text;
+                            var statusvalue = result[i].Value;
+                            optionString = optionString + " <option value='" + statusvalue + "'>" + statustext + "</option>";
+                        }
+                        $("#DrpType").append($(optionString));
+                        $("#DrpType").val(statusvalue);
+                    }
+
+                },
+            });
+            $("#DrpType").val(tableid);
+            $("#DrpType").select2();
+            if (tableid == 3 || tableid == 2) {
+                $.ajax({
+                    url: "/Variable/GetBaselineCompare",
+                    data: { id: tableid },
+                    type: "GET",
+                    async: false,
+                    contentType: "application/json;charset=utf-8",
+                    dataType: "json",
+                    success: function (result) {
+                        if (result.status == 1) {
+                            var optionString = "";
+                            optionString = optionString + " <option value='0'></option>";
+                            for (i = 0; i < result.data.length; i++) {
+                                var typetext = result.data[i].Text;
+                                var statusvalue = result.data[i].Value;
+                                optionString = optionString + " <option value='" + statusvalue + "'>" + typetext + "</option>";
+                            }
+                            optionString = optionString + "</optgroup>";
+                            $("#DrpStatus").append($(optionString));
+                            $("#DrpStatus").select2();
+                        }
+                    }
+                });
+            }
+            $("#DrpStatus").val(Statusid);
+            $("#DrpStatus").select2();
+        }
+        function AddVariable() {
+            $("#requiredtype").css("display", "none");
+            $("#existvarname").css("display", "none");
+            $("#vexampleModalLabel").text('');
+            $("#vexampleModalLabel").text('Add Variable');
+            $("#AddEditVariable").modal("show");
+            $('.modal-dialog').draggable({
+                handle: ".modal-header"
+            });
+          $("#addeditvariable").attr("disabled", false);
+            $("#hdnlookupid").val("");
+            $("#fieldname").val("");
+            $("#displayname").val("");
+            $("#DrpType").html("");
+            $("#DrpType").val("");
+            $("#DrpType").select2();
+            $("#DrpStatus").val("");
+            $("#DrpStatus").select2();
+            $.ajax({
+              url: "/Variable/LoadTableName",
+                type: "GET",
+                async: false,
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    if (result) {
+                        var optionString = "";
+                        optionString = optionString + " <option value='0'></option>";
+                        for (i = 0; i < result.length; i++) {
+                            var statustext = result[i].Text;
+                            var statusvalue = result[i].Value;
+                            optionString = optionString + " <option value='" + statusvalue + "'>" + statustext + "</option>";
+
+                        }
+                        $("#DrpType").append($(optionString));
+                        $("#DrpType").val(statusvalue);
+                    }
+
+                },
+                error: function (x, y, z) {
+                }
+            });
+
+            var validator = $("#frmAddEditVariable").validate();
+            validator.resetForm();
+        }
+    function AddEditVariable() {
+        debugger
+            var flag = false;;
+            if (!$("#frmAddEditVariable").valid()) {
+                if ($("#DrpType").val().toString() == "0") {
+                    $("#requiredtype").css("display", "block");
+                    flag = true;
+                }
+                flag = true;
+          }
+          $("#addeditvariable").attr("disabled", true);
+            var Id = $("#hdnlookupid").val();
+            if (Id == null || Id == "")
+                Id = 0;
+            var VariableModel = {};
+            VariableModel.Lookupid = Id;
+            VariableModel.field_name = $("#fieldname").val();
+            VariableModel.Display_name = $("#displayname").val();
+            VariableModel.Table_name = $("#DrpType").val().toString();
+            if (VariableModel.Table_name == "0") {
+                $("#requiredtype").css("display", "block");
+                flag = true;
+            }
+          if (flag) {
+            $("#addeditvariable").attr("disabled", false);
+                return false;
+            }
+
+            if ($("#DrpStatus").val() != null) {
+                VariableModel.status = $("#DrpStatus").val().toString();
+                if (VariableModel.status == "BASELINE") {
+                    VariableModel.status = 1;
+                }
+                else if (VariableModel.status == "COMPARE") {
+                    VariableModel.status = 2;
+                }
+                else if (VariableModel.status==""){
+                    VariableModel.status = 0;
+                }
+            }
+            else {
+                VariableModel.status = 0;
+        }
+        debugger
+            $.ajax({
+                url: "/Variable/AddEditVariableSave",
+                data: JSON.stringify(VariableModel),
+                type: "POST",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    if (result.status == 1) {
+                        if (result.data != null) {
+                            $("#AddEditVariable").modal("hide");
+                            swal.fire({
+                                "title": "",
+                                "text": result.message,
+                                "icon": "success",
+                                "onClose": function (e) {
+                                    console.log('on close event fired!');
+                                }
+                            });
+                        }
+                        else {
+                            $("#fieldname").val("");
+                            $("#existvarname").text(result.message);
+                            $("#existvarname").css("display", "block");
+                        }
+                    }
+                    else if (result.status == 0) {
+                        $("#AddEditVariable").modal("hide");
+                        swal.fire({
+                            "title": "",
+                            "text": result.message,
+                            "icon": "error",
+                            "onClose": function (e) {
+                                console.log('on close event fired!');
+                            }
+                        });
+                    }
+                    Vtable.table().draw();
+                    $("#addeditvariable").attr("disabled", false);
+                },
+                error: function (errormessage) {
+                    alert(errormessage.responseText);
+                }
+            });
+        }
+        function DeleteVariable(id, obj) {
+            var name = obj[0].dataset.varname;
+            swal.fire({
+                 title: 'Please confirm.',
+                 text: "This action can not be undone.",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, delete it!'
+            }).then(function (result) {
+                if (result.value == true) {
+
+                    $.ajax({
+                        url: "/Variable/DeleteVariable",
+                        data: JSON.stringify({ "lookupid": id }),
+                        type: "POST",
+                        async: false,
+                        contentType: "application/json;charset=utf-8",
+                        dataType: "json",
+                        success: function (result) {
+                            if (result.status == 1 && result.data) {
+                                swal.fire(
+                                    'Deleted!',
+                                    'Variable [' + name + ' ] is deleted',
+                                    'success')
+                            }
+                            else if (result.status == 0) {
+                                swal.fire({
+                                    "title": "",
+                                    "text": result.message,
+                                    "icon": "error",
+                                    "onClose": function (e) {
+                                        console.log('on close event fired!');
+                                    }
+                                });
+                            }
+                            Vtable.table().draw();
+                            },
+
+                        error: function (x, y, z) {
+                            swal.fire(
+                                'Error while deleting variable [' + name + ']',
+                                'error'
+                            )
+                        }
+                    });
+                }
+
+            });
+        }
+        function LoadBaselinecompare() {
+            var tablename = $("#DrpType").val().toString();
+            $("#DrpStatus").html("");
+            if (tablename == "2" || tablename == "3") {
+                $.ajax({
+                    url: "/Variable/GetBaselineCompare",
+                    data: { "id": tablename },
+                    type: "GET",
+                    async: false,
+                    contentType: "application/json;charset=utf-8",
+                    dataType: "json",
+                    success: function (result) {
+                        if (result.status == 1) {
+                            var optionString = "";
+                            for (i = 0; i < result.data.length; i++) {
+                                var statustext = result.data[i].Text;
+                                var statusvalue = result.data[i].Value;
+                                if (statusvalue == "0") {
+                                    $("#DrpStatus").css("visibility", "hidden");
+                                }
+                                optionString = optionString + " <option value='" + statusvalue + "'>" + statustext + "</option>";
+
+                            }
+                            $("#DrpStatus").append($(optionString));
+                            $("#DrpStatus").val(statusvalue);
+                        }
+                    },
+                    error: function (x, y, z) {
+                    }
+                });
+            }
+
+        }
+        function CheckVarNameExist() {
+            var Variablename = $("#fieldname").val();
+            var variableid = $("#hdnlookupid").val();
+            if (variableid == null || variableid == "")
+                variableid = 0;
+
+            $.ajax({
+                url: "/Variable/CheckDuplicateVariableExist",
+                data: '{"Varname":"' + Variablename + '","Varid":"' + variableid + '"}',
+                type: "POST",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    if (result.status == 1 && result.data) {
+                        $("#fieldname").val("");
+                        $("#existvarname").css("display", "block");
+                    }
+                    else if (result.status == 0) {
+                        swal.fire({
+                            "title": "",
+                            "text": result.message,
+                            "icon": "error",
+                            "onClose": function (e) {
+                                console.log('on close event fired!');
+                            }
+                        });
+                    }
+                },
+            });
+        }
+        $("#fieldname").on('keyup', function () {
+            $("#existvarname").css("display", "none");
+        });
+        $("#DrpType").change(function () {
+            $("#requiredtype").css("display", "none");
+        });
+
+</script>
+<script src="~/assets/js/pages/components/extended/sweetalert2.js" type="text/javascript"></script>
+
+<script src="~/assets/js/pages/crud/forms/widgets/select2.js"></script>
+

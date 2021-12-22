@@ -1,0 +1,1002 @@
+﻿
+<div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
+    <div class="kt-subheader   kt-grid__item" id="kt_subheader" style="left: @ViewBag.width;">
+        <div class="kt-container  kt-container--fluid ">
+            <div class="kt-subheader__main">
+
+                <span class="kt-subheader__separator kt-hidden"></span>
+                <div class="kt-subheader__breadcrumbs">
+                    <a href="#" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-settings" style="color:#1c6081"></i></a>
+                    <a href="#" class="kt-subheader__breadcrumbs-link" style="color:#1c6081">
+                        Grid List
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+        <div class="kt-portlet kt-portlet--mobile">
+            <div class="kt-portlet__head kt-portlet__head--lg">
+                <div class="kt-portlet__head-label">
+                    <h3 class="kt-portlet__head-title" style="color:#1582ab">
+                        List Of All Grid
+                    </h3>
+                </div>
+            </div>
+            <div class="kt-portlet__body">
+                <table class="table table-striped- table-bordered table-hover table-checkable " id="gridtable">
+                    <thead>
+                        <tr>
+                            <th>Grid Name</th>
+                            <th style="color: #1c6081;background-color: #e9f5ff;font-weight: bold;">Actions</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ResizeApplicationgrid" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document" style="max-width: 580px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="">Application Grid Column Width</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <label id="apperror" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                        The summation of all columns width should be 100.
+                    </label>
+                    <input type="hidden" id="appGridid">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Name</label>
+                                <input type="hidden" id="appNameid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="appNamewidth">
+                                <label id="appNameError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Application name" column should be 10 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Description</label>
+                                <input type="hidden" id="appDescriptionid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="appDescriptionwidth">
+                                <label id="appDescriptionError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Application Description" column should be 10 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Version</label>
+                                <input type="hidden" id="appVersionid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="appVersionwidth">
+                                <label id="appVersionError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Application Version" column should be 10 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Extra Requirement</label>
+                                <input type="hidden" id="appExtraid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="appExtrawidth">
+                                <label id="appExtraError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Application Extra Requirement" column should be 10 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Mode</label>
+                                <input type="hidden" id="appModeid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="appModewidth">
+                                <label id="appModeError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Application Mode" column should be 10 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">MARS Explorer Bits</label>
+                                <input type="hidden" id="appExplorerBitid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="appExplorerBitwidth">
+                                <label id="appExplorerBitError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Application MARS Explorer Bits" column should be 10 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Actions</label>
+                                <input type="hidden" id="appActionsid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="appActionswidth">
+                                <label id="appActionsError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Application Actions" column should be 10 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="">Close</button>
+                <button type="button" class="btn btn-primary" id="appGridthsave" onclick="AppGridWidthSave()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ResizeProjectgrid" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document" style="max-width: 580px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="">Project Grid Column Width</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <label id="proerror" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                        The summation of all columns width should be 100.
+                    </label>
+                    <input type="hidden" id="proGridid">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Name</label>
+                                <input type="hidden" id="proNameid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="proNamewidth">
+                                <label id="proNameError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Project name" column should be 10 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Description</label>
+                                <input type="hidden" id="proDescriptionid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="proDescriptionwidth">
+                                <label id="proDescriptionError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Project Description" column should be 10 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Application</label>
+                                <input type="hidden" id="proApplicationid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="proApplicationwidth">
+                                <label id="proApplicationError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Project Application" column should be 10 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Status</label>
+                                <input type="hidden" id="proStatusid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="proStatuswidth">
+                                <label id="proStatusError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Project Status" column should be 10 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Actions</label>
+                                <input type="hidden" id="proActionsid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="proActionswidth">
+                                <label id="proActionsError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Project Actions" column should be 10 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="">Close</button>
+                <button type="button" class="btn btn-primary" id="proGridthsave" onclick="proGridWidthSave()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ResizeKeywordgrid" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document" style="max-width: 580px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="">Keyword Grid Column Width</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <label id="keyerror" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                        The summation of all columns width should be 100.
+                    </label>
+                    <input type="hidden" id="keyGridid">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Name</label>
+                                <input type="hidden" id="keyNameid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="keyNamewidth">
+                                <label id="keyNameError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Keyword name" column should be 10 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Control Type</label>
+                                <input type="hidden" id="keyControlTypeid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="keyControlTypewidth">
+                                <label id="keyControlTypeError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Keyword Control Type" column should be 10 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Entry in Data File</label>
+                                <input type="hidden" id="keyEntryid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="keyEntrywidth">
+                                <label id="keyEntryError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Keyword Entry in Data File" column should be 10 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Actions</label>
+                                <input type="hidden" id="keyActionsid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="keyActionswidth">
+                                <label id="keyActionsError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Keyword Actions" column should be 10 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="">Close</button>
+                <button type="button" class="btn btn-primary" id="keyGridthsave" onclick="keyGridWidthSave()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ResizeTestSuitegrid" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document" style="max-width: 580px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="">Test Suite Grid Column Width</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <label id="TSerror" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                        The summation of all columns width should be 100.
+                    </label>
+                    <input type="hidden" id="TSGridid">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Name</label>
+                                <input type="hidden" id="TSNameid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="TSNamewidth">
+                                <label id="TSNameError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Test Suite name" column should be 10 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Description</label>
+                                <input type="hidden" id="TSDescriptionid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="TSDescriptionwidth">
+                                <label id="TSDescriptionError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Test Suite Description" column should be 10 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Application</label>
+                                <input type="hidden" id="TSApplicationid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="TSApplicationwidth">
+                                <label id="TSApplicationError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Test Suite Application" column should be 10 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Project</label>
+                                <input type="hidden" id="TSProjectid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="TSProjectwidth">
+                                <label id="TSProjectError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Test Suite Project" column should be 10 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Actions</label>
+                                <input type="hidden" id="TSActionsid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="TSActionswidth">
+                                <label id="TSActionsError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Test Suite Actions" column should be 10 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="">Close</button>
+                <button type="button" class="btn btn-primary" id="TSGridthsave" onclick="TSGridWidthSave()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ResizeTestCasegrid" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document" style="max-width: 580px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="">Test Case Grid Column Width</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <label id="TCerror" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                        The summation of all columns width should be 100.
+                    </label>
+                    <input type="hidden" id="TCGridid">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Name</label>
+                                <input type="hidden" id="TCNameid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="TCNamewidth">
+                                <label id="TCNameError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Test Case name" column should be 10 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Description</label>
+                                <input type="hidden" id="TCDescriptionid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="TCDescriptionwidth">
+                                <label id="TCDescriptionError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Test Case Description" column should be 10 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Application</label>
+                                <input type="hidden" id="TCApplicationid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="TCApplicationwidth">
+                                <label id="TCApplicationError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Test Case Application" column should be 10 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Test Suite</label>
+                                <input type="hidden" id="TCTestSuiteid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="TCTestSuitewidth">
+                                <label id="TCTestSuiteError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Test Case Test Suite" column should be 10 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Actions</label>
+                                <input type="hidden" id="TCActionsid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="TCActionswidth">
+                                <label id="TCActionsError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Test Case Actions" column should be 10 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="">Close</button>
+                <button type="button" class="btn btn-primary" id="TCGridthsave" onclick="TCGridWidthSave()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ResizeObjectgrid" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document" style="max-width: 580px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="">Object Grid Column Width</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <label id="objerror" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                        The summation of all columns width should be 100.
+                    </label>
+                    <input type="hidden" id="objGridid">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Object Name</label>
+                                <input type="hidden" id="objNameid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="objNamewidth">
+                                <label id="objNameError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Object Name" column should be 10 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Internal Access</label>
+                                <input type="hidden" id="objInternalAccessid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="objInternalAccesswidth">
+                                <label id="objInternalAccessError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Object Internal Access" column should be 10 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Type</label>
+                                <input type="hidden" id="objTypeid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="objTypewidth">
+                                <label id="objTypeError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Object Type" column should be 10 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Parent Pegwindow</label>
+                                <input type="hidden" id="objPegwindowid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="objPegwindowwidth">
+                                <label id="objPegwindowError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Object Parent Pegwindow" column should be 10 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Actions</label>
+                                <input type="hidden" id="objActionsid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="objActionswidth">
+                                <label id="objActionsError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Object Actions" column should be 10 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Select All</label>
+                                <input type="hidden" id="objSelectid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="objSelectwidth">
+                                <label id="objSelectError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Object Select All" column should be 10 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="">Close</button>
+                <button type="button" class="btn btn-primary" id="objGridthsave" onclick="ObjGridWidthSave()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ResizeVariablegrid" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document" style="max-width: 580px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="">Variable Grid Column Width</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <label id="Varerror" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                        The summation of all columns width should be 100.
+                    </label>
+                    <input type="hidden" id="VarGridid">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Name</label>
+                                <input type="hidden" id="VarNameid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="VarNamewidth">
+                                <label id="VarNameError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Variable name" column should be 10 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Type</label>
+                                <input type="hidden" id="VarTypeid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="VarTypewidth">
+                                <label id="VarTypeError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Variable Type" column should be 10 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Value</label>
+                                <input type="hidden" id="VarValueid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="VarValuewidth">
+                                <label id="VarValueError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Variable Value" column should be 10 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Status</label>
+                                <input type="hidden" id="VarStatusid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="VarStatuswidth">
+                                <label id="VarStatusError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Variable Status" column should be 10 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Actions</label>
+                                <input type="hidden" id="VarActionsid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="VarActionswidth">
+                                <label id="VarActionsError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Variable Actions" column should be 10 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="">Close</button>
+                <button type="button" class="btn btn-primary" id="VarGridthsave" onclick="VarGridWidthSave()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ResizeUsergrid" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document" style="max-width: 580px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="">Users Grid Column Width</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <label id="usererror" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                        The summation of all columns width should be 100.
+                    </label>
+                    <input type="hidden" id="userGridid">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">First Name</label>
+                                <input type="hidden" id="userFNameid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="userFNamewidth">
+                                <label id="userFNameError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Users First Name" column should be 10 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Middle Name</label>
+                                <input type="hidden" id="userMNameid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="userMNamewidth">
+                                <label id="userMNameError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Users Middle Name" column should be 10 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Last Name</label>
+                                <input type="hidden" id="userLNameid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="userLNamewidth">
+                                <label id="userLNameError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Users Last Name" column should be 10 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">User Name</label>
+                                <input type="hidden" id="userNameid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="userNamewidth">
+                                <label id="userNameError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Users User Name" column should be 10 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Email Address</label>
+                                <input type="hidden" id="userEmailid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="userEmailwidth">
+                                <label id="userEmailError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Users Email Address" column should be 10 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Company Name</label>
+                                <input type="hidden" id="userComid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="userComwidth">
+                                <label id="userComError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Users Company Name" column should be 10 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Status</label>
+                                <input type="hidden" id="userStatusid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="userStatuswidth">
+                                <label id="userStatusError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Users Status" column should be 10 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Actions</label>
+                                <input type="hidden" id="userActionsid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="userActionswidth">
+                                <label id="userActionsError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Users Actions" column should be 10 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="">Close</button>
+                <button type="button" class="btn btn-primary" id="UserGridthsave" onclick="userGridWidthSave()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ResizeTestCasePagegrid" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document" style="max-width: 580px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="">TestCase editor's column width</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <input type="hidden" id="TCPGridid">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Keyword</label>
+                                <input type="hidden" id="TCPKeywordid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="TCPKeywordwidth">
+                                <label id="TCPKeywordError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "TestCase Keyword" column should be 20 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Object</label>
+                                <input type="hidden" id="TCPObjectid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="TCPObjectwidth">
+                                <label id="TCPObjectError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "TestCase Object" column should be 20 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Parameters</label>
+                                <input type="hidden" id="TCPParametersid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="TCPParameterswidth">
+                                <label id="TCPParametersError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "TestCase Parameters" column should be 20 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Comment</label>
+                                <input type="hidden" id="TCPCommentid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="TCPCommentwidth">
+                                <label id="TCPCommentError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "TestCase Comment" column should be 20 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="">Close</button>
+                <button type="button" class="btn btn-primary" id="TCPGridthsave" onclick="TCPGridWidthSave()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ResizeStoryboardPqgrid" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document" style="max-width: 580px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="">Storyboard editor's column width</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <input type="hidden" id="SPGridid">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Action</label>
+                                <input type="hidden" id="SPActionid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="SPActionwidth">
+                                <label id="SPActionError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Storyboard Action" column should be 20 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Steps</label>
+                                <input type="hidden" id="SPStepsid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="SPStepswidth">
+                                <label id="SPStepsError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Storyboard SPSteps" column should be 20 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Test Suite</label>
+                                <input type="hidden" id="SPTestSuiteid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="SPTestSuitewidth">
+                                <label id="SPTestSuiteError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Storyboard Test Suite" column should be 20 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Test Case</label>
+                                <input type="hidden" id="SPTestCaseid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="SPTestCasewidth">
+                                <label id="SPTestCaseError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Storyboard Test Case" column should be 20 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Dataset</label>
+                                <input type="hidden" id="SPDatasetid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="SPDatasetwidth">
+                                <label id="SPDatasetError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Storyboard Dataset" column should be 20 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Base Line Data Result</label>
+                                <input type="hidden" id="SPBaseResultid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="SPBaseResultwidth">
+                                <label id="SPBaseResultError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Storyboard Base Line Data Result" column should be 20 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Base Line Data Error cause</label>
+                                <input type="hidden" id="SPBaseErrorCauseid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="SPBaseErrorCausewidth">
+                                <label id="SPBaseErrorCauseError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Storyboard Base Line Data Error cause" column should be 20 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Base Line Data Script Start</label>
+                                <input type="hidden" id="SPBaseScriptStartsid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="SPBaseScriptStartswidth">
+                                <label id="SPBaseScriptStartsError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Storyboard Base Line Data Script Start" column should be 20 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Base Line Data Script Duration</label>
+                                <input type="hidden" id="SPBaseScriptDurationsid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="SPBaseScriptDurationwidth">
+                                <label id="SPBaseScriptDurationError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Storyboard Base Line Data Script Duration" column should be 20 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Comparison Line Data Result</label>
+                                <input type="hidden" id="SPComResultid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="SPComResultwidth">
+                                <label id="SPComResultError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Storyboard Comparison Line Data Result" column should be 20 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Comparison Line Data Error cause</label>
+                                <input type="hidden" id="SPComErrorCauseid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="SPComErrorCausewidth">
+                                <label id="SPComErrorCauseError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Storyboard Comparison Line Data Error cause" column should be 20 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Comparison Line Data Script Start</label>
+                                <input type="hidden" id="SPComScriptStartid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="SPComScriptStartwidth">
+                                <label id="SPComScriptStartError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Storyboard Comparison Line Data Script Start" column should be 20 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Comparison Line Data Script Duration</label>
+                                <input type="hidden" id="SPComScriptDurationid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="SPComScriptDurationwidth">
+                                <label id="SPComScriptDurationError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Storyboard Comparison Line Data Script Duration" column should be 20 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Dependency</label>
+                                <input type="hidden" id="SPDependencyid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="SPDependencywidth">
+                                <label id="SPDependencyError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Storyboard Dependency" column should be 20 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="name" class="form-control-label">Description</label>
+                                <input type="hidden" id="SPDescriptionid">
+                                <input type="number" max="100" min="10" value="0" class="form-control" id="SPDescriptionwidth">
+                                <label id="SPDescriptionError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    The minimum width of "Storyboard Description" column should be 20 and float value is not allowed.
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="">Close</button>
+                <button type="button" class="btn btn-primary" id="SPpqGridthsave" onclick="SPpqGridWidthSave()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="ResizeLeftPanel" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="">Resize Left Panel</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <input type="hidden" id="RGridid">
+                    <div class="form-group">
+                        <label for="name" class="form-control-label">Enter width</label>
+                        <input type="hidden" id="RLeftGridid">
+                        <input type="number" max="400" min="150" value="0" class="form-control" id="resizeid">
+                        <label id="RError" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                            The minimum width of "LeftPanel" should be 150 and float value is not allowed.
+                        </label>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" onclick="">Close</button>
+                <button type="button" class="btn btn-primary"  onclick="ResizeLeftPanel()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/Tab/Custom_SetGridWidth.js"></script>

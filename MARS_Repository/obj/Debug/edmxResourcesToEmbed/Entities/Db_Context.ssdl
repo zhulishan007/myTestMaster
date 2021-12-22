@@ -316,6 +316,14 @@ warning 6002: The table/view 'GEN_MARS_4.MV_TC_DATASUMMARY' does not have a prim
     <Property Name="QUERY_ID" Type="number" Precision="16" Scale="0" />
     <Property Name="DATABASE_CONN_ID" Type="number" Precision="16" Scale="0" />
   </EntityType>
+  <EntityType Name="REL_FOLDER_FILTER">
+    <Key>
+      <PropertyRef Name="REL_FOLDER_FILTER_ID" />
+    </Key>
+    <Property Name="REL_FOLDER_FILTER_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="FOLDER_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="FILTER_ID" Type="number" Precision="16" Scale="0" />
+  </EntityType>
   <EntityType Name="REL_OBJ_APP">
     <Key>
       <PropertyRef Name="RELATIONSHIP_ID" />
@@ -522,6 +530,7 @@ warning 6002: The table/view 'GEN_MARS_4.MV_TC_DATASUMMARY' does not have a prim
     <Property Name="SERVICENAME" Type="varchar2" MaxLength="64" />
     <Property Name="DECODE_METHOD" Type="varchar2" MaxLength="64" />
     <Property Name="SCHEMA" Type="varchar2" MaxLength="64" />
+    <Property Name="DATABASE_VALUE" Type="blob" />
   </EntityType>
   <EntityType Name="T_DIC_RELATION_KEYWORD">
     <Key>
@@ -530,6 +539,15 @@ warning 6002: The table/view 'GEN_MARS_4.MV_TC_DATASUMMARY' does not have a prim
     <Property Name="RELATION_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
     <Property Name="TYPE_ID" Type="number" Precision="16" Scale="0" />
     <Property Name="KEY_WORD_ID" Type="number" Precision="16" Scale="0" />
+  </EntityType>
+  <EntityType Name="T_FOLDER_FILTER">
+    <Key>
+      <PropertyRef Name="FILTER_ID" />
+    </Key>
+    <Property Name="FILTER_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="FILTER_NAME" Type="varchar2" MaxLength="250" />
+    <Property Name="PROJECT_IDS" Type="varchar2" MaxLength="2000" />
+    <Property Name="STORYBOARD_IDS" Type="varchar2" MaxLength="2000" />
   </EntityType>
   <EntityType Name="T_GRIDLIST">
     <Key>
@@ -824,13 +842,13 @@ warning 6002: The table/view 'GEN_MARS_4.T_REGISTED_OBJECT_TEST' does not have a
     </Key>
     <Property Name="T_TEST_DATASETTAG_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
     <Property Name="DATASETID" Type="number" Precision="16" Scale="0" />
-    <Property Name="GROUPID" Type="number" Precision="16" Scale="0" />
-    <Property Name="SETID" Type="number" Precision="16" Scale="0" />
-    <Property Name="FOLDERID" Type="number" Precision="16" Scale="0" />
+    <Property Name="GROUPID" Type="varchar2" MaxLength="64" />
+    <Property Name="SETID" Type="varchar2" MaxLength="64" />
+    <Property Name="FOLDERID" Type="varchar2" MaxLength="64" />
     <Property Name="EXPECTEDRESULTS" Type="varchar2" MaxLength="4000" />
     <Property Name="STEPDESC" Type="varchar2" MaxLength="4000" />
     <Property Name="DIARY" Type="varchar2" MaxLength="4000" />
-    <Property Name="SEQUENCE" Type="number" Precision="38" Scale="0" />
+    <Property Name="SEQUENCE" Type="number" Precision="16" Scale="0" />
   </EntityType>
   <EntityType Name="T_TEST_ENUM">
     <Key>
@@ -2150,6 +2168,12 @@ warning 6002: The table/view 'GEN_MARS_4.V_USER_COMPANY' does not have a primary
   <Function Name="CONCATENATE_TS_TC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN_MARS_4" ReturnType="clob">
     <Parameter Name="TESTCASEID" Type="number" Mode="In" />
   </Function>
+  <Function Name="DELETEFOLDERDATASET" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN_MARS_4">
+    <Parameter Name="FEEDPROCESSDETAILID" Type="varchar2" Mode="In" />
+  </Function>
+  <Function Name="DeleteDatsSets" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN_MARS_4">
+    <Parameter Name="DATASETID" Type="number" Mode="In" />
+  </Function>
   <Function Name="DeleteResultSets" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN_MARS_4">
     <Parameter Name="HISTID" Type="number" Mode="In" />
   </Function>
@@ -2354,6 +2378,9 @@ warning 6002: The table/view 'GEN_MARS_4.V_USER_COMPANY' does not have a primary
     <Parameter Name="OLDCOMPARE_HISTID" Type="number" Mode="In" />
     <Parameter Name="OLDBASELINE_HISTID" Type="number" Mode="In" />
   </Function>
+  <Function Name="SP_SAVE_FOLDER_DATASET" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN_MARS_4">
+    <Parameter Name="FEEDDETAILID" Type="varchar2" Mode="In" />
+  </Function>
   <Function Name="SP_SAVE_SB_RESULTS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN_MARS_4">
     <Parameter Name="FEEDDETAILID" Type="varchar2" Mode="In" />
   </Function>
@@ -2436,6 +2463,7 @@ warning 6002: The table/view 'GEN_MARS_4.V_USER_COMPANY' does not have a primary
     <EntitySet Name="REL_APP_TESTCASE" EntityType="Self.REL_APP_TESTCASE" Schema="GEN_MARS_4" store:Type="Tables" />
     <EntitySet Name="REL_APP_TESTSUITE" EntityType="Self.REL_APP_TESTSUITE" Schema="GEN_MARS_4" store:Type="Tables" />
     <EntitySet Name="REL_DB_QUERY" EntityType="Self.REL_DB_QUERY" Schema="GEN_MARS_4" store:Type="Tables" />
+    <EntitySet Name="REL_FOLDER_FILTER" EntityType="Self.REL_FOLDER_FILTER" Schema="GEN_MARS_4" store:Type="Tables" />
     <EntitySet Name="REL_OBJ_APP" EntityType="Self.REL_OBJ_APP" Schema="GEN_MARS_4" store:Type="Tables" />
     <EntitySet Name="REL_PROJECT_USER" EntityType="Self.REL_PROJECT_USER" Schema="GEN_MARS_4" store:Type="Tables" />
     <EntitySet Name="REL_TC_DATA_SUMMARY" EntityType="Self.REL_TC_DATA_SUMMARY" Schema="GEN_MARS_4" store:Type="Tables" />
@@ -2455,6 +2483,7 @@ warning 6002: The table/view 'GEN_MARS_4.V_USER_COMPANY' does not have a primary
     <EntitySet Name="T_DATABASE_CONNECTIONS" EntityType="Self.T_DATABASE_CONNECTIONS" Schema="GEN_MARS_4" store:Type="Tables" />
     <EntitySet Name="T_DBCONNECTION" EntityType="Self.T_DBCONNECTION" Schema="GEN_MARS_4" store:Type="Tables" />
     <EntitySet Name="T_DIC_RELATION_KEYWORD" EntityType="Self.T_DIC_RELATION_KEYWORD" Schema="GEN_MARS_4" store:Type="Tables" />
+    <EntitySet Name="T_FOLDER_FILTER" EntityType="Self.T_FOLDER_FILTER" Schema="GEN_MARS_4" store:Type="Tables" />
     <EntitySet Name="T_GRIDLIST" EntityType="Self.T_GRIDLIST" Schema="GEN_MARS_4" store:Type="Tables" />
     <EntitySet Name="T_GUI_COMPONENT_TYPE_DIC" EntityType="Self.T_GUI_COMPONENT_TYPE_DIC" Schema="GEN_MARS_4" store:Type="Tables" />
     <EntitySet Name="T_KEYWORD" EntityType="Self.T_KEYWORD" Schema="GEN_MARS_4" store:Type="Tables" />

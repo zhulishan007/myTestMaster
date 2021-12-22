@@ -1,0 +1,53 @@
+﻿
+
+    <script>
+        var pie_data = getData();
+        //Highcharts.setOptions({
+        //    colors: ['#ffffff','#000000', '#333333', '#222222', '#111111']
+        //});
+        var data =
+            Highcharts.chart('chartholder', {
+  chart: {
+    //plotBackgroundColor: "#ccffcc",
+    plotBorderWidth: null,
+    plotShadow: false,
+    type: 'pie'
+  },
+  title: {
+    text: ''
+  },
+  tooltip: {
+    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+  },
+  accessibility: {
+    point: {
+      valueSuffix: '%'
+    }
+  },
+  plotOptions: {
+    pie: {
+      allowPointSelect: true,
+      cursor: 'pointer',
+      dataLabels: {
+        enabled: true,
+        format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+      }
+    }
+  },
+                series: [{
+                    name: 'Data',
+                    colorByPoint: true,
+                    data: getData()
+                }]
+            });
+        
+        function getData() {
+         
+           var json_axis = @Html.Raw(Json.Encode(@ViewBag.axis));
+            console.log(json_axis);
+            return JSON.parse(json_axis);
+        }
+
+    </script>
+
+

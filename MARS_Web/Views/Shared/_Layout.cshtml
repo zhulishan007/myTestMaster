@@ -4170,5 +4170,20 @@
             });
         }
     </script>
+
+    <script type="text/javascript">
+    var sessionTimeoutWarning = "<%= System.Configuration.ConfigurationManager.AppSettings["SessionWarning"].ToString()%>";
+        var sessionTimeout = "<%= Session.Timeout %>";
+
+    var sTimeout = parseInt(sessionTimeoutWarning) * 60 * 1000;
+    setTimeout('SessionWarning()', sTimeout);
+
+    function SessionWarning() {
+        var message = "Your session will expire in another " +
+            (parseInt(sessionTimeout) - parseInt(sessionTimeoutWarning)) +
+            " mins! Please Save the data before the session expires";
+        alert(message);
+    }
+</script>
 </body>
 </html>

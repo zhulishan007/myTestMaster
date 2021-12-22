@@ -1,0 +1,42 @@
+﻿<script>
+    Highcharts.chart('chartholder', {
+        chart: {
+            type: 'bar'
+        },
+        title: {
+            text: ''
+        },
+        xAxis: {
+            categories: xAxisData()
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: ''
+            }
+        },
+        legend: {
+            reversed: true
+        },
+        plotOptions: {
+            series: {
+                stacking: 'normal'
+            }
+        },
+        series:getData()
+    });
+function getData() {
+
+           var json_axis = @Html.Raw(Json.Encode(@ViewBag.axis));
+        console.log(json_axis);
+        return JSON.parse(json_axis);
+    }
+
+    
+function xAxisData() {
+
+           var json_axis = @Html.Raw(Json.Encode(@ViewBag.X_Start));
+        console.log(json_axis);
+        return JSON.parse(json_axis);
+        }
+</script>

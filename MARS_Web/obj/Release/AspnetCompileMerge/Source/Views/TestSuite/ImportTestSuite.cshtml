@@ -1,0 +1,303 @@
+﻿
+@{
+    var lFileName = ViewBag.FileName;
+
+    if (!string.IsNullOrEmpty(lFileName) && lFileName != ".xlsx")
+    {
+
+        <script>
+            setTimeout(function () {
+                swal.fire({
+                    "title": "Test Suite has validation Occured.",
+                    "text": "Please click on link to download error report.",
+                    "icon": "warning",
+                    "onClose": function (e) {
+                        console.log('on close event fired!');
+                    }
+                });
+            }, 1000);
+
+        </script>
+
+
+    }
+    else
+    {
+        if (!string.IsNullOrEmpty(lFileName))
+        {
+            <script>
+                setTimeout(function () {
+                    swal.fire({
+                        "title": "Test Suite is imported successfully",
+                        //"text": "Please click on link to download error report.",
+                        "icon": "success",
+                        "onClose": function (e) {
+                            console.log('on close event fired!');
+                        }
+                    });
+                }, 1000);
+
+            </script>
+        }
+    }
+
+    var lErrorMsg = ViewBag.ErrorMsg;
+    if (!string.IsNullOrEmpty(lErrorMsg))
+    {
+
+        <script>
+            setTimeout(function () {
+                swal.fire({
+                    "title": "Error",
+                    "text": "@lErrorMsg",
+                    "icon": "error",
+                    "onClose": function (e) {
+                        console.log('on close event fired!');
+                    }
+                });
+            }, 1000);
+
+        </script>
+
+
+    }
+}
+
+
+<div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
+    <div class="kt-subheader   kt-grid__item" id="kt_subheader" style="left: @ViewBag.width;">
+        <div class="kt-container  kt-container--fluid ">
+            <div class="kt-subheader__main">
+
+                <span class="kt-subheader__separator kt-hidden"></span>
+                <div class="kt-subheader__breadcrumbs">
+                    <a href="#" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-settings" style="color:#1c6081"></i></a>
+                    <a href="#" class="kt-subheader__breadcrumbs-link" style="color:#1c6081">
+                        Test Suite
+                    </a>
+                    <i class="fa fa-angle-double-right" style="color:#1c6081"></i>
+                    <a href="#" class="kt-subheader__breadcrumbs-link" style="color:#1c6081">
+                        &nbsp;
+                    </a>
+
+
+                    <!-- <span class="kt-subheader__breadcrumbs-link kt-subheader__breadcrumbs-link--active">Active link</span> -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+        <div class="kt-portlet kt-portlet--mobile">
+            <div class="kt-portlet__head kt-portlet__head--lg">
+                <div class="kt-portlet__head-label">
+                    <h3 class="kt-portlet__head-title" style="color:#1582ab">
+                        Import Test Suite
+                    </h3>
+                </div>
+            </div>
+            @Html.AntiForgeryToken()
+            <div class="kt-portlet__body">
+                <div class="form-group col-md-8">
+                    <div></div>
+                    <div class="custom-file ">
+                        <input type="file" class="custom-file-input" id="testsuiteUpload" name="testsuiteUpload" accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
+                        <label class="custom-file-label " for="customFile" style="text-align: left;">Choose excel file</label>
+                    </div>
+                </div>
+                <div class="form-group col-md-4" style="display:none;" id="hdnDownloadTestSuitelink">
+                    <div></div>
+                    <div class="custom-file ">
+                        <a href="#" id="downloadTestSuiteFile"> Click here to download Validation File <i class="flaticon-download-1"></i>  </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="kt-portlet__foot">
+                <div class="kt-form__actions">
+                    <div class="row">
+                        <div class="col-lg-9 ">
+                            <button type="submit" class="btn btn-outline-brand btn-elevate btn-pill" id="btnImportTestSuite">Import</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @*}*@
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('#btnImportTestSuite').click(function () {
+            // Checking whether FormData is available in browser
+            if (window.FormData !== undefined) {
+
+                var fileUpload = $("#testsuiteUpload").get(0);
+                var files = fileUpload.files;
+                if (files.length <= 0) {
+                    swal.fire({
+                        "title": "No files to import",
+                        "text": "Please select a file to import",
+                        "icon": "error",
+                        "allowOutsideClick": false,
+                        "onClose": function (e) {
+                            console.log('on close event fired!');
+                        }
+                    });
+                    return false;
+                }
+                var TestSuiteName = files[0].name;
+                // Create FormData object
+                var fileData = new FormData();
+
+                // Looping over all files and add it to FormData object
+                for (var i = 0; i < files.length; i++) {
+                    fileData.append(files[i].name, files[i]);
+                }
+
+                // Adding one more key to FormData object
+                startloader();
+                $.ajax({
+                    url: '/TestSuite/ImportTestSuites',
+                    type: "POST",
+                    contentType: false, // Not to set any content header
+                    processData: false, // Not to process data
+                    data: fileData,
+                    success: function (result) {
+                        var fresult = result.split(',');
+                        if (fresult[1] == "success") {
+                        document.getElementById("testsuiteUpload").value = "";
+                        $('#testsuiteUpload').parents().find('.custom-file-label')[0].innerHTML = "Choose excel file";
+                            swal.fire({
+                                "title": "Test Suite [" + TestSuiteName + "] imported successfully",
+                                //"text": "Please click on link to download error report.",
+                                "icon": "success",
+                                "allowOutsideClick": false,
+                                "onClose": function (e) {
+                                    console.log('on close event fired!');
+                                }
+                            });
+                            $("#hdnDownloadTestSuitelink").css("display", "none");
+                            $("#downloadTestSuiteFile").attr("href", "#");
+                            $.ajax({
+                                url: "/Login/LeftPanel",
+                                // data: { 'lLoginName': pLoginName, 'lLoginId': TESTER_ID },
+
+                                type: "POST",
+                                contentType: "application/json;charset=utf-8",
+                                dataType: "HTML",
+                                success: function (result) {
+                                    $("#leftProjectList").html("");
+                                    $("#leftProjectList").html(result);
+                                }
+                            });
+                        }
+                        else if (fresult[1] == "validation") {
+                            document.getElementById("testsuiteUpload").value = "";
+                            $('#testsuiteUpload').parents().find('.custom-file-label')[0].innerHTML = "Choose excel file";
+                            swal.fire({
+                                "title": "TestSuite Import Validation Error",
+                                "text": "Please click on link to download error report.",
+                                "icon": "warning",
+                                "allowOutsideClick": false,
+                                "onClose": function (e) {
+                                    console.log('on close event fired!');
+                                }
+                            });
+                            $("#hdnDownloadTestSuitelink").css("display", "block");
+                            $("#downloadTestSuiteFile").attr("href", "/TestSuite/DownloadFile?path=" + fresult[0]);
+
+                        }
+                        else {
+                            swal.fire({
+                                "title": "Excpetion occured",
+                                "text": "Please click on link to download error report.",
+                                "icon": "error",
+                                "allowOutsideClick": false,
+                                "onClose": function (e) {
+                                    console.log('on close event fired!');
+                                }
+                            });
+                            $("#hdnDownloadTestSuitelink").css("display", "block");
+                            $("#downloadTestSuiteFile").attr("href", "/TestSuite/DownloadFile?path=" + fresult[0]);
+                        }
+                        stoploader();
+                    },
+                    //success: function (result) {
+                    //    document.getElementById("testsuiteUpload").value = "";
+                    //    $('#testsuiteUpload').parents().find('.custom-file-label')[0].innerHTML = "Choose excel file";
+                    //    if (result != "" && result != null && result != ".xlsx" && result != "Data not found" && result != "Excel file is not valid.") {
+                    //        swal.fire({
+                    //            "title": "TestSuite Import Validation Error",
+                    //            "text": "Please click on link to download error report.",
+                    //            "type": "warning",
+                    //            "allowOutsideClick": false,
+                    //            "onClose": function (e) {
+                    //                console.log('on close event fired!');
+                    //            }
+                    //        });
+                    //        $("#hdnDownloadTestSuitelink").css("display", "block");
+                    //        $("#downloadTestSuiteFile").attr("href", "/TestSuite/DownloadFile?Path=" + result);
+                    //    } else if (result != "" && result != null && result != "Data not found" && result != "Excel file is not valid.") {
+                    //        swal.fire({
+                    //            "title": "Test Suite [" + TestSuiteName+"] imported successfully",
+                    //            //"text": "Please click on link to download error report.",
+                    //            "type": "success",
+                    //            "allowOutsideClick": false,
+                    //            "onClose": function (e) {
+                    //                console.log('on close event fired!');
+                    //            }
+                    //        });
+                    //        $("#hdnDownloadTestSuitelink").css("display", "none");
+                    //        $("#downloadTestSuiteFile").attr("href", "#");
+                    //        $.ajax({
+                    //            url: "/Login/LeftPanel",
+                    //            // data: { 'lLoginName': pLoginName, 'lLoginId': TESTER_ID },
+
+                    //            type: "POST",
+                    //            contentType: "application/json;charset=utf-8",
+                    //            dataType: "HTML",
+                    //            success: function (result) {
+                    //                $("#leftProjectList").html("");
+                    //                $("#leftProjectList").html(result);
+                    //            }
+                    //        });
+
+                    //    } else {
+                    //        swal.fire({
+                    //            "title": "Error",
+                    //            "text": result,
+                    //            "type": "error",
+                    //            "allowOutsideClick": false,
+                    //            "onClose": function (e) {
+                    //                console.log('on close event fired!');
+                    //            }
+                    //        });
+                    //        $("#hdnDownloadTestSuitelink").css("display", "none");
+                    //        $("#downloadTestSuiteFile").attr("href", "#");
+
+                    //    }
+                    //    stoploader();
+                    //},
+                    error: function (err) {
+                        stoploader();
+                        alert(err.statusText);
+                    }
+                });
+            } else {
+                stoploader();
+                alert("FormData is not supported.");
+            }
+        });
+    });
+
+    $('#testsuiteUpload').on('change', function () {
+        //get the file name
+        // var fileName = $(this).val();
+        var fileName = document.getElementById("testsuiteUpload").files[0].name;
+        //replace the "Choose a file" label
+        $(this).next('.custom-file-label').html(fileName);
+    })
+</script>
+
+

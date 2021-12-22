@@ -238,6 +238,7 @@
     <Property Name="DECODE_METHOD" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
     <Property Name="SCHEMA" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="T_QUERY" Relationship="Model.T_QUERY_FK1" FromRole="T_DBCONNECTION" ToRole="T_QUERY" />
+    <Property Name="DATABASE_VALUE" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <EntityType Name="T_DIC_RELATION_KEYWORD">
     <Key>
@@ -2329,7 +2330,6 @@
     <EntitySet Name="T_TEST_FOLDER" EntityType="Model.T_TEST_FOLDER" />
     <EntitySet Name="T_TEST_GROUP" EntityType="Model.T_TEST_GROUP" />
     <EntitySet Name="T_TEST_SET" EntityType="Model.T_TEST_SET" />
-    <EntitySet Name="T_TEST_DATASETTAG" EntityType="Model.T_TEST_DATASETTAG" />
     <FunctionImport Name="SP_CheckValidationStoryboard">
       <Parameter Name="FEEDPROCESSID1" Mode="In" Type="Decimal" />
       <Parameter Name="RESULT" Mode="Out" Type="String" />
@@ -2353,6 +2353,18 @@
       <End Role="T_DBCONNECTION" EntitySet="T_DBCONNECTION" />
       <End Role="T_QUERY" EntitySet="T_QUERY" />
     </AssociationSet>
+    <FunctionImport Name="SP_SAVE_FOLDER_DATASET">
+      <Parameter Name="FEEDDETAILID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="DeleteDatsSets">
+      <Parameter Name="DATASETID" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <EntitySet Name="T_TEST_DATASETTAG" EntityType="Model.T_TEST_DATASETTAG" />
+    <FunctionImport Name="DELETEFOLDERDATASET">
+      <Parameter Name="FEEDPROCESSDETAILID" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="T_FOLDER_FILTER" EntityType="Model.T_FOLDER_FILTER" />
+    <EntitySet Name="REL_FOLDER_FILTER" EntityType="Model.REL_FOLDER_FILTER" />
   </EntityContainer>
   <EntityType Name="T_USER_ACTIVEPAGE">
     <Key>
@@ -2510,20 +2522,6 @@
     <Property Name="CREATION_USER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="UPDATE_CREATION_USER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
-  <EntityType Name="T_TEST_DATASETTAG">
-    <Key>
-      <PropertyRef Name="T_TEST_DATASETTAG_ID" />
-    </Key>
-    <Property Name="T_TEST_DATASETTAG_ID" Type="Int64" Nullable="false" />
-    <Property Name="DATASETID" Type="Int64" />
-    <Property Name="GROUPID" Type="Int64" />
-    <Property Name="SETID" Type="Int64" />
-    <Property Name="FOLDERID" Type="Int64" />
-    <Property Name="EXPECTEDRESULTS" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
-    <Property Name="STEPDESC" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
-    <Property Name="DIARY" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
-    <Property Name="SEQUENCE" Type="Decimal" Precision="38" Scale="0" />
-  </EntityType>
   <EntityType Name="T_USER_CONFIGURATION">
     <Key>
       <PropertyRef Name="USERCONFIGID" />
@@ -2627,4 +2625,35 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="T_TEST_DATASETTAG">
+    <Key>
+      <PropertyRef Name="T_TEST_DATASETTAG_ID" />
+    </Key>
+    <Property Name="T_TEST_DATASETTAG_ID" Type="Int64" Nullable="false" />
+    <Property Name="DATASETID" Type="Int64" />
+    <Property Name="GROUPID" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="SETID" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="FOLDERID" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="EXPECTEDRESULTS" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="STEPDESC" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="DIARY" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="SEQUENCE" Type="Int64" />
+  </EntityType>
+  <EntityType Name="T_FOLDER_FILTER">
+    <Key>
+      <PropertyRef Name="FILTER_ID" />
+    </Key>
+    <Property Name="FILTER_ID" Type="Int64" Nullable="false" />
+    <Property Name="FILTER_NAME" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="PROJECT_IDS" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="STORYBOARD_IDS" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="REL_FOLDER_FILTER">
+    <Key>
+      <PropertyRef Name="REL_FOLDER_FILTER_ID" />
+    </Key>
+    <Property Name="REL_FOLDER_FILTER_ID" Type="Int64" Nullable="false" />
+    <Property Name="FOLDER_ID" Type="Int64" />
+    <Property Name="FILTER_ID" Type="Int64" />
+  </EntityType>
 </Schema>

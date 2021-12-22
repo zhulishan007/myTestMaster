@@ -1,0 +1,58 @@
+﻿<script>
+Highcharts.chart('chartholder', {
+    chart: {
+        type: 'areaspline'
+    },
+    title: {
+        text: ''
+    },
+    legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'top',
+        x: 0,
+        y: 0,
+        floating: true,
+        borderWidth: 1,
+        backgroundColor:
+            Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF'
+    },
+    xAxis: {
+        categories: xAxisData(),
+    },
+    yAxis: {
+        title: {
+            text: ''
+        }
+    },
+    tooltip: {
+        shared: true,
+        valueSuffix: ' units'
+    },
+    credits: {
+        enabled: false
+    },
+    plotOptions: {
+        areaspline: {
+            fillOpacity: 0.5
+        }
+    },
+    series:
+        getData(),
+});
+
+function getData() {
+
+           var json_axis = @Html.Raw(Json.Encode(@ViewBag.axis));
+        console.log(json_axis);
+        return JSON.parse(json_axis);
+    }
+
+    
+function xAxisData() {
+
+           var json_axis = @Html.Raw(Json.Encode(@ViewBag.X_Start));
+        console.log(json_axis);
+        return JSON.parse(json_axis);
+        }
+</script>

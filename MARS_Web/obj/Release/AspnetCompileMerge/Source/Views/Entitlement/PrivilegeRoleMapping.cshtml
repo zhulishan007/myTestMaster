@@ -1,0 +1,267 @@
+﻿<div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
+    <div class="kt-subheader   kt-grid__item" id="kt_subheader" style="left: @ViewBag.width;">
+        <div class="kt-container  kt-container--fluid ">
+            <div class="kt-subheader__main">
+                <span class="kt-subheader__separator kt-hidden"></span>
+                <div class="kt-subheader__breadcrumbs">
+                    <a href="#" class="kt-subheader__breadcrumbs-home"><i class="flaticon2-settings" style="color:#1c6081"></i></a>
+                    <a href="#" class="kt-subheader__breadcrumbs-link" style="color:#1c6081">
+                        User Role
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+        <div class="kt-portlet kt-portlet--mobile">
+            <div class="kt-portlet__head kt-portlet__head--lg">
+                <div class="kt-portlet__head-label">
+                    <h3 class="kt-portlet__head-title" style="color:#1582ab">
+                        List of Privilages according to Role
+                    </h3>
+                </div>
+                <div class="kt-portlet__head-toolbar">
+                    <div class="kt-portlet__head-wrapper">
+                        <div class="kt-portlet__head-actions">
+                            <button type="button" class="btn btn-brand btn-elevate btn-icon-sm" data-toggle="modal" onclick="AddRole()" data-target="#kt_modal_5"><i class="la la-plus"></i>New Role</button>
+                            &nbsp;
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="kt-portlet__body">
+                <div class="form-group col-md-12">
+                    <label class="form-control-label">User Roles: </label>
+                    <div class="form-control-label" id="clsappobject">
+                        <select class="form-control kt-select2" id="drpRoles" name="roles">
+                            @{var lrolelist = ViewBag.rolelist as IEnumerable<SelectListItem>;
+
+                                foreach (var item in lrolelist)
+                                {
+                                    <option value="@item.Value">@item.Text</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                    <div id="PartialListBox" class="mt-2">
+                        @Html.Partial("_ListBox")
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" id="addPrivileges" class="btn btn-outline-brand btn-elevate btn-pill" onclick="AddEditPrivilegeRoleMappingSave($(this))">Save</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="AddRoleModal" tabindex="-1" role="dialog" aria-labelledby="rrexampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="rrexampleModalLabel">Add Role</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="frmrole">
+                        <div class="form-group">
+                            <label for="recipient-name" class="form-control-label">Add Role<span style="color:red">&nbsp;*</span></label>
+                            <input type="text" class="form-control" id="txtRoleName" name="txtRoleName">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="addUserrole" class="btn btn-outline-brand btn-elevate btn-pill" onclick="SaveRole()">Save</button>
+                    <button type="button" class="btn btn-outline-brand btn-elevate btn-pill" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        $("#drpRoles").on('change', function () {
+            var roleid = $("#drpRoles").val();
+            $.ajax({
+                url: "/Entitlement/GetPrivilegesByRoleId",
+                data: JSON.stringify({ roleId: roleid }),
+                type: "POST",
+                async: false,
+                contentType: "application/json;charset=utf-8",
+                dataType: "html",
+                success: function (data) {
+                    $("#PartialListBox").html("");
+                    $("#PartialListBox").html(data);
+                }
+            });
+        });
+
+
+        function AddEditPrivilegeRoleMappingSave(obj) {
+            var privileges = [];
+            $('.dual-listbox :selected').each(function (i, selected) {
+                privileges[i] = $(selected).val();
+            });
+            var PrivilegeRoleModel = {};
+            PrivilegeRoleModel.RoleId = $("#drpRoles").val(),
+                PrivilegeRoleModel.PrivilegeId = privileges.toString();
+            startloader();
+            $.ajax({
+                url: "/Entitlement/AddEditPrivilageRoleMapping",
+                data: JSON.stringify(PrivilegeRoleModel),
+                type: "POST",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    obj[0].parentElement.previousElementSibling.children[2].children[2].firstElementChild.firstElementChild.value = "";
+
+                    stoploader();
+                    if (result.status == 1) {
+
+                        $.ajax({
+                            url: "/Entitlement/GetPrivilegesByRoleId",
+                            data: JSON.stringify({ roleId: PrivilegeRoleModel.RoleId }),
+                            type: "POST",
+                            async: false,
+                            contentType: "application/json;charset=utf-8",
+                            dataType: "html",
+                            success: function (data) {
+                                $("#PartialListBox").html("");
+                                $("#PartialListBox").html(data);
+                            }
+                        });
+                        swal.fire({
+                            "title": "",
+                            "text": result.message,
+                            "icon": "success",
+                            "onClose": function (e) {
+                                console.log('on close event fired!');
+                            }
+                        });
+                    }
+                    else if (result.status == 0) {
+                        swal.fire({
+                            "title": "",
+                            "text": result.message,
+                            "icon": "error",
+                            "onClose": function (e) {
+                                console.log('on close event fired!');
+                            }
+                        });
+                    }
+                },
+                error: function (errormessage) {
+                    stoploader();
+                    alert(errormessage.responseText);
+                }
+            });
+        }
+        function AddRole() {
+            $("#AddRoleModal").modal("show");
+            $('.modal-dialog').draggable({
+                handle: ".modal-header"
+            });
+            $("#txtRoleName").val("");
+           // $("#uDrpRole").select2();
+        }
+
+        function SaveRole() {
+            var lRoleName = $("#txtRoleName").val();
+            $("#addUserrole").prop("disabled", true);
+            if (!$("#frmrole").valid()) {
+                $("#addUserrole").prop("disabled", false);
+                return false;
+            }
+
+            $("#AddRoleModal").modal("hide");
+            startloader();
+            $.ajax({
+                url: "/Entitlement/CreateRole",
+                data: JSON.stringify({ RoleName: lRoleName }),
+                type: "POST",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                    $("#addUserrole").attr("disabled", false);
+                    if (result.status == 1) {
+                        if (result.data == "success") {
+                            $.ajax({
+                                url: "/Entitlement/GetAllRoles",
+                                data: null,
+                                type: "POST",
+                                async: false,
+                                contentType: "application/json;charset=utf-8",
+                                dataType: "json",
+                                success: function (data) {
+                                    stoploader();
+                                    if (data.status == 1) {
+                                        var dataLen = data.data.length;
+                                        $('#drpRoles').html('');
+                                        for (i = 0; i < dataLen; i++) {
+                                            $('#drpRoles').append('<option value="' + data.data[i].Value + '">' + data.data[i].Text + '</option>');
+                                        }
+
+                                        swal.fire({
+                                            "title": "",
+                                            "text": result.message,
+                                            "icon": result.data,
+                                            "onClose": function (e) {
+                                                console.log('on close event fired!');
+                                            }
+                                        });
+                                    }
+                                    else if (data.status == 0) {
+                                        stoploader();
+                                        swal.fire({
+                                            "title": "",
+                                            "text": data.message,
+                                            "icon": "error",
+                                            "onClose": function (e) {
+                                                console.log('on close event fired!');
+                                            }
+                                        });
+                                    }
+                                },
+                                error: function (x, y, z) {
+                                    stoploader();
+                                    swal.fire(
+                                        'Error in roles dropdown',
+                                        'error'
+                                    )
+                                }
+                            });
+                        }
+                        else {
+                            stoploader();
+                            swal.fire({
+                                "title": "",
+                                "text": result.message,
+                                "icon": result.data,
+                                "onClose": function (e) {
+                                    console.log('on close event fired!');
+                                }
+                            });
+                        }
+                    }
+                    else if (result.status == 0) {
+                        stoploader();
+                        swal.fire({
+                            "title": "",
+                            "text": result.message,
+                            "icon": "error",
+                            "onClose": function (e) {
+                                console.log('on close event fired!');
+                            }
+                        });
+                    }
+                },
+                error: function (errormessage) {
+                    alert(errormessage.responseText);
+                },
+                complete: function (result) {
+                    stoploader();
+                }
+            });
+        }
+    </script>
+

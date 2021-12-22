@@ -233,6 +233,7 @@
     <EntitySetMapping Name="T_DBCONNECTION">
       <EntityTypeMapping TypeName="Model.T_DBCONNECTION">
         <MappingFragment StoreEntitySet="T_DBCONNECTION">
+          <ScalarProperty Name="DATABASE_VALUE" ColumnName="DATABASE_VALUE" />
           <ScalarProperty Name="DBCONNECTION_ID" ColumnName="DBCONNECTION_ID" />
           <ScalarProperty Name="DATABASENAME" ColumnName="DATABASENAME" />
           <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
@@ -1539,21 +1540,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="T_TEST_DATASETTAG">
-      <EntityTypeMapping TypeName="Model.T_TEST_DATASETTAG">
-        <MappingFragment StoreEntitySet="T_TEST_DATASETTAG">
-          <ScalarProperty Name="SEQUENCE" ColumnName="SEQUENCE" />
-          <ScalarProperty Name="DIARY" ColumnName="DIARY" />
-          <ScalarProperty Name="STEPDESC" ColumnName="STEPDESC" />
-          <ScalarProperty Name="EXPECTEDRESULTS" ColumnName="EXPECTEDRESULTS" />
-          <ScalarProperty Name="FOLDERID" ColumnName="FOLDERID" />
-          <ScalarProperty Name="SETID" ColumnName="SETID" />
-          <ScalarProperty Name="GROUPID" ColumnName="GROUPID" />
-          <ScalarProperty Name="DATASETID" ColumnName="DATASETID" />
-          <ScalarProperty Name="T_TEST_DATASETTAG_ID" ColumnName="T_TEST_DATASETTAG_ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="SP_CheckValidationStoryboard" FunctionName="Model.Store.SP_CheckValidationStoryboard" />
     <FunctionImportMapping FunctionImportName="SP_SaveStoryboard" FunctionName="Model.Store.SP_SaveStoryboard" />
     <EntitySetMapping Name="T_USER_CONFIGURATION">
@@ -1632,6 +1618,43 @@
           <ScalarProperty Name="QUERY_DESC" ColumnName="QUERY_DESC" />
           <ScalarProperty Name="QUERY_NAME" ColumnName="QUERY_NAME" />
           <ScalarProperty Name="QUERY_ID" ColumnName="QUERY_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_SAVE_FOLDER_DATASET" FunctionName="Model.Store.SP_SAVE_FOLDER_DATASET" />
+    <FunctionImportMapping FunctionImportName="DeleteDatsSets" FunctionName="Model.Store.DeleteDatsSets" />
+    <EntitySetMapping Name="T_TEST_DATASETTAG">
+      <EntityTypeMapping TypeName="Model.T_TEST_DATASETTAG">
+        <MappingFragment StoreEntitySet="T_TEST_DATASETTAG">
+          <ScalarProperty Name="SEQUENCE" ColumnName="SEQUENCE" />
+          <ScalarProperty Name="DIARY" ColumnName="DIARY" />
+          <ScalarProperty Name="STEPDESC" ColumnName="STEPDESC" />
+          <ScalarProperty Name="EXPECTEDRESULTS" ColumnName="EXPECTEDRESULTS" />
+          <ScalarProperty Name="FOLDERID" ColumnName="FOLDERID" />
+          <ScalarProperty Name="SETID" ColumnName="SETID" />
+          <ScalarProperty Name="GROUPID" ColumnName="GROUPID" />
+          <ScalarProperty Name="DATASETID" ColumnName="DATASETID" />
+          <ScalarProperty Name="T_TEST_DATASETTAG_ID" ColumnName="T_TEST_DATASETTAG_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="DELETEFOLDERDATASET" FunctionName="Model.Store.DELETEFOLDERDATASET" />
+    <EntitySetMapping Name="T_FOLDER_FILTER">
+      <EntityTypeMapping TypeName="Model.T_FOLDER_FILTER">
+        <MappingFragment StoreEntitySet="T_FOLDER_FILTER">
+          <ScalarProperty Name="STORYBOARD_IDS" ColumnName="STORYBOARD_IDS" />
+          <ScalarProperty Name="PROJECT_IDS" ColumnName="PROJECT_IDS" />
+          <ScalarProperty Name="FILTER_NAME" ColumnName="FILTER_NAME" />
+          <ScalarProperty Name="FILTER_ID" ColumnName="FILTER_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="REL_FOLDER_FILTER">
+      <EntityTypeMapping TypeName="Model.REL_FOLDER_FILTER">
+        <MappingFragment StoreEntitySet="REL_FOLDER_FILTER">
+          <ScalarProperty Name="FILTER_ID" ColumnName="FILTER_ID" />
+          <ScalarProperty Name="FOLDER_ID" ColumnName="FOLDER_ID" />
+          <ScalarProperty Name="REL_FOLDER_FILTER_ID" ColumnName="REL_FOLDER_FILTER_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
