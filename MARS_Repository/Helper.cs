@@ -13,6 +13,8 @@ using System.Data.Metadata.Edm;
 using System.Data.Objects;
 using System.IO;
 using System.Linq;
+using System.Net;
+using System.Net.Sockets;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,7 +34,44 @@ namespace MARS_Repository
                 return ID;
            
         }
+        public static void WriteLogMessage(string message, string currentPath)
+        {
+            try
+            {
+                //string currentPath = System.Web.HttpContext.Current.Server.MapPath("~/" + logPath + "/");
+                DateTime dt = DateTime.Now;
+                string Filepath = currentPath + "\\Log." + dt.Day + "." + dt.Month + "." + dt.Year + ".txt";
+                string Ip = GetLocalIPAddress();
+                string Content = DateTime.Now + " | " + "HostName: " + Ip + " | " + message;
+                WriteToFile(Filepath, Content + Environment.NewLine, true);
+            }
+            catch (Exception EX)
+            {
+                string s = EX.Message;
+            }
+        }
+        private static void WriteToFile(string filePath, string content, bool append)
+        {
+            using (StreamWriter sw = new StreamWriter(filePath, append))
+            {
+                sw.WriteAsync(content);
+                sw.Flush();
+                sw.Close();
+            }
+        }
 
+        public static string GetLocalIPAddress()
+        {
+            var host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (var ip in host.AddressList)
+            {
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    return ip.ToString();
+                }
+            }
+            throw new Exception("No network adapters with an IPv4 address in the system!");
+        }
         //public static string getConnectionString()
         //{
         //    return ConfigurationManager.AppSettings["Entities"];

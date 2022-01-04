@@ -17,22 +17,22 @@ namespace MARS_Repository.Repositories
         Logger ELogger = LogManager.GetLogger("ErrorLog");
         DBEntities enty = Helper.GetMarsEntitiesInstance();
         public string Username = string.Empty;
+        public string currentPath = string.Empty;
 
         public List<T_REGISTERED_APPS> ListApplication()
         {
             try
             {
-                logger.Info(string.Format("List Application start | UserName: {0}", Username));
+                Helper.WriteLogMessage(string.Format("List Application start | UserName: {0}", Username), currentPath);
                 var result = enty.T_REGISTERED_APPS.ToList();
-                logger.Info(string.Format("List Application end | UserName: {0}", Username));
+                Helper.WriteLogMessage(string.Format("List Application end | UserName: {0}", Username), currentPath);
                 return result;
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured Application in ListApplication method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured Application in ListApplication method | UserName: {0}", Username), ex);
+                 Helper.WriteLogMessage(string.Format("Error occured Application in ListApplication method | UserName: {0} | Error: {1}", Username, ex.ToString()), currentPath);
                 if (ex.InnerException != null)
-                    ELogger.ErrorException(string.Format("InnerException : Error occured Application in ListApplication method | UserName: {0}", Username), ex.InnerException);
+                     Helper.WriteLogMessage(string.Format("InnerException : Error occured Application in ListApplication method | UserName: {0} | Error: {1}", Username, ex.InnerException.ToString()), currentPath);
                 throw;
             }
         }
@@ -40,17 +40,16 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("List Application start | UserName: {0}", Username));
+                logger.Info(string.Format("List Application start | UserName: {0}", Username), currentPath);
                 var list = enty.T_REGISTERED_APPS.Select(x => x.APP_SHORT_NAME).ToList();
-                logger.Info(string.Format("List Application end | UserName: {0}", Username));
+                logger.Info(string.Format("List Application end | UserName: {0}", Username), currentPath);
                 return list;
             }
             catch(Exception ex)
             {
-                logger.Error(string.Format("Error occured Application in ListApplicationObjectExport method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured Application in ListApplicationObjectExport method | UserName: {0}", Username), ex);
+                 Helper.WriteLogMessage(string.Format("Error occured Application in ListApplicationObjectExport method | UserName: {0}", Username) , currentPath);
                 if (ex.InnerException != null)
-                    ELogger.ErrorException(string.Format("InnerException : Error occured Application in ListApplicationObjectExport method | UserName: {0}", Username), ex.InnerException);
+                     Helper.WriteLogMessage(string.Format("InnerException : Error occured Application in ListApplicationObjectExport method | UserName: {0}", Username), currentPath);
                 throw;
             }
         }
@@ -58,7 +57,7 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("Get Application Detail start | AppId: {0} | Username: {1}", AppId, Username));
+                Helper.WriteLogMessage(string.Format("Get Application Detail start | AppId: {0} | Username: {1}", AppId, Username), currentPath);
                 var lResult = new ApplicationViewModel();
                 var lList = enty.T_REGISTERED_APPS.Where(x => x.APPLICATION_ID == AppId).Select(y => new ApplicationViewModel
                 {
@@ -71,15 +70,14 @@ namespace MARS_Repository.Repositories
                 {
                     lResult = lList.FirstOrDefault();
                 }
-                logger.Info(string.Format("Get Application Detail end | AppId: {0} | Username: {1}", AppId, Username));
+                Helper.WriteLogMessage(string.Format("Get Application Detail end | AppId: {0} | Username: {1}", AppId, Username), currentPath);
                 return lResult;
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured Application in GetApplicationDetail method | AppId: {0} | UserName: {1}", AppId, Username));
-                ELogger.ErrorException(string.Format("Error occured Application in GetApplicationDetail method | AppId: {0} | UserName: {1}", AppId, Username), ex);
+                 Helper.WriteLogMessage(string.Format("Error occured Application in GetApplicationDetail method | AppId: {0} | UserName: {1} | Error: {2}", AppId, Username,ex.ToString()) , currentPath);
                 if (ex.InnerException != null)
-                    ELogger.ErrorException(string.Format("InnerException : Error occured Application in GetApplicationDetail method | AppId: {0} | UserName: {1}", AppId, Username), ex.InnerException);
+                     Helper.WriteLogMessage(string.Format("InnerException : Error occured Application in GetApplicationDetail method | AppId: {0} | UserName: {1} | Error: {2}", AppId, Username,ex.InnerException.ToString()), currentPath);
                 throw;
             }
         }
@@ -88,7 +86,7 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("Get Application List start | UserName: {0}", Username));
+                Helper.WriteLogMessage(string.Format("Get Application List start | UserName: {0}", Username), currentPath);
                 List<ApplicationViewModel> applst = new List<ApplicationViewModel>();
                 var lapp = enty.T_REGISTERED_APPS.ToList();
                 foreach (var item in lapp)
@@ -112,16 +110,15 @@ namespace MARS_Repository.Repositories
 
                     applst.Add(objApplicationviewmodel);
                 }
-                logger.Info(string.Format("Get Application List end | UserName: {0}", Username));
+                Helper.WriteLogMessage(string.Format("Get Application List end | UserName: {0}", Username), currentPath);
 
                 return applst;
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured Application in GetApplicationList method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured Application in GetApplicationList method | UserName: {0}", Username), ex);
+                 Helper.WriteLogMessage(string.Format("Error occured Application in GetApplicationList method | UserName: {0} | Error: {1}", Username,ex.ToString()) , currentPath);
                 if (ex.InnerException != null)
-                    ELogger.ErrorException(string.Format("InnerException : Error occured Application in GetApplicationList method | UserName: {0}", Username), ex.InnerException);
+                     Helper.WriteLogMessage(string.Format("InnerException : Error occured Application in GetApplicationList method | UserName: {0} | Error: {1}", Username, ex.InnerException.ToString()), currentPath);
                 throw;
             }
         }
@@ -131,7 +128,7 @@ namespace MARS_Repository.Repositories
             try
             {
                 var lresult = false;
-                logger.Info(string.Format("Check Duplicate ApplicationName Exist start | UserName: {0}", Username));
+                Helper.WriteLogMessage(string.Format("Check Duplicate ApplicationName Exist start | UserName: {0}", Username), currentPath);
                 if (ApplicationId != null)
                 {
                     lresult = enty.T_REGISTERED_APPS.Any(x => x.APPLICATION_ID != ApplicationId && x.APP_SHORT_NAME.ToLower().Trim() == applicationname.ToLower().Trim());
@@ -140,15 +137,14 @@ namespace MARS_Repository.Repositories
                 {
                     lresult = enty.T_REGISTERED_APPS.Any(x => x.APP_SHORT_NAME.ToLower().Trim() == applicationname.ToLower().Trim());
                 }
-                logger.Info(string.Format("Check Duplicate ApplicationName Exist end | UserName: {0}", Username));
+                Helper.WriteLogMessage(string.Format("Check Duplicate ApplicationName Exist end | UserName: {0}", Username), currentPath);
                 return lresult;
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured Application in CheckDuplicateApplicationNameExist method | AppId: {0} | UserName: {1}", ApplicationId, Username));
-                ELogger.ErrorException(string.Format("Error occured Application in CheckDuplicateApplicationNameExist method | AppId: {0} | UserName: {1}", ApplicationId, Username), ex);
+                 Helper.WriteLogMessage(string.Format("Error occured Application in CheckDuplicateApplicationNameExist method | AppId: {0} | UserName: {1} | Error: {2}", ApplicationId, Username,ex.ToString()) , currentPath);
                 if (ex.InnerException != null)
-                    ELogger.ErrorException(string.Format("InnerException : Error occured Application in CheckDuplicateApplicationNameExist method | AppId: {0} | UserName: {1}", ApplicationId, Username), ex.InnerException);
+                     Helper.WriteLogMessage(string.Format("InnerException : Error occured Application in CheckDuplicateApplicationNameExist method | AppId: {0} | UserName: {1} | Error: {2}", ApplicationId, Username, ex.InnerException.ToString()), currentPath);
                 throw;
             } 
         }
@@ -166,7 +162,7 @@ namespace MARS_Repository.Repositories
                     var flag = false;
                     if (AppModelEntity.ApplicationId == 0)
                     {
-                        logger.Info(string.Format("Add application start | Application: {0} | Username: {1}", AppModelEntity.ApplicationName, Username));
+                        Helper.WriteLogMessage(string.Format("Add application start | Application: {0} | Username: {1}", AppModelEntity.ApplicationName, Username), currentPath);
 
                         var RegisterTbl = new T_REGISTERED_APPS();
                         RegisterTbl.APPLICATION_ID = Helper.NextTestSuiteId("T_REGISTERED_APPS_SEQ");
@@ -191,13 +187,13 @@ namespace MARS_Repository.Repositories
                         enty.SaveChanges();
 
                         flag = true;
-                        logger.Info(string.Format("Add application end | Application: {0} | Username: {1}", AppModelEntity.ApplicationName, Username));
+                        Helper.WriteLogMessage(string.Format("Add application end | Application: {0} | Username: {1}", AppModelEntity.ApplicationName, Username), currentPath);
 
                     }
                     else
                     {
                         var RegisterTbl = enty.T_REGISTERED_APPS.Find(AppModelEntity.ApplicationId);
-                        logger.Info(string.Format("Edit application start | Application: {0} | ApplicationId: {1} | Username: {2}", AppModelEntity.ApplicationName, AppModelEntity.ApplicationId, Username));
+                        Helper.WriteLogMessage(string.Format("Edit application start | Application: {0} | ApplicationId: {1} | Username: {2}", AppModelEntity.ApplicationName, AppModelEntity.ApplicationId, Username), currentPath);
                         if (RegisterTbl != null)
                         {
                             RegisterTbl.APP_SHORT_NAME = AppModelEntity.ApplicationName;
@@ -216,7 +212,7 @@ namespace MARS_Repository.Repositories
                             enty.SaveChanges();
                         }
                         flag = true;
-                        logger.Info(string.Format("Edit application end | Application: {0} | ApplicationId: {1} | Username: {2}", AppModelEntity.ApplicationName, AppModelEntity.ApplicationId, Username));
+                        Helper.WriteLogMessage(string.Format("Edit application end | Application: {0} | ApplicationId: {1} | Username: {2}", AppModelEntity.ApplicationName, AppModelEntity.ApplicationId, Username), currentPath);
                     }
                     scope.Complete();
                     return flag;
@@ -224,10 +220,9 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured Application in AddEditApplication method | AppId: {0} | UserName: {1}", AppModelEntity.ApplicationId, Username));
-                ELogger.ErrorException(string.Format("Error occured Application in AddEditApplication method | AppId: {0} | UserName: {1}", AppModelEntity.ApplicationId, Username), ex);
+                 Helper.WriteLogMessage(string.Format("Error occured Application in AddEditApplication method | AppId: {0} | UserName: {1} | Error: {2}", AppModelEntity.ApplicationId, Username,ex) , currentPath);
                 if (ex.InnerException != null)
-                    ELogger.ErrorException(string.Format("InnerException : Error occured Application in AddEditApplication method | AppId: {0} | UserName: {1}", AppModelEntity.ApplicationId, Username), ex.InnerException);
+                     Helper.WriteLogMessage(string.Format("InnerException : Error occured Application in AddEditApplication method | AppId: {0} | UserName: {1} | Error: {2}", AppModelEntity.ApplicationId, Username,ex.InnerException), currentPath);
                 throw;
             }
         }
@@ -235,7 +230,7 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("Check TestCase Exists In Appliction start | ApplicationId: {0} | Username: {1}", ApplicationId, Username));
+                Helper.WriteLogMessage(string.Format("Check TestCase Exists In Appliction start | ApplicationId: {0} | Username: {1}", ApplicationId, Username), currentPath);
                 List<string> Applicationname = new List<string>();
                 var lApplicationList = enty.REL_APP_PROJ.Where(x => x.APPLICATION_ID == ApplicationId).ToList();
 
@@ -248,18 +243,17 @@ namespace MARS_Repository.Repositories
                         Applicationname.Add(sname.PROJECT_NAME);
                         Applicationname = (from w in Applicationname select w).Distinct().ToList();
                     }
-                    logger.Info(string.Format("Check TestCase Exists In Appliction end | ApplicationId: {0} | Username: {1}", ApplicationId, Username));
+                    logger.Info(string.Format("Check TestCase Exists In Appliction end | ApplicationId: {0} | Username: {1}", ApplicationId, Username), currentPath);
                     return Applicationname;
                 }
-                logger.Info(string.Format("Check TestCase Exists In Appliction end | ApplicationId: {0} | Username: {1}", ApplicationId, Username));
+                Helper.WriteLogMessage(string.Format("Check TestCase Exists In Appliction end | ApplicationId: {0} | Username: {1}", ApplicationId, Username), currentPath);
                 return Applicationname;
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured Application in CheckTestCaseExistsInAppliction method | AppId: {0} | UserName: {1}", ApplicationId, Username));
-                ELogger.ErrorException(string.Format("Error occured Application in CheckTestCaseExistsInAppliction method | AppId: {0} | UserName: {1}", ApplicationId, Username), ex);
+                 Helper.WriteLogMessage(string.Format("Error occured Application in CheckTestCaseExistsInAppliction method | AppId: {0} | UserName: {1} | Error: {2}", ApplicationId, Username, ex) , currentPath);
                 if (ex.InnerException != null)
-                    ELogger.ErrorException(string.Format("InnerException : Error occured Application in CheckTestCaseExistsInAppliction method | AppId: {0} | UserName: {1}", ApplicationId, Username), ex.InnerException);
+                     Helper.WriteLogMessage(string.Format("InnerException : Error occured Application in CheckTestCaseExistsInAppliction method | AppId: {0} | UserName: {1} | Error: {2}", ApplicationId, Username,ex.InnerException), currentPath);
                 throw;
             }
            
@@ -270,7 +264,7 @@ namespace MARS_Repository.Repositories
             {
                 using (TransactionScope scope = new TransactionScope())
                 {
-                    logger.Info(string.Format("Delete Application start | ApplicationId: {0} | Username: {1}", ApplicationId, Username));
+                    Helper.WriteLogMessage(string.Format("Delete Application start | ApplicationId: {0} | Username: {1}", ApplicationId, Username), currentPath);
                     var flag = false;
                     var result = enty.T_REGISTERED_APPS.FirstOrDefault(x => x.APPLICATION_ID == ApplicationId);
                     if (result != null)
@@ -304,17 +298,16 @@ namespace MARS_Repository.Repositories
                         enty.SaveChanges();
                         flag = true;
                     }
-                    logger.Info(string.Format("Delete Application end | ApplicationId: {0} | Username: {1}", ApplicationId, Username));
+                    Helper.WriteLogMessage(string.Format("Delete Application end | ApplicationId: {0} | Username: {1}", ApplicationId, Username), currentPath);
                     scope.Complete();
                     return flag;
                 }
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured Application in DeleteApplication method | AppId: {0} | UserName: {1}", ApplicationId, Username));
-                ELogger.ErrorException(string.Format("Error occured Application in DeleteApplication method | AppId: {0} | UserName: {1}", ApplicationId, Username), ex);
+                 Helper.WriteLogMessage(string.Format("Error occured Application in DeleteApplication method | AppId: {0} | UserName: {1} | Error: {2}", ApplicationId, Username,ex) , currentPath);
                 if (ex.InnerException != null)
-                    ELogger.ErrorException(string.Format("InnerException : Error occured Application in DeleteApplication method | AppId: {0} | UserName: {1}", ApplicationId, Username), ex.InnerException);
+                     Helper.WriteLogMessage(string.Format("InnerException : Error occured Application in DeleteApplication method | AppId: {0} | UserName: {1} | Error:{2}", ApplicationId, Username,ex.InnerException), currentPath);
                 throw;
             }
            
@@ -323,17 +316,16 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("Get ApplicationName start | ApplicationId: {0} | Username: {1}", ApplicationId, Username));
+                Helper.WriteLogMessage(string.Format("Get ApplicationName start | ApplicationId: {0} | Username: {1}", ApplicationId, Username), currentPath);
                 var result = enty.T_REGISTERED_APPS.FirstOrDefault(x => x.APPLICATION_ID == ApplicationId).APP_SHORT_NAME;
-                logger.Info(string.Format("Get ApplicationName end | ApplicationId: {0} | Username: {1}", ApplicationId, Username));
+                Helper.WriteLogMessage(string.Format("Get ApplicationName end | ApplicationId: {0} | Username: {1}", ApplicationId, Username), currentPath);
                 return result;
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured Application in GetApplicationNameById method | AppId: {0} | UserName: {1}", ApplicationId, Username));
-                ELogger.ErrorException(string.Format("Error occured Application in GetApplicationNameById method | AppId: {0} | UserName: {1}", ApplicationId, Username), ex);
+                 Helper.WriteLogMessage(string.Format("Error occured Application in GetApplicationNameById method | AppId: {0} | UserName: {1} | Error: {2}", ApplicationId, Username,ex) , currentPath);
                 if (ex.InnerException != null)
-                    ELogger.ErrorException(string.Format("InnerException : Error occured Application in GetApplicationNameById method | AppId: {0} | UserName: {1}", ApplicationId, Username), ex.InnerException);
+                     Helper.WriteLogMessage(string.Format("InnerException : Error occured Application in GetApplicationNameById method | AppId: {0} | UserName: {1} | Error: {2}", ApplicationId, Username,ex.InnerException), currentPath);
                 throw;
             }
         }

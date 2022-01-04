@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Net.Security;
+using System.Net.Sockets;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,7 +22,8 @@ namespace MARS_Web.Helper
         public static string EmailId = WebConfigurationManager.AppSettings["EmailId"];
         public static string EmailPassword = WebConfigurationManager.AppSettings["EmailPassword"];
         public static string ForgotPasswordSubject = WebConfigurationManager.AppSettings["ForgotPasswordSubject"];
-
+        public static string logPath = WebConfigurationManager.AppSettings["LogPathLocation"];
+        
         public static string ForgotPsw(string lUserEmail, string lPsw, string lUserName, string body, string ltempKey, string lConnection,string lLink)
     {
      
@@ -60,8 +62,25 @@ namespace MARS_Web.Helper
             {
                 DateTime dt = DateTime.Now;
                 string Filepath = currentPath + "\\Log." + dt.Day + "." + dt.Month + "." + dt.Year + ".txt";
-
+                string Ip = GetLocalIPAddress();
                 string Content = DateTime.Now + " | " + Convert.ToString(logtype) + " | " + filename + " | " + message;
+                WriteToFile(Filepath, Content + Environment.NewLine, true);
+            }
+            catch (Exception EX)
+            {
+                string s = EX.Message;
+            }
+        }
+
+        public static void WriteLogMessage(string message)
+        {
+            try
+            {
+                string currentPath = System.Web.HttpContext.Current.Server.MapPath("~/" + logPath + "/");
+                DateTime dt = DateTime.Now;
+                string Filepath = currentPath + "\\Log." + dt.Day + "." + dt.Month + "." + dt.Year + ".txt";
+                string Ip = GetLocalIPAddress();
+                string Content = DateTime.Now + " | " + "HostName: " + Ip + " | " + message;
                 WriteToFile(Filepath, Content + Environment.NewLine, true);
             }
             catch (Exception EX)
@@ -77,6 +96,19 @@ namespace MARS_Web.Helper
                 sw.Flush();
                 sw.Close();
             }
+        }
+
+        public static string GetLocalIPAddress()
+        {
+            var host = Dns.GetHostEntry(Dns.GetHostName());
+            foreach (var ip in host.AddressList)
+            {
+                if (ip.AddressFamily == AddressFamily.InterNetwork)
+                {
+                    return ip.ToString();
+                }
+            }
+            throw new Exception("No network adapters with an IPv4 address in the system!");
         }
 
         static void NEVER_EAT_POISON_Disable_CertificateValidation()

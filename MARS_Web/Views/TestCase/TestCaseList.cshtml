@@ -241,7 +241,7 @@
                             
                             var lRenderHtml = "";
                             if (lEditTCdisplay == "true") {
-                                lRenderHtml = " <a href='#' class='btn btn-sm btn-clean btn-icon btn-icon-md' title='View'  data-name='" + lName + "' data-des='" + lDes + "'  data-app='" + lApplication + "' data-testsuite='" + lTestSuite + "'  data-appid='" + lApplicationId + "' data-testsuiteid='" + lTestSuiteId + "' onclick=AddEditTestCase(" + lid + ",$(this))><i class='la la-edit' ></i></a> ";
+                                lRenderHtml = " <a href='#' class='btn btn-sm btn-clean btn-icon btn-icon-md' title='Edit'  data-name='" + lName + "' data-des='" + lDes + "'  data-app='" + lApplication + "' data-testsuite='" + lTestSuite + "'  data-appid='" + lApplicationId + "' data-testsuiteid='" + lTestSuiteId + "' onclick=AddEditTestCase(" + lid + ",$(this))><i class='la la-edit' ></i></a> ";
                             }
                             if (lDeleteTCdisplay == "true") {
                                 lRenderHtml = lRenderHtml + "<a href='#' class='btn btn-sm btn-clean btn-icon btn-icon-md' title='Delete' data-testcasename='" + lName + "' onclick='TestCaseDelete(" + lid + ",$(this))' ><i class='la la-trash la-xs'></i></a>";

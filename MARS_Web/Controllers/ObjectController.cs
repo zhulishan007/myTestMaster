@@ -32,10 +32,16 @@ namespace MARS_Web.Controllers
         }
         Logger logger = LogManager.GetLogger("Log");
         Logger ELogger = LogManager.GetLogger("ErrorLog");
+        public string GetLogPathLocation()
+        {
+            string logPath = WebConfigurationManager.AppSettings["LogPathLocation"];
+            return System.Web.HttpContext.Current.Server.MapPath("~/" + logPath + "/");
+        }
         // GET: Object
         #region Crud operation for Object
         public ActionResult ObjectList()
         {
+            string currentPath = GetLogPathLocation();
             try
             {
                 var repo = new ApplicationRepository();
@@ -69,6 +75,7 @@ namespace MARS_Web.Controllers
         //This method get all application 
         public JsonResult ApplicationList()
         {
+            string currentPath = GetLogPathLocation();
             ResultModel resultModel = new ResultModel();
             try
             {
@@ -94,6 +101,7 @@ namespace MARS_Web.Controllers
         [HttpPost]
         public JsonResult DatLoad(string appId)
         {
+            string currentPath = GetLogPathLocation();
             logger.Info(string.Format("Object list open start | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
             string search = Request.Form.GetValues("search[value]")[0];
             string draw = Request.Form.GetValues("draw")[0];
@@ -163,6 +171,7 @@ namespace MARS_Web.Controllers
         //Loads dropdown of Pegwindow by ApplicationId in Add/Edit/Saveas Object
         public JsonResult LoadPegwindow(long ApplicationId)
         {
+            string currentPath = GetLogPathLocation();
             ResultModel resultModel = new ResultModel();
             try
             {
@@ -188,6 +197,7 @@ namespace MARS_Web.Controllers
         //Add/Update object values
         public JsonResult AddEditObject(ObjectModel objmodel)
         {
+            string currentPath = GetLogPathLocation();
             logger.Info(string.Format("Object Add/Edit  Modal open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
             ResultModel resultModel = new ResultModel();
             try
@@ -227,6 +237,7 @@ namespace MARS_Web.Controllers
         //Delete the object data by objectid and appid
         public JsonResult DeleteObject(long objectid, long appid,string parent)
         {
+            string currentPath = GetLogPathLocation();
             logger.Info(string.Format("Object Delete start | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
             ResultModel resultModel = new ResultModel();
             try
@@ -282,6 +293,7 @@ namespace MARS_Web.Controllers
         //This method will check Converting Object Exists
         public JsonResult CheckConvertingObjectExists(string objectname, long appid, string parentobj, string objecttype)
         {
+            string currentPath = GetLogPathLocation();
             ResultModel resultModel = new ResultModel();
             try
             {
@@ -308,6 +320,7 @@ namespace MARS_Web.Controllers
         //This method will copy all objects
         public JsonResult CopyAllObjects(long copyfromappid, long copytoappid)
         {
+            string currentPath = GetLogPathLocation();
             ResultModel resultModel = new ResultModel();
             try
             {
@@ -335,6 +348,7 @@ namespace MARS_Web.Controllers
         //This method will Check Duplicate Object List
         public JsonResult CheckDuplicateObjectList(long copyfromappid, long copytoappid)
         {
+            string currentPath = GetLogPathLocation();
             ResultModel resultModel = new ResultModel();
             try
             {
@@ -362,6 +376,7 @@ namespace MARS_Web.Controllers
         //This method will copy objects
         public JsonResult CopyObjects(List<long> model, long fromid, long toid)
         {
+            string currentPath = GetLogPathLocation();
             ResultModel resultModel = new ResultModel();
             try
             {
@@ -390,6 +405,7 @@ namespace MARS_Web.Controllers
         //Returns all the Object Ids from the selected Application
         public JsonResult GetObjectIdByApp(long appid)
         {
+            string currentPath = GetLogPathLocation();
             ResultModel resultModel = new ResultModel();
             try
             {
@@ -418,7 +434,7 @@ namespace MARS_Web.Controllers
         //This method will export object
         public JsonResult ExportObject(string application)
         {
-
+            string currentPath = GetLogPathLocation();
             string name = "Log_Object_Export" + "_" + DateTime.Now.ToString(" yyyy-MM-dd HH-mm-ss") + ".xlsx";
             string lFileName = "Objects" + "_" + DateTime.Now.ToString("yyyyMMdd") + "_" + DateTime.Now.ToString("HHmmss") + ".xlsx";
             string log_path = WebConfigurationManager.AppSettings["ExportLogPath"];
@@ -507,6 +523,7 @@ namespace MARS_Web.Controllers
 
         public ActionResult ImportObjects()
         {
+            string currentPath = GetLogPathLocation();
             try
             {
                 var userId = SessionManager.TESTER_ID;
@@ -530,6 +547,7 @@ namespace MARS_Web.Controllers
         //This method will import object file 
         public ActionResult ImportFile()
         {
+            string currentPath = GetLogPathLocation();
             string fileName = string.Empty;
 
             ViewBag.FileName = "";
@@ -666,6 +684,7 @@ namespace MARS_Web.Controllers
 
         public void setObjectGridWidth()
         {
+            string currentPath = GetLogPathLocation();
             try
             {
                 var userId = SessionManager.TESTER_ID;
@@ -692,6 +711,7 @@ namespace MARS_Web.Controllers
 
         public JsonResult RefreshCache()
         {
+            string currentPath = GetLogPathLocation();
             logger.Info(string.Format("RefreshCache start | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
 
             string BaseURL = WebConfigurationManager.AppSettings["RefreshCacheURL"];

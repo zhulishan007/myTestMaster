@@ -20,6 +20,7 @@ namespace MARS_Repository.Repositories
         Logger ELogger = LogManager.GetLogger("ErrorLog");
         DBEntities entity = Helper.GetMarsEntitiesInstance();
         public string Username = string.Empty;
+        public string LogFolderPath = string.Empty;
 
         internal const string USER_SEQ = "SEQ_TESTER_ID";
 

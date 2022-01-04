@@ -1346,6 +1346,8 @@ namespace MARS_Repository.Repositories
                         }
                         item.COMMENT = item.COMMENT.Replace("&amp;", "&").Replace("&quot;", "\"").Replace("&lt;", "<").Replace("&gt;", ">").Replace("~", ",").Replace("&apos;", "'");
                     }
+                    item.key_word_name = item.key_word_name == null ? "" : item.key_word_name;
+                    item.object_happy_name = item.object_happy_name == null ? "" : item.object_happy_name;
                 }
 
 
@@ -2753,7 +2755,7 @@ namespace MARS_Repository.Repositories
             {
                 logger.Info(string.Format("InsertStgTestCaseSave start | TestCaseId: {0} | valFeedD: {1} | UserName: {2}", testCaseId, valFeedD, Username));
                 OracleTransaction ltransaction;
-
+                logger.Info(string.Format("insert TBLSTGTESTCASESAVE table start | TestCaseId: {0} | valFeedD: {1} | UserName: {2}", testCaseId, valFeedD, Username));
                 OracleConnection lconnection = new OracleConnection(lConnectionStr);
                 lconnection.Open();
                 ltransaction = lconnection.BeginTransaction();
@@ -2880,11 +2882,14 @@ namespace MARS_Repository.Repositories
                     }
 
                     ltransaction.Commit();
+                    logger.Info(string.Format("insert TBLSTGTESTCASESAVE table end | TestCaseId: {0} | valFeedD: {1} | UserName: {2}", testCaseId, valFeedD, Username));
                     lconnection.Close();
 
                     ObjectParameter op = new ObjectParameter("RESULT", "");
+                    logger.Info(string.Format("SP_SaveTestcase SP start Execution | TestCaseId: {0} | valFeedD: {1} | UserName: {2}", testCaseId, valFeedD, Username));
                     entity.SP_SaveTestcase(valFeedD, int.Parse(testCaseId), op);
                     entity.SaveChanges();
+                    logger.Info(string.Format("SP_SaveTestcase SP end Execution | TestCaseId: {0} | valFeedD: {1} | UserName: {2}", testCaseId, valFeedD, Username));
                 }
                 logger.Info(string.Format("InsertStgTestCaseSave end | TestCaseId: {0} | valFeedD: {1} | UserName: {2}", testCaseId, valFeedD, Username));
             }
@@ -3308,30 +3313,51 @@ namespace MARS_Repository.Repositories
             try
             {
                 logger.Info(string.Format("GetTagDetails start | datasetid: {0} | Username: {1}", datasetid, Username));
-                var tags = (from k in entity.T_TEST_DATASETTAG
-                            join k1 in entity.T_TEST_GROUP on Convert.ToInt64(k.GROUPID) equals k1.GROUPID into grp
-                            from k2 in grp.DefaultIfEmpty()
-                            join k3 in entity.T_TEST_FOLDER on Convert.ToInt64(k.FOLDERID) equals k3.FOLDERID into fold
-                            from k4 in fold.DefaultIfEmpty()
-                            join k5 in entity.T_TEST_SET on Convert.ToInt64(k.SETID) equals k5.SETID into set
-                            from k6 in set.DefaultIfEmpty()
+                //var tags = (from k in entity.T_TEST_DATASETTAG
+                //            join k1 in entity.T_TEST_GROUP on long.Parse(k.GROUPID) equals k1.GROUPID into grp
+                //            from k2 in grp.DefaultIfEmpty() 
+                //            join k3 in entity.T_TEST_FOLDER on long.Parse(k.FOLDERID) equals k3.FOLDERID into fold
+                //            from k4 in fold.DefaultIfEmpty()
+                //            join k5 in entity.T_TEST_SET on long.Parse(k.SETID) equals k5.SETID into set
+                //            from k6 in set.DefaultIfEmpty()
 
+                //            where k.DATASETID == datasetid
+                //            select new DataSetTagModel
+                //            {
+                //                Group = k2.GROUPNAME == null ? "" : k2.GROUPNAME,
+                //                Set = k6.SETNAME == null ? "" : k6.SETNAME,
+                //                Folder = k4.FOLDERNAME == null ? "" : k4.FOLDERNAME,
+                //                Sequence = k.SEQUENCE == null ? 0 : k.SEQUENCE,
+                //                Expectedresults = k.EXPECTEDRESULTS == null ? "" : k.EXPECTEDRESULTS,
+                //                Diary = k.DIARY == null ? "" : k.DIARY,
+                //                Datasetid = k.DATASETID == null ? 0 : k.DATASETID,
+                //                Tagid = k.T_TEST_DATASETTAG_ID,
+                //                StepDesc = k.STEPDESC == null ? "" : k.STEPDESC,
+
+                //            }
+
+                //     ).ToList();
+
+                var tags = (from k in entity.T_TEST_DATASETTAG.AsEnumerable()
+                            join k1 in entity.T_TEST_GROUP.AsEnumerable() on new { groupId = k.GROUPID } equals new { groupId = k1.GROUPID.ToString() } into grp
+                            from k2 in grp.DefaultIfEmpty()
+                            join k3 in entity.T_TEST_FOLDER.AsEnumerable() on new { folderId = k.FOLDERID } equals new { folderId = k3.FOLDERID.ToString() } into fold
+                            from k4 in fold.DefaultIfEmpty()
+                            join k5 in entity.T_TEST_SET.AsEnumerable() on new { setId = k.SETID } equals new { setId = k5.SETID.ToString() } into set
+                            from k6 in set.DefaultIfEmpty()
                             where k.DATASETID == datasetid
                             select new DataSetTagModel
                             {
-                                Group = k2.GROUPNAME == null ? "" : k2.GROUPNAME,
-                                Set = k6.SETNAME == null ? "" : k6.SETNAME,
-                                Folder = k4.FOLDERNAME == null ? "" : k4.FOLDERNAME,
-                                Sequence = k.SEQUENCE == null ? 0 : k.SEQUENCE,
-                                Expectedresults = k.EXPECTEDRESULTS == null ? "" : k.EXPECTEDRESULTS,
-                                Diary = k.DIARY == null ? "" : k.DIARY,
-                                Datasetid = k.DATASETID == null ? 0 : k.DATASETID,
+                                Group = k2 == null ? "" : k2.GROUPNAME,
+                                Set = k6 == null ? "" : k6.SETNAME,
+                                Folder = k4 == null ? "" : k4.FOLDERNAME,
+                                Sequence = k == null ? 0 : k.SEQUENCE,
+                                Expectedresults = k == null ? "" : k.EXPECTEDRESULTS,
+                                Diary = k == null ? "" : k.DIARY,
+                                Datasetid = k == null ? 0 : k.DATASETID,
                                 Tagid = k.T_TEST_DATASETTAG_ID,
-                                StepDesc = k.STEPDESC == null ? "" : k.STEPDESC,
-
-                            }
-
-                     ).ToList();
+                                StepDesc = k == null ? "" : k.STEPDESC
+                            }).ToList();
                 logger.Info(string.Format("GetTagDetails end | datasetid: {0} | Username: {1}", datasetid, Username));
                 return tags;
             }

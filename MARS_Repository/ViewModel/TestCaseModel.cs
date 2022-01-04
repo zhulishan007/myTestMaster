@@ -26,7 +26,7 @@ namespace MARS_Repository.ViewModel
         public long Folderid { get; set; }
         public long Groupid { get; set; }
         public long Setid { get; set; }
-        public decimal? Sequence { get; set; }
+        public long? Sequence { get; set; }
         public string Expectedresults { get; set; }
         public string StepDesc { get; set; }
         public string Diary { get; set; }

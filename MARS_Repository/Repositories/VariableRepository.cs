@@ -19,7 +19,7 @@ namespace MARS_Repository.Repositories
         Logger ELogger = LogManager.GetLogger("ErrorLog");
         DBEntities enty = Helper.GetMarsEntitiesInstance();
         public string Username = string.Empty;
-
+        public string currentPath = string.Empty;
         public static OracleConnection GetOracleConnection(string StrConnection)
         {
             return new OracleConnection(StrConnection);
@@ -28,18 +28,17 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("Check Duplicate VariableName start | Id: {0} | Username: {1}", lookupid, Username));
+                Helper.WriteLogMessage(string.Format("Check Duplicate VariableName start | Id: {0} | Username: {1}", lookupid, Username), currentPath);
                 var result = entity.SYSTEM_LOOKUP.FirstOrDefault(x => x.LOOKUP_ID == lookupid);
                 var lresult = result.TABLE_NAME + ',' + result.STATUS;
-                logger.Info(string.Format("Check Duplicate VariableName end | Id: {0} | Username: {1}", lookupid, Username));
+                Helper.WriteLogMessage(string.Format("Check Duplicate VariableName end | Id: {0} | Username: {1}", lookupid, Username), currentPath);
                 return result;
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Variable for GetVariableNameById method | VariableId : {0} | UserName: {1}", lookupid, Username));
-                ELogger.ErrorException(string.Format("Error occured in Variable for GetVariableNameById method | VariableId : {0} | UserName: {1}", lookupid, Username), ex);
+                Helper.WriteLogMessage(string.Format("Error occured in Variable for GetVariableNameById method | VariableId : {0} | UserName: {1} | Error: {2}", lookupid,Username, ex.ToString()), currentPath);
                 if (ex.InnerException != null)
-                    ELogger.ErrorException(string.Format("InnerException : Error occured in Variable for GetVariableNameById method | VariableId : {0} | UserName: {1}", lookupid, Username), ex.InnerException);
+                    Helper.WriteLogMessage(string.Format("InnerException : Error occured in Variable for GetVariableNameById method | VariableId : {0} | UserName: {1} | Error: {2}", lookupid, Username, ex.InnerException.ToString()), currentPath);
                 throw;
             }
         }
@@ -48,18 +47,17 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("GetVariableById start | lookupid: {0} | Username: {1}", lookupid, Username));
+                Helper.WriteLogMessage(string.Format("GetVariableById start | lookupid: {0} | Username: {1}", lookupid, Username), currentPath);
                 var result = entity.SYSTEM_LOOKUP.FirstOrDefault(x => x.LOOKUP_ID == lookupid);
                 var lresult = result.TABLE_NAME + ',' + result.STATUS;
-                logger.Info(string.Format("GetVariableById end | lookupid: {0} | Username: {1}", lookupid, Username));
+                Helper.WriteLogMessage(string.Format("GetVariableById end | lookupid: {0} | Username: {1}", lookupid, Username), currentPath);
                 return lresult;
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Variable for GetVariableById method | VariableId : {0} | UserName: {1}", lookupid, Username));
-                ELogger.ErrorException(string.Format("Error occured in Variable for GetVariableById method | VariableId : {0} | UserName: {1}", lookupid, Username), ex);
+                Helper.WriteLogMessage(string.Format("Error occured in Variable for GetVariableById method | VariableId : {0} | UserName: {1} | Error: {2}", lookupid, Username, ex.ToString()), currentPath);
                 if (ex.InnerException != null)
-                    ELogger.ErrorException(string.Format("InnerException : Error occured in Variable for GetVariableById method | VariableId : {0} | UserName: {1}", lookupid, Username), ex.InnerException);
+                    Helper.WriteLogMessage(string.Format("InnerException : Error occured in Variable for GetVariableById method | VariableId : {0} | UserName: {1} | Error: {2}", lookupid, Username, ex.InnerException.ToString()), currentPath);
                 throw;
             }
         }
@@ -67,17 +65,16 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("GetVariableNameByName start | VariableName: {0} | Username: {1}", vname, Username));
+                Helper.WriteLogMessage(string.Format("GetVariableNameByName start | VariableName: {0} | Username: {1}", vname, Username), currentPath);
                 var result = entity.SYSTEM_LOOKUP.FirstOrDefault(x => x.FIELD_NAME.ToLower().Trim() == vname.ToLower().Trim());
-                logger.Info(string.Format("GetVariableNameByName end | VariableName: {0} | Username: {1}", vname, Username));
+                Helper.WriteLogMessage(string.Format("GetVariableNameByName end | VariableName: {0} | Username: {1}", vname, Username), currentPath);
                 return result;
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Variable for GetVariableNameByName method | VariableName : {0} | UserName: {1}", vname, Username));
-                ELogger.ErrorException(string.Format("Error occured in Variable for GetVariableNameByName method | VariableName : {0} | UserName: {1}", vname, Username), ex);
+                Helper.WriteLogMessage(string.Format("Error occured in Variable for GetVariableNameByName method | VariableName : {0} | UserName: {1} | Error: {2}", vname, Username, ex.ToString()), currentPath);
                 if (ex.InnerException != null)
-                    ELogger.ErrorException(string.Format("InnerException : Error occured in Variable for GetVariableNameByName method | VariableName : {0} | UserName: {1}", vname, Username), ex.InnerException);
+                    Helper.WriteLogMessage(string.Format("InnerException : Error occured in Variable for GetVariableNameByName method | VariableName : {0} | UserName: {1} | Error: {2}", vname, Username, ex.InnerException.ToString()), currentPath);
                 throw;
             }
         }
@@ -85,7 +82,7 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("Check Duplicate VariableName start | Id: {0} | VariableName: {1} | Username: {2}", lookupid, name, Username));
+                Helper.WriteLogMessage(string.Format("Check Duplicate VariableName start | Id: {0} | VariableName: {1} | Username: {2}", lookupid, name, Username), currentPath);
                 var lresult = false;
                 if (lookupid != 0)
                 {
@@ -96,15 +93,14 @@ namespace MARS_Repository.Repositories
                     lresult = entity.SYSTEM_LOOKUP.Any(x => x.FIELD_NAME.ToLower().Trim() == name.ToLower().Trim());
                 }
 
-                logger.Info(string.Format("Check Duplicate VariableName end | Id: {0} | VariableName: {1} | Username: {2}", lookupid, name, Username));
+                Helper.WriteLogMessage(string.Format("Check Duplicate VariableName end | Id: {0} | VariableName: {1} | Username: {2}", lookupid, name, Username), currentPath);
                 return lresult;
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Variable for CheckDuplicateVariableName method | VariableId : {0} | Variable Name : {1} | UserName: {2}", lookupid, name, Username));
-                ELogger.ErrorException(string.Format("Error occured in Variable for CheckDuplicateVariableName method | VariableId : {0} | Variable Name : {1} | UserName: {2}", lookupid, name, Username), ex);
+                Helper.WriteLogMessage(string.Format("Error occured in Variable for CheckDuplicateVariableName method | VariableId : {0} | Variable Name : {1} | UserName: {2} | Error: {3}", lookupid, name, Username, ex.ToString()), currentPath);
                 if (ex.InnerException != null)
-                    ELogger.ErrorException(string.Format("InnerException : Error occured in Variable for CheckDuplicateVariableName method | VariableId : {0} | Variable Name : {1} | UserName: {2}", lookupid, name, Username), ex.InnerException);
+                    Helper.WriteLogMessage(string.Format("InnerException : Error occured in Variable for CheckDuplicateVariableName method | VariableId : {0} | Variable Name : {1} | UserName: {2} | Error: {3}", lookupid, name, Username, ex.InnerException.ToString()), currentPath);
                 throw;
             }
         }
@@ -112,7 +108,7 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("Get Variable List start | UserName: {0}", Username));
+                Helper.WriteLogMessage(string.Format("Get Variable List start | UserName: {0}", Username), currentPath);
                 DataSet lds = new DataSet();
                 DataTable ldt = new DataTable();
 
@@ -176,15 +172,14 @@ namespace MARS_Repository.Repositories
                         TotalCount = Convert.ToInt32(row.Field<decimal>("RESULT_COUNT"))
                     }).ToList();
 
-                logger.Info(string.Format("Get Variable List end | UserName: {0}", Username));
+                Helper.WriteLogMessage(string.Format("Get Variable List end | UserName: {0}", Username), currentPath);
                 return resultList;
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Variable for GetVariables method | Connection String : {0} | Schema : {1} | UserName: {2}", lconstring, schema, Username));
-                ELogger.ErrorException(string.Format("Error occured in Variable for GetVariables method | Connection String : {0} | Schema : {1} | UserName: {2}", lconstring, schema, Username), ex);
+                Helper.WriteLogMessage(string.Format("Error occured in Variable for GetVariables method | Connection String : {0} | Schema : {1} | UserName: {2} | Error: {3}", lconstring, schema, Username, ex.ToString()), currentPath);
                 if (ex.InnerException != null)
-                    ELogger.ErrorException(string.Format("InnerException : Error occured in Variable for GetVariables method | Connection String : {0} | Schema : {1} | UserName: {2}", lconstring, schema, Username), ex.InnerException);
+                    Helper.WriteLogMessage(string.Format("InnerException : Error occured in Variable for GetVariables method | Connection String : {0} | Schema : {1} | UserName: {2} | Error: {3}", lconstring, schema, Username, ex.InnerException.ToString()), currentPath);
                 throw;
             }
         }
@@ -193,7 +188,7 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("Export Variable start | Username: {0}", Username));
+                Helper.WriteLogMessage(string.Format("Export Variable start | Username: {0}", Username), currentPath);
                 DataSet lds = new DataSet();
                 DataTable ldt = new DataTable();
 
@@ -234,15 +229,14 @@ namespace MARS_Repository.Repositories
                         BaseComp = Convert.ToString(row.Field<string>("Base/Comp")),
 
                     }).ToList();
-                logger.Info(string.Format("Export Variable end | Username: {0}", Username));
+                Helper.WriteLogMessage(string.Format("Export Variable end | Username: {0}", Username), currentPath);
                 return resultList;
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Variable for ExportVariableList method | Connection String : {0} | Schema : {1} | UserName: {2}", lstrConn, schema, Username));
-                ELogger.ErrorException(string.Format("Error occured in Variable for ExportVariableList method | Connection String : {0} | Schema : {1} | UserName: {2}", lstrConn, schema, Username), ex);
+                Helper.WriteLogMessage(string.Format("Error occured in Variable for ExportVariableList method | Connection String : {0} | Schema : {1} | UserName: {2} | Error: {3}", lstrConn, schema, Username, ex.ToString()), currentPath);
                 if (ex.InnerException != null)
-                    ELogger.ErrorException(string.Format("InnerException : Error occured in Variable for ExportVariableList method | Connection String : {0} | Schema : {1} | UserName: {2}", lstrConn, schema, Username), ex.InnerException);
+                    Helper.WriteLogMessage(string.Format("InnerException : Error occured in Variable for ExportVariableList method | Connection String : {0} | Schema : {1} | UserName: {2} | Error: {3}", lstrConn, schema, Username, ex.InnerException.ToString()), currentPath);
                 throw;
             }
         }
@@ -253,7 +247,7 @@ namespace MARS_Repository.Repositories
             {
                 using (TransactionScope scope = new TransactionScope())
                 {
-                    logger.Info(string.Format("Delete Variable start | VariableId: {0} | Username: {1}", lid, Username));
+                    Helper.WriteLogMessage(string.Format("Delete Variable start | VariableId: {0} | Username: {1}", lid, Username), currentPath);
                     var flag = false;
                     var lresult = GetVariableNameById(lid);
                     if (lresult != null)
@@ -262,17 +256,16 @@ namespace MARS_Repository.Repositories
                         entity.SaveChanges();
                         flag = true;
                     }
-                    logger.Info(string.Format("Delete Variable end | VariableId: {0} | Username: {1}", lid, Username));
+                    Helper.WriteLogMessage(string.Format("Delete Variable end | VariableId: {0} | Username: {1}", lid, Username), currentPath);
                     scope.Complete();
                     return flag;
                 }
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Variable for DeleteVariable method | VariableId : {0} | UserName: {1}", lid, Username));
-                ELogger.ErrorException(string.Format("Error occured in Variable for DeleteVariable method | VariableId : {0} | UserName: {1}", lid, Username), ex);
+                Helper.WriteLogMessage(string.Format("Error occured in Variable for DeleteVariable method | VariableId : {0} | UserName: {1} | Error: {2}", lid, Username, ex.ToString()), currentPath);
                 if (ex.InnerException != null)
-                    ELogger.ErrorException(string.Format("InnerException : Error occured in Variable for DeleteVariable method | VariableId : {0} | UserName: {1}", lid, Username), ex.InnerException);
+                    Helper.WriteLogMessage(string.Format("InnerException : Error occured in Variable for DeleteVariable method | VariableId : {0} | UserName: {1} | Error: {2}", lid, Username, ex.InnerException.ToString()), currentPath);
                 throw;
             }
         }
@@ -300,7 +293,7 @@ namespace MARS_Repository.Repositories
                         var lflag = CheckDuplicateVariableName(lookup.Lookupid, lookup.field_name);
                         if (lresult == null)
                         {
-                            logger.Info(string.Format("Add variable start | variable: {0} | Username: {1}", lookup.field_name, Username));
+                            Helper.WriteLogMessage(string.Format("Add variable start | variable: {0} | Username: {1}", lookup.field_name, Username), currentPath);
                             SYSTEM_LOOKUP tbl = new SYSTEM_LOOKUP();
                             var lookupID = Helper.NextTestSuiteId("SYSTEM_LOOKUP_SEQ");
                             tbl.LOOKUP_ID = lookupID;
@@ -312,12 +305,12 @@ namespace MARS_Repository.Repositories
                             entity.SYSTEM_LOOKUP.Add(tbl);
                             entity.SaveChanges();
 
-                            logger.Info(string.Format("Add variable end | variable: {0} | Username: {1}", lookup.field_name, Username));
+                            Helper.WriteLogMessage(string.Format("Add variable end | variable: {0} | Username: {1}", lookup.field_name, Username), currentPath);
                             return "success";
                         }
                         else
                         {
-                            logger.Info(string.Format("Edit variable start | variable: {0} | variableId: {1} | Username: {2}", lookup.field_name, lookup.Lookupid, Username));
+                            Helper.WriteLogMessage(string.Format("Edit variable start | variable: {0} | variableId: {1} | Username: {2}", lookup.field_name, lookup.Lookupid, Username), currentPath);
 
                             lresult.FIELD_NAME = lookup.field_name;
                             lresult.DISPLAY_NAME = lookup.Display_name;
@@ -325,7 +318,7 @@ namespace MARS_Repository.Repositories
                             lresult.VALUE = lookup.value;
                             lresult.TABLE_NAME = lookup.Table_name;
                             entity.SaveChanges();
-                            logger.Info(string.Format("Edit variable end | variable: {0} | variableId: {1} | Username: {2}", lookup.field_name, lookup.Lookupid, Username));
+                            Helper.WriteLogMessage(string.Format("Edit variable end | variable: {0} | variableId: {1} | Username: {2}", lookup.field_name, lookup.Lookupid, Username), currentPath);
                         }
                     }
                     scope.Complete();
@@ -334,10 +327,9 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Variable for AddEditVariable method | VariableId : {0} | UserName: {1}", lookup.Lookupid, Username));
-                ELogger.ErrorException(string.Format("Error occured in Variable for AddEditVariable method | VariableId : {0} | UserName: {1}", lookup.Lookupid, Username), ex);
+                Helper.WriteLogMessage(string.Format("Error occured in Variable for AddEditVariable method | VariableId : {0} | UserName: {1} | Error: {2}", lookup.Lookupid, Username, ex.ToString()), currentPath);
                 if (ex.InnerException != null)
-                    ELogger.ErrorException(string.Format("InnerException : Error occured in Variable for AddEditVariable method | VariableId : {0} | UserName: {1}", lookup.Lookupid, Username), ex.InnerException);
+                    Helper.WriteLogMessage(string.Format("InnerException : Error occured in Variable for AddEditVariable method | VariableId : {0} | UserName: {1} | Error: {2}", lookup.Lookupid, Username, ex.InnerException.ToString()), currentPath);
                 throw;
             }
         }
@@ -346,7 +338,6 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                //logger.Info(string.Format("Check Duplicate VariableName start | Id: {0} | VariableName: {1} | Username: {2}", lookupid, name, Username));
                 var lresult = string.Empty;
                 var flag = false;
 
@@ -384,31 +375,13 @@ namespace MARS_Repository.Repositories
                         lresult = "Varible already exist.";
                 }
 
-                //if (flag == false && lresult == string.Empty)
-                //{
-                //    if (lookup.Table_name == "GLOBAL_VAR")
-                //    {
-                //        var test1 = entity.SYSTEM_LOOKUP.Where(x => x.FIELD_NAME.ToLower().Trim() == lookup.field_name.ToLower().Trim() && (x.TABLE_NAME == "MODAL_VAR" || x.TABLE_NAME == "LOOP_VAR")).ToList();
-                //        flag = entity.SYSTEM_LOOKUP.Any(x => x.FIELD_NAME.ToLower().Trim() == lookup.field_name.ToLower().Trim() && (x.TABLE_NAME == "MODAL_VAR" || x.TABLE_NAME == "LOOP_VAR"));
-
-                //        if (flag)
-                //            lresult = "Global variable name has exist in Modal/Loop Variable name.";
-                //    }
-                //    else if (lookup.Table_name == "MODAL_VAR" || lookup.Table_name == "LOOP_VAR")
-                //    {
-                //        flag = entity.SYSTEM_LOOKUP.Any(x => x.FIELD_NAME.ToLower().Trim() == lookup.field_name.ToLower().Trim() && x.TABLE_NAME == "GLOBAL_VAR");
-                //        if (flag)
-                //            lresult = "Modal/Loop variable name has exist in Global Variable name";
-                //    }
-                //}
                 return lresult;
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Variable for CheckVariable method | VariableId : {0} | UserName: {1}", lookup.Lookupid, Username));
-                ELogger.ErrorException(string.Format("Error occured in Variable for CheckVariable method | VariableId : {0} | UserName: {1}", lookup.Lookupid, Username), ex);
+                Helper.WriteLogMessage(string.Format("Error occured in Variable for CheckVariable method | VariableId : {0} | UserName: {1} | Error: {2}", lookup.Lookupid, Username, ex.ToString()), currentPath);
                 if (ex.InnerException != null)
-                    ELogger.ErrorException(string.Format("InnerException : Error occured in Variable for CheckVariable method | VariableId : {0} | UserName: {1}", lookup.Lookupid, Username), ex.InnerException);
+                    Helper.WriteLogMessage(string.Format("InnerException : Error occured in Variable for CheckVariable method | VariableId : {0} | UserName: {1} | Error: {2}", lookup.Lookupid, Username, ex.InnerException.ToString()), currentPath);
                 throw;
             }
         }

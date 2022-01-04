@@ -71,7 +71,7 @@
 </style>
 @if (ViewBag.ProjectId != null && ViewBag.StoryBoardId != null && ViewBag.ProjectId != 0 && ViewBag.StoryBoardId != 0)
 {
-    <script>
+<script>
               var sbvalidmsg = false;
         var lheight = $(window).height();
         var testsuitevalidate = [];
@@ -95,7 +95,7 @@
         var pqwidth = "99%";
         var actions = [];
         var pqheight = lheight - 130;
-
+        gridTestcase['@Storyboardname'] = @Html.Raw(ViewBag.TestSuitesList);
         var jsonData = "";
         var dt = [];
         var obj = [];
@@ -238,45 +238,53 @@
                     var rowindx = ui.rowIndx;
                     var Projectid = @ViewBag.ProjectId;
                     //Rutvi
-                     var testsuiteList = @Html.Raw(ViewBag.TestSuitesList);
+                    if (ReloadTestSuite == true) {
+
+                     $.ajax({
+                        url: "/StoryBoard/GetTestSuiteListInStoryboard",
+                        type: "POST",
+                        data: '{ProjectId: ' + Projectid + '}',
+                        contentType: "application/json;charset=utf-8",
+                        dataType: "json",
+                        async: false,
+                         success: function (result) {
+                             ReloadTestSuite = false;
+                       if (result.status == 1) {
+                           if (result.data != null && result.data.length > 0) {
+                               testsuites.push({ "value": "", "text": "" });
+                               for (var i = 0; i < result.data.length; i++) {
+                                   testsuites.push({ "value": result.data[i].TestsuiteName, "text": result.data[i].TestsuiteName });
+                               }
+                               List = testsuites;
+                               testsuites = [];
+                               gridTestcase['@Storyboardname'] = result.data;
+                               //testsuiteList = result.data;
+                           }
+                       }
+                       else if (result.status == 0) {
+                           swal.fire({
+                               "title": "",
+                               "text": result.message,
+                               "icon": "error",
+                               "onClose": function (e) {
+                                   console.log('on close event fired!');
+                               }
+                           });
+                       }
+                   },
+                   error(a, b, c) {
+                   }
+                    });
+                    }
+                    else {
+                        var testsuiteList = gridTestcase['@Storyboardname'];
                     testsuites.push({ "value": "", "text": "" });
                     $.each(testsuiteList, function (key, value) {
                         testsuites.push({ "value": value.TestsuiteName, "text": value.TestsuiteName });
                     });
                     List = testsuites;
                     testsuites = [];
-                   // $.ajax({
-                   //     url: "/StoryBoard/GetTestSuiteListInStoryboard",
-                   //type: "POST",
-                   //data: '{ProjectId: ' + Projectid + '}',
-                   //contentType: "application/json;charset=utf-8",
-                   //dataType: "json",
-                   //async: false,
-                   //success: function (result) {
-                   //    if (result.status == 1) {
-                   //        if (result.data != null && result.data.length > 0) {
-                   //            testsuites.push({ "value": "", "text": "" });
-                   //            for (var i = 0; i < result.data.length; i++) {
-                   //                testsuites.push({ "value": result.data[i].TestsuiteName, "text": result.data[i].TestsuiteName });
-                   //            }
-                   //            List = testsuites;
-                   //            testsuites = [];
-                   //        }
-                   //    }
-                   //    else if (result.status == 0) {
-                   //        swal.fire({
-                   //            "title": "",
-                   //            "text": result.message,
-                   //            "icon": "error",
-                   //            "onClose": function (e) {
-                   //                console.log('on close event fired!');
-                   //            }
-                   //        });
-                   //    }
-                   //},
-                   //error(a, b, c) {
-                   //}
-                   // });
+                    }
                     return List;
                 }
             },
@@ -1663,7 +1671,7 @@
                             ////for (i = 0; i < gridobj[sbgrid].pdata.length; i++) {
                             //    gridobj[sbgrid].Range({ r1: i, r2: i }).comment("");
                             //}
-                           
+
                          ReloadStoryboard(sbgrid, ProjectId, sbid);
                         }
                         else {
@@ -1732,7 +1740,7 @@
             });
 
         }
-    </script>
+</script>
 }
 @{
 
@@ -1748,8 +1756,8 @@
             <span class="kt-subheader__separator kt-hidden"></span>
             <div class="kt-subheader__breadcrumbs">
                 @*<a href="#" class="kt-subheader__breadcrumbs-home">
-                    <i class="flaticon2-shelter" style="color:#1c6081;"></i>
-                </a>*@
+                        <i class="flaticon2-shelter" style="color:#1c6081;"></i>
+                    </a>*@
                 <a href="#" class="kt-subheader__breadcrumbs-link" style="color:#1c6081;display:none;" id="@BProjectId">
                 </a>
                 <i class="fa fa-angle-double-right" style="color:#1c6081;display:none;">&nbsp;</i>

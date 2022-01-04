@@ -431,7 +431,7 @@ namespace MARS_Web.Controllers
                 var lobj = js.Deserialize<KeywordObjectLink[]>(lGrid);
                 if (lobj.ToList().Count() == 0)
                 {
-                    logger.Info(string.Format("Test Case SaveAs end | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                    logger.Info(string.Format("Test Case Save end | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
                     resultModel.message = "You can not delete all steps.";
                     resultModel.status = 1;
                     return Json(resultModel, JsonRequestBehavior.AllowGet);
@@ -439,10 +439,9 @@ namespace MARS_Web.Controllers
 
                 OracleTransaction ltransaction;
                 lSchema = SessionManager.Schema;
-
-                EmailHelper.WriteMessage("before validation check", EmailHelper.logFilePath, DateTime.Now.ToString(), "");
+                logger.Info(string.Format("before validation check | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
                 var ValidationSteps = repTC.InsertStgTestcaseValidationTable(lConnectionStr, lSchema, lobj, lTestCaseId);
-                EmailHelper.WriteMessage("after validation validation check", EmailHelper.logFilePath, DateTime.Now.ToString(), "");
+                logger.Info(string.Format("after validation validation check | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
 
                 OracleConnection lconnection = new OracleConnection(lConnectionStr);
 
@@ -489,18 +488,17 @@ namespace MARS_Web.Controllers
 
                     if (lDeleteColumnsList != "")
                     {
-                        EmailHelper.WriteMessage("start delete column list", EmailHelper.logFilePath, DateTime.Now.ToString(), "");
+                        logger.Info(string.Format("start delete column list | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
                         List<Object> DataSet = js.Deserialize<List<Object>>(lDeleteColumnsList);
                         foreach (var d in DataSet)
                         {
 
                             var stp = (((System.Collections.Generic.Dictionary<string, object>)d).ToList());
-                            EmailHelper.WriteMessage("delete it", EmailHelper.logFilePath, " Datasetids: " + stp[2].Value.ToString(), "");
                             repTC.DeleteRelTestCaseDataSummary(long.Parse(lTestCaseId), long.Parse(stp[2].Value.ToString()));
                         }
-                        EmailHelper.WriteMessage("end delete column list", EmailHelper.logFilePath, DateTime.Now.ToString(), "");
+                        logger.Info(string.Format("end delete column list | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
                     }
-                    EmailHelper.WriteMessage("create  table object", EmailHelper.logFilePath, DateTime.Now.ToString(), "");
+                    logger.Info(string.Format("create table object | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
                     var lUpdateRownumber = js.Deserialize<SaveTestcaseModel[]>(lGrid);
                     var minStepId = lUpdateRownumber.Where(x => x.stepsID != null).Min(x => Convert.ToInt32(x.stepsID));
                     if (minStepId > 0)
@@ -533,11 +531,8 @@ namespace MARS_Web.Controllers
                     dt.Columns.Add("ParentObj");
 
                     string returnValues = repTC.InsertFeedProcess();
-                    EmailHelper.WriteMessage("start  feed process  ", EmailHelper.logFilePath, DateTime.Now.ToString(), "");
                     var valFeed = returnValues.Split('~')[0];
                     var valFeedD = returnValues.Split('~')[1];
-                    EmailHelper.WriteMessage("end  feed process  ", EmailHelper.logFilePath, "FeedProcessId: " + valFeed, "FeedProcessDetailId: " + valFeedD);
-                    EmailHelper.WriteMessage("end  feed process", EmailHelper.logFilePath, DateTime.Now.ToString(), "");
                     //delete rows
                     var lDeleteSteps = plist["deleteList"];
                     if (lDeleteSteps.Count > 0)
@@ -560,7 +555,7 @@ namespace MARS_Web.Controllers
                     }
 
                     var lOldList = plist["oldList"];
-                    EmailHelper.WriteMessage("update  table object", EmailHelper.logFilePath, DateTime.Now.ToString(), "");
+                    logger.Info(string.Format("update  table object | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
                     //update value
                     var lUpdateSteps = plist["updateList"];
                     if (lUpdateSteps.Count > 0)
@@ -674,8 +669,6 @@ namespace MARS_Web.Controllers
                                             }
                                         }
                                     }
-
-
                                 }
                             }
 
@@ -710,10 +703,8 @@ namespace MARS_Web.Controllers
                             Rowid++;
                         }
                     }
-                    EmailHelper.WriteMessage("update end  table object", EmailHelper.logFilePath, DateTime.Now.ToString(), "");
-
-                    EmailHelper.WriteMessage("add  table object", EmailHelper.logFilePath, DateTime.Now.ToString(), "");
                     var lAddSteps = plist["addList"];
+                    logger.Info(string.Format("add start  table object | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
                     if (lAddSteps.Count > 0)
                     {
                         int Rowid = 0;
@@ -836,8 +827,7 @@ namespace MARS_Web.Controllers
                             }
                         }
                     }
-
-                    EmailHelper.WriteMessage("add end  table object", EmailHelper.logFilePath, DateTime.Now.ToString(), "");
+                    logger.Info(string.Format("add end  table object | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
 
                     foreach (var item in lUpdateRownumber)
                     {
@@ -853,8 +843,6 @@ namespace MARS_Web.Controllers
                             dt.Rows.Add(dr);
                         }
                     }
-                    EmailHelper.WriteMessage("end  updaterow count object", EmailHelper.logFilePath, DateTime.Now.ToString(), "");
-
 
                     for (int i = 0; i < dt.Rows.Count; i++)
                     {
@@ -873,10 +861,9 @@ namespace MARS_Web.Controllers
                             dt.Rows[i]["SKIP"] = "0";
                         }
                     }
-                    EmailHelper.WriteMessage("end  for loop object", EmailHelper.logFilePath, DateTime.Now.ToString(), "");
                     if (dt.Rows.Count == 0)
                     {
-                        logger.Info(string.Format("Test Case SaveAs end | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                        logger.Info(string.Format("Test Case Save end | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
                         resultModel.message = "No change in Testcase";
                         resultModel.status = 1;
                         return Json(resultModel, JsonRequestBehavior.AllowGet);
@@ -912,11 +899,7 @@ namespace MARS_Web.Controllers
 
                         }
                     }
-
-                    EmailHelper.WriteMessage("Start Save Testcase", EmailHelper.logFilePath, DateTime.Now.ToString(), "");
                     repTC.InsertStgTestCaseSave(lConnectionStr, lSchema, dt, lTestCaseId, int.Parse(valFeedD));
-                    EmailHelper.WriteMessage("Complete Save Testcase", EmailHelper.logFilePath, DateTime.Now.ToString(), "");
-
                     repTC.SaveTestCaseVersion(int.Parse(lTestCaseId), (long)SessionManager.TESTER_ID);
 
                     logger.Info(string.Format("Test Case Save end | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));

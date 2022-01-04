@@ -771,6 +771,18 @@ function StoryboardSaveContext() {
     if (!$("#addstoryboardcontext").valid()) {
         return false;
     }
+    var regex = /^[a-zA-Z0-9-._(&)* ]*$/;
+    if (!regex.test($("#contextStoryboardname").val())) {
+        swal.fire({
+            "title": "",
+            "text": "Storyboard name must contain only letters, numbers, spaces and underscore characters",
+            "icon": "error",
+            "onClose": function (e) {
+                console.log('on close event fired!');
+            }
+        });
+        return false;
+    }
     $("#savestoryboardcontext").prop("disabled", true);
     var Id = 0;
     var Storyboardmodel = {};

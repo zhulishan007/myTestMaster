@@ -20,25 +20,25 @@ namespace MARS_Repository.Repositories
         Logger ELogger = LogManager.GetLogger("ErrorLog");
         DBEntities entity = Helper.GetMarsEntitiesInstance();
         public string Username = string.Empty;
+        public string currentPath = string.Empty;
 
         public List<T_KEYWORD> GetKeywords()
         {
             try
             {
-                logger.Info(string.Format("Get Keywords start | UserName: {0}", Username));
+                Helper.WriteLogMessage(string.Format("Get Keywords start | UserName: {0}", Username), currentPath);
                 var result = (from k in entity.T_KEYWORD
                               where k.KEY_WORD_NAME != null
                               orderby k.KEY_WORD_NAME
                               select k).ToList<T_KEYWORD>();
-                logger.Info(string.Format("Get Keywords end | UserName: {0}", Username));
+                Helper.WriteLogMessage(string.Format("Get Keywords end | UserName: {0}", Username), currentPath);
                 return result;
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Keyword for in GetKeywords method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured in Keyword for in GetKeywords method | UserName: {0}", Username), ex);
+                Helper.WriteLogMessage(string.Format("Error occured in Keyword for in GetKeywords method | UserName: {0} | Error: {1}",  Username, ex.ToString()), currentPath);
                 if (ex.InnerException != null)
-                    ELogger.ErrorException(string.Format("InnerException : Error occured in Keyword for in GetKeywords method | UserName: {0}", Username), ex.InnerException);
+                    Helper.WriteLogMessage(string.Format("InnerException : Error occured in Keyword for in GetKeywords method | UserName: {0} | Error: {1}", Username, ex.InnerException.ToString()), currentPath);
                 throw;
             }
         }
@@ -47,19 +47,18 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("Get Keyword start | KeywordName: {0} | UserName: {1}", lKeywordName, Username));
+                Helper.WriteLogMessage(string.Format("Get Keyword start | KeywordName: {0} | UserName: {1}", lKeywordName, Username), currentPath);
                 var result = (from k in entity.T_KEYWORD
                               where k.KEY_WORD_NAME == lKeywordName
                               select k).ToList<T_KEYWORD>().FirstOrDefault();
-                logger.Info(string.Format("Get Keyword end | KeywordName: {0} | UserName: {1}", lKeywordName, Username));
+                Helper.WriteLogMessage(string.Format("Get Keyword end | KeywordName: {0} | UserName: {1}", lKeywordName, Username), currentPath);
                 return result;
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Keyword for in GetKeywordByName method | Keyword Name : {0} | UserName: {1} ", lKeywordName, Username));
-                ELogger.ErrorException(string.Format("Error occured in Keyword for in GetKeywordByName method | Keyword Name : {0} | UserName: {1} ", lKeywordName, Username), ex);
+                Helper.WriteLogMessage(string.Format("Error occured in Keyword for in GetKeywordByName method | Keyword Name : {0} | UserName: {1} | Error: {2} ", lKeywordName,  Username, ex.ToString()), currentPath);
                 if (ex.InnerException != null)
-                    ELogger.ErrorException(string.Format("InnerException : Error occured in Keyword for in GetKeywordByName method | Keyword Name : {0} | UserName: {1} ", lKeywordName, Username), ex.InnerException);
+                    Helper.WriteLogMessage(string.Format("InnerException : Error occured in Keyword for in GetKeywordByName method | Keyword Name : {0} | UserName: {1} | Error: {2} ", lKeywordName, Username, ex.InnerException.ToString()), currentPath);
                 throw;
             }
         }
@@ -68,18 +67,17 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("CheckKeywordPegType start | KeywordId: {0} | UserName: {1}", lKeywordId, Username));
+                Helper.WriteLogMessage(string.Format("CheckKeywordPegType start | KeywordId: {0} | UserName: {1}", lKeywordId, Username), currentPath);
                 var lTypeId = entity.T_GUI_COMPONENT_TYPE_DIC.Where(x => x.TYPE_NAME == "Pegwindow").FirstOrDefault().TYPE_ID;
                 var result = entity.T_DIC_RELATION_KEYWORD.Any(x => x.KEY_WORD_ID == lKeywordId && x.TYPE_ID == lTypeId);
-                logger.Info(string.Format("CheckKeywordPegType end | KeywordId: {0} | UserName: {1}", lKeywordId, Username));
+                Helper.WriteLogMessage(string.Format("CheckKeywordPegType end | KeywordId: {0} | UserName: {1}", lKeywordId, Username), currentPath);
                 return result;
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Keyword for in CheckKeywordPegType method | Keyword Id : {0} | UserName: {1} ", lKeywordId, Username));
-                ELogger.ErrorException(string.Format("Error occured in Keyword for in CheckKeywordPegType method | Keyword Id : {0} | UserName: {1} ", lKeywordId, Username), ex);
+                Helper.WriteLogMessage(string.Format("Error occured in Keyword for in CheckKeywordPegType method | Keyword Id : {0} | UserName: {1} | Error: {2} ", lKeywordId,  Username, ex.ToString()), currentPath);
                 if (ex.InnerException != null)
-                    ELogger.ErrorException(string.Format("InnerException : Error occured in Keyword for in CheckKeywordPegType method | Keyword Id : {0} | UserName: {1} ", lKeywordId, Username), ex.InnerException);
+                    Helper.WriteLogMessage(string.Format("InnerException : Error occured in Keyword for in CheckKeywordPegType method | Keyword Id : {0} | UserName: {1} | Error: {2}", lKeywordId, Username, ex.InnerException.ToString()), currentPath);
                 throw;
             }
         }
@@ -88,17 +86,16 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("ListOfKeywordType start | UserName: {0}", Username));
+                Helper.WriteLogMessage(string.Format("ListOfKeywordType start | UserName: {0}", Username), currentPath);
                 var result = entity.T_GUI_COMPONENT_TYPE_DIC.ToList();
-                logger.Info(string.Format("ListOfKeywordType end | UserName: {0}", Username));
+                Helper.WriteLogMessage(string.Format("ListOfKeywordType end | UserName: {0}", Username), currentPath);
                 return result;
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Keyword for in ListOfKeywordType method | UserName: {0}", Username));
-                ELogger.ErrorException(string.Format("Error occured in Keyword for in ListOfKeywordType method | UserName: {0}", Username), ex);
+                Helper.WriteLogMessage(string.Format("Error occured in Keyword for in ListOfKeywordType method | UserName: {0} | Error: {1}",  Username, ex.ToString()), currentPath);
                 if (ex.InnerException != null)
-                    ELogger.ErrorException(string.Format("InnerException : Error occured in Keyword for in ListOfKeywordType method | UserName: {0}", Username), ex.InnerException);
+                    Helper.WriteLogMessage(string.Format("InnerException : Error occured in Keyword for in ListOfKeywordType method | UserName: {0} | Error: {1}", Username, ex.InnerException.ToString()), currentPath);
                 throw;
             }
         }
@@ -110,7 +107,7 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("ListAllKeyword start | UserName: {0}", Username));
+                Helper.WriteLogMessage(string.Format("ListAllKeyword start | UserName: {0}", Username), currentPath);
                 var result = new List<KeywordViewModel>();
 
                 DataSet lds = new DataSet();
@@ -175,15 +172,14 @@ namespace MARS_Repository.Repositories
                               TotalCount = Convert.ToInt32(row.Field<decimal>("RESULT_COUNT"))
                           }).ToList();
 
-                logger.Info(string.Format("ListAllKeyword end | UserName: {0}", Username));
+                Helper.WriteLogMessage(string.Format("ListAllKeyword end | UserName: {0}", Username), currentPath);
                 return resultList;
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Keyword for in ListAllKeyword method | Connection string : {0} | Schema : {1} | UserName: {2}", lconstring, schema, Username));
-                ELogger.ErrorException(string.Format("Error occured in Keyword for in ListAllKeyword method | Connection string : {0} | Schema : {1} | UserName: {2}", lconstring, schema, Username), ex);
+                Helper.WriteLogMessage(string.Format("Error occured in Keyword for in ListAllKeyword method | Connection string : {0} | Schema : {1} | UserName: {2} | Error: {3}", lconstring, schema,  Username, ex.ToString()), currentPath);
                 if (ex.InnerException != null)
-                    ELogger.ErrorException(string.Format("InnerException : Error occured in Keyword for in ListAllKeyword method | UserName: {0}", Username), ex.InnerException);
+                    Helper.WriteLogMessage(string.Format("InnerException : Error occured in Keyword for in ListAllKeyword method | UserName: {0} | Error: {1}", Username, ex.InnerException.ToString()), currentPath);
                 throw;
             }
         }
@@ -191,7 +187,7 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("Check Duplicate Keyword Name Exist start | Keyword: {0} | KeywordId: {1} | UserName: {2}", keywordname, KeywordId, Username));
+                Helper.WriteLogMessage(string.Format("Check Duplicate Keyword Name Exist start | Keyword: {0} | KeywordId: {1} | UserName: {2}", keywordname, KeywordId, Username), currentPath);
                 var lresult = false;
                 if (KeywordId != null)
                 {
@@ -201,15 +197,14 @@ namespace MARS_Repository.Repositories
                 {
                     lresult = entity.T_KEYWORD.Any(x => x.KEY_WORD_NAME.ToLower().Trim() == keywordname.ToLower().Trim());
                 }
-                logger.Info(string.Format("Check Duplicate Keyword Name Exist end | Keyword: {0} | KeywordId: {1} | UserName: {2}", keywordname, KeywordId, Username));
+                Helper.WriteLogMessage(string.Format("Check Duplicate Keyword Name Exist end | Keyword: {0} | KeywordId: {1} | UserName: {2}", keywordname, KeywordId, Username), currentPath);
                 return lresult;
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Keyword for in CheckDuplicateKeywordNameExist method | KeywordId : {0} | Keyword Name : {1} | UserName: {2}", KeywordId, keywordname, Username));
-                ELogger.ErrorException(string.Format("Error occured in Keyword for in CheckDuplicateKeywordNameExist method | KeywordId : {0} | Keyword Name : {1} | UserName: {2}", KeywordId, keywordname, Username), ex);
+                Helper.WriteLogMessage(string.Format("Error occured in Keyword for in CheckDuplicateKeywordNameExist method | KeywordId : {0} | Keyword Name : {1} | UserName: {2} | Error: {3}", KeywordId, keywordname,  Username, ex.ToString()), currentPath);
                 if (ex.InnerException != null)
-                    ELogger.ErrorException(string.Format("InnerException : Error occured in Keyword for in CheckDuplicateKeywordNameExist method | KeywordId : {0} | Keyword Name : {1} | UserName: {2}", KeywordId, keywordname, Username), ex.InnerException);
+                    Helper.WriteLogMessage(string.Format("InnerException : Error occured in Keyword for in CheckDuplicateKeywordNameExist method | KeywordId : {0} | Keyword Name : {1} | UserName: {2} | Error: {3}", KeywordId, keywordname, Username, ex.InnerException.ToString()), currentPath);
                 throw;
             }
         }
@@ -227,7 +222,7 @@ namespace MARS_Repository.Repositories
                     var flag = false;
                     if (lEntity.KeywordId == 0)
                     {
-                        logger.Info(string.Format("Add Keyword start | Keyword: {0} | UserName: {1}", lEntity.KeywordName, Username));
+                        Helper.WriteLogMessage(string.Format("Add Keyword start | Keyword: {0} | UserName: {1}", lEntity.KeywordName, Username), currentPath);
                         var tbl = new T_KEYWORD();
                         tbl.KEY_WORD_ID = Helper.NextTestSuiteId("T_KEYWORD_SEQ");
                         tbl.KEY_WORD_NAME = lEntity.KeywordName;
@@ -236,11 +231,11 @@ namespace MARS_Repository.Repositories
                         entity.T_KEYWORD.Add(tbl);
                         entity.SaveChanges();
                         flag = true;
-                        logger.Info(string.Format("Add Keyword end | Keyword: {0} | UserName: {1}", lEntity.KeywordName, Username));
+                        Helper.WriteLogMessage(string.Format("Add Keyword end | Keyword: {0} | UserName: {1}", lEntity.KeywordName, Username), currentPath);
                     }
                     else
                     {
-                        logger.Info(string.Format("Edit Keyword start | Keyword: {0} | KeywordId: {1} | UserName: {2}", lEntity.KeywordName, lEntity.KeywordId, Username));
+                        Helper.WriteLogMessage(string.Format("Edit Keyword start | Keyword: {0} | KeywordId: {1} | UserName: {2}", lEntity.KeywordName, lEntity.KeywordId, Username), currentPath);
                         var tbl = entity.T_KEYWORD.Find(lEntity.KeywordId);
                         #region Type Mapping Delete
                         var ltypeList = entity.T_DIC_RELATION_KEYWORD.Where(x => x.KEY_WORD_ID == lEntity.KeywordId).ToList();
@@ -258,7 +253,7 @@ namespace MARS_Repository.Repositories
                             entity.SaveChanges();
                         }
                         flag = true;
-                        logger.Info(string.Format("Edit Keyword end | Keyword: {0} | KeywordId: {1} | UserName: {2}", lEntity.KeywordName, lEntity.KeywordId, Username));
+                        Helper.WriteLogMessage(string.Format("Edit Keyword end | Keyword: {0} | KeywordId: {1} | UserName: {2}", lEntity.KeywordName, lEntity.KeywordId, Username), currentPath);
                     }
                     if (!string.IsNullOrEmpty(lEntity.ControlTypeId))
                     {
@@ -285,10 +280,9 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Keyword for in AddEditKeyword method | Keyword Id : {0} | UserName: {1} ", lEntity.KeywordId, Username));
-                ELogger.ErrorException(string.Format("Error occured in Keyword for in AddEditKeyword method | Keyword Id : {0} | UserName: {1} ", lEntity.KeywordId, Username), ex);
+                Helper.WriteLogMessage(string.Format("Error occured in Keyword for in AddEditKeyword method | Keyword Id : {0} | UserName: {1} | Error: {2}", lEntity.KeywordId,  Username, ex.ToString()), currentPath);
                 if (ex.InnerException != null)
-                    ELogger.ErrorException(string.Format("InnerException : Error occured in Keyword for in AddEditKeyword method | Keyword Id : {0} | UserName: {1} ", lEntity.KeywordId, Username), ex.InnerException);
+                    Helper.WriteLogMessage(string.Format("InnerException : Error occured in Keyword for in AddEditKeyword method | Keyword Id : {0} | UserName: {1} | Error: {2}", lEntity.KeywordId, Username, ex.InnerException.ToString()), currentPath);
                 throw;
             }
         }
@@ -297,7 +291,7 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("Check TestCase Exists In Keyword start | KeywordId: {0} | UserName: {1}", Keywordid, Username));
+                Helper.WriteLogMessage(string.Format("Check TestCase Exists In Keyword start | KeywordId: {0} | UserName: {1}", Keywordid, Username), currentPath);
                 List<string> Keywordname = new List<string>();
                 var lKeywordList = entity.T_TEST_STEPS.Where(x => x.KEY_WORD_ID == Keywordid).ToList();
 
@@ -310,18 +304,17 @@ namespace MARS_Repository.Repositories
                         Keywordname.Add(sname.TEST_CASE_NAME);
                         Keywordname = (from w in Keywordname select w).Distinct().ToList();
                     }
-                    logger.Info(string.Format("Check TestCase Exists In Keyword end | KeywordId: {0} | UserName: {1}", Keywordid, Username));
+                    Helper.WriteLogMessage(string.Format("Check TestCase Exists In Keyword end | KeywordId: {0} | UserName: {1}", Keywordid, Username), currentPath);
                     return Keywordname;
                 }
-                logger.Info(string.Format("Check TestCase Exists In Keyword end | KeywordId: {0} | UserName: {1}", Keywordid, Username));
+                Helper.WriteLogMessage(string.Format("Check TestCase Exists In Keyword end | KeywordId: {0} | UserName: {1}", Keywordid, Username), currentPath);
                 return Keywordname;
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Keyword for in CheckTestCaseExistsInKeyword method | Keyword Id : {0} | UserName: {1} ", Keywordid, Username));
-                ELogger.ErrorException(string.Format("Error occured in Keyword for in CheckTestCaseExistsInKeyword method | Keyword Id : {0} | UserName: {1} ", Keywordid, Username), ex);
+                Helper.WriteLogMessage(string.Format("Error occured in Keyword for in CheckTestCaseExistsInKeyword method | Keyword Id : {0} | UserName: {1} | Error: {2}", Keywordid,  Username, ex.ToString()), currentPath);
                 if (ex.InnerException != null)
-                    ELogger.ErrorException(string.Format("InnerException : Error occured in Keyword for in CheckTestCaseExistsInKeyword method | Keyword Id : {0} | UserName: {1} ", Keywordid, Username), ex.InnerException);
+                    Helper.WriteLogMessage(string.Format("InnerException : Error occured in Keyword for in CheckTestCaseExistsInKeyword method | Keyword Id : {0} | UserName: {1} | Error: {2}", Keywordid, Username, ex.InnerException.ToString()), currentPath);
                 throw;
             }
         }
@@ -332,7 +325,7 @@ namespace MARS_Repository.Repositories
             {
                 using (TransactionScope scope = new TransactionScope())
                 {
-                    logger.Info(string.Format("Delete Keyword start | KeywordId: {0} | UserName: {1}", Keywordid, Username));
+                    Helper.WriteLogMessage(string.Format("Delete Keyword start | KeywordId: {0} | UserName: {1}", Keywordid, Username), currentPath);
                     var flag = false;
                     var result = entity.T_KEYWORD.FirstOrDefault(x => x.KEY_WORD_ID == Keywordid);
                     if (result != null)
@@ -348,17 +341,16 @@ namespace MARS_Repository.Repositories
                         entity.SaveChanges();
                         flag = true;
                     }
-                    logger.Info(string.Format("Delete Keyword end | KeywordId: {0} | UserName: {1}", Keywordid, Username));
+                    Helper.WriteLogMessage(string.Format("Delete Keyword end | KeywordId: {0} | UserName: {1}", Keywordid, Username), currentPath);
                     scope.Complete();
                     return flag;
                 }
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Keyword for in DeleteKeyword method | Keyword Id : {0} | UserName: {1} ", Keywordid, Username));
-                ELogger.ErrorException(string.Format("Error occured in Keyword for in DeleteKeyword method | Keyword Id : {0} | UserName: {1} ", Keywordid, Username), ex);
+                Helper.WriteLogMessage(string.Format("Error occured in Keyword for in DeleteKeyword method | Keyword Id : {0} | UserName: {1} | Error: {2}", Keywordid,  Username, ex.ToString()), currentPath);
                 if (ex.InnerException != null)
-                    ELogger.ErrorException(string.Format("InnerException : Error occured in Keyword for in DeleteKeyword method | Keyword Id : {0} | UserName: {1} ", Keywordid, Username), ex.InnerException);
+                    Helper.WriteLogMessage(string.Format("InnerException : Error occured in Keyword for in DeleteKeyword method | Keyword Id : {0} | UserName: {1} | Error: {2}", Keywordid, Username, ex.InnerException.ToString()), currentPath);
                 throw;
             }
         }
@@ -367,17 +359,16 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("Get Keyword Id start | KeywordId: {0} | UserName: {1}", Keywordid, Username));
+                Helper.WriteLogMessage(string.Format("Get Keyword Id start | KeywordId: {0} | UserName: {1}", Keywordid, Username), currentPath);
                 var result = entity.T_KEYWORD.FirstOrDefault(x => x.KEY_WORD_ID == Keywordid).KEY_WORD_NAME;
-                logger.Info(string.Format("Get Keyword Id end | KeywordId: {0} | UserName: {1}", Keywordid, Username));
+                Helper.WriteLogMessage(string.Format("Get Keyword Id end | KeywordId: {0} | UserName: {1}", Keywordid, Username), currentPath);
                 return result;
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Keyword for in GetKeywordById method | Keyword Id : {0} | UserName: {1} ", Keywordid, Username));
-                ELogger.ErrorException(string.Format("Error occured in Keyword for in GetKeywordById method | Keyword Id : {0} | UserName: {1} ", Keywordid, Username), ex);
+                Helper.WriteLogMessage(string.Format("Error occured in Keyword for in GetKeywordById method | Keyword Id : {0} | UserName: {1} | Error: {2} ", Keywordid,  Username, ex.ToString()), currentPath);
                 if (ex.InnerException != null)
-                    ELogger.ErrorException(string.Format("InnerException : Error occured in Keyword for in GetKeywordById method | Keyword Id : {0} | UserName: {1} ", Keywordid, Username), ex.InnerException);
+                    Helper.WriteLogMessage(string.Format("InnerException : Error occured in Keyword for in GetKeywordById method | Keyword Id : {0} | UserName: {1} | Error: {2} ", Keywordid, Username, ex.InnerException.ToString()), currentPath);
                 throw;
             }
         }

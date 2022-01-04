@@ -32,9 +32,15 @@ namespace MARS_Web.Controllers
         Logger ELogger = LogManager.GetLogger("ErrorLog");
         #region Crud operations for Variable
 
+        public string GetLogPathLocation()
+        {
+            string logPath = WebConfigurationManager.AppSettings["LogPathLocation"];
+            return System.Web.HttpContext.Current.Server.MapPath("~/" + logPath + "/");
+        }
         //renders partial view
         public ActionResult VariableList()
         {
+            string currentPath = GetLogPathLocation();
             try
             {
                 var userId = SessionManager.TESTER_ID;
@@ -54,10 +60,9 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Variables for VariableList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in Variables for VariableList method |UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                MARS_Repository.Helper.WriteLogMessage(string.Format("Error occured in Variables for VariableList method | UserName: {0} | Error: {1}", SessionManager.TESTER_LOGIN_NAME, ex.ToString()), currentPath);
                 if (ex.InnerException != null)
-                    ELogger.ErrorException(string.Format("InnerException : Error occured in Variables for VariableList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+                    MARS_Repository.Helper.WriteLogMessage(string.Format("InnerException : Error occured in Variables for VariableList method | UserName: {0} | Error: {1}", SessionManager.TESTER_LOGIN_NAME, ex.InnerException.ToString()), currentPath);
             }
             return PartialView();
         }
@@ -66,9 +71,11 @@ namespace MARS_Web.Controllers
         [HttpPost]
         public JsonResult DataLoad()
         {
-            logger.Info(string.Format("variable list open start | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+            string currentPath = GetLogPathLocation();
+            MARS_Repository.Helper.WriteLogMessage(string.Format("variable list open start | Username: {0}", SessionManager.TESTER_LOGIN_NAME), currentPath);
             var repAcc = new VariableRepository();
             repAcc.Username = SessionManager.TESTER_LOGIN_NAME;
+            repAcc.currentPath = currentPath;
             int totalRecords = default(int);
             int recFilter = default(int);
             //assign values to local variable
@@ -109,15 +116,14 @@ namespace MARS_Web.Controllers
                 {
                     recFilter = data.FirstOrDefault().TotalCount;
                 }
-                logger.Info(string.Format("variable list open end | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                logger.Info(string.Format("variable list open successfully | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+                MARS_Repository.Helper.WriteLogMessage(string.Format("variable list open end | Username: {0}", SessionManager.TESTER_LOGIN_NAME), currentPath);
+                MARS_Repository.Helper.WriteLogMessage(string.Format("variable list open successfully | Username: {0}", SessionManager.TESTER_LOGIN_NAME), currentPath);
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Variables for Dataload method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in Variables for Dataload method |UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                MARS_Repository.Helper.WriteLogMessage(string.Format("Error occured in Variables for Dataload method |UserName: {0} | Error: {1}", SessionManager.TESTER_LOGIN_NAME, ex.ToString()), currentPath);
                 if (ex.InnerException != null)
-                    ELogger.ErrorException(string.Format("InnerException : Error occured in Variables for Dataload method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+                    MARS_Repository.Helper.WriteLogMessage(string.Format("InnerException : Error occured in Variables for Dataload method | UserName: {0} | Error: {1}", SessionManager.TESTER_LOGIN_NAME, ex.InnerException.ToString()), currentPath);
             }
             //returns data
             return Json(new
@@ -133,12 +139,14 @@ namespace MARS_Web.Controllers
         [HttpPost]
         public ActionResult AddEditVariableSave(VariableModel model)
         {
-            logger.Info(string.Format("Variable Add/Edit  Modal open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+            string currentPath = GetLogPathLocation();
+            MARS_Repository.Helper.WriteLogMessage(string.Format("Variable Add/Edit  Modal open | Username: {0}", SessionManager.TESTER_LOGIN_NAME), currentPath);
             ResultModel resultModel = new ResultModel();
             try
             {
                 VariableRepository repo = new VariableRepository();
                 repo.Username = SessionManager.TESTER_LOGIN_NAME;
+                repo.currentPath = currentPath;
                 var result = string.Empty;
 
                 if (!string.IsNullOrEmpty(model.Table_name))
@@ -151,8 +159,8 @@ namespace MARS_Web.Controllers
                     resultModel.message = "Successfully Saved variable [" + model.field_name + "]";
                     resultModel.data = lresult;
                     
-                    logger.Info(string.Format("Variable Add/Edit  Modal close | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                    logger.Info(string.Format("Variable Save successfully | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+                    MARS_Repository.Helper.WriteLogMessage(string.Format("Variable Add/Edit  Modal close | Username: {0}", SessionManager.TESTER_LOGIN_NAME), currentPath);
+                    MARS_Repository.Helper.WriteLogMessage(string.Format("Variable Save successfully | Username: {0}", SessionManager.TESTER_LOGIN_NAME), currentPath);
                 }
                 else
                 {
@@ -162,10 +170,9 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Variables for AddEditVariableSave method | Variable Id : {0} | UserName: {1}", model.Lookupid, SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in Variables for AddEditVariableSave method |  Variable Id : {0} | UserName: {1}", model.Lookupid, SessionManager.TESTER_LOGIN_NAME), ex);
+                MARS_Repository.Helper.WriteLogMessage(string.Format("Error occured in Variables for AddEditVariableSave method |  Variable Id : {0} | UserName: {1} | Error: {2}", model.Lookupid, SessionManager.TESTER_LOGIN_NAME, ex.ToString()), currentPath);
                 if (ex.InnerException != null)
-                    ELogger.ErrorException(string.Format("InnerException : Error occured in Variables for AddEditVariableSave method |  Variable Id : {0} | UserName: {1}", model.Lookupid, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+                    MARS_Repository.Helper.WriteLogMessage(string.Format("InnerException : Error occured in Variables for AddEditVariableSave method |  Variable Id : {0} | UserName: {1} | Error: {2}", model.Lookupid, SessionManager.TESTER_LOGIN_NAME, ex.InnerException.ToString()), currentPath);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -175,27 +182,28 @@ namespace MARS_Web.Controllers
         //Deletes a variable
         public JsonResult DeleteVariable(int lookupid)
         {
-            logger.Info(string.Format("varible Delete start | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+            string currentPath = GetLogPathLocation();
+            MARS_Repository.Helper.WriteLogMessage(string.Format("varible Delete start | Username: {0}", SessionManager.TESTER_LOGIN_NAME), currentPath);
             ResultModel resultModel = new ResultModel();
             try
             {
                 var repo = new VariableRepository();
                 repo.Username = SessionManager.TESTER_LOGIN_NAME;
+                repo.currentPath = currentPath;
                 var lresult = repo.DeleteVariable(lookupid);
                 Session["VariableDeleteMsg"] = "Successfully Variable is Deleted.";
 
                 resultModel.message = "success";
                 resultModel.data = lresult;
                 resultModel.status = 1;
-                logger.Info(string.Format("varible Delete end | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                logger.Info(string.Format("varible Delete successfully | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+                MARS_Repository.Helper.WriteLogMessage(string.Format("varible Delete end | Username: {0}", SessionManager.TESTER_LOGIN_NAME), currentPath);
+                MARS_Repository.Helper.WriteLogMessage(string.Format("varible Delete successfully | Username: {0}", SessionManager.TESTER_LOGIN_NAME), currentPath);
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Variables for DeleteVariable method | Variable Id : {0} | UserName: {1}", lookupid, SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in Variables for DeleteVariable method |  Variable Id : {0} | UserName: {1}", lookupid, SessionManager.TESTER_LOGIN_NAME), ex);
+                MARS_Repository.Helper.WriteLogMessage(string.Format("Error occured in Variables for DeleteVariable method |  Variable Id : {0} | UserName: {1} | Error: {2}", lookupid, SessionManager.TESTER_LOGIN_NAME, ex.ToString()), currentPath);
                 if (ex.InnerException != null)
-                    ELogger.ErrorException(string.Format("InnerException : Error occured in Variables for DeleteVariable method |  Variable Id : {1} | UserName: {1}", lookupid, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+                    MARS_Repository.Helper.WriteLogMessage(string.Format("InnerException : Error occured in Variables for DeleteVariable method |  Variable Id : {1} | UserName: {1} | Error: {2}", lookupid, SessionManager.TESTER_LOGIN_NAME, ex.InnerException.ToString()), currentPath);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -219,6 +227,7 @@ namespace MARS_Web.Controllers
         //get Baseline/Compare data by id
         public JsonResult GetBaselineCompare(int id)
         {
+            string currentPath = GetLogPathLocation();
             ResultModel resultModel = new ResultModel();
             try
             {
@@ -231,10 +240,9 @@ namespace MARS_Web.Controllers
             }
             catch(Exception ex)
             {
-                logger.Error(string.Format("Error occured in Variables for GetBaselineCompare method |  UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in Variables for GetBaselineCompare method |UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                MARS_Repository.Helper.WriteLogMessage(string.Format("Error occured in Variables for GetBaselineCompare method |UserName: {0} | Error: {1}", SessionManager.TESTER_LOGIN_NAME, ex.ToString()), currentPath);
                 if (ex.InnerException != null)
-                    ELogger.ErrorException(string.Format("InnerException : Error occured in Variables for GetBaselineCompare method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+                    MARS_Repository.Helper.WriteLogMessage(string.Format("InnerException : Error occured in Variables for GetBaselineCompare method | UserName: {0} | Error: {1}", SessionManager.TESTER_LOGIN_NAME, ex.InnerException.ToString()), currentPath);
             }
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
@@ -245,11 +253,13 @@ namespace MARS_Web.Controllers
         [HttpPost]
         public JsonResult CheckDuplicateVariableExist(string Varname, long Varid)
         {
+            string currentPath = GetLogPathLocation();
             ResultModel resultModel = new ResultModel();
             try
             {
                 var repo = new VariableRepository();
                 repo.Username = SessionManager.TESTER_LOGIN_NAME;
+                repo.currentPath = currentPath;
                 var result = repo.CheckDuplicateVariableName(Varid, Varname);
                 resultModel.status = 1;
                 resultModel.message = "success";
@@ -257,10 +267,9 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Variables for CheckDuplicateVariableExist method | Variable Id: {0} | Variable Name : {1} | UserName: {0}", Varid, Varname, SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in Variables for CheckDuplicateVariableExist method | Variable Id: {0} | Variable Name : {1} | UserName: {0}", Varid, Varname, SessionManager.TESTER_LOGIN_NAME), ex);
+                MARS_Repository.Helper.WriteLogMessage(string.Format("Error occured in Variables for CheckDuplicateVariableExist method | Variable Id: {0} | Variable Name : {1} | UserName: {2} | Error: {3}", Varid, Varname, SessionManager.TESTER_LOGIN_NAME, ex.ToString()), currentPath);
                 if (ex.InnerException != null)
-                    ELogger.ErrorException(string.Format("InnerException : Error occured in Variables for CheckDuplicateVariableExist method | Variable Id: {0} | Variable Name : {1} | UserName: {0}", Varid, Varname, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+                    MARS_Repository.Helper.WriteLogMessage(string.Format("InnerException : Error occured in Variables for CheckDuplicateVariableExist method | Variable Id: {0} | Variable Name : {1} | UserName: {2} | Error: {3}", Varid, Varname, SessionManager.TESTER_LOGIN_NAME, ex.InnerException.ToString()), currentPath);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -273,6 +282,7 @@ namespace MARS_Web.Controllers
         //renders partial view
         public ActionResult ImportVariables()
         {
+            string currentPath = GetLogPathLocation();
             try
             {
                 var userId = SessionManager.TESTER_ID;
@@ -285,8 +295,7 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured when variable page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured when variable page open | Username: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                MARS_Repository.Helper.WriteLogMessage(string.Format("Error occured when variable page open | Username: {0} | Error: {1}", SessionManager.TESTER_LOGIN_NAME, ex.ToString()), currentPath);
             }
             return PartialView();
         }
@@ -294,6 +303,7 @@ namespace MARS_Web.Controllers
 
         public ActionResult Importvariable()
         {
+            string currentPath = GetLogPathLocation();
             ViewBag.FileName = "";
             string fileName = string.Empty;
             string name = "Log_Import" + DateTime.Now.ToString(" yyyy-MM-dd HH-mm-ss") + ".xlsx";
@@ -380,10 +390,9 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Variables for Importvariable method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in Variables for Importvariable method |UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                MARS_Repository.Helper.WriteLogMessage(string.Format("Error occured in Variables for Importvariable method |UserName: {0} | Error: {1}", SessionManager.TESTER_LOGIN_NAME, ex.ToString()), currentPath);
                 if (ex.InnerException != null)
-                    ELogger.ErrorException(string.Format("InnerException : Error occured in Variables for Importvariable method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+                    MARS_Repository.Helper.WriteLogMessage(string.Format("InnerException : Error occured in Variables for Importvariable method | UserName: {0} | Error: {1}", SessionManager.TESTER_LOGIN_NAME, ex.InnerException.ToString()), currentPath);
                 int line;
                 string msg = ex.Message;
                 line = dbtable.lineNo(ex);
@@ -412,6 +421,7 @@ namespace MARS_Web.Controllers
 
         public JsonResult ExportVariable()
         {
+            string currentPath = GetLogPathLocation();
             string lFileName = "variable" + "_" + DateTime.Now.ToString("yyyyMMdd") + "_" + DateTime.Now.ToString("HHmmss") + ".xlsx";
             string name = "Log_Variable_Import" + "_" + DateTime.Now.ToString(" yyyy-MM-dd HH-mm-ss") + ".xlsx";
             string log_path = WebConfigurationManager.AppSettings["ExportLogPath"];
@@ -421,6 +431,8 @@ namespace MARS_Web.Controllers
                 string lSchema = SessionManager.Schema;
                 var lConnectionStr = SessionManager.APP;
                 var repAcc = new VariableRepository();
+                repAcc.currentPath = currentPath;
+                repAcc.Username = SessionManager.TESTER_LOGIN_NAME;
                 var exp = new MARSUtility.ExportExcel();
               
                 string FullPath = Path.Combine(System.Web.HttpContext.Current.Server.MapPath("~/TempExport/"), lFileName);
@@ -476,10 +488,9 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Variables for ExportVariable method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in Variables for ExportVariable method |UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                MARS_Repository.Helper.WriteLogMessage(string.Format("Error occured in Variables for ExportVariable method |UserName: {0} | Error: {1}", SessionManager.TESTER_LOGIN_NAME, ex.ToString()), currentPath);
                 if (ex.InnerException != null)
-                    ELogger.ErrorException(string.Format("InnerException : Error occured in Variables for ExportVariable method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+                    MARS_Repository.Helper.WriteLogMessage(string.Format("InnerException : Error occured in Variables for ExportVariable method | UserName: {0} | Error: {1}", SessionManager.TESTER_LOGIN_NAME, ex.InnerException.ToString()), currentPath);
                 int line;
                 string msg = ex.Message;
                 line = dbtable.lineNo(ex);

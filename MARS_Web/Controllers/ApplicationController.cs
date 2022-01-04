@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
+using System.Web.Configuration;
 using System.Web.Mvc;
 
 namespace MARS_Web.Controllers
@@ -20,11 +21,19 @@ namespace MARS_Web.Controllers
             DBEntities.ConnectionString = SessionManager.ConnectionString;
             DBEntities.Schema = SessionManager.Schema;
         }
+
         Logger logger = LogManager.GetLogger("Log");
         Logger ELogger = LogManager.GetLogger("ErrorLog");
+
+        public string GetLogPathLocation()
+        {
+            string logPath = WebConfigurationManager.AppSettings["LogPathLocation"];
+            return System.Web.HttpContext.Current.Server.MapPath("~/" + logPath + "/");
+        }
         #region Crud operations for Application
         public ActionResult ApplicationList()
         {
+           string currentPath = GetLogPathLocation();
             try
             {
                 var userid = SessionManager.TESTER_ID;
@@ -34,7 +43,6 @@ namespace MARS_Web.Controllers
                 var appgriddata = GridHelper.GetApplicationwidth(gridlst);
                 var appgridlst = repacc.GetGridList((long)userid, GridNameList.ResizeLeftPanel);
                 var Rgriddata = GridHelper.GetLeftpanelgridwidth(appgridlst);
-
                 ViewBag.width = Rgriddata.Resize == null ? ConfigurationManager.AppSettings["DefultLeftPanel"] + "px" : Rgriddata.Resize.Trim() + "px";
                 ViewBag.namewidth = appgriddata.Name == null ? "20%" : appgriddata.Name.Trim() + '%';
                 ViewBag.descriptionwidth = appgriddata.Description == null ? "20%" : appgriddata.Description.Trim() + '%';
@@ -46,10 +54,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Application for ApplicationList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in Application for ApplicationList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                MARS_Repository.Helper.WriteLogMessage(string.Format("Error occured in Application for ApplicationList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), currentPath);
+                MARS_Repository.Helper.WriteLogMessage(string.Format("Error occured in Application for ApplicationList method | UserName: {0} | Error: {1}", SessionManager.TESTER_LOGIN_NAME, ex.ToString()), currentPath);
                 if (ex.InnerException != null)
-                    ELogger.ErrorException(string.Format("InnerException : Error occured in Application for ApplicationList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+                    MARS_Repository.Helper.WriteLogMessage(string.Format("InnerException: Error occured in Application for ApplicationList method | UserName: {0} | Error: {1}", SessionManager.TESTER_LOGIN_NAME, ex.InnerException.ToString()), currentPath);
             }
             return PartialView("ApplicationList");
         }
@@ -58,10 +66,12 @@ namespace MARS_Web.Controllers
         [HttpPost]
         public JsonResult DataLoad()
         {
+            string currentPath = GetLogPathLocation();
             //Get Repository
-            logger.Info(string.Format("Application list open start | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+            MARS_Repository.Helper.WriteLogMessage(string.Format("Application list open start | Username: {0}", SessionManager.TESTER_LOGIN_NAME), currentPath);
             var _apprepository = new ApplicationRepository();
             _apprepository.Username = SessionManager.TESTER_LOGIN_NAME;
+            _apprepository.currentPath = currentPath;
             List<ApplicationViewModel> data = new List<ApplicationViewModel>();
             int totalRecords = default(int);
             int recFilter = default(int);
@@ -190,15 +200,14 @@ namespace MARS_Web.Controllers
 
                 recFilter = data.Count();
                 data = data.Skip(startRec).Take(pageSize).ToList();
-                logger.Info(string.Format("Application list open end | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                logger.Info(string.Format("Application list open successfully | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+                MARS_Repository.Helper.WriteLogMessage(string.Format("Application list open end | Username: {0}", SessionManager.TESTER_LOGIN_NAME), currentPath);
+                MARS_Repository.Helper.WriteLogMessage(string.Format("Application list open successfully | Username: {0}", SessionManager.TESTER_LOGIN_NAME), currentPath);
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Application for DataLoad method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in Application for DataLoad method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                MARS_Repository.Helper.WriteLogMessage(string.Format("Error occured in Application for DataLoad method | UserName: {0} | Error: {1}", SessionManager.TESTER_LOGIN_NAME, ex.ToString()), currentPath);
                 if (ex.InnerException != null)
-                    ELogger.ErrorException(string.Format("InnerException : Error occured in Application for DataLoad method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+                    MARS_Repository.Helper.WriteLogMessage(string.Format("InnerException: Error occured in Application for DataLoad method | UserName: {0} | Error: {1}", SessionManager.TESTER_LOGIN_NAME, ex.InnerException.ToString()), currentPath);
             }
             //Return Result in Json Formate
             return Json(new
@@ -214,12 +223,15 @@ namespace MARS_Web.Controllers
         [HttpPost]
         public JsonResult AddEditApplication(ApplicationViewModel applicationviewmodel)
         {
-            logger.Info(string.Format("Application Add/Edit  Modal open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+            string currentPath = GetLogPathLocation();
+
+            MARS_Repository.Helper.WriteLogMessage(string.Format("Application Add/Edit  Modal open | Application Id : {0} | UserName: {1}", applicationviewmodel.ApplicationId, SessionManager.TESTER_LOGIN_NAME), currentPath);
             ResultModel resultModel = new ResultModel();
             try
             {
                 var _apprepository = new ApplicationRepository();
                 _apprepository.Username = SessionManager.TESTER_LOGIN_NAME;
+                _apprepository.currentPath = currentPath;
                 applicationviewmodel.Create_Person = SessionManager.TESTER_LOGIN_NAME;
                 var _addeditResult = _apprepository.AddEditApplication(applicationviewmodel);
                 var _treerepository = new GetTreeRepository();
@@ -229,16 +241,15 @@ namespace MARS_Web.Controllers
                 resultModel.message = "Saved Application [" + applicationviewmodel.ApplicationName + "].";
                 resultModel.data = _addeditResult;
                 resultModel.status = 1;
-
-                logger.Info(string.Format("Application Add/Edit  Modal close | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                logger.Info(string.Format("Application Save successfully | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+                MARS_Repository.Helper.WriteLogMessage(string.Format("Application Add/Edit  Modal close | Username: {0}", SessionManager.TESTER_LOGIN_NAME), currentPath);
+                MARS_Repository.Helper.WriteLogMessage(string.Format("Application Save successfully | Username: {0}", SessionManager.TESTER_LOGIN_NAME), currentPath);
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Application for AddEditApplication method | Application Id : {0} | UserName: {1}", applicationviewmodel.ApplicationId, SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in Application for AddEditApplication method | Application Id : {0} | UserName: {1}", applicationviewmodel.ApplicationId, SessionManager.TESTER_LOGIN_NAME), ex);
+                MARS_Repository.Helper.WriteLogMessage(string.Format("Error occured in Application for AddEditApplication method | Application Id : {0} | UserName: {1}", applicationviewmodel.ApplicationId, SessionManager.TESTER_LOGIN_NAME, ex.ToString()), currentPath);
                 if (ex.InnerException != null)
-                    ELogger.ErrorException(string.Format("InnerException : Error occured in Application for AddEditApplication method | Application Id : {0} | UserName: {1}", applicationviewmodel.ApplicationId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+                    MARS_Repository.Helper.WriteLogMessage(string.Format("InnerException: Error occured in Application for AddEditApplication method | UserName: {0} | Error: {1}", SessionManager.TESTER_LOGIN_NAME, ex.InnerException.ToString()), currentPath);
+
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -248,14 +259,17 @@ namespace MARS_Web.Controllers
         //Delete the Application object data by applicationID
         public ActionResult DeletApplication(long ApplicationId)
         {
-            logger.Info(string.Format("Application Delete start | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+            string currentPath = GetLogPathLocation();
+
+            MARS_Repository.Helper.WriteLogMessage(string.Format("Application Delete start | Username: {0}", SessionManager.TESTER_LOGIN_NAME), currentPath);
+
             ResultModel resultModel = new ResultModel();
             try
             {
                 var _apprepository = new ApplicationRepository();
                 var _treerepository = new GetTreeRepository();
                 _apprepository.Username = SessionManager.TESTER_LOGIN_NAME;
-
+                _apprepository.currentPath = currentPath;
                 var lflag = _apprepository.CheckTestCaseExistsInAppliction(ApplicationId);
 
                 if (lflag.Count <= 0)
@@ -267,21 +281,20 @@ namespace MARS_Web.Controllers
                     Session["LeftProjectList"] = _treerepository.GetProjectList(SessionManager.TESTER_ID, lSchema, lConnectionStr);
 
                     resultModel.data = "success";
-                    resultModel.message = "Application[" + Applicationname + "] has been deleted.";
+                    resultModel.message = "Application [" + Applicationname + "] has been deleted.";
                     resultModel.status = 1;
                 }
                 else
                 {
-                    resultModel.data = lflag; 
+                    resultModel.data = lflag;
                     resultModel.status = 1;
                 }
-                logger.Info(string.Format("Application Delete end | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
-                logger.Info(string.Format("Application Delete successfully | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
+                MARS_Repository.Helper.WriteLogMessage(string.Format("Application Delete end | Username: {0}", SessionManager.TESTER_LOGIN_NAME), currentPath);
+                MARS_Repository.Helper.WriteLogMessage(string.Format("Application Delete successfully | Username: {0}", SessionManager.TESTER_LOGIN_NAME), currentPath);
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Application page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in Application page | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                MARS_Repository.Helper.WriteLogMessage(string.Format("Error occured in Application for DeletApplication method | UserName: {0} | Error: {1}", SessionManager.TESTER_LOGIN_NAME, ex.ToString()), currentPath);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
@@ -293,12 +306,14 @@ namespace MARS_Web.Controllers
         //Check application name already exist or not
         public JsonResult CheckDuplicateApplicationNameExist(string applicationname, long? ApplicationId)
         {
+            string currentPath = GetLogPathLocation();
             ResultModel resultModel = new ResultModel();
             try
             {
                 applicationname = applicationname.Trim();
                 var _apprepository = new ApplicationRepository();
                 _apprepository.Username = SessionManager.TESTER_LOGIN_NAME;
+                _apprepository.currentPath = currentPath;
                 var result = _apprepository.CheckDuplicateApplicationNameExist(applicationname, ApplicationId);
                 resultModel.status = 1;
                 resultModel.message = "success";
@@ -306,10 +321,11 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in Application for CheckDuplicateApplicationNameExist method | Application Id : {0} | Application Name: {1} | UserName: {2}", ApplicationId, applicationname, SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in Application for CheckDuplicateApplicationNameExist method | Application Id : {0} |Application Name: {1} | UserName: {2}", ApplicationId, applicationname, SessionManager.TESTER_LOGIN_NAME), ex);
+                MARS_Repository.Helper.WriteLogMessage(string.Format("Error occured in Application for CheckDuplicateApplicationNameExist method | Application Id : {0} |Application Name: {1} | UserName: {2} | Error: {3}", ApplicationId, applicationname, SessionManager.TESTER_LOGIN_NAME, ex.ToString()), currentPath);
+
                 if (ex.InnerException != null)
-                    ELogger.ErrorException(string.Format("InnerException : Error occured in Application for CheckDuplicateApplicationNameExist method | Application Id : {0} | Application Name: {1} | UserName: {2}", ApplicationId, applicationname, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+                    MARS_Repository.Helper.WriteLogMessage(string.Format("InnerException: Error occured in Application for CheckDuplicateApplicationNameExist method | Application Id : {0} |Application Name: {1} | UserName: {2} | Error: {3}", ApplicationId, applicationname, SessionManager.TESTER_LOGIN_NAME, ex.InnerException.ToString()), currentPath);
+
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }

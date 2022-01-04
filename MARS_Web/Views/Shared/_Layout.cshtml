@@ -212,6 +212,7 @@
         <script src="https://code.highcharts.com/highcharts-3d.js"></script>*@
     <script>
         var gridobj = {};
+        var gridTestcase = {};
         var ExistDataSetRenameList = [];
         var DeleteColumnsList = [];
 
@@ -805,15 +806,15 @@
                             </a>
                         }
                         @*<a href="#" onclick=UserexecutionEnginePathList("0") class="kt-notification__item">
-            <div class="kt-notification__item-icon">
-                <i class="fa fa-route"></i>
-            </div>
-            <div class="kt-notification__item-details">
-                <div class="kt-notification__item-title">
-                    <span class="kt-header__topbar-icon" data-skin="brand" data-container="body" data-toggle="kt-popover" data-placement="bottom" data-content="Location of the MARS Engine on the client's machine." data-original-title="" title="">Engine Path</span>
-                </div>
-            </div>
-        </a>*@
+                                <div class="kt-notification__item-icon">
+                                    <i class="fa fa-route"></i>
+                                </div>
+                                <div class="kt-notification__item-details">
+                                    <div class="kt-notification__item-title">
+                                        <span class="kt-header__topbar-icon" data-skin="brand" data-container="body" data-toggle="kt-popover" data-placement="bottom" data-content="Location of the MARS Engine on the client's machine." data-original-title="" title="">Engine Path</span>
+                                    </div>
+                                </div>
+                            </a>*@
                         <a href="#" onclick="PartialConnectionList()" class="kt-notification__item">
                             <div class="kt-notification__item-icon">
                                 <i class="fa fa-users"></i>
@@ -841,15 +842,15 @@
                             </a>
                         }
                         @*<a href="#" onclick="OpenResizeLeftPanelPopup()" class="kt-notification__item">
-            <div class="kt-notification__item-icon">
-                <i class="flaticon2-arrow-1"></i>
-            </div>
-            <div class="kt-notification__item-details">
-                <div class="kt-notification__item-title">
-                    <span class="kt-header__topbar-icon" data-skin="brand" data-container="body" data-toggle="kt-popover" data-placement="bottom" data-content="Set width in Left Panel" data-original-title="" title="">Resize Left Panel</span>
-                </div>
-            </div>
-        </a>*@
+                                <div class="kt-notification__item-icon">
+                                    <i class="flaticon2-arrow-1"></i>
+                                </div>
+                                <div class="kt-notification__item-details">
+                                    <div class="kt-notification__item-title">
+                                        <span class="kt-header__topbar-icon" data-skin="brand" data-container="body" data-toggle="kt-popover" data-placement="bottom" data-content="Set width in Left Panel" data-original-title="" title="">Resize Left Panel</span>
+                                    </div>
+                                </div>
+                            </a>*@
 
                         @if (RoleList.Select(y => y.ROLE_NAME.Trim().ToLower()).ToList().Contains("admin"))
                         {
@@ -1745,7 +1746,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" id="savefilter"  class="btn btn-primary" onclick="ExportReportDatasetTag()">Export</button>
+                    <button type="button" id="savefilter" class="btn btn-primary" onclick="ExportReportDatasetTag()">Export</button>
                 </div>
             </div>
         </div>
@@ -1840,7 +1841,7 @@
         var lobjTestCase;
         var lobjProject;
         var lobjstoryboard;
-
+        var ReloadTestSuite = false;
         function moveTestCasetoTestSuite() {
             var testsuite = $("#drpTs").val();
             if (testsuite == "" || testsuite=="0") {
@@ -3073,6 +3074,49 @@
                             });
 
                         }
+                    },
+                    {
+                        name: 'Reload TestSuite List',
+                        icon: '',
+                        cls: 'RESULTSHOWRoleHide',
+                        action: function (evt, ui) {
+                            ReloadTestSuite = true;
+                            //var List = []; List = testsuites;
+                            //testsuites = [];
+                            //$.ajax({
+                            //    url: "/StoryBoard/GetTestSuiteListInStoryboard",
+                            //    type: "POST",
+                            //    data: '{ProjectId: ' + ProjectId + '}',
+                            //    contentType: "application/json;charset=utf-8",
+                            //    dataType: "json",
+                            //    async: false,
+                            //    success: function (result) {
+                            //        debugger
+                            //        if (result.status == 1) {
+                            //            if (result.data != null && result.data.length > 0) {
+                            //                testsuites.push({ "value": "", "text": "" });
+                            //                for (var i = 0; i < result.data.length; i++) {
+                            //                    testsuites.push({ "value": result.data[i].TestsuiteName, "text": result.data[i].TestsuiteName });
+                            //                }
+                            //                List = testsuites;
+                            //                testsuites = [];
+                            //            }
+                            //        }
+                            //        else if (result.status == 0) {
+                            //            swal.fire({
+                            //                "title": "",
+                            //                "text": result.message,
+                            //                "icon": "error",
+                            //                "onClose": function (e) {
+                            //                    console.log('on close event fired!');
+                            //                }
+                            //            });
+                            //        }
+                            //    },
+                            //    error(a, b, c) {
+                            //    }
+                            //});
+                        }
                     }
 
                 ]
@@ -4125,7 +4169,6 @@
             });
         }
         function OpenExportFilter() {
-            debugger
             startloader();
             $.ajax({
                 url: "/TestCase/RunStoryboardForFolder",
@@ -4172,18 +4215,30 @@
     </script>
 
     <script type="text/javascript">
-    var sessionTimeoutWarning = "<%= System.Configuration.ConfigurationManager.AppSettings["SessionWarning"].ToString()%>";
-        var sessionTimeout = "<%= Session.Timeout %>";
-
-    var sTimeout = parseInt(sessionTimeoutWarning) * 60 * 1000;
-    setTimeout('SessionWarning()', sTimeout);
-
-    function SessionWarning() {
+    var sessionTimeoutWarning =    @System.Configuration.ConfigurationSettings.AppSettings["SessionWarning"].ToString();
+     var sessionTimeout = @Session.Timeout;
+        var sTimeout = parseInt(sessionTimeoutWarning) * 60 * 1000;
+        var sTime = parseInt(sessionTimeout) * 60 * 1000;
+    //var sTimeout = parseInt(sessionTimeoutWarning) * 60 * 1000;
+       setTimeout('SessionWarning()', sTimeout);
+        setTimeout('SessionOut()', sTime);
+        function SessionWarning() {
         var message = "Your session will expire in another " +
             (parseInt(sessionTimeout) - parseInt(sessionTimeoutWarning)) +
-            " mins! Please Save the data before the session expires";
-        alert(message);
-    }
-</script>
+                " mins! Please Save the data before the session expires";
+
+            swal.fire({
+                "title": "",
+                "text": message,
+                "icon": "warning",
+                "onClose": function (e) {
+                    console.log('on close event fired!');
+                }
+            });
+        }
+        function SessionOut() {
+            window.location = "/Login/Login";
+        }
+    </script>
 </body>
 </html>
