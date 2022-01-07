@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using System.Transactions;
 using MARS_Repository.Entities;
 using MARS_Repository.ViewModel;
+using MoreLinq;
+using Newtonsoft.Json;
 using NLog;
 using Oracle.ManagedDataAccess.Client;
 
@@ -45,14 +47,48 @@ namespace MARS_Repository.Repositories
                 throw;
             }
         }
-
+        public List<long> getApplicationIdByTestCaseId(int testcaseId)
+        {
+            return entity.REL_APP_TESTCASE.Where(x => x.TEST_CASE_ID == testcaseId).Select(y => (long)y.APPLICATION_ID).ToList<long>();
+        }
+        public List<long?> getTypeIdByKeywordName(string KeywordName)
+        {
+            
+            var data =  (from K in entity.T_KEYWORD
+                   join KR in entity.T_DIC_RELATION_KEYWORD on K.KEY_WORD_ID equals KR.KEY_WORD_ID
+                   where K.KEY_WORD_NAME.Trim().ToLower().Equals(KeywordName.Trim().ToLower())
+                   select new ObjectListFromJson { TYPE_ID = KR.TYPE_ID }).ToList();
+            return data.Select(x => x.TYPE_ID).ToList();
+        }
+        public List<ObjectList> GetObjectByParentFromJsonFile(long appId, string path, long pegId, List<long?> typeId)
+        {
+            var obj = new List<ObjectList>();
+            var lPegObjectName = entity.T_REGISTED_OBJECT.Where(x => x.OBJECT_NAME_ID == pegId && x.TYPE_ID == 1).FirstOrDefault().OBJECT_TYPE;
+            string jsongString = File.ReadAllText(path);
+            var data = JsonConvert.DeserializeObject<List<ObjectListFromJson>>(jsongString);
+            var finalObject = data.Where(c => typeId.Contains(c.TYPE_ID) && c.OBJECT_TYPE.Trim().ToLower().Contains(lPegObjectName.Trim().ToLower()))
+                .Select(x => new ObjectList() { ObjectId = Decimal.Truncate((decimal)x.OBJECT_NAME_ID), ObjectName = x.OBJECT_HAPPY_NAME }).ToList();
+            return finalObject.DistinctBy(x => x.ObjectName).OrderBy(y => y.ObjectName).ToList();
+        }
+        public List<ObjectList> getObjectListByAppIdFromJsonFile(List<long> appId, string path)
+        {
+            var obj = new List<ObjectList>();
+            foreach(var Id in appId)
+            {
+                string filePath = Path.Combine(path, "app_" + Id + "\\PegWindowsMapping.json");
+                string jsongString = File.ReadAllText(filePath);
+                var data = JsonConvert.DeserializeObject<List<ObjectListFromJson>>(jsongString);
+                var finalObject = data.Select(x => new ObjectList() { ObjectId = Decimal.Truncate((decimal)x.OBJECT_NAME_ID), ObjectName = x.OBJECT_HAPPY_NAME }).ToList();
+                obj.AddRange(finalObject);
+            }           
+            return obj.DistinctBy(x => x.ObjectName).OrderBy(y => y.ObjectName).ToList();
+        }
         public List<ObjectList> GetObjectsByPegWindowType(int testcaseId)
         {
             try
             {
                 logger.Info(string.Format("Get Objects By PegWindowType start | TestcaseId: {0} | UserName: {1}", testcaseId, Username));
                 var lPegObjectTypeId = entity.T_GUI_COMPONENT_TYPE_DIC.FirstOrDefault(x => x.TYPE_NAME.ToLower() == "pegwindow").TYPE_ID;
-
                 var query = (from k in entity.T_REGISTED_OBJECT
                              join obj_n in entity.T_OBJECT_NAMEINFO on k.OBJECT_NAME_ID equals obj_n.OBJECT_NAME_ID
                              join ot in entity.T_GUI_COMPONENT_TYPE_DIC on k.TYPE_ID equals ot.TYPE_ID

@@ -14,6 +14,7 @@ namespace MARS_Repository.Entities
     
     public partial class MV_OBJECT_SNAPSHOT
     {
+        public long OT_TYPE_ID { get; set; }
         public Nullable<decimal> OBJECT_NAME_ID { get; set; }
         public string OBJECT_HAPPY_NAME { get; set; }
         public string COMMENT { get; set; }

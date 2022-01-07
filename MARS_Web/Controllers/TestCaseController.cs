@@ -1924,7 +1924,62 @@ namespace MARS_Web.Controllers
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
 
+        #region STEPS
+        //Appliction -- dbid
+        //find applicationfolder
+        //get step using stepid --var lPegKeywordNameList = lobj.Where(x => x.Id == stepId).ToList();
+        //find pegwindow -- var lPegObjectName = lPegKeywordList.Where(x => x.Id < stepId).OrderByDescending(y => y.Id).First().Object;
+        //find pegwindow id from database using object name
+        //read file from pegwindow first char
+        //find list using pegwind id
+        // bind in object dropdown
+
+
+
+
+        //aplication id --database
+        //find applicationfolder
+        //find pegwindow -- var lPegObjectName = lPegKeywordList.Where(x => x.Id < stepId).OrderByDescending(y => y.Id).First().Object;
+        //find file using object pegwindow name
+        //bind in object dropdown
+        #endregion
+
         //Loads Objects in the dropdown of Object column for every step in TestCase grid
+        [HttpGet]
+        public ActionResult GetObjectsList(long appId, string objectName, string keyworkName)
+        {
+            ResultModel resultModel = new ResultModel();
+            try
+            {               
+                if (string.IsNullOrEmpty(objectName))
+                {
+                    resultModel.data = new List<ObjectList>();
+                    resultModel.status = 1;
+                }
+                else
+                {
+                    var repObject = new ObjectRepository();
+                    string folderPath = Path.Combine(Server.MapPath("~/"), "Serialization\\Object\\" + SessionManager.Schema + "\\app_" + appId + "\\" + objectName.FirstOrDefault() + ".json");
+                    T_OBJECT_NAMEINFO lPegObj = repObject.GetPegObjectByObjectName(objectName);
+                    
+                    var typeId = repObject.getTypeIdByKeywordName(keyworkName);
+                    var objectList = repObject.GetObjectByParentFromJsonFile(appId, folderPath, lPegObj.OBJECT_NAME_ID, typeId);                    
+                    resultModel.data = objectList;
+                    resultModel.status = 1;
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in TestCase controller for GetObjectsList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in TestCase controller for GetObjectsList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for GetObjectsList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+
+                resultModel.status = 0;
+                resultModel.message = ex.Message.ToString();
+            }
+            return Json(resultModel, JsonRequestBehavior.AllowGet);
+        }
         [HttpPost]
         public ActionResult GetObjectsList(GetObjectList ObjectList)
         {

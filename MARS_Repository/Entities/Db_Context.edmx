@@ -239,8 +239,10 @@ warning 6002: The table/view 'GEN_MARS_4.MV_OBJ_WITH_PEG' does not have a primar
 warning 6002: The table/view 'GEN_MARS_4.MV_OBJECT_SNAPSHOT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="MV_OBJECT_SNAPSHOT">
           <Key>
+            <PropertyRef Name="OT_TYPE_ID" />
             <PropertyRef Name="OBJECT_ID" />
           </Key>
+          <Property Name="OT_TYPE_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
           <Property Name="OBJECT_NAME_ID" Type="number" Precision="38" Scale="0" />
           <Property Name="OBJECT_HAPPY_NAME" Type="varchar2" MaxLength="256" />
           <Property Name="COMMENT" Type="varchar2" MaxLength="250" />
@@ -1529,7 +1531,7 @@ warning 6002: The table/view 'GEN_MARS_4.V_STORYBOARD_TEST_FULLVISION' does not 
           <Property Name="DEPENDS_ON" Type="number" Precision="16" Scale="0" />
           <Property Name="ALIAS_NAME" Type="varchar2" MaxLength="64" />
           <Property Name="PARENT_ALIAS_NAME" Type="varchar2" MaxLength="64" />
-          <Property Name="DISPLAY_NAME" Type="varchar2" MaxLength="64" />
+          <Property Name="DISPLAY_NAME" Type="varchar2" MaxLength="256" />
           <Property Name="TEST_RUN_VALUE" Type="number" Precision="2" Scale="0" />
           <Property Name="LATEST_TEST_MARK_ID" Type="number" Precision="16" Scale="0" />
           <Property Name="HIST_LATEST_TEST_MARK_ID" Type="number" Precision="16" Scale="0" />
@@ -1559,8 +1561,8 @@ warning 6002: The table/view 'GEN_MARS_4.V_TEST_DATA_REPORT_SUMMARY' does not ha
           </Key>
           <Property Name="KEY_WORD_NAME" Type="varchar2" MaxLength="255" />
           <Property Name="OBJECT_HAPPY_NAME" Type="varchar2" MaxLength="256" />
-          <Property Name="INPUT_VALUE_SETTING" Type="varchar2" MaxLength="128" />
-          <Property Name="RETURN_VALUES" Type="varchar2" MaxLength="64" />
+          <Property Name="INPUT_VALUE_SETTING" Type="varchar2" MaxLength="1024" />
+          <Property Name="RETURN_VALUES" Type="varchar2" MaxLength="266" />
           <Property Name="ACTUAL_INPUT_DATA" Type="varchar2" MaxLength="128" />
           <Property Name="LATEST_TEST_MARK_ID" Type="number" Precision="16" Scale="0" />
           <Property Name="STORYBOARD_DETAIL_ID" Type="number" Precision="16" Scale="0" />
@@ -1584,8 +1586,8 @@ warning 6002: The table/view 'GEN_MARS_4.V_TEST_DATARPT_CAPTURE' does not have a
           </Key>
           <Property Name="KEY_WORD_NAME" Type="varchar2" MaxLength="255" />
           <Property Name="OBJECT_HAPPY_NAME" Type="varchar2" MaxLength="256" />
-          <Property Name="INPUT_VALUE_SETTING" Type="varchar2" MaxLength="128" />
-          <Property Name="RETURN_VALUES" Type="varchar2" MaxLength="64" />
+          <Property Name="INPUT_VALUE_SETTING" Type="varchar2" MaxLength="1024" />
+          <Property Name="RETURN_VALUES" Type="varchar2" MaxLength="266" />
           <Property Name="ACTUAL_INPUT_DATA" Type="varchar2" MaxLength="128" />
           <Property Name="LATEST_TEST_MARK_ID" Type="number" Precision="16" Scale="0" />
           <Property Name="STORYBOARD_DETAIL_ID" Type="number" Precision="16" Scale="0" />
@@ -2174,7 +2176,7 @@ warning 6002: The table/view 'GEN_MARS_4.V_USER_COMPANY' does not have a primary
           <Parameter Name="TESTCASEID" Type="number" Mode="In" />
         </Function>
         <Function Name="DELETEFOLDERDATASET" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN_MARS_4">
-          <Parameter Name="FEEDPROCESSDETAILID" Type="varchar2" Mode="In" />
+          <Parameter Name="FEEDPROCESSDETAILID" Type="number" Mode="In" />
         </Function>
         <Function Name="DeleteDatsSets" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN_MARS_4">
           <Parameter Name="DATASETID" Type="number" Mode="In" />
@@ -2655,6 +2657,7 @@ FROM "GEN_MARS_4"."MV_OBJ_WITH_PEG" "MV_OBJ_WITH_PEG"</DefiningQuery>
           </EntitySet>
           <EntitySet Name="MV_OBJECT_SNAPSHOT" EntityType="Self.MV_OBJECT_SNAPSHOT" store:Type="Tables" store:Schema="GEN_MARS_4">
             <DefiningQuery>SELECT 
+"MV_OBJECT_SNAPSHOT"."OT_TYPE_ID" AS "OT_TYPE_ID", 
 "MV_OBJECT_SNAPSHOT"."OBJECT_NAME_ID" AS "OBJECT_NAME_ID", 
 "MV_OBJECT_SNAPSHOT"."OBJECT_HAPPY_NAME" AS "OBJECT_HAPPY_NAME", 
 "MV_OBJECT_SNAPSHOT"."COMMENT" AS "COMMENT", 
@@ -3559,7 +3562,7 @@ FROM "GEN_MARS_4"."V_USER_COMPANY" "V_USER_COMPANY"</DefiningQuery>
           <Key>
             <PropertyRef Name="OBJECT_NAME_ID" />
           </Key>
-          <Property Name="OBJECT_NAME_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+          <Property Name="OBJECT_NAME_ID" Type="Int64" Nullable="false" />
           <Property Name="OBJECT_HAPPY_NAME" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
           <Property Name="PEGWINDOW_MARK" Type="Int16" />
           <Property Name="OBJNAME_DESCRIPTION" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
@@ -4171,24 +4174,6 @@ FROM "GEN_MARS_4"."V_USER_COMPANY" "V_USER_COMPANY"</DefiningQuery>
           <Property Name="APPLICATION_ID" Type="Int64" />
           <Property Name="QUICK_ACCESS" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
           <Property Name="OBJECT_NAME_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-        </EntityType>
-        <EntityType Name="MV_OBJECT_SNAPSHOT">
-          <Key>
-            <PropertyRef Name="OBJECT_ID" />
-          </Key>
-          <Property Name="OBJECT_NAME_ID" Type="Decimal" Precision="38" Scale="0" />
-          <Property Name="OBJECT_HAPPY_NAME" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
-          <Property Name="COMMENT" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="APPLICATION_ID" Type="Int64" />
-          <Property Name="ENUM_TYPE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="OBJECT_ID" Type="Int64" Nullable="false" />
-          <Property Name="OBJECT_TYPE" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
-          <Property Name="QUICK_ACCESS" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
-          <Property Name="TYPE_ID" Type="Int64" />
-          <Property Name="TYPE_NAME" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
-          <Property Name="PEG_NAME" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
-          <Property Name="PEG_QUICK_ACCESS" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
-          <Property Name="PEG_ID" Type="Int64" />
         </EntityType>
         <EntityType Name="MV_STORYBOARD_LATEST">
           <Key>
@@ -5148,7 +5133,6 @@ FROM "GEN_MARS_4"."V_USER_COMPANY" "V_USER_COMPANY"</DefiningQuery>
           <EntitySet Name="MV_LAST_TC_INFO" EntityType="Self.MV_LAST_TC_INFO" />
           <EntitySet Name="MV_LATEST_STB_TSMOD_MARK" EntityType="Self.MV_LATEST_STB_TSMOD_MARK" />
           <EntitySet Name="MV_OBJ_WITH_PEG" EntityType="Self.MV_OBJ_WITH_PEG" />
-          <EntitySet Name="MV_OBJECT_SNAPSHOT" EntityType="Self.MV_OBJECT_SNAPSHOT" />
           <EntitySet Name="MV_STORYBOARD_LATEST" EntityType="Self.MV_STORYBOARD_LATEST" />
           <EntitySet Name="MV_TC_DATASUMMARY" EntityType="Self.MV_TC_DATASUMMARY" />
           <EntitySet Name="T_REGISTED_OBJECT_TEST" EntityType="Self.T_REGISTED_OBJECT_TEST" />
@@ -5629,10 +5613,11 @@ FROM "GEN_MARS_4"."V_USER_COMPANY" "V_USER_COMPANY"</DefiningQuery>
           </FunctionImport>
           <EntitySet Name="T_TEST_DATASETTAG" EntityType="Model.T_TEST_DATASETTAG" />
           <FunctionImport Name="DELETEFOLDERDATASET">
-          <Parameter Name="FEEDPROCESSDETAILID" Mode="In" Type="String" />
+          <Parameter Name="FEEDPROCESSDETAILID" Mode="In" Type="Decimal" />
           </FunctionImport>
           <EntitySet Name="T_FOLDER_FILTER" EntityType="Model.T_FOLDER_FILTER" />
           <EntitySet Name="REL_FOLDER_FILTER" EntityType="Model.REL_FOLDER_FILTER" />
+          <EntitySet Name="MV_OBJECT_SNAPSHOT" EntityType="Model.MV_OBJECT_SNAPSHOT" />
         </EntityContainer>
         <EntityType Name="T_USER_ACTIVEPAGE">
           <Key>
@@ -5923,6 +5908,26 @@ FROM "GEN_MARS_4"."V_USER_COMPANY" "V_USER_COMPANY"</DefiningQuery>
           <Property Name="REL_FOLDER_FILTER_ID" Type="Int64" Nullable="false" />
           <Property Name="FOLDER_ID" Type="Int64" />
           <Property Name="FILTER_ID" Type="Int64" />
+        </EntityType>
+        <EntityType Name="MV_OBJECT_SNAPSHOT">
+          <Key>
+            <PropertyRef Name="OT_TYPE_ID" />
+            <PropertyRef Name="OBJECT_ID" />
+          </Key>
+          <Property Name="OT_TYPE_ID" Type="Int64" Nullable="false" />
+          <Property Name="OBJECT_NAME_ID" Type="Decimal" Precision="38" Scale="0" />
+          <Property Name="OBJECT_HAPPY_NAME" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="COMMENT" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="APPLICATION_ID" Type="Int64" />
+          <Property Name="ENUM_TYPE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="OBJECT_ID" Type="Int64" Nullable="false" />
+          <Property Name="OBJECT_TYPE" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="QUICK_ACCESS" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="TYPE_ID" Type="Int64" />
+          <Property Name="TYPE_NAME" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="PEG_NAME" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="PEG_QUICK_ACCESS" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="PEG_ID" Type="Int64" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -6756,25 +6761,6 @@ FROM "GEN_MARS_4"."V_USER_COMPANY" "V_USER_COMPANY"</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="MV_OBJECT_SNAPSHOT">
-            <EntityTypeMapping TypeName="Model.MV_OBJECT_SNAPSHOT">
-              <MappingFragment StoreEntitySet="MV_OBJECT_SNAPSHOT">
-                <ScalarProperty Name="OBJECT_NAME_ID" ColumnName="OBJECT_NAME_ID" />
-                <ScalarProperty Name="OBJECT_HAPPY_NAME" ColumnName="OBJECT_HAPPY_NAME" />
-                <ScalarProperty Name="COMMENT" ColumnName="COMMENT" />
-                <ScalarProperty Name="APPLICATION_ID" ColumnName="APPLICATION_ID" />
-                <ScalarProperty Name="ENUM_TYPE" ColumnName="ENUM_TYPE" />
-                <ScalarProperty Name="OBJECT_ID" ColumnName="OBJECT_ID" />
-                <ScalarProperty Name="OBJECT_TYPE" ColumnName="OBJECT_TYPE" />
-                <ScalarProperty Name="QUICK_ACCESS" ColumnName="QUICK_ACCESS" />
-                <ScalarProperty Name="TYPE_ID" ColumnName="TYPE_ID" />
-                <ScalarProperty Name="TYPE_NAME" ColumnName="TYPE_NAME" />
-                <ScalarProperty Name="PEG_NAME" ColumnName="PEG_NAME" />
-                <ScalarProperty Name="PEG_QUICK_ACCESS" ColumnName="PEG_QUICK_ACCESS" />
-                <ScalarProperty Name="PEG_ID" ColumnName="PEG_ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="MV_STORYBOARD_LATEST">
             <EntityTypeMapping TypeName="Model.MV_STORYBOARD_LATEST">
               <MappingFragment StoreEntitySet="MV_STORYBOARD_LATEST">
@@ -7584,6 +7570,26 @@ FROM "GEN_MARS_4"."V_USER_COMPANY" "V_USER_COMPANY"</DefiningQuery>
                 <ScalarProperty Name="FILTER_ID" ColumnName="FILTER_ID" />
                 <ScalarProperty Name="FOLDER_ID" ColumnName="FOLDER_ID" />
                 <ScalarProperty Name="REL_FOLDER_FILTER_ID" ColumnName="REL_FOLDER_FILTER_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MV_OBJECT_SNAPSHOT">
+            <EntityTypeMapping TypeName="Model.MV_OBJECT_SNAPSHOT">
+              <MappingFragment StoreEntitySet="MV_OBJECT_SNAPSHOT">
+                <ScalarProperty Name="PEG_ID" ColumnName="PEG_ID" />
+                <ScalarProperty Name="PEG_QUICK_ACCESS" ColumnName="PEG_QUICK_ACCESS" />
+                <ScalarProperty Name="PEG_NAME" ColumnName="PEG_NAME" />
+                <ScalarProperty Name="TYPE_NAME" ColumnName="TYPE_NAME" />
+                <ScalarProperty Name="TYPE_ID" ColumnName="TYPE_ID" />
+                <ScalarProperty Name="QUICK_ACCESS" ColumnName="QUICK_ACCESS" />
+                <ScalarProperty Name="OBJECT_TYPE" ColumnName="OBJECT_TYPE" />
+                <ScalarProperty Name="OBJECT_ID" ColumnName="OBJECT_ID" />
+                <ScalarProperty Name="ENUM_TYPE" ColumnName="ENUM_TYPE" />
+                <ScalarProperty Name="APPLICATION_ID" ColumnName="APPLICATION_ID" />
+                <ScalarProperty Name="COMMENT" ColumnName="COMMENT" />
+                <ScalarProperty Name="OBJECT_HAPPY_NAME" ColumnName="OBJECT_HAPPY_NAME" />
+                <ScalarProperty Name="OBJECT_NAME_ID" ColumnName="OBJECT_NAME_ID" />
+                <ScalarProperty Name="OT_TYPE_ID" ColumnName="OT_TYPE_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

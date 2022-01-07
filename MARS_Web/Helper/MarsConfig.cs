@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Hosting;
 using System.Xml;
 using System.Xml.Linq;
 
@@ -34,7 +35,7 @@ namespace MARS_Web.Helper
 
         public static MarsConfig Configure(string marsEnvironment)
         {
-            string marsHomeFolder = HttpContext.Current.Server.MapPath("/Config");
+            string marsHomeFolder = HostingEnvironment.MapPath("/Config"); //HttpContext.Current.Server.MapPath("/Config");
             string marsConfigFile = marsHomeFolder + @"\Mars.config";
             return Configure(marsConfigFile, marsEnvironment);
         }

@@ -11,6 +11,7 @@ using MARS_Repository.ViewModel;
 using MARS_Repository.Entities;
 using System.Web.Configuration;
 using NLog;
+using System.Threading;
 
 namespace MARS_Web.Controllers
 {
@@ -127,6 +128,20 @@ namespace MARS_Web.Controllers
                     resultModel.status = 1;
                     resultModel.message = lMsg;
                 }
+
+                #region CREATE JSON FILE
+                //Thread Serializations = new Thread(delegate ()
+                //{
+                //    string marsHomeFolder = Server.MapPath("/Config");
+                //    string marsConfigFile = marsHomeFolder + @"\Mars.config";
+                //    MarsSerializationHelper.JsonSerialization.SerializationFile.ChangeConnectionString(connlist[0], marsConfigFile);
+                //    MarsSerializationHelper.JsonSerialization.SerializationFile.CreateJsonFiles(connlist[0], Server.MapPath("~/"));
+                //})
+                //{
+                //    IsBackground = true
+                //};
+                //Serializations.Start();
+                #endregion
             }
             catch (Exception ex)
             {

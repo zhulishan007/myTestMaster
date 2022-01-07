@@ -11,6 +11,14 @@ namespace MARS_Repository.ViewModel
         public decimal ObjectId { get; set; }
         public string ObjectName { get; set; }
     }
+    public class ObjectListFromJson
+    {
+        public decimal? OBJECT_NAME_ID { get; set; }
+        public string OBJECT_HAPPY_NAME { get; set; }
+        public long PEG_ID { get; set; }
+        public string OBJECT_TYPE { get; set; }
+        public long? TYPE_ID { get; set; }
+    }
     public class Objects
     {
         public decimal ObjectId { get; set; }

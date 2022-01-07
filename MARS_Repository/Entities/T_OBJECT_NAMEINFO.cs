@@ -14,7 +14,7 @@ namespace MARS_Repository.Entities
     
     public partial class T_OBJECT_NAMEINFO
     {
-        public decimal OBJECT_NAME_ID { get; set; }
+        public long OBJECT_NAME_ID { get; set; }
         public string OBJECT_HAPPY_NAME { get; set; }
         public Nullable<short> PEGWINDOW_MARK { get; set; }
         public string OBJNAME_DESCRIPTION { get; set; }

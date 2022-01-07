@@ -7,6 +7,7 @@ using NLog;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -162,6 +163,7 @@ namespace MARS_Web.Controllers
                 ViewBag.WebAPIURL = ConfigurationManager.AppSettings["WebApiURL"];
                 ViewBag.Title = "Home Page";
                 var lRep = new TestCaseRepository();
+                var _object = new ObjectRepository();
                 var lKeyRepo = new KeywordRepository();
                 lRep.Username = SessionManager.TESTER_LOGIN_NAME;
                 var repObject = new ObjectRepository();
@@ -204,14 +206,26 @@ namespace MARS_Web.Controllers
 
                 var keywordsResult = lKeyRepo.GetKeywords().Select(y => new KeywordList
                 {
-                    KeywordName = y.KEY_WORD_NAME
+                    KeywordName = y.KEY_WORD_NAME,
+                    KeywordId = y.KEY_WORD_ID
                 }).ToList();
                 var keywordsPegWindow = keywordsResult.Where(x => lKeywordList.Contains(x.KeywordName.ToLower().Trim())).ToList();
                 ViewBag.KeywordsList = JsonConvert.SerializeObject(keywordsResult);
                 ViewBag.KeywordsPegwindowList = JsonConvert.SerializeObject(keywordsPegWindow);
 
-                var lList = repObject.GetObjectsByPegWindowType(TestcaseId).OrderBy(y => y.ObjectName).ToList();
-                ViewBag.ObjectList = JsonConvert.SerializeObject(lList);
+                #region RBJ Comment
+                //var lList = repObject.GetObjectsByPegWindowType(TestcaseId).OrderBy(y => y.ObjectName).ToList();
+                //ViewBag.ObjectList = JsonConvert.SerializeObject(lList);
+                #endregion
+
+                #region RBJ Code
+                var appId = repObject.getApplicationIdByTestCaseId(TestcaseId);
+                string folderPath = Path.Combine(Server.MapPath("~/"), "Serialization\\Object\\" + SessionManager.Schema);
+                var objList = repObject.getObjectListByAppIdFromJsonFile(appId, folderPath);
+                ViewBag.ObjectList = JsonConvert.SerializeObject(objList);
+
+                ViewBag.AppID = _object.getApplicationIdByTestCaseId(TestcaseId).FirstOrDefault();
+                #endregion
 
                 var userid = SessionManager.TESTER_ID;
                 var repacc = new ConfigurationGridRepository();

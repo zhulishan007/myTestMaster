@@ -252,8 +252,8 @@
    });
     dt.push({
         title: "RUN_ORDER", copy: false, hidden: true, dataType: "int", dataIndx: "RUN_ORDER", align: "center", menuInHide: false, sortable: false,
-   });
-
+    });
+        //dt.push({ title: "KeywordId", dataIndx: 'KeywordId', hidden: true }),
       dt.push({
         title: "Keyword", dataIndx: "keyword", dataType: "string", align: "left", menuInHide: true, halign: "center", nodrag: true, nodrop: true, width: @ViewBag.keywordwidth,minWidth: 20, sortable: false, resizable: true,
        editor:
@@ -264,6 +264,7 @@
                ui.$cell.find("select").pqSelect();
            },
            labelIndx: "text",
+           //mapIndices: { "text": "Keyword", "value": "KeywordId" },
            options: function (ui) {
                var List = [];
                var lGridList = [];
@@ -409,7 +410,7 @@
                });
            },
            labelIndx: "text",
-           options: function (ui) {
+              options: function (ui) {
                var List = [];
                var lGridList = [];
                for (i = 0; i < gridobj["@lTestCasegrid"].pdata.length; i++) {
@@ -433,10 +434,18 @@
                    List = objects;
                    objects = [];
                } else {
+                   var paraentPeg = lGridList.filter(function (obj) { return obj.Keyword.toLowerCase() === "pegwindow" });
+                   var pegObjectList = paraentPeg.filter(function (obj) { return obj.Id < ObjectList.stepId });
+                   var keyworkName = lGridList.filter(function (obj) { return obj.Id == ObjectList.stepId })[0].Keyword;
+                   var objectName = null;
+                   if (pegObjectList.length > 1) {
+                       objectName = pegObjectList[pegObjectList.length - 1].Object;
+                   }
+                   var appId = '@ViewBag.AppID';
                    $.ajax({
                        url: "/TestCase/GetObjectsList",
-                       type: "POST",
-                       data: '{ObjectList: ' + JSON.stringify(ObjectList) + '}',
+                       type: "GET",
+                       data: { 'appId': appId, 'objectName': objectName, 'keyworkName': keyworkName },
                        contentType: "application/json;charset=utf-8",
                        dataType: "json",
                        async: false,
@@ -467,6 +476,40 @@
                        error(a, b, c) {
                        }
                    });
+                   //$.ajax({
+                   //    url: "/TestCase/GetObjectsList",
+                   //    type: "POST",
+                   //    data: '{ObjectList: ' + JSON.stringify(ObjectList) + '}',
+                   //    contentType: "application/json;charset=utf-8",
+                   //    dataType: "json",
+                   //    async: false,
+                   //    success: function (result) {
+                   //        if (result.status == 1) {
+                   //            if (result.data != null && result.data.length > 0) {
+                   //                objects.push({ "value": "", "text": "" });
+                   //                objectValidate.push("");
+                   //                for (var i = 0; i < result.data.length; i++) {
+                   //                    objects.push({ "value": result.data[i].ObjectName, "text": result.data[i].ObjectName });
+                   //                    objectValidate.push(result.data[i].ObjectName);
+                   //                }
+                   //                List = objects;
+                   //                objects = [];
+                   //            }
+                   //        }
+                   //        else if (result.status == 0) {
+                   //            swal.fire({
+                   //                "title": "",
+                   //                "text": result.message,
+                   //                "icon": "error",
+                   //                "onClose": function (e) {
+                   //                    console.log('on close event fired!');
+                   //                }
+                   //            });
+                   //        }
+                   //    },
+                   //    error(a, b, c) {
+                   //    }
+                   //});
                }
                return List;
            }
@@ -1751,7 +1794,7 @@
    });
 
 
-
+            //dt.push({ title: "KeywordId", dataIndx: 'KeywordId', hidden: true }),
    dt.push({
      title: "Keyword", dataIndx: "keyword", dataType: "string", align: "left", menuInHide: true, halign: "center", nodrag: true, nodrop: true, sortable: false, resizable: true, width: @ViewBag.keywordwidth, minWidth: 20,
        editor:
@@ -1763,6 +1806,7 @@
              //  alert("1");
            },
            labelIndx: "text",
+           //mapIndices: { "text": "Keyword", "value": "KeywordId" },
            options: function (ui) {
                var List = [];
                var lGridList = [];
@@ -2381,7 +2425,7 @@
                 title: "RUN_ORDER", copy: false, hidden: true, dataType: "int", dataIndx: "RUN_ORDER", align: "center", menuInHide: false, sortable: false,
             });
 
-
+        //dt.push({ title: "KeywordId", dataIndx: 'KeywordId', hidden: true }),
 
             dt.push({
                 title: "Keyword", dataIndx: "keyword", dataType: "string", align: "left", menuInHide: true, halign: "center", nodrag: true, nodrop: true, sortable: false, resizable: true, width: @ViewBag.keywordwidth, minWidth: 20,
@@ -2405,6 +2449,7 @@
                         //  alert("1");
                     },
                     labelIndx: "text",
+                    //mapIndices: { "text": "Keyword", "value": "KeywordId" },
                     options: function (ui) {
                         var List = [];
                         var lGridList = [];
@@ -4310,7 +4355,7 @@
         function TCbodyItems(tcgrid, tcid, tsid, sid, sname, applist) {
             var applistobj = JSON.parse(applist.replaceAll('&quot;', '"'));
             var bodyItem = [];
-                 
+
             //startloader();
             var gridlst = [];
             var engineURI = "";
@@ -4366,7 +4411,7 @@
                             //stoploader();
                         }
                     });
-   
+
                 }
                 else {
                     //stoploader();
@@ -4450,7 +4495,7 @@
                                 //$("#txtareacopy").css("display", "block");
                                 //$("#txtareacopy")[0].select();
                                 //window.document.execCommand("Copy");
-                               
+
                                 var lLoginUser = result.data.user;
                                 var lDataBase = result.data.database;
                                 var lguid = result.data.guid;
@@ -4472,7 +4517,7 @@
                             stoploader();
                         }
                     });
-   
+
                 }
                 else {
                     stoploader();
@@ -4515,8 +4560,8 @@
             <span class="kt-subheader__separator kt-hidden"></span>
             <div class="kt-subheader__breadcrumbs">
                 @*<a href="#" class="kt-subheader__breadcrumbs-home">
-                    <i class="flaticon2-shelter" style="color:#1c6081;"></i>
-                </a>*@
+                        <i class="flaticon2-shelter" style="color:#1c6081;"></i>
+                    </a>*@
                 <a href="#" class="kt-subheader__breadcrumbs-link" style="color:#1c6081;display:none;" id="@BProjectId">
                 </a>
                 <i class="fa fa-angle-double-right" style="color:#1c6081;display:none;">&nbsp;</i>

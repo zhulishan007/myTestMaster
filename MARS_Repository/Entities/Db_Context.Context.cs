@@ -9,29 +9,36 @@
 
 namespace MARS_Repository.Entities
 {
-using System;
-using System.Data.Common;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using System.Data.Objects;
-using System.Data.Objects.DataClasses;
-using System.Linq;
-
-public partial class DBEntities : DbContext
-{
-    public static string ConnectionString { get; set; }
-    public static string Schema { get; set; }
-    public DBEntities()
-         : base(ConnectionString)
+    using System;
+    using System.Data.Common;
+    using System.Data.Entity;
+    using System.Data.Entity.Infrastructure;
+    using System.Data.Objects;
+    using System.Data.Objects.DataClasses;
+    using System.Linq;
+    
+    public partial class DBEntities : DbContext
     {
-    }
-    public DBEntities(DbConnection dbCnn) : base(dbCnn, false)
-    {
-        ((IObjectContextAdapter)this).ObjectContext.CommandTimeout = 3600;
+        public static string ConnectionString { get; set; }
+        public static string Schema { get; set; }
+        public DBEntities() : base(ConnectionString)
+        {
+        }
+        public DBEntities(DbConnection dbCnn) : base(dbCnn, false)
+        {
+            ((IObjectContextAdapter)this).ObjectContext.CommandTimeout = 3600;
+        }
+        //public DBEntities()
+        //    : base("name=DBEntities")
+        //{
+        //}
 
-    }
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+        //    throw new UnintentionalCodeFirstException();
+        //}
 
-    public DbSet<ErrorLog> ErrorLogs { get; set; }
+        public DbSet<ErrorLog> ErrorLogs { get; set; }
         public DbSet<LOGREPORT> LOGREPORTs { get; set; }
         public DbSet<REL_APP_BASELINECOMPARE> REL_APP_BASELINECOMPARE { get; set; }
         public DbSet<REL_APP_PROJ> REL_APP_PROJ { get; set; }
@@ -91,7 +98,6 @@ public partial class DBEntities : DbContext
         public DbSet<MV_LAST_TC_INFO> MV_LAST_TC_INFO { get; set; }
         public DbSet<MV_LATEST_STB_TSMOD_MARK> MV_LATEST_STB_TSMOD_MARK { get; set; }
         public DbSet<MV_OBJ_WITH_PEG> MV_OBJ_WITH_PEG { get; set; }
-        public DbSet<MV_OBJECT_SNAPSHOT> MV_OBJECT_SNAPSHOT { get; set; }
         public DbSet<MV_STORYBOARD_LATEST> MV_STORYBOARD_LATEST { get; set; }
         public DbSet<MV_TC_DATASUMMARY> MV_TC_DATASUMMARY { get; set; }
         public DbSet<T_REGISTED_OBJECT_TEST> T_REGISTED_OBJECT_TEST { get; set; }
@@ -137,6 +143,7 @@ public partial class DBEntities : DbContext
         public DbSet<T_TEST_DATASETTAG> T_TEST_DATASETTAG { get; set; }
         public DbSet<T_FOLDER_FILTER> T_FOLDER_FILTER { get; set; }
         public DbSet<REL_FOLDER_FILTER> REL_FOLDER_FILTER { get; set; }
+        public DbSet<MV_OBJECT_SNAPSHOT> MV_OBJECT_SNAPSHOT { get; set; }
     
         public virtual int DeleteTestCase(Nullable<decimal> tESTCASEID)
         {
@@ -1090,11 +1097,11 @@ public partial class DBEntities : DbContext
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteDatsSets", dATASETIDParameter);
         }
     
-        public virtual int DELETEFOLDERDATASET(string fEEDPROCESSDETAILID)
+        public virtual int DELETEFOLDERDATASET(Nullable<decimal> fEEDPROCESSDETAILID)
         {
-            var fEEDPROCESSDETAILIDParameter = fEEDPROCESSDETAILID != null ?
+            var fEEDPROCESSDETAILIDParameter = fEEDPROCESSDETAILID.HasValue ?
                 new ObjectParameter("FEEDPROCESSDETAILID", fEEDPROCESSDETAILID) :
-                new ObjectParameter("FEEDPROCESSDETAILID", typeof(string));
+                new ObjectParameter("FEEDPROCESSDETAILID", typeof(decimal));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DELETEFOLDERDATASET", fEEDPROCESSDETAILIDParameter);
         }
