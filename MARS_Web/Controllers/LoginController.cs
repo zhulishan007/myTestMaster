@@ -74,7 +74,7 @@ namespace MARS_Web.Controllers
                 if (!string.IsNullOrEmpty(lUserName) && !string.IsNullOrEmpty(lPassword) && !string.IsNullOrEmpty(lconnection))
                     lModel = new LoginCookieModel { LoginName = lUserName, Password = lPassword, Dbconnection = lconnection };
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 logger.Error(string.Format("Error occured in Login for CheckCookie method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
                 ELogger.ErrorException(string.Format("Error occured in Login for CheckCookie method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
@@ -182,41 +182,70 @@ namespace MARS_Web.Controllers
                 DBEntities.Schema = SessionManager.Schema;
                 if (!string.IsNullOrEmpty(DBEntities.ConnectionString) && !string.IsNullOrEmpty(DBEntities.Schema))
                 {
-                    AccountRepository Accountrepo = new AccountRepository();
-                    EntitlementRepository Entitlementrepo = new EntitlementRepository();
-                    var repTestCase = new TestCaseRepository();
-                    var lUser = Accountrepo.GetUserByEmailAndLoginName(lUserLogin);
-                    if (lUser != null)
+                    //AccountRepository Accountrepo = new AccountRepository();
+                    //EntitlementRepository Entitlementrepo = new EntitlementRepository();
+                    TestCaseRepository repTestCase = new TestCaseRepository();
+                    var allUsers = GlobalVariable.UsersDictionary.FirstOrDefault(x => x.Key.Trim().ToUpper().Equals(MarsEnvironment.Trim().ToUpper())).Value;
+                    if (allUsers != null)
                     {
-                        var lUserPassword = PasswordHelper.DecodeString(lUser.TESTER_PWD);
-                        if (lUserPassword == lPassword)
+                        var loginUser = allUsers.FirstOrDefault(y => y.Key.TESTER_MAIL.Trim().ToLower().Equals(lUserLogin.Trim().ToLower()) || y.Key.TESTER_LOGIN_NAME.Trim().ToLower().Equals(lUserLogin.Trim().ToLower())).Key;
+                        if (loginUser != null && loginUser.IS_DELETED != "YES")
                         {
-                            SessionManager.TESTER_ID = lUser.TESTER_ID;
-                            SessionManager.TESTER_MAIL = lUser.TESTER_MAIL;
-                            SessionManager.TESTER_NAME_F = lUser.TESTER_NAME_F;
-                            SessionManager.TESTER_NAME_M = lUser.TESTER_NAME_M;
-                            SessionManager.TESTER_NAME_LAST = lUser.TESTER_NAME_LAST;
-                            SessionManager.TESTER_LOGIN_NAME = lUser.TESTER_LOGIN_NAME;
-                            SessionManager.TESTER_NUMBER = lUser.TESTER_NUMBER;
-
-                            var repTree = new GetTreeRepository();
-                            var lSchema = SessionManager.Schema;
-                            var lConnectionStr = SessionManager.APP;
-                            //Session["LeftProjectList"] = repTree.GetProjectList(lUser.TESTER_ID, lSchema, lConnectionStr);
-                            //Session["PrivilegeList"] = Entitlementrepo.GetRolePrivilege((long)lUser.TESTER_ID);
-                            //Session["RoleList"] = Entitlementrepo.GetRoleByUser((long)SessionManager.TESTER_ID);
-                            lMsg = "Succefully Logged!!";
-                            repTestCase.UpdateIsAvailableReload((long)lUser.TESTER_ID);
+                            var lUserPassword = PasswordHelper.DecodeString(loginUser.TESTER_PWD);
+                            if (lUserPassword == lPassword)
+                            {
+                                SessionManager.TESTER_ID = loginUser.TESTER_ID;
+                                SessionManager.TESTER_MAIL = loginUser.TESTER_MAIL;
+                                SessionManager.TESTER_NAME_F = loginUser.TESTER_NAME_F;
+                                SessionManager.TESTER_NAME_M = loginUser.TESTER_NAME_M;
+                                SessionManager.TESTER_NAME_LAST = loginUser.TESTER_NAME_LAST;
+                                SessionManager.TESTER_LOGIN_NAME = loginUser.TESTER_LOGIN_NAME;
+                                SessionManager.TESTER_NUMBER = loginUser.TESTER_NUMBER;
+                                lMsg = "Succefully Logged!!";
+                                repTestCase.UpdateIsAvailableReload((long)loginUser.TESTER_ID);
+                            }
+                            else
+                                lMsg = "Password did not match.";
                         }
                         else
-                        {
-                            lMsg = "Password did not match.";
-                        }
+                            lMsg = "User Name does not exist in system.";
                     }
                     else
-                    {
-                        lMsg = "User Name does not exist in system";
-                    }
+                        lMsg = connlist[0] + " database does not exist.";
+                    #region OLD CODE
+                        //var lUser = Accountrepo.GetUserByEmailAndLoginName(lUserLogin);
+                        //if (lUser != null)
+                        //{
+                        //    var lUserPassword = PasswordHelper.DecodeString(lUser.TESTER_PWD);
+                        //    if (lUserPassword == lPassword)
+                        //    {
+                        //        SessionManager.TESTER_ID = lUser.TESTER_ID;
+                        //        SessionManager.TESTER_MAIL = lUser.TESTER_MAIL;
+                        //        SessionManager.TESTER_NAME_F = lUser.TESTER_NAME_F;
+                        //        SessionManager.TESTER_NAME_M = lUser.TESTER_NAME_M;
+                        //        SessionManager.TESTER_NAME_LAST = lUser.TESTER_NAME_LAST;
+                        //        SessionManager.TESTER_LOGIN_NAME = lUser.TESTER_LOGIN_NAME;
+                        //        SessionManager.TESTER_NUMBER = lUser.TESTER_NUMBER;
+
+                        //        var repTree = new GetTreeRepository();
+                        //        var lSchema = SessionManager.Schema;
+                        //        var lConnectionStr = SessionManager.APP;
+                        //        //Session["LeftProjectList"] = repTree.GetProjectList(lUser.TESTER_ID, lSchema, lConnectionStr);
+                        //        //Session["PrivilegeList"] = Entitlementrepo.GetRolePrivilege((long)lUser.TESTER_ID);
+                        //        //Session["RoleList"] = Entitlementrepo.GetRoleByUser((long)SessionManager.TESTER_ID);
+                        //        lMsg = "Succefully Logged!!";
+                        //        repTestCase.UpdateIsAvailableReload((long)lUser.TESTER_ID);
+                        //    }
+                        //    else
+                        //    {
+                        //        lMsg = "Password did not match.";
+                        //    }
+                        //}
+                        //else
+                        //{
+                        //    lMsg = "User Name does not exist in system";
+                        //}
+                        #endregion
                 }
                 else
                 {
@@ -536,7 +565,7 @@ namespace MARS_Web.Controllers
                 DBEntities.Schema = SessionManager.Schema;
 
                 var repTree = new GetTreeRepository();
-                 lTestSuiteList = repTree.GetTestCaseList(ProjectId, TestSuiteId);
+                lTestSuiteList = repTree.GetTestCaseList(ProjectId, TestSuiteId);
             }
             catch (Exception ex)
             {
@@ -612,7 +641,7 @@ namespace MARS_Web.Controllers
                     data.Add(db);
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 logger.Error(string.Format("Error occured in Login for GetEncodingConnList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
                 ELogger.ErrorException(string.Format("Error occured in Login for GetEncodingConnList method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);

@@ -1,6 +1,8 @@
 ﻿using MARS_Repository.ViewModel;
 using MARS_Web.Helper;
+using MarsSerializationHelper.ViewModel;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -9,6 +11,7 @@ using System.Web.Hosting;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+
 
 namespace MARS_Web
 {
@@ -30,6 +33,7 @@ namespace MARS_Web
 
         protected void Load_Serializations_Files(List<string> dbNameList)
         {
+            var usersData = new ConcurrentDictionary<string, ConcurrentDictionary<UserViewModal, List<MarsSerializationHelper.ViewModel.ProjectByUser>>>();
             Thread Serializations = new Thread(delegate ()
             {
                 if (dbNameList.Count() > 0)
@@ -39,11 +43,15 @@ namespace MARS_Web
                         MarsConfig mc = MarsConfig.Configure(databaseName);
                         DatabaseConnectionDetails det = mc.GetDatabaseConnectionDetails();
 
-                        string marsHomeFolder = HostingEnvironment.MapPath("/Config");
-                        string marsConfigFile = marsHomeFolder + @"\Mars.config";
-                        MarsSerializationHelper.JsonSerialization.SerializationFile.ChangeConnectionString(databaseName, marsConfigFile);
-                        MarsSerializationHelper.JsonSerialization.SerializationFile.CreateJsonFiles(databaseName, HostingEnvironment.MapPath("~/"), det.ConnString);
+                        var userDictionary = MarsSerializationHelper.JsonSerialization.SerializationFile.GetDictionary(det.ConnString);
+                        usersData.TryAdd(databaseName, userDictionary);                        
+
+                        //string marsHomeFolder = HostingEnvironment.MapPath("/Config");
+                        //string marsConfigFile = marsHomeFolder + @"\Mars.config";
+                        //MarsSerializationHelper.JsonSerialization.SerializationFile.ChangeConnectionString(databaseName, marsConfigFile);
+                        //MarsSerializationHelper.JsonSerialization.SerializationFile.CreateJsonFiles(databaseName, HostingEnvironment.MapPath("~/"), det.ConnString);
                     }
+                    GlobalVariable.UsersDictionary = usersData;
                 }
             })
             {

@@ -106,7 +106,7 @@
 <script src="~/Scripts/Tab/Custom_AddingTab.js"></script>
 <script src="~/Scripts/Import_Export/Custom_ImporExport.js"></script>
 <script>
-    var statesAvailable = @Html.Raw(ViewBag.activePinList);
+    var statesAvailable = []; @*@Html.Raw(ViewBag.activePinList);*@
     var lShowAppdisplay = $("#hdnShowApp").val();
     var lShowProdisplay = $("#hdnShowPro").val();
     var lShowTSdisplay = $("#hdnShowTS").val();

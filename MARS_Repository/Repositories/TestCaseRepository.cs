@@ -2449,12 +2449,12 @@ namespace MARS_Repository.Repositories
                 {
                     logger.Info(string.Format("Update UserId start | UserId: {0}", UserId));
                     var tblList = entity.T_TESTCASE_VERSION.Where(x => x.CREATORID == UserId).ToList();
-                    foreach (var item in tblList)
-                    {
-                        item.ISAVAILABLE = 0;
-                        item.CREATORID = 0;
-                        //entity.SaveChanges();
-                    }
+                    tblList.ForEach(x => { x.ISAVAILABLE = 0; x.CREATORID = 0; });
+                    //foreach (var item in tblList)
+                    //{
+                    //    item.ISAVAILABLE = 0;
+                    //    item.CREATORID = 0;
+                    //}
                     entity.SaveChanges();
                     logger.Info(string.Format("Update UserId end | UserId: {0}", UserId));
                     scope.Complete();

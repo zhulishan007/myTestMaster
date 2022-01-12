@@ -25,7 +25,7 @@ namespace MARS_Web.Controllers
         }
         Logger logger = LogManager.GetLogger("Log");
         Logger ELogger = LogManager.GetLogger("ErrorLog");
-        
+
         // Main page after login User 
         public ActionResult Index(int TestcaseId = 0, int TestsuiteId = 0, int ProjectId = 0)
         {
@@ -33,17 +33,19 @@ namespace MARS_Web.Controllers
             {
                 ViewBag.Accesstoken = SessionManager.Accesstoken;
                 ViewBag.WebAPIURL = ConfigurationManager.AppSettings["WebApiURL"];
-                var lRep = new TestCaseRepository();
-                AccountRepository accrepo = new AccountRepository();
-                var repo = new StoryBoardRepository();
-                var _treerepository = new GetTreeRepository();
-                var _etlrepository = new EntitlementRepository();
-                _etlrepository.Username = SessionManager.TESTER_LOGIN_NAME;
+                TestCaseRepository lRep = new TestCaseRepository();
+                //AccountRepository accrepo = new AccountRepository();
+                //StoryBoardRepository repo = new StoryBoardRepository();
+                GetTreeRepository _treerepository = new GetTreeRepository();
+                EntitlementRepository _etlrepository = new EntitlementRepository
+                {
+                    Username = SessionManager.TESTER_LOGIN_NAME
+                };
                 var lSchema = SessionManager.Schema;
                 var lConnectionStr = SessionManager.APP;
                 lRep.UpdateIsAvailableReload((long)SessionManager.TESTER_ID);
                 ViewBag.Title = "Home Page";
-               if (TestcaseId == 0 && TestsuiteId == 0 && ProjectId == 0)
+                if (TestcaseId == 0 && TestsuiteId == 0 && ProjectId == 0)
                 {
                     ViewBag.TestcaseId = TestcaseId;
                     ViewBag.TestsuiteId = TestsuiteId;
@@ -61,8 +63,8 @@ namespace MARS_Web.Controllers
                     Session["ProjectId"] = ViewBag.ProjectId;
                 }
                 ViewBag.LeftPanelwidth = ConfigurationManager.AppSettings["DefultLeftPanel"];
-                var activePinList = accrepo.ActivePinListByUserId((long)SessionManager.TESTER_ID);
-                ViewBag.activePinList = JsonConvert.SerializeObject(activePinList);
+                //var activePinList = accrepo.ActivePinListByUserId((long)SessionManager.TESTER_ID);
+                //ViewBag.activePinList = JsonConvert.SerializeObject(activePinList);
                 var userid = SessionManager.TESTER_ID;
                 var repacc = new ConfigurationGridRepository();
                 repacc.Username = SessionManager.TESTER_LOGIN_NAME;
@@ -73,7 +75,10 @@ namespace MARS_Web.Controllers
 
                 Session["PrivilegeList"] = _etlrepository.GetRolePrivilege((long)SessionManager.TESTER_ID);
                 Session["RoleList"] = _etlrepository.GetRoleByUser((long)SessionManager.TESTER_ID);
-                Session["LeftProjectList"] = _treerepository.GetProjectList(SessionManager.TESTER_ID, lSchema, lConnectionStr);
+
+                var userData = GlobalVariable.UsersDictionary.FirstOrDefault(x => x.Key.Trim().ToUpper().Equals(lSchema.Trim().ToUpper())).Value.FirstOrDefault(y => y.Key.TESTER_ID == userid).Key;
+                Session["LeftProjectList"] = userData.Projects.Where(x => x.ProjectExists == true).ToList();
+                //Session["LeftProjectList"] = _treerepository.GetProjectList(SessionManager.TESTER_ID, lSchema, lConnectionStr);
             }
             catch (Exception ex)
             {
@@ -113,7 +118,7 @@ namespace MARS_Web.Controllers
                     Session["ProjectId"] = ViewBag.ProjectId;
                     Session["StoryBoardId"] = ViewBag.StoryBoardId;
                 }
-                
+
                 var result = repo.GetActions(Storyboardid);
                 ViewBag.ActionList = JsonConvert.SerializeObject(result);
                 var testSuiteResult = repo.GetTestSuites(Projectid);
