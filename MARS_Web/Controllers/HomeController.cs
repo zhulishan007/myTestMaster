@@ -73,12 +73,14 @@ namespace MARS_Web.Controllers
 
                 ViewBag.LeftPanelwidth = Rgriddata.Resize == null ? ConfigurationManager.AppSettings["DefultLeftPanel"] : Rgriddata.Resize.Trim();
 
-                Session["PrivilegeList"] = _etlrepository.GetRolePrivilege((long)SessionManager.TESTER_ID);
-                Session["RoleList"] = _etlrepository.GetRoleByUser((long)SessionManager.TESTER_ID);
+                //Session["PrivilegeList"] = _etlrepository.GetRolePrivilege((long)SessionManager.TESTER_ID);
+                //Session["RoleList"] = _etlrepository.GetRoleByUser((long)SessionManager.TESTER_ID);
+                //Session["LeftProjectList"] = _treerepository.GetProjectList(SessionManager.TESTER_ID, lSchema, lConnectionStr);
 
                 var userData = GlobalVariable.UsersDictionary.FirstOrDefault(x => x.Key.Trim().ToUpper().Equals(lSchema.Trim().ToUpper())).Value.FirstOrDefault(y => y.Key.TESTER_ID == userid).Key;
                 Session["LeftProjectList"] = userData.Projects.Where(x => x.ProjectExists == true).ToList();
-                //Session["LeftProjectList"] = _treerepository.GetProjectList(SessionManager.TESTER_ID, lSchema, lConnectionStr);
+                Session["RoleList"] = userData.Roles.Select(x => new RoleViewModel() { ROLE_ID = x.ROLE_ID, ROLE_NAME = x.ROLE_NAME }).ToList();
+                Session["PrivilegeList"] = userData.Privileges.Select(x => new PrivilegeViewModel() { PRIVILEGE_ID = x.PRIVILEGE_ID, DESCRIPTION = x.DESCRIPTION, MODULE = x.MODULE, PRIVILEGE_NAME = x.PRIVILEGE_NAME }).ToList();
             }
             catch (Exception ex)
             {
