@@ -36,11 +36,11 @@ namespace MARS_Web.Controllers
                 TestCaseRepository lRep = new TestCaseRepository();
                 //AccountRepository accrepo = new AccountRepository();
                 //StoryBoardRepository repo = new StoryBoardRepository();
-                GetTreeRepository _treerepository = new GetTreeRepository();
-                EntitlementRepository _etlrepository = new EntitlementRepository
-                {
-                    Username = SessionManager.TESTER_LOGIN_NAME
-                };
+                //GetTreeRepository _treerepository = new GetTreeRepository();
+                //EntitlementRepository _etlrepository = new EntitlementRepository
+                //{
+                //    Username = SessionManager.TESTER_LOGIN_NAME
+                //};
                 var lSchema = SessionManager.Schema;
                 var lConnectionStr = SessionManager.APP;
                 lRep.UpdateIsAvailableReload((long)SessionManager.TESTER_ID);
@@ -62,16 +62,19 @@ namespace MARS_Web.Controllers
                     Session["TestcaseId"] = ViewBag.TestcaseId;
                     Session["ProjectId"] = ViewBag.ProjectId;
                 }
-                ViewBag.LeftPanelwidth = ConfigurationManager.AppSettings["DefultLeftPanel"];
+                //ViewBag.LeftPanelwidth = ConfigurationManager.AppSettings["DefultLeftPanel"];
+
                 //var activePinList = accrepo.ActivePinListByUserId((long)SessionManager.TESTER_ID);
                 //ViewBag.activePinList = JsonConvert.SerializeObject(activePinList);
-                var userid = SessionManager.TESTER_ID;
-                var repacc = new ConfigurationGridRepository();
-                repacc.Username = SessionManager.TESTER_LOGIN_NAME;
-                var gridlst = repacc.GetGridList((long)userid, GridNameList.ResizeLeftPanel);
-                var Rgriddata = GridHelper.GetLeftpanelgridwidth(gridlst);
 
-                ViewBag.LeftPanelwidth = Rgriddata.Resize == null ? ConfigurationManager.AppSettings["DefultLeftPanel"] : Rgriddata.Resize.Trim();
+                var userid = SessionManager.TESTER_ID;
+                ViewBag.LeftPanelwidth = ConfigurationManager.AppSettings["DefultLeftPanel"];
+
+                //var repacc = new ConfigurationGridRepository();
+                //repacc.Username = SessionManager.TESTER_LOGIN_NAME;                
+                //var gridlst = repacc.GetGridList((long)userid, GridNameList.ResizeLeftPanel);
+                //var Rgriddata = GridHelper.GetLeftpanelgridwidth(gridlst);
+                //ViewBag.LeftPanelwidth = Rgriddata.Resize == null ? ConfigurationManager.AppSettings["DefultLeftPanel"] : Rgriddata.Resize.Trim();
 
                 //Session["PrivilegeList"] = _etlrepository.GetRolePrivilege((long)SessionManager.TESTER_ID);
                 //Session["RoleList"] = _etlrepository.GetRoleByUser((long)SessionManager.TESTER_ID);
