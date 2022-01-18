@@ -2,13 +2,18 @@ using MARS_Repository.Entities;
 using MARS_Repository.Repositories;
 using MARS_Repository.ViewModel;
 using MARS_Web.Helper;
+using MarsSerializationHelper.ViewModel;
+using Newtonsoft.Json;
 using NLog;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Web.Configuration;
 using System.Web.Mvc;
+using static MarsSerializationHelper.JsonSerialization.SerializationFile;
 
 namespace MARS_Web.Controllers
 {
@@ -33,7 +38,7 @@ namespace MARS_Web.Controllers
         #region Crud operations for Application
         public ActionResult ApplicationList()
         {
-           string currentPath = GetLogPathLocation();
+            string currentPath = GetLogPathLocation();
             try
             {
                 var userid = SessionManager.TESTER_ID;
@@ -69,10 +74,10 @@ namespace MARS_Web.Controllers
             string currentPath = GetLogPathLocation();
             //Get Repository
             MARS_Repository.Helper.WriteLogMessage(string.Format("Application list open start | Username: {0}", SessionManager.TESTER_LOGIN_NAME), currentPath);
-            var _apprepository = new ApplicationRepository();
-            _apprepository.Username = SessionManager.TESTER_LOGIN_NAME;
-            _apprepository.currentPath = currentPath;
-            List<ApplicationViewModel> data = new List<ApplicationViewModel>();
+            //var _apprepository = new ApplicationRepository();
+            //_apprepository.Username = SessionManager.TESTER_LOGIN_NAME;
+            //_apprepository.currentPath = currentPath;
+            List<MARS_Repository.ViewModel.ApplicationViewModel> data = new List<MARS_Repository.ViewModel.ApplicationViewModel>();
             int totalRecords = default(int);
             int recFilter = default(int);
             //Assign values in local variables
@@ -97,7 +102,27 @@ namespace MARS_Web.Controllers
             {
                 //Get data from List Application Object
                 #region Getdata
-                data = _apprepository.GetApplicationList();
+                //data = _apprepository.GetApplicationList();
+                string fullPath = Path.Combine(Server.MapPath("~/"), FolderName.Serialization.ToString(), FolderName.Application.ToString(), SessionManager.Schema, "application.json");
+                if (System.IO.File.Exists(fullPath))
+                {
+                    string jsongString = System.IO.File.ReadAllText(fullPath);
+                    var allList = JsonConvert.DeserializeObject<List<T_Memory_REGISTERED_APPS>>(jsongString);
+                    if (allList.Count() > 0)
+                    {
+                        data = allList.Select(x => new MARS_Repository.ViewModel.ApplicationViewModel()
+                        {
+                            ApplicationId = x.APPLICATION_ID,
+                            ApplicationName = x.APP_SHORT_NAME,
+                            Description = x.PROCESS_IDENTIFIER ?? string.Empty,
+                            Version = x.VERSION ?? string.Empty,
+                            ExtraRequirement = x.EXTRAREQUIREMENT ?? string.Empty,
+                            Mode = (x.ISBASELINE != null) ? x.ISBASELINE == 1 ? "Baseline" : "Compare" : string.Empty,
+                            Bits = (x.IS64BIT != null) ? x.IS64BIT == 1 ? "64 bits" : "32 bits" : string.Empty,
+                            BitsId = x.IS64BIT == null ? "" : x.IS64BIT.ToString()
+                        }).ToList();
+                    }
+                }
                 #endregion
 
                 //Check Variables Value 
@@ -221,7 +246,7 @@ namespace MARS_Web.Controllers
 
         //Add/Update Application objects values
         [HttpPost]
-        public JsonResult AddEditApplication(ApplicationViewModel applicationviewmodel)
+        public JsonResult AddEditApplication(MARS_Repository.ViewModel.ApplicationViewModel applicationviewmodel)
         {
             string currentPath = GetLogPathLocation();
 
@@ -229,17 +254,67 @@ namespace MARS_Web.Controllers
             ResultModel resultModel = new ResultModel();
             try
             {
+
                 var _apprepository = new ApplicationRepository();
                 _apprepository.Username = SessionManager.TESTER_LOGIN_NAME;
                 _apprepository.currentPath = currentPath;
                 applicationviewmodel.Create_Person = SessionManager.TESTER_LOGIN_NAME;
-                var _addeditResult = _apprepository.AddEditApplication(applicationviewmodel);
+
+                var appObj = new T_Memory_REGISTERED_APPS
+                {
+                    APP_SHORT_NAME = applicationviewmodel.ApplicationName,
+                    PROCESS_IDENTIFIER = applicationviewmodel.Description,
+                    VERSION = applicationviewmodel.Version,
+                    EXTRAREQUIREMENT = applicationviewmodel.ExtraRequirement,
+                    RECORD_CREATE_PERSON = SessionManager.TESTER_LOGIN_NAME,
+                    RECORD_CREATE_DATE = DateTime.Now,
+                    ISBASELINE = !string.IsNullOrEmpty(applicationviewmodel.Mode) ? applicationviewmodel.Mode == "Baseline" ? 1 : 0 : 0,
+                    IS64BIT = !string.IsNullOrEmpty(applicationviewmodel.BitsId) ? Convert.ToInt32(applicationviewmodel.BitsId) : 0,
+                    APPLICATION_ID = applicationviewmodel.ApplicationId != 0
+                                                ? applicationviewmodel.ApplicationId
+                                                : _apprepository.GetApplicationSequence("T_REGISTERED_APPS_SEQ"),
+                    currentSyncroStatus = applicationviewmodel.ApplicationId != 0
+                                                ? MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_ModifiedToDb
+                                                : MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_NewToDb
+                };
+
+                if (applicationviewmodel.ApplicationId == 0)
+                    GlobalVariable.AllApps.FirstOrDefault(x => x.Key.Equals(SessionManager.Schema)).Value.Add(appObj);
+                else
+                {
+                    var app = GlobalVariable.AllApps.FirstOrDefault(x => x.Key.Equals(SessionManager.Schema)).Value;
+                    if (app.Count > 0)
+                    {
+                        var singleApp = app.FirstOrDefault(x => x.APPLICATION_ID == applicationviewmodel.ApplicationId);
+                        if (singleApp != null)
+                        {
+                            GlobalVariable.AllApps.FirstOrDefault(x => x.Key.Equals(SessionManager.Schema)).Value.Remove(singleApp);
+                            GlobalVariable.AllApps.FirstOrDefault(x => x.Key.Equals(SessionManager.Schema)).Value.Add(appObj);
+                        }
+                    }
+                }
+                #region Reload Application file
+                var AllApps = GlobalVariable.AllApps.FirstOrDefault(x => x.Key.Equals(SessionManager.Schema)).Value;
+                ReloadApplicationFile(AllApps, Server.MapPath("~/"), SessionManager.Schema);
+                #endregion
+
+                //applicationviewmodel.ApplicationId = applicationviewmodel.ApplicationId != 0 ? applicationviewmodel.ApplicationId : appObj.APPLICATION_ID;
+                //var _addeditResult = _apprepository.AddEditApplication(applicationviewmodel);
+                Thread AddEditApp = new Thread(delegate ()
+                {
+                    bool _addeditResult = _apprepository.AddEditApplicationFromDictionary(appObj);
+
+                })
+                {
+                    IsBackground = true
+                };
+                AddEditApp.Start();
+
                 var _treerepository = new GetTreeRepository();
-                var lSchema = SessionManager.Schema;
-                var lConnectionStr = SessionManager.APP;
-                Session["LeftProjectList"] = _treerepository.GetProjectList(SessionManager.TESTER_ID, lSchema, lConnectionStr);
+                Session["LeftProjectList"] = _treerepository.GetProjectList(SessionManager.TESTER_ID, SessionManager.Schema, SessionManager.APP);
+
                 resultModel.message = "Saved Application [" + applicationviewmodel.ApplicationName + "].";
-                resultModel.data = _addeditResult;
+                resultModel.data = true;
                 resultModel.status = 1;
                 MARS_Repository.Helper.WriteLogMessage(string.Format("Application Add/Edit  Modal close | Username: {0}", SessionManager.TESTER_LOGIN_NAME), currentPath);
                 MARS_Repository.Helper.WriteLogMessage(string.Format("Application Save successfully | Username: {0}", SessionManager.TESTER_LOGIN_NAME), currentPath);
@@ -275,11 +350,31 @@ namespace MARS_Web.Controllers
                 if (lflag.Count <= 0)
                 {
                     var Applicationname = _apprepository.GetApplicationNameById(ApplicationId);
-                    var _deleteResult = _apprepository.DeleteApplication(ApplicationId);
-                    var lSchema = SessionManager.Schema;
-                    var lConnectionStr = SessionManager.APP;
-                    Session["LeftProjectList"] = _treerepository.GetProjectList(SessionManager.TESTER_ID, lSchema, lConnectionStr);
 
+                    var app = GlobalVariable.AllApps.FirstOrDefault(x => x.Key.Equals(SessionManager.Schema)).Value;
+                    if (app.Count > 0)
+                    {
+                        var singleApp = app.FirstOrDefault(x => x.APPLICATION_ID == ApplicationId);
+                        if (singleApp != null)
+                        {
+                            GlobalVariable.AllApps.FirstOrDefault(x => x.Key.Equals(SessionManager.Schema)).Value.Remove(singleApp);
+                        }
+                    }
+                    #region Reload Application file
+                    var AllApps = GlobalVariable.AllApps.FirstOrDefault(x => x.Key.Equals(SessionManager.Schema)).Value;
+                    ReloadApplicationFile(AllApps, Server.MapPath("~/"), SessionManager.Schema);
+                    #endregion
+
+                    Thread DeleteApp = new Thread(delegate ()
+                    {
+                        bool _deleteResult = _apprepository.DeleteApplication(ApplicationId);
+                    })
+                    {
+                        IsBackground = true
+                    };
+                    DeleteApp.Start();                    
+                    
+                    Session["LeftProjectList"] = _treerepository.GetProjectList(SessionManager.TESTER_ID, SessionManager.Schema, SessionManager.APP);
                     resultModel.data = "success";
                     resultModel.message = "Application [" + Applicationname + "] has been deleted.";
                     resultModel.status = 1;

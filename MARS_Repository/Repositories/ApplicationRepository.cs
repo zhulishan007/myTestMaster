@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
+using static MarsSerializationHelper.Common.CommonEnum;
 
 namespace MARS_Repository.Repositories
 {
@@ -30,9 +31,9 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                 Helper.WriteLogMessage(string.Format("Error occured Application in ListApplication method | UserName: {0} | Error: {1}", Username, ex.ToString()), currentPath);
+                Helper.WriteLogMessage(string.Format("Error occured Application in ListApplication method | UserName: {0} | Error: {1}", Username, ex.ToString()), currentPath);
                 if (ex.InnerException != null)
-                     Helper.WriteLogMessage(string.Format("InnerException : Error occured Application in ListApplication method | UserName: {0} | Error: {1}", Username, ex.InnerException.ToString()), currentPath);
+                    Helper.WriteLogMessage(string.Format("InnerException : Error occured Application in ListApplication method | UserName: {0} | Error: {1}", Username, ex.InnerException.ToString()), currentPath);
                 throw;
             }
         }
@@ -45,11 +46,11 @@ namespace MARS_Repository.Repositories
                 logger.Info(string.Format("List Application end | UserName: {0}", Username), currentPath);
                 return list;
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                 Helper.WriteLogMessage(string.Format("Error occured Application in ListApplicationObjectExport method | UserName: {0}", Username) , currentPath);
+                Helper.WriteLogMessage(string.Format("Error occured Application in ListApplicationObjectExport method | UserName: {0}", Username), currentPath);
                 if (ex.InnerException != null)
-                     Helper.WriteLogMessage(string.Format("InnerException : Error occured Application in ListApplicationObjectExport method | UserName: {0}", Username), currentPath);
+                    Helper.WriteLogMessage(string.Format("InnerException : Error occured Application in ListApplicationObjectExport method | UserName: {0}", Username), currentPath);
                 throw;
             }
         }
@@ -75,9 +76,9 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                 Helper.WriteLogMessage(string.Format("Error occured Application in GetApplicationDetail method | AppId: {0} | UserName: {1} | Error: {2}", AppId, Username,ex.ToString()) , currentPath);
+                Helper.WriteLogMessage(string.Format("Error occured Application in GetApplicationDetail method | AppId: {0} | UserName: {1} | Error: {2}", AppId, Username, ex.ToString()), currentPath);
                 if (ex.InnerException != null)
-                     Helper.WriteLogMessage(string.Format("InnerException : Error occured Application in GetApplicationDetail method | AppId: {0} | UserName: {1} | Error: {2}", AppId, Username,ex.InnerException.ToString()), currentPath);
+                    Helper.WriteLogMessage(string.Format("InnerException : Error occured Application in GetApplicationDetail method | AppId: {0} | UserName: {1} | Error: {2}", AppId, Username, ex.InnerException.ToString()), currentPath);
                 throw;
             }
         }
@@ -116,9 +117,9 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                 Helper.WriteLogMessage(string.Format("Error occured Application in GetApplicationList method | UserName: {0} | Error: {1}", Username,ex.ToString()) , currentPath);
+                Helper.WriteLogMessage(string.Format("Error occured Application in GetApplicationList method | UserName: {0} | Error: {1}", Username, ex.ToString()), currentPath);
                 if (ex.InnerException != null)
-                     Helper.WriteLogMessage(string.Format("InnerException : Error occured Application in GetApplicationList method | UserName: {0} | Error: {1}", Username, ex.InnerException.ToString()), currentPath);
+                    Helper.WriteLogMessage(string.Format("InnerException : Error occured Application in GetApplicationList method | UserName: {0} | Error: {1}", Username, ex.InnerException.ToString()), currentPath);
                 throw;
             }
         }
@@ -142,13 +143,72 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                 Helper.WriteLogMessage(string.Format("Error occured Application in CheckDuplicateApplicationNameExist method | AppId: {0} | UserName: {1} | Error: {2}", ApplicationId, Username,ex.ToString()) , currentPath);
+                Helper.WriteLogMessage(string.Format("Error occured Application in CheckDuplicateApplicationNameExist method | AppId: {0} | UserName: {1} | Error: {2}", ApplicationId, Username, ex.ToString()), currentPath);
                 if (ex.InnerException != null)
-                     Helper.WriteLogMessage(string.Format("InnerException : Error occured Application in CheckDuplicateApplicationNameExist method | AppId: {0} | UserName: {1} | Error: {2}", ApplicationId, Username, ex.InnerException.ToString()), currentPath);
+                    Helper.WriteLogMessage(string.Format("InnerException : Error occured Application in CheckDuplicateApplicationNameExist method | AppId: {0} | UserName: {1} | Error: {2}", ApplicationId, Username, ex.InnerException.ToString()), currentPath);
                 throw;
-            } 
+            }
         }
-
+        public bool AddEditApplicationFromDictionary(MarsSerializationHelper.ViewModel.T_Memory_REGISTERED_APPS objApp)
+        {
+            try
+            {
+                using (TransactionScope scope = new TransactionScope())
+                {
+                    var flag = false;
+                    if (objApp.currentSyncroStatus.Equals(MarsRecordStatus.en_NewToDb))
+                    {
+                        Helper.WriteLogMessage(string.Format("Add application start | Application: {0} | Username: {1}", objApp.APP_SHORT_NAME, Username), currentPath);
+                        var RegisterTbl = new T_REGISTERED_APPS
+                        {
+                            APPLICATION_ID = objApp.APPLICATION_ID,
+                            APP_SHORT_NAME = objApp.APP_SHORT_NAME,
+                            PROCESS_IDENTIFIER = objApp.PROCESS_IDENTIFIER,
+                            VERSION = objApp.VERSION,
+                            RECORD_CREATE_PERSON = objApp.RECORD_CREATE_PERSON,
+                            EXTRAREQUIREMENT = objApp.EXTRAREQUIREMENT,
+                            RECORD_CREATE_DATE = objApp.RECORD_CREATE_DATE,
+                            ISBASELINE = objApp.ISBASELINE,
+                            IS64BIT = objApp.IS64BIT
+                        };
+                        enty.T_REGISTERED_APPS.Add(RegisterTbl);
+                        enty.SaveChanges();
+                        flag = true;
+                        Helper.WriteLogMessage(string.Format("Add application end | Application: {0} | Username: {1}", RegisterTbl.APP_SHORT_NAME, Username), currentPath);
+                    }
+                    else if (objApp.currentSyncroStatus.Equals(MarsRecordStatus.en_ModifiedToDb))
+                    {
+                        var RegisterTbl = enty.T_REGISTERED_APPS.Find(objApp.APPLICATION_ID);
+                        Helper.WriteLogMessage(string.Format("Edit application start | Application: {0} | ApplicationId: {1} | Username: {2}", objApp.APP_SHORT_NAME, objApp.APPLICATION_ID, Username), currentPath);
+                        if (RegisterTbl != null)
+                        {
+                            RegisterTbl.APP_SHORT_NAME = objApp.APP_SHORT_NAME;
+                            RegisterTbl.PROCESS_IDENTIFIER = objApp.PROCESS_IDENTIFIER;
+                            RegisterTbl.VERSION = objApp.VERSION;
+                            RegisterTbl.EXTRAREQUIREMENT = objApp.EXTRAREQUIREMENT;
+                            RegisterTbl.ISBASELINE = objApp.ISBASELINE;
+                            RegisterTbl.IS64BIT = objApp.IS64BIT;
+                            enty.SaveChanges();
+                        }
+                        flag = true;
+                        Helper.WriteLogMessage(string.Format("Edit application end | Application: {0} | ApplicationId: {1} | Username: {2}", objApp.APP_SHORT_NAME, objApp.APPLICATION_ID, Username), currentPath);
+                    }
+                    scope.Complete();
+                    return flag;
+                }
+            }
+            catch (Exception ex)
+            {
+                Helper.WriteLogMessage(string.Format("Error occured Application in AddEditApplication method | AppId: {0} | UserName: {1} | Error: {2}", objApp.APPLICATION_ID, Username, ex), currentPath);
+                if (ex.InnerException != null)
+                    Helper.WriteLogMessage(string.Format("InnerException : Error occured Application in AddEditApplication method | AppId: {0} | UserName: {1} | Error: {2}", objApp.APPLICATION_ID, Username, ex.InnerException), currentPath);
+                throw;
+            }
+        }
+        public long GetApplicationSequence(string SeqName)
+        {
+            return Helper.NextTestSuiteId(SeqName);
+        }
         public bool AddEditApplication(ApplicationViewModel AppModelEntity)
         {
             try
@@ -220,9 +280,9 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                 Helper.WriteLogMessage(string.Format("Error occured Application in AddEditApplication method | AppId: {0} | UserName: {1} | Error: {2}", AppModelEntity.ApplicationId, Username,ex) , currentPath);
+                Helper.WriteLogMessage(string.Format("Error occured Application in AddEditApplication method | AppId: {0} | UserName: {1} | Error: {2}", AppModelEntity.ApplicationId, Username, ex), currentPath);
                 if (ex.InnerException != null)
-                     Helper.WriteLogMessage(string.Format("InnerException : Error occured Application in AddEditApplication method | AppId: {0} | UserName: {1} | Error: {2}", AppModelEntity.ApplicationId, Username,ex.InnerException), currentPath);
+                    Helper.WriteLogMessage(string.Format("InnerException : Error occured Application in AddEditApplication method | AppId: {0} | UserName: {1} | Error: {2}", AppModelEntity.ApplicationId, Username, ex.InnerException), currentPath);
                 throw;
             }
         }
@@ -251,12 +311,12 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                 Helper.WriteLogMessage(string.Format("Error occured Application in CheckTestCaseExistsInAppliction method | AppId: {0} | UserName: {1} | Error: {2}", ApplicationId, Username, ex) , currentPath);
+                Helper.WriteLogMessage(string.Format("Error occured Application in CheckTestCaseExistsInAppliction method | AppId: {0} | UserName: {1} | Error: {2}", ApplicationId, Username, ex), currentPath);
                 if (ex.InnerException != null)
-                     Helper.WriteLogMessage(string.Format("InnerException : Error occured Application in CheckTestCaseExistsInAppliction method | AppId: {0} | UserName: {1} | Error: {2}", ApplicationId, Username,ex.InnerException), currentPath);
+                    Helper.WriteLogMessage(string.Format("InnerException : Error occured Application in CheckTestCaseExistsInAppliction method | AppId: {0} | UserName: {1} | Error: {2}", ApplicationId, Username, ex.InnerException), currentPath);
                 throw;
             }
-           
+
         }
         public bool DeleteApplication(long ApplicationId)
         {
@@ -305,12 +365,12 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                 Helper.WriteLogMessage(string.Format("Error occured Application in DeleteApplication method | AppId: {0} | UserName: {1} | Error: {2}", ApplicationId, Username,ex) , currentPath);
+                Helper.WriteLogMessage(string.Format("Error occured Application in DeleteApplication method | AppId: {0} | UserName: {1} | Error: {2}", ApplicationId, Username, ex), currentPath);
                 if (ex.InnerException != null)
-                     Helper.WriteLogMessage(string.Format("InnerException : Error occured Application in DeleteApplication method | AppId: {0} | UserName: {1} | Error:{2}", ApplicationId, Username,ex.InnerException), currentPath);
+                    Helper.WriteLogMessage(string.Format("InnerException : Error occured Application in DeleteApplication method | AppId: {0} | UserName: {1} | Error:{2}", ApplicationId, Username, ex.InnerException), currentPath);
                 throw;
             }
-           
+
         }
         public String GetApplicationNameById(long ApplicationId)
         {
@@ -323,9 +383,9 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                 Helper.WriteLogMessage(string.Format("Error occured Application in GetApplicationNameById method | AppId: {0} | UserName: {1} | Error: {2}", ApplicationId, Username,ex) , currentPath);
+                Helper.WriteLogMessage(string.Format("Error occured Application in GetApplicationNameById method | AppId: {0} | UserName: {1} | Error: {2}", ApplicationId, Username, ex), currentPath);
                 if (ex.InnerException != null)
-                     Helper.WriteLogMessage(string.Format("InnerException : Error occured Application in GetApplicationNameById method | AppId: {0} | UserName: {1} | Error: {2}", ApplicationId, Username,ex.InnerException), currentPath);
+                    Helper.WriteLogMessage(string.Format("InnerException : Error occured Application in GetApplicationNameById method | AppId: {0} | UserName: {1} | Error: {2}", ApplicationId, Username, ex.InnerException), currentPath);
                 throw;
             }
         }

@@ -14,6 +14,7 @@ using MARS_Repository.Entities;
 using MARS_Repository.Repositories;
 using MARS_Repository.ViewModel;
 using MARS_Web.Helper;
+using MarsSerializationHelper.ViewModel;
 using MARSUtility;
 using Newtonsoft.Json;
 using NLog;
@@ -42,9 +43,17 @@ namespace MARS_Web.Controllers
             {
                 var repApp = new ApplicationRepository();
                 repApp.Username = SessionManager.TESTER_LOGIN_NAME;
-                var lapp = repApp.ListApplication();
-                var applist = lapp.Select(c => new SelectListItem { Text = c.APP_SHORT_NAME, Value = c.APPLICATION_ID.ToString() }).OrderBy(x => x.Text).ToList();
-                ViewBag.listApplications = applist;
+
+                List<T_Memory_REGISTERED_APPS> apps = new List<T_Memory_REGISTERED_APPS>();
+                apps = GlobalVariable.AllApps.FirstOrDefault(x => x.Key.Equals(SessionManager.Schema)).Value;
+                if (apps.Count() > 0)
+                {
+                    ViewBag.listApplications = apps.Select(c => new SelectListItem { Text = c.APP_SHORT_NAME, Value = c.APPLICATION_ID.ToString() }).OrderBy(x => x.Text).ToList();
+                }
+
+                //var lapp = repApp.ListApplication();
+                //var applist = lapp.Select(c => new SelectListItem { Text = c.APP_SHORT_NAME, Value = c.APPLICATION_ID.ToString() }).OrderBy(x => x.Text).ToList();
+                //ViewBag.listApplications = applist;
 
                 var userId = SessionManager.TESTER_ID;
                 var repAcc = new ConfigurationGridRepository();

@@ -2,6 +2,7 @@ using MARS_Repository.Entities;
 using MARS_Repository.Repositories;
 using MARS_Repository.ViewModel;
 using MARS_Web.Helper;
+using MarsSerializationHelper.ViewModel;
 using NLog;
 using System;
 using System.Collections.Generic;
@@ -71,7 +72,7 @@ namespace MARS_Web.Controllers
         //Lists the project by UserId 
         public ActionResult ProjectListByUserId(decimal userid)
         {
-            var lProjectList = new List<ProjectByUser>();
+            var lProjectList = new List<MARS_Repository.ViewModel.ProjectByUser>();
             try
             {
                 var userId = SessionManager.TESTER_ID;
@@ -351,8 +352,15 @@ namespace MARS_Web.Controllers
                 var userId = SessionManager.TESTER_ID;
                 var repAcc = new ConfigurationGridRepository();
                 repAcc.Username = SessionManager.TESTER_LOGIN_NAME;
-                var lapp = repo.ListApplication();
-                var applist = lapp.Select(c => new SelectListItem { Text = c.APP_SHORT_NAME, Value = c.APPLICATION_ID.ToString() }).OrderBy(x => x.Text).ToList();
+
+                List<T_Memory_REGISTERED_APPS> apps = new List<T_Memory_REGISTERED_APPS>();
+                apps = GlobalVariable.AllApps.FirstOrDefault(x => x.Key.Equals(SessionManager.Schema)).Value;
+                if (apps.Count() > 0)
+                {
+                    ViewBag.listApplications = apps.Select(c => new SelectListItem { Text = c.APP_SHORT_NAME, Value = c.APPLICATION_ID.ToString() }).OrderBy(x => x.Text).ToList();
+                }
+                //var lapp = repo.ListApplication();
+                //var applist = lapp.Select(c => new SelectListItem { Text = c.APP_SHORT_NAME, Value = c.APPLICATION_ID.ToString() }).OrderBy(x => x.Text).ToList();
 
                 var gridlst = repAcc.GetGridList((long)userId, GridNameList.ProjectList);
                 var proGridWidth = GridHelper.GetProjectwidth(gridlst);
@@ -361,7 +369,7 @@ namespace MARS_Web.Controllers
                 var Rgriddata = GridHelper.GetLeftpanelgridwidth(Widthgridlst);
 
                 ViewBag.width = Rgriddata.Resize == null ? ConfigurationManager.AppSettings["DefultLeftPanel"] + "px" : Rgriddata.Resize.Trim() + "px";
-                ViewBag.listApplications = applist;
+                //ViewBag.listApplications = applist;
                 ViewBag.namewidth = proGridWidth.Name == null ? "20%" : proGridWidth.Name.Trim() + '%';
                 ViewBag.descriptionwidth = proGridWidth.Description == null ? "25%" : proGridWidth.Description.Trim() + '%';
                 ViewBag.applicationwidth = proGridWidth.Application == null ? "25%" : proGridWidth.Application.Trim() + '%';
@@ -398,7 +406,7 @@ namespace MARS_Web.Controllers
 
             string lSchema = SessionManager.Schema;
             var lConnectionStr = SessionManager.APP;
-            var data = new List<ProjectViewModel>();
+            var data = new List<MARS_Repository.ViewModel.ProjectViewModel>();
             int totalRecords = 0;
             int recFilter = 0;
             string NameSearch = Request.Form.GetValues("columns[0][search][value]")[0];
@@ -439,7 +447,7 @@ namespace MARS_Web.Controllers
         [HttpPost]
 
         //Add/Update Project objects values
-        public JsonResult AddEditProject(ProjectViewModel lModel)
+        public JsonResult AddEditProject(MARS_Repository.ViewModel.ProjectViewModel lModel)
         {
             logger.Info(string.Format("Project Add/Edit  Modal open | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
             ResultModel resultModel = new ResultModel();

@@ -18,6 +18,7 @@ using System.Configuration;
 using MARSUtility;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using MarsSerializationHelper.ViewModel;
 
 namespace MARS_Web.Controllers
 {
@@ -48,8 +49,16 @@ namespace MARS_Web.Controllers
                 var objrepo = new ObjectRepository();
                 objrepo.Username = SessionManager.TESTER_LOGIN_NAME;
                 repo.Username = SessionManager.TESTER_LOGIN_NAME;
-                var list = repo.ListApplication();
-                ViewBag.applist = list.Select(c => new SelectListItem { Text = c.APP_SHORT_NAME, Value = c.APPLICATION_ID.ToString() }).ToList();
+
+
+                List<T_Memory_REGISTERED_APPS> apps = new List<T_Memory_REGISTERED_APPS>();
+                apps = GlobalVariable.AllApps.FirstOrDefault(x => x.Key.Equals(SessionManager.Schema)).Value;
+                if (apps.Count() > 0)
+                {
+                    ViewBag.applist = apps.Select(c => new SelectListItem { Text = c.APP_SHORT_NAME, Value = c.APPLICATION_ID.ToString() }).OrderBy(x => x.Text).ToList();
+                }
+                //var list = repo.ListApplication();
+                //ViewBag.applist = list.Select(c => new SelectListItem { Text = c.APP_SHORT_NAME, Value = c.APPLICATION_ID.ToString() }).ToList();
 
                 var typelist = objrepo.LoadObjectType();
                 ViewBag.typelist = typelist.Select(c => new SelectListItem { Text = c.typename, Value = c.typeid.ToString() }).OrderBy(x => x.Text).ToList();
