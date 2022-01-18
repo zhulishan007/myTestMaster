@@ -308,7 +308,7 @@
         $("#sDrpExtraReq").val(Extra.split(","));
         $("#sDrpExtraReq").select2();
         $("#DrpMode").val(Mode);
-        $("#DrpBits").val(BitsId);
+        $("#DrpBits").val(BitsId != null && BitsId != "" && BitsId != undefined ? parseInt(BitsId) : "");
 
         if (!$("#applicationvalidate").valid())
             return false;
