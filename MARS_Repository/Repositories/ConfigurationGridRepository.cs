@@ -241,13 +241,15 @@ namespace MARS_Repository.Repositories
             try
             {
                 logger.Info(string.Format("Get GridList start | UseName: {0}", Username));
+                List<GridViewModel> result = new List<GridViewModel>();
                 var gridval = entity.T_MASTERGRIDLIST.Where(x => x.GRIDNAME.ToLower().Trim() == gridname.ToLower().Trim()).FirstOrDefault();
-                var result = entity.T_GRIDLIST.Where(x => x.USER_ID == userId && x.GRID_ID == gridval.GRID_ID).ToList().Select(x => new GridViewModel
-                {
-                    GridId = x.ID,
-                    GridColomn = x.COLUMNNAME,
-                    GridSize = x.COLUMNSIZE
-                }).ToList();
+                if (gridval != null)
+                    result = entity.T_GRIDLIST.Where(x => x.USER_ID == userId && x.GRID_ID == gridval.GRID_ID).ToList().Select(x => new GridViewModel
+                    {
+                        GridId = x.ID,
+                        GridColomn = x.COLUMNNAME,
+                        GridSize = x.COLUMNSIZE
+                    }).ToList();
                 logger.Info(string.Format("Get GridList end | UseName: {0}", Username));
 
                 return result;

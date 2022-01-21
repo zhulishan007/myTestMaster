@@ -19,6 +19,7 @@ using MARSUtility;
 using Newtonsoft.Json;
 using NLog;
 using Oracle.ManagedDataAccess.Client;
+using static MarsSerializationHelper.JsonSerialization.SerializationFile;
 using EmailHelper = MARS_Web.Helper.EmailHelper;
 
 namespace MARS_Web.Controllers
@@ -397,9 +398,30 @@ namespace MARS_Web.Controllers
                 var lConnectionStr = SessionManager.APP;
 
                 var datasetId = tc.GetDatasetId(dataset);
-                var result = tc.GetTestCaseDetail(testcaseId, lSchema, lConnectionStr, (long)SessionManager.TESTER_ID, datasetId);
 
-                var json = JsonConvert.SerializeObject(result);
+                #region TESTCASE JSON FILE CODE
+                string testCaseName = tc.GetTestCaseNameById(testcaseId);
+                List<TestCaseResult> newResult = new List<TestCaseResult>();
+                Mars_Memory_TestCase allList = new Mars_Memory_TestCase();
+                if (Session[testcaseId + "_TestCase"] != null)
+                    allList = Session[testcaseId + "_TestCase"] as Mars_Memory_TestCase;
+                else
+                {
+                    string fileName = testcaseId + "_" + testCaseName.Replace("/", "") + ".json";
+                    string fullPath = Path.Combine(Server.MapPath("~/"), FolderName.Serialization.ToString(), FolderName.Testcases.ToString(), SessionManager.Schema, fileName);
+                    if (System.IO.File.Exists(fullPath))
+                    {
+                        string jsongString = System.IO.File.ReadAllText(fullPath);
+                        allList = JsonConvert.DeserializeObject<Mars_Memory_TestCase>(jsongString);
+                        Session[testcaseId + "_TestCase"] = allList;                        
+                    }
+                }
+                newResult = tc.ConvertTestcaseJsonToList(allList, testcaseId, lSchema, lConnectionStr, (long)SessionManager.TESTER_ID, datasetId);
+                #endregion
+
+                //var result = tc.GetTestCaseDetail(testcaseId, lSchema, lConnectionStr, (long)SessionManager.TESTER_ID, datasetId);
+
+                var json = JsonConvert.SerializeObject(newResult);
                 resultModel.status = 1;
                 resultModel.data = json;
             }
@@ -1959,7 +1981,7 @@ namespace MARS_Web.Controllers
         {
             ResultModel resultModel = new ResultModel();
             try
-            {               
+            {
                 if (string.IsNullOrEmpty(objectName))
                 {
                     resultModel.data = new List<ObjectList>();
@@ -1970,9 +1992,9 @@ namespace MARS_Web.Controllers
                     var repObject = new ObjectRepository();
                     string folderPath = Path.Combine(Server.MapPath("~/"), "Serialization\\Object\\" + SessionManager.Schema + "\\app_" + appId + "\\" + objectName.FirstOrDefault() + ".json");
                     T_OBJECT_NAMEINFO lPegObj = repObject.GetPegObjectByObjectName(objectName);
-                    
+
                     var typeId = repObject.getTypeIdByKeywordName(keyworkName);
-                    var objectList = repObject.GetObjectByParentFromJsonFile(appId, folderPath, lPegObj.OBJECT_NAME_ID, typeId);                    
+                    var objectList = repObject.GetObjectByParentFromJsonFile(appId, folderPath, lPegObj.OBJECT_NAME_ID, typeId);
                     resultModel.data = objectList;
                     resultModel.status = 1;
                 }

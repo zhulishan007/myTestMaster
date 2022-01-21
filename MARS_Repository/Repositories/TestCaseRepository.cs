@@ -13,6 +13,8 @@ using System.IO;
 using MARS_Repository.Entities;
 using NLog;
 using System.Transactions;
+using MarsSerializationHelper.ViewModel;
+using MoreLinq;
 
 namespace MARS_Repository.Repositories
 {
@@ -1240,6 +1242,86 @@ namespace MARS_Repository.Repositories
                 ELogger.ErrorException(string.Format("Error occured TestCase in UpdateDataSetDescription method | DataSet Id: {0} | DataSet Desc : {1} | UserName: {1}", dataSetId, dataSetDescription, Username), ex);
                 if (ex.InnerException != null)
                     ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in UpdateDataSetDescription method | DataSet Id: {0} | DataSet Desc : {1} | UserName: {1}", dataSetId, dataSetDescription, Username), ex.InnerException);
+                throw;
+            }
+        }
+        public List<TestCaseResult> ConvertTestcaseJsonToList(Mars_Memory_TestCase testCaseObj, long TestCaseId, string schema, string lstrConn, long UserId, long datasetId = 0)
+        {
+            List<TestCaseResult> resultList = new List<TestCaseResult>();
+            try
+            {
+                logger.Info(string.Format("Get TestCase Detail start | TestCaseId: {0} | UserName: {1}", TestCaseId, Username));
+                
+                string test_suiteName = entity.T_TEST_SUITE.FirstOrDefault(x => x.TEST_SUITE_ID == testCaseObj.assignedTestSuiteIDs.FirstOrDefault()).TEST_SUITE_NAME;
+                var lVersion = GetTestCaseVersion(TestCaseId, UserId);
+                resultList = testCaseObj.allSteps.Select(x => new TestCaseResult()
+                {
+                    STEPS_ID = x.STEPS_ID.ToString(),
+                    RUN_ORDER = x.RUN_ORDER.ToString(),
+                    TEST_CASE_ID = x.TEST_CASE_ID.ToString(),
+                    SKIP = string.Join(",", x.dataForDataSets.Select(c => c.SKIP).ToList()),
+                    DATASETVALUE = string.Join(",", x.dataForDataSets.Select(c => c.DATASETVALUE).ToList()),
+                    DATASETDESCRIPTION = string.Empty, // Need to get
+                    DATASETNAME = string.Join(",", testCaseObj.assignedDataSets.Select(c => c.ALIAS_NAME).ToList()),
+                    TEST_SUITE_ID = testCaseObj.assignedTestSuiteIDs.FirstOrDefault().ToString(),
+                    DATASETIDS = string.Join(",", testCaseObj.assignedDataSets.Select(c => c.DATA_SUMMARY_ID).ToList()),
+                    parameter = x.COLUMN_ROW_SETTING,
+                    object_happy_name = x.OBJECT_HAPPY_NAME,
+                    key_word_name = x.KEY_WORD_NAME,
+                    test_step_description = string.Empty, // Need to get
+                    test_case_name = x.TEST_CASE_NAME,
+                    test_suite_name = test_suiteName,
+                    Application = string.Empty, // Need to get application name
+                    COMMENT = x.COMMENTINFO,
+                    ROW_NUM = 1.ToString(),
+                    Data_Setting_Id = string.Join(",", x.dataForDataSets.Select(c => c.Data_Setting_Id).ToList())
+                }).ToList();
+                resultList = resultList.DistinctBy(x => x.RUN_ORDER).ToList();
+                resultList.ForEach(x =>
+                {
+                    if (!string.IsNullOrEmpty(x.DATASETVALUE))
+                        x.DATASETVALUE = x.DATASETVALUE.Replace("&amp;", "&").Replace("&quot;", "\"").Replace("&lt;", "<").Replace("&gt;", ">").Replace("~", "##").Replace("&apos;", "'");
+                    if (!string.IsNullOrEmpty(x.parameter))
+                    {
+                        if (x.parameter.Contains("\\n") || x.parameter.Contains("\""))
+                        {
+                            x.parameter = x.parameter.Replace("\\n", "\\n");
+                            x.parameter = x.parameter.Replace("\"", "\"");
+                        }
+                        x.parameter = x.parameter.Replace("&amp;", "&").Replace("&quot;", "\"").Replace("&lt;", "<").Replace("&gt;", ">").Replace("~", ",").Replace("&apos;", "'");
+                    }
+                    if (!string.IsNullOrEmpty(x.COMMENT))
+                    {
+                        if (x.COMMENT.Contains("\\n"))
+                            x.COMMENT = x.COMMENT.Replace("\\n", "\n");
+                        x.COMMENT = x.COMMENT.Replace("&amp;", "&").Replace("&quot;", "\"").Replace("&lt;", "<").Replace("&gt;", ">").Replace("~", ",").Replace("&apos;", "'");
+                    }
+                    x.key_word_name = x.key_word_name ?? string.Empty;
+                    x.object_happy_name = x.object_happy_name ?? string.Empty;
+                });
+                resultList.ForEach(x => x.VERSION = lVersion.VERSION);
+                resultList.ForEach(x => x.ISAVAILABLE = lVersion.ISAVAILABLE);
+
+                var lEditedUserName = "";
+                if (lVersion.CREATORID > 0)
+                {
+                    var ltblEdited = entity.T_TESTER_INFO.FirstOrDefault(x => x.TESTER_ID == lVersion.CREATORID);
+                    if (ltblEdited != null)
+                        lEditedUserName = ltblEdited.TESTER_LOGIN_NAME;
+                }
+                resultList.ForEach(x => x.EditingUserName = lEditedUserName);
+                if (resultList.Count() > 1)
+                    resultList = resultList.Where(x => x.RUN_ORDER.Trim() != "0" && !string.IsNullOrEmpty(x.RUN_ORDER)).OrderBy(x => Convert.ToInt32(x.RUN_ORDER)).ToList();
+
+                logger.Info(string.Format("Convert Testcase Json To List end | TestCaseId: {0} | UserName: {1}", TestCaseId, Username));
+                return resultList;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured TestCase in ConvertTestcaseJsonToList method | TestCase Id: {0} | Connection String : {1} | Schema : {2} |  UserName: {3}", TestCaseId, lstrConn, schema, Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase in ConvertTestcaseJsonToList method | TestCase Id: {0} | Connection String : {1} | Schema : {2} |  UserName: {3}", TestCaseId, lstrConn, schema, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in ConvertTestcaseJsonToList method | TestCase Id: {0} | Connection String : {1} | Schema : {2} |  UserName: {3}", TestCaseId, lstrConn, schema, Username), ex.InnerException);
                 throw;
             }
         }
@@ -3860,7 +3942,7 @@ namespace MARS_Repository.Repositories
                 using (TransactionScope scope = new TransactionScope())
                 {
                     logger.Info(string.Format("Delete folder Dataset start | feedprocessdetailid: {0} | UserName: {1}", feedprocessdetailid, Username));
-                   
+
                     var cmdText = "delete  T_TEST_DATASETTAG where DATASETID not in (select TO_NUMBER(DATASETID) from TBLSTGFOLDERDATASET where FEEDPROCESSDETAILID = " + feedprocessdetailid + ") and folderid= " + FolderId;
                     using (OracleConnection conn = new OracleConnection(constring))
                     using (OracleCommand cmd = new OracleCommand(cmdText, conn))
@@ -3916,14 +3998,14 @@ namespace MARS_Repository.Repositories
                 {
                     long Id = long.Parse(id);
                     var lResult = (from t2 in entity.T_STORYBOARD_SUMMARY
-                                  join t1 in entity.T_TEST_PROJECT on t2.ASSIGNED_PROJECT_ID equals t1.PROJECT_ID
-                                  where t2.ASSIGNED_PROJECT_ID == Id && t2.STORYBOARD_NAME != null
-                                  select new StoryboardModel
-                                  {
-                                      Storyboardid = t2.STORYBOARD_ID,
-                                      Storyboardname = t2.STORYBOARD_NAME,
-                                  }).ToList();
-                 
+                                   join t1 in entity.T_TEST_PROJECT on t2.ASSIGNED_PROJECT_ID equals t1.PROJECT_ID
+                                   where t2.ASSIGNED_PROJECT_ID == Id && t2.STORYBOARD_NAME != null
+                                   select new StoryboardModel
+                                   {
+                                       Storyboardid = t2.STORYBOARD_ID,
+                                       Storyboardname = t2.STORYBOARD_NAME,
+                                   }).ToList();
+
                     List.AddRange(lResult);
                 }
                 logger.Info(string.Format("GetStoryboardById end | ProjectIds: {0} | UserName: {1}", ProjectIds, Username));
@@ -3958,7 +4040,7 @@ namespace MARS_Repository.Repositories
             }
         }
 
-        public bool SaveFolderFilter(string ProjectIds, string SBIds, string filtername,int Id)
+        public bool SaveFolderFilter(string ProjectIds, string SBIds, string filtername, int Id)
         {
             try
             {
@@ -3966,10 +4048,10 @@ namespace MARS_Repository.Repositories
                 {
                     logger.Info(string.Format("SaveFolderFilter start | filtername: {0} | ProjectIds: {1} | SBIds: {2} | UserName: {3}", filtername, ProjectIds, SBIds, Username));
                     var flag = false;
-                    if(Id > 0)
+                    if (Id > 0)
                     {
                         var filter = entity.T_FOLDER_FILTER.Where(x => x.FILTER_ID == Id).FirstOrDefault();
-                        if(filter != null)
+                        if (filter != null)
                         {
                             filter.FILTER_NAME = filtername;
                             filter.PROJECT_IDS = ProjectIds;
@@ -3990,7 +4072,7 @@ namespace MARS_Repository.Repositories
                         entity.SaveChanges();
                         flag = true;
                     }
-                    
+
                     logger.Info(string.Format("SaveFolderFilter end | filtername: {0} | ProjectIds: {1} | SBIds: {2} | UserName: {3}", filtername, ProjectIds, SBIds, Username));
                     scope.Complete();
                     return flag;
@@ -4034,7 +4116,7 @@ namespace MARS_Repository.Repositories
                     logger.Info(string.Format("SaveFolderFilter start | FolderID: {0} | FilterId: {1} | UserName: {2}", FolderID, FilterId, Username));
                     var flag = false;
                     var filterIsExist = entity.REL_FOLDER_FILTER.Where(x => x.FOLDER_ID == FolderID).FirstOrDefault();
-                    if(filterIsExist == null)
+                    if (filterIsExist == null)
                     {
                         REL_FOLDER_FILTER filter = new REL_FOLDER_FILTER();
                         var filterID = Helper.NextTestSuiteId("SEQ_REL_FOLDER_FILTER");
@@ -4075,7 +4157,7 @@ namespace MARS_Repository.Repositories
                 var lResult = (from t2 in entity.T_FOLDER_FILTER
                                join t1 in entity.REL_FOLDER_FILTER on t2.FILTER_ID equals t1.FILTER_ID
                                where t1.FOLDER_ID == FolderID && t2.FILTER_NAME != null
-                               select  t2.FILTER_ID).FirstOrDefault();
+                               select t2.FILTER_ID).FirstOrDefault();
 
                 string result = lResult.ToString();
                 logger.Info(string.Format("GetFilterByFolderId end | FolderID : {0} | UserName: {1}", FolderID, Username));
@@ -4095,7 +4177,7 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("GetFilterList start | UserName: {0}",  Username));
+                logger.Info(string.Format("GetFilterList start | UserName: {0}", Username));
                 var folderlist = entity.T_FOLDER_FILTER.Select(x => new FilterModelView
                 {
                     Id = x.FILTER_ID,
@@ -4125,7 +4207,7 @@ namespace MARS_Repository.Repositories
                             item.Storyborad = String.Join(",", storyboradList);
                     }
                 });
-                
+
                 logger.Info(string.Format("GetFilterList start | UserName: {0}", Username));
                 return folderlist;
             }
@@ -4147,9 +4229,9 @@ namespace MARS_Repository.Repositories
                 using (TransactionScope scope = new TransactionScope())
                 {
                     logger.Info(string.Format("Delete Filter start | FilterId: {0} | UserName: {1}", Id, Username));
-                    
+
                     var filter = entity.T_FOLDER_FILTER.Where(x => x.FILTER_ID == Id).FirstOrDefault();
-                    if(filter != null)
+                    if (filter != null)
                     {
                         entity.T_FOLDER_FILTER.Remove(filter);
                         result = true;
