@@ -1245,13 +1245,32 @@ namespace MARS_Repository.Repositories
                 throw;
             }
         }
+        public long GetKeywordIdByName(string keywordName)
+        {
+            return entity.T_KEYWORD.FirstOrDefault(x => x.KEY_WORD_NAME.Trim().ToLower().Equals(keywordName.Trim().ToLower())).KEY_WORD_ID;
+        }
+        public ObjectViewModel GetObjectIdByName(string objectName)
+        {
+            return (from OI in entity.T_OBJECT_NAMEINFO
+                    join RO in entity.T_REGISTED_OBJECT on OI.OBJECT_NAME_ID equals RO.OBJECT_NAME_ID
+                    where OI.OBJECT_HAPPY_NAME.Trim().ToLower().Equals(objectName.Trim().ToLower())
+                    select new ObjectViewModel()
+                    {
+                        OBJECT_HAPPY_NAME = OI.OBJECT_HAPPY_NAME,
+                        OBJECT_ID = RO.OBJECT_ID,
+                        OBJECT_TYPE = RO.OBJECT_TYPE,
+                        OBJECT_NAME_ID = (decimal)RO.OBJECT_NAME_ID,
+                        COMMENT = RO.COMMENT
+                    }).FirstOrDefault();
+            //return entity.V_OBJECT_SNAPSHOT.FirstOrDefault(x => x.OBJECT_HAPPY_NAME.Trim().ToLower().Equals(objectName.ToLower().Trim()));
+        }
         public List<TestCaseResult> ConvertTestcaseJsonToList(Mars_Memory_TestCase testCaseObj, long TestCaseId, string schema, string lstrConn, long UserId, long datasetId = 0)
         {
             List<TestCaseResult> resultList = new List<TestCaseResult>();
             try
             {
                 logger.Info(string.Format("Get TestCase Detail start | TestCaseId: {0} | UserName: {1}", TestCaseId, Username));
-                
+
                 string test_suiteName = entity.T_TEST_SUITE.FirstOrDefault(x => x.TEST_SUITE_ID == testCaseObj.assignedTestSuiteIDs.FirstOrDefault()).TEST_SUITE_NAME;
                 var lVersion = GetTestCaseVersion(TestCaseId, UserId);
                 resultList = testCaseObj.allSteps.Select(x => new TestCaseResult()
@@ -1259,12 +1278,12 @@ namespace MARS_Repository.Repositories
                     STEPS_ID = x.STEPS_ID.ToString(),
                     RUN_ORDER = x.RUN_ORDER.ToString(),
                     TEST_CASE_ID = x.TEST_CASE_ID.ToString(),
-                    SKIP = string.Join(",", x.dataForDataSets.Select(c => c.SKIP).ToList()),
-                    DATASETVALUE = string.Join(",", x.dataForDataSets.Select(c => c.DATASETVALUE).ToList()),
+                    SKIP = string.Join(",", x.dataForDataSets.OrderBy(y => y.DATA_SUMMARY_ID).Select(c => c.SKIP).ToList()),
+                    DATASETVALUE = string.Join(",", x.dataForDataSets.OrderBy(y => y.DATA_SUMMARY_ID).Select(c => c.DATASETVALUE).ToList()),
                     DATASETDESCRIPTION = string.Empty, // Need to get
-                    DATASETNAME = string.Join(",", testCaseObj.assignedDataSets.Select(c => c.ALIAS_NAME).ToList()),
+                    DATASETNAME = string.Join(",", testCaseObj.assignedDataSets.OrderBy(y => y.DATA_SUMMARY_ID).Select(c => c.ALIAS_NAME).ToList()),
                     TEST_SUITE_ID = testCaseObj.assignedTestSuiteIDs.FirstOrDefault().ToString(),
-                    DATASETIDS = string.Join(",", testCaseObj.assignedDataSets.Select(c => c.DATA_SUMMARY_ID).ToList()),
+                    DATASETIDS = string.Join(",", testCaseObj.assignedDataSets.OrderBy(y => y.DATA_SUMMARY_ID).Select(c => c.DATA_SUMMARY_ID).ToList()),
                     parameter = x.COLUMN_ROW_SETTING,
                     object_happy_name = x.OBJECT_HAPPY_NAME,
                     key_word_name = x.KEY_WORD_NAME,
@@ -1274,7 +1293,7 @@ namespace MARS_Repository.Repositories
                     Application = string.Empty, // Need to get application name
                     COMMENT = x.COMMENTINFO,
                     ROW_NUM = 1.ToString(),
-                    Data_Setting_Id = string.Join(",", x.dataForDataSets.Select(c => c.Data_Setting_Id).ToList())
+                    Data_Setting_Id = string.Join(",", x.dataForDataSets.OrderBy(y => y.DATA_SUMMARY_ID).Select(c => c.Data_Setting_Id).ToList())
                 }).ToList();
                 resultList = resultList.DistinctBy(x => x.RUN_ORDER).ToList();
                 resultList.ForEach(x =>

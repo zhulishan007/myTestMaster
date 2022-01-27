@@ -178,35 +178,32 @@
 
         });
 
-                    dt.push({
-                        title: "", copy: false, editable: false, minWidth: 40, maxWidth: 40, sortable: false, dataIndx: "IsDelete", menuInHide: true, menuIcon: false, sortable: false, filter: { on: false, menuIcon: false},
-                        render: function (ui) {
-                            if (ui.rowData != undefined) {
-                                if (ui.rowData.pq_rowcls == "collapseBorder") {
-                                    return "<button type='button' class='delete_btn' disabled style='color:red;'></button>";
-                                } else {
-                                    return "<button type='button' class='delete_btn' style='color:red;'></button>";
-                                }
-                            } else {
-                                return "<button type='button' class='delete_btn' style='color:red;'></button>";
-                            }
-
-       },
-       postRender: function (ui) {
-           var rowIndx = ui.rowIndx,
-               grid = this,
-               $cell = gridobj["@lTestCasegrid"].getCell(ui);
-           var lflagPegObject = false;
-           if (ui.rowData.keyword != undefined) {
-               if (ui.rowData.keyword.toLowerCase() == "pegwindow") {
-                   lflagPegObject = true;
-               }
-           }
-           $cell.find("button").button({ icons: { primary: 'ui-icon-close' } })
-           .bind("click", function () {
-
-               gridobj["@lTestCasegrid"].addClass({ rowIndx: ui.rowIndx, cls: 'pq-row-delete' });
-
+        dt.push({
+            title: "", copy: false, editable: false, minWidth: 40, maxWidth: 40, sortable: false, dataIndx: "IsDelete", menuInHide: true, menuIcon: false, sortable: false, filter: { on: false, menuIcon: false },
+            render: function (ui) {
+                if (ui.rowData != undefined) {
+                    if (ui.rowData.pq_rowcls == "collapseBorder") {
+                        return "<button type='button' class='delete_btn' disabled style='color:red;'></button>";
+                    } else {
+                        return "<button type='button' class='delete_btn' style='color:red;'></button>";
+                    }
+                } else {
+                    return "<button type='button' class='delete_btn' style='color:red;'></button>";
+                }
+            },
+            postRender: function (ui) {
+                var rowIndx = ui.rowIndx,
+                    grid = this,
+                    $cell = gridobj["@lTestCasegrid"].getCell(ui);
+                var lflagPegObject = false;
+                if (ui.rowData.keyword != undefined) {
+                    if (ui.rowData.keyword.toLowerCase() == "pegwindow") {
+                        lflagPegObject = true;
+                    }
+                }
+                $cell.find("button").button({ icons: { primary: 'ui-icon-close' } }).bind("click", function () {
+                    debugger;
+                    gridobj["@lTestCasegrid"].addClass({ rowIndx: ui.rowIndx, cls: 'pq-row-delete' });
 
                //swal.fire({
                //    title: 'Delete',
@@ -216,37 +213,38 @@
                //    confirmButtonText: 'Yes, delete it!'
                //}).then(function (result) {
                   // if (result.value == true) {
-                       ans = true;
-                       gridobj["@lTestCasegrid"].removeClass({ rowIndx: rowIndx, cls: 'pq-row-delete' });
-                       if (ans) {
-                           gridobj["@lTestCasegrid"].deleteRow({ rowIndx: rowIndx });
-                           delete newsteps[rowIndx];
-                           if (lflagPegObject) {
-                               var ldeletedRowIndex = rowIndx;
-                               var lflagblank = true;
-                               for (var k = 0; gridobj["@lTestCasegrid"].pdata.length > k; k++) {
-                                   if (ldeletedRowIndex <= k) {
-                                       if (gridobj["@lTestCasegrid"].pdata[k].keyword.toLowerCase() == "pegwindow") {
-                                           lflagblank = false;
-                                       }
-
-                                       if (lflagblank) {
-                                           gridobj["@lTestCasegrid"].updateRow({
-                                               rowIndx: k,
-                                               newRow: { 'object': '' }
-                                           });
-                                       }
-                                   }
-                               }
-                           }
-                       }
+                    ans = true;
+                    var rowDatas = ui.rowData;
+                    gridobj["@lTestCasegrid"].removeClass({ rowIndx: rowIndx, cls: 'pq-row-delete' });
+                    if (ans) {
+                        gridobj["@lTestCasegrid"].deleteRow({ rowIndx: rowIndx });
+                        delete newsteps[rowIndx];
+                        if (lflagPegObject) {
+                            var ldeletedRowIndex = rowIndx;
+                            var lflagblank = true;
+                            for (var k = 0; gridobj["@lTestCasegrid"].pdata.length > k; k++) {
+                                if (ldeletedRowIndex <= k) {
+                                    if (gridobj["@lTestCasegrid"].pdata[k].keyword.toLowerCase() == "pegwindow") {
+                                        lflagblank = false;
+                                    }
+                                    if (lflagblank) {
+                                        gridobj["@lTestCasegrid"].updateRow({
+                                            rowIndx: k,
+                                            newRow: { 'object': '' }
+                                        });
+                                    }
+                                }
+                            }
+                        }
+                        DeleteTestCaseRowInSession(rowDatas.stepsID, rowDatas.RUN_ORDER);
+                    }
                    //} else {
                       // gridobj["@lTestCasegrid"].removeClass({ rowIndx: rowIndx, cls: 'pq-row-delete' });
                  //  }
               // });
-           });
-       }
-   });
+                });
+            }
+        });
    dt.push({
        title: "StepsID", copy: false, hidden: true,menuInHide: true,sortable: false, dataType: "int", dataIndx: "stepsID", align: "center",
    });
@@ -342,6 +340,7 @@
            }
           },
           editable: function (ui) {
+              debugger;
               if (ui.rowData != undefined) {
                   if (ui.rowData.pq_rowcls == "collapseBorder") {
                       return false;
@@ -628,7 +627,6 @@
                                             align: "center", colModel: [{
                                                 title: "", width: "2%", dataType: "bool", sortable: false, copy: IsCopy,
                                                 render: function (ui) {
-
                                                     var rowData = ui.rowData,
                                                         dataIndx = ui.dataIndx;
                                                     ldataIndx = datasetnames[k];
@@ -670,7 +668,7 @@
                                                     } else {
                                                         return true;
                                                     }
-                                                }
+                                                },
                                                 //resizable: true
                                             },
                                             {
@@ -904,11 +902,22 @@
                freezeRows: 0,
                height: lPqGridHeight,
                //rowHt: 13,
-
+               cellClick: function (evt, ui) {
+                   debugger;
+                   if (ui.column.type == "checkbox") {
+                       var chkBoxValue = false;
+                       if (ui.rowData.hasOwnProperty(ui.dataIndx)) {
+                           chkBoxValue = ui.rowData[ui.dataIndx] == true ? false : true;
+                       }
+                       var propertyName = ui.dataIndx;
+                       var propertyValue = ui.newVal;
+                       var stepId = ui.rowData.stepsID;
+                       UpdateValuesInTestCaseSession(propertyName, propertyValue, stepId, true, chkBoxValue);
+                   }
+               },
                cellSave: function (evt, ui) {
-
+                   debugger;
                    if (ui.dataIndx == "keyword" && ui.newVal !== ui.oldVal) {
-
                        //reset the region cell whenever country cell is modified.
                        this.updateRow({
                            rowIndx: ui.rowIndx,
@@ -916,6 +925,10 @@
                        });
                    }
 
+                   var propertyName = ui.dataIndx;
+                   var propertyValue = ui.newVal;
+                   var stepId = ui.rowData.stepsID;
+                   UpdateValuesInTestCaseSession(propertyName, propertyValue, stepId, false, false);
                },
                beforeValidate: function (event, ui) {
 
@@ -1029,6 +1042,7 @@
                            listener: function () {
 
                                //append empty row at the end.
+                               debugger;
                                var lMinValueStepId = 0;
                                for (var k = 0; gridobj["@lTestCasegrid"].pdata.length > k; k++) {
                                    if (gridobj["@lTestCasegrid"].pdata[k].stepsID <= lMinValueStepId) {
@@ -1354,7 +1368,7 @@
             on: true,
                 diHelper: ['StepsID'],
                 dragNodes: function(rd, evt) {
-
+                    debugger;
                     if (rd.pq_rowcls == "collapseBorder") {
                         swal.fire({
                             "title": "",
@@ -1390,7 +1404,7 @@
             gridobj['@lTestCasegrid'].refreshDataAndView();
         }, 1000);
 
-
+        //#region RELOAD DATA GRID
         function ReloadDataGrid(tcgrid, tcid, tsid, Visibledatasetname) {
             $.ajax({
                 url: "/TestCase/GetTestCaseDetails",
@@ -1601,7 +1615,9 @@
 
 
         }
+        //#endregion
 
+        //#region RELOAD COLUMNS
         function ReloadColumn(tcgrid, tcid, tsid, Visibledatasetname) {
             dt = [];
             dt.push({
@@ -1731,7 +1747,7 @@
                       }
            //return "<button type='button' class='delete_btn' style='color:red;'></button>";
        },
-       postRender: function (ui) {
+                  postRender: function (ui) {
            var rowIndx = ui.rowIndx,
                grid = this,
                $cell = gridobj[tcgrid].getCell(ui);
@@ -2230,7 +2246,7 @@
                         }
                     });
         }
-
+        //#endregion
 
     function ReloadGrid(tcgrid, tcid, tsid, Visibledatasetname) {
 
@@ -2758,6 +2774,7 @@
                                 align: "center", colModel: [{
                                     title: "", width: "2%", dataType: "bool", sortable: false,
                                     render: function (ui) {
+                                        debugger;
                                         var rowData = ui.rowData,
                                             dataIndx = ui.dataIndx;
                                         ldataIndx = datasetnames[k];
@@ -4542,9 +4559,58 @@
                 });
             }
         }
+        function UpdateValuesInTestCaseSession(propertyName, propertyValue, stepId, isSkipChange, skipValue) {
+            if ((propertyValue != "" && propertyValue != undefined && propertyValue != null) || isSkipChange == true) {
+                $.ajax({
+                    url: "/TestCase/UpdateTestcaseValueInSession",
+                    type: "GET",
+                    data: {
+                        PropertyName: propertyName,
+                        PropertyValue: propertyValue,
+                        stepId: stepId,
+                        testCaseId: @ViewBag.TestcaseId,
+                        isSkipChange: isSkipChange,
+                        skipValue: skipValue
+                    },
+                    contentType: "application/json;charset=utf-8",
+                    dataType: "json",
+                    success: function (result) {
+                    }
+                });
+            }
+        }
+        function DeleteTestCaseRowInSession(stepId, runOrder) {
+            $.ajax({
+                url: "/TestCase/DeleteTestCaseRowInSession",
+                type: "GET",
+                data: {
+                    stepId: stepId,
+                    runOrder: runOrder,
+                    testCaseId: @ViewBag.TestcaseId,
+                },
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                }
+            });
+        }
+        function AddNewRowTestCaseInSession(oldRunOrder, NewRowRunOrder) {
+            $.ajax({
+                url: "/TestCase/AddNewRowTestCaseInSession",
+                type: "GET",
+                data: {
+                    oldRunOrder: oldRunOrder,
+                    NewRowRunOrder: NewRowRunOrder,
+                    testCaseId: @ViewBag.TestcaseId,
+                },
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                }
+            });
+        }
     </script>
 }
-
 @{
 
     var BProjectId = "aProject" + ViewBag.TestcaseId;
@@ -4584,37 +4650,37 @@
 
 
 @*<script>
-   $(document).ready(function () {
-       var lProjectId = $("#hdnProjectId").val();
-       var lTestSuiteId = $("#hdnTestsuiteId").val() ;
-       var lTestCaseId = $("#hdnTestcaseId").val();
-          $.ajax({
-              dataType: "json",
-              type: "POST",
-              headers: { "Authorization": '@ViewBag.Accesstoken' },
-              url: "@ViewBag.WebAPIURL" + "api/GetTcName?lProjectId=@ViewBag.ProjectId&lTestSuiteId=@ViewBag.TestsuiteId&lTestCaseId=@ViewBag.TestcaseId",
-              success: function (result) {
-                  if (result.length > 2) {
-                      var lProjectName = result.split("#")[0];
-                      var lTestCaseName = result.split("#")[1];
-                      var lTestSuiteName = result.split("#")[2];
+       $(document).ready(function () {
+           var lProjectId = $("#hdnProjectId").val();
+           var lTestSuiteId = $("#hdnTestsuiteId").val() ;
+           var lTestCaseId = $("#hdnTestcaseId").val();
+              $.ajax({
+                  dataType: "json",
+                  type: "POST",
+                  headers: { "Authorization": '@ViewBag.Accesstoken' },
+                  url: "@ViewBag.WebAPIURL" + "api/GetTcName?lProjectId=@ViewBag.ProjectId&lTestSuiteId=@ViewBag.TestsuiteId&lTestCaseId=@ViewBag.TestcaseId",
+                  success: function (result) {
+                      if (result.length > 2) {
+                          var lProjectName = result.split("#")[0];
+                          var lTestCaseName = result.split("#")[1];
+                          var lTestSuiteName = result.split("#")[2];
 
-                      var BProjectId = "aProject" + @ViewBag.TestcaseId;
-                      var BTSId = "aTestSuite" + @ViewBag.TestcaseId;
-                      var BTCId = "aTestCase" + @ViewBag.TestcaseId;
+                          var BProjectId = "aProject" + @ViewBag.TestcaseId;
+                          var BTSId = "aTestSuite" + @ViewBag.TestcaseId;
+                          var BTCId = "aTestCase" + @ViewBag.TestcaseId;
 
-                      $("#" + BProjectId)[0].innerHTML = lProjectName;
-                      $("#" + BTSId)[0].innerHTML = lTestSuiteName;
-                      $("#" + BTCId)[0].innerHTML = lTestCaseName;
-                    $("#hdnTestsuiteId").val(@ViewBag.TestsuiteId);
-                      $("#" + BProjectId).css("display", "block");
-                      $("#" + BTSId).css("display", "block");
-                      $("#" + BTCId).css("display", "block");
-                      $("#" + BProjectId).prev().css("display", "block");
-                      $("#" + BTSId).prev().css("display", "block");
-                      $("#" + BTCId).prev().css("display", "block");
+                          $("#" + BProjectId)[0].innerHTML = lProjectName;
+                          $("#" + BTSId)[0].innerHTML = lTestSuiteName;
+                          $("#" + BTCId)[0].innerHTML = lTestCaseName;
+                        $("#hdnTestsuiteId").val(@ViewBag.TestsuiteId);
+                          $("#" + BProjectId).css("display", "block");
+                          $("#" + BTSId).css("display", "block");
+                          $("#" + BTCId).css("display", "block");
+                          $("#" + BProjectId).prev().css("display", "block");
+                          $("#" + BTSId).prev().css("display", "block");
+                          $("#" + BTCId).prev().css("display", "block");
+                      }
                   }
-              }
-          });
-   })
-</script>*@
+              });
+       })
+    </script>*@

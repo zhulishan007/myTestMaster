@@ -43,7 +43,7 @@ namespace MARS_Web.Controllers
                 }
                 var defaultDb = mc.GetDefaultDatabase();
                 var Connlst = mc.GetConnectionDetails();
-                var connlist = Connlst.Select(c => new SelectListItem { Text = c.UserName + "/" + c.Host, Value = (c.UserName + "/" + c.Host).ToString() }).ToList();
+                var connlist = Connlst.Select(c => new SelectListItem { Text = c.Databasename + "/" + c.Host, Value = (c.Databasename + "/" + c.Host).ToString() }).ToList();
                 ViewBag.connlist = connlist;
                 ViewBag.defaultDb = defaultDb;
 

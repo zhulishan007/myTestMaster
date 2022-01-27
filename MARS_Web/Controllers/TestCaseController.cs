@@ -385,7 +385,178 @@ namespace MARS_Web.Controllers
         #endregion
 
         #region PQGrid functionality of TestCase Grid
+        public ActionResult AddNewRowTestCaseInSession(long oldRunOrder, long NewRowRunOrder, long testCaseId)
+        {
+            ResultModel resultModel = new ResultModel();
+            try
+            {
+                logger.Info(string.Format("Add testcase row in session in TestCase controller for AddNewRowTestCaseInSession method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
 
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in TestCase controller for AddNewRowTestCaseInSession method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in TestCase controller for AddNewRowTestCaseInSession method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for AddNewRowTestCaseInSession method | TestCaseId: {0} | UserName: {1}", testCaseId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+                resultModel.status = 0;
+                resultModel.message = ex.Message.ToString();
+            }
+            return Json(resultModel, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult DeleteTestCaseRowInSession(long stepId, long runOrder, long testCaseId)
+        {
+            ResultModel resultModel = new ResultModel();
+            try
+            {
+                logger.Info(string.Format("Delete testcase row in session in TestCase controller for DeleteTestCaseRowInSession method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+
+                Mars_Memory_TestCase allList = new Mars_Memory_TestCase();
+                string testcaseSessionName = string.Format("{0}_Testcase_{1}", SessionManager.Schema, testCaseId);
+                if (Session[testcaseSessionName] != null)
+                    allList = Session[testcaseSessionName] as Mars_Memory_TestCase;
+                List<MB_V_TEST_STEPS> step = allList.allSteps.Where(x => x.STEPS_ID == stepId).ToList();
+                bool isPegWindow = step.Any(x => x.KEY_WORD_NAME.Trim().ToLower().Equals("pegwindow"));
+                if (step.Count() > 0)
+                {
+                    allList.allSteps = allList.allSteps.Except(step).OrderBy(x => x.RUN_ORDER).ToList();
+                    allList.allSteps.ForEach(x =>
+                    {
+                        if (x.RUN_ORDER > runOrder)
+                        {
+                            x.RUN_ORDER--;
+
+                            if (x.KEY_WORD_NAME.Trim().ToLower().Equals("pegwindow"))
+                                isPegWindow = false;
+
+                            if (isPegWindow)
+                                x.OBJECT_HAPPY_NAME = string.Empty;
+                        }
+                    });
+                }
+                Session[testcaseSessionName] = allList;
+                resultModel.status = 1;
+                resultModel.data = true;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in TestCase controller for DeleteTestCaseRowInSession method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in TestCase controller for DeleteTestCaseRowInSession method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for DeleteTestCaseRowInSession method | TestCaseId: {0} | UserName: {1}", testCaseId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+                resultModel.status = 0;
+                resultModel.message = ex.Message.ToString();
+            }
+            return Json(resultModel, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult UpdateTestcaseValueInSession(string PropertyName, string PropertyValue, long stepId, long testCaseId, bool isSkipChange, bool skipValue)
+        {
+            ResultModel resultModel = new ResultModel();
+            try
+            {
+                logger.Info(string.Format("Update testcase values in session in TestCase controller for UpdateTestcaseValueInSession method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+
+                TestCaseRepository tc = new TestCaseRepository();
+                Mars_Memory_TestCase allList = new Mars_Memory_TestCase();
+                string testcaseSessionName = string.Format("{0}_Testcase_{1}", SessionManager.Schema, testCaseId);
+                if (Session[testcaseSessionName] != null)
+                    allList = Session[testcaseSessionName] as Mars_Memory_TestCase;
+                List<MB_V_TEST_STEPS> step = allList.allSteps.Where(x => x.STEPS_ID == stepId).ToList();
+                if (isSkipChange)
+                {
+                    PropertyName = PropertyName.Replace("skip_", "");
+                    var mainDataset = allList.assignedDataSets.FirstOrDefault(x => x.ALIAS_NAME.Trim().ToLower().Equals(PropertyName.Trim().ToLower()));
+                    if (mainDataset != null)
+                    {
+                        long datasetID = mainDataset.DATA_SUMMARY_ID;
+                        var dataForDataSet = allList.allSteps.Where(c => c.STEPS_ID == stepId).Select(x => x.dataForDataSets).ToList();
+                        if (dataForDataSet.Count() > 0)
+                        {
+                            dataForDataSet.ForEach(x =>
+                            {
+                                x.ForEach(c =>
+                                {
+                                    if (c.DATA_SUMMARY_ID == datasetID)
+                                        c.SKIP = skipValue ? 4 : 0;
+                                });
+                            });
+                        }
+                    }
+                }
+                else
+                {
+                    if (PropertyName.Trim().Equals("keyword"))
+                    {
+                        if (step.Count() > 0)
+                        {
+                            long keywordId = tc.GetKeywordIdByName(PropertyValue);
+                            step.ForEach(x =>
+                            {
+                                x.KEY_WORD_NAME = PropertyValue;
+                                x.KEY_WORD_ID = keywordId;
+                            });
+                        }
+                    }
+                    else if (PropertyName.Trim().Equals("object"))
+                    {
+                        if (step.Count() > 0)
+                        {
+                            ObjectViewModel objct = tc.GetObjectIdByName(PropertyValue);
+                            step.ForEach(x =>
+                            {
+                                x.OBJECT_HAPPY_NAME = PropertyValue;
+                                x.OBJECT_ID = objct != null ? objct.OBJECT_ID : x.OBJECT_ID;
+                                x.OBJECT_NAME_ID = objct != null ? (long)objct.OBJECT_NAME_ID : x.OBJECT_NAME_ID;
+                                x.OBJECT_TYPE = objct != null ? objct.OBJECT_TYPE : x.OBJECT_TYPE;
+                            });
+                        }
+                    }
+                    else if (PropertyName.Trim().Equals("comment"))
+                    {
+                        if (step.Count() > 0)
+                            step.ForEach(x => { x.COMMENTINFO = PropertyValue; });
+                    }
+                    else if (PropertyName.Trim().Equals("parameters"))
+                    {
+                        if (step.Count() > 0)
+                            step.ForEach(x => { x.COLUMN_ROW_SETTING = PropertyValue; });
+                    }
+                    else
+                    {
+                        var mainDataset = allList.assignedDataSets.FirstOrDefault(x => x.ALIAS_NAME.Trim().ToLower().Equals(PropertyName.Trim().ToLower()));
+                        if (mainDataset != null)
+                        {
+                            long datasetID = mainDataset.DATA_SUMMARY_ID;
+                            var dataForDataSet = allList.allSteps.Where(c => c.STEPS_ID == stepId).Select(x => x.dataForDataSets).ToList();
+                            if (dataForDataSet.Count() > 0)
+                            {
+                                dataForDataSet.ForEach(x =>
+                                {
+                                    x.ForEach(c =>
+                                    {
+                                        if (c.DATA_SUMMARY_ID == datasetID)
+                                            c.DATASETVALUE = PropertyValue;
+                                    });
+                                });
+                            }
+                        }
+                    }
+                }
+                Session[testcaseSessionName] = allList;
+                resultModel.status = 1;
+                resultModel.data = true;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in TestCase controller for UpdateTestcaseValueInSession method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in TestCase controller for UpdateTestcaseValueInSession method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for UpdateTestcaseValueInSession method | TestCaseId: {0} | UserName: {1}", testCaseId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+                resultModel.status = 0;
+                resultModel.message = ex.Message.ToString();
+            }
+            return Json(resultModel, JsonRequestBehavior.AllowGet);
+        }
         //Loads all the steps of TestCase grid by TestCaseId
         public ActionResult GetTestCaseDetails(int testcaseId, string dataset)
         {
@@ -403,17 +574,18 @@ namespace MARS_Web.Controllers
                 string testCaseName = tc.GetTestCaseNameById(testcaseId);
                 List<TestCaseResult> newResult = new List<TestCaseResult>();
                 Mars_Memory_TestCase allList = new Mars_Memory_TestCase();
-                if (Session[testcaseId + "_TestCase"] != null)
-                    allList = Session[testcaseId + "_TestCase"] as Mars_Memory_TestCase;
+                string testcaseSessionName = string.Format("{0}_Testcase_{1}", SessionManager.Schema, testcaseId);
+                if (Session[testcaseSessionName] != null)
+                    allList = Session[testcaseSessionName] as Mars_Memory_TestCase;
                 else
                 {
-                    string fileName = testcaseId + "_" + testCaseName.Replace("/", "") + ".json";
+                    string fileName = string.Format("{0}_{1}.json", testcaseId, testCaseName.Replace("/", "")); //testcaseId + "_" + testCaseName.Replace("/", "") + ".json";
                     string fullPath = Path.Combine(Server.MapPath("~/"), FolderName.Serialization.ToString(), FolderName.Testcases.ToString(), SessionManager.Schema, fileName);
                     if (System.IO.File.Exists(fullPath))
                     {
                         string jsongString = System.IO.File.ReadAllText(fullPath);
                         allList = JsonConvert.DeserializeObject<Mars_Memory_TestCase>(jsongString);
-                        Session[testcaseId + "_TestCase"] = allList;                        
+                        Session[testcaseSessionName] = allList;
                     }
                 }
                 newResult = tc.ConvertTestcaseJsonToList(allList, testcaseId, lSchema, lConnectionStr, (long)SessionManager.TESTER_ID, datasetId);
@@ -2392,6 +2564,20 @@ namespace MARS_Web.Controllers
             ResultModel resultModel = new ResultModel();
             try
             {
+                //if (!string.IsNullOrEmpty(TestCaseIds))
+                //{
+                //    foreach(var testCaseId in TestCaseIds.Split(','))
+                //    {
+                //        if (!string.IsNullOrEmpty(testCaseId))
+                //        {
+                //            string testcaseSessionName = string.Format("{0}_Testcase_{1}", SessionManager.Schema, testCaseId);
+                //            if (Session[testcaseSessionName] != null)
+                //            {
+                //                Session.Remove(testcaseSessionName);
+                //            }
+                //        }                        
+                //    }
+                //}
                 var rep = new TestCaseRepository();
                 rep.Username = SessionManager.TESTER_LOGIN_NAME;
                 rep.UpdateIsAvailable(TestCaseIds);
