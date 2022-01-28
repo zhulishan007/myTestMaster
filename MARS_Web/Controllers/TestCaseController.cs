@@ -469,7 +469,9 @@ namespace MARS_Web.Controllers
                     if (mainDataset != null)
                     {
                         long datasetID = mainDataset.DATA_SUMMARY_ID;
-                        var dataForDataSet = allList.allSteps.Where(c => c.STEPS_ID == stepId).Select(x => x.dataForDataSets).ToList();
+                        var relatedSteps = allList.allSteps.Where(c => c.STEPS_ID == stepId).ToList();
+                        relatedSteps.ForEach(x => { x.recordStatus = MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_ModifiedToDb; });
+                        var dataForDataSet = relatedSteps.Where(c => c.STEPS_ID == stepId).Select(x => x.dataForDataSets).ToList();
                         if (dataForDataSet.Count() > 0)
                         {
                             dataForDataSet.ForEach(x =>
@@ -494,6 +496,7 @@ namespace MARS_Web.Controllers
                             {
                                 x.KEY_WORD_NAME = PropertyValue;
                                 x.KEY_WORD_ID = keywordId;
+                                x.recordStatus = MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_ModifiedToDb;
                             });
                         }
                     }
@@ -508,18 +511,27 @@ namespace MARS_Web.Controllers
                                 x.OBJECT_ID = objct != null ? objct.OBJECT_ID : x.OBJECT_ID;
                                 x.OBJECT_NAME_ID = objct != null ? (long)objct.OBJECT_NAME_ID : x.OBJECT_NAME_ID;
                                 x.OBJECT_TYPE = objct != null ? objct.OBJECT_TYPE : x.OBJECT_TYPE;
+                                x.recordStatus = MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_ModifiedToDb;
                             });
                         }
                     }
                     else if (PropertyName.Trim().Equals("comment"))
                     {
                         if (step.Count() > 0)
-                            step.ForEach(x => { x.COMMENTINFO = PropertyValue; });
+                            step.ForEach(x =>
+                            {
+                                x.COMMENTINFO = PropertyValue;
+                                x.recordStatus = MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_ModifiedToDb;
+                            });
                     }
                     else if (PropertyName.Trim().Equals("parameters"))
                     {
                         if (step.Count() > 0)
-                            step.ForEach(x => { x.COLUMN_ROW_SETTING = PropertyValue; });
+                            step.ForEach(x =>
+                            {
+                                x.COLUMN_ROW_SETTING = PropertyValue;
+                                x.recordStatus = MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_ModifiedToDb;
+                            });
                     }
                     else
                     {
@@ -527,7 +539,9 @@ namespace MARS_Web.Controllers
                         if (mainDataset != null)
                         {
                             long datasetID = mainDataset.DATA_SUMMARY_ID;
-                            var dataForDataSet = allList.allSteps.Where(c => c.STEPS_ID == stepId).Select(x => x.dataForDataSets).ToList();
+                            var relatedSteps = allList.allSteps.Where(c => c.STEPS_ID == stepId).ToList();
+                            relatedSteps.ForEach(x => { x.recordStatus = MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_ModifiedToDb; });
+                            var dataForDataSet = relatedSteps.Where(c => c.STEPS_ID == stepId).Select(x => x.dataForDataSets).ToList();
                             if (dataForDataSet.Count() > 0)
                             {
                                 dataForDataSet.ForEach(x =>
@@ -586,6 +600,17 @@ namespace MARS_Web.Controllers
                         string jsongString = System.IO.File.ReadAllText(fullPath);
                         allList = JsonConvert.DeserializeObject<Mars_Memory_TestCase>(jsongString);
                         Session[testcaseSessionName] = allList;
+                    }
+                    else
+                    {
+                        string fullFilePath = CreateTestcaseFolder();
+                        bool status = LoadTestcaseJsonFile(fullFilePath, new List<MB_V_TEST_STEPS>(), testcaseId, SessionManager.APP.ToString());
+                        if (status)
+                        {
+                            string jsongString = System.IO.File.ReadAllText(fullFilePath);
+                            allList = JsonConvert.DeserializeObject<Mars_Memory_TestCase>(jsongString);
+                            Session[testcaseSessionName] = allList;
+                        }
                     }
                 }
                 newResult = tc.ConvertTestcaseJsonToList(allList, testcaseId, lSchema, lConnectionStr, (long)SessionManager.TESTER_ID, datasetId);
@@ -4307,6 +4332,32 @@ namespace MARS_Web.Controllers
             process.Close();
 
             return output;
+        }
+
+        protected string CreateTestcaseFolder()
+        {
+            string mainPath = Server.MapPath("~/");
+            string F_Serialization = Path.Combine(mainPath, FolderName.Serialization.ToString());
+            string T_Testcases = Path.Combine(F_Serialization, FolderName.Testcases.ToString());
+            string D_Database = string.Empty;
+            string TestcasePath = string.Empty;
+
+            #region IF NOT EXIST CREATE MAIN SERIALIZATION FOLDER 
+            if (!Directory.Exists(F_Serialization))
+                Directory.CreateDirectory(F_Serialization);
+            #endregion
+
+            if (!Directory.Exists(T_Testcases))
+                Directory.CreateDirectory(T_Testcases);
+
+            if (Directory.Exists(T_Testcases))
+            {
+                D_Database = Path.Combine(T_Testcases, SessionManager.Schema.ToString().Trim());
+                if (!Directory.Exists(D_Database))
+                    Directory.CreateDirectory(D_Database);
+            }
+            TestcasePath = D_Database;
+            return TestcasePath;
         }
     }
 }

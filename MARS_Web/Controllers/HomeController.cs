@@ -231,7 +231,23 @@ namespace MARS_Web.Controllers
                 #region RBJ Code
                 var appId = repObject.getApplicationIdByTestCaseId(TestcaseId);
                 string folderPath = Path.Combine(Server.MapPath("~/"), "Serialization\\Object\\" + SessionManager.Schema);
-                var objList = repObject.getObjectListByAppIdFromJsonFile(appId, folderPath);
+                bool isThereAllFile = true;
+                foreach (var ID in appId)
+                {
+                    string filePath = Path.Combine(folderPath, string.Format("app_{0}\\PegWindowsMapping.json", ID));
+                    if (!System.IO.File.Exists(filePath))
+                    {
+                        isThereAllFile = false;
+                        if (!isThereAllFile)
+                            break;
+                    }
+                }
+                List<ObjectList> objList = new List<ObjectList>();
+                if (isThereAllFile)
+                    objList = repObject.getObjectListByAppIdFromJsonFile(appId, folderPath);
+                else
+                    objList = repObject.GetObjectsByPegWindowType(TestcaseId).OrderBy(y => y.ObjectName).ToList();
+
                 ViewBag.ObjectList = JsonConvert.SerializeObject(objList);
 
                 ViewBag.AppID = _object.getApplicationIdByTestCaseId(TestcaseId).FirstOrDefault();

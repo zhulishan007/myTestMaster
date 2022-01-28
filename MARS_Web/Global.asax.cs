@@ -58,16 +58,28 @@ namespace MARS_Web
                             var userDictionary = MarsSerializationHelper.JsonSerialization.SerializationFile.GetDictionary(det.ConnString);
                             usersData.TryAdd(databaseName, userDictionary);
 
-                            string marsHomeFolder = HostingEnvironment.MapPath("/Config");
-                            string marsConfigFile = marsHomeFolder + @"\Mars.config";
-                            MarsSerializationHelper.JsonSerialization.SerializationFile.ChangeConnectionString(databaseName, marsConfigFile);
-                            MarsSerializationHelper.JsonSerialization.SerializationFile.CreateJsonFiles(databaseName, HostingEnvironment.MapPath("~/"), det.ConnString);
-
                             var appDictionary = GetAppData(databaseName);
                             appsData.TryAdd(databaseName, appDictionary);
                         }
                         GlobalVariable.UsersDictionary = usersData;
                         GlobalVariable.AllApps = appsData;
+
+                        foreach (var databaseName in dbNameList)
+                        {
+                            MarsConfig mc = MarsConfig.Configure(databaseName);
+                            DatabaseConnectionDetails det = mc.GetDatabaseConnectionDetails();
+
+                            //var userDictionary = MarsSerializationHelper.JsonSerialization.SerializationFile.GetDictionary(det.ConnString);
+                            //usersData.TryAdd(databaseName, userDictionary);
+
+                            string marsHomeFolder = HostingEnvironment.MapPath("/Config");
+                            string marsConfigFile = marsHomeFolder + @"\Mars.config";
+                            MarsSerializationHelper.JsonSerialization.SerializationFile.ChangeConnectionString(databaseName, marsConfigFile);
+                            MarsSerializationHelper.JsonSerialization.SerializationFile.CreateJsonFiles(databaseName, HostingEnvironment.MapPath("~/"), det.ConnString);
+
+                            //var appDictionary = GetAppData(databaseName);
+                            //appsData.TryAdd(databaseName, appDictionary);
+                        }                        
                     }
                     logger.Info(string.Format("Successfully load all the serialization files | Database Names: {0} ", string.Join(", ", dbNameList)));
                     status = true;
