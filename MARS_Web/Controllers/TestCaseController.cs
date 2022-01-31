@@ -385,13 +385,37 @@ namespace MARS_Web.Controllers
         #endregion
 
         #region PQGrid functionality of TestCase Grid
-        public ActionResult AddNewRowTestCaseInSession(long oldRunOrder, long NewRowRunOrder, long testCaseId)
+        public ActionResult AddNewRowTestCaseInSession(long selectedRowRunOrder, long newRowRunOrder, long stepId, long testCaseId)
         {
             ResultModel resultModel = new ResultModel();
             try
             {
                 logger.Info(string.Format("Add testcase row in session in TestCase controller for AddNewRowTestCaseInSession method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
 
+                Mars_Memory_TestCase allList = new Mars_Memory_TestCase();
+                string testcaseSessionName = string.Format("{0}_Testcase_{1}", SessionManager.Schema, testCaseId);
+                if (Session[testcaseSessionName] != null)
+                    allList = Session[testcaseSessionName] as Mars_Memory_TestCase;
+                List<MB_V_TEST_STEPS> allSteps = allList.allSteps;
+                allSteps.ForEach(x =>
+                {
+                    if (x.RUN_ORDER >= newRowRunOrder)
+                        x.RUN_ORDER++;
+                });
+                MB_V_TEST_STEPS newStep = new MB_V_TEST_STEPS
+                {
+                    STEPS_ID = stepId,
+                    RUN_ORDER = newRowRunOrder,
+                    TEST_CASE_ID = testCaseId,
+                    recordStatus = MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_NewToDb,
+                    dataForDataSets = allSteps.FirstOrDefault().dataForDataSets
+                };
+                newStep.dataForDataSets.ForEach(x => { x.DATASETVALUE = string.Empty; x.SKIP = 0; });
+                allSteps.Add(newStep);
+                allList.allSteps = allList.allSteps.OrderBy(x => x.RUN_ORDER).ToList();
+                Session[testcaseSessionName] = allList;
+                resultModel.status = 1;
+                resultModel.data = true;
             }
             catch (Exception ex)
             {
@@ -419,7 +443,8 @@ namespace MARS_Web.Controllers
                 bool isPegWindow = step.Any(x => x.KEY_WORD_NAME.Trim().ToLower().Equals("pegwindow"));
                 if (step.Count() > 0)
                 {
-                    allList.allSteps = allList.allSteps.Except(step).OrderBy(x => x.RUN_ORDER).ToList();
+                    step.ForEach(x => { x.recordStatus = MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_DeletedToDb; });
+                    //allList.allSteps = allList.allSteps.Except(step).OrderBy(x => x.RUN_ORDER).ToList();
                     allList.allSteps.ForEach(x =>
                     {
                         if (x.RUN_ORDER > runOrder)
@@ -449,7 +474,7 @@ namespace MARS_Web.Controllers
             }
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
-        public ActionResult UpdateTestcaseValueInSession(string PropertyName, string PropertyValue, long stepId, long testCaseId, bool isSkipChange, bool skipValue)
+        public ActionResult UpdateTestcaseValueInSession(string PropertyName, string PropertyValue, long stepId, long testCaseId, bool isSkipChange, bool skipValue, long runOrder)
         {
             ResultModel resultModel = new ResultModel();
             try
@@ -461,7 +486,7 @@ namespace MARS_Web.Controllers
                 string testcaseSessionName = string.Format("{0}_Testcase_{1}", SessionManager.Schema, testCaseId);
                 if (Session[testcaseSessionName] != null)
                     allList = Session[testcaseSessionName] as Mars_Memory_TestCase;
-                List<MB_V_TEST_STEPS> step = allList.allSteps.Where(x => x.STEPS_ID == stepId).ToList();
+                List<MB_V_TEST_STEPS> step = allList.allSteps.Where(x => x.STEPS_ID == stepId && x.RUN_ORDER == runOrder).ToList();
                 if (isSkipChange)
                 {
                     PropertyName = PropertyName.Replace("skip_", "");
@@ -469,8 +494,13 @@ namespace MARS_Web.Controllers
                     if (mainDataset != null)
                     {
                         long datasetID = mainDataset.DATA_SUMMARY_ID;
-                        var relatedSteps = allList.allSteps.Where(c => c.STEPS_ID == stepId).ToList();
-                        relatedSteps.ForEach(x => { x.recordStatus = MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_ModifiedToDb; });
+                        var relatedSteps = allList.allSteps.Where(c => c.STEPS_ID == stepId && c.RUN_ORDER == runOrder).ToList();
+                        relatedSteps.ForEach(x =>
+                        {
+                            x.recordStatus = x.recordStatus == MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_NewToDb
+                                                             ? x.recordStatus
+                                                             : MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_ModifiedToDb;
+                        });
                         var dataForDataSet = relatedSteps.Where(c => c.STEPS_ID == stepId).Select(x => x.dataForDataSets).ToList();
                         if (dataForDataSet.Count() > 0)
                         {
@@ -496,7 +526,9 @@ namespace MARS_Web.Controllers
                             {
                                 x.KEY_WORD_NAME = PropertyValue;
                                 x.KEY_WORD_ID = keywordId;
-                                x.recordStatus = MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_ModifiedToDb;
+                                x.recordStatus = x.recordStatus == MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_NewToDb
+                                                            ? x.recordStatus
+                                                            : MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_ModifiedToDb;
                             });
                         }
                     }
@@ -511,7 +543,9 @@ namespace MARS_Web.Controllers
                                 x.OBJECT_ID = objct != null ? objct.OBJECT_ID : x.OBJECT_ID;
                                 x.OBJECT_NAME_ID = objct != null ? (long)objct.OBJECT_NAME_ID : x.OBJECT_NAME_ID;
                                 x.OBJECT_TYPE = objct != null ? objct.OBJECT_TYPE : x.OBJECT_TYPE;
-                                x.recordStatus = MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_ModifiedToDb;
+                                x.recordStatus = x.recordStatus == MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_NewToDb
+                                                            ? x.recordStatus
+                                                            : MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_ModifiedToDb;
                             });
                         }
                     }
@@ -521,7 +555,9 @@ namespace MARS_Web.Controllers
                             step.ForEach(x =>
                             {
                                 x.COMMENTINFO = PropertyValue;
-                                x.recordStatus = MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_ModifiedToDb;
+                                x.recordStatus = x.recordStatus == MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_NewToDb
+                                                            ? x.recordStatus
+                                                            : MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_ModifiedToDb;
                             });
                     }
                     else if (PropertyName.Trim().Equals("parameters"))
@@ -530,7 +566,9 @@ namespace MARS_Web.Controllers
                             step.ForEach(x =>
                             {
                                 x.COLUMN_ROW_SETTING = PropertyValue;
-                                x.recordStatus = MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_ModifiedToDb;
+                                x.recordStatus = x.recordStatus == MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_NewToDb
+                                                            ? x.recordStatus
+                                                            : MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_ModifiedToDb;
                             });
                     }
                     else
@@ -539,8 +577,13 @@ namespace MARS_Web.Controllers
                         if (mainDataset != null)
                         {
                             long datasetID = mainDataset.DATA_SUMMARY_ID;
-                            var relatedSteps = allList.allSteps.Where(c => c.STEPS_ID == stepId).ToList();
-                            relatedSteps.ForEach(x => { x.recordStatus = MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_ModifiedToDb; });
+                            var relatedSteps = allList.allSteps.Where(c => c.STEPS_ID == stepId && c.RUN_ORDER == runOrder).ToList();
+                            relatedSteps.ForEach(x =>
+                            {
+                                x.recordStatus = x.recordStatus == MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_NewToDb
+                                                            ? x.recordStatus
+                                                            : MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_ModifiedToDb;
+                            });
                             var dataForDataSet = relatedSteps.Where(c => c.STEPS_ID == stepId).Select(x => x.dataForDataSets).ToList();
                             if (dataForDataSet.Count() > 0)
                             {
@@ -607,13 +650,24 @@ namespace MARS_Web.Controllers
                         bool status = LoadTestcaseJsonFile(fullFilePath, new List<MB_V_TEST_STEPS>(), testcaseId, SessionManager.APP.ToString());
                         if (status)
                         {
-                            string jsongString = System.IO.File.ReadAllText(fullFilePath);
+                            string jsongString = System.IO.File.ReadAllText(fullPath);
                             allList = JsonConvert.DeserializeObject<Mars_Memory_TestCase>(jsongString);
                             Session[testcaseSessionName] = allList;
                         }
                     }
                 }
-                newResult = tc.ConvertTestcaseJsonToList(allList, testcaseId, lSchema, lConnectionStr, (long)SessionManager.TESTER_ID, datasetId);
+
+                Mars_Memory_TestCase finalList = new Mars_Memory_TestCase
+                {
+                    assignedApplications = allList.assignedApplications,
+                    assignedDataSets = allList.assignedDataSets,
+                    assignedTestSuiteIDs = allList.assignedTestSuiteIDs,
+                    currentSyncroStatus = allList.currentSyncroStatus,
+                    version = allList.version,
+                    allSteps = allList.allSteps.Where(x => x.recordStatus != MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_DeletedToDb).OrderBy(y => y.RUN_ORDER).ToList()
+                };
+
+                newResult = tc.ConvertTestcaseJsonToList(finalList, testcaseId, lSchema, lConnectionStr, (long)SessionManager.TESTER_ID, datasetId);
                 #endregion
 
                 //var result = tc.GetTestCaseDetail(testcaseId, lSchema, lConnectionStr, (long)SessionManager.TESTER_ID, datasetId);

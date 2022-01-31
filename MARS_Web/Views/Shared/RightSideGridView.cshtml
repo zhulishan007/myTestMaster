@@ -717,6 +717,7 @@
                                 }
                                 //  console.log("col model completed :" + new Date().getHours() + ":" + new Date().getMinutes() + ":" + new Date().getSeconds())
                                 newsteps = [];
+                                debugger;
                                 for (var i = 0; i < result.data.length; i++) {
                                     if (i != 0) {
                                         jsonData += ",";
@@ -912,7 +913,8 @@
                        var propertyName = ui.dataIndx;
                        var propertyValue = ui.newVal;
                        var stepId = ui.rowData.stepsID;
-                       UpdateValuesInTestCaseSession(propertyName, propertyValue, stepId, true, chkBoxValue);
+                       var runOrder = ui.rowData.pq_ri + 1;
+                       UpdateValuesInTestCaseSession(propertyName, propertyValue, stepId, true, chkBoxValue, runOrder);
                    }
                },
                cellSave: function (evt, ui) {
@@ -928,7 +930,8 @@
                    var propertyName = ui.dataIndx;
                    var propertyValue = ui.newVal;
                    var stepId = ui.rowData.stepsID;
-                   UpdateValuesInTestCaseSession(propertyName, propertyValue, stepId, false, false);
+                   var runOrder = ui.rowData.pq_ri + 1;
+                   UpdateValuesInTestCaseSession(propertyName, propertyValue, stepId, false, false, runOrder);
                },
                beforeValidate: function (event, ui) {
 
@@ -1055,7 +1058,11 @@
                                if (gridobj['@lTestCasegrid'].Selection().address().length > 0) {
                                    ri = gridobj['@lTestCasegrid'].Selection().address()[0].r1;
                                }
-
+                               debugger;
+                               //var newAddedRow = data[0];
+                               //Object.keys(newAddedRow).forEach(function (key) { newAddedRow[key] = null });
+                               //newAddedRow.stepsID = lMinValueStepId;
+                               
                                var rowData = { stepsID: lMinValueStepId }; //empty row
                                newstepid = newstepid - 1;
                                var rowIndx;
@@ -1065,6 +1072,7 @@
                                        newRow: {},
                                        rowData: rowData
                                    })
+                                   rowIndx = ri + 1;
                                }
                                else {
                                    rowIndx = gridobj['@lTestCasegrid'].addRow({ rowData: rowData });
@@ -1075,6 +1083,18 @@
                                var stepsCount = newsteps.length;
                                newsteps.push({ "stepsid": lMinValueStepId, "RUN_ORDER": stepsCount + 2, "RUN_ORDER_OLD": stepsCount });
 
+                               debugger;
+                               //var newAddedRow = data[0];
+                               //Object.keys(newAddedRow).forEach(function (key) { newAddedRow[key] = null });
+                               //newAddedRow.stepsid = lMinValueStepId;
+                               //newAddedRow.RUN_ORDER = stepsCount + 2;
+                               //newAddedRow.RUN_ORDER_OLD = stepsCount;
+                               //newsteps.push(newAddedRow);
+
+                               var selectedRowRunOrder = rowIndx;
+                               var newRowRunOrder = rowIndx + 1;
+                               var stepId = lMinValueStepId;
+                               AddNewRowTestCaseInSession(selectedRowRunOrder, newRowRunOrder, stepId);
                            }
                        },
 
@@ -4559,7 +4579,7 @@
                 });
             }
         }
-        function UpdateValuesInTestCaseSession(propertyName, propertyValue, stepId, isSkipChange, skipValue) {
+        function UpdateValuesInTestCaseSession(propertyName, propertyValue, stepId, isSkipChange, skipValue, runOrder) {
             if ((propertyValue != "" && propertyValue != undefined && propertyValue != null) || isSkipChange == true) {
                 $.ajax({
                     url: "/TestCase/UpdateTestcaseValueInSession",
@@ -4570,7 +4590,8 @@
                         stepId: stepId,
                         testCaseId: @ViewBag.TestcaseId,
                         isSkipChange: isSkipChange,
-                        skipValue: skipValue
+                        skipValue: skipValue,
+                        runOrder: runOrder
                     },
                     contentType: "application/json;charset=utf-8",
                     dataType: "json",
@@ -4594,13 +4615,14 @@
                 }
             });
         }
-        function AddNewRowTestCaseInSession(oldRunOrder, NewRowRunOrder) {
+        function AddNewRowTestCaseInSession(selectedRowRunOrder, newRowRunOrder, stepId) {
             $.ajax({
                 url: "/TestCase/AddNewRowTestCaseInSession",
                 type: "GET",
                 data: {
-                    oldRunOrder: oldRunOrder,
-                    NewRowRunOrder: NewRowRunOrder,
+                    selectedRowRunOrder: selectedRowRunOrder,
+                    newRowRunOrder: newRowRunOrder,
+                    stepId: stepId,
                     testCaseId: @ViewBag.TestcaseId,
                 },
                 contentType: "application/json;charset=utf-8",
