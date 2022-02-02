@@ -213,39 +213,39 @@ namespace MARS_Web.Controllers
                     else
                         lMsg = connlist[0] + " database does not exist.";
                     #region OLD CODE
-                        //var lUser = Accountrepo.GetUserByEmailAndLoginName(lUserLogin);
-                        //if (lUser != null)
-                        //{
-                        //    var lUserPassword = PasswordHelper.DecodeString(lUser.TESTER_PWD);
-                        //    if (lUserPassword == lPassword)
-                        //    {
-                        //        SessionManager.TESTER_ID = lUser.TESTER_ID;
-                        //        SessionManager.TESTER_MAIL = lUser.TESTER_MAIL;
-                        //        SessionManager.TESTER_NAME_F = lUser.TESTER_NAME_F;
-                        //        SessionManager.TESTER_NAME_M = lUser.TESTER_NAME_M;
-                        //        SessionManager.TESTER_NAME_LAST = lUser.TESTER_NAME_LAST;
-                        //        SessionManager.TESTER_LOGIN_NAME = lUser.TESTER_LOGIN_NAME;
-                        //        SessionManager.TESTER_NUMBER = lUser.TESTER_NUMBER;
+                    //var lUser = Accountrepo.GetUserByEmailAndLoginName(lUserLogin);
+                    //if (lUser != null)
+                    //{
+                    //    var lUserPassword = PasswordHelper.DecodeString(lUser.TESTER_PWD);
+                    //    if (lUserPassword == lPassword)
+                    //    {
+                    //        SessionManager.TESTER_ID = lUser.TESTER_ID;
+                    //        SessionManager.TESTER_MAIL = lUser.TESTER_MAIL;
+                    //        SessionManager.TESTER_NAME_F = lUser.TESTER_NAME_F;
+                    //        SessionManager.TESTER_NAME_M = lUser.TESTER_NAME_M;
+                    //        SessionManager.TESTER_NAME_LAST = lUser.TESTER_NAME_LAST;
+                    //        SessionManager.TESTER_LOGIN_NAME = lUser.TESTER_LOGIN_NAME;
+                    //        SessionManager.TESTER_NUMBER = lUser.TESTER_NUMBER;
 
-                        //        var repTree = new GetTreeRepository();
-                        //        var lSchema = SessionManager.Schema;
-                        //        var lConnectionStr = SessionManager.APP;
-                        //        //Session["LeftProjectList"] = repTree.GetProjectList(lUser.TESTER_ID, lSchema, lConnectionStr);
-                        //        //Session["PrivilegeList"] = Entitlementrepo.GetRolePrivilege((long)lUser.TESTER_ID);
-                        //        //Session["RoleList"] = Entitlementrepo.GetRoleByUser((long)SessionManager.TESTER_ID);
-                        //        lMsg = "Succefully Logged!!";
-                        //        repTestCase.UpdateIsAvailableReload((long)lUser.TESTER_ID);
-                        //    }
-                        //    else
-                        //    {
-                        //        lMsg = "Password did not match.";
-                        //    }
-                        //}
-                        //else
-                        //{
-                        //    lMsg = "User Name does not exist in system";
-                        //}
-                        #endregion
+                    //        var repTree = new GetTreeRepository();
+                    //        var lSchema = SessionManager.Schema;
+                    //        var lConnectionStr = SessionManager.APP;
+                    //        //Session["LeftProjectList"] = repTree.GetProjectList(lUser.TESTER_ID, lSchema, lConnectionStr);
+                    //        //Session["PrivilegeList"] = Entitlementrepo.GetRolePrivilege((long)lUser.TESTER_ID);
+                    //        //Session["RoleList"] = Entitlementrepo.GetRoleByUser((long)SessionManager.TESTER_ID);
+                    //        lMsg = "Succefully Logged!!";
+                    //        repTestCase.UpdateIsAvailableReload((long)lUser.TESTER_ID);
+                    //    }
+                    //    else
+                    //    {
+                    //        lMsg = "Password did not match.";
+                    //    }
+                    //}
+                    //else
+                    //{
+                    //    lMsg = "User Name does not exist in system";
+                    //}
+                    #endregion
                 }
                 else
                 {
@@ -530,8 +530,20 @@ namespace MARS_Web.Controllers
                 if (ex.InnerException != null)
                     ELogger.ErrorException(string.Format("InnerException : Error occured in Login for LeftPanel method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
             }
-
-            return PartialView(lProjectList);
+            List<MarsSerializationHelper.ViewModel.ProjectByUser> allProject = new List<MarsSerializationHelper.ViewModel.ProjectByUser>();
+            allProject = lProjectList.Select(x => new MarsSerializationHelper.ViewModel.ProjectByUser()
+            {
+                ProjectDesc = x.ProjectDesc,
+                ProjectExists = x.ProjectExists,
+                ProjectId = x.ProjectId,
+                ProjectName = x.ProjectName,
+                StoryBoardCount = x.StoryBoardCount,
+                TestSuiteCount = x.TestSuiteCount,
+                userId = x.userId,
+                username = x.username
+            }).ToList();
+            Session["LeftProjectList"] = allProject;
+            return PartialView(allProject);
         }
         [SessionTimeout]
         public ActionResult LeftPanelTestSuite(long ProjectId)

@@ -385,6 +385,64 @@ namespace MARS_Web.Controllers
         #endregion
 
         #region PQGrid functionality of TestCase Grid
+        public ActionResult DragAndDropRowInSession(long selectedRowRunOrder, long destinationRowRunOrder, long selectedRowStepId, long destinationRowStepId, long testCaseId)
+        {
+            ResultModel resultModel = new ResultModel();
+            try
+            {
+                logger.Info(string.Format("Drag and drop row in session in TestCase controller for DragAndDropRowInSession method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                Mars_Memory_TestCase allList = new Mars_Memory_TestCase();
+                string testcaseSessionName = string.Format("{0}_Testcase_{1}", SessionManager.Schema, testCaseId);
+                if (Session[testcaseSessionName] != null)
+                    allList = Session[testcaseSessionName] as Mars_Memory_TestCase;
+                List<MB_V_TEST_STEPS> allSteps = allList.allSteps;
+
+                if (selectedRowRunOrder > destinationRowRunOrder)
+                {
+                    allSteps.ForEach(x =>
+                    {
+                        if (x.RUN_ORDER >= destinationRowRunOrder && x.RUN_ORDER < selectedRowRunOrder)
+                        {
+                            x.RUN_ORDER++;
+                            x.recordStatus = x.recordStatus == MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_NewToDb
+                                                           ? x.recordStatus
+                                                           : MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_ModifiedToDb;
+                        }
+                    });
+                }
+                else if (selectedRowRunOrder < destinationRowRunOrder)
+                {
+                    allSteps.ForEach(x =>
+                    {
+                        if (x.RUN_ORDER > selectedRowRunOrder && x.RUN_ORDER <= destinationRowRunOrder)
+                        {
+                            x.RUN_ORDER--;
+                            x.recordStatus = x.recordStatus == MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_NewToDb
+                                                           ? x.recordStatus
+                                                           : MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_ModifiedToDb;
+                        }
+                    });
+                }
+                var selectedSteps = allSteps.Where(x => x.RUN_ORDER == selectedRowRunOrder && x.STEPS_ID == selectedRowStepId).ToList();
+                selectedSteps.ForEach(x => { x.RUN_ORDER = destinationRowRunOrder; });
+
+                allList.allSteps = allList.allSteps.OrderBy(x => x.RUN_ORDER).ToList();
+                Session[testcaseSessionName] = allList;
+                resultModel.status = 1;
+                resultModel.data = true;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in TestCase controller for DragAndDropRowInSession method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in TestCase controller for DragAndDropRowInSession method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for DragAndDropRowInSession method | TestCaseId: {0} | UserName: {1}", testCaseId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+                resultModel.status = 0;
+                resultModel.message = ex.Message.ToString();
+            }
+            return Json(resultModel, JsonRequestBehavior.AllowGet);
+        }
+
         public ActionResult AddNewRowTestCaseInSession(long selectedRowRunOrder, long newRowRunOrder, long stepId, long testCaseId)
         {
             ResultModel resultModel = new ResultModel();
@@ -444,6 +502,11 @@ namespace MARS_Web.Controllers
                 if (step.Count() > 0)
                 {
                     step.ForEach(x => { x.recordStatus = MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_DeletedToDb; });
+                    foreach (var deletedItem in step)
+                    {
+                        if (deletedItem.STEPS_ID <= 0)
+                            allList.allSteps.Remove(deletedItem);
+                    }
                     //allList.allSteps = allList.allSteps.Except(step).OrderBy(x => x.RUN_ORDER).ToList();
                     allList.allSteps.ForEach(x =>
                     {

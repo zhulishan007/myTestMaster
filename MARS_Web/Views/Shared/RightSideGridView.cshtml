@@ -1062,7 +1062,7 @@
                                //var newAddedRow = data[0];
                                //Object.keys(newAddedRow).forEach(function (key) { newAddedRow[key] = null });
                                //newAddedRow.stepsID = lMinValueStepId;
-                               
+
                                var rowData = { stepsID: lMinValueStepId }; //empty row
                                newstepid = newstepid - 1;
                                var rowIndx;
@@ -1388,7 +1388,6 @@
             on: true,
                 diHelper: ['StepsID'],
                 dragNodes: function(rd, evt) {
-                    debugger;
                     if (rd.pq_rowcls == "collapseBorder") {
                         swal.fire({
                             "title": "",
@@ -1406,15 +1405,21 @@
         },
         dropModel: {
             on: true,
-          @*drop: function (evt, uiDrop) {
-                var Drag = uiDrop.helper.data('Drag'),
-                    uiDrag = Drag.getUI(),
-                    rdDrag = uiDrag.rowData;
-                var rowIndx = uiDrop.rowIndx + (uiDrop.ratioY() > 0.5 ? 1 : 0);
-                gridobj['@lTestCasegrid'].moveNodes([rdDrag], rowIndx);
-                gridobj['@lTestCasegrid'].toolbar().children()[4].removeAttribute("disabled");
-            }*@
-               },
+                drop: function (evt, uiDrop) {
+                    debugger;
+                    var Drag = uiDrop.helper.data('Drag'),
+                        uiDrag = Drag.getUI(),
+                        rdDrag = uiDrag.rowData;
+                    var rowIndx = uiDrop.rowIndx + (uiDrop.ratioY() > 0.5 ? 1 : 0);
+                    gridobj['@lTestCasegrid'].moveNodes([rdDrag], rowIndx);
+                    gridobj['@lTestCasegrid'].toolbar().children()[4].removeAttribute("disabled");
+                    var selectedRowRunOrder = [rdDrag][0].RUN_ORDER;
+                    var destinationRowRunOrder = uiDrop.rowData.RUN_ORDER;
+                    var selectedRowStepId = [rdDrag][0].stepsID;
+                    var destinationRowStepId = uiDrop.rowData.stepsID;
+                    DragAndDropRowInSession(selectedRowRunOrder, destinationRowRunOrder, selectedRowStepId, destinationRowStepId);
+            }
+        },
            };
 
         gridobj['@lTestCasegrid'] = pq.grid("@lTestCasegrid", obj);
@@ -4623,6 +4628,23 @@
                     selectedRowRunOrder: selectedRowRunOrder,
                     newRowRunOrder: newRowRunOrder,
                     stepId: stepId,
+                    testCaseId: @ViewBag.TestcaseId,
+                },
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                success: function (result) {
+                }
+            });
+        }
+        function DragAndDropRowInSession(selectedRowRunOrder, destinationRowRunOrder, selectedRowStepId, destinationRowStepId) {
+            $.ajax({
+                url: "/TestCase/DragAndDropRowInSession",
+                type: "GET",
+                data: {
+                    selectedRowRunOrder: selectedRowRunOrder,
+                    destinationRowRunOrder: destinationRowRunOrder,
+                    selectedRowStepId: selectedRowStepId,
+                    destinationRowStepId: destinationRowStepId,
                     testCaseId: @ViewBag.TestcaseId,
                 },
                 contentType: "application/json;charset=utf-8",
