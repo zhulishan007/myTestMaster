@@ -683,24 +683,46 @@ namespace MARS_Web.Controllers
             ResultModel resultModel = new ResultModel();
             try
             {
+                logger.Info(string.Format("Get test case details | Execute Start: {0}", DateTime.Now.ToString("HH:mm:ss tt")));
+
                 TestCaseRepository tc = new TestCaseRepository();
                 tc.Username = SessionManager.TESTER_LOGIN_NAME;
                 string lSchema = SessionManager.Schema;
                 var lConnectionStr = SessionManager.APP;
 
-                var datasetId = tc.GetDatasetId(dataset);
+
+
+                //var datasetId = tc.GetDatasetId(dataset);
+                //string testCaseName = tc.GetTestCaseNameById(testcaseId);
 
                 #region TESTCASE JSON FILE CODE
-                string testCaseName = tc.GetTestCaseNameById(testcaseId);
+                logger.Info(string.Format("Get test case details | Extract Test Case File Start: {0}", DateTime.Now.ToString("HH:mm:ss tt")));
+
                 List<TestCaseResult> newResult = new List<TestCaseResult>();
                 Mars_Memory_TestCase allList = new Mars_Memory_TestCase();
+
+                string testCaseName = string.Empty;
+                string directoryPath = Path.Combine(Server.MapPath("~/"), FolderName.Serialization.ToString(), FolderName.Testcases.ToString(), SessionManager.Schema);
+                string[] filesName = new string[0];
+                if (Directory.Exists(directoryPath))
+                {
+                    filesName = Directory.GetFiles(directoryPath);
+                    filesName = filesName.Select(x => Path.GetFileName(x)).ToArray();
+                    testCaseName = filesName.FirstOrDefault(x => x.StartsWith(testcaseId.ToString()));
+                    if (string.IsNullOrEmpty(testCaseName))
+                        testCaseName = string.Format("{0}_{1}.json", testcaseId, tc.GetTestCaseNameById(testcaseId));
+                }
+                else
+                    testCaseName = string.Format("{0}_{1}.json", testcaseId, tc.GetTestCaseNameById(testcaseId));
+
+                string fileName = testCaseName; //string.Format("{0}_{1}.json", testcaseId, testCaseName.Replace("/", "")); //testcaseId + "_" + testCaseName.Replace("/", "") + ".json";
+                string fullPath = Path.Combine(Server.MapPath("~/"), FolderName.Serialization.ToString(), FolderName.Testcases.ToString(), SessionManager.Schema, fileName);
+
                 string testcaseSessionName = string.Format("{0}_Testcase_{1}", SessionManager.Schema, testcaseId);
                 if (Session[testcaseSessionName] != null)
                     allList = Session[testcaseSessionName] as Mars_Memory_TestCase;
                 else
                 {
-                    string fileName = string.Format("{0}_{1}.json", testcaseId, testCaseName.Replace("/", "")); //testcaseId + "_" + testCaseName.Replace("/", "") + ".json";
-                    string fullPath = Path.Combine(Server.MapPath("~/"), FolderName.Serialization.ToString(), FolderName.Testcases.ToString(), SessionManager.Schema, fileName);
                     if (System.IO.File.Exists(fullPath))
                     {
                         string jsongString = System.IO.File.ReadAllText(fullPath);
@@ -730,7 +752,10 @@ namespace MARS_Web.Controllers
                     allSteps = allList.allSteps.Where(x => x.recordStatus != MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_DeletedToDb).OrderBy(y => y.RUN_ORDER).ToList()
                 };
 
-                newResult = tc.ConvertTestcaseJsonToList(finalList, testcaseId, lSchema, lConnectionStr, (long)SessionManager.TESTER_ID, datasetId);
+                newResult = tc.ConvertTestcaseJsonToList(finalList, testcaseId, lSchema, lConnectionStr, (long)SessionManager.TESTER_ID);
+                
+                logger.Info(string.Format("Get test case details | Extract Test Case File Stop: {0}", DateTime.Now.ToString("HH:mm:ss tt")));
+
                 #endregion
 
                 //var result = tc.GetTestCaseDetail(testcaseId, lSchema, lConnectionStr, (long)SessionManager.TESTER_ID, datasetId);
@@ -748,6 +773,7 @@ namespace MARS_Web.Controllers
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
+            logger.Info(string.Format("Get test case details | Execute Stop: {0}", DateTime.Now.ToString("HH:mm:ss tt")));
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
 

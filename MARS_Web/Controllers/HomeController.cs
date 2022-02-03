@@ -251,7 +251,7 @@ namespace MARS_Web.Controllers
 
                 ViewBag.ObjectList = JsonConvert.SerializeObject(objList);
 
-                ViewBag.AppID = _object.getApplicationIdByTestCaseId(TestcaseId).FirstOrDefault();
+                ViewBag.AppID = appId.OrderBy(x => x).FirstOrDefault(); //_object.getApplicationIdByTestCaseId(TestcaseId).FirstOrDefault();
                 #endregion
 
                 var userid = SessionManager.TESTER_ID;
