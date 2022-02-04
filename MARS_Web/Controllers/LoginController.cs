@@ -492,7 +492,7 @@ namespace MARS_Web.Controllers
                 var lMsg = "Error";
                 var repTestCase = new TestCaseRepository();
                 repTestCase.UpdateIsAvailableReload((long)SessionManager.TESTER_ID);
-
+                Session.Abandon();
                 lMsg = "Succefully Logged out!!";
                 logger.Info(string.Format("{0} | UserName: {1} | DataBase: {2} | Ip Address: {3}", lMsg, SessionManager.TESTER_LOGIN_NAME, SessionManager.Schema, ipAddress));
                 return RedirectToAction("Login", "Login", new { isLogout = true });

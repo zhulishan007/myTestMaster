@@ -683,21 +683,19 @@ namespace MARS_Web.Controllers
             ResultModel resultModel = new ResultModel();
             try
             {
-                logger.Info(string.Format("Get test case details | Execute Start: {0}", DateTime.Now.ToString("HH:mm:ss tt")));
+
+                logger.Info(string.Format("GET TESTCASE DETAILS  | EXECUTE START | START TIME: {0}", DateTime.Now.ToString("HH:mm:ss.ffff tt")));
 
                 TestCaseRepository tc = new TestCaseRepository();
                 tc.Username = SessionManager.TESTER_LOGIN_NAME;
                 string lSchema = SessionManager.Schema;
                 var lConnectionStr = SessionManager.APP;
 
-
-
                 //var datasetId = tc.GetDatasetId(dataset);
                 //string testCaseName = tc.GetTestCaseNameById(testcaseId);
 
                 #region TESTCASE JSON FILE CODE
-                logger.Info(string.Format("Get test case details | Extract Test Case File Start: {0}", DateTime.Now.ToString("HH:mm:ss tt")));
-
+                logger.Info(string.Format("EXTRACT TESTCASE DETAILS  | START | START TIME: {0}", DateTime.Now.ToString("HH:mm:ss.ffff tt")));
                 List<TestCaseResult> newResult = new List<TestCaseResult>();
                 Mars_Memory_TestCase allList = new Mars_Memory_TestCase();
 
@@ -725,12 +723,15 @@ namespace MARS_Web.Controllers
                 {
                     if (System.IO.File.Exists(fullPath))
                     {
+                        logger.Info(string.Format("GET TESTCASE DETAILS FROM THE MAPPING FILE | START | START TIME: {0}", DateTime.Now.ToString("HH:mm:ss.ffff tt")));
                         string jsongString = System.IO.File.ReadAllText(fullPath);
                         allList = JsonConvert.DeserializeObject<Mars_Memory_TestCase>(jsongString);
                         Session[testcaseSessionName] = allList;
+                        logger.Info(string.Format("GET TESTCASE DETAILS FROM THE MAPPING FILE | END | END TIME: {0}", DateTime.Now.ToString("HH:mm:ss.ffff tt")));
                     }
                     else
                     {
+                        logger.Info(string.Format("GET TESTCASE DETAILS FROM THE DATABASE | START | START TIME: {0}", DateTime.Now.ToString("HH:mm:ss.ffff tt")));
                         string fullFilePath = CreateTestcaseFolder();
                         bool status = LoadTestcaseJsonFile(fullFilePath, new List<MB_V_TEST_STEPS>(), testcaseId, SessionManager.APP.ToString());
                         if (status)
@@ -739,6 +740,7 @@ namespace MARS_Web.Controllers
                             allList = JsonConvert.DeserializeObject<Mars_Memory_TestCase>(jsongString);
                             Session[testcaseSessionName] = allList;
                         }
+                        logger.Info(string.Format("GET TESTCASE DETAILS FROM THE DATABASE | END | END TIME: {0}", DateTime.Now.ToString("HH:mm:ss.ffff tt")));
                     }
                 }
 
@@ -751,15 +753,12 @@ namespace MARS_Web.Controllers
                     version = allList.version,
                     allSteps = allList.allSteps.Where(x => x.recordStatus != MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_DeletedToDb).OrderBy(y => y.RUN_ORDER).ToList()
                 };
-
                 newResult = tc.ConvertTestcaseJsonToList(finalList, testcaseId, lSchema, lConnectionStr, (long)SessionManager.TESTER_ID);
-                
-                logger.Info(string.Format("Get test case details | Extract Test Case File Stop: {0}", DateTime.Now.ToString("HH:mm:ss tt")));
 
+                logger.Info(string.Format("EXTRACT TESTCASE DETAILS  | END | END TIME: {0}", DateTime.Now.ToString("HH:mm:ss.ffff tt")));
                 #endregion
 
                 //var result = tc.GetTestCaseDetail(testcaseId, lSchema, lConnectionStr, (long)SessionManager.TESTER_ID, datasetId);
-
                 var json = JsonConvert.SerializeObject(newResult);
                 resultModel.status = 1;
                 resultModel.data = json;
@@ -773,7 +772,7 @@ namespace MARS_Web.Controllers
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
-            logger.Info(string.Format("Get test case details | Execute Stop: {0}", DateTime.Now.ToString("HH:mm:ss tt")));
+            logger.Info(string.Format("GET TESTCASE DETAILS  | EXECUTE END | END TIME: {0}", DateTime.Now.ToString("HH:mm:ss.ffff tt")));
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
 

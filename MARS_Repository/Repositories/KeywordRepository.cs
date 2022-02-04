@@ -26,12 +26,12 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                Helper.WriteLogMessage(string.Format("Get Keywords start | UserName: {0}", Username), currentPath);
+                Helper.WriteLogMessage(string.Format("Get Keywords start | UserName: {0} | Start time: {1}", Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")), currentPath);
                 var result = (from k in entity.T_KEYWORD
                               where k.KEY_WORD_NAME != null
                               orderby k.KEY_WORD_NAME
                               select k).ToList<T_KEYWORD>();
-                Helper.WriteLogMessage(string.Format("Get Keywords end | UserName: {0}", Username), currentPath);
+                Helper.WriteLogMessage(string.Format("Get Keywords end | UserName: {0} | Start time: {1}", Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")), currentPath);
                 return result;
             }
             catch (Exception ex)

@@ -3546,7 +3546,7 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("Get ApplicationList By TestcaseId start | TestcaseId: {0} | Username: {1}", TestcaseId, Username));
+                logger.Info(string.Format("Get ApplicationList By TestcaseId start | TestcaseId: {0} | Username: {1} | Start time: {2}", TestcaseId, Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
                 var lAppList = new List<ApplicationModel>();
                 var lList = from u in entity.REL_APP_TESTCASE
                             join r in entity.T_REGISTERED_APPS on u.APPLICATION_ID equals r.APPLICATION_ID
@@ -3557,7 +3557,7 @@ namespace MARS_Repository.Repositories
                                 ApplicationName = r.APP_SHORT_NAME
                             };
                 lAppList = lList.ToList();
-                logger.Info(string.Format("Get ApplicationList By TestcaseId end | TestcaseId: {0} | Username: {1}", TestcaseId, Username));
+                logger.Info(string.Format("Get ApplicationList By TestcaseId end | TestcaseId: {0} | Username: {1} | End time: {2}", TestcaseId, Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
                 return lAppList;
             }
             catch (Exception ex)

@@ -2,6 +2,7 @@ using MARS_Repository.Entities;
 using MARS_Repository.Repositories;
 using MARS_Repository.ViewModel;
 using MARS_Web.Helper;
+using MarsSerializationHelper.ViewModel;
 using Newtonsoft.Json;
 using NLog;
 using System;
@@ -12,6 +13,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
+using static MarsSerializationHelper.JsonSerialization.SerializationFile;
 
 namespace MARS_Web.Controllers
 {
@@ -180,6 +182,7 @@ namespace MARS_Web.Controllers
                 var repObject = new ObjectRepository();
                 repObject.Username = SessionManager.TESTER_LOGIN_NAME;
                 JavaScriptSerializer js = new JavaScriptSerializer();
+                List<long> appId = new List<long>();
                 if (TestcaseId == 0 && TestsuiteId == 0 && ProjectId == 0)
                 {
                     ViewBag.TestcaseId = TestcaseId;
@@ -196,30 +199,89 @@ namespace MARS_Web.Controllers
                     ViewBag.TestsuiteId = TestsuiteId;
                     ViewBag.VisibleDataset = VisibleDataset;
                     ViewBag.ProjectId = ProjectId;
-                    ViewBag.TestCaseName = lRep.GetTestCaseNameById(TestcaseId);
-                    ViewBag.TCApplicationList = js.Serialize(lRep.GetApplicationListByTestcaseId(TestcaseId));
+
+                    #region GET TEST CASE NAME FROM MAPPING FILE
+                    logger.Info(string.Format("GET TEST CASE NAME FROM MAPPING FILE | START | START TIME : {0}", DateTime.Now.ToString("HH:mm:ss.ffff tt")));
+
+                    string testCaseName = string.Empty;
+                    string directoryPath = Path.Combine(Server.MapPath("~/"), FolderName.Serialization.ToString(), FolderName.Testcases.ToString(), SessionManager.Schema);
+                    string[] filesName = new string[0];
+                    if (Directory.Exists(directoryPath))
+                    {
+                        filesName = Directory.GetFiles(directoryPath);
+                        filesName = filesName.Select(x => Path.GetFileName(x)).ToArray();
+                        testCaseName = filesName.FirstOrDefault(x => x.StartsWith(TestcaseId.ToString()));
+                        if (string.IsNullOrEmpty(testCaseName))
+                            testCaseName = lRep.GetTestCaseNameById(TestcaseId);
+                    }
+                    else
+                        testCaseName = lRep.GetTestCaseNameById(TestcaseId);
+                    directoryPath = Path.Combine(directoryPath, testCaseName);
+                    testCaseName = testCaseName.Replace(string.Format("{0}_", TestcaseId), string.Empty).Replace(".json", string.Empty);
+                    ViewBag.TestCaseName = testCaseName;
+
+                    logger.Info(string.Format("GET TEST CASE NAME FROM MAPPING FILE | END | END TIME : {0}", DateTime.Now.ToString("HH:mm:ss.ffff tt")));
+                    #endregion
+
+                    //ViewBag.TestCaseName = lRep.GetTestCaseNameById(TestcaseId);
+                    Mars_Memory_TestCase allList = new Mars_Memory_TestCase();
+                    
+                    if (System.IO.File.Exists(directoryPath))
+                    {
+                        string jsongString = System.IO.File.ReadAllText(directoryPath);
+                        allList = JsonConvert.DeserializeObject<Mars_Memory_TestCase>(jsongString);
+                        appId = allList.assignedApplications.Where(x => x > 0).ToList();
+                        string testcaseSessionName = string.Format("{0}_Testcase_{1}", SessionManager.Schema, TestcaseId);
+                        Session[testcaseSessionName] = allList;
+                        var applications = GlobalVariable.AllApps.FirstOrDefault(x => x.Key.Trim().Equals(SessionManager.Schema)).Value;
+                        if (applications.Count() > 0)
+                        {
+                            var testcaseApp = applications.Where(x => appId.Contains(x.APPLICATION_ID)).Select(y => new ApplicationModel()
+                            {
+                                ApplicationId = y.APPLICATION_ID,
+                                ApplicationName = y.APP_SHORT_NAME
+                            }).ToList();
+
+                            ViewBag.TCApplicationList = js.Serialize(testcaseApp);
+                        }
+                    }
+                    else
+                    {
+                        List<ApplicationModel> AppList = lRep.GetApplicationListByTestcaseId(TestcaseId);
+                        appId = AppList.Select(x => x.ApplicationId).ToList();
+                        ViewBag.TCApplicationList = js.Serialize(AppList);
+                    }
+                        
+
                     Session["TestsuiteId"] = ViewBag.TestsuiteId;
                     Session["TestcaseId"] = ViewBag.TestcaseId;
                     Session["ProjectId"] = ViewBag.ProjectId;
                 }
+
+
+
                 //Start - Put keywords in a viewbag
+                var lKeywordList = new List<string>
+                {
+                    "pegwindow",
+                    "dbcompare",
+                    "copyexcelrangetoclipboard",
+                    "executecommand",
+                    "killapplication",
+                    "loop",
+                    "resumenext",
+                    "startapplication",
+                    "waitforseconds"
+                };
 
-                var lKeywordList = new List<string>();
-                lKeywordList.Add("pegwindow");
-                lKeywordList.Add("dbcompare");
-                lKeywordList.Add("copyexcelrangetoclipboard");
-                lKeywordList.Add("executecommand");
-                lKeywordList.Add("killapplication");
-                lKeywordList.Add("loop");
-                lKeywordList.Add("resumenext");
-                lKeywordList.Add("startapplication");
-                lKeywordList.Add("waitforseconds");
-
+                logger.Info(string.Format("GET KEYWORD LIST | START | START TIME : {0}", DateTime.Now.ToString("HH:mm:ss.ffff tt")));
                 var keywordsResult = lKeyRepo.GetKeywords().Select(y => new KeywordList
                 {
                     KeywordName = y.KEY_WORD_NAME,
                     KeywordId = y.KEY_WORD_ID
                 }).ToList();
+                logger.Info(string.Format("GET KEYWORD LIST | END | END TIME : {0}", DateTime.Now.ToString("HH:mm:ss.ffff tt")));
+
                 var keywordsPegWindow = keywordsResult.Where(x => lKeywordList.Contains(x.KeywordName.ToLower().Trim())).ToList();
                 ViewBag.KeywordsList = JsonConvert.SerializeObject(keywordsResult);
                 ViewBag.KeywordsPegwindowList = JsonConvert.SerializeObject(keywordsPegWindow);
@@ -230,7 +292,8 @@ namespace MARS_Web.Controllers
                 #endregion
 
                 #region RBJ Code
-                var appId = repObject.getApplicationIdByTestCaseId(TestcaseId);
+                logger.Info(string.Format("GET OBJECT LIST FROM THE FILE | START | START TIME : {0}", DateTime.Now.ToString("HH:mm:ss.ffff tt")));
+                //appId = repObject.getApplicationIdByTestCaseId(TestcaseId);
                 string folderPath = Path.Combine(Server.MapPath("~/"), "Serialization\\Object\\" + SessionManager.Schema);
                 bool isThereAllFile = true;
                 foreach (var ID in appId)
@@ -252,21 +315,30 @@ namespace MARS_Web.Controllers
                 ViewBag.ObjectList = JsonConvert.SerializeObject(objList);
 
                 ViewBag.AppID = appId.OrderBy(x => x).FirstOrDefault(); //_object.getApplicationIdByTestCaseId(TestcaseId).FirstOrDefault();
+                logger.Info(string.Format("GET OBJECT LIST FROM THE FILE | END | END TIME : {0}", DateTime.Now.ToString("HH:mm:ss.ffff tt")));
                 #endregion
 
-                var userid = SessionManager.TESTER_ID;
-                var repacc = new ConfigurationGridRepository();
-                repacc.Username = SessionManager.TESTER_LOGIN_NAME;
-                var gridlst = repacc.GetGridList((long)userid, GridNameList.TestCasePage);
-                var TCPgriddata = GridHelper.GetTestCasePqgridwidth(gridlst);
-                var Widthgridlst = repacc.GetGridList((long)userid, GridNameList.ResizeLeftPanel);
-                var Rgriddata = GridHelper.GetLeftpanelgridwidth(Widthgridlst);
+                //var userid = SessionManager.TESTER_ID;
+                //var repacc = new ConfigurationGridRepository();
+                //repacc.Username = SessionManager.TESTER_LOGIN_NAME;
 
-                ViewBag.width = Rgriddata.Resize == null ? ConfigurationManager.AppSettings["DefultLeftPanel"] + "px" : Rgriddata.Resize.Trim() + "px";
-                ViewBag.keywordwidth = TCPgriddata.Keyword == null ? "200" : TCPgriddata.Keyword.Trim();
-                ViewBag.objectwidth = TCPgriddata.Object == null ? "200" : TCPgriddata.Object.Trim();
-                ViewBag.parameterswidth = TCPgriddata.Parameters == null ? "100" : TCPgriddata.Parameters.Trim();
-                ViewBag.commentwidth = TCPgriddata.Comment == null ? "100" : TCPgriddata.Comment.Trim();
+
+                ViewBag.width = ConfigurationManager.AppSettings["DefultLeftPanel"] + "px";
+                ViewBag.keywordwidth = "200"; ViewBag.objectwidth = "200"; ViewBag.parameterswidth = "100"; ViewBag.commentwidth = "100";
+
+                #region OLD CODE
+                //var gridlst = repacc.GetGridList((long)userid, GridNameList.TestCasePage);
+                //var TCPgriddata = GridHelper.GetTestCasePqgridwidth(gridlst);
+                //var Widthgridlst = repacc.GetGridList((long)userid, GridNameList.ResizeLeftPanel);
+                //var Rgriddata = GridHelper.GetLeftpanelgridwidth(Widthgridlst);
+
+                //ViewBag.width = Rgriddata.Resize == null ? ConfigurationManager.AppSettings["DefultLeftPanel"] + "px" : Rgriddata.Resize.Trim() + "px";
+                //ViewBag.keywordwidth = TCPgriddata.Keyword == null ? "200" : TCPgriddata.Keyword.Trim();
+                //ViewBag.objectwidth = TCPgriddata.Object == null ? "200" : TCPgriddata.Object.Trim();
+                //ViewBag.parameterswidth = TCPgriddata.Parameters == null ? "100" : TCPgriddata.Parameters.Trim();
+                //ViewBag.commentwidth = TCPgriddata.Comment == null ? "100" : TCPgriddata.Comment.Trim();
+                #endregion
+
                 logger.Info(string.Format("open Testcase close | Projectid: {0} | TestsuiteId: {1} | TestcaseId: {2} | Username: {3}", ProjectId, TestsuiteId, TestcaseId, SessionManager.TESTER_LOGIN_NAME));
                 logger.Info(string.Format("successfully open Testcase | Projectid: {0} | TestsuiteId: {1} | TestcaseId: {2} | Username: {3}", ProjectId, TestsuiteId, TestcaseId, SessionManager.TESTER_LOGIN_NAME));
             }
