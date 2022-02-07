@@ -225,14 +225,37 @@ namespace MARS_Web.Controllers
 
                     //ViewBag.TestCaseName = lRep.GetTestCaseNameById(TestcaseId);
                     Mars_Memory_TestCase allList = new Mars_Memory_TestCase();
-                    
-                    if (System.IO.File.Exists(directoryPath))
+                    string testcaseSessionName = string.Format("{0}_Testcase_{1}", SessionManager.Schema, TestcaseId);
+                    if (Session[testcaseSessionName] != null)
+                        allList = Session[testcaseSessionName] as Mars_Memory_TestCase;
+                    else
                     {
-                        string jsongString = System.IO.File.ReadAllText(directoryPath);
-                        allList = JsonConvert.DeserializeObject<Mars_Memory_TestCase>(jsongString);
-                        appId = allList.assignedApplications.Where(x => x > 0).ToList();
-                        string testcaseSessionName = string.Format("{0}_Testcase_{1}", SessionManager.Schema, TestcaseId);
-                        Session[testcaseSessionName] = allList;
+                        if (System.IO.File.Exists(directoryPath))
+                        {
+                            logger.Info(string.Format("GET TESTCASE DETAILS FROM THE MAPPING FILE | START | START TIME: {0}", DateTime.Now.ToString("HH:mm:ss.ffff tt")));
+                            string jsongString = System.IO.File.ReadAllText(directoryPath);
+                            allList = JsonConvert.DeserializeObject<Mars_Memory_TestCase>(jsongString);
+                            Session[testcaseSessionName] = allList;
+                            logger.Info(string.Format("GET TESTCASE DETAILS FROM THE MAPPING FILE | END | END TIME: {0}", DateTime.Now.ToString("HH:mm:ss.ffff tt")));
+                        }
+                        else
+                        {
+                            logger.Info(string.Format("GET TESTCASE DETAILS FROM THE DATABASE | START | START TIME: {0}", DateTime.Now.ToString("HH:mm:ss.ffff tt")));
+                            string fullFilePath = CreateTestcaseFolder();
+                            bool status = LoadTestcaseJsonFile(fullFilePath, new List<MB_V_TEST_STEPS>(), TestcaseId, SessionManager.APP.ToString());
+                            if (status)
+                            {
+                                string jsongString = System.IO.File.ReadAllText(directoryPath);
+                                allList = JsonConvert.DeserializeObject<Mars_Memory_TestCase>(jsongString);
+                                Session[testcaseSessionName] = allList;
+                            }
+                            logger.Info(string.Format("GET TESTCASE DETAILS FROM THE DATABASE | END | END TIME: {0}", DateTime.Now.ToString("HH:mm:ss.ffff tt")));
+                        }
+                    }
+
+                    if (allList != null)
+                    {
+                        appId = allList.assignedApplications.Where(x => x > 0).ToList();                       
                         var applications = GlobalVariable.AllApps.FirstOrDefault(x => x.Key.Trim().Equals(SessionManager.Schema)).Value;
                         if (applications.Count() > 0)
                         {
@@ -241,7 +264,6 @@ namespace MARS_Web.Controllers
                                 ApplicationId = y.APPLICATION_ID,
                                 ApplicationName = y.APP_SHORT_NAME
                             }).ToList();
-
                             ViewBag.TCApplicationList = js.Serialize(testcaseApp);
                         }
                     }
@@ -251,7 +273,19 @@ namespace MARS_Web.Controllers
                         appId = AppList.Select(x => x.ApplicationId).ToList();
                         ViewBag.TCApplicationList = js.Serialize(AppList);
                     }
-                        
+
+                    Mars_Memory_TestCase finalList = new Mars_Memory_TestCase
+                    {
+                        assignedApplications = allList.assignedApplications,
+                        assignedDataSets = allList.assignedDataSets,
+                        assignedTestSuiteIDs = allList.assignedTestSuiteIDs,
+                        currentSyncroStatus = allList.currentSyncroStatus,
+                        version = allList.version,
+                        allSteps = allList.allSteps.Where(x => x.recordStatus != MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_DeletedToDb).OrderBy(y => y.RUN_ORDER).ToList()
+                    };
+                    List<TestCaseResult> newResult = new List<TestCaseResult>();
+                    newResult = lRep.ConvertTestcaseJsonToList(finalList, TestcaseId, SessionManager.Schema, SessionManager.APP, (long)SessionManager.TESTER_ID);
+                    ViewBag.TestcaseData = newResult; //js.Serialize(newResult);
 
                     Session["TestsuiteId"] = ViewBag.TestsuiteId;
                     Session["TestcaseId"] = ViewBag.TestcaseId;
@@ -422,6 +456,31 @@ namespace MARS_Web.Controllers
         public ActionResult TestProjectList()
         {
             return PartialView();
+        }
+        protected string CreateTestcaseFolder()
+        {
+            string mainPath = Server.MapPath("~/");
+            string F_Serialization = Path.Combine(mainPath, FolderName.Serialization.ToString());
+            string T_Testcases = Path.Combine(F_Serialization, FolderName.Testcases.ToString());
+            string D_Database = string.Empty;
+            string TestcasePath = string.Empty;
+
+            #region IF NOT EXIST CREATE MAIN SERIALIZATION FOLDER 
+            if (!Directory.Exists(F_Serialization))
+                Directory.CreateDirectory(F_Serialization);
+            #endregion
+
+            if (!Directory.Exists(T_Testcases))
+                Directory.CreateDirectory(T_Testcases);
+
+            if (Directory.Exists(T_Testcases))
+            {
+                D_Database = Path.Combine(T_Testcases, SessionManager.Schema.ToString().Trim());
+                if (!Directory.Exists(D_Database))
+                    Directory.CreateDirectory(D_Database);
+            }
+            TestcasePath = D_Database;
+            return TestcasePath;
         }
     }
 }

@@ -1272,7 +1272,7 @@ namespace MARS_Repository.Repositories
                 logger.Info(string.Format("Get TestCase Detail start | TestCaseId: {0} | UserName: {1}", TestCaseId, Username));
 
                 string test_suiteName = entity.T_TEST_SUITE.FirstOrDefault(x => x.TEST_SUITE_ID == testCaseObj.assignedTestSuiteIDs.FirstOrDefault()).TEST_SUITE_NAME;
-                var lVersion = GetTestCaseVersion(TestCaseId, UserId);
+                //var lVersion = GetTestCaseVersion(TestCaseId, UserId);
                 resultList = testCaseObj.allSteps.Select(x => new TestCaseResult()
                 {
                     STEPS_ID = x.STEPS_ID.ToString(),
@@ -1318,17 +1318,17 @@ namespace MARS_Repository.Repositories
                     x.key_word_name = x.key_word_name ?? string.Empty;
                     x.object_happy_name = x.object_happy_name ?? string.Empty;
                 });
-                resultList.ForEach(x => x.VERSION = lVersion.VERSION);
-                resultList.ForEach(x => x.ISAVAILABLE = lVersion.ISAVAILABLE);
+                //resultList.ForEach(x => x.VERSION = lVersion.VERSION);
+                //resultList.ForEach(x => x.ISAVAILABLE = lVersion.ISAVAILABLE);
 
-                var lEditedUserName = "";
-                if (lVersion.CREATORID > 0)
-                {
-                    var ltblEdited = entity.T_TESTER_INFO.FirstOrDefault(x => x.TESTER_ID == lVersion.CREATORID);
-                    if (ltblEdited != null)
-                        lEditedUserName = ltblEdited.TESTER_LOGIN_NAME;
-                }
-                resultList.ForEach(x => x.EditingUserName = lEditedUserName);
+                //var lEditedUserName = "";
+                //if (lVersion.CREATORID > 0)
+                //{
+                //    var ltblEdited = entity.T_TESTER_INFO.FirstOrDefault(x => x.TESTER_ID == lVersion.CREATORID);
+                //    if (ltblEdited != null)
+                //        lEditedUserName = ltblEdited.TESTER_LOGIN_NAME;
+                //}
+                //resultList.ForEach(x => x.EditingUserName = lEditedUserName);
                 if (resultList.Count() > 1)
                     resultList = resultList.Where(x => x.RUN_ORDER.Trim() != "0" && !string.IsNullOrEmpty(x.RUN_ORDER)).OrderBy(x => Convert.ToInt32(x.RUN_ORDER)).ToList();
 

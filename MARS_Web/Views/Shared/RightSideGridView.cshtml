@@ -202,7 +202,6 @@
                     }
                 }
                 $cell.find("button").button({ icons: { primary: 'ui-icon-close' } }).bind("click", function () {
-                    debugger;
                     gridobj["@lTestCasegrid"].addClass({ rowIndx: ui.rowIndx, cls: 'pq-row-delete' });
 
                //swal.fire({
@@ -340,7 +339,6 @@
            }
           },
           editable: function (ui) {
-              debugger;
               if (ui.rowData != undefined) {
                   if (ui.rowData.pq_rowcls == "collapseBorder") {
                       return false;
@@ -552,7 +550,7 @@
                     title: "hdnISAVAILABLE", copy: false, dataType: "int", dataIndx: "ISAVAILABLE", hidden: true, menuInHide: true, sortable: false
                 });
 
-                    $.ajax({
+                    @*$.ajax({
                         url: "/TestCase/GetTestCaseDetails",
                         type: "GET",
                         data: {
@@ -562,9 +560,23 @@
                         contentType: "application/json;charset=utf-8",
                         async: false,
                         dataType: "json",
-                        success: function (result) {
+                        success: function (result) {*@
+                            
+                            var result = [];
+                            @if(ViewBag.TestcaseData == null) {
+                                <text>
+                                     result.status = 0;
+                                </text>
+                            }
+                            else {
+                                <text>
+                                     result.status = 1;
+                                </text>
+                            }                           
+
                             if (result.status == 1) {
-                                result.data = JSON.parse(result.data);
+                                var array = @Html.Raw(Json.Encode(ViewBag.TestcaseData));
+                                result.data = array; //JSON.parse(result.data);
 
                                 console.log("Get testCase :" + new Date().getHours() + ":" + new Date().getMinutes() + ":" + new Date().getSeconds())
                                 jsonData = "[";
@@ -717,7 +729,6 @@
                                 }
                                 //  console.log("col model completed :" + new Date().getHours() + ":" + new Date().getMinutes() + ":" + new Date().getSeconds())
                                 newsteps = [];
-                                debugger;
                                 for (var i = 0; i < result.data.length; i++) {
                                     if (i != 0) {
                                         jsonData += ",";
@@ -858,8 +869,8 @@
                                     }
                                 });
                             }
-                        }
-                    });
+                    //    }
+                    //});
                         obj = [];
            //*********************************************************************
            // START - CREATE PQ GRID JSON
@@ -904,7 +915,6 @@
                height: lPqGridHeight,
                //rowHt: 13,
                cellClick: function (evt, ui) {
-                   debugger;
                    if (ui.column.type == "checkbox") {
                        var chkBoxValue = false;
                        if (ui.rowData.hasOwnProperty(ui.dataIndx)) {
@@ -918,7 +928,6 @@
                    }
                },
                cellSave: function (evt, ui) {
-                   debugger;
                    if (ui.dataIndx == "keyword" && ui.newVal !== ui.oldVal) {
                        //reset the region cell whenever country cell is modified.
                        this.updateRow({
@@ -1045,7 +1054,6 @@
                            listener: function () {
 
                                //append empty row at the end.
-                               debugger;
                                var lMinValueStepId = 0;
                                for (var k = 0; gridobj["@lTestCasegrid"].pdata.length > k; k++) {
                                    if (gridobj["@lTestCasegrid"].pdata[k].stepsID <= lMinValueStepId) {
@@ -1058,7 +1066,6 @@
                                if (gridobj['@lTestCasegrid'].Selection().address().length > 0) {
                                    ri = gridobj['@lTestCasegrid'].Selection().address()[0].r1;
                                }
-                               debugger;
                                //var newAddedRow = data[0];
                                //Object.keys(newAddedRow).forEach(function (key) { newAddedRow[key] = null });
                                //newAddedRow.stepsID = lMinValueStepId;
@@ -1083,7 +1090,7 @@
                                var stepsCount = newsteps.length;
                                newsteps.push({ "stepsid": lMinValueStepId, "RUN_ORDER": stepsCount + 2, "RUN_ORDER_OLD": stepsCount });
 
-                               debugger;
+                               
                                //var newAddedRow = data[0];
                                //Object.keys(newAddedRow).forEach(function (key) { newAddedRow[key] = null });
                                //newAddedRow.stepsid = lMinValueStepId;
@@ -1406,7 +1413,6 @@
         dropModel: {
             on: true,
                 drop: function (evt, uiDrop) {
-                    debugger;
                     var Drag = uiDrop.helper.data('Drag'),
                         uiDrag = Drag.getUI(),
                         rdDrag = uiDrag.rowData;
@@ -2799,7 +2805,6 @@
                                 align: "center", colModel: [{
                                     title: "", width: "2%", dataType: "bool", sortable: false,
                                     render: function (ui) {
-                                        debugger;
                                         var rowData = ui.rowData,
                                             dataIndx = ui.dataIndx;
                                         ldataIndx = datasetnames[k];
@@ -4320,17 +4325,14 @@
     }
 
         function ExecuteEngineTC(tcgrid, tcid, tsid, sid, sname) {
-            debugger
             startloader();
             var gridlst = [];
             if (selectChange != "") {
                 var sChange = selectChange.selection._areas;
                 console.log('test', sChange);
             $.each(sChange, function (key, value) {
-                debugger
                 var index = value.firstR;
                 var srow = gridobj[tcgrid].pdata[index];
-                debugger
                 if (srow.keyword != "PegWindow") {
                     var pgridlist = gridobj[tcgrid].pdata.filter(({ RUN_ORDER, keyword }) => RUN_ORDER < Number(srow.RUN_ORDER) && keyword === "PegWindow");
                     var pegwindowRow = pgridlist[pgridlist.length - 1];

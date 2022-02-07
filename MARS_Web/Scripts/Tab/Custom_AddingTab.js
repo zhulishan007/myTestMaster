@@ -280,6 +280,7 @@ function PartialRightGrid(TestcaseId, TestsuiteId, ProjectId, TestCaseName, Acti
             var lflag = false;
             var ltabName = "#tab" + lTestCaseName;
             var ltabIdName = "tab" + lTestCaseName;
+            
             $('.ULtablist li').each(function (index, value) {
                 if ($(value).children().first().attr("data-target") == ltabName) {
                     if ($(value).children().first().attr("data-tab") == "TestCase") {
