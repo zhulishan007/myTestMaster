@@ -60,13 +60,13 @@ namespace MARS_Repository.Repositories
                    select new ObjectListFromJson { TYPE_ID = KR.TYPE_ID }).ToList();
             return data.Select(x => x.TYPE_ID).ToList();
         }
-        public List<ObjectList> GetObjectByParentFromJsonFile(long appId, string path, long pegId, List<long?> typeId)
+        public List<ObjectList> GetObjectByParentFromJsonFile(long appId, string path, List<long?> typeId, string pegObjectName)
         {
             var obj = new List<ObjectList>();
-            var lPegObjectName = entity.T_REGISTED_OBJECT.Where(x => x.OBJECT_NAME_ID == pegId && x.TYPE_ID == 1).FirstOrDefault().OBJECT_TYPE;
+            //var lPegObjectName = entity.T_REGISTED_OBJECT.Where(x => x.OBJECT_NAME_ID == pegId && x.TYPE_ID == 1).FirstOrDefault().OBJECT_TYPE;
             string jsongString = File.ReadAllText(path);
             var data = JsonConvert.DeserializeObject<List<ObjectListFromJson>>(jsongString);
-            var finalObject = data.Where(c => typeId.Contains(c.TYPE_ID) && c.OBJECT_TYPE.Trim().ToLower().Contains(lPegObjectName.Trim().ToLower()))
+            var finalObject = data.Where(c => typeId.Contains(c.TYPE_ID) && c.OBJECT_TYPE.Trim().ToLower().Contains(pegObjectName.Trim().ToLower()))
                 .Select(x => new ObjectList() { ObjectId = Decimal.Truncate((decimal)x.OBJECT_NAME_ID), ObjectName = x.OBJECT_HAPPY_NAME }).ToList();
             return finalObject.DistinctBy(x => x.ObjectName).OrderBy(y => y.ObjectName).ToList();
         }
@@ -132,7 +132,23 @@ namespace MARS_Repository.Repositories
                 throw;
             }
         }
-
+        public T_OBJECT_NAMEINFO GetPegObjectUsingObjectName(string lObjectName)
+        {
+            try
+            {
+                logger.Info(string.Format("GET PEG OBJECT USING OBJECT NAME | OBJECT NAME: {0} | USERNAME: {1} | START: {2}", lObjectName, Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
+                var obj = entity.T_OBJECT_NAMEINFO.FirstOrDefault(x => x.PEGWINDOW_MARK == 1 && x.OBJECT_HAPPY_NAME.ToUpper().Trim().Equals(lObjectName.ToUpper().Trim()));
+                return obj ?? new T_OBJECT_NAMEINFO();
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in Object for GetPegObjectUsingObjectName method | Object Name : {0} | UserName: {1}", lObjectName, Username));
+                ELogger.ErrorException(string.Format("Error occured in Object for GetPegObjectUsingObjectName method | Object Name : {0} | UserName: {1}", lObjectName, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in Object for GetPegObjectUsingObjectName method | Object Name : {0} | UserName: {1}", lObjectName, Username), ex.InnerException);
+                throw;
+            }
+        }
         public T_OBJECT_NAMEINFO GetPegObjectByObjectName(string lObjectName)
         {
             try

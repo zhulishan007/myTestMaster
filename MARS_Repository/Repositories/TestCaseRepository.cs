@@ -15,6 +15,7 @@ using NLog;
 using System.Transactions;
 using MarsSerializationHelper.ViewModel;
 using MoreLinq;
+using MarsSerializationHelper.Common;
 
 namespace MARS_Repository.Repositories
 {
@@ -4269,6 +4270,217 @@ namespace MARS_Repository.Repositories
                 ELogger.ErrorException(string.Format("Error occured TestCase in DeleteFilter method | Filter Id : {0} | UserName: {1}", Id, Username), ex);
                 if (ex.InnerException != null)
                     ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in DeleteFilter method | Filter Id : {0} | UserName: {1}", Id, Username), ex.InnerException);
+                throw;
+            }
+        }
+        public bool SaveTestcaseSessionInDatabase(string connectionString, long testCaseId, Mars_Memory_TestCase steps)
+        {
+            //string testcaseSessionName = string.Format("{0}_Testcase_{1}", SessionManager.Schema, testCaseId);
+            //if (Session[testcaseSessionName] != null)
+            //    allList = Session[testcaseSessionName] as Mars_Memory_TestCase;
+            try
+            {
+                logger.Info(string.Format("SAVE TESTCASE SESSION VALUES INTO DATABASE | TESTCASEID : {0} | USERNAME: {1} | START : {2}", testCaseId, Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
+
+                List<MB_V_TEST_STEPS> addedSteps = steps.allSteps.Where(x => x.recordStatus.Equals(CommonEnum.MarsRecordStatus.en_NewToDb)).ToList();
+                List<MB_V_TEST_STEPS> updatedSteps = steps.allSteps.Where(x => x.recordStatus.Equals(CommonEnum.MarsRecordStatus.en_ModifiedToDb)).ToList();
+                List<MB_V_TEST_STEPS> deletedSteps = steps.allSteps.Where(x => x.recordStatus.Equals(CommonEnum.MarsRecordStatus.en_DeletedToDb)).ToList();
+                using (OracleConnection connection = new OracleConnection(connectionString))
+                {
+                    connection.Open();
+                    OracleCommand command = connection.CreateCommand();
+                    OracleTransaction transaction;
+                    // Start a local transaction
+                    transaction = connection.BeginTransaction(System.Data.IsolationLevel.ReadCommitted);
+                    // Assign transaction object for a pending local transaction
+                    command.Transaction = transaction;
+
+                    try
+                    {
+                        string tempTestStepsTableQuery = "CREATE GLOBAL TEMPORARY TABLE T_TEST_STEPS_TEMP( STATUS VARCHAR2(50 BYTE), STEPS_ID NUMBER(16,0), RUN_ORDER NUMBER(38,0), KEY_WORD_ID NUMBER(16,0), TEST_CASE_ID NUMBER(16,0), OBJECT_ID NUMBER(16,0), COLUMN_ROW_SETTING VARCHAR2(128 BYTE), VALUE_SETTING VARCHAR2(128 BYTE), COMMENTS VARCHAR2(128 BYTE), IS_RUNNABLE NUMBER DEFAULT 0, OBJECT_NAME_ID NUMBER ) ON COMMIT PRESERVE ROWS";
+                        command.CommandText = tempTestStepsTableQuery;
+                        command.ExecuteNonQuery();
+
+                        if (steps.allSteps.Count() > 0)
+                        {
+                            command.CommandText = string.Empty;
+                            foreach (var item in addedSteps)
+                            {
+                                command.CommandText = "INSERT INTO T_TEST_STEPS_TEMP (STATUS, STEPS_ID, RUN_ORDER, KEY_WORD_ID, TEST_CASE_ID, OBJECT_ID, COLUMN_ROW_SETTING, VALUE_SETTING, COMMENTS, IS_RUNNABLE, OBJECT_NAME_ID) VALUES " +
+                                                                           "('Added', T_TEST_STEPS_SEQ.nextval, " + item.RUN_ORDER + ", " + item.KEY_WORD_ID + ", " + testCaseId + ", '" + (item.OBJECT_ID != null ? item.OBJECT_ID : null) + "', '" + (!string.IsNullOrEmpty(item.COLUMN_ROW_SETTING) ? item.COLUMN_ROW_SETTING : string.Empty) + "', '" + (!string.IsNullOrEmpty(item.VALUE_SETTING) ? item.VALUE_SETTING : "") + "', '" + (!string.IsNullOrEmpty(item.COMMENTINFO) ? item.COMMENTINFO : "") + "', " + (item.IS_RUNNABLE != null ? item.IS_RUNNABLE : 0) + ", " + (item.OBJECT_NAME_ID != null ? item.OBJECT_NAME_ID : -1) + ") ";
+                                command.ExecuteNonQuery();
+                            }
+                            foreach (var item in updatedSteps)
+                            {
+                                command.CommandText = "INSERT INTO T_TEST_STEPS_TEMP (STATUS, STEPS_ID, RUN_ORDER, KEY_WORD_ID, TEST_CASE_ID, OBJECT_ID, COLUMN_ROW_SETTING, VALUE_SETTING, COMMENTS, IS_RUNNABLE, OBJECT_NAME_ID) VALUES " +
+                                                                            "('Updated', " + item.STEPS_ID + ", " + item.RUN_ORDER + ", " + item.KEY_WORD_ID + ", " + testCaseId + ", " + item.OBJECT_ID + ", '" + (!string.IsNullOrEmpty(item.COLUMN_ROW_SETTING) ? item.COLUMN_ROW_SETTING : string.Empty) + "', '" + (!string.IsNullOrEmpty(item.VALUE_SETTING) ? item.VALUE_SETTING : "") + "', '" + (!string.IsNullOrEmpty(item.COMMENTINFO) ? item.COMMENTINFO : "") + "', " + (item.IS_RUNNABLE != null ? item.IS_RUNNABLE : 0) + ", " + (item.OBJECT_NAME_ID != null ? item.OBJECT_NAME_ID : -1) + ") ";
+                                command.ExecuteNonQuery();
+                            }
+                            foreach (var item in deletedSteps)
+                            {
+                                command.CommandText = "INSERT INTO T_TEST_STEPS_TEMP (STATUS, STEPS_ID, RUN_ORDER, KEY_WORD_ID, TEST_CASE_ID, OBJECT_ID, COLUMN_ROW_SETTING, VALUE_SETTING, COMMENTS, IS_RUNNABLE, OBJECT_NAME_ID) VALUES " +
+                                                                           "('Deleted', " + item.STEPS_ID + ", " + item.RUN_ORDER + ", " + item.KEY_WORD_ID + ", " + testCaseId + ", " + item.OBJECT_ID + ", '" + (!string.IsNullOrEmpty(item.COLUMN_ROW_SETTING) ? item.COLUMN_ROW_SETTING : string.Empty) + "', '" + (!string.IsNullOrEmpty(item.VALUE_SETTING) ? item.VALUE_SETTING : "") + "', '" + (!string.IsNullOrEmpty(item.COMMENTINFO) ? item.COMMENTINFO : "") + "', " + (item.IS_RUNNABLE != null ? item.IS_RUNNABLE : 0) + ", " + (item.OBJECT_NAME_ID != null ? item.OBJECT_NAME_ID : -1) + ") ";
+                                command.ExecuteNonQuery();
+                            }
+
+                            OracleCommand cmd = new OracleCommand
+                            {
+                                CommandText = "SELECT * FROM T_TEST_STEPS_TEMP",
+                                Connection = connection
+                            };
+                            OracleDataReader dr = cmd.ExecuteReader();
+                            var dataTable = new DataTable();
+                            dataTable.Load(dr);
+                            DataRow[] addedRow = dataTable.Select("STATUS = 'Added'");
+                            bool addTestcaseStatus = InsertTestcaseStepsInDatabase(addedRow, testCaseId, connectionString);
+                            command.CommandText = "TRUNCATE TABLE T_TEST_STEPS_TEMP";
+                            command.ExecuteNonQuery();
+
+                            command.CommandText = "DROP TABLE T_TEST_STEPS_TEMP";
+                            command.ExecuteNonQuery();
+                        }
+                        //command.CommandText = "INSERT INTO Dept (DeptNo, Dname, Loc) values (60, 'ENGINEERING', 'KANSAS CITY')";
+                        //command.ExecuteNonQuery();
+                        transaction.Commit();
+                        connection.Close();
+                        Console.WriteLine("Both records are written to database.");
+                    }
+                    catch (Exception e)
+                    {
+                        transaction.Rollback();
+                        Console.WriteLine(e.ToString());
+                        Console.WriteLine("Neither record was written to database.");
+                    }
+                }
+                logger.Info(string.Format("SAVE TESTCASE SESSION VALUES INTO DATABASE | TESTCASEID : {0} | USERNAME: {1} | END : {2}", testCaseId, Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
+                return true;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured TestCase in SaveTestcaseSessionInDatabase method | Testcase Id : {0} | UserName: {1}", testCaseId, Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase in SaveTestcaseSessionInDatabase method | Testcase Id : {0} | UserName: {1}", testCaseId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in SaveTestcaseSessionInDatabase method | Testcase Id : {0} | UserName: {1}", testCaseId, Username), ex.InnerException);
+                throw;
+            }
+        }
+        public bool InsertTestcaseStepsInDatabase(DataRow[] addedRow, long testCaseId, string lConnectionStr)
+        {
+            try
+            {
+                logger.Info(string.Format("INSERT NEW ADDED TESTCASE STEPS VALUES INTO DATABASE | TESTCASEID : {0} | USERNAME: {1} | START : {2}", testCaseId, Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
+                OracleTransaction ltransaction;
+                OracleConnection lconnection = new OracleConnection(lConnectionStr);
+                lconnection.Open();
+                ltransaction = lconnection.BeginTransaction();
+                string lcmdquery = "INSERT INTO T_TEST_STEPS (STEPS_ID, RUN_ORDER, KEY_WORD_ID, TEST_CASE_ID, OBJECT_ID, COLUMN_ROW_SETTING, VALUE_SETTING, \"COMMENT\", IS_RUNNABLE, OBJECT_NAME_ID) values(:1,:2,:3,:4,:5,:6,:7,:8,:9,:10)";
+
+                int[] ids = new int[addedRow.Length];
+                using (var lcmd = lconnection.CreateCommand())
+                {
+                    lcmd.CommandText = lcmdquery;
+                    lcmd.ArrayBindCount = ids.Length;
+
+                    decimal[] STEPS_ID_param = addedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long>("STEPS_ID"))).ToArray();
+                    decimal[] RUN_ORDER_param = addedRow.AsEnumerable().Select(r => r.Field<decimal>("RUN_ORDER")).ToArray();
+                    decimal[] KEY_WORD_ID_param = addedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long>("KEY_WORD_ID"))).ToArray();
+                    decimal[] TEST_CASE_ID_param = addedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long>("TEST_CASE_ID"))).ToArray();
+                    decimal[] OBJECT_ID_param = addedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long?>("OBJECT_ID"))).ToArray();
+                    string[] COLUMN_ROW_SETTING_param = addedRow.AsEnumerable().Select(r => r.Field<string>("COLUMN_ROW_SETTING")).ToArray();
+                    string[] VALUE_SETTING_param = addedRow.AsEnumerable().Select(r => r.Field<string>("VALUE_SETTING")).ToArray();
+                    string[] COMMENT_param = addedRow.AsEnumerable().Select(r => r.Field<string>("COMMENTS")).ToArray();
+                    long[] IS_RUNNABLE_param = addedRow.AsEnumerable().Select(r => Convert.ToInt64(r.Field<decimal>("IS_RUNNABLE"))).ToArray();
+                    long[] OBJECT_NAME_ID_param = addedRow.AsEnumerable().Select(r => Convert.ToInt64(r.Field<decimal?>("OBJECT_NAME_ID"))).ToArray();
+
+                    OracleParameter STEPS_ID_oparam = new OracleParameter
+                    {
+                        OracleDbType = OracleDbType.Decimal,
+                        Value = STEPS_ID_param
+                    };
+                    OracleParameter RUN_ORDER_oparam = new OracleParameter
+                    {
+                        OracleDbType = OracleDbType.Decimal,
+                        IsNullable = true,
+                        Value = RUN_ORDER_param
+                    };
+                    OracleParameter KEY_WORD_ID_oparam = new OracleParameter
+                    {
+                        OracleDbType = OracleDbType.Decimal,
+                        IsNullable = true,
+                        Value = KEY_WORD_ID_param
+                    };
+                    OracleParameter TEST_CASE_ID_oparam = new OracleParameter
+                    {
+                        OracleDbType = OracleDbType.Decimal,
+                        IsNullable = true,
+                        Value = TEST_CASE_ID_param
+                    };
+                    OracleParameter OBJECT_ID_oparam = new OracleParameter
+                    {
+                        OracleDbType = OracleDbType.Decimal,
+                        IsNullable = true,
+                        Value = OBJECT_ID_param
+                    };
+                    OracleParameter COLUMN_ROW_SETTING_oparam = new OracleParameter
+                    {
+                        OracleDbType = OracleDbType.Varchar2,
+                        IsNullable = true,
+                        Value = COLUMN_ROW_SETTING_param
+                    };
+                    OracleParameter VALUE_SETTING_oparam = new OracleParameter
+                    {
+                        OracleDbType = OracleDbType.Varchar2,
+                        IsNullable = true,
+                        Value = VALUE_SETTING_param
+                    };
+                    OracleParameter COMMENT_oparam = new OracleParameter
+                    {
+                        OracleDbType = OracleDbType.Varchar2,
+                        IsNullable = true,
+                        Value = COMMENT_param
+                    };
+                    OracleParameter IS_RUNNABLE_oparam = new OracleParameter
+                    {
+                        OracleDbType = OracleDbType.Long,
+                        IsNullable = true,
+                        Value = IS_RUNNABLE_param
+                    };
+                    OracleParameter OBJECT_NAME_ID_oparam = new OracleParameter
+                    {
+                        OracleDbType = OracleDbType.Long,
+                        IsNullable = true,
+                        Value = OBJECT_NAME_ID_param
+                    };
+                    lcmd.Parameters.Add(STEPS_ID_oparam);
+                    lcmd.Parameters.Add(RUN_ORDER_oparam);
+                    lcmd.Parameters.Add(KEY_WORD_ID_oparam);
+                    lcmd.Parameters.Add(TEST_CASE_ID_oparam);
+                    lcmd.Parameters.Add(OBJECT_ID_oparam);
+                    lcmd.Parameters.Add(COLUMN_ROW_SETTING_oparam);
+                    lcmd.Parameters.Add(VALUE_SETTING_oparam);
+                    lcmd.Parameters.Add(COMMENT_oparam);
+                    lcmd.Parameters.Add(IS_RUNNABLE_oparam);
+                    lcmd.Parameters.Add(OBJECT_NAME_ID_oparam);
+
+                    try
+                    {
+                        lcmd.ExecuteNonQuery();
+                    }
+                    catch (Exception lex)
+                    {
+                        ltransaction.Rollback();
+                        throw new Exception(lex.Message);
+                    }
+
+                    ltransaction.Commit();
+                    lconnection.Close();
+
+                    logger.Info(string.Format("INSERT NEW ADDED TESTCASE STEPS VALUES INTO DATABASE | TESTCASEID : {0} | USERNAME: {1} | END : {2}", testCaseId, Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
                 throw;
             }
         }

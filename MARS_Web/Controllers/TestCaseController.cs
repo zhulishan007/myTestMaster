@@ -457,8 +457,7 @@ namespace MARS_Web.Controllers
                 List<MB_V_TEST_STEPS> allSteps = allList.allSteps;
                 allSteps.ForEach(x =>
                 {
-                    if (x.RUN_ORDER >= newRowRunOrder)
-                        x.RUN_ORDER++;
+                    if (x.RUN_ORDER >= newRowRunOrder) { x.RUN_ORDER++; x.recordStatus = MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_ModifiedToDb; }
                 });
                 MB_V_TEST_STEPS newStep = new MB_V_TEST_STEPS
                 {
@@ -773,6 +772,43 @@ namespace MARS_Web.Controllers
                 resultModel.message = ex.Message.ToString();
             }
             logger.Info(string.Format("GET TESTCASE DETAILS  | EXECUTE END | END TIME: {0}", DateTime.Now.ToString("HH:mm:ss.ffff tt")));
+            return Json(resultModel, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult SaveTestcaseSesstionToDB(long testCaseId)
+        {
+            ResultModel resultModel = new ResultModel();
+            try
+            {
+                var _testCaseRepository = new TestCaseRepository
+                {
+                    Username = SessionManager.TESTER_LOGIN_NAME
+                };
+                Mars_Memory_TestCase allList = new Mars_Memory_TestCase();
+                string testcaseSessionName = string.Format("{0}_Testcase_{1}", SessionManager.Schema, testCaseId);
+                if (Session[testcaseSessionName] != null)
+                    allList = Session[testcaseSessionName] as Mars_Memory_TestCase;
+                bool status = _testCaseRepository.SaveTestcaseSessionInDatabase(SessionManager.APP, testCaseId, allList);
+                if (status)
+                {
+                    TestCaseRepository tc = new TestCaseRepository();
+                    string fullFilePath = CreateTestcaseFolder();
+                    string filePath = string.Format("{0}_{1}.json", testCaseId, tc.GetTestCaseNameById(testCaseId));
+                    filePath = Path.Combine(fullFilePath, filePath);
+                    if (System.IO.File.Exists(filePath))
+                        System.IO.File.Delete(filePath);
+                    Session[testcaseSessionName] = null;
+                    bool fileStatus = LoadTestcaseJsonFile(fullFilePath, new List<MB_V_TEST_STEPS>(), testCaseId, SessionManager.APP.ToString());
+
+                    resultModel.message = "Test Case saved.";
+                    resultModel.status = 1;
+                }
+            }
+            catch (Exception ex)
+            {
+                resultModel.status = 0;
+                resultModel.message = ex.Message.ToString();
+            }
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
 
@@ -2330,10 +2366,11 @@ namespace MARS_Web.Controllers
                 {
                     var repObject = new ObjectRepository();
                     string folderPath = Path.Combine(Server.MapPath("~/"), "Serialization\\Object\\" + SessionManager.Schema + "\\app_" + appId + "\\" + objectName.FirstOrDefault() + ".json");
-                    T_OBJECT_NAMEINFO lPegObj = repObject.GetPegObjectByObjectName(objectName);
+                    //T_OBJECT_NAMEINFO lPegObj = repObject.GetPegObjectByObjectName(objectName);
+                    //T_OBJECT_NAMEINFO lPegObj = repObject.GetPegObjectUsingObjectName(objectName);
 
-                    var typeId = repObject.getTypeIdByKeywordName(keyworkName);
-                    var objectList = repObject.GetObjectByParentFromJsonFile(appId, folderPath, lPegObj.OBJECT_NAME_ID, typeId);
+                    List<long?> typeId = repObject.getTypeIdByKeywordName(keyworkName);
+                    var objectList = repObject.GetObjectByParentFromJsonFile(appId, folderPath, typeId, objectName);
                     resultModel.data = objectList;
                     resultModel.status = 1;
                 }

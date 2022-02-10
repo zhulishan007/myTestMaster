@@ -435,7 +435,7 @@
                    var pegObjectList = paraentPeg.filter(function (obj) { return obj.Id < ObjectList.stepId });
                    var keyworkName = lGridList.filter(function (obj) { return obj.Id == ObjectList.stepId })[0].Keyword;
                    var objectName = null;
-                   if (pegObjectList.length > 1) {
+                   if (pegObjectList.length >= 1) {
                        objectName = pegObjectList[pegObjectList.length - 1].Object;
                    }
                    var appId = '@ViewBag.AppID';
@@ -561,7 +561,7 @@
                         async: false,
                         dataType: "json",
                         success: function (result) {*@
-                            
+
                             var result = [];
                             @if(ViewBag.TestcaseData == null) {
                                 <text>
@@ -572,7 +572,7 @@
                                 <text>
                                      result.status = 1;
                                 </text>
-                            }                           
+                            }
 
                             if (result.status == 1) {
                                 var array = @Html.Raw(Json.Encode(ViewBag.TestcaseData));
@@ -1090,7 +1090,7 @@
                                var stepsCount = newsteps.length;
                                newsteps.push({ "stepsid": lMinValueStepId, "RUN_ORDER": stepsCount + 2, "RUN_ORDER_OLD": stepsCount });
 
-                               
+
                                //var newAddedRow = data[0];
                                //Object.keys(newAddedRow).forEach(function (key) { newAddedRow[key] = null });
                                //newAddedRow.stepsid = lMinValueStepId;
@@ -3733,9 +3733,25 @@
                }
            });
         console.timeEnd("step 3");
-
-
         console.time("step 5");
+
+        //$.ajax({
+        //    dataType: "json",
+        //    type: "POST",
+        //    async: true,
+        //    beforeSend: function (jqXHR, settings) {
+        //        //gridobj[tcgrid].showLoading("Saving Data");
+        //    },
+
+        //    url: "/TestCase/SaveTestcaseSesstionToDB",
+        //    data: { 'testCaseId': tcid },
+        //    success: function (result) {
+
+        //    },
+        //    complete: function (result) {
+        //        stoploader();
+        //    }
+        //});
            $.ajax({
                dataType: "json",
                type: "POST",
