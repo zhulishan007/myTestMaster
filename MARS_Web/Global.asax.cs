@@ -46,6 +46,7 @@ namespace MARS_Web
 
                 var usersData = new ConcurrentDictionary<string, ConcurrentDictionary<UserViewModal, List<MarsSerializationHelper.ViewModel.ProjectByUser>>>();
                 var appsData = new ConcurrentDictionary<string, List<T_Memory_REGISTERED_APPS>>();
+                var keywordsData = new ConcurrentDictionary<string, List<MarsSerializationHelper.ViewModel.KeywordViewModel>>();
                 Thread Serializations = new Thread(delegate ()
                 {
                     if (dbNameList.Count() > 0)
@@ -60,9 +61,13 @@ namespace MARS_Web
 
                             var appDictionary = GetAppData(databaseName);
                             appsData.TryAdd(databaseName, appDictionary);
+
+                            var keywordDictionary = MarsSerializationHelper.JsonSerialization.SerializationFile.GetKeywordList(det.ConnString);
+                            keywordsData.TryAdd(databaseName, keywordDictionary);
                         }
                         GlobalVariable.UsersDictionary = usersData;
                         GlobalVariable.AllApps = appsData;
+                        GlobalVariable.AllKeywords = keywordsData;
 
                         foreach (var databaseName in dbNameList)
                         {

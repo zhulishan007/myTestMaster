@@ -784,24 +784,55 @@ namespace MARS_Web.Controllers
                 {
                     Username = SessionManager.TESTER_LOGIN_NAME
                 };
+                TestCaseRepository tc = new TestCaseRepository();
+                string fullFilePath = CreateTestcaseFolder();
+                string filePath = string.Format("{0}_{1}.json", testCaseId, tc.GetTestCaseNameById(testCaseId));
+
                 Mars_Memory_TestCase allList = new Mars_Memory_TestCase();
                 string testcaseSessionName = string.Format("{0}_Testcase_{1}", SessionManager.Schema, testCaseId);
                 if (Session[testcaseSessionName] != null)
                     allList = Session[testcaseSessionName] as Mars_Memory_TestCase;
+                else
+                {
+                    if (System.IO.File.Exists(Path.Combine(fullFilePath, filePath)))
+                    {
+                        logger.Info(string.Format("GET TESTCASE DETAILS FROM THE MAPPING FILE | START | START TIME: {0}", DateTime.Now.ToString("HH:mm:ss.ffff tt")));
+                        string jsongString = System.IO.File.ReadAllText(Path.Combine(fullFilePath, filePath));
+                        allList = JsonConvert.DeserializeObject<Mars_Memory_TestCase>(jsongString);
+                        Session[testcaseSessionName] = allList;
+                        logger.Info(string.Format("GET TESTCASE DETAILS FROM THE MAPPING FILE | END | END TIME: {0}", DateTime.Now.ToString("HH:mm:ss.ffff tt")));
+                    }
+                    else
+                    {
+                        logger.Info(string.Format("GET TESTCASE DETAILS FROM THE DATABASE | START | START TIME: {0}", DateTime.Now.ToString("HH:mm:ss.ffff tt")));
+                        bool statusCreateFile = LoadTestcaseJsonFile(fullFilePath, new List<MB_V_TEST_STEPS>(), testCaseId, SessionManager.APP.ToString());
+                        if (statusCreateFile)
+                        {
+                            string jsongString = System.IO.File.ReadAllText(Path.Combine(fullFilePath, filePath));
+                            allList = JsonConvert.DeserializeObject<Mars_Memory_TestCase>(jsongString);
+                            Session[testcaseSessionName] = allList;
+                        }
+                        logger.Info(string.Format("GET TESTCASE DETAILS FROM THE DATABASE | END | END TIME: {0}", DateTime.Now.ToString("HH:mm:ss.ffff tt")));
+                    }
+                }
+
                 bool status = _testCaseRepository.SaveTestcaseSessionInDatabase(SessionManager.APP, testCaseId, allList);
                 if (status)
                 {
-                    TestCaseRepository tc = new TestCaseRepository();
-                    string fullFilePath = CreateTestcaseFolder();
-                    string filePath = string.Format("{0}_{1}.json", testCaseId, tc.GetTestCaseNameById(testCaseId));
                     filePath = Path.Combine(fullFilePath, filePath);
                     if (System.IO.File.Exists(filePath))
                         System.IO.File.Delete(filePath);
                     Session[testcaseSessionName] = null;
                     bool fileStatus = LoadTestcaseJsonFile(fullFilePath, new List<MB_V_TEST_STEPS>(), testCaseId, SessionManager.APP.ToString());
-
+                    if (fileStatus)
+                    {
+                        string jsongString = System.IO.File.ReadAllText(Path.Combine(fullFilePath, filePath));
+                        allList = JsonConvert.DeserializeObject<Mars_Memory_TestCase>(jsongString);
+                        Session[testcaseSessionName] = allList;
+                    }
                     resultModel.message = "Test Case saved.";
                     resultModel.status = 1;
+                    resultModel.data = "success";
                 }
             }
             catch (Exception ex)
@@ -2367,9 +2398,20 @@ namespace MARS_Web.Controllers
                     var repObject = new ObjectRepository();
                     string folderPath = Path.Combine(Server.MapPath("~/"), "Serialization\\Object\\" + SessionManager.Schema + "\\app_" + appId + "\\" + objectName.FirstOrDefault() + ".json");
                     //T_OBJECT_NAMEINFO lPegObj = repObject.GetPegObjectByObjectName(objectName);
-                    //T_OBJECT_NAMEINFO lPegObj = repObject.GetPegObjectUsingObjectName(objectName);
+                    List<long?> typeId = new List<long?>();
 
-                    List<long?> typeId = repObject.getTypeIdByKeywordName(keyworkName);
+                    List<MarsSerializationHelper.ViewModel.KeywordViewModel> keywords =
+                        GlobalVariable.AllKeywords.FirstOrDefault(x => x.Key.Trim().Equals(SessionManager.Schema.Trim())).Value;
+                    if (keywords.Count() > 0)
+                    {
+                        MarsSerializationHelper.ViewModel.KeywordViewModel singleKeyword =
+                            keywords.FirstOrDefault(x => x.KEY_WORD_NAME.Trim().ToLower().Equals(keyworkName.Trim().ToLower()));
+                        if (singleKeyword != null)
+                            typeId = singleKeyword.KeywordType.Select(x => x.TYPE_ID).ToList();
+                    }
+                    else
+                        typeId = repObject.getTypeIdByKeywordName(keyworkName);
+
                     var objectList = repObject.GetObjectByParentFromJsonFile(appId, folderPath, typeId, objectName);
                     resultModel.data = objectList;
                     resultModel.status = 1;

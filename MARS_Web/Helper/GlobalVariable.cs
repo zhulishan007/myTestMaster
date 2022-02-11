@@ -17,6 +17,7 @@ namespace MARS_Web.Helper
     {
         public static ConcurrentDictionary<string, ConcurrentDictionary<UserViewModal, List<MarsSerializationHelper.ViewModel.ProjectByUser>>> UsersDictionary { get; set; }
         public static ConcurrentDictionary<string, List<T_Memory_REGISTERED_APPS>> AllApps { get; set; }
+        public static ConcurrentDictionary<string, List<MarsSerializationHelper.ViewModel.KeywordViewModel>> AllKeywords { get; set; }
     }
 
     //public static class ConvertJsonToList

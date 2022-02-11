@@ -132,23 +132,7 @@ namespace MARS_Repository.Repositories
                 throw;
             }
         }
-        public T_OBJECT_NAMEINFO GetPegObjectUsingObjectName(string lObjectName)
-        {
-            try
-            {
-                logger.Info(string.Format("GET PEG OBJECT USING OBJECT NAME | OBJECT NAME: {0} | USERNAME: {1} | START: {2}", lObjectName, Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
-                var obj = entity.T_OBJECT_NAMEINFO.FirstOrDefault(x => x.PEGWINDOW_MARK == 1 && x.OBJECT_HAPPY_NAME.ToUpper().Trim().Equals(lObjectName.ToUpper().Trim()));
-                return obj ?? new T_OBJECT_NAMEINFO();
-            }
-            catch (Exception ex)
-            {
-                logger.Error(string.Format("Error occured in Object for GetPegObjectUsingObjectName method | Object Name : {0} | UserName: {1}", lObjectName, Username));
-                ELogger.ErrorException(string.Format("Error occured in Object for GetPegObjectUsingObjectName method | Object Name : {0} | UserName: {1}", lObjectName, Username), ex);
-                if (ex.InnerException != null)
-                    ELogger.ErrorException(string.Format("InnerException : Error occured in Object for GetPegObjectUsingObjectName method | Object Name : {0} | UserName: {1}", lObjectName, Username), ex.InnerException);
-                throw;
-            }
-        }
+       
         public T_OBJECT_NAMEINFO GetPegObjectByObjectName(string lObjectName)
         {
             try

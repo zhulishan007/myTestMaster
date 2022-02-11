@@ -3735,186 +3735,315 @@
         console.timeEnd("step 3");
         console.time("step 5");
 
-        //$.ajax({
-        //    dataType: "json",
-        //    type: "POST",
-        //    async: true,
-        //    beforeSend: function (jqXHR, settings) {
-        //        //gridobj[tcgrid].showLoading("Saving Data");
-        //    },
+        $.ajax({
+            dataType: "json",
+            type: "POST",
+            async: true,
+            beforeSend: function (jqXHR, settings) {
+                //gridobj[tcgrid].showLoading("Saving Data");
+            },
 
-        //    url: "/TestCase/SaveTestcaseSesstionToDB",
-        //    data: { 'testCaseId': tcid },
-        //    success: function (result) {
+            url: "/TestCase/SaveTestcaseSesstionToDB",
+            data: { 'testCaseId': tcid },
+            success: function (result) {
+                if (result.status == 1) {
+                    console.timeEnd("step 5");
+                    console.time("step 4");
+                    if (result.data == "success") {
+                        swal.fire({
+                            "title": "",
+                            "text": result.message,
+                            "icon": "success",
+                            "onClose": function (e) {
+                                console.log('on close event fired!');
+                            }
+                        });
 
-        //    },
-        //    complete: function (result) {
-        //        stoploader();
-        //    }
-        //});
-           $.ajax({
-               dataType: "json",
-               type: "POST",
-               async: true,
-               beforeSend: function (jqXHR, settings) {
-                   //gridobj[tcgrid].showLoading("Saving Data");
-               },
+                        gridobj[tcgrid].commit({ type: 'add', rows: changes.addList });
+                        gridobj[tcgrid].commit({ type: 'update', rows: changes.updateList });
+                        gridobj[tcgrid].commit({ type: 'delete', rows: changes.deleteList });
 
-              url: "/TestCase/SaveTestCase",
-               data: {
-                   lGrid: JSON.stringify(gridobj[tcgrid].pdata), lChanges: JSON.stringify(changes), lTestCaseId: tcid,
-                   lTestSuiteId: tsid, lDeleteColumnsList: JSON.stringify(tcDeleteColumnsList),
-                   lVersion: Version
-               },
-               success: function (result) {
-               if (result.status == 1) {
-                   console.timeEnd("step 5");
-                   console.time("step 4");
-                   if (result.data == "success") {
-                       swal.fire({
-                           "title": "",
-                           "text": result.message,
-                           "icon": "success",
-                           "onClose": function (e) {
-                               console.log('on close event fired!');
-                           }
-                       });
+                        gridobj[tcgrid].history({ method: 'reset' });
 
-                       gridobj[tcgrid].commit({ type: 'add', rows: changes.addList });
-                       gridobj[tcgrid].commit({ type: 'update', rows: changes.updateList });
-                       gridobj[tcgrid].commit({ type: 'delete', rows: changes.deleteList });
+                        var prj = $("#projectidtc").val();
+                        var ts = $("#testsuiteidtc").val();
+                        $.ajax({
+                            url: "/TestCase/GetDataSetCount",
+                            data: JSON.stringify({ ProjectId: prj, TestSuiteId: ts, TestCaseId: tcid }),
+                            type: "POST",
+                            contentType: "application/json;charset=utf-8",
 
-                       gridobj[tcgrid].history({ method: 'reset' });
+                            dataType: "json",
+                            success: function (result) {
+                                if (result.status == 1) {
+                                    var datasetcount;
+                                    if (result.data.length > 0) {
+                                        for (i = 0; i < result.data.length; i++) {
+                                            datasetcount = result.data[i].DataSetCount;
+                                        }
+                                    }
+                                    //alert(result);
+                                    var obj = datasetobj;
+                                    //var lcountTC = $(obj).children(".kt-menu__link-text").children(".tccount")[0].innerHTML;
+                                    $(obj).children().text('(' + datasetcount + ')')
+                                }
+                                else if (result.status == 0) {
+                                    swal.fire({
+                                        "title": "",
+                                        "text": result.message,
+                                        "icon": "error",
+                                        "onClose": function (e) {
+                                            console.log('on close event fired!');
+                                        }
+                                    });
+                                }
+                            }
+                        });
+                        //stoploader();
 
-                       var prj = $("#projectidtc").val();
-                       var ts = $("#testsuiteidtc").val();
-                       $.ajax({
-                           url: "/TestCase/GetDataSetCount",
-                           data: JSON.stringify({ ProjectId: prj, TestSuiteId: ts, TestCaseId: tcid }),
-                           type: "POST",
-                           contentType: "application/json;charset=utf-8",
+                        var lDeletedColLength = 0;
+                        var lExistDataSetLength = 0;
+                        lDeletedColLength = DeleteColumnsList.length;
+                        lExistDataSetLength = ExistDataSetRenameList.length;
+                        while (lDeletedColLength--) {
+                            if (DeleteColumnsList[lDeletedColLength]["TestCaseId"] == tcid) {
+                                DeleteColumnsList.splice(lDeletedColLength, 1);
+                            }
+                        }
 
-                           dataType: "json",
-                           success: function (result) {
-                               if (result.status == 1) {
-                                   var datasetcount;
-                                   if (result.data.length > 0) {
-                                       for (i = 0; i < result.data.length; i++) {
-                                           datasetcount = result.data[i].DataSetCount;
-                                       }
-                                   }
-                                   //alert(result);
-                                   var obj = datasetobj;
-                                   //var lcountTC = $(obj).children(".kt-menu__link-text").children(".tccount")[0].innerHTML;
-                                   $(obj).children().text('(' + datasetcount + ')')
-                               }
-                               else if (result.status == 0) {
-                                   swal.fire({
-                                       "title": "",
-                                       "text": result.message,
-                                       "icon": "error",
-                                       "onClose": function (e) {
-                                           console.log('on close event fired!');
-                                       }
-                                   });
-                               }
-                           }
-                       });
-                       //stoploader();
-
-                       var lDeletedColLength = 0;
-                       var lExistDataSetLength = 0;
-                       lDeletedColLength = DeleteColumnsList.length;
-                       lExistDataSetLength = ExistDataSetRenameList.length;
-                       while (lDeletedColLength--) {
-                           if (DeleteColumnsList[lDeletedColLength]["TestCaseId"] == tcid) {
-                               DeleteColumnsList.splice(lDeletedColLength, 1);
-                           }
-                       }
-
-                       while (lExistDataSetLength--) {
-                           if (ExistDataSetRenameList[lExistDataSetLength]["TestCaseId"] == tcid) {
-                               ExistDataSetRenameList.splice(lExistDataSetLength, 1);
-                           }
-                       }
+                        while (lExistDataSetLength--) {
+                            if (ExistDataSetRenameList[lExistDataSetLength]["TestCaseId"] == tcid) {
+                                ExistDataSetRenameList.splice(lExistDataSetLength, 1);
+                            }
+                        }
 
 
-                       Version = 0;
-                       IsAvailable = 0;
-                       dt = [];
+                        Version = 0;
+                        IsAvailable = 0;
+                        dt = [];
 
 
-                       ReloadGrid(tcgrid, tcid, tsid, "");
-                       validflag = false;
-                       msgflag = false;
-                   }
+                        ReloadGrid(tcgrid, tcid, tsid, "");
+                        validflag = false;
+                        msgflag = false;
+                    }                    
+                    else if (result.message == "error") {
+                        swal.fire({
+                            "title": "",
+                            "text": "Please check log file for more information",
+                            "icon": "error",
+                            "onClose": function (e) {
+                                console.log('on close event fired!');
+                            }
+                        });
+                    }
+                    else if (result.message == "No change in Testcase" || result.message == "You can not delete all steps.") {
+                        swal.fire({
+                            "title": "",
+                            "text": result.message,
+                            "icon": "warning",
+                            "onClose": function (e) {
+                                console.log('on close event fired!');
+                            }
+                        });
+                    }
+                    else {
+                        msgflag = true;
+                        var validationmsgs = "<table cellborder='0' cellspacing='2' cellpadding='5'>";
+                        var lobject = JSON.parse(result.data);
+                        $("#ValidationMessageLabel").html("");
+                        for (var i = 0; i < lobject.length; i++) {
+                            var lrowid = lobject[i].ID;
+                            gridobj[tcgrid].setSelection({ rowIndx: lrowid, focus: true });
+                            gridobj[tcgrid].Range({ r1: lrowid, r2: lrowid }).comment(lobject[i].VALIDATIONMSG);
+                            validationmsgs += "<tr><td style='width: 80px;'>Row: " + (lrowid + 1) + "</td><td align='left'>" + lobject[i].VALIDATIONMSG + "</td></tr>";
+                        }
+                        validationmsgs += "</table>";
+                        $("#ValidationMessageLabel").html(validationmsgs);
+                        $("#ValidateMsgModel").modal("toggle");
+                    }
+                }
+                else if (result.status == 0) {
+                    swal.fire({
+                        "title": "",
+                        "text": result.message,
+                        "icon": "error",
+                        "onClose": function (e) {
+                            console.log('on close event fired!');
+                        }
+                    });
+                }
+                newstepsid = 0;
 
-                   else if (result.message.indexOf("Another User Edited this Test Case") > -1) {
-                       //stoploader();
-                       swal.fire({
-                           "title": "",
-                           "text": result.message,
-                           "icon": "warning",
-                           "onClose": function (e) {
-                               console.log('on close event fired!');
-                           }
-                       });
-                   }
-                   else if (result.message == "error") {
-                       swal.fire({
-                           "title": "",
-                           "text": "Please check log file for more information",
-                           "icon": "error",
-                           "onClose": function (e) {
-                               console.log('on close event fired!');
-                           }
-                       });
-                   }
-                   else if (result.message == "No change in Testcase" || result.message == "You can not delete all steps.") {
-                       swal.fire({
-                           "title": "",
-                           "text": result.message,
-                           "icon": "warning",
-                           "onClose": function (e) {
-                               console.log('on close event fired!');
-                           }
-                       });
-                   }
-                   else {
-                       msgflag = true;
-                       var validationmsgs = "<table cellborder='0' cellspacing='2' cellpadding='5'>";
-                       var lobject = JSON.parse(result.data);
-                       $("#ValidationMessageLabel").html("");
-                       for (var i = 0; i < lobject.length; i++) {
-                           var lrowid = lobject[i].ID;
-                           gridobj[tcgrid].setSelection({ rowIndx: lrowid, focus: true });
-                           gridobj[tcgrid].Range({ r1: lrowid, r2: lrowid }).comment(lobject[i].VALIDATIONMSG);
-                           validationmsgs += "<tr><td style='width: 80px;'>Row: " + (lrowid + 1) + "</td><td align='left'>" + lobject[i].VALIDATIONMSG + "</td></tr>";
-                       }
-                       validationmsgs += "</table>";
-                       $("#ValidationMessageLabel").html(validationmsgs);
-                       $("#ValidateMsgModel").modal("toggle");
-                   }
-               }
-               else if (result.status == 0) {
-                   swal.fire({
-                       "title": "",
-                       "text": result.message,
-                       "icon": "error",
-                       "onClose": function (e) {
-                           console.log('on close event fired!');
-                       }
-                   });
-               }
-                   newstepsid = 0;
+                console.timeEnd("step 4");
+            },
+            complete: function (result) {
+                stoploader();
+            }
+        });
+           //$.ajax({
+           //    dataType: "json",
+           //    type: "POST",
+           //    async: true,
+           //    beforeSend: function (jqXHR, settings) {
+           //        //gridobj[tcgrid].showLoading("Saving Data");
+           //    },
 
-                   console.timeEnd("step 4");
-               },
-                   complete: function (result) {
-                   stoploader();
-                   //gridobj[tcgrid].hideLoading();
-               }
-           });
+           //   url: "/TestCase/SaveTestCase",
+           //    data: {
+           //        lGrid: JSON.stringify(gridobj[tcgrid].pdata), lChanges: JSON.stringify(changes), lTestCaseId: tcid,
+           //        lTestSuiteId: tsid, lDeleteColumnsList: JSON.stringify(tcDeleteColumnsList),
+           //        lVersion: Version
+           //    },
+           //    success: function (result) {
+           //    if (result.status == 1) {
+           //        console.timeEnd("step 5");
+           //        console.time("step 4");
+           //        if (result.data == "success") {
+           //            swal.fire({
+           //                "title": "",
+           //                "text": result.message,
+           //                "icon": "success",
+           //                "onClose": function (e) {
+           //                    console.log('on close event fired!');
+           //                }
+           //            });
+
+           //            gridobj[tcgrid].commit({ type: 'add', rows: changes.addList });
+           //            gridobj[tcgrid].commit({ type: 'update', rows: changes.updateList });
+           //            gridobj[tcgrid].commit({ type: 'delete', rows: changes.deleteList });
+
+           //            gridobj[tcgrid].history({ method: 'reset' });
+
+           //            var prj = $("#projectidtc").val();
+           //            var ts = $("#testsuiteidtc").val();
+           //            $.ajax({
+           //                url: "/TestCase/GetDataSetCount",
+           //                data: JSON.stringify({ ProjectId: prj, TestSuiteId: ts, TestCaseId: tcid }),
+           //                type: "POST",
+           //                contentType: "application/json;charset=utf-8",
+
+           //                dataType: "json",
+           //                success: function (result) {
+           //                    if (result.status == 1) {
+           //                        var datasetcount;
+           //                        if (result.data.length > 0) {
+           //                            for (i = 0; i < result.data.length; i++) {
+           //                                datasetcount = result.data[i].DataSetCount;
+           //                            }
+           //                        }
+           //                        //alert(result);
+           //                        var obj = datasetobj;
+           //                        //var lcountTC = $(obj).children(".kt-menu__link-text").children(".tccount")[0].innerHTML;
+           //                        $(obj).children().text('(' + datasetcount + ')')
+           //                    }
+           //                    else if (result.status == 0) {
+           //                        swal.fire({
+           //                            "title": "",
+           //                            "text": result.message,
+           //                            "icon": "error",
+           //                            "onClose": function (e) {
+           //                                console.log('on close event fired!');
+           //                            }
+           //                        });
+           //                    }
+           //                }
+           //            });
+           //            //stoploader();
+
+           //            var lDeletedColLength = 0;
+           //            var lExistDataSetLength = 0;
+           //            lDeletedColLength = DeleteColumnsList.length;
+           //            lExistDataSetLength = ExistDataSetRenameList.length;
+           //            while (lDeletedColLength--) {
+           //                if (DeleteColumnsList[lDeletedColLength]["TestCaseId"] == tcid) {
+           //                    DeleteColumnsList.splice(lDeletedColLength, 1);
+           //                }
+           //            }
+
+           //            while (lExistDataSetLength--) {
+           //                if (ExistDataSetRenameList[lExistDataSetLength]["TestCaseId"] == tcid) {
+           //                    ExistDataSetRenameList.splice(lExistDataSetLength, 1);
+           //                }
+           //            }
+
+
+           //            Version = 0;
+           //            IsAvailable = 0;
+           //            dt = [];
+
+
+           //            ReloadGrid(tcgrid, tcid, tsid, "");
+           //            validflag = false;
+           //            msgflag = false;
+           //        }
+
+           //        else if (result.message.indexOf("Another User Edited this Test Case") > -1) {
+           //            //stoploader();
+           //            swal.fire({
+           //                "title": "",
+           //                "text": result.message,
+           //                "icon": "warning",
+           //                "onClose": function (e) {
+           //                    console.log('on close event fired!');
+           //                }
+           //            });
+           //        }
+           //        else if (result.message == "error") {
+           //            swal.fire({
+           //                "title": "",
+           //                "text": "Please check log file for more information",
+           //                "icon": "error",
+           //                "onClose": function (e) {
+           //                    console.log('on close event fired!');
+           //                }
+           //            });
+           //        }
+           //        else if (result.message == "No change in Testcase" || result.message == "You can not delete all steps.") {
+           //            swal.fire({
+           //                "title": "",
+           //                "text": result.message,
+           //                "icon": "warning",
+           //                "onClose": function (e) {
+           //                    console.log('on close event fired!');
+           //                }
+           //            });
+           //        }
+           //        else {
+           //            msgflag = true;
+           //            var validationmsgs = "<table cellborder='0' cellspacing='2' cellpadding='5'>";
+           //            var lobject = JSON.parse(result.data);
+           //            $("#ValidationMessageLabel").html("");
+           //            for (var i = 0; i < lobject.length; i++) {
+           //                var lrowid = lobject[i].ID;
+           //                gridobj[tcgrid].setSelection({ rowIndx: lrowid, focus: true });
+           //                gridobj[tcgrid].Range({ r1: lrowid, r2: lrowid }).comment(lobject[i].VALIDATIONMSG);
+           //                validationmsgs += "<tr><td style='width: 80px;'>Row: " + (lrowid + 1) + "</td><td align='left'>" + lobject[i].VALIDATIONMSG + "</td></tr>";
+           //            }
+           //            validationmsgs += "</table>";
+           //            $("#ValidationMessageLabel").html(validationmsgs);
+           //            $("#ValidateMsgModel").modal("toggle");
+           //        }
+           //    }
+           //    else if (result.status == 0) {
+           //        swal.fire({
+           //            "title": "",
+           //            "text": result.message,
+           //            "icon": "error",
+           //            "onClose": function (e) {
+           //                console.log('on close event fired!');
+           //            }
+           //        });
+           //    }
+           //        newstepsid = 0;
+
+           //        console.timeEnd("step 4");
+           //    },
+           //        complete: function (result) {
+           //        stoploader();
+           //        //gridobj[tcgrid].hideLoading();
+           //    }
+           //});
        }
 
 
