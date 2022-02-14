@@ -4275,9 +4275,6 @@ namespace MARS_Repository.Repositories
         }
         public bool SaveTestcaseSessionInDatabase(string connectionString, long testCaseId, Mars_Memory_TestCase steps)
         {
-            //string testcaseSessionName = string.Format("{0}_Testcase_{1}", SessionManager.Schema, testCaseId);
-            //if (Session[testcaseSessionName] != null)
-            //    allList = Session[testcaseSessionName] as Mars_Memory_TestCase;
             try
             {
                 logger.Info(string.Format("SAVE TESTCASE SESSION VALUES INTO DATABASE | TESTCASEID : {0} | USERNAME: {1} | START : {2}", testCaseId, Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
@@ -4297,6 +4294,10 @@ namespace MARS_Repository.Repositories
 
                     try
                     {
+                        string dropTempTable = "DECLARE cnt NUMBER; BEGIN SELECT COUNT(*) INTO cnt FROM user_tables WHERE table_name = 'T_TEST_STEPS_TEMP'; IF cnt <> 0 THEN EXECUTE IMMEDIATE 'DROP TABLE T_TEST_STEPS_TEMP'; END IF; END;";
+                        command.CommandText = dropTempTable;
+                        command.ExecuteNonQuery();
+
                         string tempTestStepsTableQuery = "CREATE GLOBAL TEMPORARY TABLE T_TEST_STEPS_TEMP( STATUS VARCHAR2(50 BYTE), STEPS_ID NUMBER(16,0), RUN_ORDER NUMBER(38,0), KEY_WORD_ID NUMBER(16,0), TEST_CASE_ID NUMBER(16,0), OBJECT_ID NUMBER(16,0), COLUMN_ROW_SETTING VARCHAR2(128 BYTE), VALUE_SETTING VARCHAR2(128 BYTE), COMMENTS VARCHAR2(128 BYTE), IS_RUNNABLE NUMBER DEFAULT 0, OBJECT_NAME_ID NUMBER ) ON COMMIT PRESERVE ROWS";
                         command.CommandText = tempTestStepsTableQuery;
                         command.ExecuteNonQuery();
@@ -4407,6 +4408,7 @@ namespace MARS_Repository.Repositories
                     decimal[] KEY_WORD_ID_param = addedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long>("KEY_WORD_ID"))).ToArray();
                     decimal[] TEST_CASE_ID_param = addedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long>("TEST_CASE_ID"))).ToArray();
                     decimal[] OBJECT_ID_param = addedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long?>("OBJECT_ID"))).ToArray();
+                    decimal?[] OBJECT_ID_NEW_Param = OBJECT_ID_param.Select(x => x > 0 ? x : (decimal?)null).ToArray();
                     string[] COLUMN_ROW_SETTING_param = addedRow.AsEnumerable().Select(r => r.Field<string>("COLUMN_ROW_SETTING")).ToArray();
                     string[] VALUE_SETTING_param = addedRow.AsEnumerable().Select(r => r.Field<string>("VALUE_SETTING")).ToArray();
                     string[] COMMENT_param = addedRow.AsEnumerable().Select(r => r.Field<string>("COMMENTS")).ToArray();
@@ -4440,7 +4442,7 @@ namespace MARS_Repository.Repositories
                     {
                         OracleDbType = OracleDbType.Decimal,
                         IsNullable = true,
-                        Value = OBJECT_ID_param
+                        Value = OBJECT_ID_NEW_Param
                     };
                     OracleParameter COLUMN_ROW_SETTING_oparam = new OracleParameter
                     {
@@ -4631,7 +4633,77 @@ namespace MARS_Repository.Repositories
 
         public bool DeleteTestcaseStepsInDatabase(DataRow[] deletedRow, long testCaseId, string lConnectionStr)
         {
-            return true;
+            try
+            {
+                logger.Info(string.Format("DELTE TESTCASE STEPS VALUES INTO DATABASE | TESTCASEID : {0} | USERNAME: {1} | START : {2}", testCaseId, Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
+
+                string deleteReportStepQuery = "DELETE FROM T_TEST_REPORT_STEPS WHERE STEPS_ID IN ({STEP_ID})";
+                string deleteDatasettingsQuery = "DELETE FROM TEST_DATA_SETTING WHERE STEPS_ID IN ({STEP_ID})";
+                string deleteStepQuery = "DELETE FROM T_TEST_STEPS WHERE STEPS_ID IN ({STEP_ID})";
+
+                using (OracleConnection connection = new OracleConnection(lConnectionStr))
+                {
+                    connection.Open();
+                    OracleCommand command = connection.CreateCommand();
+                    OracleTransaction transaction;
+                    transaction = connection.BeginTransaction(System.Data.IsolationLevel.ReadCommitted);
+                    command.Transaction = transaction;
+
+                    try
+                    {
+                        decimal[] STEPS_ID_param = deletedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long>("STEPS_ID"))).ToArray();
+                        deleteReportStepQuery = deleteReportStepQuery.Replace("{STEP_ID}", string.Join(",", STEPS_ID_param));
+                        deleteDatasettingsQuery = deleteDatasettingsQuery.Replace("{STEP_ID}", string.Join(",", STEPS_ID_param));
+                        deleteStepQuery = deleteStepQuery.Replace("{STEP_ID}", string.Join(",", STEPS_ID_param));
+
+                        command.CommandText = deleteReportStepQuery;
+                        command.ExecuteNonQuery();
+
+                        command.CommandText = deleteDatasettingsQuery;
+                        command.ExecuteNonQuery();
+
+                        command.CommandText = deleteStepQuery;
+                        command.ExecuteNonQuery();
+
+                        transaction.Commit();
+                        connection.Close();
+
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        return false;
+                    }
+                }
+
+                //int[] ids = new int[deletedRow.Length];
+                //using (var lcmd = lconnection.CreateCommand())
+                //{
+                //    decimal[] STEPS_ID_param = deletedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long>("STEPS_ID"))).ToArray();
+                //    deleteReportStepQuery = deleteReportStepQuery.Replace("{STEP_ID}", string.Join(",", STEPS_ID_param));
+                //    deleteDatasettingsQuery = deleteDatasettingsQuery.Replace("{STEP_ID}", string.Join(",", STEPS_ID_param));
+                //    deleteStepQuery = deleteStepQuery.Replace("{STEP_ID}", string.Join(",", STEPS_ID_param));
+
+                //    lcmd.CommandText = string.Format("{0} {1} {2}", deleteReportStepQuery, deleteDatasettingsQuery, deleteStepQuery);
+                //    try
+                //    {
+                //        lcmd.ExecuteNonQuery();
+                //    }
+                //    catch (Exception lex)
+                //    {
+                //        ltransaction.Rollback();
+                //        throw new Exception(lex.Message);
+                //    }
+                //    ltransaction.Commit();
+                //    lconnection.Close();
+                //    logger.Info(string.Format("DELETE TESTCASE STEPS VALUES INTO DATABASE | TESTCASEID : {0} | USERNAME: {1} | END : {2}", testCaseId, Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
+                //}
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
     }
 }

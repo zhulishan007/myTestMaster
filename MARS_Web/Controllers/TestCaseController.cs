@@ -512,7 +512,7 @@ namespace MARS_Web.Controllers
                         if (x.RUN_ORDER > runOrder)
                         {
                             x.RUN_ORDER--;
-
+                            x.recordStatus = MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_ModifiedToDb;
                             if (x.KEY_WORD_NAME.Trim().ToLower().Equals("pegwindow"))
                                 isPegWindow = false;
 
@@ -677,7 +677,7 @@ namespace MARS_Web.Controllers
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
         //Loads all the steps of TestCase grid by TestCaseId
-        public ActionResult GetTestCaseDetails(int testcaseId, string dataset)
+        public ActionResult GetTestCaseDetails(int testcaseId, string dataset, bool isReload = false)
         {
             ResultModel resultModel = new ResultModel();
             try
@@ -716,7 +716,7 @@ namespace MARS_Web.Controllers
                 string fullPath = Path.Combine(Server.MapPath("~/"), FolderName.Serialization.ToString(), FolderName.Testcases.ToString(), SessionManager.Schema, fileName);
 
                 string testcaseSessionName = string.Format("{0}_Testcase_{1}", SessionManager.Schema, testcaseId);
-                if (Session[testcaseSessionName] != null)
+                if (Session[testcaseSessionName] != null && isReload == false)
                     allList = Session[testcaseSessionName] as Mars_Memory_TestCase;
                 else
                 {

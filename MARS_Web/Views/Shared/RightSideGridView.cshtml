@@ -2738,7 +2738,8 @@
                 type: "GET",
                 data: {
                     testcaseId: tcid,
-                    dataset: Visibledatasetname
+                    dataset: Visibledatasetname,
+                    isReload: true
                 },
                 contentType: "application/json;charset=utf-8",
                 async: false,
@@ -3826,7 +3827,7 @@
                         ReloadGrid(tcgrid, tcid, tsid, "");
                         validflag = false;
                         msgflag = false;
-                    }                    
+                    }
                     else if (result.message == "error") {
                         swal.fire({
                             "title": "",
