@@ -755,7 +755,7 @@ namespace MARS_Repository.Repositories
                     //entity.SaveChanges();// -- check
                     var ldatasetid = lDataSummary.DATA_SUMMARY_ID;
 
-                    var lRelTCDataSet = new REL_TC_DATA_SUMMARY();
+                    var lRelTCDataSet = new Entities.REL_TC_DATA_SUMMARY();
                     lRelTCDataSet.ID = Helper.NextTestSuiteId("T_TEST_STEPS_SEQ");
                     lRelTCDataSet.TEST_CASE_ID = testCaseId;
                     lRelTCDataSet.DATA_SUMMARY_ID = lDataSummary.DATA_SUMMARY_ID;
@@ -1074,7 +1074,7 @@ namespace MARS_Repository.Repositories
                         //entity.SaveChanges();
 
 
-                        var tblMapping = new REL_TC_DATA_SUMMARY();
+                        var tblMapping = new Entities.REL_TC_DATA_SUMMARY();
                         tblMapping.ID = Helper.NextTestSuiteId("T_TEST_STEPS_SEQ");
                         tblMapping.TEST_CASE_ID = tbl.TEST_CASE_ID;
                         tblMapping.DATA_SUMMARY_ID = tblDataSummary.DATA_SUMMARY_ID;
@@ -1751,7 +1751,7 @@ namespace MARS_Repository.Repositories
                     //entity.SaveChanges();
 
 
-                    var tblMapping = new REL_TC_DATA_SUMMARY();
+                    var tblMapping = new Entities.REL_TC_DATA_SUMMARY();
                     tblMapping.ID = Helper.NextTestSuiteId("T_TEST_STEPS_SEQ");
                     tblMapping.TEST_CASE_ID = tbl.TEST_CASE_ID;
                     tblMapping.DATA_SUMMARY_ID = tblDataSummary.DATA_SUMMARY_ID;
@@ -1888,7 +1888,7 @@ namespace MARS_Repository.Repositories
                     entity.T_TEST_DATA_SUMMARY.Add(tblDataSummary);
                     entity.SaveChanges();
 
-                    var tblMapping = new REL_TC_DATA_SUMMARY();
+                    var tblMapping = new Entities.REL_TC_DATA_SUMMARY();
                     tblMapping.ID = Helper.NextTestSuiteId("T_TEST_STEPS_SEQ");
                     tblMapping.TEST_CASE_ID = tbl.TEST_CASE_ID;
                     tblMapping.DATA_SUMMARY_ID = tblDataSummary.DATA_SUMMARY_ID;
@@ -2288,7 +2288,7 @@ namespace MARS_Repository.Repositories
 
         }
 
-        public void CreateAllDatasetMapping(string constring, List<REL_TC_DATA_SUMMARY> rEL_TCs)
+        public void CreateAllDatasetMapping(string constring, List<Entities.REL_TC_DATA_SUMMARY> rEL_TCs)
         {
             try
             {
@@ -2590,7 +2590,7 @@ namespace MARS_Repository.Repositories
                 //entity.SaveChanges();
                 var ldatasetid = lDataSummary.DATA_SUMMARY_ID;
 
-                var lRelTCDataSet = new REL_TC_DATA_SUMMARY();
+                var lRelTCDataSet = new Entities.REL_TC_DATA_SUMMARY();
                 lRelTCDataSet.ID = Helper.NextTestSuiteId("T_TEST_STEPS_SEQ");
                 lRelTCDataSet.TEST_CASE_ID = testCaseId;
                 lRelTCDataSet.DATA_SUMMARY_ID = lDataSummary.DATA_SUMMARY_ID;
@@ -4308,7 +4308,7 @@ namespace MARS_Repository.Repositories
                             foreach (var item in addedSteps)
                             {
                                 command.CommandText = "INSERT INTO T_TEST_STEPS_TEMP (STATUS, STEPS_ID, RUN_ORDER, KEY_WORD_ID, TEST_CASE_ID, OBJECT_ID, COLUMN_ROW_SETTING, VALUE_SETTING, COMMENTS, IS_RUNNABLE, OBJECT_NAME_ID) VALUES " +
-                                                                           "('Added', T_TEST_STEPS_SEQ.nextval, " + item.RUN_ORDER + ", " + item.KEY_WORD_ID + ", " + testCaseId + ", '" + (item.OBJECT_ID != null ? item.OBJECT_ID : null) + "', '" + (!string.IsNullOrEmpty(item.COLUMN_ROW_SETTING) ? item.COLUMN_ROW_SETTING : string.Empty) + "', '" + (!string.IsNullOrEmpty(item.VALUE_SETTING) ? item.VALUE_SETTING : "") + "', '" + (!string.IsNullOrEmpty(item.COMMENTINFO) ? item.COMMENTINFO : "") + "', " + (item.IS_RUNNABLE != null ? item.IS_RUNNABLE : 0) + ", " + (item.OBJECT_NAME_ID != null ? item.OBJECT_NAME_ID : -1) + ") ";
+                                                                           "('Added', " + item.STEPS_ID + ", " + item.RUN_ORDER + ", " + item.KEY_WORD_ID + ", " + testCaseId + ", '" + (item.OBJECT_ID != null ? item.OBJECT_ID : null) + "', '" + (!string.IsNullOrEmpty(item.COLUMN_ROW_SETTING) ? item.COLUMN_ROW_SETTING : string.Empty) + "', '" + (!string.IsNullOrEmpty(item.VALUE_SETTING) ? item.VALUE_SETTING : "") + "', '" + (!string.IsNullOrEmpty(item.COMMENTINFO) ? item.COMMENTINFO : "") + "', " + (item.IS_RUNNABLE != null ? item.IS_RUNNABLE : 0) + ", " + (item.OBJECT_NAME_ID != null ? item.OBJECT_NAME_ID : -1) + ") ";
                                 command.ExecuteNonQuery();
                             }
                             foreach (var item in updatedSteps)

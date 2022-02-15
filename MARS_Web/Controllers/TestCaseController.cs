@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Web;
 using System.Web.Configuration;
 using System.Web.Mvc;
@@ -17,6 +18,7 @@ using MARS_Web.Helper;
 using MarsSerializationHelper.ViewModel;
 using MARSUtility;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using NLog;
 using Oracle.ManagedDataAccess.Client;
 using static MarsSerializationHelper.JsonSerialization.SerializationFile;
@@ -815,25 +817,90 @@ namespace MARS_Web.Controllers
                         logger.Info(string.Format("GET TESTCASE DETAILS FROM THE DATABASE | END | END TIME: {0}", DateTime.Now.ToString("HH:mm:ss.ffff tt")));
                     }
                 }
-
-                bool status = _testCaseRepository.SaveTestcaseSessionInDatabase(SessionManager.APP, testCaseId, allList);
-                if (status)
+                var newAddedSteps = allList.allSteps.Where(x => x.STEPS_ID <= 0).ToList();
+                if (newAddedSteps.Count() > 0)
                 {
-                    filePath = Path.Combine(fullFilePath, filePath);
-                    if (System.IO.File.Exists(filePath))
-                        System.IO.File.Delete(filePath);
-                    Session[testcaseSessionName] = null;
-                    bool fileStatus = LoadTestcaseJsonFile(fullFilePath, new List<MB_V_TEST_STEPS>(), testCaseId, SessionManager.APP.ToString());
-                    if (fileStatus)
+                    newAddedSteps.ForEach(x =>
                     {
-                        string jsongString = System.IO.File.ReadAllText(Path.Combine(fullFilePath, filePath));
-                        allList = JsonConvert.DeserializeObject<Mars_Memory_TestCase>(jsongString);
-                        Session[testcaseSessionName] = allList;
-                    }
-                    resultModel.message = "Test Case saved.";
-                    resultModel.status = 1;
-                    resultModel.data = "success";
+                        long stepID = MARS_Repository.Helper.NextTestSuiteId("T_TEST_STEPS_SEQ");
+                        x.STEPS_ID = stepID;
+                        x.dataForDataSets.ForEach(y =>
+                        {
+                            y.STEPS_ID = stepID;
+                            y.Data_Setting_Id = MARS_Repository.Helper.NextTestSuiteId("TEST_DATA_SETTING_SEQ");
+                        });
+                    });
                 }
+
+                StepsJsonMemoryModel dbSaveData = new StepsJsonMemoryModel
+                {
+                    currentSyncroStatus = (RecordStatus)allList.currentSyncroStatus,
+                    allSteps = allList.allSteps.Select(x => new VIEW_TEST_STEPS()
+                    {
+                        APPLICATION_ID = x.APPLICATION_ID,
+                        COLUMN_ROW_SETTING = x.COLUMN_ROW_SETTING,
+                        COMMENTINFO = x.COMMENTINFO,
+                        dataForDataSets = x.dataForDataSets.Select(c => new Data_ForDataSets { DATASETVALUE = c.DATASETVALUE, Data_Setting_Id = c.Data_Setting_Id, DATA_SUMMARY_ID = c.DATA_SUMMARY_ID, SKIP = c.SKIP, STEPS_ID = c.STEPS_ID }).ToList(),
+                        ENUM_TYPE = x.ENUM_TYPE,
+                        IS_RUNNABLE = x.IS_RUNNABLE,
+                        STEPS_ID = x.STEPS_ID,
+                        KEY_WORD_ID = x.KEY_WORD_ID,
+                        KEY_WORD_NAME = x.KEY_WORD_NAME,
+                        OBJECT_HAPPY_NAME = x.OBJECT_HAPPY_NAME,
+                        OBJECT_ID = x.OBJECT_ID,
+                        OBJECT_NAME_ID = x.OBJECT_NAME_ID,
+                        OBJECT_TYPE = x.OBJECT_TYPE,
+                        QUICK_ACCESS = x.QUICK_ACCESS,
+                        recordStatus = (RecordStatus)x.recordStatus,
+                        RUN_ORDER = x.RUN_ORDER,
+                        TEST_CASE_ID = x.TEST_CASE_ID,
+                        TEST_CASE_NAME = x.TEST_CASE_NAME,
+                        TYPE_NAME = x.TYPE_NAME,
+                        VALUE_SETTING = x.VALUE_SETTING
+                    }).ToList(),
+                    assignedApplications = allList.assignedApplications,
+                    assignedDataSets = allList.assignedDataSets.Select(x => new REL_TEST_CASE_DATA_SUMMARY { recordStatus = (RecordStatus)x.recordStatus, ALIAS_NAME = x.ALIAS_NAME, DATA_SUMMARY_ID = x.DATA_SUMMARY_ID }).ToList(),
+                    assignedTestSuiteIDs = allList.assignedTestSuiteIDs,
+                    version = allList.version
+                };
+
+                if (System.IO.File.Exists(Path.Combine(fullFilePath, filePath)))
+                {
+                    dbSaveData.currentSyncroStatus = RecordStatus.en_None;
+                    dbSaveData.assignedDataSets.ForEach(x => { x.recordStatus = RecordStatus.en_None; });
+                    dbSaveData.allSteps.ForEach(x => { x.recordStatus = RecordStatus.en_None; });
+
+                    System.IO.File.Delete(Path.Combine(fullFilePath, filePath));
+                    string testcaseJsonData = JsonConvert.SerializeObject(dbSaveData);
+                    testcaseJsonData = JValue.Parse(testcaseJsonData).ToString(Formatting.Indented);
+                    System.IO.File.WriteAllText(Path.Combine(fullFilePath, filePath), testcaseJsonData);
+                }
+                Session[testcaseSessionName] = null;
+                string connectionString = SessionManager.APP;
+                Thread SaveToDatabase = new Thread(delegate ()
+                {
+                    bool status = _testCaseRepository.SaveTestcaseSessionInDatabase(connectionString, testCaseId, allList);
+                    //if (status)
+                    //{
+                    //    filePath = Path.Combine(fullFilePath, filePath);
+                    //    if (System.IO.File.Exists(filePath))
+                    //        System.IO.File.Delete(filePath);
+                    //    Session[testcaseSessionName] = null;
+                    //    bool fileStatus = LoadTestcaseJsonFile(fullFilePath, new List<MB_V_TEST_STEPS>(), testCaseId, SessionManager.APP.ToString());
+                    //    if (fileStatus)
+                    //    {
+                    //        string jsongString = System.IO.File.ReadAllText(Path.Combine(fullFilePath, filePath));
+                    //        allList = JsonConvert.DeserializeObject<Mars_Memory_TestCase>(jsongString);
+                    //        Session[testcaseSessionName] = allList;
+                    //    }
+                    //}
+                });
+                SaveToDatabase.IsBackground = true;
+                SaveToDatabase.Start();
+
+                resultModel.message = "Test Case saved.";
+                resultModel.status = 1;
+                resultModel.data = "success";
             }
             catch (Exception ex)
             {
