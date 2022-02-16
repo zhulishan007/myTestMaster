@@ -1764,36 +1764,32 @@
             }
 
         });
-              dt.push({
-                  title: "", copy: false, copy: false,editable: false, minWidth: 40, maxWidth: 40, sortable: false, dataIndx: "IsDelete", menuInHide: true, menuIcon: false, sortable: false, filter: { on: false, menuIcon: false},
-                  render: function (ui) {
-                      if (ui.rowData != undefined) {
-                          if (ui.rowData.pq_rowcls == "collapseBorder") {
-                              return "<button type='button' class='delete_btn' disabled style='color:red;'></button>";
-                          } else {
-                              return "<button type='button' class='delete_btn' style='color:red;'></button>";
-                          }
-                      } else {
-                          return "<button type='button' class='delete_btn' style='color:red;'></button>";
-                      }
+            dt.push({
+                title: "", copy: false, copy: false, editable: false, minWidth: 40, maxWidth: 40, sortable: false, dataIndx: "IsDelete", menuInHide: true, menuIcon: false, sortable: false, filter: { on: false, menuIcon: false },                
+                render: function (ui) {
+                    if (ui.rowData != undefined) {
+                        if (ui.rowData.pq_rowcls == "collapseBorder") {
+                            return "<button type='button' class='delete_btn' disabled style='color:red;'></button>";
+                        } else {
+                            return "<button type='button' class='delete_btn' style='color:red;'></button>";
+                        }
+                    } else {
+                        return "<button type='button' class='delete_btn' style='color:red;'></button>";
+                    }
            //return "<button type='button' class='delete_btn' style='color:red;'></button>";
-       },
-                  postRender: function (ui) {
-           var rowIndx = ui.rowIndx,
-               grid = this,
-               $cell = gridobj[tcgrid].getCell(ui);
-           var lflagPegObject = false;
-           if (ui.rowData.keyword != undefined) {
-               if (ui.rowData.keyword.toLowerCase() == "pegwindow") {
-                   lflagPegObject = true;
-               }
-           }
-           $cell.find("button").button({ icons: { primary: 'ui-icon-close' } })
-           .bind("click", function () {
-
-               gridobj[tcgrid].addClass({ rowIndx: ui.rowIndx, cls: 'pq-row-delete' });
-
-
+                },
+                postRender: function (ui) {
+                    var rowIndx = ui.rowIndx,
+                        grid = this,
+                        $cell = gridobj[tcgrid].getCell(ui);
+                    var lflagPegObject = false;
+                    if (ui.rowData.keyword != undefined) {
+                        if (ui.rowData.keyword.toLowerCase() == "pegwindow") {
+                            lflagPegObject = true;
+                        }
+                    }
+                    $cell.find("button").button({ icons: { primary: 'ui-icon-close' } }).bind("click", function () {
+                        gridobj[tcgrid].addClass({ rowIndx: ui.rowIndx, cls: 'pq-row-delete' });
                //swal.fire({
                //    title: 'Delete',
                //    text: "Are you sure to delete this row No " + (rowIndx + 1) + "?",
@@ -1802,44 +1798,46 @@
                //    confirmButtonText: 'Yes, delete it!'
                //}).then(function (result) {
                    //if (result.value == true) {
-                       ans = true;
-                       gridobj[tcgrid].removeClass({ rowIndx: rowIndx, cls: 'pq-row-delete' });
-                       if (ans) {
-                           gridobj[tcgrid].deleteRow({ rowIndx: rowIndx });
-                           delete newsteps[rowIndx];
-                           if (lflagPegObject) {
-                               var ldeletedRowIndex = rowIndx;
-                               var lflagblank = true;
-                               for (var k = 0; gridobj[tcgrid].pdata.length > k; k++) {
-                                   if (ldeletedRowIndex <= k) {
-                                       if (gridobj[tcgrid].pdata[k].keyword.toLowerCase() == "pegwindow") {
-                                           lflagblank = false;
-                                       }
-
-                                       if (lflagblank) {
-                                           gridobj[tcgrid].updateRow({
-                                               rowIndx: k,
-                                               newRow: { 'object': '' }
-                                           });
-                                       }
-                                   }
-                               }
-                           }
-                       }
+                        ans = true;
+                        var rowDatas = ui.rowData;
+                        gridobj[tcgrid].removeClass({ rowIndx: rowIndx, cls: 'pq-row-delete' });
+                        if (ans) {
+                            gridobj[tcgrid].deleteRow({ rowIndx: rowIndx });
+                            delete newsteps[rowIndx];
+                            if (lflagPegObject) {
+                                var ldeletedRowIndex = rowIndx;
+                                var lflagblank = true;
+                                for (var k = 0; gridobj[tcgrid].pdata.length > k; k++) {
+                                    if (ldeletedRowIndex <= k) {
+                                        if (gridobj[tcgrid].pdata[k].keyword.toLowerCase() == "pegwindow") {
+                                            lflagblank = false;
+                                        }
+                                        if (lflagblank) {
+                                            gridobj[tcgrid].updateRow({
+                                                rowIndx: k,
+                                                newRow: { 'object': '' }
+                                            });
+                                        }
+                                    }
+                                }
+                            }
+                            DeleteTestCaseRowInSession(rowDatas.stepsID, rowDatas.RUN_ORDER);
+                        }
                   // } else {
                     //   gridobj[tcgrid].removeClass({ rowIndx: rowIndx, cls: 'pq-row-delete' });
                    //}
               // });
-           });
-       }
-   });
-   dt.push({
-       title: "StepsID", copy: false,hidden: true,menuInHide: true,sortable: false, dataType: "int", dataIndx: "stepsID", align: "center",
-   });
-   dt.push({
-       title: "RUN_ORDER", copy: false, hidden: true, dataType: "int", dataIndx: "RUN_ORDER", align: "center", menuInHide: false, sortable: false,
-   });
 
+                    });
+                }
+            });
+
+            dt.push({
+                title: "StepsID", copy: false, hidden: true, menuInHide: true, sortable: false, dataType: "int", dataIndx: "stepsID", align: "center",
+            });
+            dt.push({
+                title: "RUN_ORDER", copy: false, hidden: true, dataType: "int", dataIndx: "RUN_ORDER", align: "center", menuInHide: false, sortable: false,
+            });
 
             //dt.push({ title: "KeywordId", dataIndx: 'KeywordId', hidden: true }),
    dt.push({
@@ -2281,9 +2279,12 @@
 
     function ReloadGrid(tcgrid, tcid, tsid, Visibledatasetname) {
 
-            dt = [];
-            data = [];
+        dt = [];
+
+        data = [];
+
         jsonData = "[";
+
         dt.push({
             dataIndx: "state", copy: false, maxWidth: 30, minWidth: 30, align: "center", resizable: false, title: "", menuIcon: false, type: 'checkbox', sortable: false, editor: false, dataType: 'bool',
             render: function (ui) {
@@ -2304,128 +2305,124 @@
                // return "<input type='checkbox'   " + (ui.cellData ? "checked='checked'" : "") + " />";
 
         });
-            dt.push({
-                title: "", minWidth: 30, copy: false,maxWidth: 30, filter: { on: false, menuIcon: false }, menuIcon: false, menuInHide: true, align: "left", halign: "center", sortable: false, nodrag: true,
-                nodrop: true, resizable: false, editable: false, render: function (ui) {
-                    var rowIndx = ui.rowIndx,
-                        grid = this,
-                        $cell = gridobj[tcgrid].getCell(ui);
-                    var lflagPegObject = false;
-                    if (ui.rowData.keyword != undefined) {
-                        if (ui.rowData.keyword.toLowerCase() == "pegwindow") {
-                            lflagPegObject = true;
-                        }
-                    }
-                    var lChildCount = 0;
-                    if (lflagPegObject) {
-                        //
-                        var prowvisible = true;
-                        var lDM = gridobj[tcgrid].option("dataModel");
-                        ldata = lDM.data;
-                        if ((rowIndx + 1) < lDM.data.length) {
-                            if (ldata[rowIndx + 1].pq_hidden == true) {
-                                prowvisible = false;
-                            }
-                        }
-                        for (var k = 0; gridobj[tcgrid].pdata.length > k; k++) {
-                            if (rowIndx < k) {
 
-                                if (gridobj[tcgrid].pdata[k].keyword != undefined) {
-                                    if (gridobj[tcgrid].pdata[k].keyword.toLowerCase() != "pegwindow") {
-                                        lChildCount = lChildCount + 1;
-                                    } else {
-                                        break;
-                                    }
-                                }
-                            }
-                        }
-                        if (prowvisible) {
-                            return "<button type='button' class='ui-icon-collapse-Row'></button>";
-                        } else {
-                            return "<button type='button' class='ui-icon-expand-Row'></button>";
-                        }
-                    }
-                },
-                postRender: function (ui) {
-                    var rowIndx = ui.rowIndx;
+        dt.push({
+            title: "", minWidth: 30, copy: false, maxWidth: 30, filter: { on: false, menuIcon: false }, menuIcon: false, menuInHide: true, align: "left", halign: "center", sortable: false, nodrag: true,
+            nodrop: true, resizable: false, editable: false, render: function (ui) {
+                var rowIndx = ui.rowIndx,
+                    grid = this,
                     $cell = gridobj[tcgrid].getCell(ui);
-                    if (ui.rowData.keyword != undefined) {
-                        if (ui.rowData.keyword.toLowerCase() == "pegwindow") {
-                            lflagPegObject = true;
-                        }
+                var lflagPegObject = false;
+                if (ui.rowData.keyword != undefined) {
+                    if (ui.rowData.keyword.toLowerCase() == "pegwindow") {
+                        lflagPegObject = true;
                     }
-                    var lrowvisible;
-
-                    $cell.find("button")
-                        .bind("click", function () {
-                            var lDM = gridobj[tcgrid].option("dataModel");
-                            ldata = lDM.data;
-                            if (ldata[rowIndx + 1].pq_hidden == true && lrowvisible == null) {
-                                lrowvisible = true;
-                            }
-                            for (var k = 0; gridobj[tcgrid].pdata.length > k; k++) {
-
-                                if (rowIndx < k) {
-                                    var lflagblank = true;
-                                    if (gridobj[tcgrid].pdata[k].keyword.toLowerCase() == "pegwindow") {
-                                        lflagblank = false;
-                                        break;
-                                    }
-
-                                    if (lflagblank) {
-                                        var DM = gridobj[tcgrid].option("dataModel");
-                                        data = DM.data;
-
-
-
-                                        if (lrowvisible == true) {
-
-                                            data[k].pq_hidden = false;
-                                            gridobj[tcgrid].removeClass({ rowIndx: rowIndx, cls: 'collapseBorder' });
-                                        }
-                                        else {
-                                            data[k].pq_hidden = true;
-                                            gridobj[tcgrid].addClass({ rowIndx: rowIndx, cls: 'collapseBorder' });
-                                        }
-                                    }
-                                    gridobj[tcgrid].refreshView();
-                                }
-                            }
-                            lrowvisible = null;
-                        });
                 }
 
-            });
-            dt.push({
-                title: "", editable: false, copy: false,minWidth: 40, maxWidth: 40, sortable: false, dataIndx: "IsDelete", menuInHide: true, menuIcon: false, sortable: false, filter: { on: false, menuIcon: false },
-                render: function (ui) {
-                    if (ui.rowData != undefined) {
-                        if (ui.rowData.pq_rowcls == "collapseBorder") {
-                            return "<button type='button' class='delete_btn' disabled style='color:red;'></button>";
-                        } else {
-                            return "<button type='button' class='delete_btn' style='color:red;'></button>";
+                var lChildCount = 0;
+                if (lflagPegObject) {
+                    var prowvisible = true;
+                    var lDM = gridobj[tcgrid].option("dataModel");
+                    ldata = lDM.data;
+                    if ((rowIndx + 1) < lDM.data.length) {
+                        if (ldata[rowIndx + 1].pq_hidden == true) {
+                            prowvisible = false;
                         }
+                    }
+
+                    for (var k = 0; gridobj[tcgrid].pdata.length > k; k++) {
+                        if (rowIndx < k) {
+                            if (gridobj[tcgrid].pdata[k].keyword != undefined) {
+                                if (gridobj[tcgrid].pdata[k].keyword.toLowerCase() != "pegwindow") {
+                                    lChildCount = lChildCount + 1;
+                                } else {
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
+                    if (prowvisible) {
+                        return "<button type='button' class='ui-icon-collapse-Row'></button>";
+                    } else {
+
+                        return "<button type='button' class='ui-icon-expand-Row'></button>";
+                    }
+                }
+            },
+
+            postRender: function (ui) {
+                var rowIndx = ui.rowIndx;
+                $cell = gridobj[tcgrid].getCell(ui);
+                if (ui.rowData.keyword != undefined) {
+                    if (ui.rowData.keyword.toLowerCase() == "pegwindow") {
+                        lflagPegObject = true;
+                    }
+                }
+                var lrowvisible;
+                $cell.find("button")
+                    .bind("click", function () {
+                        var lDM = gridobj[tcgrid].option("dataModel");
+                        ldata = lDM.data;
+                        if (ldata[rowIndx + 1].pq_hidden == true && lrowvisible == null) {
+                            lrowvisible = true;
+                        }
+
+                        for (var k = 0; gridobj[tcgrid].pdata.length > k; k++) {
+                            if (rowIndx < k) {
+                                var lflagblank = true;
+                                if (gridobj[tcgrid].pdata[k].keyword.toLowerCase() == "pegwindow") {
+                                    lflagblank = false;
+                                    break;
+                                }
+
+                                if (lflagblank) {
+                                    var DM = gridobj[tcgrid].option("dataModel");
+                                    data = DM.data;                                                                                                         
+                                    if (lrowvisible == true) {
+                                        data[k].pq_hidden = false;
+                                        gridobj[tcgrid].removeClass({ rowIndx: rowIndx, cls: 'collapseBorder' });
+                                    }
+                                    else {
+                                        data[k].pq_hidden = true;
+                                        gridobj[tcgrid].addClass({ rowIndx: rowIndx, cls: 'collapseBorder' });
+                                    }
+                                }
+                                gridobj[tcgrid].refreshView();
+                            }
+                        }
+                        lrowvisible = null;
+                    });
+            }
+        });
+
+        dt.push({
+            title: "", editable: false, copy: false, minWidth: 40, maxWidth: 40, sortable: false, dataIndx: "IsDelete", menuInHide: true, menuIcon: false, sortable: false, filter: { on: false, menuIcon: false },
+            render: function (ui) {
+                if (ui.rowData != undefined) {
+                    if (ui.rowData.pq_rowcls == "collapseBorder") {
+                        return "<button type='button' class='delete_btn' disabled style='color:red;'></button>";
                     } else {
                         return "<button type='button' class='delete_btn' style='color:red;'></button>";
                     }
+                } else {
+                    return "<button type='button' class='delete_btn' style='color:red;'></button>";
+                }
                  //   return "<button type='button' class='delete_btn' style='color:red;'></button>";
-                },
-                postRender: function (ui) {
-                    var rowIndx = ui.rowIndx,
-                        grid = this,
-                        $cell = gridobj[tcgrid].getCell(ui);
-                    var lflagPegObject = false;
-                    if (ui.rowData.keyword != undefined) {
-                        if (ui.rowData.keyword.toLowerCase() == "pegwindow") {
-                            lflagPegObject = true;
-                        }
+            },
+            postRender: function (ui) {
+                var rowIndx = ui.rowIndx,
+                    grid = this,
+                    $cell = gridobj[tcgrid].getCell(ui);
+                var lflagPegObject = false;
+                if (ui.rowData.keyword != undefined) {
+                    if (ui.rowData.keyword.toLowerCase() == "pegwindow") {
+                        lflagPegObject = true;
                     }
-                    $cell.find("button").button({ icons: { primary: 'ui-icon-close' } })
-                        .bind("click", function () {
+                }
 
-                            gridobj[tcgrid].addClass({ rowIndx: ui.rowIndx, cls: 'pq-row-delete' });
-
-
+                $cell.find("button").button({ icons: { primary: 'ui-icon-close' } }).bind("click", function () {
+                    gridobj[tcgrid].addClass({ rowIndx: ui.rowIndx, cls: 'pq-row-delete' });
                             //swal.fire({
                             //    title: 'Delete',
                             //    text: "Are you sure to delete this row No " + (rowIndx + 1) + "?",
@@ -2434,102 +2431,101 @@
                             //    confirmButtonText: 'Yes, delete it!'
                             //}).then(function (result) {
                                // if (result.value == true) {
-                                    ans = true;
-                                    gridobj[tcgrid].removeClass({ rowIndx: rowIndx, cls: 'pq-row-delete' });
-                                    if (ans) {
-                                        gridobj[tcgrid].deleteRow({ rowIndx: rowIndx });
-                                        delete newsteps[rowIndx];
-                                        if (lflagPegObject) {
-                                            var ldeletedRowIndex = rowIndx;
-                                            var lflagblank = true;
-                                            for (var k = 0; gridobj[tcgrid].pdata.length > k; k++) {
-                                                if (ldeletedRowIndex <= k) {
-                                                    if (gridobj[tcgrid].pdata[k].keyword.toLowerCase() == "pegwindow") {
-                                                        lflagblank = false;
-                                                    }
-
-                                                    if (lflagblank) {
-                                                        gridobj[tcgrid].updateRow({
-                                                            rowIndx: k,
-                                                            newRow: { 'object': '' }
-                                                        });
-                                                    }
-                                                }
-                                            }
-                                        }
+                    ans = true;
+                    var rowDatas = ui.rowData;
+                    gridobj[tcgrid].removeClass({ rowIndx: rowIndx, cls: 'pq-row-delete' });
+                    if (ans) {
+                        gridobj[tcgrid].deleteRow({ rowIndx: rowIndx });
+                        delete newsteps[rowIndx];
+                        if (lflagPegObject) {
+                            var ldeletedRowIndex = rowIndx;
+                            var lflagblank = true;
+                            for (var k = 0; gridobj[tcgrid].pdata.length > k; k++) {
+                                if (ldeletedRowIndex <= k) {
+                                    if (gridobj[tcgrid].pdata[k].keyword.toLowerCase() == "pegwindow") {
+                                        lflagblank = false;
                                     }
+                                    if (lflagblank) {
+                                        gridobj[tcgrid].updateRow({
+                                            rowIndx: k,
+                                            newRow: { 'object': '' }
+                                        });
+                                    }
+                                }
+                            }
+                        }
+                        DeleteTestCaseRowInSession(rowDatas.stepsID, rowDatas.RUN_ORDER);
+                    }
                                 //} else {
                                   //  gridobj[tcgrid].removeClass({ rowIndx: rowIndx, cls: 'pq-row-delete' });
                                 //}
                            // });
-                        });
-                }
-            });
-            dt.push({
-                title: "StepsID", copy: false, hidden: true, menuInHide: true, sortable: false, dataType: "int", dataIndx: "stepsID", align: "center",
-            });
-            dt.push({
-                title: "RUN_ORDER", copy: false, hidden: true, dataType: "int", dataIndx: "RUN_ORDER", align: "center", menuInHide: false, sortable: false,
-            });
+                });
+            }
+        });
+
+        dt.push({
+            title: "StepsID", copy: false, hidden: true, menuInHide: true, sortable: false, dataType: "int", dataIndx: "stepsID", align: "center",
+        });
+        dt.push({
+            title: "RUN_ORDER", copy: false, hidden: true, dataType: "int", dataIndx: "RUN_ORDER", align: "center", menuInHide: false, sortable: false,
+        });
 
         //dt.push({ title: "KeywordId", dataIndx: 'KeywordId', hidden: true }),
 
-            dt.push({
-                title: "Keyword", dataIndx: "keyword", dataType: "string", align: "left", menuInHide: true, halign: "center", nodrag: true, nodrop: true, sortable: false, resizable: true, width: @ViewBag.keywordwidth, minWidth: 20,
-                editable: function (ui) {
-                    if (ui.rowData != undefined) {
-                        if (ui.rowData.pq_rowcls == "collapseBorder") {
-                            return false;
-                        } else {
-                            return true;
-                        }
+        dt.push({
+            title: "Keyword", dataIndx: "keyword", dataType: "string", align: "left", menuInHide: true, halign: "center", nodrag: true, nodrop: true, sortable: false, resizable: true, width: @ViewBag.keywordwidth, minWidth: 20,
+            editable: function (ui) {
+                if (ui.rowData != undefined) {
+                    if (ui.rowData.pq_rowcls == "collapseBorder") {
+                        return false;
                     } else {
                         return true;
                     }
-                },
-                editor:
-                {
-                    type: 'select',
-                    valueIndx: "value",
-                    init: function (ui) {
-                        ui.$cell.find("select").pqSelect();
+                } else {
+                    return true;
+                }
+            },
+            editor:
+            {
+                type: 'select',
+                valueIndx: "value",
+                init: function (ui) {
+                    ui.$cell.find("select").pqSelect();
                         //  alert("1");
-                    },
-                    labelIndx: "text",
+                },
+                labelIndx: "text",
                     //mapIndices: { "text": "Keyword", "value": "KeywordId" },
-                    options: function (ui) {
-                        var List = [];
-                        var lGridList = [];
-                        for (i = 0; i < gridobj[tcgrid].pdata.length; i++) {
-                            lGridList.push({ "Id": gridobj[tcgrid].pdata[i].stepsID, "Keyword": gridobj[tcgrid].pdata[i].keyword });
-                        }
-                        var KeywordList = {};
-                        KeywordList.stepId = ui.rowIndx + 1;
-                        KeywordList.Grid = JSON.stringify(lGridList);
-                        var lPegStepId = 0;
-               var lstepId = ui.rowIndx + 1;
-               var keywordsList;
-               for (i = 0; i < gridobj[tcgrid].pdata.length; i++)
-               {
-                   var item = gridobj[tcgrid].pdata[i];
-                   if (item.keyword) {
-
+                options: function (ui) {
+                    var List = [];
+                    var lGridList = [];
+                    for (i = 0; i < gridobj[tcgrid].pdata.length; i++) {
+                        lGridList.push({ "Id": gridobj[tcgrid].pdata[i].stepsID, "Keyword": gridobj[tcgrid].pdata[i].keyword });
+                    }
+                    var KeywordList = {};
+                    KeywordList.stepId = ui.rowIndx + 1;
+                    KeywordList.Grid = JSON.stringify(lGridList);
+                    var lPegStepId = 0;
+                    var lstepId = ui.rowIndx + 1;
+                    var keywordsList;
+                    for (i = 0; i < gridobj[tcgrid].pdata.length; i++)
+                    {
+                        var item = gridobj[tcgrid].pdata[i];
+                        if (item.keyword) {
                             if (item.keyword.toLowerCase() == "pegwindow" && lPegStepId == 0) {
                                 lPegStepId = i + 1;
                                 break;
-                         }
+                            }
                         }
+                        i++;
+                    }
+                    if (lstepId == 1 || lstepId < lPegStepId || lPegStepId == 0) {
+                        keywordsList = @Html.Raw(ViewBag.KeywordsPegwindowList);
+                    }
+                    else {
+                        keywordsList = @Html.Raw(ViewBag.KeywordsList);
+                    }
 
-
-                    i++;
-               }
-               if (lstepId == 1 || lstepId < lPegStepId || lPegStepId == 0) {
-                   keywordsList = @Html.Raw(ViewBag.KeywordsPegwindowList);
-
-               }
-               else {
-                   keywordsList = @Html.Raw(ViewBag.KeywordsList);
-               }
                keywords.push({ "value": "", "text": "" });
                $.each(keywordsList, function (key, value) {
                    keywords.push({ "value": value.KeywordName, "text": value.KeywordName });

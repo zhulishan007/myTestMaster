@@ -513,13 +513,16 @@ namespace MARS_Web.Controllers
                     {
                         if (x.RUN_ORDER > runOrder)
                         {
-                            x.RUN_ORDER--;
-                            x.recordStatus = MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_ModifiedToDb;
-                            if (x.KEY_WORD_NAME.Trim().ToLower().Equals("pegwindow"))
-                                isPegWindow = false;
+                            if (!x.recordStatus.Equals(MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_DeletedToDb))
+                            {
+                                x.RUN_ORDER--;
+                                x.recordStatus = MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_ModifiedToDb;
+                                if (x.KEY_WORD_NAME.Trim().ToLower().Equals("pegwindow"))
+                                    isPegWindow = false;
 
-                            if (isPegWindow)
-                                x.OBJECT_HAPPY_NAME = string.Empty;
+                                if (isPegWindow)
+                                    x.OBJECT_HAPPY_NAME = string.Empty;
+                            }
                         }
                     });
                 }
@@ -863,6 +866,8 @@ namespace MARS_Web.Controllers
                     assignedTestSuiteIDs = allList.assignedTestSuiteIDs,
                     version = allList.version
                 };
+                var deletedSteps = dbSaveData.allSteps.Where(x => x.recordStatus == RecordStatus.en_DeletedToDb).ToList();
+                deletedSteps.ForEach(x => { dbSaveData.allSteps.Remove(x); });
 
                 if (System.IO.File.Exists(Path.Combine(fullFilePath, filePath)))
                 {
