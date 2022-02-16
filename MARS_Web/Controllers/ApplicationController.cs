@@ -2,7 +2,7 @@ using MARS_Repository.Entities;
 using MARS_Repository.Repositories;
 using MARS_Repository.ViewModel;
 using MARS_Web.Helper;
-using MarsSerializationHelper.ViewModel;
+using Mars_Serialization.ViewModel;
 using Newtonsoft.Json;
 using NLog;
 using System;
@@ -13,7 +13,7 @@ using System.Linq;
 using System.Threading;
 using System.Web.Configuration;
 using System.Web.Mvc;
-using static MarsSerializationHelper.JsonSerialization.SerializationFile;
+using static Mars_Serialization.JsonSerialization.SerializationFile;
 
 namespace MARS_Web.Controllers
 {
@@ -274,8 +274,8 @@ namespace MARS_Web.Controllers
                                                 ? applicationviewmodel.ApplicationId
                                                 : _apprepository.GetApplicationSequence("T_REGISTERED_APPS_SEQ"),
                     currentSyncroStatus = applicationviewmodel.ApplicationId != 0
-                                                ? MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_ModifiedToDb
-                                                : MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_NewToDb
+                                                ? Mars_Serialization.Common.CommonEnum.MarsRecordStatus.en_ModifiedToDb
+                                                : Mars_Serialization.Common.CommonEnum.MarsRecordStatus.en_NewToDb
                 };
 
                 if (applicationviewmodel.ApplicationId == 0)

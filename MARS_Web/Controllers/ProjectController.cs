@@ -2,7 +2,7 @@ using MARS_Repository.Entities;
 using MARS_Repository.Repositories;
 using MARS_Repository.ViewModel;
 using MARS_Web.Helper;
-using MarsSerializationHelper.ViewModel;
+using Mars_Serialization.ViewModel;
 using NLog;
 using System;
 using System.Collections.Generic;

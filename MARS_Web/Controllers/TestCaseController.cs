@@ -15,13 +15,13 @@ using MARS_Repository.Entities;
 using MARS_Repository.Repositories;
 using MARS_Repository.ViewModel;
 using MARS_Web.Helper;
-using MarsSerializationHelper.ViewModel;
+using Mars_Serialization.ViewModel;
 using MARSUtility;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using NLog;
 using Oracle.ManagedDataAccess.Client;
-using static MarsSerializationHelper.JsonSerialization.SerializationFile;
+using static Mars_Serialization.JsonSerialization.SerializationFile;
 using EmailHelper = MARS_Web.Helper.EmailHelper;
 
 namespace MARS_Web.Controllers
@@ -406,9 +406,9 @@ namespace MARS_Web.Controllers
                         if (x.RUN_ORDER >= destinationRowRunOrder && x.RUN_ORDER < selectedRowRunOrder)
                         {
                             x.RUN_ORDER++;
-                            x.recordStatus = x.recordStatus == MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_NewToDb
+                            x.recordStatus = x.recordStatus == Mars_Serialization.Common.CommonEnum.MarsRecordStatus.en_NewToDb
                                                            ? x.recordStatus
-                                                           : MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_ModifiedToDb;
+                                                           : Mars_Serialization.Common.CommonEnum.MarsRecordStatus.en_ModifiedToDb;
                         }
                     });
                 }
@@ -419,9 +419,9 @@ namespace MARS_Web.Controllers
                         if (x.RUN_ORDER > selectedRowRunOrder && x.RUN_ORDER <= destinationRowRunOrder)
                         {
                             x.RUN_ORDER--;
-                            x.recordStatus = x.recordStatus == MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_NewToDb
+                            x.recordStatus = x.recordStatus == Mars_Serialization.Common.CommonEnum.MarsRecordStatus.en_NewToDb
                                                            ? x.recordStatus
-                                                           : MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_ModifiedToDb;
+                                                           : Mars_Serialization.Common.CommonEnum.MarsRecordStatus.en_ModifiedToDb;
                         }
                     });
                 }
@@ -459,14 +459,14 @@ namespace MARS_Web.Controllers
                 List<MB_V_TEST_STEPS> allSteps = allList.allSteps;
                 allSteps.ForEach(x =>
                 {
-                    if (x.RUN_ORDER >= newRowRunOrder) { x.RUN_ORDER++; x.recordStatus = MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_ModifiedToDb; }
+                    if (x.RUN_ORDER >= newRowRunOrder) { x.RUN_ORDER++; x.recordStatus = Mars_Serialization.Common.CommonEnum.MarsRecordStatus.en_ModifiedToDb; }
                 });
                 MB_V_TEST_STEPS newStep = new MB_V_TEST_STEPS
                 {
                     STEPS_ID = stepId,
                     RUN_ORDER = newRowRunOrder,
                     TEST_CASE_ID = testCaseId,
-                    recordStatus = MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_NewToDb,
+                    recordStatus = Mars_Serialization.Common.CommonEnum.MarsRecordStatus.en_NewToDb,
                     dataForDataSets = allSteps.FirstOrDefault().dataForDataSets
                 };
                 newStep.dataForDataSets.ForEach(x => { x.DATASETVALUE = string.Empty; x.SKIP = 0; });
@@ -502,7 +502,7 @@ namespace MARS_Web.Controllers
                 bool isPegWindow = step.Any(x => x.KEY_WORD_NAME.Trim().ToLower().Equals("pegwindow"));
                 if (step.Count() > 0)
                 {
-                    step.ForEach(x => { x.recordStatus = MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_DeletedToDb; });
+                    step.ForEach(x => { x.recordStatus = Mars_Serialization.Common.CommonEnum.MarsRecordStatus.en_DeletedToDb; });
                     foreach (var deletedItem in step)
                     {
                         if (deletedItem.STEPS_ID <= 0)
@@ -513,10 +513,10 @@ namespace MARS_Web.Controllers
                     {
                         if (x.RUN_ORDER > runOrder)
                         {
-                            if (!x.recordStatus.Equals(MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_DeletedToDb))
+                            if (!x.recordStatus.Equals(Mars_Serialization.Common.CommonEnum.MarsRecordStatus.en_DeletedToDb))
                             {
                                 x.RUN_ORDER--;
-                                x.recordStatus = MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_ModifiedToDb;
+                                x.recordStatus = Mars_Serialization.Common.CommonEnum.MarsRecordStatus.en_ModifiedToDb;
                                 if (x.KEY_WORD_NAME.Trim().ToLower().Equals("pegwindow"))
                                     isPegWindow = false;
 
@@ -564,9 +564,9 @@ namespace MARS_Web.Controllers
                         var relatedSteps = allList.allSteps.Where(c => c.STEPS_ID == stepId && c.RUN_ORDER == runOrder).ToList();
                         relatedSteps.ForEach(x =>
                         {
-                            x.recordStatus = x.recordStatus == MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_NewToDb
+                            x.recordStatus = x.recordStatus == Mars_Serialization.Common.CommonEnum.MarsRecordStatus.en_NewToDb
                                                              ? x.recordStatus
-                                                             : MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_ModifiedToDb;
+                                                             : Mars_Serialization.Common.CommonEnum.MarsRecordStatus.en_ModifiedToDb;
                         });
                         var dataForDataSet = relatedSteps.Where(c => c.STEPS_ID == stepId).Select(x => x.dataForDataSets).ToList();
                         if (dataForDataSet.Count() > 0)
@@ -593,9 +593,9 @@ namespace MARS_Web.Controllers
                             {
                                 x.KEY_WORD_NAME = PropertyValue;
                                 x.KEY_WORD_ID = keywordId;
-                                x.recordStatus = x.recordStatus == MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_NewToDb
+                                x.recordStatus = x.recordStatus == Mars_Serialization.Common.CommonEnum.MarsRecordStatus.en_NewToDb
                                                             ? x.recordStatus
-                                                            : MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_ModifiedToDb;
+                                                            : Mars_Serialization.Common.CommonEnum.MarsRecordStatus.en_ModifiedToDb;
                             });
                         }
                     }
@@ -610,9 +610,9 @@ namespace MARS_Web.Controllers
                                 x.OBJECT_ID = objct != null ? objct.OBJECT_ID : x.OBJECT_ID;
                                 x.OBJECT_NAME_ID = objct != null ? (long)objct.OBJECT_NAME_ID : x.OBJECT_NAME_ID;
                                 x.OBJECT_TYPE = objct != null ? objct.OBJECT_TYPE : x.OBJECT_TYPE;
-                                x.recordStatus = x.recordStatus == MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_NewToDb
+                                x.recordStatus = x.recordStatus == Mars_Serialization.Common.CommonEnum.MarsRecordStatus.en_NewToDb
                                                             ? x.recordStatus
-                                                            : MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_ModifiedToDb;
+                                                            : Mars_Serialization.Common.CommonEnum.MarsRecordStatus.en_ModifiedToDb;
                             });
                         }
                     }
@@ -622,9 +622,9 @@ namespace MARS_Web.Controllers
                             step.ForEach(x =>
                             {
                                 x.COMMENTINFO = PropertyValue;
-                                x.recordStatus = x.recordStatus == MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_NewToDb
+                                x.recordStatus = x.recordStatus == Mars_Serialization.Common.CommonEnum.MarsRecordStatus.en_NewToDb
                                                             ? x.recordStatus
-                                                            : MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_ModifiedToDb;
+                                                            : Mars_Serialization.Common.CommonEnum.MarsRecordStatus.en_ModifiedToDb;
                             });
                     }
                     else if (PropertyName.Trim().Equals("parameters"))
@@ -633,9 +633,9 @@ namespace MARS_Web.Controllers
                             step.ForEach(x =>
                             {
                                 x.COLUMN_ROW_SETTING = PropertyValue;
-                                x.recordStatus = x.recordStatus == MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_NewToDb
+                                x.recordStatus = x.recordStatus == Mars_Serialization.Common.CommonEnum.MarsRecordStatus.en_NewToDb
                                                             ? x.recordStatus
-                                                            : MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_ModifiedToDb;
+                                                            : Mars_Serialization.Common.CommonEnum.MarsRecordStatus.en_ModifiedToDb;
                             });
                     }
                     else
@@ -647,9 +647,9 @@ namespace MARS_Web.Controllers
                             var relatedSteps = allList.allSteps.Where(c => c.STEPS_ID == stepId && c.RUN_ORDER == runOrder).ToList();
                             relatedSteps.ForEach(x =>
                             {
-                                x.recordStatus = x.recordStatus == MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_NewToDb
+                                x.recordStatus = x.recordStatus == Mars_Serialization.Common.CommonEnum.MarsRecordStatus.en_NewToDb
                                                             ? x.recordStatus
-                                                            : MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_ModifiedToDb;
+                                                            : Mars_Serialization.Common.CommonEnum.MarsRecordStatus.en_ModifiedToDb;
                             });
                             var dataForDataSet = relatedSteps.Where(c => c.STEPS_ID == stepId).Select(x => x.dataForDataSets).ToList();
                             if (dataForDataSet.Count() > 0)
@@ -755,7 +755,7 @@ namespace MARS_Web.Controllers
                     assignedTestSuiteIDs = allList.assignedTestSuiteIDs,
                     currentSyncroStatus = allList.currentSyncroStatus,
                     version = allList.version,
-                    allSteps = allList.allSteps.Where(x => x.recordStatus != MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_DeletedToDb).OrderBy(y => y.RUN_ORDER).ToList()
+                    allSteps = allList.allSteps.Where(x => x.recordStatus != Mars_Serialization.Common.CommonEnum.MarsRecordStatus.en_DeletedToDb).OrderBy(y => y.RUN_ORDER).ToList()
                 };
                 newResult = tc.ConvertTestcaseJsonToList(finalList, testcaseId, lSchema, lConnectionStr, (long)SessionManager.TESTER_ID);
 
@@ -2472,11 +2472,11 @@ namespace MARS_Web.Controllers
                     //T_OBJECT_NAMEINFO lPegObj = repObject.GetPegObjectByObjectName(objectName);
                     List<long?> typeId = new List<long?>();
 
-                    List<MarsSerializationHelper.ViewModel.KeywordViewModel> keywords =
+                    List<Mars_Serialization.ViewModel.KeywordViewModel> keywords =
                         GlobalVariable.AllKeywords.FirstOrDefault(x => x.Key.Trim().Equals(SessionManager.Schema.Trim())).Value;
                     if (keywords.Count() > 0)
                     {
-                        MarsSerializationHelper.ViewModel.KeywordViewModel singleKeyword =
+                        Mars_Serialization.ViewModel.KeywordViewModel singleKeyword =
                             keywords.FirstOrDefault(x => x.KEY_WORD_NAME.Trim().ToLower().Equals(keyworkName.Trim().ToLower()));
                         if (singleKeyword != null)
                             typeId = singleKeyword.KeywordType.Select(x => x.TYPE_ID).ToList();
@@ -2747,6 +2747,51 @@ namespace MARS_Web.Controllers
         #endregion
 
         #region Add/Edit Dataset in TestCase
+        [HttpPost]
+        public JsonResult AddEditDatasetInSession(long? Testcaseid, long? datasetid, string datasetname, string datasetdesc, DataSetTagModel tagmodel)
+        {
+            ResultModel resultModel = new ResultModel();
+            try
+            {
+                logger.Info(string.Format("ADD/ADIT DATASET IN THE SESSION | TESTCASEID : {0} | USERNAME: {1} | START : {2}", Testcaseid, SessionManager.TESTER_LOGIN_NAME, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
+                var lSchema = SessionManager.Schema;
+                var lConnectionStr = SessionManager.APP;
+                var testCaserepo = new TestCaseRepository();
+                testCaserepo.Username = SessionManager.TESTER_LOGIN_NAME;
+                bool IsAvailable = testCaserepo.CheckDuplicateDataset(datasetname, datasetid);
+                if (IsAvailable)
+                {
+                    var lresult = new
+                    {
+                        datasetId = datasetid,
+                        msg = "error"
+                    };
+                    resultModel.data = lresult;
+                    resultModel.message = "DataSet already exist in system.";
+                    resultModel.status = 1;
+                    return Json(resultModel, JsonRequestBehavior.AllowGet);
+                }
+
+                Mars_Memory_TestCase allList = new Mars_Memory_TestCase();
+                string testcaseSessionName = string.Format("{0}_Testcase_{1}", SessionManager.Schema, Testcaseid);
+                if (Session[testcaseSessionName] != null)
+                    allList = Session[testcaseSessionName] as Mars_Memory_TestCase;
+
+
+                logger.Info(string.Format("ADD/ADIT DATASET IN THE SESSION | TESTCASEID : {0} | USERNAME: {1} | END : {2}", Testcaseid, SessionManager.TESTER_LOGIN_NAME, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in TestCase controller for AddEditDatasetInSession method | Testcaseid: {0} | datasetid: {1} | datasetname: {2} | datasetdesc: {3} | UserName: {4}", Testcaseid, datasetid, datasetname, datasetdesc, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in TestCase controller for AddEditDatasetInSession method | Testcaseid: {0} | datasetid: {1} | datasetname: {2} | datasetdesc: {3} | UserName: {4}", Testcaseid, datasetid, datasetname, datasetdesc, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for AddEditDatasetInSession method | Testcaseid: {0} | datasetid: {1} | datasetname: {2} | datasetdesc: {3} | UserName: {4}", Testcaseid, datasetid, datasetname, datasetdesc, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+
+                resultModel.status = 0;
+                resultModel.message = ex.Message.ToString();
+            }
+            return Json(resultModel, JsonRequestBehavior.AllowGet);
+        }
         //Add/Edit a dataset in a TestCase
         [HttpPost]
         public JsonResult AddEditDataset(long? Testcaseid, long? datasetid, string datasetname, string datasetdesc, DataSetTagModel tagmodel)

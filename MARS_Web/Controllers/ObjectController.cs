@@ -18,7 +18,7 @@ using System.Configuration;
 using MARSUtility;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using MarsSerializationHelper.ViewModel;
+using Mars_Serialization.ViewModel;
 
 namespace MARS_Web.Controllers
 {

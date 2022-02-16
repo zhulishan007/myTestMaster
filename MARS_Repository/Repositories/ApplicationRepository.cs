@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
-using static MarsSerializationHelper.Common.CommonEnum;
+using static Mars_Serialization.Common.CommonEnum;
 
 namespace MARS_Repository.Repositories
 {
@@ -149,7 +149,7 @@ namespace MARS_Repository.Repositories
                 throw;
             }
         }
-        public bool AddEditApplicationFromDictionary(MarsSerializationHelper.ViewModel.T_Memory_REGISTERED_APPS objApp)
+        public bool AddEditApplicationFromDictionary(Mars_Serialization.ViewModel.T_Memory_REGISTERED_APPS objApp)
         {
             try
             {

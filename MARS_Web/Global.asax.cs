@@ -1,6 +1,6 @@
 ﻿using MARS_Repository.ViewModel;
+using Mars_Serialization.ViewModel;
 using MARS_Web.Helper;
-using MarsSerializationHelper.ViewModel;
 using Newtonsoft.Json;
 using NLog;
 using System;
@@ -14,7 +14,7 @@ using System.Web.Hosting;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-using static MarsSerializationHelper.JsonSerialization.SerializationFile;
+using static Mars_Serialization.JsonSerialization.SerializationFile;
 
 namespace MARS_Web
 {
@@ -44,9 +44,9 @@ namespace MARS_Web
             {
                 logger.Info(string.Format("Load_Serializations_Files | Database Names: {0} ", string.Join(", ", dbNameList)));
 
-                var usersData = new ConcurrentDictionary<string, ConcurrentDictionary<UserViewModal, List<MarsSerializationHelper.ViewModel.ProjectByUser>>>();
+                var usersData = new ConcurrentDictionary<string, ConcurrentDictionary<UserViewModal, List<Mars_Serialization.ViewModel.ProjectByUser>>>();
                 var appsData = new ConcurrentDictionary<string, List<T_Memory_REGISTERED_APPS>>();
-                var keywordsData = new ConcurrentDictionary<string, List<MarsSerializationHelper.ViewModel.KeywordViewModel>>();
+                var keywordsData = new ConcurrentDictionary<string, List<Mars_Serialization.ViewModel.KeywordViewModel>>();
                 Thread Serializations = new Thread(delegate ()
                 {
                     if (dbNameList.Count() > 0)
@@ -56,13 +56,13 @@ namespace MARS_Web
                             MarsConfig mc = MarsConfig.Configure(databaseName);
                             DatabaseConnectionDetails det = mc.GetDatabaseConnectionDetails();
 
-                            var userDictionary = MarsSerializationHelper.JsonSerialization.SerializationFile.GetDictionary(det.ConnString);
+                            var userDictionary = Mars_Serialization.JsonSerialization.SerializationFile.GetDictionary(det.ConnString);
                             usersData.TryAdd(databaseName, userDictionary);
 
                             var appDictionary = GetAppData(databaseName);
                             appsData.TryAdd(databaseName, appDictionary);
 
-                            var keywordDictionary = MarsSerializationHelper.JsonSerialization.SerializationFile.GetKeywordList(det.ConnString);
+                            var keywordDictionary = Mars_Serialization.JsonSerialization.SerializationFile.GetKeywordList(det.ConnString);
                             keywordsData.TryAdd(databaseName, keywordDictionary);
                         }
                         GlobalVariable.UsersDictionary = usersData;
@@ -74,13 +74,13 @@ namespace MARS_Web
                             MarsConfig mc = MarsConfig.Configure(databaseName);
                             DatabaseConnectionDetails det = mc.GetDatabaseConnectionDetails();
 
-                            //var userDictionary = MarsSerializationHelper.JsonSerialization.SerializationFile.GetDictionary(det.ConnString);
+                            //var userDictionary = Mars_Serialization.JsonSerialization.SerializationFile.GetDictionary(det.ConnString);
                             //usersData.TryAdd(databaseName, userDictionary);
 
                             string marsHomeFolder = HostingEnvironment.MapPath("/Config");
                             string marsConfigFile = marsHomeFolder + @"\Mars.config";
-                            MarsSerializationHelper.JsonSerialization.SerializationFile.ChangeConnectionString(databaseName, marsConfigFile);
-                            MarsSerializationHelper.JsonSerialization.SerializationFile.CreateJsonFiles(databaseName, HostingEnvironment.MapPath("~/"), det.ConnString);
+                            Mars_Serialization.JsonSerialization.SerializationFile.ChangeConnectionString(databaseName, marsConfigFile);
+                            Mars_Serialization.JsonSerialization.SerializationFile.CreateJsonFiles(databaseName, HostingEnvironment.MapPath("~/"), det.ConnString);
 
                             //var appDictionary = GetAppData(databaseName);
                             //appsData.TryAdd(databaseName, appDictionary);

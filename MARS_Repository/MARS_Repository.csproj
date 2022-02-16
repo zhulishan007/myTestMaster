@@ -77,7 +77,6 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.3.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="MarsSerializationHelper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="MoreLinq, Version=3.3.2.0, Culture=neutral, PublicKeyToken=384d532d7e88985d, processorArchitecture=MSIL">
       <HintPath>..\packages\morelinq.3.3.2\lib\net451\MoreLinq.dll</HintPath>
     </Reference>
@@ -535,7 +534,6 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DLL\MarsSerializationHelper.dll" />
     <Content Include="Entities\Db_Context.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Db_Context.edmx</DependentUpon>
@@ -549,7 +547,14 @@
     <Content Include="SybaseDll\System.Data.CData.Sybase.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="DLL\" />
     <Folder Include="Helper\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Mars_Serialization\Mars_Serialization.csproj">
+      <Project>{35e9f246-4664-453e-8e09-1e3c4dfdb3fa}</Project>
+      <Name>Mars_Serialization</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

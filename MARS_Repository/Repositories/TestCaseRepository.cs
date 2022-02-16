@@ -13,9 +13,9 @@ using System.IO;
 using MARS_Repository.Entities;
 using NLog;
 using System.Transactions;
-using MarsSerializationHelper.ViewModel;
 using MoreLinq;
-using MarsSerializationHelper.Common;
+using Mars_Serialization.ViewModel;
+using Mars_Serialization.Common;
 
 namespace MARS_Repository.Repositories
 {

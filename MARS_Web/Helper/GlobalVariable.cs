@@ -1,4 +1,4 @@
-﻿using MarsSerializationHelper.ViewModel;
+﻿using Mars_Serialization.ViewModel;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Concurrent;
@@ -9,15 +9,15 @@ using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Web;
 using System.Web.Hosting;
-using static MarsSerializationHelper.JsonSerialization.SerializationFile;
+using static Mars_Serialization.JsonSerialization.SerializationFile;
 
 namespace MARS_Web.Helper
 {
     public static class GlobalVariable
     {
-        public static ConcurrentDictionary<string, ConcurrentDictionary<UserViewModal, List<MarsSerializationHelper.ViewModel.ProjectByUser>>> UsersDictionary { get; set; }
+        public static ConcurrentDictionary<string, ConcurrentDictionary<UserViewModal, List<Mars_Serialization.ViewModel.ProjectByUser>>> UsersDictionary { get; set; }
         public static ConcurrentDictionary<string, List<T_Memory_REGISTERED_APPS>> AllApps { get; set; }
-        public static ConcurrentDictionary<string, List<MarsSerializationHelper.ViewModel.KeywordViewModel>> AllKeywords { get; set; }
+        public static ConcurrentDictionary<string, List<Mars_Serialization.ViewModel.KeywordViewModel>> AllKeywords { get; set; }
     }
 
     //public static class ConvertJsonToList

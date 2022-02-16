@@ -128,20 +128,6 @@ namespace MARS_Web.Controllers
                     resultModel.status = 1;
                     resultModel.message = lMsg;
                 }
-
-                #region CREATE JSON FILE
-                //Thread Serializations = new Thread(delegate ()
-                //{
-                //    string marsHomeFolder = Server.MapPath("/Config");
-                //    string marsConfigFile = marsHomeFolder + @"\Mars.config";
-                //    MarsSerializationHelper.JsonSerialization.SerializationFile.ChangeConnectionString(connlist[0], marsConfigFile);
-                //    MarsSerializationHelper.JsonSerialization.SerializationFile.CreateJsonFiles(connlist[0], Server.MapPath("~/"));
-                //})
-                //{
-                //    IsBackground = true
-                //};
-                //Serializations.Start();
-                #endregion
             }
             catch (Exception ex)
             {
@@ -530,8 +516,8 @@ namespace MARS_Web.Controllers
                 if (ex.InnerException != null)
                     ELogger.ErrorException(string.Format("InnerException : Error occured in Login for LeftPanel method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
             }
-            List<MarsSerializationHelper.ViewModel.ProjectByUser> allProject = new List<MarsSerializationHelper.ViewModel.ProjectByUser>();
-            allProject = lProjectList.Select(x => new MarsSerializationHelper.ViewModel.ProjectByUser()
+            List<Mars_Serialization.ViewModel.ProjectByUser> allProject = new List<Mars_Serialization.ViewModel.ProjectByUser>();
+            allProject = lProjectList.Select(x => new Mars_Serialization.ViewModel.ProjectByUser()
             {
                 ProjectDesc = x.ProjectDesc,
                 ProjectExists = x.ProjectExists,

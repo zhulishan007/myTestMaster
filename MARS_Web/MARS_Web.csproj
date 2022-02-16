@@ -59,10 +59,6 @@
     <Reference Include="ExcelNumberFormat, Version=1.0.10.0, Culture=neutral, PublicKeyToken=23c6f5d73be07eca, processorArchitecture=MSIL">
       <HintPath>..\packages\ExcelNumberFormat.1.0.10\lib\net20\ExcelNumberFormat.dll</HintPath>
     </Reference>
-    <Reference Include="MarsSerializationHelper, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>DLL\MarsSerializationHelper.dll</HintPath>
-    </Reference>
     <Reference Include="MARSUtility, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\MARS_Utility\MARSUtility\bin\Debug\MARSUtility.dll</HintPath>
@@ -1616,7 +1612,6 @@
     <Content Include="DbScripts\DbTables_Triggers.sql" />
     <Content Include="DbScripts\Dbtype_Views_MaterializedView.sql" />
     <Content Include="DbScripts\InsertValuesintoTblMessage.sql" />
-    <Content Include="DLL\MarsSerializationHelper.dll" />
     <Content Include="DLL\MARSUtility.dll" />
     <Content Include="EmailHTML\ForgotEmail.html" />
     <Content Include="favicon.ico" />
@@ -1851,6 +1846,12 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Mars_Serialization\Mars_Serialization.csproj">
+      <Project>{35e9f246-4664-453e-8e09-1e3c4dfdb3fa}</Project>
+      <Name>Mars_Serialization</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

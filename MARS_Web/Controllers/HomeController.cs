@@ -1,8 +1,8 @@
 using MARS_Repository.Entities;
 using MARS_Repository.Repositories;
 using MARS_Repository.ViewModel;
+using Mars_Serialization.ViewModel;
 using MARS_Web.Helper;
-using MarsSerializationHelper.ViewModel;
 using Newtonsoft.Json;
 using NLog;
 using System;
@@ -13,7 +13,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
-using static MarsSerializationHelper.JsonSerialization.SerializationFile;
+using static Mars_Serialization.JsonSerialization.SerializationFile;
 
 namespace MARS_Web.Controllers
 {
@@ -281,7 +281,7 @@ namespace MARS_Web.Controllers
                         assignedTestSuiteIDs = allList.assignedTestSuiteIDs,
                         currentSyncroStatus = allList.currentSyncroStatus,
                         version = allList.version,
-                        allSteps = allList.allSteps.Where(x => x.recordStatus != MarsSerializationHelper.Common.CommonEnum.MarsRecordStatus.en_DeletedToDb).OrderBy(y => y.RUN_ORDER).ToList()
+                        allSteps = allList.allSteps.Where(x => x.recordStatus != Mars_Serialization.Common.CommonEnum.MarsRecordStatus.en_DeletedToDb).OrderBy(y => y.RUN_ORDER).ToList()
                     };
                     List<TestCaseResult> newResult = new List<TestCaseResult>();
                     newResult = lRep.ConvertTestcaseJsonToList(finalList, TestcaseId, SessionManager.Schema, SessionManager.APP, (long)SessionManager.TESTER_ID);
