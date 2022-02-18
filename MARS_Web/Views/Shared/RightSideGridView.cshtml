@@ -214,6 +214,7 @@
                   // if (result.value == true) {
                     ans = true;
                     var rowDatas = ui.rowData;
+                    
                     gridobj["@lTestCasegrid"].removeClass({ rowIndx: rowIndx, cls: 'pq-row-delete' });
                     if (ans) {
                         gridobj["@lTestCasegrid"].deleteRow({ rowIndx: rowIndx });
@@ -235,7 +236,8 @@
                                 }
                             }
                         }
-                        DeleteTestCaseRowInSession(rowDatas.stepsID, rowDatas.RUN_ORDER);
+                        var run_Orders = rowDatas.RUN_ORDER == undefined ? rowDatas.pq_ri + 1 : rowDatas.RUN_ORDER;
+                        DeleteTestCaseRowInSession(rowDatas.stepsID, run_Orders);
                     }
                    //} else {
                       // gridobj["@lTestCasegrid"].removeClass({ rowIndx: rowIndx, cls: 'pq-row-delete' });
@@ -1800,6 +1802,7 @@
                    //if (result.value == true) {
                         ans = true;
                         var rowDatas = ui.rowData;
+                        
                         gridobj[tcgrid].removeClass({ rowIndx: rowIndx, cls: 'pq-row-delete' });
                         if (ans) {
                             gridobj[tcgrid].deleteRow({ rowIndx: rowIndx });
@@ -1821,7 +1824,9 @@
                                     }
                                 }
                             }
-                            DeleteTestCaseRowInSession(rowDatas.stepsID, rowDatas.RUN_ORDER);
+                            
+                            var run_Orders = rowDatas.RUN_ORDER == undefined ? rowDatas.pq_ri + 1 : rowDatas.RUN_ORDER;
+                            DeleteTestCaseRowInSession(rowDatas.stepsID, run_Orders);
                         }
                   // } else {
                     //   gridobj[tcgrid].removeClass({ rowIndx: rowIndx, cls: 'pq-row-delete' });
@@ -2433,6 +2438,7 @@
                                // if (result.value == true) {
                     ans = true;
                     var rowDatas = ui.rowData;
+                    
                     gridobj[tcgrid].removeClass({ rowIndx: rowIndx, cls: 'pq-row-delete' });
                     if (ans) {
                         gridobj[tcgrid].deleteRow({ rowIndx: rowIndx });
@@ -2454,7 +2460,8 @@
                                 }
                             }
                         }
-                        DeleteTestCaseRowInSession(rowDatas.stepsID, rowDatas.RUN_ORDER);
+                        var run_Orders = rowDatas.RUN_ORDER == undefined ? rowDatas.pq_ri + 1 : rowDatas.RUN_ORDER;
+                        DeleteTestCaseRowInSession(rowDatas.stepsID, run_Orders);
                     }
                                 //} else {
                                   //  gridobj[tcgrid].removeClass({ rowIndx: rowIndx, cls: 'pq-row-delete' });

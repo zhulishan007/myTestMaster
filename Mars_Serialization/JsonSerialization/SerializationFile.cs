@@ -378,7 +378,7 @@ namespace Mars_Serialization.JsonSerialization
                         DataTable testSuiteIDDatatable = Common.Common.GetRecordAsDatatable(conString, queryTestSuiteId);
                         long[] testSuiteID = testSuiteIDDatatable.AsEnumerable().Select(r => r.Field<long>("TEST_SUITE_ID")).ToArray();
 
-                        string queryAssignedDataSets = "SELECT ttds.DATA_SUMMARY_ID, ttds.ALIAS_NAME FROM REL_TC_DATA_SUMMARY reltcds INNER JOIN T_TEST_DATA_SUMMARY ttds ON ttds.DATA_SUMMARY_ID = reltcds.DATA_SUMMARY_ID WHERE reltcds.TEST_CASE_ID = '" + testcaseId + "'";
+                        string queryAssignedDataSets = "SELECT ttds.DATA_SUMMARY_ID, ttds.ALIAS_NAME, ttds.DESCRIPTION_INFO FROM REL_TC_DATA_SUMMARY reltcds INNER JOIN T_TEST_DATA_SUMMARY ttds ON ttds.DATA_SUMMARY_ID = reltcds.DATA_SUMMARY_ID WHERE reltcds.TEST_CASE_ID = '" + testcaseId + "'";
                         DataTable assignedDataSetsDatatable = Common.Common.GetRecordAsDatatable(conString, queryAssignedDataSets);
                         List<MB_REL_TC_DATA_SUMMARY> assignedDataSets = new List<MB_REL_TC_DATA_SUMMARY>();
                         assignedDataSets = Common.Common.ConvertDataTableToList<MB_REL_TC_DATA_SUMMARY>(assignedDataSetsDatatable);

@@ -3189,14 +3189,16 @@
                                         return false;
                                     }
                                     startloader();
+                                    debugger;
                                     $.ajax({
-                                        url: "/TestCase/AddEditDataset",
+                                        url: "/TestCase/AddEditDatasetInSession",
                                         data: JSON.stringify({ Testcaseid: tcid, datasetid: datasetid, datasetname: title, datasetdesc: Desc }),
                                         type: "POST",
                                         contentType: "application/json;charset=utf-8",
                                         async: false,
                                         dataType: "json",
                                         success: function (lresult) {
+                                            debugger;
                                             if (lresult.status == 1) {
                                                 if (lresult.data.msg == "success") {
                                                     var prj = $("#projectidtc").val();

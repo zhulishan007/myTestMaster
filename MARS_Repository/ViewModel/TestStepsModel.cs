@@ -84,5 +84,6 @@ namespace MARS_Repository.ViewModel
     {
         public long DATA_SUMMARY_ID { get; set; }
         public string ALIAS_NAME { get; set; }
+        public string DESCRIPTION_INFO { get; set; }
     }
 }

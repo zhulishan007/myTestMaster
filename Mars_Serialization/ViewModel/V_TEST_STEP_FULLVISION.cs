@@ -60,7 +60,7 @@ namespace Mars_Serialization.ViewModel
     {
         public long DATA_SUMMARY_ID { get; set; }
         public string ALIAS_NAME { get; set; }
-        //public string DESCRIPTION_INFO { get; set; }
+        public string DESCRIPTION_INFO { get; set; }
         //public Nullable<short> AVAILABLE_MARK { get; set; }
         //public Nullable<long> VERSION { get; set; }
         //public Nullable<short> SHARE_MARK { get; set; }

@@ -451,7 +451,7 @@ namespace MARS_Web.Controllers
             try
             {
                 logger.Info(string.Format("Add testcase row in session in TestCase controller for AddNewRowTestCaseInSession method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-
+                TestCaseRepository tc = new TestCaseRepository();
                 Mars_Memory_TestCase allList = new Mars_Memory_TestCase();
                 string testcaseSessionName = string.Format("{0}_Testcase_{1}", SessionManager.Schema, testCaseId);
                 if (Session[testcaseSessionName] != null)
@@ -459,17 +459,37 @@ namespace MARS_Web.Controllers
                 List<MB_V_TEST_STEPS> allSteps = allList.allSteps;
                 allSteps.ForEach(x =>
                 {
-                    if (x.RUN_ORDER >= newRowRunOrder) { x.RUN_ORDER++; x.recordStatus = Mars_Serialization.Common.CommonEnum.MarsRecordStatus.en_ModifiedToDb; }
+                    if (x.RUN_ORDER >= newRowRunOrder)
+                    {
+                        x.RUN_ORDER++;
+                        x.recordStatus = Mars_Serialization.Common.CommonEnum.MarsRecordStatus.en_ModifiedToDb;
+                    }
                 });
                 MB_V_TEST_STEPS newStep = new MB_V_TEST_STEPS
                 {
                     STEPS_ID = stepId,
                     RUN_ORDER = newRowRunOrder,
                     TEST_CASE_ID = testCaseId,
-                    recordStatus = Mars_Serialization.Common.CommonEnum.MarsRecordStatus.en_NewToDb,
-                    dataForDataSets = allSteps.FirstOrDefault().dataForDataSets
+                    recordStatus = Mars_Serialization.Common.CommonEnum.MarsRecordStatus.en_NewToDb
+                    //dataForDataSets = allSteps.FirstOrDefault().dataForDataSets
                 };
-                newStep.dataForDataSets.ForEach(x => { x.DATASETVALUE = string.Empty; x.SKIP = 0; });
+                foreach (var item in allList.assignedDataSets)
+                {
+                    DataForDataSets obj = new DataForDataSets()
+                    {
+                        DATASETVALUE = string.Empty,
+                        SKIP = 0,
+                        Data_Setting_Id = tc.GetDataSettings_Seq(),
+                        DATA_SUMMARY_ID = item.DATA_SUMMARY_ID,
+                        STEPS_ID = stepId
+                    };
+                    newStep.dataForDataSets.Add(obj);
+                }
+                //newStep.dataForDataSets.ForEach(x =>
+                //{
+                //    x.DATASETVALUE = string.Empty;
+                //    x.SKIP = 0;
+                //});
                 allSteps.Add(newStep);
                 allList.allSteps = allList.allSteps.OrderBy(x => x.RUN_ORDER).ToList();
                 Session[testcaseSessionName] = allList;
@@ -499,7 +519,7 @@ namespace MARS_Web.Controllers
                 if (Session[testcaseSessionName] != null)
                     allList = Session[testcaseSessionName] as Mars_Memory_TestCase;
                 List<MB_V_TEST_STEPS> step = allList.allSteps.Where(x => x.STEPS_ID == stepId).ToList();
-                bool isPegWindow = step.Any(x => x.KEY_WORD_NAME.Trim().ToLower().Equals("pegwindow"));
+                bool isPegWindow = step.Any(x => !string.IsNullOrEmpty(x.KEY_WORD_NAME) && x.KEY_WORD_NAME.Trim().ToLower().Equals("pegwindow"));
                 if (step.Count() > 0)
                 {
                     step.ForEach(x => { x.recordStatus = Mars_Serialization.Common.CommonEnum.MarsRecordStatus.en_DeletedToDb; });
@@ -2756,8 +2776,10 @@ namespace MARS_Web.Controllers
                 logger.Info(string.Format("ADD/ADIT DATASET IN THE SESSION | TESTCASEID : {0} | USERNAME: {1} | START : {2}", Testcaseid, SessionManager.TESTER_LOGIN_NAME, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
                 var lSchema = SessionManager.Schema;
                 var lConnectionStr = SessionManager.APP;
-                var testCaserepo = new TestCaseRepository();
-                testCaserepo.Username = SessionManager.TESTER_LOGIN_NAME;
+                var testCaserepo = new TestCaseRepository
+                {
+                    Username = SessionManager.TESTER_LOGIN_NAME
+                };
                 bool IsAvailable = testCaserepo.CheckDuplicateDataset(datasetname, datasetid);
                 if (IsAvailable)
                 {
@@ -2777,7 +2799,35 @@ namespace MARS_Web.Controllers
                 if (Session[testcaseSessionName] != null)
                     allList = Session[testcaseSessionName] as Mars_Memory_TestCase;
 
-
+                MB_REL_TC_DATA_SUMMARY objDataset = new MB_REL_TC_DATA_SUMMARY()
+                {
+                    recordStatus = Mars_Serialization.Common.CommonEnum.MarsRecordStatus.en_NewToDb,
+                    ALIAS_NAME = datasetname,
+                    DATA_SUMMARY_ID = testCaserepo.GetTEST_DATA_SUMMARY_Seq()
+                    //DESCRIPTION_INFO = datasetdesc
+                };
+                allList.assignedDataSets.Add(objDataset);
+                allList.allSteps.ForEach(x =>
+                {
+                    DataForDataSets obj = new DataForDataSets
+                    {
+                        DATASETVALUE = string.Empty,
+                        DATA_SUMMARY_ID = objDataset.DATA_SUMMARY_ID,
+                        SKIP = 0,
+                        Data_Setting_Id = 0,
+                        STEPS_ID = x.STEPS_ID
+                    };
+                    x.dataForDataSets.Add(obj);
+                });
+                var result = new
+                {
+                    datasetId = datasetid,
+                    msg = "success"
+                };
+                var flag = datasetid == 0 ? "added" : "saved";
+                resultModel.data = result;
+                resultModel.message = "Dataset is " + flag + " successfully";
+                resultModel.status = 1;
                 logger.Info(string.Format("ADD/ADIT DATASET IN THE SESSION | TESTCASEID : {0} | USERNAME: {1} | END : {2}", Testcaseid, SessionManager.TESTER_LOGIN_NAME, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
             }
             catch (Exception ex)
