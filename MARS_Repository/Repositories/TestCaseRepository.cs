@@ -4341,20 +4341,23 @@ namespace MARS_Repository.Repositories
                             DataRow[] addedRow = dataTable.Select("STATUS = 'Added'");
                             if (addedRow.Length > 0)
                             {
-                                bool addTestcaseStatus = InsertTestcaseStepsInDatabase(addedRow, testCaseId, connectionString, addedSteps);
+                                bool addTestcaseStatus = InsertTestcaseStepsInDatabase(addedRow, testCaseId, connectionString, addedSteps, connection);
                             }
 
                             DataRow[] updatedRow = dataTable.Select("STATUS = 'Updated'");
                             if (updatedRow.Length > 0)
                             {
-                                bool updateTestcaseStatus = UpdateTestcaseStepsInDatabase(updatedRow, testCaseId, connectionString);
+                                bool updateTestcaseStatus = UpdateTestcaseStepsInDatabase(updatedRow, testCaseId, connectionString, connection);
                             }
                             DataRow[] deletedRow = dataTable.Select("STATUS = 'Deleted'");
                             if (deletedRow.Length > 0)
                             {
-                                bool deleteTestcaseStatus = DeleteTestcaseStepsInDatabase(deletedRow, testCaseId, connectionString);
+                                bool deleteTestcaseStatus = DeleteTestcaseStepsInDatabase(deletedRow, testCaseId, connectionString, connection);
                             }
-                            bool dataSetStatus = InsertUpdateDatasetAndSettings(testCaseId, connectionString, steps);
+
+
+                            bool dataSetStatus = InsertUpdateDatasetAndSettings(testCaseId, connectionString, steps, connection);
+
 
                             command.CommandText = "TRUNCATE TABLE T_TEST_STEPS_TEMP";
                             command.ExecuteNonQuery();
@@ -4373,6 +4376,11 @@ namespace MARS_Repository.Repositories
                         command.ExecuteNonQuery();
 
                         command.CommandText = "DROP TABLE T_TEST_STEPS_TEMP";
+                        command.ExecuteNonQuery();
+
+                        command.CommandText = "TRUNCATE TABLE T_DATASET_TEMP";
+                        command.ExecuteNonQuery();
+                        command.CommandText = "DROP TABLE T_DATASET_TEMP";
                         command.ExecuteNonQuery();
 
                         logger.Error(string.Format("Error occured TestCase in SaveTestcaseSessionInDatabase method | Testcase Id : {0} | UserName: {1}", testCaseId, Username));
@@ -4394,702 +4402,1223 @@ namespace MARS_Repository.Repositories
                 return false;
             }
         }
-        public bool InsertTestcaseStepsInDatabase(DataRow[] addedRow, long testCaseId, string lConnectionStr, List<MB_V_TEST_STEPS> addedSteps)
+        public bool InsertTestcaseStepsInDatabase(DataRow[] addedRow, long testCaseId, string lConnectionStr, List<MB_V_TEST_STEPS> addedSteps, OracleConnection lconnection)
         {
-            try
-            {
-                logger.Info(string.Format("INSERT NEW ADDED TESTCASE STEPS VALUES INTO DATABASE | TESTCASEID : {0} | USERNAME: {1} | START : {2}", testCaseId, Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
-                OracleTransaction ltransaction;
-                OracleConnection lconnection = new OracleConnection(lConnectionStr);
-                lconnection.Open();
-                ltransaction = lconnection.BeginTransaction();
-                string lcmdquery = "INSERT INTO T_TEST_STEPS (STEPS_ID, RUN_ORDER, KEY_WORD_ID, TEST_CASE_ID, OBJECT_ID, COLUMN_ROW_SETTING, VALUE_SETTING, \"COMMENT\", IS_RUNNABLE, OBJECT_NAME_ID) values(:1,:2,:3,:4,:5,:6,:7,:8,:9,:10)";
+            logger.Info(string.Format("INSERT NEW ADDED TESTCASE STEPS VALUES INTO DATABASE | TESTCASEID : {0} | USERNAME: {1} | START : {2}", testCaseId, Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
+            //OracleTransaction ltransaction;
+            //OracleConnection lconnection = new OracleConnection(lConnectionStr);
+            //lconnection.Open();
+            //ltransaction = lconnection.BeginTransaction();
+            string lcmdquery = "INSERT INTO T_TEST_STEPS (STEPS_ID, RUN_ORDER, KEY_WORD_ID, TEST_CASE_ID, OBJECT_ID, COLUMN_ROW_SETTING, VALUE_SETTING, \"COMMENT\", IS_RUNNABLE, OBJECT_NAME_ID) values(:1,:2,:3,:4,:5,:6,:7,:8,:9,:10)";
 
-                int[] ids = new int[addedRow.Length];
-                using (var lcmd = lconnection.CreateCommand())
+            int[] ids = new int[addedRow.Length];
+            using (var lcmd = lconnection.CreateCommand())
+            {
+                lcmd.CommandText = lcmdquery;
+                lcmd.ArrayBindCount = ids.Length;
+
+                decimal[] STEPS_ID_param = addedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long>("STEPS_ID"))).ToArray();
+                decimal[] RUN_ORDER_param = addedRow.AsEnumerable().Select(r => r.Field<decimal>("RUN_ORDER")).ToArray();
+                decimal[] KEY_WORD_ID_param = addedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long>("KEY_WORD_ID"))).ToArray();
+                decimal[] TEST_CASE_ID_param = addedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long>("TEST_CASE_ID"))).ToArray();
+                decimal[] OBJECT_ID_param = addedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long?>("OBJECT_ID"))).ToArray();
+                decimal?[] OBJECT_ID_NEW_Param = OBJECT_ID_param.Select(x => x > 0 ? x : (decimal?)null).ToArray();
+                string[] COLUMN_ROW_SETTING_param = addedRow.AsEnumerable().Select(r => r.Field<string>("COLUMN_ROW_SETTING")).ToArray();
+                string[] VALUE_SETTING_param = addedRow.AsEnumerable().Select(r => r.Field<string>("VALUE_SETTING")).ToArray();
+                string[] COMMENT_param = addedRow.AsEnumerable().Select(r => r.Field<string>("COMMENTS")).ToArray();
+                long[] IS_RUNNABLE_param = addedRow.AsEnumerable().Select(r => Convert.ToInt64(r.Field<decimal>("IS_RUNNABLE"))).ToArray();
+                long[] OBJECT_NAME_ID_param = addedRow.AsEnumerable().Select(r => Convert.ToInt64(r.Field<decimal?>("OBJECT_NAME_ID"))).ToArray();
+
+                OracleParameter STEPS_ID_oparam = new OracleParameter
                 {
-                    lcmd.CommandText = lcmdquery;
-                    lcmd.ArrayBindCount = ids.Length;
+                    OracleDbType = OracleDbType.Decimal,
+                    Value = STEPS_ID_param
+                };
+                OracleParameter RUN_ORDER_oparam = new OracleParameter
+                {
+                    OracleDbType = OracleDbType.Decimal,
+                    IsNullable = true,
+                    Value = RUN_ORDER_param
+                };
+                OracleParameter KEY_WORD_ID_oparam = new OracleParameter
+                {
+                    OracleDbType = OracleDbType.Decimal,
+                    IsNullable = true,
+                    Value = KEY_WORD_ID_param
+                };
+                OracleParameter TEST_CASE_ID_oparam = new OracleParameter
+                {
+                    OracleDbType = OracleDbType.Decimal,
+                    IsNullable = true,
+                    Value = TEST_CASE_ID_param
+                };
+                OracleParameter OBJECT_ID_oparam = new OracleParameter
+                {
+                    OracleDbType = OracleDbType.Decimal,
+                    IsNullable = true,
+                    Value = OBJECT_ID_NEW_Param
+                };
+                OracleParameter COLUMN_ROW_SETTING_oparam = new OracleParameter
+                {
+                    OracleDbType = OracleDbType.Varchar2,
+                    IsNullable = true,
+                    Value = COLUMN_ROW_SETTING_param
+                };
+                OracleParameter VALUE_SETTING_oparam = new OracleParameter
+                {
+                    OracleDbType = OracleDbType.Varchar2,
+                    IsNullable = true,
+                    Value = VALUE_SETTING_param
+                };
+                OracleParameter COMMENT_oparam = new OracleParameter
+                {
+                    OracleDbType = OracleDbType.Varchar2,
+                    IsNullable = true,
+                    Value = COMMENT_param
+                };
+                OracleParameter IS_RUNNABLE_oparam = new OracleParameter
+                {
+                    OracleDbType = OracleDbType.Long,
+                    IsNullable = true,
+                    Value = IS_RUNNABLE_param
+                };
+                OracleParameter OBJECT_NAME_ID_oparam = new OracleParameter
+                {
+                    OracleDbType = OracleDbType.Long,
+                    IsNullable = true,
+                    Value = OBJECT_NAME_ID_param
+                };
+                lcmd.Parameters.Add(STEPS_ID_oparam);
+                lcmd.Parameters.Add(RUN_ORDER_oparam);
+                lcmd.Parameters.Add(KEY_WORD_ID_oparam);
+                lcmd.Parameters.Add(TEST_CASE_ID_oparam);
+                lcmd.Parameters.Add(OBJECT_ID_oparam);
+                lcmd.Parameters.Add(COLUMN_ROW_SETTING_oparam);
+                lcmd.Parameters.Add(VALUE_SETTING_oparam);
+                lcmd.Parameters.Add(COMMENT_oparam);
+                lcmd.Parameters.Add(IS_RUNNABLE_oparam);
+                lcmd.Parameters.Add(OBJECT_NAME_ID_oparam);
 
-                    decimal[] STEPS_ID_param = addedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long>("STEPS_ID"))).ToArray();
-                    decimal[] RUN_ORDER_param = addedRow.AsEnumerable().Select(r => r.Field<decimal>("RUN_ORDER")).ToArray();
-                    decimal[] KEY_WORD_ID_param = addedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long>("KEY_WORD_ID"))).ToArray();
-                    decimal[] TEST_CASE_ID_param = addedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long>("TEST_CASE_ID"))).ToArray();
-                    decimal[] OBJECT_ID_param = addedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long?>("OBJECT_ID"))).ToArray();
-                    decimal?[] OBJECT_ID_NEW_Param = OBJECT_ID_param.Select(x => x > 0 ? x : (decimal?)null).ToArray();
-                    string[] COLUMN_ROW_SETTING_param = addedRow.AsEnumerable().Select(r => r.Field<string>("COLUMN_ROW_SETTING")).ToArray();
-                    string[] VALUE_SETTING_param = addedRow.AsEnumerable().Select(r => r.Field<string>("VALUE_SETTING")).ToArray();
-                    string[] COMMENT_param = addedRow.AsEnumerable().Select(r => r.Field<string>("COMMENTS")).ToArray();
-                    long[] IS_RUNNABLE_param = addedRow.AsEnumerable().Select(r => Convert.ToInt64(r.Field<decimal>("IS_RUNNABLE"))).ToArray();
-                    long[] OBJECT_NAME_ID_param = addedRow.AsEnumerable().Select(r => Convert.ToInt64(r.Field<decimal?>("OBJECT_NAME_ID"))).ToArray();
+                lcmd.ExecuteNonQuery();
 
-                    OracleParameter STEPS_ID_oparam = new OracleParameter
-                    {
-                        OracleDbType = OracleDbType.Decimal,
-                        Value = STEPS_ID_param
-                    };
-                    OracleParameter RUN_ORDER_oparam = new OracleParameter
-                    {
-                        OracleDbType = OracleDbType.Decimal,
-                        IsNullable = true,
-                        Value = RUN_ORDER_param
-                    };
-                    OracleParameter KEY_WORD_ID_oparam = new OracleParameter
-                    {
-                        OracleDbType = OracleDbType.Decimal,
-                        IsNullable = true,
-                        Value = KEY_WORD_ID_param
-                    };
-                    OracleParameter TEST_CASE_ID_oparam = new OracleParameter
-                    {
-                        OracleDbType = OracleDbType.Decimal,
-                        IsNullable = true,
-                        Value = TEST_CASE_ID_param
-                    };
-                    OracleParameter OBJECT_ID_oparam = new OracleParameter
-                    {
-                        OracleDbType = OracleDbType.Decimal,
-                        IsNullable = true,
-                        Value = OBJECT_ID_NEW_Param
-                    };
-                    OracleParameter COLUMN_ROW_SETTING_oparam = new OracleParameter
-                    {
-                        OracleDbType = OracleDbType.Varchar2,
-                        IsNullable = true,
-                        Value = COLUMN_ROW_SETTING_param
-                    };
-                    OracleParameter VALUE_SETTING_oparam = new OracleParameter
-                    {
-                        OracleDbType = OracleDbType.Varchar2,
-                        IsNullable = true,
-                        Value = VALUE_SETTING_param
-                    };
-                    OracleParameter COMMENT_oparam = new OracleParameter
-                    {
-                        OracleDbType = OracleDbType.Varchar2,
-                        IsNullable = true,
-                        Value = COMMENT_param
-                    };
-                    OracleParameter IS_RUNNABLE_oparam = new OracleParameter
-                    {
-                        OracleDbType = OracleDbType.Long,
-                        IsNullable = true,
-                        Value = IS_RUNNABLE_param
-                    };
-                    OracleParameter OBJECT_NAME_ID_oparam = new OracleParameter
-                    {
-                        OracleDbType = OracleDbType.Long,
-                        IsNullable = true,
-                        Value = OBJECT_NAME_ID_param
-                    };
-                    lcmd.Parameters.Add(STEPS_ID_oparam);
-                    lcmd.Parameters.Add(RUN_ORDER_oparam);
-                    lcmd.Parameters.Add(KEY_WORD_ID_oparam);
-                    lcmd.Parameters.Add(TEST_CASE_ID_oparam);
-                    lcmd.Parameters.Add(OBJECT_ID_oparam);
-                    lcmd.Parameters.Add(COLUMN_ROW_SETTING_oparam);
-                    lcmd.Parameters.Add(VALUE_SETTING_oparam);
-                    lcmd.Parameters.Add(COMMENT_oparam);
-                    lcmd.Parameters.Add(IS_RUNNABLE_oparam);
-                    lcmd.Parameters.Add(OBJECT_NAME_ID_oparam);
+                var alldatasetings = addedSteps.Select(x => x.dataForDataSets).ToList();
+                List<DataForDataSets> data_settings = new List<DataForDataSets>();
+                alldatasetings.ForEach(x => { data_settings.AddRange(x); });
+                bool IsAddDatasettings = InsertDataSettingsInDatabase(data_settings, testCaseId, lConnectionStr, lconnection);
 
-                    try
-                    {
-                        lcmd.ExecuteNonQuery();
-                        ltransaction.Commit();
-                        lconnection.Close();
-
-                        var alldatasetings = addedSteps.Select(x => x.dataForDataSets).ToList();
-                        List<DataForDataSets> data_settings = new List<DataForDataSets>();
-                        alldatasetings.ForEach(x => { data_settings.AddRange(x); });
-                        bool IsAddDatasettings = InsertDataSettingsInDatabase(data_settings, testCaseId, lConnectionStr);
-                    }
-                    catch (Exception lex)
-                    {
-                        ltransaction.Rollback();
-                        ltransaction.Commit();
-                        lconnection.Close();
-                        throw new Exception(lex.Message);
-                    }
-                    logger.Info(string.Format("INSERT NEW ADDED TESTCASE STEPS VALUES INTO DATABASE | TESTCASEID : {0} | USERNAME: {1} | END : {2}", testCaseId, Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
-                }
-                return true;
+                logger.Info(string.Format("INSERT NEW ADDED TESTCASE STEPS VALUES INTO DATABASE | TESTCASEID : {0} | USERNAME: {1} | END : {2}", testCaseId, Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
             }
-            catch (Exception ex)
-            {
-                throw;
-            }
+            return true;
+
+            #region OLD CODE
+            //try
+            //{
+            //    logger.Info(string.Format("INSERT NEW ADDED TESTCASE STEPS VALUES INTO DATABASE | TESTCASEID : {0} | USERNAME: {1} | START : {2}", testCaseId, Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
+            //    OracleTransaction ltransaction;
+            //    OracleConnection lconnection = new OracleConnection(lConnectionStr);
+            //    lconnection.Open();
+            //    ltransaction = lconnection.BeginTransaction();
+            //    string lcmdquery = "INSERT INTO T_TEST_STEPS (STEPS_ID, RUN_ORDER, KEY_WORD_ID, TEST_CASE_ID, OBJECT_ID, COLUMN_ROW_SETTING, VALUE_SETTING, \"COMMENT\", IS_RUNNABLE, OBJECT_NAME_ID) values(:1,:2,:3,:4,:5,:6,:7,:8,:9,:10)";
+
+            //    int[] ids = new int[addedRow.Length];
+            //    using (var lcmd = lconnection.CreateCommand())
+            //    {
+            //        lcmd.CommandText = lcmdquery;
+            //        lcmd.ArrayBindCount = ids.Length;
+
+            //        decimal[] STEPS_ID_param = addedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long>("STEPS_ID"))).ToArray();
+            //        decimal[] RUN_ORDER_param = addedRow.AsEnumerable().Select(r => r.Field<decimal>("RUN_ORDER")).ToArray();
+            //        decimal[] KEY_WORD_ID_param = addedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long>("KEY_WORD_ID"))).ToArray();
+            //        decimal[] TEST_CASE_ID_param = addedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long>("TEST_CASE_ID"))).ToArray();
+            //        decimal[] OBJECT_ID_param = addedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long?>("OBJECT_ID"))).ToArray();
+            //        decimal?[] OBJECT_ID_NEW_Param = OBJECT_ID_param.Select(x => x > 0 ? x : (decimal?)null).ToArray();
+            //        string[] COLUMN_ROW_SETTING_param = addedRow.AsEnumerable().Select(r => r.Field<string>("COLUMN_ROW_SETTING")).ToArray();
+            //        string[] VALUE_SETTING_param = addedRow.AsEnumerable().Select(r => r.Field<string>("VALUE_SETTING")).ToArray();
+            //        string[] COMMENT_param = addedRow.AsEnumerable().Select(r => r.Field<string>("COMMENTS")).ToArray();
+            //        long[] IS_RUNNABLE_param = addedRow.AsEnumerable().Select(r => Convert.ToInt64(r.Field<decimal>("IS_RUNNABLE"))).ToArray();
+            //        long[] OBJECT_NAME_ID_param = addedRow.AsEnumerable().Select(r => Convert.ToInt64(r.Field<decimal?>("OBJECT_NAME_ID"))).ToArray();
+
+            //        OracleParameter STEPS_ID_oparam = new OracleParameter
+            //        {
+            //            OracleDbType = OracleDbType.Decimal,
+            //            Value = STEPS_ID_param
+            //        };
+            //        OracleParameter RUN_ORDER_oparam = new OracleParameter
+            //        {
+            //            OracleDbType = OracleDbType.Decimal,
+            //            IsNullable = true,
+            //            Value = RUN_ORDER_param
+            //        };
+            //        OracleParameter KEY_WORD_ID_oparam = new OracleParameter
+            //        {
+            //            OracleDbType = OracleDbType.Decimal,
+            //            IsNullable = true,
+            //            Value = KEY_WORD_ID_param
+            //        };
+            //        OracleParameter TEST_CASE_ID_oparam = new OracleParameter
+            //        {
+            //            OracleDbType = OracleDbType.Decimal,
+            //            IsNullable = true,
+            //            Value = TEST_CASE_ID_param
+            //        };
+            //        OracleParameter OBJECT_ID_oparam = new OracleParameter
+            //        {
+            //            OracleDbType = OracleDbType.Decimal,
+            //            IsNullable = true,
+            //            Value = OBJECT_ID_NEW_Param
+            //        };
+            //        OracleParameter COLUMN_ROW_SETTING_oparam = new OracleParameter
+            //        {
+            //            OracleDbType = OracleDbType.Varchar2,
+            //            IsNullable = true,
+            //            Value = COLUMN_ROW_SETTING_param
+            //        };
+            //        OracleParameter VALUE_SETTING_oparam = new OracleParameter
+            //        {
+            //            OracleDbType = OracleDbType.Varchar2,
+            //            IsNullable = true,
+            //            Value = VALUE_SETTING_param
+            //        };
+            //        OracleParameter COMMENT_oparam = new OracleParameter
+            //        {
+            //            OracleDbType = OracleDbType.Varchar2,
+            //            IsNullable = true,
+            //            Value = COMMENT_param
+            //        };
+            //        OracleParameter IS_RUNNABLE_oparam = new OracleParameter
+            //        {
+            //            OracleDbType = OracleDbType.Long,
+            //            IsNullable = true,
+            //            Value = IS_RUNNABLE_param
+            //        };
+            //        OracleParameter OBJECT_NAME_ID_oparam = new OracleParameter
+            //        {
+            //            OracleDbType = OracleDbType.Long,
+            //            IsNullable = true,
+            //            Value = OBJECT_NAME_ID_param
+            //        };
+            //        lcmd.Parameters.Add(STEPS_ID_oparam);
+            //        lcmd.Parameters.Add(RUN_ORDER_oparam);
+            //        lcmd.Parameters.Add(KEY_WORD_ID_oparam);
+            //        lcmd.Parameters.Add(TEST_CASE_ID_oparam);
+            //        lcmd.Parameters.Add(OBJECT_ID_oparam);
+            //        lcmd.Parameters.Add(COLUMN_ROW_SETTING_oparam);
+            //        lcmd.Parameters.Add(VALUE_SETTING_oparam);
+            //        lcmd.Parameters.Add(COMMENT_oparam);
+            //        lcmd.Parameters.Add(IS_RUNNABLE_oparam);
+            //        lcmd.Parameters.Add(OBJECT_NAME_ID_oparam);
+
+            //        try
+            //        {
+            //            lcmd.ExecuteNonQuery();
+            //            ltransaction.Commit();
+            //            lconnection.Close();
+
+            //            var alldatasetings = addedSteps.Select(x => x.dataForDataSets).ToList();
+            //            List<DataForDataSets> data_settings = new List<DataForDataSets>();
+            //            alldatasetings.ForEach(x => { data_settings.AddRange(x); });
+            //            bool IsAddDatasettings = InsertDataSettingsInDatabase(data_settings, testCaseId, lConnectionStr);
+            //        }
+            //        catch (Exception lex)
+            //        {
+            //            ltransaction.Rollback();
+            //            ltransaction.Commit();
+            //            lconnection.Close();
+            //            throw new Exception(lex.Message);
+            //        }
+            //        logger.Info(string.Format("INSERT NEW ADDED TESTCASE STEPS VALUES INTO DATABASE | TESTCASEID : {0} | USERNAME: {1} | END : {2}", testCaseId, Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
+            //    }
+            //    return true;
+            //}
+            //catch (Exception ex)
+            //{
+            //    throw;
+            //}
+            #endregion
         }
-        public bool UpdateTestcaseStepsInDatabase(DataRow[] updatedRow, long testCaseId, string lConnectionStr)
+        public bool UpdateTestcaseStepsInDatabase(DataRow[] updatedRow, long testCaseId, string lConnectionStr, OracleConnection lconnection)
         {
-            try
+            logger.Info(string.Format("UPDATE TESTCASE STEPS VALUES INTO DATABASE | TESTCASEID : {0} | USERNAME: {1} | START : {2}", testCaseId, Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
+
+            //OracleTransaction ltransaction;
+            //OracleConnection lconnection = new OracleConnection(lConnectionStr);
+            //lconnection.Open();
+            //ltransaction = lconnection.BeginTransaction();
+            string lcmdquery = "UPDATE T_TEST_STEPS SET RUN_ORDER = :1, KEY_WORD_ID = :2, TEST_CASE_ID = :3, OBJECT_ID = :4, COLUMN_ROW_SETTING = :5, VALUE_SETTING = :6, \"COMMENT\" = :7, IS_RUNNABLE = :8, OBJECT_NAME_ID = :9 WHERE STEPS_ID = :10";
+
+            int[] ids = new int[updatedRow.Length];
+            using (var lcmd = lconnection.CreateCommand())
             {
-                logger.Info(string.Format("UPDATE TESTCASE STEPS VALUES INTO DATABASE | TESTCASEID : {0} | USERNAME: {1} | START : {2}", testCaseId, Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
+                lcmd.CommandText = lcmdquery;
+                lcmd.ArrayBindCount = ids.Length;
 
-                OracleTransaction ltransaction;
-                OracleConnection lconnection = new OracleConnection(lConnectionStr);
-                lconnection.Open();
-                ltransaction = lconnection.BeginTransaction();
-                string lcmdquery = "UPDATE T_TEST_STEPS SET RUN_ORDER = :1, KEY_WORD_ID = :2, TEST_CASE_ID = :3, OBJECT_ID = :4, COLUMN_ROW_SETTING = :5, VALUE_SETTING = :6, \"COMMENT\" = :7, IS_RUNNABLE = :8, OBJECT_NAME_ID = :9 WHERE STEPS_ID = :10";
+                decimal[] STEPS_ID_param = updatedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long>("STEPS_ID"))).ToArray();
+                decimal[] RUN_ORDER_param = updatedRow.AsEnumerable().Select(r => r.Field<decimal>("RUN_ORDER")).ToArray();
+                decimal[] KEY_WORD_ID_param = updatedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long>("KEY_WORD_ID"))).ToArray();
+                decimal[] TEST_CASE_ID_param = updatedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long>("TEST_CASE_ID"))).ToArray();
+                decimal[] OBJECT_ID_param = updatedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long>("OBJECT_ID"))).ToArray();
+                decimal?[] OBJECT_ID_NEW_Param = OBJECT_ID_param.Select(x => x > 0 ? x : (decimal?)null).ToArray();
+                string[] COLUMN_ROW_SETTING_param = updatedRow.AsEnumerable().Select(r => r.Field<string>("COLUMN_ROW_SETTING")).ToArray();
+                string[] VALUE_SETTING_param = updatedRow.AsEnumerable().Select(r => r.Field<string>("VALUE_SETTING")).ToArray();
+                string[] COMMENT_param = updatedRow.AsEnumerable().Select(r => r.Field<string>("COMMENTS")).ToArray();
+                long[] IS_RUNNABLE_param = updatedRow.AsEnumerable().Select(r => Convert.ToInt64(r.Field<decimal>("IS_RUNNABLE"))).ToArray();
+                long[] OBJECT_NAME_ID_param = updatedRow.AsEnumerable().Select(r => Convert.ToInt64(r.Field<decimal?>("OBJECT_NAME_ID"))).ToArray();
 
-                int[] ids = new int[updatedRow.Length];
-                using (var lcmd = lconnection.CreateCommand())
+
+                OracleParameter RUN_ORDER_oparam = new OracleParameter
                 {
-                    lcmd.CommandText = lcmdquery;
-                    lcmd.ArrayBindCount = ids.Length;
+                    OracleDbType = OracleDbType.Decimal,
+                    IsNullable = true,
+                    Value = RUN_ORDER_param
+                };
+                OracleParameter KEY_WORD_ID_oparam = new OracleParameter
+                {
+                    OracleDbType = OracleDbType.Decimal,
+                    IsNullable = true,
+                    Value = KEY_WORD_ID_param
+                };
+                OracleParameter TEST_CASE_ID_oparam = new OracleParameter
+                {
+                    OracleDbType = OracleDbType.Decimal,
+                    IsNullable = true,
+                    Value = TEST_CASE_ID_param
+                };
+                OracleParameter OBJECT_ID_oparam = new OracleParameter
+                {
+                    OracleDbType = OracleDbType.Decimal,
+                    IsNullable = true,
+                    Value = OBJECT_ID_NEW_Param
+                };
+                OracleParameter COLUMN_ROW_SETTING_oparam = new OracleParameter
+                {
+                    OracleDbType = OracleDbType.Varchar2,
+                    IsNullable = true,
+                    Value = COLUMN_ROW_SETTING_param
+                };
+                OracleParameter VALUE_SETTING_oparam = new OracleParameter
+                {
+                    OracleDbType = OracleDbType.Varchar2,
+                    IsNullable = true,
+                    Value = VALUE_SETTING_param
+                };
+                OracleParameter COMMENT_oparam = new OracleParameter
+                {
+                    OracleDbType = OracleDbType.Varchar2,
+                    IsNullable = true,
+                    Value = COMMENT_param
+                };
+                OracleParameter IS_RUNNABLE_oparam = new OracleParameter
+                {
+                    OracleDbType = OracleDbType.Long,
+                    IsNullable = true,
+                    Value = IS_RUNNABLE_param
+                };
+                OracleParameter OBJECT_NAME_ID_oparam = new OracleParameter
+                {
+                    OracleDbType = OracleDbType.Long,
+                    IsNullable = true,
+                    Value = OBJECT_NAME_ID_param
+                };
+                OracleParameter STEPS_ID_oparam = new OracleParameter
+                {
+                    OracleDbType = OracleDbType.Decimal,
+                    Value = STEPS_ID_param
+                };
 
-                    decimal[] STEPS_ID_param = updatedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long>("STEPS_ID"))).ToArray();
-                    decimal[] RUN_ORDER_param = updatedRow.AsEnumerable().Select(r => r.Field<decimal>("RUN_ORDER")).ToArray();
-                    decimal[] KEY_WORD_ID_param = updatedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long>("KEY_WORD_ID"))).ToArray();
-                    decimal[] TEST_CASE_ID_param = updatedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long>("TEST_CASE_ID"))).ToArray();
-                    decimal[] OBJECT_ID_param = updatedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long>("OBJECT_ID"))).ToArray();
-                    decimal?[] OBJECT_ID_NEW_Param = OBJECT_ID_param.Select(x => x > 0 ? x : (decimal?)null).ToArray();
-                    string[] COLUMN_ROW_SETTING_param = updatedRow.AsEnumerable().Select(r => r.Field<string>("COLUMN_ROW_SETTING")).ToArray();
-                    string[] VALUE_SETTING_param = updatedRow.AsEnumerable().Select(r => r.Field<string>("VALUE_SETTING")).ToArray();
-                    string[] COMMENT_param = updatedRow.AsEnumerable().Select(r => r.Field<string>("COMMENTS")).ToArray();
-                    long[] IS_RUNNABLE_param = updatedRow.AsEnumerable().Select(r => Convert.ToInt64(r.Field<decimal>("IS_RUNNABLE"))).ToArray();
-                    long[] OBJECT_NAME_ID_param = updatedRow.AsEnumerable().Select(r => Convert.ToInt64(r.Field<decimal?>("OBJECT_NAME_ID"))).ToArray();
+                lcmd.Parameters.Add(RUN_ORDER_oparam);
+                lcmd.Parameters.Add(KEY_WORD_ID_oparam);
+                lcmd.Parameters.Add(TEST_CASE_ID_oparam);
+                lcmd.Parameters.Add(OBJECT_ID_oparam);
+                lcmd.Parameters.Add(COLUMN_ROW_SETTING_oparam);
+                lcmd.Parameters.Add(VALUE_SETTING_oparam);
+                lcmd.Parameters.Add(COMMENT_oparam);
+                lcmd.Parameters.Add(IS_RUNNABLE_oparam);
+                lcmd.Parameters.Add(OBJECT_NAME_ID_oparam);
+                lcmd.Parameters.Add(STEPS_ID_oparam);
 
+                lcmd.ExecuteNonQuery();
 
-                    OracleParameter RUN_ORDER_oparam = new OracleParameter
-                    {
-                        OracleDbType = OracleDbType.Decimal,
-                        IsNullable = true,
-                        Value = RUN_ORDER_param
-                    };
-                    OracleParameter KEY_WORD_ID_oparam = new OracleParameter
-                    {
-                        OracleDbType = OracleDbType.Decimal,
-                        IsNullable = true,
-                        Value = KEY_WORD_ID_param
-                    };
-                    OracleParameter TEST_CASE_ID_oparam = new OracleParameter
-                    {
-                        OracleDbType = OracleDbType.Decimal,
-                        IsNullable = true,
-                        Value = TEST_CASE_ID_param
-                    };
-                    OracleParameter OBJECT_ID_oparam = new OracleParameter
-                    {
-                        OracleDbType = OracleDbType.Decimal,
-                        IsNullable = true,
-                        Value = OBJECT_ID_NEW_Param
-                    };
-                    OracleParameter COLUMN_ROW_SETTING_oparam = new OracleParameter
-                    {
-                        OracleDbType = OracleDbType.Varchar2,
-                        IsNullable = true,
-                        Value = COLUMN_ROW_SETTING_param
-                    };
-                    OracleParameter VALUE_SETTING_oparam = new OracleParameter
-                    {
-                        OracleDbType = OracleDbType.Varchar2,
-                        IsNullable = true,
-                        Value = VALUE_SETTING_param
-                    };
-                    OracleParameter COMMENT_oparam = new OracleParameter
-                    {
-                        OracleDbType = OracleDbType.Varchar2,
-                        IsNullable = true,
-                        Value = COMMENT_param
-                    };
-                    OracleParameter IS_RUNNABLE_oparam = new OracleParameter
-                    {
-                        OracleDbType = OracleDbType.Long,
-                        IsNullable = true,
-                        Value = IS_RUNNABLE_param
-                    };
-                    OracleParameter OBJECT_NAME_ID_oparam = new OracleParameter
-                    {
-                        OracleDbType = OracleDbType.Long,
-                        IsNullable = true,
-                        Value = OBJECT_NAME_ID_param
-                    };
-                    OracleParameter STEPS_ID_oparam = new OracleParameter
-                    {
-                        OracleDbType = OracleDbType.Decimal,
-                        Value = STEPS_ID_param
-                    };
-
-                    lcmd.Parameters.Add(RUN_ORDER_oparam);
-                    lcmd.Parameters.Add(KEY_WORD_ID_oparam);
-                    lcmd.Parameters.Add(TEST_CASE_ID_oparam);
-                    lcmd.Parameters.Add(OBJECT_ID_oparam);
-                    lcmd.Parameters.Add(COLUMN_ROW_SETTING_oparam);
-                    lcmd.Parameters.Add(VALUE_SETTING_oparam);
-                    lcmd.Parameters.Add(COMMENT_oparam);
-                    lcmd.Parameters.Add(IS_RUNNABLE_oparam);
-                    lcmd.Parameters.Add(OBJECT_NAME_ID_oparam);
-                    lcmd.Parameters.Add(STEPS_ID_oparam);
-
-                    try
-                    {
-                        lcmd.ExecuteNonQuery();
-                        ltransaction.Commit();
-                        lconnection.Close();
-                    }
-                    catch (Exception lex)
-                    {
-                        ltransaction.Rollback();
-                        ltransaction.Commit();
-                        lconnection.Close();
-                        throw new Exception(lex.Message);
-                    }                    
-                    logger.Info(string.Format("UPDATE TESTCASE STEPS VALUES INTO DATABASE | TESTCASEID : {0} | USERNAME: {1} | END : {2}", testCaseId, Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
-                }
-                return true;
+                logger.Info(string.Format("UPDATE TESTCASE STEPS VALUES INTO DATABASE | TESTCASEID : {0} | USERNAME: {1} | END : {2}", testCaseId, Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
             }
-            catch (Exception ex)
-            {
-                throw;
-            }
+            return true;
+            #region OLD CODE
+            //try
+            //{
+            //    logger.Info(string.Format("UPDATE TESTCASE STEPS VALUES INTO DATABASE | TESTCASEID : {0} | USERNAME: {1} | START : {2}", testCaseId, Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
+
+            //    OracleTransaction ltransaction;
+            //    OracleConnection lconnection = new OracleConnection(lConnectionStr);
+            //    lconnection.Open();
+            //    ltransaction = lconnection.BeginTransaction();
+            //    string lcmdquery = "UPDATE T_TEST_STEPS SET RUN_ORDER = :1, KEY_WORD_ID = :2, TEST_CASE_ID = :3, OBJECT_ID = :4, COLUMN_ROW_SETTING = :5, VALUE_SETTING = :6, \"COMMENT\" = :7, IS_RUNNABLE = :8, OBJECT_NAME_ID = :9 WHERE STEPS_ID = :10";
+
+            //    int[] ids = new int[updatedRow.Length];
+            //    using (var lcmd = lconnection.CreateCommand())
+            //    {
+            //        lcmd.CommandText = lcmdquery;
+            //        lcmd.ArrayBindCount = ids.Length;
+
+            //        decimal[] STEPS_ID_param = updatedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long>("STEPS_ID"))).ToArray();
+            //        decimal[] RUN_ORDER_param = updatedRow.AsEnumerable().Select(r => r.Field<decimal>("RUN_ORDER")).ToArray();
+            //        decimal[] KEY_WORD_ID_param = updatedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long>("KEY_WORD_ID"))).ToArray();
+            //        decimal[] TEST_CASE_ID_param = updatedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long>("TEST_CASE_ID"))).ToArray();
+            //        decimal[] OBJECT_ID_param = updatedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long>("OBJECT_ID"))).ToArray();
+            //        decimal?[] OBJECT_ID_NEW_Param = OBJECT_ID_param.Select(x => x > 0 ? x : (decimal?)null).ToArray();
+            //        string[] COLUMN_ROW_SETTING_param = updatedRow.AsEnumerable().Select(r => r.Field<string>("COLUMN_ROW_SETTING")).ToArray();
+            //        string[] VALUE_SETTING_param = updatedRow.AsEnumerable().Select(r => r.Field<string>("VALUE_SETTING")).ToArray();
+            //        string[] COMMENT_param = updatedRow.AsEnumerable().Select(r => r.Field<string>("COMMENTS")).ToArray();
+            //        long[] IS_RUNNABLE_param = updatedRow.AsEnumerable().Select(r => Convert.ToInt64(r.Field<decimal>("IS_RUNNABLE"))).ToArray();
+            //        long[] OBJECT_NAME_ID_param = updatedRow.AsEnumerable().Select(r => Convert.ToInt64(r.Field<decimal?>("OBJECT_NAME_ID"))).ToArray();
+
+
+            //        OracleParameter RUN_ORDER_oparam = new OracleParameter
+            //        {
+            //            OracleDbType = OracleDbType.Decimal,
+            //            IsNullable = true,
+            //            Value = RUN_ORDER_param
+            //        };
+            //        OracleParameter KEY_WORD_ID_oparam = new OracleParameter
+            //        {
+            //            OracleDbType = OracleDbType.Decimal,
+            //            IsNullable = true,
+            //            Value = KEY_WORD_ID_param
+            //        };
+            //        OracleParameter TEST_CASE_ID_oparam = new OracleParameter
+            //        {
+            //            OracleDbType = OracleDbType.Decimal,
+            //            IsNullable = true,
+            //            Value = TEST_CASE_ID_param
+            //        };
+            //        OracleParameter OBJECT_ID_oparam = new OracleParameter
+            //        {
+            //            OracleDbType = OracleDbType.Decimal,
+            //            IsNullable = true,
+            //            Value = OBJECT_ID_NEW_Param
+            //        };
+            //        OracleParameter COLUMN_ROW_SETTING_oparam = new OracleParameter
+            //        {
+            //            OracleDbType = OracleDbType.Varchar2,
+            //            IsNullable = true,
+            //            Value = COLUMN_ROW_SETTING_param
+            //        };
+            //        OracleParameter VALUE_SETTING_oparam = new OracleParameter
+            //        {
+            //            OracleDbType = OracleDbType.Varchar2,
+            //            IsNullable = true,
+            //            Value = VALUE_SETTING_param
+            //        };
+            //        OracleParameter COMMENT_oparam = new OracleParameter
+            //        {
+            //            OracleDbType = OracleDbType.Varchar2,
+            //            IsNullable = true,
+            //            Value = COMMENT_param
+            //        };
+            //        OracleParameter IS_RUNNABLE_oparam = new OracleParameter
+            //        {
+            //            OracleDbType = OracleDbType.Long,
+            //            IsNullable = true,
+            //            Value = IS_RUNNABLE_param
+            //        };
+            //        OracleParameter OBJECT_NAME_ID_oparam = new OracleParameter
+            //        {
+            //            OracleDbType = OracleDbType.Long,
+            //            IsNullable = true,
+            //            Value = OBJECT_NAME_ID_param
+            //        };
+            //        OracleParameter STEPS_ID_oparam = new OracleParameter
+            //        {
+            //            OracleDbType = OracleDbType.Decimal,
+            //            Value = STEPS_ID_param
+            //        };
+
+            //        lcmd.Parameters.Add(RUN_ORDER_oparam);
+            //        lcmd.Parameters.Add(KEY_WORD_ID_oparam);
+            //        lcmd.Parameters.Add(TEST_CASE_ID_oparam);
+            //        lcmd.Parameters.Add(OBJECT_ID_oparam);
+            //        lcmd.Parameters.Add(COLUMN_ROW_SETTING_oparam);
+            //        lcmd.Parameters.Add(VALUE_SETTING_oparam);
+            //        lcmd.Parameters.Add(COMMENT_oparam);
+            //        lcmd.Parameters.Add(IS_RUNNABLE_oparam);
+            //        lcmd.Parameters.Add(OBJECT_NAME_ID_oparam);
+            //        lcmd.Parameters.Add(STEPS_ID_oparam);
+
+            //        try
+            //        {
+            //            lcmd.ExecuteNonQuery();
+            //            ltransaction.Commit();
+            //            lconnection.Close();
+            //        }
+            //        catch (Exception lex)
+            //        {
+            //            ltransaction.Rollback();
+            //            ltransaction.Commit();
+            //            lconnection.Close();
+            //            throw new Exception(lex.Message);
+            //        }
+            //        logger.Info(string.Format("UPDATE TESTCASE STEPS VALUES INTO DATABASE | TESTCASEID : {0} | USERNAME: {1} | END : {2}", testCaseId, Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
+            //    }
+            //    return true;
+            //}
+            //catch (Exception ex)
+            //{
+            //    throw;
+            //}
+            #endregion
         }
-        public bool DeleteTestcaseStepsInDatabase(DataRow[] deletedRow, long testCaseId, string lConnectionStr)
+        public bool DeleteTestcaseStepsInDatabase(DataRow[] deletedRow, long testCaseId, string lConnectionStr, OracleConnection lconnection)
         {
-            try
+            logger.Info(string.Format("DELTE TESTCASE STEPS VALUES INTO DATABASE | TESTCASEID : {0} | USERNAME: {1} | START : {2}", testCaseId, Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
+
+            string deleteReportStepQuery = "DELETE FROM T_TEST_REPORT_STEPS WHERE STEPS_ID IN ({STEP_ID})";
+            string deleteDatasettingsQuery = "DELETE FROM TEST_DATA_SETTING WHERE STEPS_ID IN ({STEP_ID})";
+            string deleteStepQuery = "DELETE FROM T_TEST_STEPS WHERE STEPS_ID IN ({STEP_ID})";
+            using (var lcmd = lconnection.CreateCommand())
             {
-                logger.Info(string.Format("DELTE TESTCASE STEPS VALUES INTO DATABASE | TESTCASEID : {0} | USERNAME: {1} | START : {2}", testCaseId, Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
+                decimal[] STEPS_ID_param = deletedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long>("STEPS_ID"))).ToArray();
+                deleteReportStepQuery = deleteReportStepQuery.Replace("{STEP_ID}", string.Join(",", STEPS_ID_param));
+                deleteDatasettingsQuery = deleteDatasettingsQuery.Replace("{STEP_ID}", string.Join(",", STEPS_ID_param));
+                deleteStepQuery = deleteStepQuery.Replace("{STEP_ID}", string.Join(",", STEPS_ID_param));
 
-                string deleteReportStepQuery = "DELETE FROM T_TEST_REPORT_STEPS WHERE STEPS_ID IN ({STEP_ID})";
-                string deleteDatasettingsQuery = "DELETE FROM TEST_DATA_SETTING WHERE STEPS_ID IN ({STEP_ID})";
-                string deleteStepQuery = "DELETE FROM T_TEST_STEPS WHERE STEPS_ID IN ({STEP_ID})";
+                lcmd.CommandText = deleteReportStepQuery;
+                lcmd.ExecuteNonQuery();
 
-                using (OracleConnection connection = new OracleConnection(lConnectionStr))
-                {
-                    connection.Open();
-                    OracleCommand command = connection.CreateCommand();
-                    OracleTransaction transaction;
-                    transaction = connection.BeginTransaction(System.Data.IsolationLevel.ReadCommitted);
-                    command.Transaction = transaction;
+                lcmd.CommandText = deleteDatasettingsQuery;
+                lcmd.ExecuteNonQuery();
 
-                    try
-                    {
-                        decimal[] STEPS_ID_param = deletedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long>("STEPS_ID"))).ToArray();
-                        deleteReportStepQuery = deleteReportStepQuery.Replace("{STEP_ID}", string.Join(",", STEPS_ID_param));
-                        deleteDatasettingsQuery = deleteDatasettingsQuery.Replace("{STEP_ID}", string.Join(",", STEPS_ID_param));
-                        deleteStepQuery = deleteStepQuery.Replace("{STEP_ID}", string.Join(",", STEPS_ID_param));
+                lcmd.CommandText = deleteStepQuery;
+                lcmd.ExecuteNonQuery();
 
-                        command.CommandText = deleteReportStepQuery;
-                        command.ExecuteNonQuery();
-
-                        command.CommandText = deleteDatasettingsQuery;
-                        command.ExecuteNonQuery();
-
-                        command.CommandText = deleteStepQuery;
-                        command.ExecuteNonQuery();
-
-                        transaction.Commit();
-                        connection.Close();
-
-                    }
-                    catch (Exception ex)
-                    {
-                        transaction.Rollback();
-                        transaction.Commit();
-                        connection.Close();
-                        return false;
-                    }
-                }
-
-                //int[] ids = new int[deletedRow.Length];
-                //using (var lcmd = lconnection.CreateCommand())
-                //{
-                //    decimal[] STEPS_ID_param = deletedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long>("STEPS_ID"))).ToArray();
-                //    deleteReportStepQuery = deleteReportStepQuery.Replace("{STEP_ID}", string.Join(",", STEPS_ID_param));
-                //    deleteDatasettingsQuery = deleteDatasettingsQuery.Replace("{STEP_ID}", string.Join(",", STEPS_ID_param));
-                //    deleteStepQuery = deleteStepQuery.Replace("{STEP_ID}", string.Join(",", STEPS_ID_param));
-
-                //    lcmd.CommandText = string.Format("{0} {1} {2}", deleteReportStepQuery, deleteDatasettingsQuery, deleteStepQuery);
-                //    try
-                //    {
-                //        lcmd.ExecuteNonQuery();
-                //    }
-                //    catch (Exception lex)
-                //    {
-                //        ltransaction.Rollback();
-                //        throw new Exception(lex.Message);
-                //    }
-                //    ltransaction.Commit();
-                //    lconnection.Close();
-                //    logger.Info(string.Format("DELETE TESTCASE STEPS VALUES INTO DATABASE | TESTCASEID : {0} | USERNAME: {1} | END : {2}", testCaseId, Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
-                //}
-                return true;
+                logger.Info(string.Format("DELETE TESTCASE STEPS VALUES INTO DATABASE | TESTCASEID : {0} | USERNAME: {1} | END : {2}", testCaseId, Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
             }
-            catch (Exception ex)
-            {
-                throw;
-            }
+            return true;
+            #region OLD CODE
+            //try
+            //{
+            //    logger.Info(string.Format("DELTE TESTCASE STEPS VALUES INTO DATABASE | TESTCASEID : {0} | USERNAME: {1} | START : {2}", testCaseId, Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
+
+            //    string deleteReportStepQuery = "DELETE FROM T_TEST_REPORT_STEPS WHERE STEPS_ID IN ({STEP_ID})";
+            //    string deleteDatasettingsQuery = "DELETE FROM TEST_DATA_SETTING WHERE STEPS_ID IN ({STEP_ID})";
+            //    string deleteStepQuery = "DELETE FROM T_TEST_STEPS WHERE STEPS_ID IN ({STEP_ID})";
+
+            //    using (OracleConnection connection = new OracleConnection(lConnectionStr))
+            //    {
+            //        connection.Open();
+            //        OracleCommand command = connection.CreateCommand();
+            //        OracleTransaction transaction;
+            //        transaction = connection.BeginTransaction(System.Data.IsolationLevel.ReadCommitted);
+            //        command.Transaction = transaction;
+
+            //        try
+            //        {
+            //            decimal[] STEPS_ID_param = deletedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long>("STEPS_ID"))).ToArray();
+            //            deleteReportStepQuery = deleteReportStepQuery.Replace("{STEP_ID}", string.Join(",", STEPS_ID_param));
+            //            deleteDatasettingsQuery = deleteDatasettingsQuery.Replace("{STEP_ID}", string.Join(",", STEPS_ID_param));
+            //            deleteStepQuery = deleteStepQuery.Replace("{STEP_ID}", string.Join(",", STEPS_ID_param));
+
+            //            command.CommandText = deleteReportStepQuery;
+            //            command.ExecuteNonQuery();
+
+            //            command.CommandText = deleteDatasettingsQuery;
+            //            command.ExecuteNonQuery();
+
+            //            command.CommandText = deleteStepQuery;
+            //            command.ExecuteNonQuery();
+
+            //            transaction.Commit();
+            //            connection.Close();
+
+            //        }
+            //        catch (Exception ex)
+            //        {
+            //            transaction.Rollback();
+            //            transaction.Commit();
+            //            connection.Close();
+            //            return false;
+            //        }
+            //    }
+
+            //    //int[] ids = new int[deletedRow.Length];
+            //    //using (var lcmd = lconnection.CreateCommand())
+            //    //{
+            //    //    decimal[] STEPS_ID_param = deletedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long>("STEPS_ID"))).ToArray();
+            //    //    deleteReportStepQuery = deleteReportStepQuery.Replace("{STEP_ID}", string.Join(",", STEPS_ID_param));
+            //    //    deleteDatasettingsQuery = deleteDatasettingsQuery.Replace("{STEP_ID}", string.Join(",", STEPS_ID_param));
+            //    //    deleteStepQuery = deleteStepQuery.Replace("{STEP_ID}", string.Join(",", STEPS_ID_param));
+
+            //    //    lcmd.CommandText = string.Format("{0} {1} {2}", deleteReportStepQuery, deleteDatasettingsQuery, deleteStepQuery);
+            //    //    try
+            //    //    {
+            //    //        lcmd.ExecuteNonQuery();
+            //    //    }
+            //    //    catch (Exception lex)
+            //    //    {
+            //    //        ltransaction.Rollback();
+            //    //        throw new Exception(lex.Message);
+            //    //    }
+            //    //    ltransaction.Commit();
+            //    //    lconnection.Close();
+            //    //    logger.Info(string.Format("DELETE TESTCASE STEPS VALUES INTO DATABASE | TESTCASEID : {0} | USERNAME: {1} | END : {2}", testCaseId, Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
+            //    //}
+            //    return true;
+            //}
+            //catch (Exception ex)
+            //{
+            //    throw;
+            //}
+            #endregion
         }
-        public bool InsertUpdateDatasetAndSettings(long testCaseId, string lConnectionStr, Mars_Memory_TestCase steps)
+        public bool InsertUpdateDatasetAndSettings(long testCaseId, string lConnectionStr, Mars_Memory_TestCase steps, OracleConnection connection)
         {
-            try
+            logger.Info(string.Format("SAVE DATASET AND SETTINGS SESSION VALUES INTO DATABASE | TESTCASEID : {0} | USERNAME: {1} | START : {2}", testCaseId, Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
+            List<MB_REL_TC_DATA_SUMMARY> addedDataset = steps.assignedDataSets.Where(x => x.recordStatus == CommonEnum.MarsRecordStatus.en_NewToDb).ToList();
+            List<MB_REL_TC_DATA_SUMMARY> updatedDataset = steps.assignedDataSets.Where(x => x.recordStatus == CommonEnum.MarsRecordStatus.en_ModifiedToDb).ToList();
+            List<MB_REL_TC_DATA_SUMMARY> deletedDataset = steps.assignedDataSets.Where(x => x.recordStatus == CommonEnum.MarsRecordStatus.en_DeletedToDb).ToList();
+            using (var command = connection.CreateCommand())
             {
-                logger.Info(string.Format("SAVE DATASET AND SETTINGS SESSION VALUES INTO DATABASE | TESTCASEID : {0} | USERNAME: {1} | START : {2}", testCaseId, Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
-                List<MB_REL_TC_DATA_SUMMARY> addedDataset = steps.assignedDataSets.Where(x => x.recordStatus == CommonEnum.MarsRecordStatus.en_NewToDb).ToList();
-                List<MB_REL_TC_DATA_SUMMARY> updatedDataset = steps.assignedDataSets.Where(x => x.recordStatus == CommonEnum.MarsRecordStatus.en_ModifiedToDb).ToList();
-                List<MB_REL_TC_DATA_SUMMARY> deletedDataset = steps.assignedDataSets.Where(x => x.recordStatus == CommonEnum.MarsRecordStatus.en_DeletedToDb).ToList();
+                string dropTempTable = "DECLARE cnt NUMBER; BEGIN SELECT COUNT(*) INTO cnt FROM user_tables WHERE table_name = 'T_DATASET_TEMP'; IF cnt <> 0 THEN EXECUTE IMMEDIATE 'DROP TABLE T_DATASET_TEMP'; END IF; END;";
+                command.CommandText = dropTempTable;
+                command.ExecuteNonQuery();
 
-                using (OracleConnection connection = new OracleConnection(lConnectionStr))
+                string tempTestStepsTableQuery = "CREATE GLOBAL TEMPORARY TABLE T_DATASET_TEMP( STATUSS VARCHAR2(50 BYTE), DATA_SUMMARY_ID NUMBER(16,0), ALIAS_NAME VARCHAR2(64 BYTE), DESCRIPTION_INFO VARCHAR2(512 BYTE), AVAILABLE_MARK NUMBER(2,0), VERSION NUMBER(16,0), SHARE_MARK NUMBER(2,0), CREATE_TIME DATE, STATUS NUMBER(2,0), DATA_SET_TYPE NUMBER(2,0) ) ON COMMIT PRESERVE ROWS";
+                command.CommandText = tempTestStepsTableQuery;
+                command.ExecuteNonQuery();
+
+                if (steps.assignedDataSets.Count() > 0)
                 {
-                    connection.Open();
-                    OracleCommand command = connection.CreateCommand();
-                    OracleTransaction transaction;
-                    transaction = connection.BeginTransaction(System.Data.IsolationLevel.ReadCommitted);
-                    command.Transaction = transaction;
-                    try
+                    command.CommandText = string.Empty;
+                    foreach (var item in addedDataset)
                     {
-                        string dropTempTable = "DECLARE cnt NUMBER; BEGIN SELECT COUNT(*) INTO cnt FROM user_tables WHERE table_name = 'T_DATASET_TEMP'; IF cnt <> 0 THEN EXECUTE IMMEDIATE 'DROP TABLE T_DATASET_TEMP'; END IF; END;";
-                        command.CommandText = dropTempTable;
+                        command.CommandText = "INSERT INTO T_DATASET_TEMP (STATUSS, DATA_SUMMARY_ID, ALIAS_NAME, DESCRIPTION_INFO, AVAILABLE_MARK, VERSION, SHARE_MARK, CREATE_TIME, STATUS, DATA_SET_TYPE) VALUES " +
+                                                                   "('Added', " + item.DATA_SUMMARY_ID + ", '" + item.ALIAS_NAME + "', '" + null + "', '" + null + "', '" + null + "', '" + null + "', SYSDATE, '" + null + "', '" + null + "') ";
                         command.ExecuteNonQuery();
-
-                        string tempTestStepsTableQuery = "CREATE GLOBAL TEMPORARY TABLE T_DATASET_TEMP( STATUSS VARCHAR2(50 BYTE), DATA_SUMMARY_ID NUMBER(16,0), ALIAS_NAME VARCHAR2(64 BYTE), DESCRIPTION_INFO VARCHAR2(512 BYTE), AVAILABLE_MARK NUMBER(2,0), VERSION NUMBER(16,0), SHARE_MARK NUMBER(2,0), CREATE_TIME DATE, STATUS NUMBER(2,0), DATA_SET_TYPE NUMBER(2,0) ) ON COMMIT PRESERVE ROWS";
-                        command.CommandText = tempTestStepsTableQuery;
-                        command.ExecuteNonQuery();
-
-                        if (steps.assignedDataSets.Count() > 0)
-                        {
-                            command.CommandText = string.Empty;
-                            foreach (var item in addedDataset)
-                            {
-                                command.CommandText = "INSERT INTO T_DATASET_TEMP (STATUSS, DATA_SUMMARY_ID, ALIAS_NAME, DESCRIPTION_INFO, AVAILABLE_MARK, VERSION, SHARE_MARK, CREATE_TIME, STATUS, DATA_SET_TYPE) VALUES " +
-                                                                           "('Added', " + item.DATA_SUMMARY_ID + ", '" + item.ALIAS_NAME + "', '" + null + "', '" + null + "', '" + null + "', '" + null + "', SYSDATE, '" + null + "', '" + null + "') ";
-                                command.ExecuteNonQuery();
-                            }
-
-                            OracleCommand cmd = new OracleCommand
-                            {
-                                CommandText = "SELECT * FROM T_DATASET_TEMP",
-                                Connection = connection
-                            };
-                            OracleDataReader dr = cmd.ExecuteReader();
-                            var dataTable = new DataTable();
-                            dataTable.Load(dr);
-                            DataRow[] addedRow = dataTable.Select("STATUSS = 'Added'");
-                            if (addedRow.Length > 0)
-                            {
-                                bool addDatasetStatus = InsertDatasetInDatabase(addedRow, testCaseId, lConnectionStr, steps);
-                            }
-
-                            command.CommandText = "TRUNCATE TABLE T_DATASET_TEMP";
-                            command.ExecuteNonQuery();
-                            command.CommandText = "DROP TABLE T_DATASET_TEMP";
-                            command.ExecuteNonQuery();
-
-                            transaction.Commit();
-                            connection.Close();
-                        }
                     }
-                    catch (Exception ex)
+                    foreach (var item in addedDataset)
                     {
-                        transaction.Rollback();
-                        command.CommandText = "TRUNCATE TABLE T_DATASET_TEMP";
+                        command.CommandText = "INSERT INTO T_DATASET_TEMP (STATUSS, DATA_SUMMARY_ID, ALIAS_NAME, DESCRIPTION_INFO, AVAILABLE_MARK, VERSION, SHARE_MARK, CREATE_TIME, STATUS, DATA_SET_TYPE) VALUES " +
+                                                                   "('Updated', " + item.DATA_SUMMARY_ID + ", '" + item.ALIAS_NAME + "', '" + null + "', '" + null + "', '" + null + "', '" + null + "', SYSDATE, '" + null + "', '" + null + "') ";
                         command.ExecuteNonQuery();
-                        command.CommandText = "DROP TABLE T_DATASET_TEMP";
+                    }
+                    foreach (var item in addedDataset)
+                    {
+                        command.CommandText = "INSERT INTO T_DATASET_TEMP (STATUSS, DATA_SUMMARY_ID, ALIAS_NAME, DESCRIPTION_INFO, AVAILABLE_MARK, VERSION, SHARE_MARK, CREATE_TIME, STATUS, DATA_SET_TYPE) VALUES " +
+                                                                   "('Deleted', " + item.DATA_SUMMARY_ID + ", '" + item.ALIAS_NAME + "', '" + null + "', '" + null + "', '" + null + "', '" + null + "', SYSDATE, '" + null + "', '" + null + "') ";
                         command.ExecuteNonQuery();
-                        transaction.Commit();
-                        connection.Close();
+                    }
 
-                        logger.Error(string.Format("Error occured TestCase in InsertUpdateDatasetAndSettings method | Testcase Id : {0} | UserName: {1}", testCaseId, Username));
-                        ELogger.ErrorException(string.Format("Error occured TestCase in InsertUpdateDatasetAndSettings method | Testcase Id : {0} | UserName: {1}", testCaseId, Username), ex);
-                        if (ex.InnerException != null)
-                            ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in InsertUpdateDatasetAndSettings method | Testcase Id : {0} | UserName: {1}", testCaseId, Username), ex.InnerException);
-                        return false;
-                    }                    
+                    OracleCommand cmd = new OracleCommand
+                    {
+                        CommandText = "SELECT * FROM T_DATASET_TEMP",
+                        Connection = connection
+                    };
+                    OracleDataReader dr = cmd.ExecuteReader();
+                    var dataTable = new DataTable();
+                    dataTable.Load(dr);
+                    DataRow[] addedRow = dataTable.Select("STATUSS = 'Added'");
+                    if (addedRow.Length > 0)
+                    {
+                        bool addDatasetStatus = InsertDatasetInDatabase(addedRow, testCaseId, lConnectionStr, steps, connection);
+                    }
+
+                    command.CommandText = "TRUNCATE TABLE T_DATASET_TEMP";
+                    command.ExecuteNonQuery();
+                    command.CommandText = "DROP TABLE T_DATASET_TEMP";
+                    command.ExecuteNonQuery();
+
                 }
                 logger.Info(string.Format("SAVE DATASET AND SETTINGS SESSION VALUES INTO DATABASE | TESTCASEID : {0} | USERNAME: {1} | END : {2}", testCaseId, Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
                 return true;
-            }
-            catch (Exception ex)
-            {
-                return false;
+
+                #region OLD CODE
+                //using (OracleConnection connection = new OracleConnection(lConnectionStr))
+                //{
+                //    connection.Open();
+                //    OracleCommand command = connection.CreateCommand();
+                //    OracleTransaction transaction;
+                //    transaction = connection.BeginTransaction(System.Data.IsolationLevel.ReadCommitted);
+                //    command.Transaction = transaction;
+                //    try
+                //    {
+                //        string dropTempTable = "DECLARE cnt NUMBER; BEGIN SELECT COUNT(*) INTO cnt FROM user_tables WHERE table_name = 'T_DATASET_TEMP'; IF cnt <> 0 THEN EXECUTE IMMEDIATE 'DROP TABLE T_DATASET_TEMP'; END IF; END;";
+                //        command.CommandText = dropTempTable;
+                //        command.ExecuteNonQuery();
+
+                //        string tempTestStepsTableQuery = "CREATE GLOBAL TEMPORARY TABLE T_DATASET_TEMP( STATUSS VARCHAR2(50 BYTE), DATA_SUMMARY_ID NUMBER(16,0), ALIAS_NAME VARCHAR2(64 BYTE), DESCRIPTION_INFO VARCHAR2(512 BYTE), AVAILABLE_MARK NUMBER(2,0), VERSION NUMBER(16,0), SHARE_MARK NUMBER(2,0), CREATE_TIME DATE, STATUS NUMBER(2,0), DATA_SET_TYPE NUMBER(2,0) ) ON COMMIT PRESERVE ROWS";
+                //        command.CommandText = tempTestStepsTableQuery;
+                //        command.ExecuteNonQuery();
+
+                //        if (steps.assignedDataSets.Count() > 0)
+                //        {
+                //            command.CommandText = string.Empty;
+                //            foreach (var item in addedDataset)
+                //            {
+                //                command.CommandText = "INSERT INTO T_DATASET_TEMP (STATUSS, DATA_SUMMARY_ID, ALIAS_NAME, DESCRIPTION_INFO, AVAILABLE_MARK, VERSION, SHARE_MARK, CREATE_TIME, STATUS, DATA_SET_TYPE) VALUES " +
+                //                                                           "('Added', " + item.DATA_SUMMARY_ID + ", '" + item.ALIAS_NAME + "', '" + null + "', '" + null + "', '" + null + "', '" + null + "', SYSDATE, '" + null + "', '" + null + "') ";
+                //                command.ExecuteNonQuery();
+                //            }
+
+                //            OracleCommand cmd = new OracleCommand
+                //            {
+                //                CommandText = "SELECT * FROM T_DATASET_TEMP",
+                //                Connection = connection
+                //            };
+                //            OracleDataReader dr = cmd.ExecuteReader();
+                //            var dataTable = new DataTable();
+                //            dataTable.Load(dr);
+                //            DataRow[] addedRow = dataTable.Select("STATUSS = 'Added'");
+                //            if (addedRow.Length > 0)
+                //            {
+                //                bool addDatasetStatus = InsertDatasetInDatabase(addedRow, testCaseId, lConnectionStr, steps);
+                //            }
+
+                //            command.CommandText = "TRUNCATE TABLE T_DATASET_TEMP";
+                //            command.ExecuteNonQuery();
+                //            command.CommandText = "DROP TABLE T_DATASET_TEMP";
+                //            command.ExecuteNonQuery();
+
+                //            transaction.Commit();
+                //            connection.Close();
+                //        }
+                //    }
+                //    catch (Exception ex)
+                //    {
+                //        transaction.Rollback();
+                //        command.CommandText = "TRUNCATE TABLE T_DATASET_TEMP";
+                //        command.ExecuteNonQuery();
+                //        command.CommandText = "DROP TABLE T_DATASET_TEMP";
+                //        command.ExecuteNonQuery();
+                //        transaction.Commit();
+                //        connection.Close();
+
+                //        logger.Error(string.Format("Error occured TestCase in InsertUpdateDatasetAndSettings method | Testcase Id : {0} | UserName: {1}", testCaseId, Username));
+                //        ELogger.ErrorException(string.Format("Error occured TestCase in InsertUpdateDatasetAndSettings method | Testcase Id : {0} | UserName: {1}", testCaseId, Username), ex);
+                //        if (ex.InnerException != null)
+                //            ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in InsertUpdateDatasetAndSettings method | Testcase Id : {0} | UserName: {1}", testCaseId, Username), ex.InnerException);
+                //        return false;
+                //    }
+                //}
+                #endregion
             }
         }
-        public bool InsertDatasetInDatabase(DataRow[] addedRow, long testCaseId, string lConnectionStr, Mars_Memory_TestCase steps)
+        public bool InsertDatasetInDatabase(DataRow[] addedRow, long testCaseId, string lConnectionStr, Mars_Memory_TestCase steps, OracleConnection lconnection)
         {
-            try
+            logger.Info(string.Format("INSERT NEW ADDED DATASET AND SETTINGS STEPS VALUES INTO DATABASE | TESTCASEID : {0} | USERNAME: {1} | START : {2}", testCaseId, Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
+
+            string lcmdquery = "INSERT INTO T_TEST_DATA_SUMMARY (DATA_SUMMARY_ID, ALIAS_NAME, DESCRIPTION_INFO, AVAILABLE_MARK, VERSION, SHARE_MARK, CREATE_TIME, STATUS, DATA_SET_TYPE) values(:1,:2,:3,:4,:5,:6,:7,:8,:9)";
+
+            int[] ids = new int[addedRow.Length];
+            using (var lcmd = lconnection.CreateCommand())
             {
-                logger.Info(string.Format("INSERT NEW ADDED DATASET AND SETTINGS STEPS VALUES INTO DATABASE | TESTCASEID : {0} | USERNAME: {1} | START : {2}", testCaseId, Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
-                OracleTransaction ltransaction;
-                OracleConnection lconnection = new OracleConnection(lConnectionStr);
-                lconnection.Open();
-                ltransaction = lconnection.BeginTransaction();
-                string lcmdquery = "INSERT INTO T_TEST_DATA_SUMMARY (DATA_SUMMARY_ID, ALIAS_NAME, DESCRIPTION_INFO, AVAILABLE_MARK, VERSION, SHARE_MARK, CREATE_TIME, STATUS, DATA_SET_TYPE) values(:1,:2,:3,:4,:5,:6,:7,:8,:9)";
+                lcmd.CommandText = lcmdquery;
+                lcmd.ArrayBindCount = ids.Length;
 
-                int[] ids = new int[addedRow.Length];
-                using (var lcmd = lconnection.CreateCommand())
+                decimal[] DATA_SUMMARY_ID_param = addedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long>("DATA_SUMMARY_ID"))).ToArray();
+                string[] ALIAS_NAME_param = addedRow.AsEnumerable().Select(r => r.Field<string>("ALIAS_NAME")).ToArray();
+                string[] DESCRIPTION_INFO_param = addedRow.AsEnumerable().Select(r => r.Field<string>("DESCRIPTION_INFO")).ToArray();
+
+                decimal[] AVAILABLE_MARK_param = addedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long?>("AVAILABLE_MARK"))).ToArray();
+                decimal?[] AVAILABLE_MARK_NEW_param = AVAILABLE_MARK_param.Select(x => x > 0 ? x : (decimal?)null).ToArray();
+
+                decimal[] VERSION_param = addedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long?>("VERSION"))).ToArray();
+                decimal?[] VERSION_NEW_Param = VERSION_param.Select(x => x > 0 ? x : (decimal?)null).ToArray();
+
+                decimal[] SHARE_MARK_param = addedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long?>("SHARE_MARK"))).ToArray();
+                decimal?[] SHARE_MARK_NEW_Param = SHARE_MARK_param.Select(x => x > 0 ? x : (decimal?)null).ToArray();
+
+                DateTime[] CREATE_TIME_param = addedRow.AsEnumerable().Select(r => r.Field<DateTime>("CREATE_TIME")).ToArray();
+                decimal[] STATUS_param = addedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long?>("STATUS"))).ToArray();
+                decimal?[] STATUS_NEW_Param = STATUS_param.Select(x => x > 0 ? x : (decimal?)null).ToArray();
+
+                decimal[] DATA_SET_TYPE_param = addedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long?>("DATA_SET_TYPE"))).ToArray();
+                decimal?[] DATA_SET_TYPE_NEW_Param = DATA_SET_TYPE_param.Select(x => x > 0 ? x : (decimal?)null).ToArray();
+
+                OracleParameter DATA_SUMMARY_ID_oparam = new OracleParameter
                 {
-                    lcmd.CommandText = lcmdquery;
-                    lcmd.ArrayBindCount = ids.Length;
+                    OracleDbType = OracleDbType.Decimal,
+                    Value = DATA_SUMMARY_ID_param
+                };
+                OracleParameter ALIAS_NAME_oparam = new OracleParameter
+                {
+                    OracleDbType = OracleDbType.Varchar2,
+                    IsNullable = true,
+                    Value = ALIAS_NAME_param
+                };
+                OracleParameter DESCRIPTION_INFO_oparam = new OracleParameter
+                {
+                    OracleDbType = OracleDbType.Varchar2,
+                    IsNullable = true,
+                    Value = DESCRIPTION_INFO_param
+                };
+                OracleParameter AVAILABLE_MARK_oparam = new OracleParameter
+                {
+                    OracleDbType = OracleDbType.Decimal,
+                    IsNullable = true,
+                    Value = AVAILABLE_MARK_NEW_param
+                };
+                OracleParameter VERSION_oparam = new OracleParameter
+                {
+                    OracleDbType = OracleDbType.Decimal,
+                    IsNullable = true,
+                    Value = VERSION_NEW_Param
+                };
+                OracleParameter SHARE_MARK_oparam = new OracleParameter
+                {
+                    OracleDbType = OracleDbType.Varchar2,
+                    IsNullable = true,
+                    Value = SHARE_MARK_NEW_Param
+                };
+                OracleParameter CREATE_TIME_oparam = new OracleParameter
+                {
+                    OracleDbType = OracleDbType.Date,
+                    IsNullable = true,
+                    Value = CREATE_TIME_param
+                };
+                OracleParameter STATUS_oparam = new OracleParameter
+                {
+                    OracleDbType = OracleDbType.Varchar2,
+                    IsNullable = true,
+                    Value = STATUS_NEW_Param
+                };
+                OracleParameter DATA_SET_TYPE_oparam = new OracleParameter
+                {
+                    OracleDbType = OracleDbType.Long,
+                    IsNullable = true,
+                    Value = DATA_SET_TYPE_NEW_Param
+                };
+                lcmd.Parameters.Add(DATA_SUMMARY_ID_oparam);
+                lcmd.Parameters.Add(ALIAS_NAME_oparam);
+                lcmd.Parameters.Add(DESCRIPTION_INFO_oparam);
+                lcmd.Parameters.Add(AVAILABLE_MARK_oparam);
+                lcmd.Parameters.Add(VERSION_oparam);
+                lcmd.Parameters.Add(SHARE_MARK_oparam);
+                lcmd.Parameters.Add(CREATE_TIME_oparam);
+                lcmd.Parameters.Add(STATUS_oparam);
+                lcmd.Parameters.Add(DATA_SET_TYPE_oparam);
 
-                    decimal[] DATA_SUMMARY_ID_param = addedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long>("DATA_SUMMARY_ID"))).ToArray();
-                    string[] ALIAS_NAME_param = addedRow.AsEnumerable().Select(r => r.Field<string>("ALIAS_NAME")).ToArray();
-                    string[] DESCRIPTION_INFO_param = addedRow.AsEnumerable().Select(r => r.Field<string>("DESCRIPTION_INFO")).ToArray();
+                lcmd.ExecuteNonQuery();
 
-                    decimal[] AVAILABLE_MARK_param = addedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long?>("AVAILABLE_MARK"))).ToArray();
-                    decimal?[] AVAILABLE_MARK_NEW_param = AVAILABLE_MARK_param.Select(x => x > 0 ? x : (decimal?)null).ToArray();
+                List<MB_REL_TC_DATA_SUMMARY> addedDataset = steps.assignedDataSets.Where(x => x.recordStatus == CommonEnum.MarsRecordStatus.en_NewToDb).ToList();
+                if (addedDataset.Count() > 0)
+                {
+                    foreach (var item in addedDataset)
+                    {
+                        long ID = Helper.NextTestSuiteId("T_TEST_STEPS_SEQ");
+                        string rel_dataset_summary = "INSERT INTO REL_TC_DATA_SUMMARY (ID, DATA_SUMMARY_ID, TEST_CASE_ID, CREATE_TIME) values(" + ID + "," + item.DATA_SUMMARY_ID + "," + testCaseId + ", SYSDATE)";
+                        lcmd.CommandText = rel_dataset_summary;
 
-                    decimal[] VERSION_param = addedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long?>("VERSION"))).ToArray();
-                    decimal?[] VERSION_NEW_Param = VERSION_param.Select(x => x > 0 ? x : (decimal?)null).ToArray();
-
-                    decimal[] SHARE_MARK_param = addedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long?>("SHARE_MARK"))).ToArray();
-                    decimal?[] SHARE_MARK_NEW_Param = SHARE_MARK_param.Select(x => x > 0 ? x : (decimal?)null).ToArray();
-
-                    DateTime[] CREATE_TIME_param = addedRow.AsEnumerable().Select(r => r.Field<DateTime>("CREATE_TIME")).ToArray();
-                    decimal[] STATUS_param = addedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long?>("STATUS"))).ToArray();
-                    decimal?[] STATUS_NEW_Param = STATUS_param.Select(x => x > 0 ? x : (decimal?)null).ToArray();
-
-                    decimal[] DATA_SET_TYPE_param = addedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long?>("DATA_SET_TYPE"))).ToArray();
-                    decimal?[] DATA_SET_TYPE_NEW_Param = DATA_SET_TYPE_param.Select(x => x > 0 ? x : (decimal?)null).ToArray();
-
-                    OracleParameter DATA_SUMMARY_ID_oparam = new OracleParameter
-                    {
-                        OracleDbType = OracleDbType.Decimal,
-                        Value = DATA_SUMMARY_ID_param
-                    };
-                    OracleParameter ALIAS_NAME_oparam = new OracleParameter
-                    {
-                        OracleDbType = OracleDbType.Varchar2,
-                        IsNullable = true,
-                        Value = ALIAS_NAME_param
-                    };
-                    OracleParameter DESCRIPTION_INFO_oparam = new OracleParameter
-                    {
-                        OracleDbType = OracleDbType.Varchar2,
-                        IsNullable = true,
-                        Value = DESCRIPTION_INFO_param
-                    };
-                    OracleParameter AVAILABLE_MARK_oparam = new OracleParameter
-                    {
-                        OracleDbType = OracleDbType.Decimal,
-                        IsNullable = true,
-                        Value = AVAILABLE_MARK_NEW_param
-                    };
-                    OracleParameter VERSION_oparam = new OracleParameter
-                    {
-                        OracleDbType = OracleDbType.Decimal,
-                        IsNullable = true,
-                        Value = VERSION_NEW_Param
-                    };
-                    OracleParameter SHARE_MARK_oparam = new OracleParameter
-                    {
-                        OracleDbType = OracleDbType.Varchar2,
-                        IsNullable = true,
-                        Value = SHARE_MARK_NEW_Param
-                    };
-                    OracleParameter CREATE_TIME_oparam = new OracleParameter
-                    {
-                        OracleDbType = OracleDbType.Date,
-                        IsNullable = true,
-                        Value = CREATE_TIME_param
-                    };
-                    OracleParameter STATUS_oparam = new OracleParameter
-                    {
-                        OracleDbType = OracleDbType.Varchar2,
-                        IsNullable = true,
-                        Value = STATUS_NEW_Param
-                    };
-                    OracleParameter DATA_SET_TYPE_oparam = new OracleParameter
-                    {
-                        OracleDbType = OracleDbType.Long,
-                        IsNullable = true,
-                        Value = DATA_SET_TYPE_NEW_Param
-                    };
-                    lcmd.Parameters.Add(DATA_SUMMARY_ID_oparam);
-                    lcmd.Parameters.Add(ALIAS_NAME_oparam);
-                    lcmd.Parameters.Add(DESCRIPTION_INFO_oparam);
-                    lcmd.Parameters.Add(AVAILABLE_MARK_oparam);
-                    lcmd.Parameters.Add(VERSION_oparam);
-                    lcmd.Parameters.Add(SHARE_MARK_oparam);
-                    lcmd.Parameters.Add(CREATE_TIME_oparam);
-                    lcmd.Parameters.Add(STATUS_oparam);
-                    lcmd.Parameters.Add(DATA_SET_TYPE_oparam);
-
-                    try
-                    {
                         lcmd.ExecuteNonQuery();
 
-                        List<MB_REL_TC_DATA_SUMMARY> addedDataset = steps.assignedDataSets.Where(x => x.recordStatus == CommonEnum.MarsRecordStatus.en_NewToDb).ToList();
-                        if (addedDataset.Count() > 0)
+                    }
+                    if (!steps.allSteps.Any(x => x.recordStatus == CommonEnum.MarsRecordStatus.en_NewToDb))
+                    {
+                        List<long> data_summary_ids = addedDataset.Select(x => x.DATA_SUMMARY_ID).ToList();
+                        List<MB_V_TEST_STEPS> stepsList = steps.allSteps.Where(x => x.dataForDataSets.Any(y => data_summary_ids.Contains(y.DATA_SUMMARY_ID))).ToList();
+                        var alldatasetings = stepsList.Select(x => x.dataForDataSets).ToList();
+                        List<DataForDataSets> data_settings = new List<DataForDataSets>();
+                        alldatasetings.ForEach(x => { data_settings.AddRange(x); });
+                        data_settings = data_settings.Where(x => data_summary_ids.Contains(x.DATA_SUMMARY_ID)).ToList();
+                        if (data_settings.Count() > 0)
                         {
-                            foreach (var item in addedDataset)
-                            {
-                                long ID = Helper.NextTestSuiteId("T_TEST_STEPS_SEQ");
-                                string rel_dataset_summary = "INSERT INTO REL_TC_DATA_SUMMARY (ID, DATA_SUMMARY_ID, TEST_CASE_ID, CREATE_TIME) values(" + ID + "," + item.DATA_SUMMARY_ID + "," + testCaseId + ", SYSDATE)";
-                                lcmd.CommandText = rel_dataset_summary;
-                                try
-                                {
-                                    lcmd.ExecuteNonQuery();
-                                    ltransaction.Commit();
-                                    lconnection.Close();
-                                }
-                                catch (Exception ex)
-                                {
-                                    ltransaction.Rollback();
-                                    ltransaction.Commit();
-                                    lconnection.Close();
-                                    throw;
-                                }
-                            }
-                            if(!steps.allSteps.Any(x => x.recordStatus == CommonEnum.MarsRecordStatus.en_NewToDb))
-                            {
-                                List<long> data_summary_ids = addedDataset.Select(x => x.DATA_SUMMARY_ID).ToList();
-                                List<MB_V_TEST_STEPS> stepsList = steps.allSteps.Where(x => x.dataForDataSets.Any(y => data_summary_ids.Contains(y.DATA_SUMMARY_ID))).ToList();
-                                var alldatasetings = stepsList.Select(x => x.dataForDataSets).ToList();
-                                List<DataForDataSets> data_settings = new List<DataForDataSets>();
-                                alldatasetings.ForEach(x => { data_settings.AddRange(x); });
-                                data_settings = data_settings.Where(x => data_summary_ids.Contains(x.DATA_SUMMARY_ID)).ToList();
-                                if (data_settings.Count() > 0)
-                                {
-                                    bool datasettingStatus = InsertDataSettingsInDatabase(data_settings, testCaseId, lConnectionStr);
-                                }
-                            }
+                            bool datasettingStatus = InsertDataSettingsInDatabase(data_settings, testCaseId, lConnectionStr, lconnection);
                         }
                     }
-                    catch (Exception lex)
-                    {
-                        ltransaction.Rollback();
-                        ltransaction.Commit();
-                        lconnection.Close();
-                        throw new Exception(lex.Message);
-                    }                    
-                    logger.Info(string.Format("INSERT NEW ADDED TESTCASE STEPS VALUES INTO DATABASE | TESTCASEID : {0} | USERNAME: {1} | END : {2}", testCaseId, Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
+
                 }
-                return true;
+                logger.Info(string.Format("INSERT NEW ADDED TESTCASE STEPS VALUES INTO DATABASE | TESTCASEID : {0} | USERNAME: {1} | END : {2}", testCaseId, Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
             }
-            catch (Exception ex)
-            {
-                throw;
-            }
+            return true;
+
+            #region OLD CODE
+            //try
+            //{
+            //    logger.Info(string.Format("INSERT NEW ADDED DATASET AND SETTINGS STEPS VALUES INTO DATABASE | TESTCASEID : {0} | USERNAME: {1} | START : {2}", testCaseId, Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
+            //    OracleTransaction ltransaction;
+            //    OracleConnection lconnection = new OracleConnection(lConnectionStr);
+            //    lconnection.Open();
+            //    ltransaction = lconnection.BeginTransaction();
+            //    string lcmdquery = "INSERT INTO T_TEST_DATA_SUMMARY (DATA_SUMMARY_ID, ALIAS_NAME, DESCRIPTION_INFO, AVAILABLE_MARK, VERSION, SHARE_MARK, CREATE_TIME, STATUS, DATA_SET_TYPE) values(:1,:2,:3,:4,:5,:6,:7,:8,:9)";
+
+            //    int[] ids = new int[addedRow.Length];
+            //    using (var lcmd = lconnection.CreateCommand())
+            //    {
+            //        lcmd.CommandText = lcmdquery;
+            //        lcmd.ArrayBindCount = ids.Length;
+
+            //        decimal[] DATA_SUMMARY_ID_param = addedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long>("DATA_SUMMARY_ID"))).ToArray();
+            //        string[] ALIAS_NAME_param = addedRow.AsEnumerable().Select(r => r.Field<string>("ALIAS_NAME")).ToArray();
+            //        string[] DESCRIPTION_INFO_param = addedRow.AsEnumerable().Select(r => r.Field<string>("DESCRIPTION_INFO")).ToArray();
+
+            //        decimal[] AVAILABLE_MARK_param = addedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long?>("AVAILABLE_MARK"))).ToArray();
+            //        decimal?[] AVAILABLE_MARK_NEW_param = AVAILABLE_MARK_param.Select(x => x > 0 ? x : (decimal?)null).ToArray();
+
+            //        decimal[] VERSION_param = addedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long?>("VERSION"))).ToArray();
+            //        decimal?[] VERSION_NEW_Param = VERSION_param.Select(x => x > 0 ? x : (decimal?)null).ToArray();
+
+            //        decimal[] SHARE_MARK_param = addedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long?>("SHARE_MARK"))).ToArray();
+            //        decimal?[] SHARE_MARK_NEW_Param = SHARE_MARK_param.Select(x => x > 0 ? x : (decimal?)null).ToArray();
+
+            //        DateTime[] CREATE_TIME_param = addedRow.AsEnumerable().Select(r => r.Field<DateTime>("CREATE_TIME")).ToArray();
+            //        decimal[] STATUS_param = addedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long?>("STATUS"))).ToArray();
+            //        decimal?[] STATUS_NEW_Param = STATUS_param.Select(x => x > 0 ? x : (decimal?)null).ToArray();
+
+            //        decimal[] DATA_SET_TYPE_param = addedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long?>("DATA_SET_TYPE"))).ToArray();
+            //        decimal?[] DATA_SET_TYPE_NEW_Param = DATA_SET_TYPE_param.Select(x => x > 0 ? x : (decimal?)null).ToArray();
+
+            //        OracleParameter DATA_SUMMARY_ID_oparam = new OracleParameter
+            //        {
+            //            OracleDbType = OracleDbType.Decimal,
+            //            Value = DATA_SUMMARY_ID_param
+            //        };
+            //        OracleParameter ALIAS_NAME_oparam = new OracleParameter
+            //        {
+            //            OracleDbType = OracleDbType.Varchar2,
+            //            IsNullable = true,
+            //            Value = ALIAS_NAME_param
+            //        };
+            //        OracleParameter DESCRIPTION_INFO_oparam = new OracleParameter
+            //        {
+            //            OracleDbType = OracleDbType.Varchar2,
+            //            IsNullable = true,
+            //            Value = DESCRIPTION_INFO_param
+            //        };
+            //        OracleParameter AVAILABLE_MARK_oparam = new OracleParameter
+            //        {
+            //            OracleDbType = OracleDbType.Decimal,
+            //            IsNullable = true,
+            //            Value = AVAILABLE_MARK_NEW_param
+            //        };
+            //        OracleParameter VERSION_oparam = new OracleParameter
+            //        {
+            //            OracleDbType = OracleDbType.Decimal,
+            //            IsNullable = true,
+            //            Value = VERSION_NEW_Param
+            //        };
+            //        OracleParameter SHARE_MARK_oparam = new OracleParameter
+            //        {
+            //            OracleDbType = OracleDbType.Varchar2,
+            //            IsNullable = true,
+            //            Value = SHARE_MARK_NEW_Param
+            //        };
+            //        OracleParameter CREATE_TIME_oparam = new OracleParameter
+            //        {
+            //            OracleDbType = OracleDbType.Date,
+            //            IsNullable = true,
+            //            Value = CREATE_TIME_param
+            //        };
+            //        OracleParameter STATUS_oparam = new OracleParameter
+            //        {
+            //            OracleDbType = OracleDbType.Varchar2,
+            //            IsNullable = true,
+            //            Value = STATUS_NEW_Param
+            //        };
+            //        OracleParameter DATA_SET_TYPE_oparam = new OracleParameter
+            //        {
+            //            OracleDbType = OracleDbType.Long,
+            //            IsNullable = true,
+            //            Value = DATA_SET_TYPE_NEW_Param
+            //        };
+            //        lcmd.Parameters.Add(DATA_SUMMARY_ID_oparam);
+            //        lcmd.Parameters.Add(ALIAS_NAME_oparam);
+            //        lcmd.Parameters.Add(DESCRIPTION_INFO_oparam);
+            //        lcmd.Parameters.Add(AVAILABLE_MARK_oparam);
+            //        lcmd.Parameters.Add(VERSION_oparam);
+            //        lcmd.Parameters.Add(SHARE_MARK_oparam);
+            //        lcmd.Parameters.Add(CREATE_TIME_oparam);
+            //        lcmd.Parameters.Add(STATUS_oparam);
+            //        lcmd.Parameters.Add(DATA_SET_TYPE_oparam);
+
+            //        try
+            //        {
+            //            lcmd.ExecuteNonQuery();
+
+            //            List<MB_REL_TC_DATA_SUMMARY> addedDataset = steps.assignedDataSets.Where(x => x.recordStatus == CommonEnum.MarsRecordStatus.en_NewToDb).ToList();
+            //            if (addedDataset.Count() > 0)
+            //            {
+            //                foreach (var item in addedDataset)
+            //                {
+            //                    long ID = Helper.NextTestSuiteId("T_TEST_STEPS_SEQ");
+            //                    string rel_dataset_summary = "INSERT INTO REL_TC_DATA_SUMMARY (ID, DATA_SUMMARY_ID, TEST_CASE_ID, CREATE_TIME) values(" + ID + "," + item.DATA_SUMMARY_ID + "," + testCaseId + ", SYSDATE)";
+            //                    lcmd.CommandText = rel_dataset_summary;
+            //                    try
+            //                    {
+            //                        lcmd.ExecuteNonQuery();
+            //                        ltransaction.Commit();
+            //                        lconnection.Close();
+            //                    }
+            //                    catch (Exception ex)
+            //                    {
+            //                        ltransaction.Rollback();
+            //                        ltransaction.Commit();
+            //                        lconnection.Close();
+            //                        throw;
+            //                    }
+            //                }
+            //                if (!steps.allSteps.Any(x => x.recordStatus == CommonEnum.MarsRecordStatus.en_NewToDb))
+            //                {
+            //                    List<long> data_summary_ids = addedDataset.Select(x => x.DATA_SUMMARY_ID).ToList();
+            //                    List<MB_V_TEST_STEPS> stepsList = steps.allSteps.Where(x => x.dataForDataSets.Any(y => data_summary_ids.Contains(y.DATA_SUMMARY_ID))).ToList();
+            //                    var alldatasetings = stepsList.Select(x => x.dataForDataSets).ToList();
+            //                    List<DataForDataSets> data_settings = new List<DataForDataSets>();
+            //                    alldatasetings.ForEach(x => { data_settings.AddRange(x); });
+            //                    data_settings = data_settings.Where(x => data_summary_ids.Contains(x.DATA_SUMMARY_ID)).ToList();
+            //                    if (data_settings.Count() > 0)
+            //                    {
+            //                        //bool datasettingStatus = InsertDataSettingsInDatabase(data_settings, testCaseId, lConnectionStr);
+            //                    }
+            //                }
+            //            }
+            //        }
+            //        catch (Exception lex)
+            //        {
+            //            ltransaction.Rollback();
+            //            ltransaction.Commit();
+            //            lconnection.Close();
+            //            throw new Exception(lex.Message);
+            //        }
+            //        logger.Info(string.Format("INSERT NEW ADDED TESTCASE STEPS VALUES INTO DATABASE | TESTCASEID : {0} | USERNAME: {1} | END : {2}", testCaseId, Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
+            //    }
+            //    return true;
+            //}
+            //catch (Exception ex)
+            //{
+            //    throw;
+            //}
+            #endregion
         }
 
-        public bool InsertDataSettingsInDatabase(List<DataForDataSets> datasettings, long testCaseId, string lConnectionStr)
+        public bool InsertDataSettingsInDatabase(List<DataForDataSets> datasettings, long testCaseId, string lConnectionStr, OracleConnection l_connection)
         {
-            try
+            logger.Info(string.Format("INSERT NEW ADDED DATA SETTINGS STEPS VALUES INTO DATABASE | TESTCASEID : {0} | USERNAME: {1} | START : {2}", testCaseId, Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
+
+            string queryDataSettings = "INSERT INTO TEST_DATA_SETTING(DATA_SETTING_ID, STEPS_ID, LOOP_ID, DATA_VALUE, VALUE_OR_OBJECT, DESCRIPTION, DATA_SUMMARY_ID, DATA_DIRECTION, VERSION, CREATE_TIME, POOL_ID) VALUES(:1,:2,:3,:4,:5,:6,:7,:8,:9,:10,:11)";
+            int[] id_s = new int[datasettings.Count];
+            using (var l_cmd = l_connection.CreateCommand())
             {
-                logger.Info(string.Format("INSERT NEW ADDED DATA SETTINGS STEPS VALUES INTO DATABASE | TESTCASEID : {0} | USERNAME: {1} | START : {2}", testCaseId, Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
-                OracleTransaction l_transaction;
-                OracleConnection l_connection = new OracleConnection(lConnectionStr);
-                l_connection.Open();
-                l_transaction = l_connection.BeginTransaction();
-                string queryDataSettings = "INSERT INTO TEST_DATA_SETTING(DATA_SETTING_ID, STEPS_ID, LOOP_ID, DATA_VALUE, VALUE_OR_OBJECT, DESCRIPTION, DATA_SUMMARY_ID, DATA_DIRECTION, VERSION, CREATE_TIME, POOL_ID) VALUES(:1,:2,:3,:4,:5,:6,:7,:8,:9,:10,:11)";
-                int[] id_s = new int[datasettings.Count];
-                using (var l_cmd = l_connection.CreateCommand())
+                l_cmd.CommandText = queryDataSettings;
+                l_cmd.ArrayBindCount = id_s.Length;
+
+                decimal[] DATA_SETTING_ID_param = datasettings.Select(x => (decimal)x.Data_Setting_Id).ToArray();
+                decimal[] STEP_ID_param = datasettings.Select(x => (decimal)x.STEPS_ID).ToArray();
+                decimal[] LOOP_ID_param = new decimal[datasettings.Count];
+                decimal?[] VALUE_OR_OBJECT_param = new decimal?[datasettings.Count];
+                string[] DESCRIPTION_param = new string[datasettings.Count];
+                decimal?[] VERSION_param = new decimal?[datasettings.Count];
+                DateTime[] CREATE_TIME_param = new DateTime[datasettings.Count];
+                decimal?[] POOL_ID_param = new decimal?[datasettings.Count];
+                for (int i = 0; i < datasettings.Count; i++)
                 {
-                    l_cmd.CommandText = queryDataSettings;
-                    l_cmd.ArrayBindCount = id_s.Length;
-
-                    decimal[] DATA_SETTING_ID_param = datasettings.Select(x => (decimal)x.Data_Setting_Id).ToArray();
-                    decimal[] STEP_ID_param = datasettings.Select(x => (decimal)x.STEPS_ID).ToArray();
-                    decimal[] LOOP_ID_param = new decimal[datasettings.Count];
-                    decimal?[] VALUE_OR_OBJECT_param = new decimal?[datasettings.Count];
-                    string[] DESCRIPTION_param = new string[datasettings.Count];
-                    decimal?[] VERSION_param = new decimal?[datasettings.Count];
-                    DateTime[] CREATE_TIME_param = new DateTime[datasettings.Count];
-                    decimal?[] POOL_ID_param = new decimal?[datasettings.Count];
-                    for (int i = 0; i < datasettings.Count; i++)
-                    {
-                        LOOP_ID_param[i] = 1;
-                        VALUE_OR_OBJECT_param[i] = null;
-                        DESCRIPTION_param[i] = null;
-                        VERSION_param[i] = null;
-                        CREATE_TIME_param[i] = DateTime.Now;
-                        POOL_ID_param[i] = null;
-                    }
-                    string[] DATA_VALUE_param = datasettings.Select(x => x.DATASETVALUE).ToArray();
-
-                    decimal[] DATA_SUMMARY_ID_param = datasettings.Select(x => (decimal)x.DATA_SUMMARY_ID).ToArray();
-                    decimal[] DATA_DIRECTION_param = datasettings.Select(x => (decimal)x.SKIP).ToArray();
-
-                    OracleParameter DATA_SETTING_ID_oparam = new OracleParameter
-                    {
-                        OracleDbType = OracleDbType.Decimal,
-                        Value = DATA_SETTING_ID_param
-                    };
-                    OracleParameter STEP_ID_oparam = new OracleParameter
-                    {
-                        OracleDbType = OracleDbType.Decimal,
-                        Value = STEP_ID_param
-                    };
-                    OracleParameter LOOP_ID_oparam = new OracleParameter
-                    {
-                        OracleDbType = OracleDbType.Decimal,
-                        Value = LOOP_ID_param
-                    };
-                    OracleParameter DATA_VALUE_oparam = new OracleParameter
-                    {
-                        OracleDbType = OracleDbType.Varchar2,
-                        Value = DATA_VALUE_param
-                    };
-                    OracleParameter VALUE_OR_OBJECT_oparam = new OracleParameter
-                    {
-                        OracleDbType = OracleDbType.Decimal,
-                        Value = VALUE_OR_OBJECT_param
-                    };
-                    OracleParameter DESCRIPTION_oparam = new OracleParameter
-                    {
-                        OracleDbType = OracleDbType.Varchar2,
-                        Value = DESCRIPTION_param
-                    };
-                    OracleParameter DATA_SUMMARY_ID_oparam = new OracleParameter
-                    {
-                        OracleDbType = OracleDbType.Decimal,
-                        Value = DATA_SUMMARY_ID_param
-                    };
-                    OracleParameter DATA_DIRECTION_oparam = new OracleParameter
-                    {
-                        OracleDbType = OracleDbType.Decimal,
-                        Value = DATA_DIRECTION_param
-                    };
-                    OracleParameter VERSION_oparam = new OracleParameter
-                    {
-                        OracleDbType = OracleDbType.Varchar2,
-                        Value = VERSION_param
-                    };
-                    OracleParameter CREATE_TIME_oparam = new OracleParameter
-                    {
-                        OracleDbType = OracleDbType.Date,
-                        Value = CREATE_TIME_param
-                    };
-                    OracleParameter POOL_ID_oparam = new OracleParameter
-                    {
-                        OracleDbType = OracleDbType.Decimal,
-                        Value = POOL_ID_param
-                    };
-
-                    l_cmd.Parameters.Add(DATA_SETTING_ID_oparam);
-                    l_cmd.Parameters.Add(STEP_ID_oparam);
-                    l_cmd.Parameters.Add(LOOP_ID_oparam);
-                    l_cmd.Parameters.Add(DATA_VALUE_oparam);
-                    l_cmd.Parameters.Add(VALUE_OR_OBJECT_oparam);
-                    l_cmd.Parameters.Add(DESCRIPTION_oparam);
-                    l_cmd.Parameters.Add(DATA_SUMMARY_ID_oparam);
-                    l_cmd.Parameters.Add(DATA_DIRECTION_oparam);
-                    l_cmd.Parameters.Add(VERSION_oparam);
-                    l_cmd.Parameters.Add(CREATE_TIME_oparam);
-                    l_cmd.Parameters.Add(POOL_ID_oparam);
-
-                    try
-                    {
-                        l_cmd.ExecuteNonQuery();
-                        l_transaction.Commit();
-                        l_connection.Close();
-                    }
-                    catch (Exception lex)
-                    {
-                        l_transaction.Rollback();
-                        l_transaction.Commit();
-                        l_connection.Close();
-                        throw new Exception(lex.Message);
-                    }
-
+                    LOOP_ID_param[i] = 1;
+                    VALUE_OR_OBJECT_param[i] = null;
+                    DESCRIPTION_param[i] = null;
+                    VERSION_param[i] = null;
+                    CREATE_TIME_param[i] = DateTime.Now;
+                    POOL_ID_param[i] = null;
                 }
-                logger.Info(string.Format("INSERT NEW ADDED DATA SETTINGS STEPS VALUES INTO DATABASE | TESTCASEID : {0} | USERNAME: {1} | END : {2}", testCaseId, Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
-                return true;
+                string[] DATA_VALUE_param = datasettings.Select(x => x.DATASETVALUE).ToArray();
+
+                decimal[] DATA_SUMMARY_ID_param = datasettings.Select(x => (decimal)x.DATA_SUMMARY_ID).ToArray();
+                decimal[] DATA_DIRECTION_param = datasettings.Select(x => (decimal)x.SKIP).ToArray();
+
+                OracleParameter DATA_SETTING_ID_oparam = new OracleParameter
+                {
+                    OracleDbType = OracleDbType.Decimal,
+                    Value = DATA_SETTING_ID_param
+                };
+                OracleParameter STEP_ID_oparam = new OracleParameter
+                {
+                    OracleDbType = OracleDbType.Decimal,
+                    Value = STEP_ID_param
+                };
+                OracleParameter LOOP_ID_oparam = new OracleParameter
+                {
+                    OracleDbType = OracleDbType.Decimal,
+                    Value = LOOP_ID_param
+                };
+                OracleParameter DATA_VALUE_oparam = new OracleParameter
+                {
+                    OracleDbType = OracleDbType.Varchar2,
+                    Value = DATA_VALUE_param
+                };
+                OracleParameter VALUE_OR_OBJECT_oparam = new OracleParameter
+                {
+                    OracleDbType = OracleDbType.Decimal,
+                    Value = VALUE_OR_OBJECT_param
+                };
+                OracleParameter DESCRIPTION_oparam = new OracleParameter
+                {
+                    OracleDbType = OracleDbType.Varchar2,
+                    Value = DESCRIPTION_param
+                };
+                OracleParameter DATA_SUMMARY_ID_oparam = new OracleParameter
+                {
+                    OracleDbType = OracleDbType.Decimal,
+                    Value = DATA_SUMMARY_ID_param
+                };
+                OracleParameter DATA_DIRECTION_oparam = new OracleParameter
+                {
+                    OracleDbType = OracleDbType.Decimal,
+                    Value = DATA_DIRECTION_param
+                };
+                OracleParameter VERSION_oparam = new OracleParameter
+                {
+                    OracleDbType = OracleDbType.Varchar2,
+                    Value = VERSION_param
+                };
+                OracleParameter CREATE_TIME_oparam = new OracleParameter
+                {
+                    OracleDbType = OracleDbType.Date,
+                    Value = CREATE_TIME_param
+                };
+                OracleParameter POOL_ID_oparam = new OracleParameter
+                {
+                    OracleDbType = OracleDbType.Decimal,
+                    Value = POOL_ID_param
+                };
+
+                l_cmd.Parameters.Add(DATA_SETTING_ID_oparam);
+                l_cmd.Parameters.Add(STEP_ID_oparam);
+                l_cmd.Parameters.Add(LOOP_ID_oparam);
+                l_cmd.Parameters.Add(DATA_VALUE_oparam);
+                l_cmd.Parameters.Add(VALUE_OR_OBJECT_oparam);
+                l_cmd.Parameters.Add(DESCRIPTION_oparam);
+                l_cmd.Parameters.Add(DATA_SUMMARY_ID_oparam);
+                l_cmd.Parameters.Add(DATA_DIRECTION_oparam);
+                l_cmd.Parameters.Add(VERSION_oparam);
+                l_cmd.Parameters.Add(CREATE_TIME_oparam);
+                l_cmd.Parameters.Add(POOL_ID_oparam);
+
+                l_cmd.ExecuteNonQuery();
             }
-            catch (Exception ex)
-            {
-                return false;
-            }
+            logger.Info(string.Format("INSERT NEW ADDED DATA SETTINGS STEPS VALUES INTO DATABASE | TESTCASEID : {0} | USERNAME: {1} | END : {2}", testCaseId, Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
+            return true;
+
+            #region OLD CODE
+            //try
+            //{
+            //    logger.Info(string.Format("INSERT NEW ADDED DATA SETTINGS STEPS VALUES INTO DATABASE | TESTCASEID : {0} | USERNAME: {1} | START : {2}", testCaseId, Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
+            //    OracleTransaction l_transaction;
+            //    OracleConnection l_connection = new OracleConnection(lConnectionStr);
+            //    l_connection.Open();
+            //    l_transaction = l_connection.BeginTransaction();
+            //    string queryDataSettings = "INSERT INTO TEST_DATA_SETTING(DATA_SETTING_ID, STEPS_ID, LOOP_ID, DATA_VALUE, VALUE_OR_OBJECT, DESCRIPTION, DATA_SUMMARY_ID, DATA_DIRECTION, VERSION, CREATE_TIME, POOL_ID) VALUES(:1,:2,:3,:4,:5,:6,:7,:8,:9,:10,:11)";
+            //    int[] id_s = new int[datasettings.Count];
+            //    using (var l_cmd = l_connection.CreateCommand())
+            //    {
+            //        l_cmd.CommandText = queryDataSettings;
+            //        l_cmd.ArrayBindCount = id_s.Length;
+
+            //        decimal[] DATA_SETTING_ID_param = datasettings.Select(x => (decimal)x.Data_Setting_Id).ToArray();
+            //        decimal[] STEP_ID_param = datasettings.Select(x => (decimal)x.STEPS_ID).ToArray();
+            //        decimal[] LOOP_ID_param = new decimal[datasettings.Count];
+            //        decimal?[] VALUE_OR_OBJECT_param = new decimal?[datasettings.Count];
+            //        string[] DESCRIPTION_param = new string[datasettings.Count];
+            //        decimal?[] VERSION_param = new decimal?[datasettings.Count];
+            //        DateTime[] CREATE_TIME_param = new DateTime[datasettings.Count];
+            //        decimal?[] POOL_ID_param = new decimal?[datasettings.Count];
+            //        for (int i = 0; i < datasettings.Count; i++)
+            //        {
+            //            LOOP_ID_param[i] = 1;
+            //            VALUE_OR_OBJECT_param[i] = null;
+            //            DESCRIPTION_param[i] = null;
+            //            VERSION_param[i] = null;
+            //            CREATE_TIME_param[i] = DateTime.Now;
+            //            POOL_ID_param[i] = null;
+            //        }
+            //        string[] DATA_VALUE_param = datasettings.Select(x => x.DATASETVALUE).ToArray();
+
+            //        decimal[] DATA_SUMMARY_ID_param = datasettings.Select(x => (decimal)x.DATA_SUMMARY_ID).ToArray();
+            //        decimal[] DATA_DIRECTION_param = datasettings.Select(x => (decimal)x.SKIP).ToArray();
+
+            //        OracleParameter DATA_SETTING_ID_oparam = new OracleParameter
+            //        {
+            //            OracleDbType = OracleDbType.Decimal,
+            //            Value = DATA_SETTING_ID_param
+            //        };
+            //        OracleParameter STEP_ID_oparam = new OracleParameter
+            //        {
+            //            OracleDbType = OracleDbType.Decimal,
+            //            Value = STEP_ID_param
+            //        };
+            //        OracleParameter LOOP_ID_oparam = new OracleParameter
+            //        {
+            //            OracleDbType = OracleDbType.Decimal,
+            //            Value = LOOP_ID_param
+            //        };
+            //        OracleParameter DATA_VALUE_oparam = new OracleParameter
+            //        {
+            //            OracleDbType = OracleDbType.Varchar2,
+            //            Value = DATA_VALUE_param
+            //        };
+            //        OracleParameter VALUE_OR_OBJECT_oparam = new OracleParameter
+            //        {
+            //            OracleDbType = OracleDbType.Decimal,
+            //            Value = VALUE_OR_OBJECT_param
+            //        };
+            //        OracleParameter DESCRIPTION_oparam = new OracleParameter
+            //        {
+            //            OracleDbType = OracleDbType.Varchar2,
+            //            Value = DESCRIPTION_param
+            //        };
+            //        OracleParameter DATA_SUMMARY_ID_oparam = new OracleParameter
+            //        {
+            //            OracleDbType = OracleDbType.Decimal,
+            //            Value = DATA_SUMMARY_ID_param
+            //        };
+            //        OracleParameter DATA_DIRECTION_oparam = new OracleParameter
+            //        {
+            //            OracleDbType = OracleDbType.Decimal,
+            //            Value = DATA_DIRECTION_param
+            //        };
+            //        OracleParameter VERSION_oparam = new OracleParameter
+            //        {
+            //            OracleDbType = OracleDbType.Varchar2,
+            //            Value = VERSION_param
+            //        };
+            //        OracleParameter CREATE_TIME_oparam = new OracleParameter
+            //        {
+            //            OracleDbType = OracleDbType.Date,
+            //            Value = CREATE_TIME_param
+            //        };
+            //        OracleParameter POOL_ID_oparam = new OracleParameter
+            //        {
+            //            OracleDbType = OracleDbType.Decimal,
+            //            Value = POOL_ID_param
+            //        };
+
+            //        l_cmd.Parameters.Add(DATA_SETTING_ID_oparam);
+            //        l_cmd.Parameters.Add(STEP_ID_oparam);
+            //        l_cmd.Parameters.Add(LOOP_ID_oparam);
+            //        l_cmd.Parameters.Add(DATA_VALUE_oparam);
+            //        l_cmd.Parameters.Add(VALUE_OR_OBJECT_oparam);
+            //        l_cmd.Parameters.Add(DESCRIPTION_oparam);
+            //        l_cmd.Parameters.Add(DATA_SUMMARY_ID_oparam);
+            //        l_cmd.Parameters.Add(DATA_DIRECTION_oparam);
+            //        l_cmd.Parameters.Add(VERSION_oparam);
+            //        l_cmd.Parameters.Add(CREATE_TIME_oparam);
+            //        l_cmd.Parameters.Add(POOL_ID_oparam);
+
+            //        try
+            //        {
+            //            l_cmd.ExecuteNonQuery();
+            //            l_transaction.Commit();
+            //            l_connection.Close();
+            //        }
+            //        catch (Exception lex)
+            //        {
+            //            l_transaction.Rollback();
+            //            l_transaction.Commit();
+            //            l_connection.Close();
+            //            throw new Exception(lex.Message);
+            //        }
+
+            //    }
+            //    logger.Info(string.Format("INSERT NEW ADDED DATA SETTINGS STEPS VALUES INTO DATABASE | TESTCASEID : {0} | USERNAME: {1} | END : {2}", testCaseId, Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
+            //    return true;
+            //}
+            //catch (Exception ex)
+            //{
+            //    return false;
+            //}
+            #endregion
         }
     }
 }
