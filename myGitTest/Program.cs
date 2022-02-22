@@ -6,6 +6,7 @@ namespace myGitTest
     {
         static void Main(string[] args)
         {
+                        Console.WriteLine("XXXXXXXXXXXX");
             Console.WriteLine("XXXXXXXXXXXX");
             Console.WriteLine("bbbbbbbbbbbbb");
             Console.WriteLine("Send to Master1");
