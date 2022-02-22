@@ -387,6 +387,39 @@ namespace MARS_Web.Controllers
         #endregion
 
         #region PQGrid functionality of TestCase Grid
+        public JsonResult DeleteDatasetInSession(long datasetid, long testCaseId)
+        {
+            ResultModel resultModel = new ResultModel();
+            try
+            {
+                logger.Info(string.Format("Delete dataset in session in TestCase controller for DeleteDatasetInSession method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                Mars_Memory_TestCase allList = new Mars_Memory_TestCase();
+                string testcaseSessionName = string.Format("{0}_Testcase_{1}", SessionManager.Schema, testCaseId);
+                if (Session[testcaseSessionName] != null)
+                    allList = Session[testcaseSessionName] as Mars_Memory_TestCase;
+                List<MB_V_TEST_STEPS> allSteps = allList.allSteps;
+                allList.assignedDataSets.ForEach(x =>
+                {
+                    if (x.DATA_SUMMARY_ID == datasetid)
+                        x.recordStatus = Mars_Serialization.Common.CommonEnum.MarsRecordStatus.en_DeletedToDb;
+                });
+                resultModel.data = null;
+                resultModel.status = 1;
+                logger.Info(string.Format("Delete dataset in session in TestCase controller for DeleteDatasetInSession method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in TestCase controller for DeleteDatasetInSession method | datasetid: {0} | UserName: {1}", datasetid, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in TestCase controller for DeleteDatasetInSession method | datasetid: {0} | UserName: {1}", datasetid, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for DeleteDatasetInSession method | datasetid: {0} | UserName: {1}", datasetid, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+
+                resultModel.status = 0;
+                resultModel.message = ex.Message.ToString();
+            }
+            return Json(resultModel, JsonRequestBehavior.AllowGet);
+
+        }
         public ActionResult DragAndDropRowInSession(long selectedRowRunOrder, long destinationRowRunOrder, long selectedRowStepId, long destinationRowStepId, long testCaseId)
         {
             ResultModel resultModel = new ResultModel();
@@ -889,6 +922,22 @@ namespace MARS_Web.Controllers
                 var deletedSteps = dbSaveData.allSteps.Where(x => x.recordStatus == RecordStatus.en_DeletedToDb).ToList();
                 deletedSteps.ForEach(x => { dbSaveData.allSteps.Remove(x); });
 
+                var deletedDatasets = dbSaveData.assignedDataSets.Where(x => x.recordStatus == RecordStatus.en_DeletedToDb).ToList();
+                deletedDatasets.ForEach(x => { dbSaveData.assignedDataSets.Remove(x); });
+                long[] datasetId = deletedDatasets.Select(x => x.DATA_SUMMARY_ID).ToArray();
+                dbSaveData.allSteps.ForEach(x =>
+                {
+                    List<Data_ForDataSets> deletedDataSettings = new List<Data_ForDataSets>();
+                    x.dataForDataSets.ForEach(y =>
+                    {
+                        if (datasetId.Contains(y.DATA_SUMMARY_ID))
+                        {
+                            deletedDataSettings.Add(y);
+                        }
+                    });
+                    deletedDataSettings.ForEach(c => { x.dataForDataSets.Remove(c); });
+                });
+
                 if (System.IO.File.Exists(Path.Combine(fullFilePath, filePath)))
                 {
                     dbSaveData.currentSyncroStatus = RecordStatus.en_None;
@@ -905,6 +954,7 @@ namespace MARS_Web.Controllers
                 Thread SaveToDatabase = new Thread(delegate ()
                 {
                     bool status = _testCaseRepository.SaveTestcaseSessionInDatabase(connectionString, testCaseId, allList);
+                    #region OLD CODE
                     //if (status)
                     //{
                     //    filePath = Path.Combine(fullFilePath, filePath);
@@ -919,6 +969,7 @@ namespace MARS_Web.Controllers
                     //        Session[testcaseSessionName] = allList;
                     //    }
                     //}
+                    #endregion
                 });
                 SaveToDatabase.IsBackground = true;
                 SaveToDatabase.Start();
@@ -2803,8 +2854,8 @@ namespace MARS_Web.Controllers
                 {
                     recordStatus = Mars_Serialization.Common.CommonEnum.MarsRecordStatus.en_NewToDb,
                     ALIAS_NAME = datasetname,
-                    DATA_SUMMARY_ID = testCaserepo.GetTEST_DATA_SUMMARY_Seq()
-                    //DESCRIPTION_INFO = datasetdesc
+                    DATA_SUMMARY_ID = testCaserepo.GetTEST_DATA_SUMMARY_Seq(),
+                    DESCRIPTION_INFO = datasetdesc
                 };
                 allList.assignedDataSets.Add(objDataset);
                 allList.allSteps.ForEach(x =>
@@ -2814,7 +2865,7 @@ namespace MARS_Web.Controllers
                         DATASETVALUE = string.Empty,
                         DATA_SUMMARY_ID = objDataset.DATA_SUMMARY_ID,
                         SKIP = 0,
-                        Data_Setting_Id = 0,
+                        Data_Setting_Id = testCaserepo.GetDataSettings_Seq(),
                         STEPS_ID = x.STEPS_ID
                     };
                     x.dataForDataSets.Add(obj);

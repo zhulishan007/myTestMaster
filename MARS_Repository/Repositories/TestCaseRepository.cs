@@ -4338,25 +4338,30 @@ namespace MARS_Repository.Repositories
                             OracleDataReader dr = cmd.ExecuteReader();
                             var dataTable = new DataTable();
                             dataTable.Load(dr);
+
+                            bool dataSetStatus = InsertUpdateDatasetAndSettings(testCaseId, connectionString, steps, connection);
+
+
                             DataRow[] addedRow = dataTable.Select("STATUS = 'Added'");
                             if (addedRow.Length > 0)
                             {
-                                bool addTestcaseStatus = InsertTestcaseStepsInDatabase(addedRow, testCaseId, connectionString, addedSteps, connection);
+                                bool addTestcaseStatus = InsertTestcaseStepsInDatabase(addedRow, testCaseId, connectionString, addedSteps, connection, steps);
                             }
 
                             DataRow[] updatedRow = dataTable.Select("STATUS = 'Updated'");
                             if (updatedRow.Length > 0)
                             {
-                                bool updateTestcaseStatus = UpdateTestcaseStepsInDatabase(updatedRow, testCaseId, connectionString, connection);
+                                bool updateTestcaseStatus = UpdateTestcaseStepsInDatabase(updatedRow, testCaseId, connectionString, updatedSteps, connection);
                             }
+
                             DataRow[] deletedRow = dataTable.Select("STATUS = 'Deleted'");
                             if (deletedRow.Length > 0)
                             {
-                                bool deleteTestcaseStatus = DeleteTestcaseStepsInDatabase(deletedRow, testCaseId, connectionString, connection);
+                                bool deleteTestcaseStatus = DeleteTestcaseStepsInDatabase(deletedRow, testCaseId, connectionString, deletedSteps, connection);
                             }
 
 
-                            bool dataSetStatus = InsertUpdateDatasetAndSettings(testCaseId, connectionString, steps, connection);
+                            //bool dataSetStatus = InsertUpdateDatasetAndSettings(testCaseId, connectionString, steps, connection);
 
 
                             command.CommandText = "TRUNCATE TABLE T_TEST_STEPS_TEMP";
@@ -4402,7 +4407,7 @@ namespace MARS_Repository.Repositories
                 return false;
             }
         }
-        public bool InsertTestcaseStepsInDatabase(DataRow[] addedRow, long testCaseId, string lConnectionStr, List<MB_V_TEST_STEPS> addedSteps, OracleConnection lconnection)
+        public bool InsertTestcaseStepsInDatabase(DataRow[] addedRow, long testCaseId, string lConnectionStr, List<MB_V_TEST_STEPS> addedSteps, OracleConnection lconnection, Mars_Memory_TestCase steps)
         {
             logger.Info(string.Format("INSERT NEW ADDED TESTCASE STEPS VALUES INTO DATABASE | TESTCASEID : {0} | USERNAME: {1} | START : {2}", testCaseId, Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
             //OracleTransaction ltransaction;
@@ -4504,7 +4509,24 @@ namespace MARS_Repository.Repositories
                 var alldatasetings = addedSteps.Select(x => x.dataForDataSets).ToList();
                 List<DataForDataSets> data_settings = new List<DataForDataSets>();
                 alldatasetings.ForEach(x => { data_settings.AddRange(x); });
+                if (steps.assignedDataSets.Any(x => x.recordStatus == CommonEnum.MarsRecordStatus.en_NewToDb))
+                {
+                    List<MB_REL_TC_DATA_SUMMARY> addedDataset = steps.assignedDataSets.Where(x => x.recordStatus == CommonEnum.MarsRecordStatus.en_NewToDb).ToList();
+                    long[] addedStepId = addedSteps.Select(x => x.STEPS_ID).ToArray();
+                    List<long> data_summary_ids = addedDataset.Select(x => x.DATA_SUMMARY_ID).ToList();
+                    List<MB_V_TEST_STEPS> stepsList = steps.allSteps.Where(x => !addedStepId.Contains(x.STEPS_ID) && x.dataForDataSets.Any(y => data_summary_ids.Contains(y.DATA_SUMMARY_ID))).ToList();
+                    var all_datasetings = stepsList.Select(x => x.dataForDataSets).ToList();
+                    List<DataForDataSets> data__settings = new List<DataForDataSets>();
+                    all_datasetings.ForEach(x => { data__settings.AddRange(x); });
+                    data__settings = data__settings.Where(x => data_summary_ids.Contains(x.DATA_SUMMARY_ID)).ToList();
+                    if (data__settings.Count() > 0)
+                    {
+                        data_settings.AddRange(data__settings);
+                    }
+                }
                 bool IsAddDatasettings = InsertDataSettingsInDatabase(data_settings, testCaseId, lConnectionStr, lconnection);
+
+
 
                 logger.Info(string.Format("INSERT NEW ADDED TESTCASE STEPS VALUES INTO DATABASE | TESTCASEID : {0} | USERNAME: {1} | END : {2}", testCaseId, Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
             }
@@ -4636,7 +4658,7 @@ namespace MARS_Repository.Repositories
             //}
             #endregion
         }
-        public bool UpdateTestcaseStepsInDatabase(DataRow[] updatedRow, long testCaseId, string lConnectionStr, OracleConnection lconnection)
+        public bool UpdateTestcaseStepsInDatabase(DataRow[] updatedRow, long testCaseId, string lConnectionStr, List<MB_V_TEST_STEPS> updatedSteps, OracleConnection lconnection)
         {
             logger.Info(string.Format("UPDATE TESTCASE STEPS VALUES INTO DATABASE | TESTCASEID : {0} | USERNAME: {1} | START : {2}", testCaseId, Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
 
@@ -4737,6 +4759,12 @@ namespace MARS_Repository.Repositories
                 lcmd.Parameters.Add(STEPS_ID_oparam);
 
                 lcmd.ExecuteNonQuery();
+
+                var alldatasetings = updatedSteps.Select(x => x.dataForDataSets).ToList();
+                List<DataForDataSets> data_settings = new List<DataForDataSets>();
+                alldatasetings.ForEach(x => { data_settings.AddRange(x); });
+
+                bool IsUpdateDatasettings = UpdateDataSettingsInDatabase(data_settings, testCaseId, lConnectionStr, lconnection);
 
                 logger.Info(string.Format("UPDATE TESTCASE STEPS VALUES INTO DATABASE | TESTCASEID : {0} | USERNAME: {1} | END : {2}", testCaseId, Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
             }
@@ -4865,7 +4893,7 @@ namespace MARS_Repository.Repositories
             //}
             #endregion
         }
-        public bool DeleteTestcaseStepsInDatabase(DataRow[] deletedRow, long testCaseId, string lConnectionStr, OracleConnection lconnection)
+        public bool DeleteTestcaseStepsInDatabase(DataRow[] deletedRow, long testCaseId, string lConnectionStr, List<MB_V_TEST_STEPS> deletedSteps, OracleConnection lconnection)
         {
             logger.Info(string.Format("DELTE TESTCASE STEPS VALUES INTO DATABASE | TESTCASEID : {0} | USERNAME: {1} | START : {2}", testCaseId, Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
 
@@ -4989,19 +5017,19 @@ namespace MARS_Repository.Repositories
                     foreach (var item in addedDataset)
                     {
                         command.CommandText = "INSERT INTO T_DATASET_TEMP (STATUSS, DATA_SUMMARY_ID, ALIAS_NAME, DESCRIPTION_INFO, AVAILABLE_MARK, VERSION, SHARE_MARK, CREATE_TIME, STATUS, DATA_SET_TYPE) VALUES " +
-                                                                   "('Added', " + item.DATA_SUMMARY_ID + ", '" + item.ALIAS_NAME + "', '" + null + "', '" + null + "', '" + null + "', '" + null + "', SYSDATE, '" + null + "', '" + null + "') ";
+                                                                   "('Added', " + item.DATA_SUMMARY_ID + ", '" + item.ALIAS_NAME + "', '" + item.DESCRIPTION_INFO + "', '" + null + "', '" + null + "', '" + null + "', SYSDATE, '" + null + "', '" + null + "') ";
                         command.ExecuteNonQuery();
                     }
-                    foreach (var item in addedDataset)
+                    //foreach (var item in updatedDataset)
+                    //{
+                    //    command.CommandText = "INSERT INTO T_DATASET_TEMP (STATUSS, DATA_SUMMARY_ID, ALIAS_NAME, DESCRIPTION_INFO, AVAILABLE_MARK, VERSION, SHARE_MARK, CREATE_TIME, STATUS, DATA_SET_TYPE) VALUES " +
+                    //                                               "('Updated', " + item.DATA_SUMMARY_ID + ", '" + item.ALIAS_NAME + "', '" + item.DESCRIPTION_INFO + "', '" + null + "', '" + null + "', '" + null + "', SYSDATE, '" + null + "', '" + null + "') ";
+                    //    command.ExecuteNonQuery();
+                    //}
+                    foreach (var item in deletedDataset)
                     {
                         command.CommandText = "INSERT INTO T_DATASET_TEMP (STATUSS, DATA_SUMMARY_ID, ALIAS_NAME, DESCRIPTION_INFO, AVAILABLE_MARK, VERSION, SHARE_MARK, CREATE_TIME, STATUS, DATA_SET_TYPE) VALUES " +
-                                                                   "('Updated', " + item.DATA_SUMMARY_ID + ", '" + item.ALIAS_NAME + "', '" + null + "', '" + null + "', '" + null + "', '" + null + "', SYSDATE, '" + null + "', '" + null + "') ";
-                        command.ExecuteNonQuery();
-                    }
-                    foreach (var item in addedDataset)
-                    {
-                        command.CommandText = "INSERT INTO T_DATASET_TEMP (STATUSS, DATA_SUMMARY_ID, ALIAS_NAME, DESCRIPTION_INFO, AVAILABLE_MARK, VERSION, SHARE_MARK, CREATE_TIME, STATUS, DATA_SET_TYPE) VALUES " +
-                                                                   "('Deleted', " + item.DATA_SUMMARY_ID + ", '" + item.ALIAS_NAME + "', '" + null + "', '" + null + "', '" + null + "', '" + null + "', SYSDATE, '" + null + "', '" + null + "') ";
+                                                                   "('Deleted', " + item.DATA_SUMMARY_ID + ", '" + item.ALIAS_NAME + "', '" + item.DESCRIPTION_INFO + "', '" + null + "', '" + null + "', '" + null + "', SYSDATE, '" + null + "', '" + null + "') ";
                         command.ExecuteNonQuery();
                     }
 
@@ -5018,7 +5046,12 @@ namespace MARS_Repository.Repositories
                     {
                         bool addDatasetStatus = InsertDatasetInDatabase(addedRow, testCaseId, lConnectionStr, steps, connection);
                     }
+                    DataRow[] deletedRow = dataTable.Select("STATUSS = 'Deleted'");
+                    if (deletedRow.Length > 0)
+                    {
+                        bool deleteDatasetStatus = DeleteDatasetInDatabase(deletedRow, testCaseId, lConnectionStr, steps, connection);
 
+                    }
                     command.CommandText = "TRUNCATE TABLE T_DATASET_TEMP";
                     command.ExecuteNonQuery();
                     command.CommandText = "DROP TABLE T_DATASET_TEMP";
@@ -5384,6 +5417,37 @@ namespace MARS_Repository.Repositories
             //}
             #endregion
         }
+        public bool DeleteDatasetInDatabase(DataRow[] deletedRow, long testCaseId, string lConnectionStr, Mars_Memory_TestCase steps, OracleConnection lconnection)
+        {
+            logger.Info(string.Format("DELTE DATASET AND SETTINGS VALUES INTO DATABASE | TESTCASEID : {0} | USERNAME: {1} | START : {2}", testCaseId, Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
+            string deleteDatasettingsQuery = "DELETE FROM TEST_DATA_SETTING WHERE DATA_SUMMARY_ID IN ({DATA_SUMMARY_ID})";
+            string deleteDatasetRelation = "DELETE FROM REL_TC_DATA_SUMMARY WHERE TEST_CASE_ID = {TEST_CASE_ID} AND DATA_SUMMARY_ID IN ({DATA_SUMMARY_ID})";
+            string deleteSharedObjectPool = "DELETE FROM T_SHARED_OBJECT_POOL WHERE DATA_SUMMARY_ID IN ({DATA_SUMMARY_ID})";
+            string deleteDatasetQuery = "DELETE FROM T_TEST_DATA_SUMMARY WHERE DATA_SUMMARY_ID IN ({DATA_SUMMARY_ID})";
+            
+            using (var lcmd = lconnection.CreateCommand())
+            {
+                decimal[] DATA_SUMMARY_ID_param = deletedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long>("DATA_SUMMARY_ID"))).ToArray();
+                deleteDatasettingsQuery = deleteDatasettingsQuery.Replace("{DATA_SUMMARY_ID}", string.Join(",", DATA_SUMMARY_ID_param));
+                deleteDatasetRelation = deleteDatasetRelation.Replace("{DATA_SUMMARY_ID}", string.Join(",", DATA_SUMMARY_ID_param)).Replace("{TEST_CASE_ID}", testCaseId.ToString());
+                deleteSharedObjectPool = deleteSharedObjectPool.Replace("{DATA_SUMMARY_ID}", string.Join(",", DATA_SUMMARY_ID_param));
+                deleteDatasetQuery = deleteDatasetQuery.Replace("{DATA_SUMMARY_ID}", string.Join(",", DATA_SUMMARY_ID_param));
+
+                lcmd.CommandText = deleteDatasettingsQuery;
+                lcmd.ExecuteNonQuery();
+
+                lcmd.CommandText = deleteDatasetRelation;
+                lcmd.ExecuteNonQuery();
+
+                lcmd.CommandText = deleteSharedObjectPool;
+                lcmd.ExecuteNonQuery();
+
+                lcmd.CommandText = deleteDatasetQuery;
+                lcmd.ExecuteNonQuery();
+            }
+            logger.Info(string.Format("DELTE DELETE DATASET AND SETTINGS VALUES INTO DATABASE | TESTCASEID : {0} | USERNAME: {1} | START : {2}", testCaseId, Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
+            return true;
+        }
 
         public bool InsertDataSettingsInDatabase(List<DataForDataSets> datasettings, long testCaseId, string lConnectionStr, OracleConnection l_connection)
         {
@@ -5619,6 +5683,47 @@ namespace MARS_Repository.Repositories
             //    return false;
             //}
             #endregion
+        }
+
+        public bool UpdateDataSettingsInDatabase(List<DataForDataSets> datasettings, long testCaseId, string lConnectionStr, OracleConnection l_connection)
+        {
+            logger.Info(string.Format("UPDATE DATA SETTINGS STEPS VALUES INTO DATABASE | TESTCASEID : {0} | USERNAME: {1} | START : {2}", testCaseId, Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
+
+            string queryDataSettings = "UPDATE TEST_DATA_SETTING SET DATA_VALUE = :1, DATA_DIRECTION = :2 WHERE DATA_SETTING_ID = :3";
+            int[] id_s = new int[datasettings.Count];
+            using (var l_cmd = l_connection.CreateCommand())
+            {
+                l_cmd.CommandText = queryDataSettings;
+                l_cmd.ArrayBindCount = id_s.Length;
+
+                decimal[] DATA_SETTING_ID_param = datasettings.Select(x => (decimal)x.Data_Setting_Id).ToArray();
+                string[] DATA_VALUE_param = datasettings.Select(x => x.DATASETVALUE).ToArray();
+                decimal[] DATA_DIRECTION_param = datasettings.Select(x => (decimal)x.SKIP).ToArray();
+
+                OracleParameter DATA_VALUE_oparam = new OracleParameter
+                {
+                    OracleDbType = OracleDbType.Varchar2,
+                    Value = DATA_VALUE_param
+                };
+                OracleParameter DATA_DIRECTION_oparam = new OracleParameter
+                {
+                    OracleDbType = OracleDbType.Decimal,
+                    Value = DATA_DIRECTION_param
+                };
+                OracleParameter DATA_SETTING_ID_oparam = new OracleParameter
+                {
+                    OracleDbType = OracleDbType.Decimal,
+                    Value = DATA_SETTING_ID_param
+                };
+
+                l_cmd.Parameters.Add(DATA_VALUE_oparam);
+                l_cmd.Parameters.Add(DATA_DIRECTION_oparam);
+                l_cmd.Parameters.Add(DATA_SETTING_ID_oparam);
+
+                l_cmd.ExecuteNonQuery();
+            }
+            logger.Info(string.Format("UPDATE DATA SETTINGS STEPS VALUES INTO DATABASE | TESTCASEID : {0} | USERNAME: {1} | END : {2}", testCaseId, Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
+            return true;
         }
     }
 }

@@ -3188,17 +3188,23 @@
                                         });
                                         return false;
                                     }
-                                    startloader();
-                                    debugger;
+                                    
+                                    
                                     $.ajax({
                                         url: "/TestCase/AddEditDatasetInSession",
                                         data: JSON.stringify({ Testcaseid: tcid, datasetid: datasetid, datasetname: title, datasetdesc: Desc }),
                                         type: "POST",
                                         contentType: "application/json;charset=utf-8",
-                                        async: false,
+                                        async: true,
                                         dataType: "json",
+                                        beforeSend: function () {
+                                            startloader();
+                                        },
+                                        complete: function () {
+                                            stoploader();
+                                        },
                                         success: function (lresult) {
-                                            debugger;
+                                            
                                             if (lresult.status == 1) {
                                                 if (lresult.data.msg == "success") {
                                                     var prj = $("#projectidtc").val();
@@ -3339,9 +3345,6 @@
                                         },
                                         error: function (errormessage) {
                                             alert(errormessage.responseText);
-                                        },
-                                        complete: function (result) {
-                                            stoploader();
                                         }
                                     });
                                 }
@@ -4075,7 +4078,16 @@
                                                             }
                                                             i++;
                                                         });
-
+                                                    });
+                                                    $.ajax({
+                                                        url: "/TestCase/DeleteDatasetInSession",
+                                                        data: JSON.stringify({ datasetid: datasetid, testCaseId: tcid }),
+                                                        type: "POST",
+                                                        contentType: "application/json;charset=utf-8",
+                                                        dataType: "json",
+                                                        success: function (lresult) {
+                                                           
+                                                        }
                                                     });
                                                 }
                                             }
