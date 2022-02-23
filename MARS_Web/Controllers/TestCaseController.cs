@@ -398,11 +398,32 @@ namespace MARS_Web.Controllers
                 if (Session[testcaseSessionName] != null)
                     allList = Session[testcaseSessionName] as Mars_Memory_TestCase;
                 List<MB_V_TEST_STEPS> allSteps = allList.allSteps;
-                allList.assignedDataSets.ForEach(x =>
+                MB_REL_TC_DATA_SUMMARY deleteDataset = allList.assignedDataSets.FirstOrDefault(x => x.DATA_SUMMARY_ID == datasetid); ;
+                if (deleteDataset.recordStatus == Mars_Serialization.Common.CommonEnum.MarsRecordStatus.en_NewToDb)
                 {
-                    if (x.DATA_SUMMARY_ID == datasetid)
-                        x.recordStatus = Mars_Serialization.Common.CommonEnum.MarsRecordStatus.en_DeletedToDb;
-                });
+                    allList.assignedDataSets.Remove(deleteDataset);
+                    allList.allSteps.ForEach(x =>
+                    {
+                        DataForDataSets obj = new DataForDataSets();
+                        x.dataForDataSets.ForEach(y =>
+                        {
+                            if (y.DATA_SUMMARY_ID == datasetid)
+                            {
+                                obj = y;
+                            }
+                        });
+                        x.dataForDataSets.Remove(obj);
+                    });
+                }
+                else
+                {
+                    allList.assignedDataSets.ForEach(x =>
+                    {
+                        if (x.DATA_SUMMARY_ID == datasetid)
+                            x.recordStatus = Mars_Serialization.Common.CommonEnum.MarsRecordStatus.en_DeletedToDb;
+                    });
+                }
+
                 resultModel.data = null;
                 resultModel.status = 1;
                 logger.Info(string.Format("Delete dataset in session in TestCase controller for DeleteDatasetInSession method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
@@ -2973,6 +2994,80 @@ namespace MARS_Web.Controllers
                 ELogger.ErrorException(string.Format("Error occured in TestCase controller for GetDataSetCount method  | ProjectId: {0} | TestSuiteId: {1} | TestCaseId: {2} | UserName: {3}", ProjectId, TestSuiteId, TestCaseId, SessionManager.TESTER_LOGIN_NAME), ex);
                 if (ex.InnerException != null)
                     ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for GetDataSetCount method  | ProjectId: {0} | TestSuiteId: {1} | TestCaseId: {2} | UserName: {3}", ProjectId, TestSuiteId, TestCaseId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+
+                resultModel.status = 0;
+                resultModel.message = ex.Message.ToString();
+            }
+            return Json(resultModel, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult CopyDataSetInSession(long? testcaseid, long? oldDatasetid, string datasetname, string datasetdescription = "")
+        {
+            ResultModel resultModel = new ResultModel();
+            try
+            {
+                logger.Info(string.Format("COPY DATASET IN THE SESSION | TESTCASEID : {0} | USERNAME: {1} | START : {2}", testcaseid, SessionManager.TESTER_LOGIN_NAME, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
+                var lSchema = SessionManager.Schema;
+                var lConnectionStr = SessionManager.APP;
+                var testCaserepo = new TestCaseRepository
+                {
+                    Username = SessionManager.TESTER_LOGIN_NAME
+                };
+                bool IsAvailable = testCaserepo.CheckDuplicateDataset(datasetname, null);
+                if (IsAvailable)
+                {
+                    resultModel.message = "Duplicate";
+                    resultModel.data = "Duplicate";
+                    resultModel.status = 1;
+                    return Json(resultModel, JsonRequestBehavior.AllowGet);
+                }
+
+                Mars_Memory_TestCase allList = new Mars_Memory_TestCase();
+                string testcaseSessionName = string.Format("{0}_Testcase_{1}", SessionManager.Schema, testcaseid);
+                if (Session[testcaseSessionName] != null)
+                    allList = Session[testcaseSessionName] as Mars_Memory_TestCase;
+
+                MB_REL_TC_DATA_SUMMARY copyDataset = allList.assignedDataSets.FirstOrDefault(x => x.DATA_SUMMARY_ID == oldDatasetid);
+                MB_REL_TC_DATA_SUMMARY objDataset = new MB_REL_TC_DATA_SUMMARY()
+                {
+                    recordStatus = Mars_Serialization.Common.CommonEnum.MarsRecordStatus.en_NewToDb,
+                    ALIAS_NAME = datasetname,
+                    DATA_SUMMARY_ID = testCaserepo.GetTEST_DATA_SUMMARY_Seq(),
+                    DESCRIPTION_INFO = datasetdescription
+                };
+                allList.assignedDataSets.Add(objDataset);
+                allList.allSteps.ForEach(x =>
+                {
+                    DataForDataSets obj = new DataForDataSets();
+                    x.dataForDataSets.ForEach(y =>
+                    {
+                        if (y.DATA_SUMMARY_ID == oldDatasetid)
+                        {
+                            obj.DATASETVALUE = y.DATASETVALUE;
+                            obj.DATA_SUMMARY_ID = objDataset.DATA_SUMMARY_ID;
+                            obj.SKIP = y.SKIP;
+                            obj.Data_Setting_Id = testCaserepo.GetDataSettings_Seq();
+                            obj.STEPS_ID = x.STEPS_ID;
+                        }
+                    });
+                    x.dataForDataSets.Add(obj);
+                });
+                var result = new
+                {
+                    datasetId = objDataset.DATA_SUMMARY_ID,
+                    msg = "success"
+                };
+                resultModel.message = result.msg == "success" ? "Dataset [" + datasetname + "] added successfully." : "Dataset  [" + datasetname + "] is already present in the System";
+                resultModel.data = result;
+                resultModel.status = 1;
+                Session[testcaseSessionName] = allList;
+                logger.Info(string.Format("COPY DATASET IN THE SESSION | TESTCASEID : {0} | USERNAME: {1} | END : {2}", testcaseid, SessionManager.TESTER_LOGIN_NAME, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in TestCase controller for CopyDataSetInSession method | Testcaseid: {0} | datasetid: {1} | datasetname: {2} | datasetdesc: {3} | UserName: {4}", testcaseid, oldDatasetid, datasetname, datasetdescription, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in TestCase controller for CopyDataSetInSession method | Testcaseid: {0} | datasetid: {1} | datasetname: {2} | datasetdesc: {3} | UserName: {4}", testcaseid, oldDatasetid, datasetname, datasetdescription, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for CopyDataSetInSession method | Testcaseid: {0} | datasetid: {1} | datasetname: {2} | datasetdesc: {3} | UserName: {4}", testcaseid, oldDatasetid, datasetname, datasetdescription, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
 
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();

@@ -214,7 +214,7 @@
                   // if (result.value == true) {
                     ans = true;
                     var rowDatas = ui.rowData;
-                    
+
                     gridobj["@lTestCasegrid"].removeClass({ rowIndx: rowIndx, cls: 'pq-row-delete' });
                     if (ans) {
                         gridobj["@lTestCasegrid"].deleteRow({ rowIndx: rowIndx });
@@ -1767,7 +1767,7 @@
 
         });
             dt.push({
-                title: "", copy: false, copy: false, editable: false, minWidth: 40, maxWidth: 40, sortable: false, dataIndx: "IsDelete", menuInHide: true, menuIcon: false, sortable: false, filter: { on: false, menuIcon: false },                
+                title: "", copy: false, copy: false, editable: false, minWidth: 40, maxWidth: 40, sortable: false, dataIndx: "IsDelete", menuInHide: true, menuIcon: false, sortable: false, filter: { on: false, menuIcon: false },
                 render: function (ui) {
                     if (ui.rowData != undefined) {
                         if (ui.rowData.pq_rowcls == "collapseBorder") {
@@ -1802,7 +1802,7 @@
                    //if (result.value == true) {
                         ans = true;
                         var rowDatas = ui.rowData;
-                        
+
                         gridobj[tcgrid].removeClass({ rowIndx: rowIndx, cls: 'pq-row-delete' });
                         if (ans) {
                             gridobj[tcgrid].deleteRow({ rowIndx: rowIndx });
@@ -1824,7 +1824,7 @@
                                     }
                                 }
                             }
-                            
+
                             var run_Orders = rowDatas.RUN_ORDER == undefined ? rowDatas.pq_ri + 1 : rowDatas.RUN_ORDER;
                             DeleteTestCaseRowInSession(rowDatas.stepsID, run_Orders);
                         }
@@ -2282,7 +2282,7 @@
         }
         //#endregion
 
-    function ReloadGrid(tcgrid, tcid, tsid, Visibledatasetname) {
+   function ReloadGrid(tcgrid, tcid, tsid, Visibledatasetname, isReload = true) {
 
         dt = [];
 
@@ -2383,7 +2383,7 @@
 
                                 if (lflagblank) {
                                     var DM = gridobj[tcgrid].option("dataModel");
-                                    data = DM.data;                                                                                                         
+                                    data = DM.data;
                                     if (lrowvisible == true) {
                                         data[k].pq_hidden = false;
                                         gridobj[tcgrid].removeClass({ rowIndx: rowIndx, cls: 'collapseBorder' });
@@ -2438,7 +2438,7 @@
                                // if (result.value == true) {
                     ans = true;
                     var rowDatas = ui.rowData;
-                    
+
                     gridobj[tcgrid].removeClass({ rowIndx: rowIndx, cls: 'pq-row-delete' });
                     if (ans) {
                         gridobj[tcgrid].deleteRow({ rowIndx: rowIndx });
@@ -2742,7 +2742,7 @@
                 data: {
                     testcaseId: tcid,
                     dataset: Visibledatasetname,
-                    isReload: true
+                    isReload: isReload
                 },
                 contentType: "application/json;charset=utf-8",
                 async: false,

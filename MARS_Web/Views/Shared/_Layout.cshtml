@@ -3319,6 +3319,7 @@
                                                     C.add([col1, col2], 0, parent.colModel);
 
                                                     ExistDataSetRenameList.push({ TestCaseId: tcid, oldColumn: title, newColumn: title, detail: Desc, datasetid: lresult.data.datasetId });
+                                                    ReloadGrid(tcgrid, tcid, null, "", false);
                                                 }
                                                 else if (lresult.data.msg == "error") {
                                                     swal.fire({
@@ -3673,7 +3674,6 @@
                         action: function (evt, ui) {
                             var self = this,
                                 C = gridobj[tcgrid].Columns();
-
                             swal.fire({
                                 title: "COPY DATA SET",
                                 html: '<form method="post" id="taxcode-update" name="taxcodeUpdate">' +
@@ -3686,7 +3686,6 @@
                                 closeOnConfirm: true
                             }).then(function (result) {
                                 if (result.value) {
-
                                     var suiteidsave = $("#hdnTestsuiteId").val();
                                     if ($("#copydatasetname").val() == "") {
                                         swal.fire({
@@ -3699,9 +3698,7 @@
                                         });
                                         return false;
                                     }
-
                                     var DataSetid = ui.column.clsHead;
-
                                     var datasettitle = $("#copydatasetname").val();
                                     var regex = /^[a-zA-Z0-9-._(&)*  ]*$/;
                                     if (!regex.test(datasettitle)) {
@@ -3714,7 +3711,7 @@
                                             }
                                         });
                                         return false;
-                                    }
+                                    }                                    
                                     Desc = $("#copydatasetdesc").val();
                                     var checkarray = gridobj[tcgrid].getChanges({ format: "byVal" });
                                     if (checkarray.addList.length > 0 || checkarray.deleteList.length > 0 || checkarray.updateList.length > 0 || checkarray.oldList.length > 0) {
@@ -3726,23 +3723,29 @@
                                             confirmButtonText: 'Yes'
                                         }).then(function (result) {
                                             if (result.value) {
+                                                
+                                                startloader();
                                                 $.when($.ajax(saveChangesTCForCopyDataset(tcgrid, tcid, suiteidsave))).then(function () {
                                                     if (validflag == true || msgflag == true) {
                                                         return false;
-                                                    }
-                                                    startloader();
+                                                    }                                                    
                                                     //gridobj[tcgrid].showLoading("Saving Data");
                                                     $.ajax({
-                                                        url: "/TestCase/CopyDataSet",
+                                                        //url: "/TestCase/CopyDataSet",
+                                                        url: "/TestCase/CopyDataSetInSession",
                                                         data: JSON.stringify({ testcaseid: tcid, oldDatasetid: DataSetid, datasetname: datasettitle, datasetdescription: Desc }),
                                                         type: "POST",
                                                         contentType: "application/json;charset=utf-8",
                                                         dataType: "json",
-                                                        async: false,
+                                                        async: true,
+                                                        beforeSend: function () {
+                                                            startloader();
+                                                        },
+                                                        complete: function () {
+                                                            stoploader();
+                                                        },
                                                         success: function (lresult) {
-
                                                             if (lresult.msg == "success") {
-
                                                                 swal.fire({
                                                                     "title": "",
                                                                     "text": "Test Case is saved and Dataset [" + datasettitle + "] added successfully.",
@@ -3751,7 +3754,6 @@
                                                                         console.log('on close event fired!');
                                                                     }
                                                                 });
-                                                                stoploader();
                                                                 // gridobj[tcgrid].hideLoading();
                                                                 parent = { title: datasettitle, colModel: [], clsHead: lresult.datasetId, align: "center", menuInClose: true, sortable: false, resizable: true },
                                                                     col1 = {
@@ -3804,7 +3806,7 @@
                                                                 });
                                                                 C.add([parent], ui.colIndx);
                                                                 C.add([col1, col2], 0, parent.colModel);
-                                                                ReloadGrid(tcgrid, tcid, null, "");
+                                                                ReloadGrid(tcgrid, tcid, null, "", false);
 
                                                             }
 
@@ -3826,21 +3828,25 @@
 
                                                     });
                                                 });
-
-
                                             }
-
                                         });
                                     }
-
                                     else {
+                                                                          
                                         $.ajax({
-                                            url: "/TestCase/CopyDataSet",
+                                            //url: "/TestCase/CopyDataSet",
+                                            url: "/TestCase/CopyDataSetInSession",
                                             data: JSON.stringify({ testcaseid: tcid, oldDatasetid: DataSetid, datasetname: datasettitle, datasetdescription: Desc }),
                                             type: "POST",
                                             contentType: "application/json;charset=utf-8",
                                             dataType: "json",
-                                            async: false,
+                                            async: true,
+                                            beforeSend: function () {
+                                                startloader();
+                                            },
+                                            complete: function () {
+                                                stoploader();
+                                            },
                                             success: function (lresult) {
                                                 if (lresult.status == 1) {
                                                     if (lresult.data.msg == "success") {
@@ -3852,7 +3858,6 @@
                                                                 console.log('on close event fired!');
                                                             }
                                                         });
-
                                                         parent = { title: datasettitle, colModel: [], clsHead: lresult.data.datasetId, align: "center", menuInClose: true, sortable: false, resizable: true },
                                                             col1 = {
                                                                 title: "",
@@ -3900,9 +3905,8 @@
                                                             if (value != undefined) {
                                                                 return value["TestCaseId"] != tcid;
                                                             }
-
-                                                        });                                                        //$.each(ExistDataSetRenameList, function (index, value) {
-                                                        //    debugger;
+                                                        });
+                                                        //$.each(ExistDataSetRenameList, function (index, value) {                                                        
                                                         //    if (value != undefined) {
                                                         //        if (value["TestCaseId"] == tcid) {
                                                         //            delete
@@ -3911,12 +3915,10 @@
                                                         //    }
                                                         //});
                                                         //ExistDataSetRenameList = [];
-
                                                         //ExistDataSetRenameList.push({ TestCaseId: tcid, oldColumn: datasettitle, newColumn: datasettitle, detail: Desc, datasetid: lresult.data.datasetId });
                                                         C.add([parent], ui.colIndx);
                                                         C.add([col1, col2], 0, parent.colModel);
-                                                        ReloadGrid(tcgrid, tcid, null, "");
-
+                                                        ReloadGrid(tcgrid, tcid, null, "", false);
                                                     }
                                                     else {
                                                         swal.fire({
