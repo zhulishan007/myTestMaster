@@ -8,6 +8,8 @@ namespace myGitTest
         {
             Console.WriteLine("YYYYYYYYYYY");
             Console.WriteLine("YYYYYYYYYYY");
+            Console.WriteLine("XXXXXXXXXXXX");
+            Console.WriteLine("XXXXXXXXXXXX");
             Console.WriteLine("ddddddddd");
             Console.WriteLine("XXXXXXXXXXXX");
             Console.WriteLine("XXXXXXXXXXXX");
