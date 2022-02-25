@@ -7,7 +7,7 @@ namespace myGitTest
         static void Main(string[] args)
         {
             Console.WriteLine("ddddddddd");
-                        Console.WriteLine("XXXXXXXXXXXX");
+            Console.WriteLine("XXXXXXXXXXXX");
             Console.WriteLine("XXXXXXXXXXXX");
             Console.WriteLine("bbbbbbbbbbbbb");
             Console.WriteLine("Send to Master1");
@@ -20,6 +20,8 @@ namespace myGitTest
 
             Console.WriteLine("========Send to Master");
             Console.WriteLine("========Send to Master");
+            Console.WriteLine("XXXXXXXXXXXX");
+            Console.WriteLine("XXXXXXXXXXXX");
             Console.ReadKey();
         }
     }
