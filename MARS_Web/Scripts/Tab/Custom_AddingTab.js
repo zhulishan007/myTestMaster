@@ -959,6 +959,12 @@ function PartialConnectionList() {
         type: "POST",
         contentType: "application/json;charset=utf-8",
         dataType: "HTML",
+        beforeSend: function () {
+            startloader();
+        },
+        complete: function () {
+            stoploader();
+        },
         success: function (result) {
             // CheckAtiveTabStatus();
             var lflag = false;
@@ -987,7 +993,6 @@ function PartialConnectionList() {
                 });
             }
             else {
-
                 $(".ULtablist").append(ltab);
                 $(".divtablist").append(ldiv);
                 $('.ULtablist li').each(function (index, value) {
@@ -1001,7 +1006,6 @@ function PartialConnectionList() {
                     }
                 });
             }
-            stoploader();
         },
     });
 }
@@ -1546,6 +1550,12 @@ function RightSideUserGrid(Default) {
         type: "POST",
         contentType: "application/json;charset=utf-8",
         dataType: "HTML",
+        beforeSend: function () {
+            startloader();
+        },
+        complete: function () {
+            stoploader();
+        },
         success: function (result) {
             var lflag = false;
             $('.ULtablist li').each(function (index, value) {
@@ -1605,6 +1615,12 @@ function partialRightOpenProjectList(Default) {
         type: "POST",
         contentType: "application/json;charset=utf-8",
         dataType: "HTML",
+        beforeSend: function () {
+            startloader();
+        },
+        complete: function () {
+            stoploader();
+        },
         success: function (result) {
             // CheckAtiveTabStatus();
             //$("#rightsideView").html("");
@@ -1640,7 +1656,6 @@ function partialRightOpenProjectList(Default) {
                 });
             }
             else {
-
                 $(".ULtablist").append(ltab);
                 $(".divtablist").append(ldiv);
                 $('.ULtablist li').each(function (index, value) {
@@ -1654,7 +1669,6 @@ function partialRightOpenProjectList(Default) {
                     }
                 });
             }
-            stoploader();
         }
     });
 }

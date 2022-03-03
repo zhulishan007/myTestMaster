@@ -433,7 +433,10 @@
                    List = objects;
                    objects = [];
                } else {
-                   var paraentPeg = lGridList.filter(function (obj) { return obj.Keyword.toLowerCase() === "pegwindow" });
+                   var paraentPeg = lGridList.filter(function (obj) {
+                       if (obj.Keyword !== undefined && obj.Keyword !== null && obj.Keyword !== "")
+                           return obj.Keyword.toLowerCase() === "pegwindow"
+                   });
                    var pegObjectList = paraentPeg.filter(function (obj) { return obj.Id < ObjectList.stepId });
                    var keyworkName = lGridList.filter(function (obj) { return obj.Id == ObjectList.stepId })[0].Keyword;
                    var objectName = null;
@@ -887,7 +890,7 @@
                track: { on: true },
                virtualX: true,
                editable: true,
-               selectionModel: { type: 'cell' },
+               selectionModel: { type: 'cell', mode:'block' },
                collapsible: { on: false, toggle: false },
                columnBorders: true,
                hoverMode: 'row',
@@ -917,17 +920,19 @@
                height: lPqGridHeight,
                //rowHt: 13,
                cellClick: function (evt, ui) {
-                   if (ui.column.type == "checkbox") {
-                       var chkBoxValue = false;
-                       if (ui.rowData.hasOwnProperty(ui.dataIndx)) {
-                           chkBoxValue = ui.rowData[ui.dataIndx] == true ? false : true;
+                   if (ui.column !== undefined) {
+                       if (ui.column.type == "checkbox") {
+                           var chkBoxValue = false;
+                           if (ui.rowData.hasOwnProperty(ui.dataIndx)) {
+                               chkBoxValue = ui.rowData[ui.dataIndx] == true ? false : true;
+                           }
+                           var propertyName = ui.dataIndx;
+                           var propertyValue = ui.newVal;
+                           var stepId = ui.rowData.stepsID;
+                           var runOrder = ui.rowData.pq_ri + 1;
+                           UpdateValuesInTestCaseSession(propertyName, propertyValue, stepId, true, chkBoxValue, runOrder);
                        }
-                       var propertyName = ui.dataIndx;
-                       var propertyValue = ui.newVal;
-                       var stepId = ui.rowData.stepsID;
-                       var runOrder = ui.rowData.pq_ri + 1;
-                       UpdateValuesInTestCaseSession(propertyName, propertyValue, stepId, true, chkBoxValue, runOrder);
-                   }
+                   }                   
                },
                cellSave: function (evt, ui) {
                    if (ui.dataIndx == "keyword" && ui.newVal !== ui.oldVal) {
