@@ -25,5 +25,6 @@ namespace MARS_Repository.ViewModel
         public decimal? IS64BIT { get; set; }
         public string Bits { get; set; }
         public string BitsId { get; set; }
+        public string STARTER_COMMAND { get; set; }
     }
 }

@@ -228,10 +228,11 @@
                             var lMode = full.Mode;
                             var lBits = full.Bits;
                             var lBitsId = full.BitsId;
+                            var STARTER_COMMAND = full.STARTER_COMMAND;
                             //lEditAppdisplay
                             var lRenderHtml = "";
                             if (lEditAppdisplay == "true") {
-                                lRenderHtml = " <a href='#' class='btn btn-sm btn-clean btn-icon btn-icon-md' title='View' data-name='" + lName + "' data-des='" + lDes + "' data-ver='" + lVersion + "' data-Extra='" + lExtraRequirement + "' data-Extraid='" + lExtraRequirementId + "' data-Mode='" + lMode + "' data-Bits='" + lBits + "' data-BitsId='" + lBitsId + "'onclick=AddEditApplication(" + lid + ",$(this)) ><i class='la la-edit'></i></a> ";
+                                lRenderHtml = " <a href='#' class='btn btn-sm btn-clean btn-icon btn-icon-md' title='View' data-name='" + lName + "' data-des='" + lDes + "' data-ver='" + lVersion + "' data-Extra='" + lExtraRequirement + "' data-Extraid='" + lExtraRequirementId + "' data-Mode='" + lMode + "' data-Bits='" + lBits + "' data-BitsId='" + lBitsId + "' data-appPath='" + STARTER_COMMAND +"' onclick=AddEditApplication(" + lid + ",$(this)) ><i class='la la-edit'></i></a> ";
                             }
                             if (lDeleteAppdisplay == "true") {
                                 lRenderHtml = lRenderHtml + "<a href='#' class='btn btn-sm btn-clean btn-icon btn-icon-md' title='Delete' onclick='AppDelete(" + lid + ")' ><i class='la la-trash la-xs'></i></a>";

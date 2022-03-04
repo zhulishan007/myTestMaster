@@ -169,7 +169,8 @@ namespace MARS_Repository.Repositories
                             EXTRAREQUIREMENT = objApp.EXTRAREQUIREMENT,
                             RECORD_CREATE_DATE = objApp.RECORD_CREATE_DATE,
                             ISBASELINE = objApp.ISBASELINE,
-                            IS64BIT = objApp.IS64BIT
+                            IS64BIT = objApp.IS64BIT,
+                            STARTER_COMMAND = objApp.STARTER_COMMAND
                         };
                         enty.T_REGISTERED_APPS.Add(RegisterTbl);
                         enty.SaveChanges();
@@ -188,6 +189,7 @@ namespace MARS_Repository.Repositories
                             RegisterTbl.EXTRAREQUIREMENT = objApp.EXTRAREQUIREMENT;
                             RegisterTbl.ISBASELINE = objApp.ISBASELINE;
                             RegisterTbl.IS64BIT = objApp.IS64BIT;
+                            RegisterTbl.STARTER_COMMAND = objApp.STARTER_COMMAND;
                             enty.SaveChanges();
                         }
                         flag = true;

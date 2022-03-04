@@ -32,6 +32,7 @@ function AddEditApplication(Id, editObj) {
     var Extra = $(editObj).attr("data-Extra");
     var Mode = $(editObj).attr("data-Mode");
     var BitsId = $(editObj).attr("data-BitsId");
+    var appPath = $(editObj).attr("data-appPath");
 
     $("#applicationname").val(Name);
     $("#applicationdesc").val(Desc);
@@ -41,6 +42,7 @@ function AddEditApplication(Id, editObj) {
     $("#sDrpExtraReq").select2();
     $("#DrpMode").val(Mode);
     $("#DrpBits").val(BitsId != null && BitsId != "" && BitsId != undefined ? parseInt(BitsId) : "");
+    $("#applicationpath").val(appPath);
 
     if (!$("#applicationvalidate").valid())
         return false;
@@ -77,12 +79,13 @@ function AddEditApplicationSave() {
     var regex = /^[a-zA-Z0-9-._(&)*  ]*$/;
     var ApplicationModel = {};
     ApplicationModel.ApplicationId = lId,
-        ApplicationModel.ApplicationName = $("#applicationname").val(),
-        ApplicationModel.Description = $("#applicationdesc").val(),
-        ApplicationModel.Version = $("#applicationversion").val().toString(),
-        ApplicationModel.ExtraRequirement = $("#sDrpExtraReq").val().toString(),
-        ApplicationModel.Mode = $("#DrpMode").val().toString(),
-        ApplicationModel.BitsId = $("#DrpBits").val().toString();
+    ApplicationModel.ApplicationName = $("#applicationname").val(),
+    ApplicationModel.Description = $("#applicationdesc").val(),
+    ApplicationModel.Version = $("#applicationversion").val().toString(),
+    ApplicationModel.ExtraRequirement = $("#sDrpExtraReq").val().toString(),
+    ApplicationModel.Mode = $("#DrpMode").val().toString(),
+    ApplicationModel.STARTER_COMMAND = $("#applicationpath").val().toString(),
+    ApplicationModel.BitsId = $("#DrpBits").val().toString();
     if (!regex.test(ApplicationModel.ApplicationName)) {
         $("#applicationname").val("");
         $("#applicationvalidate").css("display", "block");

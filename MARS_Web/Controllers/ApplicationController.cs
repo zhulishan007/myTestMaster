@@ -119,7 +119,8 @@ namespace MARS_Web.Controllers
                             ExtraRequirement = x.EXTRAREQUIREMENT ?? string.Empty,
                             Mode = (x.ISBASELINE != null) ? x.ISBASELINE == 1 ? "Baseline" : "Compare" : string.Empty,
                             Bits = (x.IS64BIT != null) ? x.IS64BIT == 1 ? "64 bits" : "32 bits" : string.Empty,
-                            BitsId = x.IS64BIT == null ? "" : x.IS64BIT.ToString()
+                            BitsId = x.IS64BIT == null ? "" : x.IS64BIT.ToString(),
+                            STARTER_COMMAND = x.STARTER_COMMAND
                         }).ToList();
                     }
                 }
@@ -268,6 +269,7 @@ namespace MARS_Web.Controllers
                     EXTRAREQUIREMENT = applicationviewmodel.ExtraRequirement,
                     RECORD_CREATE_PERSON = SessionManager.TESTER_LOGIN_NAME,
                     RECORD_CREATE_DATE = DateTime.Now,
+                    STARTER_COMMAND = applicationviewmodel.STARTER_COMMAND,
                     ISBASELINE = !string.IsNullOrEmpty(applicationviewmodel.Mode) ? applicationviewmodel.Mode == "Baseline" ? 1 : 0 : 0,
                     IS64BIT = !string.IsNullOrEmpty(applicationviewmodel.BitsId) ? Convert.ToInt32(applicationviewmodel.BitsId) : 0,
                     APPLICATION_ID = applicationviewmodel.ApplicationId != 0
