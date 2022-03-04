@@ -50,63 +50,64 @@
                         </div>
                     </div>
                 }
-                </div>
-            <div class="modal fade" id="AddTestSuite" tabindex="-1" role="dialog" aria-labelledby="TSexampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="TSexampleModalLabel">Add Test Suite</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form id="frmtestsuite">
-                                <input type="hidden" id="hdnTestSuiteId" name="hdnTestSuiteId" />
-                                <div class="form-group">
-                                    <label for="recipient-name" class="form-control-label">Test Suite Name<span style="color:red">&nbsp;*</span></label>
-                                    <input type="text" class="form-control" id="testsuitename" name="testsuitename" onchange="CheckNameExist()" maxlength="64">
-                                    <label id="existtestsuitename" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
-                                        Test Suite Name already exist.
-                                    </label>
-                                    <label id="testsuitevalidate" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
-                                        TestSuite name can only consist Uppercase,Lowercase,numbers and Special characters(-,_,.,*,&,(,))
-                                    </label>
-                                </div>
-                                <div class="form-group">
-                                    <label for="message-text" class="form-control-label">Description<span style="color:red">&nbsp;*</span></label>
-                                    <textarea class="form-control" id="testsuitedesc" name="testsuitedesc" maxlength="128"></textarea>
-                                </div>
+            </div>
+            @*<div class="modal fade" id="AddTestSuite" tabindex="-1" role="dialog" aria-labelledby="TSexampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="TSexampleModalLabel">Add Test Suite</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="frmtestsuite">
+                            <input type="hidden" id="hdnTestSuiteId" name="hdnTestSuiteId" />
+                            <div class="form-group">
+                                <label for="recipient-name" class="form-control-label">Test Suite Name<span style="color:red">&nbsp;*</span></label>
+                                <input type="text" class="form-control" id="testsuitename" name="testsuitename" onchange="CheckTestSuiteNameExist()" maxlength="64">
+                                <label id="existtestsuitename" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    Test Suite Name already exist.
+                                </label>
+                                <label id="testsuitevalidate" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                    TestSuite name can only consist Uppercase,Lowercase,numbers and Special characters(-,_,.,*,&,(,))
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label for="message-text" class="form-control-label">Description<span style="color:red">&nbsp;*</span></label>
+                                <textarea class="form-control" id="testsuitedesc" name="testsuitedesc" maxlength="128"></textarea>
+                            </div>
 
-                                <div class="form-group" id="clssuiteApplication">
-                                    <label class="form-control-label">Application<span style="color:red">&nbsp;*</span></label>
-                                    <select class="form-control kt-select2" id="stDrpApplication" name="stDrpApplication" onchange="ChangeApplication()" multiple="multiple" style="border-color:#59c0e7 !important">
+                            <div class="form-group" id="clssuiteApplication">
+                                <label class="form-control-label">Application<span style="color:red">&nbsp;*</span></label>
+                                <select class="form-control kt-select2" id="stDrpApplication" name="stDrpApplication" onchange="ChangeApplication()" multiple="multiple" style="border-color:#59c0e7 !important">
 
-                                        @{var lAppsList = ViewBag.listApplications as IEnumerable<SelectListItem>;
+                                    @{var lAppsList = ViewBag.listApplications as IEnumerable<SelectListItem>;
 
-                                            <optgroup id="appnamesuite" label="Applications">
-                                                @foreach (var item in lAppsList)
-                                                {
-                                                    <option value="@item.Value">@item.Text</option>
-                                                }
-                                            </optgroup>
+                                        <optgroup id="appnamesuite" label="Applications">
+                                            @foreach (var item in lAppsList)
+                                            {
+                                                <option value="@item.Value">@item.Text</option>
+                                            }
+                                        </optgroup>
 
 
-                                        }
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label class="form-control-label">Project </label>
-                                    <select class="form-control kt-select2" id="DrpProject" name="DrpProject" multiple="multiple"></select>
-                                </div>
+                                    }
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label">Project </label>
+                                <select class="form-control kt-select2" id="DrpProject" name="DrpProject" multiple="multiple"></select>
+                            </div>
 
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" id="addedittestsuite" class="btn btn-outline-brand btn-elevate btn-pill" onclick="AddEditTestSuiteSave()">Save</button>
-                            <button type="button" class="btn btn-outline-brand btn-elevate btn-pill" data-dismiss="modal">Cancel</button>
-                        </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="addedittestsuite" class="btn btn-outline-brand btn-elevate btn-pill" onclick="AddEditTestSuiteSave()">Save</button>
+                        <button type="button" class="btn btn-outline-brand btn-elevate btn-pill" data-dismiss="modal">Cancel</button>
                     </div>
                 </div>
             </div>
+        </div>*@
+
             <div class="kt-portlet__body">
                 <table class="table table-striped- table-bordered table-hover table-checkable " id="TestSuitetable">
                     <thead>
@@ -299,28 +300,7 @@
             return '<span class="ellipsis" title="' + esc(d) + '">' + shortened + '&#8230;</span>';
         };
     };
-    $(document).ready(function () {
 
-        $("#frmtestsuite").validate({
-            rules: {
-                testsuitename: {
-                    required: true
-                },
-
-                testsuitedesc: {
-                    required: true,
-                },
-                stDrpApplication: {
-                    required: true
-                }
-            },
-        });
-
-        $('#stDrpApplication').on('changed.bs.stDrpApplication', function () {
-            validator.element($(this));
-        });
-
-    });
     function AddEditTestSuite(Id, editObj) {
         $("#TSexampleModalLabel").text('');
         $("#TSexampleModalLabel").text('Edit Test Suite');
@@ -387,110 +367,8 @@
         $("#DrpProject").select2();
         if (!$("#frmtestsuite").valid())
             return false;
-    }
-    function ChangeApplication() {
-
-        var ApplicationIds = $("#stDrpApplication").val().toString();
-        var ProjectIds = $("#DrpProject").val().toString();;
-        $("#DrpProject").html("");
-        $("#DrpProject").select2();
-        $.ajax({
-            url: "/TestSuite/GetProjectByApplicaton",
-            data: '{"ApplicationId":"' + ApplicationIds + '"}',
-            type: "POST",
-            contentType: "application/json;charset=utf-8",
-            dataType: "json",
-            async: false,
-            success: function (result) {
-                if (result.status == 1) {
-                    var lTempApplication = "";
-                    var optionString = "";
-                    optionString = optionString + " <option value=0></option>";
-                    for (i = 0; i < result.data.length; i++) {
-                        if (result.data[i].ApplicationName != lTempApplication && lTempApplication != "") {
-                            optionString = optionString + "</optgroup>";
-                        }
-                        if (result.data[i].ApplicationName != lTempApplication) {
-                            optionString = optionString + "<optgroup label='Projects:'>";
-                            lTempApplication = result.data[i].ApplicationName;
-                        }
-                        var optionValue = result.data[i].ProjectId;
-                        var optionText = result.data[i].ProjectName;
-                        optionString = optionString + " <option value='" + optionValue + "'>" + optionText + "</option>";
-                    }
-
-                    $("#DrpProject").append($(optionString));
-                    $("#DrpProject").select2();
-
-                    $("#DrpProject").val(ProjectIds.split(","));
-                    $("#DrpProject").select2();
-                }
-                else if (result.status == 0) {
-                    swal.fire({
-                        "title": "",
-                        "text": result.message,
-                        "icon": "error",
-                        "onClose": function (e) {
-                            console.log('on close event fired!');
-                        }
-                    });
-                }
-            },
-            error: function (errormessage) {
-                alert(errormessage.responseText);
-            }
-        });
-    }
-    function AddSuite() {
-
-        $("#addedittestsuite").attr("disabled", false);
-        $("#TSexampleModalLabel").text('');
-        $("#TSexampleModalLabel").text('Add Test Suite');
-        $("#AddTestSuite").modal("show");
-        $('.modal-dialog').draggable({
-            handle: ".modal-header"
-        });
-        $("#existtestsuitename").css("display", "none");
-        $("#hdnTestSuiteId").val("");
-        $("#testsuitename").val("");
-        $("#testsuitedesc").val("");
-        $("#hdnTestCaseId").val("");
-        $("#stDrpApplication").val("");
-        $("#stDrpApplication").select2();
-        $("#DrpProject").html("");
-        $("#DrpProject").select2();
-        $("#testsuitevalidate").css("display", "none");
-        var validator = $("#frmtestsuite").validate();
-        validator.resetForm();
-    }
-    $("#btnadd").click(function () {
-
-        var suiteobj = {};
-        suiteobj.TestSuiteId = $("#testsuiteid").val();
-        suiteobj.TestSuiteName = $("#testsuitename").val();
-        suiteobj.TestSuiteDescription = $("#testsuitedesc").val();
-        // var applist = new Object();
-        //  applist.Entrys = new Array("#kt_select2_3_model");
-        suiteobj.Application = $("#kt_select2_3_model").val();
-        suiteobj.Application = applist.Entrys;
-        // suiteobj.Project = $("").val();
-
-        $.ajax({
-            url: "/TestSuite/AddEditTestSuite",
-            type: "POST",
-            data: JSON.stringify(suiteobj),
-            contentType: "application/json;charset=utf-8",
-            dataType: "json",
-            success: function (result) {
-                if (result) {
-                    window.location.href = "/Accounts/ListOfUsers";
-                }
-            },
-            error: function (errormessage) {
-                alert(errormessage.responseText);
-            }
-        });
-    });
+    }    
+ 
     function TestSuiteDelete(id) {
 
         swal.fire({
@@ -509,6 +387,12 @@
                     async: false,
                     contentType: "application/json;charset=utf-8",
                     dataType: "json",
+                    beforeSend: function () {
+                        startloader();
+                    },
+                    complete: function () {
+                        stoploader();
+                    },
                     success: function (result) {
                         if (result.status == 1) {
                             if (result.data == true) {
@@ -557,141 +441,7 @@
 
         });
     }
-    function AddEditTestSuiteSave() {
-        if (!$("#frmtestsuite").valid()) {
-            debugger
-            var validationobj = $("#clssuiteApplication").find("#stDrpApplication-error");
-            if (validationobj.length > 0) {
-                $("#clssuiteApplication").find("#stDrpApplication-error").remove();
-                validationHTML = "<div id='stDrpApplication-error' class='error invalid-feedback ' >This field is required.</div>";
-                $("#clssuiteApplication").append(validationHTML);
-            }
 
-            return false;
-        }
-        $("#addedittestsuite").attr("disabled", true);
-
-        var lId = $("#hdnTestSuiteId").val();
-        if (lId == null && lId == "")
-            lId
-                = 0;
-        var regex = /^[a-zA-Z0-9-._(&)*  ]*$/;
-
-        var TestSuiteModel = {};
-        var testsuitename = $("#testsuitename").val();
-        TestSuiteModel.TestSuiteId = lId,
-            TestSuiteModel.TestSuiteName = $("#testsuitename").val(),
-            TestSuiteModel.TestSuiteDescription = $("#testsuitedesc").val(),
-            TestSuiteModel.ApplicationId = $("#stDrpApplication").val().toString(),
-            TestSuiteModel.ProjectId = $("#DrpProject").val().toString();
-        if (!regex.test(TestSuiteModel.TestSuiteName)) {
-            $("#testsuitename").val("");
-            $("#testsuitevalidate").css("display", "block");
-            $("#addedittestsuite").attr("disabled", false);
-            return false;
-        }
-        // var lModel = JSON.stringify(TestCaseModel);
-        $.ajax({
-            url: "/TestSuite/AddEditTestSuite",
-            data: JSON.stringify(TestSuiteModel),
-            type: "POST",
-            contentType: "application/json;charset=utf-8",
-            dataType: "json",
-            success: function (result) {
-                if (result.status == 1) {
-                if (result.data.length > 0) {
-
-                    var resultstring = "";
-                    for (i = 0; i < result.data.length; i++) {
-
-                        resultstring = resultstring + result.data[i] + " , ";
-                    }
-                    swal.fire(
-                        '',
-                        'Following Storyboards contains this Test Suite. In order to remove this Test Suite please remove it from all storyboards. ' + "<br>" + resultstring,
-                        'error'
-                    )
-                }
-                else {
-                    $("#AddTestSuite").modal("hide");
-                    swal.fire({
-                        "title": "",
-                        "text": result.message,
-                        "icon": "success",
-                        "onClose": function (e) {
-                            console.log('on close event fired!');
-                        }
-                    });
-                    TestSuitetable.table().draw();
-                    $.ajax({
-                        url: "/Login/LeftPanel",
-                        // data: { 'lLoginName': pLoginName, 'lLoginId': TESTER_ID },
-
-                        type: "POST",
-                        contentType: "application/json;charset=utf-8",
-                        dataType: "HTML",
-                        success: function (result) {
-                            $("#leftProjectList").html("");
-                            $("#leftProjectList").html(result);
-                        }
-                    });
-                    }
-                }
-                else if (result.status == 0) {
-                    swal.fire({
-                        "title": "",
-                        "text": result.message,
-                        "icon": "error",
-                        "onClose": function (e) {
-                            console.log('on close event fired!');
-                        }
-                    });
-                }
-
-                $("#addedittestsuite").attr("disabled", false);
-                // window.location.href = "/Home/Index";
-            },
-            error: function (errormessage) {
-                alert(errormessage.responseText);
-            }
-        });
-
-    }
-    function CheckNameExist() {
-
-        var TestSuiteName = $("#testsuitename").val();
-        var TestSuiteId = $("#hdnTestSuiteId").val();
-
-        $.ajax({
-            url: "/TestSuite/CheckDuplicateTestSuiteNameExist",
-            data: '{"TestSuiteName":"' + TestSuiteName + '","TestSuiteId":"' + TestSuiteId + '"}',
-            type: "POST",
-            contentType: "application/json;charset=utf-8",
-            dataType: "json",
-            success: function (result) {
-                if (result.status == 1 && result.data) {
-                    $("#testsuitename").val("");
-                    $("#existtestsuitename").css("display", "block");
-                } else if (result.status == 0) {
-                    swal.fire({
-                        "title": "",
-                        "text": result.message,
-                        "icon": "error",
-                        "onClose": function (e) {
-                            console.log('on close event fired!');
-                        }
-                    });
-                }
-            },
-        });
-    }
-
-    $("#testsuitename").on('keyup', function () {
-        $("#existtestsuitename").css("display", "none");
-    });
-    $("#testsuitename").on('keyup', function () {
-        $("#testsuitevalidate").css("display", "none");
-    });
 </script>
 
 

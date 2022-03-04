@@ -777,51 +777,51 @@
                                                     </a>
                                                 </li>
                                                 @*@if (PrivilegeList.Select(y => y.MODULE).ToList().Contains("Object"))
-                                                {
-                                                    <li class="kt-menu__item mr_custom_menu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
-                                                        <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
-                                                            <span class="kt-menu__link-icon">
-                                                                <i class="flaticon-list-2"></i>
-                                                            </span><span class="kt-menu__link-text">Object</span><i class="la la-angle-right"></i>
-                                                        </a>
-                                                        <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--right mr_custom_submenu" data-kthor-direction="menu-submenu-right">
-                                                            <ul class="kt-menu__subnav">
-                                                                @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Import Object"))
-                                                                {
-                                                                    <li class="kt-menu__item " aria-haspopup="true">
-                                                                        <a href="javascript:;" class="kt-menu__link" onclick=ImportObjects("0")>
-                                                                            <span class="kt-menu__link-icon">
-                                                                                <i class="fa fa-circle"></i>
-                                                                            </span><span class="kt-menu__link-text">Import</span>
-                                                                        </a>
-                                                                    </li>
-                                                                }
-                                                                @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Export Object"))
-                                                                {
-                                                                    <li class="kt-menu__item " aria-haspopup="true">
-                                                                        <a href="javascript:;" class="kt-menu__link" data-toggle="modal" data-target="#ExportPopup" onclick="getApplicationList()">
-                                                                            <span class="kt-menu__link-icon">
-                                                                                <i class="fa fa-circle"></i>
-                                                                            </span><span class="kt-menu__link-text">Export</span>
-                                                                        </a>
-                                                                    </li>
-                                                                }
-                                                                @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Add Object") || PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Add Pegwindow Object") ||
-                                                                    PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Edit Object") || PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("View Object") ||
-                                                                    PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Delete Object") || PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("SaveAs Object"))
-                                                                {
-                                                                    <li class="kt-menu__item " aria-haspopup="true">
-                                                                        <a href="javascript:;" onclick=partialOpenObjectList("0") class="kt-menu__link">
-                                                                            <span class="kt-menu__link-icon">
-                                                                                <i class="fa fa-circle"></i>
-                                                                            </span><span class="kt-menu__link-text">Object Management</span>
-                                                                        </a>
-                                                                    </li>
-                                                                }
-                                                            </ul>
-                                                        </div>
-                                                    </li>
-                                                }*@
+                                                    {
+                                                        <li class="kt-menu__item mr_custom_menu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
+                                                            <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
+                                                                <span class="kt-menu__link-icon">
+                                                                    <i class="flaticon-list-2"></i>
+                                                                </span><span class="kt-menu__link-text">Object</span><i class="la la-angle-right"></i>
+                                                            </a>
+                                                            <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--right mr_custom_submenu" data-kthor-direction="menu-submenu-right">
+                                                                <ul class="kt-menu__subnav">
+                                                                    @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Import Object"))
+                                                                    {
+                                                                        <li class="kt-menu__item " aria-haspopup="true">
+                                                                            <a href="javascript:;" class="kt-menu__link" onclick=ImportObjects("0")>
+                                                                                <span class="kt-menu__link-icon">
+                                                                                    <i class="fa fa-circle"></i>
+                                                                                </span><span class="kt-menu__link-text">Import</span>
+                                                                            </a>
+                                                                        </li>
+                                                                    }
+                                                                    @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Export Object"))
+                                                                    {
+                                                                        <li class="kt-menu__item " aria-haspopup="true">
+                                                                            <a href="javascript:;" class="kt-menu__link" data-toggle="modal" data-target="#ExportPopup" onclick="getApplicationList()">
+                                                                                <span class="kt-menu__link-icon">
+                                                                                    <i class="fa fa-circle"></i>
+                                                                                </span><span class="kt-menu__link-text">Export</span>
+                                                                            </a>
+                                                                        </li>
+                                                                    }
+                                                                    @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Add Object") || PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Add Pegwindow Object") ||
+                                                                        PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Edit Object") || PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("View Object") ||
+                                                                        PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Delete Object") || PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("SaveAs Object"))
+                                                                    {
+                                                                        <li class="kt-menu__item " aria-haspopup="true">
+                                                                            <a href="javascript:;" onclick=partialOpenObjectList("0") class="kt-menu__link">
+                                                                                <span class="kt-menu__link-icon">
+                                                                                    <i class="fa fa-circle"></i>
+                                                                                </span><span class="kt-menu__link-text">Object Management</span>
+                                                                            </a>
+                                                                        </li>
+                                                                    }
+                                                                </ul>
+                                                            </div>
+                                                        </li>
+                                                    }*@
                                             </ul>
                                         </div>
                                     </li>
@@ -1243,25 +1243,25 @@
                                         </li>
                                     }*@
                                 @*@if (PrivilegeList.Select(y => y.MODULE).ToList().Contains("Display Chart"))
-                                {
-                                    <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel custm_singl_menu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
-                                        <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
-                                            <span class="kt-menu__link-text">Charts</span>
-                                            <i class="kt-menu__ver-arrow la la-angle-right"></i>
-                                        </a>
-                                        <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
-                                            <ul class="kt-menu__subnav">
-                                                <li class="kt-menu__item " aria-haspopup="true">
-                                                    <a href="javascript:;" onclick=window.open("/Chart/ChartIndex") class="kt-menu__link ">
-                                                        <span class="kt-menu__link-icon">
-                                                            <i class="flaticon-list-2"></i>
-                                                        </span><span class="kt-menu__link-text">3D Charts</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                }*@
+                                    {
+                                        <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel custm_singl_menu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
+                                            <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
+                                                <span class="kt-menu__link-text">Charts</span>
+                                                <i class="kt-menu__ver-arrow la la-angle-right"></i>
+                                            </a>
+                                            <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
+                                                <ul class="kt-menu__subnav">
+                                                    <li class="kt-menu__item " aria-haspopup="true">
+                                                        <a href="javascript:;" onclick=window.open("/Chart/ChartIndex") class="kt-menu__link ">
+                                                            <span class="kt-menu__link-icon">
+                                                                <i class="flaticon-list-2"></i>
+                                                            </span><span class="kt-menu__link-text">3D Charts</span>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    }*@
 
                                 @*@if (PrivilegeList.Select(y => y.MODULE).ToList().Contains("Project"))
                                     {*@
@@ -2614,6 +2614,122 @@
         </div>
     </div>
     <!-- Project Modal Popup -- END -->
+    <!-- Test Suite Modal Popup -- START -->
+    <div class="modal fade" id="AddTestSuite" tabindex="-1" role="dialog" aria-labelledby="TSexampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="TSexampleModalLabel">Add Test Suite</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="frmtestsuite">
+                        <input type="hidden" id="hdnTestSuiteId" name="hdnTestSuiteId" />
+                        <div class="form-group">
+                            <label for="recipient-name" class="form-control-label">Test Suite Name<span style="color:red">&nbsp;*</span></label>
+                            <input type="text" class="form-control" id="testsuitename" name="testsuitename" onchange="CheckTestSuiteNameExist()" maxlength="64">
+                            <label id="existtestsuitename" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                Test Suite Name already exist.
+                            </label>
+                            <label id="testsuitevalidate" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                TestSuite name can only consist Uppercase,Lowercase,numbers and Special characters(-,_,.,*,&,(,))
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="form-control-label">Description<span style="color:red">&nbsp;*</span></label>
+                            <textarea class="form-control" id="testsuitedesc" name="testsuitedesc" maxlength="128"></textarea>
+                        </div>
+
+                        <div class="form-group" id="clssuiteApplication">
+                            <label class="form-control-label">Application<span style="color:red">&nbsp;*</span></label>
+                            <select class="form-control kt-select2" id="stDrpApplication" name="stDrpApplication" onchange="ChangeApplication()" multiple="multiple" style="border-color:#59c0e7 !important">
+
+                                @{
+                                    var l_AppsList = ViewBag.listApplications as IEnumerable<SelectListItem>;
+                                    <optgroup id="appnamesuite" label="Applications">
+                                        @foreach (var item in l_AppsList)
+                                        {
+                                            <option value="@item.Value">@item.Text</option>
+                                        }
+                                    </optgroup>
+
+
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label">Project </label>
+                            <select class="form-control kt-select2" id="DrpProject" name="DrpProject" multiple="multiple"></select>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="addedittestsuite" class="btn btn-outline-brand btn-elevate btn-pill" onclick="AddEditTestSuiteSave()">Save</button>
+                    <button type="button" class="btn btn-outline-brand btn-elevate btn-pill" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Test Suite Modal Popup -- END -->
+    <!-- Test Case Modal Popup -- START -->
+    <div class="modal fade" id="AddEditTestCase" tabindex="-1" role="dialog" aria-labelledby="TCexampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="TCexampleModalLabel">Test Case</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="frmAddEditTestCase">
+                        <input type="hidden" id="hdnTestCaseId" name="hdnTestCaseId" />
+                        <div class="form-group">
+                            <label for="recipient-name" class="form-control-label">Test Case Name<span style="color:red">&nbsp;*</span></label>
+                            <input type="text" class="form-control" id="testcasename" name="testcasename" required onchange="CheckTestCaseNameExist()" maxlength="64">
+                            <label id="existtestcasename" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                TestCase Name already exist.
+                            </label>
+                            <label id="testcasevalidate" class="error" style="display: none;width: 100%;margin-top: 0.25rem;font-size: 80%;color: #fd397a;">
+                                Test case name can only consist Uppercase,Lowercase,numbers and Special characters(-,_,.,*,&,(,))
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label for="message-text" class="form-control-label">Description<span style="color:red">&nbsp;*</span></label>
+                            <textarea class="form-control" id="testcasedesc" name="testcasedesc" required maxlength="128"></textarea>
+                        </div>
+
+                        <div class="form-group" id="clscaseApplication">
+                            <label class="form-control-label">Application <span style="color:red">&nbsp;*</span></label>
+                            <select class="form-control kt-select2" id="DrpApplication" name="DrpApplication" multiple="multiple" onchange="ChangeApplicationTestsuite()" required>
+
+                                @{
+                                    var lAppList = ViewBag.listApplications as IEnumerable<SelectListItem>;
+                                    <optgroup label="Applications">
+                                        @foreach (var item in lAppList)
+                                        {
+                                            <option value="@item.Value">@item.Text</option>
+                                        }
+                                    </optgroup>
+                                }
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label">TestSuite </label>
+                            <div id="clsTestSuite">
+                                <select class="form-control" id="DrpTestSuite" name="DrpTestSuite" style="width: 749px;"></select>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" id="addedittestcase" class="btn btn-outline-brand btn-elevate btn-pill" onclick="AddEditTestCaseSave()">Save</button>
+                    <button type="button" class="btn btn-outline-brand btn-elevate btn-pill" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Test Case Modal Popup -- END -->
     @*<div class="modal fade" id="ExecutePopupTC" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display: none;">
             <div class="modal-dialog modal-sm" role="document">
                 <div class="modal-content">
@@ -2739,6 +2855,8 @@
     <script src="~/Scripts/ExecuteEngine/ExecuteEngine.js"></script>
     <script src="~/Scripts/Applications/AddEditApplication.js"></script>
     <script src="~/Scripts/Projects/AddEditProject.js"></script>
+    <script src="~/Scripts/TestSuite/TestSuite.js"></script>
+    <script src="~/Scripts/TestCase/TestCase.js"></script>
     <script>
         $(document).ready(function () {
 
