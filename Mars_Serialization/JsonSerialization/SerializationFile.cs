@@ -355,6 +355,51 @@ namespace Mars_Serialization.JsonSerialization
                 File.WriteAllText(parentPagWindowPath, applicationJsonData);
             }
         }
+        public static List<GroupsViewModel> GetAllGroups(string conString)
+        {
+            List<GroupsViewModel> groups = new List<GroupsViewModel>();
+            try
+            {
+                string query = "SELECT * FROM T_TEST_GROUP WHERE ACTIVE = 1";
+                DataTable groupsDatatable = Common.Common.GetRecordAsDatatable(conString, query);
+                groups = Common.Common.ConvertDataTableToList<GroupsViewModel>(groupsDatatable);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            return groups;
+        }
+        public static List<FoldersViewModel> GetAllFolders(string conString)
+        {
+            List<FoldersViewModel> folders = new List<FoldersViewModel>();
+            try
+            {
+                string query = "SELECT * FROM T_TEST_FOLDER WHERE ACTIVE = 1";
+                DataTable foldersDatatable = Common.Common.GetRecordAsDatatable(conString, query);
+                folders = Common.Common.ConvertDataTableToList<FoldersViewModel>(foldersDatatable);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            return folders;
+        }
+        public static List<SetsViewModel> GetAllSets(string conString)
+        {
+            List<SetsViewModel> sets = new List<SetsViewModel>();
+            try
+            {
+                string query = "SELECT * FROM T_TEST_SET WHERE ACTIVE = 1";
+                DataTable setsDatatable = Common.Common.GetRecordAsDatatable(conString, query);
+                sets = Common.Common.ConvertDataTableToList<SetsViewModel>(setsDatatable);
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            return sets;
+        }
         public static bool LoadTestcaseJsonFile(string folderPath, List<MB_V_TEST_STEPS> testCases, long testcaseId, string conString)
         {
             try
