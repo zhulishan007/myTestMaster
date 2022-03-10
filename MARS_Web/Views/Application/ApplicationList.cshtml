@@ -257,6 +257,9 @@
         ApplicationTable.init();
     });
     function AppDelete(id) {
+        if (!CanEditCheck("ApplicationList")) {
+            return;
+        }
         swal.fire({
             title: 'Please confirm.',
             text: "This action can not be undone.",
@@ -265,6 +268,7 @@
             confirmButtonText: 'Yes, delete it!'
         }).then(function (result) {
             if (result.value == true) {
+                OnPartialRightGridShow(0, "ApplicationList", "2", "ApplicationList");
                 $.ajax({
                     url: "/Application/DeletApplication",
                     data: JSON.stringify({ "ApplicationId": id }),

@@ -302,6 +302,9 @@
     };
 
     function AddEditTestSuite(Id, editObj) {
+        if (!CanEditCheck("TestSuiteList")) {
+            return;
+        }
         $("#TSexampleModalLabel").text('');
         $("#TSexampleModalLabel").text('Edit Test Suite');
         $("#testsuitevalidate").css("display", "none");
@@ -334,6 +337,7 @@
             dataType: "json",
             success: function (result) {
                 if (result.status == 1) {
+                    OnPartialRightGridShow(0, "TestSuiteList", "2", "TestSuiteList");
                     var lTempApplication = "";
                     var optionString = "";
 
@@ -370,7 +374,12 @@
     }    
  
     function TestSuiteDelete(id) {
-
+        if (!CanEditCheck("TestSuiteList")) {
+            return;
+        }
+        if (!CanEditCheck("TestSuiteList")) {
+            return;
+        }
         swal.fire({
             title: 'Please confirm.',
             text: "This action can not be undone.",
@@ -394,6 +403,7 @@
                         stoploader();
                     },
                     success: function (result) {
+                        OnPartialRightGridShow(0, "TestSuiteList", "2", "TestSuiteList");
                         if (result.status == 1) {
                             if (result.data == true) {
                             TestSuitetable.table().draw();

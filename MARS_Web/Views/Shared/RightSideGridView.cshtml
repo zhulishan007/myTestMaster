@@ -981,6 +981,8 @@
                  $undo.button("option", { label: 'Undo (' + ui.num_undo + ')' });
                  //undonum = ui.num_undo;
                    $redo.button("option", { label: 'Redo (' + ui.num_redo + ')' });
+                   if (ui.num_undo>0)
+                       OnPartialRightGridShow("@ViewBag.TestcaseId", "@ViewBag.TestCaseName", "0","TestCase");
                },
                columnTemplate: { render: filterRenderTC },//
                menuIcon: true,
@@ -2288,7 +2290,7 @@
         //#endregion
 
    function ReloadGrid(tcgrid, tcid, tsid, Visibledatasetname, isReload = true) {
-
+	OnPartialRightGridShow("@ViewBag.TestcaseId", "@ViewBag.TestCaseName", "2","TestCase");
         dt = [];
 
         data = [];
@@ -3759,6 +3761,7 @@
                     console.timeEnd("step 5");
                     console.time("step 4");
                     if (result.data == "success") {
+ On			PartialRightGridShow("@ViewBag.TestcaseId","@ViewBag.TestCaseName","2","TestCase");
                         swal.fire({
                             "title": "",
                             "text": result.message,
@@ -4845,7 +4848,7 @@
     </div>
 </div>
 <div class="kt-portlet__body">
-    <div id="grid" class="@lclassgrid" style="margin:auto;padding:0px 10px;"></div>
+    <div id="grid" class="@lclassgrid" style="margin:1px;@*padding:0px 10px;*@"></div>
 </div>
 
 

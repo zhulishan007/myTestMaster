@@ -420,5 +420,40 @@ namespace MARS_Repository.Repositories
                 throw;
             }
         }
+        public List<StoryBoardListByProject> GetStoryboardList(List<Mars_Serialization.ViewModel.ProjectByUser> projectByUserList)
+        {
+            try
+            {
+                List<long>  list = projectByUserList.Select(r => r.ProjectId).ToList();
+                var lStoryboardTree = new List<StoryBoardListByProject>();
+                var lResult = from t2 in entity.T_STORYBOARD_SUMMARY
+                              join t1 in entity.T_TEST_PROJECT on t2.ASSIGNED_PROJECT_ID equals t1.PROJECT_ID
+                              where t2.ASSIGNED_PROJECT_ID!= null && list.Contains( (long)t2.ASSIGNED_PROJECT_ID ) && t2.STORYBOARD_NAME != null
+                              select new StoryBoardListByProject
+                              {
+                                  ProjectId = t1.PROJECT_ID,
+                                  ProjectName = t1.PROJECT_NAME,
+                                  StoryboardId = t2.STORYBOARD_ID,
+                                  StoryboardName = t2.STORYBOARD_NAME,
+                                  Storyboardescription = t2.DESCRIPTION
+                              };
+
+                if (lResult.Count() > 0)
+                {
+                    lStoryboardTree = lResult.Distinct().OrderBy(x => x.StoryboardName).ToList();
+                }
+ 
+                return lStoryboardTree;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(ex.StackTrace);
+                ELogger.ErrorException(string.Format("Error occured GetTree in GetStoryboardList method | ProjectId: all projects | Username: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured GetStoryboardList in GetRoleByUser method |ProjectId: all projects | Username: {0}",  Username), ex.InnerException);
+                throw;
+            }
+        }
+
     }
 }

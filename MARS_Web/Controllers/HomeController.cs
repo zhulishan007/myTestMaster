@@ -6,10 +6,12 @@ using MARS_Web.Helper;
 using Newtonsoft.Json;
 using NLog;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Configuration;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
@@ -27,6 +29,8 @@ namespace MARS_Web.Controllers
         }
         Logger logger = LogManager.GetLogger("Log");
         Logger ELogger = LogManager.GetLogger("ErrorLog");
+
+        //private static Dictionary<string, Dictionary<string,string>> storyboardInfo = new Dictionary<string, Dictionary<string, string>>();
 
         // Main page after login User 
         public ActionResult Index(int TestcaseId = 0, int TestsuiteId = 0, int ProjectId = 0)
@@ -99,65 +103,168 @@ namespace MARS_Web.Controllers
         }
 
         #region Right Side Display PqGrid
-        public ActionResult PartialRightStoryboardGrid(int Projectid = 0, int Storyboardid = 0)
+        public ActionResult PartialRightStoryboardGrid(string storyBoardName, int Projectid = 0, int Storyboardid = 0)
         {
             try
             {
-                logger.Info(string.Format("open storyborad start | Projectid: {0} | Storyboardid: {1} | Username: {2}", Projectid, Storyboardid, SessionManager.TESTER_LOGIN_NAME));
-                StoryBoardRepository repo = new StoryBoardRepository();
-                repo.Username = SessionManager.TESTER_LOGIN_NAME;
-                var lAppList = repo.GetApplicationListByStoryboardId(Storyboardid);
-                ViewBag.applicationlst = JsonConvert.SerializeObject(lAppList);
-                ViewBag.Accesstoken = SessionManager.Accesstoken;
-                ViewBag.WebAPIURL = ConfigurationManager.AppSettings["WebApiURL"];
-                ViewBag.Title = "Home Page";
-                if (Projectid == 0 && Storyboardid == 0)
+                string key = $"{Projectid}_{Storyboardid}_{storyBoardName}.json";
+                /* if (!GlobalVariable.StoryboardInfo.ContainsKey(SessionManager.Schema)) 
+                 {
+                     var dictionary = new ConcurrentDictionary<string, ConcurrentDictionary<string, string>>();
+                     GlobalVariable.StoryboardInfo.TryAdd(SessionManager.Schema, dictionary);
+                 }
+
+                var storyboardInfo = GlobalVariable.StoryboardInfo[SessionManager.Schema];
+                if (!storyboardInfo.ContainsKey(key))
                 {
-                    ViewBag.ProjectId = Projectid;
-                    ViewBag.StoryBoardId = Storyboardid;
-                    ViewBag.Storyboardname = "0";
+                    var result = JsonFileHelper.GetFilePath(key + ".json", SessionManager.Schema);
+                    if (!string.IsNullOrEmpty(result))
+                    {
+                        ConcurrentDictionary<string, string> keyValuePairs = new ConcurrentDictionary<string, string>();
+                        keyValuePairs = Newtonsoft.Json.JsonConvert.DeserializeObject<ConcurrentDictionary<string, string>>(result);
+                        storyboardInfo.TryAdd(key, keyValuePairs);
+                    }
+                }*/
+                
+                var result = JsonFileHelper.GetFilePath(key, SessionManager.Schema);
+                if (!string.IsNullOrEmpty(result))
+                {
+                    //ConcurrentDictionary<string, string> keyValuePairs = new ConcurrentDictionary<string, string>();
+                    ConcurrentDictionary<string, string> keyValuePairs = Newtonsoft.Json.JsonConvert.DeserializeObject<ConcurrentDictionary<string, string>>(result);
+                    ViewBag.applicationlst = keyValuePairs["applicationlst"];
+                    ViewBag.Accesstoken = SessionManager.Accesstoken;
+                    ViewBag.WebAPIURL = ConfigurationManager.AppSettings["WebApiURL"];
+                    ViewBag.Title = "Home Page";
+                    if (Projectid == 0 && Storyboardid == 0)
+                    {
+                        ViewBag.ProjectId = Projectid;
+                        ViewBag.StoryBoardId = Storyboardid;
+                        ViewBag.Storyboardname = "0";
+                    }
+                    else
+                    {
+                        ViewBag.ProjectId = Projectid;
+                        ViewBag.StoryBoardId = Storyboardid;
+                        ViewBag.Storyboardname = keyValuePairs["Storyboardname"]; 
+                        Session["ProjectId"] = ViewBag.ProjectId;
+                        Session["StoryBoardId"] = ViewBag.StoryBoardId;
+                    }
+
+                    ViewBag.ActionList = keyValuePairs["ActionList"];
+                    ViewBag.TestSuitesList = keyValuePairs["TestSuitesList"];
+                    //var userid = SessionManager.TESTER_ID;
+                    //var repacc = new ConfigurationGridRepository();
+                    //repacc.Username = SessionManager.TESTER_LOGIN_NAME;
+                    var gridlst = Newtonsoft.Json.JsonConvert.DeserializeObject<List<GridViewModel>> (keyValuePairs["gridlst"]);  
+                    var SPgriddata = GridHelper.GetStoryboardPqgridwidth(gridlst);
+                    var Widthgridlst = Newtonsoft.Json.JsonConvert.DeserializeObject<List<GridViewModel>>(keyValuePairs["Widthgridlst"]); 
+                    var Rgriddata = GridHelper.GetLeftpanelgridwidth(Widthgridlst);
+
+                    ViewBag.width = Rgriddata.Resize == null ? ConfigurationManager.AppSettings["DefultLeftPanel"] + "px" : Rgriddata.Resize.Trim() + "px";
+                    ViewBag.actionwidth = SPgriddata.Action == null ? "70" : SPgriddata.Action.Trim();
+                    ViewBag.stepswidth = SPgriddata.Steps == null ? "100" : SPgriddata.Steps.Trim();
+                    ViewBag.testsuitewidth = SPgriddata.TestSuite == null ? "180" : SPgriddata.TestSuite.Trim();
+                    ViewBag.testcasewidth = SPgriddata.TestCase == null ? "180" : SPgriddata.TestCase.Trim();
+                    ViewBag.datasetwidth = SPgriddata.Dataset == null ? "180" : SPgriddata.Dataset.Trim();
+                    ViewBag.bresultwidth = SPgriddata.BResult == null ? "75" : SPgriddata.BResult.Trim();
+                    ViewBag.berrorcausewidth = SPgriddata.BErrorCause == null ? "75" : SPgriddata.BErrorCause.Trim();
+                    ViewBag.bscriptstartwidth = SPgriddata.BScriptStart == null ? "75" : SPgriddata.BScriptStart.Trim();
+                    ViewBag.bscriptdurationwidth = SPgriddata.BScriptDuration == null ? "75" : SPgriddata.BScriptDuration.Trim();
+                    ViewBag.cresultwidth = SPgriddata.CResult == null ? "75" : SPgriddata.CResult.Trim();
+                    ViewBag.cerrorcausewidth = SPgriddata.CErrorCause == null ? "75" : SPgriddata.CErrorCause.Trim();
+                    ViewBag.cscriptstartwidth = SPgriddata.CScriptStart == null ? "75" : SPgriddata.CScriptStart.Trim();
+                    ViewBag.cscriptdurationwidth = SPgriddata.CScriptDuration == null ? "75" : SPgriddata.CScriptDuration.Trim();
+                    ViewBag.dependencywidth = SPgriddata.Dependency == null ? "50" : SPgriddata.Dependency.Trim();
+                    ViewBag.descriptionwidth = SPgriddata.Dependency == null ? "100" : SPgriddata.Dependency.Trim();
+                    ViewBag.StoryBoardDetails = keyValuePairs["StoryBoardDetails"];
                 }
                 else
                 {
-                    ViewBag.ProjectId = Projectid;
-                    ViewBag.StoryBoardId = Storyboardid;
-                    ViewBag.Storyboardname = repo.GetStoryboardById(Storyboardid);
+                    ConcurrentDictionary<string, string> keyValuePairs = new ConcurrentDictionary<string, string>();
+                    //storyboardInfo.TryAdd(key, keyValuePairs);
+                    logger.Info(string.Format("open storyborad start | Projectid: {0} | Storyboardid: {1} | Username: {2}", Projectid, Storyboardid, SessionManager.TESTER_LOGIN_NAME));
+                    StoryBoardRepository repo = new StoryBoardRepository();
+                    repo.Username = SessionManager.TESTER_LOGIN_NAME;
+                    Task task1= System.Threading.Tasks.Task.Run(()=> {
+                        var lAppList = repo.GetApplicationListByStoryboardId(Storyboardid);
+                        ViewBag.applicationlst = JsonConvert.SerializeObject(lAppList);
+                        keyValuePairs.TryAdd("applicationlst", ViewBag.applicationlst);
+                    });
+                    /*var lAppList = repo.GetApplicationListByStoryboardId(Storyboardid);
+                    ViewBag.applicationlst = JsonConvert.SerializeObject(lAppList);
+                    keyValuePairs.TryAdd("applicationlst", ViewBag.applicationlst);*/
+                    ViewBag.Accesstoken = SessionManager.Accesstoken;
+                    ViewBag.WebAPIURL = ConfigurationManager.AppSettings["WebApiURL"];
+                    ViewBag.Title = "Home Page";
+                    if (Projectid == 0 && Storyboardid == 0)
+                    {
+                        ViewBag.ProjectId = Projectid;
+                        ViewBag.StoryBoardId = Storyboardid;
+                        ViewBag.Storyboardname = "0";
+                    }
+                    else
+                    {
+                        ViewBag.ProjectId = Projectid;
+                        ViewBag.StoryBoardId = Storyboardid;
+                        
+                        Session["ProjectId"] = ViewBag.ProjectId;
+                        Session["StoryBoardId"] = ViewBag.StoryBoardId;
+                         
+                        ViewBag.Storyboardname = repo.GetStoryboardById(Storyboardid);
+                        keyValuePairs.TryAdd("Storyboardname", ViewBag.Storyboardname);
+                    }
+                     
+                    var actionResult = repo.GetActions(Storyboardid);
+                    ViewBag.ActionList = JsonConvert.SerializeObject(actionResult);
+                    var testSuiteResult = repo.GetTestSuites(Projectid);
+                    ViewBag.TestSuitesList = JsonConvert.SerializeObject(testSuiteResult);
+                    var userid = SessionManager.TESTER_ID;
+                    var repacc = new ConfigurationGridRepository();
+                    repacc.Username = SessionManager.TESTER_LOGIN_NAME;
+                    var gridlst = repacc.GetGridList((long)userid, GridNameList.StoryboradPage);
+                    var SPgriddata = GridHelper.GetStoryboardPqgridwidth(gridlst);
+                    var Widthgridlst = repacc.GetGridList((long)userid, GridNameList.ResizeLeftPanel);
+                    var Rgriddata = GridHelper.GetLeftpanelgridwidth(Widthgridlst);
 
-                    Session["ProjectId"] = ViewBag.ProjectId;
-                    Session["StoryBoardId"] = ViewBag.StoryBoardId;
+                    keyValuePairs.TryAdd("ActionList", ViewBag.ActionList);
+                    keyValuePairs.TryAdd("TestSuitesList", ViewBag.TestSuitesList);
+                    keyValuePairs.TryAdd("gridlst", JsonConvert.SerializeObject( gridlst));
+                    keyValuePairs.TryAdd("Widthgridlst", JsonConvert.SerializeObject(Widthgridlst));
+                    ViewBag.ProjectName = testSuiteResult.FirstOrDefault()?.ProjectName;
+                    keyValuePairs.TryAdd("ProjectName", ViewBag.ProjectName);
+
+                    ViewBag.width = Rgriddata.Resize == null ? ConfigurationManager.AppSettings["DefultLeftPanel"] + "px" : Rgriddata.Resize.Trim() + "px";
+                    ViewBag.actionwidth = SPgriddata.Action == null ? "70" : SPgriddata.Action.Trim();
+                    ViewBag.stepswidth = SPgriddata.Steps == null ? "100" : SPgriddata.Steps.Trim();
+                    ViewBag.testsuitewidth = SPgriddata.TestSuite == null ? "180" : SPgriddata.TestSuite.Trim();
+                    ViewBag.testcasewidth = SPgriddata.TestCase == null ? "180" : SPgriddata.TestCase.Trim();
+                    ViewBag.datasetwidth = SPgriddata.Dataset == null ? "180" : SPgriddata.Dataset.Trim();
+                    ViewBag.bresultwidth = SPgriddata.BResult == null ? "75" : SPgriddata.BResult.Trim();
+                    ViewBag.berrorcausewidth = SPgriddata.BErrorCause == null ? "75" : SPgriddata.BErrorCause.Trim();
+                    ViewBag.bscriptstartwidth = SPgriddata.BScriptStart == null ? "75" : SPgriddata.BScriptStart.Trim();
+                    ViewBag.bscriptdurationwidth = SPgriddata.BScriptDuration == null ? "75" : SPgriddata.BScriptDuration.Trim();
+                    ViewBag.cresultwidth = SPgriddata.CResult == null ? "75" : SPgriddata.CResult.Trim();
+                    ViewBag.cerrorcausewidth = SPgriddata.CErrorCause == null ? "75" : SPgriddata.CErrorCause.Trim();
+                    ViewBag.cscriptstartwidth = SPgriddata.CScriptStart == null ? "75" : SPgriddata.CScriptStart.Trim();
+                    ViewBag.cscriptdurationwidth = SPgriddata.CScriptDuration == null ? "75" : SPgriddata.CScriptDuration.Trim();
+                    ViewBag.dependencywidth = SPgriddata.Dependency == null ? "50" : SPgriddata.Dependency.Trim();
+                    ViewBag.descriptionwidth = SPgriddata.Dependency == null ? "100" : SPgriddata.Dependency.Trim();
+                    var lresult = repo.GetStoryBoardDetails(SessionManager.Schema, SessionManager.APP, Projectid, Storyboardid);
+                    var storyBoardDetails = JsonConvert.SerializeObject(lresult);
+                    storyBoardDetails = storyBoardDetails.Replace("\\r", "\\\\r");
+                    storyBoardDetails = storyBoardDetails.Replace("\\n", "\\\\n");
+                    storyBoardDetails = storyBoardDetails.Replace("   ", "");
+                    storyBoardDetails = storyBoardDetails.Replace("\\", "\\\\");
+                    storyBoardDetails = storyBoardDetails.Trim();
+                    keyValuePairs.TryAdd("StoryBoardDetails", storyBoardDetails);
+                    ViewBag.StoryBoardDetails = storyBoardDetails;
+                    string jsonData = JsonConvert.SerializeObject(keyValuePairs);
+                    JsonFileHelper.SaveToJsonFile(jsonData,key, SessionManager.Schema);
+                    logger.Info(string.Format("successfully open storyborad | Projectid: {0} | Storyboardid: {1} | Username: {2}", Projectid, Storyboardid, SessionManager.TESTER_LOGIN_NAME));
                 }
 
-                var result = repo.GetActions(Storyboardid);
-                ViewBag.ActionList = JsonConvert.SerializeObject(result);
-                var testSuiteResult = repo.GetTestSuites(Projectid);
-                ViewBag.TestSuitesList = JsonConvert.SerializeObject(testSuiteResult);
-                var userid = SessionManager.TESTER_ID;
-                var repacc = new ConfigurationGridRepository();
-                repacc.Username = SessionManager.TESTER_LOGIN_NAME;
-                var gridlst = repacc.GetGridList((long)userid, GridNameList.StoryboradPage);
-                var SPgriddata = GridHelper.GetStoryboardPqgridwidth(gridlst);
-                var Widthgridlst = repacc.GetGridList((long)userid, GridNameList.ResizeLeftPanel);
-                var Rgriddata = GridHelper.GetLeftpanelgridwidth(Widthgridlst);
-
-                ViewBag.width = Rgriddata.Resize == null ? ConfigurationManager.AppSettings["DefultLeftPanel"] + "px" : Rgriddata.Resize.Trim() + "px";
-                ViewBag.actionwidth = SPgriddata.Action == null ? "70" : SPgriddata.Action.Trim();
-                ViewBag.stepswidth = SPgriddata.Steps == null ? "100" : SPgriddata.Steps.Trim();
-                ViewBag.testsuitewidth = SPgriddata.TestSuite == null ? "180" : SPgriddata.TestSuite.Trim();
-                ViewBag.testcasewidth = SPgriddata.TestCase == null ? "180" : SPgriddata.TestCase.Trim();
-                ViewBag.datasetwidth = SPgriddata.Dataset == null ? "180" : SPgriddata.Dataset.Trim();
-                ViewBag.bresultwidth = SPgriddata.BResult == null ? "75" : SPgriddata.BResult.Trim();
-                ViewBag.berrorcausewidth = SPgriddata.BErrorCause == null ? "75" : SPgriddata.BErrorCause.Trim();
-                ViewBag.bscriptstartwidth = SPgriddata.BScriptStart == null ? "75" : SPgriddata.BScriptStart.Trim();
-                ViewBag.bscriptdurationwidth = SPgriddata.BScriptDuration == null ? "75" : SPgriddata.BScriptDuration.Trim();
-                ViewBag.cresultwidth = SPgriddata.CResult == null ? "75" : SPgriddata.CResult.Trim();
-                ViewBag.cerrorcausewidth = SPgriddata.CErrorCause == null ? "75" : SPgriddata.CErrorCause.Trim();
-                ViewBag.cscriptstartwidth = SPgriddata.CScriptStart == null ? "75" : SPgriddata.CScriptStart.Trim();
-                ViewBag.cscriptdurationwidth = SPgriddata.CScriptDuration == null ? "75" : SPgriddata.CScriptDuration.Trim();
-                ViewBag.dependencywidth = SPgriddata.Dependency == null ? "50" : SPgriddata.Dependency.Trim();
-                ViewBag.descriptionwidth = SPgriddata.Dependency == null ? "100" : SPgriddata.Dependency.Trim();
-
-                logger.Info(string.Format("successfully open storyborad | Projectid: {0} | Storyboardid: {1} | Username: {2}", Projectid, Storyboardid, SessionManager.TESTER_LOGIN_NAME));
-            }
+                
+             }
             catch (Exception ex)
             {
                 logger.Error(string.Format("Error occured in Home for PartialRightStoryboardGrid method | StoryBoard Id : {0} | Project Id : {1} | UserName: {2}", Storyboardid, Projectid, SessionManager.TESTER_LOGIN_NAME));

@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Objects;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -794,6 +795,25 @@ namespace MARS_Repository.Repositories
                 var lstoryboardname = enty.T_STORYBOARD_SUMMARY.FirstOrDefault(x => x.STORYBOARD_ID == Storyboardid).STORYBOARD_NAME;
                 logger.Info(string.Format("Get Storyboard end | Storyboardid: {0} | UserName: {1}", Storyboardid, Username));
                 return lstoryboardname;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in StoryBoard for GetStoryboardById method | StoryBoardId: {0} | UserName: {1}", Storyboardid, Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in GetStoryboardById method | StoryBoardId: {0} | UserName: {1}", Storyboardid, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in GetStoryboardById method | StoryBoardId: {0} | UserName: {1}", Storyboardid, Username), ex.InnerException);
+                throw;
+            }
+        }
+
+        public T_STORYBOARD_SUMMARY GetStoryboardSummaryById(long Storyboardid)
+        {
+            try
+            {
+                logger.Info(string.Format("Get Storyboard start | Storyboardid: {0} | UserName: {1}", Storyboardid, Username));
+                var storyboard = enty.T_STORYBOARD_SUMMARY.FirstOrDefault(x => x.STORYBOARD_ID == Storyboardid);
+                logger.Info(string.Format("Get Storyboard end | Storyboardid: {0} | UserName: {1}", Storyboardid, Username));
+                return storyboard;
             }
             catch (Exception ex)
             {
@@ -2141,6 +2161,7 @@ namespace MARS_Repository.Repositories
                                     };
                         lAppList = lList.ToList();
                     }
+                  
                     logger.Info(string.Format("Get ApplicationList By StoryboardId end | StoryboardId: {0} | Username: {1}", lStoryboardId, Username));
                     scope.Complete();
                     return lAppList;
@@ -2633,10 +2654,12 @@ namespace MARS_Repository.Repositories
             return flag;
         }
 
-        public List<TestCaseValidationResultModel> InsertStgStoryboardValidationTable(string lConnectionStr, string lschema, StoryBoardResultModel[] lobj, string StoryboardId, string lvalFeed, string lvalFeedD, string lProjectId)
+        public List<TestCaseValidationResultModel> InsertStgStoryboardValidationTable(string lConnectionStr, string lschema, List<StoryBoardResultModel> lobj, string StoryboardId, string lvalFeed, string lvalFeedD, string lProjectId)
         {
             try
             {
+                Stopwatch sw = new Stopwatch();
+                sw.Start();
                 logger.Info(string.Format("Insert StgStoryboard ValidationTable start | StoryboardId: {0} | UserName: {1}", StoryboardId, Username));
                 OracleTransaction ltransaction;
 
@@ -2645,7 +2668,7 @@ namespace MARS_Repository.Repositories
                 ltransaction = lconnection.BeginTransaction();
 
                 logger.Info(string.Format("Insert StgStoryboard ValidationTable 1 | StoryboardId: {0} | UserName: {1}", StoryboardId, Username));
-                string lcmdquery = "insert into TBLSTGSTORYBOARDVALID ( ROW_ID,RUN_ORDER,PROJECTID,ACTIONAME,STEPNAME,TESTSUITENAME,TESTCASENAME,DATASETNAME,DEPENDENCY,FEEDPROCESSID,FEEDPROCESSDETAILID,STORYBOARDDETAILID,STORYBOARDID) values(:1,:2,:3,:4,:5,:6,:7,:8,:9,:10,:11,:12,:13)";
+                string lcmdquery = "insert into TBLSTGSTORYBOARDVALID ( ROW_ID,RUN_ORDER,PROJECTID,ACTIONAME,STEPNAME,TESTSUITENAME,TESTCASENAME,DATASETNAME,DEPENDENCY,FEEDPROCESSID,FEEDPROCESSDETAILID,STORYBOARDDETAILID,STORYBOARDID,STATUS) values(:1,:2,:3,:4,:5,:6,:7,:8,:9,:10,:11,:12,:13,:14)";
                 int[] lids = new int[lobj.ToList().Count()];
                 var ValidationSteps = new List<TestCaseValidationResultModel>();
                 using (var lcmd = lconnection.CreateCommand())
@@ -2689,7 +2712,7 @@ namespace MARS_Repository.Repositories
                     {
                         STORYBOARDID_param[p] = StoryboardId;
                     }
-
+                    string[] STATUS_param = lobj.ToList().Select(r => Convert.ToString(r.status)).ToArray();
                     OracleParameter ROW_ID_oparam = new OracleParameter();
                     ROW_ID_oparam.OracleDbType = OracleDbType.Varchar2;
                     ROW_ID_oparam.Value = ROW_ID_param;
@@ -2742,6 +2765,10 @@ namespace MARS_Repository.Repositories
                     STORYBOARDID_oparam.OracleDbType = OracleDbType.Varchar2;
                     STORYBOARDID_oparam.Value = STORYBOARDID_param;
 
+                    OracleParameter STATUS_oparam = new OracleParameter();
+                    STATUS_oparam.OracleDbType = OracleDbType.Varchar2;
+                    STATUS_oparam.Value = STATUS_param;
+
                     lcmd.Parameters.Add(ROW_ID_oparam);
                     lcmd.Parameters.Add(RUN_ORDER_oparam);
                     lcmd.Parameters.Add(PROJECTID_oparam);
@@ -2755,6 +2782,10 @@ namespace MARS_Repository.Repositories
                     lcmd.Parameters.Add(FEEDPROCESSDETAILID_oparam);
                     lcmd.Parameters.Add(STORYBOARDDETAILID_oparam);
                     lcmd.Parameters.Add(STORYBOARDID_oparam);
+                    lcmd.Parameters.Add(STATUS_oparam);
+                    Console.WriteLine(sw.ElapsedMilliseconds);
+                    sw.Stop();
+                    sw.Restart();
                     try
                     {
                         logger.Info(string.Format("Insert StgStoryboard ValidationTable 2 | StoryboardId: {0} | UserName: {1}", StoryboardId, Username));
@@ -2771,11 +2802,19 @@ namespace MARS_Repository.Repositories
 
                     ltransaction.Commit();
                     lconnection.Close();
+                    Console.WriteLine(sw.ElapsedMilliseconds);
+                    sw.Stop();
+                    sw.Restart();
+
                     logger.Info(string.Format("Insert  TBLSTGSTORYBOARDVALID end | StoryboardId: {0} | UserName: {1}", StoryboardId, Username));
                     //check validation
                     logger.Info(string.Format("Insert StgStoryboard ValidationTable 4 | StoryboardId: {0} | UserName: {1}", StoryboardId, Username));
-                    ValidationSteps = ExecuteCheckValidationStoryboard(int.Parse(lvalFeed), lschema, lConnectionStr);
+                    //ValidationSteps = ExecuteCheckValidationStoryboard(Int64.Parse(lvalFeed), lschema, lConnectionStr);
+                    ValidationSteps = ExecuteCheckValidationStoryboardNew(Int64.Parse(lvalFeed), lschema, lConnectionStr);
                     logger.Info(string.Format("Insert StgStoryboard ValidationTable 5 | StoryboardId: {0} | UserName: {1}", StoryboardId, Username));
+                    Console.WriteLine(sw.ElapsedMilliseconds);
+                    sw.Stop();
+                    sw.Restart();
                     return ValidationSteps;
                 }
             }
@@ -2797,11 +2836,15 @@ namespace MARS_Repository.Repositories
         {
             try
             {
+                Stopwatch sw = new Stopwatch();
+                sw.Start();
                 logger.Info(string.Format("ExecuteCheckValidationStoryboard start | feedProcessId: {0} | UserName: {1}", feedProcessId, Username));
                 ObjectParameter op = new ObjectParameter("RESULT", "");
                 enty.SP_CheckValidationStoryboard(feedProcessId, op);
                 enty.SaveChanges();
-
+                Console.WriteLine(sw.ElapsedMilliseconds);
+                sw.Stop();
+                sw.Restart();
                 DataSet lds = new DataSet();
                 DataTable ldt = new DataTable();
 
@@ -2852,7 +2895,83 @@ namespace MARS_Repository.Repositories
                     VALIDATIONMSG = string.Join(",", g.Select(i => i.VALIDATIONMSG)),
 
                 }).OrderBy(z => z.ID).ToList();
+                Console.WriteLine(sw.ElapsedMilliseconds);
+                sw.Stop();
+                sw.Restart();
+                logger.Info(string.Format("ExecuteCheckValidationStoryboard end | feedProcessId: {0} | UserName: {1}", feedProcessId, Username));
+                return lGroupResult;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in StoryBoard for ExecuteCheckValidationStoryboard method | Feed Process Id: {0} | Connection string: {1} | Schema : {2} | UserName: {3}", feedProcessId, lstrConn, schema, Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in ExecuteCheckValidationStoryboard method | Feed Process Id: {0} | Connection string: {1} | Schema : {2} | UserName: {3}", feedProcessId, lstrConn, schema, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in ExecuteCheckValidationStoryboard method | Feed Process Id: {0} | Connection string: {1} | Schema : {2} | UserName: {3}", feedProcessId, lstrConn, schema, Username), ex.InnerException);
+                throw;
+            }
+        }
 
+        public List<TestCaseValidationResultModel> ExecuteCheckValidationStoryboardNew(long feedProcessId, string schema, string lstrConn)
+        {
+            try
+            {
+                Stopwatch sw = new Stopwatch();
+                sw.Start();
+                logger.Info(string.Format("ExecuteCheckValidationStoryboard start | feedProcessId: {0} | UserName: {1}", feedProcessId, Username));
+
+                DataSet lds = new DataSet();
+                DataTable ldt = new DataTable();
+
+                OracleConnection pconnection = GetOracleConnection(lstrConn);
+                pconnection.Open();
+
+                OracleTransaction ptransaction;
+                ptransaction = pconnection.BeginTransaction();
+
+                OracleCommand pcmd;
+                pcmd = pconnection.CreateCommand();
+                pcmd.Transaction = ptransaction;
+
+                OracleParameter[] padd_refer_image = new OracleParameter[2];
+                padd_refer_image[0] = new OracleParameter("FEEDPROCESSID1", OracleDbType.Long);
+                padd_refer_image[0].Value = feedProcessId;
+
+                padd_refer_image[1] = new OracleParameter("sl_cursor", OracleDbType.RefCursor);
+                padd_refer_image[1].Direction = ParameterDirection.Output;
+
+                foreach (OracleParameter p in padd_refer_image)
+                {
+                    pcmd.Parameters.Add(p);
+                }
+
+                //The name of the Procedure responsible for inserting the data in the table.
+                pcmd.CommandText = schema + "." + "SP_GetSBValidationResult_New";
+                pcmd.CommandType = CommandType.StoredProcedure;
+                OracleDataAdapter dataAdapter = new OracleDataAdapter(pcmd);
+                dataAdapter.Fill(lds);
+
+                var dt = new DataTable();
+                dt = lds.Tables[0];
+
+                List<TestCaseValidationResultModel> resultList = dt.AsEnumerable().Select(row =>
+                    new TestCaseValidationResultModel
+                    {
+                        ID = Convert.ToInt64(row.Field<decimal>("ID")),
+                        ISVALID = Convert.ToInt64(row.Field<decimal>("ISVALID")),
+                        FEEDPROCESSDETAILID = Convert.ToInt64(row.Field<decimal?>("FEEDPROCESSDETAILID")),
+                        FEEDPROCESSID = Convert.ToInt64(row.Field<decimal>("FEEDPROCESSID")),
+                        VALIDATIONMSG = row.Field<string>("VALIDATIONMSG"),
+                    }).ToList();
+
+                var lGroupResult = resultList.GroupBy(x => new { x.ID }).Select(g => new TestCaseValidationResultModel
+                {
+                    ID = g.Key.ID,
+                    VALIDATIONMSG = string.Join(",", g.Select(i => i.VALIDATIONMSG)),
+
+                }).OrderBy(z => z.ID).ToList();
+                Console.WriteLine(sw.ElapsedMilliseconds);
+                sw.Stop();
+ 
                 logger.Info(string.Format("ExecuteCheckValidationStoryboard end | feedProcessId: {0} | UserName: {1}", feedProcessId, Username));
                 return lGroupResult;
             }
@@ -2928,7 +3047,7 @@ namespace MARS_Repository.Repositories
                     logger.Info(string.Format("SaveStoryboardGrid start in Repository | StoryboardId: {0} | UserName: {1}", lStoryboardId, Username));
 
                     ObjectParameter op = new ObjectParameter("RESULT", "");
-                    enty.SP_SaveStoryboard(int.Parse(lFeedProceID), lStoryboardId, int.Parse(lProjectId), op);
+                    enty.SP_SaveStoryboard(long.Parse(lFeedProceID), lStoryboardId, long.Parse(lProjectId), op);
                     enty.SaveChanges();
 
                     logger.Info(string.Format("SaveStoryboardGrid end in Repository | StoryboardId: {0} | UserName: {1}", lStoryboardId, Username));
@@ -3227,5 +3346,116 @@ namespace MARS_Repository.Repositories
                 throw;
             }
         }
+
+        public void SaveStoryboardGrid(string lConnectionStr, string schema, long lStoryboardId, string lFeedProceID, string lProjectId,List<StoryBoardResultModel> list,bool needSp = true)
+        {
+            try
+            {
+                using (OracleConnection pconnection = GetOracleConnection(lConnectionStr))
+                {
+                    pconnection.Open();
+                    OracleCommand pcmd = pconnection.CreateCommand();
+                    OracleTransaction ptransaction = pconnection.BeginTransaction();
+                    pcmd.Transaction = ptransaction;
+
+                    var dels = list.FindAll(r => r.status == "delete");
+                    if (dels != null && dels.Count > 0)
+                    {
+                        foreach (var del in dels)
+                        {
+                            pcmd.CommandText = $"delete from T_STORYBOARD_DATASET_SETTING where STORYBOARD_DETAIL_ID={del.storyboarddetailid}";
+                            pcmd.ExecuteNonQuery();
+
+                            pcmd.CommandText = $"delete from T_PROJ_TC_MGR where STORYBOARD_DETAIL_ID={del.storyboarddetailid}";
+                            pcmd.ExecuteNonQuery();
+                        }
+                    }
+                    if (needSp)
+                    {
+                        pcmd.CommandText = $@"MERGE INTO T_PROJ_TC_MGR mgr
+  USING(
+select distinct stg.STORYBOARDDETAILID, ts.TEST_SUITE_ID, tc.TEST_CASE_ID, ds.DATA_SUMMARY_ID, sl.VALUE as Action, stg.STEPNAME
+      , stg.ROW_ID + 1 as ROW_ID
+      from TBLSTGSTORYBOARDVALID stg
+join SYSTEM_LOOKUP sl on sl.TABLE_NAME = 'T_PROJ_TC_MGR' and sl.FIELD_NAME = 'RUN_TYPE'
+    and lower(sl.DISPLAY_NAME) = lower(stg.ACTIONAME)
+join T_TEST_SUITE ts on lower(ts.TEST_SUITE_NAME) = lower(stg.TESTSUITENAME)
+join T_TEST_CASE_SUMMARY tc on lower(tc.TEST_CASE_NAME) = lower(stg.TESTCASENAME)
+join T_TEST_DATA_SUMMARY ds on lower(ds.ALIAS_NAME) = lower(stg.DATASETNAME)
+where stg.FEEDPROCESSID = {lFeedProceID} and stg.STORYBOARDDETAILID > 0 and stg.status = 'update') TMP
+   ON(mgr.STORYBOARD_DETAIL_ID = TMP.STORYBOARDDETAILID)
+   WHEN MATCHED THEN
+    UPDATE SET
+   mgr.TEST_SUITE_ID = TMP.TEST_SUITE_ID,
+   mgr.TEST_CASE_ID = TMP.TEST_CASE_ID,
+   mgr.RUN_TYPE = TMP.Action,
+   mgr.RUN_ORDER = TMP.ROW_ID,
+   mgr.ALIAS_NAME = TMP.STEPNAME
+   ";
+                        pcmd.ExecuteNonQuery();
+
+                        pcmd.CommandText = $@"MERGE INTO T_STORYBOARD_DATASET_SETTING sd
+  USING (  
+select distinct stg.STORYBOARDDETAILID,ds.DATA_SUMMARY_ID     
+      from TBLSTGSTORYBOARDVALID stg
+join T_TEST_DATA_SUMMARY ds on lower(ds.ALIAS_NAME) = lower(stg.DATASETNAME)
+where stg.FEEDPROCESSID = {lFeedProceID} and stg.STORYBOARDDETAILID > 0 and stg.status='update') TMP
+   ON (sd.STORYBOARD_DETAIL_ID = TMP.STORYBOARDDETAILID)
+   WHEN MATCHED THEN
+    UPDATE SET
+   sd.DATA_SUMMARY_ID = TMP.DATA_SUMMARY_ID";
+                        pcmd.ExecuteNonQuery();
+
+                        pcmd.CommandText = $@" insert into T_PROJ_TC_MGR(STORYBOARD_DETAIL_ID,TEST_SUITE_ID,TEST_CASE_ID,RUN_TYPE,ALIAS_NAME,RUN_ORDER,PROJECT_ID,STORYBOARD_ID)
+select T_TEST_STEPS_SEQ.nextval,ts.TEST_SUITE_ID,tc.TEST_CASE_ID,sl.VALUE as Action,stg.STEPNAME
+      ,stg.ROW_ID + 1 as ROW_ID,PROJECTID,stg.STORYBOARDID
+      from TBLSTGSTORYBOARDVALID stg
+join SYSTEM_LOOKUP sl on sl.TABLE_NAME = 'T_PROJ_TC_MGR' and sl.FIELD_NAME = 'RUN_TYPE'
+    and lower(sl.DISPLAY_NAME) = lower(stg.ACTIONAME)
+join T_TEST_SUITE ts on lower(ts.TEST_SUITE_NAME) = lower(stg.TESTSUITENAME)
+join T_TEST_CASE_SUMMARY tc on lower(tc.TEST_CASE_NAME) = lower(stg.TESTCASENAME)
+join T_TEST_DATA_SUMMARY ds on lower(ds.ALIAS_NAME) = lower(stg.DATASETNAME)
+where stg.FEEDPROCESSID = {lFeedProceID} and stg.STORYBOARDDETAILID is null and stg.status = 'add' ";
+                        pcmd.ExecuteNonQuery();
+
+                        pcmd.CommandText = $@"insert into T_STORYBOARD_DATASET_SETTING(SETTING_ID,STORYBOARD_DETAIL_ID,DATA_SUMMARY_ID)
+select T_TEST_STEPS_SEQ.nextval,mgr.STORYBOARD_DETAIL_ID,ds.DATA_SUMMARY_ID from TBLSTGSTORYBOARDVALID stg
+join T_TEST_DATA_SUMMARY ds on lower(ds.ALIAS_NAME) = lower(stg.DATASETNAME)
+join T_PROJ_TC_MGR mgr on mgr.RUN_ORDER = (stg.ROW_ID + 1) and mgr.STORYBOARD_ID = stg.STORYBOARDID
+where stg.FEEDPROCESSID = {lFeedProceID} and stg.STORYBOARDDETAILID is null and stg.status = 'add'";
+                        pcmd.ExecuteNonQuery();
+
+                        pcmd.CommandText = $@"MERGE INTO T_PROJ_TC_MGR tmgr
+  USING (  
+select  mgr.STORYBOARD_DETAIL_ID as StID,dep.STORYBOARD_DETAIL_ID as UpdateValue
+      from TBLSTGSTORYBOARDVALID stg
+join T_PROJ_TC_MGR mgr on mgr.RUN_ORDER = (stg.ROW_ID + 1) and mgr.STORYBOARD_ID = stg.STORYBOARDID
+join T_PROJ_TC_MGR dep on  mgr.STORYBOARD_ID = dep.STORYBOARD_ID and lower(dep.ALIAS_NAME) = lower(stg.DEPENDENCY)
+where stg.FEEDPROCESSID = {lFeedProceID} and stg.DEPENDENCY not in ('None') and stg.status='update'  )  TMP
+   ON (tmgr.STORYBOARD_DETAIL_ID = TMP.StID)
+   WHEN MATCHED THEN
+    UPDATE SET
+   tmgr.DEPENDS_ON = TMP.UpdateValue";
+                        pcmd.ExecuteNonQuery();
+
+                        pcmd.CommandText = @"update T_TEST_DATA_SUMMARY set status = 0 where status is null";
+                        pcmd.ExecuteNonQuery();
+                    }
+                    ptransaction.Commit();
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in StoryBoard for SaveStoryboardGrid method | StoryBoard Id: {0} | Project Id : {1} | Feed Process Id : {2} | UserName: {3}", lStoryboardId, lProjectId, lFeedProceID, Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in SaveStoryboardGrid method | StoryBoard Id: {0} | Project Id : {1} | Feed Process Id : {2} | UserName: {3}", lStoryboardId, lProjectId, lFeedProceID, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in SaveStoryboardGrid method | StoryBoard Id: {0} | Project Id : {1} | Feed Process Id : {2} | UserName: {3}", lStoryboardId, lProjectId, lFeedProceID, Username), ex.InnerException);
+                if (ex.InnerException.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in SaveStoryboardGrid method | StoryBoard Id: {0} | Project Id : {1} | Feed Process Id : {2} | UserName: {3}", lStoryboardId, lProjectId, lFeedProceID, Username), ex.InnerException.InnerException);
+                throw;
+            }
+        }
+
+
     }
 }

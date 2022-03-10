@@ -21,7 +21,7 @@ using MARS_Repository.Entities;
 using System.Text.RegularExpressions;
 using NLog;
 using MARSUtility;
-
+using System.Collections.Concurrent;
 
 namespace MARS_Web.Controllers
 {
@@ -602,6 +602,22 @@ namespace MARS_Web.Controllers
                 jsonresult = jsonresult.Trim();
                 resultModel.status = 1;
                 resultModel.data = jsonresult;
+
+                var storyBoardName = lresult.FirstOrDefault()?.Storyboardname;
+                if (!string.IsNullOrWhiteSpace(storyBoardName))
+                {
+                    string key = $"{Pid}_{sid}_{storyBoardName}.json";
+                    var jsonFiles = JsonFileHelper.GetFilePath(key, lSchema);
+                    if (!string.IsNullOrEmpty(jsonFiles))
+                    {
+                        ConcurrentDictionary<string, string> keyValuePairs = JsonConvert.DeserializeObject<ConcurrentDictionary<string, string>>(jsonFiles);
+                        if (keyValuePairs != null && keyValuePairs.ContainsKey("StoryBoardDetails"))
+                        {
+                            keyValuePairs["StoryBoardDetails"] = jsonresult;
+                            JsonFileHelper.SaveToJsonFile(JsonConvert.SerializeObject(keyValuePairs), key, lSchema);
+                        }
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -711,6 +727,28 @@ namespace MARS_Web.Controllers
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult GetTestCaseListinStoryboard(string lProjectId, string lStoryboardId)
+        {
+            logger.Info(string.Format("controller -->GetTestCaseListinStoryboard start "));
+            ResultModel resultModel = new ResultModel();
+            try
+            {
+               
+                resultModel.status = 1;
+                resultModel.data = "";
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in StoryBoard for GetTestCaseListinStoryboard method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in StoryBoard for GetTestCaseListinStoryboard method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in StoryBoard for GetTestCaseListinStoryboard method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+                resultModel.status = 0;
+                resultModel.message = ex.Message.ToString();
+            }
+            return Json(resultModel, JsonRequestBehavior.AllowGet);
+        }
+
         //Loads Dropdown of Dataset column based on selected TestSuite and TestCase in Storyboard grid
         public ActionResult GetDatasetList(GetDatasetByTestcase lgrid)
         {
@@ -806,7 +844,8 @@ namespace MARS_Web.Controllers
                 sbRep.Username = SessionManager.TESTER_LOGIN_NAME;
 
                 //check Keyword  object linking
-                var lobj = js.Deserialize<StoryBoardResultModel[]>(lGridJsonData);
+                //var lobj = js.Deserialize<StoryBoardResultModel[]>(lGridJsonData);
+                var lobj = js.Deserialize<List<StoryBoardResultModel>>(lGridJsonData);
                 string lSchema = SessionManager.Schema;
                 var lConnectionStr = SessionManager.APP;
                 if (lobj.Count() > 0)
@@ -850,7 +889,7 @@ namespace MARS_Web.Controllers
         }
 
         //Saves the storyboard grid after it is validated successfully
-        public ActionResult SaveStoryboardGrid(string lGridJsonData, string lStoryboardId, string lchangedGrid, string lProjectId)
+        public ActionResult SaveStoryboardGrid(string lGridJsonData, string lStoryboardId, string lchangedGrid, string lProjectId,string storyBoardName)
         {
             logger.Info(string.Format("Storyborad Save Start | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
             ResultModel resultModel = new ResultModel();
@@ -858,31 +897,44 @@ namespace MARS_Web.Controllers
             try
             {
                 JavaScriptSerializer js = new JavaScriptSerializer();
-                var sbRep = new StoryBoardRepository();
-                sbRep.Username = SessionManager.TESTER_LOGIN_NAME;
                 //check Keyword  object linking
-                var lobj = js.Deserialize<StoryBoardResultModel[]>(lGridJsonData);
+                //var lobj = js.Deserialize<StoryBoardResultModel[]>(lGridJsonData);
+                var lobj = js.Deserialize<List<StoryBoardResultModel>>(lGridJsonData);
                 string lSchema = SessionManager.Schema;
                 var lConnectionStr = SessionManager.APP;
                 if (lobj.Count() > 0)
                 {
-                    logger.Info(string.Format("Storyborad Saves 1 | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                    Dictionary<String, List<Object>> dlist = js.Deserialize<Dictionary<String, List<Object>>>(lchangedGrid);
+                    SaveStoryBoardInit(lobj, dlist);
+                    var sbRep = new StoryBoardRepository();
+                    sbRep.Username = SessionManager.TESTER_LOGIN_NAME;
+                    /*logger.Info(string.Format("Storyborad Saves 1 | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
                     string lreturnValues = sbRep.InsertFeedProcess();
                     logger.Info(string.Format("Storyborad Saves 2 | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
                     var lvalFeed = lreturnValues.Split('~')[0];
                     logger.Info(string.Format("Storyborad Saves 3 | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
                     var lvalFeedD = lreturnValues.Split('~')[1];
                     logger.Info(string.Format("Storyborad Saves 4 | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                    var ValidationResult = sbRep.InsertStgStoryboardValidationTable(lConnectionStr, lSchema, lobj, lStoryboardId, lvalFeed, lvalFeedD, lProjectId);
-                    logger.Info(string.Format("Storyborad Saves 5 | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                    var ValidationResult = sbRep.InsertStgStoryboardValidationTable(lConnectionStr, lSchema, lobj.FindAll(r => !string.IsNullOrWhiteSpace(r.status) && r.status!="delete"), lStoryboardId, lvalFeed, lvalFeedD, lProjectId);
+                    logger.Info(string.Format("Storyborad Saves 5 | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));*/
+
+                    var addAndUpdateList = lobj.FindAll(r => !string.IsNullOrWhiteSpace(r.status) && (r.status== "update"|| r.status=="add"));
+                    List<TestCaseValidationResultModel> ValidationResult = new List<TestCaseValidationResultModel>();
+                    long lvalFeedLong = IdWorker.Instance.NextId();
+                    if (addAndUpdateList != null && addAndUpdateList.Count > 0)
+                    {
+                        logger.Info(string.Format("Storyborad Saves 1 | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                        var lvalFeed = lvalFeedLong.ToString();
+                        var lvalFeedD = IdWorker.Instance.NextId().ToString();
+                        ValidationResult = sbRep.InsertStgStoryboardValidationTable(lConnectionStr, lSchema, addAndUpdateList, lStoryboardId, lvalFeed, lvalFeedD, lProjectId);
+                        logger.Info(string.Format("Storyborad Saves 2 | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                    }
                     // var ValidationResult = sbRep.CheckSBGridValidation(lobj.ToList(), int.Parse(lStoryboardId));
                     //  ValidationResult = ValidationResult.Where(x => x.IsValid == false).ToList();
 
                     if (ValidationResult.Count() == 0)
                     {
-                        Dictionary<String, List<Object>> dlist = js.Deserialize<Dictionary<String, List<Object>>>(lchangedGrid);
-
-                        if (dlist["deleteList"].Count > 0)
+                        /*if (dlist["deleteList"].Count > 0)
                         {
                             var lDeletedSB = new List<long>();
                             foreach (var d in dlist["deleteList"])
@@ -903,6 +955,97 @@ namespace MARS_Web.Controllers
                         }
                         logger.Info(string.Format("Storyborad Saves 8 | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
                         sbRep.SaveStoryboardGrid(int.Parse(lStoryboardId), lvalFeed, lProjectId);
+*/
+                        string key = $"{lProjectId}_{lStoryboardId}_{storyBoardName}.json";
+                        var jsonFiles = JsonFileHelper.GetFilePath(key, lSchema);
+                        if (!string.IsNullOrEmpty(jsonFiles))
+                        {
+                            ConcurrentDictionary<string, string> keyValuePairs = JsonConvert.DeserializeObject<ConcurrentDictionary<string, string>>(jsonFiles);
+                            if (keyValuePairs != null && keyValuePairs.ContainsKey("StoryBoardDetails"))
+                            {
+                                var values = JsonConvert.DeserializeObject<List<StoryBoardResultModel>>(keyValuePairs["StoryBoardDetails"]);
+                                foreach (var obj in lobj)
+                                {
+                                    if (obj.status == "delete")
+                                    {
+                                        values.RemoveAll(r => r.storyboarddetailid == obj.storyboarddetailid);
+                                    }
+                                    else if (obj.status == "add")
+                                    {
+                                        values.Add(new StoryBoardResultModel()
+                                        {
+                                            ProjectId = obj.ProjectId,
+                                            ActionName = obj.ActionName,
+                                            Run_order = obj.Run_order,
+                                            StepName = obj.StepName,
+                                            TestSuiteName = obj.TestSuiteName,
+                                            TestCaseName = obj.TestCaseName,
+                                            DataSetName = obj.DataSetName,
+                                            Dependency = obj.Dependency,
+                                            storyboarddetailid = IdWorker.Instance.NextId(),
+                                            Storyboardid = long.Parse(lStoryboardId),
+                                            Storyboardname = storyBoardName
+                                        });
+                                    }
+                                    else if (obj.status == "update")
+                                    {
+                                        var value = values.FirstOrDefault(r => r.storyboarddetailid == obj.storyboarddetailid);
+                                        if (value != null)
+                                        {
+
+                                            value.ProjectId = obj.ProjectId;
+                                            value.ActionName = obj.ActionName;
+                                            value.Run_order = obj.Run_order;
+                                            value.StepName = obj.StepName;
+                                            value.TestSuiteName = obj.TestSuiteName;
+
+                                            value.DataSetName = obj.DataSetName;
+                                            value.Dependency = obj.Dependency;
+                                            if (value.TestCaseName != obj.TestCaseName)
+                                            {
+                                                value.TestCaseName = obj.TestCaseName;
+                                                value.BTestResult = "";
+                                                value.BErrorcause = "";
+                                                var datetimeNow = DateTime.Now;
+                                                value.BScriptstart = datetimeNow;
+                                                value.Bstart = String.Format("{0:MM/dd/yyyy hh:mm tt}", datetimeNow);
+                                                value.BScriptend = datetimeNow;
+                                                value.CTestResult = "";
+                                                value.CErrorcause = "";
+                                                value.CScriptstart = datetimeNow;
+                                                value.Cstart = String.Format("{0:MM/dd/yyyy hh:mm tt}", datetimeNow);
+                                                value.CScriptend = datetimeNow;
+                                            }
+                                        }
+                                    }
+                                    else {
+                                        var value = values.FirstOrDefault(r => r.storyboarddetailid !=null &&  r.storyboarddetailid == obj.storyboarddetailid);
+                                        if (value != null)
+                                            value.Run_order = obj.Run_order;
+                                    }
+                                }
+                                //var lresult = sbRep.GetStoryBoardDetails(lSchema, lConnectionStr, Convert.ToInt64(lProjectId), Convert.ToInt64(lStoryboardId));
+                                var storyBoardDetails = JsonConvert.SerializeObject(values);
+                                storyBoardDetails = storyBoardDetails.Replace("\\r", "\\\\r");
+                                storyBoardDetails = storyBoardDetails.Replace("\\n", "\\\\n");
+                                storyBoardDetails = storyBoardDetails.Replace("   ", "");
+                                storyBoardDetails = storyBoardDetails.Replace("\\", "\\\\");
+                                storyBoardDetails = storyBoardDetails.Trim();
+                                keyValuePairs["StoryBoardDetails"] = storyBoardDetails;
+                                JsonFileHelper.SaveToJsonFile(JsonConvert.SerializeObject(keyValuePairs), key, lSchema);
+                            }
+                        }
+                        System.Threading.Tasks.Task.Run(()=> {
+                        //SaveStoryBoardDetailToJsonFile(lProjectId, lStoryboardId, storyBoardName, lSchema, lConnectionStr, sbRep);
+                            bool needSP = false;
+                            if (addAndUpdateList != null && addAndUpdateList.Count > 0)
+                            {
+                                needSP = true;
+                            }
+
+                            sbRep.SaveStoryboardGrid(lConnectionStr, lSchema, long.Parse(lStoryboardId), lvalFeedLong.ToString(), lProjectId, lobj.FindAll(r => r.status == "delete"), needSP);
+                            SaveStoryBoardDetailToJsonFile(lProjectId, lStoryboardId, storyBoardName, lSchema, lConnectionStr, sbRep);
+                        });
                         logger.Info(string.Format("Storyborad Saves 9 | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
                         result = JsonConvert.SerializeObject(ValidationResult);
                         logger.Info(string.Format("Storyborad Saves 10 | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
@@ -2219,5 +2362,84 @@ namespace MARS_Web.Controllers
             public string FileName { get; set; }
             public string FilePath { get; set; }
         }
+
+        public void SaveStoryBoardInit(List<StoryBoardResultModel> lobj, Dictionary<String, List<Object>> dlist)
+        {
+            lobj.ForEach(r => r.status = "nomal");
+            if (dlist.ContainsKey("updateList") && dlist["updateList"].Count > 0)
+            {
+                foreach (var d in dlist["updateList"])
+                {
+                    var update = (((System.Collections.Generic.Dictionary<string, object>)d).ToList());
+                    var lsbdetailId = update.Where(r => r.Key == "detailid").FirstOrDefault();
+                    if (lsbdetailId.Value !=null && !string.IsNullOrEmpty(Convert.ToString(lsbdetailId.Value)))
+                    {
+                        var model = lobj.FirstOrDefault(r => (Convert.ToInt64(lsbdetailId.Value)).Equals(r.storyboarddetailid));
+                        if (model != null)
+                            model.status = "update";
+                    }
+                }
+            }
+            if (dlist.ContainsKey("addList") && dlist["addList"].Count > 0)
+            {
+                lobj.ForEach(r => {
+                    if (r.storyboarddetailid == null || r.storyboarddetailid == 0)
+                        r.status = "add";
+                });
+            }
+            if (dlist.ContainsKey("deleteList") && dlist["deleteList"].Count > 0)
+            {
+                foreach (var d in dlist["deleteList"])
+                {
+                    var update = (((System.Collections.Generic.Dictionary<string, object>)d).ToList());
+                    var lsbdetailId = update.Where(x => x.Key == "detailid").FirstOrDefault();
+                    if (lsbdetailId.Value != null && !string.IsNullOrEmpty(Convert.ToString(lsbdetailId.Value)))
+                    {
+                        var model = lobj.FirstOrDefault(r => (Convert.ToInt64(lsbdetailId.Value)).Equals(r.storyboarddetailid));
+                        if (model != null)
+                        {
+                            model.status = "delete";
+                        }
+                        else
+                        {
+                            var newModel = new StoryBoardResultModel() { Run_order = 0, ProjectId = 0, ApplicationName = "",
+                                ProjectName = "",ProjectDescription = "", Storyboardname = "", Storyboardid = 0, ActionName = "",StepName = "",
+                                TestSuiteName = "",TestCaseName = "",DataSetName = "", Dependency = "",BTestResult = "",
+                                BErrorcause = "", BScriptstart = DateTime.Now, Bstart = "", BScriptend = DateTime.Now,
+                                CTestResult = "",   CErrorcause = "",  CScriptstart = DateTime.Now,
+                                Cstart = "", CScriptend = DateTime.Now, Description = "",Suiteid = 0, Caseid = 0, Datasetid = 0,
+                                BHistid = 0, CHistid = 0,   IsValid = false,  ValidationMsg = "",   RowId = 0, runtype = 0,
+                                Dependson = 0, latestmark = 0,  recordvision = 0, status = "delete",
+                                storyboarddetailid = Convert.ToInt64(lsbdetailId.Value)   };
+                            lobj.Add(newModel);         
+                        }
+                    }
+                }
+            }
+
+        }
+
+        private void SaveStoryBoardDetailToJsonFile(string lProjectId,string lStoryboardId,string storyBoardName, string lSchema,string lConnectionStr,StoryBoardRepository sbRep)
+        {
+            string key = $"{lProjectId}_{lStoryboardId}_{storyBoardName}.json";
+            var jsonFiles = JsonFileHelper.GetFilePath(key, lSchema);
+            if (!string.IsNullOrEmpty(jsonFiles))
+            {
+                ConcurrentDictionary<string, string> keyValuePairs = JsonConvert.DeserializeObject<ConcurrentDictionary<string, string>>(jsonFiles);
+                if (keyValuePairs != null && keyValuePairs.ContainsKey("StoryBoardDetails"))
+                {
+                    var lresult = sbRep.GetStoryBoardDetails(lSchema, lConnectionStr, Convert.ToInt64(lProjectId), Convert.ToInt64(lStoryboardId));
+                    var storyBoardDetails = JsonConvert.SerializeObject(lresult);
+                    storyBoardDetails = storyBoardDetails.Replace("\\r", "\\\\r");
+                    storyBoardDetails = storyBoardDetails.Replace("\\n", "\\\\n");
+                    storyBoardDetails = storyBoardDetails.Replace("   ", "");
+                    storyBoardDetails = storyBoardDetails.Replace("\\", "\\\\");
+                    storyBoardDetails = storyBoardDetails.Trim();
+                    keyValuePairs["StoryBoardDetails"] = storyBoardDetails;
+                    JsonFileHelper.SaveToJsonFile(JsonConvert.SerializeObject(keyValuePairs), key, lSchema);
+                }
+            }
+        }
+    
     }
 }

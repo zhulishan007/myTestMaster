@@ -59,6 +59,9 @@
     <Reference Include="ExcelNumberFormat, Version=1.0.10.0, Culture=neutral, PublicKeyToken=23c6f5d73be07eca, processorArchitecture=MSIL">
       <HintPath>..\packages\ExcelNumberFormat.1.0.10\lib\net20\ExcelNumberFormat.dll</HintPath>
     </Reference>
+    <Reference Include="Fleck, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Fleck.1.2.0\lib\net45\Fleck.dll</HintPath>
+    </Reference>
     <Reference Include="MARSUtility, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\MARS_Utility\MARSUtility\bin\Debug\MARSUtility.dll</HintPath>
@@ -211,6 +214,8 @@
     <Compile Include="Helper\ChartHelper.cs" />
     <Compile Include="Helper\DatabaseConnectionDetails.cs" />
     <Compile Include="Helper\EmailHelper.cs" />
+    <Compile Include="Helper\IdWorker.cs" />
+    <Compile Include="Helper\JsonFileHelper.cs" />
     <Compile Include="Helper\GlobalVariable.cs" />
     <Compile Include="Helper\GridHelper.cs" />
     <Compile Include="Helper\MarsConfig.cs" />
@@ -220,6 +225,7 @@
     <Compile Include="Helper\SessionTimeoutAttribute.cs" />
     <Compile Include="Helper\SQLServerConnectionStringBuilder.cs" />
     <Compile Include="Helper\SybaseConnectionStringBuilder.cs" />
+    <Compile Include="Helper\WebSocketHelper.cs" />
     <Compile Include="HUB\MyHub.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -1733,6 +1739,13 @@
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\Projects\AddEditProject.js" />
     <Content Include="Scripts\simpleXML.js" />
+    <Content Include="Scripts\splitter\img\paneh.gif" />
+    <Content Include="Scripts\splitter\img\panehc.gif" />
+    <Content Include="Scripts\splitter\img\panev.gif" />
+    <Content Include="Scripts\splitter\img\panevc.gif" />
+    <Content Include="Scripts\splitter\index.html" />
+    <Content Include="Scripts\splitter\jquery-1.4.3.min.js" />
+    <Content Include="Scripts\splitter\splitter.js" />
     <Content Include="Scripts\Tab\Custom_AddingTab.js" />
     <Content Include="Scripts\Tab\Custom_SetGridWidth.js" />
     <Content Include="Scripts\TestCase\TestCase.js" />

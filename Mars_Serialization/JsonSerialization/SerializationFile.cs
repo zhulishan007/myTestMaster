@@ -268,9 +268,68 @@ namespace Mars_Serialization.JsonSerialization
                 users = Common.Common.ConvertDataTableToList<UserViewModal>(usersDatatable);
                 if (users.Count() > 0)
                 {
+                    List<UserRoleViewModel> rolesList = null;
+                    Task task1 = Task.Run(() =>
+                    {
+                        string roleQuery = "SELECT UR.USER_ID, R.ROLE_ID, R.ROLE_NAME FROM T_TEST_USER_ROLE_MAPPING UR INNER JOIN T_TEST_ROLES R ON UR.ROLE_ID = R.ROLE_ID  ORDER BY R.ROLE_NAME";
+                        DataTable rolesDatatable = Common.Common.GetRecordAsDatatable(conString, roleQuery);
+                        rolesList = Common.Common.ConvertDataTableToList<UserRoleViewModel>(rolesDatatable);
+                    });
+                    List<UserPrivilegeViewModel> privilegesList = new List<UserPrivilegeViewModel>();
+                    Task task2 = Task.Run(() =>
+                    {
+                        string PrivilegesQuery = @"  select  t.PRIVILEGE_ID, t.DESCRIPTION, t.MODULE, t.PRIVILEGE_NAME,j.USER_ID from T_TEST_PRIVILEGE t
+                            join T_TEST_PRIVILEGE_ROLE_MAPPING m on t.PRIVILEGE_ID =m.PRIVILEGE_ID
+                            join T_TEST_USER_ROLE_MAPPING j on j.role_id= m.role_id";
+                        DataTable privilegesDatatable = Common.Common.GetRecordAsDatatable(conString, PrivilegesQuery);
+                         privilegesList = Common.Common.ConvertDataTableToList<UserPrivilegeViewModel>(privilegesDatatable);
+                    });
+                    List<ProjectViewModel> projectList = new List<ProjectViewModel>();
+                    Task task3 = Task.Run(() =>
+                    {
+                        string projectQuery = "SELECT PROJECT_ID, PROJECT_NAME, PROJECT_DESCRIPTION, CREATOR, CREATE_DATE, STATUS FROM T_TEST_PROJECT P ORDER BY PROJECT_NAME ";
+                        DataTable projectDatatable = Common.Common.GetRecordAsDatatable(conString, projectQuery);
+                        projectList = Common.Common.ConvertDataTableToList<ProjectViewModel>(projectDatatable);
+                    });
+                    List<ProjectRelUser> projectRelUserList = new List<ProjectRelUser>();
+                    Task task4 = Task.Run(() =>
+                    {
+                        string projectRelUser = " select USER_ID,PROJECT_ID  from REL_PROJECT_USER";
+                        DataTable projectRelUserDatatable = Common.Common.GetRecordAsDatatable(conString, projectRelUser);
+                        projectRelUserList = Common.Common.ConvertDataTableToList<ProjectRelUser>(projectRelUserDatatable);
+                    });
+                    List<CountOfProject> projectRelSuitList = new List<CountOfProject>();
+                    Task task5 = Task.Run(() =>
+                    {
+                        string projectRelSuit = " select PROJECT_ID  from REL_TEST_SUIT_PROJECT";
+                        DataTable projectRelSuitDatatable = Common.Common.GetRecordAsDatatable(conString, projectRelSuit);
+                        projectRelSuitList = Common.Common.ConvertDataTableToList<CountOfProject>(projectRelSuitDatatable);
+                    });
+                    List<CountOfProject> storyBoardList = new List<CountOfProject>() ;
+                    Task task6 = Task.Run(() =>
+                    {
+                        string storyBoard = " select ASSIGNED_PROJECT_ID as  PROJECT_ID  from T_STORYBOARD_SUMMARY where STORYBOARD_NAME is not null";
+                        DataTable storyBoardDatatable = Common.Common.GetRecordAsDatatable(conString, storyBoard);
+                        storyBoardList = Common.Common.ConvertDataTableToList<CountOfProject>(storyBoardDatatable);
+                    });
+                    Task.WaitAll(task1, task2, task3, task4, task5, task6);
                     users.ForEach(x =>
                     {
-                        string projectQuery = "SELECT PROJECT_ID, PROJECT_NAME, PROJECT_DESCRIPTION, CREATOR, CREATE_DATE, STATUS, (CASE WHEN EXISTS (SELECT 1 FROM REL_PROJECT_USER WHERE USER_ID = " + x.TESTER_ID + " AND PROJECT_ID = P.PROJECT_ID) THEN 'YES' ELSE 'NO' END) AS PROJECTEXISTS, (SELECT COUNT(*) AS TestSuiteCount FROM REL_TEST_SUIT_PROJECT WHERE PROJECT_ID = P.PROJECT_ID) AS TestSuiteCount, (SELECT COUNT(*) AS StoryBoardCount FROM T_STORYBOARD_SUMMARY tss WHERE tss.ASSIGNED_PROJECT_ID = P.PROJECT_ID and tss.STORYBOARD_NAME is not null) AS StoryBoardCount FROM T_TEST_PROJECT P ORDER BY PROJECT_NAME";
+                        x.Roles = rolesList.FindAll(r => r.USER_ID == x.TESTER_ID);
+                        x.Privileges = privilegesList.FindAll(r => r.USER_ID == x.TESTER_ID);
+                        x.Projects = projectList.Select(u => new ProjectByUser()
+                        {
+                            userId = x.TESTER_ID,
+                            username = x.TESTER_LOGIN_NAME,
+                            ProjectDesc = u.PROJECT_DESCRIPTION,
+                            ProjectExists = projectRelUserList.Exists(r=>r.USER_ID==x.TESTER_ID && r.PROJECT_ID==u.PROJECT_ID), 
+                            ProjectId = u.PROJECT_ID,
+                            ProjectName = u.PROJECT_NAME,
+                            TestSuiteCount = projectRelSuitList.Count(r=>r.PROJECT_ID==u.PROJECT_ID),
+                            StoryBoardCount = storyBoardList.Count(r => r.PROJECT_ID == u.PROJECT_ID)
+                        }).ToList();
+
+                        /*string projectQuery = "SELECT PROJECT_ID, PROJECT_NAME, PROJECT_DESCRIPTION, CREATOR, CREATE_DATE, STATUS, (CASE WHEN EXISTS (SELECT 1 FROM REL_PROJECT_USER WHERE USER_ID = " + x.TESTER_ID + " AND PROJECT_ID = P.PROJECT_ID) THEN 'YES' ELSE 'NO' END) AS PROJECTEXISTS, (SELECT COUNT(*) AS TestSuiteCount FROM REL_TEST_SUIT_PROJECT WHERE PROJECT_ID = P.PROJECT_ID) AS TestSuiteCount, (SELECT COUNT(*) AS StoryBoardCount FROM T_STORYBOARD_SUMMARY tss WHERE tss.ASSIGNED_PROJECT_ID = P.PROJECT_ID and tss.STORYBOARD_NAME is not null) AS StoryBoardCount FROM T_TEST_PROJECT P ORDER BY PROJECT_NAME";
                         DataTable projectDatatable = Common.Common.GetRecordAsDatatable(conString, projectQuery);
                         List<ProjectViewModel> projectList = Common.Common.ConvertDataTableToList<ProjectViewModel>(projectDatatable);
 
@@ -294,7 +353,7 @@ namespace Mars_Serialization.JsonSerialization
                         string PrivilegesQuery = "SELECT PRIVILEGE_ID, DESCRIPTION, MODULE, PRIVILEGE_NAME FROM T_TEST_PRIVILEGE WHERE PRIVILEGE_ID IN (SELECT PRIVILEGE_ID FROM T_TEST_PRIVILEGE_ROLE_MAPPING WHERE ROLE_ID IN (SELECT ROLE_ID FROM T_TEST_USER_ROLE_MAPPING WHERE USER_ID = " + x.TESTER_ID + "))";
                         DataTable privilegesDatatable = Common.Common.GetRecordAsDatatable(conString, PrivilegesQuery);
                         List<UserPrivilegeViewModel> privilegesList = Common.Common.ConvertDataTableToList<UserPrivilegeViewModel>(privilegesDatatable);
-                        x.Privileges = privilegesList;
+                        x.Privileges = privilegesList;*/
                     });
                 }
             }
@@ -355,7 +414,7 @@ namespace Mars_Serialization.JsonSerialization
                 File.WriteAllText(parentPagWindowPath, applicationJsonData);
             }
         }
-        public static bool LoadTestcaseJsonFile(string folderPath, List<MB_V_TEST_STEPS> testCases, long testcaseId, string conString)
+        public static bool LoadTestcaseJsonFile(string folderPath, List<MB_V_TEST_STEPS> testCases, long testcaseId, string conString,bool needReflesh= false)
         {
             try
             {
@@ -370,7 +429,7 @@ namespace Mars_Serialization.JsonSerialization
                 {
                     string fileName = string.Format("{0}_{1}.json", testcaseId, testCasesListById.FirstOrDefault().TEST_CASE_NAME.Replace("/", ""));
                     string filePath = Path.Combine(folderPath, fileName);
-                    if (!File.Exists(filePath))
+                    if (!File.Exists(filePath)|| needReflesh)
                     {
                         long[] AppId = testCasesListById.Select(x => (long)x.APPLICATION_ID).Distinct().ToArray();
 
@@ -438,5 +497,172 @@ namespace Mars_Serialization.JsonSerialization
             Testcases
         }
         #endregion
+
+
+        public static void ApplicationFolderNew(string folderPath, List<ApplicationViewModel> appList, string flag, long dataid=0,bool needReflesh =false)
+        {
+            try
+            {
+                if (appList.Count() > 0)
+                {
+                    if (FolderName.Object.ToString().Equals(flag))
+                    {
+                        string allObjectsListQuery =  "SELECT * FROM MV_OBJECT_SNAPSHOT ";
+                        if (dataid != 0)
+                            allObjectsListQuery = $"{allObjectsListQuery} where object_id={dataid}";
+                        DataTable allAppPegWindowsData = Common.Common.GetRecordAsDatatable(conString, allObjectsListQuery);
+                        var allAppPegWindowsList = Common.Common.ConvertDataTableToList<OBJECT_SNAPSHOT>(allAppPegWindowsData);
+                        foreach (var app in appList)
+                        {
+                            #region CREATE APPLICATION FOLDER
+                            string appPath = Path.Combine(folderPath, "app_" + app.APPLICATION_ID);
+                            if (!Directory.Exists(appPath))
+                                Directory.CreateDirectory(appPath);
+                            #endregion
+
+                            if (flag.Equals(FolderName.Object.ToString()))
+                            {
+                                #region CREATE OBJECT JSON FILE IN APPLICATION FOLDER
+                                var appPegWindow = allAppPegWindowsList.Where(h => h.APPLICATION_ID == app.APPLICATION_ID && h.TYPE_ID == 1).Distinct().OrderBy(v => v.OBJECT_TYPE).ToList();
+                                if (appPegWindow.Count() > 0)
+                                {
+                                    string parentPagWindowPath = Path.Combine(appPath, "PegWindowsMapping.json");
+                                    if (!File.Exists(parentPagWindowPath) ||  needReflesh)
+                                    {
+                                        string pegWindowJsonData = JsonConvert.SerializeObject(appPegWindow);
+                                        pegWindowJsonData = JValue.Parse(pegWindowJsonData).ToString(Formatting.Indented);
+                                        File.WriteAllText(parentPagWindowPath, pegWindowJsonData);
+                                    }
+                                    //if (File.Exists(parentPagWindowPath))
+                                    //    File.Delete(parentPagWindowPath);
+                                    //File.WriteAllText(parentPagWindowPath, pegWindowJsonData);
+                                }
+
+                                var pegW_Char = appPegWindow.Select(x => x.OBJECT_TYPE.ToUpper().FirstOrDefault()).Distinct().ToList();
+                                foreach (var P_char in pegW_Char)
+                                {
+                                    string filePath = Path.Combine(appPath, string.Format("{0}.json", P_char));
+                                    if (!File.Exists(filePath) || needReflesh)
+                                    {
+                                        var pegWindow = appPegWindow.Where(x => x.OBJECT_TYPE.ToUpper().Trim().StartsWith(P_char.ToString().ToUpper().Trim())).ToList();
+                                        //var finalObjectList = _db.MV_OBJECT_SNAPSHOT.ToList().Where(a => pegWindow.Any(b => a.PEG_ID.Equals(b.PEG_ID))).OrderBy(v => v.PEG_NAME).ToList();
+                                        var finalObjectList = allAppPegWindowsList.Where(a => pegWindow.Any(b => a.PEG_ID.Equals(b.PEG_ID))).OrderBy(v => v.PEG_NAME).ToList();
+
+                                        string objectJsonData = JsonConvert.SerializeObject(finalObjectList);
+                                        objectJsonData = JValue.Parse(objectJsonData).ToString(Formatting.Indented);
+                                        File.WriteAllText(filePath, objectJsonData);
+                                    }
+                                    //if (File.Exists(filePath))
+                                    //    File.Delete(filePath);
+                                    //File.WriteAllText(filePath, objectJsonData);
+                                }
+                                #endregion
+                            }
+                        }
+                    }
+                    else if (FolderName.Application.ToString().Equals(flag))
+                    {
+                        if (appList.Count() > 0)
+                        {
+                            string parentPagWindowPath = Path.Combine(folderPath, "application.json");
+                            if (!File.Exists(parentPagWindowPath) || needReflesh)
+                            {
+                                string applicationJsonData = JsonConvert.SerializeObject(appList);
+                                applicationJsonData = JValue.Parse(applicationJsonData).ToString(Formatting.Indented);
+                                File.WriteAllText(parentPagWindowPath, applicationJsonData);
+                            }
+                            //if (File.Exists(parentPagWindowPath))
+                            //    File.Delete(parentPagWindowPath);
+                            //File.WriteAllText(parentPagWindowPath, applicationJsonData);
+                        }
+                    }
+                    else if (FolderName.Testcases.ToString().Equals(flag))
+                    {
+                        List<MB_V_TEST_STEPS> testCases = new List<MB_V_TEST_STEPS>();
+                        string query = "SELECT CAST(TEST_CASE_ID AS NUMBER(16,0)) AS TEST_CASE_ID, TEST_CASE_NAME, CAST(KEY_WORD_ID AS NUMBER(16,0)) AS KEY_WORD_ID, KEY_WORD_NAME, OBJECT_HAPPY_NAME, CAST(OBJECT_ID AS NUMBER(16,0)) AS OBJECT_ID, OBJECT_TYPE, QUICK_ACCESS, ENUM_TYPE, CAST(APPLICATION_ID AS NUMBER(16,0)) AS APPLICATION_ID, CAST(OBJECT_NAME_ID AS NUMBER(16,0)) AS OBJECT_NAME_ID, TYPE_NAME, STEPS_ID, COLUMN_ROW_SETTING, COMMENTINFO, CAST(IS_RUNNABLE AS NUMBER(16,0)) AS IS_RUNNABLE, CAST(RUN_ORDER AS NUMBER(16,0)) AS RUN_ORDER, VALUE_SETTING FROM V_TEST_STEPS_FULLVISION"; //"SELECT * FROM V_TEST_STEPS_FULLVISION ORDER BY TEST_CASE_ID";
+                        if (dataid != 0) {
+                            query = $"{query} where TEST_CASE_ID={dataid}";
+                        }
+                        DataTable testCaseDatatable = Common.Common.GetRecordAsDatatable(conString, query);
+                        testCases = Common.Common.ConvertDataTableToList<MB_V_TEST_STEPS>(testCaseDatatable);
+                        if (testCases.Count() > 0)
+                        {
+                            long[] testCasesId = testCases.Select(x => (long)x.TEST_CASE_ID).Distinct().ToArray();
+                            foreach (var id in testCasesId)
+                            {
+                                bool status = LoadTestcaseJsonFile(folderPath, testCases, id, conString,needReflesh);
+                                //var testCasesListById = testCases.Where(x => x.TEST_CASE_ID == id).ToList();
+                                //if (testCasesListById.Count() > 0)
+                                //{
+                                //    string fileName = string.Format("{0}_{1}.json", id, testCasesListById.FirstOrDefault().TEST_CASE_NAME.Replace("/", ""));
+                                //    string filePath = Path.Combine(folderPath, fileName);
+                                //    if (!File.Exists(filePath))
+                                //    {
+                                //        long[] AppId = testCasesListById.Select(x => (long)x.APPLICATION_ID).Distinct().ToArray();
+
+                                //        string queryTestSuiteId = "SELECT TEST_SUITE_ID FROM REL_TEST_CASE_TEST_SUITE WHERE TEST_CASE_ID = '" + id + "'";
+                                //        DataTable testSuiteIDDatatable = Common.Common.GetRecordAsDatatable(conString, queryTestSuiteId);
+                                //        long[] testSuiteID = testSuiteIDDatatable.AsEnumerable().Select(r => r.Field<long>("TEST_SUITE_ID")).ToArray();
+
+                                //        string queryAssignedDataSets = "SELECT ttds.DATA_SUMMARY_ID, ttds.ALIAS_NAME FROM REL_TC_DATA_SUMMARY reltcds INNER JOIN T_TEST_DATA_SUMMARY ttds ON ttds.DATA_SUMMARY_ID = reltcds.DATA_SUMMARY_ID WHERE reltcds.TEST_CASE_ID = '" + id + "'";
+                                //        DataTable assignedDataSetsDatatable = Common.Common.GetRecordAsDatatable(conString, queryAssignedDataSets);
+                                //        List<MB_REL_TC_DATA_SUMMARY> assignedDataSets = new List<MB_REL_TC_DATA_SUMMARY>();
+                                //        assignedDataSets = Common.Common.ConvertDataTableToList<MB_REL_TC_DATA_SUMMARY>(assignedDataSetsDatatable);
+
+                                //        testCasesListById.ForEach(x =>
+                                //        {
+                                //            List<DataForDataSets> DataSettingsValues = new List<DataForDataSets>();
+                                //            string queryDataSettingIdAndValues = "SELECT * FROM ( SELECT TESTDS.DATA_VALUE AS DATASETVALUE, testds.Data_Setting_Id AS Data_Setting_Id, CAST(ttds.DATA_SUMMARY_ID AS NUMBER(16,0)) AS DATA_SUMMARY_ID, TESTDS.DATA_DIRECTION AS SKIP FROM REL_TC_DATA_SUMMARY reltcds INNER JOIN T_TEST_DATA_SUMMARY ttds ON ttds.DATA_SUMMARY_ID = reltcds.DATA_SUMMARY_ID INNER JOIN T_TEST_STEPS ts1 ON ts1.TEST_CASE_ID = reltcds.TEST_CASE_ID LEFT JOIN TEST_DATA_SETTING testds ON testds.DATA_SUMMARY_ID = reltcds.DATA_SUMMARY_ID AND testds.steps_id = ts1.STEPS_ID WHERE reltcds.TEST_CASE_ID = " + x.TEST_CASE_ID + " AND ts1.STEPS_ID = " + x.STEPS_ID + " ORDER BY ttds.ALIAS_NAME)"; //"SELECT * FROM ( SELECT TESTDS.DATA_VALUE AS DATASETVALUE,  testds.Data_Setting_Id AS Data_Setting_Id FROM REL_TC_DATA_SUMMARY reltcds INNER JOIN T_TEST_DATA_SUMMARY ttds ON ttds.DATA_SUMMARY_ID = reltcds.DATA_SUMMARY_ID INNER JOIN T_TEST_STEPS ts1 ON ts1.TEST_CASE_ID = reltcds.TEST_CASE_ID LEFT JOIN TEST_DATA_SETTING testds ON testds.DATA_SUMMARY_ID = reltcds.DATA_SUMMARY_ID AND testds.steps_id = ts1.STEPS_ID WHERE reltcds.TEST_CASE_ID = " + x.TEST_CASE_ID + " AND ts1.STEPS_ID = " + x.STEPS_ID + " ORDER BY ttds.ALIAS_NAME )";
+                                //            DataTable dataSettingIdAndValuesDatatable = Common.Common.GetRecordAsDatatable(conString, queryDataSettingIdAndValues);
+                                //            DataSettingsValues = Common.Common.ConvertDataTableToList<DataForDataSets>(dataSettingIdAndValuesDatatable);
+
+                                //            x.dataForDataSets = DataSettingsValues;
+                                //        });
+
+                                //        Mars_Memory_TestCase obj = new Mars_Memory_TestCase
+                                //        {
+                                //            allSteps = testCasesListById.OrderBy(x => x.RUN_ORDER).ToList(),
+                                //            assignedApplications = AppId,
+                                //            assignedTestSuiteIDs = testSuiteID,
+                                //            assignedDataSets = assignedDataSets
+                                //        };
+
+                                //        string testcaseJsonData = JsonConvert.SerializeObject(obj);
+                                //        testcaseJsonData = JValue.Parse(testcaseJsonData).ToString(Formatting.Indented);
+
+                                //        File.WriteAllText(filePath, testcaseJsonData);
+                                //    }
+                                //    //if (File.Exists(filePath))
+                                //    //    File.Delete(filePath);
+                                //    //File.WriteAllText(filePath, testcaseJsonData);
+                                //}
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        public static List<ApplicationViewModel> GetAppList(string connectionString)
+        {
+            DataTable appData = Common.Common.GetRecordAsDatatable(connectionString, "SELECT * FROM T_REGISTERED_APPS");
+            return Common.Common.ConvertDataTableToList<ApplicationViewModel>(appData);
+
+        }
+        public static void CreateJsonFilesNew(string databaseName, string projectPath, string cashName,List<ApplicationViewModel> appList,long dataid=0,bool needReflesh=false)
+        {
+            string F_Serialization = Path.Combine(projectPath, FolderName.Serialization.ToString());
+            string  filePath = Path.Combine(F_Serialization, cashName,databaseName.Trim());
+
+            if (!Directory.Exists(filePath))
+                Directory.CreateDirectory(filePath);
+ 
+            ApplicationFolderNew(filePath, appList, FolderName.Object.ToString(),dataid,needReflesh);
+          
+        }
     }
 }

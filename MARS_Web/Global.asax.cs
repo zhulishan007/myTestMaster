@@ -6,6 +6,7 @@ using NLog;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading;
@@ -29,7 +30,7 @@ namespace MARS_Web
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-
+            WebSocketHelper.WebSocketInstance.StartServer();
             #region SERIALIZATION JSON FILES 
             MarsConfig mc = MarsConfig.Configure(string.Empty);
             var dbNameList = mc.GetConnectionDetails().Select(x => x.Schema).ToList();
@@ -61,6 +62,11 @@ namespace MARS_Web
 
                             var userDictionary = Mars_Serialization.JsonSerialization.SerializationFile.GetDictionary(det.ConnString);
                             usersData.TryAdd(databaseName, userDictionary);
+
+                            System.Threading.Tasks.Task.Run(() =>
+                            {
+                                JsonFileHelper.InitStoryBoardJson(databaseName);
+                            });
 
                             var appDictionary = GetAppData(databaseName);
                             appsData.TryAdd(databaseName, appDictionary);

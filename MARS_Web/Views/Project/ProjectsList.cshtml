@@ -253,7 +253,10 @@
     });
 
     function ProDelete(id, obj) {
-        var projectName = obj[0].dataset.projectname;
+        if (!CanEditCheck("ProjectsList")) {
+            return;
+        }
+            var projectName = obj[0].dataset.projectname;
         swal.fire({
             title: 'Please confirm.',
             text: "This action can not be undone.",
@@ -276,6 +279,7 @@
                         stoploader();
                     },
                     success: function (result) {
+                        OnPartialRightGridShow(0, "ProjectsList", "2", "ProjectsList");
                         if (result.status == 1) {
                             ProjectTable.table().draw();
                             swal.fire(

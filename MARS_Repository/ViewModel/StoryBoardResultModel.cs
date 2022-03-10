@@ -45,7 +45,11 @@ namespace MARS_Repository.ViewModel
     public long? Dependson { get; set; }
     public long? latestmark { get; set; }
     public decimal? recordvision { get; set; }
-  }
+    public string status { get; set; }
+    public object clone() {
+        return this.MemberwiseClone();
+    }
+    }
   public class StoryboardDatasetSetting
   {
     public long Settingid { get; set; }

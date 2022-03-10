@@ -43,10 +43,23 @@ namespace Mars_Serialization.ViewModel
         public string PRIVILEGE_NAME { get; set; }
         public string MODULE { get; set; }
         public string DESCRIPTION { get; set; }
+        public decimal USER_ID { get; set; }
     }
     public class UserRoleViewModel
     {
+        public decimal USER_ID { get; set; }
         public decimal ROLE_ID { get; set; }
         public string ROLE_NAME { get; set; }
+    }
+
+    public class CountOfProject
+    {
+        public long PROJECT_ID { get; set; }
+    }
+
+    public class ProjectRelUser
+    {
+        public long PROJECT_ID { get; set; }
+        public decimal USER_ID { get; set; }
     }
 }

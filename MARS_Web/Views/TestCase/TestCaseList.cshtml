@@ -301,6 +301,9 @@
         };
     };
     function AddEditTestCase(Id, editObj) {
+        if (!CanEditCheck("TestSuiteList")) {
+            return;
+        }
         $("#testcasevalidate").css("display", "none");
         $("#existtestcasename").css("display", "none");
         $("#TCexampleModalLabel").text('');
@@ -364,12 +367,15 @@
         $("#DrpTestSuite").val(lTestSuiteId.split(","));
         $("#DrpTestSuite").select2();
 
-
+        OnPartialRightGridShow(0, "TestCaseList", "0", "TestCaseList");
         if (!$("#frmAddEditTestCase").valid())
             return false;
 
     }
     function TestCaseDelete(id, obj) {
+        if (!CanEditCheck("TestSuiteList")) {
+            return;
+        }
         var testcasename = obj[0].dataset.testcasename;
         swal.fire({
             title: 'Please confirm.',
@@ -394,6 +400,7 @@
                     },
                     success: function (result) {
                         if (result.status == 1) {
+                            OnPartialRightGridShow(0, "TestCaseList", "2", "TestCaseList"); 
                             if (result.data == true) {
                                 tableTestCase.table().draw();
                                 swal.fire(
