@@ -779,7 +779,8 @@ namespace MARS_Repository.Repositories
                     ds.DESCRIPTION_INFO = DataSetDesc;
                     entity.SaveChanges();
 
-                    var seqcheck = entity.T_TEST_DATASETTAG.Where(x => x.FOLDERID == tagmodel.Folderid.ToString() && x.SEQUENCE == tagmodel.Sequence && x.DATASETID != datasetid).ToList();
+                    string folder_id = tagmodel.Folderid.ToString();
+                    var seqcheck = entity.T_TEST_DATASETTAG.Where(x => x.FOLDERID == folder_id && x.SEQUENCE == tagmodel.Sequence && x.DATASETID != datasetid).ToList();
                     if (seqcheck.Count > 0)
                     {
                         return datasetid + ",sequence error";
@@ -3536,7 +3537,8 @@ namespace MARS_Repository.Repositories
             try
             {
                 logger.Info(string.Format("CheckFolderSequenceMapping start | datasetid: {0} | FolderId: {1} | SequenceId: {2} | Username: {2}", datasetid, FolderId, SequenceId, Username));
-                bool result = entity.T_TEST_DATASETTAG.Any(x => x.FOLDERID == FolderId.ToString() && x.SEQUENCE == SequenceId && x.DATASETID != datasetid);
+                string folder_id = FolderId.ToString();
+                bool result = entity.T_TEST_DATASETTAG.Any(x => x.FOLDERID == folder_id && x.SEQUENCE == SequenceId && x.DATASETID != datasetid);
                 logger.Info(string.Format("CheckFolderSequenceMapping end | datasetid: {0} | FolderId: {1} | SequenceId: {2} | Username: {2}", datasetid, FolderId, SequenceId, Username));
                 return result;
             }

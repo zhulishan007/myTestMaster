@@ -2938,6 +2938,72 @@ namespace MARS_Web.Controllers
                 resultModel.data = lresult;
                 resultModel.message = lresult.msg == "success" ? "Dataset is " + flag + " successfully" : "DataSet already exist in system.";
                 resultModel.status = 1;
+
+                #region UPDATE DATASET NAME AND DISCRIPTION IN THE JSON MAPPING FILE AND SESSION
+                Mars_Memory_TestCase allList = new Mars_Memory_TestCase();
+                string testcaseSessionName = string.Format("{0}_Testcase_{1}", SessionManager.Schema, Testcaseid);
+                if (Session[testcaseSessionName] != null)
+                    allList = Session[testcaseSessionName] as Mars_Memory_TestCase;
+
+                if (allList != null)
+                {
+                    allList.assignedDataSets.ForEach(x =>
+                    {
+                        if (x.DATA_SUMMARY_ID == datasetid)
+                        {
+                            x.ALIAS_NAME = datasetname;
+                            x.DESCRIPTION_INFO = datasetdesc;
+                        }
+                    });
+                }
+                string fullFilePath = CreateTestcaseFolder();
+                string filePath = string.Format("{0}_{1}.json", Testcaseid, testCaserepo.GetTestCaseNameById((long)Testcaseid));
+
+                StepsJsonMemoryModel dbSaveData = new StepsJsonMemoryModel
+                {
+                    currentSyncroStatus = (RecordStatus)allList.currentSyncroStatus,
+                    allSteps = allList.allSteps.Select(x => new VIEW_TEST_STEPS()
+                    {
+                        APPLICATION_ID = x.APPLICATION_ID,
+                        COLUMN_ROW_SETTING = x.COLUMN_ROW_SETTING,
+                        COMMENTINFO = x.COMMENTINFO,
+                        dataForDataSets = x.dataForDataSets.Select(c => new Data_ForDataSets { DATASETVALUE = c.DATASETVALUE, Data_Setting_Id = c.Data_Setting_Id, DATA_SUMMARY_ID = c.DATA_SUMMARY_ID, SKIP = c.SKIP, STEPS_ID = c.STEPS_ID }).ToList(),
+                        ENUM_TYPE = x.ENUM_TYPE,
+                        IS_RUNNABLE = x.IS_RUNNABLE,
+                        STEPS_ID = x.STEPS_ID,
+                        KEY_WORD_ID = x.KEY_WORD_ID,
+                        KEY_WORD_NAME = x.KEY_WORD_NAME,
+                        OBJECT_HAPPY_NAME = x.OBJECT_HAPPY_NAME,
+                        OBJECT_ID = x.OBJECT_ID,
+                        OBJECT_NAME_ID = x.OBJECT_NAME_ID,
+                        OBJECT_TYPE = x.OBJECT_TYPE,
+                        QUICK_ACCESS = x.QUICK_ACCESS,
+                        recordStatus = (RecordStatus)x.recordStatus,
+                        RUN_ORDER = x.RUN_ORDER,
+                        TEST_CASE_ID = x.TEST_CASE_ID,
+                        TEST_CASE_NAME = x.TEST_CASE_NAME,
+                        TYPE_NAME = x.TYPE_NAME,
+                        VALUE_SETTING = x.VALUE_SETTING
+                    }).ToList(),
+                    assignedApplications = allList.assignedApplications,
+                    assignedDataSets = allList.assignedDataSets.Select(x => new REL_TEST_CASE_DATA_SUMMARY { recordStatus = (RecordStatus)x.recordStatus, ALIAS_NAME = x.ALIAS_NAME, DATA_SUMMARY_ID = x.DATA_SUMMARY_ID }).ToList(),
+                    assignedTestSuiteIDs = allList.assignedTestSuiteIDs,
+                    version = allList.version
+                };
+
+                if (System.IO.File.Exists(Path.Combine(fullFilePath, filePath)))
+                {
+                    dbSaveData.currentSyncroStatus = RecordStatus.en_None;
+                    dbSaveData.assignedDataSets.ForEach(x => { x.recordStatus = RecordStatus.en_None; });
+                    dbSaveData.allSteps.ForEach(x => { x.recordStatus = RecordStatus.en_None; });
+
+                    System.IO.File.Delete(Path.Combine(fullFilePath, filePath));
+                    string testcaseJsonData = JsonConvert.SerializeObject(dbSaveData);
+                    testcaseJsonData = JValue.Parse(testcaseJsonData).ToString(Formatting.Indented);
+                    System.IO.File.WriteAllText(Path.Combine(fullFilePath, filePath), testcaseJsonData);
+                }
+                #endregion
+
                 logger.Info(string.Format("Add/Edit Dataset end | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
             }
             catch (Exception ex)
@@ -3778,14 +3844,24 @@ namespace MARS_Web.Controllers
                 ViewBag.Sequence = dataresults.Count == 0 ? 0 : dataresults[0].Sequence;
                 ViewBag.Diary = dataresults.Count == 0 ? "" : dataresults[0].Diary;
                 ViewBag.StepDesc = dataresults.Count == 0 ? "" : dataresults[0].StepDesc;
-                var groups = repo.GetGroups();
+
+                var groups = GlobalVariable.AllGroups.FirstOrDefault(x => x.Key.Equals(SessionManager.Schema)).Value;
                 ViewBag.Taggroup = groups.Select(x => new SelectListItem { Text = x.GROUPNAME, Value = Convert.ToString(x.GROUPID), Selected = x.GROUPNAME == (dataresults.Count == 0 ? "" : dataresults[0].Group) ? true : false }).Distinct().ToList();
 
-                var folder = repo.GetFolders();
+                var folder = GlobalVariable.AllFolders.FirstOrDefault(x => x.Key.Equals(SessionManager.Schema)).Value;
                 ViewBag.TagFolder = folder.Select(x => new SelectListItem { Text = x.FOLDERNAME, Value = Convert.ToString(x.FOLDERID), Selected = x.FOLDERNAME == (dataresults.Count == 0 ? "" : dataresults[0].Folder) ? true : false }).Distinct().ToList();
 
-                var sets = repo.GetSets();
+                var sets = GlobalVariable.AllSets.FirstOrDefault(x => x.Key.Equals(SessionManager.Schema)).Value;
                 ViewBag.TagSet = sets.Select(x => new SelectListItem { Text = x.SETNAME, Value = Convert.ToString(x.SETID), Selected = x.SETNAME == (dataresults.Count == 0 ? "" : dataresults[0].Set) ? true : false }).Distinct().ToList();
+
+                //var groups = repo.GetGroups();
+                //ViewBag.Taggroup = groups.Select(x => new SelectListItem { Text = x.GROUPNAME, Value = Convert.ToString(x.GROUPID), Selected = x.GROUPNAME == (dataresults.Count == 0 ? "" : dataresults[0].Group) ? true : false }).Distinct().ToList();
+
+                //var folder = repo.GetFolders();
+                //ViewBag.TagFolder = folder.Select(x => new SelectListItem { Text = x.FOLDERNAME, Value = Convert.ToString(x.FOLDERID), Selected = x.FOLDERNAME == (dataresults.Count == 0 ? "" : dataresults[0].Folder) ? true : false }).Distinct().ToList();
+
+                //var sets = repo.GetSets();
+                //ViewBag.TagSet = sets.Select(x => new SelectListItem { Text = x.SETNAME, Value = Convert.ToString(x.SETID), Selected = x.SETNAME == (dataresults.Count == 0 ? "" : dataresults[0].Set) ? true : false }).Distinct().ToList();
 
                 var dataset = repo.GetDataSetName(datasetid);
                 ViewBag.datasetid = datasetid;
