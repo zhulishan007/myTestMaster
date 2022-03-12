@@ -91,14 +91,14 @@
                     dataIndx = ui.dataIndx;
                 rowData.pq_cellcls = rowData.pq_cellcls || {};
                  if (ui.rowData != undefined) {
-                                if (ui.rowData.pq_rowcls == "collapseBorder") {
-                                    return "<input type='checkbox' disabled  " + (ui.cellData ? "checked='checked'" : "") + " />";
-                                } else {
-                                    return "<input type='checkbox'   " + (ui.cellData ? "checked='checked'" : "") + " />";
-                                }
-                            } else {
-                                    return "<input type='checkbox'   " + (ui.cellData ? "checked='checked'" : "") + " />";
-                            }
+                    if (ui.rowData.pq_rowcls == "collapseBorder") {
+                        return "<input type='checkbox' disabled  " + (ui.cellData ? "checked='checked'" : "") + " />";
+                    } else {
+                        return "<input type='checkbox'   " + (ui.cellData ? "checked='checked'" : "") + " />";
+                    }
+                 }else {
+                        return "<input type='checkbox'   " + (ui.cellData ? "checked='checked'" : "") + " />";
+                 }
 
             }
         });
@@ -3761,7 +3761,7 @@
                     console.timeEnd("step 5");
                     console.time("step 4");
                     if (result.data == "success") {
- On			PartialRightGridShow("@ViewBag.TestcaseId","@ViewBag.TestCaseName","2","TestCase");
+                        OnPartialRightGridShow("@ViewBag.TestcaseId","@ViewBag.TestCaseName","2","TestCase");
                         swal.fire({
                             "title": "",
                             "text": result.message,
