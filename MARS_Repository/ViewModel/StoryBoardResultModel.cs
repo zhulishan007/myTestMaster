@@ -15,6 +15,7 @@ namespace MARS_Repository.ViewModel
     public string ProjectDescription { get; set; }
     public string Storyboardname { get; set; }
     public long Storyboardid { get; set; }
+    public long ActionId { get; set; }
     public string ActionName { get; set; }
     public string StepName { get; set; }
     public string TestSuiteName { get; set; }

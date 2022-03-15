@@ -219,6 +219,7 @@ namespace MARS_Repository.Repositories
                       ProjectDescription = row.Field<string>("ProjectDescription"),
                       Storyboardname = row.Field<string>("storyboard_name"),
                       Storyboardid = row.Field<long>("storyboardid"),
+                      ActionId = row.Field<short>("ActionId"),
                       ActionName = row.Field<string>("ActionName"),
                       StepName = row.Field<string>("StepName"),
                       TestSuiteName = row.Field<string>("SuiteName"),
@@ -237,7 +238,7 @@ namespace MARS_Repository.Repositories
                       Suiteid = row.Field<long>("suiteid"),
                       Caseid = row.Field<long>("caseid"),
                       Datasetid = row.Field<long>("datasetid"),
-                      storyboarddetailid = row.Field<long>("storyboarddetailid"),
+                      storyboarddetailid =long.Parse(row["storyboarddetailid"].ToString()),// row.Field<long>("storyboarddetailid"),
                       BHistid = row.Field<long?>("BHIST_ID"),
                       CHistid = row.Field<long?>("CHIST_ID")
                   }).ToList();
@@ -732,6 +733,75 @@ namespace MARS_Repository.Repositories
                 throw;
             }
         }
+
+        public List<TestCaseListByProject> GetTestCaseListNew(long projectId,long testSuiteId)
+        {
+            try
+            {
+                logger.Info(string.Format("Get TestCase List start | TestSuiteId: {0} | UserName: {1}", testSuiteId, Username));
+                var lTestcaseTree = new List<TestCaseListByProject>();
+                logger.Info(string.Format("Get TestCase List 1 | TestSuiteId: {0} | UserName: {1}", testSuiteId, Username));
+                var lList = from t1 in enty.REL_TEST_CASE_TEST_SUITE
+                            join t2 in enty.T_TEST_CASE_SUMMARY on t1.TEST_CASE_ID equals t2.TEST_CASE_ID
+                            where t1.TEST_SUITE_ID == testSuiteId
+                            select new TestCaseListByProject
+                            {
+                                ProjectId = projectId,
+                                TestsuiteId = testSuiteId,
+                                TestcaseId = t2.TEST_CASE_ID,
+                                TestcaseName = t2.TEST_CASE_NAME,
+                                TestCaseDesc = t2.TEST_STEP_DESCRIPTION
+                             };
+                logger.Info(string.Format("Get TestCase List 2 | TestSuiteId: {0} | UserName: {1}", testSuiteId, Username));
+                var lResult = lList.Distinct().OrderBy(x => x.TestcaseName).ToList();
+                logger.Info(string.Format("Get TestCase List 3 | TestSuiteId: {0} | UserName: {1}", testSuiteId, Username));
+                return lResult;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in StoryBoard for GetTestCaseList method | ProjectId: {0} | TestSuiteId : {1} | UserName: {2}", projectId, testSuiteId, Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in GetTestCaseList method | ProjectId: {0} | TestSuiteId : {1} | UserName: {2}", projectId, testSuiteId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in GetTestCaseList method | ProjectId: {0} | TestSuiteId : {1} | UserName: {2}", projectId, testSuiteId, Username), ex.InnerException);
+                throw;
+            }
+        }
+        public List<TestCaseListByProject> GetTestCaseListNew(long projectId)
+        {
+            try
+            {
+                logger.Info(string.Format("Get TestCase List start | projectId: {0} | UserName: {1}", projectId, Username));
+                var lTestcaseTree = new List<TestCaseListByProject>();
+                logger.Info(string.Format("Get TestCase List 1 | projectId: {0} | UserName: {1}", projectId, Username));
+                var lList = from t1 in enty.T_TEST_PROJECT
+                            join t2 in enty.REL_TEST_SUIT_PROJECT on t1.PROJECT_ID equals t2.PROJECT_ID
+                            join t3 in enty.T_TEST_SUITE on t2.TEST_SUITE_ID equals t3.TEST_SUITE_ID
+                            join t4 in enty.REL_TEST_CASE_TEST_SUITE on t2.TEST_SUITE_ID equals t4.TEST_SUITE_ID
+                            join t5 in enty.T_TEST_CASE_SUMMARY on t4.TEST_CASE_ID equals t5.TEST_CASE_ID
+                             where t1.PROJECT_ID == projectId
+                            select new TestCaseListByProject
+                            {
+                                ProjectId =projectId,
+                                TestsuiteId =t3.TEST_SUITE_ID,
+                                TestcaseId = t5.TEST_CASE_ID,
+                                TestcaseName = t5.TEST_CASE_NAME,
+                                TestCaseDesc = t5.TEST_STEP_DESCRIPTION
+                            };
+                logger.Info(string.Format("Get TestCase List 2 | projectId: {0} | UserName: {1}", projectId, Username));
+                var lResult = lList.Distinct().OrderBy(x => x.TestcaseName).ToList();
+                logger.Info(string.Format("Get TestCase List 3 | projectId: {0} | UserName: {1}", projectId, Username));
+                return lResult;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in StoryBoard for GetTestCaseList method | ProjectId: {0} |  UserName: {1}", projectId,  Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in GetTestCaseList method | ProjectId: {0} | UserName: {1}", projectId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in GetTestCaseList method | ProjectId: {0} | UserName: {1}", projectId, Username), ex.InnerException);
+                throw;
+            }
+        }
+
         public List<DataSetListByTestCase> GetDataSetList(long Projectid, string TestSuitename, string Testcasename)
         {
             logger.Info(string.Format("Get DataSet List start | Projectid: {0} | TestSuitename: {1} | Testcasename: {2} | UserName: {3}", Projectid, TestSuitename, Testcasename, Username));
@@ -787,6 +857,74 @@ namespace MARS_Repository.Repositories
                 throw;
             }
         }
+
+        public List<DataSetListByTestCase> GetDataSetListNew(long projectid, long testcaseId)
+        {
+            logger.Info(string.Format("Get DataSet List start | Projectid: {0} | TestSuitename: {1} |   UserName: {2}", projectid, testcaseId, Username));
+            try
+            {
+                var lDatasettree = new List<DataSetListByTestCase>();
+                var lList = from t6 in enty.REL_TC_DATA_SUMMARY  
+                            join t7 in enty.T_TEST_DATA_SUMMARY on t6.DATA_SUMMARY_ID equals t7.DATA_SUMMARY_ID
+                            where t6.TEST_CASE_ID == testcaseId
+                            select new DataSetListByTestCase
+                            {
+                                ProjectId = projectid,
+                                TestcaseId =testcaseId,
+                                Datasetid = t7.DATA_SUMMARY_ID,
+                                Datasetname = t7.ALIAS_NAME
+                            };
+                var lResult = lList.Distinct().OrderBy(x => x.Datasetname).ToList();
+                logger.Info(string.Format("Get DataSet List end | Projectid: {0} | testcaseId: {1} | Testcasename: {2} | UserName: {3}", projectid, testcaseId, testcaseId, Username));
+                return lResult;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in StoryBoard for GetTestCaseList method | ProjectId: {0} | TestSuiteName : {1} | TestCaseName : {2} | UserName: {3}", projectid, testcaseId, testcaseId, Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in GetTestCaseList method | ProjectId: {0} | TestSuiteName : {1} | TestCaseName : {2} | UserName: {3}", projectid, testcaseId, testcaseId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in GetTestCaseList method | ProjectId: {0} | TestSuiteName : {1} | TestCaseName : {2} | UserName: {3}", projectid, testcaseId, testcaseId, Username), ex.InnerException);
+                throw;
+            }
+        }
+
+        public List<DataSetListByTestCase> GetDataSetListNew(long Projectid)
+        {
+            logger.Info(string.Format("Get DataSet List start | Projectid: {0} |   UserName: {1}", Projectid, Username));
+            try
+            {
+                var lDatasettree = new List<DataSetListByTestCase>();
+                var lList = from t1 in enty.T_TEST_PROJECT
+                            join t2 in enty.REL_TEST_SUIT_PROJECT on t1.PROJECT_ID equals t2.PROJECT_ID
+                            join t3 in enty.T_TEST_SUITE on t2.TEST_SUITE_ID equals t3.TEST_SUITE_ID
+                            join t4 in enty.REL_TEST_CASE_TEST_SUITE on t2.TEST_SUITE_ID equals t4.TEST_SUITE_ID
+                            join t5 in enty.T_TEST_CASE_SUMMARY on t4.TEST_CASE_ID equals t5.TEST_CASE_ID
+                            join t6 in enty.REL_TC_DATA_SUMMARY on t5.TEST_CASE_ID equals t6.TEST_CASE_ID
+                            join t7 in enty.T_TEST_DATA_SUMMARY on t6.DATA_SUMMARY_ID equals t7.DATA_SUMMARY_ID
+                            where t1.PROJECT_ID == Projectid
+                            select new DataSetListByTestCase
+                            {
+                                ProjectId = t1.PROJECT_ID,
+                                ProjectName = t1.PROJECT_NAME,
+                                TestcaseId = t5.TEST_CASE_ID,
+                                TestsuiteId = t3.TEST_SUITE_ID,
+                                Datasetid = t7.DATA_SUMMARY_ID,
+                                Datasetname = t7.ALIAS_NAME
+                            };
+                var lResult = lList.Distinct().OrderBy(x => x.Datasetname).ToList();
+                logger.Info(string.Format("Get DataSet List end | Projectid: {0} |  UserName: {1}", Projectid,  Username));
+                return lResult;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in StoryBoard for GetTestCaseList method | ProjectId: {0} |  UserName: {1}", Projectid,  Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in GetTestCaseList method | ProjectId: {0} | TestSuiteName : {1}  | UserName: {1}", Projectid,  Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in GetTestCaseList method | ProjectId: {0}  | UserName: {1}", Projectid,  Username), ex.InnerException);
+                throw;
+            }
+        }
+
         public string GetStoryboardById(long Storyboardid)
         {
             try
@@ -3451,6 +3589,86 @@ where stg.FEEDPROCESSID = {lFeedProceID} and stg.DEPENDENCY not in ('None') and 
                 if (ex.InnerException != null)
                     ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in SaveStoryboardGrid method | StoryBoard Id: {0} | Project Id : {1} | Feed Process Id : {2} | UserName: {3}", lStoryboardId, lProjectId, lFeedProceID, Username), ex.InnerException);
                 if (ex.InnerException.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in SaveStoryboardGrid method | StoryBoard Id: {0} | Project Id : {1} | Feed Process Id : {2} | UserName: {3}", lStoryboardId, lProjectId, lFeedProceID, Username), ex.InnerException.InnerException);
+                throw;
+            }
+        }
+
+        public void SaveStoryboardGridNew(string lConnectionStr, string schema, long lStoryboardId, string lFeedProceID, string lProjectId, List<StoryBoardResultModel> list, bool needSp = true)
+        {
+            try
+            {
+                using (OracleConnection pconnection = GetOracleConnection(lConnectionStr))
+                {
+                    pconnection.Open();
+                    OracleCommand pcmd = pconnection.CreateCommand();
+                    OracleTransaction ptransaction = pconnection.BeginTransaction();
+                    pcmd.Transaction = ptransaction;
+
+                    var dels = list.FindAll(r => r.status == "delete");
+                    if (dels != null && dels.Count > 0)
+                    {
+                        foreach (var del in dels)
+                        {
+                            pcmd.CommandText = $"delete from T_STORYBOARD_DATASET_SETTING where STORYBOARD_DETAIL_ID={del.storyboarddetailid}";
+                            pcmd.ExecuteNonQuery();
+
+                            pcmd.CommandText = $"delete from T_PROJ_TC_MGR where STORYBOARD_DETAIL_ID={del.storyboarddetailid}";
+                            pcmd.ExecuteNonQuery();
+                        }
+                    }
+                    if (needSp)
+                    {
+                        var updates = list.FindAll(r => r.status == "update");
+                        foreach (var update in updates) 
+                        {
+                            pcmd.CommandText = $@"update T_PROJ_TC_MGR mgr set mgr.TEST_SUITE_ID ={update.Suiteid},mgr.TEST_CASE_ID ={update.Caseid},
+                                 mgr.RUN_TYPE ={update.ActionId},mgr.RUN_ORDER ={update.RowId + 1}, mgr.ALIAS_NAME='{update.StepName}' where mgr.STORYBOARD_DETAIL_ID={update.storyboarddetailid}";
+                            pcmd.ExecuteNonQuery();
+
+                            pcmd.CommandText = $@"update T_STORYBOARD_DATASET_SETTING mgr set mgr.DATA_SUMMARY_ID ={update.Datasetid}  where mgr.STORYBOARD_DETAIL_ID={update.storyboarddetailid}";
+                            pcmd.ExecuteNonQuery();
+                        }
+
+                        var adds = list.FindAll(r => r.status == "add");
+                        foreach (var add in adds)
+                        {
+                            pcmd.CommandText = $@"insert into T_PROJ_TC_MGR(STORYBOARD_DETAIL_ID,TEST_SUITE_ID,TEST_CASE_ID,RUN_TYPE,ALIAS_NAME,RUN_ORDER,PROJECT_ID,STORYBOARD_ID)
+                                  values({add.storyboarddetailid},{add.Suiteid},{add.Caseid},{add.ActionId},'{add.StepName}',{add.RowId+1},{add.ProjectId},{add.Storyboardid})";
+                            pcmd.ExecuteNonQuery();
+
+                            pcmd.CommandText = $@"insert into T_STORYBOARD_DATASET_SETTING(SETTING_ID,STORYBOARD_DETAIL_ID,DATA_SUMMARY_ID) values
+                            ( T_TEST_STEPS_SEQ.nextval,{add.storyboarddetailid},{add.Datasetid}) ";
+                            pcmd.ExecuteNonQuery();
+                        }
+
+                        foreach (var add in list)
+                        {
+                            if (!string.IsNullOrWhiteSpace(add.Dependency) && add.Dependency != "None" )
+                            {
+                                pcmd.CommandText = $@"MERGE INTO T_PROJ_TC_MGR tmgr
+                         USING(  select  mgr.STORYBOARD_DETAIL_ID as StID, dep.STORYBOARD_DETAIL_ID as UpdateValue  from T_PROJ_TC_MGR mgr
+                    join T_PROJ_TC_MGR dep on  mgr.STORYBOARD_ID = dep.STORYBOARD_ID and lower(dep.ALIAS_NAME) = lower('{add.Dependency}')
+                        where mgr.RUN_ORDER = {add.RowId + 1} and mgr.STORYBOARD_ID = {add.Storyboardid}  )  TMP
+                    ON(tmgr.STORYBOARD_DETAIL_ID = TMP.StID)WHEN MATCHED THEN
+                    UPDATE SET  tmgr.DEPENDS_ON = TMP.UpdateValue"; 
+                                pcmd.ExecuteNonQuery();
+                            }
+                        }
+
+                        pcmd.CommandText = @"update T_TEST_DATA_SUMMARY set status = 0 where status is null";
+                        pcmd.ExecuteNonQuery();
+                    }
+                    ptransaction.Commit();
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in StoryBoard for SaveStoryboardGrid method | StoryBoard Id: {0} | Project Id : {1} | Feed Process Id : {2} | UserName: {3}", lStoryboardId, lProjectId, lFeedProceID, Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in SaveStoryboardGrid method | StoryBoard Id: {0} | Project Id : {1} | Feed Process Id : {2} | UserName: {3}", lStoryboardId, lProjectId, lFeedProceID, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in SaveStoryboardGrid method | StoryBoard Id: {0} | Project Id : {1} | Feed Process Id : {2} | UserName: {3}", lStoryboardId, lProjectId, lFeedProceID, Username), ex.InnerException);
+                if (ex.InnerException != null && ex.InnerException.InnerException != null)
                     ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in SaveStoryboardGrid method | StoryBoard Id: {0} | Project Id : {1} | Feed Process Id : {2} | UserName: {3}", lStoryboardId, lProjectId, lFeedProceID, Username), ex.InnerException.InnerException);
                 throw;
             }

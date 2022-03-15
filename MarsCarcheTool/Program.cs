@@ -61,14 +61,14 @@ namespace MarsCacheTool
                 }
                 else if (args.Length == 2)
                 {
-                    if (args[1].ToLower() != "all")
+                    long dataid = 0;
+                    if (args[1].ToLower() == "all" || long.TryParse(args[1],out dataid))
                     {
                         foreach (var connect in connections)
                         {
                             MarsConfig config = MarsConfig.Configure(configPath, connect.Schema);
                             MARS_Web.Helper.DatabaseConnectionDetails det = config.GetDatabaseConnectionDetails();
 
-                            long dataid = 0;
                             if (args[1].ToLower() != "all")
                             {
                                 dataid = Convert.ToInt64(args[1]);

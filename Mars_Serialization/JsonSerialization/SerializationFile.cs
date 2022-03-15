@@ -539,7 +539,8 @@ namespace Mars_Serialization.JsonSerialization
             Object,
             Keyword,
             Application,
-            Testcases
+            Testcases,
+            Storyboard
         }
         #endregion
 

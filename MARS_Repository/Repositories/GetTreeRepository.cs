@@ -226,6 +226,39 @@ namespace MARS_Repository.Repositories
             }
         }
 
+        public List<TestSuiteListByProject> GetTestSuiteListNew(long lProjectId)
+        {
+            try
+            {
+                logger.Info(string.Format("Get TestSuiteList start | ProjectId: {0} | UserName: {1}", lProjectId, Username));
+                var lList = from t1 in entity.T_TEST_PROJECT
+                            join t2 in entity.REL_TEST_SUIT_PROJECT on t1.PROJECT_ID equals t2.PROJECT_ID
+                            join t3 in entity.T_TEST_SUITE on t2.TEST_SUITE_ID equals t3.TEST_SUITE_ID
+                            where t1.PROJECT_ID == lProjectId
+                            select new TestSuiteListByProject
+                            {
+                                ProjectId =lProjectId,
+                                TestsuiteId = t3.TEST_SUITE_ID,
+                                TestsuiteName = t3.TEST_SUITE_NAME,
+                                TestSuiteDesc = t3.TEST_SUITE_DESCRIPTION
+                            };
+
+
+                var lResult = lList.Distinct().OrderBy(r=>r.TestsuiteName).ToList();
+              
+                logger.Info(string.Format("Get TestSuiteList end | ProjectId: {0} | UserName: {1}", lProjectId, Username));
+                return lResult;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured GetTree in GetTestSuiteList method | ProjectId: {0} | Username: {1}", lProjectId, Username));
+                ELogger.ErrorException(string.Format("Error occured GetTree in GetTestSuiteList method | ProjectId: {0} | Username: {1}", lProjectId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured GetTestSuiteList in GetRoleByUser method |ProjectId: {0} | Username: {1}", lProjectId, Username), ex.InnerException);
+                throw;
+            }
+        }
+
         public List<StoryBoardListByProject> GetStoryboardList(long lProjectId)
         {
             try

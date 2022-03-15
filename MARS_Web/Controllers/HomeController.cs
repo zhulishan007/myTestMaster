@@ -177,6 +177,7 @@ namespace MARS_Web.Controllers
                     ViewBag.dependencywidth = SPgriddata.Dependency == null ? "50" : SPgriddata.Dependency.Trim();
                     ViewBag.descriptionwidth = SPgriddata.Dependency == null ? "100" : SPgriddata.Dependency.Trim();
                     ViewBag.StoryBoardDetails = keyValuePairs["StoryBoardDetails"];
+                    ViewBag.keyValues = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string,object>>(keyValuePairs["keyValues"]);
                 }
                 else
                 {
@@ -185,14 +186,14 @@ namespace MARS_Web.Controllers
                     logger.Info(string.Format("open storyborad start | Projectid: {0} | Storyboardid: {1} | Username: {2}", Projectid, Storyboardid, SessionManager.TESTER_LOGIN_NAME));
                     StoryBoardRepository repo = new StoryBoardRepository();
                     repo.Username = SessionManager.TESTER_LOGIN_NAME;
-                    Task task1= System.Threading.Tasks.Task.Run(()=> {
+                    /*Task task1= System.Threading.Tasks.Task.Run(()=> {
                         var lAppList = repo.GetApplicationListByStoryboardId(Storyboardid);
                         ViewBag.applicationlst = JsonConvert.SerializeObject(lAppList);
                         keyValuePairs.TryAdd("applicationlst", ViewBag.applicationlst);
-                    });
-                    /*var lAppList = repo.GetApplicationListByStoryboardId(Storyboardid);
+                    });*/
+                    var lAppList = repo.GetApplicationListByStoryboardId(Storyboardid);
                     ViewBag.applicationlst = JsonConvert.SerializeObject(lAppList);
-                    keyValuePairs.TryAdd("applicationlst", ViewBag.applicationlst);*/
+                    keyValuePairs.TryAdd("applicationlst", ViewBag.applicationlst);
                     ViewBag.Accesstoken = SessionManager.Accesstoken;
                     ViewBag.WebAPIURL = ConfigurationManager.AppSettings["WebApiURL"];
                     ViewBag.Title = "Home Page";
@@ -258,6 +259,25 @@ namespace MARS_Web.Controllers
                     storyBoardDetails = storyBoardDetails.Trim();
                     keyValuePairs.TryAdd("StoryBoardDetails", storyBoardDetails);
                     ViewBag.StoryBoardDetails = storyBoardDetails;
+                    //StoryBoardRepository repo1 = new StoryBoardRepository();
+                    //repo1.Username = SessionManager.TESTER_LOGIN_NAME;
+                    Dictionary<string, object> keyValues = new Dictionary<string, object>();
+                  
+                    var datasetList = repo.GetDataSetListNew(Projectid);
+                    keyValues.Add("datasetList", datasetList);
+                  
+                    var actions = repo.GetActions(Storyboardid);
+                    keyValues.Add("actions", actions);
+                   
+                    var testSuiteList = repo.GetTestSuites(Projectid);
+                    keyValues.Add("testSuiteList", testSuiteList);
+                  
+        
+                    var testCaseLists = repo.GetTestCaseListNew(Projectid);
+                    keyValues.Add("testCaseLists", testCaseLists);
+
+                    keyValuePairs.TryAdd("keyValues", JsonConvert.SerializeObject(keyValues));
+                    ViewBag.keyValues = keyValues;
                     string jsonData = JsonConvert.SerializeObject(keyValuePairs);
                     JsonFileHelper.SaveToJsonFile(jsonData,key, SessionManager.Schema);
                     logger.Info(string.Format("successfully open storyborad | Projectid: {0} | Storyboardid: {1} | Username: {2}", Projectid, Storyboardid, SessionManager.TESTER_LOGIN_NAME));

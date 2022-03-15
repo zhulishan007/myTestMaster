@@ -72,7 +72,81 @@
 @if (ViewBag.ProjectId != null && ViewBag.StoryBoardId != null && ViewBag.ProjectId != 0 && ViewBag.StoryBoardId != 0)
 {
 <script>
-              var sbvalidmsg = false;
+    var initActions = [];
+    var inittestCaseLists = [];
+    var inittestSuiteList = [];
+    var initdatasetList = [];
+    //debugger;
+    var pageProjectid = @ViewBag.ProjectId;
+    var pageStoryboardId =  @ViewBag.StoryBoardId;
+    var pageStoryboardname ='@ViewBag.Storyboardname';
+       @* $.ajax({
+            dataType: "json",
+            type: "GET",
+            url: '/StoryBoard/GetStoryBoardAll?projectid=' + pageProjectid + '&storyboardid=' + pageStoryboardId,
+            //data: "{projectid:" + pageProjectid + ",storyboardid:" + pageStoryboardId + "}",
+            contentType: "application/json;charset=utf-8",
+            success: function (result) {
+                //debugger;
+                if (result.status == 1) {
+                    if (result.data != null && result.data.actions.length > 1) {
+                        initActions = [];
+                        for (var i = 0; i < result.data.actions.length; i++) {
+                            initActions.push({ "value": result.data.actions[i].VALUE, "text": result.data.actions[i].DISPLAY_NAME });
+                        }
+                    }
+                    if (result.data != null && result.data.testCaseLists.length > 1) {
+                        inittestCaseLists = [];
+                        for (var i = 0; i < result.data.testCaseLists.length; i++) {
+                            inittestCaseLists.push({ "value": result.data.testCaseLists[i].TestcaseId, "text": result.data.testCaseLists[i].TestcaseName });
+                        }
+                    }
+                    if (result.data != null && result.data.testSuiteList.length > 1) {
+                        inittestSuiteList = [];
+                        for (var i = 0; i < result.data.testSuiteList.length; i++) {
+                            inittestSuiteList.push({ "value": result.data.testSuiteList[i].TestsuiteId, "text": result.data.testSuiteList[i].TestsuiteName });
+                        }
+                    }
+                    if (result.data != null && result.data.datasetList.length > 1) {
+                        initdatasetList = [];
+                        for (var i = 0; i < result.data.datasetList.length; i++) {
+                            initdatasetList.push({ "value": result.data.datasetList[i].Datasetid, "text": result.data.datasetList[i].Datasetname });
+                        }
+                    }
+                }
+                else if (result.status == 0) {
+                    swal.fire({
+                        "title": "",
+                        "text": result.message,
+                        "icon": "error",
+                        "onClose": function (e) {
+                            console.log('on close event fired!');
+                        }
+                    });
+                }
+            }
+        });*@
+    (function () {
+        var actionlist = @Html.Raw(ViewBag.keyValues["actions"]);
+        $.each(actionlist, function (key, value) {
+            initActions.push({ "value": value.VALUE, "text": value.DISPLAY_NAME });
+            //actions.push({ "value": value.DISPLAY_NAME, "text": value.DISPLAY_NAME });
+        });
+        var testCaseLists = @Html.Raw(ViewBag.keyValues["testCaseLists"]);
+        $.each(testCaseLists, function (key, value) {
+            inittestCaseLists.push({ "value": value.TestcaseId, "text": value.TestcaseName });
+        });
+        var testSuiteList = @Html.Raw(ViewBag.keyValues["testSuiteList"]);
+        $.each(testSuiteList, function (key, value) {
+            inittestSuiteList.push({ "value": value.TestsuiteId, "text": value.TestsuiteName });
+        });
+        var datasetList = @Html.Raw(ViewBag.keyValues["datasetList"]);
+        $.each(datasetList, function (key, value) {
+            initdatasetList.push({ "value": value.Datasetid, "text": value.Datasetname });
+        });
+    })();
+
+        var sbvalidmsg = false;
         var lheight = $(window).height();
         var testsuitevalidate = [];
         var actionvalidate = [];
@@ -160,7 +234,7 @@
             title: "CHistoryId", copy: false, hidden: true, dataType: "int", dataIndx: "chistid", align: "center", menuInHide: true, sortable: false,
         });
         dt.push({
-            title: "Actions", dataIndx: "actions", dataType: "string", align: "left", menuInHide: true, halign: "center", sortable: false, resizable: true, nodrag: true, nodrop: true, width: @ViewBag.actionwidth, minWidth: 20,
+            title: "Actions", dataIndx: "ActionId" /*"actions"*/, dataType: "string", align: "left", menuInHide: true, halign: "center", sortable: false, resizable: true, nodrag: true, nodrop: true, width: @ViewBag.actionwidth, minWidth: 20,
             editor: {
                 type: 'select',
                 valueIndx: "value",
@@ -173,12 +247,13 @@
                     var rowindx = ui.rowIndx;
                     var sid = @ViewBag.StoryBoardId;
                     var actionlist = @Html.Raw(ViewBag.ActionList);
+                    actions = [];
                     actions.push({ "value": "", "text": "" });
                     $.each(actionlist, function (key, value) {
-                        actions.push({ "value": value.DISPLAY_NAME, "text": value.DISPLAY_NAME });
+                        actions.push({ "value": value.VALUE, "text": value.DISPLAY_NAME });
+                        //actions.push({ "value": value.DISPLAY_NAME, "text": value.DISPLAY_NAME });
                     });
                     List = actions;
-                    actions = [];
                    // $.ajax({
                    //url: "/StoryBoard/GetActionList",
                    //type: "POST",
@@ -216,13 +291,21 @@
             },
             filter: { crules: [{ condition: 'contain' }] },
             labelIndx: "text",
-
+            render: function (ui) {
+                //debugger;
+                var value = ui.rowData.ActionId;
+                var index = initActions.find(r => r.value == value);
+                if (index != null || index != undefined)
+                    return index.text;
+                else
+                    return value;
+            }
         });
 
         dt.push({
             title: "Steps", width: @ViewBag.stepswidth, minWidth: 20, menuInHide: false, align: "left", halign: "center", sortable: false, nodrag: true, nodrop: true, dataIndx: "steps", filter: { crules: [{ condition: 'contain' }] }, resizable: true});
         dt.push({
-          title: "Test Suite", width: @ViewBag.testsuitewidth, minWidth: 20,  dataIndx: "testsuite", dataType: "string", align: "left", menuInHide: false, halign: "center", sortable: false, resizable: true, nodrag: true, nodrop: true,
+            title: "Test Suite", width: @ViewBag.testsuitewidth, minWidth: 20, dataIndx: "suiteid"/*"testsuite"*/, dataType: "string", align: "left", menuInHide: false, halign: "center", sortable: false, resizable: true, nodrag: true, nodrop: true,
             editor: {
                 type: 'select',
                 valueIndx: "value",
@@ -232,33 +315,33 @@
 
                 labelIndx: "text",
                 options: function (ui) {
-
-
+                    //debugger;
                     var List = [];
                     var rowindx = ui.rowIndx;
-                    var Projectid = @ViewBag.ProjectId;
+                    var Projectid = '@ViewBag.ProjectId';
                     //Rutvi
                     if (ReloadTestSuite == true) {
 
                      $.ajax({
-                        url: "/StoryBoard/GetTestSuiteListInStoryboard",
+                         //url: "/StoryBoard/GetTestSuiteListInStoryboard",
+                        url: "/StoryBoard/GetTestSuiteListInStoryboardNew",
                         type: "POST",
-                        data: '{ProjectId: ' + Projectid + '}',
+                        data: "{ProjectId:" + Projectid + ",Storyboardid:" + pageStoryboardId +",Storyboardname:'" + pageStoryboardname+ "'}",
                         contentType: "application/json;charset=utf-8",
                         dataType: "json",
                         async: false,
                          success: function (result) {
                              ReloadTestSuite = false;
-                          if (result.status == 1) {   
+                          if (result.status == 1) {
                               if (result.data != null && result.data.length > 0) {
-                               testsuites = [];
-                                  debugger;
-                               testsuites.push({ "value": "", "text": "" });
-                               for (var i = 0; i < result.data.length; i++) {
-                                   testsuites.push({ "value": result.data[i].TestsuiteName, "text": result.data[i].TestsuiteName });
-                               }
+                                  testsuites = [];
+                                  testsuites.push({ "value": "", "text": "" });
+                                  for (var i = 0; i < result.data.length; i++) {
+                                      //testsuites.push({ "value": result.data[i].TestsuiteName, "text": result.data[i].TestsuiteName });
+                                      testsuites.push({ "value": result.data[i].TestsuiteId, "text": result.data[i].TestsuiteName });
+                                  }
                                List = testsuites;
-                               
+
                                gridTestcase['@Storyboardname'] = result.data;
                                //testsuiteList = result.data;
                            }
@@ -283,7 +366,8 @@
                         var testsuiteList = gridTestcase['@Storyboardname'];
                         testsuites.push({ "value": "", "text": "" });
                         $.each(testsuiteList, function (key, value) {
-                            testsuites.push({ "value": value.TestsuiteName, "text": value.TestsuiteName });
+                            //testsuites.push({ "value": value.TestsuiteName, "text": value.TestsuiteName });
+                            testsuites.push({ "value": value.TestsuiteId, "text": value.TestsuiteName });
                          });
                         List = testsuites;
                     }
@@ -293,8 +377,8 @@
             filter: { crules: [{ condition: 'contain' }] },
             render: function (ui) {
                 //debugger;
-                var value = ui.rowData.testsuite;
-                var index = testsuites.find(r => r.value == value);
+                var value = ui.rowData.suiteid;
+                var index = inittestSuiteList.find(r => r.value == value);
                 if (index != null || index != undefined)
                     return index.text;
                 else
@@ -302,7 +386,7 @@
             }
         });
         dt.push({
-          title: "Test Case", dataIndx: "testcase", dataType: "string", align: "left", menuInHide: false, halign: "center", sortable: false, resizable: true, nodrag: true, nodrop: true, width: @ViewBag.testcasewidth, minWidth: 20,
+            title: "Test Case", dataIndx: "caseid"/*"testcase"*/, dataType: "string", align: "left", menuInHide: false, halign: "center", sortable: false, resizable: true, nodrag: true, nodrop: true, width: @ViewBag.testcasewidth, minWidth: 20,
         editor: {
                 type: 'select',
                 valueIndx: "value",
@@ -311,35 +395,38 @@
                 },
                 labelIndx: "text",
                 options: function (ui) {
-
+                    //debugger;
                     var List = [];
                     var lgrid=[]
                     var rowindx = ui.rowIndx + 1;
                     var Projectid = @ViewBag.ProjectId;
                     for (i = 0; i < gridobj['@lstoryboardgrid'].pdata.length; i++) {
-
                         lgrid.push({ "testsuitename": gridobj['@lstoryboardgrid'].pdata[i].testsuite });
                     }
                     var TestSuitelist = {};
                     TestSuitelist.grid = JSON.stringify(lgrid);
                     TestSuitelist.stepid = rowindx;
                     TestSuitelist.projectid = Projectid;
+                    var testSuitId = ui.rowData.suiteid;
                     $.ajax({
-                      url: "/StoryBoard/GetTestCaseListinStoryboard",
+                      //url: "/StoryBoard/GetTestCaseListinStoryboard",
+                        url: "/StoryBoard/GetTestCaseListinStoryboardNew",
                         type: "POST",
-                        data: '{lgrid: ' + JSON.stringify(TestSuitelist) + '}',
+                        //data: '{lgrid: ' + JSON.stringify(TestSuitelist) + '}',
+                        data: "{projectId:" + Projectid + ",testSuiteId:" + testSuitId + ",Storyboardid:" + pageStoryboardId + ",Storyboardname:'" + pageStoryboardname + "'}",
                    contentType: "application/json;charset=utf-8",
                    dataType: "json",
                    async: false,
                    success: function (result) {
                        if (result.status == 1) {
                            if (result.data != null && result.data.length > 0) {
+                               testcases = [];
                                testcases.push({ "value": "", "text": "" });
                                for (var i = 0; i < result.data.length; i++) {
-                                   testcases.push({ "value": result.data[i].TestcaseName, "text": result.data[i].TestcaseName });
+                                   //testcases.push({ "value": result.data[i].TestcaseName, "text": result.data[i].TestcaseName });
+                                   testcases.push({ "value": result.data[i].TestcaseId, "text": result.data[i].TestcaseName });
                                }
                                List = testcases;
-                               testcases = [];
                            }
                        }
                        else if (result.status == 0) {
@@ -360,9 +447,18 @@
                 }
             },
             filter: { crules: [{ condition: 'contain' }] },
+            render: function (ui) {
+                var value = ui.rowData.caseid;
+                //var index = testcases.find(r => r.value == value);
+                var index = inittestCaseLists.find(r => r.value == value);
+                if (index != null || index != undefined)
+                    return index.text;
+                else
+                    return value;
+            }
         });
         dt.push({
-            title: "Dataset", dataIndx: "dataset", dataType: "string", align: "left", menuInHide: false, halign: "center", sortable: false, resizable: true, nodrag: true, nodrop: true, width: @ViewBag.datasetwidth, minWidth: 20,
+            title: "Dataset", dataIndx:"datasetid"/* "dataset"*/, dataType: "string", align: "left", menuInHide: false, halign: "center", sortable: false, resizable: true, nodrag: true, nodrop: true, width: @ViewBag.datasetwidth, minWidth: 20,
             editor: {
                 type: 'select',
                 valueIndx: "value",
@@ -372,6 +468,7 @@
                 },
                 labelIndx: "text",
                 options: function (ui) {
+                    //debugger;
                     var List = [];
                     var lgrid=[]
                     var rowindx = ui.rowIndx + 1;
@@ -384,23 +481,26 @@
                     Testcaselist.grid = JSON.stringify(lgrid);
                     Testcaselist.stepid = rowindx;
                     Testcaselist.projectid = Projectid;
+                    var testCaseId = ui.rowData.caseid;
                     $.ajax({
-                      url: "/StoryBoard/GetDatasetList",
+                      //url: "/StoryBoard/GetDatasetList",
+                        url: "/StoryBoard/GetDatasetListNew",
                         type: "POST",
-                        data: '{lgrid: ' + JSON.stringify(Testcaselist) + '}',
+                        //data: '{lgrid: ' + JSON.stringify(Testcaselist) + '}',
+                        data: "{projectid:" + Projectid + ",testCaseId:" + testCaseId + ",Storyboardid:" + pageStoryboardId + ",Storyboardname:'" + pageStoryboardname + "'}",
                         contentType: "application/json;charset=utf-8",
                         dataType: "json",
                         async: false,
                         success: function (result) {
                             if (result.status == 1) {
+                                datasets = [];
                                 if (result.data != null && result.data.length > 0) {
                                     datasets.push({ "value": "", "text": "" });
                                     for (var i = 0; i < result.data.length; i++) {
-                                        datasets.push({ "value": result.data[i].Datasetname, "text": result.data[i].Datasetname });
+                                        //datasets.push({ "value": result.data[i].Datasetname, "text": result.data[i].Datasetname });
+                                        datasets.push({ "value": result.data[i].Datasetid, "text": result.data[i].Datasetname });
                                     }
-
                                     List = datasets;
-                                    datasets = [];
                                 }
                             }
                             else if (result.status == 0) {
@@ -421,6 +521,15 @@
                 }
             },
             filter: { crules: [{ condition: 'contain' }] },
+            render: function (ui) {
+                var value = ui.rowData.datasetid;
+                //var index = datasets.find(r => r.value == value);
+                var index = initdatasetList.find(r => r.value == value);
+                if (index != null || index != undefined)
+                    return index.text;
+                else
+                    return value;
+            }
         });
 
         dt.push({
@@ -966,7 +1075,10 @@
 				    storyboardname = details[i].Storyboardname;
 				    caseid = details[i].Caseid;
 				    datasetid = details[i].Datasetid;
-				    detailid = details[i].storyboarddetailid;
+                    detailid = details[i].storyboarddetailid;
+                    if (details[i].ActionId != null) {
+                        ActionId = details[i].ActionId;
+                    }
 				    if (details[i].ActionName != null) {
 					    actionname = details[i].ActionName;
 				    }
@@ -1077,8 +1189,8 @@
 				    }
 				    else {
 					    description = "";
-				    }
-				    jsonData += '{"actions":"' + actionname + '",  "StoryboardId":"' + storyboardid + '",  "Storyboardname":"' + storyboardname + '",  "ProjectId":"' + projectid + '","steps":"' + stepname + '", "bhistid":"' + bhistid + '","chistid":"' + chistid + '", "suiteid":"' + suiteid + '", "caseid":"' + caseid + '", "datasetid":"' + datasetid + '", "detailid":"' + detailid + '", "testsuite":"'
+                    }
+                    jsonData += '{"ActionId":"' + ActionId + '","actions": "' + actionname + '", "StoryboardId": "' + storyboardid + '", "Storyboardname": "' + storyboardname + '", "ProjectId": "' + projectid + '", "steps": "' + stepname + '", "bhistid": "' + bhistid + '", "chistid": "' + chistid + '", "suiteid": "' + suiteid + '", "caseid": "' + caseid + '", "datasetid": "' + datasetid + '", "detailid": "' + detailid + '", "testsuite": "'
 					    + suitename + '", "testcase":"' + casename + '", "dataset":"' + datasetname + '", "btestresult": "' + btestresult + '", "berrcause": "' + berrcause + '", "bscriptstart": "' + bscriptstart + '", "bscriptend": "' + bscriptend + '","ctestresult": "' + ctestresult + '", "cerrcause": "' + cerrcause + '", "cscriptstart": "' + cscriptstart + '", "cscriptend": "' + cscriptend + '","dependson": "' + dependency + '", "desc": "' + description + '", "RUN_ORDER": "' + details[i].Run_order + '"';
 				    jsonData += "}";
 			    }
@@ -1217,6 +1329,9 @@
                                 caseid = result.data[i].Caseid;
                                 datasetid = result.data[i].Datasetid;
                                 detailid = result.data[i].storyboarddetailid;
+                                if (result.data[i].ActionId != null) {
+                                    actionId = result.data[i].ActionId;
+                                }
                                 if (result.data[i].ActionName != null) {
                                     actionname = result.data[i].ActionName;
                                 }
@@ -1328,7 +1443,7 @@
                                 else {
                                     description = "";
                                 }
-                                jsonData += '{"actions":"' + actionname + '",  "StoryboardId":"' + storyboardid + '",  "Storyboardname":"' + storyboardname + '",  "ProjectId":"' + projectid + '","steps":"' + stepname + '", "bhistid":"' + bhistid + '","chistid":"' + chistid + '", "suiteid":"' + suiteid + '", "caseid":"' + caseid + '", "datasetid":"' + datasetid + '", "detailid":"' + detailid + '", "testsuite":"'
+                                jsonData += '{"ActionId":"' + actionId + '","actions": "' + actionname + '",  "StoryboardId":"' + storyboardid + '",  "Storyboardname":"' + storyboardname + '",  "ProjectId":"' + projectid + '","steps":"' + stepname + '", "bhistid":"' + bhistid + '","chistid":"' + chistid + '", "suiteid":"' + suiteid + '", "caseid":"' + caseid + '", "datasetid":"' + datasetid + '", "detailid":"' + detailid + '", "testsuite":"'
                                     + suitename + '", "testcase":"' + casename + '", "dataset":"' + datasetname + '", "btestresult": "' + btestresult + '", "berrcause": "' + berrcause + '", "bscriptstart": "' + bscriptstart + '", "bscriptend": "' + bscriptend + '","ctestresult": "' + ctestresult + '", "cerrcause": "' + cerrcause + '", "cscriptstart": "' + cscriptstart + '", "cscriptend": "' + cscriptend + '","dependson": "' + dependency + '", "desc": "' + description + '", "RUN_ORDER": "' + result.data[i].Run_order + '"';
                                 jsonData += "}";
                             }
@@ -1625,7 +1740,11 @@
             var tempSBValidation = [];
             var flag2 = false;
             for (i = 0; i < gridobj[sbgrid].pdata.length; i++) {
-                if (gridobj[sbgrid].pdata[i].actions == undefined || gridobj[sbgrid].pdata[i].actions == "" || gridobj[sbgrid].pdata[i].actions =="null" || gridobj[sbgrid].pdata[i].testsuite == undefined || gridobj[sbgrid].pdata[i].testsuite == "" || gridobj[sbgrid].pdata[i].testsuite == "null" || gridobj[sbgrid].pdata[i].testcase == undefined || gridobj[sbgrid].pdata[i].testcase == "" || gridobj[sbgrid].pdata[i].testcase == "null" || gridobj[sbgrid].pdata[i].dataset == undefined || gridobj[sbgrid].pdata[i].dataset == "" || gridobj[sbgrid].pdata[i].dataset == "null") {
+                //if (gridobj[sbgrid].pdata[i].actions == undefined || gridobj[sbgrid].pdata[i].actions == "" || gridobj[sbgrid].pdata[i].actions =="null" || gridobj[sbgrid].pdata[i].testsuite == undefined || gridobj[sbgrid].pdata[i].testsuite == "" || gridobj[sbgrid].pdata[i].testsuite == "null" || gridobj[sbgrid].pdata[i].testcase == undefined || gridobj[sbgrid].pdata[i].testcase == "" || gridobj[sbgrid].pdata[i].testcase == "null" || gridobj[sbgrid].pdata[i].dataset == undefined || gridobj[sbgrid].pdata[i].dataset == "" || gridobj[sbgrid].pdata[i].dataset == "null") {
+                if (gridobj[sbgrid].pdata[i].ActionId == undefined || gridobj[sbgrid].pdata[i].ActionId == "" || gridobj[sbgrid].pdata[i].ActionId == "null"
+                    || gridobj[sbgrid].pdata[i].suiteid == undefined || gridobj[sbgrid].pdata[i].suiteid == "" || gridobj[sbgrid].pdata[i].suiteid == "null"
+                    || gridobj[sbgrid].pdata[i].caseid == undefined || gridobj[sbgrid].pdata[i].caseid == "" || gridobj[sbgrid].pdata[i].caseid == "null"
+                    || gridobj[sbgrid].pdata[i].datasetid == undefined || gridobj[sbgrid].pdata[i].datasetid == "" || gridobj[sbgrid].pdata[i].datasetid == "null") {
                     gridobj[sbgrid].setSelection({ rowIndx: i, focus: true });
                     flag1 = true;
                 }
@@ -1768,7 +1887,11 @@
             var flag2 = false;
             gridobj[sbgrid].setSelection(null);
             for (i = 0; i < gridobj[sbgrid].pdata.length; i++) {
-                if (gridobj[sbgrid].pdata[i].actions == undefined || gridobj[sbgrid].pdata[i].actions == "" || gridobj[sbgrid].pdata[i].actions =="null" || gridobj[sbgrid].pdata[i].testsuite == undefined || gridobj[sbgrid].pdata[i].testsuite == "" || gridobj[sbgrid].pdata[i].testsuite == "null" || gridobj[sbgrid].pdata[i].testcase == undefined || gridobj[sbgrid].pdata[i].testcase == "" || gridobj[sbgrid].pdata[i].testcase == "null" || gridobj[sbgrid].pdata[i].dataset == undefined || gridobj[sbgrid].pdata[i].dataset == "" || gridobj[sbgrid].pdata[i].dataset == "null") {
+                //if (gridobj[sbgrid].pdata[i].actions == undefined || gridobj[sbgrid].pdata[i].actions == "" || gridobj[sbgrid].pdata[i].actions =="null" || gridobj[sbgrid].pdata[i].testsuite == undefined || gridobj[sbgrid].pdata[i].testsuite == "" || gridobj[sbgrid].pdata[i].testsuite == "null" || gridobj[sbgrid].pdata[i].testcase == undefined || gridobj[sbgrid].pdata[i].testcase == "" || gridobj[sbgrid].pdata[i].testcase == "null" || gridobj[sbgrid].pdata[i].dataset == undefined || gridobj[sbgrid].pdata[i].dataset == "" || gridobj[sbgrid].pdata[i].dataset == "null") {
+                if (gridobj[sbgrid].pdata[i].ActionId == undefined || gridobj[sbgrid].pdata[i].ActionId == "" || gridobj[sbgrid].pdata[i].ActionId == "null"
+                    || gridobj[sbgrid].pdata[i].suiteid == undefined || gridobj[sbgrid].pdata[i].suiteid == "" || gridobj[sbgrid].pdata[i].suiteid == "null"
+                    || gridobj[sbgrid].pdata[i].caseid == undefined || gridobj[sbgrid].pdata[i].caseid == "" || gridobj[sbgrid].pdata[i].caseid == "null"
+                    || gridobj[sbgrid].pdata[i].datasetid == undefined || gridobj[sbgrid].pdata[i].datasetid == "" || gridobj[sbgrid].pdata[i].datasetid == "null") {
                     gridobj[sbgrid].setSelection({ rowIndx: i, focus: true });
                     flag1 = true;
                 }
@@ -1823,6 +1946,7 @@
 
                 pStoryboardArray.push({
                     "RowId": key, "Run_order": value.RUN_ORDER, "ProjectId": ProjectId, "ActionName": value.actions,
+                    "ActionId": value.ActionId, "Suiteid": value.suiteid, "Caseid": value.caseid, "Datasetid": value.datasetid,
                     "StepName": value.steps, "TestSuiteName": value.testsuite, "TestCaseName": value.testcase, "DataSetName": value.dataset,
                     "Dependency": value.dependson, "storyboarddetailid": value.detailid
                 });
@@ -1838,7 +1962,8 @@
                 beforeSend: function (jqXHR, settings) {
                     //gridobj[sbgrid].showLoading("Saving Data");
                 },
-                url: "/StoryBoard/SaveStoryboardGrid",
+                //url: "/StoryBoard/SaveStoryboardGrid",
+                url: "/StoryBoard/SaveStoryboardGridNew",
                 data: { lGridJsonData: JSON.stringify(pStoryboardArray), lStoryboardId: sbid, lchangedGrid: JSON.stringify(changes), lProjectId: ProjectId, storyBoardName: "@ViewBag.Storyboardname"},
                 success: function (result) {
                      if (result.status == 1) {
@@ -1984,33 +2109,6 @@
         //    e.preventDefault();
         //    return false;
         //}) 
-         $.ajax({
-            dataType: "json",
-            type: "POST",
-             url: '/StoryBoard/GetTestCaseListinStoryboard ',
-            data: { 'lProjectId': lProjectId, "lStoryboardId": lstoryboardid },
-            success: function (result) {
-                if (result.status == 1) {
-                     if (result.data.length > 1) {
-                        var lProjectName = result.data.split("#")[0];
-                        var lstoryboardname = result.data.split("#")[1];
-
-                        var BProjectId = "sProject" + @ViewBag.StoryBoardId;
-                        var BSBId = "sStoryboard" + @ViewBag.StoryBoardId;
-                    }
-                }
-                else if (result.status == 0) {
-                    swal.fire({
-                        "title": "",
-                        "text": result.message,
-                        "icon": "error",
-                        "onClose": function (e) {
-                            console.log('on close event fired!');
-                        }
-                    });
-                }
-            }
-        });
      });
     document.oncontextmenu = function (ev) {
         return false;    //ÆÁ±ÎÓÒ¼ü²Ëµ¥

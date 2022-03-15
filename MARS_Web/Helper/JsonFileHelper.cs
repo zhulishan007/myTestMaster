@@ -44,9 +44,10 @@ namespace MARS_Web.Helper
             }
         }
 
-        public static bool HasCashFile(string databaseName, string storyboardName, long projectId, long storyBoardId, string caseName = "Storyboard") 
+        public static bool HasCashFile(string databaseName, string storyboardName, long projectId, long storyBoardId, string caseName = "Storyboard", string path = "") 
         {
-            string path = Path.Combine(HostingEnvironment.MapPath("~/"), "Serialization", caseName, databaseName);
+            if(!string.IsNullOrEmpty(path))
+                path = Path.Combine(HostingEnvironment.MapPath("~/"), "Serialization", caseName, databaseName);
             string fileName = $"{projectId}_{storyBoardId}_{storyboardName}.json";
             if (File.Exists(Path.Combine(path, fileName))) 
             {
@@ -84,6 +85,10 @@ namespace MARS_Web.Helper
                     TestSuiteCount = (int)u.TestSuiteCount,
                     StoryBoardCount = (int)u.StoryBoardCount
                 }).ToList();
+                var usersData = new ConcurrentDictionary<string, ConcurrentDictionary<Mars_Serialization.ViewModel.UserViewModal, List<Mars_Serialization.ViewModel.ProjectByUser>>> ();
+                var userDictionary = Mars_Serialization.JsonSerialization.SerializationFile.GetDictionary(det.ConnString);
+                usersData.TryAdd(databaseName, userDictionary);
+                GlobalVariable.UsersDictionary = usersData;
             }
             else
             {
@@ -103,8 +108,11 @@ namespace MARS_Web.Helper
                 {
                     if (dataId != 0 && project.StoryboardId != dataId)
                         continue;
-                    if (HasCashFile(databaseName, project.StoryboardName, project.ProjectId, project.StoryboardId))
-                        continue;
+                    if (!needReflesh)
+                    {
+                        if (HasCashFile(databaseName, project.StoryboardName, project.ProjectId, project.StoryboardId,  path ))
+                            continue;
+                    }
                     //System.Threading.Tasks.Task.Run(() =>
                     //{
                         StoryBoardCashJson(databaseName, det, project.StoryboardName, project.ProjectId, project.StoryboardId, needReflesh);
@@ -120,24 +128,7 @@ namespace MARS_Web.Helper
             try
             {
                 string key = $"{Projectid}_{Storyboardid}_{storyBoardName}.json";
-               /* if (!GlobalVariable.StoryboardInfo.ContainsKey(databaseName))
-                {
-                    var dictionary = new ConcurrentDictionary<string, ConcurrentDictionary<string, string>>();
-                    GlobalVariable.StoryboardInfo.TryAdd(databaseName, dictionary);
-                }
-
-                var storyboardInfo = GlobalVariable.StoryboardInfo[databaseName];
-                if (!storyboardInfo.ContainsKey(key))
-                {
-                    var result = GetFilePath(key + ".json", databaseName);
-                    if (!string.IsNullOrEmpty(result))
-                    {
-                        ConcurrentDictionary<string, string> keyValuePairs = new ConcurrentDictionary<string, string>();
-                        keyValuePairs = Newtonsoft.Json.JsonConvert.DeserializeObject<ConcurrentDictionary<string, string>>(result);
-                        storyboardInfo.TryAdd(key, keyValuePairs);
-                    }
-                }
-*/
+              
                 var result = GetFilePath(key, databaseName);
 
                 if (string.IsNullOrWhiteSpace(result) || needReflesh)
@@ -147,6 +138,22 @@ namespace MARS_Web.Helper
                     logger.Info(string.Format("open storyborad start | Projectid: {0} | Storyboardid: {1} | Username: {2} ", Projectid, Storyboardid, user.username));
                     StoryBoardRepository repo = new StoryBoardRepository();
                     repo.Username = user.username;
+
+                    Dictionary<string, object> keyValues = new Dictionary<string, object>();
+                   
+                    var datasetList = repo.GetDataSetListNew(Projectid);
+                    keyValues.Add("datasetList", datasetList);
+                   
+                    var actions = repo.GetActions(Storyboardid);
+                    keyValues.Add("actions", actions);
+                   
+                    var testSuiteList = repo.GetTestSuites(Projectid);
+                    keyValues.Add("testSuiteList", testSuiteList);
+                   
+                    var testCaseLists = repo.GetTestCaseListNew(Projectid);
+                    keyValues.Add("testCaseLists", testCaseLists);
+                   
+                    
                     var lAppList = repo.GetApplicationListByStoryboardId(Storyboardid);
                     keyValuePairs.TryAdd("applicationlst", JsonConvert.SerializeObject(lAppList));
                     var storyboardname = repo.GetStoryboardById(Storyboardid);
@@ -177,6 +184,7 @@ namespace MARS_Web.Helper
                     storyBoardDetails = storyBoardDetails.Replace("\\", "\\\\");
                     storyBoardDetails = storyBoardDetails.Trim();
                     keyValuePairs.TryAdd("StoryBoardDetails", storyBoardDetails);
+                    keyValuePairs.TryAdd("keyValues", JsonConvert.SerializeObject(keyValues));
                     string jsonData = JsonConvert.SerializeObject(keyValuePairs);
                     SaveToJsonFile(jsonData, $"{Projectid}_{Storyboardid}_{storyboardname}.json", databaseName);
                     logger.Info(string.Format("successfully open storyborad | Projectid: {0} | Storyboardid: {1} | Username: admin", Projectid, Storyboardid));
