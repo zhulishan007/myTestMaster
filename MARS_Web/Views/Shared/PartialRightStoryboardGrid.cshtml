@@ -136,14 +136,17 @@
         $.each(testCaseLists, function (key, value) {
             inittestCaseLists.push({ "value": value.TestcaseId, "text": value.TestcaseName });
         });
+        inittestCaseLists.push({ "value":0, "text": ''});
         var testSuiteList = @Html.Raw(ViewBag.keyValues["testSuiteList"]);
         $.each(testSuiteList, function (key, value) {
             inittestSuiteList.push({ "value": value.TestsuiteId, "text": value.TestsuiteName });
         });
+        inittestSuiteList.push({ "value":0, "text": ''});
         var datasetList = @Html.Raw(ViewBag.keyValues["datasetList"]);
         $.each(datasetList, function (key, value) {
             initdatasetList.push({ "value": value.Datasetid, "text": value.Datasetname });
         });
+        initdatasetList.push({ "value": 0, "text": '' });
     })();
 
         var sbvalidmsg = false;
@@ -709,20 +712,26 @@
                 });
             },
             cellSave: function (evt, ui) {
-
-                if (ui.dataIndx == "testsuite" && ui.newVal !== ui.oldVal) {
+                //debugger;
+                if (ui.dataIndx =="suiteid" /*"testsuite" */&& ui.newVal !== ui.oldVal) {
 
                     //reset the region cell whenever country cell is modified.
-                    this.updateRow({
-                        rowIndx: ui.rowIndx,
-                        row: { 'testcase': '','dataset':'' }
-                    });
+                    //this.updateRow({
+                    //    rowIndx: ui.rowIndx,
+                    //    row: { 'testcase': '', 'dataset': '', 'caseid': 0,'datasetid':0 }
+                    //});
+                    ui.rowData.caseid = 0;
+                    ui.rowData.datasetid = 0;
+                    this.refreshRow({ rowIndx: ui.rowIndx });
                 }
-                if (ui.dataIndx == "testcase" && ui.newVal != ui.oldVal) {
-                    this.updateRow({
+                if (ui.dataIndx == "caseid"/*"testcase"*/ && ui.newVal != ui.oldVal) {
+                   @* this.updateRow({
                         rowIndx: ui.rowIndx,
-                        row: {'dataset': '' }
+                        row: { 'dataset': '','datasetid':0}
                     });
+*@
+                    ui.rowData.datasetid = 0;
+                    this.refreshRow({ rowIndx: ui.rowIndx });
                 }
             },
             //important option for this example.
