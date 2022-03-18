@@ -291,7 +291,7 @@
     <Key>
       <PropertyRef Name="OBJECT_NAME_ID" />
     </Key>
-    <Property Name="OBJECT_NAME_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="OBJECT_NAME_ID" Type="Int64" Nullable="false" />
     <Property Name="OBJECT_HAPPY_NAME" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
     <Property Name="PEGWINDOW_MARK" Type="Int16" />
     <Property Name="OBJNAME_DESCRIPTION" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
@@ -903,24 +903,6 @@
     <Property Name="APPLICATION_ID" Type="Int64" />
     <Property Name="QUICK_ACCESS" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
     <Property Name="OBJECT_NAME_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-  </EntityType>
-  <EntityType Name="MV_OBJECT_SNAPSHOT">
-    <Key>
-      <PropertyRef Name="OBJECT_ID" />
-    </Key>
-    <Property Name="OBJECT_NAME_ID" Type="Decimal" Precision="38" Scale="0" />
-    <Property Name="OBJECT_HAPPY_NAME" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
-    <Property Name="COMMENT" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-    <Property Name="APPLICATION_ID" Type="Int64" />
-    <Property Name="ENUM_TYPE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="OBJECT_ID" Type="Int64" Nullable="false" />
-    <Property Name="OBJECT_TYPE" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
-    <Property Name="QUICK_ACCESS" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
-    <Property Name="TYPE_ID" Type="Int64" />
-    <Property Name="TYPE_NAME" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
-    <Property Name="PEG_NAME" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
-    <Property Name="PEG_QUICK_ACCESS" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
-    <Property Name="PEG_ID" Type="Int64" />
   </EntityType>
   <EntityType Name="MV_STORYBOARD_LATEST">
     <Key>
@@ -1880,7 +1862,6 @@
     <EntitySet Name="MV_LAST_TC_INFO" EntityType="Self.MV_LAST_TC_INFO" />
     <EntitySet Name="MV_LATEST_STB_TSMOD_MARK" EntityType="Self.MV_LATEST_STB_TSMOD_MARK" />
     <EntitySet Name="MV_OBJ_WITH_PEG" EntityType="Self.MV_OBJ_WITH_PEG" />
-    <EntitySet Name="MV_OBJECT_SNAPSHOT" EntityType="Self.MV_OBJECT_SNAPSHOT" />
     <EntitySet Name="MV_STORYBOARD_LATEST" EntityType="Self.MV_STORYBOARD_LATEST" />
     <EntitySet Name="MV_TC_DATASUMMARY" EntityType="Self.MV_TC_DATASUMMARY" />
     <EntitySet Name="T_REGISTED_OBJECT_TEST" EntityType="Self.T_REGISTED_OBJECT_TEST" />
@@ -2361,10 +2342,11 @@
     </FunctionImport>
     <EntitySet Name="T_TEST_DATASETTAG" EntityType="Model.T_TEST_DATASETTAG" />
     <FunctionImport Name="DELETEFOLDERDATASET">
-      <Parameter Name="FEEDPROCESSDETAILID" Mode="In" Type="String" />
+      <Parameter Name="FEEDPROCESSDETAILID" Mode="In" Type="Decimal" />
     </FunctionImport>
     <EntitySet Name="T_FOLDER_FILTER" EntityType="Model.T_FOLDER_FILTER" />
     <EntitySet Name="REL_FOLDER_FILTER" EntityType="Model.REL_FOLDER_FILTER" />
+    <EntitySet Name="MV_OBJECT_SNAPSHOT" EntityType="Model.MV_OBJECT_SNAPSHOT" />
   </EntityContainer>
   <EntityType Name="T_USER_ACTIVEPAGE">
     <Key>
@@ -2655,5 +2637,25 @@
     <Property Name="REL_FOLDER_FILTER_ID" Type="Int64" Nullable="false" />
     <Property Name="FOLDER_ID" Type="Int64" />
     <Property Name="FILTER_ID" Type="Int64" />
+  </EntityType>
+  <EntityType Name="MV_OBJECT_SNAPSHOT">
+    <Key>
+      <PropertyRef Name="OT_TYPE_ID" />
+      <PropertyRef Name="OBJECT_ID" />
+    </Key>
+    <Property Name="OT_TYPE_ID" Type="Int64" Nullable="false" />
+    <Property Name="OBJECT_NAME_ID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="OBJECT_HAPPY_NAME" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="COMMENT" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="APPLICATION_ID" Type="Int64" />
+    <Property Name="ENUM_TYPE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="OBJECT_ID" Type="Int64" Nullable="false" />
+    <Property Name="OBJECT_TYPE" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="QUICK_ACCESS" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+    <Property Name="TYPE_ID" Type="Int64" />
+    <Property Name="TYPE_NAME" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="PEG_NAME" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="PEG_QUICK_ACCESS" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+    <Property Name="PEG_ID" Type="Int64" />
   </EntityType>
 </Schema>

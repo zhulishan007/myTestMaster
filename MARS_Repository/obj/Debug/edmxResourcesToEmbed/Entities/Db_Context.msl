@@ -827,25 +827,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="MV_OBJECT_SNAPSHOT">
-      <EntityTypeMapping TypeName="Model.MV_OBJECT_SNAPSHOT">
-        <MappingFragment StoreEntitySet="MV_OBJECT_SNAPSHOT">
-          <ScalarProperty Name="OBJECT_NAME_ID" ColumnName="OBJECT_NAME_ID" />
-          <ScalarProperty Name="OBJECT_HAPPY_NAME" ColumnName="OBJECT_HAPPY_NAME" />
-          <ScalarProperty Name="COMMENT" ColumnName="COMMENT" />
-          <ScalarProperty Name="APPLICATION_ID" ColumnName="APPLICATION_ID" />
-          <ScalarProperty Name="ENUM_TYPE" ColumnName="ENUM_TYPE" />
-          <ScalarProperty Name="OBJECT_ID" ColumnName="OBJECT_ID" />
-          <ScalarProperty Name="OBJECT_TYPE" ColumnName="OBJECT_TYPE" />
-          <ScalarProperty Name="QUICK_ACCESS" ColumnName="QUICK_ACCESS" />
-          <ScalarProperty Name="TYPE_ID" ColumnName="TYPE_ID" />
-          <ScalarProperty Name="TYPE_NAME" ColumnName="TYPE_NAME" />
-          <ScalarProperty Name="PEG_NAME" ColumnName="PEG_NAME" />
-          <ScalarProperty Name="PEG_QUICK_ACCESS" ColumnName="PEG_QUICK_ACCESS" />
-          <ScalarProperty Name="PEG_ID" ColumnName="PEG_ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="MV_STORYBOARD_LATEST">
       <EntityTypeMapping TypeName="Model.MV_STORYBOARD_LATEST">
         <MappingFragment StoreEntitySet="MV_STORYBOARD_LATEST">
@@ -1655,6 +1636,26 @@
           <ScalarProperty Name="FILTER_ID" ColumnName="FILTER_ID" />
           <ScalarProperty Name="FOLDER_ID" ColumnName="FOLDER_ID" />
           <ScalarProperty Name="REL_FOLDER_FILTER_ID" ColumnName="REL_FOLDER_FILTER_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MV_OBJECT_SNAPSHOT">
+      <EntityTypeMapping TypeName="Model.MV_OBJECT_SNAPSHOT">
+        <MappingFragment StoreEntitySet="MV_OBJECT_SNAPSHOT">
+          <ScalarProperty Name="PEG_ID" ColumnName="PEG_ID" />
+          <ScalarProperty Name="PEG_QUICK_ACCESS" ColumnName="PEG_QUICK_ACCESS" />
+          <ScalarProperty Name="PEG_NAME" ColumnName="PEG_NAME" />
+          <ScalarProperty Name="TYPE_NAME" ColumnName="TYPE_NAME" />
+          <ScalarProperty Name="TYPE_ID" ColumnName="TYPE_ID" />
+          <ScalarProperty Name="QUICK_ACCESS" ColumnName="QUICK_ACCESS" />
+          <ScalarProperty Name="OBJECT_TYPE" ColumnName="OBJECT_TYPE" />
+          <ScalarProperty Name="OBJECT_ID" ColumnName="OBJECT_ID" />
+          <ScalarProperty Name="ENUM_TYPE" ColumnName="ENUM_TYPE" />
+          <ScalarProperty Name="APPLICATION_ID" ColumnName="APPLICATION_ID" />
+          <ScalarProperty Name="COMMENT" ColumnName="COMMENT" />
+          <ScalarProperty Name="OBJECT_HAPPY_NAME" ColumnName="OBJECT_HAPPY_NAME" />
+          <ScalarProperty Name="OBJECT_NAME_ID" ColumnName="OBJECT_NAME_ID" />
+          <ScalarProperty Name="OT_TYPE_ID" ColumnName="OT_TYPE_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
