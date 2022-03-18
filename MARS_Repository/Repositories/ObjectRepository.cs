@@ -75,11 +75,19 @@ namespace MARS_Repository.Repositories
             var obj = new List<ObjectList>();
             foreach(var Id in appId)
             {
+                try
+                {
+                
                 string filePath = Path.Combine(path, "app_" + Id + "\\PegWindowsMapping.json");
                 string jsongString = File.ReadAllText(filePath);
                 var data = JsonConvert.DeserializeObject<List<ObjectListFromJson>>(jsongString);
                 var finalObject = data.Select(x => new ObjectList() { ObjectId = Decimal.Truncate((decimal)x.OBJECT_NAME_ID), ObjectName = x.OBJECT_HAPPY_NAME }).ToList();
                 obj.AddRange(finalObject);
+                }
+                catch (Exception e)
+                {
+                    ELogger.Error("getObjectListByAppIdFromJsonFile",e);
+                }
             }           
             return obj.DistinctBy(x => x.ObjectName).OrderBy(y => y.ObjectName).ToList();
         }

@@ -288,7 +288,10 @@
             validator.element($(this)); // validate element
         });
 
-        function AddEditVariableShow(Id, editobj) {
+    function AddEditVariableShow(Id, editobj) {
+        if (!CanEditCheck("VariableList")) {
+            return;
+        }
             var tableid;
             var Statusid;
             var validator = $("#frmAddEditVariable").validate();
@@ -382,8 +385,12 @@
             }
             $("#DrpStatus").val(Statusid);
             $("#DrpStatus").select2();
+            OnPartialRightGridShow(0, "VariableList", "0", "VariableList"); 
         }
-        function AddVariable() {
+    function AddVariable() {
+        if (!CanEditCheck("VariableList")) {
+            return;
+        }
             $("#requiredtype").css("display", "none");
             $("#existvarname").css("display", "none");
             $("#vexampleModalLabel").text('');
@@ -430,7 +437,10 @@
             validator.resetForm();
         }
     function AddEditVariable() {
-        debugger
+        if (!CanEditCheck("VariableList")) {
+            return;
+        }
+
             var flag = false;;
             if (!$("#frmAddEditVariable").valid()) {
                 if ($("#DrpType").val().toString() == "0") {
@@ -481,6 +491,7 @@
                 dataType: "json",
                 success: function (result) {
                     if (result.status == 1) {
+                        OnPartialRightGridShow(0, "VariableList", "2", "VariableList"); 
                         if (result.data != null) {
                             $("#AddEditVariable").modal("hide");
                             swal.fire({
@@ -517,7 +528,10 @@
                 }
             });
         }
-        function DeleteVariable(id, obj) {
+    function DeleteVariable(id, obj) {
+        if (!CanEditCheck("VariableList")) {
+            return;
+        }
             var name = obj[0].dataset.varname;
             swal.fire({
                  title: 'Please confirm.',
@@ -537,6 +551,7 @@
                         dataType: "json",
                         success: function (result) {
                             if (result.status == 1 && result.data) {
+                                OnPartialRightGridShow(0, "VariableList", "2", "VariableList"); 
                                 swal.fire(
                                     'Deleted!',
                                     'Variable [' + name + ' ] is deleted',

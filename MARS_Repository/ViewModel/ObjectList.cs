@@ -15,7 +15,7 @@ namespace MARS_Repository.ViewModel
     {
         public decimal? OBJECT_NAME_ID { get; set; }
         public string OBJECT_HAPPY_NAME { get; set; }
-        public long PEG_ID { get; set; }
+        public long? PEG_ID { get; set; }
         public string OBJECT_TYPE { get; set; }
         public long? TYPE_ID { get; set; }
     }

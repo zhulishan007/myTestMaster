@@ -233,8 +233,8 @@ div.pq-theme select {
 
 .pq-grid-row:last-child > .pq-grid-col {
     border-bottom-width: 0;
-    background-color: #e9f5ff;
-    color: #1c6081;
+    background-color: #f0f0f0; /*#e9f5ff;*/
+    color: black; /*#1c6081;*/
 }
 
 .pq-header-outer .pq-grid-row {
@@ -301,7 +301,10 @@ div.pq-theme select {
 
 .pq-theme .pq-align-center,
 .pq-theme .pq-align-center * {
-    text-align: center
+    text-align: center;
+    margin:0px;
+    height:100%;
+    vertical-align:middle;
 }
 
 .pq-grid-cell.pq-group-title-cell * {
@@ -399,8 +402,8 @@ div.pq-grid-cont {
 
 .pq-grid-row:not(:last-child) > .pq-grid-col {
     border-bottom-color: transparent;
-    background-color: #e9f5ff;
-    color: #1c6081;
+    background-color: #f0f0f0; /*#e9f5ff;*/
+    color: black; /*#1c6081;*/
     font-weight: bold;
 }
 
@@ -409,9 +412,9 @@ div.pq-grid-cont {
 }
 
 .pq-grid-row:first-child > .pq-grid-col {
-    background-color: #e9f5ff;
+    background-color: #f0f0f0;/* #e9f5ff;*/
     border-top-color: transparent;
-    color: #1c6081;
+    color:black; /*#1c6081;*/
     font-weight: bold;
 }
 

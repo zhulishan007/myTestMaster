@@ -9,7 +9,7 @@
         <ul class="kt-menu__subnav">
             <li class="kt-menu__item context-menu-Storyboard" aria-haspopup="true">
                 <a href="javascript:;" class="kt-menu__link kt-menu__toggle context-Storyboard" title="@item.Storyboardescription" data-tab="Storyboard" data-Project-Id="@item.ProjectId" data-name="@item.StoryboardName" data-id="@item.StoryboardId"
-                    onclick="PartialRightStoryboardGrid(@item.ProjectId,@item.StoryboardId,'@item.StoryboardName',null,$(this),'0')"
+                    onclick="PartialRightStoryboardGrid(@item.ProjectId,@item.StoryboardId, '@item.StoryboardName', null, $(this), '0');OnPartialRightGridShow(@item.StoryboardId,'@item.StoryboardName','1','Storyboard');"
                    >
                     <span class="kt-menu__link-icon">
                         <i class="flaticon2-file-2"></i>

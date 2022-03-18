@@ -337,7 +337,7 @@ namespace MARS_Web.Controllers
                     {
                         filesName = Directory.GetFiles(directoryPath);
                         filesName = filesName.Select(x => Path.GetFileName(x)).ToArray();
-                        testCaseName = filesName.FirstOrDefault(x => x.StartsWith(TestcaseId.ToString()));
+                        testCaseName = filesName.FirstOrDefault(x => x.StartsWith(TestcaseId.ToString() + "_"));
                         if (string.IsNullOrEmpty(testCaseName))
                             testCaseName = lRep.GetTestCaseNameById(TestcaseId);
                     }
@@ -382,7 +382,9 @@ namespace MARS_Web.Controllers
 
                     if (allList != null)
                     {
-                        appId = allList.assignedApplications.Where(x => x > 0).ToList();                       
+                        appId = allList.assignedApplications
+                            //.Where(x => x > 0)
+                            .ToList();                       
                         var applications = GlobalVariable.AllApps.FirstOrDefault(x => x.Key.Trim().Equals(SessionManager.Schema)).Value;
                         if (applications.Count() > 0)
                         {

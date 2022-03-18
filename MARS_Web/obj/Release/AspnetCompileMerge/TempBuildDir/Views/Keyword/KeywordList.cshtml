@@ -324,7 +324,7 @@
         $("#hdnKeywordId").val(lKeywordId);
         $("#sDrpControlType").val(contorltypeId.split(","));
         $("#sDrpControlType").select2();
-
+        OnPartialRightGridShow(0, "KeywordList", "0", "KeywordList");
         if (!$("#keywordvalidate").valid())
             return false;
     }
@@ -363,6 +363,7 @@
                     dataType: "json",
                     success: function (result) {
                         if (result.status == 1) {
+                            OnPartialRightGridShow(0, "KeywordList", "0", "KeywordList");
                             if (result.data) {
                                 KeywordTable.table().draw();
                                 swal.fire(
@@ -450,6 +451,7 @@
             success: function (result) {
                 $("#AddKeyword").modal("hide");
                 if (result.status == 1 && result.data) {
+                    OnPartialRightGridShow(0, "KeywordList", "2", "KeywordList");
                     swal.fire({
                         "title": "",
                         "text": result.message,

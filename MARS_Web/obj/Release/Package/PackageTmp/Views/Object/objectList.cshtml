@@ -258,7 +258,7 @@
             <div class="modal-footer">
                 <button type="button" id="saveobject" class="btn btn-outline-brand btn-elevate btn-pill" onclick="saveObject()">Save</button>
 
-                <button type="button" class="btn btn-outline-brand btn-elevate btn-pill" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-outline-brand btn-elevate btn-pill" data-dismiss="modal" onclick="cancelObject()">Cancel</button>
             </div>
         </div>
     </div>
@@ -316,7 +316,7 @@
             <div class="modal-footer">
 
                 <button type="button" id="peginsert" class="btn btn-outline-brand btn-elevate btn-pill" onclick="savePegObject()">Insert Peg</button>
-                <button type="button" class="btn btn-outline-brand btn-elevate btn-pill" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-outline-brand btn-elevate btn-pill" data-dismiss="modal" onclick="cancelObject()">Cancel</button>
             </div>
         </div>
     </div>
@@ -813,6 +813,9 @@
 
     }
     function addPegObject() {
+        if (!CanEditCheck("objectlist")) {
+            return;
+        }
         var validator = $("#frmpegobject").validate();
         validator.resetForm();
         $("#AddPegwindowObject").modal("show");
@@ -826,8 +829,12 @@
         $("#pegdesc").val("");
         $("#hdnobjectid").val("");
         $("#pegautocheckerror").val("");
+        OnPartialRightGridShow(0, "objectlist", "0", "objectlist");
     }
     function addObject() {
+        if (!CanEditCheck("objectlist")) {
+            return;
+        }
         var validator = $("#frmObject").validate();
         validator.resetForm();
 
@@ -858,6 +865,7 @@
         $("#drpObjecttype").val("");
         $("#autocheckerror").val("");
         $("#autocheckerror").attr("checked", false);
+        OnPartialRightGridShow(0, "objectlist", "0", "objectlist");
 
     }
     function loadPegwindow() {
@@ -903,6 +911,7 @@
         });
     }
     function EditPopupShow(id, obj) {
+        OnPartialRightGridShow(0, "objectlist", "0", "objectlist");
         $("#AddEditObject").modal("show");
         $('.modal-dialog').draggable({
             handle: ".modal-header"
@@ -1046,6 +1055,7 @@
             dataType: "json",
             success: function (result) {
                 if (result.status == 1) {
+                    OnPartialRightGridShow(0, "objectlist", "2", "objectlist");
                     RefreshCacheForObject();
                     $("#AddEditObject").modal("hide");
                     swal.fire({
@@ -1082,8 +1092,6 @@
         if (!$("#frmpegobject").valid()) {
             $("#peginsert").attr("disabled", false);
             return false;
-
-
         }
         var lcheck = 0;
         var objectid = $("#hdnobjectid").val();
@@ -1117,6 +1125,7 @@
             dataType: "json",
             success: function (result) {
                 if (result.status == 1) {
+                    OnPartialRightGridShow(0, "objectlist", "2", "objectlist");
                     RefreshCacheForObject();
                     $("#AddPegwindowObject").modal("hide");
                     swal.fire({
@@ -1149,6 +1158,9 @@
         });
     }
     function deleteObject(id, obj) {
+        if (!CanEditCheck("objectlist")) {
+            return;
+        }
         swal.fire({
             title: 'Please confirm.',
             text: "This action can not be undone.",
@@ -1156,6 +1168,7 @@
             showCancelButton: true,
             confirmButtonText: 'Yes, delete it!'
         }).then(function (result) {
+            OnPartialRightGridShow(0, "objectlist", "2", "objectlist");
             if (result.value == true) {
                 debugger;
                 var appid = $(obj).attr("data-app");
@@ -1169,6 +1182,7 @@
                     dataType: "json",
                     success: function (result) {
                         if (result.status == 1) {
+                            OnPartialRightGridShow(0, "objectlist", "0", "objectlist");
                             if (result.data == "success") {
                                 RefreshCacheForObject();
                                 swal.fire(
@@ -1268,6 +1282,7 @@
 
         }
         else {
+            OnPartialRightGridShow(0, "objectlist", "0", "objectlist");
             $.ajax({
                 url: "/Object/LoadPegwindow",
                 data: '{"ApplicationId":"' + app + '"}',
@@ -1392,6 +1407,7 @@
             dataType: "json",
             success: function (result) {
                 if (result.status == 1) {
+                    OnPartialRightGridShow(0, "objectlist", "2", "objectlist");
                     RefreshCacheForObject();
                     $("#saveAsObject").modal("hide");
                     swal.fire({
@@ -1422,6 +1438,9 @@
                 alert(errormessage.responseText);
             }
         });
+    }
+    function cancelObject() {
+        OnPartialRightGridShow(0, "objectlist", "2", "objectlist");
     }
     $("#objecthappyname").on('keyup', function () {
         $("#existobjectname").css("display", "none");
