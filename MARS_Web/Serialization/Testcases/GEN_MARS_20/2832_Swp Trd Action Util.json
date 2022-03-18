@@ -1,0 +1,5882 @@
+{
+  "currentSyncroStatus": 0,
+  "assignedApplications": [
+    194,
+    193,
+    -1
+  ],
+  "assignedTestSuiteIDs": [
+    1318
+  ],
+  "version": null,
+  "assignedDataSets": [
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 357173,
+      "ALIAS_NAME": "SWAPD_02_VER",
+      "DESCRIPTION_INFO": "Veryfy Trade"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 357062,
+      "ALIAS_NAME": "SWAPD_03_VER",
+      "DESCRIPTION_INFO": "Veryfy Trade"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 357063,
+      "ALIAS_NAME": "SWAPD_04_VER",
+      "DESCRIPTION_INFO": "Veryfy Trade"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 357064,
+      "ALIAS_NAME": "SWAPD_06_VER",
+      "DESCRIPTION_INFO": "Veryfy Trade"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 357100,
+      "ALIAS_NAME": "SWAPD_05_VER",
+      "DESCRIPTION_INFO": "Veryfy Trade"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 357104,
+      "ALIAS_NAME": "BO_22_002",
+      "DESCRIPTION_INFO": "Verify inflation trade created by ALM"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 357105,
+      "ALIAS_NAME": "BO_6_001",
+      "DESCRIPTION_INFO": "Veryfy Trade for IRS01"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 357121,
+      "ALIAS_NAME": "IRS01_VER",
+      "DESCRIPTION_INFO": "Veryfy Trade for IRS01"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 357139,
+      "ALIAS_NAME": "IRS01_AUTH",
+      "DESCRIPTION_INFO": "Authorize IRS01"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 357140,
+      "ALIAS_NAME": "SWAPD_01_VER",
+      "DESCRIPTION_INFO": "Veryfy Trade"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 357163,
+      "ALIAS_NAME": "BO_7_001",
+      "DESCRIPTION_INFO": "Verify OIS Swap Trade created by LAM_101"
+    }
+  ],
+  "allSteps": [
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240425,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358313
+        },
+        {
+          "Data_Setting_Id": 240426,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358313
+        },
+        {
+          "Data_Setting_Id": 240430,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358313
+        },
+        {
+          "Data_Setting_Id": 240428,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358313
+        },
+        {
+          "Data_Setting_Id": 240427,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358313
+        },
+        {
+          "Data_Setting_Id": 240429,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358313
+        },
+        {
+          "Data_Setting_Id": 240431,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358313
+        },
+        {
+          "Data_Setting_Id": 240421,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358313
+        },
+        {
+          "Data_Setting_Id": 240422,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358313
+        },
+        {
+          "Data_Setting_Id": 240424,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358313
+        },
+        {
+          "Data_Setting_Id": 240423,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358313
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 358313,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240425,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358313
+        },
+        {
+          "Data_Setting_Id": 240426,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358313
+        },
+        {
+          "Data_Setting_Id": 240430,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358313
+        },
+        {
+          "Data_Setting_Id": 240428,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358313
+        },
+        {
+          "Data_Setting_Id": 240427,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358313
+        },
+        {
+          "Data_Setting_Id": 240429,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358313
+        },
+        {
+          "Data_Setting_Id": 240431,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358313
+        },
+        {
+          "Data_Setting_Id": 240421,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358313
+        },
+        {
+          "Data_Setting_Id": 240422,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358313
+        },
+        {
+          "Data_Setting_Id": 240424,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358313
+        },
+        {
+          "Data_Setting_Id": 240423,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358313
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 358313,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240436,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358314
+        },
+        {
+          "Data_Setting_Id": 240437,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358314
+        },
+        {
+          "Data_Setting_Id": 240441,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358314
+        },
+        {
+          "Data_Setting_Id": 240439,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358314
+        },
+        {
+          "Data_Setting_Id": 240438,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358314
+        },
+        {
+          "Data_Setting_Id": 240440,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358314
+        },
+        {
+          "Data_Setting_Id": 240442,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358314
+        },
+        {
+          "Data_Setting_Id": 240432,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358314
+        },
+        {
+          "Data_Setting_Id": 240433,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358314
+        },
+        {
+          "Data_Setting_Id": 240435,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358314
+        },
+        {
+          "Data_Setting_Id": 240434,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358314
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 358314,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 2,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240436,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358314
+        },
+        {
+          "Data_Setting_Id": 240437,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358314
+        },
+        {
+          "Data_Setting_Id": 240441,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358314
+        },
+        {
+          "Data_Setting_Id": 240439,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358314
+        },
+        {
+          "Data_Setting_Id": 240438,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358314
+        },
+        {
+          "Data_Setting_Id": 240440,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358314
+        },
+        {
+          "Data_Setting_Id": 240442,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358314
+        },
+        {
+          "Data_Setting_Id": 240432,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358314
+        },
+        {
+          "Data_Setting_Id": 240433,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358314
+        },
+        {
+          "Data_Setting_Id": 240435,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358314
+        },
+        {
+          "Data_Setting_Id": 240434,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358314
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 358314,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 2,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240447,
+          "DATASETVALUE": "Trade Blotter",
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358315
+        },
+        {
+          "Data_Setting_Id": 240448,
+          "DATASETVALUE": "Trade Blotter",
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358315
+        },
+        {
+          "Data_Setting_Id": 240452,
+          "DATASETVALUE": "Trade Blotter",
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358315
+        },
+        {
+          "Data_Setting_Id": 240450,
+          "DATASETVALUE": "Trade Blotter",
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358315
+        },
+        {
+          "Data_Setting_Id": 240449,
+          "DATASETVALUE": "Trade Blotter",
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358315
+        },
+        {
+          "Data_Setting_Id": 240451,
+          "DATASETVALUE": "Trade Blotter",
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358315
+        },
+        {
+          "Data_Setting_Id": 240453,
+          "DATASETVALUE": "Trade Blotter",
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358315
+        },
+        {
+          "Data_Setting_Id": 240443,
+          "DATASETVALUE": "Trade Blotter",
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358315
+        },
+        {
+          "Data_Setting_Id": 240444,
+          "DATASETVALUE": "Trade Blotter",
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358315
+        },
+        {
+          "Data_Setting_Id": 240446,
+          "DATASETVALUE": "Trade Blotter",
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358315
+        },
+        {
+          "Data_Setting_Id": 240445,
+          "DATASETVALUE": "Trade Blotter",
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358315
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 12,
+      "KEY_WORD_NAME": "LaunchApplication",
+      "OBJECT_HAPPY_NAME": "ApplicationName",
+      "OBJECT_ID": 35170,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockAreaTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 29559,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 358315,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 3,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240447,
+          "DATASETVALUE": "Trade Blotter",
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358315
+        },
+        {
+          "Data_Setting_Id": 240448,
+          "DATASETVALUE": "Trade Blotter",
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358315
+        },
+        {
+          "Data_Setting_Id": 240452,
+          "DATASETVALUE": "Trade Blotter",
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358315
+        },
+        {
+          "Data_Setting_Id": 240450,
+          "DATASETVALUE": "Trade Blotter",
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358315
+        },
+        {
+          "Data_Setting_Id": 240449,
+          "DATASETVALUE": "Trade Blotter",
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358315
+        },
+        {
+          "Data_Setting_Id": 240451,
+          "DATASETVALUE": "Trade Blotter",
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358315
+        },
+        {
+          "Data_Setting_Id": 240453,
+          "DATASETVALUE": "Trade Blotter",
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358315
+        },
+        {
+          "Data_Setting_Id": 240443,
+          "DATASETVALUE": "Trade Blotter",
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358315
+        },
+        {
+          "Data_Setting_Id": 240444,
+          "DATASETVALUE": "Trade Blotter",
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358315
+        },
+        {
+          "Data_Setting_Id": 240446,
+          "DATASETVALUE": "Trade Blotter",
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358315
+        },
+        {
+          "Data_Setting_Id": 240445,
+          "DATASETVALUE": "Trade Blotter",
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358315
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 12,
+      "KEY_WORD_NAME": "LaunchApplication",
+      "OBJECT_HAPPY_NAME": "ApplicationName",
+      "OBJECT_ID": 44673,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockAreaTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 29559,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 358315,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 3,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240458,
+          "DATASETVALUE": "40",
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358316
+        },
+        {
+          "Data_Setting_Id": 240459,
+          "DATASETVALUE": "40",
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358316
+        },
+        {
+          "Data_Setting_Id": 240463,
+          "DATASETVALUE": "40",
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358316
+        },
+        {
+          "Data_Setting_Id": 240461,
+          "DATASETVALUE": "40",
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358316
+        },
+        {
+          "Data_Setting_Id": 240460,
+          "DATASETVALUE": "40",
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358316
+        },
+        {
+          "Data_Setting_Id": 240462,
+          "DATASETVALUE": "40",
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358316
+        },
+        {
+          "Data_Setting_Id": 240464,
+          "DATASETVALUE": "40",
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358316
+        },
+        {
+          "Data_Setting_Id": 240454,
+          "DATASETVALUE": "40",
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358316
+        },
+        {
+          "Data_Setting_Id": 240455,
+          "DATASETVALUE": "40",
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358316
+        },
+        {
+          "Data_Setting_Id": 240457,
+          "DATASETVALUE": "40",
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358316
+        },
+        {
+          "Data_Setting_Id": 240456,
+          "DATASETVALUE": "40",
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358316
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 358316,
+      "COLUMN_ROW_SETTING": "F",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 4,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240469,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358317
+        },
+        {
+          "Data_Setting_Id": 240470,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358317
+        },
+        {
+          "Data_Setting_Id": 240474,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358317
+        },
+        {
+          "Data_Setting_Id": 240472,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358317
+        },
+        {
+          "Data_Setting_Id": 240471,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358317
+        },
+        {
+          "Data_Setting_Id": 240473,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358317
+        },
+        {
+          "Data_Setting_Id": 240475,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358317
+        },
+        {
+          "Data_Setting_Id": 240465,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358317
+        },
+        {
+          "Data_Setting_Id": 240466,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358317
+        },
+        {
+          "Data_Setting_Id": 240468,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358317
+        },
+        {
+          "Data_Setting_Id": 240467,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358317
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_BLOTTER",
+      "OBJECT_ID": 40275,
+      "OBJECT_TYPE": "TRADE_BLOTTER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24876,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 358317,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 5,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240469,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358317
+        },
+        {
+          "Data_Setting_Id": 240470,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358317
+        },
+        {
+          "Data_Setting_Id": 240474,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358317
+        },
+        {
+          "Data_Setting_Id": 240472,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358317
+        },
+        {
+          "Data_Setting_Id": 240471,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358317
+        },
+        {
+          "Data_Setting_Id": 240473,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358317
+        },
+        {
+          "Data_Setting_Id": 240475,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358317
+        },
+        {
+          "Data_Setting_Id": 240465,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358317
+        },
+        {
+          "Data_Setting_Id": 240466,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358317
+        },
+        {
+          "Data_Setting_Id": 240468,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358317
+        },
+        {
+          "Data_Setting_Id": 240467,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358317
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_BLOTTER",
+      "OBJECT_ID": 48473,
+      "OBJECT_TYPE": "TRADE_BLOTTER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24876,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 358317,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 5,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240477,
+          "DATASETVALUE": "MODAL_VAR:ALM_31_TRADE_ID",
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358318
+        },
+        {
+          "Data_Setting_Id": 240476,
+          "DATASETVALUE": "MODAL_VAR:ALM_20_TRADE_ID",
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358318
+        },
+        {
+          "Data_Setting_Id": 240478,
+          "DATASETVALUE": "MODAL_VAR:LAM_101_TRADE_ID",
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358318
+        },
+        {
+          "Data_Setting_Id": 240486,
+          "DATASETVALUE": "MODAL_VAR:SWP_01_TRADE_ID",
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358318
+        },
+        {
+          "Data_Setting_Id": 240485,
+          "DATASETVALUE": "MODAL_VAR:SWP_01_TRADE_ID",
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358318
+        },
+        {
+          "Data_Setting_Id": 240479,
+          "DATASETVALUE": "MODAL_VAR:SWAPD_01_TRADE_ID",
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358318
+        },
+        {
+          "Data_Setting_Id": 240480,
+          "DATASETVALUE": "MODAL_VAR:SWAPD_02_TRADE_ID",
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358318
+        },
+        {
+          "Data_Setting_Id": 240481,
+          "DATASETVALUE": "MODAL_VAR:SWAPD_03_TRADE_ID",
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358318
+        },
+        {
+          "Data_Setting_Id": 240482,
+          "DATASETVALUE": "MODAL_VAR:SWAPD_04_TRADE_ID",
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358318
+        },
+        {
+          "Data_Setting_Id": 240483,
+          "DATASETVALUE": "MODAL_VAR:SWAPD_05_TRADE_ID",
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358318
+        },
+        {
+          "Data_Setting_Id": 240484,
+          "DATASETVALUE": "MODAL_VAR:SWAPD_06_TRADE_ID",
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358318
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "TRADE_BLOTTER_TRADE_ID",
+      "OBJECT_ID": 48372,
+      "OBJECT_TYPE": "TRADE_BLOTTER",
+      "QUICK_ACCESS": "swfname:=Trade_ID",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 30378,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 358318,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": "GLOBAL_VAR:SP_FTERM_01_TRADE_ID",
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 6,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240477,
+          "DATASETVALUE": "MODAL_VAR:ALM_31_TRADE_ID",
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358318
+        },
+        {
+          "Data_Setting_Id": 240476,
+          "DATASETVALUE": "MODAL_VAR:ALM_20_TRADE_ID",
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358318
+        },
+        {
+          "Data_Setting_Id": 240478,
+          "DATASETVALUE": "MODAL_VAR:LAM_101_TRADE_ID",
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358318
+        },
+        {
+          "Data_Setting_Id": 240486,
+          "DATASETVALUE": "MODAL_VAR:SWP_01_TRADE_ID",
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358318
+        },
+        {
+          "Data_Setting_Id": 240485,
+          "DATASETVALUE": "MODAL_VAR:SWP_01_TRADE_ID",
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358318
+        },
+        {
+          "Data_Setting_Id": 240479,
+          "DATASETVALUE": "MODAL_VAR:SWAPD_01_TRADE_ID",
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358318
+        },
+        {
+          "Data_Setting_Id": 240480,
+          "DATASETVALUE": "MODAL_VAR:SWAPD_02_TRADE_ID",
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358318
+        },
+        {
+          "Data_Setting_Id": 240481,
+          "DATASETVALUE": "MODAL_VAR:SWAPD_03_TRADE_ID",
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358318
+        },
+        {
+          "Data_Setting_Id": 240482,
+          "DATASETVALUE": "MODAL_VAR:SWAPD_04_TRADE_ID",
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358318
+        },
+        {
+          "Data_Setting_Id": 240483,
+          "DATASETVALUE": "MODAL_VAR:SWAPD_05_TRADE_ID",
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358318
+        },
+        {
+          "Data_Setting_Id": 240484,
+          "DATASETVALUE": "MODAL_VAR:SWAPD_06_TRADE_ID",
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358318
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "TRADE_BLOTTER_TRADE_ID",
+      "OBJECT_ID": 40205,
+      "OBJECT_TYPE": "TRADE_BLOTTER",
+      "QUICK_ACCESS": "swfname:=Trade_ID",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 30378,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 358318,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": "GLOBAL_VAR:SP_FTERM_01_TRADE_ID",
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 6,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240491,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358319
+        },
+        {
+          "Data_Setting_Id": 240492,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358319
+        },
+        {
+          "Data_Setting_Id": 240496,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358319
+        },
+        {
+          "Data_Setting_Id": 240494,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358319
+        },
+        {
+          "Data_Setting_Id": 240493,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358319
+        },
+        {
+          "Data_Setting_Id": 240495,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358319
+        },
+        {
+          "Data_Setting_Id": 240497,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358319
+        },
+        {
+          "Data_Setting_Id": 240487,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358319
+        },
+        {
+          "Data_Setting_Id": 240488,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358319
+        },
+        {
+          "Data_Setting_Id": 240490,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358319
+        },
+        {
+          "Data_Setting_Id": 240489,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358319
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "TRADE_BLOTTER_APPLY",
+      "OBJECT_ID": 39369,
+      "OBJECT_TYPE": "TRADE_BLOTTER",
+      "QUICK_ACCESS": "swfname:=butApply",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25902,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 358319,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 7,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240491,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358319
+        },
+        {
+          "Data_Setting_Id": 240492,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358319
+        },
+        {
+          "Data_Setting_Id": 240496,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358319
+        },
+        {
+          "Data_Setting_Id": 240494,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358319
+        },
+        {
+          "Data_Setting_Id": 240493,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358319
+        },
+        {
+          "Data_Setting_Id": 240495,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358319
+        },
+        {
+          "Data_Setting_Id": 240497,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358319
+        },
+        {
+          "Data_Setting_Id": 240487,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358319
+        },
+        {
+          "Data_Setting_Id": 240488,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358319
+        },
+        {
+          "Data_Setting_Id": 240490,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358319
+        },
+        {
+          "Data_Setting_Id": 240489,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358319
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "TRADE_BLOTTER_APPLY",
+      "OBJECT_ID": 47546,
+      "OBJECT_TYPE": "TRADE_BLOTTER",
+      "QUICK_ACCESS": "swfname:=butApply",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25902,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 358319,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 7,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240502,
+          "DATASETVALUE": "30",
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358320
+        },
+        {
+          "Data_Setting_Id": 240503,
+          "DATASETVALUE": "30",
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358320
+        },
+        {
+          "Data_Setting_Id": 240507,
+          "DATASETVALUE": "30",
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358320
+        },
+        {
+          "Data_Setting_Id": 240505,
+          "DATASETVALUE": "30",
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358320
+        },
+        {
+          "Data_Setting_Id": 240504,
+          "DATASETVALUE": "30",
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358320
+        },
+        {
+          "Data_Setting_Id": 240506,
+          "DATASETVALUE": "30",
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358320
+        },
+        {
+          "Data_Setting_Id": 240508,
+          "DATASETVALUE": "30",
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358320
+        },
+        {
+          "Data_Setting_Id": 240498,
+          "DATASETVALUE": "30",
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358320
+        },
+        {
+          "Data_Setting_Id": 240499,
+          "DATASETVALUE": "30",
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358320
+        },
+        {
+          "Data_Setting_Id": 240501,
+          "DATASETVALUE": "30",
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358320
+        },
+        {
+          "Data_Setting_Id": 240500,
+          "DATASETVALUE": "30",
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358320
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 358320,
+      "COLUMN_ROW_SETTING": "F",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 8,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240513,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358321
+        },
+        {
+          "Data_Setting_Id": 240514,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358321
+        },
+        {
+          "Data_Setting_Id": 240518,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358321
+        },
+        {
+          "Data_Setting_Id": 240516,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358321
+        },
+        {
+          "Data_Setting_Id": 240515,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358321
+        },
+        {
+          "Data_Setting_Id": 240517,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358321
+        },
+        {
+          "Data_Setting_Id": 240519,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358321
+        },
+        {
+          "Data_Setting_Id": 240509,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358321
+        },
+        {
+          "Data_Setting_Id": 240510,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358321
+        },
+        {
+          "Data_Setting_Id": 240512,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358321
+        },
+        {
+          "Data_Setting_Id": 240511,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358321
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_BLOTTER",
+      "OBJECT_ID": 40275,
+      "OBJECT_TYPE": "TRADE_BLOTTER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24876,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 358321,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 9,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240513,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358321
+        },
+        {
+          "Data_Setting_Id": 240514,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358321
+        },
+        {
+          "Data_Setting_Id": 240518,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358321
+        },
+        {
+          "Data_Setting_Id": 240516,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358321
+        },
+        {
+          "Data_Setting_Id": 240515,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358321
+        },
+        {
+          "Data_Setting_Id": 240517,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358321
+        },
+        {
+          "Data_Setting_Id": 240519,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358321
+        },
+        {
+          "Data_Setting_Id": 240509,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358321
+        },
+        {
+          "Data_Setting_Id": 240510,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358321
+        },
+        {
+          "Data_Setting_Id": 240512,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358321
+        },
+        {
+          "Data_Setting_Id": 240511,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358321
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_BLOTTER",
+      "OBJECT_ID": 48473,
+      "OBJECT_TYPE": "TRADE_BLOTTER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24876,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 358321,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 9,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240521,
+          "DATASETVALUE": "MODAL_VAR:ALM_31_TRADE_ID",
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358322
+        },
+        {
+          "Data_Setting_Id": 240520,
+          "DATASETVALUE": "MODAL_VAR:ALM_20_TRADE_ID",
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358322
+        },
+        {
+          "Data_Setting_Id": 240522,
+          "DATASETVALUE": "MODAL_VAR:LAM_101_TRADE_ID",
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358322
+        },
+        {
+          "Data_Setting_Id": 240530,
+          "DATASETVALUE": "MODAL_VAR:SWP_01_TRADE_ID",
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358322
+        },
+        {
+          "Data_Setting_Id": 240529,
+          "DATASETVALUE": "MODAL_VAR:SWP_01_TRADE_ID",
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358322
+        },
+        {
+          "Data_Setting_Id": 240523,
+          "DATASETVALUE": "MODAL_VAR:SWAPD_01_TRADE_ID",
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358322
+        },
+        {
+          "Data_Setting_Id": 240524,
+          "DATASETVALUE": "MODAL_VAR:SWAPD_02_TRADE_ID",
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358322
+        },
+        {
+          "Data_Setting_Id": 240525,
+          "DATASETVALUE": "MODAL_VAR:SWAPD_03_TRADE_ID",
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358322
+        },
+        {
+          "Data_Setting_Id": 240526,
+          "DATASETVALUE": "MODAL_VAR:SWAPD_04_TRADE_ID",
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358322
+        },
+        {
+          "Data_Setting_Id": 240527,
+          "DATASETVALUE": "MODAL_VAR:SWAPD_05_TRADE_ID",
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358322
+        },
+        {
+          "Data_Setting_Id": 240528,
+          "DATASETVALUE": "MODAL_VAR:SWAPD_06_TRADE_ID",
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358322
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 32,
+      "KEY_WORD_NAME": "SearchAndClick",
+      "OBJECT_HAPPY_NAME": "TRADE_BLOTTER_TABLE",
+      "OBJECT_ID": 34197,
+      "OBJECT_TYPE": "TRADE_BLOTTER",
+      "QUICK_ACCESS": "swfname:=_Spr",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 27806,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 358322,
+      "COLUMN_ROW_SETTING": "MarsAddins;Trade ID;Action:LEFT_DBL_CLICK",
+      "COMMENTINFO": "GLOBAL_VAR:SP_FTERM_01_TRADE_ID",
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 10,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240521,
+          "DATASETVALUE": "MODAL_VAR:ALM_31_TRADE_ID",
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358322
+        },
+        {
+          "Data_Setting_Id": 240520,
+          "DATASETVALUE": "MODAL_VAR:ALM_20_TRADE_ID",
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358322
+        },
+        {
+          "Data_Setting_Id": 240522,
+          "DATASETVALUE": "MODAL_VAR:LAM_101_TRADE_ID",
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358322
+        },
+        {
+          "Data_Setting_Id": 240530,
+          "DATASETVALUE": "MODAL_VAR:SWP_01_TRADE_ID",
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358322
+        },
+        {
+          "Data_Setting_Id": 240529,
+          "DATASETVALUE": "MODAL_VAR:SWP_01_TRADE_ID",
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358322
+        },
+        {
+          "Data_Setting_Id": 240523,
+          "DATASETVALUE": "MODAL_VAR:SWAPD_01_TRADE_ID",
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358322
+        },
+        {
+          "Data_Setting_Id": 240524,
+          "DATASETVALUE": "MODAL_VAR:SWAPD_02_TRADE_ID",
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358322
+        },
+        {
+          "Data_Setting_Id": 240525,
+          "DATASETVALUE": "MODAL_VAR:SWAPD_03_TRADE_ID",
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358322
+        },
+        {
+          "Data_Setting_Id": 240526,
+          "DATASETVALUE": "MODAL_VAR:SWAPD_04_TRADE_ID",
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358322
+        },
+        {
+          "Data_Setting_Id": 240527,
+          "DATASETVALUE": "MODAL_VAR:SWAPD_05_TRADE_ID",
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358322
+        },
+        {
+          "Data_Setting_Id": 240528,
+          "DATASETVALUE": "MODAL_VAR:SWAPD_06_TRADE_ID",
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358322
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 32,
+      "KEY_WORD_NAME": "SearchAndClick",
+      "OBJECT_HAPPY_NAME": "TRADE_BLOTTER_TABLE",
+      "OBJECT_ID": 43746,
+      "OBJECT_TYPE": "TRADE_BLOTTER",
+      "QUICK_ACCESS": "swfname:=_Spr",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 27806,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 358322,
+      "COLUMN_ROW_SETTING": "MarsAddins;Trade ID;Action:LEFT_DBL_CLICK",
+      "COMMENTINFO": "GLOBAL_VAR:SP_FTERM_01_TRADE_ID",
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 10,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240535,
+          "DATASETVALUE": "30",
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358323
+        },
+        {
+          "Data_Setting_Id": 240536,
+          "DATASETVALUE": "30",
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358323
+        },
+        {
+          "Data_Setting_Id": 240540,
+          "DATASETVALUE": "30",
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358323
+        },
+        {
+          "Data_Setting_Id": 240538,
+          "DATASETVALUE": "30",
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358323
+        },
+        {
+          "Data_Setting_Id": 240537,
+          "DATASETVALUE": "30",
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358323
+        },
+        {
+          "Data_Setting_Id": 240539,
+          "DATASETVALUE": "30",
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358323
+        },
+        {
+          "Data_Setting_Id": 240541,
+          "DATASETVALUE": "30",
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358323
+        },
+        {
+          "Data_Setting_Id": 240531,
+          "DATASETVALUE": "30",
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358323
+        },
+        {
+          "Data_Setting_Id": 240532,
+          "DATASETVALUE": "30",
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358323
+        },
+        {
+          "Data_Setting_Id": 240534,
+          "DATASETVALUE": "30",
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358323
+        },
+        {
+          "Data_Setting_Id": 240533,
+          "DATASETVALUE": "30",
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358323
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 358323,
+      "COLUMN_ROW_SETTING": "F",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 11,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240546,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358324
+        },
+        {
+          "Data_Setting_Id": 240547,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358324
+        },
+        {
+          "Data_Setting_Id": 240551,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358324
+        },
+        {
+          "Data_Setting_Id": 240549,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358324
+        },
+        {
+          "Data_Setting_Id": 240548,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358324
+        },
+        {
+          "Data_Setting_Id": 240550,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358324
+        },
+        {
+          "Data_Setting_Id": 240552,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358324
+        },
+        {
+          "Data_Setting_Id": 240542,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358324
+        },
+        {
+          "Data_Setting_Id": 240543,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358324
+        },
+        {
+          "Data_Setting_Id": 240545,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358324
+        },
+        {
+          "Data_Setting_Id": 240544,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358324
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "SWAP_TRADE",
+      "OBJECT_ID": 41203,
+      "OBJECT_TYPE": "SWAP_TRADE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24908,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 358324,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 12,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240546,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358324
+        },
+        {
+          "Data_Setting_Id": 240547,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358324
+        },
+        {
+          "Data_Setting_Id": 240551,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358324
+        },
+        {
+          "Data_Setting_Id": 240549,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358324
+        },
+        {
+          "Data_Setting_Id": 240548,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358324
+        },
+        {
+          "Data_Setting_Id": 240550,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358324
+        },
+        {
+          "Data_Setting_Id": 240552,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358324
+        },
+        {
+          "Data_Setting_Id": 240542,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358324
+        },
+        {
+          "Data_Setting_Id": 240543,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358324
+        },
+        {
+          "Data_Setting_Id": 240545,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358324
+        },
+        {
+          "Data_Setting_Id": 240544,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358324
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "SWAP_TRADE",
+      "OBJECT_ID": 33353,
+      "OBJECT_TYPE": "SWAP_TRADE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24908,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 358324,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 12,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240557,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358325
+        },
+        {
+          "Data_Setting_Id": 240558,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358325
+        },
+        {
+          "Data_Setting_Id": 240562,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358325
+        },
+        {
+          "Data_Setting_Id": 240560,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358325
+        },
+        {
+          "Data_Setting_Id": 240559,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358325
+        },
+        {
+          "Data_Setting_Id": 240561,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358325
+        },
+        {
+          "Data_Setting_Id": 240563,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358325
+        },
+        {
+          "Data_Setting_Id": 240553,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358325
+        },
+        {
+          "Data_Setting_Id": 240554,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358325
+        },
+        {
+          "Data_Setting_Id": 240556,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358325
+        },
+        {
+          "Data_Setting_Id": 240555,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358325
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "SWAP_TRADE",
+      "OBJECT_ID": 41203,
+      "OBJECT_TYPE": "SWAP_TRADE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24908,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 358325,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 13,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240557,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358325
+        },
+        {
+          "Data_Setting_Id": 240558,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358325
+        },
+        {
+          "Data_Setting_Id": 240562,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358325
+        },
+        {
+          "Data_Setting_Id": 240560,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358325
+        },
+        {
+          "Data_Setting_Id": 240559,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358325
+        },
+        {
+          "Data_Setting_Id": 240561,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358325
+        },
+        {
+          "Data_Setting_Id": 240563,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358325
+        },
+        {
+          "Data_Setting_Id": 240553,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358325
+        },
+        {
+          "Data_Setting_Id": 240554,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358325
+        },
+        {
+          "Data_Setting_Id": 240556,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358325
+        },
+        {
+          "Data_Setting_Id": 240555,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358325
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "SWAP_TRADE",
+      "OBJECT_ID": 33353,
+      "OBJECT_TYPE": "SWAP_TRADE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24908,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 358325,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 13,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240568,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358326
+        },
+        {
+          "Data_Setting_Id": 240569,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358326
+        },
+        {
+          "Data_Setting_Id": 240573,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358326
+        },
+        {
+          "Data_Setting_Id": 240571,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358326
+        },
+        {
+          "Data_Setting_Id": 240570,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358326
+        },
+        {
+          "Data_Setting_Id": 240572,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358326
+        },
+        {
+          "Data_Setting_Id": 240574,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358326
+        },
+        {
+          "Data_Setting_Id": 240564,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358326
+        },
+        {
+          "Data_Setting_Id": 240565,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358326
+        },
+        {
+          "Data_Setting_Id": 240567,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358326
+        },
+        {
+          "Data_Setting_Id": 240566,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358326
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 358326,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 14,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240579,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358327
+        },
+        {
+          "Data_Setting_Id": 240580,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358327
+        },
+        {
+          "Data_Setting_Id": 240583,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358327
+        },
+        {
+          "Data_Setting_Id": 240585,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358327
+        },
+        {
+          "Data_Setting_Id": 240581,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358327
+        },
+        {
+          "Data_Setting_Id": 240582,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358327
+        },
+        {
+          "Data_Setting_Id": 240584,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358327
+        },
+        {
+          "Data_Setting_Id": 240575,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358327
+        },
+        {
+          "Data_Setting_Id": 240576,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358327
+        },
+        {
+          "Data_Setting_Id": 240578,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358327
+        },
+        {
+          "Data_Setting_Id": 240577,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358327
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 26,
+      "KEY_WORD_NAME": "VerifyValue",
+      "OBJECT_HAPPY_NAME": "SWAP_TRADE_STATE",
+      "OBJECT_ID": 39323,
+      "OBJECT_TYPE": "SWAP_TRADE",
+      "QUICK_ACCESS": "swfname:=_extStateLabel",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 32109,
+      "TYPE_NAME": "SwfLabel",
+      "STEPS_ID": 358327,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": "Done",
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 15,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240579,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358327
+        },
+        {
+          "Data_Setting_Id": 240580,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358327
+        },
+        {
+          "Data_Setting_Id": 240583,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358327
+        },
+        {
+          "Data_Setting_Id": 240585,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358327
+        },
+        {
+          "Data_Setting_Id": 240581,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358327
+        },
+        {
+          "Data_Setting_Id": 240582,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358327
+        },
+        {
+          "Data_Setting_Id": 240584,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358327
+        },
+        {
+          "Data_Setting_Id": 240575,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358327
+        },
+        {
+          "Data_Setting_Id": 240576,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358327
+        },
+        {
+          "Data_Setting_Id": 240578,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358327
+        },
+        {
+          "Data_Setting_Id": 240577,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358327
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 26,
+      "KEY_WORD_NAME": "VerifyValue",
+      "OBJECT_HAPPY_NAME": "SWAP_TRADE_STATE",
+      "OBJECT_ID": 47501,
+      "OBJECT_TYPE": "SWAP_TRADE",
+      "QUICK_ACCESS": "swfname:=_extStateLabel",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 32109,
+      "TYPE_NAME": "SwfLabel",
+      "STEPS_ID": 358327,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": "Done",
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 15,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240591,
+          "DATASETVALUE": "Desktop Menu;Action;Verify",
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358328
+        },
+        {
+          "Data_Setting_Id": 240592,
+          "DATASETVALUE": "Desktop Menu;Action;Verify",
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358328
+        },
+        {
+          "Data_Setting_Id": 240595,
+          "DATASETVALUE": "Desktop Menu;Action;Verify",
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358328
+        },
+        {
+          "Data_Setting_Id": 240586,
+          "DATASETVALUE": "Desktop Menu;Action;Authorize",
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358328
+        },
+        {
+          "Data_Setting_Id": 240593,
+          "DATASETVALUE": "Desktop Menu;Action;Verify",
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358328
+        },
+        {
+          "Data_Setting_Id": 240594,
+          "DATASETVALUE": "Desktop Menu;Action;Verify",
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358328
+        },
+        {
+          "Data_Setting_Id": 240596,
+          "DATASETVALUE": "Desktop Menu;Action;Verify",
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358328
+        },
+        {
+          "Data_Setting_Id": 240587,
+          "DATASETVALUE": "Desktop Menu;Action;Verify",
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358328
+        },
+        {
+          "Data_Setting_Id": 240588,
+          "DATASETVALUE": "Desktop Menu;Action;Verify",
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358328
+        },
+        {
+          "Data_Setting_Id": 240590,
+          "DATASETVALUE": "Desktop Menu;Action;Verify",
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358328
+        },
+        {
+          "Data_Setting_Id": 240589,
+          "DATASETVALUE": "Desktop Menu;Action;Verify",
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358328
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 22,
+      "KEY_WORD_NAME": "SelectMenuItem",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 358328,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": "Desktop Menu;Action;Verify",
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 16,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240601,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358329
+        },
+        {
+          "Data_Setting_Id": 240602,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358329
+        },
+        {
+          "Data_Setting_Id": 240606,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358329
+        },
+        {
+          "Data_Setting_Id": 240604,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358329
+        },
+        {
+          "Data_Setting_Id": 240603,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358329
+        },
+        {
+          "Data_Setting_Id": 240605,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358329
+        },
+        {
+          "Data_Setting_Id": 240607,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358329
+        },
+        {
+          "Data_Setting_Id": 240597,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358329
+        },
+        {
+          "Data_Setting_Id": 240598,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358329
+        },
+        {
+          "Data_Setting_Id": 240600,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358329
+        },
+        {
+          "Data_Setting_Id": 240599,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358329
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 358329,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 17,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240612,
+          "DATASETVALUE": "TRADE_VERIFY",
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358330
+        },
+        {
+          "Data_Setting_Id": 240613,
+          "DATASETVALUE": "TRADE_VERIFY",
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358330
+        },
+        {
+          "Data_Setting_Id": 240617,
+          "DATASETVALUE": "TRADE_VERIFY",
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358330
+        },
+        {
+          "Data_Setting_Id": 240615,
+          "DATASETVALUE": "TRADE_VERIFY",
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358330
+        },
+        {
+          "Data_Setting_Id": 240614,
+          "DATASETVALUE": "TRADE_VERIFY",
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358330
+        },
+        {
+          "Data_Setting_Id": 240616,
+          "DATASETVALUE": "TRADE_VERIFY",
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358330
+        },
+        {
+          "Data_Setting_Id": 240618,
+          "DATASETVALUE": "TRADE_VERIFY",
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358330
+        },
+        {
+          "Data_Setting_Id": 240608,
+          "DATASETVALUE": "TRADE_VERIFY",
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358330
+        },
+        {
+          "Data_Setting_Id": 240609,
+          "DATASETVALUE": "TRADE_VERIFY",
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358330
+        },
+        {
+          "Data_Setting_Id": 240611,
+          "DATASETVALUE": "TRADE_VERIFY",
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358330
+        },
+        {
+          "Data_Setting_Id": 240610,
+          "DATASETVALUE": "TRADE_VERIFY",
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358330
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "SWAP_TRADE_STATE",
+      "OBJECT_ID": 39323,
+      "OBJECT_TYPE": "SWAP_TRADE",
+      "QUICK_ACCESS": "swfname:=_extStateLabel",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 32109,
+      "TYPE_NAME": "SwfLabel",
+      "STEPS_ID": 358330,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 18,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240612,
+          "DATASETVALUE": "TRADE_VERIFY",
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358330
+        },
+        {
+          "Data_Setting_Id": 240613,
+          "DATASETVALUE": "TRADE_VERIFY",
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358330
+        },
+        {
+          "Data_Setting_Id": 240617,
+          "DATASETVALUE": "TRADE_VERIFY",
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358330
+        },
+        {
+          "Data_Setting_Id": 240615,
+          "DATASETVALUE": "TRADE_VERIFY",
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358330
+        },
+        {
+          "Data_Setting_Id": 240614,
+          "DATASETVALUE": "TRADE_VERIFY",
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358330
+        },
+        {
+          "Data_Setting_Id": 240616,
+          "DATASETVALUE": "TRADE_VERIFY",
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358330
+        },
+        {
+          "Data_Setting_Id": 240618,
+          "DATASETVALUE": "TRADE_VERIFY",
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358330
+        },
+        {
+          "Data_Setting_Id": 240608,
+          "DATASETVALUE": "TRADE_VERIFY",
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358330
+        },
+        {
+          "Data_Setting_Id": 240609,
+          "DATASETVALUE": "TRADE_VERIFY",
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358330
+        },
+        {
+          "Data_Setting_Id": 240611,
+          "DATASETVALUE": "TRADE_VERIFY",
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358330
+        },
+        {
+          "Data_Setting_Id": 240610,
+          "DATASETVALUE": "TRADE_VERIFY",
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358330
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "SWAP_TRADE_STATE",
+      "OBJECT_ID": 47501,
+      "OBJECT_TYPE": "SWAP_TRADE",
+      "QUICK_ACCESS": "swfname:=_extStateLabel",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 32109,
+      "TYPE_NAME": "SwfLabel",
+      "STEPS_ID": 358330,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 18,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240623,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358331
+        },
+        {
+          "Data_Setting_Id": 240624,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358331
+        },
+        {
+          "Data_Setting_Id": 240628,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358331
+        },
+        {
+          "Data_Setting_Id": 240626,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358331
+        },
+        {
+          "Data_Setting_Id": 240625,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358331
+        },
+        {
+          "Data_Setting_Id": 240627,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358331
+        },
+        {
+          "Data_Setting_Id": 240629,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358331
+        },
+        {
+          "Data_Setting_Id": 240619,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358331
+        },
+        {
+          "Data_Setting_Id": 240620,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358331
+        },
+        {
+          "Data_Setting_Id": 240622,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358331
+        },
+        {
+          "Data_Setting_Id": 240621,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358331
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 3,
+      "KEY_WORD_NAME": "CheckError",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 358331,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 19,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240634,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358332
+        },
+        {
+          "Data_Setting_Id": 240635,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358332
+        },
+        {
+          "Data_Setting_Id": 240639,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358332
+        },
+        {
+          "Data_Setting_Id": 240637,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358332
+        },
+        {
+          "Data_Setting_Id": 240636,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358332
+        },
+        {
+          "Data_Setting_Id": 240638,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358332
+        },
+        {
+          "Data_Setting_Id": 240640,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358332
+        },
+        {
+          "Data_Setting_Id": 240630,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358332
+        },
+        {
+          "Data_Setting_Id": 240631,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358332
+        },
+        {
+          "Data_Setting_Id": 240633,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358332
+        },
+        {
+          "Data_Setting_Id": 240632,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358332
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 358332,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 20,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240634,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358332
+        },
+        {
+          "Data_Setting_Id": 240635,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358332
+        },
+        {
+          "Data_Setting_Id": 240639,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358332
+        },
+        {
+          "Data_Setting_Id": 240637,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358332
+        },
+        {
+          "Data_Setting_Id": 240636,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358332
+        },
+        {
+          "Data_Setting_Id": 240638,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358332
+        },
+        {
+          "Data_Setting_Id": 240640,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358332
+        },
+        {
+          "Data_Setting_Id": 240630,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358332
+        },
+        {
+          "Data_Setting_Id": 240631,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358332
+        },
+        {
+          "Data_Setting_Id": 240633,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358332
+        },
+        {
+          "Data_Setting_Id": 240632,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358332
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 358332,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 20,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240645,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358333
+        },
+        {
+          "Data_Setting_Id": 240646,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358333
+        },
+        {
+          "Data_Setting_Id": 240650,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358333
+        },
+        {
+          "Data_Setting_Id": 240648,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358333
+        },
+        {
+          "Data_Setting_Id": 240647,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358333
+        },
+        {
+          "Data_Setting_Id": 240649,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358333
+        },
+        {
+          "Data_Setting_Id": 240651,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358333
+        },
+        {
+          "Data_Setting_Id": 240641,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358333
+        },
+        {
+          "Data_Setting_Id": 240642,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358333
+        },
+        {
+          "Data_Setting_Id": 240644,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358333
+        },
+        {
+          "Data_Setting_Id": 240643,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358333
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 22,
+      "KEY_WORD_NAME": "SelectMenuItem",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 358333,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 21,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240656,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358334
+        },
+        {
+          "Data_Setting_Id": 240657,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358334
+        },
+        {
+          "Data_Setting_Id": 240661,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358334
+        },
+        {
+          "Data_Setting_Id": 240659,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358334
+        },
+        {
+          "Data_Setting_Id": 240658,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358334
+        },
+        {
+          "Data_Setting_Id": 240660,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358334
+        },
+        {
+          "Data_Setting_Id": 240662,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358334
+        },
+        {
+          "Data_Setting_Id": 240652,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358334
+        },
+        {
+          "Data_Setting_Id": 240653,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358334
+        },
+        {
+          "Data_Setting_Id": 240655,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358334
+        },
+        {
+          "Data_Setting_Id": 240654,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358334
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 358334,
+      "COLUMN_ROW_SETTING": "F",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 22,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240667,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358335
+        },
+        {
+          "Data_Setting_Id": 240668,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358335
+        },
+        {
+          "Data_Setting_Id": 240672,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358335
+        },
+        {
+          "Data_Setting_Id": 240670,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358335
+        },
+        {
+          "Data_Setting_Id": 240669,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358335
+        },
+        {
+          "Data_Setting_Id": 240671,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358335
+        },
+        {
+          "Data_Setting_Id": 240673,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358335
+        },
+        {
+          "Data_Setting_Id": 240663,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358335
+        },
+        {
+          "Data_Setting_Id": 240664,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358335
+        },
+        {
+          "Data_Setting_Id": 240666,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358335
+        },
+        {
+          "Data_Setting_Id": 240665,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358335
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "CLEARING_REG",
+      "OBJECT_ID": 43989,
+      "OBJECT_TYPE": "CLEARING_REG",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=Clearing Reg.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25010,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 358335,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 23,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240667,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358335
+        },
+        {
+          "Data_Setting_Id": 240668,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358335
+        },
+        {
+          "Data_Setting_Id": 240672,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358335
+        },
+        {
+          "Data_Setting_Id": 240670,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358335
+        },
+        {
+          "Data_Setting_Id": 240669,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358335
+        },
+        {
+          "Data_Setting_Id": 240671,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358335
+        },
+        {
+          "Data_Setting_Id": 240673,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358335
+        },
+        {
+          "Data_Setting_Id": 240663,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358335
+        },
+        {
+          "Data_Setting_Id": 240664,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358335
+        },
+        {
+          "Data_Setting_Id": 240666,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358335
+        },
+        {
+          "Data_Setting_Id": 240665,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358335
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "CLEARING_REG",
+      "OBJECT_ID": 34478,
+      "OBJECT_TYPE": "CLEARING_REG",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=Clearing Reg.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25010,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 358335,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 23,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240678,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358336
+        },
+        {
+          "Data_Setting_Id": 240679,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358336
+        },
+        {
+          "Data_Setting_Id": 240683,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358336
+        },
+        {
+          "Data_Setting_Id": 240681,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358336
+        },
+        {
+          "Data_Setting_Id": 240680,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358336
+        },
+        {
+          "Data_Setting_Id": 240682,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358336
+        },
+        {
+          "Data_Setting_Id": 240684,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358336
+        },
+        {
+          "Data_Setting_Id": 240674,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358336
+        },
+        {
+          "Data_Setting_Id": 240675,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358336
+        },
+        {
+          "Data_Setting_Id": 240677,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358336
+        },
+        {
+          "Data_Setting_Id": 240676,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358336
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "CLEARING_REG_AMOUNT",
+      "OBJECT_ID": 42967,
+      "OBJECT_TYPE": "CLEARING_REG",
+      "QUICK_ACCESS": "SwfName:=_clrMemberAmountEntry",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 27118,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 358336,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 24,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240678,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358336
+        },
+        {
+          "Data_Setting_Id": 240679,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358336
+        },
+        {
+          "Data_Setting_Id": 240683,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358336
+        },
+        {
+          "Data_Setting_Id": 240681,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358336
+        },
+        {
+          "Data_Setting_Id": 240680,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358336
+        },
+        {
+          "Data_Setting_Id": 240682,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358336
+        },
+        {
+          "Data_Setting_Id": 240684,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358336
+        },
+        {
+          "Data_Setting_Id": 240674,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358336
+        },
+        {
+          "Data_Setting_Id": 240675,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358336
+        },
+        {
+          "Data_Setting_Id": 240677,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358336
+        },
+        {
+          "Data_Setting_Id": 240676,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358336
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "CLEARING_REG_AMOUNT",
+      "OBJECT_ID": 38875,
+      "OBJECT_TYPE": "CLEARING_REG",
+      "QUICK_ACCESS": "SwfName:=_clrMemberAmountEntry",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 27118,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 358336,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 24,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240689,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358337
+        },
+        {
+          "Data_Setting_Id": 240690,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358337
+        },
+        {
+          "Data_Setting_Id": 240694,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358337
+        },
+        {
+          "Data_Setting_Id": 240692,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358337
+        },
+        {
+          "Data_Setting_Id": 240691,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358337
+        },
+        {
+          "Data_Setting_Id": 240693,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358337
+        },
+        {
+          "Data_Setting_Id": 240695,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358337
+        },
+        {
+          "Data_Setting_Id": 240685,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358337
+        },
+        {
+          "Data_Setting_Id": 240686,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358337
+        },
+        {
+          "Data_Setting_Id": 240688,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358337
+        },
+        {
+          "Data_Setting_Id": 240687,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358337
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLEARING_REG_OK_BTN",
+      "OBJECT_ID": 40263,
+      "OBJECT_TYPE": "CLEARING_REG",
+      "QUICK_ACCESS": "SwfName:=_okButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 30738,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 358337,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 25,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240689,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358337
+        },
+        {
+          "Data_Setting_Id": 240690,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358337
+        },
+        {
+          "Data_Setting_Id": 240694,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358337
+        },
+        {
+          "Data_Setting_Id": 240692,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358337
+        },
+        {
+          "Data_Setting_Id": 240691,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358337
+        },
+        {
+          "Data_Setting_Id": 240693,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358337
+        },
+        {
+          "Data_Setting_Id": 240695,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358337
+        },
+        {
+          "Data_Setting_Id": 240685,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358337
+        },
+        {
+          "Data_Setting_Id": 240686,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358337
+        },
+        {
+          "Data_Setting_Id": 240688,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358337
+        },
+        {
+          "Data_Setting_Id": 240687,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358337
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLEARING_REG_OK_BTN",
+      "OBJECT_ID": 46845,
+      "OBJECT_TYPE": "CLEARING_REG",
+      "QUICK_ACCESS": "SwfName:=_okButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 30738,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 358337,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 25,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240700,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358338
+        },
+        {
+          "Data_Setting_Id": 240701,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358338
+        },
+        {
+          "Data_Setting_Id": 240705,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358338
+        },
+        {
+          "Data_Setting_Id": 240703,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358338
+        },
+        {
+          "Data_Setting_Id": 240702,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358338
+        },
+        {
+          "Data_Setting_Id": 240704,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358338
+        },
+        {
+          "Data_Setting_Id": 240706,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358338
+        },
+        {
+          "Data_Setting_Id": 240696,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358338
+        },
+        {
+          "Data_Setting_Id": 240697,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358338
+        },
+        {
+          "Data_Setting_Id": 240699,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358338
+        },
+        {
+          "Data_Setting_Id": 240698,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358338
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 358338,
+      "COLUMN_ROW_SETTING": "F",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 26,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240711,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358339
+        },
+        {
+          "Data_Setting_Id": 240712,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358339
+        },
+        {
+          "Data_Setting_Id": 240716,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358339
+        },
+        {
+          "Data_Setting_Id": 240714,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358339
+        },
+        {
+          "Data_Setting_Id": 240713,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358339
+        },
+        {
+          "Data_Setting_Id": 240715,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358339
+        },
+        {
+          "Data_Setting_Id": 240717,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358339
+        },
+        {
+          "Data_Setting_Id": 240707,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358339
+        },
+        {
+          "Data_Setting_Id": 240708,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358339
+        },
+        {
+          "Data_Setting_Id": 240710,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358339
+        },
+        {
+          "Data_Setting_Id": 240709,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358339
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 38,
+      "KEY_WORD_NAME": "Dismiss",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 358339,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 27,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240722,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358340
+        },
+        {
+          "Data_Setting_Id": 240723,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358340
+        },
+        {
+          "Data_Setting_Id": 240727,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358340
+        },
+        {
+          "Data_Setting_Id": 240725,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358340
+        },
+        {
+          "Data_Setting_Id": 240724,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358340
+        },
+        {
+          "Data_Setting_Id": 240726,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358340
+        },
+        {
+          "Data_Setting_Id": 240728,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358340
+        },
+        {
+          "Data_Setting_Id": 240718,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358340
+        },
+        {
+          "Data_Setting_Id": 240719,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358340
+        },
+        {
+          "Data_Setting_Id": 240721,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358340
+        },
+        {
+          "Data_Setting_Id": 240720,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358340
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 22,
+      "KEY_WORD_NAME": "SelectMenuItem",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 358340,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": "Desktop Menu;Swap Trade;Maintenance;Child Trades",
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 28,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240733,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358341
+        },
+        {
+          "Data_Setting_Id": 240734,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358341
+        },
+        {
+          "Data_Setting_Id": 240738,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358341
+        },
+        {
+          "Data_Setting_Id": 240736,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358341
+        },
+        {
+          "Data_Setting_Id": 240735,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358341
+        },
+        {
+          "Data_Setting_Id": 240737,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358341
+        },
+        {
+          "Data_Setting_Id": 240739,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358341
+        },
+        {
+          "Data_Setting_Id": 240729,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358341
+        },
+        {
+          "Data_Setting_Id": 240730,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358341
+        },
+        {
+          "Data_Setting_Id": 240732,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358341
+        },
+        {
+          "Data_Setting_Id": 240731,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358341
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_ALLOCATION",
+      "OBJECT_ID": 39711,
+      "OBJECT_TYPE": "TRADE_ALLOCATION",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=Trade Allocation.*\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24943,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 358341,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 29,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240733,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358341
+        },
+        {
+          "Data_Setting_Id": 240734,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358341
+        },
+        {
+          "Data_Setting_Id": 240738,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358341
+        },
+        {
+          "Data_Setting_Id": 240736,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358341
+        },
+        {
+          "Data_Setting_Id": 240735,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358341
+        },
+        {
+          "Data_Setting_Id": 240737,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358341
+        },
+        {
+          "Data_Setting_Id": 240739,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358341
+        },
+        {
+          "Data_Setting_Id": 240729,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358341
+        },
+        {
+          "Data_Setting_Id": 240730,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358341
+        },
+        {
+          "Data_Setting_Id": 240732,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358341
+        },
+        {
+          "Data_Setting_Id": 240731,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358341
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_ALLOCATION",
+      "OBJECT_ID": 47903,
+      "OBJECT_TYPE": "TRADE_ALLOCATION",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=Trade Allocation.*\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24943,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 358341,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 29,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240744,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358342
+        },
+        {
+          "Data_Setting_Id": 240745,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358342
+        },
+        {
+          "Data_Setting_Id": 240749,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358342
+        },
+        {
+          "Data_Setting_Id": 240747,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358342
+        },
+        {
+          "Data_Setting_Id": 240746,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358342
+        },
+        {
+          "Data_Setting_Id": 240748,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358342
+        },
+        {
+          "Data_Setting_Id": 240750,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358342
+        },
+        {
+          "Data_Setting_Id": 240740,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358342
+        },
+        {
+          "Data_Setting_Id": 240741,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358342
+        },
+        {
+          "Data_Setting_Id": 240743,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358342
+        },
+        {
+          "Data_Setting_Id": 240742,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358342
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 1,
+      "KEY_WORD_NAME": "CaptureValue",
+      "OBJECT_HAPPY_NAME": "ALLOC_MIRROR_TRADES_TBL",
+      "OBJECT_ID": 45557,
+      "OBJECT_TYPE": "TRADE_ALLOCATION",
+      "QUICK_ACCESS": "SwfName:=_mirrorTradesSpr\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25899,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 358342,
+      "COLUMN_ROW_SETTING": "ROWS_LIMIT:1;Trade ID",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 30,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240744,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358342
+        },
+        {
+          "Data_Setting_Id": 240745,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358342
+        },
+        {
+          "Data_Setting_Id": 240749,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358342
+        },
+        {
+          "Data_Setting_Id": 240747,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358342
+        },
+        {
+          "Data_Setting_Id": 240746,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358342
+        },
+        {
+          "Data_Setting_Id": 240748,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358342
+        },
+        {
+          "Data_Setting_Id": 240750,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358342
+        },
+        {
+          "Data_Setting_Id": 240740,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358342
+        },
+        {
+          "Data_Setting_Id": 240741,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358342
+        },
+        {
+          "Data_Setting_Id": 240743,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358342
+        },
+        {
+          "Data_Setting_Id": 240742,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358342
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 1,
+      "KEY_WORD_NAME": "CaptureValue",
+      "OBJECT_HAPPY_NAME": "ALLOC_MIRROR_TRADES_TBL",
+      "OBJECT_ID": 36772,
+      "OBJECT_TYPE": "TRADE_ALLOCATION",
+      "QUICK_ACCESS": "SwfName:=_mirrorTradesSpr\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25899,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 358342,
+      "COLUMN_ROW_SETTING": "ROWS_LIMIT:1;Trade ID",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 30,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240755,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358343
+        },
+        {
+          "Data_Setting_Id": 240756,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358343
+        },
+        {
+          "Data_Setting_Id": 240760,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358343
+        },
+        {
+          "Data_Setting_Id": 240758,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358343
+        },
+        {
+          "Data_Setting_Id": 240757,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358343
+        },
+        {
+          "Data_Setting_Id": 240759,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358343
+        },
+        {
+          "Data_Setting_Id": 240761,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358343
+        },
+        {
+          "Data_Setting_Id": 240751,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358343
+        },
+        {
+          "Data_Setting_Id": 240752,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358343
+        },
+        {
+          "Data_Setting_Id": 240754,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358343
+        },
+        {
+          "Data_Setting_Id": 240753,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358343
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "ALLOC_APPLY_BTN",
+      "OBJECT_ID": 34317,
+      "OBJECT_TYPE": "TRADE_ALLOCATION",
+      "QUICK_ACCESS": "SwfName:=_applyButton\ntext:=Apply\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 31366,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 358343,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 31,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240755,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358343
+        },
+        {
+          "Data_Setting_Id": 240756,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358343
+        },
+        {
+          "Data_Setting_Id": 240760,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358343
+        },
+        {
+          "Data_Setting_Id": 240758,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358343
+        },
+        {
+          "Data_Setting_Id": 240757,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358343
+        },
+        {
+          "Data_Setting_Id": 240759,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358343
+        },
+        {
+          "Data_Setting_Id": 240761,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358343
+        },
+        {
+          "Data_Setting_Id": 240751,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358343
+        },
+        {
+          "Data_Setting_Id": 240752,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358343
+        },
+        {
+          "Data_Setting_Id": 240754,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358343
+        },
+        {
+          "Data_Setting_Id": 240753,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358343
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "ALLOC_APPLY_BTN",
+      "OBJECT_ID": 43867,
+      "OBJECT_TYPE": "TRADE_ALLOCATION",
+      "QUICK_ACCESS": "SwfName:=_applyButton\ntext:=Apply\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 31366,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 358343,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 31,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240766,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358344
+        },
+        {
+          "Data_Setting_Id": 240767,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358344
+        },
+        {
+          "Data_Setting_Id": 240771,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358344
+        },
+        {
+          "Data_Setting_Id": 240769,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358344
+        },
+        {
+          "Data_Setting_Id": 240768,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358344
+        },
+        {
+          "Data_Setting_Id": 240770,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358344
+        },
+        {
+          "Data_Setting_Id": 240772,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358344
+        },
+        {
+          "Data_Setting_Id": 240762,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358344
+        },
+        {
+          "Data_Setting_Id": 240763,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358344
+        },
+        {
+          "Data_Setting_Id": 240765,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358344
+        },
+        {
+          "Data_Setting_Id": 240764,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358344
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 358344,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 32,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240766,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358344
+        },
+        {
+          "Data_Setting_Id": 240767,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358344
+        },
+        {
+          "Data_Setting_Id": 240771,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358344
+        },
+        {
+          "Data_Setting_Id": 240769,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358344
+        },
+        {
+          "Data_Setting_Id": 240768,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358344
+        },
+        {
+          "Data_Setting_Id": 240770,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358344
+        },
+        {
+          "Data_Setting_Id": 240772,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358344
+        },
+        {
+          "Data_Setting_Id": 240762,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358344
+        },
+        {
+          "Data_Setting_Id": 240763,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358344
+        },
+        {
+          "Data_Setting_Id": 240765,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358344
+        },
+        {
+          "Data_Setting_Id": 240764,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358344
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 358344,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 32,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240777,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358345
+        },
+        {
+          "Data_Setting_Id": 240778,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358345
+        },
+        {
+          "Data_Setting_Id": 240782,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358345
+        },
+        {
+          "Data_Setting_Id": 240780,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358345
+        },
+        {
+          "Data_Setting_Id": 240779,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358345
+        },
+        {
+          "Data_Setting_Id": 240781,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358345
+        },
+        {
+          "Data_Setting_Id": 240783,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358345
+        },
+        {
+          "Data_Setting_Id": 240773,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358345
+        },
+        {
+          "Data_Setting_Id": 240774,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358345
+        },
+        {
+          "Data_Setting_Id": 240776,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358345
+        },
+        {
+          "Data_Setting_Id": 240775,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358345
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON_DOWN",
+      "OBJECT_ID": 39639,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nLocation:=1",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 28653,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 358345,
+      "COLUMN_ROW_SETTING": "SKIP_NOTEXIST",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 33,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240777,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358345
+        },
+        {
+          "Data_Setting_Id": 240778,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358345
+        },
+        {
+          "Data_Setting_Id": 240782,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358345
+        },
+        {
+          "Data_Setting_Id": 240780,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358345
+        },
+        {
+          "Data_Setting_Id": 240779,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358345
+        },
+        {
+          "Data_Setting_Id": 240781,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358345
+        },
+        {
+          "Data_Setting_Id": 240783,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358345
+        },
+        {
+          "Data_Setting_Id": 240773,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358345
+        },
+        {
+          "Data_Setting_Id": 240774,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358345
+        },
+        {
+          "Data_Setting_Id": 240776,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358345
+        },
+        {
+          "Data_Setting_Id": 240775,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358345
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON_DOWN",
+      "OBJECT_ID": 47810,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nLocation:=1",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 28653,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 358345,
+      "COLUMN_ROW_SETTING": "SKIP_NOTEXIST",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 33,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240788,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358346
+        },
+        {
+          "Data_Setting_Id": 240789,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358346
+        },
+        {
+          "Data_Setting_Id": 240793,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358346
+        },
+        {
+          "Data_Setting_Id": 240791,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358346
+        },
+        {
+          "Data_Setting_Id": 240790,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358346
+        },
+        {
+          "Data_Setting_Id": 240792,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358346
+        },
+        {
+          "Data_Setting_Id": 240794,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358346
+        },
+        {
+          "Data_Setting_Id": 240784,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358346
+        },
+        {
+          "Data_Setting_Id": 240785,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358346
+        },
+        {
+          "Data_Setting_Id": 240787,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358346
+        },
+        {
+          "Data_Setting_Id": 240786,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358346
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 38,
+      "KEY_WORD_NAME": "Dismiss",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 358346,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 34,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240799,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358347
+        },
+        {
+          "Data_Setting_Id": 240800,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358347
+        },
+        {
+          "Data_Setting_Id": 240804,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358347
+        },
+        {
+          "Data_Setting_Id": 240802,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358347
+        },
+        {
+          "Data_Setting_Id": 240801,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358347
+        },
+        {
+          "Data_Setting_Id": 240803,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358347
+        },
+        {
+          "Data_Setting_Id": 240805,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358347
+        },
+        {
+          "Data_Setting_Id": 240795,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358347
+        },
+        {
+          "Data_Setting_Id": 240796,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358347
+        },
+        {
+          "Data_Setting_Id": 240798,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358347
+        },
+        {
+          "Data_Setting_Id": 240797,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358347
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 32409,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 30430,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 358347,
+      "COLUMN_ROW_SETTING": "SKIP_NOTEXIST",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 35,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240799,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358347
+        },
+        {
+          "Data_Setting_Id": 240800,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358347
+        },
+        {
+          "Data_Setting_Id": 240804,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358347
+        },
+        {
+          "Data_Setting_Id": 240802,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358347
+        },
+        {
+          "Data_Setting_Id": 240801,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358347
+        },
+        {
+          "Data_Setting_Id": 240803,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358347
+        },
+        {
+          "Data_Setting_Id": 240805,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358347
+        },
+        {
+          "Data_Setting_Id": 240795,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358347
+        },
+        {
+          "Data_Setting_Id": 240796,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358347
+        },
+        {
+          "Data_Setting_Id": 240798,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358347
+        },
+        {
+          "Data_Setting_Id": 240797,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358347
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 40727,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 30430,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 358347,
+      "COLUMN_ROW_SETTING": "SKIP_NOTEXIST",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 35,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 240810,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357104,
+          "SKIP": 0,
+          "STEPS_ID": 358348
+        },
+        {
+          "Data_Setting_Id": 240811,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357105,
+          "SKIP": 0,
+          "STEPS_ID": 358348
+        },
+        {
+          "Data_Setting_Id": 240815,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357163,
+          "SKIP": 0,
+          "STEPS_ID": 358348
+        },
+        {
+          "Data_Setting_Id": 240813,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357139,
+          "SKIP": 0,
+          "STEPS_ID": 358348
+        },
+        {
+          "Data_Setting_Id": 240812,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357121,
+          "SKIP": 0,
+          "STEPS_ID": 358348
+        },
+        {
+          "Data_Setting_Id": 240814,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357140,
+          "SKIP": 0,
+          "STEPS_ID": 358348
+        },
+        {
+          "Data_Setting_Id": 240816,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357173,
+          "SKIP": 0,
+          "STEPS_ID": 358348
+        },
+        {
+          "Data_Setting_Id": 240806,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357062,
+          "SKIP": 0,
+          "STEPS_ID": 358348
+        },
+        {
+          "Data_Setting_Id": 240807,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357063,
+          "SKIP": 0,
+          "STEPS_ID": 358348
+        },
+        {
+          "Data_Setting_Id": 240809,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357100,
+          "SKIP": 0,
+          "STEPS_ID": 358348
+        },
+        {
+          "Data_Setting_Id": 240808,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 357064,
+          "SKIP": 0,
+          "STEPS_ID": 358348
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2832,
+      "TEST_CASE_NAME": "Swp Trd Action Util",
+      "KEY_WORD_ID": 38,
+      "KEY_WORD_NAME": "Dismiss",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 358348,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 36,
+      "VALUE_SETTING": null
+    }
+  ]
+}

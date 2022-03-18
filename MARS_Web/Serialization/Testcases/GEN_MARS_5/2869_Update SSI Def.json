@@ -1,0 +1,4635 @@
+{
+  "currentSyncroStatus": 0,
+  "assignedApplications": [
+    234,
+    293,
+    2,
+    1,
+    173,
+    133,
+    213,
+    -1
+  ],
+  "assignedTestSuiteIDs": [
+    1264
+  ],
+  "version": null,
+  "assignedDataSets": [
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 283224,
+      "ALIAS_NAME": "Update SSI Def",
+      "DESCRIPTION_INFO": null
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 283264,
+      "ALIAS_NAME": "update customer securities",
+      "DESCRIPTION_INFO": null
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 283270,
+      "ALIAS_NAME": "Update our cash",
+      "DESCRIPTION_INFO": null
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 283285,
+      "ALIAS_NAME": "Update our securities",
+      "DESCRIPTION_INFO": null
+    }
+  ],
+  "allSteps": [
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278605,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283226
+        },
+        {
+          "Data_Setting_Id": 278639,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283226
+        },
+        {
+          "Data_Setting_Id": 278659,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283226
+        },
+        {
+          "Data_Setting_Id": 278622,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283226
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 38857,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "is owned window:=False\r\nis child window:=False\r\ntext:=((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\r\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 234,
+      "OBJECT_NAME_ID": 11892,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 283226,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278605,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283226
+        },
+        {
+          "Data_Setting_Id": 278639,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283226
+        },
+        {
+          "Data_Setting_Id": 278659,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283226
+        },
+        {
+          "Data_Setting_Id": 278622,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283226
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 46255,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "is owned window:=False\r\nis child window:=False\r\ntext:=((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\r\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 293,
+      "OBJECT_NAME_ID": 11892,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 283226,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278605,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283226
+        },
+        {
+          "Data_Setting_Id": 278639,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283226
+        },
+        {
+          "Data_Setting_Id": 278659,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283226
+        },
+        {
+          "Data_Setting_Id": 278622,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283226
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 3893,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Misys ){0,1}(FusionCapital ){0,1}Summit( FT){0,1})(?!(.*Login)).*\r\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 2,
+      "OBJECT_NAME_ID": 11892,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 283226,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278605,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283226
+        },
+        {
+          "Data_Setting_Id": 278639,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283226
+        },
+        {
+          "Data_Setting_Id": 278659,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283226
+        },
+        {
+          "Data_Setting_Id": 278622,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283226
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 61,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "is owned window:=False\r\nis child window:=False\r\ntext:=((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\r\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 1,
+      "OBJECT_NAME_ID": 11892,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 283226,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278605,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283226
+        },
+        {
+          "Data_Setting_Id": 278639,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283226
+        },
+        {
+          "Data_Setting_Id": 278659,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283226
+        },
+        {
+          "Data_Setting_Id": 278622,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283226
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 16827,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Misys ){0,1}(FusionCapital ){0,1}Summit( FT){0,1})(?!(.*Login)).*\r\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 173,
+      "OBJECT_NAME_ID": 11892,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 283226,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278605,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283226
+        },
+        {
+          "Data_Setting_Id": 278639,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283226
+        },
+        {
+          "Data_Setting_Id": 278659,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283226
+        },
+        {
+          "Data_Setting_Id": 278622,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283226
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 20724,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=(Misys ){0,1}Summit FT.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 133,
+      "OBJECT_NAME_ID": 11892,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 283226,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278605,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283226
+        },
+        {
+          "Data_Setting_Id": 278639,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283226
+        },
+        {
+          "Data_Setting_Id": 278659,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283226
+        },
+        {
+          "Data_Setting_Id": 278622,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283226
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32573,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Misys ){0,1}(FusionCapital ){0,1}Summit( FT){0,1})(?!(.*Login)).*\r\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 213,
+      "OBJECT_NAME_ID": 11892,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 283226,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278602,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283243
+        },
+        {
+          "Data_Setting_Id": 278636,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283243
+        },
+        {
+          "Data_Setting_Id": 278656,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283243
+        },
+        {
+          "Data_Setting_Id": 278619,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283243
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 38857,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "is owned window:=False\r\nis child window:=False\r\ntext:=((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\r\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 234,
+      "OBJECT_NAME_ID": 11892,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 283243,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 2,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278602,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283243
+        },
+        {
+          "Data_Setting_Id": 278636,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283243
+        },
+        {
+          "Data_Setting_Id": 278656,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283243
+        },
+        {
+          "Data_Setting_Id": 278619,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283243
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 46255,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "is owned window:=False\r\nis child window:=False\r\ntext:=((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\r\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 293,
+      "OBJECT_NAME_ID": 11892,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 283243,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 2,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278602,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283243
+        },
+        {
+          "Data_Setting_Id": 278636,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283243
+        },
+        {
+          "Data_Setting_Id": 278656,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283243
+        },
+        {
+          "Data_Setting_Id": 278619,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283243
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 3893,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Misys ){0,1}(FusionCapital ){0,1}Summit( FT){0,1})(?!(.*Login)).*\r\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 2,
+      "OBJECT_NAME_ID": 11892,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 283243,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 2,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278602,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283243
+        },
+        {
+          "Data_Setting_Id": 278636,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283243
+        },
+        {
+          "Data_Setting_Id": 278656,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283243
+        },
+        {
+          "Data_Setting_Id": 278619,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283243
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 61,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "is owned window:=False\r\nis child window:=False\r\ntext:=((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\r\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 1,
+      "OBJECT_NAME_ID": 11892,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 283243,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 2,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278602,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283243
+        },
+        {
+          "Data_Setting_Id": 278636,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283243
+        },
+        {
+          "Data_Setting_Id": 278656,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283243
+        },
+        {
+          "Data_Setting_Id": 278619,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283243
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 16827,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Misys ){0,1}(FusionCapital ){0,1}Summit( FT){0,1})(?!(.*Login)).*\r\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 173,
+      "OBJECT_NAME_ID": 11892,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 283243,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 2,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278602,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283243
+        },
+        {
+          "Data_Setting_Id": 278636,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283243
+        },
+        {
+          "Data_Setting_Id": 278656,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283243
+        },
+        {
+          "Data_Setting_Id": 278619,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283243
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 20724,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=(Misys ){0,1}Summit FT.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 133,
+      "OBJECT_NAME_ID": 11892,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 283243,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 2,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278602,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283243
+        },
+        {
+          "Data_Setting_Id": 278636,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283243
+        },
+        {
+          "Data_Setting_Id": 278656,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283243
+        },
+        {
+          "Data_Setting_Id": 278619,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283243
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32573,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Misys ){0,1}(FusionCapital ){0,1}Summit( FT){0,1})(?!(.*Login)).*\r\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 213,
+      "OBJECT_NAME_ID": 11892,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 283243,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 2,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278597,
+          "DATASETVALUE": "Settlement Instructions Definition - Customer Cash",
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283236
+        },
+        {
+          "Data_Setting_Id": 278631,
+          "DATASETVALUE": "Settlement Instructions Definition - Our Cash",
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283236
+        },
+        {
+          "Data_Setting_Id": 278651,
+          "DATASETVALUE": "Settlement Instructions Definition - Our Securities",
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283236
+        },
+        {
+          "Data_Setting_Id": 278614,
+          "DATASETVALUE": "Settlement Instructions Definition - Customer Securities",
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283236
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 12,
+      "KEY_WORD_NAME": "LaunchApplication",
+      "OBJECT_HAPPY_NAME": "ApplicationName",
+      "OBJECT_ID": 43872,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockAreaTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 293,
+      "OBJECT_NAME_ID": 14837,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 283236,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 3,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278597,
+          "DATASETVALUE": "Settlement Instructions Definition - Customer Cash",
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283236
+        },
+        {
+          "Data_Setting_Id": 278631,
+          "DATASETVALUE": "Settlement Instructions Definition - Our Cash",
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283236
+        },
+        {
+          "Data_Setting_Id": 278651,
+          "DATASETVALUE": "Settlement Instructions Definition - Our Securities",
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283236
+        },
+        {
+          "Data_Setting_Id": 278614,
+          "DATASETVALUE": "Settlement Instructions Definition - Customer Securities",
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283236
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 12,
+      "KEY_WORD_NAME": "LaunchApplication",
+      "OBJECT_HAPPY_NAME": "ApplicationName",
+      "OBJECT_ID": 36474,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockAreaTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 234,
+      "OBJECT_NAME_ID": 14837,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 283236,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 3,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278597,
+          "DATASETVALUE": "Settlement Instructions Definition - Customer Cash",
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283236
+        },
+        {
+          "Data_Setting_Id": 278631,
+          "DATASETVALUE": "Settlement Instructions Definition - Our Cash",
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283236
+        },
+        {
+          "Data_Setting_Id": 278651,
+          "DATASETVALUE": "Settlement Instructions Definition - Our Securities",
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283236
+        },
+        {
+          "Data_Setting_Id": 278614,
+          "DATASETVALUE": "Settlement Instructions Definition - Customer Securities",
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283236
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 12,
+      "KEY_WORD_NAME": "LaunchApplication",
+      "OBJECT_HAPPY_NAME": "ApplicationName",
+      "OBJECT_ID": 3897,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockAreaTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 2,
+      "OBJECT_NAME_ID": 14837,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 283236,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 3,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278597,
+          "DATASETVALUE": "Settlement Instructions Definition - Customer Cash",
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283236
+        },
+        {
+          "Data_Setting_Id": 278631,
+          "DATASETVALUE": "Settlement Instructions Definition - Our Cash",
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283236
+        },
+        {
+          "Data_Setting_Id": 278651,
+          "DATASETVALUE": "Settlement Instructions Definition - Our Securities",
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283236
+        },
+        {
+          "Data_Setting_Id": 278614,
+          "DATASETVALUE": "Settlement Instructions Definition - Customer Securities",
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283236
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 12,
+      "KEY_WORD_NAME": "LaunchApplication",
+      "OBJECT_HAPPY_NAME": "ApplicationName",
+      "OBJECT_ID": 65,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockAreaTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 1,
+      "OBJECT_NAME_ID": 14837,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 283236,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 3,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278597,
+          "DATASETVALUE": "Settlement Instructions Definition - Customer Cash",
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283236
+        },
+        {
+          "Data_Setting_Id": 278631,
+          "DATASETVALUE": "Settlement Instructions Definition - Our Cash",
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283236
+        },
+        {
+          "Data_Setting_Id": 278651,
+          "DATASETVALUE": "Settlement Instructions Definition - Our Securities",
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283236
+        },
+        {
+          "Data_Setting_Id": 278614,
+          "DATASETVALUE": "Settlement Instructions Definition - Customer Securities",
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283236
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 12,
+      "KEY_WORD_NAME": "LaunchApplication",
+      "OBJECT_HAPPY_NAME": "ApplicationName",
+      "OBJECT_ID": 14444,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockAreaTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 173,
+      "OBJECT_NAME_ID": 14837,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 283236,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 3,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278597,
+          "DATASETVALUE": "Settlement Instructions Definition - Customer Cash",
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283236
+        },
+        {
+          "Data_Setting_Id": 278631,
+          "DATASETVALUE": "Settlement Instructions Definition - Our Cash",
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283236
+        },
+        {
+          "Data_Setting_Id": 278651,
+          "DATASETVALUE": "Settlement Instructions Definition - Our Securities",
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283236
+        },
+        {
+          "Data_Setting_Id": 278614,
+          "DATASETVALUE": "Settlement Instructions Definition - Customer Securities",
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283236
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 12,
+      "KEY_WORD_NAME": "LaunchApplication",
+      "OBJECT_HAPPY_NAME": "ApplicationName",
+      "OBJECT_ID": 30667,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockAreaTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 213,
+      "OBJECT_NAME_ID": 14837,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 283236,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 3,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278594,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283233
+        },
+        {
+          "Data_Setting_Id": 278628,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283233
+        },
+        {
+          "Data_Setting_Id": 278648,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283233
+        },
+        {
+          "Data_Setting_Id": 278611,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283233
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "SSI_CS",
+      "OBJECT_ID": 47731,
+      "OBJECT_TYPE": "SSI_CS",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 293,
+      "OBJECT_NAME_ID": 25108,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 283233,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 4,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278594,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283233
+        },
+        {
+          "Data_Setting_Id": 278628,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283233
+        },
+        {
+          "Data_Setting_Id": 278648,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283233
+        },
+        {
+          "Data_Setting_Id": 278611,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283233
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "SSI_CS",
+      "OBJECT_ID": 25196,
+      "OBJECT_TYPE": "SSI_CS",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 1,
+      "OBJECT_NAME_ID": 25108,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 283233,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 4,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278594,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283233
+        },
+        {
+          "Data_Setting_Id": 278628,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283233
+        },
+        {
+          "Data_Setting_Id": 278648,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283233
+        },
+        {
+          "Data_Setting_Id": 278611,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283233
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "SSI_CS",
+      "OBJECT_ID": 40333,
+      "OBJECT_TYPE": "SSI_CS",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 234,
+      "OBJECT_NAME_ID": 25108,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 283233,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 4,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278603,
+          "DATASETVALUE": "Desktop Menu;Settlement Instructions Definition - Customer Cash;Open.*",
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283245
+        },
+        {
+          "Data_Setting_Id": 278637,
+          "DATASETVALUE": "Desktop Menu;Settlement Instructions Definition - Our Cash;Open.*",
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283245
+        },
+        {
+          "Data_Setting_Id": 278657,
+          "DATASETVALUE": "Desktop Menu;Settlement Instructions Definition - Our Securities;Open.*",
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283245
+        },
+        {
+          "Data_Setting_Id": 278620,
+          "DATASETVALUE": "Desktop Menu;Settlement Instructions Definition - Customer Securities;Open.*",
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283245
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 22,
+      "KEY_WORD_NAME": "SelectMenuItem",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 283245,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 5,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 281111,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283244
+        },
+        {
+          "Data_Setting_Id": 278794,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283244
+        },
+        {
+          "Data_Setting_Id": 281113,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283244
+        },
+        {
+          "Data_Setting_Id": 281112,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283244
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "SSI_FINDER",
+      "OBJECT_ID": 48025,
+      "OBJECT_TYPE": "SSI_FINDER",
+      "QUICK_ACCESS": "swfname:=DetachedFormHolder",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 293,
+      "OBJECT_NAME_ID": 25699,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 283244,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 6,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 281111,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283244
+        },
+        {
+          "Data_Setting_Id": 278794,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283244
+        },
+        {
+          "Data_Setting_Id": 281113,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283244
+        },
+        {
+          "Data_Setting_Id": 281112,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283244
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "SSI_FINDER",
+      "OBJECT_ID": 40627,
+      "OBJECT_TYPE": "SSI_FINDER",
+      "QUICK_ACCESS": "swfname:=DetachedFormHolder",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 234,
+      "OBJECT_NAME_ID": 25699,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 283244,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 6,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 281111,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283244
+        },
+        {
+          "Data_Setting_Id": 278794,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283244
+        },
+        {
+          "Data_Setting_Id": 281113,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283244
+        },
+        {
+          "Data_Setting_Id": 281112,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283244
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "SSI_FINDER",
+      "OBJECT_ID": 25712,
+      "OBJECT_TYPE": "SSI_FINDER",
+      "QUICK_ACCESS": "swfname:=DetachedFormHolder",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 1,
+      "OBJECT_NAME_ID": 25699,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 283244,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 6,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 281114,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283467
+        },
+        {
+          "Data_Setting_Id": 278795,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283467
+        },
+        {
+          "Data_Setting_Id": 281116,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283467
+        },
+        {
+          "Data_Setting_Id": 281115,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283467
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "SSI_FINDER",
+      "OBJECT_ID": 48025,
+      "OBJECT_TYPE": "SSI_FINDER",
+      "QUICK_ACCESS": "swfname:=DetachedFormHolder",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 293,
+      "OBJECT_NAME_ID": 25699,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 283467,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 7,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 281114,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283467
+        },
+        {
+          "Data_Setting_Id": 278795,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283467
+        },
+        {
+          "Data_Setting_Id": 281116,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283467
+        },
+        {
+          "Data_Setting_Id": 281115,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283467
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "SSI_FINDER",
+      "OBJECT_ID": 40627,
+      "OBJECT_TYPE": "SSI_FINDER",
+      "QUICK_ACCESS": "swfname:=DetachedFormHolder",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 234,
+      "OBJECT_NAME_ID": 25699,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 283467,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 7,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 281114,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283467
+        },
+        {
+          "Data_Setting_Id": 278795,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283467
+        },
+        {
+          "Data_Setting_Id": 281116,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283467
+        },
+        {
+          "Data_Setting_Id": 281115,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283467
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "SSI_FINDER",
+      "OBJECT_ID": 25712,
+      "OBJECT_TYPE": "SSI_FINDER",
+      "QUICK_ACCESS": "swfname:=DetachedFormHolder",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 1,
+      "OBJECT_NAME_ID": 25699,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 283467,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 7,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278589,
+          "DATASETVALUE": "CITIBANK",
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283227
+        },
+        {
+          "Data_Setting_Id": 278623,
+          "DATASETVALUE": "TEST123",
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283227
+        },
+        {
+          "Data_Setting_Id": 278643,
+          "DATASETVALUE": "BDB",
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283227
+        },
+        {
+          "Data_Setting_Id": 278606,
+          "DATASETVALUE": "CHASE_NYC",
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283227
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "SSI_FINDER_CUSTOMER_ID",
+      "OBJECT_ID": 48027,
+      "OBJECT_TYPE": "SSI_FINDER",
+      "QUICK_ACCESS": "swfname:=_custIDDb",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 293,
+      "OBJECT_NAME_ID": 25689,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 283227,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 8,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278589,
+          "DATASETVALUE": "CITIBANK",
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283227
+        },
+        {
+          "Data_Setting_Id": 278623,
+          "DATASETVALUE": "TEST123",
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283227
+        },
+        {
+          "Data_Setting_Id": 278643,
+          "DATASETVALUE": "BDB",
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283227
+        },
+        {
+          "Data_Setting_Id": 278606,
+          "DATASETVALUE": "CHASE_NYC",
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283227
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "SSI_FINDER_CUSTOMER_ID",
+      "OBJECT_ID": 40629,
+      "OBJECT_TYPE": "SSI_FINDER",
+      "QUICK_ACCESS": "swfname:=_custIDDb",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 234,
+      "OBJECT_NAME_ID": 25689,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 283227,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 8,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278589,
+          "DATASETVALUE": "CITIBANK",
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283227
+        },
+        {
+          "Data_Setting_Id": 278623,
+          "DATASETVALUE": "TEST123",
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283227
+        },
+        {
+          "Data_Setting_Id": 278643,
+          "DATASETVALUE": "BDB",
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283227
+        },
+        {
+          "Data_Setting_Id": 278606,
+          "DATASETVALUE": "CHASE_NYC",
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283227
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "SSI_FINDER_CUSTOMER_ID",
+      "OBJECT_ID": 25714,
+      "OBJECT_TYPE": "SSI_FINDER",
+      "QUICK_ACCESS": "swfname:=_custIDDb",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 1,
+      "OBJECT_NAME_ID": 25689,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 283227,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 8,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278595,
+          "DATASETVALUE": "TRADING",
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283234
+        },
+        {
+          "Data_Setting_Id": 278629,
+          "DATASETVALUE": "COMPANY",
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283234
+        },
+        {
+          "Data_Setting_Id": 278649,
+          "DATASETVALUE": "COMPANY",
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283234
+        },
+        {
+          "Data_Setting_Id": 278612,
+          "DATASETVALUE": "TRADING",
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283234
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "SSI_FINDER_CUSTOMER_ROLE",
+      "OBJECT_ID": 48079,
+      "OBJECT_TYPE": "SSI_FINDER",
+      "QUICK_ACCESS": "swfname:=_custRoleToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 293,
+      "OBJECT_NAME_ID": 25691,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 283234,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 9,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278595,
+          "DATASETVALUE": "TRADING",
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283234
+        },
+        {
+          "Data_Setting_Id": 278629,
+          "DATASETVALUE": "COMPANY",
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283234
+        },
+        {
+          "Data_Setting_Id": 278649,
+          "DATASETVALUE": "COMPANY",
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283234
+        },
+        {
+          "Data_Setting_Id": 278612,
+          "DATASETVALUE": "TRADING",
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283234
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "SSI_FINDER_CUSTOMER_ROLE",
+      "OBJECT_ID": 40681,
+      "OBJECT_TYPE": "SSI_FINDER",
+      "QUICK_ACCESS": "swfname:=_custRoleToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 234,
+      "OBJECT_NAME_ID": 25691,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 283234,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 9,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278595,
+          "DATASETVALUE": "TRADING",
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283234
+        },
+        {
+          "Data_Setting_Id": 278629,
+          "DATASETVALUE": "COMPANY",
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283234
+        },
+        {
+          "Data_Setting_Id": 278649,
+          "DATASETVALUE": "COMPANY",
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283234
+        },
+        {
+          "Data_Setting_Id": 278612,
+          "DATASETVALUE": "TRADING",
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283234
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "SSI_FINDER_CUSTOMER_ROLE",
+      "OBJECT_ID": 25766,
+      "OBJECT_TYPE": "SSI_FINDER",
+      "QUICK_ACCESS": "swfname:=_custRoleToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 1,
+      "OBJECT_NAME_ID": 25691,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 283234,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 9,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278591,
+          "DATASETVALUE": "USD",
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283230
+        },
+        {
+          "Data_Setting_Id": 278625,
+          "DATASETVALUE": "USD",
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 4,
+          "STEPS_ID": 283230
+        },
+        {
+          "Data_Setting_Id": 278645,
+          "DATASETVALUE": "COP",
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283230
+        },
+        {
+          "Data_Setting_Id": 278608,
+          "DATASETVALUE": "USD",
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283230
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "SSI_FINDER_CURRENCY",
+      "OBJECT_ID": 48039,
+      "OBJECT_TYPE": "SSI_FINDER",
+      "QUICK_ACCESS": "swfname:=_ccyDb",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 293,
+      "OBJECT_NAME_ID": 25654,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 283230,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 10,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278591,
+          "DATASETVALUE": "USD",
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283230
+        },
+        {
+          "Data_Setting_Id": 278625,
+          "DATASETVALUE": "USD",
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 4,
+          "STEPS_ID": 283230
+        },
+        {
+          "Data_Setting_Id": 278645,
+          "DATASETVALUE": "COP",
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283230
+        },
+        {
+          "Data_Setting_Id": 278608,
+          "DATASETVALUE": "USD",
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283230
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "SSI_FINDER_CURRENCY",
+      "OBJECT_ID": 40641,
+      "OBJECT_TYPE": "SSI_FINDER",
+      "QUICK_ACCESS": "swfname:=_ccyDb",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 234,
+      "OBJECT_NAME_ID": 25654,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 283230,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 10,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278591,
+          "DATASETVALUE": "USD",
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283230
+        },
+        {
+          "Data_Setting_Id": 278625,
+          "DATASETVALUE": "USD",
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 4,
+          "STEPS_ID": 283230
+        },
+        {
+          "Data_Setting_Id": 278645,
+          "DATASETVALUE": "COP",
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283230
+        },
+        {
+          "Data_Setting_Id": 278608,
+          "DATASETVALUE": "USD",
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283230
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "SSI_FINDER_CURRENCY",
+      "OBJECT_ID": 25726,
+      "OBJECT_TYPE": "SSI_FINDER",
+      "QUICK_ACCESS": "swfname:=_ccyDb",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 1,
+      "OBJECT_NAME_ID": 25654,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 283230,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 10,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278641,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 4,
+          "STEPS_ID": 283272
+        },
+        {
+          "Data_Setting_Id": 278640,
+          "DATASETVALUE": "DLPMT",
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 4,
+          "STEPS_ID": 283272
+        },
+        {
+          "Data_Setting_Id": 278660,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 4,
+          "STEPS_ID": 283272
+        },
+        {
+          "Data_Setting_Id": 278642,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 4,
+          "STEPS_ID": 283272
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "SSI_FINDER_TRADE_TYPE",
+      "OBJECT_ID": 48035,
+      "OBJECT_TYPE": "SSI_FINDER",
+      "QUICK_ACCESS": "swfname:=_tradetypeToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 293,
+      "OBJECT_NAME_ID": 25701,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 283272,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 11,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278641,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 4,
+          "STEPS_ID": 283272
+        },
+        {
+          "Data_Setting_Id": 278640,
+          "DATASETVALUE": "DLPMT",
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 4,
+          "STEPS_ID": 283272
+        },
+        {
+          "Data_Setting_Id": 278660,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 4,
+          "STEPS_ID": 283272
+        },
+        {
+          "Data_Setting_Id": 278642,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 4,
+          "STEPS_ID": 283272
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "SSI_FINDER_TRADE_TYPE",
+      "OBJECT_ID": 40637,
+      "OBJECT_TYPE": "SSI_FINDER",
+      "QUICK_ACCESS": "swfname:=_tradetypeToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 234,
+      "OBJECT_NAME_ID": 25701,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 283272,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 11,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278641,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 4,
+          "STEPS_ID": 283272
+        },
+        {
+          "Data_Setting_Id": 278640,
+          "DATASETVALUE": "DLPMT",
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 4,
+          "STEPS_ID": 283272
+        },
+        {
+          "Data_Setting_Id": 278660,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 4,
+          "STEPS_ID": 283272
+        },
+        {
+          "Data_Setting_Id": 278642,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 4,
+          "STEPS_ID": 283272
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "SSI_FINDER_TRADE_TYPE",
+      "OBJECT_ID": 25722,
+      "OBJECT_TYPE": "SSI_FINDER",
+      "QUICK_ACCESS": "swfname:=_tradetypeToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 1,
+      "OBJECT_NAME_ID": 25701,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 283272,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 11,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 281108,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283238
+        },
+        {
+          "Data_Setting_Id": 278796,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283238
+        },
+        {
+          "Data_Setting_Id": 281110,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283238
+        },
+        {
+          "Data_Setting_Id": 281109,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283238
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "SSI_FINDER_FIND_BTN",
+      "OBJECT_ID": 48064,
+      "OBJECT_TYPE": "SSI_FINDER",
+      "QUICK_ACCESS": "swfname:=_findNowButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 293,
+      "OBJECT_NAME_ID": 25686,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 283238,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 12,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 281108,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283238
+        },
+        {
+          "Data_Setting_Id": 278796,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283238
+        },
+        {
+          "Data_Setting_Id": 281110,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283238
+        },
+        {
+          "Data_Setting_Id": 281109,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283238
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "SSI_FINDER_FIND_BTN",
+      "OBJECT_ID": 40666,
+      "OBJECT_TYPE": "SSI_FINDER",
+      "QUICK_ACCESS": "swfname:=_findNowButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 234,
+      "OBJECT_NAME_ID": 25686,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 283238,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 12,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 281108,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283238
+        },
+        {
+          "Data_Setting_Id": 278796,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283238
+        },
+        {
+          "Data_Setting_Id": 281110,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283238
+        },
+        {
+          "Data_Setting_Id": 281109,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283238
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "SSI_FINDER_FIND_BTN",
+      "OBJECT_ID": 25751,
+      "OBJECT_TYPE": "SSI_FINDER",
+      "QUICK_ACCESS": "swfname:=_findNowButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 1,
+      "OBJECT_NAME_ID": 25686,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 283238,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 12,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 281102,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283229
+        },
+        {
+          "Data_Setting_Id": 278797,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283229
+        },
+        {
+          "Data_Setting_Id": 281104,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283229
+        },
+        {
+          "Data_Setting_Id": 281103,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283229
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "SSI_FINDER_APPLY_BTN",
+      "OBJECT_ID": 48050,
+      "OBJECT_TYPE": "SSI_FINDER",
+      "QUICK_ACCESS": "swfname:=_applyButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 293,
+      "OBJECT_NAME_ID": 25705,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 283229,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 13,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 281102,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283229
+        },
+        {
+          "Data_Setting_Id": 278797,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283229
+        },
+        {
+          "Data_Setting_Id": 281104,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283229
+        },
+        {
+          "Data_Setting_Id": 281103,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283229
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "SSI_FINDER_APPLY_BTN",
+      "OBJECT_ID": 40652,
+      "OBJECT_TYPE": "SSI_FINDER",
+      "QUICK_ACCESS": "swfname:=_applyButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 234,
+      "OBJECT_NAME_ID": 25705,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 283229,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 13,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 281102,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283229
+        },
+        {
+          "Data_Setting_Id": 278797,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283229
+        },
+        {
+          "Data_Setting_Id": 281104,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283229
+        },
+        {
+          "Data_Setting_Id": 281103,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283229
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "SSI_FINDER_APPLY_BTN",
+      "OBJECT_ID": 25737,
+      "OBJECT_TYPE": "SSI_FINDER",
+      "QUICK_ACCESS": "swfname:=_applyButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 1,
+      "OBJECT_NAME_ID": 25705,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 283229,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 13,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 281105,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283237
+        },
+        {
+          "Data_Setting_Id": 278793,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283237
+        },
+        {
+          "Data_Setting_Id": 281107,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283237
+        },
+        {
+          "Data_Setting_Id": 281106,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283237
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "SSI_CS",
+      "OBJECT_ID": 47731,
+      "OBJECT_TYPE": "SSI_CS",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 293,
+      "OBJECT_NAME_ID": 25108,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 283237,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 14,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 281105,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283237
+        },
+        {
+          "Data_Setting_Id": 278793,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283237
+        },
+        {
+          "Data_Setting_Id": 281107,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283237
+        },
+        {
+          "Data_Setting_Id": 281106,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283237
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "SSI_CS",
+      "OBJECT_ID": 25196,
+      "OBJECT_TYPE": "SSI_CS",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 1,
+      "OBJECT_NAME_ID": 25108,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 283237,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 14,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 281105,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283237
+        },
+        {
+          "Data_Setting_Id": 278793,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283237
+        },
+        {
+          "Data_Setting_Id": 281107,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283237
+        },
+        {
+          "Data_Setting_Id": 281106,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283237
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "SSI_CS",
+      "OBJECT_ID": 40333,
+      "OBJECT_TYPE": "SSI_CS",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 234,
+      "OBJECT_NAME_ID": 25108,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 283237,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 14,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278590,
+          "DATASETVALUE": "SWIFT",
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283228
+        },
+        {
+          "Data_Setting_Id": 278624,
+          "DATASETVALUE": "SWIFT",
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283228
+        },
+        {
+          "Data_Setting_Id": 278644,
+          "DATASETVALUE": "SWIFT",
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 4,
+          "STEPS_ID": 283228
+        },
+        {
+          "Data_Setting_Id": 278607,
+          "DATASETVALUE": "SWIFT",
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283228
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "SS_CC_CARRIER",
+      "OBJECT_ID": 47700,
+      "OBJECT_TYPE": "SSI_CS",
+      "QUICK_ACCESS": "swfname:=_carrierEnumEnt",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 293,
+      "OBJECT_NAME_ID": 25130,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 283228,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 15,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278590,
+          "DATASETVALUE": "SWIFT",
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283228
+        },
+        {
+          "Data_Setting_Id": 278624,
+          "DATASETVALUE": "SWIFT",
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283228
+        },
+        {
+          "Data_Setting_Id": 278644,
+          "DATASETVALUE": "SWIFT",
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 4,
+          "STEPS_ID": 283228
+        },
+        {
+          "Data_Setting_Id": 278607,
+          "DATASETVALUE": "SWIFT",
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283228
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "SS_CC_CARRIER",
+      "OBJECT_ID": 25165,
+      "OBJECT_TYPE": "SSI_CS",
+      "QUICK_ACCESS": "swfname:=_carrierEnumEnt",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 1,
+      "OBJECT_NAME_ID": 25130,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 283228,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 15,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278590,
+          "DATASETVALUE": "SWIFT",
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283228
+        },
+        {
+          "Data_Setting_Id": 278624,
+          "DATASETVALUE": "SWIFT",
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283228
+        },
+        {
+          "Data_Setting_Id": 278644,
+          "DATASETVALUE": "SWIFT",
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 4,
+          "STEPS_ID": 283228
+        },
+        {
+          "Data_Setting_Id": 278607,
+          "DATASETVALUE": "SWIFT",
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283228
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "SS_CC_CARRIER",
+      "OBJECT_ID": 40302,
+      "OBJECT_TYPE": "SSI_CS",
+      "QUICK_ACCESS": "swfname:=_carrierEnumEnt",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 234,
+      "OBJECT_NAME_ID": 25130,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 283228,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 15,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278662,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 4,
+          "STEPS_ID": 283287
+        },
+        {
+          "Data_Setting_Id": 278664,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 4,
+          "STEPS_ID": 283287
+        },
+        {
+          "Data_Setting_Id": 278661,
+          "DATASETVALUE": "Free of Payment",
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283287
+        },
+        {
+          "Data_Setting_Id": 278663,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 4,
+          "STEPS_ID": 283287
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "SSI_OS_SETTLEMENT_METHOD",
+      "OBJECT_ID": 47723,
+      "OBJECT_TYPE": "SSI_CS",
+      "QUICK_ACCESS": "swfname:=_settleMethodToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 293,
+      "OBJECT_NAME_ID": 25132,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 283287,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 16,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278662,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 4,
+          "STEPS_ID": 283287
+        },
+        {
+          "Data_Setting_Id": 278664,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 4,
+          "STEPS_ID": 283287
+        },
+        {
+          "Data_Setting_Id": 278661,
+          "DATASETVALUE": "Free of Payment",
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283287
+        },
+        {
+          "Data_Setting_Id": 278663,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 4,
+          "STEPS_ID": 283287
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "SSI_OS_SETTLEMENT_METHOD",
+      "OBJECT_ID": 25188,
+      "OBJECT_TYPE": "SSI_CS",
+      "QUICK_ACCESS": "swfname:=_settleMethodToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 1,
+      "OBJECT_NAME_ID": 25132,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 283287,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 16,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278662,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 4,
+          "STEPS_ID": 283287
+        },
+        {
+          "Data_Setting_Id": 278664,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 4,
+          "STEPS_ID": 283287
+        },
+        {
+          "Data_Setting_Id": 278661,
+          "DATASETVALUE": "Free of Payment",
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283287
+        },
+        {
+          "Data_Setting_Id": 278663,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 4,
+          "STEPS_ID": 283287
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "SSI_OS_SETTLEMENT_METHOD",
+      "OBJECT_ID": 40325,
+      "OBJECT_TYPE": "SSI_CS",
+      "QUICK_ACCESS": "swfname:=_settleMethodToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 234,
+      "OBJECT_NAME_ID": 25132,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 283287,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 16,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278600,
+          "DATASETVALUE": "Desktop Menu;Settlement Instructions Definition - Customer Cash;Validate",
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283241
+        },
+        {
+          "Data_Setting_Id": 278634,
+          "DATASETVALUE": "Desktop Menu;Settlement Instructions Definition - Our Cash;Validate",
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283241
+        },
+        {
+          "Data_Setting_Id": 278654,
+          "DATASETVALUE": "Desktop Menu;Settlement Instructions Definition - Our Securities;Validate",
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283241
+        },
+        {
+          "Data_Setting_Id": 278617,
+          "DATASETVALUE": "Desktop Menu;Settlement Instructions Definition - Customer Securities;Validate",
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283241
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 22,
+      "KEY_WORD_NAME": "SelectMenuItem",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 283241,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 17,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278598,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283239
+        },
+        {
+          "Data_Setting_Id": 278632,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283239
+        },
+        {
+          "Data_Setting_Id": 278652,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283239
+        },
+        {
+          "Data_Setting_Id": 278615,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283239
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 3,
+      "KEY_WORD_NAME": "CheckError",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 283239,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 18,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278599,
+          "DATASETVALUE": "Desktop Menu;Action;SAVE edit",
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283240
+        },
+        {
+          "Data_Setting_Id": 278633,
+          "DATASETVALUE": "Desktop Menu;Action;SAVE edit",
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283240
+        },
+        {
+          "Data_Setting_Id": 278653,
+          "DATASETVALUE": "Desktop Menu;Action;SAVE edit",
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283240
+        },
+        {
+          "Data_Setting_Id": 278616,
+          "DATASETVALUE": "Desktop Menu;Action;SAVE edit",
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283240
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 22,
+      "KEY_WORD_NAME": "SelectMenuItem",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 283240,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 19,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278596,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283235
+        },
+        {
+          "Data_Setting_Id": 278630,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283235
+        },
+        {
+          "Data_Setting_Id": 278650,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283235
+        },
+        {
+          "Data_Setting_Id": 278613,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283235
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 283235,
+      "COLUMN_ROW_SETTING": "F",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 20,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 281098,
+          "DATASETVALUE": "CUST_CASH_STATE",
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 289662
+        },
+        {
+          "Data_Setting_Id": 281100,
+          "DATASETVALUE": "OUR_CASH_STATE",
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 289662
+        },
+        {
+          "Data_Setting_Id": 281101,
+          "DATASETVALUE": "OUR_SECURITIES_STATE",
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 289662
+        },
+        {
+          "Data_Setting_Id": 281099,
+          "DATASETVALUE": "CUST_SECURITIES_STATE",
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 289662
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "SSI_CC_STATE_LABEL",
+      "OBJECT_ID": 47755,
+      "OBJECT_TYPE": "SSI_CS",
+      "QUICK_ACCESS": "swfname:=_stateDataLinkLabelControl",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 293,
+      "OBJECT_NAME_ID": 25340,
+      "TYPE_NAME": "SwfLabel",
+      "STEPS_ID": 289662,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 21,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 281098,
+          "DATASETVALUE": "CUST_CASH_STATE",
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 289662
+        },
+        {
+          "Data_Setting_Id": 281100,
+          "DATASETVALUE": "OUR_CASH_STATE",
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 289662
+        },
+        {
+          "Data_Setting_Id": 281101,
+          "DATASETVALUE": "OUR_SECURITIES_STATE",
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 289662
+        },
+        {
+          "Data_Setting_Id": 281099,
+          "DATASETVALUE": "CUST_SECURITIES_STATE",
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 289662
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "SSI_CC_STATE_LABEL",
+      "OBJECT_ID": 25341,
+      "OBJECT_TYPE": "SSI_CS",
+      "QUICK_ACCESS": "swfname:=_stateDataLinkLabelControl",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 1,
+      "OBJECT_NAME_ID": 25340,
+      "TYPE_NAME": "SwfLabel",
+      "STEPS_ID": 289662,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 21,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 281098,
+          "DATASETVALUE": "CUST_CASH_STATE",
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 289662
+        },
+        {
+          "Data_Setting_Id": 281100,
+          "DATASETVALUE": "OUR_CASH_STATE",
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 289662
+        },
+        {
+          "Data_Setting_Id": 281101,
+          "DATASETVALUE": "OUR_SECURITIES_STATE",
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 289662
+        },
+        {
+          "Data_Setting_Id": 281099,
+          "DATASETVALUE": "CUST_SECURITIES_STATE",
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 289662
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "SSI_CC_STATE_LABEL",
+      "OBJECT_ID": 40357,
+      "OBJECT_TYPE": "SSI_CS",
+      "QUICK_ACCESS": "swfname:=_stateDataLinkLabelControl",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 234,
+      "OBJECT_NAME_ID": 25340,
+      "TYPE_NAME": "SwfLabel",
+      "STEPS_ID": 289662,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 21,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 281229,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 290092
+        },
+        {
+          "Data_Setting_Id": 281231,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 4,
+          "STEPS_ID": 290092
+        },
+        {
+          "Data_Setting_Id": 281232,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 4,
+          "STEPS_ID": 290092
+        },
+        {
+          "Data_Setting_Id": 281230,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 4,
+          "STEPS_ID": 290092
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "SSI_CUST_CASH_PANEL",
+      "OBJECT_ID": 27573,
+      "OBJECT_TYPE": "SSI_CS",
+      "QUICK_ACCESS": "swfname:=CustCashSsiView",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 1,
+      "OBJECT_NAME_ID": 27572,
+      "TYPE_NAME": "SwfWindow",
+      "STEPS_ID": 290092,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 22,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 281229,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 290092
+        },
+        {
+          "Data_Setting_Id": 281231,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 4,
+          "STEPS_ID": 290092
+        },
+        {
+          "Data_Setting_Id": 281232,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 4,
+          "STEPS_ID": 290092
+        },
+        {
+          "Data_Setting_Id": 281230,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 4,
+          "STEPS_ID": 290092
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "SSI_CUST_CASH_PANEL",
+      "OBJECT_ID": 41255,
+      "OBJECT_TYPE": "SSI_CS",
+      "QUICK_ACCESS": "swfname:=CustCashSsiView",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 234,
+      "OBJECT_NAME_ID": 27572,
+      "TYPE_NAME": "SwfWindow",
+      "STEPS_ID": 290092,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 22,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 281229,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 290092
+        },
+        {
+          "Data_Setting_Id": 281231,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 4,
+          "STEPS_ID": 290092
+        },
+        {
+          "Data_Setting_Id": 281232,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 4,
+          "STEPS_ID": 290092
+        },
+        {
+          "Data_Setting_Id": 281230,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 4,
+          "STEPS_ID": 290092
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "SSI_CUST_CASH_PANEL",
+      "OBJECT_ID": 48653,
+      "OBJECT_TYPE": "SSI_CS",
+      "QUICK_ACCESS": "swfname:=CustCashSsiView",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 293,
+      "OBJECT_NAME_ID": 27572,
+      "TYPE_NAME": "SwfWindow",
+      "STEPS_ID": 290092,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 22,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 281237,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 4,
+          "STEPS_ID": 290094
+        },
+        {
+          "Data_Setting_Id": 281239,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 4,
+          "STEPS_ID": 290094
+        },
+        {
+          "Data_Setting_Id": 281240,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 4,
+          "STEPS_ID": 290094
+        },
+        {
+          "Data_Setting_Id": 281238,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 290094
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "SSI_CUST_SEC_PANEL",
+      "OBJECT_ID": 27575,
+      "OBJECT_TYPE": "SSI_CS",
+      "QUICK_ACCESS": "swfname:=CustSecuritiesSsiView",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 1,
+      "OBJECT_NAME_ID": 27574,
+      "TYPE_NAME": "SwfWindow",
+      "STEPS_ID": 290094,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 23,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 281237,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 4,
+          "STEPS_ID": 290094
+        },
+        {
+          "Data_Setting_Id": 281239,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 4,
+          "STEPS_ID": 290094
+        },
+        {
+          "Data_Setting_Id": 281240,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 4,
+          "STEPS_ID": 290094
+        },
+        {
+          "Data_Setting_Id": 281238,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 290094
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "SSI_CUST_SEC_PANEL",
+      "OBJECT_ID": 41256,
+      "OBJECT_TYPE": "SSI_CS",
+      "QUICK_ACCESS": "swfname:=CustSecuritiesSsiView",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 234,
+      "OBJECT_NAME_ID": 27574,
+      "TYPE_NAME": "SwfWindow",
+      "STEPS_ID": 290094,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 23,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 281237,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 4,
+          "STEPS_ID": 290094
+        },
+        {
+          "Data_Setting_Id": 281239,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 4,
+          "STEPS_ID": 290094
+        },
+        {
+          "Data_Setting_Id": 281240,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 4,
+          "STEPS_ID": 290094
+        },
+        {
+          "Data_Setting_Id": 281238,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 290094
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "SSI_CUST_SEC_PANEL",
+      "OBJECT_ID": 48654,
+      "OBJECT_TYPE": "SSI_CS",
+      "QUICK_ACCESS": "swfname:=CustSecuritiesSsiView",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 293,
+      "OBJECT_NAME_ID": 27574,
+      "TYPE_NAME": "SwfWindow",
+      "STEPS_ID": 290094,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 23,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 281233,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 4,
+          "STEPS_ID": 290093
+        },
+        {
+          "Data_Setting_Id": 281235,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 290093
+        },
+        {
+          "Data_Setting_Id": 281236,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 4,
+          "STEPS_ID": 290093
+        },
+        {
+          "Data_Setting_Id": 281234,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 4,
+          "STEPS_ID": 290093
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "SSI_OUR_CASH_PANEL",
+      "OBJECT_ID": 27577,
+      "OBJECT_TYPE": "SSI_CS",
+      "QUICK_ACCESS": "swfname:=OurCashSsiView",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 1,
+      "OBJECT_NAME_ID": 27576,
+      "TYPE_NAME": "SwfWindow",
+      "STEPS_ID": 290093,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 24,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 281233,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 4,
+          "STEPS_ID": 290093
+        },
+        {
+          "Data_Setting_Id": 281235,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 290093
+        },
+        {
+          "Data_Setting_Id": 281236,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 4,
+          "STEPS_ID": 290093
+        },
+        {
+          "Data_Setting_Id": 281234,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 4,
+          "STEPS_ID": 290093
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "SSI_OUR_CASH_PANEL",
+      "OBJECT_ID": 41257,
+      "OBJECT_TYPE": "SSI_CS",
+      "QUICK_ACCESS": "swfname:=OurCashSsiView",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 234,
+      "OBJECT_NAME_ID": 27576,
+      "TYPE_NAME": "SwfWindow",
+      "STEPS_ID": 290093,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 24,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 281233,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 4,
+          "STEPS_ID": 290093
+        },
+        {
+          "Data_Setting_Id": 281235,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 290093
+        },
+        {
+          "Data_Setting_Id": 281236,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 4,
+          "STEPS_ID": 290093
+        },
+        {
+          "Data_Setting_Id": 281234,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 4,
+          "STEPS_ID": 290093
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "SSI_OUR_CASH_PANEL",
+      "OBJECT_ID": 48655,
+      "OBJECT_TYPE": "SSI_CS",
+      "QUICK_ACCESS": "swfname:=OurCashSsiView",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 293,
+      "OBJECT_NAME_ID": 27576,
+      "TYPE_NAME": "SwfWindow",
+      "STEPS_ID": 290093,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 24,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278604,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 4,
+          "STEPS_ID": 283246
+        },
+        {
+          "Data_Setting_Id": 278638,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 4,
+          "STEPS_ID": 283246
+        },
+        {
+          "Data_Setting_Id": 278658,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283246
+        },
+        {
+          "Data_Setting_Id": 278621,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 4,
+          "STEPS_ID": 283246
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "SSI_OUR_SEC_PANEL",
+      "OBJECT_ID": 48314,
+      "OBJECT_TYPE": "SSI_CS",
+      "QUICK_ACCESS": "swfname:=OurSecuritiesSsiView",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 293,
+      "OBJECT_NAME_ID": 27578,
+      "TYPE_NAME": "SwfWindow",
+      "STEPS_ID": 283246,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 25,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278604,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 4,
+          "STEPS_ID": 283246
+        },
+        {
+          "Data_Setting_Id": 278638,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 4,
+          "STEPS_ID": 283246
+        },
+        {
+          "Data_Setting_Id": 278658,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283246
+        },
+        {
+          "Data_Setting_Id": 278621,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 4,
+          "STEPS_ID": 283246
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "SSI_OUR_SEC_PANEL",
+      "OBJECT_ID": 40916,
+      "OBJECT_TYPE": "SSI_CS",
+      "QUICK_ACCESS": "swfname:=OurSecuritiesSsiView",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 234,
+      "OBJECT_NAME_ID": 27578,
+      "TYPE_NAME": "SwfWindow",
+      "STEPS_ID": 283246,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 25,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278604,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 4,
+          "STEPS_ID": 283246
+        },
+        {
+          "Data_Setting_Id": 278638,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 4,
+          "STEPS_ID": 283246
+        },
+        {
+          "Data_Setting_Id": 278658,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283246
+        },
+        {
+          "Data_Setting_Id": 278621,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 4,
+          "STEPS_ID": 283246
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "SSI_OUR_SEC_PANEL",
+      "OBJECT_ID": 27579,
+      "OBJECT_TYPE": "SSI_CS",
+      "QUICK_ACCESS": "swfname:=OurSecuritiesSsiView",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 1,
+      "OBJECT_NAME_ID": 27578,
+      "TYPE_NAME": "SwfWindow",
+      "STEPS_ID": 283246,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 25,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278592,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283231
+        },
+        {
+          "Data_Setting_Id": 278626,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283231
+        },
+        {
+          "Data_Setting_Id": 278646,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283231
+        },
+        {
+          "Data_Setting_Id": 278609,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283231
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 38857,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "is owned window:=False\r\nis child window:=False\r\ntext:=((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\r\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 234,
+      "OBJECT_NAME_ID": 11892,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 283231,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 26,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278592,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283231
+        },
+        {
+          "Data_Setting_Id": 278626,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283231
+        },
+        {
+          "Data_Setting_Id": 278646,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283231
+        },
+        {
+          "Data_Setting_Id": 278609,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283231
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 46255,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "is owned window:=False\r\nis child window:=False\r\ntext:=((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\r\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 293,
+      "OBJECT_NAME_ID": 11892,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 283231,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 26,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278592,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283231
+        },
+        {
+          "Data_Setting_Id": 278626,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283231
+        },
+        {
+          "Data_Setting_Id": 278646,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283231
+        },
+        {
+          "Data_Setting_Id": 278609,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283231
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 3893,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Misys ){0,1}(FusionCapital ){0,1}Summit( FT){0,1})(?!(.*Login)).*\r\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 2,
+      "OBJECT_NAME_ID": 11892,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 283231,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 26,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278592,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283231
+        },
+        {
+          "Data_Setting_Id": 278626,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283231
+        },
+        {
+          "Data_Setting_Id": 278646,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283231
+        },
+        {
+          "Data_Setting_Id": 278609,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283231
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 61,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "is owned window:=False\r\nis child window:=False\r\ntext:=((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\r\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 1,
+      "OBJECT_NAME_ID": 11892,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 283231,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 26,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278592,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283231
+        },
+        {
+          "Data_Setting_Id": 278626,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283231
+        },
+        {
+          "Data_Setting_Id": 278646,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283231
+        },
+        {
+          "Data_Setting_Id": 278609,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283231
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 16827,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Misys ){0,1}(FusionCapital ){0,1}Summit( FT){0,1})(?!(.*Login)).*\r\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 173,
+      "OBJECT_NAME_ID": 11892,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 283231,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 26,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278592,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283231
+        },
+        {
+          "Data_Setting_Id": 278626,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283231
+        },
+        {
+          "Data_Setting_Id": 278646,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283231
+        },
+        {
+          "Data_Setting_Id": 278609,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283231
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 20724,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=(Misys ){0,1}Summit FT.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 133,
+      "OBJECT_NAME_ID": 11892,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 283231,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 26,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278592,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283231
+        },
+        {
+          "Data_Setting_Id": 278626,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283231
+        },
+        {
+          "Data_Setting_Id": 278646,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283231
+        },
+        {
+          "Data_Setting_Id": 278609,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283231
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32573,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Misys ){0,1}(FusionCapital ){0,1}Summit( FT){0,1})(?!(.*Login)).*\r\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 213,
+      "OBJECT_NAME_ID": 11892,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 283231,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 26,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278593,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283232
+        },
+        {
+          "Data_Setting_Id": 278627,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283232
+        },
+        {
+          "Data_Setting_Id": 278647,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283232
+        },
+        {
+          "Data_Setting_Id": 278610,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283232
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 38858,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 234,
+      "OBJECT_NAME_ID": 13105,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 283232,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 27,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278593,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283232
+        },
+        {
+          "Data_Setting_Id": 278627,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283232
+        },
+        {
+          "Data_Setting_Id": 278647,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283232
+        },
+        {
+          "Data_Setting_Id": 278610,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283232
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 46256,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 293,
+      "OBJECT_NAME_ID": 13105,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 283232,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 27,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278593,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283232
+        },
+        {
+          "Data_Setting_Id": 278627,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283232
+        },
+        {
+          "Data_Setting_Id": 278647,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283232
+        },
+        {
+          "Data_Setting_Id": 278610,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283232
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 10575,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\r\nswftypename:=Summit.Framework.DesktopContent.ImageButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 2,
+      "OBJECT_NAME_ID": 13105,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 283232,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 27,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278593,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283232
+        },
+        {
+          "Data_Setting_Id": 278627,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283232
+        },
+        {
+          "Data_Setting_Id": 278647,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283232
+        },
+        {
+          "Data_Setting_Id": 278610,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283232
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 9052,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 1,
+      "OBJECT_NAME_ID": 13105,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 283232,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 27,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278593,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283232
+        },
+        {
+          "Data_Setting_Id": 278627,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283232
+        },
+        {
+          "Data_Setting_Id": 278647,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283232
+        },
+        {
+          "Data_Setting_Id": 278610,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283232
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 16828,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 173,
+      "OBJECT_NAME_ID": 13105,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 283232,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 27,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278593,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283232
+        },
+        {
+          "Data_Setting_Id": 278627,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283232
+        },
+        {
+          "Data_Setting_Id": 278647,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283232
+        },
+        {
+          "Data_Setting_Id": 278610,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283232
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 32574,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\r\nswftypename:=Summit.Framework.DesktopContent.ImageButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 213,
+      "OBJECT_NAME_ID": 13105,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 283232,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 27,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 278601,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283224,
+          "SKIP": 0,
+          "STEPS_ID": 283242
+        },
+        {
+          "Data_Setting_Id": 278635,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283270,
+          "SKIP": 0,
+          "STEPS_ID": 283242
+        },
+        {
+          "Data_Setting_Id": 278655,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283285,
+          "SKIP": 0,
+          "STEPS_ID": 283242
+        },
+        {
+          "Data_Setting_Id": 278618,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 283264,
+          "SKIP": 0,
+          "STEPS_ID": 283242
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2869,
+      "TEST_CASE_NAME": "Update SSI Def",
+      "KEY_WORD_ID": 38,
+      "KEY_WORD_NAME": "Dismiss",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 283242,
+      "COLUMN_ROW_SETTING": "5",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 28,
+      "VALUE_SETTING": null
+    }
+  ]
+}

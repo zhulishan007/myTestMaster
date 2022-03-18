@@ -1,0 +1,1750 @@
+{
+  "currentSyncroStatus": 0,
+  "assignedApplications": [
+    193,
+    194,
+    -1
+  ],
+  "assignedTestSuiteIDs": [
+    1644
+  ],
+  "version": null,
+  "assignedDataSets": [
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 600052,
+      "ALIAS_NAME": "RSK_3a",
+      "DESCRIPTION_INFO": "Verify counterparty credit limit setup"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 600015,
+      "ALIAS_NAME": "RSK_1a",
+      "DESCRIPTION_INFO": null
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 600050,
+      "ALIAS_NAME": "RSK_2a",
+      "DESCRIPTION_INFO": "Verify counterparty credit limit setup"
+    }
+  ],
+  "allSteps": [
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 390533,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 600015,
+          "SKIP": 0,
+          "STEPS_ID": 600017
+        },
+        {
+          "Data_Setting_Id": 390545,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 600050,
+          "SKIP": 0,
+          "STEPS_ID": 600017
+        },
+        {
+          "Data_Setting_Id": 390557,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 600052,
+          "SKIP": 0,
+          "STEPS_ID": 600017
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3560,
+      "TEST_CASE_NAME": "New Credit Limit Customer Definition",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 600017,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 390533,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 600015,
+          "SKIP": 0,
+          "STEPS_ID": 600017
+        },
+        {
+          "Data_Setting_Id": 390545,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 600050,
+          "SKIP": 0,
+          "STEPS_ID": 600017
+        },
+        {
+          "Data_Setting_Id": 390557,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 600052,
+          "SKIP": 0,
+          "STEPS_ID": 600017
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3560,
+      "TEST_CASE_NAME": "New Credit Limit Customer Definition",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 600017,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 390528,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 600015,
+          "SKIP": 0,
+          "STEPS_ID": 600022
+        },
+        {
+          "Data_Setting_Id": 390540,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 600050,
+          "SKIP": 0,
+          "STEPS_ID": 600022
+        },
+        {
+          "Data_Setting_Id": 390552,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 600052,
+          "SKIP": 0,
+          "STEPS_ID": 600022
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3560,
+      "TEST_CASE_NAME": "New Credit Limit Customer Definition",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 600022,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 2,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 390528,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 600015,
+          "SKIP": 0,
+          "STEPS_ID": 600022
+        },
+        {
+          "Data_Setting_Id": 390540,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 600050,
+          "SKIP": 0,
+          "STEPS_ID": 600022
+        },
+        {
+          "Data_Setting_Id": 390552,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 600052,
+          "SKIP": 0,
+          "STEPS_ID": 600022
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3560,
+      "TEST_CASE_NAME": "New Credit Limit Customer Definition",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 600022,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 2,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 390526,
+          "DATASETVALUE": "Credit Limit Customer Definition",
+          "DATA_SUMMARY_ID": 600015,
+          "SKIP": 0,
+          "STEPS_ID": 600020
+        },
+        {
+          "Data_Setting_Id": 390538,
+          "DATASETVALUE": "Credit Limit Customer Definition",
+          "DATA_SUMMARY_ID": 600050,
+          "SKIP": 0,
+          "STEPS_ID": 600020
+        },
+        {
+          "Data_Setting_Id": 390550,
+          "DATASETVALUE": "Credit Limit Customer Definition",
+          "DATA_SUMMARY_ID": 600052,
+          "SKIP": 0,
+          "STEPS_ID": 600020
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3560,
+      "TEST_CASE_NAME": "New Credit Limit Customer Definition",
+      "KEY_WORD_ID": 12,
+      "KEY_WORD_NAME": "LaunchApplication",
+      "OBJECT_HAPPY_NAME": "ApplicationName",
+      "OBJECT_ID": 35170,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockAreaTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 29559,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 600020,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 3,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 390526,
+          "DATASETVALUE": "Credit Limit Customer Definition",
+          "DATA_SUMMARY_ID": 600015,
+          "SKIP": 0,
+          "STEPS_ID": 600020
+        },
+        {
+          "Data_Setting_Id": 390538,
+          "DATASETVALUE": "Credit Limit Customer Definition",
+          "DATA_SUMMARY_ID": 600050,
+          "SKIP": 0,
+          "STEPS_ID": 600020
+        },
+        {
+          "Data_Setting_Id": 390550,
+          "DATASETVALUE": "Credit Limit Customer Definition",
+          "DATA_SUMMARY_ID": 600052,
+          "SKIP": 0,
+          "STEPS_ID": 600020
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3560,
+      "TEST_CASE_NAME": "New Credit Limit Customer Definition",
+      "KEY_WORD_ID": 12,
+      "KEY_WORD_NAME": "LaunchApplication",
+      "OBJECT_HAPPY_NAME": "ApplicationName",
+      "OBJECT_ID": 44673,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockAreaTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 29559,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 600020,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 3,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 390527,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 600015,
+          "SKIP": 0,
+          "STEPS_ID": 600021
+        },
+        {
+          "Data_Setting_Id": 390539,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 600050,
+          "SKIP": 0,
+          "STEPS_ID": 600021
+        },
+        {
+          "Data_Setting_Id": 390551,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 600052,
+          "SKIP": 0,
+          "STEPS_ID": 600021
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3560,
+      "TEST_CASE_NAME": "New Credit Limit Customer Definition",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "CREDIT_LIM_CUST_DEF",
+      "OBJECT_ID": 50022,
+      "OBJECT_TYPE": "CREDIT_LIM_CUST_DEF",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 49993,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 600021,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 4,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 390527,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 600015,
+          "SKIP": 0,
+          "STEPS_ID": 600021
+        },
+        {
+          "Data_Setting_Id": 390539,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 600050,
+          "SKIP": 0,
+          "STEPS_ID": 600021
+        },
+        {
+          "Data_Setting_Id": 390551,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 600052,
+          "SKIP": 0,
+          "STEPS_ID": 600021
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3560,
+      "TEST_CASE_NAME": "New Credit Limit Customer Definition",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "CREDIT_LIM_CUST_DEF",
+      "OBJECT_ID": 50036,
+      "OBJECT_TYPE": "CREDIT_LIM_CUST_DEF",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 49993,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 600021,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 4,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 423785,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 600015,
+          "SKIP": 0,
+          "STEPS_ID": 600019
+        },
+        {
+          "Data_Setting_Id": 423786,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 600050,
+          "SKIP": 0,
+          "STEPS_ID": 600019
+        },
+        {
+          "Data_Setting_Id": 423787,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 600052,
+          "SKIP": 0,
+          "STEPS_ID": 600019
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3560,
+      "TEST_CASE_NAME": "New Credit Limit Customer Definition",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "CREDIT_LIM_CUST_DEF_COMPANY",
+      "OBJECT_ID": 50028,
+      "OBJECT_TYPE": "CREDIT_LIM_CUST_DEF",
+      "QUICK_ACCESS": "SwfName:=_company",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 50001,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 600019,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 5,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 423785,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 600015,
+          "SKIP": 0,
+          "STEPS_ID": 600019
+        },
+        {
+          "Data_Setting_Id": 423786,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 600050,
+          "SKIP": 0,
+          "STEPS_ID": 600019
+        },
+        {
+          "Data_Setting_Id": 423787,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 600052,
+          "SKIP": 0,
+          "STEPS_ID": 600019
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3560,
+      "TEST_CASE_NAME": "New Credit Limit Customer Definition",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "CREDIT_LIM_CUST_DEF_COMPANY",
+      "OBJECT_ID": 50042,
+      "OBJECT_TYPE": "CREDIT_LIM_CUST_DEF",
+      "QUICK_ACCESS": "SwfName:=_company",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 50001,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 600019,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 5,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 390536,
+          "DATASETVALUE": "GLOBAL_VAR:CUST_ID_RSK_01",
+          "DATA_SUMMARY_ID": 600015,
+          "SKIP": 0,
+          "STEPS_ID": 600018
+        },
+        {
+          "Data_Setting_Id": 390548,
+          "DATASETVALUE": "GLOBAL_VAR:CUST_ID_RSK_02",
+          "DATA_SUMMARY_ID": 600050,
+          "SKIP": 0,
+          "STEPS_ID": 600018
+        },
+        {
+          "Data_Setting_Id": 390560,
+          "DATASETVALUE": "GLOBAL_VAR:CUST_ID_RSK_03",
+          "DATA_SUMMARY_ID": 600052,
+          "SKIP": 0,
+          "STEPS_ID": 600018
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3560,
+      "TEST_CASE_NAME": "New Credit Limit Customer Definition",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "CREDIT_LIM_CUST_DEF_ID",
+      "OBJECT_ID": 50021,
+      "OBJECT_TYPE": "CREDIT_LIM_CUST_DEF",
+      "QUICK_ACCESS": "SwfName:=_id",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 50000,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 600018,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 6,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 390536,
+          "DATASETVALUE": "GLOBAL_VAR:CUST_ID_RSK_01",
+          "DATA_SUMMARY_ID": 600015,
+          "SKIP": 0,
+          "STEPS_ID": 600018
+        },
+        {
+          "Data_Setting_Id": 390548,
+          "DATASETVALUE": "GLOBAL_VAR:CUST_ID_RSK_02",
+          "DATA_SUMMARY_ID": 600050,
+          "SKIP": 0,
+          "STEPS_ID": 600018
+        },
+        {
+          "Data_Setting_Id": 390560,
+          "DATASETVALUE": "GLOBAL_VAR:CUST_ID_RSK_03",
+          "DATA_SUMMARY_ID": 600052,
+          "SKIP": 0,
+          "STEPS_ID": 600018
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3560,
+      "TEST_CASE_NAME": "New Credit Limit Customer Definition",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "CREDIT_LIM_CUST_DEF_ID",
+      "OBJECT_ID": 50035,
+      "OBJECT_TYPE": "CREDIT_LIM_CUST_DEF",
+      "QUICK_ACCESS": "SwfName:=_id",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 50000,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 600018,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 6,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 390529,
+          "DATASETVALUE": "USD",
+          "DATA_SUMMARY_ID": 600015,
+          "SKIP": 4,
+          "STEPS_ID": 600023
+        },
+        {
+          "Data_Setting_Id": 390541,
+          "DATASETVALUE": "USD",
+          "DATA_SUMMARY_ID": 600050,
+          "SKIP": 4,
+          "STEPS_ID": 600023
+        },
+        {
+          "Data_Setting_Id": 390553,
+          "DATASETVALUE": "USD",
+          "DATA_SUMMARY_ID": 600052,
+          "SKIP": 4,
+          "STEPS_ID": 600023
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3560,
+      "TEST_CASE_NAME": "New Credit Limit Customer Definition",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "CREDIT_LIM_CUST_DEF_LIMIT_CCY",
+      "OBJECT_ID": 50015,
+      "OBJECT_TYPE": "CREDIT_LIM_CUST_DEF",
+      "QUICK_ACCESS": "SwfName:=_limitCcy",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 49994,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 600023,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 7,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 390529,
+          "DATASETVALUE": "USD",
+          "DATA_SUMMARY_ID": 600015,
+          "SKIP": 4,
+          "STEPS_ID": 600023
+        },
+        {
+          "Data_Setting_Id": 390541,
+          "DATASETVALUE": "USD",
+          "DATA_SUMMARY_ID": 600050,
+          "SKIP": 4,
+          "STEPS_ID": 600023
+        },
+        {
+          "Data_Setting_Id": 390553,
+          "DATASETVALUE": "USD",
+          "DATA_SUMMARY_ID": 600052,
+          "SKIP": 4,
+          "STEPS_ID": 600023
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3560,
+      "TEST_CASE_NAME": "New Credit Limit Customer Definition",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "CREDIT_LIM_CUST_DEF_LIMIT_CCY",
+      "OBJECT_ID": 50043,
+      "OBJECT_TYPE": "CREDIT_LIM_CUST_DEF",
+      "QUICK_ACCESS": "SwfName:=_limitCcy",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 49994,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 600023,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 7,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 390531,
+          "DATASETVALUE": "N",
+          "DATA_SUMMARY_ID": 600015,
+          "SKIP": 4,
+          "STEPS_ID": 600025
+        },
+        {
+          "Data_Setting_Id": 390543,
+          "DATASETVALUE": "N",
+          "DATA_SUMMARY_ID": 600050,
+          "SKIP": 4,
+          "STEPS_ID": 600025
+        },
+        {
+          "Data_Setting_Id": 390555,
+          "DATASETVALUE": "N",
+          "DATA_SUMMARY_ID": 600052,
+          "SKIP": 4,
+          "STEPS_ID": 600025
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3560,
+      "TEST_CASE_NAME": "New Credit Limit Customer Definition",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "CREDIT_LIM_CUST_DEF_MULTI_BRANCH",
+      "OBJECT_ID": 50017,
+      "OBJECT_TYPE": "CREDIT_LIM_CUST_DEF",
+      "QUICK_ACCESS": "SwfName:=_multiBranch",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 50003,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 600025,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 8,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 390531,
+          "DATASETVALUE": "N",
+          "DATA_SUMMARY_ID": 600015,
+          "SKIP": 4,
+          "STEPS_ID": 600025
+        },
+        {
+          "Data_Setting_Id": 390543,
+          "DATASETVALUE": "N",
+          "DATA_SUMMARY_ID": 600050,
+          "SKIP": 4,
+          "STEPS_ID": 600025
+        },
+        {
+          "Data_Setting_Id": 390555,
+          "DATASETVALUE": "N",
+          "DATA_SUMMARY_ID": 600052,
+          "SKIP": 4,
+          "STEPS_ID": 600025
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3560,
+      "TEST_CASE_NAME": "New Credit Limit Customer Definition",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "CREDIT_LIM_CUST_DEF_MULTI_BRANCH",
+      "OBJECT_ID": 50045,
+      "OBJECT_TYPE": "CREDIT_LIM_CUST_DEF",
+      "QUICK_ACCESS": "SwfName:=_multiBranch",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 50003,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 600025,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 8,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 390530,
+          "DATASETVALUE": "USD",
+          "DATA_SUMMARY_ID": 600015,
+          "SKIP": 4,
+          "STEPS_ID": 600024
+        },
+        {
+          "Data_Setting_Id": 390542,
+          "DATASETVALUE": "USD",
+          "DATA_SUMMARY_ID": 600050,
+          "SKIP": 4,
+          "STEPS_ID": 600024
+        },
+        {
+          "Data_Setting_Id": 390554,
+          "DATASETVALUE": "USD",
+          "DATA_SUMMARY_ID": 600052,
+          "SKIP": 4,
+          "STEPS_ID": 600024
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3560,
+      "TEST_CASE_NAME": "New Credit Limit Customer Definition",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "CREDIT_LIM_CUST_DEF_COLLATERAL_CCY",
+      "OBJECT_ID": 50016,
+      "OBJECT_TYPE": "CREDIT_LIM_CUST_DEF",
+      "QUICK_ACCESS": "SwfName:=_collateralCcy",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 49996,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 600024,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 9,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 390530,
+          "DATASETVALUE": "USD",
+          "DATA_SUMMARY_ID": 600015,
+          "SKIP": 4,
+          "STEPS_ID": 600024
+        },
+        {
+          "Data_Setting_Id": 390542,
+          "DATASETVALUE": "USD",
+          "DATA_SUMMARY_ID": 600050,
+          "SKIP": 4,
+          "STEPS_ID": 600024
+        },
+        {
+          "Data_Setting_Id": 390554,
+          "DATASETVALUE": "USD",
+          "DATA_SUMMARY_ID": 600052,
+          "SKIP": 4,
+          "STEPS_ID": 600024
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3560,
+      "TEST_CASE_NAME": "New Credit Limit Customer Definition",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "CREDIT_LIM_CUST_DEF_COLLATERAL_CCY",
+      "OBJECT_ID": 50044,
+      "OBJECT_TYPE": "CREDIT_LIM_CUST_DEF",
+      "QUICK_ACCESS": "SwfName:=_collateralCcy",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 49996,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 600024,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 9,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 390532,
+          "DATASETVALUE": "200",
+          "DATA_SUMMARY_ID": 600015,
+          "SKIP": 0,
+          "STEPS_ID": 600026
+        },
+        {
+          "Data_Setting_Id": 390544,
+          "DATASETVALUE": "375",
+          "DATA_SUMMARY_ID": 600050,
+          "SKIP": 0,
+          "STEPS_ID": 600026
+        },
+        {
+          "Data_Setting_Id": 390556,
+          "DATASETVALUE": "401",
+          "DATA_SUMMARY_ID": 600052,
+          "SKIP": 0,
+          "STEPS_ID": 600026
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3560,
+      "TEST_CASE_NAME": "New Credit Limit Customer Definition",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "CREDIT_LIM_CUST_DEF_NET_LIMIT",
+      "OBJECT_ID": 50024,
+      "OBJECT_TYPE": "CREDIT_LIM_CUST_DEF",
+      "QUICK_ACCESS": "SwfName:=_netLimit",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 50008,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 600026,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 10,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 390532,
+          "DATASETVALUE": "200",
+          "DATA_SUMMARY_ID": 600015,
+          "SKIP": 0,
+          "STEPS_ID": 600026
+        },
+        {
+          "Data_Setting_Id": 390544,
+          "DATASETVALUE": "375",
+          "DATA_SUMMARY_ID": 600050,
+          "SKIP": 0,
+          "STEPS_ID": 600026
+        },
+        {
+          "Data_Setting_Id": 390556,
+          "DATASETVALUE": "401",
+          "DATA_SUMMARY_ID": 600052,
+          "SKIP": 0,
+          "STEPS_ID": 600026
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3560,
+      "TEST_CASE_NAME": "New Credit Limit Customer Definition",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "CREDIT_LIM_CUST_DEF_NET_LIMIT",
+      "OBJECT_ID": 50038,
+      "OBJECT_TYPE": "CREDIT_LIM_CUST_DEF",
+      "QUICK_ACCESS": "SwfName:=_netLimit",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 50008,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 600026,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 10,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 390562,
+          "DATASETVALUE": "0",
+          "DATA_SUMMARY_ID": 600015,
+          "SKIP": 4,
+          "STEPS_ID": 600036
+        },
+        {
+          "Data_Setting_Id": 390563,
+          "DATASETVALUE": "0",
+          "DATA_SUMMARY_ID": 600050,
+          "SKIP": 4,
+          "STEPS_ID": 600036
+        },
+        {
+          "Data_Setting_Id": 390564,
+          "DATASETVALUE": "0",
+          "DATA_SUMMARY_ID": 600052,
+          "SKIP": 4,
+          "STEPS_ID": 600036
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3560,
+      "TEST_CASE_NAME": "New Credit Limit Customer Definition",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "CREDIT_LIM_CUST_DEF_COLLATERAL_VALUE",
+      "OBJECT_ID": 50020,
+      "OBJECT_TYPE": "CREDIT_LIM_CUST_DEF",
+      "QUICK_ACCESS": "SwfName:=_collateralValue",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 49999,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 600036,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 11,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 390562,
+          "DATASETVALUE": "0",
+          "DATA_SUMMARY_ID": 600015,
+          "SKIP": 4,
+          "STEPS_ID": 600036
+        },
+        {
+          "Data_Setting_Id": 390563,
+          "DATASETVALUE": "0",
+          "DATA_SUMMARY_ID": 600050,
+          "SKIP": 4,
+          "STEPS_ID": 600036
+        },
+        {
+          "Data_Setting_Id": 390564,
+          "DATASETVALUE": "0",
+          "DATA_SUMMARY_ID": 600052,
+          "SKIP": 4,
+          "STEPS_ID": 600036
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3560,
+      "TEST_CASE_NAME": "New Credit Limit Customer Definition",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "CREDIT_LIM_CUST_DEF_COLLATERAL_VALUE",
+      "OBJECT_ID": 50034,
+      "OBJECT_TYPE": "CREDIT_LIM_CUST_DEF",
+      "QUICK_ACCESS": "SwfName:=_collateralValue",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 49999,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 600036,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 11,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 390568,
+          "DATASETVALUE": "0",
+          "DATA_SUMMARY_ID": 600015,
+          "SKIP": 4,
+          "STEPS_ID": 600038
+        },
+        {
+          "Data_Setting_Id": 390569,
+          "DATASETVALUE": "0",
+          "DATA_SUMMARY_ID": 600050,
+          "SKIP": 4,
+          "STEPS_ID": 600038
+        },
+        {
+          "Data_Setting_Id": 390570,
+          "DATASETVALUE": "0",
+          "DATA_SUMMARY_ID": 600052,
+          "SKIP": 4,
+          "STEPS_ID": 600038
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3560,
+      "TEST_CASE_NAME": "New Credit Limit Customer Definition",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "CREDIT_LIM_CUST_DEF_COLLATERAL_PERCENT",
+      "OBJECT_ID": 50019,
+      "OBJECT_TYPE": "CREDIT_LIM_CUST_DEF",
+      "QUICK_ACCESS": "SwfName:=_collateralPercent",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 49995,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 600038,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 12,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 390568,
+          "DATASETVALUE": "0",
+          "DATA_SUMMARY_ID": 600015,
+          "SKIP": 4,
+          "STEPS_ID": 600038
+        },
+        {
+          "Data_Setting_Id": 390569,
+          "DATASETVALUE": "0",
+          "DATA_SUMMARY_ID": 600050,
+          "SKIP": 4,
+          "STEPS_ID": 600038
+        },
+        {
+          "Data_Setting_Id": 390570,
+          "DATASETVALUE": "0",
+          "DATA_SUMMARY_ID": 600052,
+          "SKIP": 4,
+          "STEPS_ID": 600038
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3560,
+      "TEST_CASE_NAME": "New Credit Limit Customer Definition",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "CREDIT_LIM_CUST_DEF_COLLATERAL_PERCENT",
+      "OBJECT_ID": 50033,
+      "OBJECT_TYPE": "CREDIT_LIM_CUST_DEF",
+      "QUICK_ACCESS": "SwfName:=_collateralPercent",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 49995,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 600038,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 12,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 390565,
+          "DATASETVALUE": "0",
+          "DATA_SUMMARY_ID": 600015,
+          "SKIP": 4,
+          "STEPS_ID": 600037
+        },
+        {
+          "Data_Setting_Id": 390566,
+          "DATASETVALUE": "0",
+          "DATA_SUMMARY_ID": 600050,
+          "SKIP": 4,
+          "STEPS_ID": 600037
+        },
+        {
+          "Data_Setting_Id": 390567,
+          "DATASETVALUE": "0",
+          "DATA_SUMMARY_ID": 600052,
+          "SKIP": 4,
+          "STEPS_ID": 600037
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3560,
+      "TEST_CASE_NAME": "New Credit Limit Customer Definition",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "CREDIT_LIM_CUST_DEF_GROSS_LIMIT",
+      "OBJECT_ID": 50012,
+      "OBJECT_TYPE": "CREDIT_LIM_CUST_DEF",
+      "QUICK_ACCESS": "SwfName:=_grossLimit",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 50007,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 600037,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 13,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 390565,
+          "DATASETVALUE": "0",
+          "DATA_SUMMARY_ID": 600015,
+          "SKIP": 4,
+          "STEPS_ID": 600037
+        },
+        {
+          "Data_Setting_Id": 390566,
+          "DATASETVALUE": "0",
+          "DATA_SUMMARY_ID": 600050,
+          "SKIP": 4,
+          "STEPS_ID": 600037
+        },
+        {
+          "Data_Setting_Id": 390567,
+          "DATASETVALUE": "0",
+          "DATA_SUMMARY_ID": 600052,
+          "SKIP": 4,
+          "STEPS_ID": 600037
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3560,
+      "TEST_CASE_NAME": "New Credit Limit Customer Definition",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "CREDIT_LIM_CUST_DEF_GROSS_LIMIT",
+      "OBJECT_ID": 50030,
+      "OBJECT_TYPE": "CREDIT_LIM_CUST_DEF",
+      "QUICK_ACCESS": "SwfName:=_grossLimit",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 50007,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 600037,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 13,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 390537,
+          "DATASETVALUE": "Desktop Menu;Credit Limit Customer Definition;Validate",
+          "DATA_SUMMARY_ID": 600015,
+          "SKIP": 0,
+          "STEPS_ID": 600035
+        },
+        {
+          "Data_Setting_Id": 390549,
+          "DATASETVALUE": "Desktop Menu;Credit Limit Customer Definition;Validate",
+          "DATA_SUMMARY_ID": 600050,
+          "SKIP": 0,
+          "STEPS_ID": 600035
+        },
+        {
+          "Data_Setting_Id": 390561,
+          "DATASETVALUE": "Desktop Menu;Credit Limit Customer Definition;Validate",
+          "DATA_SUMMARY_ID": 600052,
+          "SKIP": 0,
+          "STEPS_ID": 600035
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3560,
+      "TEST_CASE_NAME": "New Credit Limit Customer Definition",
+      "KEY_WORD_ID": 22,
+      "KEY_WORD_NAME": "SelectMenuItem",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 600035,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 14,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 390535,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 600015,
+          "SKIP": 0,
+          "STEPS_ID": 600040
+        },
+        {
+          "Data_Setting_Id": 390547,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 600050,
+          "SKIP": 0,
+          "STEPS_ID": 600040
+        },
+        {
+          "Data_Setting_Id": 390559,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 600052,
+          "SKIP": 0,
+          "STEPS_ID": 600040
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3560,
+      "TEST_CASE_NAME": "New Credit Limit Customer Definition",
+      "KEY_WORD_ID": 3,
+      "KEY_WORD_NAME": "CheckError",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 600040,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 15,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 390534,
+          "DATASETVALUE": "Desktop Menu;Action;SAVE new static",
+          "DATA_SUMMARY_ID": 600015,
+          "SKIP": 0,
+          "STEPS_ID": 600039
+        },
+        {
+          "Data_Setting_Id": 390546,
+          "DATASETVALUE": "Desktop Menu;Action;SAVE new static",
+          "DATA_SUMMARY_ID": 600050,
+          "SKIP": 0,
+          "STEPS_ID": 600039
+        },
+        {
+          "Data_Setting_Id": 390558,
+          "DATASETVALUE": "Desktop Menu;Action;SAVE new static",
+          "DATA_SUMMARY_ID": 600052,
+          "SKIP": 0,
+          "STEPS_ID": 600039
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3560,
+      "TEST_CASE_NAME": "New Credit Limit Customer Definition",
+      "KEY_WORD_ID": 22,
+      "KEY_WORD_NAME": "SelectMenuItem",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 600039,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 16,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 423791,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 600015,
+          "SKIP": 0,
+          "STEPS_ID": 600046
+        },
+        {
+          "Data_Setting_Id": 423792,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 600050,
+          "SKIP": 0,
+          "STEPS_ID": 600046
+        },
+        {
+          "Data_Setting_Id": 423793,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 600052,
+          "SKIP": 0,
+          "STEPS_ID": 600046
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3560,
+      "TEST_CASE_NAME": "New Credit Limit Customer Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "CREDIT_LIM_CUST_DEF_STATE",
+      "OBJECT_ID": 50023,
+      "OBJECT_TYPE": "CREDIT_LIM_CUST_DEF",
+      "QUICK_ACCESS": "SwfName:=_empStateHolder",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 50005,
+      "TYPE_NAME": "SwfLabel",
+      "STEPS_ID": 600046,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 17,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 423791,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 600015,
+          "SKIP": 0,
+          "STEPS_ID": 600046
+        },
+        {
+          "Data_Setting_Id": 423792,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 600050,
+          "SKIP": 0,
+          "STEPS_ID": 600046
+        },
+        {
+          "Data_Setting_Id": 423793,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 600052,
+          "SKIP": 0,
+          "STEPS_ID": 600046
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3560,
+      "TEST_CASE_NAME": "New Credit Limit Customer Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "CREDIT_LIM_CUST_DEF_STATE",
+      "OBJECT_ID": 50037,
+      "OBJECT_TYPE": "CREDIT_LIM_CUST_DEF",
+      "QUICK_ACCESS": "SwfName:=_empStateHolder",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 50005,
+      "TYPE_NAME": "SwfLabel",
+      "STEPS_ID": 600046,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 17,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 423794,
+          "DATASETVALUE": "CREDIT_LIM_DEF",
+          "DATA_SUMMARY_ID": 600015,
+          "SKIP": 0,
+          "STEPS_ID": 600047
+        },
+        {
+          "Data_Setting_Id": 423795,
+          "DATASETVALUE": "CREDIT_LIM_DEF",
+          "DATA_SUMMARY_ID": 600050,
+          "SKIP": 0,
+          "STEPS_ID": 600047
+        },
+        {
+          "Data_Setting_Id": 423796,
+          "DATASETVALUE": "CREDIT_LIM_DEF",
+          "DATA_SUMMARY_ID": 600052,
+          "SKIP": 0,
+          "STEPS_ID": 600047
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3560,
+      "TEST_CASE_NAME": "New Credit Limit Customer Definition",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "CREDIT_LIM_CUST_DEF_PANEL",
+      "OBJECT_ID": 50018,
+      "OBJECT_TYPE": "CREDIT_LIM_CUST_DEF",
+      "QUICK_ACCESS": "SwfName:=CreditCustomerView",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 49998,
+      "TYPE_NAME": "SwfWindow",
+      "STEPS_ID": 600047,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 18,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 423794,
+          "DATASETVALUE": "CREDIT_LIM_DEF",
+          "DATA_SUMMARY_ID": 600015,
+          "SKIP": 0,
+          "STEPS_ID": 600047
+        },
+        {
+          "Data_Setting_Id": 423795,
+          "DATASETVALUE": "CREDIT_LIM_DEF",
+          "DATA_SUMMARY_ID": 600050,
+          "SKIP": 0,
+          "STEPS_ID": 600047
+        },
+        {
+          "Data_Setting_Id": 423796,
+          "DATASETVALUE": "CREDIT_LIM_DEF",
+          "DATA_SUMMARY_ID": 600052,
+          "SKIP": 0,
+          "STEPS_ID": 600047
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3560,
+      "TEST_CASE_NAME": "New Credit Limit Customer Definition",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "CREDIT_LIM_CUST_DEF_PANEL",
+      "OBJECT_ID": 50046,
+      "OBJECT_TYPE": "CREDIT_LIM_CUST_DEF",
+      "QUICK_ACCESS": "SwfName:=CreditCustomerView",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 49998,
+      "TYPE_NAME": "SwfWindow",
+      "STEPS_ID": 600047,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 18,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 423782,
+          "DATASETVALUE": "TEXT|\"Credit Limit Customer Def\"|IMAGE:CREDIT_LIM_DEF",
+          "DATA_SUMMARY_ID": 600015,
+          "SKIP": 0,
+          "STEPS_ID": 644908
+        },
+        {
+          "Data_Setting_Id": 423783,
+          "DATASETVALUE": "TEXT|\"Credit Limit Customer Def\"|IMAGE:CREDIT_LIM_DEF",
+          "DATA_SUMMARY_ID": 600050,
+          "SKIP": 0,
+          "STEPS_ID": 644908
+        },
+        {
+          "Data_Setting_Id": 423784,
+          "DATASETVALUE": "TEXT|\"Credit Limit Customer Def\"|IMAGE:CREDIT_LIM_DEF",
+          "DATA_SUMMARY_ID": 600052,
+          "SKIP": 0,
+          "STEPS_ID": 644908
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3560,
+      "TEST_CASE_NAME": "New Credit Limit Customer Definition",
+      "KEY_WORD_ID": 10819,
+      "KEY_WORD_NAME": "Comment",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 644908,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 19,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 423797,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 600015,
+          "SKIP": 0,
+          "STEPS_ID": 600048
+        },
+        {
+          "Data_Setting_Id": 423798,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 600050,
+          "SKIP": 0,
+          "STEPS_ID": 600048
+        },
+        {
+          "Data_Setting_Id": 423799,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 600052,
+          "SKIP": 0,
+          "STEPS_ID": 600048
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3560,
+      "TEST_CASE_NAME": "New Credit Limit Customer Definition",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 600048,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 20,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 423797,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 600015,
+          "SKIP": 0,
+          "STEPS_ID": 600048
+        },
+        {
+          "Data_Setting_Id": 423798,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 600050,
+          "SKIP": 0,
+          "STEPS_ID": 600048
+        },
+        {
+          "Data_Setting_Id": 423799,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 600052,
+          "SKIP": 0,
+          "STEPS_ID": 600048
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3560,
+      "TEST_CASE_NAME": "New Credit Limit Customer Definition",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 600048,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 20,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 423788,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 600015,
+          "SKIP": 0,
+          "STEPS_ID": 600045
+        },
+        {
+          "Data_Setting_Id": 423789,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 600050,
+          "SKIP": 0,
+          "STEPS_ID": 600045
+        },
+        {
+          "Data_Setting_Id": 423790,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 600052,
+          "SKIP": 0,
+          "STEPS_ID": 600045
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3560,
+      "TEST_CASE_NAME": "New Credit Limit Customer Definition",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 32409,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 30430,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 600045,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 21,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 423788,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 600015,
+          "SKIP": 0,
+          "STEPS_ID": 600045
+        },
+        {
+          "Data_Setting_Id": 423789,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 600050,
+          "SKIP": 0,
+          "STEPS_ID": 600045
+        },
+        {
+          "Data_Setting_Id": 423790,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 600052,
+          "SKIP": 0,
+          "STEPS_ID": 600045
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3560,
+      "TEST_CASE_NAME": "New Credit Limit Customer Definition",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 40727,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 30430,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 600045,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 21,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 423800,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 600015,
+          "SKIP": 0,
+          "STEPS_ID": 600049
+        },
+        {
+          "Data_Setting_Id": 423801,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 600050,
+          "SKIP": 0,
+          "STEPS_ID": 600049
+        },
+        {
+          "Data_Setting_Id": 423802,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 600052,
+          "SKIP": 0,
+          "STEPS_ID": 600049
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3560,
+      "TEST_CASE_NAME": "New Credit Limit Customer Definition",
+      "KEY_WORD_ID": 38,
+      "KEY_WORD_NAME": "Dismiss",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 600049,
+      "COLUMN_ROW_SETTING": "5",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 22,
+      "VALUE_SETTING": null
+    }
+  ]
+}

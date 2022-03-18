@@ -1,0 +1,110 @@
+{
+  "currentSyncroStatus": 0,
+  "assignedApplications": [
+    14
+  ],
+  "assignedTestSuiteIDs": [
+    364
+  ],
+  "version": null,
+  "assignedDataSets": [
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 27318,
+      "ALIAS_NAME": "TPG- CHANGE RIBBON",
+      "DESCRIPTION_INFO": "Shared DataSet27318"
+    }
+  ],
+  "allSteps": [
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 27318,
+          "SKIP": 0,
+          "STEPS_ID": 27320
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 747,
+      "TEST_CASE_NAME": "TPG- CHANGE RIBBON",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TPG_MAIN",
+      "OBJECT_ID": 17943,
+      "OBJECT_TYPE": "TPG_MAIN",
+      "QUICK_ACCESS": "regexpwndtitle:=TPG Workstation\nswfname:=frmMain\nswfname path:=frmMain",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 14,
+      "OBJECT_NAME_ID": 12077,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 27320,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 1,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 24543,
+          "DATASETVALUE": "Front Office",
+          "DATA_SUMMARY_ID": 27318,
+          "SKIP": 0,
+          "STEPS_ID": 27321
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 747,
+      "TEST_CASE_NAME": "TPG- CHANGE RIBBON",
+      "KEY_WORD_ID": 24,
+      "KEY_WORD_NAME": "SelectTab",
+      "OBJECT_HAPPY_NAME": "TPG_MAIN_RABBIN",
+      "OBJECT_ID": 17944,
+      "OBJECT_TYPE": "TPG_MAIN",
+      "QUICK_ACCESS": "swfname:=_MainForm_Toolbars_Dock_Area_Top\nswfname path:=_MainForm_Toolbars_Dock_Area_Top;frmMain\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 14,
+      "OBJECT_NAME_ID": 16990,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 27321,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 1,
+      "RUN_ORDER": 2,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 24544,
+          "DATASETVALUE": "Trader;Repo Trade List",
+          "DATA_SUMMARY_ID": 27318,
+          "SKIP": 0,
+          "STEPS_ID": 27322
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 747,
+      "TEST_CASE_NAME": "TPG- CHANGE RIBBON",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "TPG_MAIN_RABBIN",
+      "OBJECT_ID": 17944,
+      "OBJECT_TYPE": "TPG_MAIN",
+      "QUICK_ACCESS": "swfname:=_MainForm_Toolbars_Dock_Area_Top\nswfname path:=_MainForm_Toolbars_Dock_Area_Top;frmMain\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 14,
+      "OBJECT_NAME_ID": 16990,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 27322,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 1,
+      "RUN_ORDER": 3,
+      "VALUE_SETTING": null
+    }
+  ]
+}

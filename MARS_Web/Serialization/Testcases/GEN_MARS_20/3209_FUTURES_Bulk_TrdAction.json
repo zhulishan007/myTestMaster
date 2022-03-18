@@ -1,0 +1,4069 @@
+{
+  "currentSyncroStatus": 0,
+  "assignedApplications": [
+    193,
+    194,
+    -1
+  ],
+  "assignedTestSuiteIDs": [
+    1438
+  ],
+  "version": null,
+  "assignedDataSets": [
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 460405,
+      "ALIAS_NAME": "FUT_Day_1_VER",
+      "DESCRIPTION_INFO": "Futures Trade Finder Verify Done Trade"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 468318,
+      "ALIAS_NAME": "FUT_Day_2_VER",
+      "DESCRIPTION_INFO": "Verification of Day 2 Futures Trade"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 469320,
+      "ALIAS_NAME": "FUT_DAY_1_IDS_AUTH",
+      "DESCRIPTION_INFO": "Authorization of Futures Trades Day 1"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 469328,
+      "ALIAS_NAME": "FUT_DAY_2_IDS_AUTH",
+      "DESCRIPTION_INFO": "Futures Trade Authorization for Day 2"
+    }
+  ],
+  "allSteps": [
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350802,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 460596
+        },
+        {
+          "Data_Setting_Id": 350842,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 460596
+        },
+        {
+          "Data_Setting_Id": 342199,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 460596
+        },
+        {
+          "Data_Setting_Id": 349740,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 460596
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 460596,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350802,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 460596
+        },
+        {
+          "Data_Setting_Id": 350842,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 460596
+        },
+        {
+          "Data_Setting_Id": 342199,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 460596
+        },
+        {
+          "Data_Setting_Id": 349740,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 460596
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 460596,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350803,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 460597
+        },
+        {
+          "Data_Setting_Id": 350843,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 460597
+        },
+        {
+          "Data_Setting_Id": 342200,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 460597
+        },
+        {
+          "Data_Setting_Id": 349741,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 460597
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 460597,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 2,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350803,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 460597
+        },
+        {
+          "Data_Setting_Id": 350843,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 460597
+        },
+        {
+          "Data_Setting_Id": 342200,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 460597
+        },
+        {
+          "Data_Setting_Id": 349741,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 460597
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 460597,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 2,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350804,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 460598
+        },
+        {
+          "Data_Setting_Id": 350844,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 460598
+        },
+        {
+          "Data_Setting_Id": 342201,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 460598
+        },
+        {
+          "Data_Setting_Id": 349742,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 460598
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 12,
+      "KEY_WORD_NAME": "LaunchApplication",
+      "OBJECT_HAPPY_NAME": "ApplicationName",
+      "OBJECT_ID": 35170,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockAreaTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 29559,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 460598,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 3,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350804,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 460598
+        },
+        {
+          "Data_Setting_Id": 350844,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 460598
+        },
+        {
+          "Data_Setting_Id": 342201,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 460598
+        },
+        {
+          "Data_Setting_Id": 349742,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 460598
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 12,
+      "KEY_WORD_NAME": "LaunchApplication",
+      "OBJECT_HAPPY_NAME": "ApplicationName",
+      "OBJECT_ID": 44673,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockAreaTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 29559,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 460598,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 3,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350805,
+          "DATASETVALUE": "15",
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 460599
+        },
+        {
+          "Data_Setting_Id": 350845,
+          "DATASETVALUE": "15",
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 460599
+        },
+        {
+          "Data_Setting_Id": 342202,
+          "DATASETVALUE": "15",
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 460599
+        },
+        {
+          "Data_Setting_Id": 349743,
+          "DATASETVALUE": "15",
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 460599
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 460599,
+      "COLUMN_ROW_SETTING": "F",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 4,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350806,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 460600
+        },
+        {
+          "Data_Setting_Id": 350846,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 460600
+        },
+        {
+          "Data_Setting_Id": 342203,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 460600
+        },
+        {
+          "Data_Setting_Id": 349744,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 460600
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 37247,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\n",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 460600,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 5,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350806,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 460600
+        },
+        {
+          "Data_Setting_Id": 350846,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 460600
+        },
+        {
+          "Data_Setting_Id": 342203,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 460600
+        },
+        {
+          "Data_Setting_Id": 349744,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 460600
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 46046,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswfname:=Desktop|Page",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 460600,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 5,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350807,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 460601
+        },
+        {
+          "Data_Setting_Id": 350847,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 460601
+        },
+        {
+          "Data_Setting_Id": 342204,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 460601
+        },
+        {
+          "Data_Setting_Id": 349745,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 460601
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 37247,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\n",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 460601,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 6,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350807,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 460601
+        },
+        {
+          "Data_Setting_Id": 350847,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 460601
+        },
+        {
+          "Data_Setting_Id": 342204,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 460601
+        },
+        {
+          "Data_Setting_Id": 349745,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 460601
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 46046,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswfname:=Desktop|Page",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 460601,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 6,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 463406
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 463406
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 463406
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 463406
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_SETUP",
+      "OBJECT_ID": 37910,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_setUpButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 31334,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 463406,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 7,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 463406
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 463406
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 463406
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 463406
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_SETUP",
+      "OBJECT_ID": 46688,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_setUpButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 31334,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 463406,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 7,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 463411
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 463411
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 463411
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 463411
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "FILTER_SELECTION",
+      "OBJECT_ID": 37316,
+      "OBJECT_TYPE": "FILTER_SELECTION",
+      "QUICK_ACCESS": "is child window:=False\nis owned window:=True\nswfname:=BlotterFilterSelectFieldsForm|SelectFieldsForm",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24813,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 463411,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 8,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 463411
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 463411
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 463411
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 463411
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "FILTER_SELECTION",
+      "OBJECT_ID": 46115,
+      "OBJECT_TYPE": "FILTER_SELECTION",
+      "QUICK_ACCESS": "is child window:=False\nis owned window:=True\nswfname:=BlotterFilterSelectFieldsForm|SelectFieldsForm",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24813,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 463411,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 8,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 504980,
+          "DATASETVALUE": "6,6",
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 763210
+        },
+        {
+          "Data_Setting_Id": 504981,
+          "DATASETVALUE": "6,6",
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 763210
+        },
+        {
+          "Data_Setting_Id": 504978,
+          "DATASETVALUE": "6,30",
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 763210
+        },
+        {
+          "Data_Setting_Id": 504979,
+          "DATASETVALUE": "6,6",
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 763210
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 44,
+      "KEY_WORD_NAME": "ClickAt",
+      "OBJECT_HAPPY_NAME": "SETUP_AVAILABLE_FIELDS",
+      "OBJECT_ID": 47202,
+      "OBJECT_TYPE": "FILTER_SELECTION",
+      "QUICK_ACCESS": "swfname:=lstAvailable",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25123,
+      "TYPE_NAME": "SwfList",
+      "STEPS_ID": 763210,
+      "COLUMN_ROW_SETTING": "LEFT_CLICK",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 9,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 504980,
+          "DATASETVALUE": "6,6",
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 763210
+        },
+        {
+          "Data_Setting_Id": 504981,
+          "DATASETVALUE": "6,6",
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 763210
+        },
+        {
+          "Data_Setting_Id": 504978,
+          "DATASETVALUE": "6,30",
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 763210
+        },
+        {
+          "Data_Setting_Id": 504979,
+          "DATASETVALUE": "6,6",
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 763210
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 44,
+      "KEY_WORD_NAME": "ClickAt",
+      "OBJECT_HAPPY_NAME": "SETUP_AVAILABLE_FIELDS",
+      "OBJECT_ID": 35605,
+      "OBJECT_TYPE": "FILTER_SELECTION",
+      "QUICK_ACCESS": "swfname:=lstAvailable",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25123,
+      "TYPE_NAME": "SwfList",
+      "STEPS_ID": 763210,
+      "COLUMN_ROW_SETTING": "LEFT_CLICK",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 9,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 504984,
+          "DATASETVALUE": "f{Down 2}",
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 763211
+        },
+        {
+          "Data_Setting_Id": 504985,
+          "DATASETVALUE": "f{Down 2}",
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 763211
+        },
+        {
+          "Data_Setting_Id": 504982,
+          "DATASETVALUE": "f{down 2}",
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 763211
+        },
+        {
+          "Data_Setting_Id": 504983,
+          "DATASETVALUE": "f{Down 2}",
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 763211
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 86,
+      "KEY_WORD_NAME": "PressKeys",
+      "OBJECT_HAPPY_NAME": "SETUP_AVAILABLE_FIELDS",
+      "OBJECT_ID": 47202,
+      "OBJECT_TYPE": "FILTER_SELECTION",
+      "QUICK_ACCESS": "swfname:=lstAvailable",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25123,
+      "TYPE_NAME": "SwfList",
+      "STEPS_ID": 763211,
+      "COLUMN_ROW_SETTING": "CURRENT_POS",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 10,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 504984,
+          "DATASETVALUE": "f{Down 2}",
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 763211
+        },
+        {
+          "Data_Setting_Id": 504985,
+          "DATASETVALUE": "f{Down 2}",
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 763211
+        },
+        {
+          "Data_Setting_Id": 504982,
+          "DATASETVALUE": "f{down 2}",
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 763211
+        },
+        {
+          "Data_Setting_Id": 504983,
+          "DATASETVALUE": "f{Down 2}",
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 763211
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 86,
+      "KEY_WORD_NAME": "PressKeys",
+      "OBJECT_HAPPY_NAME": "SETUP_AVAILABLE_FIELDS",
+      "OBJECT_ID": 35605,
+      "OBJECT_TYPE": "FILTER_SELECTION",
+      "QUICK_ACCESS": "swfname:=lstAvailable",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25123,
+      "TYPE_NAME": "SwfList",
+      "STEPS_ID": 763211,
+      "COLUMN_ROW_SETTING": "CURRENT_POS",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 10,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350838,
+          "DATASETVALUE": "Fold",
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 463410
+        },
+        {
+          "Data_Setting_Id": 350878,
+          "DATASETVALUE": "Fold",
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 463410
+        },
+        {
+          "Data_Setting_Id": 346656,
+          "DATASETVALUE": "Fold",
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 463410
+        },
+        {
+          "Data_Setting_Id": 349776,
+          "DATASETVALUE": "Fold",
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 463410
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 40,
+      "KEY_WORD_NAME": "SelectListItem",
+      "OBJECT_HAPPY_NAME": "SETUP_AVAILABLE_FIELDS",
+      "OBJECT_ID": 47202,
+      "OBJECT_TYPE": "FILTER_SELECTION",
+      "QUICK_ACCESS": "swfname:=lstAvailable",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25123,
+      "TYPE_NAME": "SwfList",
+      "STEPS_ID": 463410,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 11,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350838,
+          "DATASETVALUE": "Fold",
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 463410
+        },
+        {
+          "Data_Setting_Id": 350878,
+          "DATASETVALUE": "Fold",
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 463410
+        },
+        {
+          "Data_Setting_Id": 346656,
+          "DATASETVALUE": "Fold",
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 463410
+        },
+        {
+          "Data_Setting_Id": 349776,
+          "DATASETVALUE": "Fold",
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 463410
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 40,
+      "KEY_WORD_NAME": "SelectListItem",
+      "OBJECT_HAPPY_NAME": "SETUP_AVAILABLE_FIELDS",
+      "OBJECT_ID": 35605,
+      "OBJECT_TYPE": "FILTER_SELECTION",
+      "QUICK_ACCESS": "swfname:=lstAvailable",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25123,
+      "TYPE_NAME": "SwfList",
+      "STEPS_ID": 463410,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 11,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 463409
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 463409
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 463409
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 463409
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "SETUP_ADD",
+      "OBJECT_ID": 32608,
+      "OBJECT_TYPE": "FILTER_SELECTION",
+      "QUICK_ACCESS": "swfname:=butAdd",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 30564,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 463409,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 12,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 463409
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 463409
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 463409
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 463409
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "SETUP_ADD",
+      "OBJECT_ID": 42424,
+      "OBJECT_TYPE": "FILTER_SELECTION",
+      "QUICK_ACCESS": "swfname:=butAdd",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 30564,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 463409,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 12,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350840,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 463413
+        },
+        {
+          "Data_Setting_Id": 350880,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 463413
+        },
+        {
+          "Data_Setting_Id": 346658,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 463413
+        },
+        {
+          "Data_Setting_Id": 349778,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 4,
+          "STEPS_ID": 463413
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "SETUP_OK",
+      "OBJECT_ID": 37828,
+      "OBJECT_TYPE": "FILTER_SELECTION",
+      "QUICK_ACCESS": "swfname:=butOK",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25126,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 463413,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 13,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350840,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 463413
+        },
+        {
+          "Data_Setting_Id": 350880,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 463413
+        },
+        {
+          "Data_Setting_Id": 346658,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 463413
+        },
+        {
+          "Data_Setting_Id": 349778,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 4,
+          "STEPS_ID": 463413
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "SETUP_OK",
+      "OBJECT_ID": 46608,
+      "OBJECT_TYPE": "FILTER_SELECTION",
+      "QUICK_ACCESS": "swfname:=butOK",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25126,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 463413,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 13,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350837,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 463408
+        },
+        {
+          "Data_Setting_Id": 350877,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 463408
+        },
+        {
+          "Data_Setting_Id": 346655,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 463408
+        },
+        {
+          "Data_Setting_Id": 349775,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 4,
+          "STEPS_ID": 463408
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 37247,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\n",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 463408,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 14,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350837,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 463408
+        },
+        {
+          "Data_Setting_Id": 350877,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 463408
+        },
+        {
+          "Data_Setting_Id": 346655,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 463408
+        },
+        {
+          "Data_Setting_Id": 349775,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 4,
+          "STEPS_ID": 463408
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 46046,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswfname:=Desktop|Page",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 463408,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 14,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 575121,
+          "DATASETVALUE": "FUT",
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 463405
+        },
+        {
+          "Data_Setting_Id": 575122,
+          "DATASETVALUE": "FUT",
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 463405
+        },
+        {
+          "Data_Setting_Id": 575119,
+          "DATASETVALUE": "FUT",
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 463405
+        },
+        {
+          "Data_Setting_Id": 575120,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 463405
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_TYPES",
+      "OBJECT_ID": 37854,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeTypes",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 26818,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 463405,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 15,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 575121,
+          "DATASETVALUE": "FUT",
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 463405
+        },
+        {
+          "Data_Setting_Id": 575122,
+          "DATASETVALUE": "FUT",
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 463405
+        },
+        {
+          "Data_Setting_Id": 575119,
+          "DATASETVALUE": "FUT",
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 463405
+        },
+        {
+          "Data_Setting_Id": 575120,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 463405
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_TYPES",
+      "OBJECT_ID": 46634,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeTypes",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 26818,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 463405,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 15,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 575125,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 463407
+        },
+        {
+          "Data_Setting_Id": 575126,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 463407
+        },
+        {
+          "Data_Setting_Id": 575123,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 463407
+        },
+        {
+          "Data_Setting_Id": 575124,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 463407
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_STATUS",
+      "OBJECT_ID": 34193,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeStatus",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 32176,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 463407,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 16,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 575125,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 463407
+        },
+        {
+          "Data_Setting_Id": 575126,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 463407
+        },
+        {
+          "Data_Setting_Id": 575123,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 463407
+        },
+        {
+          "Data_Setting_Id": 575124,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 463407
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_STATUS",
+      "OBJECT_ID": 43743,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeStatus",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 32176,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 463407,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 16,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350808,
+          "DATASETVALUE": "true",
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 4,
+          "STEPS_ID": 460602
+        },
+        {
+          "Data_Setting_Id": 350848,
+          "DATASETVALUE": "FUT",
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 4,
+          "STEPS_ID": 460602
+        },
+        {
+          "Data_Setting_Id": 342205,
+          "DATASETVALUE": "FUNDING",
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 4,
+          "STEPS_ID": 460602
+        },
+        {
+          "Data_Setting_Id": 349746,
+          "DATASETVALUE": "FUNDING",
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 4,
+          "STEPS_ID": 460602
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_DESK",
+      "OBJECT_ID": 48286,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=Desk",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 29515,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 460602,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 17,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350808,
+          "DATASETVALUE": "true",
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 4,
+          "STEPS_ID": 460602
+        },
+        {
+          "Data_Setting_Id": 350848,
+          "DATASETVALUE": "FUT",
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 4,
+          "STEPS_ID": 460602
+        },
+        {
+          "Data_Setting_Id": 342205,
+          "DATASETVALUE": "FUNDING",
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 4,
+          "STEPS_ID": 460602
+        },
+        {
+          "Data_Setting_Id": 349746,
+          "DATASETVALUE": "FUNDING",
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 4,
+          "STEPS_ID": 460602
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_DESK",
+      "OBJECT_ID": 40120,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=Desk",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 29515,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 460602,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 17,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350809,
+          "DATASETVALUE": "MARS",
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 460603
+        },
+        {
+          "Data_Setting_Id": 350849,
+          "DATASETVALUE": "MARS",
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 460603
+        },
+        {
+          "Data_Setting_Id": 342206,
+          "DATASETVALUE": "MARS",
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 460603
+        },
+        {
+          "Data_Setting_Id": 349747,
+          "DATASETVALUE": "MARS",
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 460603
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_FOLDER",
+      "OBJECT_ID": 43966,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=Folder",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25857,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 460603,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 18,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350809,
+          "DATASETVALUE": "MARS",
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 460603
+        },
+        {
+          "Data_Setting_Id": 350849,
+          "DATASETVALUE": "MARS",
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 460603
+        },
+        {
+          "Data_Setting_Id": 342206,
+          "DATASETVALUE": "MARS",
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 460603
+        },
+        {
+          "Data_Setting_Id": 349747,
+          "DATASETVALUE": "MARS",
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 460603
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_FOLDER",
+      "OBJECT_ID": 34394,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=Folder",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25857,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 460603,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 18,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350810,
+          "DATASETVALUE": "LAM",
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 460604
+        },
+        {
+          "Data_Setting_Id": 350850,
+          "DATASETVALUE": "LAM",
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 460604
+        },
+        {
+          "Data_Setting_Id": 342207,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 460604
+        },
+        {
+          "Data_Setting_Id": 349748,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 460604
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_FIND_NOW",
+      "OBJECT_ID": 32728,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_findNowButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 32179,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 460604,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 19,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350810,
+          "DATASETVALUE": "LAM",
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 460604
+        },
+        {
+          "Data_Setting_Id": 350850,
+          "DATASETVALUE": "LAM",
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 460604
+        },
+        {
+          "Data_Setting_Id": 342207,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 460604
+        },
+        {
+          "Data_Setting_Id": 349748,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 460604
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_FIND_NOW",
+      "OBJECT_ID": 45052,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_findNowButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 32179,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 460604,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 19,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350839,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 463412
+        },
+        {
+          "Data_Setting_Id": 350879,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 463412
+        },
+        {
+          "Data_Setting_Id": 346657,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 463412
+        },
+        {
+          "Data_Setting_Id": 349777,
+          "DATASETVALUE": "MARS",
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 463412
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 37247,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\n",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 463412,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 20,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350839,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 463412
+        },
+        {
+          "Data_Setting_Id": 350879,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 463412
+        },
+        {
+          "Data_Setting_Id": 346657,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 463412
+        },
+        {
+          "Data_Setting_Id": 349777,
+          "DATASETVALUE": "MARS",
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 463412
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 46046,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswfname:=Desktop|Page",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 463412,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 20,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350811,
+          "DATASETVALUE": "LOOP_VAR:FUTURES_VER_TRADE_IDS",
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 460605
+        },
+        {
+          "Data_Setting_Id": 350851,
+          "DATASETVALUE": "LOOP_VAR:FUTURES_VER_TRADE_IDS",
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 460605
+        },
+        {
+          "Data_Setting_Id": 342208,
+          "DATASETVALUE": "LOOP_VAR:FUTURES_VER_TRADE_IDS",
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 460605
+        },
+        {
+          "Data_Setting_Id": 349749,
+          "DATASETVALUE": "LOOP_VAR:FUTURES_VER_TRADE_IDS",
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 460605
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 1,
+      "KEY_WORD_NAME": "CaptureValue",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_TABLE",
+      "OBJECT_ID": 41666,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_queryResults",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 28613,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 460605,
+      "COLUMN_ROW_SETTING": "ALLROWS;Trade ID",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 21,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350811,
+          "DATASETVALUE": "LOOP_VAR:FUTURES_VER_TRADE_IDS",
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 460605
+        },
+        {
+          "Data_Setting_Id": 350851,
+          "DATASETVALUE": "LOOP_VAR:FUTURES_VER_TRADE_IDS",
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 460605
+        },
+        {
+          "Data_Setting_Id": 342208,
+          "DATASETVALUE": "LOOP_VAR:FUTURES_VER_TRADE_IDS",
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 460605
+        },
+        {
+          "Data_Setting_Id": 349749,
+          "DATASETVALUE": "LOOP_VAR:FUTURES_VER_TRADE_IDS",
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 460605
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 1,
+      "KEY_WORD_NAME": "CaptureValue",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_TABLE",
+      "OBJECT_ID": 35712,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_queryResults",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 28613,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 460605,
+      "COLUMN_ROW_SETTING": "ALLROWS;Trade ID",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 21,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350812,
+          "DATASETVALUE": "LOOP_VAR:FUTURES_VER_TRADE_IDS",
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 460606
+        },
+        {
+          "Data_Setting_Id": 350852,
+          "DATASETVALUE": "LOOP_VAR:FUTURES_VER_TRADE_IDS",
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 460606
+        },
+        {
+          "Data_Setting_Id": 342209,
+          "DATASETVALUE": "LOOP_VAR:FUTURES_VER_TRADE_IDS",
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 460606
+        },
+        {
+          "Data_Setting_Id": 349750,
+          "DATASETVALUE": "LOOP_VAR:FUTURES_VER_TRADE_IDS",
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 460606
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 36,
+      "KEY_WORD_NAME": "Loop",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 460606,
+      "COLUMN_ROW_SETTING": "Reload",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 22,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350813,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 460607
+        },
+        {
+          "Data_Setting_Id": 350853,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 460607
+        },
+        {
+          "Data_Setting_Id": 342210,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 460607
+        },
+        {
+          "Data_Setting_Id": 349751,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 460607
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 460607,
+      "COLUMN_ROW_SETTING": "F",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 23,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350814,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 460608
+        },
+        {
+          "Data_Setting_Id": 350854,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 460608
+        },
+        {
+          "Data_Setting_Id": 342211,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 460608
+        },
+        {
+          "Data_Setting_Id": 349752,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 460608
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 37247,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\n",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 460608,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 24,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350814,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 460608
+        },
+        {
+          "Data_Setting_Id": 350854,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 460608
+        },
+        {
+          "Data_Setting_Id": 342211,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 460608
+        },
+        {
+          "Data_Setting_Id": 349752,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 460608
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 46046,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswfname:=Desktop|Page",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 460608,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 24,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350815,
+          "DATASETVALUE": "LOOP_VAR:FUTURES_VER_TRADE_IDS",
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 460609
+        },
+        {
+          "Data_Setting_Id": 350855,
+          "DATASETVALUE": "LOOP_VAR:FUTURES_VER_TRADE_IDS",
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 460609
+        },
+        {
+          "Data_Setting_Id": 342212,
+          "DATASETVALUE": "LOOP_VAR:FUTURES_VER_TRADE_IDS",
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 460609
+        },
+        {
+          "Data_Setting_Id": 349753,
+          "DATASETVALUE": "LOOP_VAR:FUTURES_VER_TRADE_IDS",
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 460609
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_ID",
+      "OBJECT_ID": 41222,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeID",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 29531,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 460609,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 25,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350815,
+          "DATASETVALUE": "LOOP_VAR:FUTURES_VER_TRADE_IDS",
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 460609
+        },
+        {
+          "Data_Setting_Id": 350855,
+          "DATASETVALUE": "LOOP_VAR:FUTURES_VER_TRADE_IDS",
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 460609
+        },
+        {
+          "Data_Setting_Id": 342212,
+          "DATASETVALUE": "LOOP_VAR:FUTURES_VER_TRADE_IDS",
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 460609
+        },
+        {
+          "Data_Setting_Id": 349753,
+          "DATASETVALUE": "LOOP_VAR:FUTURES_VER_TRADE_IDS",
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 460609
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_ID",
+      "OBJECT_ID": 33373,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeID",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 29531,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 460609,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 25,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350816,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 460610
+        },
+        {
+          "Data_Setting_Id": 350856,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 460610
+        },
+        {
+          "Data_Setting_Id": 342213,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 460610
+        },
+        {
+          "Data_Setting_Id": 349754,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 460610
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_FIND_NOW",
+      "OBJECT_ID": 32728,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_findNowButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 32179,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 460610,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 26,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350816,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 460610
+        },
+        {
+          "Data_Setting_Id": 350856,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 460610
+        },
+        {
+          "Data_Setting_Id": 342213,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 460610
+        },
+        {
+          "Data_Setting_Id": 349754,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 460610
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_FIND_NOW",
+      "OBJECT_ID": 45052,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_findNowButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 32179,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 460610,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 26,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350817,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 460611
+        },
+        {
+          "Data_Setting_Id": 350857,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 460611
+        },
+        {
+          "Data_Setting_Id": 342214,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 460611
+        },
+        {
+          "Data_Setting_Id": 349755,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 460611
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 460611,
+      "COLUMN_ROW_SETTING": "F",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 27,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350818,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 460612
+        },
+        {
+          "Data_Setting_Id": 350858,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 460612
+        },
+        {
+          "Data_Setting_Id": 342215,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 460612
+        },
+        {
+          "Data_Setting_Id": 349756,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 460612
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 37247,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\n",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 460612,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 28,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350818,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 460612
+        },
+        {
+          "Data_Setting_Id": 350858,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 460612
+        },
+        {
+          "Data_Setting_Id": 342215,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 460612
+        },
+        {
+          "Data_Setting_Id": 349756,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 460612
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 46046,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswfname:=Desktop|Page",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 460612,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 28,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350819,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 460613
+        },
+        {
+          "Data_Setting_Id": 350859,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 460613
+        },
+        {
+          "Data_Setting_Id": 342216,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 460613
+        },
+        {
+          "Data_Setting_Id": 349757,
+          "DATASETVALUE": "f{ENTER}",
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 460613
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 86,
+      "KEY_WORD_NAME": "PressKeys",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_TABLE",
+      "OBJECT_ID": 41666,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_queryResults",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 28613,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 460613,
+      "COLUMN_ROW_SETTING": "100,40",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 29,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350819,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 460613
+        },
+        {
+          "Data_Setting_Id": 350859,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 460613
+        },
+        {
+          "Data_Setting_Id": 342216,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 460613
+        },
+        {
+          "Data_Setting_Id": 349757,
+          "DATASETVALUE": "f{ENTER}",
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 460613
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 86,
+      "KEY_WORD_NAME": "PressKeys",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_TABLE",
+      "OBJECT_ID": 35712,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_queryResults",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 28613,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 460613,
+      "COLUMN_ROW_SETTING": "100,40",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 29,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350820,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 460614
+        },
+        {
+          "Data_Setting_Id": 350860,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 460614
+        },
+        {
+          "Data_Setting_Id": 342217,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 460614
+        },
+        {
+          "Data_Setting_Id": 349758,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 460614
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 460614,
+      "COLUMN_ROW_SETTING": "F",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 30,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350821,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 460615
+        },
+        {
+          "Data_Setting_Id": 350861,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 460615
+        },
+        {
+          "Data_Setting_Id": 342218,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 460615
+        },
+        {
+          "Data_Setting_Id": 349759,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 460615
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "FUTURES_POPUP_TRADE",
+      "OBJECT_ID": 35269,
+      "OBJECT_TYPE": "FUTURES_POPUP_TRADE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^IFC Futures Trade.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24855,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 460615,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 31,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350821,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 460615
+        },
+        {
+          "Data_Setting_Id": 350861,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 460615
+        },
+        {
+          "Data_Setting_Id": 342218,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 460615
+        },
+        {
+          "Data_Setting_Id": 349759,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 460615
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "FUTURES_POPUP_TRADE",
+      "OBJECT_ID": 44826,
+      "OBJECT_TYPE": "FUTURES_POPUP_TRADE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^IFC Futures Trade.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24855,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 460615,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 31,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350822,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 460616
+        },
+        {
+          "Data_Setting_Id": 350862,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 460616
+        },
+        {
+          "Data_Setting_Id": 342219,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 460616
+        },
+        {
+          "Data_Setting_Id": 349760,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 460616
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 22,
+      "KEY_WORD_NAME": "SelectMenuItem",
+      "OBJECT_HAPPY_NAME": "FUTURES_TRADE_POPUP_TOOLBAR",
+      "OBJECT_ID": 34716,
+      "OBJECT_TYPE": "FUTURES_POPUP_TRADE",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25556,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 460616,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 32,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350822,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 460616
+        },
+        {
+          "Data_Setting_Id": 350862,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 460616
+        },
+        {
+          "Data_Setting_Id": 342219,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 460616
+        },
+        {
+          "Data_Setting_Id": 349760,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 460616
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 22,
+      "KEY_WORD_NAME": "SelectMenuItem",
+      "OBJECT_HAPPY_NAME": "FUTURES_TRADE_POPUP_TOOLBAR",
+      "OBJECT_ID": 46134,
+      "OBJECT_TYPE": "FUTURES_POPUP_TRADE",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25556,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 460616,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 32,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350823,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 460617
+        },
+        {
+          "Data_Setting_Id": 350863,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 460617
+        },
+        {
+          "Data_Setting_Id": 342220,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 460617
+        },
+        {
+          "Data_Setting_Id": 349761,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 460617
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "FUTURES_TRADE",
+      "OBJECT_ID": 34218,
+      "OBJECT_TYPE": "FUTURES_TRADE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24856,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 460617,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 33,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350823,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 460617
+        },
+        {
+          "Data_Setting_Id": 350863,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 460617
+        },
+        {
+          "Data_Setting_Id": 342220,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 460617
+        },
+        {
+          "Data_Setting_Id": 349761,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 460617
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "FUTURES_TRADE",
+      "OBJECT_ID": 43767,
+      "OBJECT_TYPE": "FUTURES_TRADE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24856,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 460617,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 33,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350824,
+          "DATASETVALUE": "TRADE_STATE_BEFORE",
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 460618
+        },
+        {
+          "Data_Setting_Id": 350864,
+          "DATASETVALUE": "TRADE_STATE_BEFORE",
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 460618
+        },
+        {
+          "Data_Setting_Id": 342221,
+          "DATASETVALUE": "TRADE_STATE_BEFORE",
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 460618
+        },
+        {
+          "Data_Setting_Id": 349762,
+          "DATASETVALUE": "TRADE_STATE_BEFORE",
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 460618
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "FUTURES_STATE",
+      "OBJECT_ID": 45294,
+      "OBJECT_TYPE": "FUTURES_TRADE",
+      "QUICK_ACCESS": "swfname:=_stateLLControl",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 27405,
+      "TYPE_NAME": "SwfLabel",
+      "STEPS_ID": 460618,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 34,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350824,
+          "DATASETVALUE": "TRADE_STATE_BEFORE",
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 460618
+        },
+        {
+          "Data_Setting_Id": 350864,
+          "DATASETVALUE": "TRADE_STATE_BEFORE",
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 460618
+        },
+        {
+          "Data_Setting_Id": 342221,
+          "DATASETVALUE": "TRADE_STATE_BEFORE",
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 460618
+        },
+        {
+          "Data_Setting_Id": 349762,
+          "DATASETVALUE": "TRADE_STATE_BEFORE",
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 460618
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "FUTURES_STATE",
+      "OBJECT_ID": 36365,
+      "OBJECT_TYPE": "FUTURES_TRADE",
+      "QUICK_ACCESS": "swfname:=_stateLLControl",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 27405,
+      "TYPE_NAME": "SwfLabel",
+      "STEPS_ID": 460618,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 34,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350825,
+          "DATASETVALUE": "Desktop Menu;Action;Authorize",
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 460619
+        },
+        {
+          "Data_Setting_Id": 350865,
+          "DATASETVALUE": "Desktop Menu;Action;Authorize",
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 460619
+        },
+        {
+          "Data_Setting_Id": 342222,
+          "DATASETVALUE": "Desktop Menu;Action;Verify",
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 460619
+        },
+        {
+          "Data_Setting_Id": 349763,
+          "DATASETVALUE": "Desktop Menu;Action;Verify",
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 460619
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 22,
+      "KEY_WORD_NAME": "SelectMenuItem",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 460619,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 35,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350826,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 460620
+        },
+        {
+          "Data_Setting_Id": 350866,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 460620
+        },
+        {
+          "Data_Setting_Id": 342223,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 460620
+        },
+        {
+          "Data_Setting_Id": 349764,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 460620
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 38,
+      "KEY_WORD_NAME": "Dismiss",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 460620,
+      "COLUMN_ROW_SETTING": "10",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 36,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350827,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 460621
+        },
+        {
+          "Data_Setting_Id": 350867,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 460621
+        },
+        {
+          "Data_Setting_Id": 342224,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 460621
+        },
+        {
+          "Data_Setting_Id": 349765,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 460621
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "FUTURES_TRADE",
+      "OBJECT_ID": 34218,
+      "OBJECT_TYPE": "FUTURES_TRADE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24856,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 460621,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 37,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350827,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 460621
+        },
+        {
+          "Data_Setting_Id": 350867,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 460621
+        },
+        {
+          "Data_Setting_Id": 342224,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 460621
+        },
+        {
+          "Data_Setting_Id": 349765,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 460621
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "FUTURES_TRADE",
+      "OBJECT_ID": 43767,
+      "OBJECT_TYPE": "FUTURES_TRADE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24856,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 460621,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 37,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350828,
+          "DATASETVALUE": "TRADE_STATE_AFTER",
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 460622
+        },
+        {
+          "Data_Setting_Id": 350868,
+          "DATASETVALUE": "TRADE_STATE_AFTER",
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 460622
+        },
+        {
+          "Data_Setting_Id": 342225,
+          "DATASETVALUE": "TRADE_STATE_AFTER",
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 460622
+        },
+        {
+          "Data_Setting_Id": 349766,
+          "DATASETVALUE": "TRADE_STATE_AFTER",
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 460622
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "FUTURES_STATE",
+      "OBJECT_ID": 45294,
+      "OBJECT_TYPE": "FUTURES_TRADE",
+      "QUICK_ACCESS": "swfname:=_stateLLControl",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 27405,
+      "TYPE_NAME": "SwfLabel",
+      "STEPS_ID": 460622,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 38,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350828,
+          "DATASETVALUE": "TRADE_STATE_AFTER",
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 460622
+        },
+        {
+          "Data_Setting_Id": 350868,
+          "DATASETVALUE": "TRADE_STATE_AFTER",
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 460622
+        },
+        {
+          "Data_Setting_Id": 342225,
+          "DATASETVALUE": "TRADE_STATE_AFTER",
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 460622
+        },
+        {
+          "Data_Setting_Id": 349766,
+          "DATASETVALUE": "TRADE_STATE_AFTER",
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 460622
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "FUTURES_STATE",
+      "OBJECT_ID": 36365,
+      "OBJECT_TYPE": "FUTURES_TRADE",
+      "QUICK_ACCESS": "swfname:=_stateLLControl",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 27405,
+      "TYPE_NAME": "SwfLabel",
+      "STEPS_ID": 460622,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 38,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350829,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 460623
+        },
+        {
+          "Data_Setting_Id": 350869,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 460623
+        },
+        {
+          "Data_Setting_Id": 342226,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 460623
+        },
+        {
+          "Data_Setting_Id": 349767,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 460623
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 460623,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 39,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350829,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 460623
+        },
+        {
+          "Data_Setting_Id": 350869,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 460623
+        },
+        {
+          "Data_Setting_Id": 342226,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 460623
+        },
+        {
+          "Data_Setting_Id": 349767,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 460623
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 460623,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 39,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350830,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 460624
+        },
+        {
+          "Data_Setting_Id": 350870,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 460624
+        },
+        {
+          "Data_Setting_Id": 342227,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 460624
+        },
+        {
+          "Data_Setting_Id": 349768,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 460624
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 32409,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 30430,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 460624,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 40,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350830,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 460624
+        },
+        {
+          "Data_Setting_Id": 350870,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 460624
+        },
+        {
+          "Data_Setting_Id": 342227,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 460624
+        },
+        {
+          "Data_Setting_Id": 349768,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 460624
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 40727,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 30430,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 460624,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 40,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350831,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 460625
+        },
+        {
+          "Data_Setting_Id": 350871,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 460625
+        },
+        {
+          "Data_Setting_Id": 342228,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 460625
+        },
+        {
+          "Data_Setting_Id": 349769,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 460625
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 38,
+      "KEY_WORD_NAME": "Dismiss",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 460625,
+      "COLUMN_ROW_SETTING": "5",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 41,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350832,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 460626
+        },
+        {
+          "Data_Setting_Id": 350872,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 460626
+        },
+        {
+          "Data_Setting_Id": 342229,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 460626
+        },
+        {
+          "Data_Setting_Id": 349770,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 460626
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 90,
+      "KEY_WORD_NAME": "EndLoop",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 460626,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 42,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350833,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 460627
+        },
+        {
+          "Data_Setting_Id": 350873,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 460627
+        },
+        {
+          "Data_Setting_Id": 342230,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 460627
+        },
+        {
+          "Data_Setting_Id": 349771,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 460627
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 83,
+      "KEY_WORD_NAME": "ResumeNext",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 460627,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 43,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350834,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 460628
+        },
+        {
+          "Data_Setting_Id": 350874,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 460628
+        },
+        {
+          "Data_Setting_Id": 342231,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 460628
+        },
+        {
+          "Data_Setting_Id": 349772,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 460628
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 32409,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 30430,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 460628,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 44,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350834,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 460628
+        },
+        {
+          "Data_Setting_Id": 350874,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 460628
+        },
+        {
+          "Data_Setting_Id": 342231,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 460628
+        },
+        {
+          "Data_Setting_Id": 349772,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 460628
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 40727,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 30430,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 460628,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 44,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 350841,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469320,
+          "SKIP": 0,
+          "STEPS_ID": 468389
+        },
+        {
+          "Data_Setting_Id": 350881,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 469328,
+          "SKIP": 0,
+          "STEPS_ID": 468389
+        },
+        {
+          "Data_Setting_Id": 349960,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460405,
+          "SKIP": 0,
+          "STEPS_ID": 468389
+        },
+        {
+          "Data_Setting_Id": 349961,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468318,
+          "SKIP": 0,
+          "STEPS_ID": 468389
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3209,
+      "TEST_CASE_NAME": "FUTURES_Bulk_TrdAction",
+      "KEY_WORD_ID": 38,
+      "KEY_WORD_NAME": "Dismiss",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 468389,
+      "COLUMN_ROW_SETTING": "5",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 45,
+      "VALUE_SETTING": null
+    }
+  ]
+}

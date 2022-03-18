@@ -1,0 +1,4273 @@
+{
+  "currentSyncroStatus": 0,
+  "assignedApplications": [
+    193,
+    194,
+    -1
+  ],
+  "assignedTestSuiteIDs": [
+    1863
+  ],
+  "version": null,
+  "assignedDataSets": [
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 764706,
+      "ALIAS_NAME": "FXSPOTD_Day_2_DOC_VER",
+      "DESCRIPTION_INFO": "Verification of FX Forward Trades for Document Processing on Day 2"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 764712,
+      "ALIAS_NAME": "FXSPOTD_Day_1_VER",
+      "DESCRIPTION_INFO": "FX Spot  Verify  Trade"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 764697,
+      "ALIAS_NAME": "FXSPOTD_Day_2_DOC_AUTH",
+      "DESCRIPTION_INFO": "FX Spot  Verify  Trade Authorization"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 901492,
+      "ALIAS_NAME": "fxspot_accept",
+      "DESCRIPTION_INFO": "fxspot_accept"
+    }
+  ],
+  "allSteps": [
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506411,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764835
+        },
+        {
+          "Data_Setting_Id": 506409,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764835
+        },
+        {
+          "Data_Setting_Id": 506410,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764835
+        },
+        {
+          "Data_Setting_Id": 601512,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764835
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 764835,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506411,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764835
+        },
+        {
+          "Data_Setting_Id": 506409,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764835
+        },
+        {
+          "Data_Setting_Id": 506410,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764835
+        },
+        {
+          "Data_Setting_Id": 601512,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764835
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 764835,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506414,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764836
+        },
+        {
+          "Data_Setting_Id": 506412,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764836
+        },
+        {
+          "Data_Setting_Id": 506413,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764836
+        },
+        {
+          "Data_Setting_Id": 601513,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764836
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 764836,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 2,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506414,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764836
+        },
+        {
+          "Data_Setting_Id": 506412,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764836
+        },
+        {
+          "Data_Setting_Id": 506413,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764836
+        },
+        {
+          "Data_Setting_Id": 601513,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764836
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 764836,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 2,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506417,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764837
+        },
+        {
+          "Data_Setting_Id": 506415,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764837
+        },
+        {
+          "Data_Setting_Id": 506416,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764837
+        },
+        {
+          "Data_Setting_Id": 601514,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764837
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 12,
+      "KEY_WORD_NAME": "LaunchApplication",
+      "OBJECT_HAPPY_NAME": "ApplicationName",
+      "OBJECT_ID": 35170,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockAreaTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 29559,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 764837,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 3,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506417,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764837
+        },
+        {
+          "Data_Setting_Id": 506415,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764837
+        },
+        {
+          "Data_Setting_Id": 506416,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764837
+        },
+        {
+          "Data_Setting_Id": 601514,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764837
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 12,
+      "KEY_WORD_NAME": "LaunchApplication",
+      "OBJECT_HAPPY_NAME": "ApplicationName",
+      "OBJECT_ID": 44673,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockAreaTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 29559,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 764837,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 3,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506420,
+          "DATASETVALUE": "15",
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764838
+        },
+        {
+          "Data_Setting_Id": 506418,
+          "DATASETVALUE": "15",
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764838
+        },
+        {
+          "Data_Setting_Id": 506419,
+          "DATASETVALUE": "15",
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764838
+        },
+        {
+          "Data_Setting_Id": 601515,
+          "DATASETVALUE": "15",
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764838
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 764838,
+      "COLUMN_ROW_SETTING": "F",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 4,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506423,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764839
+        },
+        {
+          "Data_Setting_Id": 506421,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764839
+        },
+        {
+          "Data_Setting_Id": 506422,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764839
+        },
+        {
+          "Data_Setting_Id": 601516,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764839
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 37247,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\n",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 764839,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 5,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506423,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764839
+        },
+        {
+          "Data_Setting_Id": 506421,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764839
+        },
+        {
+          "Data_Setting_Id": 506422,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764839
+        },
+        {
+          "Data_Setting_Id": 601516,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764839
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 46046,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswfname:=Desktop|Page",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 764839,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 5,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506426,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764840
+        },
+        {
+          "Data_Setting_Id": 506424,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764840
+        },
+        {
+          "Data_Setting_Id": 506425,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764840
+        },
+        {
+          "Data_Setting_Id": 601517,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764840
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 37247,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\n",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 764840,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 6,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506426,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764840
+        },
+        {
+          "Data_Setting_Id": 506424,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764840
+        },
+        {
+          "Data_Setting_Id": 506425,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764840
+        },
+        {
+          "Data_Setting_Id": 601517,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764840
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 46046,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswfname:=Desktop|Page",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 764840,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 6,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506429,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764841
+        },
+        {
+          "Data_Setting_Id": 506427,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764841
+        },
+        {
+          "Data_Setting_Id": 506428,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764841
+        },
+        {
+          "Data_Setting_Id": 601518,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764841
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_SETUP",
+      "OBJECT_ID": 37910,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_setUpButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 31334,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 764841,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 7,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506429,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764841
+        },
+        {
+          "Data_Setting_Id": 506427,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764841
+        },
+        {
+          "Data_Setting_Id": 506428,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764841
+        },
+        {
+          "Data_Setting_Id": 601518,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764841
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_SETUP",
+      "OBJECT_ID": 46688,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_setUpButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 31334,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 764841,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 7,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506432,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764842
+        },
+        {
+          "Data_Setting_Id": 506430,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764842
+        },
+        {
+          "Data_Setting_Id": 506431,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764842
+        },
+        {
+          "Data_Setting_Id": 601519,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764842
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "FILTER_SELECTION",
+      "OBJECT_ID": 37316,
+      "OBJECT_TYPE": "FILTER_SELECTION",
+      "QUICK_ACCESS": "is child window:=False\nis owned window:=True\nswfname:=BlotterFilterSelectFieldsForm|SelectFieldsForm",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24813,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 764842,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 8,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506432,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764842
+        },
+        {
+          "Data_Setting_Id": 506430,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764842
+        },
+        {
+          "Data_Setting_Id": 506431,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764842
+        },
+        {
+          "Data_Setting_Id": 601519,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764842
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "FILTER_SELECTION",
+      "OBJECT_ID": 46115,
+      "OBJECT_TYPE": "FILTER_SELECTION",
+      "QUICK_ACCESS": "is child window:=False\nis owned window:=True\nswfname:=BlotterFilterSelectFieldsForm|SelectFieldsForm",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24813,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 764842,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 8,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506435,
+          "DATASETVALUE": "6,6",
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764843
+        },
+        {
+          "Data_Setting_Id": 506433,
+          "DATASETVALUE": "6,6",
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764843
+        },
+        {
+          "Data_Setting_Id": 506434,
+          "DATASETVALUE": "6,6",
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764843
+        },
+        {
+          "Data_Setting_Id": 601520,
+          "DATASETVALUE": "6,6",
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764843
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 44,
+      "KEY_WORD_NAME": "ClickAt",
+      "OBJECT_HAPPY_NAME": "SETUP_AVAILABLE_FIELDS",
+      "OBJECT_ID": 47202,
+      "OBJECT_TYPE": "FILTER_SELECTION",
+      "QUICK_ACCESS": "swfname:=lstAvailable",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25123,
+      "TYPE_NAME": "SwfList",
+      "STEPS_ID": 764843,
+      "COLUMN_ROW_SETTING": "LEFT_CLICK",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 9,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506435,
+          "DATASETVALUE": "6,6",
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764843
+        },
+        {
+          "Data_Setting_Id": 506433,
+          "DATASETVALUE": "6,6",
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764843
+        },
+        {
+          "Data_Setting_Id": 506434,
+          "DATASETVALUE": "6,6",
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764843
+        },
+        {
+          "Data_Setting_Id": 601520,
+          "DATASETVALUE": "6,6",
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764843
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 44,
+      "KEY_WORD_NAME": "ClickAt",
+      "OBJECT_HAPPY_NAME": "SETUP_AVAILABLE_FIELDS",
+      "OBJECT_ID": 35605,
+      "OBJECT_TYPE": "FILTER_SELECTION",
+      "QUICK_ACCESS": "swfname:=lstAvailable",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25123,
+      "TYPE_NAME": "SwfList",
+      "STEPS_ID": 764843,
+      "COLUMN_ROW_SETTING": "LEFT_CLICK",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 9,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506438,
+          "DATASETVALUE": "f{down 2}",
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764844
+        },
+        {
+          "Data_Setting_Id": 506436,
+          "DATASETVALUE": "f{down 2}",
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764844
+        },
+        {
+          "Data_Setting_Id": 506437,
+          "DATASETVALUE": "f{down 2}",
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764844
+        },
+        {
+          "Data_Setting_Id": 601521,
+          "DATASETVALUE": "f{down 2}",
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764844
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 86,
+      "KEY_WORD_NAME": "PressKeys",
+      "OBJECT_HAPPY_NAME": "SETUP_AVAILABLE_FIELDS",
+      "OBJECT_ID": 47202,
+      "OBJECT_TYPE": "FILTER_SELECTION",
+      "QUICK_ACCESS": "swfname:=lstAvailable",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25123,
+      "TYPE_NAME": "SwfList",
+      "STEPS_ID": 764844,
+      "COLUMN_ROW_SETTING": "CURRENT_POS",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 10,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506438,
+          "DATASETVALUE": "f{down 2}",
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764844
+        },
+        {
+          "Data_Setting_Id": 506436,
+          "DATASETVALUE": "f{down 2}",
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764844
+        },
+        {
+          "Data_Setting_Id": 506437,
+          "DATASETVALUE": "f{down 2}",
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764844
+        },
+        {
+          "Data_Setting_Id": 601521,
+          "DATASETVALUE": "f{down 2}",
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764844
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 86,
+      "KEY_WORD_NAME": "PressKeys",
+      "OBJECT_HAPPY_NAME": "SETUP_AVAILABLE_FIELDS",
+      "OBJECT_ID": 35605,
+      "OBJECT_TYPE": "FILTER_SELECTION",
+      "QUICK_ACCESS": "swfname:=lstAvailable",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25123,
+      "TYPE_NAME": "SwfList",
+      "STEPS_ID": 764844,
+      "COLUMN_ROW_SETTING": "CURRENT_POS",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 10,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506441,
+          "DATASETVALUE": "Fold",
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764845
+        },
+        {
+          "Data_Setting_Id": 506439,
+          "DATASETVALUE": "Fold",
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764845
+        },
+        {
+          "Data_Setting_Id": 506440,
+          "DATASETVALUE": "Fold",
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764845
+        },
+        {
+          "Data_Setting_Id": 601522,
+          "DATASETVALUE": "Fold",
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764845
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 40,
+      "KEY_WORD_NAME": "SelectListItem",
+      "OBJECT_HAPPY_NAME": "SETUP_AVAILABLE_FIELDS",
+      "OBJECT_ID": 47202,
+      "OBJECT_TYPE": "FILTER_SELECTION",
+      "QUICK_ACCESS": "swfname:=lstAvailable",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25123,
+      "TYPE_NAME": "SwfList",
+      "STEPS_ID": 764845,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 11,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506441,
+          "DATASETVALUE": "Fold",
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764845
+        },
+        {
+          "Data_Setting_Id": 506439,
+          "DATASETVALUE": "Fold",
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764845
+        },
+        {
+          "Data_Setting_Id": 506440,
+          "DATASETVALUE": "Fold",
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764845
+        },
+        {
+          "Data_Setting_Id": 601522,
+          "DATASETVALUE": "Fold",
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764845
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 40,
+      "KEY_WORD_NAME": "SelectListItem",
+      "OBJECT_HAPPY_NAME": "SETUP_AVAILABLE_FIELDS",
+      "OBJECT_ID": 35605,
+      "OBJECT_TYPE": "FILTER_SELECTION",
+      "QUICK_ACCESS": "swfname:=lstAvailable",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25123,
+      "TYPE_NAME": "SwfList",
+      "STEPS_ID": 764845,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 11,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506444,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764846
+        },
+        {
+          "Data_Setting_Id": 506442,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764846
+        },
+        {
+          "Data_Setting_Id": 506443,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764846
+        },
+        {
+          "Data_Setting_Id": 601523,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764846
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "SETUP_ADD",
+      "OBJECT_ID": 32608,
+      "OBJECT_TYPE": "FILTER_SELECTION",
+      "QUICK_ACCESS": "swfname:=butAdd",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 30564,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 764846,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 12,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506444,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764846
+        },
+        {
+          "Data_Setting_Id": 506442,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764846
+        },
+        {
+          "Data_Setting_Id": 506443,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764846
+        },
+        {
+          "Data_Setting_Id": 601523,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764846
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "SETUP_ADD",
+      "OBJECT_ID": 42424,
+      "OBJECT_TYPE": "FILTER_SELECTION",
+      "QUICK_ACCESS": "swfname:=butAdd",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 30564,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 764846,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 12,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506447,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 4,
+          "STEPS_ID": 764847
+        },
+        {
+          "Data_Setting_Id": 506445,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 4,
+          "STEPS_ID": 764847
+        },
+        {
+          "Data_Setting_Id": 506446,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 4,
+          "STEPS_ID": 764847
+        },
+        {
+          "Data_Setting_Id": 601524,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 4,
+          "STEPS_ID": 764847
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 40,
+      "KEY_WORD_NAME": "SelectListItem",
+      "OBJECT_HAPPY_NAME": "SETUP_AVAILABLE_FIELDS",
+      "OBJECT_ID": 47202,
+      "OBJECT_TYPE": "FILTER_SELECTION",
+      "QUICK_ACCESS": "swfname:=lstAvailable",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25123,
+      "TYPE_NAME": "SwfList",
+      "STEPS_ID": 764847,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 13,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506447,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 4,
+          "STEPS_ID": 764847
+        },
+        {
+          "Data_Setting_Id": 506445,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 4,
+          "STEPS_ID": 764847
+        },
+        {
+          "Data_Setting_Id": 506446,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 4,
+          "STEPS_ID": 764847
+        },
+        {
+          "Data_Setting_Id": 601524,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 4,
+          "STEPS_ID": 764847
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 40,
+      "KEY_WORD_NAME": "SelectListItem",
+      "OBJECT_HAPPY_NAME": "SETUP_AVAILABLE_FIELDS",
+      "OBJECT_ID": 35605,
+      "OBJECT_TYPE": "FILTER_SELECTION",
+      "QUICK_ACCESS": "swfname:=lstAvailable",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25123,
+      "TYPE_NAME": "SwfList",
+      "STEPS_ID": 764847,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 13,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506450,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 4,
+          "STEPS_ID": 764848
+        },
+        {
+          "Data_Setting_Id": 506448,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 4,
+          "STEPS_ID": 764848
+        },
+        {
+          "Data_Setting_Id": 506449,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 4,
+          "STEPS_ID": 764848
+        },
+        {
+          "Data_Setting_Id": 601525,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 4,
+          "STEPS_ID": 764848
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "SETUP_ADD",
+      "OBJECT_ID": 32608,
+      "OBJECT_TYPE": "FILTER_SELECTION",
+      "QUICK_ACCESS": "swfname:=butAdd",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 30564,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 764848,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 14,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506450,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 4,
+          "STEPS_ID": 764848
+        },
+        {
+          "Data_Setting_Id": 506448,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 4,
+          "STEPS_ID": 764848
+        },
+        {
+          "Data_Setting_Id": 506449,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 4,
+          "STEPS_ID": 764848
+        },
+        {
+          "Data_Setting_Id": 601525,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 4,
+          "STEPS_ID": 764848
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "SETUP_ADD",
+      "OBJECT_ID": 42424,
+      "OBJECT_TYPE": "FILTER_SELECTION",
+      "QUICK_ACCESS": "swfname:=butAdd",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 30564,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 764848,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 14,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506453,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764849
+        },
+        {
+          "Data_Setting_Id": 506451,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764849
+        },
+        {
+          "Data_Setting_Id": 506452,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764849
+        },
+        {
+          "Data_Setting_Id": 601526,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764849
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "SETUP_OK",
+      "OBJECT_ID": 37828,
+      "OBJECT_TYPE": "FILTER_SELECTION",
+      "QUICK_ACCESS": "swfname:=butOK",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25126,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 764849,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 15,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506453,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764849
+        },
+        {
+          "Data_Setting_Id": 506451,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764849
+        },
+        {
+          "Data_Setting_Id": 506452,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764849
+        },
+        {
+          "Data_Setting_Id": 601526,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764849
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "SETUP_OK",
+      "OBJECT_ID": 46608,
+      "OBJECT_TYPE": "FILTER_SELECTION",
+      "QUICK_ACCESS": "swfname:=butOK",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25126,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 764849,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 15,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506456,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764850
+        },
+        {
+          "Data_Setting_Id": 506454,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764850
+        },
+        {
+          "Data_Setting_Id": 506455,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764850
+        },
+        {
+          "Data_Setting_Id": 601527,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764850
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 37247,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\n",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 764850,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 16,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506456,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764850
+        },
+        {
+          "Data_Setting_Id": 506454,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764850
+        },
+        {
+          "Data_Setting_Id": 506455,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764850
+        },
+        {
+          "Data_Setting_Id": 601527,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764850
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 46046,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswfname:=Desktop|Page",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 764850,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 16,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506459,
+          "DATASETVALUE": "FXSPOT",
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764851
+        },
+        {
+          "Data_Setting_Id": 506457,
+          "DATASETVALUE": "FXSPOT",
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764851
+        },
+        {
+          "Data_Setting_Id": 506458,
+          "DATASETVALUE": "FXSPOT",
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764851
+        },
+        {
+          "Data_Setting_Id": 601528,
+          "DATASETVALUE": "FXSPOT",
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764851
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_TYPES",
+      "OBJECT_ID": 37854,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeTypes",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 26818,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 764851,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 17,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506459,
+          "DATASETVALUE": "FXSPOT",
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764851
+        },
+        {
+          "Data_Setting_Id": 506457,
+          "DATASETVALUE": "FXSPOT",
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764851
+        },
+        {
+          "Data_Setting_Id": 506458,
+          "DATASETVALUE": "FXSPOT",
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764851
+        },
+        {
+          "Data_Setting_Id": 601528,
+          "DATASETVALUE": "FXSPOT",
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764851
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_TYPES",
+      "OBJECT_ID": 46634,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeTypes",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 26818,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 764851,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 17,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506461,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764852
+        },
+        {
+          "Data_Setting_Id": 506462,
+          "DATASETVALUE": "VER",
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 4,
+          "STEPS_ID": 764852
+        },
+        {
+          "Data_Setting_Id": 506460,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764852
+        },
+        {
+          "Data_Setting_Id": 601529,
+          "DATASETVALUE": "VER",
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 4,
+          "STEPS_ID": 764852
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_STATUS",
+      "OBJECT_ID": 34193,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeStatus",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 32176,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 764852,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 18,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506461,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764852
+        },
+        {
+          "Data_Setting_Id": 506462,
+          "DATASETVALUE": "VER",
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 4,
+          "STEPS_ID": 764852
+        },
+        {
+          "Data_Setting_Id": 506460,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764852
+        },
+        {
+          "Data_Setting_Id": 601529,
+          "DATASETVALUE": "VER",
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 4,
+          "STEPS_ID": 764852
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_STATUS",
+      "OBJECT_ID": 43743,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeStatus",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 32176,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 764852,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 18,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506465,
+          "DATASETVALUE": "FUNDING",
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 4,
+          "STEPS_ID": 764853
+        },
+        {
+          "Data_Setting_Id": 506463,
+          "DATASETVALUE": "FUNDING",
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 4,
+          "STEPS_ID": 764853
+        },
+        {
+          "Data_Setting_Id": 506464,
+          "DATASETVALUE": "FUNDING",
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 4,
+          "STEPS_ID": 764853
+        },
+        {
+          "Data_Setting_Id": 601530,
+          "DATASETVALUE": "FUNDING",
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 4,
+          "STEPS_ID": 764853
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_DESK",
+      "OBJECT_ID": 48286,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=Desk",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 29515,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 764853,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 19,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506465,
+          "DATASETVALUE": "FUNDING",
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 4,
+          "STEPS_ID": 764853
+        },
+        {
+          "Data_Setting_Id": 506463,
+          "DATASETVALUE": "FUNDING",
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 4,
+          "STEPS_ID": 764853
+        },
+        {
+          "Data_Setting_Id": 506464,
+          "DATASETVALUE": "FUNDING",
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 4,
+          "STEPS_ID": 764853
+        },
+        {
+          "Data_Setting_Id": 601530,
+          "DATASETVALUE": "FUNDING",
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 4,
+          "STEPS_ID": 764853
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_DESK",
+      "OBJECT_ID": 40120,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=Desk",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 29515,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 764853,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 19,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506468,
+          "DATASETVALUE": "DOC",
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764854
+        },
+        {
+          "Data_Setting_Id": 506466,
+          "DATASETVALUE": "DOC",
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764854
+        },
+        {
+          "Data_Setting_Id": 506467,
+          "DATASETVALUE": "DOC",
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764854
+        },
+        {
+          "Data_Setting_Id": 601531,
+          "DATASETVALUE": "DOC",
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764854
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_FOLDER",
+      "OBJECT_ID": 43966,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=Folder",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25857,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 764854,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 20,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506468,
+          "DATASETVALUE": "DOC",
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764854
+        },
+        {
+          "Data_Setting_Id": 506466,
+          "DATASETVALUE": "DOC",
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764854
+        },
+        {
+          "Data_Setting_Id": 506467,
+          "DATASETVALUE": "DOC",
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764854
+        },
+        {
+          "Data_Setting_Id": 601531,
+          "DATASETVALUE": "DOC",
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764854
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_FOLDER",
+      "OBJECT_ID": 34394,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=Folder",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25857,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 764854,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 20,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506471,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764855
+        },
+        {
+          "Data_Setting_Id": 506469,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764855
+        },
+        {
+          "Data_Setting_Id": 506470,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764855
+        },
+        {
+          "Data_Setting_Id": 601532,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764855
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_FIND_NOW",
+      "OBJECT_ID": 32728,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_findNowButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 32179,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 764855,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 21,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506471,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764855
+        },
+        {
+          "Data_Setting_Id": 506469,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764855
+        },
+        {
+          "Data_Setting_Id": 506470,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764855
+        },
+        {
+          "Data_Setting_Id": 601532,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764855
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_FIND_NOW",
+      "OBJECT_ID": 45052,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_findNowButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 32179,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 764855,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 21,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506474,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764856
+        },
+        {
+          "Data_Setting_Id": 506472,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764856
+        },
+        {
+          "Data_Setting_Id": 506473,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764856
+        },
+        {
+          "Data_Setting_Id": 601533,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764856
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 37247,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\n",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 764856,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 22,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506474,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764856
+        },
+        {
+          "Data_Setting_Id": 506472,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764856
+        },
+        {
+          "Data_Setting_Id": 506473,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764856
+        },
+        {
+          "Data_Setting_Id": 601533,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764856
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 46046,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswfname:=Desktop|Page",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 764856,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 22,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506477,
+          "DATASETVALUE": "LOOP_VAR:FXSPOT_VER_TRADE_IDS",
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764857
+        },
+        {
+          "Data_Setting_Id": 506475,
+          "DATASETVALUE": "LOOP_VAR:FXSPOT_DOC_AUTH_IDS",
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764857
+        },
+        {
+          "Data_Setting_Id": 506476,
+          "DATASETVALUE": "LOOP_VAR:FXSPOT_VER_TRADE_IDS",
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764857
+        },
+        {
+          "Data_Setting_Id": 601534,
+          "DATASETVALUE": "LOOP_VAR:FXSPOT_DOC_AUTH_IDS",
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764857
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 1,
+      "KEY_WORD_NAME": "CaptureValue",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_TABLE",
+      "OBJECT_ID": 41666,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_queryResults",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 28613,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 764857,
+      "COLUMN_ROW_SETTING": "ALLROWS;Trade ID",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 23,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506477,
+          "DATASETVALUE": "LOOP_VAR:FXSPOT_VER_TRADE_IDS",
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764857
+        },
+        {
+          "Data_Setting_Id": 506475,
+          "DATASETVALUE": "LOOP_VAR:FXSPOT_DOC_AUTH_IDS",
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764857
+        },
+        {
+          "Data_Setting_Id": 506476,
+          "DATASETVALUE": "LOOP_VAR:FXSPOT_VER_TRADE_IDS",
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764857
+        },
+        {
+          "Data_Setting_Id": 601534,
+          "DATASETVALUE": "LOOP_VAR:FXSPOT_DOC_AUTH_IDS",
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764857
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 1,
+      "KEY_WORD_NAME": "CaptureValue",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_TABLE",
+      "OBJECT_ID": 35712,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_queryResults",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 28613,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 764857,
+      "COLUMN_ROW_SETTING": "ALLROWS;Trade ID",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 23,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506480,
+          "DATASETVALUE": "LOOP_VAR:FXSPOT_VER_TRADE_IDS",
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764858
+        },
+        {
+          "Data_Setting_Id": 506478,
+          "DATASETVALUE": "LOOP_VAR:FXSPOT_DOC_AUTH_IDS",
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764858
+        },
+        {
+          "Data_Setting_Id": 506479,
+          "DATASETVALUE": "LOOP_VAR:FXSPOT_VER_TRADE_IDS",
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764858
+        },
+        {
+          "Data_Setting_Id": 601535,
+          "DATASETVALUE": "LOOP_VAR:FXSPOT_DOC_AUTH_IDS",
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764858
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 36,
+      "KEY_WORD_NAME": "Loop",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 764858,
+      "COLUMN_ROW_SETTING": "Reload",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 24,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506483,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764859
+        },
+        {
+          "Data_Setting_Id": 506481,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764859
+        },
+        {
+          "Data_Setting_Id": 506482,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764859
+        },
+        {
+          "Data_Setting_Id": 601536,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764859
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 764859,
+      "COLUMN_ROW_SETTING": "F",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 25,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506486,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764860
+        },
+        {
+          "Data_Setting_Id": 506484,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764860
+        },
+        {
+          "Data_Setting_Id": 506485,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764860
+        },
+        {
+          "Data_Setting_Id": 601537,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764860
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 37247,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\n",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 764860,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 26,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506486,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764860
+        },
+        {
+          "Data_Setting_Id": 506484,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764860
+        },
+        {
+          "Data_Setting_Id": 506485,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764860
+        },
+        {
+          "Data_Setting_Id": 601537,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764860
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 46046,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswfname:=Desktop|Page",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 764860,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 26,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506489,
+          "DATASETVALUE": "LOOP_VAR:FXSPOT_VER_TRADE_IDS",
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764861
+        },
+        {
+          "Data_Setting_Id": 506487,
+          "DATASETVALUE": "LOOP_VAR:FXSPOT_DOC_AUTH_IDS",
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764861
+        },
+        {
+          "Data_Setting_Id": 506488,
+          "DATASETVALUE": "LOOP_VAR:FXSPOT_VER_TRADE_IDS",
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764861
+        },
+        {
+          "Data_Setting_Id": 601538,
+          "DATASETVALUE": "LOOP_VAR:FXSPOT_DOC_AUTH_IDS",
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764861
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_ID",
+      "OBJECT_ID": 41222,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeID",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 29531,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 764861,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 27,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506489,
+          "DATASETVALUE": "LOOP_VAR:FXSPOT_VER_TRADE_IDS",
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764861
+        },
+        {
+          "Data_Setting_Id": 506487,
+          "DATASETVALUE": "LOOP_VAR:FXSPOT_DOC_AUTH_IDS",
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764861
+        },
+        {
+          "Data_Setting_Id": 506488,
+          "DATASETVALUE": "LOOP_VAR:FXSPOT_VER_TRADE_IDS",
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764861
+        },
+        {
+          "Data_Setting_Id": 601538,
+          "DATASETVALUE": "LOOP_VAR:FXSPOT_DOC_AUTH_IDS",
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764861
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_ID",
+      "OBJECT_ID": 33373,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeID",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 29531,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 764861,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 27,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506492,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764862
+        },
+        {
+          "Data_Setting_Id": 506490,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764862
+        },
+        {
+          "Data_Setting_Id": 506491,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764862
+        },
+        {
+          "Data_Setting_Id": 601539,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764862
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_FIND_NOW",
+      "OBJECT_ID": 32728,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_findNowButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 32179,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 764862,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 28,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506492,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764862
+        },
+        {
+          "Data_Setting_Id": 506490,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764862
+        },
+        {
+          "Data_Setting_Id": 506491,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764862
+        },
+        {
+          "Data_Setting_Id": 601539,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764862
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_FIND_NOW",
+      "OBJECT_ID": 45052,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_findNowButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 32179,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 764862,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 28,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506495,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764863
+        },
+        {
+          "Data_Setting_Id": 506493,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764863
+        },
+        {
+          "Data_Setting_Id": 506494,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764863
+        },
+        {
+          "Data_Setting_Id": 601540,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764863
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 764863,
+      "COLUMN_ROW_SETTING": "F",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 29,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506498,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764864
+        },
+        {
+          "Data_Setting_Id": 506496,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764864
+        },
+        {
+          "Data_Setting_Id": 506497,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764864
+        },
+        {
+          "Data_Setting_Id": 601541,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764864
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 37247,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\n",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 764864,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 30,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506498,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764864
+        },
+        {
+          "Data_Setting_Id": 506496,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764864
+        },
+        {
+          "Data_Setting_Id": 506497,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764864
+        },
+        {
+          "Data_Setting_Id": 601541,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764864
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 46046,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswfname:=Desktop|Page",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 764864,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 30,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506501,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764865
+        },
+        {
+          "Data_Setting_Id": 506499,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764865
+        },
+        {
+          "Data_Setting_Id": 506500,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764865
+        },
+        {
+          "Data_Setting_Id": 601542,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764865
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 86,
+      "KEY_WORD_NAME": "PressKeys",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_TABLE",
+      "OBJECT_ID": 41666,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_queryResults",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 28613,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 764865,
+      "COLUMN_ROW_SETTING": "100,40",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 31,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506501,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764865
+        },
+        {
+          "Data_Setting_Id": 506499,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764865
+        },
+        {
+          "Data_Setting_Id": 506500,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764865
+        },
+        {
+          "Data_Setting_Id": 601542,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764865
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 86,
+      "KEY_WORD_NAME": "PressKeys",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_TABLE",
+      "OBJECT_ID": 35712,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_queryResults",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 28613,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 764865,
+      "COLUMN_ROW_SETTING": "100,40",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 31,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506504,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764866
+        },
+        {
+          "Data_Setting_Id": 506502,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764866
+        },
+        {
+          "Data_Setting_Id": 506503,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764866
+        },
+        {
+          "Data_Setting_Id": 601543,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764866
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 764866,
+      "COLUMN_ROW_SETTING": "F",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 32,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506507,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764867
+        },
+        {
+          "Data_Setting_Id": 506505,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764867
+        },
+        {
+          "Data_Setting_Id": 506506,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764867
+        },
+        {
+          "Data_Setting_Id": 601544,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764867
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "FXSPOT_TRADE_POPUP",
+      "OBJECT_ID": 32931,
+      "OBJECT_TYPE": "FXSPOT_TRADE_POPUP",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^IFC FX Spot Trade.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24896,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 764867,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 33,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506507,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764867
+        },
+        {
+          "Data_Setting_Id": 506505,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764867
+        },
+        {
+          "Data_Setting_Id": 506506,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764867
+        },
+        {
+          "Data_Setting_Id": 601544,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764867
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "FXSPOT_TRADE_POPUP",
+      "OBJECT_ID": 40738,
+      "OBJECT_TYPE": "FXSPOT_TRADE_POPUP",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^IFC FX Spot Trade.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24896,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 764867,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 33,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506510,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764868
+        },
+        {
+          "Data_Setting_Id": 506508,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764868
+        },
+        {
+          "Data_Setting_Id": 506509,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764868
+        },
+        {
+          "Data_Setting_Id": 601545,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764868
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 22,
+      "KEY_WORD_NAME": "SelectMenuItem",
+      "OBJECT_HAPPY_NAME": "FXSPOT_TRADE_POPUP_TOOLBAR",
+      "OBJECT_ID": 48322,
+      "OBJECT_TYPE": "FXSPOT_TRADE_POPUP",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 31038,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 764868,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 34,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506510,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764868
+        },
+        {
+          "Data_Setting_Id": 506508,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764868
+        },
+        {
+          "Data_Setting_Id": 506509,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764868
+        },
+        {
+          "Data_Setting_Id": 601545,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764868
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 22,
+      "KEY_WORD_NAME": "SelectMenuItem",
+      "OBJECT_HAPPY_NAME": "FXSPOT_TRADE_POPUP_TOOLBAR",
+      "OBJECT_ID": 40154,
+      "OBJECT_TYPE": "FXSPOT_TRADE_POPUP",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 31038,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 764868,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 34,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506513,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764869
+        },
+        {
+          "Data_Setting_Id": 506511,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764869
+        },
+        {
+          "Data_Setting_Id": 506512,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764869
+        },
+        {
+          "Data_Setting_Id": 601546,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764869
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "FXSPOT",
+      "OBJECT_ID": 33325,
+      "OBJECT_TYPE": "FXSPOT",
+      "QUICK_ACCESS": "is owned window:=False \nis child window:=False \nswfname:=Desktop \nswftypename:=Summit\\.Framework\\.Desktop\\.Desktop \nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24895,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 764869,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 35,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506513,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764869
+        },
+        {
+          "Data_Setting_Id": 506511,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764869
+        },
+        {
+          "Data_Setting_Id": 506512,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764869
+        },
+        {
+          "Data_Setting_Id": 601546,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764869
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "FXSPOT",
+      "OBJECT_ID": 41105,
+      "OBJECT_TYPE": "FXSPOT",
+      "QUICK_ACCESS": "is owned window:=False \nis child window:=False \nswfname:=Desktop \nswftypename:=Summit\\.Framework\\.Desktop\\.Desktop \nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24895,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 764869,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 35,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506516,
+          "DATASETVALUE": "TRADE_STATE_BEFORE",
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764870
+        },
+        {
+          "Data_Setting_Id": 506514,
+          "DATASETVALUE": "TRADE_STATE_BEFORE",
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764870
+        },
+        {
+          "Data_Setting_Id": 506515,
+          "DATASETVALUE": "TRADE_STATE_BEFORE",
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764870
+        },
+        {
+          "Data_Setting_Id": 601547,
+          "DATASETVALUE": "TRADE_STATE_BEFORE",
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764870
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "FXSPOT_STATE_LAB",
+      "OBJECT_ID": 39104,
+      "OBJECT_TYPE": "FXSPOT",
+      "QUICK_ACCESS": "Swfname:=_stateEntry",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 28339,
+      "TYPE_NAME": "SwfLabel",
+      "STEPS_ID": 764870,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 36,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506516,
+          "DATASETVALUE": "TRADE_STATE_BEFORE",
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764870
+        },
+        {
+          "Data_Setting_Id": 506514,
+          "DATASETVALUE": "TRADE_STATE_BEFORE",
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764870
+        },
+        {
+          "Data_Setting_Id": 506515,
+          "DATASETVALUE": "TRADE_STATE_BEFORE",
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764870
+        },
+        {
+          "Data_Setting_Id": 601547,
+          "DATASETVALUE": "TRADE_STATE_BEFORE",
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764870
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "FXSPOT_STATE_LAB",
+      "OBJECT_ID": 43099,
+      "OBJECT_TYPE": "FXSPOT",
+      "QUICK_ACCESS": "Swfname:=_stateEntry",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 28339,
+      "TYPE_NAME": "SwfLabel",
+      "STEPS_ID": 764870,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 36,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506519,
+          "DATASETVALUE": "Desktop Menu;Action;Verify",
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764871
+        },
+        {
+          "Data_Setting_Id": 506517,
+          "DATASETVALUE": "Desktop Menu;Action;Authorize",
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764871
+        },
+        {
+          "Data_Setting_Id": 506518,
+          "DATASETVALUE": "Desktop Menu;Action;Verify",
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764871
+        },
+        {
+          "Data_Setting_Id": 601548,
+          "DATASETVALUE": "Desktop Menu;Action;Accept",
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764871
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 22,
+      "KEY_WORD_NAME": "SelectMenuItem",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 764871,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 37,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506522,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764872
+        },
+        {
+          "Data_Setting_Id": 506520,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764872
+        },
+        {
+          "Data_Setting_Id": 506521,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764872
+        },
+        {
+          "Data_Setting_Id": 601549,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764872
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 38,
+      "KEY_WORD_NAME": "Dismiss",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 764872,
+      "COLUMN_ROW_SETTING": "10",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 38,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506525,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764873
+        },
+        {
+          "Data_Setting_Id": 506523,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764873
+        },
+        {
+          "Data_Setting_Id": 506524,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764873
+        },
+        {
+          "Data_Setting_Id": 601550,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764873
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "FXSPOT",
+      "OBJECT_ID": 33325,
+      "OBJECT_TYPE": "FXSPOT",
+      "QUICK_ACCESS": "is owned window:=False \nis child window:=False \nswfname:=Desktop \nswftypename:=Summit\\.Framework\\.Desktop\\.Desktop \nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24895,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 764873,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 39,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506525,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764873
+        },
+        {
+          "Data_Setting_Id": 506523,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764873
+        },
+        {
+          "Data_Setting_Id": 506524,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764873
+        },
+        {
+          "Data_Setting_Id": 601550,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764873
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "FXSPOT",
+      "OBJECT_ID": 41105,
+      "OBJECT_TYPE": "FXSPOT",
+      "QUICK_ACCESS": "is owned window:=False \nis child window:=False \nswfname:=Desktop \nswftypename:=Summit\\.Framework\\.Desktop\\.Desktop \nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24895,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 764873,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 39,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506528,
+          "DATASETVALUE": "TRADE_STATE_AFTER",
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764874
+        },
+        {
+          "Data_Setting_Id": 506526,
+          "DATASETVALUE": "TRADE_STATE_AFTER",
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764874
+        },
+        {
+          "Data_Setting_Id": 506527,
+          "DATASETVALUE": "TRADE_STATE_AFTER",
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764874
+        },
+        {
+          "Data_Setting_Id": 601551,
+          "DATASETVALUE": "TRADE_STATE_AFTER",
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764874
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "FXSPOT_STATE_LAB",
+      "OBJECT_ID": 39104,
+      "OBJECT_TYPE": "FXSPOT",
+      "QUICK_ACCESS": "Swfname:=_stateEntry",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 28339,
+      "TYPE_NAME": "SwfLabel",
+      "STEPS_ID": 764874,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 40,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506528,
+          "DATASETVALUE": "TRADE_STATE_AFTER",
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764874
+        },
+        {
+          "Data_Setting_Id": 506526,
+          "DATASETVALUE": "TRADE_STATE_AFTER",
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764874
+        },
+        {
+          "Data_Setting_Id": 506527,
+          "DATASETVALUE": "TRADE_STATE_AFTER",
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764874
+        },
+        {
+          "Data_Setting_Id": 601551,
+          "DATASETVALUE": "TRADE_STATE_AFTER",
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764874
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "FXSPOT_STATE_LAB",
+      "OBJECT_ID": 43099,
+      "OBJECT_TYPE": "FXSPOT",
+      "QUICK_ACCESS": "Swfname:=_stateEntry",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 28339,
+      "TYPE_NAME": "SwfLabel",
+      "STEPS_ID": 764874,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 40,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506531,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764875
+        },
+        {
+          "Data_Setting_Id": 506529,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764875
+        },
+        {
+          "Data_Setting_Id": 506530,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764875
+        },
+        {
+          "Data_Setting_Id": 601552,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764875
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 764875,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 41,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506531,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764875
+        },
+        {
+          "Data_Setting_Id": 506529,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764875
+        },
+        {
+          "Data_Setting_Id": 506530,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764875
+        },
+        {
+          "Data_Setting_Id": 601552,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764875
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 764875,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 41,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506534,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764876
+        },
+        {
+          "Data_Setting_Id": 506532,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764876
+        },
+        {
+          "Data_Setting_Id": 506533,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764876
+        },
+        {
+          "Data_Setting_Id": 601553,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764876
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 32409,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 30430,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 764876,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 42,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506534,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764876
+        },
+        {
+          "Data_Setting_Id": 506532,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764876
+        },
+        {
+          "Data_Setting_Id": 506533,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764876
+        },
+        {
+          "Data_Setting_Id": 601553,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764876
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 40727,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 30430,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 764876,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 42,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506537,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764877
+        },
+        {
+          "Data_Setting_Id": 506535,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764877
+        },
+        {
+          "Data_Setting_Id": 506536,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764877
+        },
+        {
+          "Data_Setting_Id": 601554,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764877
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 38,
+      "KEY_WORD_NAME": "Dismiss",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 764877,
+      "COLUMN_ROW_SETTING": "5",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 43,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506540,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764878
+        },
+        {
+          "Data_Setting_Id": 506538,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764878
+        },
+        {
+          "Data_Setting_Id": 506539,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764878
+        },
+        {
+          "Data_Setting_Id": 601555,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764878
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 90,
+      "KEY_WORD_NAME": "EndLoop",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 764878,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 44,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506543,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764879
+        },
+        {
+          "Data_Setting_Id": 506541,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764879
+        },
+        {
+          "Data_Setting_Id": 506542,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764879
+        },
+        {
+          "Data_Setting_Id": 601556,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764879
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 83,
+      "KEY_WORD_NAME": "ResumeNext",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 764879,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 45,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506546,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764880
+        },
+        {
+          "Data_Setting_Id": 506544,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764880
+        },
+        {
+          "Data_Setting_Id": 506545,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764880
+        },
+        {
+          "Data_Setting_Id": 601557,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764880
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 32409,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 30430,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 764880,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 46,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506546,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764880
+        },
+        {
+          "Data_Setting_Id": 506544,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764880
+        },
+        {
+          "Data_Setting_Id": 506545,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764880
+        },
+        {
+          "Data_Setting_Id": 601557,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764880
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 40727,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 30430,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 764880,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 46,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 506549,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764712,
+          "SKIP": 0,
+          "STEPS_ID": 764881
+        },
+        {
+          "Data_Setting_Id": 506547,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764697,
+          "SKIP": 0,
+          "STEPS_ID": 764881
+        },
+        {
+          "Data_Setting_Id": 506548,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 764706,
+          "SKIP": 0,
+          "STEPS_ID": 764881
+        },
+        {
+          "Data_Setting_Id": 601558,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 901492,
+          "SKIP": 0,
+          "STEPS_ID": 764881
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4079,
+      "TEST_CASE_NAME": "DOC FX SPOT trades Bulk TrdAction",
+      "KEY_WORD_ID": 38,
+      "KEY_WORD_NAME": "Dismiss",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 764881,
+      "COLUMN_ROW_SETTING": "5",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 47,
+      "VALUE_SETTING": null
+    }
+  ]
+}

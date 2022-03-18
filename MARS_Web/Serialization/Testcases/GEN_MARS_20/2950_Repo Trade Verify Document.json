@@ -1,0 +1,3543 @@
+{
+  "currentSyncroStatus": 0,
+  "assignedApplications": [
+    194,
+    193,
+    -1
+  ],
+  "assignedTestSuiteIDs": [
+    1354
+  ],
+  "version": null,
+  "assignedDataSets": [
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 398027,
+      "ALIAS_NAME": "BO_57b",
+      "DESCRIPTION_INFO": "Verify close of Repo trade ticket for collateral and non-collateral trade"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 398111,
+      "ALIAS_NAME": "LAM_36_001",
+      "DESCRIPTION_INFO": "Process pairoff on a classic Repo upgraded from V5.5"
+    }
+  ],
+  "allSteps": [
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267145,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398464
+        },
+        {
+          "Data_Setting_Id": 267146,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398464
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 398464,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267145,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398464
+        },
+        {
+          "Data_Setting_Id": 267146,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398464
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 398464,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267147,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398465
+        },
+        {
+          "Data_Setting_Id": 267148,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398465
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 398465,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 2,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267147,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398465
+        },
+        {
+          "Data_Setting_Id": 267148,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398465
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 398465,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 2,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267149,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398466
+        },
+        {
+          "Data_Setting_Id": 267150,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398466
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 12,
+      "KEY_WORD_NAME": "LaunchApplication",
+      "OBJECT_HAPPY_NAME": "ApplicationName",
+      "OBJECT_ID": 35170,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockAreaTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 29559,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 398466,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 3,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267149,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398466
+        },
+        {
+          "Data_Setting_Id": 267150,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398466
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 12,
+      "KEY_WORD_NAME": "LaunchApplication",
+      "OBJECT_HAPPY_NAME": "ApplicationName",
+      "OBJECT_ID": 44673,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockAreaTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 29559,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 398466,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 3,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267151,
+          "DATASETVALUE": "50",
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398467
+        },
+        {
+          "Data_Setting_Id": 267152,
+          "DATASETVALUE": "50",
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398467
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 398467,
+      "COLUMN_ROW_SETTING": "F",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 4,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267153,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398468
+        },
+        {
+          "Data_Setting_Id": 267154,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398468
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 37247,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\n",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 398468,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 5,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267153,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398468
+        },
+        {
+          "Data_Setting_Id": 267154,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398468
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 46046,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswfname:=Desktop|Page",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 398468,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 5,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267155,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398469
+        },
+        {
+          "Data_Setting_Id": 267156,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398469
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 37247,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\n",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 398469,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 6,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267155,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398469
+        },
+        {
+          "Data_Setting_Id": 267156,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398469
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 46046,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswfname:=Desktop|Page",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 398469,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 6,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267157,
+          "DATASETVALUE": "REPO",
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398470
+        },
+        {
+          "Data_Setting_Id": 267158,
+          "DATASETVALUE": "REPO",
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398470
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_TYPES",
+      "OBJECT_ID": 37854,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeTypes",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 26818,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 398470,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 7,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267157,
+          "DATASETVALUE": "REPO",
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398470
+        },
+        {
+          "Data_Setting_Id": 267158,
+          "DATASETVALUE": "REPO",
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398470
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_TYPES",
+      "OBJECT_ID": 46634,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeTypes",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 26818,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 398470,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 7,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267159,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398471
+        },
+        {
+          "Data_Setting_Id": 267160,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398471
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_STATUS",
+      "OBJECT_ID": 34193,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeStatus",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 32176,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 398471,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 8,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267159,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398471
+        },
+        {
+          "Data_Setting_Id": 267160,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398471
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_STATUS",
+      "OBJECT_ID": 43743,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeStatus",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 32176,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 398471,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 8,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267161,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398472
+        },
+        {
+          "Data_Setting_Id": 267162,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398472
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_EXTERNAL_TRADE_ID",
+      "OBJECT_ID": 44105,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=ExternalTradeId",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 27732,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 398472,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 9,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267161,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398472
+        },
+        {
+          "Data_Setting_Id": 267162,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398472
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_EXTERNAL_TRADE_ID",
+      "OBJECT_ID": 34602,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=ExternalTradeId",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 27732,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 398472,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 9,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267163,
+          "DATASETVALUE": "MODAL_VAR:BO_57_TRADE_ID",
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398473
+        },
+        {
+          "Data_Setting_Id": 267164,
+          "DATASETVALUE": "MODAL_VAR:LAM_46_TRADE_ID",
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398473
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_ID",
+      "OBJECT_ID": 41222,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeID",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 29531,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 398473,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 10,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267163,
+          "DATASETVALUE": "MODAL_VAR:BO_57_TRADE_ID",
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398473
+        },
+        {
+          "Data_Setting_Id": 267164,
+          "DATASETVALUE": "MODAL_VAR:LAM_46_TRADE_ID",
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398473
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_ID",
+      "OBJECT_ID": 33373,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeID",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 29531,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 398473,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 10,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267165,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398474
+        },
+        {
+          "Data_Setting_Id": 267166,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398474
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_FIND_NOW",
+      "OBJECT_ID": 32728,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_findNowButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 32179,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 398474,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 11,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267165,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398474
+        },
+        {
+          "Data_Setting_Id": 267166,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398474
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_FIND_NOW",
+      "OBJECT_ID": 45052,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_findNowButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 32179,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 398474,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 11,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267167,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 4,
+          "STEPS_ID": 398475
+        },
+        {
+          "Data_Setting_Id": 267168,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 4,
+          "STEPS_ID": 398475
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 37247,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\n",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 398475,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 12,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267167,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 4,
+          "STEPS_ID": 398475
+        },
+        {
+          "Data_Setting_Id": 267168,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 4,
+          "STEPS_ID": 398475
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 46046,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswfname:=Desktop|Page",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 398475,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 12,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267169,
+          "DATASETVALUE": "MODAL_VAR:BO_57_TRADE_ID",
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 4,
+          "STEPS_ID": 398476
+        },
+        {
+          "Data_Setting_Id": 267170,
+          "DATASETVALUE": "MODAL_VAR:LAM_46_TRADE_ID",
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 4,
+          "STEPS_ID": 398476
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 32,
+      "KEY_WORD_NAME": "SearchAndClick",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_TABLE",
+      "OBJECT_ID": 41666,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_queryResults",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 28613,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 398476,
+      "COLUMN_ROW_SETTING": "MarsAddins;Trade ID;Action:LEFT_DBL_CLICK",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 13,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267169,
+          "DATASETVALUE": "MODAL_VAR:BO_57_TRADE_ID",
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 4,
+          "STEPS_ID": 398476
+        },
+        {
+          "Data_Setting_Id": 267170,
+          "DATASETVALUE": "MODAL_VAR:LAM_46_TRADE_ID",
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 4,
+          "STEPS_ID": 398476
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 32,
+      "KEY_WORD_NAME": "SearchAndClick",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_TABLE",
+      "OBJECT_ID": 35712,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_queryResults",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 28613,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 398476,
+      "COLUMN_ROW_SETTING": "MarsAddins;Trade ID;Action:LEFT_DBL_CLICK",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 13,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267171,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 4,
+          "STEPS_ID": 398477
+        },
+        {
+          "Data_Setting_Id": 267172,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 4,
+          "STEPS_ID": 398477
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "REPO_TRADE_POPUP",
+      "OBJECT_ID": 32753,
+      "OBJECT_TYPE": "REPO_TRADE_POPUP",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^IFC Repo Trade.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25029,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 398477,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": "MultiplePane:Runtime:REPO_TRADE_POPUP",
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 14,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267171,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 4,
+          "STEPS_ID": 398477
+        },
+        {
+          "Data_Setting_Id": 267172,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 4,
+          "STEPS_ID": 398477
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "REPO_TRADE_POPUP",
+      "OBJECT_ID": 45075,
+      "OBJECT_TYPE": "REPO_TRADE_POPUP",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^IFC Repo Trade.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25029,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 398477,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": "MultiplePane:Runtime:REPO_TRADE_POPUP",
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 14,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267173,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 4,
+          "STEPS_ID": 398478
+        },
+        {
+          "Data_Setting_Id": 267174,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 4,
+          "STEPS_ID": 398478
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 22,
+      "KEY_WORD_NAME": "SelectMenuItem",
+      "OBJECT_HAPPY_NAME": "REPO_TRADE_POPUP_TOOLBAR",
+      "OBJECT_ID": 42002,
+      "OBJECT_TYPE": "REPO_TRADE_POPUP",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 28539,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 398478,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 15,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267173,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 4,
+          "STEPS_ID": 398478
+        },
+        {
+          "Data_Setting_Id": 267174,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 4,
+          "STEPS_ID": 398478
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 22,
+      "KEY_WORD_NAME": "SelectMenuItem",
+      "OBJECT_HAPPY_NAME": "REPO_TRADE_POPUP_TOOLBAR",
+      "OBJECT_ID": 36013,
+      "OBJECT_TYPE": "REPO_TRADE_POPUP",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 28539,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 398478,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 15,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267175,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 4,
+          "STEPS_ID": 398479
+        },
+        {
+          "Data_Setting_Id": 267176,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 4,
+          "STEPS_ID": 398479
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "REPO_TRADE",
+      "OBJECT_ID": 43662,
+      "OBJECT_TYPE": "REPO_TRADE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24790,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 398479,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 16,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267175,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 4,
+          "STEPS_ID": 398479
+        },
+        {
+          "Data_Setting_Id": 267176,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 4,
+          "STEPS_ID": 398479
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "REPO_TRADE",
+      "OBJECT_ID": 34153,
+      "OBJECT_TYPE": "REPO_TRADE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24790,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 398479,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 16,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267179,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 4,
+          "STEPS_ID": 398481
+        },
+        {
+          "Data_Setting_Id": 267180,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 4,
+          "STEPS_ID": 398481
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 398481,
+      "COLUMN_ROW_SETTING": "F",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 17,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267181,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 4,
+          "STEPS_ID": 398482
+        },
+        {
+          "Data_Setting_Id": 267182,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 4,
+          "STEPS_ID": 398482
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 38,
+      "KEY_WORD_NAME": "Dismiss",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 398482,
+      "COLUMN_ROW_SETTING": "10",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 18,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267183,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 4,
+          "STEPS_ID": 398483
+        },
+        {
+          "Data_Setting_Id": 267184,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 4,
+          "STEPS_ID": 398483
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 398483,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 19,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267183,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 4,
+          "STEPS_ID": 398483
+        },
+        {
+          "Data_Setting_Id": 267184,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 4,
+          "STEPS_ID": 398483
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 398483,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 19,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267185,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 4,
+          "STEPS_ID": 398484
+        },
+        {
+          "Data_Setting_Id": 267186,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 4,
+          "STEPS_ID": 398484
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 32409,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 30430,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 398484,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 20,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267185,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 4,
+          "STEPS_ID": 398484
+        },
+        {
+          "Data_Setting_Id": 267186,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 4,
+          "STEPS_ID": 398484
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 40727,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 30430,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 398484,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 20,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267187,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 4,
+          "STEPS_ID": 398485
+        },
+        {
+          "Data_Setting_Id": 267188,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 4,
+          "STEPS_ID": 398485
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 38,
+      "KEY_WORD_NAME": "Dismiss",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 398485,
+      "COLUMN_ROW_SETTING": "3",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 21,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267189,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398486
+        },
+        {
+          "Data_Setting_Id": 267190,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398486
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 37247,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\n",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 398486,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 22,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267189,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398486
+        },
+        {
+          "Data_Setting_Id": 267190,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398486
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 46046,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswfname:=Desktop|Page",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 398486,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 22,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 353781,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 470847
+        },
+        {
+          "Data_Setting_Id": 353782,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 470847
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 86,
+      "KEY_WORD_NAME": "PressKeys",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_TABLE",
+      "OBJECT_ID": 41666,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_queryResults",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 28613,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 470847,
+      "COLUMN_ROW_SETTING": "100,40",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 23,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 353781,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 470847
+        },
+        {
+          "Data_Setting_Id": 353782,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 470847
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 86,
+      "KEY_WORD_NAME": "PressKeys",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_TABLE",
+      "OBJECT_ID": 35712,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_queryResults",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 28613,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 470847,
+      "COLUMN_ROW_SETTING": "100,40",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 23,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267191,
+          "DATASETVALUE": "MODAL_VAR:BO_57_TRADE_ID",
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398487
+        },
+        {
+          "Data_Setting_Id": 267192,
+          "DATASETVALUE": "MODAL_VAR:LAM_46_TRADE_ID",
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398487
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 32,
+      "KEY_WORD_NAME": "SearchAndClick",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_TABLE",
+      "OBJECT_ID": 41666,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_queryResults",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 28613,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 398487,
+      "COLUMN_ROW_SETTING": "MarsAddins;Trade ID;Action:LEFT_DBL_CLICK",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 24,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267191,
+          "DATASETVALUE": "MODAL_VAR:BO_57_TRADE_ID",
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398487
+        },
+        {
+          "Data_Setting_Id": 267192,
+          "DATASETVALUE": "MODAL_VAR:LAM_46_TRADE_ID",
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398487
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 32,
+      "KEY_WORD_NAME": "SearchAndClick",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_TABLE",
+      "OBJECT_ID": 35712,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_queryResults",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 28613,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 398487,
+      "COLUMN_ROW_SETTING": "MarsAddins;Trade ID;Action:LEFT_DBL_CLICK",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 24,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267193,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398488
+        },
+        {
+          "Data_Setting_Id": 267194,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398488
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "REPO_TRADE_POPUP",
+      "OBJECT_ID": 32753,
+      "OBJECT_TYPE": "REPO_TRADE_POPUP",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^IFC Repo Trade.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25029,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 398488,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": "MultiplePane:Runtime:REPO_TRADE_POPUP",
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 25,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267193,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398488
+        },
+        {
+          "Data_Setting_Id": 267194,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398488
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "REPO_TRADE_POPUP",
+      "OBJECT_ID": 45075,
+      "OBJECT_TYPE": "REPO_TRADE_POPUP",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^IFC Repo Trade.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25029,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 398488,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": "MultiplePane:Runtime:REPO_TRADE_POPUP",
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 25,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267197,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398490
+        },
+        {
+          "Data_Setting_Id": 267198,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398490
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 22,
+      "KEY_WORD_NAME": "SelectMenuItem",
+      "OBJECT_HAPPY_NAME": "REPO_TRADE_POPUP_TOOLBAR",
+      "OBJECT_ID": 42002,
+      "OBJECT_TYPE": "REPO_TRADE_POPUP",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 28539,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 398490,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 26,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267197,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398490
+        },
+        {
+          "Data_Setting_Id": 267198,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398490
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 22,
+      "KEY_WORD_NAME": "SelectMenuItem",
+      "OBJECT_HAPPY_NAME": "REPO_TRADE_POPUP_TOOLBAR",
+      "OBJECT_ID": 36013,
+      "OBJECT_TYPE": "REPO_TRADE_POPUP",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 28539,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 398490,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 26,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267199,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398491
+        },
+        {
+          "Data_Setting_Id": 267200,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398491
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "REPO_TRADE",
+      "OBJECT_ID": 43662,
+      "OBJECT_TYPE": "REPO_TRADE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24790,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 398491,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 27,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267199,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398491
+        },
+        {
+          "Data_Setting_Id": 267200,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398491
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "REPO_TRADE",
+      "OBJECT_ID": 34153,
+      "OBJECT_TYPE": "REPO_TRADE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24790,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 398491,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 27,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 353780,
+          "DATASETVALUE": "Back Office",
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 470845
+        },
+        {
+          "Data_Setting_Id": 353783,
+          "DATASETVALUE": "Back Office",
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 470845
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 5,
+      "KEY_WORD_NAME": "ClickMenuIcon",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 470845,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 28,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267203,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398493
+        },
+        {
+          "Data_Setting_Id": 267204,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398493
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 398493,
+      "COLUMN_ROW_SETTING": "F",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 29,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267205,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398494
+        },
+        {
+          "Data_Setting_Id": 267206,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398494
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "BACK_OFFICE",
+      "OBJECT_ID": 41341,
+      "OBJECT_TYPE": "BACK_OFFICE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24973,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 398494,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 30,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267205,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398494
+        },
+        {
+          "Data_Setting_Id": 267206,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398494
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "BACK_OFFICE",
+      "OBJECT_ID": 33664,
+      "OBJECT_TYPE": "BACK_OFFICE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24973,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 398494,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 30,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267207,
+          "DATASETVALUE": "Documents.*",
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398495
+        },
+        {
+          "Data_Setting_Id": 267208,
+          "DATASETVALUE": "Documents.*",
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398495
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 24,
+      "KEY_WORD_NAME": "SelectTab",
+      "OBJECT_HAPPY_NAME": "BACK_OFFICE_TABS",
+      "OBJECT_ID": 37850,
+      "OBJECT_TYPE": "BACK_OFFICE",
+      "QUICK_ACCESS": "swfname:=tabControl1",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 30554,
+      "TYPE_NAME": "swfTab",
+      "STEPS_ID": 398495,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 31,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267207,
+          "DATASETVALUE": "Documents.*",
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398495
+        },
+        {
+          "Data_Setting_Id": 267208,
+          "DATASETVALUE": "Documents.*",
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398495
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 24,
+      "KEY_WORD_NAME": "SelectTab",
+      "OBJECT_HAPPY_NAME": "BACK_OFFICE_TABS",
+      "OBJECT_ID": 46631,
+      "OBJECT_TYPE": "BACK_OFFICE",
+      "QUICK_ACCESS": "swfname:=tabControl1",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 30554,
+      "TYPE_NAME": "swfTab",
+      "STEPS_ID": 398495,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 31,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267209,
+          "DATASETVALUE": "H:R",
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 4,
+          "STEPS_ID": 398496
+        },
+        {
+          "Data_Setting_Id": 267210,
+          "DATASETVALUE": "H:R",
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 4,
+          "STEPS_ID": 398496
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 82,
+      "KEY_WORD_NAME": "ScrollWindow",
+      "OBJECT_HAPPY_NAME": "DOCUMENTS_TABLE",
+      "OBJECT_ID": 35285,
+      "OBJECT_TYPE": "BACK_OFFICE",
+      "QUICK_ACCESS": "swfname:=_documentsSheet",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25980,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 398496,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 32,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267209,
+          "DATASETVALUE": "H:R",
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 4,
+          "STEPS_ID": 398496
+        },
+        {
+          "Data_Setting_Id": 267210,
+          "DATASETVALUE": "H:R",
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 4,
+          "STEPS_ID": 398496
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 82,
+      "KEY_WORD_NAME": "ScrollWindow",
+      "OBJECT_HAPPY_NAME": "DOCUMENTS_TABLE",
+      "OBJECT_ID": 44789,
+      "OBJECT_TYPE": "BACK_OFFICE",
+      "QUICK_ACCESS": "swfname:=_documentsSheet",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25980,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 398496,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 32,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267211,
+          "DATASETVALUE": "Inception",
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398497
+        },
+        {
+          "Data_Setting_Id": 267212,
+          "DATASETVALUE": "Inception",
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398497
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 32,
+      "KEY_WORD_NAME": "SearchAndClick",
+      "OBJECT_HAPPY_NAME": "DOCUMENTS_TABLE",
+      "OBJECT_ID": 35285,
+      "OBJECT_TYPE": "BACK_OFFICE",
+      "QUICK_ACCESS": "swfname:=_documentsSheet",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25980,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 398497,
+      "COLUMN_ROW_SETTING": "MarsAddins;Document Function;Action:LEFT_DBL_CLICK",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 33,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267211,
+          "DATASETVALUE": "Inception",
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398497
+        },
+        {
+          "Data_Setting_Id": 267212,
+          "DATASETVALUE": "Inception",
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398497
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 32,
+      "KEY_WORD_NAME": "SearchAndClick",
+      "OBJECT_HAPPY_NAME": "DOCUMENTS_TABLE",
+      "OBJECT_ID": 44789,
+      "OBJECT_TYPE": "BACK_OFFICE",
+      "QUICK_ACCESS": "swfname:=_documentsSheet",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25980,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 398497,
+      "COLUMN_ROW_SETTING": "MarsAddins;Document Function;Action:LEFT_DBL_CLICK",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 33,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267213,
+          "DATASETVALUE": "30",
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398498
+        },
+        {
+          "Data_Setting_Id": 267214,
+          "DATASETVALUE": "30",
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398498
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 398498,
+      "COLUMN_ROW_SETTING": "F",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 34,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267215,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398499
+        },
+        {
+          "Data_Setting_Id": 267216,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398499
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "DOCUMENT_VIEWER",
+      "OBJECT_ID": 42939,
+      "OBJECT_TYPE": "DOCUMENT_VIEWER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^Document Viewer.*\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24772,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 398499,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 35,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267215,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398499
+        },
+        {
+          "Data_Setting_Id": 267216,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398499
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "DOCUMENT_VIEWER",
+      "OBJECT_ID": 38847,
+      "OBJECT_TYPE": "DOCUMENT_VIEWER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^Document Viewer.*\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24772,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 398499,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 35,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267217,
+          "DATASETVALUE": "AUDIT_STATE",
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398500
+        },
+        {
+          "Data_Setting_Id": 267218,
+          "DATASETVALUE": "AUDIT_STATE",
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398500
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "AUDIT_STATE",
+      "OBJECT_ID": 42569,
+      "OBJECT_TYPE": "DOCUMENT_VIEWER",
+      "QUICK_ACCESS": "swfname:=_auditStateEntry",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 30861,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 398500,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 36,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267217,
+          "DATASETVALUE": "AUDIT_STATE",
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398500
+        },
+        {
+          "Data_Setting_Id": 267218,
+          "DATASETVALUE": "AUDIT_STATE",
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398500
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "AUDIT_STATE",
+      "OBJECT_ID": 38450,
+      "OBJECT_TYPE": "DOCUMENT_VIEWER",
+      "QUICK_ACCESS": "swfname:=_auditStateEntry",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 30861,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 398500,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 36,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267219,
+          "DATASETVALUE": "AUDIT_VERSION",
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398501
+        },
+        {
+          "Data_Setting_Id": 267220,
+          "DATASETVALUE": "AUDIT_VERSION",
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398501
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "AUDIT_VERSION",
+      "OBJECT_ID": 39766,
+      "OBJECT_TYPE": "DOCUMENT_VIEWER",
+      "QUICK_ACCESS": "swfname:=_auditVersionEntry",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 28158,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 398501,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 37,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267219,
+          "DATASETVALUE": "AUDIT_VERSION",
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398501
+        },
+        {
+          "Data_Setting_Id": 267220,
+          "DATASETVALUE": "AUDIT_VERSION",
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398501
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "AUDIT_VERSION",
+      "OBJECT_ID": 47961,
+      "OBJECT_TYPE": "DOCUMENT_VIEWER",
+      "QUICK_ACCESS": "swfname:=_auditVersionEntry",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 28158,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 398501,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 37,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267221,
+          "DATASETVALUE": "DETAIL_DOCUMENT_ID",
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398502
+        },
+        {
+          "Data_Setting_Id": 267222,
+          "DATASETVALUE": "DETAIL_DOCUMENT_ID",
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398502
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "DETAIL_DOCUMENT_ID",
+      "OBJECT_ID": 41252,
+      "OBJECT_TYPE": "DOCUMENT_VIEWER",
+      "QUICK_ACCESS": "swfname:=_documentIdEntry",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 31740,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 398502,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 38,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267221,
+          "DATASETVALUE": "DETAIL_DOCUMENT_ID",
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398502
+        },
+        {
+          "Data_Setting_Id": 267222,
+          "DATASETVALUE": "DETAIL_DOCUMENT_ID",
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398502
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "DETAIL_DOCUMENT_ID",
+      "OBJECT_ID": 33404,
+      "OBJECT_TYPE": "DOCUMENT_VIEWER",
+      "QUICK_ACCESS": "swfname:=_documentIdEntry",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 31740,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 398502,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 38,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267223,
+          "DATASETVALUE": "DOCUMENT_VIEWER",
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398503
+        },
+        {
+          "Data_Setting_Id": 267224,
+          "DATASETVALUE": "DOCUMENT_VIEWER",
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398503
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "DOCUMENT_VIEWER",
+      "OBJECT_ID": 42939,
+      "OBJECT_TYPE": "DOCUMENT_VIEWER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^Document Viewer.*\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24772,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 398503,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 39,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267223,
+          "DATASETVALUE": "DOCUMENT_VIEWER",
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398503
+        },
+        {
+          "Data_Setting_Id": 267224,
+          "DATASETVALUE": "DOCUMENT_VIEWER",
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398503
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "DOCUMENT_VIEWER",
+      "OBJECT_ID": 38847,
+      "OBJECT_TYPE": "DOCUMENT_VIEWER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^Document Viewer.*\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24772,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 398503,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 39,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 574970,
+          "DATASETVALUE": "TEXT|\"Document Viewer Image\"|IMAGE:DOCUMENT_VIEWER",
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 834395
+        },
+        {
+          "Data_Setting_Id": 574971,
+          "DATASETVALUE": "TEXT|\"Document Viewer Image\"|IMAGE:DOCUMENT_VIEWER",
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 834395
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 10819,
+      "KEY_WORD_NAME": "Comment",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 834395,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 40,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267225,
+          "DATASETVALUE": "Trade",
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398504
+        },
+        {
+          "Data_Setting_Id": 267226,
+          "DATASETVALUE": "Trade",
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398504
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 24,
+      "KEY_WORD_NAME": "SelectTab",
+      "OBJECT_HAPPY_NAME": "DETAIL_TAB",
+      "OBJECT_ID": 44001,
+      "OBJECT_TYPE": "DOCUMENT_VIEWER",
+      "QUICK_ACCESS": "swfname:=tabControl1",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 31741,
+      "TYPE_NAME": "swfTab",
+      "STEPS_ID": 398504,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 41,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267225,
+          "DATASETVALUE": "Trade",
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398504
+        },
+        {
+          "Data_Setting_Id": 267226,
+          "DATASETVALUE": "Trade",
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398504
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 24,
+      "KEY_WORD_NAME": "SelectTab",
+      "OBJECT_HAPPY_NAME": "DETAIL_TAB",
+      "OBJECT_ID": 34492,
+      "OBJECT_TYPE": "DOCUMENT_VIEWER",
+      "QUICK_ACCESS": "swfname:=tabControl1",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 31741,
+      "TYPE_NAME": "swfTab",
+      "STEPS_ID": 398504,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 41,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267227,
+          "DATASETVALUE": "TRADE_BOOK",
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398505
+        },
+        {
+          "Data_Setting_Id": 267228,
+          "DATASETVALUE": "TRADE_BOOK",
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398505
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "TRADE_BOOK",
+      "OBJECT_ID": 48696,
+      "OBJECT_TYPE": "DOCUMENT_VIEWER",
+      "QUICK_ACCESS": "swfname:=_bookEntry",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 31745,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 398505,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 42,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267227,
+          "DATASETVALUE": "TRADE_BOOK",
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398505
+        },
+        {
+          "Data_Setting_Id": 267228,
+          "DATASETVALUE": "TRADE_BOOK",
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398505
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "TRADE_BOOK",
+      "OBJECT_ID": 40519,
+      "OBJECT_TYPE": "DOCUMENT_VIEWER",
+      "QUICK_ACCESS": "swfname:=_bookEntry",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 31745,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 398505,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 42,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267229,
+          "DATASETVALUE": "TRADE_CASH_AMOUNT",
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398506
+        },
+        {
+          "Data_Setting_Id": 267230,
+          "DATASETVALUE": "TRADE_CASH_AMOUNT",
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398506
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "TRADE_CASH_AMOUNT",
+      "OBJECT_ID": 44102,
+      "OBJECT_TYPE": "DOCUMENT_VIEWER",
+      "QUICK_ACCESS": "swfname:=_physicalAmtEntry",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 26321,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 398506,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 43,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267229,
+          "DATASETVALUE": "TRADE_CASH_AMOUNT",
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398506
+        },
+        {
+          "Data_Setting_Id": 267230,
+          "DATASETVALUE": "TRADE_CASH_AMOUNT",
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398506
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "TRADE_CASH_AMOUNT",
+      "OBJECT_ID": 34600,
+      "OBJECT_TYPE": "DOCUMENT_VIEWER",
+      "QUICK_ACCESS": "swfname:=_physicalAmtEntry",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 26321,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 398506,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 43,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267231,
+          "DATASETVALUE": "TRADE_CURRENCY",
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398507
+        },
+        {
+          "Data_Setting_Id": 267232,
+          "DATASETVALUE": "TRADE_CURRENCY",
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398507
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "TRADE_CURRENCY",
+      "OBJECT_ID": 44424,
+      "OBJECT_TYPE": "DOCUMENT_VIEWER",
+      "QUICK_ACCESS": "swfname:=_ccyEntry",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 29063,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 398507,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 44,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267231,
+          "DATASETVALUE": "TRADE_CURRENCY",
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398507
+        },
+        {
+          "Data_Setting_Id": 267232,
+          "DATASETVALUE": "TRADE_CURRENCY",
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398507
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "TRADE_CURRENCY",
+      "OBJECT_ID": 34856,
+      "OBJECT_TYPE": "DOCUMENT_VIEWER",
+      "QUICK_ACCESS": "swfname:=_ccyEntry",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 29063,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 398507,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 44,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267233,
+          "DATASETVALUE": "TRADE_LOCATION",
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398508
+        },
+        {
+          "Data_Setting_Id": 267234,
+          "DATASETVALUE": "TRADE_LOCATION",
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398508
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "TRADE_LOCATION",
+      "OBJECT_ID": 36268,
+      "OBJECT_TYPE": "DOCUMENT_VIEWER",
+      "QUICK_ACCESS": "swfname:=_locationEntry",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 29065,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 398508,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 45,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267233,
+          "DATASETVALUE": "TRADE_LOCATION",
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398508
+        },
+        {
+          "Data_Setting_Id": 267234,
+          "DATASETVALUE": "TRADE_LOCATION",
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398508
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "TRADE_LOCATION",
+      "OBJECT_ID": 45258,
+      "OBJECT_TYPE": "DOCUMENT_VIEWER",
+      "QUICK_ACCESS": "swfname:=_locationEntry",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 29065,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 398508,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 45,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267235,
+          "DATASETVALUE": "DETAIL_TAB",
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398509
+        },
+        {
+          "Data_Setting_Id": 267236,
+          "DATASETVALUE": "DETAIL_TAB",
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398509
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "DETAIL_TAB",
+      "OBJECT_ID": 44001,
+      "OBJECT_TYPE": "DOCUMENT_VIEWER",
+      "QUICK_ACCESS": "swfname:=tabControl1",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 31741,
+      "TYPE_NAME": "swfTab",
+      "STEPS_ID": 398509,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 46,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267235,
+          "DATASETVALUE": "DETAIL_TAB",
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398509
+        },
+        {
+          "Data_Setting_Id": 267236,
+          "DATASETVALUE": "DETAIL_TAB",
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398509
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "DETAIL_TAB",
+      "OBJECT_ID": 34492,
+      "OBJECT_TYPE": "DOCUMENT_VIEWER",
+      "QUICK_ACCESS": "swfname:=tabControl1",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 31741,
+      "TYPE_NAME": "swfTab",
+      "STEPS_ID": 398509,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 46,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 574972,
+          "DATASETVALUE": "TEXT|\"Doocument Detail Tab Image\"|IMAGE:DETAIL_TAB",
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 834400
+        },
+        {
+          "Data_Setting_Id": 574973,
+          "DATASETVALUE": "TEXT|\"Doocument Detail Tab Image\"|IMAGE:DETAIL_TAB",
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 834400
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 10819,
+      "KEY_WORD_NAME": "Comment",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 834400,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 47,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267237,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398510
+        },
+        {
+          "Data_Setting_Id": 267238,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398510
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 45,
+      "KEY_WORD_NAME": "CloseWindow",
+      "OBJECT_HAPPY_NAME": "DOCUMENT_VIEWER",
+      "OBJECT_ID": 42939,
+      "OBJECT_TYPE": "DOCUMENT_VIEWER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^Document Viewer.*\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24772,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 398510,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 48,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267237,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398510
+        },
+        {
+          "Data_Setting_Id": 267238,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398510
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 45,
+      "KEY_WORD_NAME": "CloseWindow",
+      "OBJECT_HAPPY_NAME": "DOCUMENT_VIEWER",
+      "OBJECT_ID": 38847,
+      "OBJECT_TYPE": "DOCUMENT_VIEWER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^Document Viewer.*\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24772,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 398510,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 48,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267239,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398511
+        },
+        {
+          "Data_Setting_Id": 267240,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398511
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 398511,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 49,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267239,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398511
+        },
+        {
+          "Data_Setting_Id": 267240,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398511
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 398511,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 49,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267241,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398512
+        },
+        {
+          "Data_Setting_Id": 267242,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398512
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 32409,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 30430,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 398512,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 50,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267241,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398512
+        },
+        {
+          "Data_Setting_Id": 267242,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398512
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 40727,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 30430,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 398512,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 50,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267243,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398513
+        },
+        {
+          "Data_Setting_Id": 267244,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398513
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 38,
+      "KEY_WORD_NAME": "Dismiss",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 398513,
+      "COLUMN_ROW_SETTING": "3",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 51,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267245,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398514
+        },
+        {
+          "Data_Setting_Id": 267246,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398514
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 32409,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 30430,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 398514,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 52,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267245,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398514
+        },
+        {
+          "Data_Setting_Id": 267246,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398514
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 40727,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 30430,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 398514,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 52,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 267247,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398027,
+          "SKIP": 0,
+          "STEPS_ID": 398515
+        },
+        {
+          "Data_Setting_Id": 267248,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398111,
+          "SKIP": 0,
+          "STEPS_ID": 398515
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2950,
+      "TEST_CASE_NAME": "Repo Trade Verify Document",
+      "KEY_WORD_ID": 38,
+      "KEY_WORD_NAME": "Dismiss",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 398515,
+      "COLUMN_ROW_SETTING": "3",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 53,
+      "VALUE_SETTING": null
+    }
+  ]
+}

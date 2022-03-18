@@ -1,0 +1,5746 @@
+{
+  "currentSyncroStatus": 0,
+  "assignedApplications": [
+    193,
+    194,
+    -1
+  ],
+  "assignedTestSuiteIDs": [
+    1438
+  ],
+  "version": null,
+  "assignedDataSets": [
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 460403,
+      "ALIAS_NAME": "FXFWD_Day_1_VER",
+      "DESCRIPTION_INFO": "FX Forward Trade Finder Verify Done Trade"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 846648,
+      "ALIAS_NAME": "FXFWD_Day_2_DOC_Appr",
+      "DESCRIPTION_INFO": "FX trade approval"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 578327,
+      "ALIAS_NAME": "FXFWD_Day_2_DOC_AUTH",
+      "DESCRIPTION_INFO": "Authorization of FX Forwards Trades for Documentation Processing"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 578318,
+      "ALIAS_NAME": "FXFWD_Day_2_DOC_VER",
+      "DESCRIPTION_INFO": "Authorization of FX Forwards Trades for Documentation Processing"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 796366,
+      "ALIAS_NAME": "FXFWD_DAY4_DOC_PS",
+      "DESCRIPTION_INFO": "Authorize pending save FX fwd"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 796378,
+      "ALIAS_NAME": "FXFWD_DAY4_DOC_PC",
+      "DESCRIPTION_INFO": "Authorize Pending Cancel FX Fwd trades"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 832486,
+      "ALIAS_NAME": "FXFWD_DAY_1_DOC_VER",
+      "DESCRIPTION_INFO": "Verify fx fwd day 1 doc trades"
+    }
+  ],
+  "allSteps": [
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559309,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460708
+        },
+        {
+          "Data_Setting_Id": 559261,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460708
+        },
+        {
+          "Data_Setting_Id": 574426,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460708
+        },
+        {
+          "Data_Setting_Id": 342311,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460708
+        },
+        {
+          "Data_Setting_Id": 377909,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460708
+        },
+        {
+          "Data_Setting_Id": 581445,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460708
+        },
+        {
+          "Data_Setting_Id": 377865,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460708
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 460708,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559309,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460708
+        },
+        {
+          "Data_Setting_Id": 559261,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460708
+        },
+        {
+          "Data_Setting_Id": 574426,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460708
+        },
+        {
+          "Data_Setting_Id": 342311,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460708
+        },
+        {
+          "Data_Setting_Id": 377909,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460708
+        },
+        {
+          "Data_Setting_Id": 581445,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460708
+        },
+        {
+          "Data_Setting_Id": 377865,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460708
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 460708,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559310,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460709
+        },
+        {
+          "Data_Setting_Id": 559262,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460709
+        },
+        {
+          "Data_Setting_Id": 574427,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460709
+        },
+        {
+          "Data_Setting_Id": 342312,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460709
+        },
+        {
+          "Data_Setting_Id": 377910,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460709
+        },
+        {
+          "Data_Setting_Id": 581446,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460709
+        },
+        {
+          "Data_Setting_Id": 377866,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460709
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 460709,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 2,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559310,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460709
+        },
+        {
+          "Data_Setting_Id": 559262,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460709
+        },
+        {
+          "Data_Setting_Id": 574427,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460709
+        },
+        {
+          "Data_Setting_Id": 342312,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460709
+        },
+        {
+          "Data_Setting_Id": 377910,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460709
+        },
+        {
+          "Data_Setting_Id": 581446,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460709
+        },
+        {
+          "Data_Setting_Id": 377866,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460709
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 460709,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 2,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559311,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460710
+        },
+        {
+          "Data_Setting_Id": 559263,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460710
+        },
+        {
+          "Data_Setting_Id": 574428,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460710
+        },
+        {
+          "Data_Setting_Id": 342313,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460710
+        },
+        {
+          "Data_Setting_Id": 377911,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460710
+        },
+        {
+          "Data_Setting_Id": 581447,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460710
+        },
+        {
+          "Data_Setting_Id": 377867,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460710
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 12,
+      "KEY_WORD_NAME": "LaunchApplication",
+      "OBJECT_HAPPY_NAME": "ApplicationName",
+      "OBJECT_ID": 35170,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockAreaTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 29559,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 460710,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 3,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559311,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460710
+        },
+        {
+          "Data_Setting_Id": 559263,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460710
+        },
+        {
+          "Data_Setting_Id": 574428,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460710
+        },
+        {
+          "Data_Setting_Id": 342313,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460710
+        },
+        {
+          "Data_Setting_Id": 377911,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460710
+        },
+        {
+          "Data_Setting_Id": 581447,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460710
+        },
+        {
+          "Data_Setting_Id": 377867,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460710
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 12,
+      "KEY_WORD_NAME": "LaunchApplication",
+      "OBJECT_HAPPY_NAME": "ApplicationName",
+      "OBJECT_ID": 44673,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockAreaTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 29559,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 460710,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 3,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559312,
+          "DATASETVALUE": "15",
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460711
+        },
+        {
+          "Data_Setting_Id": 559264,
+          "DATASETVALUE": "15",
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460711
+        },
+        {
+          "Data_Setting_Id": 574429,
+          "DATASETVALUE": "15",
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460711
+        },
+        {
+          "Data_Setting_Id": 342314,
+          "DATASETVALUE": "15",
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460711
+        },
+        {
+          "Data_Setting_Id": 377912,
+          "DATASETVALUE": "20",
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460711
+        },
+        {
+          "Data_Setting_Id": 581448,
+          "DATASETVALUE": "15",
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460711
+        },
+        {
+          "Data_Setting_Id": 377868,
+          "DATASETVALUE": "15",
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460711
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 460711,
+      "COLUMN_ROW_SETTING": "F",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 4,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559313,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460712
+        },
+        {
+          "Data_Setting_Id": 559265,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460712
+        },
+        {
+          "Data_Setting_Id": 574430,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460712
+        },
+        {
+          "Data_Setting_Id": 342315,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460712
+        },
+        {
+          "Data_Setting_Id": 377913,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460712
+        },
+        {
+          "Data_Setting_Id": 581449,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460712
+        },
+        {
+          "Data_Setting_Id": 377869,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460712
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 37247,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\n",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 460712,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 5,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559313,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460712
+        },
+        {
+          "Data_Setting_Id": 559265,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460712
+        },
+        {
+          "Data_Setting_Id": 574430,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460712
+        },
+        {
+          "Data_Setting_Id": 342315,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460712
+        },
+        {
+          "Data_Setting_Id": 377913,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460712
+        },
+        {
+          "Data_Setting_Id": 581449,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460712
+        },
+        {
+          "Data_Setting_Id": 377869,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460712
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 46046,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswfname:=Desktop|Page",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 460712,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 5,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559314,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460713
+        },
+        {
+          "Data_Setting_Id": 559266,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460713
+        },
+        {
+          "Data_Setting_Id": 574431,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460713
+        },
+        {
+          "Data_Setting_Id": 342316,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460713
+        },
+        {
+          "Data_Setting_Id": 377914,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460713
+        },
+        {
+          "Data_Setting_Id": 581450,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460713
+        },
+        {
+          "Data_Setting_Id": 377870,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460713
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 37247,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\n",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 460713,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 6,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559314,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460713
+        },
+        {
+          "Data_Setting_Id": 559266,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460713
+        },
+        {
+          "Data_Setting_Id": 574431,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460713
+        },
+        {
+          "Data_Setting_Id": 342316,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460713
+        },
+        {
+          "Data_Setting_Id": 377914,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460713
+        },
+        {
+          "Data_Setting_Id": 581450,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460713
+        },
+        {
+          "Data_Setting_Id": 377870,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460713
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 46046,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswfname:=Desktop|Page",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 460713,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 6,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559349,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 463393
+        },
+        {
+          "Data_Setting_Id": 559301,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 463393
+        },
+        {
+          "Data_Setting_Id": 574464,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 463393
+        },
+        {
+          "Data_Setting_Id": 345728,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 463393
+        },
+        {
+          "Data_Setting_Id": 377949,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 463393
+        },
+        {
+          "Data_Setting_Id": 581483,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 463393
+        },
+        {
+          "Data_Setting_Id": 377905,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 463393
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_SETUP",
+      "OBJECT_ID": 37910,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_setUpButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 31334,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 463393,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 7,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559349,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 463393
+        },
+        {
+          "Data_Setting_Id": 559301,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 463393
+        },
+        {
+          "Data_Setting_Id": 574464,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 463393
+        },
+        {
+          "Data_Setting_Id": 345728,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 463393
+        },
+        {
+          "Data_Setting_Id": 377949,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 463393
+        },
+        {
+          "Data_Setting_Id": 581483,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 463393
+        },
+        {
+          "Data_Setting_Id": 377905,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 463393
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_SETUP",
+      "OBJECT_ID": 46688,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_setUpButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 31334,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 463393,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 7,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559344,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 463388
+        },
+        {
+          "Data_Setting_Id": 559296,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 463388
+        },
+        {
+          "Data_Setting_Id": 574461,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 463388
+        },
+        {
+          "Data_Setting_Id": 345723,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 463388
+        },
+        {
+          "Data_Setting_Id": 377944,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 463388
+        },
+        {
+          "Data_Setting_Id": 581480,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 463388
+        },
+        {
+          "Data_Setting_Id": 377900,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 463388
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "FILTER_SELECTION",
+      "OBJECT_ID": 37316,
+      "OBJECT_TYPE": "FILTER_SELECTION",
+      "QUICK_ACCESS": "is child window:=False\nis owned window:=True\nswfname:=BlotterFilterSelectFieldsForm|SelectFieldsForm",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24813,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 463388,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 8,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559344,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 463388
+        },
+        {
+          "Data_Setting_Id": 559296,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 463388
+        },
+        {
+          "Data_Setting_Id": 574461,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 463388
+        },
+        {
+          "Data_Setting_Id": 345723,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 463388
+        },
+        {
+          "Data_Setting_Id": 377944,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 463388
+        },
+        {
+          "Data_Setting_Id": 581480,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 463388
+        },
+        {
+          "Data_Setting_Id": 377900,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 463388
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "FILTER_SELECTION",
+      "OBJECT_ID": 46115,
+      "OBJECT_TYPE": "FILTER_SELECTION",
+      "QUICK_ACCESS": "is child window:=False\nis owned window:=True\nswfname:=BlotterFilterSelectFieldsForm|SelectFieldsForm",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24813,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 463388,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 8,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559352,
+          "DATASETVALUE": "6,30",
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 747307
+        },
+        {
+          "Data_Setting_Id": 559304,
+          "DATASETVALUE": "6,30",
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 747307
+        },
+        {
+          "Data_Setting_Id": 574467,
+          "DATASETVALUE": "6,30",
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 747307
+        },
+        {
+          "Data_Setting_Id": 505037,
+          "DATASETVALUE": "6,30",
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 747307
+        },
+        {
+          "Data_Setting_Id": 501218,
+          "DATASETVALUE": "6,30",
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 747307
+        },
+        {
+          "Data_Setting_Id": 581486,
+          "DATASETVALUE": "6,30",
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 747307
+        },
+        {
+          "Data_Setting_Id": 495169,
+          "DATASETVALUE": "6,30",
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 747307
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 44,
+      "KEY_WORD_NAME": "ClickAt",
+      "OBJECT_HAPPY_NAME": "SETUP_AVAILABLE_FIELDS",
+      "OBJECT_ID": 47202,
+      "OBJECT_TYPE": "FILTER_SELECTION",
+      "QUICK_ACCESS": "swfname:=lstAvailable",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25123,
+      "TYPE_NAME": "SwfList",
+      "STEPS_ID": 747307,
+      "COLUMN_ROW_SETTING": "LEFT_CLICK",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 9,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559352,
+          "DATASETVALUE": "6,30",
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 747307
+        },
+        {
+          "Data_Setting_Id": 559304,
+          "DATASETVALUE": "6,30",
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 747307
+        },
+        {
+          "Data_Setting_Id": 574467,
+          "DATASETVALUE": "6,30",
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 747307
+        },
+        {
+          "Data_Setting_Id": 505037,
+          "DATASETVALUE": "6,30",
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 747307
+        },
+        {
+          "Data_Setting_Id": 501218,
+          "DATASETVALUE": "6,30",
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 747307
+        },
+        {
+          "Data_Setting_Id": 581486,
+          "DATASETVALUE": "6,30",
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 747307
+        },
+        {
+          "Data_Setting_Id": 495169,
+          "DATASETVALUE": "6,30",
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 747307
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 44,
+      "KEY_WORD_NAME": "ClickAt",
+      "OBJECT_HAPPY_NAME": "SETUP_AVAILABLE_FIELDS",
+      "OBJECT_ID": 35605,
+      "OBJECT_TYPE": "FILTER_SELECTION",
+      "QUICK_ACCESS": "swfname:=lstAvailable",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25123,
+      "TYPE_NAME": "SwfList",
+      "STEPS_ID": 747307,
+      "COLUMN_ROW_SETTING": "LEFT_CLICK",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 9,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559353,
+          "DATASETVALUE": "f{down 2}",
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 747308
+        },
+        {
+          "Data_Setting_Id": 559305,
+          "DATASETVALUE": "f{down 2}",
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 747308
+        },
+        {
+          "Data_Setting_Id": 574466,
+          "DATASETVALUE": "f{down 2}",
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 747308
+        },
+        {
+          "Data_Setting_Id": 505038,
+          "DATASETVALUE": "f{down 2}",
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 747308
+        },
+        {
+          "Data_Setting_Id": 501219,
+          "DATASETVALUE": "f{down 2}",
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 747308
+        },
+        {
+          "Data_Setting_Id": 581487,
+          "DATASETVALUE": "f{down 2}",
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 747308
+        },
+        {
+          "Data_Setting_Id": 495170,
+          "DATASETVALUE": "f{down 2}",
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 747308
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 86,
+      "KEY_WORD_NAME": "PressKeys",
+      "OBJECT_HAPPY_NAME": "SETUP_AVAILABLE_FIELDS",
+      "OBJECT_ID": 47202,
+      "OBJECT_TYPE": "FILTER_SELECTION",
+      "QUICK_ACCESS": "swfname:=lstAvailable",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25123,
+      "TYPE_NAME": "SwfList",
+      "STEPS_ID": 747308,
+      "COLUMN_ROW_SETTING": "CURRENT_POS",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 10,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559353,
+          "DATASETVALUE": "f{down 2}",
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 747308
+        },
+        {
+          "Data_Setting_Id": 559305,
+          "DATASETVALUE": "f{down 2}",
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 747308
+        },
+        {
+          "Data_Setting_Id": 574466,
+          "DATASETVALUE": "f{down 2}",
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 747308
+        },
+        {
+          "Data_Setting_Id": 505038,
+          "DATASETVALUE": "f{down 2}",
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 747308
+        },
+        {
+          "Data_Setting_Id": 501219,
+          "DATASETVALUE": "f{down 2}",
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 747308
+        },
+        {
+          "Data_Setting_Id": 581487,
+          "DATASETVALUE": "f{down 2}",
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 747308
+        },
+        {
+          "Data_Setting_Id": 495170,
+          "DATASETVALUE": "f{down 2}",
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 747308
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 86,
+      "KEY_WORD_NAME": "PressKeys",
+      "OBJECT_HAPPY_NAME": "SETUP_AVAILABLE_FIELDS",
+      "OBJECT_ID": 35605,
+      "OBJECT_TYPE": "FILTER_SELECTION",
+      "QUICK_ACCESS": "swfname:=lstAvailable",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25123,
+      "TYPE_NAME": "SwfList",
+      "STEPS_ID": 747308,
+      "COLUMN_ROW_SETTING": "CURRENT_POS",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 10,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559350,
+          "DATASETVALUE": "Fold",
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 463394
+        },
+        {
+          "Data_Setting_Id": 559302,
+          "DATASETVALUE": "Fold",
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 463394
+        },
+        {
+          "Data_Setting_Id": 574465,
+          "DATASETVALUE": "Fold",
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 463394
+        },
+        {
+          "Data_Setting_Id": 345729,
+          "DATASETVALUE": "Fold",
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 463394
+        },
+        {
+          "Data_Setting_Id": 377950,
+          "DATASETVALUE": "Fold",
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 463394
+        },
+        {
+          "Data_Setting_Id": 581484,
+          "DATASETVALUE": "Fold",
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 463394
+        },
+        {
+          "Data_Setting_Id": 377906,
+          "DATASETVALUE": "Fold",
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 463394
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 40,
+      "KEY_WORD_NAME": "SelectListItem",
+      "OBJECT_HAPPY_NAME": "SETUP_AVAILABLE_FIELDS",
+      "OBJECT_ID": 47202,
+      "OBJECT_TYPE": "FILTER_SELECTION",
+      "QUICK_ACCESS": "swfname:=lstAvailable",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25123,
+      "TYPE_NAME": "SwfList",
+      "STEPS_ID": 463394,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 11,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559350,
+          "DATASETVALUE": "Fold",
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 463394
+        },
+        {
+          "Data_Setting_Id": 559302,
+          "DATASETVALUE": "Fold",
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 463394
+        },
+        {
+          "Data_Setting_Id": 574465,
+          "DATASETVALUE": "Fold",
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 463394
+        },
+        {
+          "Data_Setting_Id": 345729,
+          "DATASETVALUE": "Fold",
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 463394
+        },
+        {
+          "Data_Setting_Id": 377950,
+          "DATASETVALUE": "Fold",
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 463394
+        },
+        {
+          "Data_Setting_Id": 581484,
+          "DATASETVALUE": "Fold",
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 463394
+        },
+        {
+          "Data_Setting_Id": 377906,
+          "DATASETVALUE": "Fold",
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 463394
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 40,
+      "KEY_WORD_NAME": "SelectListItem",
+      "OBJECT_HAPPY_NAME": "SETUP_AVAILABLE_FIELDS",
+      "OBJECT_ID": 35605,
+      "OBJECT_TYPE": "FILTER_SELECTION",
+      "QUICK_ACCESS": "swfname:=lstAvailable",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25123,
+      "TYPE_NAME": "SwfList",
+      "STEPS_ID": 463394,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 11,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559308,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 463387
+        },
+        {
+          "Data_Setting_Id": 559260,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 463387
+        },
+        {
+          "Data_Setting_Id": 574425,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 463387
+        },
+        {
+          "Data_Setting_Id": 345722,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 463387
+        },
+        {
+          "Data_Setting_Id": 377908,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 463387
+        },
+        {
+          "Data_Setting_Id": 581444,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 463387
+        },
+        {
+          "Data_Setting_Id": 377864,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 463387
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "SETUP_ADD",
+      "OBJECT_ID": 32608,
+      "OBJECT_TYPE": "FILTER_SELECTION",
+      "QUICK_ACCESS": "swfname:=butAdd",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 30564,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 463387,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 12,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559308,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 463387
+        },
+        {
+          "Data_Setting_Id": 559260,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 463387
+        },
+        {
+          "Data_Setting_Id": 574425,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 463387
+        },
+        {
+          "Data_Setting_Id": 345722,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 463387
+        },
+        {
+          "Data_Setting_Id": 377908,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 463387
+        },
+        {
+          "Data_Setting_Id": 581444,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 463387
+        },
+        {
+          "Data_Setting_Id": 377864,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 463387
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "SETUP_ADD",
+      "OBJECT_ID": 42424,
+      "OBJECT_TYPE": "FILTER_SELECTION",
+      "QUICK_ACCESS": "swfname:=butAdd",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 30564,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 463387,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 12,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559345,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 463389
+        },
+        {
+          "Data_Setting_Id": 559297,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 463389
+        },
+        {
+          "Data_Setting_Id": 574462,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 463389
+        },
+        {
+          "Data_Setting_Id": 345724,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 463389
+        },
+        {
+          "Data_Setting_Id": 377945,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 463389
+        },
+        {
+          "Data_Setting_Id": 581481,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 463389
+        },
+        {
+          "Data_Setting_Id": 377901,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 463389
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "SETUP_OK",
+      "OBJECT_ID": 37828,
+      "OBJECT_TYPE": "FILTER_SELECTION",
+      "QUICK_ACCESS": "swfname:=butOK",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25126,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 463389,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 13,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559345,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 463389
+        },
+        {
+          "Data_Setting_Id": 559297,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 463389
+        },
+        {
+          "Data_Setting_Id": 574462,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 463389
+        },
+        {
+          "Data_Setting_Id": 345724,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 463389
+        },
+        {
+          "Data_Setting_Id": 377945,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 463389
+        },
+        {
+          "Data_Setting_Id": 581481,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 463389
+        },
+        {
+          "Data_Setting_Id": 377901,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 463389
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "SETUP_OK",
+      "OBJECT_ID": 46608,
+      "OBJECT_TYPE": "FILTER_SELECTION",
+      "QUICK_ACCESS": "swfname:=butOK",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25126,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 463389,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 13,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559346,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 463390
+        },
+        {
+          "Data_Setting_Id": 559298,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 463390
+        },
+        {
+          "Data_Setting_Id": 574463,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 463390
+        },
+        {
+          "Data_Setting_Id": 345725,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 463390
+        },
+        {
+          "Data_Setting_Id": 377946,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 463390
+        },
+        {
+          "Data_Setting_Id": 581482,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 463390
+        },
+        {
+          "Data_Setting_Id": 377902,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 463390
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 37247,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\n",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 463390,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 14,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559346,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 463390
+        },
+        {
+          "Data_Setting_Id": 559298,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 463390
+        },
+        {
+          "Data_Setting_Id": 574463,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 463390
+        },
+        {
+          "Data_Setting_Id": 345725,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 463390
+        },
+        {
+          "Data_Setting_Id": 377946,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 463390
+        },
+        {
+          "Data_Setting_Id": 581482,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 463390
+        },
+        {
+          "Data_Setting_Id": 377902,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 463390
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 46046,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswfname:=Desktop|Page",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 463390,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 14,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559315,
+          "DATASETVALUE": "FXFWD",
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460714
+        },
+        {
+          "Data_Setting_Id": 559267,
+          "DATASETVALUE": "FXFWD",
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460714
+        },
+        {
+          "Data_Setting_Id": 574432,
+          "DATASETVALUE": "FXFWD",
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460714
+        },
+        {
+          "Data_Setting_Id": 342317,
+          "DATASETVALUE": "FXFWD",
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460714
+        },
+        {
+          "Data_Setting_Id": 377915,
+          "DATASETVALUE": "FXFWD",
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460714
+        },
+        {
+          "Data_Setting_Id": 581451,
+          "DATASETVALUE": "FXFWD",
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460714
+        },
+        {
+          "Data_Setting_Id": 377871,
+          "DATASETVALUE": "FXFWD",
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460714
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_TYPES",
+      "OBJECT_ID": 37854,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeTypes",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 26818,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 460714,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 15,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559315,
+          "DATASETVALUE": "FXFWD",
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460714
+        },
+        {
+          "Data_Setting_Id": 559267,
+          "DATASETVALUE": "FXFWD",
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460714
+        },
+        {
+          "Data_Setting_Id": 574432,
+          "DATASETVALUE": "FXFWD",
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460714
+        },
+        {
+          "Data_Setting_Id": 342317,
+          "DATASETVALUE": "FXFWD",
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460714
+        },
+        {
+          "Data_Setting_Id": 377915,
+          "DATASETVALUE": "FXFWD",
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460714
+        },
+        {
+          "Data_Setting_Id": 581451,
+          "DATASETVALUE": "FXFWD",
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460714
+        },
+        {
+          "Data_Setting_Id": 377871,
+          "DATASETVALUE": "FXFWD",
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460714
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_TYPES",
+      "OBJECT_ID": 46634,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeTypes",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 26818,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 460714,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 15,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559316,
+          "DATASETVALUE": "Canc",
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 4,
+          "STEPS_ID": 460715
+        },
+        {
+          "Data_Setting_Id": 559268,
+          "DATASETVALUE": "-Canc",
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 4,
+          "STEPS_ID": 460715
+        },
+        {
+          "Data_Setting_Id": 574433,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 4,
+          "STEPS_ID": 460715
+        },
+        {
+          "Data_Setting_Id": 342318,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 4,
+          "STEPS_ID": 460715
+        },
+        {
+          "Data_Setting_Id": 377916,
+          "DATASETVALUE": "VER",
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 4,
+          "STEPS_ID": 460715
+        },
+        {
+          "Data_Setting_Id": 581452,
+          "DATASETVALUE": "VER",
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 4,
+          "STEPS_ID": 460715
+        },
+        {
+          "Data_Setting_Id": 377872,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 4,
+          "STEPS_ID": 460715
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_STATUS",
+      "OBJECT_ID": 34193,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeStatus",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 32176,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 460715,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 16,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559316,
+          "DATASETVALUE": "Canc",
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 4,
+          "STEPS_ID": 460715
+        },
+        {
+          "Data_Setting_Id": 559268,
+          "DATASETVALUE": "-Canc",
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 4,
+          "STEPS_ID": 460715
+        },
+        {
+          "Data_Setting_Id": 574433,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 4,
+          "STEPS_ID": 460715
+        },
+        {
+          "Data_Setting_Id": 342318,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 4,
+          "STEPS_ID": 460715
+        },
+        {
+          "Data_Setting_Id": 377916,
+          "DATASETVALUE": "VER",
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 4,
+          "STEPS_ID": 460715
+        },
+        {
+          "Data_Setting_Id": 581452,
+          "DATASETVALUE": "VER",
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 4,
+          "STEPS_ID": 460715
+        },
+        {
+          "Data_Setting_Id": 377872,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 4,
+          "STEPS_ID": 460715
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_STATUS",
+      "OBJECT_ID": 43743,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeStatus",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 32176,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 460715,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 16,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559317,
+          "DATASETVALUE": "FUNDING",
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 4,
+          "STEPS_ID": 460716
+        },
+        {
+          "Data_Setting_Id": 559269,
+          "DATASETVALUE": "FUNDING",
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 4,
+          "STEPS_ID": 460716
+        },
+        {
+          "Data_Setting_Id": 574434,
+          "DATASETVALUE": "FUNDING",
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 4,
+          "STEPS_ID": 460716
+        },
+        {
+          "Data_Setting_Id": 342319,
+          "DATASETVALUE": "FUNDING",
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 4,
+          "STEPS_ID": 460716
+        },
+        {
+          "Data_Setting_Id": 377917,
+          "DATASETVALUE": "FUNDING",
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 4,
+          "STEPS_ID": 460716
+        },
+        {
+          "Data_Setting_Id": 581453,
+          "DATASETVALUE": "FUNDING",
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 4,
+          "STEPS_ID": 460716
+        },
+        {
+          "Data_Setting_Id": 377873,
+          "DATASETVALUE": "FUNDING",
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 4,
+          "STEPS_ID": 460716
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_DESK",
+      "OBJECT_ID": 48286,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=Desk",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 29515,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 460716,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 17,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559317,
+          "DATASETVALUE": "FUNDING",
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 4,
+          "STEPS_ID": 460716
+        },
+        {
+          "Data_Setting_Id": 559269,
+          "DATASETVALUE": "FUNDING",
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 4,
+          "STEPS_ID": 460716
+        },
+        {
+          "Data_Setting_Id": 574434,
+          "DATASETVALUE": "FUNDING",
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 4,
+          "STEPS_ID": 460716
+        },
+        {
+          "Data_Setting_Id": 342319,
+          "DATASETVALUE": "FUNDING",
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 4,
+          "STEPS_ID": 460716
+        },
+        {
+          "Data_Setting_Id": 377917,
+          "DATASETVALUE": "FUNDING",
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 4,
+          "STEPS_ID": 460716
+        },
+        {
+          "Data_Setting_Id": 581453,
+          "DATASETVALUE": "FUNDING",
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 4,
+          "STEPS_ID": 460716
+        },
+        {
+          "Data_Setting_Id": 377873,
+          "DATASETVALUE": "FUNDING",
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 4,
+          "STEPS_ID": 460716
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_DESK",
+      "OBJECT_ID": 40120,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=Desk",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 29515,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 460716,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 17,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559307,
+          "DATASETVALUE": "DOC",
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 463386
+        },
+        {
+          "Data_Setting_Id": 559259,
+          "DATASETVALUE": "DOC",
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 463386
+        },
+        {
+          "Data_Setting_Id": 574424,
+          "DATASETVALUE": "DOC",
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 463386
+        },
+        {
+          "Data_Setting_Id": 345721,
+          "DATASETVALUE": "MARS",
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 463386
+        },
+        {
+          "Data_Setting_Id": 377907,
+          "DATASETVALUE": "DOC",
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 463386
+        },
+        {
+          "Data_Setting_Id": 581443,
+          "DATASETVALUE": "DOC",
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 463386
+        },
+        {
+          "Data_Setting_Id": 377863,
+          "DATASETVALUE": "DOC",
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 463386
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_FOLDER",
+      "OBJECT_ID": 43966,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=Folder",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25857,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 463386,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 18,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559307,
+          "DATASETVALUE": "DOC",
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 463386
+        },
+        {
+          "Data_Setting_Id": 559259,
+          "DATASETVALUE": "DOC",
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 463386
+        },
+        {
+          "Data_Setting_Id": 574424,
+          "DATASETVALUE": "DOC",
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 463386
+        },
+        {
+          "Data_Setting_Id": 345721,
+          "DATASETVALUE": "MARS",
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 463386
+        },
+        {
+          "Data_Setting_Id": 377907,
+          "DATASETVALUE": "DOC",
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 463386
+        },
+        {
+          "Data_Setting_Id": 581443,
+          "DATASETVALUE": "DOC",
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 463386
+        },
+        {
+          "Data_Setting_Id": 377863,
+          "DATASETVALUE": "DOC",
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 463386
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_FOLDER",
+      "OBJECT_ID": 34394,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=Folder",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25857,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 463386,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 18,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559318,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460717
+        },
+        {
+          "Data_Setting_Id": 559270,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460717
+        },
+        {
+          "Data_Setting_Id": 574435,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460717
+        },
+        {
+          "Data_Setting_Id": 342320,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460717
+        },
+        {
+          "Data_Setting_Id": 377918,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460717
+        },
+        {
+          "Data_Setting_Id": 581454,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460717
+        },
+        {
+          "Data_Setting_Id": 377874,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460717
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_FIND_NOW",
+      "OBJECT_ID": 32728,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_findNowButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 32179,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 460717,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 19,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559318,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460717
+        },
+        {
+          "Data_Setting_Id": 559270,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460717
+        },
+        {
+          "Data_Setting_Id": 574435,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460717
+        },
+        {
+          "Data_Setting_Id": 342320,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460717
+        },
+        {
+          "Data_Setting_Id": 377918,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460717
+        },
+        {
+          "Data_Setting_Id": 581454,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460717
+        },
+        {
+          "Data_Setting_Id": 377874,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460717
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_FIND_NOW",
+      "OBJECT_ID": 45052,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_findNowButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 32179,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 460717,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 19,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559319,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460718
+        },
+        {
+          "Data_Setting_Id": 559271,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460718
+        },
+        {
+          "Data_Setting_Id": 574436,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460718
+        },
+        {
+          "Data_Setting_Id": 342321,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460718
+        },
+        {
+          "Data_Setting_Id": 377919,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460718
+        },
+        {
+          "Data_Setting_Id": 581455,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460718
+        },
+        {
+          "Data_Setting_Id": 377875,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460718
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 37247,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\n",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 460718,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 20,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559319,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460718
+        },
+        {
+          "Data_Setting_Id": 559271,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460718
+        },
+        {
+          "Data_Setting_Id": 574436,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460718
+        },
+        {
+          "Data_Setting_Id": 342321,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460718
+        },
+        {
+          "Data_Setting_Id": 377919,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460718
+        },
+        {
+          "Data_Setting_Id": 581455,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460718
+        },
+        {
+          "Data_Setting_Id": 377875,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460718
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 46046,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswfname:=Desktop|Page",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 460718,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 20,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559320,
+          "DATASETVALUE": "LOOP_VAR:FXFWD_DOC_PC_IDS",
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460719
+        },
+        {
+          "Data_Setting_Id": 559272,
+          "DATASETVALUE": "LOOP_VAR:FXFWD_DOC_PS_IDS",
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460719
+        },
+        {
+          "Data_Setting_Id": 574437,
+          "DATASETVALUE": "LOOP_VAR:FXFWD_DOC_VER_IDS",
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460719
+        },
+        {
+          "Data_Setting_Id": 342322,
+          "DATASETVALUE": "LOOP_VAR:FXFWD_VER_TRADE_IDS",
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460719
+        },
+        {
+          "Data_Setting_Id": 377920,
+          "DATASETVALUE": "LOOP_VAR:FXFWD_DOC_AUTH_IDS",
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460719
+        },
+        {
+          "Data_Setting_Id": 581456,
+          "DATASETVALUE": "LOOP_VAR:FXFWD_DOC_AUTH_IDS",
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460719
+        },
+        {
+          "Data_Setting_Id": 377876,
+          "DATASETVALUE": "LOOP_VAR:FXFWD_DOC_VER_IDS",
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460719
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 1,
+      "KEY_WORD_NAME": "CaptureValue",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_TABLE",
+      "OBJECT_ID": 41666,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_queryResults",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 28613,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 460719,
+      "COLUMN_ROW_SETTING": "ALLROWS;Trade ID",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 21,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559320,
+          "DATASETVALUE": "LOOP_VAR:FXFWD_DOC_PC_IDS",
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460719
+        },
+        {
+          "Data_Setting_Id": 559272,
+          "DATASETVALUE": "LOOP_VAR:FXFWD_DOC_PS_IDS",
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460719
+        },
+        {
+          "Data_Setting_Id": 574437,
+          "DATASETVALUE": "LOOP_VAR:FXFWD_DOC_VER_IDS",
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460719
+        },
+        {
+          "Data_Setting_Id": 342322,
+          "DATASETVALUE": "LOOP_VAR:FXFWD_VER_TRADE_IDS",
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460719
+        },
+        {
+          "Data_Setting_Id": 377920,
+          "DATASETVALUE": "LOOP_VAR:FXFWD_DOC_AUTH_IDS",
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460719
+        },
+        {
+          "Data_Setting_Id": 581456,
+          "DATASETVALUE": "LOOP_VAR:FXFWD_DOC_AUTH_IDS",
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460719
+        },
+        {
+          "Data_Setting_Id": 377876,
+          "DATASETVALUE": "LOOP_VAR:FXFWD_DOC_VER_IDS",
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460719
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 1,
+      "KEY_WORD_NAME": "CaptureValue",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_TABLE",
+      "OBJECT_ID": 35712,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_queryResults",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 28613,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 460719,
+      "COLUMN_ROW_SETTING": "ALLROWS;Trade ID",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 21,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559321,
+          "DATASETVALUE": "LOOP_VAR:FXFWD_DOC_PC_IDS",
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460720
+        },
+        {
+          "Data_Setting_Id": 559273,
+          "DATASETVALUE": "LOOP_VAR:FXFWD_DOC_PS_IDS",
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460720
+        },
+        {
+          "Data_Setting_Id": 574438,
+          "DATASETVALUE": "LOOP_VAR:FXFWD_DOC_VER_IDS",
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460720
+        },
+        {
+          "Data_Setting_Id": 342323,
+          "DATASETVALUE": "LOOP_VAR:FXFWD_VER_TRADE_IDS",
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460720
+        },
+        {
+          "Data_Setting_Id": 377921,
+          "DATASETVALUE": "LOOP_VAR:FXFWD_DOC_AUTH_IDS",
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460720
+        },
+        {
+          "Data_Setting_Id": 581457,
+          "DATASETVALUE": "LOOP_VAR:FXFWD_DOC_AUTH_IDS",
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460720
+        },
+        {
+          "Data_Setting_Id": 377877,
+          "DATASETVALUE": "LOOP_VAR:FXFWD_DOC_VER_IDS",
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460720
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 36,
+      "KEY_WORD_NAME": "Loop",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 460720,
+      "COLUMN_ROW_SETTING": "Reload",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 22,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559322,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460721
+        },
+        {
+          "Data_Setting_Id": 559274,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460721
+        },
+        {
+          "Data_Setting_Id": 574439,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460721
+        },
+        {
+          "Data_Setting_Id": 342324,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460721
+        },
+        {
+          "Data_Setting_Id": 377922,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460721
+        },
+        {
+          "Data_Setting_Id": 581458,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460721
+        },
+        {
+          "Data_Setting_Id": 377878,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460721
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 460721,
+      "COLUMN_ROW_SETTING": "F",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 23,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559323,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460722
+        },
+        {
+          "Data_Setting_Id": 559275,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460722
+        },
+        {
+          "Data_Setting_Id": 574440,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460722
+        },
+        {
+          "Data_Setting_Id": 342325,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460722
+        },
+        {
+          "Data_Setting_Id": 377923,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460722
+        },
+        {
+          "Data_Setting_Id": 581459,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460722
+        },
+        {
+          "Data_Setting_Id": 377879,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460722
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 37247,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\n",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 460722,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 24,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559323,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460722
+        },
+        {
+          "Data_Setting_Id": 559275,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460722
+        },
+        {
+          "Data_Setting_Id": 574440,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460722
+        },
+        {
+          "Data_Setting_Id": 342325,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460722
+        },
+        {
+          "Data_Setting_Id": 377923,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460722
+        },
+        {
+          "Data_Setting_Id": 581459,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460722
+        },
+        {
+          "Data_Setting_Id": 377879,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460722
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 46046,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswfname:=Desktop|Page",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 460722,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 24,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559324,
+          "DATASETVALUE": "LOOP_VAR:FXFWD_DOC_PC_IDS",
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460723
+        },
+        {
+          "Data_Setting_Id": 559276,
+          "DATASETVALUE": "LOOP_VAR:FXFWD_DOC_PS_IDS",
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460723
+        },
+        {
+          "Data_Setting_Id": 574441,
+          "DATASETVALUE": "LOOP_VAR:FXFWD_DOC_VER_IDS",
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460723
+        },
+        {
+          "Data_Setting_Id": 342326,
+          "DATASETVALUE": "LOOP_VAR:FXFWD_VER_TRADE_IDS",
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460723
+        },
+        {
+          "Data_Setting_Id": 377924,
+          "DATASETVALUE": "LOOP_VAR:FXFWD_DOC_AUTH_IDS",
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460723
+        },
+        {
+          "Data_Setting_Id": 581460,
+          "DATASETVALUE": "LOOP_VAR:FXFWD_DOC_AUTH_IDS",
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460723
+        },
+        {
+          "Data_Setting_Id": 377880,
+          "DATASETVALUE": "LOOP_VAR:FXFWD_DOC_VER_IDS",
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460723
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_ID",
+      "OBJECT_ID": 41222,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeID",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 29531,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 460723,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 25,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559324,
+          "DATASETVALUE": "LOOP_VAR:FXFWD_DOC_PC_IDS",
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460723
+        },
+        {
+          "Data_Setting_Id": 559276,
+          "DATASETVALUE": "LOOP_VAR:FXFWD_DOC_PS_IDS",
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460723
+        },
+        {
+          "Data_Setting_Id": 574441,
+          "DATASETVALUE": "LOOP_VAR:FXFWD_DOC_VER_IDS",
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460723
+        },
+        {
+          "Data_Setting_Id": 342326,
+          "DATASETVALUE": "LOOP_VAR:FXFWD_VER_TRADE_IDS",
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460723
+        },
+        {
+          "Data_Setting_Id": 377924,
+          "DATASETVALUE": "LOOP_VAR:FXFWD_DOC_AUTH_IDS",
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460723
+        },
+        {
+          "Data_Setting_Id": 581460,
+          "DATASETVALUE": "LOOP_VAR:FXFWD_DOC_AUTH_IDS",
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460723
+        },
+        {
+          "Data_Setting_Id": 377880,
+          "DATASETVALUE": "LOOP_VAR:FXFWD_DOC_VER_IDS",
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460723
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_ID",
+      "OBJECT_ID": 33373,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeID",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 29531,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 460723,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 25,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559325,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460724
+        },
+        {
+          "Data_Setting_Id": 559277,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460724
+        },
+        {
+          "Data_Setting_Id": 574442,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460724
+        },
+        {
+          "Data_Setting_Id": 342327,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460724
+        },
+        {
+          "Data_Setting_Id": 377925,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460724
+        },
+        {
+          "Data_Setting_Id": 581461,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460724
+        },
+        {
+          "Data_Setting_Id": 377881,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460724
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_FIND_NOW",
+      "OBJECT_ID": 32728,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_findNowButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 32179,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 460724,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 26,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559325,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460724
+        },
+        {
+          "Data_Setting_Id": 559277,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460724
+        },
+        {
+          "Data_Setting_Id": 574442,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460724
+        },
+        {
+          "Data_Setting_Id": 342327,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460724
+        },
+        {
+          "Data_Setting_Id": 377925,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460724
+        },
+        {
+          "Data_Setting_Id": 581461,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460724
+        },
+        {
+          "Data_Setting_Id": 377881,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460724
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_FIND_NOW",
+      "OBJECT_ID": 45052,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_findNowButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 32179,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 460724,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 26,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559326,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460725
+        },
+        {
+          "Data_Setting_Id": 559278,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460725
+        },
+        {
+          "Data_Setting_Id": 574443,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460725
+        },
+        {
+          "Data_Setting_Id": 342328,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460725
+        },
+        {
+          "Data_Setting_Id": 377926,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460725
+        },
+        {
+          "Data_Setting_Id": 581462,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460725
+        },
+        {
+          "Data_Setting_Id": 377882,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460725
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 460725,
+      "COLUMN_ROW_SETTING": "F",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 27,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559327,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460726
+        },
+        {
+          "Data_Setting_Id": 559279,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460726
+        },
+        {
+          "Data_Setting_Id": 574444,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460726
+        },
+        {
+          "Data_Setting_Id": 342329,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460726
+        },
+        {
+          "Data_Setting_Id": 377927,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460726
+        },
+        {
+          "Data_Setting_Id": 581463,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460726
+        },
+        {
+          "Data_Setting_Id": 377883,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460726
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 37247,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\n",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 460726,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 28,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559327,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460726
+        },
+        {
+          "Data_Setting_Id": 559279,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460726
+        },
+        {
+          "Data_Setting_Id": 574444,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460726
+        },
+        {
+          "Data_Setting_Id": 342329,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460726
+        },
+        {
+          "Data_Setting_Id": 377927,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460726
+        },
+        {
+          "Data_Setting_Id": 581463,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460726
+        },
+        {
+          "Data_Setting_Id": 377883,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460726
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 46046,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswfname:=Desktop|Page",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 460726,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 28,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559328,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460727
+        },
+        {
+          "Data_Setting_Id": 559280,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460727
+        },
+        {
+          "Data_Setting_Id": 574445,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460727
+        },
+        {
+          "Data_Setting_Id": 342330,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460727
+        },
+        {
+          "Data_Setting_Id": 377928,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460727
+        },
+        {
+          "Data_Setting_Id": 581464,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460727
+        },
+        {
+          "Data_Setting_Id": 377884,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460727
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 86,
+      "KEY_WORD_NAME": "PressKeys",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_TABLE",
+      "OBJECT_ID": 41666,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_queryResults",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 28613,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 460727,
+      "COLUMN_ROW_SETTING": "100,40",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 29,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559328,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460727
+        },
+        {
+          "Data_Setting_Id": 559280,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460727
+        },
+        {
+          "Data_Setting_Id": 574445,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460727
+        },
+        {
+          "Data_Setting_Id": 342330,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460727
+        },
+        {
+          "Data_Setting_Id": 377928,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460727
+        },
+        {
+          "Data_Setting_Id": 581464,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460727
+        },
+        {
+          "Data_Setting_Id": 377884,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460727
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 86,
+      "KEY_WORD_NAME": "PressKeys",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_TABLE",
+      "OBJECT_ID": 35712,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_queryResults",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 28613,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 460727,
+      "COLUMN_ROW_SETTING": "100,40",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 29,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559329,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460728
+        },
+        {
+          "Data_Setting_Id": 559281,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460728
+        },
+        {
+          "Data_Setting_Id": 574446,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460728
+        },
+        {
+          "Data_Setting_Id": 342331,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460728
+        },
+        {
+          "Data_Setting_Id": 377929,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460728
+        },
+        {
+          "Data_Setting_Id": 581465,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460728
+        },
+        {
+          "Data_Setting_Id": 377885,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460728
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 460728,
+      "COLUMN_ROW_SETTING": "F",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 30,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559330,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460729
+        },
+        {
+          "Data_Setting_Id": 559282,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460729
+        },
+        {
+          "Data_Setting_Id": 574447,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460729
+        },
+        {
+          "Data_Setting_Id": 342332,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460729
+        },
+        {
+          "Data_Setting_Id": 377930,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460729
+        },
+        {
+          "Data_Setting_Id": 581466,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460729
+        },
+        {
+          "Data_Setting_Id": 377886,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460729
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "FXFWD_TRADE_POPUP",
+      "OBJECT_ID": 43969,
+      "OBJECT_TYPE": "FXFWD_TRADE_POPUP",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^IFC FX Fwd Trade.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24988,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 460729,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 31,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559330,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460729
+        },
+        {
+          "Data_Setting_Id": 559282,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460729
+        },
+        {
+          "Data_Setting_Id": 574447,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460729
+        },
+        {
+          "Data_Setting_Id": 342332,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460729
+        },
+        {
+          "Data_Setting_Id": 377930,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460729
+        },
+        {
+          "Data_Setting_Id": 581466,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460729
+        },
+        {
+          "Data_Setting_Id": 377886,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460729
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "FXFWD_TRADE_POPUP",
+      "OBJECT_ID": 34398,
+      "OBJECT_TYPE": "FXFWD_TRADE_POPUP",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^IFC FX Fwd Trade.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24988,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 460729,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 31,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559331,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460730
+        },
+        {
+          "Data_Setting_Id": 559283,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460730
+        },
+        {
+          "Data_Setting_Id": 574448,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460730
+        },
+        {
+          "Data_Setting_Id": 342333,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460730
+        },
+        {
+          "Data_Setting_Id": 377931,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460730
+        },
+        {
+          "Data_Setting_Id": 581467,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460730
+        },
+        {
+          "Data_Setting_Id": 377887,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460730
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 22,
+      "KEY_WORD_NAME": "SelectMenuItem",
+      "OBJECT_HAPPY_NAME": "FXFWD_TRADE_POPUP_TOOLBAR",
+      "OBJECT_ID": 36550,
+      "OBJECT_TYPE": "FXFWD_TRADE_POPUP",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 31914,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 460730,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 32,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559331,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460730
+        },
+        {
+          "Data_Setting_Id": 559283,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460730
+        },
+        {
+          "Data_Setting_Id": 574448,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460730
+        },
+        {
+          "Data_Setting_Id": 342333,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460730
+        },
+        {
+          "Data_Setting_Id": 377931,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460730
+        },
+        {
+          "Data_Setting_Id": 581467,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460730
+        },
+        {
+          "Data_Setting_Id": 377887,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460730
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 22,
+      "KEY_WORD_NAME": "SelectMenuItem",
+      "OBJECT_HAPPY_NAME": "FXFWD_TRADE_POPUP_TOOLBAR",
+      "OBJECT_ID": 42303,
+      "OBJECT_TYPE": "FXFWD_TRADE_POPUP",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 31914,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 460730,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 32,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559332,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460731
+        },
+        {
+          "Data_Setting_Id": 559284,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460731
+        },
+        {
+          "Data_Setting_Id": 574449,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460731
+        },
+        {
+          "Data_Setting_Id": 342334,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460731
+        },
+        {
+          "Data_Setting_Id": 377932,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460731
+        },
+        {
+          "Data_Setting_Id": 581468,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460731
+        },
+        {
+          "Data_Setting_Id": 377888,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460731
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "FXFWD",
+      "OBJECT_ID": 41665,
+      "OBJECT_TYPE": "FXFWD",
+      "QUICK_ACCESS": "is owned window:=False \nis child window:=False \nswfname:=Desktop \nswftypename:=Summit\\.Framework\\.Desktop\\.Desktop \nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25022,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 460731,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 33,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559332,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460731
+        },
+        {
+          "Data_Setting_Id": 559284,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460731
+        },
+        {
+          "Data_Setting_Id": 574449,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460731
+        },
+        {
+          "Data_Setting_Id": 342334,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460731
+        },
+        {
+          "Data_Setting_Id": 377932,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460731
+        },
+        {
+          "Data_Setting_Id": 581468,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460731
+        },
+        {
+          "Data_Setting_Id": 377888,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460731
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "FXFWD",
+      "OBJECT_ID": 35711,
+      "OBJECT_TYPE": "FXFWD",
+      "QUICK_ACCESS": "is owned window:=False \nis child window:=False \nswfname:=Desktop \nswftypename:=Summit\\.Framework\\.Desktop\\.Desktop \nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25022,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 460731,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 33,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559333,
+          "DATASETVALUE": "TRADE_STATE_BEFORE",
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460732
+        },
+        {
+          "Data_Setting_Id": 559285,
+          "DATASETVALUE": "TRADE_STATE_BEFORE",
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460732
+        },
+        {
+          "Data_Setting_Id": 574450,
+          "DATASETVALUE": "TRADE_STATE_BEFORE",
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460732
+        },
+        {
+          "Data_Setting_Id": 342335,
+          "DATASETVALUE": "TRADE_STATE_BEFORE",
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460732
+        },
+        {
+          "Data_Setting_Id": 377933,
+          "DATASETVALUE": "TRADE_STATE_BEFORE",
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460732
+        },
+        {
+          "Data_Setting_Id": 581469,
+          "DATASETVALUE": "TRADE_STATE_BEFORE",
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460732
+        },
+        {
+          "Data_Setting_Id": 377889,
+          "DATASETVALUE": "TRADE_STATE_BEFORE",
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460732
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "FXFWD_STATE_LAB",
+      "OBJECT_ID": 35182,
+      "OBJECT_TYPE": "FXFWD",
+      "QUICK_ACCESS": "Swfname:=_stateEntry",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 31911,
+      "TYPE_NAME": "SwfLabel",
+      "STEPS_ID": 460732,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 34,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559333,
+          "DATASETVALUE": "TRADE_STATE_BEFORE",
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460732
+        },
+        {
+          "Data_Setting_Id": 559285,
+          "DATASETVALUE": "TRADE_STATE_BEFORE",
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460732
+        },
+        {
+          "Data_Setting_Id": 574450,
+          "DATASETVALUE": "TRADE_STATE_BEFORE",
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460732
+        },
+        {
+          "Data_Setting_Id": 342335,
+          "DATASETVALUE": "TRADE_STATE_BEFORE",
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460732
+        },
+        {
+          "Data_Setting_Id": 377933,
+          "DATASETVALUE": "TRADE_STATE_BEFORE",
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460732
+        },
+        {
+          "Data_Setting_Id": 581469,
+          "DATASETVALUE": "TRADE_STATE_BEFORE",
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460732
+        },
+        {
+          "Data_Setting_Id": 377889,
+          "DATASETVALUE": "TRADE_STATE_BEFORE",
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460732
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "FXFWD_STATE_LAB",
+      "OBJECT_ID": 44745,
+      "OBJECT_TYPE": "FXFWD",
+      "QUICK_ACCESS": "Swfname:=_stateEntry",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 31911,
+      "TYPE_NAME": "SwfLabel",
+      "STEPS_ID": 460732,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 34,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559334,
+          "DATASETVALUE": "Desktop Menu;Action;Authorize",
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460733
+        },
+        {
+          "Data_Setting_Id": 559286,
+          "DATASETVALUE": "Desktop Menu;Action;Authorize",
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460733
+        },
+        {
+          "Data_Setting_Id": 574451,
+          "DATASETVALUE": "Desktop Menu;Action;Verify",
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460733
+        },
+        {
+          "Data_Setting_Id": 342336,
+          "DATASETVALUE": "Desktop Menu;Action;Verify",
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460733
+        },
+        {
+          "Data_Setting_Id": 377934,
+          "DATASETVALUE": "Desktop Menu;Action;Authorize",
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460733
+        },
+        {
+          "Data_Setting_Id": 581470,
+          "DATASETVALUE": "Desktop Menu;Action;Approve",
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460733
+        },
+        {
+          "Data_Setting_Id": 377890,
+          "DATASETVALUE": "Desktop Menu;Action;Verify",
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460733
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 22,
+      "KEY_WORD_NAME": "SelectMenuItem",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 460733,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 35,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559335,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460734
+        },
+        {
+          "Data_Setting_Id": 559287,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 4,
+          "STEPS_ID": 460734
+        },
+        {
+          "Data_Setting_Id": 574452,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460734
+        },
+        {
+          "Data_Setting_Id": 342337,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460734
+        },
+        {
+          "Data_Setting_Id": 377935,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460734
+        },
+        {
+          "Data_Setting_Id": 581471,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460734
+        },
+        {
+          "Data_Setting_Id": 377891,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460734
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 38,
+      "KEY_WORD_NAME": "Dismiss",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 460734,
+      "COLUMN_ROW_SETTING": "10",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 36,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559336,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460735
+        },
+        {
+          "Data_Setting_Id": 559288,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460735
+        },
+        {
+          "Data_Setting_Id": 574453,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460735
+        },
+        {
+          "Data_Setting_Id": 342338,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460735
+        },
+        {
+          "Data_Setting_Id": 377936,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460735
+        },
+        {
+          "Data_Setting_Id": 581472,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460735
+        },
+        {
+          "Data_Setting_Id": 377892,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460735
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "FXFWD",
+      "OBJECT_ID": 41665,
+      "OBJECT_TYPE": "FXFWD",
+      "QUICK_ACCESS": "is owned window:=False \nis child window:=False \nswfname:=Desktop \nswftypename:=Summit\\.Framework\\.Desktop\\.Desktop \nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25022,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 460735,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 37,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559336,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460735
+        },
+        {
+          "Data_Setting_Id": 559288,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460735
+        },
+        {
+          "Data_Setting_Id": 574453,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460735
+        },
+        {
+          "Data_Setting_Id": 342338,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460735
+        },
+        {
+          "Data_Setting_Id": 377936,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460735
+        },
+        {
+          "Data_Setting_Id": 581472,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460735
+        },
+        {
+          "Data_Setting_Id": 377892,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460735
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "FXFWD",
+      "OBJECT_ID": 35711,
+      "OBJECT_TYPE": "FXFWD",
+      "QUICK_ACCESS": "is owned window:=False \nis child window:=False \nswfname:=Desktop \nswftypename:=Summit\\.Framework\\.Desktop\\.Desktop \nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25022,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 460735,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 37,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559337,
+          "DATASETVALUE": "TRADE_STATE_AFTER",
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460736
+        },
+        {
+          "Data_Setting_Id": 559289,
+          "DATASETVALUE": "TRADE_STATE_AFTER",
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460736
+        },
+        {
+          "Data_Setting_Id": 574454,
+          "DATASETVALUE": "TRADE_STATE_AFTER",
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460736
+        },
+        {
+          "Data_Setting_Id": 342339,
+          "DATASETVALUE": "TRADE_STATE_AFTER",
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460736
+        },
+        {
+          "Data_Setting_Id": 377937,
+          "DATASETVALUE": "TRADE_STATE_AFTER",
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460736
+        },
+        {
+          "Data_Setting_Id": 581473,
+          "DATASETVALUE": "TRADE_STATE_AFTER",
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460736
+        },
+        {
+          "Data_Setting_Id": 377893,
+          "DATASETVALUE": "TRADE_STATE_AFTER",
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460736
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "FXFWD_STATE_LAB",
+      "OBJECT_ID": 35182,
+      "OBJECT_TYPE": "FXFWD",
+      "QUICK_ACCESS": "Swfname:=_stateEntry",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 31911,
+      "TYPE_NAME": "SwfLabel",
+      "STEPS_ID": 460736,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 38,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559337,
+          "DATASETVALUE": "TRADE_STATE_AFTER",
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460736
+        },
+        {
+          "Data_Setting_Id": 559289,
+          "DATASETVALUE": "TRADE_STATE_AFTER",
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460736
+        },
+        {
+          "Data_Setting_Id": 574454,
+          "DATASETVALUE": "TRADE_STATE_AFTER",
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460736
+        },
+        {
+          "Data_Setting_Id": 342339,
+          "DATASETVALUE": "TRADE_STATE_AFTER",
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460736
+        },
+        {
+          "Data_Setting_Id": 377937,
+          "DATASETVALUE": "TRADE_STATE_AFTER",
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460736
+        },
+        {
+          "Data_Setting_Id": 581473,
+          "DATASETVALUE": "TRADE_STATE_AFTER",
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460736
+        },
+        {
+          "Data_Setting_Id": 377893,
+          "DATASETVALUE": "TRADE_STATE_AFTER",
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460736
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "FXFWD_STATE_LAB",
+      "OBJECT_ID": 44745,
+      "OBJECT_TYPE": "FXFWD",
+      "QUICK_ACCESS": "Swfname:=_stateEntry",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 31911,
+      "TYPE_NAME": "SwfLabel",
+      "STEPS_ID": 460736,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 38,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559338,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460737
+        },
+        {
+          "Data_Setting_Id": 559290,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460737
+        },
+        {
+          "Data_Setting_Id": 574455,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460737
+        },
+        {
+          "Data_Setting_Id": 342340,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460737
+        },
+        {
+          "Data_Setting_Id": 377938,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460737
+        },
+        {
+          "Data_Setting_Id": 581474,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460737
+        },
+        {
+          "Data_Setting_Id": 377894,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460737
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 460737,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 39,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559338,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460737
+        },
+        {
+          "Data_Setting_Id": 559290,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460737
+        },
+        {
+          "Data_Setting_Id": 574455,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460737
+        },
+        {
+          "Data_Setting_Id": 342340,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460737
+        },
+        {
+          "Data_Setting_Id": 377938,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460737
+        },
+        {
+          "Data_Setting_Id": 581474,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460737
+        },
+        {
+          "Data_Setting_Id": 377894,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460737
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 460737,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 39,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559339,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460738
+        },
+        {
+          "Data_Setting_Id": 559291,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460738
+        },
+        {
+          "Data_Setting_Id": 574456,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460738
+        },
+        {
+          "Data_Setting_Id": 342341,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460738
+        },
+        {
+          "Data_Setting_Id": 377939,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460738
+        },
+        {
+          "Data_Setting_Id": 581475,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460738
+        },
+        {
+          "Data_Setting_Id": 377895,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460738
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 32409,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 30430,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 460738,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 40,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559339,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460738
+        },
+        {
+          "Data_Setting_Id": 559291,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460738
+        },
+        {
+          "Data_Setting_Id": 574456,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460738
+        },
+        {
+          "Data_Setting_Id": 342341,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460738
+        },
+        {
+          "Data_Setting_Id": 377939,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460738
+        },
+        {
+          "Data_Setting_Id": 581475,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460738
+        },
+        {
+          "Data_Setting_Id": 377895,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460738
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 40727,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 30430,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 460738,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 40,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559340,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460739
+        },
+        {
+          "Data_Setting_Id": 559292,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460739
+        },
+        {
+          "Data_Setting_Id": 574457,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460739
+        },
+        {
+          "Data_Setting_Id": 342342,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460739
+        },
+        {
+          "Data_Setting_Id": 377940,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460739
+        },
+        {
+          "Data_Setting_Id": 581476,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460739
+        },
+        {
+          "Data_Setting_Id": 377896,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460739
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 38,
+      "KEY_WORD_NAME": "Dismiss",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 460739,
+      "COLUMN_ROW_SETTING": "5",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 41,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559341,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460740
+        },
+        {
+          "Data_Setting_Id": 559293,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460740
+        },
+        {
+          "Data_Setting_Id": 574458,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460740
+        },
+        {
+          "Data_Setting_Id": 342343,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460740
+        },
+        {
+          "Data_Setting_Id": 377941,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460740
+        },
+        {
+          "Data_Setting_Id": 581477,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460740
+        },
+        {
+          "Data_Setting_Id": 377897,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460740
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 90,
+      "KEY_WORD_NAME": "EndLoop",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 460740,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 42,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559351,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 4,
+          "STEPS_ID": 469074
+        },
+        {
+          "Data_Setting_Id": 559303,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 4,
+          "STEPS_ID": 469074
+        },
+        {
+          "Data_Setting_Id": 574468,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 4,
+          "STEPS_ID": 469074
+        },
+        {
+          "Data_Setting_Id": 559306,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 4,
+          "STEPS_ID": 469074
+        },
+        {
+          "Data_Setting_Id": 501217,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 4,
+          "STEPS_ID": 469074
+        },
+        {
+          "Data_Setting_Id": 581485,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 4,
+          "STEPS_ID": 469074
+        },
+        {
+          "Data_Setting_Id": 501216,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 4,
+          "STEPS_ID": 469074
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 83,
+      "KEY_WORD_NAME": "ResumeNext",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 469074,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 43,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559342,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460741
+        },
+        {
+          "Data_Setting_Id": 559294,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460741
+        },
+        {
+          "Data_Setting_Id": 574459,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460741
+        },
+        {
+          "Data_Setting_Id": 342344,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460741
+        },
+        {
+          "Data_Setting_Id": 377942,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460741
+        },
+        {
+          "Data_Setting_Id": 581478,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460741
+        },
+        {
+          "Data_Setting_Id": 377898,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460741
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 32409,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 30430,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 460741,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 44,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559342,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460741
+        },
+        {
+          "Data_Setting_Id": 559294,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460741
+        },
+        {
+          "Data_Setting_Id": 574459,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460741
+        },
+        {
+          "Data_Setting_Id": 342344,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460741
+        },
+        {
+          "Data_Setting_Id": 377942,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460741
+        },
+        {
+          "Data_Setting_Id": 581478,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460741
+        },
+        {
+          "Data_Setting_Id": 377898,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460741
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 40727,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 30430,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 460741,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 44,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 559343,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796378,
+          "SKIP": 0,
+          "STEPS_ID": 460742
+        },
+        {
+          "Data_Setting_Id": 559295,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 796366,
+          "SKIP": 0,
+          "STEPS_ID": 460742
+        },
+        {
+          "Data_Setting_Id": 574460,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 832486,
+          "SKIP": 0,
+          "STEPS_ID": 460742
+        },
+        {
+          "Data_Setting_Id": 342345,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 460403,
+          "SKIP": 0,
+          "STEPS_ID": 460742
+        },
+        {
+          "Data_Setting_Id": 377943,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578327,
+          "SKIP": 0,
+          "STEPS_ID": 460742
+        },
+        {
+          "Data_Setting_Id": 581479,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 846648,
+          "SKIP": 0,
+          "STEPS_ID": 460742
+        },
+        {
+          "Data_Setting_Id": 377899,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578318,
+          "SKIP": 0,
+          "STEPS_ID": 460742
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3212,
+      "TEST_CASE_NAME": "FXFWD_Bulk_TrdAction",
+      "KEY_WORD_ID": 38,
+      "KEY_WORD_NAME": "Dismiss",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 460742,
+      "COLUMN_ROW_SETTING": "5",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 45,
+      "VALUE_SETTING": null
+    }
+  ]
+}

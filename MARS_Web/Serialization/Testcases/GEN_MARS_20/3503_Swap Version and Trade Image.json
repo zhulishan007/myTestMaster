@@ -1,0 +1,1642 @@
+{
+  "currentSyncroStatus": 0,
+  "assignedApplications": [
+    194,
+    193,
+    -1
+  ],
+  "assignedTestSuiteIDs": [
+    1318
+  ],
+  "version": null,
+  "assignedDataSets": [
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 578852,
+      "ALIAS_NAME": "ALM_13_Imgx",
+      "DESCRIPTION_INFO": "Capture Show Version and Swap Trade Image"
+    }
+  ],
+  "allSteps": [
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 378398,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578852,
+          "SKIP": 0,
+          "STEPS_ID": 578871
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3503,
+      "TEST_CASE_NAME": "Swap Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 578871,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 378398,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578852,
+          "SKIP": 0,
+          "STEPS_ID": 578871
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3503,
+      "TEST_CASE_NAME": "Swap Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 578871,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 378411,
+          "DATASETVALUE": "New Search",
+          "DATA_SUMMARY_ID": 578852,
+          "SKIP": 0,
+          "STEPS_ID": 578933
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3503,
+      "TEST_CASE_NAME": "Swap Version and Trade Image",
+      "KEY_WORD_ID": 5,
+      "KEY_WORD_NAME": "ClickMenuIcon",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 578933,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 2,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 378409,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578852,
+          "SKIP": 0,
+          "STEPS_ID": 578923
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3503,
+      "TEST_CASE_NAME": "Swap Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 37247,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\n",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 578923,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 3,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 378409,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578852,
+          "SKIP": 0,
+          "STEPS_ID": 578923
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3503,
+      "TEST_CASE_NAME": "Swap Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 46046,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswfname:=Desktop|Page",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 578923,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 3,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 378384,
+          "DATASETVALUE": "SWAP",
+          "DATA_SUMMARY_ID": 578852,
+          "SKIP": 0,
+          "STEPS_ID": 578857
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3503,
+      "TEST_CASE_NAME": "Swap Version and Trade Image",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_TYPES",
+      "OBJECT_ID": 37854,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeTypes",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 26818,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 578857,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 4,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 378384,
+          "DATASETVALUE": "SWAP",
+          "DATA_SUMMARY_ID": 578852,
+          "SKIP": 0,
+          "STEPS_ID": 578857
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3503,
+      "TEST_CASE_NAME": "Swap Version and Trade Image",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_TYPES",
+      "OBJECT_ID": 46634,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeTypes",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 26818,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 578857,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 4,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 378382,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 578852,
+          "SKIP": 4,
+          "STEPS_ID": 578855
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3503,
+      "TEST_CASE_NAME": "Swap Version and Trade Image",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_STATUS",
+      "OBJECT_ID": 34193,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeStatus",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 32176,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 578855,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 5,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 378382,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 578852,
+          "SKIP": 4,
+          "STEPS_ID": 578855
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3503,
+      "TEST_CASE_NAME": "Swap Version and Trade Image",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_STATUS",
+      "OBJECT_ID": 43743,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeStatus",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 32176,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 578855,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 5,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 378383,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 578852,
+          "SKIP": 0,
+          "STEPS_ID": 578856
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3503,
+      "TEST_CASE_NAME": "Swap Version and Trade Image",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_EXTERNAL_TRADE_ID",
+      "OBJECT_ID": 44105,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=ExternalTradeId",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 27732,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 578856,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 6,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 378383,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 578852,
+          "SKIP": 0,
+          "STEPS_ID": 578856
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3503,
+      "TEST_CASE_NAME": "Swap Version and Trade Image",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_EXTERNAL_TRADE_ID",
+      "OBJECT_ID": 34602,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=ExternalTradeId",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 27732,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 578856,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 6,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 378391,
+          "DATASETVALUE": "MODAL_VAR:ALM_13_TRADE_ID",
+          "DATA_SUMMARY_ID": 578852,
+          "SKIP": 0,
+          "STEPS_ID": 578864
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3503,
+      "TEST_CASE_NAME": "Swap Version and Trade Image",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_ID",
+      "OBJECT_ID": 41222,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeID",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 29531,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 578864,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 7,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 378391,
+          "DATASETVALUE": "MODAL_VAR:ALM_13_TRADE_ID",
+          "DATA_SUMMARY_ID": 578852,
+          "SKIP": 0,
+          "STEPS_ID": 578864
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3503,
+      "TEST_CASE_NAME": "Swap Version and Trade Image",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_ID",
+      "OBJECT_ID": 33373,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeID",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 29531,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 578864,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 7,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 378388,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578852,
+          "SKIP": 0,
+          "STEPS_ID": 578861
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3503,
+      "TEST_CASE_NAME": "Swap Version and Trade Image",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_FIND_NOW",
+      "OBJECT_ID": 32728,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_findNowButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 32179,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 578861,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 8,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 378388,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578852,
+          "SKIP": 0,
+          "STEPS_ID": 578861
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3503,
+      "TEST_CASE_NAME": "Swap Version and Trade Image",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_FIND_NOW",
+      "OBJECT_ID": 45052,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_findNowButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 32179,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 578861,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 8,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 378399,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578852,
+          "SKIP": 0,
+          "STEPS_ID": 578872
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3503,
+      "TEST_CASE_NAME": "Swap Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 37247,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\n",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 578872,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 9,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 378399,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578852,
+          "SKIP": 0,
+          "STEPS_ID": 578872
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3503,
+      "TEST_CASE_NAME": "Swap Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 46046,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswfname:=Desktop|Page",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 578872,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 9,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 378393,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 578852,
+          "SKIP": 0,
+          "STEPS_ID": 578866
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3503,
+      "TEST_CASE_NAME": "Swap Version and Trade Image",
+      "KEY_WORD_ID": 32,
+      "KEY_WORD_NAME": "SearchAndClick",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_TABLE",
+      "OBJECT_ID": 41666,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_queryResults",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 28613,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 578866,
+      "COLUMN_ROW_SETTING": "MarsAddins;Trade ID;Action:LEFT_DBL_CLICK",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 10,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 378393,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 578852,
+          "SKIP": 0,
+          "STEPS_ID": 578866
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3503,
+      "TEST_CASE_NAME": "Swap Version and Trade Image",
+      "KEY_WORD_ID": 32,
+      "KEY_WORD_NAME": "SearchAndClick",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_TABLE",
+      "OBJECT_ID": 35712,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_queryResults",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 28613,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 578866,
+      "COLUMN_ROW_SETTING": "MarsAddins;Trade ID;Action:LEFT_DBL_CLICK",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 10,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 378387,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 578852,
+          "SKIP": 0,
+          "STEPS_ID": 578860
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3503,
+      "TEST_CASE_NAME": "Swap Version and Trade Image",
+      "KEY_WORD_ID": 86,
+      "KEY_WORD_NAME": "PressKeys",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_TABLE",
+      "OBJECT_ID": 41666,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_queryResults",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 28613,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 578860,
+      "COLUMN_ROW_SETTING": "100,40",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 11,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 378387,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 578852,
+          "SKIP": 0,
+          "STEPS_ID": 578860
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3503,
+      "TEST_CASE_NAME": "Swap Version and Trade Image",
+      "KEY_WORD_ID": 86,
+      "KEY_WORD_NAME": "PressKeys",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_TABLE",
+      "OBJECT_ID": 35712,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_queryResults",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 28613,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 578860,
+      "COLUMN_ROW_SETTING": "100,40",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 11,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 378394,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 578852,
+          "SKIP": 0,
+          "STEPS_ID": 578867
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3503,
+      "TEST_CASE_NAME": "Swap Version and Trade Image",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 578867,
+      "COLUMN_ROW_SETTING": "F",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 12,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 378405,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578852,
+          "SKIP": 0,
+          "STEPS_ID": 578878
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3503,
+      "TEST_CASE_NAME": "Swap Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "SWAP_TRADE_POPUP",
+      "OBJECT_ID": 42722,
+      "OBJECT_TYPE": "SWAP_TRADE_POPUP",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^IFC Swap Trade.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24797,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 578878,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 13,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 378405,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578852,
+          "SKIP": 0,
+          "STEPS_ID": 578878
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3503,
+      "TEST_CASE_NAME": "Swap Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "SWAP_TRADE_POPUP",
+      "OBJECT_ID": 38628,
+      "OBJECT_TYPE": "SWAP_TRADE_POPUP",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^IFC Swap Trade.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24797,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 578878,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 13,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 378404,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578852,
+          "SKIP": 0,
+          "STEPS_ID": 578877
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3503,
+      "TEST_CASE_NAME": "Swap Version and Trade Image",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "SWAP_TRADE_POPUP",
+      "OBJECT_ID": 42722,
+      "OBJECT_TYPE": "SWAP_TRADE_POPUP",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^IFC Swap Trade.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24797,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 578877,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 14,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 378404,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578852,
+          "SKIP": 0,
+          "STEPS_ID": 578877
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3503,
+      "TEST_CASE_NAME": "Swap Version and Trade Image",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "SWAP_TRADE_POPUP",
+      "OBJECT_ID": 38628,
+      "OBJECT_TYPE": "SWAP_TRADE_POPUP",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^IFC Swap Trade.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24797,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 578877,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 14,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 378389,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 578852,
+          "SKIP": 0,
+          "STEPS_ID": 578862
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3503,
+      "TEST_CASE_NAME": "Swap Version and Trade Image",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 578862,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 15,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 378396,
+          "DATASETVALUE": "TRADE_STATE_BEFORE",
+          "DATA_SUMMARY_ID": 578852,
+          "SKIP": 0,
+          "STEPS_ID": 578869
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3503,
+      "TEST_CASE_NAME": "Swap Version and Trade Image",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "SWAP_TRADE_STATE",
+      "OBJECT_ID": 45368,
+      "OBJECT_TYPE": "SWAP_TRADE_POPUP",
+      "QUICK_ACCESS": "swfname:=_extStateLabel",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 32109,
+      "TYPE_NAME": "SwfLabel",
+      "STEPS_ID": 578869,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 16,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 378396,
+          "DATASETVALUE": "TRADE_STATE_BEFORE",
+          "DATA_SUMMARY_ID": 578852,
+          "SKIP": 0,
+          "STEPS_ID": 578869
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3503,
+      "TEST_CASE_NAME": "Swap Version and Trade Image",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "SWAP_TRADE_STATE",
+      "OBJECT_ID": 36380,
+      "OBJECT_TYPE": "SWAP_TRADE_POPUP",
+      "QUICK_ACCESS": "swfname:=_extStateLabel",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 32109,
+      "TYPE_NAME": "SwfLabel",
+      "STEPS_ID": 578869,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 16,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 378392,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578852,
+          "SKIP": 0,
+          "STEPS_ID": 578865
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3503,
+      "TEST_CASE_NAME": "Swap Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "SWAP_TRADE_POPUP",
+      "OBJECT_ID": 42722,
+      "OBJECT_TYPE": "SWAP_TRADE_POPUP",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^IFC Swap Trade.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24797,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 578865,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 17,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 378392,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578852,
+          "SKIP": 0,
+          "STEPS_ID": 578865
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3503,
+      "TEST_CASE_NAME": "Swap Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "SWAP_TRADE_POPUP",
+      "OBJECT_ID": 38628,
+      "OBJECT_TYPE": "SWAP_TRADE_POPUP",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^IFC Swap Trade.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24797,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 578865,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 17,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 378402,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 578852,
+          "SKIP": 0,
+          "STEPS_ID": 578875
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3503,
+      "TEST_CASE_NAME": "Swap Version and Trade Image",
+      "KEY_WORD_ID": 22,
+      "KEY_WORD_NAME": "SelectMenuItem",
+      "OBJECT_HAPPY_NAME": "SWAP_TRADE_POPUP_TOOLBAR",
+      "OBJECT_ID": 48823,
+      "OBJECT_TYPE": "SWAP_TRADE_POPUP",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 30427,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 578875,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 18,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 378402,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 578852,
+          "SKIP": 0,
+          "STEPS_ID": 578875
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3503,
+      "TEST_CASE_NAME": "Swap Version and Trade Image",
+      "KEY_WORD_ID": 22,
+      "KEY_WORD_NAME": "SelectMenuItem",
+      "OBJECT_HAPPY_NAME": "SWAP_TRADE_POPUP_TOOLBAR",
+      "OBJECT_ID": 38383,
+      "OBJECT_TYPE": "SWAP_TRADE_POPUP",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 30427,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 578875,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 18,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 378385,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578852,
+          "SKIP": 0,
+          "STEPS_ID": 578858
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3503,
+      "TEST_CASE_NAME": "Swap Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 578858,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 19,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 378385,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578852,
+          "SKIP": 0,
+          "STEPS_ID": 578858
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3503,
+      "TEST_CASE_NAME": "Swap Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 578858,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 19,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 378397,
+          "DATASETVALUE": "Desktop Menu;IFC Swap Trade;Show Version",
+          "DATA_SUMMARY_ID": 578852,
+          "SKIP": 0,
+          "STEPS_ID": 578870
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3503,
+      "TEST_CASE_NAME": "Swap Version and Trade Image",
+      "KEY_WORD_ID": 22,
+      "KEY_WORD_NAME": "SelectMenuItem",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 578870,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 20,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578852,
+          "SKIP": 0,
+          "STEPS_ID": 578912
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3503,
+      "TEST_CASE_NAME": "Swap Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "SHOW_VERSION",
+      "OBJECT_ID": 49954,
+      "OBJECT_TYPE": "SHOW_VERSION",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^Show Version.*\nSwfName:=DetachedFormHolder",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 49953,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 578912,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 21,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578852,
+          "SKIP": 0,
+          "STEPS_ID": 578912
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3503,
+      "TEST_CASE_NAME": "Swap Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "SHOW_VERSION",
+      "OBJECT_ID": 49957,
+      "OBJECT_TYPE": "SHOW_VERSION",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^Show Version.*\nSwfName:=DetachedFormHolder",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 49953,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 578912,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 21,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578852,
+          "SKIP": 0,
+          "STEPS_ID": 578911
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3503,
+      "TEST_CASE_NAME": "Swap Version and Trade Image",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "SHOW_VERSION",
+      "OBJECT_ID": 49954,
+      "OBJECT_TYPE": "SHOW_VERSION",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^Show Version.*\nSwfName:=DetachedFormHolder",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 49953,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 578911,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 22,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578852,
+          "SKIP": 0,
+          "STEPS_ID": 578911
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3503,
+      "TEST_CASE_NAME": "Swap Version and Trade Image",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "SHOW_VERSION",
+      "OBJECT_ID": 49957,
+      "OBJECT_TYPE": "SHOW_VERSION",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^Show Version.*\nSwfName:=DetachedFormHolder",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 49953,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 578911,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 22,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 378408,
+          "DATASETVALUE": "VERSION",
+          "DATA_SUMMARY_ID": 578852,
+          "SKIP": 0,
+          "STEPS_ID": 578910
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3503,
+      "TEST_CASE_NAME": "Swap Version and Trade Image",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "SHOW_VERSION",
+      "OBJECT_ID": 49954,
+      "OBJECT_TYPE": "SHOW_VERSION",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^Show Version.*\nSwfName:=DetachedFormHolder",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 49953,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 578910,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 23,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 378408,
+          "DATASETVALUE": "VERSION",
+          "DATA_SUMMARY_ID": 578852,
+          "SKIP": 0,
+          "STEPS_ID": 578910
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3503,
+      "TEST_CASE_NAME": "Swap Version and Trade Image",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "SHOW_VERSION",
+      "OBJECT_ID": 49957,
+      "OBJECT_TYPE": "SHOW_VERSION",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^Show Version.*\nSwfName:=DetachedFormHolder",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 49953,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 578910,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 23,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 378407,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578852,
+          "SKIP": 0,
+          "STEPS_ID": 578909
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3503,
+      "TEST_CASE_NAME": "Swap Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 578909,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 24,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 378407,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578852,
+          "SKIP": 0,
+          "STEPS_ID": 578909
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3503,
+      "TEST_CASE_NAME": "Swap Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 578909,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 24,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 378400,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578852,
+          "SKIP": 0,
+          "STEPS_ID": 578873
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3503,
+      "TEST_CASE_NAME": "Swap Version and Trade Image",
+      "KEY_WORD_ID": 38,
+      "KEY_WORD_NAME": "Dismiss",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 578873,
+      "COLUMN_ROW_SETTING": "10",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 25,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 378386,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578852,
+          "SKIP": 0,
+          "STEPS_ID": 578859
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3503,
+      "TEST_CASE_NAME": "Swap Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "SWAP_TRADE",
+      "OBJECT_ID": 41203,
+      "OBJECT_TYPE": "SWAP_TRADE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24908,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 578859,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 26,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 378386,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578852,
+          "SKIP": 0,
+          "STEPS_ID": 578859
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3503,
+      "TEST_CASE_NAME": "Swap Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "SWAP_TRADE",
+      "OBJECT_ID": 33353,
+      "OBJECT_TYPE": "SWAP_TRADE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24908,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 578859,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 26,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 378395,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578852,
+          "SKIP": 0,
+          "STEPS_ID": 578868
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3503,
+      "TEST_CASE_NAME": "Swap Version and Trade Image",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "SWAP_TRADE",
+      "OBJECT_ID": 41203,
+      "OBJECT_TYPE": "SWAP_TRADE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24908,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 578868,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 27,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 378395,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578852,
+          "SKIP": 0,
+          "STEPS_ID": 578868
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3503,
+      "TEST_CASE_NAME": "Swap Version and Trade Image",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "SWAP_TRADE",
+      "OBJECT_ID": 33353,
+      "OBJECT_TYPE": "SWAP_TRADE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24908,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 578868,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 27,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 378406,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578852,
+          "SKIP": 0,
+          "STEPS_ID": 578879
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3503,
+      "TEST_CASE_NAME": "Swap Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 578879,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 28,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 378406,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578852,
+          "SKIP": 0,
+          "STEPS_ID": 578879
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3503,
+      "TEST_CASE_NAME": "Swap Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 578879,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 28,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 378401,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578852,
+          "SKIP": 0,
+          "STEPS_ID": 578874
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3503,
+      "TEST_CASE_NAME": "Swap Version and Trade Image",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 32409,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 30430,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 578874,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 29,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 378401,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578852,
+          "SKIP": 0,
+          "STEPS_ID": 578874
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3503,
+      "TEST_CASE_NAME": "Swap Version and Trade Image",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 40727,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 30430,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 578874,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 29,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 378390,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 578852,
+          "SKIP": 0,
+          "STEPS_ID": 578863
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3503,
+      "TEST_CASE_NAME": "Swap Version and Trade Image",
+      "KEY_WORD_ID": 38,
+      "KEY_WORD_NAME": "Dismiss",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 578863,
+      "COLUMN_ROW_SETTING": "5",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 30,
+      "VALUE_SETTING": null
+    }
+  ]
+}
