@@ -1,0 +1,682 @@
+{
+  "currentSyncroStatus": 0,
+  "assignedApplications": [
+    193,
+    194,
+    -1
+  ],
+  "assignedTestSuiteIDs": [
+    1241
+  ],
+  "version": null,
+  "assignedDataSets": [
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 615932,
+      "ALIAS_NAME": "SSI_ASSIGN_OP",
+      "DESCRIPTION_INFO": null
+    }
+  ],
+  "allSteps": [
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 397031,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 615932,
+          "SKIP": 0,
+          "STEPS_ID": 615936
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3603,
+      "TEST_CASE_NAME": "SSI_Assignment",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "SSI",
+      "OBJECT_ID": 42725,
+      "OBJECT_TYPE": "SSI",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^Settlement Instructions.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24941,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 615936,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 397031,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 615932,
+          "SKIP": 0,
+          "STEPS_ID": 615936
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3603,
+      "TEST_CASE_NAME": "SSI_Assignment",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "SSI",
+      "OBJECT_ID": 38631,
+      "OBJECT_TYPE": "SSI",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^Settlement Instructions.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24941,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 615936,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 397032,
+          "DATASETVALUE": "LOOP_VAR:SSI_STATUS_OUR",
+          "DATA_SUMMARY_ID": 615932,
+          "SKIP": 0,
+          "STEPS_ID": 615937
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3603,
+      "TEST_CASE_NAME": "SSI_Assignment",
+      "KEY_WORD_ID": 1,
+      "KEY_WORD_NAME": "CaptureValue",
+      "OBJECT_HAPPY_NAME": "SSI_PAIRSSPR",
+      "OBJECT_ID": 39768,
+      "OBJECT_TYPE": "SSI",
+      "QUICK_ACCESS": "SwfName:=_pairsSpr",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 28522,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 615937,
+      "COLUMN_ROW_SETTING": "ALLROWS;OUR SSI STATUS",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 2,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 397032,
+          "DATASETVALUE": "LOOP_VAR:SSI_STATUS_OUR",
+          "DATA_SUMMARY_ID": 615932,
+          "SKIP": 0,
+          "STEPS_ID": 615937
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3603,
+      "TEST_CASE_NAME": "SSI_Assignment",
+      "KEY_WORD_ID": 1,
+      "KEY_WORD_NAME": "CaptureValue",
+      "OBJECT_HAPPY_NAME": "SSI_PAIRSSPR",
+      "OBJECT_ID": 47964,
+      "OBJECT_TYPE": "SSI",
+      "QUICK_ACCESS": "SwfName:=_pairsSpr",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 28522,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 615937,
+      "COLUMN_ROW_SETTING": "ALLROWS;OUR SSI STATUS",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 2,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 397033,
+          "DATASETVALUE": "LOOP_VAR:SSI_STATUS_OUR",
+          "DATA_SUMMARY_ID": 615932,
+          "SKIP": 0,
+          "STEPS_ID": 615938
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3603,
+      "TEST_CASE_NAME": "SSI_Assignment",
+      "KEY_WORD_ID": 36,
+      "KEY_WORD_NAME": "Loop",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 615938,
+      "COLUMN_ROW_SETTING": "Reload",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 3,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 397034,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 615932,
+          "SKIP": 0,
+          "STEPS_ID": 615939
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3603,
+      "TEST_CASE_NAME": "SSI_Assignment",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "SSI",
+      "OBJECT_ID": 42725,
+      "OBJECT_TYPE": "SSI",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^Settlement Instructions.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24941,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 615939,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 4,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 397034,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 615932,
+          "SKIP": 0,
+          "STEPS_ID": 615939
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3603,
+      "TEST_CASE_NAME": "SSI_Assignment",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "SSI",
+      "OBJECT_ID": 38631,
+      "OBJECT_TYPE": "SSI",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^Settlement Instructions.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24941,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 615939,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 4,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 397035,
+          "DATASETVALUE": "LOOP_VAR:_LOOP_INDEX",
+          "DATA_SUMMARY_ID": 615932,
+          "SKIP": 0,
+          "STEPS_ID": 615940
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3603,
+      "TEST_CASE_NAME": "SSI_Assignment",
+      "KEY_WORD_ID": 32,
+      "KEY_WORD_NAME": "SearchAndClick",
+      "OBJECT_HAPPY_NAME": "SSI_PAIRSSPR",
+      "OBJECT_ID": 39768,
+      "OBJECT_TYPE": "SSI",
+      "QUICK_ACCESS": "SwfName:=_pairsSpr",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 28522,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 615940,
+      "COLUMN_ROW_SETTING": "LoopAddins;Our SSI Status;Action:L_ClickAt:-6:6",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 5,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 397035,
+          "DATASETVALUE": "LOOP_VAR:_LOOP_INDEX",
+          "DATA_SUMMARY_ID": 615932,
+          "SKIP": 0,
+          "STEPS_ID": 615940
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3603,
+      "TEST_CASE_NAME": "SSI_Assignment",
+      "KEY_WORD_ID": 32,
+      "KEY_WORD_NAME": "SearchAndClick",
+      "OBJECT_HAPPY_NAME": "SSI_PAIRSSPR",
+      "OBJECT_ID": 47964,
+      "OBJECT_TYPE": "SSI",
+      "QUICK_ACCESS": "SwfName:=_pairsSpr",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 28522,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 615940,
+      "COLUMN_ROW_SETTING": "LoopAddins;Our SSI Status;Action:L_ClickAt:-6:6",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 5,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 397036,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 615932,
+          "SKIP": 0,
+          "STEPS_ID": 615941
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3603,
+      "TEST_CASE_NAME": "SSI_Assignment",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "SUMMIT_DROPDOWNHOST",
+      "OBJECT_ID": 50218,
+      "OBJECT_TYPE": "SUMMIT_DROPDOWNHOST",
+      "QUICK_ACCESS": "swfname:=^$\nswftype:=Infragistics.Win.DropDownManager+DropDownForm",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 50213,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 615941,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 6,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 397036,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 615932,
+          "SKIP": 0,
+          "STEPS_ID": 615941
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3603,
+      "TEST_CASE_NAME": "SSI_Assignment",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "SUMMIT_DROPDOWNHOST",
+      "OBJECT_ID": 50216,
+      "OBJECT_TYPE": "SUMMIT_DROPDOWNHOST",
+      "QUICK_ACCESS": "swfname:=^$\nswftype:=Infragistics.Win.DropDownManager+DropDownForm",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 50213,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 615941,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 6,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 397037,
+          "DATASETVALUE": "60,60",
+          "DATA_SUMMARY_ID": 615932,
+          "SKIP": 0,
+          "STEPS_ID": 615942
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3603,
+      "TEST_CASE_NAME": "SSI_Assignment",
+      "KEY_WORD_ID": 44,
+      "KEY_WORD_NAME": "ClickAt",
+      "OBJECT_HAPPY_NAME": "DROPDOWN_TMP_WND",
+      "OBJECT_ID": 50215,
+      "OBJECT_TYPE": "SUMMIT_DROPDOWNHOST",
+      "QUICK_ACCESS": "swfname:=_ourQueryDrop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 50214,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 615942,
+      "COLUMN_ROW_SETTING": "LEFT_CLICK",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 7,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 397037,
+          "DATASETVALUE": "60,60",
+          "DATA_SUMMARY_ID": 615932,
+          "SKIP": 0,
+          "STEPS_ID": 615942
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3603,
+      "TEST_CASE_NAME": "SSI_Assignment",
+      "KEY_WORD_ID": 44,
+      "KEY_WORD_NAME": "ClickAt",
+      "OBJECT_HAPPY_NAME": "DROPDOWN_TMP_WND",
+      "OBJECT_ID": 50217,
+      "OBJECT_TYPE": "SUMMIT_DROPDOWNHOST",
+      "QUICK_ACCESS": "swfname:=_ourQueryDrop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 50214,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 615942,
+      "COLUMN_ROW_SETTING": "LEFT_CLICK",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 7,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 397392,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 615932,
+          "SKIP": 0,
+          "STEPS_ID": 616026
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3603,
+      "TEST_CASE_NAME": "SSI_Assignment",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "SSI",
+      "OBJECT_ID": 42725,
+      "OBJECT_TYPE": "SSI",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^Settlement Instructions.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24941,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 616026,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 8,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 397392,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 615932,
+          "SKIP": 0,
+          "STEPS_ID": 616026
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3603,
+      "TEST_CASE_NAME": "SSI_Assignment",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "SSI",
+      "OBJECT_ID": 38631,
+      "OBJECT_TYPE": "SSI",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^Settlement Instructions.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24941,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 616026,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 8,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 397391,
+          "DATASETVALUE": "LOOP_VAR:_LOOP_INDEX",
+          "DATA_SUMMARY_ID": 615932,
+          "SKIP": 0,
+          "STEPS_ID": 616024
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3603,
+      "TEST_CASE_NAME": "SSI_Assignment",
+      "KEY_WORD_ID": 32,
+      "KEY_WORD_NAME": "SearchAndClick",
+      "OBJECT_HAPPY_NAME": "SSI_PAIRSSPR",
+      "OBJECT_ID": 39768,
+      "OBJECT_TYPE": "SSI",
+      "QUICK_ACCESS": "SwfName:=_pairsSpr",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 28522,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 616024,
+      "COLUMN_ROW_SETTING": "LoopAddins;Cust SSI Status;Action:L_ClickAt:-10:6",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 9,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 397391,
+          "DATASETVALUE": "LOOP_VAR:_LOOP_INDEX",
+          "DATA_SUMMARY_ID": 615932,
+          "SKIP": 0,
+          "STEPS_ID": 616024
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3603,
+      "TEST_CASE_NAME": "SSI_Assignment",
+      "KEY_WORD_ID": 32,
+      "KEY_WORD_NAME": "SearchAndClick",
+      "OBJECT_HAPPY_NAME": "SSI_PAIRSSPR",
+      "OBJECT_ID": 47964,
+      "OBJECT_TYPE": "SSI",
+      "QUICK_ACCESS": "SwfName:=_pairsSpr",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 28522,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 616024,
+      "COLUMN_ROW_SETTING": "LoopAddins;Cust SSI Status;Action:L_ClickAt:-10:6",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 9,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 397393,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 615932,
+          "SKIP": 0,
+          "STEPS_ID": 616039
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3603,
+      "TEST_CASE_NAME": "SSI_Assignment",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "SUMMIT_DROPDOWNHOST",
+      "OBJECT_ID": 50218,
+      "OBJECT_TYPE": "SUMMIT_DROPDOWNHOST",
+      "QUICK_ACCESS": "swfname:=^$\nswftype:=Infragistics.Win.DropDownManager+DropDownForm",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 50213,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 616039,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 10,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 397393,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 615932,
+          "SKIP": 0,
+          "STEPS_ID": 616039
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3603,
+      "TEST_CASE_NAME": "SSI_Assignment",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "SUMMIT_DROPDOWNHOST",
+      "OBJECT_ID": 50216,
+      "OBJECT_TYPE": "SUMMIT_DROPDOWNHOST",
+      "QUICK_ACCESS": "swfname:=^$\nswftype:=Infragistics.Win.DropDownManager+DropDownForm",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 50213,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 616039,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 10,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 397394,
+          "DATASETVALUE": "60,60",
+          "DATA_SUMMARY_ID": 615932,
+          "SKIP": 0,
+          "STEPS_ID": 616040
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3603,
+      "TEST_CASE_NAME": "SSI_Assignment",
+      "KEY_WORD_ID": 44,
+      "KEY_WORD_NAME": "ClickAt",
+      "OBJECT_HAPPY_NAME": "DROPDOWN_CUSTDROPDOWN",
+      "OBJECT_ID": 50254,
+      "OBJECT_TYPE": "SUMMIT_DROPDOWNHOST",
+      "QUICK_ACCESS": "swfname:=_custQueryDrop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 50253,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 616040,
+      "COLUMN_ROW_SETTING": "LEFT_CLICK",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 11,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 397394,
+          "DATASETVALUE": "60,60",
+          "DATA_SUMMARY_ID": 615932,
+          "SKIP": 0,
+          "STEPS_ID": 616040
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3603,
+      "TEST_CASE_NAME": "SSI_Assignment",
+      "KEY_WORD_ID": 44,
+      "KEY_WORD_NAME": "ClickAt",
+      "OBJECT_HAPPY_NAME": "DROPDOWN_CUSTDROPDOWN",
+      "OBJECT_ID": 50273,
+      "OBJECT_TYPE": "SUMMIT_DROPDOWNHOST",
+      "QUICK_ACCESS": "swfname:=_custQueryDrop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 50253,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 616040,
+      "COLUMN_ROW_SETTING": "LEFT_CLICK",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 11,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 397038,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 615932,
+          "SKIP": 0,
+          "STEPS_ID": 615943
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3603,
+      "TEST_CASE_NAME": "SSI_Assignment",
+      "KEY_WORD_ID": 90,
+      "KEY_WORD_NAME": "EndLoop",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 615943,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 12,
+      "VALUE_SETTING": null
+    }
+  ]
+}

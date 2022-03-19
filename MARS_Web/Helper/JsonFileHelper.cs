@@ -19,9 +19,12 @@ namespace MARS_Web.Helper
     {
         static Logger logger = LogManager.GetLogger("Log");
         static Logger ELogger = LogManager.GetLogger("ErrorLog");
-        public static string GetFilePath(string fileName, string databaseName,string caseName="Storyboard")
+
+        public static bool IsForWeb = true;
+
+        public static string GetFilePath(string fileName, string databaseName,string caseName="Storyboard" )
         {
-            string fullName = Path.Combine(HostingEnvironment.MapPath("~/"), "Serialization" , caseName, databaseName,fileName);
+            string fullName = IsForWeb?Path.Combine(HostingEnvironment.MapPath("~/"), "Serialization" , caseName, databaseName,fileName): fileName;
             if (File.Exists(fullName))
             {
                 return File.ReadAllText(fullName);
@@ -32,11 +35,15 @@ namespace MARS_Web.Helper
 
         public static void SaveToJsonFile(string jsonData, string fileName, string databaseName, string caseName = "Storyboard")
         {
-            var path = Path.Combine(HostingEnvironment.MapPath("~/"), "Serialization", caseName, databaseName);
-            if (!Directory.Exists(path)) {
-                Directory.CreateDirectory(path);
+            var path = IsForWeb? Path.Combine(HostingEnvironment.MapPath("~/"), "Serialization", caseName, databaseName):fileName;
+            if (IsForWeb)
+            {
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
             }
-            string fullName = Path.Combine(path, fileName);
+            string fullName = IsForWeb?Path.Combine(path, fileName):fileName;
 
             using (StreamWriter sw = new StreamWriter(fullName, false))
             {
@@ -44,18 +51,24 @@ namespace MARS_Web.Helper
             }
         }
 
-        public static bool HasCashFile(string databaseName, string storyboardName, long projectId, long storyBoardId, string caseName = "Storyboard", string path = "") 
+        public static bool HasCashFile(string databaseName, string storyboardName, long projectId, long storyBoardId, ref string strTargetName,  string caseName = "Storyboard", string path = "") 
         {
-            if(!string.IsNullOrEmpty(path))
+            if (string.IsNullOrEmpty(path))
                 path = Path.Combine(HostingEnvironment.MapPath("~/"), "Serialization", caseName, databaseName);
+            else
+                path = Path.Combine(path, "Serialization", caseName, databaseName);
+            if (!Directory.Exists(path))
+            {
+                Directory.CreateDirectory(path);
+            }
             string fileName = $"{projectId}_{storyBoardId}_{storyboardName}.json";
-            if (File.Exists(Path.Combine(path, fileName))) 
+            if (File.Exists(strTargetName = Path.Combine(path, fileName))) 
             {
                 return true;
             }
             return false;
         }
-        public static void InitStoryBoardJson(string databaseName,string path="", long dataId=0,bool needReflesh=false)
+        public static void InitStoryBoardJson(string databaseName,string path="", long dataId=0,bool needReflesh=false,string strJsonPath=null)
         {
             MarsConfig mc = null;
             if (string.IsNullOrWhiteSpace(path))
@@ -103,34 +116,40 @@ namespace MARS_Web.Helper
             var repTree = new GetTreeRepository();
             var lstoryboardlist = repTree.GetStoryboardList(projectByUserList);
             if (lstoryboardlist != null && lstoryboardlist.Count > 0)
-            { 
+            {
+                string strTargetName = "";
                 foreach (var project in lstoryboardlist)
                 {
+                    strTargetName = "";
                     if (dataId != 0 && project.StoryboardId != dataId)
                         continue;
+                    Console.WriteLine($"Storyboard:[{project.StoryboardName}]-begins");
                     if (!needReflesh)
                     {
-                        if (HasCashFile(databaseName, project.StoryboardName, project.ProjectId, project.StoryboardId,  path ))
+                        if (HasCashFile(databaseName, project.StoryboardName, project.ProjectId, project.StoryboardId, ref strTargetName, "Storyboard", strJsonPath)) // path ))
+                        {
+                            Console.WriteLine($"{strTargetName} exists, skip");
                             continue;
+                        }
                     }
                     //System.Threading.Tasks.Task.Run(() =>
                     //{
-                        StoryBoardCashJson(databaseName, det, project.StoryboardName, project.ProjectId, project.StoryboardId, needReflesh);
+                        StoryBoardCashJson(databaseName, det, project.StoryboardName,strTargetName, project.ProjectId, project.StoryboardId, needReflesh);
                     //});
                 }
             }
         }
 
-        public static void StoryBoardCashJson(string databaseName, DatabaseConnectionDetails det,string storyBoardName,long Projectid = 0, long Storyboardid = 0,bool needReflesh=false)
+        public static void StoryBoardCashJson(string databaseName, DatabaseConnectionDetails det,string storyBoardName, string strTargetFileName, long Projectid = 0, long Storyboardid = 0,bool needReflesh=false)
         {
             var users = GlobalVariable.UsersDictionary[databaseName].Values.FirstOrDefault();
             var user = users.FirstOrDefault();
             try
             {
-                string key = $"{Projectid}_{Storyboardid}_{storyBoardName}.json";
+                string key =string.IsNullOrEmpty(strTargetFileName)?$"{Projectid}_{Storyboardid}_{storyBoardName}.json": strTargetFileName;
               
                 var result = GetFilePath(key, databaseName);
-
+                Console.WriteLine($"\t Prepare {key} data....");
                 if (string.IsNullOrWhiteSpace(result) || needReflesh)
                 {
                     ConcurrentDictionary<string, string> keyValuePairs = new ConcurrentDictionary<string, string>();
@@ -186,12 +205,15 @@ namespace MARS_Web.Helper
                     keyValuePairs.TryAdd("StoryBoardDetails", storyBoardDetails);
                     keyValuePairs.TryAdd("keyValues", JsonConvert.SerializeObject(keyValues));
                     string jsonData = JsonConvert.SerializeObject(keyValuePairs);
-                    SaveToJsonFile(jsonData, $"{Projectid}_{Storyboardid}_{storyboardname}.json", databaseName);
+                    SaveToJsonFile(jsonData, IsForWeb?$"{Projectid}_{Storyboardid}_{storyboardname}.json":key, databaseName);
+                    Console.WriteLine($"\t file {key} is created");
+
                     logger.Info(string.Format("successfully open storyborad | Projectid: {0} | Storyboardid: {1} | Username: admin", Projectid, Storyboardid));
                 }
             }
             catch (Exception ex)
             {
+                Console.WriteLine($"\t Exceptions:{ex.Message} from StoryBoardCacheJson\r\n{ex.StackTrace}");
                 logger.Error(string.Format("Error occured in Home for PartialRightStoryboardGrid method | StoryBoard Id : {0} | Project Id : {1} | UserName: {2}", Storyboardid, Projectid, user.username));
                 ELogger.ErrorException(string.Format("Error occured in Home for PartialRightStoryboardGrid method | StoryBoard Id : {0} | Project Id : {1} | UserName: {2}", Storyboardid, Projectid, user.username), ex);
                 if (ex.InnerException != null)

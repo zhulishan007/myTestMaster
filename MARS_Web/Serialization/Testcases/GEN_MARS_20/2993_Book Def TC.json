@@ -1,0 +1,2632 @@
+{
+  "currentSyncroStatus": 0,
+  "assignedApplications": [
+    193,
+    194,
+    -1
+  ],
+  "assignedTestSuiteIDs": [
+    1374
+  ],
+  "version": null,
+  "assignedDataSets": [
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 422253,
+      "ALIAS_NAME": "BO_28_1",
+      "DESCRIPTION_INFO": "Verify if new book can be created"
+    }
+  ],
+  "allSteps": [
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 290380,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 422305
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 422305,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 290380,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 422305
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 422305,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 290381,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 422306
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 422306,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 2,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 290381,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 422306
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 422306,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 2,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 290382,
+          "DATASETVALUE": "Book Definition",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 422307
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 12,
+      "KEY_WORD_NAME": "LaunchApplication",
+      "OBJECT_HAPPY_NAME": "ApplicationName",
+      "OBJECT_ID": 35170,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockAreaTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 29559,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 422307,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 3,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 290382,
+          "DATASETVALUE": "Book Definition",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 422307
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 12,
+      "KEY_WORD_NAME": "LaunchApplication",
+      "OBJECT_HAPPY_NAME": "ApplicationName",
+      "OBJECT_ID": 44673,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockAreaTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 29559,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 422307,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 3,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 290383,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 422308
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF",
+      "OBJECT_ID": 41556,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24947,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 422308,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 4,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 290383,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 422308
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF",
+      "OBJECT_ID": 32497,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24947,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 422308,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 4,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 591852,
+          "DATASETVALUE": "MODAL_VAR:TARGET_SYSTEM",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 884143
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 54,
+      "KEY_WORD_NAME": "IF",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 884143,
+      "COLUMN_ROW_SETTING": "BASELINE",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 5,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 290384,
+          "DATASETVALUE": "SEQ:BID_{0}",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 422309
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_NAME",
+      "OBJECT_ID": 36568,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_bookString",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 29753,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 422309,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 6,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 290384,
+          "DATASETVALUE": "SEQ:BID_{0}",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 422309
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_NAME",
+      "OBJECT_ID": 42321,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_bookString",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 29753,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 422309,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 6,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 591781,
+          "DATASETVALUE": "GLOBAL_VAR:BID_28_ID",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 883844
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 1,
+      "KEY_WORD_NAME": "CaptureValue",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_NAME",
+      "OBJECT_ID": 36568,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_bookString",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 29753,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 883844,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 7,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 591781,
+          "DATASETVALUE": "GLOBAL_VAR:BID_28_ID",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 883844
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 1,
+      "KEY_WORD_NAME": "CaptureValue",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_NAME",
+      "OBJECT_ID": 42321,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_bookString",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 29753,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 883844,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 7,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 591849,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 884140
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 87,
+      "KEY_WORD_NAME": "ELSE",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 884140,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 8,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 591851,
+          "DATASETVALUE": "GLOBAL_VAR:BID_28_ID",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 884142
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_NAME",
+      "OBJECT_ID": 36568,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_bookString",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 29753,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 884142,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 9,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 591851,
+          "DATASETVALUE": "GLOBAL_VAR:BID_28_ID",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 884142
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_NAME",
+      "OBJECT_ID": 42321,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_bookString",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 29753,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 884142,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 9,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 591850,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 884141
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 88,
+      "KEY_WORD_NAME": "IFEND",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 884141,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 10,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 290385,
+          "DATASETVALUE": "For the currency report",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 422310
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_DESCRIPTION",
+      "OBJECT_ID": 41879,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_descripString",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 27018,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 422310,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 11,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 290385,
+          "DATASETVALUE": "For the currency report",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 422310
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_DESCRIPTION",
+      "OBJECT_ID": 35892,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_descripString",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 27018,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 422310,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 11,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 290386,
+          "DATASETVALUE": "Yes",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 422311
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_PROFIT_AND_LOSS",
+      "OBJECT_ID": 45014,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_pandLToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 29754,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 422311,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 12,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 290386,
+          "DATASETVALUE": "Yes",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 422311
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_PROFIT_AND_LOSS",
+      "OBJECT_ID": 38140,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_pandLToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 29754,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 422311,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 12,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 290387,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 4,
+          "STEPS_ID": 422312
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_ACCOUNTING_TYPE",
+      "OBJECT_ID": 39598,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_acctTypeToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 29749,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 422312,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 13,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 290387,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 4,
+          "STEPS_ID": 422312
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_ACCOUNTING_TYPE",
+      "OBJECT_ID": 47775,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_acctTypeToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 29749,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 422312,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 13,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 290388,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 4,
+          "STEPS_ID": 422313
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_FX_REVALUATION_METHOD",
+      "OBJECT_ID": 44345,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_fXRevalMethodToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 30647,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 422313,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 14,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 290388,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 4,
+          "STEPS_ID": 422313
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_FX_REVALUATION_METHOD",
+      "OBJECT_ID": 34774,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_fXRevalMethodToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 30647,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 422313,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 14,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 290389,
+          "DATASETVALUE": "Yes",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 4,
+          "STEPS_ID": 422314
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_SWEEP_PL_TO_BASE_POSITION",
+      "OBJECT_ID": 35348,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_fXRevalSweepToBaseToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 31555,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 422314,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 15,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 290389,
+          "DATASETVALUE": "Yes",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 4,
+          "STEPS_ID": 422314
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_SWEEP_PL_TO_BASE_POSITION",
+      "OBJECT_ID": 44837,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_fXRevalSweepToBaseToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 31555,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 422314,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 15,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 291262,
+          "DATASETVALUE": "NONE",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 435722
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_BOND_AVERAGE_METHOD",
+      "OBJECT_ID": 33035,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_bondAvgMatchMthdToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 31553,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 435722,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 16,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 291262,
+          "DATASETVALUE": "NONE",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 435722
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_BOND_AVERAGE_METHOD",
+      "OBJECT_ID": 40850,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_bondAvgMatchMthdToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 31553,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 435722,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 16,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 291271,
+          "DATASETVALUE": "NO",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 4,
+          "STEPS_ID": 435731
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_CAP_GL_AT_ADJUSTED_COST",
+      "OBJECT_ID": 47168,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_adjCapGL",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 27017,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 435731,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 17,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 291271,
+          "DATASETVALUE": "NO",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 4,
+          "STEPS_ID": 435731
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_CAP_GL_AT_ADJUSTED_COST",
+      "OBJECT_ID": 35631,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_adjCapGL",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 27017,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 435731,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 17,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 291265,
+          "DATASETVALUE": "NO",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 4,
+          "STEPS_ID": 435725
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_TRANSLATE_OFFSETTING_EVENTS_AT_CURRENT_RATE",
+      "OBJECT_ID": 43297,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_ddBaseCcyTodayFXOffset",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 27966,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 435725,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 18,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 291265,
+          "DATASETVALUE": "NO",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 4,
+          "STEPS_ID": 435725
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_TRANSLATE_OFFSETTING_EVENTS_AT_CURRENT_RATE",
+      "OBJECT_ID": 33553,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_ddBaseCcyTodayFXOffset",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 27966,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 435725,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 18,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 290390,
+          "DATASETVALUE": "Constant Yield",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 4,
+          "STEPS_ID": 422315
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_BOND_ACCRUALS_METHOD",
+      "OBJECT_ID": 32352,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_bondPremDiscAccMethosToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 31552,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 422315,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 19,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 290390,
+          "DATASETVALUE": "Constant Yield",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 4,
+          "STEPS_ID": 422315
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_BOND_ACCRUALS_METHOD",
+      "OBJECT_ID": 40670,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_bondPremDiscAccMethosToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 31552,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 422315,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 19,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 290391,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 4,
+          "STEPS_ID": 422316
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_OPTIMIZE_POSITION_CASH_VALUATION",
+      "OBJECT_ID": 32604,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_optimizeValuationToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 26082,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 422316,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 20,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 290391,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 4,
+          "STEPS_ID": 422316
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_OPTIMIZE_POSITION_CASH_VALUATION",
+      "OBJECT_ID": 42420,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_optimizeValuationToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 26082,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 422316,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 20,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 290392,
+          "DATASETVALUE": "Weighted Avg. Purchase Price",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 422317
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_STOCK_AVERAGE_MATCHING_METHOD",
+      "OBJECT_ID": 43331,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_stockAvgMatchMthdToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 29756,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 422317,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 21,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 290392,
+          "DATASETVALUE": "Weighted Avg. Purchase Price",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 422317
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_STOCK_AVERAGE_MATCHING_METHOD",
+      "OBJECT_ID": 33595,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_stockAvgMatchMthdToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 29756,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 422317,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 21,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 290393,
+          "DATASETVALUE": "First In First Out",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 422318
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_FUTURE_MATCHING_METHOD",
+      "OBJECT_ID": 35136,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_futureAvgMatchMthdToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 27020,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 422318,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 22,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 290393,
+          "DATASETVALUE": "First In First Out",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 422318
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_FUTURE_MATCHING_METHOD",
+      "OBJECT_ID": 44701,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_futureAvgMatchMthdToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 27020,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 422318,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 22,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 290394,
+          "DATASETVALUE": "Brokerage for Purchase and Sale",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 4,
+          "STEPS_ID": 422319
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_INCLUDE_STOCK_BROKERAGE",
+      "OBJECT_ID": 48392,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_includeStockBrokerageToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 29752,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 422319,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 23,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 290394,
+          "DATASETVALUE": "Brokerage for Purchase and Sale",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 4,
+          "STEPS_ID": 422319
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_INCLUDE_STOCK_BROKERAGE",
+      "OBJECT_ID": 40225,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_includeStockBrokerageToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 29752,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 422319,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 23,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 290395,
+          "DATASETVALUE": "First In First Out",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 422320
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_LOPT_MATCHING_METHOD",
+      "OBJECT_ID": 42167,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_loptAvgMatchMthdDD",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 26081,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 422320,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 24,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 290395,
+          "DATASETVALUE": "First In First Out",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 422320
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_LOPT_MATCHING_METHOD",
+      "OBJECT_ID": 36174,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_loptAvgMatchMthdDD",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 26081,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 422320,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 24,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 290396,
+          "DATASETVALUE": "Inception",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 422321
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_FLOATING_RATE_PROJECTIONS",
+      "OBJECT_ID": 37455,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_floatingRateProjectionToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 27019,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 422321,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 25,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 290396,
+          "DATASETVALUE": "Inception",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 422321
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_FLOATING_RATE_PROJECTIONS",
+      "OBJECT_ID": 46256,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_floatingRateProjectionToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 27019,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 422321,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 25,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 290397,
+          "DATASETVALUE": "Retrospective",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 422322
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_PREPAYMENTS",
+      "OBJECT_ID": 39809,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_prepayment",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 26085,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 422322,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 26,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 290397,
+          "DATASETVALUE": "Retrospective",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 422322
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_PREPAYMENTS",
+      "OBJECT_ID": 46284,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_prepayment",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 26085,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 422322,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 26,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 290398,
+          "DATASETVALUE": "Current Cost",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 422323
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_SUBSEQUENT_RULES",
+      "OBJECT_ID": 48441,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_subsequentFeesToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 29757,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 422323,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 27,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 290398,
+          "DATASETVALUE": "Current Cost",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 422323
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_SUBSEQUENT_RULES",
+      "OBJECT_ID": 40312,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_subsequentFeesToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 29757,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 422323,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 27,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 291274,
+          "DATASETVALUE": "NO",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 435734
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_ADJUST_31ST_DAY_OF_MONTH",
+      "OBJECT_ID": 39073,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_adj31Toggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 27016,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 435734,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 28,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 291274,
+          "DATASETVALUE": "NO",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 435734
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_ADJUST_31ST_DAY_OF_MONTH",
+      "OBJECT_ID": 43067,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_adj31Toggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 27016,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 435734,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 28,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 291267,
+          "DATASETVALUE": "NO",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 435727
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_SPLIT_FEE_RECOGNITION",
+      "OBJECT_ID": 35113,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_splFeeRecToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 29755,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 435727,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 29,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 291267,
+          "DATASETVALUE": "NO",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 435727
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_SPLIT_FEE_RECOGNITION",
+      "OBJECT_ID": 44595,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_splFeeRecToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 29755,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 435727,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 29,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 291268,
+          "DATASETVALUE": "NO",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 435728
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_SEPERATE_FEE_ENTRIES",
+      "OBJECT_ID": 36300,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_separateFeeEntries",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 27965,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 435728,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 30,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 291268,
+          "DATASETVALUE": "NO",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 435728
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_SEPERATE_FEE_ENTRIES",
+      "OBJECT_ID": 45295,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_separateFeeEntries",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 27965,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 435728,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 30,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 291264,
+          "DATASETVALUE": "NO",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 435724
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_ASSET_SWAP_TERMINATION_SPLIT_FEE",
+      "OBJECT_ID": 48224,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_assetSplitRecOnTermToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 29750,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 435724,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 31,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 291264,
+          "DATASETVALUE": "NO",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 435724
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_ASSET_SWAP_TERMINATION_SPLIT_FEE",
+      "OBJECT_ID": 40095,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_assetSplitRecOnTermToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 29750,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 435724,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 31,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 291263,
+          "DATASETVALUE": "Yes",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 435723
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_SWEEP_PL_TO_BASE_POSITION",
+      "OBJECT_ID": 35348,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_fXRevalSweepToBaseToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 31555,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 435723,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 32,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 291263,
+          "DATASETVALUE": "Yes",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 435723
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_SWEEP_PL_TO_BASE_POSITION",
+      "OBJECT_ID": 44837,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_fXRevalSweepToBaseToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 31555,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 435723,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 32,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 291272,
+          "DATASETVALUE": "NO",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 435732
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_USE_EQUIVALENT_YIELD",
+      "OBJECT_ID": 43945,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_useEqYieldToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 27967,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 435732,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 33,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 291272,
+          "DATASETVALUE": "NO",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 435732
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_USE_EQUIVALENT_YIELD",
+      "OBJECT_ID": 34373,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_useEqYieldToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 27967,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 435732,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 33,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 291275,
+          "DATASETVALUE": "NO",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 435735
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_STEPPED_AMOTIZATION",
+      "OBJECT_ID": 34319,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_steppedAmortToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 31554,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 435735,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 34,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 291275,
+          "DATASETVALUE": "NO",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 435735
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_STEPPED_AMOTIZATION",
+      "OBJECT_ID": 43869,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_steppedAmortToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 31554,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 435735,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 34,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 291269,
+          "DATASETVALUE": "BY ORDER",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 435729
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_ALLOCATE_CEY_AMORT_METHOD",
+      "OBJECT_ID": 46892,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_CEYAmortMthToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 26080,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 435729,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 35,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 291269,
+          "DATASETVALUE": "BY ORDER",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 435729
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_ALLOCATE_CEY_AMORT_METHOD",
+      "OBJECT_ID": 38154,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_CEYAmortMthToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 26080,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 435729,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 35,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 291273,
+          "DATASETVALUE": "NO",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 435733
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_PAr_PD_CEY_AMORTIZATION",
+      "OBJECT_ID": 43626,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_parCEYAmortToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 27021,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 435733,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 36,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 291273,
+          "DATASETVALUE": "NO",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 435733
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_PAr_PD_CEY_AMORTIZATION",
+      "OBJECT_ID": 34067,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_parCEYAmortToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 27021,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 435733,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 36,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 291270,
+          "DATASETVALUE": "NO",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 4,
+          "STEPS_ID": 435730
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_USE_DURATION_AS_WAL",
+      "OBJECT_ID": 39443,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_useDurationForCEYAmort",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 27022,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 435730,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 37,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 291270,
+          "DATASETVALUE": "NO",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 4,
+          "STEPS_ID": 435730
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_USE_DURATION_AS_WAL",
+      "OBJECT_ID": 47574,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_useDurationForCEYAmort",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 27022,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 435730,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 37,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 291266,
+          "DATASETVALUE": "Yes",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 435726
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_MUST_CEY_FIXED_FLOWS",
+      "OBJECT_ID": 32846,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_CEYFixFlowToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 28851,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 435726,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 38,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 291266,
+          "DATASETVALUE": "Yes",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 435726
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_MUST_CEY_FIXED_FLOWS",
+      "OBJECT_ID": 45097,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_CEYFixFlowToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 28851,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 435726,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 38,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 290399,
+          "DATASETVALUE": "Desktop Menu;Book Definition;Validate",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 422324
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 22,
+      "KEY_WORD_NAME": "SelectMenuItem",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 422324,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 39,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 290400,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 422325
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 3,
+      "KEY_WORD_NAME": "CheckError",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 422325,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 40,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 290401,
+          "DATASETVALUE": "Desktop Menu;Action;SAVE new static",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 422326
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 22,
+      "KEY_WORD_NAME": "SelectMenuItem",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 422326,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 41,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 290402,
+          "DATASETVALUE": "6",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 422327
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 422327,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 42,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 290403,
+          "DATASETVALUE": "BOOK_STATE",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 422328
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_STATE",
+      "OBJECT_ID": 37847,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_stateLabelHolder",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25201,
+      "TYPE_NAME": "SwfLabel",
+      "STEPS_ID": 422328,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 43,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 290403,
+          "DATASETVALUE": "BOOK_STATE",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 422328
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_STATE",
+      "OBJECT_ID": 46627,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=_stateLabelHolder",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25201,
+      "TYPE_NAME": "SwfLabel",
+      "STEPS_ID": 422328,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 43,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 290404,
+          "DATASETVALUE": "BOOK_DEF",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 422329
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_PANEL",
+      "OBJECT_ID": 37240,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=BookView",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 26083,
+      "TYPE_NAME": "SwfWindow",
+      "STEPS_ID": 422329,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 44,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 290404,
+          "DATASETVALUE": "BOOK_DEF",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 422329
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "BOOK_DEF_PANEL",
+      "OBJECT_ID": 46040,
+      "OBJECT_TYPE": "BOOK_DEF",
+      "QUICK_ACCESS": "swfname:=BookView",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 26083,
+      "TYPE_NAME": "SwfWindow",
+      "STEPS_ID": 422329,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 44,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 423781,
+          "DATASETVALUE": "TEXT|\"Book Definition\"|IMAGE:BOOK_DEF",
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 644905
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 10819,
+      "KEY_WORD_NAME": "Comment",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 644905,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 45,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 290405,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 422330
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 422330,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 46,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 290405,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 422330
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 422330,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 46,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 290406,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 422331
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 32409,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 30430,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 422331,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 47,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 290406,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 422331
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 40727,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 30430,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 422331,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 47,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 290407,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 422253,
+          "SKIP": 0,
+          "STEPS_ID": 422332
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2993,
+      "TEST_CASE_NAME": "Book Def TC",
+      "KEY_WORD_ID": 38,
+      "KEY_WORD_NAME": "Dismiss",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 422332,
+      "COLUMN_ROW_SETTING": "5",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 48,
+      "VALUE_SETTING": null
+    }
+  ]
+}

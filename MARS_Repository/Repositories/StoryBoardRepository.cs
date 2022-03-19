@@ -615,23 +615,28 @@ namespace MARS_Repository.Repositories
             }
         }
 
+        private static List<SYSTEM_LOOKUP> cachedActions = null;
         public List<SYSTEM_LOOKUP> GetActions(long sid)
         {
             try
             {
                 logger.Info(string.Format("Get Actions start | storyboradId: {0} | UserName: {1}", sid, Username));
                 var lresult = new List<SYSTEM_LOOKUP>();
-                var result = enty.SYSTEM_LOOKUP.Where(x => x.FIELD_NAME == "RUN_TYPE" && x.TABLE_NAME == "T_PROJ_TC_MGR").ToList();
-                foreach (var item in result)
+                if (cachedActions == null)
                 {
-                    lresult = result.ToList();
-                    if (item.DISPLAY_NAME == "FAILUE")
+                    var result = enty.SYSTEM_LOOKUP.Where(x => x.FIELD_NAME == "RUN_TYPE" && x.TABLE_NAME == "T_PROJ_TC_MGR").ToList();
+                    foreach (var item in result)
                     {
-                        lresult.Remove(item);
+                        lresult = result.ToList();
+                        if (item.DISPLAY_NAME == "FAILUE")
+                        {
+                            lresult.Remove(item);
+                        }
                     }
+                    logger.Info(string.Format("Get Actions end | storyboradId: {0} | UserName: {1}", sid, Username));
+                    return cachedActions = lresult;
                 }
-                logger.Info(string.Format("Get Actions end | storyboradId: {0} | UserName: {1}", sid, Username));
-                return lresult;
+                return cachedActions;
             }
             catch (Exception ex)
             {

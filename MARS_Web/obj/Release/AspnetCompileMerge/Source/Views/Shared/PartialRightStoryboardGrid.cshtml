@@ -71,8 +71,85 @@
 </style>
 @if (ViewBag.ProjectId != null && ViewBag.StoryBoardId != null && ViewBag.ProjectId != 0 && ViewBag.StoryBoardId != 0)
 {
-    <script>
-              var sbvalidmsg = false;
+<script>
+    var initActions = [];
+    var inittestCaseLists = [];
+    var inittestSuiteList = [];
+    var initdatasetList = [];
+    //debugger;
+    var pageProjectid = @ViewBag.ProjectId;
+    var pageStoryboardId =  @ViewBag.StoryBoardId;
+    var pageStoryboardname ='@ViewBag.Storyboardname';
+       @* $.ajax({
+            dataType: "json",
+            type: "GET",
+            url: '/StoryBoard/GetStoryBoardAll?projectid=' + pageProjectid + '&storyboardid=' + pageStoryboardId,
+            //data: "{projectid:" + pageProjectid + ",storyboardid:" + pageStoryboardId + "}",
+            contentType: "application/json;charset=utf-8",
+            success: function (result) {
+                //debugger;
+                if (result.status == 1) {
+                    if (result.data != null && result.data.actions.length > 1) {
+                        initActions = [];
+                        for (var i = 0; i < result.data.actions.length; i++) {
+                            initActions.push({ "value": result.data.actions[i].VALUE, "text": result.data.actions[i].DISPLAY_NAME });
+                        }
+                    }
+                    if (result.data != null && result.data.testCaseLists.length > 1) {
+                        inittestCaseLists = [];
+                        for (var i = 0; i < result.data.testCaseLists.length; i++) {
+                            inittestCaseLists.push({ "value": result.data.testCaseLists[i].TestcaseId, "text": result.data.testCaseLists[i].TestcaseName });
+                        }
+                    }
+                    if (result.data != null && result.data.testSuiteList.length > 1) {
+                        inittestSuiteList = [];
+                        for (var i = 0; i < result.data.testSuiteList.length; i++) {
+                            inittestSuiteList.push({ "value": result.data.testSuiteList[i].TestsuiteId, "text": result.data.testSuiteList[i].TestsuiteName });
+                        }
+                    }
+                    if (result.data != null && result.data.datasetList.length > 1) {
+                        initdatasetList = [];
+                        for (var i = 0; i < result.data.datasetList.length; i++) {
+                            initdatasetList.push({ "value": result.data.datasetList[i].Datasetid, "text": result.data.datasetList[i].Datasetname });
+                        }
+                    }
+                }
+                else if (result.status == 0) {
+                    swal.fire({
+                        "title": "",
+                        "text": result.message,
+                        "icon": "error",
+                        "onClose": function (e) {
+                            console.log('on close event fired!');
+                        }
+                    });
+                }
+            }
+        });*@
+    (function () {
+        var actionlist = @Html.Raw(ViewBag.keyValues["actions"]);
+        $.each(actionlist, function (key, value) {
+            initActions.push({ "value": value.VALUE, "text": value.DISPLAY_NAME });
+            //actions.push({ "value": value.DISPLAY_NAME, "text": value.DISPLAY_NAME });
+        });
+        var testCaseLists = @Html.Raw(ViewBag.keyValues["testCaseLists"]);
+        $.each(testCaseLists, function (key, value) {
+            inittestCaseLists.push({ "value": value.TestcaseId, "text": value.TestcaseName });
+        });
+        inittestCaseLists.push({ "value":0, "text": ''});
+        var testSuiteList = @Html.Raw(ViewBag.keyValues["testSuiteList"]);
+        $.each(testSuiteList, function (key, value) {
+            inittestSuiteList.push({ "value": value.TestsuiteId, "text": value.TestsuiteName });
+        });
+        inittestSuiteList.push({ "value":0, "text": ''});
+        var datasetList = @Html.Raw(ViewBag.keyValues["datasetList"]);
+        $.each(datasetList, function (key, value) {
+            initdatasetList.push({ "value": value.Datasetid, "text": value.Datasetname });
+        });
+        initdatasetList.push({ "value": 0, "text": '' });
+    })();
+
+        var sbvalidmsg = false;
         var lheight = $(window).height();
         var testsuitevalidate = [];
         var actionvalidate = [];
@@ -95,7 +172,7 @@
         var pqwidth = "99%";
         var actions = [];
         var pqheight = lheight - 130;
-
+        gridTestcase['@Storyboardname'] = @Html.Raw(ViewBag.TestSuitesList);
         var jsonData = "";
         var dt = [];
         var obj = [];
@@ -160,7 +237,7 @@
             title: "CHistoryId", copy: false, hidden: true, dataType: "int", dataIndx: "chistid", align: "center", menuInHide: true, sortable: false,
         });
         dt.push({
-            title: "Actions", dataIndx: "actions", dataType: "string", align: "left", menuInHide: true, halign: "center", sortable: false, resizable: true, nodrag: true, nodrop: true, width: @ViewBag.actionwidth, minWidth: 20,
+            title: "Actions", dataIndx: "ActionId" /*"actions"*/, dataType: "string", align: "left", menuInHide: true, halign: "center", sortable: false, resizable: true, nodrag: true, nodrop: true, width: @ViewBag.actionwidth, minWidth: 20,
             editor: {
                 type: 'select',
                 valueIndx: "value",
@@ -173,12 +250,13 @@
                     var rowindx = ui.rowIndx;
                     var sid = @ViewBag.StoryBoardId;
                     var actionlist = @Html.Raw(ViewBag.ActionList);
+                    actions = [];
                     actions.push({ "value": "", "text": "" });
                     $.each(actionlist, function (key, value) {
-                        actions.push({ "value": value.DISPLAY_NAME, "text": value.DISPLAY_NAME });
+                        actions.push({ "value": value.VALUE, "text": value.DISPLAY_NAME });
+                        //actions.push({ "value": value.DISPLAY_NAME, "text": value.DISPLAY_NAME });
                     });
                     List = actions;
-                    actions = [];
                    // $.ajax({
                    //url: "/StoryBoard/GetActionList",
                    //type: "POST",
@@ -216,13 +294,21 @@
             },
             filter: { crules: [{ condition: 'contain' }] },
             labelIndx: "text",
-
+            render: function (ui) {
+                //debugger;
+                var value = ui.rowData.ActionId;
+                var index = initActions.find(r => r.value == value);
+                if (index != null || index != undefined)
+                    return index.text;
+                else
+                    return value;
+            }
         });
 
         dt.push({
             title: "Steps", width: @ViewBag.stepswidth, minWidth: 20, menuInHide: false, align: "left", halign: "center", sortable: false, nodrag: true, nodrop: true, dataIndx: "steps", filter: { crules: [{ condition: 'contain' }] }, resizable: true});
         dt.push({
-          title: "Test Suite", width: @ViewBag.testsuitewidth, minWidth: 20,  dataIndx: "testsuite", dataType: "string", align: "left", menuInHide: false, halign: "center", sortable: false, resizable: true, nodrag: true, nodrop: true,
+            title: "Test Suite", width: @ViewBag.testsuitewidth, minWidth: 20, dataIndx: "suiteid"/*"testsuite"*/, dataType: "string", align: "left", menuInHide: false, halign: "center", sortable: false, resizable: true, nodrag: true, nodrop: true,
             editor: {
                 type: 'select',
                 valueIndx: "value",
@@ -232,58 +318,78 @@
 
                 labelIndx: "text",
                 options: function (ui) {
-
-
+                    //debugger;
                     var List = [];
                     var rowindx = ui.rowIndx;
-                    var Projectid = @ViewBag.ProjectId;
+                    var Projectid = '@ViewBag.ProjectId';
                     //Rutvi
-                     var testsuiteList = @Html.Raw(ViewBag.TestSuitesList);
-                    testsuites.push({ "value": "", "text": "" });
-                    $.each(testsuiteList, function (key, value) {
-                        testsuites.push({ "value": value.TestsuiteName, "text": value.TestsuiteName });
+                    if (ReloadTestSuite == true) {
+
+                     $.ajax({
+                         //url: "/StoryBoard/GetTestSuiteListInStoryboard",
+                        url: "/StoryBoard/GetTestSuiteListInStoryboardNew",
+                        type: "POST",
+                        data: "{ProjectId:" + Projectid + ",Storyboardid:" + pageStoryboardId +",Storyboardname:'" + pageStoryboardname+ "'}",
+                        contentType: "application/json;charset=utf-8",
+                        dataType: "json",
+                        async: false,
+                         success: function (result) {
+                             ReloadTestSuite = false;
+                          if (result.status == 1) {
+                              if (result.data != null && result.data.length > 0) {
+                                  testsuites = [];
+                                  testsuites.push({ "value": "", "text": "" });
+                                  for (var i = 0; i < result.data.length; i++) {
+                                      //testsuites.push({ "value": result.data[i].TestsuiteName, "text": result.data[i].TestsuiteName });
+                                      testsuites.push({ "value": result.data[i].TestsuiteId, "text": result.data[i].TestsuiteName });
+                                  }
+                               List = testsuites;
+
+                               gridTestcase['@Storyboardname'] = result.data;
+                               //testsuiteList = result.data;
+                           }
+                       }
+                       else if (result.status == 0) {
+                           swal.fire({
+                               "title": "",
+                               "text": result.message,
+                               "icon": "error",
+                               "onClose": function (e) {
+                                   console.log('on close event fired!');
+                               }
+                           });
+                       }
+                   },
+                   error(a, b, c) {
+                   }
                     });
-                    List = testsuites;
-                    testsuites = [];
-                   // $.ajax({
-                   //     url: "/StoryBoard/GetTestSuiteListInStoryboard",
-                   //type: "POST",
-                   //data: '{ProjectId: ' + Projectid + '}',
-                   //contentType: "application/json;charset=utf-8",
-                   //dataType: "json",
-                   //async: false,
-                   //success: function (result) {
-                   //    if (result.status == 1) {
-                   //        if (result.data != null && result.data.length > 0) {
-                   //            testsuites.push({ "value": "", "text": "" });
-                   //            for (var i = 0; i < result.data.length; i++) {
-                   //                testsuites.push({ "value": result.data[i].TestsuiteName, "text": result.data[i].TestsuiteName });
-                   //            }
-                   //            List = testsuites;
-                   //            testsuites = [];
-                   //        }
-                   //    }
-                   //    else if (result.status == 0) {
-                   //        swal.fire({
-                   //            "title": "",
-                   //            "text": result.message,
-                   //            "icon": "error",
-                   //            "onClose": function (e) {
-                   //                console.log('on close event fired!');
-                   //            }
-                   //        });
-                   //    }
-                   //},
-                   //error(a, b, c) {
-                   //}
-                   // });
+                    }
+                    else {
+                        testsuites = [];
+                        var testsuiteList = gridTestcase['@Storyboardname'];
+                        testsuites.push({ "value": "", "text": "" });
+                        $.each(testsuiteList, function (key, value) {
+                            //testsuites.push({ "value": value.TestsuiteName, "text": value.TestsuiteName });
+                            testsuites.push({ "value": value.TestsuiteId, "text": value.TestsuiteName });
+                         });
+                        List = testsuites;
+                    }
                     return List;
                 }
             },
             filter: { crules: [{ condition: 'contain' }] },
+            render: function (ui) {
+                //debugger;
+                var value = ui.rowData.suiteid;
+                var index = inittestSuiteList.find(r => r.value == value);
+                if (index != null || index != undefined)
+                    return index.text;
+                else
+                    return value;
+            }
         });
         dt.push({
-          title: "Test Case", dataIndx: "testcase", dataType: "string", align: "left", menuInHide: false, halign: "center", sortable: false, resizable: true, nodrag: true, nodrop: true, width: @ViewBag.testcasewidth, minWidth: 20,
+            title: "Test Case", dataIndx: "caseid"/*"testcase"*/, dataType: "string", align: "left", menuInHide: false, halign: "center", sortable: false, resizable: true, nodrag: true, nodrop: true, width: @ViewBag.testcasewidth, minWidth: 20,
         editor: {
                 type: 'select',
                 valueIndx: "value",
@@ -292,35 +398,38 @@
                 },
                 labelIndx: "text",
                 options: function (ui) {
-
+                    //debugger;
                     var List = [];
                     var lgrid=[]
                     var rowindx = ui.rowIndx + 1;
                     var Projectid = @ViewBag.ProjectId;
                     for (i = 0; i < gridobj['@lstoryboardgrid'].pdata.length; i++) {
-
                         lgrid.push({ "testsuitename": gridobj['@lstoryboardgrid'].pdata[i].testsuite });
                     }
                     var TestSuitelist = {};
                     TestSuitelist.grid = JSON.stringify(lgrid);
                     TestSuitelist.stepid = rowindx;
                     TestSuitelist.projectid = Projectid;
+                    var testSuitId = ui.rowData.suiteid;
                     $.ajax({
-                      url: "/StoryBoard/GetTestCaseListinStoryboard",
+                      //url: "/StoryBoard/GetTestCaseListinStoryboard",
+                        url: "/StoryBoard/GetTestCaseListinStoryboardNew",
                         type: "POST",
-                        data: '{lgrid: ' + JSON.stringify(TestSuitelist) + '}',
+                        //data: '{lgrid: ' + JSON.stringify(TestSuitelist) + '}',
+                        data: "{projectId:" + Projectid + ",testSuiteId:" + testSuitId + ",Storyboardid:" + pageStoryboardId + ",Storyboardname:'" + pageStoryboardname + "'}",
                    contentType: "application/json;charset=utf-8",
                    dataType: "json",
                    async: false,
                    success: function (result) {
                        if (result.status == 1) {
                            if (result.data != null && result.data.length > 0) {
+                               testcases = [];
                                testcases.push({ "value": "", "text": "" });
                                for (var i = 0; i < result.data.length; i++) {
-                                   testcases.push({ "value": result.data[i].TestcaseName, "text": result.data[i].TestcaseName });
+                                   //testcases.push({ "value": result.data[i].TestcaseName, "text": result.data[i].TestcaseName });
+                                   testcases.push({ "value": result.data[i].TestcaseId, "text": result.data[i].TestcaseName });
                                }
                                List = testcases;
-                               testcases = [];
                            }
                        }
                        else if (result.status == 0) {
@@ -341,9 +450,18 @@
                 }
             },
             filter: { crules: [{ condition: 'contain' }] },
+            render: function (ui) {
+                var value = ui.rowData.caseid;
+                //var index = testcases.find(r => r.value == value);
+                var index = inittestCaseLists.find(r => r.value == value);
+                if (index != null || index != undefined)
+                    return index.text;
+                else
+                    return value;
+            }
         });
         dt.push({
-            title: "Dataset", dataIndx: "dataset", dataType: "string", align: "left", menuInHide: false, halign: "center", sortable: false, resizable: true, nodrag: true, nodrop: true, width: @ViewBag.datasetwidth, minWidth: 20,
+            title: "Dataset", dataIndx:"datasetid"/* "dataset"*/, dataType: "string", align: "left", menuInHide: false, halign: "center", sortable: false, resizable: true, nodrag: true, nodrop: true, width: @ViewBag.datasetwidth, minWidth: 20,
             editor: {
                 type: 'select',
                 valueIndx: "value",
@@ -353,6 +471,7 @@
                 },
                 labelIndx: "text",
                 options: function (ui) {
+                    //debugger;
                     var List = [];
                     var lgrid=[]
                     var rowindx = ui.rowIndx + 1;
@@ -365,23 +484,26 @@
                     Testcaselist.grid = JSON.stringify(lgrid);
                     Testcaselist.stepid = rowindx;
                     Testcaselist.projectid = Projectid;
+                    var testCaseId = ui.rowData.caseid;
                     $.ajax({
-                      url: "/StoryBoard/GetDatasetList",
+                      //url: "/StoryBoard/GetDatasetList",
+                        url: "/StoryBoard/GetDatasetListNew",
                         type: "POST",
-                        data: '{lgrid: ' + JSON.stringify(Testcaselist) + '}',
+                        //data: '{lgrid: ' + JSON.stringify(Testcaselist) + '}',
+                        data: "{projectid:" + Projectid + ",testCaseId:" + testCaseId + ",Storyboardid:" + pageStoryboardId + ",Storyboardname:'" + pageStoryboardname + "'}",
                         contentType: "application/json;charset=utf-8",
                         dataType: "json",
                         async: false,
                         success: function (result) {
                             if (result.status == 1) {
+                                datasets = [];
                                 if (result.data != null && result.data.length > 0) {
                                     datasets.push({ "value": "", "text": "" });
                                     for (var i = 0; i < result.data.length; i++) {
-                                        datasets.push({ "value": result.data[i].Datasetname, "text": result.data[i].Datasetname });
+                                        //datasets.push({ "value": result.data[i].Datasetname, "text": result.data[i].Datasetname });
+                                        datasets.push({ "value": result.data[i].Datasetid, "text": result.data[i].Datasetname });
                                     }
-
                                     List = datasets;
-                                    datasets = [];
                                 }
                             }
                             else if (result.status == 0) {
@@ -402,6 +524,15 @@
                 }
             },
             filter: { crules: [{ condition: 'contain' }] },
+            render: function (ui) {
+                var value = ui.rowData.datasetid;
+                //var index = datasets.find(r => r.value == value);
+                var index = initdatasetList.find(r => r.value == value);
+                if (index != null || index != undefined)
+                    return index.text;
+                else
+                    return value;
+            }
         });
 
         dt.push({
@@ -552,6 +683,8 @@
               }
                 $undo.button("option", { label: 'Undo (' + ui.num_undo + ')' });
                 $redo.button("option", { label: 'Redo (' + ui.num_redo + ')' });
+                if (ui.num_undo > 0)
+                    OnPartialRightGridShow("@ViewBag.StoryBoardId", "@ViewBag.Storyboardname", "0","Storyboard");
             },
             columnTemplate: { render: filterRender },//
             menuIcon: true,
@@ -579,20 +712,26 @@
                 });
             },
             cellSave: function (evt, ui) {
-
-                if (ui.dataIndx == "testsuite" && ui.newVal !== ui.oldVal) {
+                //debugger;
+                if (ui.dataIndx =="suiteid" /*"testsuite" */&& ui.newVal !== ui.oldVal) {
 
                     //reset the region cell whenever country cell is modified.
-                    this.updateRow({
-                        rowIndx: ui.rowIndx,
-                        row: { 'testcase': '','dataset':'' }
-                    });
+                    //this.updateRow({
+                    //    rowIndx: ui.rowIndx,
+                    //    row: { 'testcase': '', 'dataset': '', 'caseid': 0,'datasetid':0 }
+                    //});
+                    ui.rowData.caseid = 0;
+                    ui.rowData.datasetid = 0;
+                    this.refreshRow({ rowIndx: ui.rowIndx });
                 }
-                if (ui.dataIndx == "testcase" && ui.newVal != ui.oldVal) {
-                    this.updateRow({
+                if (ui.dataIndx == "caseid"/*"testcase"*/ && ui.newVal != ui.oldVal) {
+                   @* this.updateRow({
                         rowIndx: ui.rowIndx,
-                        row: {'dataset': '' }
+                        row: { 'dataset': '','datasetid':0}
                     });
+*@
+                    ui.rowData.datasetid = 0;
+                    this.refreshRow({ rowIndx: ui.rowIndx });
                 }
             },
             //important option for this example.
@@ -894,9 +1033,190 @@
 
         gridobj['@lstoryboardgrid'] = pq.grid("@lstoryboardgrid", obj);
 
-        ReloadStoryboard('@lstoryboardgrid',@ViewBag.ProjectId,@ViewBag.StoryBoardId);
+        //ReloadStoryboard('@lstoryboardgrid',@ViewBag.ProjectId,@ViewBag.StoryBoardId);
+     firstReloadStoryboard('@lstoryboardgrid', '@ViewBag.StoryBoardDetails');
 
+    function firstReloadStoryboard(sbgrid, storyBoardDetails) {
+        startloader();
+		    OnPartialRightGridShow("@ViewBag.StoryBoardId", "@ViewBag.Storyboardname", "2","Storyboard");
+		    data = [];
 
+		    jsonData = "[";
+
+		    var bhistid = "";
+		    var chistid = "";
+		    var suiteid = "";
+		    var projectid = "";
+		    var caseid = "";
+		    var datasetid = "";
+		    var detailid = "";
+		    var actionname = "";
+		    var stepname = "";
+		    var suitename = "";
+		    var casename = "";
+		    var datasetname = "";
+		    var dependency = "";
+		    var btestresult = "";
+		    var berrcause = "";
+		    var bscriptstart = "";
+		    var bscriptend = "";
+		    var ctestresult = "";
+		    var cerrcause = "";
+		    var cscriptstart = "";
+		    var cscriptend = "";
+		    var description = "";
+
+		    // result.data = result.data.replace("\\","\\\\");
+         storyBoardDetails = storyBoardDetails.replace(/\\"/g, '"dquote');
+         storyBoardDetails = storyBoardDetails.replaceAll("&quot;", '"');
+
+		    var  details = JSON.parse(storyBoardDetails);
+		    if (details.length > 0) {
+			    for (i = 0; i < details.length; i++) {
+				    if (i != 0) {
+					    jsonData += ",";
+				    }
+				    bhistid = details[i].BHistid;
+				    chistid = details[i].CHistid;
+				    suiteid = details[i].Suiteid;
+				    projectid = details[i].ProjectId;
+				    storyboardid = details[i].Storyboardid;
+				    storyboardname = details[i].Storyboardname;
+				    caseid = details[i].Caseid;
+				    datasetid = details[i].Datasetid;
+                    detailid = details[i].storyboarddetailid;
+                    if (details[i].ActionId != null) {
+                        ActionId = details[i].ActionId;
+                    }
+				    if (details[i].ActionName != null) {
+					    actionname = details[i].ActionName;
+				    }
+				    if (details[i].StepName != null) {
+					    stepname = details[i].StepName;
+				    } else {
+					    stepname = "";
+				    }
+				    if (details[i].TestSuiteName != null) {
+					    suitename = details[i].TestSuiteName;
+				    }
+				    if (details[i].TestCaseName != null) {
+					    casename = details[i].TestCaseName;
+				    }
+				    if (details[i].DataSetName != null) {
+					    datasetname = details[i].DataSetName;
+				    }
+
+				    if (details[i].Dependency != null) {
+					    dependency = details[i].Dependency;
+				    }
+				    if (details[i].BTestResult != null) {
+					    btestresult = details[i].BTestResult;
+				    }
+				    else {
+					    btestresult = "";
+				    }
+				    if (details[i].BErrorcause != null) {
+					    berrcause = details[i].BErrorcause;
+					    berrcause = berrcause.trim();
+
+					    berrcause = berrcause.replace("	", "");
+
+				    }
+				    else {
+					    berrcause = "";
+				    }
+				    if (details[i].BScriptstart != null && details[i].Bstart != null) {
+					    bscriptstart = details[i].Bstart.replaceAll('-', '/');
+				    }
+				    else {
+					    bscriptstart = "";
+				    }
+				    if (details[i].BScriptend != null && details[i].BScriptstart != null) {
+
+					    var time_hour = "", time_mins = "", time_secs = "";
+					    var bEnd = new Date(details[i].BScriptend);
+					    var bStart = new Date(details[i].BScriptstart);
+
+					    var res = Math.abs(bEnd - bStart) / 1000;
+					    var hours = Math.floor(res / 3600) % 24;
+					    var minutes = Math.floor(res / 60) % 60;
+					    var seconds = res % 60;
+
+					    if (hours < 10) { time_hour = "0" + hours + ":"; } else { time_hour = hours + ":"; };
+					    if (minutes < 10) { time_mins = "0" + minutes + ":"; } else { time_mins = minutes + ":"; };
+					    if (seconds < 10) { time_secs = "0" + seconds } else { time_secs = seconds };
+
+					    bscriptend = time_hour + time_mins + time_secs;
+				    }
+				    else {
+					    bscriptend = "";
+				    }
+				    if (details[i].CTestResult != null) {
+					    ctestresult = details[i].CTestResult;
+				    }
+				    else {
+					    ctestresult = "";
+				    }
+				    if (details[i].CErrorcause != null) {
+					    cerrcause = details[i].CErrorcause;
+					    cerrcause = cerrcause.trim();
+					    cerrcause = cerrcause.replace("	", "");
+				    }
+				    else {
+					    cerrcause = "";
+				    }
+				    if (details[i].CScriptstart != null && details[i].Cstart != null) {
+					    cscriptstart = details[i].Cstart.replaceAll('-', '/');
+				    }
+				    else {
+					    cscriptstart = "";
+				    }
+				    if (details[i].CScriptend != null && details[i].CScriptstart != null) {
+
+					    var time_hour = "", time_mins = "", time_secs = "";
+					    var cEnd = new Date(details[i].CScriptend);
+					    var cStart = new Date(details[i].CScriptstart);
+
+					    var res = Math.abs(cEnd - cStart) / 1000;
+					    var hours = Math.floor(res / 3600) % 24;
+					    var minutes = Math.floor(res / 60) % 60;
+					    var seconds = res % 60;
+
+					    if (hours < 10) { time_hour = "0" + hours + ":"; } else { time_hour = hours + ":"; };
+					    if (minutes < 10) { time_mins = "0" + minutes + ":"; } else { time_mins = minutes + ":"; };
+					    if (seconds < 10) { time_secs = "0" + seconds } else { time_secs = seconds };
+
+					    cscriptend = time_hour + time_mins + time_secs;
+				    }
+				    else {
+					    cscriptend = "";
+				    }
+
+				    if (details[i].Description != null) {
+					    description = details[i].Description;
+					    description = description.trim().replace(/\s+/g, " ");//replace("-","_");
+				    }
+				    else {
+					    description = "";
+                    }
+                    jsonData += '{"ActionId":"' + ActionId + '","actions": "' + actionname + '", "StoryboardId": "' + storyboardid + '", "Storyboardname": "' + storyboardname + '", "ProjectId": "' + projectid + '", "steps": "' + stepname + '", "bhistid": "' + bhistid + '", "chistid": "' + chistid + '", "suiteid": "' + suiteid + '", "caseid": "' + caseid + '", "datasetid": "' + datasetid + '", "detailid": "' + detailid + '", "testsuite": "'
+					    + suitename + '", "testcase":"' + casename + '", "dataset":"' + datasetname + '", "btestresult": "' + btestresult + '", "berrcause": "' + berrcause + '", "bscriptstart": "' + bscriptstart + '", "bscriptend": "' + bscriptend + '","ctestresult": "' + ctestresult + '", "cerrcause": "' + cerrcause + '", "cscriptstart": "' + cscriptstart + '", "cscriptend": "' + cscriptend + '","dependson": "' + dependency + '", "desc": "' + description + '", "RUN_ORDER": "' + details[i].Run_order + '"';
+				    jsonData += "}";
+			    }
+			    jsonData += "]";
+			    //jsonData = jsonData.replace
+
+			    jsonData = jsonData.replaceAll("\\\\r", " ");
+			    jsonData = jsonData.replaceAll("\\\\n", " ");
+			    jsonData = jsonData.replace(/"dquote/g, '\\"');
+			    data = JSON.parse(jsonData);
+		    }
+
+		    gridobj[sbgrid].option("dataModel.data", data);
+         gridobj[sbgrid].refreshDataAndView();
+
+		    stoploader();
+	    }
 
         function exportStoryboard(SBGrid, ProjectId, SBId) {
              if (gridobj[SBGrid].isDirty() && gridobj[SBGrid].isValidChange({ focusInvalid: true }).valid) {
@@ -964,7 +1284,8 @@
         }
 
 
-        function ReloadStoryboard(sbgrid, ProjectId, SBId) {
+    function ReloadStoryboard(sbgrid, ProjectId, SBId) {
+            OnPartialRightGridShow("@ViewBag.StoryBoardId", "@ViewBag.Storyboardname", "2","Storyboard");
             data = [];
             $.ajax({
 
@@ -1017,6 +1338,9 @@
                                 caseid = result.data[i].Caseid;
                                 datasetid = result.data[i].Datasetid;
                                 detailid = result.data[i].storyboarddetailid;
+                                if (result.data[i].ActionId != null) {
+                                    actionId = result.data[i].ActionId;
+                                }
                                 if (result.data[i].ActionName != null) {
                                     actionname = result.data[i].ActionName;
                                 }
@@ -1128,7 +1452,7 @@
                                 else {
                                     description = "";
                                 }
-                                jsonData += '{"actions":"' + actionname + '",  "StoryboardId":"' + storyboardid + '",  "Storyboardname":"' + storyboardname + '",  "ProjectId":"' + projectid + '","steps":"' + stepname + '", "bhistid":"' + bhistid + '","chistid":"' + chistid + '", "suiteid":"' + suiteid + '", "caseid":"' + caseid + '", "datasetid":"' + datasetid + '", "detailid":"' + detailid + '", "testsuite":"'
+                                jsonData += '{"ActionId":"' + actionId + '","actions": "' + actionname + '",  "StoryboardId":"' + storyboardid + '",  "Storyboardname":"' + storyboardname + '",  "ProjectId":"' + projectid + '","steps":"' + stepname + '", "bhistid":"' + bhistid + '","chistid":"' + chistid + '", "suiteid":"' + suiteid + '", "caseid":"' + caseid + '", "datasetid":"' + datasetid + '", "detailid":"' + detailid + '", "testsuite":"'
                                     + suitename + '", "testcase":"' + casename + '", "dataset":"' + datasetname + '", "btestresult": "' + btestresult + '", "berrcause": "' + berrcause + '", "bscriptstart": "' + bscriptstart + '", "bscriptend": "' + bscriptend + '","ctestresult": "' + ctestresult + '", "cerrcause": "' + cerrcause + '", "cscriptstart": "' + cscriptstart + '", "cscriptend": "' + cscriptend + '","dependson": "' + dependency + '", "desc": "' + description + '", "RUN_ORDER": "' + result.data[i].Run_order + '"';
                                 jsonData += "}";
                             }
@@ -1142,7 +1466,7 @@
                         }
 
                         gridobj[sbgrid].option("dataModel.data", data);
-                        gridobj[sbgrid].refreshDataAndView()
+                        gridobj[sbgrid].refreshDataAndView();
 
                         stoploader();
                     }
@@ -1425,7 +1749,11 @@
             var tempSBValidation = [];
             var flag2 = false;
             for (i = 0; i < gridobj[sbgrid].pdata.length; i++) {
-                if (gridobj[sbgrid].pdata[i].actions == undefined || gridobj[sbgrid].pdata[i].actions == "" || gridobj[sbgrid].pdata[i].actions =="null" || gridobj[sbgrid].pdata[i].testsuite == undefined || gridobj[sbgrid].pdata[i].testsuite == "" || gridobj[sbgrid].pdata[i].testsuite == "null" || gridobj[sbgrid].pdata[i].testcase == undefined || gridobj[sbgrid].pdata[i].testcase == "" || gridobj[sbgrid].pdata[i].testcase == "null" || gridobj[sbgrid].pdata[i].dataset == undefined || gridobj[sbgrid].pdata[i].dataset == "" || gridobj[sbgrid].pdata[i].dataset == "null") {
+                //if (gridobj[sbgrid].pdata[i].actions == undefined || gridobj[sbgrid].pdata[i].actions == "" || gridobj[sbgrid].pdata[i].actions =="null" || gridobj[sbgrid].pdata[i].testsuite == undefined || gridobj[sbgrid].pdata[i].testsuite == "" || gridobj[sbgrid].pdata[i].testsuite == "null" || gridobj[sbgrid].pdata[i].testcase == undefined || gridobj[sbgrid].pdata[i].testcase == "" || gridobj[sbgrid].pdata[i].testcase == "null" || gridobj[sbgrid].pdata[i].dataset == undefined || gridobj[sbgrid].pdata[i].dataset == "" || gridobj[sbgrid].pdata[i].dataset == "null") {
+                if (gridobj[sbgrid].pdata[i].ActionId == undefined || gridobj[sbgrid].pdata[i].ActionId == "" || gridobj[sbgrid].pdata[i].ActionId == "null"
+                    || gridobj[sbgrid].pdata[i].suiteid == undefined || gridobj[sbgrid].pdata[i].suiteid == "" || gridobj[sbgrid].pdata[i].suiteid == "null"
+                    || gridobj[sbgrid].pdata[i].caseid == undefined || gridobj[sbgrid].pdata[i].caseid == "" || gridobj[sbgrid].pdata[i].caseid == "null"
+                    || gridobj[sbgrid].pdata[i].datasetid == undefined || gridobj[sbgrid].pdata[i].datasetid == "" || gridobj[sbgrid].pdata[i].datasetid == "null") {
                     gridobj[sbgrid].setSelection({ rowIndx: i, focus: true });
                     flag1 = true;
                 }
@@ -1568,7 +1896,11 @@
             var flag2 = false;
             gridobj[sbgrid].setSelection(null);
             for (i = 0; i < gridobj[sbgrid].pdata.length; i++) {
-                if (gridobj[sbgrid].pdata[i].actions == undefined || gridobj[sbgrid].pdata[i].actions == "" || gridobj[sbgrid].pdata[i].actions =="null" || gridobj[sbgrid].pdata[i].testsuite == undefined || gridobj[sbgrid].pdata[i].testsuite == "" || gridobj[sbgrid].pdata[i].testsuite == "null" || gridobj[sbgrid].pdata[i].testcase == undefined || gridobj[sbgrid].pdata[i].testcase == "" || gridobj[sbgrid].pdata[i].testcase == "null" || gridobj[sbgrid].pdata[i].dataset == undefined || gridobj[sbgrid].pdata[i].dataset == "" || gridobj[sbgrid].pdata[i].dataset == "null") {
+                //if (gridobj[sbgrid].pdata[i].actions == undefined || gridobj[sbgrid].pdata[i].actions == "" || gridobj[sbgrid].pdata[i].actions =="null" || gridobj[sbgrid].pdata[i].testsuite == undefined || gridobj[sbgrid].pdata[i].testsuite == "" || gridobj[sbgrid].pdata[i].testsuite == "null" || gridobj[sbgrid].pdata[i].testcase == undefined || gridobj[sbgrid].pdata[i].testcase == "" || gridobj[sbgrid].pdata[i].testcase == "null" || gridobj[sbgrid].pdata[i].dataset == undefined || gridobj[sbgrid].pdata[i].dataset == "" || gridobj[sbgrid].pdata[i].dataset == "null") {
+                if (gridobj[sbgrid].pdata[i].ActionId == undefined || gridobj[sbgrid].pdata[i].ActionId == "" || gridobj[sbgrid].pdata[i].ActionId == "null"
+                    || gridobj[sbgrid].pdata[i].suiteid == undefined || gridobj[sbgrid].pdata[i].suiteid == "" || gridobj[sbgrid].pdata[i].suiteid == "null"
+                    || gridobj[sbgrid].pdata[i].caseid == undefined || gridobj[sbgrid].pdata[i].caseid == "" || gridobj[sbgrid].pdata[i].caseid == "null"
+                    || gridobj[sbgrid].pdata[i].datasetid == undefined || gridobj[sbgrid].pdata[i].datasetid == "" || gridobj[sbgrid].pdata[i].datasetid == "null") {
                     gridobj[sbgrid].setSelection({ rowIndx: i, focus: true });
                     flag1 = true;
                 }
@@ -1623,6 +1955,7 @@
 
                 pStoryboardArray.push({
                     "RowId": key, "Run_order": value.RUN_ORDER, "ProjectId": ProjectId, "ActionName": value.actions,
+                    "ActionId": value.ActionId, "Suiteid": value.suiteid, "Caseid": value.caseid, "Datasetid": value.datasetid,
                     "StepName": value.steps, "TestSuiteName": value.testsuite, "TestCaseName": value.testcase, "DataSetName": value.dataset,
                     "Dependency": value.dependson, "storyboarddetailid": value.detailid
                 });
@@ -1638,8 +1971,9 @@
                 beforeSend: function (jqXHR, settings) {
                     //gridobj[sbgrid].showLoading("Saving Data");
                 },
-                url: "/StoryBoard/SaveStoryboardGrid",
-                data: { lGridJsonData: JSON.stringify(pStoryboardArray), lStoryboardId: sbid, lchangedGrid: JSON.stringify(changes), lProjectId: ProjectId },
+                //url: "/StoryBoard/SaveStoryboardGrid",
+                url: "/StoryBoard/SaveStoryboardGridNew",
+                data: { lGridJsonData: JSON.stringify(pStoryboardArray), lStoryboardId: sbid, lchangedGrid: JSON.stringify(changes), lProjectId: ProjectId, storyBoardName: "@ViewBag.Storyboardname"},
                 success: function (result) {
                      if (result.status == 1) {
                         if (result.data == "[]") {
@@ -1651,7 +1985,7 @@
                                     console.log('on close event fired!');
                                 }
                             });
-
+                            OnPartialRightGridShow("@ViewBag.StoryBoardId", "@ViewBag.Storyboardname", "2","Storyboard");
                             gridobj[sbgrid].commit({ type: 'add', rows: result.data.addList });
                             gridobj[sbgrid].commit({ type: 'update', rows: result.data.updateList });
                             gridobj[sbgrid].commit({ type: 'delete', rows: result.data.deleteList });
@@ -1663,8 +1997,8 @@
                             ////for (i = 0; i < gridobj[sbgrid].pdata.length; i++) {
                             //    gridobj[sbgrid].Range({ r1: i, r2: i }).comment("");
                             //}
-                           
-                         ReloadStoryboard(sbgrid, ProjectId, sbid);
+
+                         //ReloadStoryboard(sbgrid, ProjectId, sbid);
                         }
                         else {
                             sbvalidmsg = true;
@@ -1732,7 +2066,7 @@
             });
 
         }
-    </script>
+</script>
 }
 @{
 
@@ -1748,8 +2082,8 @@
             <span class="kt-subheader__separator kt-hidden"></span>
             <div class="kt-subheader__breadcrumbs">
                 @*<a href="#" class="kt-subheader__breadcrumbs-home">
-                    <i class="flaticon2-shelter" style="color:#1c6081;"></i>
-                </a>*@
+                        <i class="flaticon2-shelter" style="color:#1c6081;"></i>
+                    </a>*@
                 <a href="#" class="kt-subheader__breadcrumbs-link" style="color:#1c6081;display:none;" id="@BProjectId">
                 </a>
                 <i class="fa fa-angle-double-right" style="color:#1c6081;display:none;">&nbsp;</i>
@@ -1763,15 +2097,32 @@
     </div>
 </div>
 <div class="kt-portlet__body">
-    <div id="grid" class="@classgrid" style="margin:auto;padding:0px 10px;"></div>
+    <div id="grid" class="@classgrid" style="margin:1px;@*padding:0px 10px;*@"></div>
 </div>
 <script>
 
-   $(document).ready(function () {
-       var lProjectId = $("#hdnSProjectId").val();
-       var lstoryboardid = $("#hdnSBId").val();
+    $(document).ready(function () {
+        var lProjectId = $("#hdnSProjectId").val();
+        var lstoryboardid = $("#hdnSBId").val();
+        var BProjectId = "sProject" + @ViewBag.StoryBoardId;
+        var BSBId = "sStoryboard" + @ViewBag.StoryBoardId;
 
-          $.ajax({
+        $("#" + BProjectId)[0].innerHTML = '@ViewBag.ProjectName';
+        $("#" + BSBId)[0].innerHTML = '@ViewBag.Storyboardname';
+
+        $("#" + BProjectId).css("display", "block");
+        $("#" + BSBId).css("display", "block");
+        $("#" + BProjectId).prev().css("display", "block");
+        $("#" + BSBId).prev().css("display", "block");
+        //$('#grid').bind('contextmenu', function (e) {
+        //    e.preventDefault();
+        //    return false;
+        //}) 
+     });
+    document.oncontextmenu = function (ev) {
+        return false;    //ÆÁ±ÎÓÒ¼ü²Ëµ¥
+    }
+          @*$.ajax({
               dataType: "json",
               type: "POST",
               url: '/Home/GetSBBreadcum?lProjectId=@ViewBag.ProjectId&lStoryboardId=@ViewBag.StoryBoardId',
@@ -1807,7 +2158,7 @@
                   }
               }
           });
-        })
+        })*@
 
 
 

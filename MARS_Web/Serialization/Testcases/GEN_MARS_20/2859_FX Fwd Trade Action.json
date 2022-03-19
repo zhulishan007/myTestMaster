@@ -1,0 +1,4522 @@
+{
+  "currentSyncroStatus": 0,
+  "assignedApplications": [
+    194,
+    193,
+    -1
+  ],
+  "assignedTestSuiteIDs": [
+    1324
+  ],
+  "version": null,
+  "assignedDataSets": [
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 369072,
+      "ALIAS_NAME": "RSK_54c",
+      "DESCRIPTION_INFO": "Verify Amendment of FX Fwd trade with no credit check"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 369068,
+      "ALIAS_NAME": "RSK_55c",
+      "DESCRIPTION_INFO": "Verify Amendment of FX Fwd trade with no credit check"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 369073,
+      "ALIAS_NAME": "RSK_55b",
+      "DESCRIPTION_INFO": "Verify Amendment of FX Fwd trade with no credit check"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 369059,
+      "ALIAS_NAME": "BO_47b",
+      "DESCRIPTION_INFO": "Verify trade in test case #BO_58"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 369065,
+      "ALIAS_NAME": "BO_12_a",
+      "DESCRIPTION_INFO": "Verify trade in test case #BO_58"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 369060,
+      "ALIAS_NAME": "RSK_54b",
+      "DESCRIPTION_INFO": "Verify Amendment of FX Fwd trade with no credit check"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 618371,
+      "ALIAS_NAME": "TRC_08",
+      "DESCRIPTION_INFO": "Verify FX Forward trade authorization after saving the trade classification"
+    }
+  ],
+  "allSteps": [
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245256,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 0,
+          "STEPS_ID": 369167
+        },
+        {
+          "Data_Setting_Id": 245254,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 369167
+        },
+        {
+          "Data_Setting_Id": 245255,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369167
+        },
+        {
+          "Data_Setting_Id": 245258,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369167
+        },
+        {
+          "Data_Setting_Id": 245259,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369167
+        },
+        {
+          "Data_Setting_Id": 245257,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369167
+        },
+        {
+          "Data_Setting_Id": 400417,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369167
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 369167,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245256,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 0,
+          "STEPS_ID": 369167
+        },
+        {
+          "Data_Setting_Id": 245254,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 369167
+        },
+        {
+          "Data_Setting_Id": 245255,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369167
+        },
+        {
+          "Data_Setting_Id": 245258,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369167
+        },
+        {
+          "Data_Setting_Id": 245259,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369167
+        },
+        {
+          "Data_Setting_Id": 245257,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369167
+        },
+        {
+          "Data_Setting_Id": 400417,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369167
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 369167,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245262,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 0,
+          "STEPS_ID": 369168
+        },
+        {
+          "Data_Setting_Id": 245260,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 369168
+        },
+        {
+          "Data_Setting_Id": 245261,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369168
+        },
+        {
+          "Data_Setting_Id": 245264,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369168
+        },
+        {
+          "Data_Setting_Id": 245265,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369168
+        },
+        {
+          "Data_Setting_Id": 245263,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369168
+        },
+        {
+          "Data_Setting_Id": 400418,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369168
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 369168,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 2,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245262,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 0,
+          "STEPS_ID": 369168
+        },
+        {
+          "Data_Setting_Id": 245260,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 369168
+        },
+        {
+          "Data_Setting_Id": 245261,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369168
+        },
+        {
+          "Data_Setting_Id": 245264,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369168
+        },
+        {
+          "Data_Setting_Id": 245265,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369168
+        },
+        {
+          "Data_Setting_Id": 245263,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369168
+        },
+        {
+          "Data_Setting_Id": 400418,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369168
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 369168,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 2,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245268,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 0,
+          "STEPS_ID": 369169
+        },
+        {
+          "Data_Setting_Id": 245266,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 369169
+        },
+        {
+          "Data_Setting_Id": 245267,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369169
+        },
+        {
+          "Data_Setting_Id": 245270,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369169
+        },
+        {
+          "Data_Setting_Id": 245271,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369169
+        },
+        {
+          "Data_Setting_Id": 245269,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369169
+        },
+        {
+          "Data_Setting_Id": 400419,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369169
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 12,
+      "KEY_WORD_NAME": "LaunchApplication",
+      "OBJECT_HAPPY_NAME": "ApplicationName",
+      "OBJECT_ID": 35170,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockAreaTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 29559,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 369169,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 3,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245268,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 0,
+          "STEPS_ID": 369169
+        },
+        {
+          "Data_Setting_Id": 245266,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 369169
+        },
+        {
+          "Data_Setting_Id": 245267,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369169
+        },
+        {
+          "Data_Setting_Id": 245270,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369169
+        },
+        {
+          "Data_Setting_Id": 245271,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369169
+        },
+        {
+          "Data_Setting_Id": 245269,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369169
+        },
+        {
+          "Data_Setting_Id": 400419,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369169
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 12,
+      "KEY_WORD_NAME": "LaunchApplication",
+      "OBJECT_HAPPY_NAME": "ApplicationName",
+      "OBJECT_ID": 44673,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockAreaTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 29559,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 369169,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 3,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245274,
+          "DATASETVALUE": "50",
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 0,
+          "STEPS_ID": 369170
+        },
+        {
+          "Data_Setting_Id": 245272,
+          "DATASETVALUE": "50",
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 369170
+        },
+        {
+          "Data_Setting_Id": 245273,
+          "DATASETVALUE": "50",
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369170
+        },
+        {
+          "Data_Setting_Id": 245276,
+          "DATASETVALUE": "50",
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369170
+        },
+        {
+          "Data_Setting_Id": 245277,
+          "DATASETVALUE": "50",
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369170
+        },
+        {
+          "Data_Setting_Id": 245275,
+          "DATASETVALUE": "50",
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369170
+        },
+        {
+          "Data_Setting_Id": 400420,
+          "DATASETVALUE": "50",
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369170
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 369170,
+      "COLUMN_ROW_SETTING": "F",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 4,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 581900,
+          "DATASETVALUE": "TEXT|\"Trade Finder Window\"|TRADE_FINDER",
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 0,
+          "STEPS_ID": 848247
+        },
+        {
+          "Data_Setting_Id": 581898,
+          "DATASETVALUE": "TEXT|\"Trade Finder Window\"|TRADE_FINDER",
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 848247
+        },
+        {
+          "Data_Setting_Id": 581899,
+          "DATASETVALUE": "TEXT|\"Trade Finder Window\"|TRADE_FINDER",
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 848247
+        },
+        {
+          "Data_Setting_Id": 581902,
+          "DATASETVALUE": "TEXT|\"Trade Finder Window\"|TRADE_FINDER",
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 848247
+        },
+        {
+          "Data_Setting_Id": 581903,
+          "DATASETVALUE": "TEXT|\"Trade Finder Window\"|TRADE_FINDER",
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 848247
+        },
+        {
+          "Data_Setting_Id": 581901,
+          "DATASETVALUE": "TEXT|\"Trade Finder Window\"|TRADE_FINDER",
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 848247
+        },
+        {
+          "Data_Setting_Id": 581904,
+          "DATASETVALUE": "TEXT|\"Trade Finder Window\"|TRADE_FINDER",
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 848247
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 10819,
+      "KEY_WORD_NAME": "Comment",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 848247,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 5,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 581914,
+          "DATASETVALUE": "TEXT|\"Trade Window After Action\"|FX_FWD_AFTER",
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 0,
+          "STEPS_ID": 848249
+        },
+        {
+          "Data_Setting_Id": 581912,
+          "DATASETVALUE": "TEXT|\"Trade Window After Action\"|FX_FWD_AFTER",
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 848249
+        },
+        {
+          "Data_Setting_Id": 581913,
+          "DATASETVALUE": "TEXT|\"Trade Window After Action\"|FX_FWD_AFTER",
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 848249
+        },
+        {
+          "Data_Setting_Id": 581916,
+          "DATASETVALUE": "TEXT|\"Trade Window After Action\"|FX_FWD_AFTER",
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 848249
+        },
+        {
+          "Data_Setting_Id": 581917,
+          "DATASETVALUE": "TEXT|\"Trade Window After Action\"|FX_FWD_AFTER",
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 848249
+        },
+        {
+          "Data_Setting_Id": 581915,
+          "DATASETVALUE": "TEXT|\"Trade Window After Action\"|FX_FWD_AFTER",
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 848249
+        },
+        {
+          "Data_Setting_Id": 581918,
+          "DATASETVALUE": "TEXT|\"Trade Window After Action\"|FX_FWD_AFTER",
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 848249
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 10819,
+      "KEY_WORD_NAME": "Comment",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 848249,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 6,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245280,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 0,
+          "STEPS_ID": 369171
+        },
+        {
+          "Data_Setting_Id": 245278,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 369171
+        },
+        {
+          "Data_Setting_Id": 245279,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369171
+        },
+        {
+          "Data_Setting_Id": 245282,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369171
+        },
+        {
+          "Data_Setting_Id": 245283,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369171
+        },
+        {
+          "Data_Setting_Id": 245281,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369171
+        },
+        {
+          "Data_Setting_Id": 400421,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369171
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 37247,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\n",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 369171,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 7,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245280,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 0,
+          "STEPS_ID": 369171
+        },
+        {
+          "Data_Setting_Id": 245278,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 369171
+        },
+        {
+          "Data_Setting_Id": 245279,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369171
+        },
+        {
+          "Data_Setting_Id": 245282,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369171
+        },
+        {
+          "Data_Setting_Id": 245283,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369171
+        },
+        {
+          "Data_Setting_Id": 245281,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369171
+        },
+        {
+          "Data_Setting_Id": 400421,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369171
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 46046,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswfname:=Desktop|Page",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 369171,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 7,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245286,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 0,
+          "STEPS_ID": 369172
+        },
+        {
+          "Data_Setting_Id": 245284,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 369172
+        },
+        {
+          "Data_Setting_Id": 245285,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369172
+        },
+        {
+          "Data_Setting_Id": 245288,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369172
+        },
+        {
+          "Data_Setting_Id": 245289,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369172
+        },
+        {
+          "Data_Setting_Id": 245287,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369172
+        },
+        {
+          "Data_Setting_Id": 400422,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369172
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 37247,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\n",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 369172,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 8,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245286,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 0,
+          "STEPS_ID": 369172
+        },
+        {
+          "Data_Setting_Id": 245284,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 369172
+        },
+        {
+          "Data_Setting_Id": 245285,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369172
+        },
+        {
+          "Data_Setting_Id": 245288,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369172
+        },
+        {
+          "Data_Setting_Id": 245289,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369172
+        },
+        {
+          "Data_Setting_Id": 245287,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369172
+        },
+        {
+          "Data_Setting_Id": 400422,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369172
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 46046,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswfname:=Desktop|Page",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 369172,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 8,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245292,
+          "DATASETVALUE": "FXFWD",
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 0,
+          "STEPS_ID": 369173
+        },
+        {
+          "Data_Setting_Id": 245290,
+          "DATASETVALUE": "FXFWD",
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 369173
+        },
+        {
+          "Data_Setting_Id": 245291,
+          "DATASETVALUE": "FXFWD",
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369173
+        },
+        {
+          "Data_Setting_Id": 245294,
+          "DATASETVALUE": "FXFWD",
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369173
+        },
+        {
+          "Data_Setting_Id": 245295,
+          "DATASETVALUE": "FXFWD",
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369173
+        },
+        {
+          "Data_Setting_Id": 245293,
+          "DATASETVALUE": "FXFWD",
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369173
+        },
+        {
+          "Data_Setting_Id": 400427,
+          "DATASETVALUE": "FXFWD",
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369173
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_TYPES",
+      "OBJECT_ID": 37854,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeTypes",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 26818,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 369173,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 9,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245292,
+          "DATASETVALUE": "FXFWD",
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 0,
+          "STEPS_ID": 369173
+        },
+        {
+          "Data_Setting_Id": 245290,
+          "DATASETVALUE": "FXFWD",
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 369173
+        },
+        {
+          "Data_Setting_Id": 245291,
+          "DATASETVALUE": "FXFWD",
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369173
+        },
+        {
+          "Data_Setting_Id": 245294,
+          "DATASETVALUE": "FXFWD",
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369173
+        },
+        {
+          "Data_Setting_Id": 245295,
+          "DATASETVALUE": "FXFWD",
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369173
+        },
+        {
+          "Data_Setting_Id": 245293,
+          "DATASETVALUE": "FXFWD",
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369173
+        },
+        {
+          "Data_Setting_Id": 400427,
+          "DATASETVALUE": "FXFWD",
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369173
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_TYPES",
+      "OBJECT_ID": 46634,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeTypes",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 26818,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 369173,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 9,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245298,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 0,
+          "STEPS_ID": 369174
+        },
+        {
+          "Data_Setting_Id": 245296,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 369174
+        },
+        {
+          "Data_Setting_Id": 245297,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369174
+        },
+        {
+          "Data_Setting_Id": 245300,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369174
+        },
+        {
+          "Data_Setting_Id": 245301,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369174
+        },
+        {
+          "Data_Setting_Id": 245299,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369174
+        },
+        {
+          "Data_Setting_Id": 400428,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369174
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_STATUS",
+      "OBJECT_ID": 34193,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeStatus",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 32176,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 369174,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 10,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245298,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 0,
+          "STEPS_ID": 369174
+        },
+        {
+          "Data_Setting_Id": 245296,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 369174
+        },
+        {
+          "Data_Setting_Id": 245297,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369174
+        },
+        {
+          "Data_Setting_Id": 245300,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369174
+        },
+        {
+          "Data_Setting_Id": 245301,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369174
+        },
+        {
+          "Data_Setting_Id": 245299,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369174
+        },
+        {
+          "Data_Setting_Id": 400428,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369174
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_STATUS",
+      "OBJECT_ID": 43743,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeStatus",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 32176,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 369174,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 10,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245304,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 0,
+          "STEPS_ID": 369175
+        },
+        {
+          "Data_Setting_Id": 245302,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 369175
+        },
+        {
+          "Data_Setting_Id": 245303,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369175
+        },
+        {
+          "Data_Setting_Id": 245306,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369175
+        },
+        {
+          "Data_Setting_Id": 245307,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369175
+        },
+        {
+          "Data_Setting_Id": 245305,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369175
+        },
+        {
+          "Data_Setting_Id": 400429,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369175
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_EXTERNAL_TRADE_ID",
+      "OBJECT_ID": 44105,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=ExternalTradeId",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 27732,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 369175,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 11,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245304,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 0,
+          "STEPS_ID": 369175
+        },
+        {
+          "Data_Setting_Id": 245302,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 369175
+        },
+        {
+          "Data_Setting_Id": 245303,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369175
+        },
+        {
+          "Data_Setting_Id": 245306,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369175
+        },
+        {
+          "Data_Setting_Id": 245307,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369175
+        },
+        {
+          "Data_Setting_Id": 245305,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369175
+        },
+        {
+          "Data_Setting_Id": 400429,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369175
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_EXTERNAL_TRADE_ID",
+      "OBJECT_ID": 34602,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=ExternalTradeId",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 27732,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 369175,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 11,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245308,
+          "DATASETVALUE": "MODAL_VAR:BO_11_TRADE_ID",
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 0,
+          "STEPS_ID": 369176
+        },
+        {
+          "Data_Setting_Id": 245309,
+          "DATASETVALUE": "MODAL_VAR:BO_47_TRADE_ID",
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 369176
+        },
+        {
+          "Data_Setting_Id": 245310,
+          "DATASETVALUE": "MODAL_VAR:RSK_54_TRADE_ID",
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369176
+        },
+        {
+          "Data_Setting_Id": 245311,
+          "DATASETVALUE": "MODAL_VAR:RSK_54_TRADE_ID",
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369176
+        },
+        {
+          "Data_Setting_Id": 245313,
+          "DATASETVALUE": "MODAL_VAR:RSK_55_TRADE_ID",
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369176
+        },
+        {
+          "Data_Setting_Id": 245312,
+          "DATASETVALUE": "MODAL_VAR:RSK_55_TRADE_ID",
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369176
+        },
+        {
+          "Data_Setting_Id": 400430,
+          "DATASETVALUE": "MODAL_VAR:TRC_07_TRADE_ID",
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369176
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_ID",
+      "OBJECT_ID": 41222,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeID",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 29531,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 369176,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 12,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245308,
+          "DATASETVALUE": "MODAL_VAR:BO_11_TRADE_ID",
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 0,
+          "STEPS_ID": 369176
+        },
+        {
+          "Data_Setting_Id": 245309,
+          "DATASETVALUE": "MODAL_VAR:BO_47_TRADE_ID",
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 369176
+        },
+        {
+          "Data_Setting_Id": 245310,
+          "DATASETVALUE": "MODAL_VAR:RSK_54_TRADE_ID",
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369176
+        },
+        {
+          "Data_Setting_Id": 245311,
+          "DATASETVALUE": "MODAL_VAR:RSK_54_TRADE_ID",
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369176
+        },
+        {
+          "Data_Setting_Id": 245313,
+          "DATASETVALUE": "MODAL_VAR:RSK_55_TRADE_ID",
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369176
+        },
+        {
+          "Data_Setting_Id": 245312,
+          "DATASETVALUE": "MODAL_VAR:RSK_55_TRADE_ID",
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369176
+        },
+        {
+          "Data_Setting_Id": 400430,
+          "DATASETVALUE": "MODAL_VAR:TRC_07_TRADE_ID",
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369176
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_ID",
+      "OBJECT_ID": 33373,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeID",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 29531,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 369176,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 12,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245316,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 0,
+          "STEPS_ID": 369177
+        },
+        {
+          "Data_Setting_Id": 245314,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 369177
+        },
+        {
+          "Data_Setting_Id": 245315,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369177
+        },
+        {
+          "Data_Setting_Id": 245318,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369177
+        },
+        {
+          "Data_Setting_Id": 245319,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369177
+        },
+        {
+          "Data_Setting_Id": 245317,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369177
+        },
+        {
+          "Data_Setting_Id": 400431,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369177
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_FIND_NOW",
+      "OBJECT_ID": 32728,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_findNowButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 32179,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 369177,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 13,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245316,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 0,
+          "STEPS_ID": 369177
+        },
+        {
+          "Data_Setting_Id": 245314,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 369177
+        },
+        {
+          "Data_Setting_Id": 245315,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369177
+        },
+        {
+          "Data_Setting_Id": 245318,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369177
+        },
+        {
+          "Data_Setting_Id": 245319,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369177
+        },
+        {
+          "Data_Setting_Id": 245317,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369177
+        },
+        {
+          "Data_Setting_Id": 400431,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369177
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_FIND_NOW",
+      "OBJECT_ID": 45052,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_findNowButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 32179,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 369177,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 13,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245322,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 0,
+          "STEPS_ID": 369178
+        },
+        {
+          "Data_Setting_Id": 245320,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 369178
+        },
+        {
+          "Data_Setting_Id": 245321,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369178
+        },
+        {
+          "Data_Setting_Id": 245324,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369178
+        },
+        {
+          "Data_Setting_Id": 245325,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369178
+        },
+        {
+          "Data_Setting_Id": 245323,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369178
+        },
+        {
+          "Data_Setting_Id": 400432,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369178
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 37247,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\n",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 369178,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 14,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245322,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 0,
+          "STEPS_ID": 369178
+        },
+        {
+          "Data_Setting_Id": 245320,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 369178
+        },
+        {
+          "Data_Setting_Id": 245321,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369178
+        },
+        {
+          "Data_Setting_Id": 245324,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369178
+        },
+        {
+          "Data_Setting_Id": 245325,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369178
+        },
+        {
+          "Data_Setting_Id": 245323,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369178
+        },
+        {
+          "Data_Setting_Id": 400432,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369178
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 46046,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswfname:=Desktop|Page",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 369178,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 14,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 581921,
+          "DATASETVALUE": "TRADE_FINDER",
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 0,
+          "STEPS_ID": 848250
+        },
+        {
+          "Data_Setting_Id": 581919,
+          "DATASETVALUE": "TRADE_FINDER",
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 848250
+        },
+        {
+          "Data_Setting_Id": 581920,
+          "DATASETVALUE": "TRADE_FINDER",
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 848250
+        },
+        {
+          "Data_Setting_Id": 581923,
+          "DATASETVALUE": "TRADE_FINDER",
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 848250
+        },
+        {
+          "Data_Setting_Id": 581924,
+          "DATASETVALUE": "TRADE_FINDER",
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 848250
+        },
+        {
+          "Data_Setting_Id": 581922,
+          "DATASETVALUE": "TRADE_FINDER",
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 848250
+        },
+        {
+          "Data_Setting_Id": 581925,
+          "DATASETVALUE": "TRADE_FINDER",
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 848250
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 37247,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\n",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 848250,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 15,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 581921,
+          "DATASETVALUE": "TRADE_FINDER",
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 0,
+          "STEPS_ID": 848250
+        },
+        {
+          "Data_Setting_Id": 581919,
+          "DATASETVALUE": "TRADE_FINDER",
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 848250
+        },
+        {
+          "Data_Setting_Id": 581920,
+          "DATASETVALUE": "TRADE_FINDER",
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 848250
+        },
+        {
+          "Data_Setting_Id": 581923,
+          "DATASETVALUE": "TRADE_FINDER",
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 848250
+        },
+        {
+          "Data_Setting_Id": 581924,
+          "DATASETVALUE": "TRADE_FINDER",
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 848250
+        },
+        {
+          "Data_Setting_Id": 581922,
+          "DATASETVALUE": "TRADE_FINDER",
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 848250
+        },
+        {
+          "Data_Setting_Id": 581925,
+          "DATASETVALUE": "TRADE_FINDER",
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 848250
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 46046,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswfname:=Desktop|Page",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 848250,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 15,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245326,
+          "DATASETVALUE": "MODAL_VAR:BO_11_TRADE_ID",
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 0,
+          "STEPS_ID": 369179
+        },
+        {
+          "Data_Setting_Id": 245327,
+          "DATASETVALUE": "MODAL_VAR:BO_47_TRADE_ID",
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 369179
+        },
+        {
+          "Data_Setting_Id": 245328,
+          "DATASETVALUE": "MODAL_VAR:RSK_54_TRADE_ID",
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369179
+        },
+        {
+          "Data_Setting_Id": 245329,
+          "DATASETVALUE": "MODAL_VAR:RSK_54_TRADE_ID",
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369179
+        },
+        {
+          "Data_Setting_Id": 245331,
+          "DATASETVALUE": "MODAL_VAR:RSK_55_TRADE_ID",
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369179
+        },
+        {
+          "Data_Setting_Id": 245330,
+          "DATASETVALUE": "MODAL_VAR:RSK_55_TRADE_ID",
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369179
+        },
+        {
+          "Data_Setting_Id": 400423,
+          "DATASETVALUE": "MODAL_VAR:TRC_07_TRADE_ID",
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369179
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 32,
+      "KEY_WORD_NAME": "SearchAndClick",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_TABLE",
+      "OBJECT_ID": 41666,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_queryResults",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 28613,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 369179,
+      "COLUMN_ROW_SETTING": "MarsAddins;Trade ID;Action:LEFT_DBL_CLICK",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 16,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245326,
+          "DATASETVALUE": "MODAL_VAR:BO_11_TRADE_ID",
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 0,
+          "STEPS_ID": 369179
+        },
+        {
+          "Data_Setting_Id": 245327,
+          "DATASETVALUE": "MODAL_VAR:BO_47_TRADE_ID",
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 369179
+        },
+        {
+          "Data_Setting_Id": 245328,
+          "DATASETVALUE": "MODAL_VAR:RSK_54_TRADE_ID",
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369179
+        },
+        {
+          "Data_Setting_Id": 245329,
+          "DATASETVALUE": "MODAL_VAR:RSK_54_TRADE_ID",
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369179
+        },
+        {
+          "Data_Setting_Id": 245331,
+          "DATASETVALUE": "MODAL_VAR:RSK_55_TRADE_ID",
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369179
+        },
+        {
+          "Data_Setting_Id": 245330,
+          "DATASETVALUE": "MODAL_VAR:RSK_55_TRADE_ID",
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369179
+        },
+        {
+          "Data_Setting_Id": 400423,
+          "DATASETVALUE": "MODAL_VAR:TRC_07_TRADE_ID",
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369179
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 32,
+      "KEY_WORD_NAME": "SearchAndClick",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_TABLE",
+      "OBJECT_ID": 35712,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_queryResults",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 28613,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 369179,
+      "COLUMN_ROW_SETTING": "MarsAddins;Trade ID;Action:LEFT_DBL_CLICK",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 16,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245334,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 0,
+          "STEPS_ID": 369180
+        },
+        {
+          "Data_Setting_Id": 245332,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 369180
+        },
+        {
+          "Data_Setting_Id": 245333,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369180
+        },
+        {
+          "Data_Setting_Id": 245336,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369180
+        },
+        {
+          "Data_Setting_Id": 245337,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369180
+        },
+        {
+          "Data_Setting_Id": 245335,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369180
+        },
+        {
+          "Data_Setting_Id": 400424,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369180
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "FXFWD_TRADE_POPUP",
+      "OBJECT_ID": 43969,
+      "OBJECT_TYPE": "FXFWD_TRADE_POPUP",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^IFC FX Fwd Trade.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24988,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 369180,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": "MultiplePane:Runtime:REPO_TRADE_POPUP",
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 17,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245334,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 0,
+          "STEPS_ID": 369180
+        },
+        {
+          "Data_Setting_Id": 245332,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 369180
+        },
+        {
+          "Data_Setting_Id": 245333,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369180
+        },
+        {
+          "Data_Setting_Id": 245336,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369180
+        },
+        {
+          "Data_Setting_Id": 245337,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369180
+        },
+        {
+          "Data_Setting_Id": 245335,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369180
+        },
+        {
+          "Data_Setting_Id": 400424,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369180
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "FXFWD_TRADE_POPUP",
+      "OBJECT_ID": 34398,
+      "OBJECT_TYPE": "FXFWD_TRADE_POPUP",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^IFC FX Fwd Trade.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24988,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 369180,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": "MultiplePane:Runtime:REPO_TRADE_POPUP",
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 17,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245340,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 0,
+          "STEPS_ID": 369181
+        },
+        {
+          "Data_Setting_Id": 245338,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 369181
+        },
+        {
+          "Data_Setting_Id": 245339,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369181
+        },
+        {
+          "Data_Setting_Id": 245342,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369181
+        },
+        {
+          "Data_Setting_Id": 245343,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369181
+        },
+        {
+          "Data_Setting_Id": 245341,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369181
+        },
+        {
+          "Data_Setting_Id": 400425,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369181
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 22,
+      "KEY_WORD_NAME": "SelectMenuItem",
+      "OBJECT_HAPPY_NAME": "FXFWD_TRADE_POPUP_TOOLBAR",
+      "OBJECT_ID": 36550,
+      "OBJECT_TYPE": "FXFWD_TRADE_POPUP",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 31914,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 369181,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 18,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245340,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 0,
+          "STEPS_ID": 369181
+        },
+        {
+          "Data_Setting_Id": 245338,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 369181
+        },
+        {
+          "Data_Setting_Id": 245339,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369181
+        },
+        {
+          "Data_Setting_Id": 245342,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369181
+        },
+        {
+          "Data_Setting_Id": 245343,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369181
+        },
+        {
+          "Data_Setting_Id": 245341,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369181
+        },
+        {
+          "Data_Setting_Id": 400425,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369181
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 22,
+      "KEY_WORD_NAME": "SelectMenuItem",
+      "OBJECT_HAPPY_NAME": "FXFWD_TRADE_POPUP_TOOLBAR",
+      "OBJECT_ID": 42303,
+      "OBJECT_TYPE": "FXFWD_TRADE_POPUP",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 31914,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 369181,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 18,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245346,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 0,
+          "STEPS_ID": 369182
+        },
+        {
+          "Data_Setting_Id": 245344,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 369182
+        },
+        {
+          "Data_Setting_Id": 245345,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369182
+        },
+        {
+          "Data_Setting_Id": 245348,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369182
+        },
+        {
+          "Data_Setting_Id": 245349,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369182
+        },
+        {
+          "Data_Setting_Id": 245347,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369182
+        },
+        {
+          "Data_Setting_Id": 400426,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369182
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "FXFWD",
+      "OBJECT_ID": 41665,
+      "OBJECT_TYPE": "FXFWD",
+      "QUICK_ACCESS": "is owned window:=False \nis child window:=False \nswfname:=Desktop \nswftypename:=Summit\\.Framework\\.Desktop\\.Desktop \nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25022,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 369182,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 19,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245346,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 0,
+          "STEPS_ID": 369182
+        },
+        {
+          "Data_Setting_Id": 245344,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 369182
+        },
+        {
+          "Data_Setting_Id": 245345,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369182
+        },
+        {
+          "Data_Setting_Id": 245348,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369182
+        },
+        {
+          "Data_Setting_Id": 245349,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369182
+        },
+        {
+          "Data_Setting_Id": 245347,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369182
+        },
+        {
+          "Data_Setting_Id": 400426,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369182
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "FXFWD",
+      "OBJECT_ID": 35711,
+      "OBJECT_TYPE": "FXFWD",
+      "QUICK_ACCESS": "is owned window:=False \nis child window:=False \nswfname:=Desktop \nswftypename:=Summit\\.Framework\\.Desktop\\.Desktop \nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25022,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 369182,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 19,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 581907,
+          "DATASETVALUE": "FX_FWD_BEFORE",
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 0,
+          "STEPS_ID": 848248
+        },
+        {
+          "Data_Setting_Id": 581905,
+          "DATASETVALUE": "FX_FWD_BEFORE",
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 848248
+        },
+        {
+          "Data_Setting_Id": 581906,
+          "DATASETVALUE": "FX_FWD_BEFORE",
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 848248
+        },
+        {
+          "Data_Setting_Id": 581909,
+          "DATASETVALUE": "FX_FWD_BEFORE",
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 848248
+        },
+        {
+          "Data_Setting_Id": 581910,
+          "DATASETVALUE": "FX_FWD_BEFORE",
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 848248
+        },
+        {
+          "Data_Setting_Id": 581908,
+          "DATASETVALUE": "FX_FWD_BEFORE",
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 848248
+        },
+        {
+          "Data_Setting_Id": 581911,
+          "DATASETVALUE": "FX_FWD_BEFORE",
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 848248
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "FXFWD",
+      "OBJECT_ID": 41665,
+      "OBJECT_TYPE": "FXFWD",
+      "QUICK_ACCESS": "is owned window:=False \nis child window:=False \nswfname:=Desktop \nswftypename:=Summit\\.Framework\\.Desktop\\.Desktop \nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25022,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 848248,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 20,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 581907,
+          "DATASETVALUE": "FX_FWD_BEFORE",
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 0,
+          "STEPS_ID": 848248
+        },
+        {
+          "Data_Setting_Id": 581905,
+          "DATASETVALUE": "FX_FWD_BEFORE",
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 848248
+        },
+        {
+          "Data_Setting_Id": 581906,
+          "DATASETVALUE": "FX_FWD_BEFORE",
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 848248
+        },
+        {
+          "Data_Setting_Id": 581909,
+          "DATASETVALUE": "FX_FWD_BEFORE",
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 848248
+        },
+        {
+          "Data_Setting_Id": 581910,
+          "DATASETVALUE": "FX_FWD_BEFORE",
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 848248
+        },
+        {
+          "Data_Setting_Id": 581908,
+          "DATASETVALUE": "FX_FWD_BEFORE",
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 848248
+        },
+        {
+          "Data_Setting_Id": 581911,
+          "DATASETVALUE": "FX_FWD_BEFORE",
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 848248
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "FXFWD",
+      "OBJECT_ID": 35711,
+      "OBJECT_TYPE": "FXFWD",
+      "QUICK_ACCESS": "is owned window:=False \nis child window:=False \nswfname:=Desktop \nswftypename:=Summit\\.Framework\\.Desktop\\.Desktop \nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25022,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 848248,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 20,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245354,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 0,
+          "STEPS_ID": 369183
+        },
+        {
+          "Data_Setting_Id": 245352,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 369183
+        },
+        {
+          "Data_Setting_Id": 245353,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369183
+        },
+        {
+          "Data_Setting_Id": 245351,
+          "DATASETVALUE": "200",
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369183
+        },
+        {
+          "Data_Setting_Id": 245355,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369183
+        },
+        {
+          "Data_Setting_Id": 245350,
+          "DATASETVALUE": "200",
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369183
+        },
+        {
+          "Data_Setting_Id": 400401,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369183
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FXFWD_CCY1_AMOUNT",
+      "OBJECT_ID": 33768,
+      "OBJECT_TYPE": "FXFWD",
+      "QUICK_ACCESS": "Swfname:=_ccy1AmountEntry",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 31903,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 369183,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 21,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245354,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 0,
+          "STEPS_ID": 369183
+        },
+        {
+          "Data_Setting_Id": 245352,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 369183
+        },
+        {
+          "Data_Setting_Id": 245353,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369183
+        },
+        {
+          "Data_Setting_Id": 245351,
+          "DATASETVALUE": "200",
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369183
+        },
+        {
+          "Data_Setting_Id": 245355,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369183
+        },
+        {
+          "Data_Setting_Id": 245350,
+          "DATASETVALUE": "200",
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369183
+        },
+        {
+          "Data_Setting_Id": 400401,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369183
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FXFWD_CCY1_AMOUNT",
+      "OBJECT_ID": 41447,
+      "OBJECT_TYPE": "FXFWD",
+      "QUICK_ACCESS": "Swfname:=_ccy1AmountEntry",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 31903,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 369183,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 21,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245360,
+          "DATASETVALUE": "Desktop Menu;Action;Verify",
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 0,
+          "STEPS_ID": 369184
+        },
+        {
+          "Data_Setting_Id": 245358,
+          "DATASETVALUE": "Desktop Menu;Action;Verify",
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 369184
+        },
+        {
+          "Data_Setting_Id": 245359,
+          "DATASETVALUE": "Desktop Menu;Action;Verify",
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369184
+        },
+        {
+          "Data_Setting_Id": 245357,
+          "DATASETVALUE": "Desktop Menu;Action;Save",
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369184
+        },
+        {
+          "Data_Setting_Id": 245361,
+          "DATASETVALUE": "Desktop Menu;Action;Verify",
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369184
+        },
+        {
+          "Data_Setting_Id": 245356,
+          "DATASETVALUE": "Desktop Menu;Action;Save",
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369184
+        },
+        {
+          "Data_Setting_Id": 400402,
+          "DATASETVALUE": "Desktop Menu;Action;Verify",
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369184
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 22,
+      "KEY_WORD_NAME": "SelectMenuItem",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 369184,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 22,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245366,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 0,
+          "STEPS_ID": 369185
+        },
+        {
+          "Data_Setting_Id": 245367,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 369185
+        },
+        {
+          "Data_Setting_Id": 245362,
+          "DATASETVALUE": "2",
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369185
+        },
+        {
+          "Data_Setting_Id": 245364,
+          "DATASETVALUE": "2",
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369185
+        },
+        {
+          "Data_Setting_Id": 245365,
+          "DATASETVALUE": "2",
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369185
+        },
+        {
+          "Data_Setting_Id": 245363,
+          "DATASETVALUE": "2",
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369185
+        },
+        {
+          "Data_Setting_Id": 400403,
+          "DATASETVALUE": "2",
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369185
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 369185,
+      "COLUMN_ROW_SETTING": "F",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 23,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245370,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 0,
+          "STEPS_ID": 369186
+        },
+        {
+          "Data_Setting_Id": 245368,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 369186
+        },
+        {
+          "Data_Setting_Id": 245369,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369186
+        },
+        {
+          "Data_Setting_Id": 245372,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369186
+        },
+        {
+          "Data_Setting_Id": 245373,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369186
+        },
+        {
+          "Data_Setting_Id": 245371,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369186
+        },
+        {
+          "Data_Setting_Id": 400404,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369186
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 38,
+      "KEY_WORD_NAME": "Dismiss",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 369186,
+      "COLUMN_ROW_SETTING": "5",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 24,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245374,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 0,
+          "STEPS_ID": 369187
+        },
+        {
+          "Data_Setting_Id": 245375,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 369187
+        },
+        {
+          "Data_Setting_Id": 245376,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369187
+        },
+        {
+          "Data_Setting_Id": 245378,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369187
+        },
+        {
+          "Data_Setting_Id": 245379,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369187
+        },
+        {
+          "Data_Setting_Id": 245377,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369187
+        },
+        {
+          "Data_Setting_Id": 400405,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369187
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 369187,
+      "COLUMN_ROW_SETTING": "F",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 25,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245382,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 0,
+          "STEPS_ID": 369188
+        },
+        {
+          "Data_Setting_Id": 245380,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 369188
+        },
+        {
+          "Data_Setting_Id": 245381,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369188
+        },
+        {
+          "Data_Setting_Id": 245384,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369188
+        },
+        {
+          "Data_Setting_Id": 245385,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369188
+        },
+        {
+          "Data_Setting_Id": 245383,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369188
+        },
+        {
+          "Data_Setting_Id": 400406,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369188
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "FXFWD",
+      "OBJECT_ID": 41665,
+      "OBJECT_TYPE": "FXFWD",
+      "QUICK_ACCESS": "is owned window:=False \nis child window:=False \nswfname:=Desktop \nswftypename:=Summit\\.Framework\\.Desktop\\.Desktop \nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25022,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 369188,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 26,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245382,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 0,
+          "STEPS_ID": 369188
+        },
+        {
+          "Data_Setting_Id": 245380,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 369188
+        },
+        {
+          "Data_Setting_Id": 245381,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369188
+        },
+        {
+          "Data_Setting_Id": 245384,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369188
+        },
+        {
+          "Data_Setting_Id": 245385,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369188
+        },
+        {
+          "Data_Setting_Id": 245383,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369188
+        },
+        {
+          "Data_Setting_Id": 400406,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369188
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "FXFWD",
+      "OBJECT_ID": 35711,
+      "OBJECT_TYPE": "FXFWD",
+      "QUICK_ACCESS": "is owned window:=False \nis child window:=False \nswfname:=Desktop \nswftypename:=Summit\\.Framework\\.Desktop\\.Desktop \nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25022,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 369188,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 26,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245388,
+          "DATASETVALUE": "FX_FWD_AFTER",
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 0,
+          "STEPS_ID": 369189
+        },
+        {
+          "Data_Setting_Id": 245386,
+          "DATASETVALUE": "FX_FWD_AFTER",
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 369189
+        },
+        {
+          "Data_Setting_Id": 245387,
+          "DATASETVALUE": "FX_FWD_AFTER",
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369189
+        },
+        {
+          "Data_Setting_Id": 245390,
+          "DATASETVALUE": "FX_FWD_AFTER",
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369189
+        },
+        {
+          "Data_Setting_Id": 245391,
+          "DATASETVALUE": "FX_FWD_AFTER",
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369189
+        },
+        {
+          "Data_Setting_Id": 245389,
+          "DATASETVALUE": "FX_FWD_AFTER",
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369189
+        },
+        {
+          "Data_Setting_Id": 400407,
+          "DATASETVALUE": "FX_FWD_AFTER",
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369189
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "FXFWD",
+      "OBJECT_ID": 41665,
+      "OBJECT_TYPE": "FXFWD",
+      "QUICK_ACCESS": "is owned window:=False \nis child window:=False \nswfname:=Desktop \nswftypename:=Summit\\.Framework\\.Desktop\\.Desktop \nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25022,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 369189,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 27,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245388,
+          "DATASETVALUE": "FX_FWD_AFTER",
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 0,
+          "STEPS_ID": 369189
+        },
+        {
+          "Data_Setting_Id": 245386,
+          "DATASETVALUE": "FX_FWD_AFTER",
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 369189
+        },
+        {
+          "Data_Setting_Id": 245387,
+          "DATASETVALUE": "FX_FWD_AFTER",
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369189
+        },
+        {
+          "Data_Setting_Id": 245390,
+          "DATASETVALUE": "FX_FWD_AFTER",
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369189
+        },
+        {
+          "Data_Setting_Id": 245391,
+          "DATASETVALUE": "FX_FWD_AFTER",
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369189
+        },
+        {
+          "Data_Setting_Id": 245389,
+          "DATASETVALUE": "FX_FWD_AFTER",
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369189
+        },
+        {
+          "Data_Setting_Id": 400407,
+          "DATASETVALUE": "FX_FWD_AFTER",
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369189
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "FXFWD",
+      "OBJECT_ID": 35711,
+      "OBJECT_TYPE": "FXFWD",
+      "QUICK_ACCESS": "is owned window:=False \nis child window:=False \nswfname:=Desktop \nswftypename:=Summit\\.Framework\\.Desktop\\.Desktop \nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25022,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 369189,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 27,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245394,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 0,
+          "STEPS_ID": 369190
+        },
+        {
+          "Data_Setting_Id": 245392,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 369190
+        },
+        {
+          "Data_Setting_Id": 245393,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369190
+        },
+        {
+          "Data_Setting_Id": 245396,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369190
+        },
+        {
+          "Data_Setting_Id": 245397,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369190
+        },
+        {
+          "Data_Setting_Id": 245395,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369190
+        },
+        {
+          "Data_Setting_Id": 400408,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369190
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 38,
+      "KEY_WORD_NAME": "Dismiss",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 369190,
+      "COLUMN_ROW_SETTING": "10",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 28,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245403,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 4,
+          "STEPS_ID": 369191
+        },
+        {
+          "Data_Setting_Id": 245402,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 4,
+          "STEPS_ID": 369191
+        },
+        {
+          "Data_Setting_Id": 245399,
+          "DATASETVALUE": "RSK_54_TRADE_ID",
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369191
+        },
+        {
+          "Data_Setting_Id": 245398,
+          "DATASETVALUE": "RSK_54C_TRADE_ID",
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369191
+        },
+        {
+          "Data_Setting_Id": 245401,
+          "DATASETVALUE": "RSK_55_TRADE_ID",
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369191
+        },
+        {
+          "Data_Setting_Id": 245400,
+          "DATASETVALUE": "RSK_55C_TRADE_ID",
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369191
+        },
+        {
+          "Data_Setting_Id": 400409,
+          "DATASETVALUE": "TRC_08_TRADE_ID",
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369191
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 1,
+      "KEY_WORD_NAME": "CaptureValue",
+      "OBJECT_HAPPY_NAME": "FXFWD_TRADE_ID_LAB",
+      "OBJECT_ID": 41987,
+      "OBJECT_TYPE": "FXFWD",
+      "QUICK_ACCESS": "Swfname:=_tradeIDEntry",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 31033,
+      "TYPE_NAME": "SwfLabel",
+      "STEPS_ID": 369191,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 29,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245403,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 4,
+          "STEPS_ID": 369191
+        },
+        {
+          "Data_Setting_Id": 245402,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 4,
+          "STEPS_ID": 369191
+        },
+        {
+          "Data_Setting_Id": 245399,
+          "DATASETVALUE": "RSK_54_TRADE_ID",
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369191
+        },
+        {
+          "Data_Setting_Id": 245398,
+          "DATASETVALUE": "RSK_54C_TRADE_ID",
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369191
+        },
+        {
+          "Data_Setting_Id": 245401,
+          "DATASETVALUE": "RSK_55_TRADE_ID",
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369191
+        },
+        {
+          "Data_Setting_Id": 245400,
+          "DATASETVALUE": "RSK_55C_TRADE_ID",
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369191
+        },
+        {
+          "Data_Setting_Id": 400409,
+          "DATASETVALUE": "TRC_08_TRADE_ID",
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369191
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 1,
+      "KEY_WORD_NAME": "CaptureValue",
+      "OBJECT_HAPPY_NAME": "FXFWD_TRADE_ID_LAB",
+      "OBJECT_ID": 35996,
+      "OBJECT_TYPE": "FXFWD",
+      "QUICK_ACCESS": "Swfname:=_tradeIDEntry",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 31033,
+      "TYPE_NAME": "SwfLabel",
+      "STEPS_ID": 369191,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 29,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245409,
+          "DATASETVALUE": "TRADE_STATE",
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 4,
+          "STEPS_ID": 369192
+        },
+        {
+          "Data_Setting_Id": 245408,
+          "DATASETVALUE": "TRADE_STATE",
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 369192
+        },
+        {
+          "Data_Setting_Id": 245404,
+          "DATASETVALUE": "FXFWD_TRADE_STATUS",
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369192
+        },
+        {
+          "Data_Setting_Id": 245406,
+          "DATASETVALUE": "FXFWD_TRADE_STATUS",
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369192
+        },
+        {
+          "Data_Setting_Id": 245407,
+          "DATASETVALUE": "FXFWD_TRADE_STATUS",
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369192
+        },
+        {
+          "Data_Setting_Id": 245405,
+          "DATASETVALUE": "FXFWD_TRADE_STATUS",
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369192
+        },
+        {
+          "Data_Setting_Id": 400410,
+          "DATASETVALUE": "FXFWD_TRADE_STATUS",
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369192
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "FXFWD_STATE_LAB",
+      "OBJECT_ID": 35182,
+      "OBJECT_TYPE": "FXFWD",
+      "QUICK_ACCESS": "Swfname:=_stateEntry",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 31911,
+      "TYPE_NAME": "SwfLabel",
+      "STEPS_ID": 369192,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 30,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245409,
+          "DATASETVALUE": "TRADE_STATE",
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 4,
+          "STEPS_ID": 369192
+        },
+        {
+          "Data_Setting_Id": 245408,
+          "DATASETVALUE": "TRADE_STATE",
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 369192
+        },
+        {
+          "Data_Setting_Id": 245404,
+          "DATASETVALUE": "FXFWD_TRADE_STATUS",
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369192
+        },
+        {
+          "Data_Setting_Id": 245406,
+          "DATASETVALUE": "FXFWD_TRADE_STATUS",
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369192
+        },
+        {
+          "Data_Setting_Id": 245407,
+          "DATASETVALUE": "FXFWD_TRADE_STATUS",
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369192
+        },
+        {
+          "Data_Setting_Id": 245405,
+          "DATASETVALUE": "FXFWD_TRADE_STATUS",
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369192
+        },
+        {
+          "Data_Setting_Id": 400410,
+          "DATASETVALUE": "FXFWD_TRADE_STATUS",
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369192
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "FXFWD_STATE_LAB",
+      "OBJECT_ID": 44745,
+      "OBJECT_TYPE": "FXFWD",
+      "QUICK_ACCESS": "Swfname:=_stateEntry",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 31911,
+      "TYPE_NAME": "SwfLabel",
+      "STEPS_ID": 369192,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 30,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245412,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 0,
+          "STEPS_ID": 369193
+        },
+        {
+          "Data_Setting_Id": 245410,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 369193
+        },
+        {
+          "Data_Setting_Id": 245411,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369193
+        },
+        {
+          "Data_Setting_Id": 245414,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369193
+        },
+        {
+          "Data_Setting_Id": 245415,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369193
+        },
+        {
+          "Data_Setting_Id": 245413,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369193
+        },
+        {
+          "Data_Setting_Id": 400411,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369193
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 369193,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 31,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245412,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 0,
+          "STEPS_ID": 369193
+        },
+        {
+          "Data_Setting_Id": 245410,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 369193
+        },
+        {
+          "Data_Setting_Id": 245411,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369193
+        },
+        {
+          "Data_Setting_Id": 245414,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369193
+        },
+        {
+          "Data_Setting_Id": 245415,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369193
+        },
+        {
+          "Data_Setting_Id": 245413,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369193
+        },
+        {
+          "Data_Setting_Id": 400411,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369193
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 369193,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 31,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245418,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 0,
+          "STEPS_ID": 369194
+        },
+        {
+          "Data_Setting_Id": 245416,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 369194
+        },
+        {
+          "Data_Setting_Id": 245417,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369194
+        },
+        {
+          "Data_Setting_Id": 245420,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369194
+        },
+        {
+          "Data_Setting_Id": 245421,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369194
+        },
+        {
+          "Data_Setting_Id": 245419,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369194
+        },
+        {
+          "Data_Setting_Id": 400412,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369194
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 32409,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 30430,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 369194,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 32,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245418,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 0,
+          "STEPS_ID": 369194
+        },
+        {
+          "Data_Setting_Id": 245416,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 369194
+        },
+        {
+          "Data_Setting_Id": 245417,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369194
+        },
+        {
+          "Data_Setting_Id": 245420,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369194
+        },
+        {
+          "Data_Setting_Id": 245421,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369194
+        },
+        {
+          "Data_Setting_Id": 245419,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369194
+        },
+        {
+          "Data_Setting_Id": 400412,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369194
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 40727,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 30430,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 369194,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 32,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245424,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 0,
+          "STEPS_ID": 369195
+        },
+        {
+          "Data_Setting_Id": 245422,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 369195
+        },
+        {
+          "Data_Setting_Id": 245423,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369195
+        },
+        {
+          "Data_Setting_Id": 245426,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369195
+        },
+        {
+          "Data_Setting_Id": 245427,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369195
+        },
+        {
+          "Data_Setting_Id": 245425,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369195
+        },
+        {
+          "Data_Setting_Id": 400413,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369195
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 38,
+      "KEY_WORD_NAME": "Dismiss",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 369195,
+      "COLUMN_ROW_SETTING": "3",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 33,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245430,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 4,
+          "STEPS_ID": 369196
+        },
+        {
+          "Data_Setting_Id": 245428,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 369196
+        },
+        {
+          "Data_Setting_Id": 245429,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369196
+        },
+        {
+          "Data_Setting_Id": 245432,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369196
+        },
+        {
+          "Data_Setting_Id": 245433,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369196
+        },
+        {
+          "Data_Setting_Id": 245431,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369196
+        },
+        {
+          "Data_Setting_Id": 400414,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369196
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 369196,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 34,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245430,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 4,
+          "STEPS_ID": 369196
+        },
+        {
+          "Data_Setting_Id": 245428,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 369196
+        },
+        {
+          "Data_Setting_Id": 245429,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369196
+        },
+        {
+          "Data_Setting_Id": 245432,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369196
+        },
+        {
+          "Data_Setting_Id": 245433,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369196
+        },
+        {
+          "Data_Setting_Id": 245431,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369196
+        },
+        {
+          "Data_Setting_Id": 400414,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369196
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 369196,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 34,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245436,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 4,
+          "STEPS_ID": 369197
+        },
+        {
+          "Data_Setting_Id": 245434,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 369197
+        },
+        {
+          "Data_Setting_Id": 245435,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369197
+        },
+        {
+          "Data_Setting_Id": 245438,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369197
+        },
+        {
+          "Data_Setting_Id": 245439,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369197
+        },
+        {
+          "Data_Setting_Id": 245437,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369197
+        },
+        {
+          "Data_Setting_Id": 400415,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369197
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 32409,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 30430,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 369197,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 35,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245436,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 4,
+          "STEPS_ID": 369197
+        },
+        {
+          "Data_Setting_Id": 245434,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 369197
+        },
+        {
+          "Data_Setting_Id": 245435,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369197
+        },
+        {
+          "Data_Setting_Id": 245438,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369197
+        },
+        {
+          "Data_Setting_Id": 245439,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369197
+        },
+        {
+          "Data_Setting_Id": 245437,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369197
+        },
+        {
+          "Data_Setting_Id": 400415,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369197
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 40727,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 30430,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 369197,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 35,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 245442,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369065,
+          "SKIP": 4,
+          "STEPS_ID": 369198
+        },
+        {
+          "Data_Setting_Id": 245440,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369059,
+          "SKIP": 0,
+          "STEPS_ID": 369198
+        },
+        {
+          "Data_Setting_Id": 245441,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369060,
+          "SKIP": 0,
+          "STEPS_ID": 369198
+        },
+        {
+          "Data_Setting_Id": 245444,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369072,
+          "SKIP": 0,
+          "STEPS_ID": 369198
+        },
+        {
+          "Data_Setting_Id": 245445,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369073,
+          "SKIP": 0,
+          "STEPS_ID": 369198
+        },
+        {
+          "Data_Setting_Id": 245443,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 369068,
+          "SKIP": 0,
+          "STEPS_ID": 369198
+        },
+        {
+          "Data_Setting_Id": 400416,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 618371,
+          "SKIP": 0,
+          "STEPS_ID": 369198
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2859,
+      "TEST_CASE_NAME": "FX Fwd Trade Action",
+      "KEY_WORD_ID": 38,
+      "KEY_WORD_NAME": "Dismiss",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 369198,
+      "COLUMN_ROW_SETTING": "10",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 36,
+      "VALUE_SETTING": null
+    }
+  ]
+}

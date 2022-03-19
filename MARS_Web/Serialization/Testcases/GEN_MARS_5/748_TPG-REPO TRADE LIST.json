@@ -1,0 +1,261 @@
+{
+  "currentSyncroStatus": 0,
+  "assignedApplications": [
+    14,
+    -1
+  ],
+  "assignedTestSuiteIDs": [
+    364
+  ],
+  "version": null,
+  "assignedDataSets": [
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 27325,
+      "ALIAS_NAME": "TPG- REPO TRADE LIST",
+      "DESCRIPTION_INFO": "Shared DataSet27325"
+    }
+  ],
+  "allSteps": [
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 27325,
+          "SKIP": 0,
+          "STEPS_ID": 27327
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 748,
+      "TEST_CASE_NAME": "TPG-REPO TRADE LIST",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TPG_REPO_TRADE_LIST",
+      "OBJECT_ID": 17904,
+      "OBJECT_TYPE": "TPG_REPO_TRADE_LIST",
+      "QUICK_ACCESS": "swfname:=frmMain\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 14,
+      "OBJECT_NAME_ID": 12075,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 27327,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 1,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 24551,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 27325,
+          "SKIP": 0,
+          "STEPS_ID": 27346
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 748,
+      "TEST_CASE_NAME": "TPG-REPO TRADE LIST",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 27346,
+      "COLUMN_ROW_SETTING": "F",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 1,
+      "RUN_ORDER": 2,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 24545,
+          "DATASETVALUE": "CUSIP",
+          "DATA_SUMMARY_ID": 27325,
+          "SKIP": 0,
+          "STEPS_ID": 27328
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 748,
+      "TEST_CASE_NAME": "TPG-REPO TRADE LIST",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "TPG_REPO_GRD_RESULT",
+      "OBJECT_ID": 17906,
+      "OBJECT_TYPE": "TPG_REPO_TRADE_LIST",
+      "QUICK_ACCESS": "SwfName:=grdResults\nswfname path:=grdResults;ggRepoList;;;frmRepoList;;frmMain\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 14,
+      "OBJECT_NAME_ID": 16975,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 27328,
+      "COLUMN_ROW_SETTING": "ALLROWS;CUSIP",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 1,
+      "RUN_ORDER": 3,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 24546,
+          "DATASETVALUE": "COUNTER_PARTY",
+          "DATA_SUMMARY_ID": 27325,
+          "SKIP": 0,
+          "STEPS_ID": 27329
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 748,
+      "TEST_CASE_NAME": "TPG-REPO TRADE LIST",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "TPG_REPO_GRD_RESULT",
+      "OBJECT_ID": 17906,
+      "OBJECT_TYPE": "TPG_REPO_TRADE_LIST",
+      "QUICK_ACCESS": "SwfName:=grdResults\nswfname path:=grdResults;ggRepoList;;;frmRepoList;;frmMain\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 14,
+      "OBJECT_NAME_ID": 16975,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 27329,
+      "COLUMN_ROW_SETTING": "ALLROWS;Counterparty",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 1,
+      "RUN_ORDER": 4,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 24547,
+          "DATASETVALUE": "SETTLEMENT",
+          "DATA_SUMMARY_ID": 27325,
+          "SKIP": 0,
+          "STEPS_ID": 27330
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 748,
+      "TEST_CASE_NAME": "TPG-REPO TRADE LIST",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "TPG_REPO_GRD_RESULT",
+      "OBJECT_ID": 17906,
+      "OBJECT_TYPE": "TPG_REPO_TRADE_LIST",
+      "QUICK_ACCESS": "SwfName:=grdResults\nswfname path:=grdResults;ggRepoList;;;frmRepoList;;frmMain\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 14,
+      "OBJECT_NAME_ID": 16975,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 27330,
+      "COLUMN_ROW_SETTING": "ALLROWS;Settlement",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 1,
+      "RUN_ORDER": 5,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 24548,
+          "DATASETVALUE": "CURRENT_LOAN_AMT",
+          "DATA_SUMMARY_ID": 27325,
+          "SKIP": 0,
+          "STEPS_ID": 27331
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 748,
+      "TEST_CASE_NAME": "TPG-REPO TRADE LIST",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "TPG_REPO_GRD_RESULT",
+      "OBJECT_ID": 17906,
+      "OBJECT_TYPE": "TPG_REPO_TRADE_LIST",
+      "QUICK_ACCESS": "SwfName:=grdResults\nswfname path:=grdResults;ggRepoList;;;frmRepoList;;frmMain\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 14,
+      "OBJECT_NAME_ID": 16975,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 27331,
+      "COLUMN_ROW_SETTING": "ALLROWS;Current Loan Amount",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 1,
+      "RUN_ORDER": 6,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 24549,
+          "DATASETVALUE": "MARKET_VALUE",
+          "DATA_SUMMARY_ID": 27325,
+          "SKIP": 0,
+          "STEPS_ID": 27336
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 748,
+      "TEST_CASE_NAME": "TPG-REPO TRADE LIST",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "TPG_REPO_GRD_RESULT",
+      "OBJECT_ID": 17906,
+      "OBJECT_TYPE": "TPG_REPO_TRADE_LIST",
+      "QUICK_ACCESS": "SwfName:=grdResults\nswfname path:=grdResults;ggRepoList;;;frmRepoList;;frmMain\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 14,
+      "OBJECT_NAME_ID": 16975,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 27336,
+      "COLUMN_ROW_SETTING": "ALLROWS;Market Value",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 1,
+      "RUN_ORDER": 7,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 24550,
+          "DATASETVALUE": "FAIR_VALUE",
+          "DATA_SUMMARY_ID": 27325,
+          "SKIP": 0,
+          "STEPS_ID": 27337
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 748,
+      "TEST_CASE_NAME": "TPG-REPO TRADE LIST",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "TPG_REPO_GRD_RESULT",
+      "OBJECT_ID": 17906,
+      "OBJECT_TYPE": "TPG_REPO_TRADE_LIST",
+      "QUICK_ACCESS": "SwfName:=grdResults\nswfname path:=grdResults;ggRepoList;;;frmRepoList;;frmMain\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 14,
+      "OBJECT_NAME_ID": 16975,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 27337,
+      "COLUMN_ROW_SETTING": "ALLROWS;Fair Value",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 1,
+      "RUN_ORDER": 8,
+      "VALUE_SETTING": null
+    }
+  ]
+}

@@ -1,0 +1,2242 @@
+{
+  "currentSyncroStatus": 0,
+  "assignedApplications": [
+    194,
+    193,
+    -1
+  ],
+  "assignedTestSuiteIDs": [
+    1333
+  ],
+  "version": null,
+  "assignedDataSets": [
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 845689,
+      "ALIAS_NAME": "V61_21a",
+      "DESCRIPTION_INFO": "View Asset Details and Cashflow"
+    }
+  ],
+  "allSteps": [
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 845744,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845691
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 845691,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 845744,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845691
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 845691,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 845745,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845692
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 845692,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 2,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 845745,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845692
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 845692,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 2,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 845746,
+          "DATASETVALUE": "IFC Bond Definition",
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845693
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 12,
+      "KEY_WORD_NAME": "LaunchApplication",
+      "OBJECT_HAPPY_NAME": "ApplicationName",
+      "OBJECT_ID": 35170,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockAreaTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 29559,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 845693,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 3,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 845746,
+          "DATASETVALUE": "IFC Bond Definition",
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845693
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 12,
+      "KEY_WORD_NAME": "LaunchApplication",
+      "OBJECT_HAPPY_NAME": "ApplicationName",
+      "OBJECT_ID": 44673,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockAreaTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 29559,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 845693,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 3,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 845747,
+          "DATASETVALUE": "15",
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845694
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 845694,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 4,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 845748,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845695
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "BOND_DEFINITION",
+      "OBJECT_ID": 44189,
+      "OBJECT_TYPE": "BOND_DEFINITION",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24760,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 845695,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 5,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 845748,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845695
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "BOND_DEFINITION",
+      "OBJECT_ID": 34677,
+      "OBJECT_TYPE": "BOND_DEFINITION",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24760,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 845695,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 5,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 845749,
+          "DATASETVALUE": "Open IFC Bond Definition.*",
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845696
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 5,
+      "KEY_WORD_NAME": "ClickMenuIcon",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 845696,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 6,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 845750,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845697
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "SECURITY_FIND",
+      "OBJECT_ID": 42117,
+      "OBJECT_TYPE": "SECURITY_FIND",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^Security Finder.*\nindex:=0\nSwfName:=DetachedFormHolder",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24907,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 845697,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 7,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 845750,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845697
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "SECURITY_FIND",
+      "OBJECT_ID": 36121,
+      "OBJECT_TYPE": "SECURITY_FIND",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^Security Finder.*\nindex:=0\nSwfName:=DetachedFormHolder",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24907,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 845697,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 7,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 845778,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845725
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "SECURITY_FIND",
+      "OBJECT_ID": 42117,
+      "OBJECT_TYPE": "SECURITY_FIND",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^Security Finder.*\nindex:=0\nSwfName:=DetachedFormHolder",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24907,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 845725,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 8,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 845778,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845725
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "SECURITY_FIND",
+      "OBJECT_ID": 36121,
+      "OBJECT_TYPE": "SECURITY_FIND",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^Security Finder.*\nindex:=0\nSwfName:=DetachedFormHolder",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24907,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 845725,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 8,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 845751,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845698
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "FIND_IDENTIFIER_LIST",
+      "OBJECT_ID": 32320,
+      "OBJECT_TYPE": "SECURITY_FIND",
+      "QUICK_ACCESS": "swfname:=_idTypeDropDownControl",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 28553,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 845698,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 9,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 845751,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845698
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "FIND_IDENTIFIER_LIST",
+      "OBJECT_ID": 40635,
+      "OBJECT_TYPE": "SECURITY_FIND",
+      "QUICK_ACCESS": "swfname:=_idTypeDropDownControl",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 28553,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 845698,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 9,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 845752,
+          "DATASETVALUE": "MODAL_VAR:V_61_21_SEC_ID",
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845699
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_IDENTIFIER_TEXT",
+      "OBJECT_ID": 41283,
+      "OBJECT_TYPE": "SECURITY_FIND",
+      "QUICK_ACCESS": "swfname:=_identifierText",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 32099,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 845699,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 10,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 845752,
+          "DATASETVALUE": "MODAL_VAR:V_61_21_SEC_ID",
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845699
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_IDENTIFIER_TEXT",
+      "OBJECT_ID": 33438,
+      "OBJECT_TYPE": "SECURITY_FIND",
+      "QUICK_ACCESS": "swfname:=_identifierText",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 32099,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 845699,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 10,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 845753,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845700
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "SECURITY_FINDER_FIND_NOW",
+      "OBJECT_ID": 48853,
+      "OBJECT_TYPE": "SECURITY_FIND",
+      "QUICK_ACCESS": "swfname:=_findNowButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 30330,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 845700,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 11,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 845753,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845700
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "SECURITY_FINDER_FIND_NOW",
+      "OBJECT_ID": 38416,
+      "OBJECT_TYPE": "SECURITY_FIND",
+      "QUICK_ACCESS": "swfname:=_findNowButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 30330,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 845700,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 11,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 845754,
+          "DATASETVALUE": "BOND10",
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845701
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "SECURITY_FIND_PANEL",
+      "OBJECT_ID": 48924,
+      "OBJECT_TYPE": "SECURITY_FIND",
+      "QUICK_ACCESS": "SwfName:=SecQueryView",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 48886,
+      "TYPE_NAME": "SwfWindow",
+      "STEPS_ID": 845701,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 12,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 845754,
+          "DATASETVALUE": "BOND10",
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845701
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "SECURITY_FIND_PANEL",
+      "OBJECT_ID": 48962,
+      "OBJECT_TYPE": "SECURITY_FIND",
+      "QUICK_ACCESS": "SwfName:=SecQueryView",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 48886,
+      "TYPE_NAME": "SwfWindow",
+      "STEPS_ID": 845701,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 12,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 845780,
+          "DATASETVALUE": "TEXT|\"Security Find Panel\"|IMAGE:BOND10",
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845727
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 10819,
+      "KEY_WORD_NAME": "Comment",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 845727,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 13,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 845755,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845702
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "SECURITY_FINDER_OK",
+      "OBJECT_ID": 40988,
+      "OBJECT_TYPE": "SECURITY_FIND",
+      "QUICK_ACCESS": "swfname:=_okButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25772,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 845702,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 14,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 845755,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845702
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "SECURITY_FINDER_OK",
+      "OBJECT_ID": 33222,
+      "OBJECT_TYPE": "SECURITY_FIND",
+      "QUICK_ACCESS": "swfname:=_okButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25772,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 845702,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 14,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 845756,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845703
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 845703,
+      "COLUMN_ROW_SETTING": "f",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 15,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 845757,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845704
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 845704,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 16,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 845757,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845704
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 845704,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 16,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845739
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "BOND_DEFINITION",
+      "OBJECT_ID": 44189,
+      "OBJECT_TYPE": "BOND_DEFINITION",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24760,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 845739,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 17,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845739
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "BOND_DEFINITION",
+      "OBJECT_ID": 34677,
+      "OBJECT_TYPE": "BOND_DEFINITION",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24760,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 845739,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 17,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 580079,
+          "DATASETVALUE": "Show asset detail",
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845806
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 5,
+      "KEY_WORD_NAME": "ClickMenuIcon",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 845806,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 18,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845809
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "ASSET_DETAIL",
+      "OBJECT_ID": 37634,
+      "OBJECT_TYPE": "ASSET_DETAIL",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24830,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 845809,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 19,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845809
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "ASSET_DETAIL",
+      "OBJECT_ID": 46371,
+      "OBJECT_TYPE": "ASSET_DETAIL",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24830,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 845809,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 19,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 580069,
+          "DATASETVALUE": "Interest",
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845803
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 24,
+      "KEY_WORD_NAME": "SelectTab",
+      "OBJECT_HAPPY_NAME": "ASSET_DETAIL_TAB",
+      "OBJECT_ID": 41745,
+      "OBJECT_TYPE": "ASSET_DETAIL",
+      "QUICK_ACCESS": "swfname:=_detailPanel",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 28703,
+      "TYPE_NAME": "swfTab",
+      "STEPS_ID": 845803,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 20,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 580069,
+          "DATASETVALUE": "Interest",
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845803
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 24,
+      "KEY_WORD_NAME": "SelectTab",
+      "OBJECT_HAPPY_NAME": "ASSET_DETAIL_TAB",
+      "OBJECT_ID": 35779,
+      "OBJECT_TYPE": "ASSET_DETAIL",
+      "QUICK_ACCESS": "swfname:=_detailPanel",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 28703,
+      "TYPE_NAME": "swfTab",
+      "STEPS_ID": 845803,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 20,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 580071,
+          "DATASETVALUE": "ASSET_DETAIL_INTEREST",
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845808
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "ASSET_DETAIL",
+      "OBJECT_ID": 37634,
+      "OBJECT_TYPE": "ASSET_DETAIL",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24830,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 845808,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 21,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 580071,
+          "DATASETVALUE": "ASSET_DETAIL_INTEREST",
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845808
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "ASSET_DETAIL",
+      "OBJECT_ID": 46371,
+      "OBJECT_TYPE": "ASSET_DETAIL",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24830,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 845808,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 21,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 580066,
+          "DATASETVALUE": "TEXT|\"Security Asset Detail Window\"|IMAGE:ASSET_DETAIL_INTEREST",
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845797
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 10819,
+      "KEY_WORD_NAME": "Comment",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 845797,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 22,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 580072,
+          "DATASETVALUE": "IFC Bond Definition.*",
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845811
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 24,
+      "KEY_WORD_NAME": "SelectTab",
+      "OBJECT_HAPPY_NAME": "ASSET_DETAIL_MULTIPLE_PANES_TABS",
+      "OBJECT_ID": 39968,
+      "OBJECT_TYPE": "ASSET_DETAIL",
+      "QUICK_ACCESS": "swfname:=_tabControl",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 28701,
+      "TYPE_NAME": "swfTab",
+      "STEPS_ID": 845811,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 23,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 580072,
+          "DATASETVALUE": "IFC Bond Definition.*",
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845811
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 24,
+      "KEY_WORD_NAME": "SelectTab",
+      "OBJECT_HAPPY_NAME": "ASSET_DETAIL_MULTIPLE_PANES_TABS",
+      "OBJECT_ID": 48098,
+      "OBJECT_TYPE": "ASSET_DETAIL",
+      "QUICK_ACCESS": "swfname:=_tabControl",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 28701,
+      "TYPE_NAME": "swfTab",
+      "STEPS_ID": 845811,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 23,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845804
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "BOND_DEFINITION",
+      "OBJECT_ID": 44189,
+      "OBJECT_TYPE": "BOND_DEFINITION",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24760,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 845804,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 24,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845804
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "BOND_DEFINITION",
+      "OBJECT_ID": 34677,
+      "OBJECT_TYPE": "BOND_DEFINITION",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24760,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 845804,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 24,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 580067,
+          "DATASETVALUE": "Show cash flows",
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845798
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 5,
+      "KEY_WORD_NAME": "ClickMenuIcon",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 845798,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 25,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845810
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 845810,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 26,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845799
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "CASHFLOWS",
+      "OBJECT_ID": 47170,
+      "OBJECT_TYPE": "CASHFLOWS",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^Cashflows.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25006,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 845799,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 27,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845799
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "CASHFLOWS",
+      "OBJECT_ID": 35633,
+      "OBJECT_TYPE": "CASHFLOWS",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^Cashflows.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25006,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 845799,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 27,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845801
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "CASHFLOWS",
+      "OBJECT_ID": 47170,
+      "OBJECT_TYPE": "CASHFLOWS",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^Cashflows.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25006,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 845801,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 28,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845801
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "CASHFLOWS",
+      "OBJECT_ID": 35633,
+      "OBJECT_TYPE": "CASHFLOWS",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^Cashflows.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25006,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 845801,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 28,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 580073,
+          "DATASETVALUE": "CASHFLOW_ALL_START",
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845812
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "CASHFLOWS_TABLE",
+      "OBJECT_ID": 40985,
+      "OBJECT_TYPE": "CASHFLOWS",
+      "QUICK_ACCESS": "swfname:=_cashflowSpreadsheet",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25268,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 845812,
+      "COLUMN_ROW_SETTING": "ALLROWS;extraTable0Start",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 29,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 580073,
+          "DATASETVALUE": "CASHFLOW_ALL_START",
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845812
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "CASHFLOWS_TABLE",
+      "OBJECT_ID": 33219,
+      "OBJECT_TYPE": "CASHFLOWS",
+      "QUICK_ACCESS": "swfname:=_cashflowSpreadsheet",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25268,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 845812,
+      "COLUMN_ROW_SETTING": "ALLROWS;extraTable0Start",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 29,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 580078,
+          "DATASETVALUE": "CASHFLOW_ALL_END",
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845817
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "CASHFLOWS_TABLE",
+      "OBJECT_ID": 40985,
+      "OBJECT_TYPE": "CASHFLOWS",
+      "QUICK_ACCESS": "swfname:=_cashflowSpreadsheet",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25268,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 845817,
+      "COLUMN_ROW_SETTING": "ALLROWS;extraTable0End",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 30,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 580078,
+          "DATASETVALUE": "CASHFLOW_ALL_END",
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845817
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "CASHFLOWS_TABLE",
+      "OBJECT_ID": 33219,
+      "OBJECT_TYPE": "CASHFLOWS",
+      "QUICK_ACCESS": "swfname:=_cashflowSpreadsheet",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25268,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 845817,
+      "COLUMN_ROW_SETTING": "ALLROWS;extraTable0End",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 30,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 580075,
+          "DATASETVALUE": "CASHFLOW_ALL_DATE",
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845814
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "CASHFLOWS_TABLE",
+      "OBJECT_ID": 40985,
+      "OBJECT_TYPE": "CASHFLOWS",
+      "QUICK_ACCESS": "swfname:=_cashflowSpreadsheet",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25268,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 845814,
+      "COLUMN_ROW_SETTING": "ALLROWS;extraTable0Date",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 31,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 580075,
+          "DATASETVALUE": "CASHFLOW_ALL_DATE",
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845814
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "CASHFLOWS_TABLE",
+      "OBJECT_ID": 33219,
+      "OBJECT_TYPE": "CASHFLOWS",
+      "QUICK_ACCESS": "swfname:=_cashflowSpreadsheet",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25268,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 845814,
+      "COLUMN_ROW_SETTING": "ALLROWS;extraTable0Date",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 31,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 580074,
+          "DATASETVALUE": "CASHFLOW_ALL_RATE",
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845813
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "CASHFLOWS_TABLE",
+      "OBJECT_ID": 40985,
+      "OBJECT_TYPE": "CASHFLOWS",
+      "QUICK_ACCESS": "swfname:=_cashflowSpreadsheet",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25268,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 845813,
+      "COLUMN_ROW_SETTING": "ALLROWS;extraTable0Rate",
+      "COMMENTINFO": "TOL:TOL_COMPARE 0.000000000001",
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 32,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 580074,
+          "DATASETVALUE": "CASHFLOW_ALL_RATE",
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845813
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "CASHFLOWS_TABLE",
+      "OBJECT_ID": 33219,
+      "OBJECT_TYPE": "CASHFLOWS",
+      "QUICK_ACCESS": "swfname:=_cashflowSpreadsheet",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25268,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 845813,
+      "COLUMN_ROW_SETTING": "ALLROWS;extraTable0Rate",
+      "COMMENTINFO": "TOL:TOL_COMPARE 0.000000000001",
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 32,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 580076,
+          "DATASETVALUE": "CASHFLOW_ALL_ZERO",
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845815
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "CASHFLOWS_TABLE",
+      "OBJECT_ID": 40985,
+      "OBJECT_TYPE": "CASHFLOWS",
+      "QUICK_ACCESS": "swfname:=_cashflowSpreadsheet",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25268,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 845815,
+      "COLUMN_ROW_SETTING": "ALLROWS;extraTable0Zero",
+      "COMMENTINFO": "TOL:TOL_COMPARE 0.000000000001",
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 33,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 580076,
+          "DATASETVALUE": "CASHFLOW_ALL_ZERO",
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845815
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "CASHFLOWS_TABLE",
+      "OBJECT_ID": 33219,
+      "OBJECT_TYPE": "CASHFLOWS",
+      "QUICK_ACCESS": "swfname:=_cashflowSpreadsheet",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25268,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 845815,
+      "COLUMN_ROW_SETTING": "ALLROWS;extraTable0Zero",
+      "COMMENTINFO": "TOL:TOL_COMPARE 0.000000000001",
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 33,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 580077,
+          "DATASETVALUE": "CASHFLOW_ALL_FLOWS",
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845816
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "CASHFLOWS_TABLE",
+      "OBJECT_ID": 40985,
+      "OBJECT_TYPE": "CASHFLOWS",
+      "QUICK_ACCESS": "swfname:=_cashflowSpreadsheet",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25268,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 845816,
+      "COLUMN_ROW_SETTING": "ALLROWS;extraTable0Flows",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 34,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 580077,
+          "DATASETVALUE": "CASHFLOW_ALL_FLOWS",
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845816
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "CASHFLOWS_TABLE",
+      "OBJECT_ID": 33219,
+      "OBJECT_TYPE": "CASHFLOWS",
+      "QUICK_ACCESS": "swfname:=_cashflowSpreadsheet",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25268,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 845816,
+      "COLUMN_ROW_SETTING": "ALLROWS;extraTable0Flows",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 34,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 580068,
+          "DATASETVALUE": "BOND_CASHFLOWS",
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845802
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "CASHFLOWS",
+      "OBJECT_ID": 47170,
+      "OBJECT_TYPE": "CASHFLOWS",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^Cashflows.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25006,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 845802,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 35,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 580068,
+          "DATASETVALUE": "BOND_CASHFLOWS",
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845802
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "CASHFLOWS",
+      "OBJECT_ID": 35633,
+      "OBJECT_TYPE": "CASHFLOWS",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^Cashflows.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25006,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 845802,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 35,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845800
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 45,
+      "KEY_WORD_NAME": "CloseWindow",
+      "OBJECT_HAPPY_NAME": "CASHFLOWS",
+      "OBJECT_ID": 47170,
+      "OBJECT_TYPE": "CASHFLOWS",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^Cashflows.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25006,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 845800,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 36,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845800
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 45,
+      "KEY_WORD_NAME": "CloseWindow",
+      "OBJECT_HAPPY_NAME": "CASHFLOWS",
+      "OBJECT_ID": 35633,
+      "OBJECT_TYPE": "CASHFLOWS",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^Cashflows.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25006,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 845800,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 36,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 580065,
+          "DATASETVALUE": "TEXT|\"Bond Cashflows\"|IMAGE:BOND_CASHFLOWS",
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845796
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 10819,
+      "KEY_WORD_NAME": "Comment",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 845796,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 37,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 580070,
+          "DATASETVALUE": "TEXT|\"Bond Cashflows\"|CASHFLOWS:ALL",
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845807
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 10819,
+      "KEY_WORD_NAME": "Comment",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 845807,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 38,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845805
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "BOND_DEFINITION",
+      "OBJECT_ID": 44189,
+      "OBJECT_TYPE": "BOND_DEFINITION",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24760,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 845805,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 39,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845805
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "BOND_DEFINITION",
+      "OBJECT_ID": 34677,
+      "OBJECT_TYPE": "BOND_DEFINITION",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24760,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 845805,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 39,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 845794,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845742
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 845742,
+      "COLUMN_ROW_SETTING": "f",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 40,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 845776,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845723
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 845723,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 41,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 845776,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845723
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 845723,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 41,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 845777,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845724
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 32409,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 30430,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 845724,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 42,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 845777,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845724
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 40727,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 30430,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 845724,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 42,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 845795,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 845689,
+          "SKIP": 0,
+          "STEPS_ID": 845743
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4560,
+      "TEST_CASE_NAME": "View Bond and Cashflow",
+      "KEY_WORD_ID": 38,
+      "KEY_WORD_NAME": "Dismiss",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 845743,
+      "COLUMN_ROW_SETTING": "5",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 43,
+      "VALUE_SETTING": null
+    }
+  ]
+}

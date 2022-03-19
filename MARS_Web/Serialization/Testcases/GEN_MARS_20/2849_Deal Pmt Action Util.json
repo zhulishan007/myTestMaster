@@ -1,0 +1,3154 @@
+{
+  "currentSyncroStatus": 0,
+  "assignedApplications": [
+    193,
+    194,
+    -1
+  ],
+  "assignedTestSuiteIDs": [
+    1322
+  ],
+  "version": null,
+  "assignedDataSets": [
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 365759,
+      "ALIAS_NAME": "DLPMD_06a",
+      "DESCRIPTION_INFO": "Verify Deal Payment Trade created by LAM_29"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 365754,
+      "ALIAS_NAME": "DLPMD_03a",
+      "DESCRIPTION_INFO": "Verify Deal Payment Trade created by LAM_29"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 365758,
+      "ALIAS_NAME": "DLPMD_04a",
+      "DESCRIPTION_INFO": "Verify Deal Payment Trade created by LAM_29"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 365763,
+      "ALIAS_NAME": "DLPMD_02a",
+      "DESCRIPTION_INFO": "Verify Deal Payment Trade created by LAM_29"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 365741,
+      "ALIAS_NAME": "DLPMD_01a",
+      "DESCRIPTION_INFO": "Verify Deal Payment Trade created by LAM_29"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 365773,
+      "ALIAS_NAME": "DLPMD_05a",
+      "DESCRIPTION_INFO": "Verify Deal Payment Trade created by LAM_29"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 365746,
+      "ALIAS_NAME": "DLPMD_07a",
+      "DESCRIPTION_INFO": "Verify Deal Payment Trade created by LAM_29"
+    }
+  ],
+  "allSteps": [
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 243277,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365741,
+          "SKIP": 0,
+          "STEPS_ID": 365854
+        },
+        {
+          "Data_Setting_Id": 243282,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365763,
+          "SKIP": 0,
+          "STEPS_ID": 365854
+        },
+        {
+          "Data_Setting_Id": 243279,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365754,
+          "SKIP": 0,
+          "STEPS_ID": 365854
+        },
+        {
+          "Data_Setting_Id": 243280,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365758,
+          "SKIP": 0,
+          "STEPS_ID": 365854
+        },
+        {
+          "Data_Setting_Id": 243283,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365773,
+          "SKIP": 0,
+          "STEPS_ID": 365854
+        },
+        {
+          "Data_Setting_Id": 243281,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365759,
+          "SKIP": 0,
+          "STEPS_ID": 365854
+        },
+        {
+          "Data_Setting_Id": 243278,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365746,
+          "SKIP": 0,
+          "STEPS_ID": 365854
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2849,
+      "TEST_CASE_NAME": "Deal Pmt Action Util",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 365854,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 243277,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365741,
+          "SKIP": 0,
+          "STEPS_ID": 365854
+        },
+        {
+          "Data_Setting_Id": 243282,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365763,
+          "SKIP": 0,
+          "STEPS_ID": 365854
+        },
+        {
+          "Data_Setting_Id": 243279,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365754,
+          "SKIP": 0,
+          "STEPS_ID": 365854
+        },
+        {
+          "Data_Setting_Id": 243280,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365758,
+          "SKIP": 0,
+          "STEPS_ID": 365854
+        },
+        {
+          "Data_Setting_Id": 243283,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365773,
+          "SKIP": 0,
+          "STEPS_ID": 365854
+        },
+        {
+          "Data_Setting_Id": 243281,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365759,
+          "SKIP": 0,
+          "STEPS_ID": 365854
+        },
+        {
+          "Data_Setting_Id": 243278,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365746,
+          "SKIP": 0,
+          "STEPS_ID": 365854
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2849,
+      "TEST_CASE_NAME": "Deal Pmt Action Util",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 365854,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 243284,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365741,
+          "SKIP": 0,
+          "STEPS_ID": 365855
+        },
+        {
+          "Data_Setting_Id": 243289,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365763,
+          "SKIP": 0,
+          "STEPS_ID": 365855
+        },
+        {
+          "Data_Setting_Id": 243286,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365754,
+          "SKIP": 0,
+          "STEPS_ID": 365855
+        },
+        {
+          "Data_Setting_Id": 243287,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365758,
+          "SKIP": 0,
+          "STEPS_ID": 365855
+        },
+        {
+          "Data_Setting_Id": 243290,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365773,
+          "SKIP": 0,
+          "STEPS_ID": 365855
+        },
+        {
+          "Data_Setting_Id": 243288,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365759,
+          "SKIP": 0,
+          "STEPS_ID": 365855
+        },
+        {
+          "Data_Setting_Id": 243285,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365746,
+          "SKIP": 0,
+          "STEPS_ID": 365855
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2849,
+      "TEST_CASE_NAME": "Deal Pmt Action Util",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 365855,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 2,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 243284,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365741,
+          "SKIP": 0,
+          "STEPS_ID": 365855
+        },
+        {
+          "Data_Setting_Id": 243289,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365763,
+          "SKIP": 0,
+          "STEPS_ID": 365855
+        },
+        {
+          "Data_Setting_Id": 243286,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365754,
+          "SKIP": 0,
+          "STEPS_ID": 365855
+        },
+        {
+          "Data_Setting_Id": 243287,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365758,
+          "SKIP": 0,
+          "STEPS_ID": 365855
+        },
+        {
+          "Data_Setting_Id": 243290,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365773,
+          "SKIP": 0,
+          "STEPS_ID": 365855
+        },
+        {
+          "Data_Setting_Id": 243288,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365759,
+          "SKIP": 0,
+          "STEPS_ID": 365855
+        },
+        {
+          "Data_Setting_Id": 243285,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365746,
+          "SKIP": 0,
+          "STEPS_ID": 365855
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2849,
+      "TEST_CASE_NAME": "Deal Pmt Action Util",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 365855,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 2,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 243291,
+          "DATASETVALUE": "Trade Blotter",
+          "DATA_SUMMARY_ID": 365741,
+          "SKIP": 0,
+          "STEPS_ID": 365856
+        },
+        {
+          "Data_Setting_Id": 243296,
+          "DATASETVALUE": "Trade Blotter",
+          "DATA_SUMMARY_ID": 365763,
+          "SKIP": 0,
+          "STEPS_ID": 365856
+        },
+        {
+          "Data_Setting_Id": 243293,
+          "DATASETVALUE": "Trade Blotter",
+          "DATA_SUMMARY_ID": 365754,
+          "SKIP": 0,
+          "STEPS_ID": 365856
+        },
+        {
+          "Data_Setting_Id": 243294,
+          "DATASETVALUE": "Trade Blotter",
+          "DATA_SUMMARY_ID": 365758,
+          "SKIP": 0,
+          "STEPS_ID": 365856
+        },
+        {
+          "Data_Setting_Id": 243297,
+          "DATASETVALUE": "Trade Blotter",
+          "DATA_SUMMARY_ID": 365773,
+          "SKIP": 0,
+          "STEPS_ID": 365856
+        },
+        {
+          "Data_Setting_Id": 243295,
+          "DATASETVALUE": "Trade Blotter",
+          "DATA_SUMMARY_ID": 365759,
+          "SKIP": 0,
+          "STEPS_ID": 365856
+        },
+        {
+          "Data_Setting_Id": 243292,
+          "DATASETVALUE": "Trade Blotter",
+          "DATA_SUMMARY_ID": 365746,
+          "SKIP": 0,
+          "STEPS_ID": 365856
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2849,
+      "TEST_CASE_NAME": "Deal Pmt Action Util",
+      "KEY_WORD_ID": 12,
+      "KEY_WORD_NAME": "LaunchApplication",
+      "OBJECT_HAPPY_NAME": "ApplicationName",
+      "OBJECT_ID": 35170,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockAreaTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 29559,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 365856,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 3,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 243291,
+          "DATASETVALUE": "Trade Blotter",
+          "DATA_SUMMARY_ID": 365741,
+          "SKIP": 0,
+          "STEPS_ID": 365856
+        },
+        {
+          "Data_Setting_Id": 243296,
+          "DATASETVALUE": "Trade Blotter",
+          "DATA_SUMMARY_ID": 365763,
+          "SKIP": 0,
+          "STEPS_ID": 365856
+        },
+        {
+          "Data_Setting_Id": 243293,
+          "DATASETVALUE": "Trade Blotter",
+          "DATA_SUMMARY_ID": 365754,
+          "SKIP": 0,
+          "STEPS_ID": 365856
+        },
+        {
+          "Data_Setting_Id": 243294,
+          "DATASETVALUE": "Trade Blotter",
+          "DATA_SUMMARY_ID": 365758,
+          "SKIP": 0,
+          "STEPS_ID": 365856
+        },
+        {
+          "Data_Setting_Id": 243297,
+          "DATASETVALUE": "Trade Blotter",
+          "DATA_SUMMARY_ID": 365773,
+          "SKIP": 0,
+          "STEPS_ID": 365856
+        },
+        {
+          "Data_Setting_Id": 243295,
+          "DATASETVALUE": "Trade Blotter",
+          "DATA_SUMMARY_ID": 365759,
+          "SKIP": 0,
+          "STEPS_ID": 365856
+        },
+        {
+          "Data_Setting_Id": 243292,
+          "DATASETVALUE": "Trade Blotter",
+          "DATA_SUMMARY_ID": 365746,
+          "SKIP": 0,
+          "STEPS_ID": 365856
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2849,
+      "TEST_CASE_NAME": "Deal Pmt Action Util",
+      "KEY_WORD_ID": 12,
+      "KEY_WORD_NAME": "LaunchApplication",
+      "OBJECT_HAPPY_NAME": "ApplicationName",
+      "OBJECT_ID": 44673,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockAreaTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 29559,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 365856,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 3,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 243298,
+          "DATASETVALUE": "40",
+          "DATA_SUMMARY_ID": 365741,
+          "SKIP": 0,
+          "STEPS_ID": 365857
+        },
+        {
+          "Data_Setting_Id": 243303,
+          "DATASETVALUE": "40",
+          "DATA_SUMMARY_ID": 365763,
+          "SKIP": 0,
+          "STEPS_ID": 365857
+        },
+        {
+          "Data_Setting_Id": 243300,
+          "DATASETVALUE": "40",
+          "DATA_SUMMARY_ID": 365754,
+          "SKIP": 0,
+          "STEPS_ID": 365857
+        },
+        {
+          "Data_Setting_Id": 243301,
+          "DATASETVALUE": "40",
+          "DATA_SUMMARY_ID": 365758,
+          "SKIP": 0,
+          "STEPS_ID": 365857
+        },
+        {
+          "Data_Setting_Id": 243304,
+          "DATASETVALUE": "40",
+          "DATA_SUMMARY_ID": 365773,
+          "SKIP": 0,
+          "STEPS_ID": 365857
+        },
+        {
+          "Data_Setting_Id": 243302,
+          "DATASETVALUE": "40",
+          "DATA_SUMMARY_ID": 365759,
+          "SKIP": 0,
+          "STEPS_ID": 365857
+        },
+        {
+          "Data_Setting_Id": 243299,
+          "DATASETVALUE": "40",
+          "DATA_SUMMARY_ID": 365746,
+          "SKIP": 0,
+          "STEPS_ID": 365857
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2849,
+      "TEST_CASE_NAME": "Deal Pmt Action Util",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 365857,
+      "COLUMN_ROW_SETTING": "F",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 4,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 243305,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365741,
+          "SKIP": 0,
+          "STEPS_ID": 365858
+        },
+        {
+          "Data_Setting_Id": 243310,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365763,
+          "SKIP": 0,
+          "STEPS_ID": 365858
+        },
+        {
+          "Data_Setting_Id": 243307,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365754,
+          "SKIP": 0,
+          "STEPS_ID": 365858
+        },
+        {
+          "Data_Setting_Id": 243308,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365758,
+          "SKIP": 0,
+          "STEPS_ID": 365858
+        },
+        {
+          "Data_Setting_Id": 243311,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365773,
+          "SKIP": 0,
+          "STEPS_ID": 365858
+        },
+        {
+          "Data_Setting_Id": 243309,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365759,
+          "SKIP": 0,
+          "STEPS_ID": 365858
+        },
+        {
+          "Data_Setting_Id": 243306,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365746,
+          "SKIP": 0,
+          "STEPS_ID": 365858
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2849,
+      "TEST_CASE_NAME": "Deal Pmt Action Util",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_BLOTTER",
+      "OBJECT_ID": 40275,
+      "OBJECT_TYPE": "TRADE_BLOTTER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24876,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 365858,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 5,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 243305,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365741,
+          "SKIP": 0,
+          "STEPS_ID": 365858
+        },
+        {
+          "Data_Setting_Id": 243310,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365763,
+          "SKIP": 0,
+          "STEPS_ID": 365858
+        },
+        {
+          "Data_Setting_Id": 243307,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365754,
+          "SKIP": 0,
+          "STEPS_ID": 365858
+        },
+        {
+          "Data_Setting_Id": 243308,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365758,
+          "SKIP": 0,
+          "STEPS_ID": 365858
+        },
+        {
+          "Data_Setting_Id": 243311,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365773,
+          "SKIP": 0,
+          "STEPS_ID": 365858
+        },
+        {
+          "Data_Setting_Id": 243309,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365759,
+          "SKIP": 0,
+          "STEPS_ID": 365858
+        },
+        {
+          "Data_Setting_Id": 243306,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365746,
+          "SKIP": 0,
+          "STEPS_ID": 365858
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2849,
+      "TEST_CASE_NAME": "Deal Pmt Action Util",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_BLOTTER",
+      "OBJECT_ID": 48473,
+      "OBJECT_TYPE": "TRADE_BLOTTER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24876,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 365858,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 5,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 243312,
+          "DATASETVALUE": "MODAL_VAR:DLPMD_01_TRADE_ID",
+          "DATA_SUMMARY_ID": 365741,
+          "SKIP": 0,
+          "STEPS_ID": 365859
+        },
+        {
+          "Data_Setting_Id": 243315,
+          "DATASETVALUE": "MODAL_VAR:DLPMD_02_TRADE_ID",
+          "DATA_SUMMARY_ID": 365763,
+          "SKIP": 0,
+          "STEPS_ID": 365859
+        },
+        {
+          "Data_Setting_Id": 243317,
+          "DATASETVALUE": "MODAL_VAR:DLPMD_03_TRADE_ID",
+          "DATA_SUMMARY_ID": 365754,
+          "SKIP": 0,
+          "STEPS_ID": 365859
+        },
+        {
+          "Data_Setting_Id": 243318,
+          "DATASETVALUE": "MODAL_VAR:DLPMD_04_TRADE_ID",
+          "DATA_SUMMARY_ID": 365758,
+          "SKIP": 0,
+          "STEPS_ID": 365859
+        },
+        {
+          "Data_Setting_Id": 243313,
+          "DATASETVALUE": "MODAL_VAR:DLPMD_01_TRADE_ID",
+          "DATA_SUMMARY_ID": 365773,
+          "SKIP": 0,
+          "STEPS_ID": 365859
+        },
+        {
+          "Data_Setting_Id": 243314,
+          "DATASETVALUE": "MODAL_VAR:DLPMD_02_TRADE_ID",
+          "DATA_SUMMARY_ID": 365759,
+          "SKIP": 0,
+          "STEPS_ID": 365859
+        },
+        {
+          "Data_Setting_Id": 243316,
+          "DATASETVALUE": "MODAL_VAR:DLPMD_03_TRADE_ID",
+          "DATA_SUMMARY_ID": 365746,
+          "SKIP": 0,
+          "STEPS_ID": 365859
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2849,
+      "TEST_CASE_NAME": "Deal Pmt Action Util",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "TRADE_BLOTTER_TRADE_ID",
+      "OBJECT_ID": 48372,
+      "OBJECT_TYPE": "TRADE_BLOTTER",
+      "QUICK_ACCESS": "swfname:=Trade_ID",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 30378,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 365859,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 6,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 243312,
+          "DATASETVALUE": "MODAL_VAR:DLPMD_01_TRADE_ID",
+          "DATA_SUMMARY_ID": 365741,
+          "SKIP": 0,
+          "STEPS_ID": 365859
+        },
+        {
+          "Data_Setting_Id": 243315,
+          "DATASETVALUE": "MODAL_VAR:DLPMD_02_TRADE_ID",
+          "DATA_SUMMARY_ID": 365763,
+          "SKIP": 0,
+          "STEPS_ID": 365859
+        },
+        {
+          "Data_Setting_Id": 243317,
+          "DATASETVALUE": "MODAL_VAR:DLPMD_03_TRADE_ID",
+          "DATA_SUMMARY_ID": 365754,
+          "SKIP": 0,
+          "STEPS_ID": 365859
+        },
+        {
+          "Data_Setting_Id": 243318,
+          "DATASETVALUE": "MODAL_VAR:DLPMD_04_TRADE_ID",
+          "DATA_SUMMARY_ID": 365758,
+          "SKIP": 0,
+          "STEPS_ID": 365859
+        },
+        {
+          "Data_Setting_Id": 243313,
+          "DATASETVALUE": "MODAL_VAR:DLPMD_01_TRADE_ID",
+          "DATA_SUMMARY_ID": 365773,
+          "SKIP": 0,
+          "STEPS_ID": 365859
+        },
+        {
+          "Data_Setting_Id": 243314,
+          "DATASETVALUE": "MODAL_VAR:DLPMD_02_TRADE_ID",
+          "DATA_SUMMARY_ID": 365759,
+          "SKIP": 0,
+          "STEPS_ID": 365859
+        },
+        {
+          "Data_Setting_Id": 243316,
+          "DATASETVALUE": "MODAL_VAR:DLPMD_03_TRADE_ID",
+          "DATA_SUMMARY_ID": 365746,
+          "SKIP": 0,
+          "STEPS_ID": 365859
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2849,
+      "TEST_CASE_NAME": "Deal Pmt Action Util",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "TRADE_BLOTTER_TRADE_ID",
+      "OBJECT_ID": 40205,
+      "OBJECT_TYPE": "TRADE_BLOTTER",
+      "QUICK_ACCESS": "swfname:=Trade_ID",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 30378,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 365859,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 6,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 243319,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365741,
+          "SKIP": 0,
+          "STEPS_ID": 365860
+        },
+        {
+          "Data_Setting_Id": 243324,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365763,
+          "SKIP": 0,
+          "STEPS_ID": 365860
+        },
+        {
+          "Data_Setting_Id": 243321,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365754,
+          "SKIP": 0,
+          "STEPS_ID": 365860
+        },
+        {
+          "Data_Setting_Id": 243322,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365758,
+          "SKIP": 0,
+          "STEPS_ID": 365860
+        },
+        {
+          "Data_Setting_Id": 243325,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365773,
+          "SKIP": 0,
+          "STEPS_ID": 365860
+        },
+        {
+          "Data_Setting_Id": 243323,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365759,
+          "SKIP": 0,
+          "STEPS_ID": 365860
+        },
+        {
+          "Data_Setting_Id": 243320,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365746,
+          "SKIP": 0,
+          "STEPS_ID": 365860
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2849,
+      "TEST_CASE_NAME": "Deal Pmt Action Util",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "TRADE_BLOTTER_APPLY",
+      "OBJECT_ID": 39369,
+      "OBJECT_TYPE": "TRADE_BLOTTER",
+      "QUICK_ACCESS": "swfname:=butApply",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25902,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 365860,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 7,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 243319,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365741,
+          "SKIP": 0,
+          "STEPS_ID": 365860
+        },
+        {
+          "Data_Setting_Id": 243324,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365763,
+          "SKIP": 0,
+          "STEPS_ID": 365860
+        },
+        {
+          "Data_Setting_Id": 243321,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365754,
+          "SKIP": 0,
+          "STEPS_ID": 365860
+        },
+        {
+          "Data_Setting_Id": 243322,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365758,
+          "SKIP": 0,
+          "STEPS_ID": 365860
+        },
+        {
+          "Data_Setting_Id": 243325,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365773,
+          "SKIP": 0,
+          "STEPS_ID": 365860
+        },
+        {
+          "Data_Setting_Id": 243323,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365759,
+          "SKIP": 0,
+          "STEPS_ID": 365860
+        },
+        {
+          "Data_Setting_Id": 243320,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365746,
+          "SKIP": 0,
+          "STEPS_ID": 365860
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2849,
+      "TEST_CASE_NAME": "Deal Pmt Action Util",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "TRADE_BLOTTER_APPLY",
+      "OBJECT_ID": 47546,
+      "OBJECT_TYPE": "TRADE_BLOTTER",
+      "QUICK_ACCESS": "swfname:=butApply",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25902,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 365860,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 7,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 243326,
+          "DATASETVALUE": "25",
+          "DATA_SUMMARY_ID": 365741,
+          "SKIP": 0,
+          "STEPS_ID": 365861
+        },
+        {
+          "Data_Setting_Id": 243331,
+          "DATASETVALUE": "25",
+          "DATA_SUMMARY_ID": 365763,
+          "SKIP": 0,
+          "STEPS_ID": 365861
+        },
+        {
+          "Data_Setting_Id": 243328,
+          "DATASETVALUE": "25",
+          "DATA_SUMMARY_ID": 365754,
+          "SKIP": 0,
+          "STEPS_ID": 365861
+        },
+        {
+          "Data_Setting_Id": 243329,
+          "DATASETVALUE": "25",
+          "DATA_SUMMARY_ID": 365758,
+          "SKIP": 0,
+          "STEPS_ID": 365861
+        },
+        {
+          "Data_Setting_Id": 243332,
+          "DATASETVALUE": "25",
+          "DATA_SUMMARY_ID": 365773,
+          "SKIP": 0,
+          "STEPS_ID": 365861
+        },
+        {
+          "Data_Setting_Id": 243330,
+          "DATASETVALUE": "25",
+          "DATA_SUMMARY_ID": 365759,
+          "SKIP": 0,
+          "STEPS_ID": 365861
+        },
+        {
+          "Data_Setting_Id": 243327,
+          "DATASETVALUE": "25",
+          "DATA_SUMMARY_ID": 365746,
+          "SKIP": 0,
+          "STEPS_ID": 365861
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2849,
+      "TEST_CASE_NAME": "Deal Pmt Action Util",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 365861,
+      "COLUMN_ROW_SETTING": "F",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 8,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 243333,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365741,
+          "SKIP": 0,
+          "STEPS_ID": 365862
+        },
+        {
+          "Data_Setting_Id": 243338,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365763,
+          "SKIP": 0,
+          "STEPS_ID": 365862
+        },
+        {
+          "Data_Setting_Id": 243335,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365754,
+          "SKIP": 0,
+          "STEPS_ID": 365862
+        },
+        {
+          "Data_Setting_Id": 243336,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365758,
+          "SKIP": 0,
+          "STEPS_ID": 365862
+        },
+        {
+          "Data_Setting_Id": 243339,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365773,
+          "SKIP": 0,
+          "STEPS_ID": 365862
+        },
+        {
+          "Data_Setting_Id": 243337,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365759,
+          "SKIP": 0,
+          "STEPS_ID": 365862
+        },
+        {
+          "Data_Setting_Id": 243334,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365746,
+          "SKIP": 0,
+          "STEPS_ID": 365862
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2849,
+      "TEST_CASE_NAME": "Deal Pmt Action Util",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_BLOTTER",
+      "OBJECT_ID": 40275,
+      "OBJECT_TYPE": "TRADE_BLOTTER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24876,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 365862,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 9,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 243333,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365741,
+          "SKIP": 0,
+          "STEPS_ID": 365862
+        },
+        {
+          "Data_Setting_Id": 243338,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365763,
+          "SKIP": 0,
+          "STEPS_ID": 365862
+        },
+        {
+          "Data_Setting_Id": 243335,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365754,
+          "SKIP": 0,
+          "STEPS_ID": 365862
+        },
+        {
+          "Data_Setting_Id": 243336,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365758,
+          "SKIP": 0,
+          "STEPS_ID": 365862
+        },
+        {
+          "Data_Setting_Id": 243339,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365773,
+          "SKIP": 0,
+          "STEPS_ID": 365862
+        },
+        {
+          "Data_Setting_Id": 243337,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365759,
+          "SKIP": 0,
+          "STEPS_ID": 365862
+        },
+        {
+          "Data_Setting_Id": 243334,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365746,
+          "SKIP": 0,
+          "STEPS_ID": 365862
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2849,
+      "TEST_CASE_NAME": "Deal Pmt Action Util",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_BLOTTER",
+      "OBJECT_ID": 48473,
+      "OBJECT_TYPE": "TRADE_BLOTTER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24876,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 365862,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 9,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 243340,
+          "DATASETVALUE": "MODAL_VAR:DLPMD_01_TRADE_ID",
+          "DATA_SUMMARY_ID": 365741,
+          "SKIP": 0,
+          "STEPS_ID": 365863
+        },
+        {
+          "Data_Setting_Id": 243341,
+          "DATASETVALUE": "MODAL_VAR:DLPMD_02_TRADE_ID",
+          "DATA_SUMMARY_ID": 365763,
+          "SKIP": 0,
+          "STEPS_ID": 365863
+        },
+        {
+          "Data_Setting_Id": 243342,
+          "DATASETVALUE": "MODAL_VAR:DLPMD_03_TRADE_ID",
+          "DATA_SUMMARY_ID": 365754,
+          "SKIP": 0,
+          "STEPS_ID": 365863
+        },
+        {
+          "Data_Setting_Id": 243343,
+          "DATASETVALUE": "MODAL_VAR:DLPMD_04_TRADE_ID",
+          "DATA_SUMMARY_ID": 365758,
+          "SKIP": 0,
+          "STEPS_ID": 365863
+        },
+        {
+          "Data_Setting_Id": 243344,
+          "DATASETVALUE": "MODAL_VAR:DLPMD_05_TRADE_ID",
+          "DATA_SUMMARY_ID": 365773,
+          "SKIP": 0,
+          "STEPS_ID": 365863
+        },
+        {
+          "Data_Setting_Id": 243345,
+          "DATASETVALUE": "MODAL_VAR:DLPMD_06_TRADE_ID",
+          "DATA_SUMMARY_ID": 365759,
+          "SKIP": 0,
+          "STEPS_ID": 365863
+        },
+        {
+          "Data_Setting_Id": 243346,
+          "DATASETVALUE": "MODAL_VAR:DLPMD_07_TRADE_ID",
+          "DATA_SUMMARY_ID": 365746,
+          "SKIP": 0,
+          "STEPS_ID": 365863
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2849,
+      "TEST_CASE_NAME": "Deal Pmt Action Util",
+      "KEY_WORD_ID": 32,
+      "KEY_WORD_NAME": "SearchAndClick",
+      "OBJECT_HAPPY_NAME": "TRADE_BLOTTER_TABLE",
+      "OBJECT_ID": 34197,
+      "OBJECT_TYPE": "TRADE_BLOTTER",
+      "QUICK_ACCESS": "swfname:=_Spr",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 27806,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 365863,
+      "COLUMN_ROW_SETTING": "MarsAddins;Trade ID;Action:LEFT_DBL_CLICK",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 10,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 243340,
+          "DATASETVALUE": "MODAL_VAR:DLPMD_01_TRADE_ID",
+          "DATA_SUMMARY_ID": 365741,
+          "SKIP": 0,
+          "STEPS_ID": 365863
+        },
+        {
+          "Data_Setting_Id": 243341,
+          "DATASETVALUE": "MODAL_VAR:DLPMD_02_TRADE_ID",
+          "DATA_SUMMARY_ID": 365763,
+          "SKIP": 0,
+          "STEPS_ID": 365863
+        },
+        {
+          "Data_Setting_Id": 243342,
+          "DATASETVALUE": "MODAL_VAR:DLPMD_03_TRADE_ID",
+          "DATA_SUMMARY_ID": 365754,
+          "SKIP": 0,
+          "STEPS_ID": 365863
+        },
+        {
+          "Data_Setting_Id": 243343,
+          "DATASETVALUE": "MODAL_VAR:DLPMD_04_TRADE_ID",
+          "DATA_SUMMARY_ID": 365758,
+          "SKIP": 0,
+          "STEPS_ID": 365863
+        },
+        {
+          "Data_Setting_Id": 243344,
+          "DATASETVALUE": "MODAL_VAR:DLPMD_05_TRADE_ID",
+          "DATA_SUMMARY_ID": 365773,
+          "SKIP": 0,
+          "STEPS_ID": 365863
+        },
+        {
+          "Data_Setting_Id": 243345,
+          "DATASETVALUE": "MODAL_VAR:DLPMD_06_TRADE_ID",
+          "DATA_SUMMARY_ID": 365759,
+          "SKIP": 0,
+          "STEPS_ID": 365863
+        },
+        {
+          "Data_Setting_Id": 243346,
+          "DATASETVALUE": "MODAL_VAR:DLPMD_07_TRADE_ID",
+          "DATA_SUMMARY_ID": 365746,
+          "SKIP": 0,
+          "STEPS_ID": 365863
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2849,
+      "TEST_CASE_NAME": "Deal Pmt Action Util",
+      "KEY_WORD_ID": 32,
+      "KEY_WORD_NAME": "SearchAndClick",
+      "OBJECT_HAPPY_NAME": "TRADE_BLOTTER_TABLE",
+      "OBJECT_ID": 43746,
+      "OBJECT_TYPE": "TRADE_BLOTTER",
+      "QUICK_ACCESS": "swfname:=_Spr",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 27806,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 365863,
+      "COLUMN_ROW_SETTING": "MarsAddins;Trade ID;Action:LEFT_DBL_CLICK",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 10,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 243347,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365741,
+          "SKIP": 0,
+          "STEPS_ID": 365864
+        },
+        {
+          "Data_Setting_Id": 243352,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365763,
+          "SKIP": 0,
+          "STEPS_ID": 365864
+        },
+        {
+          "Data_Setting_Id": 243349,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365754,
+          "SKIP": 0,
+          "STEPS_ID": 365864
+        },
+        {
+          "Data_Setting_Id": 243350,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365758,
+          "SKIP": 0,
+          "STEPS_ID": 365864
+        },
+        {
+          "Data_Setting_Id": 243353,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365773,
+          "SKIP": 0,
+          "STEPS_ID": 365864
+        },
+        {
+          "Data_Setting_Id": 243351,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365759,
+          "SKIP": 0,
+          "STEPS_ID": 365864
+        },
+        {
+          "Data_Setting_Id": 243348,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365746,
+          "SKIP": 0,
+          "STEPS_ID": 365864
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2849,
+      "TEST_CASE_NAME": "Deal Pmt Action Util",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "TRADE_BLOTTER_PANEL",
+      "OBJECT_ID": 48990,
+      "OBJECT_TYPE": "TRADE_BLOTTER",
+      "QUICK_ACCESS": "SwfName:=TradeBlotterView",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 48895,
+      "TYPE_NAME": "SwfWindow",
+      "STEPS_ID": 365864,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 11,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 243347,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365741,
+          "SKIP": 0,
+          "STEPS_ID": 365864
+        },
+        {
+          "Data_Setting_Id": 243352,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365763,
+          "SKIP": 0,
+          "STEPS_ID": 365864
+        },
+        {
+          "Data_Setting_Id": 243349,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365754,
+          "SKIP": 0,
+          "STEPS_ID": 365864
+        },
+        {
+          "Data_Setting_Id": 243350,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365758,
+          "SKIP": 0,
+          "STEPS_ID": 365864
+        },
+        {
+          "Data_Setting_Id": 243353,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365773,
+          "SKIP": 0,
+          "STEPS_ID": 365864
+        },
+        {
+          "Data_Setting_Id": 243351,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365759,
+          "SKIP": 0,
+          "STEPS_ID": 365864
+        },
+        {
+          "Data_Setting_Id": 243348,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365746,
+          "SKIP": 0,
+          "STEPS_ID": 365864
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2849,
+      "TEST_CASE_NAME": "Deal Pmt Action Util",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "TRADE_BLOTTER_PANEL",
+      "OBJECT_ID": 48954,
+      "OBJECT_TYPE": "TRADE_BLOTTER",
+      "QUICK_ACCESS": "SwfName:=TradeBlotterView",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 48895,
+      "TYPE_NAME": "SwfWindow",
+      "STEPS_ID": 365864,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 11,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 243354,
+          "DATASETVALUE": "15",
+          "DATA_SUMMARY_ID": 365741,
+          "SKIP": 0,
+          "STEPS_ID": 365865
+        },
+        {
+          "Data_Setting_Id": 243359,
+          "DATASETVALUE": "15",
+          "DATA_SUMMARY_ID": 365763,
+          "SKIP": 0,
+          "STEPS_ID": 365865
+        },
+        {
+          "Data_Setting_Id": 243356,
+          "DATASETVALUE": "15",
+          "DATA_SUMMARY_ID": 365754,
+          "SKIP": 0,
+          "STEPS_ID": 365865
+        },
+        {
+          "Data_Setting_Id": 243357,
+          "DATASETVALUE": "15",
+          "DATA_SUMMARY_ID": 365758,
+          "SKIP": 0,
+          "STEPS_ID": 365865
+        },
+        {
+          "Data_Setting_Id": 243360,
+          "DATASETVALUE": "15",
+          "DATA_SUMMARY_ID": 365773,
+          "SKIP": 0,
+          "STEPS_ID": 365865
+        },
+        {
+          "Data_Setting_Id": 243358,
+          "DATASETVALUE": "15",
+          "DATA_SUMMARY_ID": 365759,
+          "SKIP": 0,
+          "STEPS_ID": 365865
+        },
+        {
+          "Data_Setting_Id": 243355,
+          "DATASETVALUE": "15",
+          "DATA_SUMMARY_ID": 365746,
+          "SKIP": 0,
+          "STEPS_ID": 365865
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2849,
+      "TEST_CASE_NAME": "Deal Pmt Action Util",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 365865,
+      "COLUMN_ROW_SETTING": "F",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 12,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 243361,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365741,
+          "SKIP": 0,
+          "STEPS_ID": 365866
+        },
+        {
+          "Data_Setting_Id": 243366,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365763,
+          "SKIP": 0,
+          "STEPS_ID": 365866
+        },
+        {
+          "Data_Setting_Id": 243363,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365754,
+          "SKIP": 0,
+          "STEPS_ID": 365866
+        },
+        {
+          "Data_Setting_Id": 243364,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365758,
+          "SKIP": 0,
+          "STEPS_ID": 365866
+        },
+        {
+          "Data_Setting_Id": 243367,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365773,
+          "SKIP": 0,
+          "STEPS_ID": 365866
+        },
+        {
+          "Data_Setting_Id": 243365,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365759,
+          "SKIP": 0,
+          "STEPS_ID": 365866
+        },
+        {
+          "Data_Setting_Id": 243362,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365746,
+          "SKIP": 0,
+          "STEPS_ID": 365866
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2849,
+      "TEST_CASE_NAME": "Deal Pmt Action Util",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "DEAL_PMT_TRADE",
+      "OBJECT_ID": 44473,
+      "OBJECT_TYPE": "DEAL_PMT_TRADE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24882,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 365866,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 13,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 243361,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365741,
+          "SKIP": 0,
+          "STEPS_ID": 365866
+        },
+        {
+          "Data_Setting_Id": 243366,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365763,
+          "SKIP": 0,
+          "STEPS_ID": 365866
+        },
+        {
+          "Data_Setting_Id": 243363,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365754,
+          "SKIP": 0,
+          "STEPS_ID": 365866
+        },
+        {
+          "Data_Setting_Id": 243364,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365758,
+          "SKIP": 0,
+          "STEPS_ID": 365866
+        },
+        {
+          "Data_Setting_Id": 243367,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365773,
+          "SKIP": 0,
+          "STEPS_ID": 365866
+        },
+        {
+          "Data_Setting_Id": 243365,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365759,
+          "SKIP": 0,
+          "STEPS_ID": 365866
+        },
+        {
+          "Data_Setting_Id": 243362,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365746,
+          "SKIP": 0,
+          "STEPS_ID": 365866
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2849,
+      "TEST_CASE_NAME": "Deal Pmt Action Util",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "DEAL_PMT_TRADE",
+      "OBJECT_ID": 34934,
+      "OBJECT_TYPE": "DEAL_PMT_TRADE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24882,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 365866,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 13,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 243368,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365741,
+          "SKIP": 0,
+          "STEPS_ID": 365867
+        },
+        {
+          "Data_Setting_Id": 243373,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365763,
+          "SKIP": 0,
+          "STEPS_ID": 365867
+        },
+        {
+          "Data_Setting_Id": 243370,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365754,
+          "SKIP": 0,
+          "STEPS_ID": 365867
+        },
+        {
+          "Data_Setting_Id": 243371,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365758,
+          "SKIP": 0,
+          "STEPS_ID": 365867
+        },
+        {
+          "Data_Setting_Id": 243374,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365773,
+          "SKIP": 0,
+          "STEPS_ID": 365867
+        },
+        {
+          "Data_Setting_Id": 243372,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365759,
+          "SKIP": 0,
+          "STEPS_ID": 365867
+        },
+        {
+          "Data_Setting_Id": 243369,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365746,
+          "SKIP": 0,
+          "STEPS_ID": 365867
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2849,
+      "TEST_CASE_NAME": "Deal Pmt Action Util",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "DEAL_PMT_TRADE",
+      "OBJECT_ID": 44473,
+      "OBJECT_TYPE": "DEAL_PMT_TRADE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24882,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 365867,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 14,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 243368,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365741,
+          "SKIP": 0,
+          "STEPS_ID": 365867
+        },
+        {
+          "Data_Setting_Id": 243373,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365763,
+          "SKIP": 0,
+          "STEPS_ID": 365867
+        },
+        {
+          "Data_Setting_Id": 243370,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365754,
+          "SKIP": 0,
+          "STEPS_ID": 365867
+        },
+        {
+          "Data_Setting_Id": 243371,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365758,
+          "SKIP": 0,
+          "STEPS_ID": 365867
+        },
+        {
+          "Data_Setting_Id": 243374,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365773,
+          "SKIP": 0,
+          "STEPS_ID": 365867
+        },
+        {
+          "Data_Setting_Id": 243372,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365759,
+          "SKIP": 0,
+          "STEPS_ID": 365867
+        },
+        {
+          "Data_Setting_Id": 243369,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365746,
+          "SKIP": 0,
+          "STEPS_ID": 365867
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2849,
+      "TEST_CASE_NAME": "Deal Pmt Action Util",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "DEAL_PMT_TRADE",
+      "OBJECT_ID": 34934,
+      "OBJECT_TYPE": "DEAL_PMT_TRADE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24882,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 365867,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 14,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 243375,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 365741,
+          "SKIP": 0,
+          "STEPS_ID": 365868
+        },
+        {
+          "Data_Setting_Id": 243380,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 365763,
+          "SKIP": 0,
+          "STEPS_ID": 365868
+        },
+        {
+          "Data_Setting_Id": 243377,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 365754,
+          "SKIP": 0,
+          "STEPS_ID": 365868
+        },
+        {
+          "Data_Setting_Id": 243378,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 365758,
+          "SKIP": 0,
+          "STEPS_ID": 365868
+        },
+        {
+          "Data_Setting_Id": 243381,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 365773,
+          "SKIP": 0,
+          "STEPS_ID": 365868
+        },
+        {
+          "Data_Setting_Id": 243379,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 365759,
+          "SKIP": 0,
+          "STEPS_ID": 365868
+        },
+        {
+          "Data_Setting_Id": 243376,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 365746,
+          "SKIP": 0,
+          "STEPS_ID": 365868
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2849,
+      "TEST_CASE_NAME": "Deal Pmt Action Util",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 365868,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 15,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 243382,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 365741,
+          "SKIP": 0,
+          "STEPS_ID": 365869
+        },
+        {
+          "Data_Setting_Id": 243387,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 365763,
+          "SKIP": 0,
+          "STEPS_ID": 365869
+        },
+        {
+          "Data_Setting_Id": 243384,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 365754,
+          "SKIP": 0,
+          "STEPS_ID": 365869
+        },
+        {
+          "Data_Setting_Id": 243385,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 365758,
+          "SKIP": 0,
+          "STEPS_ID": 365869
+        },
+        {
+          "Data_Setting_Id": 243388,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 365773,
+          "SKIP": 0,
+          "STEPS_ID": 365869
+        },
+        {
+          "Data_Setting_Id": 243386,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 365759,
+          "SKIP": 0,
+          "STEPS_ID": 365869
+        },
+        {
+          "Data_Setting_Id": 243383,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 365746,
+          "SKIP": 0,
+          "STEPS_ID": 365869
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2849,
+      "TEST_CASE_NAME": "Deal Pmt Action Util",
+      "KEY_WORD_ID": 26,
+      "KEY_WORD_NAME": "VerifyValue",
+      "OBJECT_HAPPY_NAME": "DEAL_PMT_TRADE_AUDIT_STATE",
+      "OBJECT_ID": 38006,
+      "OBJECT_TYPE": "DEAL_PMT_TRADE",
+      "QUICK_ACCESS": "SwfName:=_auditStateText",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 28973,
+      "TYPE_NAME": "SwfLabel",
+      "STEPS_ID": 365869,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 16,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 243382,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 365741,
+          "SKIP": 0,
+          "STEPS_ID": 365869
+        },
+        {
+          "Data_Setting_Id": 243387,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 365763,
+          "SKIP": 0,
+          "STEPS_ID": 365869
+        },
+        {
+          "Data_Setting_Id": 243384,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 365754,
+          "SKIP": 0,
+          "STEPS_ID": 365869
+        },
+        {
+          "Data_Setting_Id": 243385,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 365758,
+          "SKIP": 0,
+          "STEPS_ID": 365869
+        },
+        {
+          "Data_Setting_Id": 243388,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 365773,
+          "SKIP": 0,
+          "STEPS_ID": 365869
+        },
+        {
+          "Data_Setting_Id": 243386,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 365759,
+          "SKIP": 0,
+          "STEPS_ID": 365869
+        },
+        {
+          "Data_Setting_Id": 243383,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 365746,
+          "SKIP": 0,
+          "STEPS_ID": 365869
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2849,
+      "TEST_CASE_NAME": "Deal Pmt Action Util",
+      "KEY_WORD_ID": 26,
+      "KEY_WORD_NAME": "VerifyValue",
+      "OBJECT_HAPPY_NAME": "DEAL_PMT_TRADE_AUDIT_STATE",
+      "OBJECT_ID": 46806,
+      "OBJECT_TYPE": "DEAL_PMT_TRADE",
+      "QUICK_ACCESS": "SwfName:=_auditStateText",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 28973,
+      "TYPE_NAME": "SwfLabel",
+      "STEPS_ID": 365869,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 16,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 243389,
+          "DATASETVALUE": "Desktop Menu;Action;Verify",
+          "DATA_SUMMARY_ID": 365741,
+          "SKIP": 0,
+          "STEPS_ID": 365870
+        },
+        {
+          "Data_Setting_Id": 243394,
+          "DATASETVALUE": "Desktop Menu;Action;Verify",
+          "DATA_SUMMARY_ID": 365763,
+          "SKIP": 0,
+          "STEPS_ID": 365870
+        },
+        {
+          "Data_Setting_Id": 243391,
+          "DATASETVALUE": "Desktop Menu;Action;Verify",
+          "DATA_SUMMARY_ID": 365754,
+          "SKIP": 0,
+          "STEPS_ID": 365870
+        },
+        {
+          "Data_Setting_Id": 243392,
+          "DATASETVALUE": "Desktop Menu;Action;Verify",
+          "DATA_SUMMARY_ID": 365758,
+          "SKIP": 0,
+          "STEPS_ID": 365870
+        },
+        {
+          "Data_Setting_Id": 243395,
+          "DATASETVALUE": "Desktop Menu;Action;Verify",
+          "DATA_SUMMARY_ID": 365773,
+          "SKIP": 0,
+          "STEPS_ID": 365870
+        },
+        {
+          "Data_Setting_Id": 243393,
+          "DATASETVALUE": "Desktop Menu;Action;Verify",
+          "DATA_SUMMARY_ID": 365759,
+          "SKIP": 0,
+          "STEPS_ID": 365870
+        },
+        {
+          "Data_Setting_Id": 243390,
+          "DATASETVALUE": "Desktop Menu;Action;Verify",
+          "DATA_SUMMARY_ID": 365746,
+          "SKIP": 0,
+          "STEPS_ID": 365870
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2849,
+      "TEST_CASE_NAME": "Deal Pmt Action Util",
+      "KEY_WORD_ID": 22,
+      "KEY_WORD_NAME": "SelectMenuItem",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 365870,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 17,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 243396,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 365741,
+          "SKIP": 0,
+          "STEPS_ID": 365871
+        },
+        {
+          "Data_Setting_Id": 243401,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 365763,
+          "SKIP": 0,
+          "STEPS_ID": 365871
+        },
+        {
+          "Data_Setting_Id": 243398,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 365754,
+          "SKIP": 0,
+          "STEPS_ID": 365871
+        },
+        {
+          "Data_Setting_Id": 243399,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 365758,
+          "SKIP": 0,
+          "STEPS_ID": 365871
+        },
+        {
+          "Data_Setting_Id": 243402,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 365773,
+          "SKIP": 0,
+          "STEPS_ID": 365871
+        },
+        {
+          "Data_Setting_Id": 243400,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 365759,
+          "SKIP": 0,
+          "STEPS_ID": 365871
+        },
+        {
+          "Data_Setting_Id": 243397,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 365746,
+          "SKIP": 0,
+          "STEPS_ID": 365871
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2849,
+      "TEST_CASE_NAME": "Deal Pmt Action Util",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 365871,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 18,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 243403,
+          "DATASETVALUE": "TRADE_VERIFY",
+          "DATA_SUMMARY_ID": 365741,
+          "SKIP": 0,
+          "STEPS_ID": 365872
+        },
+        {
+          "Data_Setting_Id": 243408,
+          "DATASETVALUE": "TRADE_VERIFY",
+          "DATA_SUMMARY_ID": 365763,
+          "SKIP": 0,
+          "STEPS_ID": 365872
+        },
+        {
+          "Data_Setting_Id": 243405,
+          "DATASETVALUE": "TRADE_VERIFY",
+          "DATA_SUMMARY_ID": 365754,
+          "SKIP": 0,
+          "STEPS_ID": 365872
+        },
+        {
+          "Data_Setting_Id": 243406,
+          "DATASETVALUE": "TRADE_VERIFY",
+          "DATA_SUMMARY_ID": 365758,
+          "SKIP": 0,
+          "STEPS_ID": 365872
+        },
+        {
+          "Data_Setting_Id": 243409,
+          "DATASETVALUE": "TRADE_VERIFY",
+          "DATA_SUMMARY_ID": 365773,
+          "SKIP": 0,
+          "STEPS_ID": 365872
+        },
+        {
+          "Data_Setting_Id": 243407,
+          "DATASETVALUE": "TRADE_VERIFY",
+          "DATA_SUMMARY_ID": 365759,
+          "SKIP": 0,
+          "STEPS_ID": 365872
+        },
+        {
+          "Data_Setting_Id": 243404,
+          "DATASETVALUE": "TRADE_VERIFY",
+          "DATA_SUMMARY_ID": 365746,
+          "SKIP": 0,
+          "STEPS_ID": 365872
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2849,
+      "TEST_CASE_NAME": "Deal Pmt Action Util",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "DEAL_PMT_TRADE_AUDIT_STATE",
+      "OBJECT_ID": 38006,
+      "OBJECT_TYPE": "DEAL_PMT_TRADE",
+      "QUICK_ACCESS": "SwfName:=_auditStateText",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 28973,
+      "TYPE_NAME": "SwfLabel",
+      "STEPS_ID": 365872,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 19,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 243403,
+          "DATASETVALUE": "TRADE_VERIFY",
+          "DATA_SUMMARY_ID": 365741,
+          "SKIP": 0,
+          "STEPS_ID": 365872
+        },
+        {
+          "Data_Setting_Id": 243408,
+          "DATASETVALUE": "TRADE_VERIFY",
+          "DATA_SUMMARY_ID": 365763,
+          "SKIP": 0,
+          "STEPS_ID": 365872
+        },
+        {
+          "Data_Setting_Id": 243405,
+          "DATASETVALUE": "TRADE_VERIFY",
+          "DATA_SUMMARY_ID": 365754,
+          "SKIP": 0,
+          "STEPS_ID": 365872
+        },
+        {
+          "Data_Setting_Id": 243406,
+          "DATASETVALUE": "TRADE_VERIFY",
+          "DATA_SUMMARY_ID": 365758,
+          "SKIP": 0,
+          "STEPS_ID": 365872
+        },
+        {
+          "Data_Setting_Id": 243409,
+          "DATASETVALUE": "TRADE_VERIFY",
+          "DATA_SUMMARY_ID": 365773,
+          "SKIP": 0,
+          "STEPS_ID": 365872
+        },
+        {
+          "Data_Setting_Id": 243407,
+          "DATASETVALUE": "TRADE_VERIFY",
+          "DATA_SUMMARY_ID": 365759,
+          "SKIP": 0,
+          "STEPS_ID": 365872
+        },
+        {
+          "Data_Setting_Id": 243404,
+          "DATASETVALUE": "TRADE_VERIFY",
+          "DATA_SUMMARY_ID": 365746,
+          "SKIP": 0,
+          "STEPS_ID": 365872
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2849,
+      "TEST_CASE_NAME": "Deal Pmt Action Util",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "DEAL_PMT_TRADE_AUDIT_STATE",
+      "OBJECT_ID": 46806,
+      "OBJECT_TYPE": "DEAL_PMT_TRADE",
+      "QUICK_ACCESS": "SwfName:=_auditStateText",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 28973,
+      "TYPE_NAME": "SwfLabel",
+      "STEPS_ID": 365872,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 19,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 243410,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365741,
+          "SKIP": 0,
+          "STEPS_ID": 365873
+        },
+        {
+          "Data_Setting_Id": 243415,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365763,
+          "SKIP": 0,
+          "STEPS_ID": 365873
+        },
+        {
+          "Data_Setting_Id": 243412,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365754,
+          "SKIP": 0,
+          "STEPS_ID": 365873
+        },
+        {
+          "Data_Setting_Id": 243413,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365758,
+          "SKIP": 0,
+          "STEPS_ID": 365873
+        },
+        {
+          "Data_Setting_Id": 243416,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365773,
+          "SKIP": 0,
+          "STEPS_ID": 365873
+        },
+        {
+          "Data_Setting_Id": 243414,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365759,
+          "SKIP": 0,
+          "STEPS_ID": 365873
+        },
+        {
+          "Data_Setting_Id": 243411,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365746,
+          "SKIP": 0,
+          "STEPS_ID": 365873
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2849,
+      "TEST_CASE_NAME": "Deal Pmt Action Util",
+      "KEY_WORD_ID": 3,
+      "KEY_WORD_NAME": "CheckError",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 365873,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 20,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 243417,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365741,
+          "SKIP": 0,
+          "STEPS_ID": 365874
+        },
+        {
+          "Data_Setting_Id": 243422,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365763,
+          "SKIP": 0,
+          "STEPS_ID": 365874
+        },
+        {
+          "Data_Setting_Id": 243419,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365754,
+          "SKIP": 0,
+          "STEPS_ID": 365874
+        },
+        {
+          "Data_Setting_Id": 243420,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365758,
+          "SKIP": 0,
+          "STEPS_ID": 365874
+        },
+        {
+          "Data_Setting_Id": 243423,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365773,
+          "SKIP": 0,
+          "STEPS_ID": 365874
+        },
+        {
+          "Data_Setting_Id": 243421,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365759,
+          "SKIP": 0,
+          "STEPS_ID": 365874
+        },
+        {
+          "Data_Setting_Id": 243418,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365746,
+          "SKIP": 0,
+          "STEPS_ID": 365874
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2849,
+      "TEST_CASE_NAME": "Deal Pmt Action Util",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "DEAL_PMT_TRADE_PANEL",
+      "OBJECT_ID": 48921,
+      "OBJECT_TYPE": "DEAL_PMT_TRADE",
+      "QUICK_ACCESS": "SwfName:=DealPaymentView",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 48893,
+      "TYPE_NAME": "SwfWindow",
+      "STEPS_ID": 365874,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 21,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 243417,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365741,
+          "SKIP": 0,
+          "STEPS_ID": 365874
+        },
+        {
+          "Data_Setting_Id": 243422,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365763,
+          "SKIP": 0,
+          "STEPS_ID": 365874
+        },
+        {
+          "Data_Setting_Id": 243419,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365754,
+          "SKIP": 0,
+          "STEPS_ID": 365874
+        },
+        {
+          "Data_Setting_Id": 243420,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365758,
+          "SKIP": 0,
+          "STEPS_ID": 365874
+        },
+        {
+          "Data_Setting_Id": 243423,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365773,
+          "SKIP": 0,
+          "STEPS_ID": 365874
+        },
+        {
+          "Data_Setting_Id": 243421,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365759,
+          "SKIP": 0,
+          "STEPS_ID": 365874
+        },
+        {
+          "Data_Setting_Id": 243418,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365746,
+          "SKIP": 0,
+          "STEPS_ID": 365874
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2849,
+      "TEST_CASE_NAME": "Deal Pmt Action Util",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "DEAL_PMT_TRADE_PANEL",
+      "OBJECT_ID": 48959,
+      "OBJECT_TYPE": "DEAL_PMT_TRADE",
+      "QUICK_ACCESS": "SwfName:=DealPaymentView",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 48893,
+      "TYPE_NAME": "SwfWindow",
+      "STEPS_ID": 365874,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 21,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 243424,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365741,
+          "SKIP": 0,
+          "STEPS_ID": 365875
+        },
+        {
+          "Data_Setting_Id": 243429,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365763,
+          "SKIP": 0,
+          "STEPS_ID": 365875
+        },
+        {
+          "Data_Setting_Id": 243426,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365754,
+          "SKIP": 0,
+          "STEPS_ID": 365875
+        },
+        {
+          "Data_Setting_Id": 243427,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365758,
+          "SKIP": 0,
+          "STEPS_ID": 365875
+        },
+        {
+          "Data_Setting_Id": 243430,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365773,
+          "SKIP": 0,
+          "STEPS_ID": 365875
+        },
+        {
+          "Data_Setting_Id": 243428,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365759,
+          "SKIP": 0,
+          "STEPS_ID": 365875
+        },
+        {
+          "Data_Setting_Id": 243425,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365746,
+          "SKIP": 0,
+          "STEPS_ID": 365875
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2849,
+      "TEST_CASE_NAME": "Deal Pmt Action Util",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 365875,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 22,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 243424,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365741,
+          "SKIP": 0,
+          "STEPS_ID": 365875
+        },
+        {
+          "Data_Setting_Id": 243429,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365763,
+          "SKIP": 0,
+          "STEPS_ID": 365875
+        },
+        {
+          "Data_Setting_Id": 243426,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365754,
+          "SKIP": 0,
+          "STEPS_ID": 365875
+        },
+        {
+          "Data_Setting_Id": 243427,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365758,
+          "SKIP": 0,
+          "STEPS_ID": 365875
+        },
+        {
+          "Data_Setting_Id": 243430,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365773,
+          "SKIP": 0,
+          "STEPS_ID": 365875
+        },
+        {
+          "Data_Setting_Id": 243428,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365759,
+          "SKIP": 0,
+          "STEPS_ID": 365875
+        },
+        {
+          "Data_Setting_Id": 243425,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365746,
+          "SKIP": 0,
+          "STEPS_ID": 365875
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2849,
+      "TEST_CASE_NAME": "Deal Pmt Action Util",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 365875,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 22,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 243431,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365741,
+          "SKIP": 0,
+          "STEPS_ID": 365876
+        },
+        {
+          "Data_Setting_Id": 243436,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365763,
+          "SKIP": 0,
+          "STEPS_ID": 365876
+        },
+        {
+          "Data_Setting_Id": 243433,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365754,
+          "SKIP": 0,
+          "STEPS_ID": 365876
+        },
+        {
+          "Data_Setting_Id": 243434,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365758,
+          "SKIP": 0,
+          "STEPS_ID": 365876
+        },
+        {
+          "Data_Setting_Id": 243437,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365773,
+          "SKIP": 0,
+          "STEPS_ID": 365876
+        },
+        {
+          "Data_Setting_Id": 243435,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365759,
+          "SKIP": 0,
+          "STEPS_ID": 365876
+        },
+        {
+          "Data_Setting_Id": 243432,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365746,
+          "SKIP": 0,
+          "STEPS_ID": 365876
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2849,
+      "TEST_CASE_NAME": "Deal Pmt Action Util",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 32409,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 30430,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 365876,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 23,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 243431,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365741,
+          "SKIP": 0,
+          "STEPS_ID": 365876
+        },
+        {
+          "Data_Setting_Id": 243436,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365763,
+          "SKIP": 0,
+          "STEPS_ID": 365876
+        },
+        {
+          "Data_Setting_Id": 243433,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365754,
+          "SKIP": 0,
+          "STEPS_ID": 365876
+        },
+        {
+          "Data_Setting_Id": 243434,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365758,
+          "SKIP": 0,
+          "STEPS_ID": 365876
+        },
+        {
+          "Data_Setting_Id": 243437,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365773,
+          "SKIP": 0,
+          "STEPS_ID": 365876
+        },
+        {
+          "Data_Setting_Id": 243435,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365759,
+          "SKIP": 0,
+          "STEPS_ID": 365876
+        },
+        {
+          "Data_Setting_Id": 243432,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365746,
+          "SKIP": 0,
+          "STEPS_ID": 365876
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2849,
+      "TEST_CASE_NAME": "Deal Pmt Action Util",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 40727,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 30430,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 365876,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 23,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 243438,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365741,
+          "SKIP": 0,
+          "STEPS_ID": 365877
+        },
+        {
+          "Data_Setting_Id": 243443,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365763,
+          "SKIP": 0,
+          "STEPS_ID": 365877
+        },
+        {
+          "Data_Setting_Id": 243440,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365754,
+          "SKIP": 0,
+          "STEPS_ID": 365877
+        },
+        {
+          "Data_Setting_Id": 243441,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365758,
+          "SKIP": 0,
+          "STEPS_ID": 365877
+        },
+        {
+          "Data_Setting_Id": 243444,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365773,
+          "SKIP": 0,
+          "STEPS_ID": 365877
+        },
+        {
+          "Data_Setting_Id": 243442,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365759,
+          "SKIP": 0,
+          "STEPS_ID": 365877
+        },
+        {
+          "Data_Setting_Id": 243439,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365746,
+          "SKIP": 0,
+          "STEPS_ID": 365877
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2849,
+      "TEST_CASE_NAME": "Deal Pmt Action Util",
+      "KEY_WORD_ID": 38,
+      "KEY_WORD_NAME": "Dismiss",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 365877,
+      "COLUMN_ROW_SETTING": "5",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 24,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 243445,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365741,
+          "SKIP": 0,
+          "STEPS_ID": 365878
+        },
+        {
+          "Data_Setting_Id": 243450,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365763,
+          "SKIP": 0,
+          "STEPS_ID": 365878
+        },
+        {
+          "Data_Setting_Id": 243447,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365754,
+          "SKIP": 0,
+          "STEPS_ID": 365878
+        },
+        {
+          "Data_Setting_Id": 243448,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365758,
+          "SKIP": 0,
+          "STEPS_ID": 365878
+        },
+        {
+          "Data_Setting_Id": 243451,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365773,
+          "SKIP": 0,
+          "STEPS_ID": 365878
+        },
+        {
+          "Data_Setting_Id": 243449,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365759,
+          "SKIP": 0,
+          "STEPS_ID": 365878
+        },
+        {
+          "Data_Setting_Id": 243446,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365746,
+          "SKIP": 0,
+          "STEPS_ID": 365878
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2849,
+      "TEST_CASE_NAME": "Deal Pmt Action Util",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 32409,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 30430,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 365878,
+      "COLUMN_ROW_SETTING": "SKIP_NOTEXIST",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 25,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 243445,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365741,
+          "SKIP": 0,
+          "STEPS_ID": 365878
+        },
+        {
+          "Data_Setting_Id": 243450,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365763,
+          "SKIP": 0,
+          "STEPS_ID": 365878
+        },
+        {
+          "Data_Setting_Id": 243447,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365754,
+          "SKIP": 0,
+          "STEPS_ID": 365878
+        },
+        {
+          "Data_Setting_Id": 243448,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365758,
+          "SKIP": 0,
+          "STEPS_ID": 365878
+        },
+        {
+          "Data_Setting_Id": 243451,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365773,
+          "SKIP": 0,
+          "STEPS_ID": 365878
+        },
+        {
+          "Data_Setting_Id": 243449,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365759,
+          "SKIP": 0,
+          "STEPS_ID": 365878
+        },
+        {
+          "Data_Setting_Id": 243446,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365746,
+          "SKIP": 0,
+          "STEPS_ID": 365878
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2849,
+      "TEST_CASE_NAME": "Deal Pmt Action Util",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 40727,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 30430,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 365878,
+      "COLUMN_ROW_SETTING": "SKIP_NOTEXIST",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 25,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 243452,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365741,
+          "SKIP": 0,
+          "STEPS_ID": 365879
+        },
+        {
+          "Data_Setting_Id": 243457,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365763,
+          "SKIP": 0,
+          "STEPS_ID": 365879
+        },
+        {
+          "Data_Setting_Id": 243454,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365754,
+          "SKIP": 0,
+          "STEPS_ID": 365879
+        },
+        {
+          "Data_Setting_Id": 243455,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365758,
+          "SKIP": 0,
+          "STEPS_ID": 365879
+        },
+        {
+          "Data_Setting_Id": 243458,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365773,
+          "SKIP": 0,
+          "STEPS_ID": 365879
+        },
+        {
+          "Data_Setting_Id": 243456,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365759,
+          "SKIP": 0,
+          "STEPS_ID": 365879
+        },
+        {
+          "Data_Setting_Id": 243453,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 365746,
+          "SKIP": 0,
+          "STEPS_ID": 365879
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2849,
+      "TEST_CASE_NAME": "Deal Pmt Action Util",
+      "KEY_WORD_ID": 38,
+      "KEY_WORD_NAME": "Dismiss",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 365879,
+      "COLUMN_ROW_SETTING": "5",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 26,
+      "VALUE_SETTING": null
+    }
+  ]
+}

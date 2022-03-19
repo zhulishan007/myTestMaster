@@ -1,0 +1,2322 @@
+{
+  "currentSyncroStatus": 0,
+  "assignedApplications": [
+    194,
+    193,
+    -1
+  ],
+  "assignedTestSuiteIDs": [
+    1324
+  ],
+  "version": null,
+  "assignedDataSets": [
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 834481,
+      "ALIAS_NAME": "TRC_07_Img",
+      "DESCRIPTION_INFO": "Snapshot DLPMT Version and Trade Image"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 834482,
+      "ALIAS_NAME": "FXFWDD_12_Img",
+      "DESCRIPTION_INFO": "Capture Show Version and FX Forward Trade Image"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 860377,
+      "ALIAS_NAME": "ALM_2_Img",
+      "DESCRIPTION_INFO": null
+    }
+  ],
+  "allSteps": [
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 585148,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 860377,
+          "SKIP": 0,
+          "STEPS_ID": 834487
+        },
+        {
+          "Data_Setting_Id": 575029,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834482,
+          "SKIP": 0,
+          "STEPS_ID": 834487
+        },
+        {
+          "Data_Setting_Id": 575028,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834481,
+          "SKIP": 0,
+          "STEPS_ID": 834487
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4450,
+      "TEST_CASE_NAME": "Snapshot FX Forward Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 834487,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 585148,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 860377,
+          "SKIP": 0,
+          "STEPS_ID": 834487
+        },
+        {
+          "Data_Setting_Id": 575029,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834482,
+          "SKIP": 0,
+          "STEPS_ID": 834487
+        },
+        {
+          "Data_Setting_Id": 575028,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834481,
+          "SKIP": 0,
+          "STEPS_ID": 834487
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4450,
+      "TEST_CASE_NAME": "Snapshot FX Forward Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 834487,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 585149,
+          "DATASETVALUE": "New Search",
+          "DATA_SUMMARY_ID": 860377,
+          "SKIP": 0,
+          "STEPS_ID": 834488
+        },
+        {
+          "Data_Setting_Id": 575031,
+          "DATASETVALUE": "New Search",
+          "DATA_SUMMARY_ID": 834482,
+          "SKIP": 0,
+          "STEPS_ID": 834488
+        },
+        {
+          "Data_Setting_Id": 575030,
+          "DATASETVALUE": "New Search",
+          "DATA_SUMMARY_ID": 834481,
+          "SKIP": 0,
+          "STEPS_ID": 834488
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4450,
+      "TEST_CASE_NAME": "Snapshot FX Forward Version and Trade Image",
+      "KEY_WORD_ID": 5,
+      "KEY_WORD_NAME": "ClickMenuIcon",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 834488,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 2,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 585150,
+          "DATASETVALUE": "TEXT|\"Show Version Image\"|IMAGE:VERSION",
+          "DATA_SUMMARY_ID": 860377,
+          "SKIP": 0,
+          "STEPS_ID": 834489
+        },
+        {
+          "Data_Setting_Id": 575033,
+          "DATASETVALUE": "TEXT|\"Show Version Image\"|IMAGE:VERSION",
+          "DATA_SUMMARY_ID": 834482,
+          "SKIP": 0,
+          "STEPS_ID": 834489
+        },
+        {
+          "Data_Setting_Id": 575032,
+          "DATASETVALUE": "TEXT|\"Show Version Image\"|IMAGE:VERSION",
+          "DATA_SUMMARY_ID": 834481,
+          "SKIP": 0,
+          "STEPS_ID": 834489
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4450,
+      "TEST_CASE_NAME": "Snapshot FX Forward Version and Trade Image",
+      "KEY_WORD_ID": 10819,
+      "KEY_WORD_NAME": "Comment",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 834489,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 3,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 585151,
+          "DATASETVALUE": "TEXT|\"FX Forward Trade\"|IMAGE:FXFWD_TRADE",
+          "DATA_SUMMARY_ID": 860377,
+          "SKIP": 0,
+          "STEPS_ID": 834490
+        },
+        {
+          "Data_Setting_Id": 575035,
+          "DATASETVALUE": "TEXT|\"FX Forward Trade\"|IMAGE:FXFWD_TRADE",
+          "DATA_SUMMARY_ID": 834482,
+          "SKIP": 0,
+          "STEPS_ID": 834490
+        },
+        {
+          "Data_Setting_Id": 575034,
+          "DATASETVALUE": "TEXT|\"FX Forward Trade\"|IMAGE:FXFWD_TRADE",
+          "DATA_SUMMARY_ID": 834481,
+          "SKIP": 0,
+          "STEPS_ID": 834490
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4450,
+      "TEST_CASE_NAME": "Snapshot FX Forward Version and Trade Image",
+      "KEY_WORD_ID": 10819,
+      "KEY_WORD_NAME": "Comment",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 834490,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 4,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 585152,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 860377,
+          "SKIP": 0,
+          "STEPS_ID": 834491
+        },
+        {
+          "Data_Setting_Id": 575037,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834482,
+          "SKIP": 0,
+          "STEPS_ID": 834491
+        },
+        {
+          "Data_Setting_Id": 575036,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834481,
+          "SKIP": 0,
+          "STEPS_ID": 834491
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4450,
+      "TEST_CASE_NAME": "Snapshot FX Forward Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 37247,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\n",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 834491,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 5,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 585152,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 860377,
+          "SKIP": 0,
+          "STEPS_ID": 834491
+        },
+        {
+          "Data_Setting_Id": 575037,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834482,
+          "SKIP": 0,
+          "STEPS_ID": 834491
+        },
+        {
+          "Data_Setting_Id": 575036,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834481,
+          "SKIP": 0,
+          "STEPS_ID": 834491
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4450,
+      "TEST_CASE_NAME": "Snapshot FX Forward Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 46046,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswfname:=Desktop|Page",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 834491,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 5,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 585153,
+          "DATASETVALUE": "FXFWD",
+          "DATA_SUMMARY_ID": 860377,
+          "SKIP": 0,
+          "STEPS_ID": 834492
+        },
+        {
+          "Data_Setting_Id": 575039,
+          "DATASETVALUE": "FXFWD",
+          "DATA_SUMMARY_ID": 834482,
+          "SKIP": 0,
+          "STEPS_ID": 834492
+        },
+        {
+          "Data_Setting_Id": 575038,
+          "DATASETVALUE": "FXFWD",
+          "DATA_SUMMARY_ID": 834481,
+          "SKIP": 0,
+          "STEPS_ID": 834492
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4450,
+      "TEST_CASE_NAME": "Snapshot FX Forward Version and Trade Image",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_TYPES",
+      "OBJECT_ID": 37854,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeTypes",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 26818,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 834492,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 6,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 585153,
+          "DATASETVALUE": "FXFWD",
+          "DATA_SUMMARY_ID": 860377,
+          "SKIP": 0,
+          "STEPS_ID": 834492
+        },
+        {
+          "Data_Setting_Id": 575039,
+          "DATASETVALUE": "FXFWD",
+          "DATA_SUMMARY_ID": 834482,
+          "SKIP": 0,
+          "STEPS_ID": 834492
+        },
+        {
+          "Data_Setting_Id": 575038,
+          "DATASETVALUE": "FXFWD",
+          "DATA_SUMMARY_ID": 834481,
+          "SKIP": 0,
+          "STEPS_ID": 834492
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4450,
+      "TEST_CASE_NAME": "Snapshot FX Forward Version and Trade Image",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_TYPES",
+      "OBJECT_ID": 46634,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeTypes",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 26818,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 834492,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 6,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 585154,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 860377,
+          "SKIP": 4,
+          "STEPS_ID": 834493
+        },
+        {
+          "Data_Setting_Id": 575041,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 834482,
+          "SKIP": 4,
+          "STEPS_ID": 834493
+        },
+        {
+          "Data_Setting_Id": 575040,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 834481,
+          "SKIP": 4,
+          "STEPS_ID": 834493
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4450,
+      "TEST_CASE_NAME": "Snapshot FX Forward Version and Trade Image",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_STATUS",
+      "OBJECT_ID": 34193,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeStatus",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 32176,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 834493,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 7,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 585154,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 860377,
+          "SKIP": 4,
+          "STEPS_ID": 834493
+        },
+        {
+          "Data_Setting_Id": 575041,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 834482,
+          "SKIP": 4,
+          "STEPS_ID": 834493
+        },
+        {
+          "Data_Setting_Id": 575040,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 834481,
+          "SKIP": 4,
+          "STEPS_ID": 834493
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4450,
+      "TEST_CASE_NAME": "Snapshot FX Forward Version and Trade Image",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_STATUS",
+      "OBJECT_ID": 43743,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeStatus",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 32176,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 834493,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 7,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 585155,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 860377,
+          "SKIP": 0,
+          "STEPS_ID": 834494
+        },
+        {
+          "Data_Setting_Id": 575043,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 834482,
+          "SKIP": 0,
+          "STEPS_ID": 834494
+        },
+        {
+          "Data_Setting_Id": 575042,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 834481,
+          "SKIP": 0,
+          "STEPS_ID": 834494
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4450,
+      "TEST_CASE_NAME": "Snapshot FX Forward Version and Trade Image",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_EXTERNAL_TRADE_ID",
+      "OBJECT_ID": 44105,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=ExternalTradeId",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 27732,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 834494,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 8,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 585155,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 860377,
+          "SKIP": 0,
+          "STEPS_ID": 834494
+        },
+        {
+          "Data_Setting_Id": 575043,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 834482,
+          "SKIP": 0,
+          "STEPS_ID": 834494
+        },
+        {
+          "Data_Setting_Id": 575042,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 834481,
+          "SKIP": 0,
+          "STEPS_ID": 834494
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4450,
+      "TEST_CASE_NAME": "Snapshot FX Forward Version and Trade Image",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_EXTERNAL_TRADE_ID",
+      "OBJECT_ID": 34602,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=ExternalTradeId",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 27732,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 834494,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 8,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 585156,
+          "DATASETVALUE": "MODAL_VAR:ALM_2_TRADE_ID",
+          "DATA_SUMMARY_ID": 860377,
+          "SKIP": 0,
+          "STEPS_ID": 834495
+        },
+        {
+          "Data_Setting_Id": 575044,
+          "DATASETVALUE": "MODAL_VAR:FXFW_12_TRADE_ID",
+          "DATA_SUMMARY_ID": 834482,
+          "SKIP": 0,
+          "STEPS_ID": 834495
+        },
+        {
+          "Data_Setting_Id": 575045,
+          "DATASETVALUE": "MODAL_VAR:TRC_07_TRADE_ID",
+          "DATA_SUMMARY_ID": 834481,
+          "SKIP": 0,
+          "STEPS_ID": 834495
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4450,
+      "TEST_CASE_NAME": "Snapshot FX Forward Version and Trade Image",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_ID",
+      "OBJECT_ID": 41222,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeID",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 29531,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 834495,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 9,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 585156,
+          "DATASETVALUE": "MODAL_VAR:ALM_2_TRADE_ID",
+          "DATA_SUMMARY_ID": 860377,
+          "SKIP": 0,
+          "STEPS_ID": 834495
+        },
+        {
+          "Data_Setting_Id": 575044,
+          "DATASETVALUE": "MODAL_VAR:FXFW_12_TRADE_ID",
+          "DATA_SUMMARY_ID": 834482,
+          "SKIP": 0,
+          "STEPS_ID": 834495
+        },
+        {
+          "Data_Setting_Id": 575045,
+          "DATASETVALUE": "MODAL_VAR:TRC_07_TRADE_ID",
+          "DATA_SUMMARY_ID": 834481,
+          "SKIP": 0,
+          "STEPS_ID": 834495
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4450,
+      "TEST_CASE_NAME": "Snapshot FX Forward Version and Trade Image",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_ID",
+      "OBJECT_ID": 33373,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeID",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 29531,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 834495,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 9,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 585157,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 860377,
+          "SKIP": 0,
+          "STEPS_ID": 834496
+        },
+        {
+          "Data_Setting_Id": 575047,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834482,
+          "SKIP": 0,
+          "STEPS_ID": 834496
+        },
+        {
+          "Data_Setting_Id": 575046,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834481,
+          "SKIP": 0,
+          "STEPS_ID": 834496
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4450,
+      "TEST_CASE_NAME": "Snapshot FX Forward Version and Trade Image",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_FIND_NOW",
+      "OBJECT_ID": 32728,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_findNowButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 32179,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 834496,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 10,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 585157,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 860377,
+          "SKIP": 0,
+          "STEPS_ID": 834496
+        },
+        {
+          "Data_Setting_Id": 575047,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834482,
+          "SKIP": 0,
+          "STEPS_ID": 834496
+        },
+        {
+          "Data_Setting_Id": 575046,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834481,
+          "SKIP": 0,
+          "STEPS_ID": 834496
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4450,
+      "TEST_CASE_NAME": "Snapshot FX Forward Version and Trade Image",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_FIND_NOW",
+      "OBJECT_ID": 45052,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_findNowButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 32179,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 834496,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 10,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 585158,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 860377,
+          "SKIP": 0,
+          "STEPS_ID": 834497
+        },
+        {
+          "Data_Setting_Id": 575049,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834482,
+          "SKIP": 0,
+          "STEPS_ID": 834497
+        },
+        {
+          "Data_Setting_Id": 575048,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834481,
+          "SKIP": 0,
+          "STEPS_ID": 834497
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4450,
+      "TEST_CASE_NAME": "Snapshot FX Forward Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 37247,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\n",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 834497,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 11,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 585158,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 860377,
+          "SKIP": 0,
+          "STEPS_ID": 834497
+        },
+        {
+          "Data_Setting_Id": 575049,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834482,
+          "SKIP": 0,
+          "STEPS_ID": 834497
+        },
+        {
+          "Data_Setting_Id": 575048,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834481,
+          "SKIP": 0,
+          "STEPS_ID": 834497
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4450,
+      "TEST_CASE_NAME": "Snapshot FX Forward Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 46046,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswfname:=Desktop|Page",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 834497,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 11,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 585159,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 860377,
+          "SKIP": 0,
+          "STEPS_ID": 834498
+        },
+        {
+          "Data_Setting_Id": 575051,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 834482,
+          "SKIP": 0,
+          "STEPS_ID": 834498
+        },
+        {
+          "Data_Setting_Id": 575050,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 834481,
+          "SKIP": 0,
+          "STEPS_ID": 834498
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4450,
+      "TEST_CASE_NAME": "Snapshot FX Forward Version and Trade Image",
+      "KEY_WORD_ID": 86,
+      "KEY_WORD_NAME": "PressKeys",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_TABLE",
+      "OBJECT_ID": 41666,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_queryResults",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 28613,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 834498,
+      "COLUMN_ROW_SETTING": "100,40",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 12,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 585159,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 860377,
+          "SKIP": 0,
+          "STEPS_ID": 834498
+        },
+        {
+          "Data_Setting_Id": 575051,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 834482,
+          "SKIP": 0,
+          "STEPS_ID": 834498
+        },
+        {
+          "Data_Setting_Id": 575050,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 834481,
+          "SKIP": 0,
+          "STEPS_ID": 834498
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4450,
+      "TEST_CASE_NAME": "Snapshot FX Forward Version and Trade Image",
+      "KEY_WORD_ID": 86,
+      "KEY_WORD_NAME": "PressKeys",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_TABLE",
+      "OBJECT_ID": 35712,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_queryResults",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 28613,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 834498,
+      "COLUMN_ROW_SETTING": "100,40",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 12,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 585160,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 860377,
+          "SKIP": 0,
+          "STEPS_ID": 834499
+        },
+        {
+          "Data_Setting_Id": 575053,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 834482,
+          "SKIP": 0,
+          "STEPS_ID": 834499
+        },
+        {
+          "Data_Setting_Id": 575052,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 834481,
+          "SKIP": 0,
+          "STEPS_ID": 834499
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4450,
+      "TEST_CASE_NAME": "Snapshot FX Forward Version and Trade Image",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 834499,
+      "COLUMN_ROW_SETTING": "F",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 13,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 585161,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 860377,
+          "SKIP": 0,
+          "STEPS_ID": 834500
+        },
+        {
+          "Data_Setting_Id": 575055,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834482,
+          "SKIP": 0,
+          "STEPS_ID": 834500
+        },
+        {
+          "Data_Setting_Id": 575054,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834481,
+          "SKIP": 0,
+          "STEPS_ID": 834500
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4450,
+      "TEST_CASE_NAME": "Snapshot FX Forward Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "FXFWD_TRADE_POPUP",
+      "OBJECT_ID": 43969,
+      "OBJECT_TYPE": "FXFWD_TRADE_POPUP",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^IFC FX Fwd Trade.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24988,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 834500,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 14,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 585161,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 860377,
+          "SKIP": 0,
+          "STEPS_ID": 834500
+        },
+        {
+          "Data_Setting_Id": 575055,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834482,
+          "SKIP": 0,
+          "STEPS_ID": 834500
+        },
+        {
+          "Data_Setting_Id": 575054,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834481,
+          "SKIP": 0,
+          "STEPS_ID": 834500
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4450,
+      "TEST_CASE_NAME": "Snapshot FX Forward Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "FXFWD_TRADE_POPUP",
+      "OBJECT_ID": 34398,
+      "OBJECT_TYPE": "FXFWD_TRADE_POPUP",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^IFC FX Fwd Trade.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24988,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 834500,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 14,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 585162,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 860377,
+          "SKIP": 0,
+          "STEPS_ID": 834501
+        },
+        {
+          "Data_Setting_Id": 575057,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834482,
+          "SKIP": 0,
+          "STEPS_ID": 834501
+        },
+        {
+          "Data_Setting_Id": 575056,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834481,
+          "SKIP": 0,
+          "STEPS_ID": 834501
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4450,
+      "TEST_CASE_NAME": "Snapshot FX Forward Version and Trade Image",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "FXFWD_TRADE_POPUP",
+      "OBJECT_ID": 43969,
+      "OBJECT_TYPE": "FXFWD_TRADE_POPUP",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^IFC FX Fwd Trade.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24988,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 834501,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 15,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 585162,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 860377,
+          "SKIP": 0,
+          "STEPS_ID": 834501
+        },
+        {
+          "Data_Setting_Id": 575057,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834482,
+          "SKIP": 0,
+          "STEPS_ID": 834501
+        },
+        {
+          "Data_Setting_Id": 575056,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834481,
+          "SKIP": 0,
+          "STEPS_ID": 834501
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4450,
+      "TEST_CASE_NAME": "Snapshot FX Forward Version and Trade Image",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "FXFWD_TRADE_POPUP",
+      "OBJECT_ID": 34398,
+      "OBJECT_TYPE": "FXFWD_TRADE_POPUP",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^IFC FX Fwd Trade.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24988,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 834501,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 15,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 585163,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 860377,
+          "SKIP": 0,
+          "STEPS_ID": 834502
+        },
+        {
+          "Data_Setting_Id": 575059,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 834482,
+          "SKIP": 0,
+          "STEPS_ID": 834502
+        },
+        {
+          "Data_Setting_Id": 575058,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 834481,
+          "SKIP": 0,
+          "STEPS_ID": 834502
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4450,
+      "TEST_CASE_NAME": "Snapshot FX Forward Version and Trade Image",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 834502,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 16,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 585164,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 860377,
+          "SKIP": 0,
+          "STEPS_ID": 834503
+        },
+        {
+          "Data_Setting_Id": 575061,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834482,
+          "SKIP": 0,
+          "STEPS_ID": 834503
+        },
+        {
+          "Data_Setting_Id": 575060,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834481,
+          "SKIP": 0,
+          "STEPS_ID": 834503
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4450,
+      "TEST_CASE_NAME": "Snapshot FX Forward Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "FXFWD_TRADE_POPUP",
+      "OBJECT_ID": 43969,
+      "OBJECT_TYPE": "FXFWD_TRADE_POPUP",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^IFC FX Fwd Trade.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24988,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 834503,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 17,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 585164,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 860377,
+          "SKIP": 0,
+          "STEPS_ID": 834503
+        },
+        {
+          "Data_Setting_Id": 575061,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834482,
+          "SKIP": 0,
+          "STEPS_ID": 834503
+        },
+        {
+          "Data_Setting_Id": 575060,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834481,
+          "SKIP": 0,
+          "STEPS_ID": 834503
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4450,
+      "TEST_CASE_NAME": "Snapshot FX Forward Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "FXFWD_TRADE_POPUP",
+      "OBJECT_ID": 34398,
+      "OBJECT_TYPE": "FXFWD_TRADE_POPUP",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^IFC FX Fwd Trade.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24988,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 834503,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 17,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 585165,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 860377,
+          "SKIP": 0,
+          "STEPS_ID": 834504
+        },
+        {
+          "Data_Setting_Id": 575063,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 834482,
+          "SKIP": 0,
+          "STEPS_ID": 834504
+        },
+        {
+          "Data_Setting_Id": 575062,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 834481,
+          "SKIP": 0,
+          "STEPS_ID": 834504
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4450,
+      "TEST_CASE_NAME": "Snapshot FX Forward Version and Trade Image",
+      "KEY_WORD_ID": 22,
+      "KEY_WORD_NAME": "SelectMenuItem",
+      "OBJECT_HAPPY_NAME": "FXFWD_TRADE_POPUP_TOOLBAR",
+      "OBJECT_ID": 36550,
+      "OBJECT_TYPE": "FXFWD_TRADE_POPUP",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 31914,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 834504,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 18,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 585165,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 860377,
+          "SKIP": 0,
+          "STEPS_ID": 834504
+        },
+        {
+          "Data_Setting_Id": 575063,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 834482,
+          "SKIP": 0,
+          "STEPS_ID": 834504
+        },
+        {
+          "Data_Setting_Id": 575062,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 834481,
+          "SKIP": 0,
+          "STEPS_ID": 834504
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4450,
+      "TEST_CASE_NAME": "Snapshot FX Forward Version and Trade Image",
+      "KEY_WORD_ID": 22,
+      "KEY_WORD_NAME": "SelectMenuItem",
+      "OBJECT_HAPPY_NAME": "FXFWD_TRADE_POPUP_TOOLBAR",
+      "OBJECT_ID": 42303,
+      "OBJECT_TYPE": "FXFWD_TRADE_POPUP",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 31914,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 834504,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 18,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 585166,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 860377,
+          "SKIP": 0,
+          "STEPS_ID": 834505
+        },
+        {
+          "Data_Setting_Id": 575065,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834482,
+          "SKIP": 0,
+          "STEPS_ID": 834505
+        },
+        {
+          "Data_Setting_Id": 575064,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834481,
+          "SKIP": 0,
+          "STEPS_ID": 834505
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4450,
+      "TEST_CASE_NAME": "Snapshot FX Forward Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 834505,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 19,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 585166,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 860377,
+          "SKIP": 0,
+          "STEPS_ID": 834505
+        },
+        {
+          "Data_Setting_Id": 575065,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834482,
+          "SKIP": 0,
+          "STEPS_ID": 834505
+        },
+        {
+          "Data_Setting_Id": 575064,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834481,
+          "SKIP": 0,
+          "STEPS_ID": 834505
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4450,
+      "TEST_CASE_NAME": "Snapshot FX Forward Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 834505,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 19,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 585167,
+          "DATASETVALUE": "Desktop Menu;IFC FX Fwd Trade;Show Version",
+          "DATA_SUMMARY_ID": 860377,
+          "SKIP": 0,
+          "STEPS_ID": 834506
+        },
+        {
+          "Data_Setting_Id": 575067,
+          "DATASETVALUE": "Desktop Menu;IFC FX Fwd Trade;Show Version",
+          "DATA_SUMMARY_ID": 834482,
+          "SKIP": 0,
+          "STEPS_ID": 834506
+        },
+        {
+          "Data_Setting_Id": 575066,
+          "DATASETVALUE": "Desktop Menu;IFC FX Fwd Trade;Show Version",
+          "DATA_SUMMARY_ID": 834481,
+          "SKIP": 0,
+          "STEPS_ID": 834506
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4450,
+      "TEST_CASE_NAME": "Snapshot FX Forward Version and Trade Image",
+      "KEY_WORD_ID": 22,
+      "KEY_WORD_NAME": "SelectMenuItem",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 834506,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 20,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 585168,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 860377,
+          "SKIP": 0,
+          "STEPS_ID": 834507
+        },
+        {
+          "Data_Setting_Id": 575069,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834482,
+          "SKIP": 0,
+          "STEPS_ID": 834507
+        },
+        {
+          "Data_Setting_Id": 575068,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834481,
+          "SKIP": 0,
+          "STEPS_ID": 834507
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4450,
+      "TEST_CASE_NAME": "Snapshot FX Forward Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "SHOW_VERSION",
+      "OBJECT_ID": 49954,
+      "OBJECT_TYPE": "SHOW_VERSION",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^Show Version.*\nSwfName:=DetachedFormHolder",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 49953,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 834507,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 21,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 585168,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 860377,
+          "SKIP": 0,
+          "STEPS_ID": 834507
+        },
+        {
+          "Data_Setting_Id": 575069,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834482,
+          "SKIP": 0,
+          "STEPS_ID": 834507
+        },
+        {
+          "Data_Setting_Id": 575068,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834481,
+          "SKIP": 0,
+          "STEPS_ID": 834507
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4450,
+      "TEST_CASE_NAME": "Snapshot FX Forward Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "SHOW_VERSION",
+      "OBJECT_ID": 49957,
+      "OBJECT_TYPE": "SHOW_VERSION",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^Show Version.*\nSwfName:=DetachedFormHolder",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 49953,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 834507,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 21,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 585169,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 860377,
+          "SKIP": 0,
+          "STEPS_ID": 834508
+        },
+        {
+          "Data_Setting_Id": 575071,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834482,
+          "SKIP": 0,
+          "STEPS_ID": 834508
+        },
+        {
+          "Data_Setting_Id": 575070,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834481,
+          "SKIP": 0,
+          "STEPS_ID": 834508
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4450,
+      "TEST_CASE_NAME": "Snapshot FX Forward Version and Trade Image",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "SHOW_VERSION",
+      "OBJECT_ID": 49954,
+      "OBJECT_TYPE": "SHOW_VERSION",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^Show Version.*\nSwfName:=DetachedFormHolder",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 49953,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 834508,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 22,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 585169,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 860377,
+          "SKIP": 0,
+          "STEPS_ID": 834508
+        },
+        {
+          "Data_Setting_Id": 575071,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834482,
+          "SKIP": 0,
+          "STEPS_ID": 834508
+        },
+        {
+          "Data_Setting_Id": 575070,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834481,
+          "SKIP": 0,
+          "STEPS_ID": 834508
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4450,
+      "TEST_CASE_NAME": "Snapshot FX Forward Version and Trade Image",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "SHOW_VERSION",
+      "OBJECT_ID": 49957,
+      "OBJECT_TYPE": "SHOW_VERSION",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^Show Version.*\nSwfName:=DetachedFormHolder",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 49953,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 834508,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 22,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 585170,
+          "DATASETVALUE": "VERSION",
+          "DATA_SUMMARY_ID": 860377,
+          "SKIP": 0,
+          "STEPS_ID": 834509
+        },
+        {
+          "Data_Setting_Id": 575073,
+          "DATASETVALUE": "VERSION",
+          "DATA_SUMMARY_ID": 834482,
+          "SKIP": 0,
+          "STEPS_ID": 834509
+        },
+        {
+          "Data_Setting_Id": 575072,
+          "DATASETVALUE": "VERSION",
+          "DATA_SUMMARY_ID": 834481,
+          "SKIP": 0,
+          "STEPS_ID": 834509
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4450,
+      "TEST_CASE_NAME": "Snapshot FX Forward Version and Trade Image",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "SHOW_VERSION",
+      "OBJECT_ID": 49954,
+      "OBJECT_TYPE": "SHOW_VERSION",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^Show Version.*\nSwfName:=DetachedFormHolder",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 49953,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 834509,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 23,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 585170,
+          "DATASETVALUE": "VERSION",
+          "DATA_SUMMARY_ID": 860377,
+          "SKIP": 0,
+          "STEPS_ID": 834509
+        },
+        {
+          "Data_Setting_Id": 575073,
+          "DATASETVALUE": "VERSION",
+          "DATA_SUMMARY_ID": 834482,
+          "SKIP": 0,
+          "STEPS_ID": 834509
+        },
+        {
+          "Data_Setting_Id": 575072,
+          "DATASETVALUE": "VERSION",
+          "DATA_SUMMARY_ID": 834481,
+          "SKIP": 0,
+          "STEPS_ID": 834509
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4450,
+      "TEST_CASE_NAME": "Snapshot FX Forward Version and Trade Image",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "SHOW_VERSION",
+      "OBJECT_ID": 49957,
+      "OBJECT_TYPE": "SHOW_VERSION",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^Show Version.*\nSwfName:=DetachedFormHolder",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 49953,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 834509,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 23,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 585171,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 860377,
+          "SKIP": 0,
+          "STEPS_ID": 834510
+        },
+        {
+          "Data_Setting_Id": 575075,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834482,
+          "SKIP": 0,
+          "STEPS_ID": 834510
+        },
+        {
+          "Data_Setting_Id": 575074,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834481,
+          "SKIP": 0,
+          "STEPS_ID": 834510
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4450,
+      "TEST_CASE_NAME": "Snapshot FX Forward Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 834510,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 24,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 585171,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 860377,
+          "SKIP": 0,
+          "STEPS_ID": 834510
+        },
+        {
+          "Data_Setting_Id": 575075,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834482,
+          "SKIP": 0,
+          "STEPS_ID": 834510
+        },
+        {
+          "Data_Setting_Id": 575074,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834481,
+          "SKIP": 0,
+          "STEPS_ID": 834510
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4450,
+      "TEST_CASE_NAME": "Snapshot FX Forward Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 834510,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 24,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 585172,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 860377,
+          "SKIP": 0,
+          "STEPS_ID": 834511
+        },
+        {
+          "Data_Setting_Id": 575077,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834482,
+          "SKIP": 0,
+          "STEPS_ID": 834511
+        },
+        {
+          "Data_Setting_Id": 575076,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834481,
+          "SKIP": 0,
+          "STEPS_ID": 834511
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4450,
+      "TEST_CASE_NAME": "Snapshot FX Forward Version and Trade Image",
+      "KEY_WORD_ID": 38,
+      "KEY_WORD_NAME": "Dismiss",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 834511,
+      "COLUMN_ROW_SETTING": "10",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 25,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 585173,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 860377,
+          "SKIP": 0,
+          "STEPS_ID": 834512
+        },
+        {
+          "Data_Setting_Id": 575079,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834482,
+          "SKIP": 0,
+          "STEPS_ID": 834512
+        },
+        {
+          "Data_Setting_Id": 575078,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834481,
+          "SKIP": 0,
+          "STEPS_ID": 834512
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4450,
+      "TEST_CASE_NAME": "Snapshot FX Forward Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "FXFWD",
+      "OBJECT_ID": 41665,
+      "OBJECT_TYPE": "FXFWD",
+      "QUICK_ACCESS": "is owned window:=False \nis child window:=False \nswfname:=Desktop \nswftypename:=Summit\\.Framework\\.Desktop\\.Desktop \nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25022,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 834512,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 26,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 585173,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 860377,
+          "SKIP": 0,
+          "STEPS_ID": 834512
+        },
+        {
+          "Data_Setting_Id": 575079,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834482,
+          "SKIP": 0,
+          "STEPS_ID": 834512
+        },
+        {
+          "Data_Setting_Id": 575078,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834481,
+          "SKIP": 0,
+          "STEPS_ID": 834512
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4450,
+      "TEST_CASE_NAME": "Snapshot FX Forward Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "FXFWD",
+      "OBJECT_ID": 35711,
+      "OBJECT_TYPE": "FXFWD",
+      "QUICK_ACCESS": "is owned window:=False \nis child window:=False \nswfname:=Desktop \nswftypename:=Summit\\.Framework\\.Desktop\\.Desktop \nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25022,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 834512,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 26,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 585174,
+          "DATASETVALUE": "FXFWD_TRADE",
+          "DATA_SUMMARY_ID": 860377,
+          "SKIP": 0,
+          "STEPS_ID": 834513
+        },
+        {
+          "Data_Setting_Id": 575081,
+          "DATASETVALUE": "FXFWD_TRADE",
+          "DATA_SUMMARY_ID": 834482,
+          "SKIP": 0,
+          "STEPS_ID": 834513
+        },
+        {
+          "Data_Setting_Id": 575080,
+          "DATASETVALUE": "FXFWD_TRADE",
+          "DATA_SUMMARY_ID": 834481,
+          "SKIP": 0,
+          "STEPS_ID": 834513
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4450,
+      "TEST_CASE_NAME": "Snapshot FX Forward Version and Trade Image",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "FXFWD",
+      "OBJECT_ID": 41665,
+      "OBJECT_TYPE": "FXFWD",
+      "QUICK_ACCESS": "is owned window:=False \nis child window:=False \nswfname:=Desktop \nswftypename:=Summit\\.Framework\\.Desktop\\.Desktop \nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25022,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 834513,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 27,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 585174,
+          "DATASETVALUE": "FXFWD_TRADE",
+          "DATA_SUMMARY_ID": 860377,
+          "SKIP": 0,
+          "STEPS_ID": 834513
+        },
+        {
+          "Data_Setting_Id": 575081,
+          "DATASETVALUE": "FXFWD_TRADE",
+          "DATA_SUMMARY_ID": 834482,
+          "SKIP": 0,
+          "STEPS_ID": 834513
+        },
+        {
+          "Data_Setting_Id": 575080,
+          "DATASETVALUE": "FXFWD_TRADE",
+          "DATA_SUMMARY_ID": 834481,
+          "SKIP": 0,
+          "STEPS_ID": 834513
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4450,
+      "TEST_CASE_NAME": "Snapshot FX Forward Version and Trade Image",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "FXFWD",
+      "OBJECT_ID": 35711,
+      "OBJECT_TYPE": "FXFWD",
+      "QUICK_ACCESS": "is owned window:=False \nis child window:=False \nswfname:=Desktop \nswftypename:=Summit\\.Framework\\.Desktop\\.Desktop \nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25022,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 834513,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 27,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 585175,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 860377,
+          "SKIP": 0,
+          "STEPS_ID": 834514
+        },
+        {
+          "Data_Setting_Id": 575083,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834482,
+          "SKIP": 0,
+          "STEPS_ID": 834514
+        },
+        {
+          "Data_Setting_Id": 575082,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834481,
+          "SKIP": 0,
+          "STEPS_ID": 834514
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4450,
+      "TEST_CASE_NAME": "Snapshot FX Forward Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 834514,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 28,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 585175,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 860377,
+          "SKIP": 0,
+          "STEPS_ID": 834514
+        },
+        {
+          "Data_Setting_Id": 575083,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834482,
+          "SKIP": 0,
+          "STEPS_ID": 834514
+        },
+        {
+          "Data_Setting_Id": 575082,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834481,
+          "SKIP": 0,
+          "STEPS_ID": 834514
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4450,
+      "TEST_CASE_NAME": "Snapshot FX Forward Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 834514,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 28,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 585176,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 860377,
+          "SKIP": 0,
+          "STEPS_ID": 834515
+        },
+        {
+          "Data_Setting_Id": 575085,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834482,
+          "SKIP": 0,
+          "STEPS_ID": 834515
+        },
+        {
+          "Data_Setting_Id": 575084,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834481,
+          "SKIP": 0,
+          "STEPS_ID": 834515
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4450,
+      "TEST_CASE_NAME": "Snapshot FX Forward Version and Trade Image",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 32409,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 30430,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 834515,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 29,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 585176,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 860377,
+          "SKIP": 0,
+          "STEPS_ID": 834515
+        },
+        {
+          "Data_Setting_Id": 575085,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834482,
+          "SKIP": 0,
+          "STEPS_ID": 834515
+        },
+        {
+          "Data_Setting_Id": 575084,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834481,
+          "SKIP": 0,
+          "STEPS_ID": 834515
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4450,
+      "TEST_CASE_NAME": "Snapshot FX Forward Version and Trade Image",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 40727,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 30430,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 834515,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 29,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 585177,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 860377,
+          "SKIP": 0,
+          "STEPS_ID": 834516
+        },
+        {
+          "Data_Setting_Id": 575087,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834482,
+          "SKIP": 0,
+          "STEPS_ID": 834516
+        },
+        {
+          "Data_Setting_Id": 575086,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 834481,
+          "SKIP": 0,
+          "STEPS_ID": 834516
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4450,
+      "TEST_CASE_NAME": "Snapshot FX Forward Version and Trade Image",
+      "KEY_WORD_ID": 38,
+      "KEY_WORD_NAME": "Dismiss",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 834516,
+      "COLUMN_ROW_SETTING": "5",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 30,
+      "VALUE_SETTING": null
+    }
+  ]
+}

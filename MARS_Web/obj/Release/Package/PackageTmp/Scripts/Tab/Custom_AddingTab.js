@@ -3,6 +3,11 @@ var ltmpstoryboard = "";
 var testcaseopenflag = false;
 var tempflag = false;
 var tmpname = "";
+Array.prototype.remove = function (val) {
+    for (var i = 0; i < this.length; i++) {
+        if (this[i] == val) this.splice(i, 1);
+    }
+}; 
 function RecusrsiveTab(name) {
     ltempTestCase = name;
     if (name.indexOf(" ") > -1) {
@@ -146,9 +151,13 @@ function PartialRightStoryboardGrid(ProjectId, StoryBoardid, storyboardname, Act
         RecusrsiveTab1(storyboard);
         storyboard = ltmpstoryboard;
     }
+    if (openedTestCaseList.Storyboard != null) {
+        if (!openedTestCaseList.Storyboard.includes(StoryBoardid))
+            openedTestCaseList.Storyboard.push(StoryBoardid);
+    }
     $.ajax({
         url: "/Home/PartialRightStoryboardGrid",
-        data: '{"Projectid":"' + ProjectId + '","Storyboardid":"' + StoryBoardid + '"}',
+        data: '{"storyBoardName":"' + storyboardname +  '","Projectid":"' + ProjectId + '","Storyboardid":"' + StoryBoardid + '"}',
         type: "POST",
         contentType: "application/json;charset=utf-8",
         dataType: "HTML",
@@ -214,10 +223,10 @@ function PartialRightStoryboardGrid(ProjectId, StoryBoardid, storyboardname, Act
                     }
                 });
             }
-            //stoploader();
+            stoploader();
         },
     });
-    stoploader();
+    //stoploader();
 }
 
 function DisplayStoryboardGrid(StoryBoardid, Pid, Default) {
@@ -269,6 +278,10 @@ function PartialRightGrid(TestcaseId, TestsuiteId, ProjectId, TestCaseName, Acti
         RecusrsiveTab(lTestCaseName);
         lTestCaseName = ltempTestCase;
     }
+    if (openedTestCaseList.TestCase != null) {
+        if (!openedTestCaseList.TestCase.includes(TestcaseId))
+            openedTestCaseList.TestCase.push(TestcaseId);
+    }
     $.ajax({
         url: "/Home/RightSideGridView",
         data: '{"TestcaseId":"' + TestcaseId + '","TestsuiteId":"' + TestsuiteId + '","ProjectId":"' + ProjectId + '"}',
@@ -280,6 +293,7 @@ function PartialRightGrid(TestcaseId, TestsuiteId, ProjectId, TestCaseName, Acti
             var lflag = false;
             var ltabName = "#tab" + lTestCaseName;
             var ltabIdName = "tab" + lTestCaseName;
+            
             $('.ULtablist li').each(function (index, value) {
                 if ($(value).children().first().attr("data-target") == ltabName) {
                     if ($(value).children().first().attr("data-tab") == "TestCase") {
@@ -519,7 +533,7 @@ function ActiveTab(Activetab) {
                 classlst.remove("kt-menu__item--open");
             }
         }
-        lTestCaseName = lTestCaseName == undefined ? lTestCaseName : lTestCaseName.replace(/_/g, ' ');
+        lTestCaseName = lTestCaseName == undefined ? "" : lTestCaseName.replace(/_/g, ' ');
         obj = obj == undefined ? obj : obj.replace(/_/g, ' ').trim();
         if (obj.includes(lTestCaseName.trim())) {
             value.classList.add("kt-menu__item--open");
@@ -533,7 +547,7 @@ function ActiveTab(Activetab) {
                 classlst.remove("kt-menu__item--open");
             }
         }
-        storyboardname = storyboardname == undefined ? storyboardname : storyboardname.replace(/_/g, ' ');
+        storyboardname = storyboardname == undefined ? "" : storyboardname.replace(/_/g, ' ');
         obj = obj == undefined ? obj : obj.replace(/_/g, ' ').trim();
         if (storyboardname != undefined) {
             if (obj.includes(storyboardname.trim())) {
@@ -551,6 +565,9 @@ function partialOpenObjectList(Default) {
         dataType: "HTML",
         success: function (result) {
             //CheckAtiveTabStatus();
+            if (!openedListTabList.includes("objectlist"))
+                openedListTabList.push("objectlist");
+            OnPartialRightGridShow(0, "objectlist", "1", "objectlist");
             var lflag = false;
             $('.ULtablist li').each(function (index, value) {
                 if ($(value).children().first().attr("data-target") === "#tabobjectlist") {
@@ -669,6 +686,9 @@ function PartialRightSideTestSuiteGrid(Default) {
         dataType: "HTML",
         success: function (result) {
             // CheckAtiveTabStatus();
+            if (!openedListTabList.includes("TestSuiteList"))
+                openedListTabList.push("TestSuiteList");
+            OnPartialRightGridShow(0, "TestSuiteList", "1", "TestSuiteList");
             var lflag = false;
             $('.ULtablist li').each(function (index, value) {
                 if ($(value).children().first().attr("data-target") == "#tabtestsuitelist") {
@@ -726,6 +746,9 @@ function PartialRightSideProjectGrid(Default) {
         dataType: "HTML",
         success: function (result) {
             // CheckAtiveTabStatus();
+            if (!openedListTabList.includes("ProjectsList"))
+                openedListTabList.push("ProjectsList");
+            OnPartialRightGridShow(0, "ProjectsList", "1", "ProjectsList");
             var lflag = false;
             $('.ULtablist li').each(function (index, value) {
                 if ($(value).children().first().attr("data-target") == "#tabprojectslist") {
@@ -846,6 +869,10 @@ function PartialRightSideAplicationGrid(Default) {
             //CheckAtiveTabStatus();
             var lflag = false;
 
+            if (!openedListTabList.includes("ApplicationList"))
+                openedListTabList.push("ApplicationList");
+            OnPartialRightGridShow(0, "ApplicationList", "1", "ApplicationList");
+
             $('.ULtablist li').each(function (index, value) {
                 if ($(value).children().first().attr("data-target") == "#tabapplicationlist") {
                     lflag = true;
@@ -902,6 +929,9 @@ function PartialRightSideKeywordGrid(Default) {
         dataType: "HTML",
         success: function (result) {
             // CheckAtiveTabStatus();
+            if (!openedListTabList.includes("KeywordList"))
+                openedListTabList.push("KeywordList");
+            OnPartialRightGridShow(0, "KeywordList", "1", "KeywordList");
             var lflag = false;
             $('.ULtablist li').each(function (index, value) {
                 if ($(value).children().first().attr("data-target") == "#tabkeywordlist") {
@@ -958,6 +988,12 @@ function PartialConnectionList() {
         type: "POST",
         contentType: "application/json;charset=utf-8",
         dataType: "HTML",
+        beforeSend: function () {
+            startloader();
+        },
+        complete: function () {
+            stoploader();
+        },
         success: function (result) {
             // CheckAtiveTabStatus();
             var lflag = false;
@@ -986,7 +1022,6 @@ function PartialConnectionList() {
                 });
             }
             else {
-
                 $(".ULtablist").append(ltab);
                 $(".divtablist").append(ldiv);
                 $('.ULtablist li').each(function (index, value) {
@@ -1074,6 +1109,10 @@ function PartialRightSideVariablesGrid(Default) {
             // CheckAtiveTabStatus();
             //$("#rightsideView").html("");
             //$("#rightsideView").html(result);
+            if (!openedListTabList.includes("VariableList"))
+                openedListTabList.push("VariableList");
+            OnPartialRightGridShow(0, "VariableList", "1", "VariableList");
+
             var lflag = false;
             $('.ULtablist li').each(function (index, value) {
                 if ($(value).children().first().attr("data-target") == "#tabvariablelist") {
@@ -1426,6 +1465,9 @@ function PartialRightSideTestCaseGrid(Default) {
         dataType: "HTML",
         success: function (result) {
             // CheckAtiveTabStatus();
+            if (!openedListTabList.includes("TestCaseList"))
+                openedListTabList.push("TestCaseList");
+            OnPartialRightGridShow(0, "TestCaseList", "1", "TestCaseList"); 
             var lflag = false;
             $('.ULtablist li').each(function (index, value) {
                 if ($(value).children().first().attr("data-target") == "#tabtestcaselist") {
@@ -1545,6 +1587,12 @@ function RightSideUserGrid(Default) {
         type: "POST",
         contentType: "application/json;charset=utf-8",
         dataType: "HTML",
+        beforeSend: function () {
+            startloader();
+        },
+        complete: function () {
+            stoploader();
+        },
         success: function (result) {
             var lflag = false;
             $('.ULtablist li').each(function (index, value) {
@@ -1604,6 +1652,12 @@ function partialRightOpenProjectList(Default) {
         type: "POST",
         contentType: "application/json;charset=utf-8",
         dataType: "HTML",
+        beforeSend: function () {
+            startloader();
+        },
+        complete: function () {
+            stoploader();
+        },
         success: function (result) {
             // CheckAtiveTabStatus();
             //$("#rightsideView").html("");
@@ -1639,7 +1693,6 @@ function partialRightOpenProjectList(Default) {
                 });
             }
             else {
-
                 $(".ULtablist").append(ltab);
                 $(".divtablist").append(ldiv);
                 $('.ULtablist li').each(function (index, value) {
@@ -1653,7 +1706,6 @@ function partialRightOpenProjectList(Default) {
                     }
                 });
             }
-            stoploader();
         }
     });
 }
@@ -1789,6 +1841,11 @@ function checkTCSBChangesOnClose(value) {
             // testcaseopenflag = true;
             return "unsaved";
         }
+    } else {
+        /*if (openedListTabList != null && openedListTabList.includes(lFindTab)) {
+            openedListTabList.remove(lFindTab);
+            OnPartialRightGridShow(0, lFindTab, "2", lFindTab);
+        }*/
     }
 }
 var tcsbobj = "";
@@ -1804,7 +1861,7 @@ function alertShow(testcasegrid, lname, tcsbid, suiteid, projectid, tabname, tab
         html:
             "<button type='button' role='button' tabindex='0' class='swal2-styled swal2-confirm cancelSwalBtn' data-testcaseid='" + testcaseid + "' data-storyboarddetailid='" + storyboarddetailid + "' data-base='" + baseid + "' data-compare='" + compareid + "' data-tabsave='" + testcasegrid + "' data-tcsbid='" + tcsbid + "' data-suiteid='" + suiteid + "' data-projectid='" + projectid + "' data-tabname='" + tabname + "' onclick=swal.closeModal();saveTCSBGrid($(this))>Save</button>" +
             '<button type="button" role="button" tabindex="0" class="swal2-styled swal2-confirm cancelSwalBtn" onclick="swal.closeModal(); return false;" >' + 'Cancel' + '</button>' +
-            "<button type='button' role='button' tabindex='0' class='swal2-styled swal2-confirm cancelSwalBtn'  data-obj='" + tcsbid + "' onclick=swal.closeModal();cancelTCSBGrid()>Close</button>",
+            "<button type='button' role='button' tabindex='0' class='swal2-styled swal2-confirm cancelSwalBtn' data-testcaseid='" + testcaseid + "' data-obj='" + tcsbid + "' onclick=swal.closeModal();cancelTCSBGrid()>Close</button>",
         //html: buttons,
         title: 'Save changes to [' + lname + '] ?',
         text: "You have some unsaved changes left!",
@@ -1822,6 +1879,20 @@ function cancelTCSBGrid() {
     var lFindTab = $(lParent).children().first().attr("data-target");
     var targetname = $(lParent).children().first().attr("data-tab");
     var lfindname = $(lParent).children().first().attr("data-name");
+    var lfindTestcaseid = $(lParent).children().first().attr("data-testcaseid"); 
+    if (lfindTestcaseid != null && lfindTestcaseid != undefined && lfindTestcaseid != 0) {
+        var lfindidLong = parseInt(lfindTestcaseid);
+        if (openedTestCaseList[targetname] != null && openedTestCaseList[targetname].includes(lfindidLong)) {
+            openedTestCaseList[targetname].remove(lfindidLong);
+            OnPartialRightGridShow(lfindidLong, lfindname, "2", targetname);
+        }
+    }
+
+    //if (openedListTabList != null && openedListTabList.includes(targetname)) {
+    //    openedListTabList.remove(targetname);
+    //    OnPartialRightGridShow(0, targetname, "2", targetname);
+    //}
+
     if ($(lParent).children().first().attr("data-tab") == "TestCase") {
         var tcidclose = $(lParent).children().first().attr("data-id");
         if (ExistDataSetRenameList.length > 0) {
@@ -2032,7 +2103,7 @@ function closetab(tabcloseObj) {
                 var classlst = value.classList;
                 lTestCaseName = lTestCaseName.replace(/_/g, ' ');
                 obj = obj.replace(/_/g, ' ').trim();
-                if (obj.includes(lTestCaseName).trim()) {
+                if (obj.includes(lTestCaseName.trim())) {
                     value.classList.add("kt-menu__item--open");
                 }
             });

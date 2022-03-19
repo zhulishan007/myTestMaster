@@ -1,0 +1,5982 @@
+{
+  "currentSyncroStatus": 0,
+  "assignedApplications": [
+    194,
+    193,
+    -1
+  ],
+  "assignedTestSuiteIDs": [
+    1291
+  ],
+  "version": null,
+  "assignedDataSets": [
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 658555,
+      "ALIAS_NAME": "IRGD_3_Img",
+      "DESCRIPTION_INFO": "Capture Show Version and Swap Trade Image"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 658556,
+      "ALIAS_NAME": "IRGD_6_Img",
+      "DESCRIPTION_INFO": "Capture Show Version and Swap Trade Image"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 658557,
+      "ALIAS_NAME": "IRGD_7_Img",
+      "DESCRIPTION_INFO": "Capture Show Version and Swap Trade Image"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 658558,
+      "ALIAS_NAME": "IRGD_1_Img",
+      "DESCRIPTION_INFO": "Capture Show Version and Swap Trade Image"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 658559,
+      "ALIAS_NAME": "IRGD_2_Img",
+      "DESCRIPTION_INFO": null
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 658560,
+      "ALIAS_NAME": "IRGD_4_Img",
+      "DESCRIPTION_INFO": "Capture Show Version and Swap Trade Image"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 658561,
+      "ALIAS_NAME": "IRGD_8_Img",
+      "DESCRIPTION_INFO": "Capture Show Version and Swap Trade Image"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 658562,
+      "ALIAS_NAME": "ALM_18_Img",
+      "DESCRIPTION_INFO": "Capture Show Version and Swap Trade Image"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 658563,
+      "ALIAS_NAME": "IRGD_5_Img",
+      "DESCRIPTION_INFO": "Capture Show Version and Swap Trade Image"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 658564,
+      "ALIAS_NAME": "ALM_19_Img",
+      "DESCRIPTION_INFO": "Verify the Interest rate floor trade"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 658565,
+      "ALIAS_NAME": "ALM_36_Img",
+      "DESCRIPTION_INFO": "Show Version and Trade Image"
+    }
+  ],
+  "allSteps": [
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 426898,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658579
+        },
+        {
+          "Data_Setting_Id": 426900,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658579
+        },
+        {
+          "Data_Setting_Id": 426901,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658579
+        },
+        {
+          "Data_Setting_Id": 426894,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658579
+        },
+        {
+          "Data_Setting_Id": 426895,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658579
+        },
+        {
+          "Data_Setting_Id": 426891,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658579
+        },
+        {
+          "Data_Setting_Id": 426896,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658579
+        },
+        {
+          "Data_Setting_Id": 426899,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658579
+        },
+        {
+          "Data_Setting_Id": 426892,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658579
+        },
+        {
+          "Data_Setting_Id": 426893,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658579
+        },
+        {
+          "Data_Setting_Id": 426897,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658579
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 658579,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 426898,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658579
+        },
+        {
+          "Data_Setting_Id": 426900,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658579
+        },
+        {
+          "Data_Setting_Id": 426901,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658579
+        },
+        {
+          "Data_Setting_Id": 426894,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658579
+        },
+        {
+          "Data_Setting_Id": 426895,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658579
+        },
+        {
+          "Data_Setting_Id": 426891,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658579
+        },
+        {
+          "Data_Setting_Id": 426896,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658579
+        },
+        {
+          "Data_Setting_Id": 426899,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658579
+        },
+        {
+          "Data_Setting_Id": 426892,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658579
+        },
+        {
+          "Data_Setting_Id": 426893,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658579
+        },
+        {
+          "Data_Setting_Id": 426897,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658579
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 658579,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 426902,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658580
+        },
+        {
+          "Data_Setting_Id": 426911,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658580
+        },
+        {
+          "Data_Setting_Id": 426912,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658580
+        },
+        {
+          "Data_Setting_Id": 426906,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658580
+        },
+        {
+          "Data_Setting_Id": 426907,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658580
+        },
+        {
+          "Data_Setting_Id": 426903,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658580
+        },
+        {
+          "Data_Setting_Id": 426908,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658580
+        },
+        {
+          "Data_Setting_Id": 426910,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658580
+        },
+        {
+          "Data_Setting_Id": 426904,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658580
+        },
+        {
+          "Data_Setting_Id": 426905,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658580
+        },
+        {
+          "Data_Setting_Id": 426909,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658580
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 658580,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 2,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 426920,
+          "DATASETVALUE": "TEXT|\"Trade Action Verify\"|IMAGE:CAP_FLOOR",
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658581
+        },
+        {
+          "Data_Setting_Id": 426922,
+          "DATASETVALUE": "TEXT|\"Trade Action Verify\"|IMAGE:CAP_FLOOR",
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658581
+        },
+        {
+          "Data_Setting_Id": 426923,
+          "DATASETVALUE": "TEXT|\"Trade Action Verify\"|IMAGE:CAP_FLOOR",
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658581
+        },
+        {
+          "Data_Setting_Id": 426916,
+          "DATASETVALUE": "TEXT|\"Trade Action Verify\"|IMAGE:CAP_FLOOR",
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658581
+        },
+        {
+          "Data_Setting_Id": 426917,
+          "DATASETVALUE": "TEXT|\"Trade Action Verify\"|IMAGE:CAP_FLOOR",
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658581
+        },
+        {
+          "Data_Setting_Id": 426913,
+          "DATASETVALUE": "TEXT|\"Trade Action Verify\"|IMAGE:CAP_FLOOR",
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658581
+        },
+        {
+          "Data_Setting_Id": 426918,
+          "DATASETVALUE": "TEXT|\"Trade Action Verify\"|IMAGE:CAP_FLOOR",
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658581
+        },
+        {
+          "Data_Setting_Id": 426921,
+          "DATASETVALUE": "TEXT|\"Trade Action Verify\"|IMAGE:CAP_FLOOR",
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658581
+        },
+        {
+          "Data_Setting_Id": 426914,
+          "DATASETVALUE": "TEXT|\"Trade Action Verify\"|IMAGE:CAP_FLOOR",
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658581
+        },
+        {
+          "Data_Setting_Id": 426915,
+          "DATASETVALUE": "TEXT|\"Trade Action Verify\"|IMAGE:CAP_FLOOR",
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658581
+        },
+        {
+          "Data_Setting_Id": 426919,
+          "DATASETVALUE": "TEXT|\"Trade Action Verify\"|IMAGE:CAP_FLOOR",
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658581
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 10819,
+      "KEY_WORD_NAME": "Comment",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 658581,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 3,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 426931,
+          "DATASETVALUE": "TEXT|\"Trade Versions\"|IMAGE:VERSION",
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658582
+        },
+        {
+          "Data_Setting_Id": 426933,
+          "DATASETVALUE": "TEXT|\"Trade Versions\"|IMAGE:VERSION",
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658582
+        },
+        {
+          "Data_Setting_Id": 426934,
+          "DATASETVALUE": "TEXT|\"Trade Versions\"|IMAGE:VERSION",
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658582
+        },
+        {
+          "Data_Setting_Id": 426927,
+          "DATASETVALUE": "TEXT|\"Trade Versions\"|IMAGE:VERSION",
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658582
+        },
+        {
+          "Data_Setting_Id": 426928,
+          "DATASETVALUE": "TEXT|\"Trade Versions\"|IMAGE:VERSION",
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658582
+        },
+        {
+          "Data_Setting_Id": 426924,
+          "DATASETVALUE": "TEXT|\"Trade Versions\"|IMAGE:VERSION",
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658582
+        },
+        {
+          "Data_Setting_Id": 426929,
+          "DATASETVALUE": "TEXT|\"Trade Versions\"|IMAGE:VERSION",
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658582
+        },
+        {
+          "Data_Setting_Id": 426932,
+          "DATASETVALUE": "TEXT|\"Trade Versions\"|IMAGE:VERSION",
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658582
+        },
+        {
+          "Data_Setting_Id": 426925,
+          "DATASETVALUE": "TEXT|\"Trade Versions\"|IMAGE:VERSION",
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658582
+        },
+        {
+          "Data_Setting_Id": 426926,
+          "DATASETVALUE": "TEXT|\"Trade Versions\"|IMAGE:VERSION",
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658582
+        },
+        {
+          "Data_Setting_Id": 426930,
+          "DATASETVALUE": "TEXT|\"Trade Versions\"|IMAGE:VERSION",
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658582
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 10819,
+      "KEY_WORD_NAME": "Comment",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 658582,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 4,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 426942,
+          "DATASETVALUE": "New Search",
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658583
+        },
+        {
+          "Data_Setting_Id": 426944,
+          "DATASETVALUE": "New Search",
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658583
+        },
+        {
+          "Data_Setting_Id": 426945,
+          "DATASETVALUE": "New Search",
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658583
+        },
+        {
+          "Data_Setting_Id": 426938,
+          "DATASETVALUE": "New Search",
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658583
+        },
+        {
+          "Data_Setting_Id": 426939,
+          "DATASETVALUE": "New Search",
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658583
+        },
+        {
+          "Data_Setting_Id": 426935,
+          "DATASETVALUE": "New Search",
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658583
+        },
+        {
+          "Data_Setting_Id": 426940,
+          "DATASETVALUE": "New Search",
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658583
+        },
+        {
+          "Data_Setting_Id": 426943,
+          "DATASETVALUE": "New Search",
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658583
+        },
+        {
+          "Data_Setting_Id": 426936,
+          "DATASETVALUE": "New Search",
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658583
+        },
+        {
+          "Data_Setting_Id": 426937,
+          "DATASETVALUE": "New Search",
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658583
+        },
+        {
+          "Data_Setting_Id": 426941,
+          "DATASETVALUE": "New Search",
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658583
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 5,
+      "KEY_WORD_NAME": "ClickMenuIcon",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 658583,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 5,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 426953,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658584
+        },
+        {
+          "Data_Setting_Id": 426955,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658584
+        },
+        {
+          "Data_Setting_Id": 426956,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658584
+        },
+        {
+          "Data_Setting_Id": 426949,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658584
+        },
+        {
+          "Data_Setting_Id": 426950,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658584
+        },
+        {
+          "Data_Setting_Id": 426946,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658584
+        },
+        {
+          "Data_Setting_Id": 426951,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658584
+        },
+        {
+          "Data_Setting_Id": 426954,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658584
+        },
+        {
+          "Data_Setting_Id": 426947,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658584
+        },
+        {
+          "Data_Setting_Id": 426948,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658584
+        },
+        {
+          "Data_Setting_Id": 426952,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658584
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 37247,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\n",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 658584,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 6,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 426953,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658584
+        },
+        {
+          "Data_Setting_Id": 426955,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658584
+        },
+        {
+          "Data_Setting_Id": 426956,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658584
+        },
+        {
+          "Data_Setting_Id": 426949,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658584
+        },
+        {
+          "Data_Setting_Id": 426950,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658584
+        },
+        {
+          "Data_Setting_Id": 426946,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658584
+        },
+        {
+          "Data_Setting_Id": 426951,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658584
+        },
+        {
+          "Data_Setting_Id": 426954,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658584
+        },
+        {
+          "Data_Setting_Id": 426947,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658584
+        },
+        {
+          "Data_Setting_Id": 426948,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658584
+        },
+        {
+          "Data_Setting_Id": 426952,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658584
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 46046,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswfname:=Desktop|Page",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 658584,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 6,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 426964,
+          "DATASETVALUE": "IRG",
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658585
+        },
+        {
+          "Data_Setting_Id": 426966,
+          "DATASETVALUE": "IRG",
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658585
+        },
+        {
+          "Data_Setting_Id": 426967,
+          "DATASETVALUE": "IRG",
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658585
+        },
+        {
+          "Data_Setting_Id": 426960,
+          "DATASETVALUE": "IRG",
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658585
+        },
+        {
+          "Data_Setting_Id": 426961,
+          "DATASETVALUE": "IRG",
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658585
+        },
+        {
+          "Data_Setting_Id": 426957,
+          "DATASETVALUE": "IRG",
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658585
+        },
+        {
+          "Data_Setting_Id": 426962,
+          "DATASETVALUE": "IRG",
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658585
+        },
+        {
+          "Data_Setting_Id": 426965,
+          "DATASETVALUE": "IRG",
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658585
+        },
+        {
+          "Data_Setting_Id": 426958,
+          "DATASETVALUE": "IRG",
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658585
+        },
+        {
+          "Data_Setting_Id": 426959,
+          "DATASETVALUE": "IRG",
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658585
+        },
+        {
+          "Data_Setting_Id": 426963,
+          "DATASETVALUE": "IRG",
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658585
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_TYPES",
+      "OBJECT_ID": 37854,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeTypes",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 26818,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 658585,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 7,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 426964,
+          "DATASETVALUE": "IRG",
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658585
+        },
+        {
+          "Data_Setting_Id": 426966,
+          "DATASETVALUE": "IRG",
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658585
+        },
+        {
+          "Data_Setting_Id": 426967,
+          "DATASETVALUE": "IRG",
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658585
+        },
+        {
+          "Data_Setting_Id": 426960,
+          "DATASETVALUE": "IRG",
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658585
+        },
+        {
+          "Data_Setting_Id": 426961,
+          "DATASETVALUE": "IRG",
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658585
+        },
+        {
+          "Data_Setting_Id": 426957,
+          "DATASETVALUE": "IRG",
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658585
+        },
+        {
+          "Data_Setting_Id": 426962,
+          "DATASETVALUE": "IRG",
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658585
+        },
+        {
+          "Data_Setting_Id": 426965,
+          "DATASETVALUE": "IRG",
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658585
+        },
+        {
+          "Data_Setting_Id": 426958,
+          "DATASETVALUE": "IRG",
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658585
+        },
+        {
+          "Data_Setting_Id": 426959,
+          "DATASETVALUE": "IRG",
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658585
+        },
+        {
+          "Data_Setting_Id": 426963,
+          "DATASETVALUE": "IRG",
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658585
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_TYPES",
+      "OBJECT_ID": 46634,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeTypes",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 26818,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 658585,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 7,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 426975,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 4,
+          "STEPS_ID": 658586
+        },
+        {
+          "Data_Setting_Id": 426977,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 4,
+          "STEPS_ID": 658586
+        },
+        {
+          "Data_Setting_Id": 426978,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 4,
+          "STEPS_ID": 658586
+        },
+        {
+          "Data_Setting_Id": 426971,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 4,
+          "STEPS_ID": 658586
+        },
+        {
+          "Data_Setting_Id": 426972,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 4,
+          "STEPS_ID": 658586
+        },
+        {
+          "Data_Setting_Id": 426968,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 4,
+          "STEPS_ID": 658586
+        },
+        {
+          "Data_Setting_Id": 426973,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 4,
+          "STEPS_ID": 658586
+        },
+        {
+          "Data_Setting_Id": 426976,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 4,
+          "STEPS_ID": 658586
+        },
+        {
+          "Data_Setting_Id": 426969,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 4,
+          "STEPS_ID": 658586
+        },
+        {
+          "Data_Setting_Id": 426970,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 4,
+          "STEPS_ID": 658586
+        },
+        {
+          "Data_Setting_Id": 426974,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 4,
+          "STEPS_ID": 658586
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_STATUS",
+      "OBJECT_ID": 34193,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeStatus",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 32176,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 658586,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 8,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 426975,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 4,
+          "STEPS_ID": 658586
+        },
+        {
+          "Data_Setting_Id": 426977,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 4,
+          "STEPS_ID": 658586
+        },
+        {
+          "Data_Setting_Id": 426978,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 4,
+          "STEPS_ID": 658586
+        },
+        {
+          "Data_Setting_Id": 426971,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 4,
+          "STEPS_ID": 658586
+        },
+        {
+          "Data_Setting_Id": 426972,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 4,
+          "STEPS_ID": 658586
+        },
+        {
+          "Data_Setting_Id": 426968,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 4,
+          "STEPS_ID": 658586
+        },
+        {
+          "Data_Setting_Id": 426973,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 4,
+          "STEPS_ID": 658586
+        },
+        {
+          "Data_Setting_Id": 426976,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 4,
+          "STEPS_ID": 658586
+        },
+        {
+          "Data_Setting_Id": 426969,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 4,
+          "STEPS_ID": 658586
+        },
+        {
+          "Data_Setting_Id": 426970,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 4,
+          "STEPS_ID": 658586
+        },
+        {
+          "Data_Setting_Id": 426974,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 4,
+          "STEPS_ID": 658586
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_STATUS",
+      "OBJECT_ID": 43743,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeStatus",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 32176,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 658586,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 8,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 426986,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658587
+        },
+        {
+          "Data_Setting_Id": 426988,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658587
+        },
+        {
+          "Data_Setting_Id": 426989,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658587
+        },
+        {
+          "Data_Setting_Id": 426982,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658587
+        },
+        {
+          "Data_Setting_Id": 426983,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658587
+        },
+        {
+          "Data_Setting_Id": 426979,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658587
+        },
+        {
+          "Data_Setting_Id": 426984,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658587
+        },
+        {
+          "Data_Setting_Id": 426987,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658587
+        },
+        {
+          "Data_Setting_Id": 426980,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658587
+        },
+        {
+          "Data_Setting_Id": 426981,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658587
+        },
+        {
+          "Data_Setting_Id": 426985,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658587
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_EXTERNAL_TRADE_ID",
+      "OBJECT_ID": 44105,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=ExternalTradeId",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 27732,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 658587,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 9,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 426986,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658587
+        },
+        {
+          "Data_Setting_Id": 426988,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658587
+        },
+        {
+          "Data_Setting_Id": 426989,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658587
+        },
+        {
+          "Data_Setting_Id": 426982,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658587
+        },
+        {
+          "Data_Setting_Id": 426983,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658587
+        },
+        {
+          "Data_Setting_Id": 426979,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658587
+        },
+        {
+          "Data_Setting_Id": 426984,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658587
+        },
+        {
+          "Data_Setting_Id": 426987,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658587
+        },
+        {
+          "Data_Setting_Id": 426980,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658587
+        },
+        {
+          "Data_Setting_Id": 426981,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658587
+        },
+        {
+          "Data_Setting_Id": 426985,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658587
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_EXTERNAL_TRADE_ID",
+      "OBJECT_ID": 34602,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=ExternalTradeId",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 27732,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 658587,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 9,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 426990,
+          "DATASETVALUE": "GLOBAL_VAR:ALM_18_TRADE_ID",
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658588
+        },
+        {
+          "Data_Setting_Id": 426991,
+          "DATASETVALUE": "GLOBAL_VAR:ALM_19_TRADE_ID",
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658588
+        },
+        {
+          "Data_Setting_Id": 426992,
+          "DATASETVALUE": "GLOBAL_VAR:ALM_36_TRADE_ID",
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658588
+        },
+        {
+          "Data_Setting_Id": 426993,
+          "DATASETVALUE": "GLOBAL_VAR:IRGD_1_TRADE_ID",
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658588
+        },
+        {
+          "Data_Setting_Id": 426994,
+          "DATASETVALUE": "GLOBAL_VAR:IRGD_2_TRADE_ID",
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658588
+        },
+        {
+          "Data_Setting_Id": 426995,
+          "DATASETVALUE": "GLOBAL_VAR:IRGD_3_TRADE_ID",
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658588
+        },
+        {
+          "Data_Setting_Id": 426996,
+          "DATASETVALUE": "GLOBAL_VAR:IRGD_4_TRADE_ID",
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658588
+        },
+        {
+          "Data_Setting_Id": 426997,
+          "DATASETVALUE": "GLOBAL_VAR:IRGD_5_TRADE_ID",
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658588
+        },
+        {
+          "Data_Setting_Id": 426998,
+          "DATASETVALUE": "GLOBAL_VAR:IRGD_6_TRADE_ID",
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658588
+        },
+        {
+          "Data_Setting_Id": 426999,
+          "DATASETVALUE": "GLOBAL_VAR:IRGD_7_TRADE_ID",
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658588
+        },
+        {
+          "Data_Setting_Id": 427000,
+          "DATASETVALUE": "GLOBAL_VAR:IRGD_8_TRADE_ID",
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658588
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_ID",
+      "OBJECT_ID": 41222,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeID",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 29531,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 658588,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 10,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 426990,
+          "DATASETVALUE": "GLOBAL_VAR:ALM_18_TRADE_ID",
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658588
+        },
+        {
+          "Data_Setting_Id": 426991,
+          "DATASETVALUE": "GLOBAL_VAR:ALM_19_TRADE_ID",
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658588
+        },
+        {
+          "Data_Setting_Id": 426992,
+          "DATASETVALUE": "GLOBAL_VAR:ALM_36_TRADE_ID",
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658588
+        },
+        {
+          "Data_Setting_Id": 426993,
+          "DATASETVALUE": "GLOBAL_VAR:IRGD_1_TRADE_ID",
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658588
+        },
+        {
+          "Data_Setting_Id": 426994,
+          "DATASETVALUE": "GLOBAL_VAR:IRGD_2_TRADE_ID",
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658588
+        },
+        {
+          "Data_Setting_Id": 426995,
+          "DATASETVALUE": "GLOBAL_VAR:IRGD_3_TRADE_ID",
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658588
+        },
+        {
+          "Data_Setting_Id": 426996,
+          "DATASETVALUE": "GLOBAL_VAR:IRGD_4_TRADE_ID",
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658588
+        },
+        {
+          "Data_Setting_Id": 426997,
+          "DATASETVALUE": "GLOBAL_VAR:IRGD_5_TRADE_ID",
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658588
+        },
+        {
+          "Data_Setting_Id": 426998,
+          "DATASETVALUE": "GLOBAL_VAR:IRGD_6_TRADE_ID",
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658588
+        },
+        {
+          "Data_Setting_Id": 426999,
+          "DATASETVALUE": "GLOBAL_VAR:IRGD_7_TRADE_ID",
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658588
+        },
+        {
+          "Data_Setting_Id": 427000,
+          "DATASETVALUE": "GLOBAL_VAR:IRGD_8_TRADE_ID",
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658588
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_ID",
+      "OBJECT_ID": 33373,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeID",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 29531,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 658588,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 10,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 427008,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658589
+        },
+        {
+          "Data_Setting_Id": 427010,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658589
+        },
+        {
+          "Data_Setting_Id": 427011,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658589
+        },
+        {
+          "Data_Setting_Id": 427004,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658589
+        },
+        {
+          "Data_Setting_Id": 427005,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658589
+        },
+        {
+          "Data_Setting_Id": 427001,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658589
+        },
+        {
+          "Data_Setting_Id": 427006,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658589
+        },
+        {
+          "Data_Setting_Id": 427009,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658589
+        },
+        {
+          "Data_Setting_Id": 427002,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658589
+        },
+        {
+          "Data_Setting_Id": 427003,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658589
+        },
+        {
+          "Data_Setting_Id": 427007,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658589
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_FIND_NOW",
+      "OBJECT_ID": 32728,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_findNowButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 32179,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 658589,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 11,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 427008,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658589
+        },
+        {
+          "Data_Setting_Id": 427010,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658589
+        },
+        {
+          "Data_Setting_Id": 427011,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658589
+        },
+        {
+          "Data_Setting_Id": 427004,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658589
+        },
+        {
+          "Data_Setting_Id": 427005,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658589
+        },
+        {
+          "Data_Setting_Id": 427001,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658589
+        },
+        {
+          "Data_Setting_Id": 427006,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658589
+        },
+        {
+          "Data_Setting_Id": 427009,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658589
+        },
+        {
+          "Data_Setting_Id": 427002,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658589
+        },
+        {
+          "Data_Setting_Id": 427003,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658589
+        },
+        {
+          "Data_Setting_Id": 427007,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658589
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_FIND_NOW",
+      "OBJECT_ID": 45052,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_findNowButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 32179,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 658589,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 11,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 427019,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658590
+        },
+        {
+          "Data_Setting_Id": 427021,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658590
+        },
+        {
+          "Data_Setting_Id": 427022,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658590
+        },
+        {
+          "Data_Setting_Id": 427015,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658590
+        },
+        {
+          "Data_Setting_Id": 427016,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658590
+        },
+        {
+          "Data_Setting_Id": 427012,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658590
+        },
+        {
+          "Data_Setting_Id": 427017,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658590
+        },
+        {
+          "Data_Setting_Id": 427020,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658590
+        },
+        {
+          "Data_Setting_Id": 427013,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658590
+        },
+        {
+          "Data_Setting_Id": 427014,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658590
+        },
+        {
+          "Data_Setting_Id": 427018,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658590
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 37247,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\n",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 658590,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 12,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 427019,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658590
+        },
+        {
+          "Data_Setting_Id": 427021,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658590
+        },
+        {
+          "Data_Setting_Id": 427022,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658590
+        },
+        {
+          "Data_Setting_Id": 427015,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658590
+        },
+        {
+          "Data_Setting_Id": 427016,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658590
+        },
+        {
+          "Data_Setting_Id": 427012,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658590
+        },
+        {
+          "Data_Setting_Id": 427017,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658590
+        },
+        {
+          "Data_Setting_Id": 427020,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658590
+        },
+        {
+          "Data_Setting_Id": 427013,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658590
+        },
+        {
+          "Data_Setting_Id": 427014,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658590
+        },
+        {
+          "Data_Setting_Id": 427018,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658590
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 46046,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswfname:=Desktop|Page",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 658590,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 12,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 427030,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658591
+        },
+        {
+          "Data_Setting_Id": 427032,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658591
+        },
+        {
+          "Data_Setting_Id": 427033,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658591
+        },
+        {
+          "Data_Setting_Id": 427026,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658591
+        },
+        {
+          "Data_Setting_Id": 427027,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658591
+        },
+        {
+          "Data_Setting_Id": 427023,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658591
+        },
+        {
+          "Data_Setting_Id": 427028,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658591
+        },
+        {
+          "Data_Setting_Id": 427031,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658591
+        },
+        {
+          "Data_Setting_Id": 427024,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658591
+        },
+        {
+          "Data_Setting_Id": 427025,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658591
+        },
+        {
+          "Data_Setting_Id": 427029,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658591
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 32,
+      "KEY_WORD_NAME": "SearchAndClick",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_TABLE",
+      "OBJECT_ID": 41666,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_queryResults",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 28613,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 658591,
+      "COLUMN_ROW_SETTING": "MarsAddins;Trade ID;Action:LEFT_DBL_CLICK",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 13,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 427030,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658591
+        },
+        {
+          "Data_Setting_Id": 427032,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658591
+        },
+        {
+          "Data_Setting_Id": 427033,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658591
+        },
+        {
+          "Data_Setting_Id": 427026,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658591
+        },
+        {
+          "Data_Setting_Id": 427027,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658591
+        },
+        {
+          "Data_Setting_Id": 427023,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658591
+        },
+        {
+          "Data_Setting_Id": 427028,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658591
+        },
+        {
+          "Data_Setting_Id": 427031,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658591
+        },
+        {
+          "Data_Setting_Id": 427024,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658591
+        },
+        {
+          "Data_Setting_Id": 427025,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658591
+        },
+        {
+          "Data_Setting_Id": 427029,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658591
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 32,
+      "KEY_WORD_NAME": "SearchAndClick",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_TABLE",
+      "OBJECT_ID": 35712,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_queryResults",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 28613,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 658591,
+      "COLUMN_ROW_SETTING": "MarsAddins;Trade ID;Action:LEFT_DBL_CLICK",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 13,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 427041,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658592
+        },
+        {
+          "Data_Setting_Id": 427043,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658592
+        },
+        {
+          "Data_Setting_Id": 427044,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658592
+        },
+        {
+          "Data_Setting_Id": 427037,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658592
+        },
+        {
+          "Data_Setting_Id": 427038,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658592
+        },
+        {
+          "Data_Setting_Id": 427034,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658592
+        },
+        {
+          "Data_Setting_Id": 427039,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658592
+        },
+        {
+          "Data_Setting_Id": 427042,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658592
+        },
+        {
+          "Data_Setting_Id": 427035,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658592
+        },
+        {
+          "Data_Setting_Id": 427036,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658592
+        },
+        {
+          "Data_Setting_Id": 427040,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658592
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 86,
+      "KEY_WORD_NAME": "PressKeys",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_TABLE",
+      "OBJECT_ID": 41666,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_queryResults",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 28613,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 658592,
+      "COLUMN_ROW_SETTING": "100,40",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 14,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 427041,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658592
+        },
+        {
+          "Data_Setting_Id": 427043,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658592
+        },
+        {
+          "Data_Setting_Id": 427044,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658592
+        },
+        {
+          "Data_Setting_Id": 427037,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658592
+        },
+        {
+          "Data_Setting_Id": 427038,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658592
+        },
+        {
+          "Data_Setting_Id": 427034,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658592
+        },
+        {
+          "Data_Setting_Id": 427039,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658592
+        },
+        {
+          "Data_Setting_Id": 427042,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658592
+        },
+        {
+          "Data_Setting_Id": 427035,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658592
+        },
+        {
+          "Data_Setting_Id": 427036,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658592
+        },
+        {
+          "Data_Setting_Id": 427040,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658592
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 86,
+      "KEY_WORD_NAME": "PressKeys",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_TABLE",
+      "OBJECT_ID": 35712,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_queryResults",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 28613,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 658592,
+      "COLUMN_ROW_SETTING": "100,40",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 14,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 427052,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658593
+        },
+        {
+          "Data_Setting_Id": 427054,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658593
+        },
+        {
+          "Data_Setting_Id": 427055,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658593
+        },
+        {
+          "Data_Setting_Id": 427048,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658593
+        },
+        {
+          "Data_Setting_Id": 427049,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658593
+        },
+        {
+          "Data_Setting_Id": 427045,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658593
+        },
+        {
+          "Data_Setting_Id": 427050,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658593
+        },
+        {
+          "Data_Setting_Id": 427053,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658593
+        },
+        {
+          "Data_Setting_Id": 427046,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658593
+        },
+        {
+          "Data_Setting_Id": 427047,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658593
+        },
+        {
+          "Data_Setting_Id": 427051,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658593
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 658593,
+      "COLUMN_ROW_SETTING": "F",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 15,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 427063,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658594
+        },
+        {
+          "Data_Setting_Id": 427065,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658594
+        },
+        {
+          "Data_Setting_Id": 427066,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658594
+        },
+        {
+          "Data_Setting_Id": 427059,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658594
+        },
+        {
+          "Data_Setting_Id": 427060,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658594
+        },
+        {
+          "Data_Setting_Id": 427056,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658594
+        },
+        {
+          "Data_Setting_Id": 427061,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658594
+        },
+        {
+          "Data_Setting_Id": 427064,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658594
+        },
+        {
+          "Data_Setting_Id": 427057,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658594
+        },
+        {
+          "Data_Setting_Id": 427058,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658594
+        },
+        {
+          "Data_Setting_Id": 427062,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658594
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "CAP_FLOOR_POPUP",
+      "OBJECT_ID": 45563,
+      "OBJECT_TYPE": "CAP_FLOOR_POPUP",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^IFC Cap & Floor Trade.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24949,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 658594,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 16,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 427063,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658594
+        },
+        {
+          "Data_Setting_Id": 427065,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658594
+        },
+        {
+          "Data_Setting_Id": 427066,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658594
+        },
+        {
+          "Data_Setting_Id": 427059,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658594
+        },
+        {
+          "Data_Setting_Id": 427060,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658594
+        },
+        {
+          "Data_Setting_Id": 427056,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658594
+        },
+        {
+          "Data_Setting_Id": 427061,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658594
+        },
+        {
+          "Data_Setting_Id": 427064,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658594
+        },
+        {
+          "Data_Setting_Id": 427057,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658594
+        },
+        {
+          "Data_Setting_Id": 427058,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658594
+        },
+        {
+          "Data_Setting_Id": 427062,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658594
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "CAP_FLOOR_POPUP",
+      "OBJECT_ID": 36778,
+      "OBJECT_TYPE": "CAP_FLOOR_POPUP",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^IFC Cap & Floor Trade.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24949,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 658594,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 16,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 427074,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658595
+        },
+        {
+          "Data_Setting_Id": 427076,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658595
+        },
+        {
+          "Data_Setting_Id": 427077,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658595
+        },
+        {
+          "Data_Setting_Id": 427070,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658595
+        },
+        {
+          "Data_Setting_Id": 427071,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658595
+        },
+        {
+          "Data_Setting_Id": 427067,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658595
+        },
+        {
+          "Data_Setting_Id": 427072,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658595
+        },
+        {
+          "Data_Setting_Id": 427075,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658595
+        },
+        {
+          "Data_Setting_Id": 427068,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658595
+        },
+        {
+          "Data_Setting_Id": 427069,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658595
+        },
+        {
+          "Data_Setting_Id": 427073,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658595
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "CAP_FLOOR_POPUP",
+      "OBJECT_ID": 45563,
+      "OBJECT_TYPE": "CAP_FLOOR_POPUP",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^IFC Cap & Floor Trade.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24949,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 658595,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 17,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 427074,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658595
+        },
+        {
+          "Data_Setting_Id": 427076,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658595
+        },
+        {
+          "Data_Setting_Id": 427077,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658595
+        },
+        {
+          "Data_Setting_Id": 427070,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658595
+        },
+        {
+          "Data_Setting_Id": 427071,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658595
+        },
+        {
+          "Data_Setting_Id": 427067,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658595
+        },
+        {
+          "Data_Setting_Id": 427072,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658595
+        },
+        {
+          "Data_Setting_Id": 427075,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658595
+        },
+        {
+          "Data_Setting_Id": 427068,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658595
+        },
+        {
+          "Data_Setting_Id": 427069,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658595
+        },
+        {
+          "Data_Setting_Id": 427073,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658595
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "CAP_FLOOR_POPUP",
+      "OBJECT_ID": 36778,
+      "OBJECT_TYPE": "CAP_FLOOR_POPUP",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^IFC Cap & Floor Trade.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24949,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 658595,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 17,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 427085,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658596
+        },
+        {
+          "Data_Setting_Id": 427087,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658596
+        },
+        {
+          "Data_Setting_Id": 427088,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658596
+        },
+        {
+          "Data_Setting_Id": 427081,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658596
+        },
+        {
+          "Data_Setting_Id": 427082,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658596
+        },
+        {
+          "Data_Setting_Id": 427078,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658596
+        },
+        {
+          "Data_Setting_Id": 427083,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658596
+        },
+        {
+          "Data_Setting_Id": 427086,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658596
+        },
+        {
+          "Data_Setting_Id": 427079,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658596
+        },
+        {
+          "Data_Setting_Id": 427080,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658596
+        },
+        {
+          "Data_Setting_Id": 427084,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658596
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 658596,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 18,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 427096,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658597
+        },
+        {
+          "Data_Setting_Id": 427098,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658597
+        },
+        {
+          "Data_Setting_Id": 427099,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658597
+        },
+        {
+          "Data_Setting_Id": 427092,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658597
+        },
+        {
+          "Data_Setting_Id": 427093,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658597
+        },
+        {
+          "Data_Setting_Id": 427089,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658597
+        },
+        {
+          "Data_Setting_Id": 427094,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658597
+        },
+        {
+          "Data_Setting_Id": 427097,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658597
+        },
+        {
+          "Data_Setting_Id": 427090,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658597
+        },
+        {
+          "Data_Setting_Id": 427091,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658597
+        },
+        {
+          "Data_Setting_Id": 427095,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658597
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "CAP_FLOOR_POPUP",
+      "OBJECT_ID": 45563,
+      "OBJECT_TYPE": "CAP_FLOOR_POPUP",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^IFC Cap & Floor Trade.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24949,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 658597,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 19,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 427096,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658597
+        },
+        {
+          "Data_Setting_Id": 427098,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658597
+        },
+        {
+          "Data_Setting_Id": 427099,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658597
+        },
+        {
+          "Data_Setting_Id": 427092,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658597
+        },
+        {
+          "Data_Setting_Id": 427093,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658597
+        },
+        {
+          "Data_Setting_Id": 427089,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658597
+        },
+        {
+          "Data_Setting_Id": 427094,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658597
+        },
+        {
+          "Data_Setting_Id": 427097,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658597
+        },
+        {
+          "Data_Setting_Id": 427090,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658597
+        },
+        {
+          "Data_Setting_Id": 427091,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658597
+        },
+        {
+          "Data_Setting_Id": 427095,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658597
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "CAP_FLOOR_POPUP",
+      "OBJECT_ID": 36778,
+      "OBJECT_TYPE": "CAP_FLOOR_POPUP",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^IFC Cap & Floor Trade.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24949,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 658597,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 19,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 427107,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658598
+        },
+        {
+          "Data_Setting_Id": 427109,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658598
+        },
+        {
+          "Data_Setting_Id": 427110,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658598
+        },
+        {
+          "Data_Setting_Id": 427103,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658598
+        },
+        {
+          "Data_Setting_Id": 427104,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658598
+        },
+        {
+          "Data_Setting_Id": 427100,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658598
+        },
+        {
+          "Data_Setting_Id": 427105,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658598
+        },
+        {
+          "Data_Setting_Id": 427108,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658598
+        },
+        {
+          "Data_Setting_Id": 427101,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658598
+        },
+        {
+          "Data_Setting_Id": 427102,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658598
+        },
+        {
+          "Data_Setting_Id": 427106,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658598
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 22,
+      "KEY_WORD_NAME": "SelectMenuItem",
+      "OBJECT_HAPPY_NAME": "CAP_FLOOR_POPUP_TOOLBAR",
+      "OBJECT_ID": 47328,
+      "OBJECT_TYPE": "CAP_FLOOR_POPUP",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 31577,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 658598,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 20,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 427107,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658598
+        },
+        {
+          "Data_Setting_Id": 427109,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658598
+        },
+        {
+          "Data_Setting_Id": 427110,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658598
+        },
+        {
+          "Data_Setting_Id": 427103,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658598
+        },
+        {
+          "Data_Setting_Id": 427104,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658598
+        },
+        {
+          "Data_Setting_Id": 427100,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658598
+        },
+        {
+          "Data_Setting_Id": 427105,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658598
+        },
+        {
+          "Data_Setting_Id": 427108,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658598
+        },
+        {
+          "Data_Setting_Id": 427101,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658598
+        },
+        {
+          "Data_Setting_Id": 427102,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658598
+        },
+        {
+          "Data_Setting_Id": 427106,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658598
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 22,
+      "KEY_WORD_NAME": "SelectMenuItem",
+      "OBJECT_HAPPY_NAME": "CAP_FLOOR_POPUP_TOOLBAR",
+      "OBJECT_ID": 38983,
+      "OBJECT_TYPE": "CAP_FLOOR_POPUP",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 31577,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 658598,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 20,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 427118,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658599
+        },
+        {
+          "Data_Setting_Id": 427120,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658599
+        },
+        {
+          "Data_Setting_Id": 427121,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658599
+        },
+        {
+          "Data_Setting_Id": 427114,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658599
+        },
+        {
+          "Data_Setting_Id": 427115,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658599
+        },
+        {
+          "Data_Setting_Id": 427111,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658599
+        },
+        {
+          "Data_Setting_Id": 427116,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658599
+        },
+        {
+          "Data_Setting_Id": 427119,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658599
+        },
+        {
+          "Data_Setting_Id": 427112,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658599
+        },
+        {
+          "Data_Setting_Id": 427113,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658599
+        },
+        {
+          "Data_Setting_Id": 427117,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658599
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 658599,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 21,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 427118,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658599
+        },
+        {
+          "Data_Setting_Id": 427120,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658599
+        },
+        {
+          "Data_Setting_Id": 427121,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658599
+        },
+        {
+          "Data_Setting_Id": 427114,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658599
+        },
+        {
+          "Data_Setting_Id": 427115,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658599
+        },
+        {
+          "Data_Setting_Id": 427111,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658599
+        },
+        {
+          "Data_Setting_Id": 427116,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658599
+        },
+        {
+          "Data_Setting_Id": 427119,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658599
+        },
+        {
+          "Data_Setting_Id": 427112,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658599
+        },
+        {
+          "Data_Setting_Id": 427113,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658599
+        },
+        {
+          "Data_Setting_Id": 427117,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658599
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 658599,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 21,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 427129,
+          "DATASETVALUE": "Desktop Menu;IFC Cap & Floor Trade;Show Version",
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658600
+        },
+        {
+          "Data_Setting_Id": 427131,
+          "DATASETVALUE": "Desktop Menu;IFC Cap & Floor Trade;Show Version",
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658600
+        },
+        {
+          "Data_Setting_Id": 427132,
+          "DATASETVALUE": "Desktop Menu;IFC Cap & Floor Trade;Show Version",
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658600
+        },
+        {
+          "Data_Setting_Id": 427125,
+          "DATASETVALUE": "Desktop Menu;IFC Cap & Floor Trade;Show Version",
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658600
+        },
+        {
+          "Data_Setting_Id": 427126,
+          "DATASETVALUE": "Desktop Menu;IFC Cap & Floor Trade;Show Version",
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658600
+        },
+        {
+          "Data_Setting_Id": 427122,
+          "DATASETVALUE": "Desktop Menu;IFC Cap & Floor Trade;Show Version",
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658600
+        },
+        {
+          "Data_Setting_Id": 427127,
+          "DATASETVALUE": "Desktop Menu;IFC Cap & Floor Trade;Show Version",
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658600
+        },
+        {
+          "Data_Setting_Id": 427130,
+          "DATASETVALUE": "Desktop Menu;IFC Cap & Floor Trade;Show Version",
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658600
+        },
+        {
+          "Data_Setting_Id": 427123,
+          "DATASETVALUE": "Desktop Menu;IFC Cap & Floor Trade;Show Version",
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658600
+        },
+        {
+          "Data_Setting_Id": 427124,
+          "DATASETVALUE": "Desktop Menu;IFC Cap & Floor Trade;Show Version",
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658600
+        },
+        {
+          "Data_Setting_Id": 427128,
+          "DATASETVALUE": "Desktop Menu;IFC Cap & Floor Trade;Show Version",
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658600
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 22,
+      "KEY_WORD_NAME": "SelectMenuItem",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 658600,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 22,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 427140,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658601
+        },
+        {
+          "Data_Setting_Id": 427142,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658601
+        },
+        {
+          "Data_Setting_Id": 427143,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658601
+        },
+        {
+          "Data_Setting_Id": 427136,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658601
+        },
+        {
+          "Data_Setting_Id": 427137,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658601
+        },
+        {
+          "Data_Setting_Id": 427133,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658601
+        },
+        {
+          "Data_Setting_Id": 427138,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658601
+        },
+        {
+          "Data_Setting_Id": 427141,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658601
+        },
+        {
+          "Data_Setting_Id": 427134,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658601
+        },
+        {
+          "Data_Setting_Id": 427135,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658601
+        },
+        {
+          "Data_Setting_Id": 427139,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658601
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "SHOW_VERSION",
+      "OBJECT_ID": 49954,
+      "OBJECT_TYPE": "SHOW_VERSION",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^Show Version.*\nSwfName:=DetachedFormHolder",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 49953,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 658601,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 23,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 427140,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658601
+        },
+        {
+          "Data_Setting_Id": 427142,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658601
+        },
+        {
+          "Data_Setting_Id": 427143,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658601
+        },
+        {
+          "Data_Setting_Id": 427136,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658601
+        },
+        {
+          "Data_Setting_Id": 427137,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658601
+        },
+        {
+          "Data_Setting_Id": 427133,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658601
+        },
+        {
+          "Data_Setting_Id": 427138,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658601
+        },
+        {
+          "Data_Setting_Id": 427141,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658601
+        },
+        {
+          "Data_Setting_Id": 427134,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658601
+        },
+        {
+          "Data_Setting_Id": 427135,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658601
+        },
+        {
+          "Data_Setting_Id": 427139,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658601
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "SHOW_VERSION",
+      "OBJECT_ID": 49957,
+      "OBJECT_TYPE": "SHOW_VERSION",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^Show Version.*\nSwfName:=DetachedFormHolder",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 49953,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 658601,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 23,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 427151,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658602
+        },
+        {
+          "Data_Setting_Id": 427153,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658602
+        },
+        {
+          "Data_Setting_Id": 427154,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658602
+        },
+        {
+          "Data_Setting_Id": 427147,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658602
+        },
+        {
+          "Data_Setting_Id": 427148,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658602
+        },
+        {
+          "Data_Setting_Id": 427144,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658602
+        },
+        {
+          "Data_Setting_Id": 427149,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658602
+        },
+        {
+          "Data_Setting_Id": 427152,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658602
+        },
+        {
+          "Data_Setting_Id": 427145,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658602
+        },
+        {
+          "Data_Setting_Id": 427146,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658602
+        },
+        {
+          "Data_Setting_Id": 427150,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658602
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "SHOW_VERSION",
+      "OBJECT_ID": 49954,
+      "OBJECT_TYPE": "SHOW_VERSION",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^Show Version.*\nSwfName:=DetachedFormHolder",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 49953,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 658602,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 24,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 427151,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658602
+        },
+        {
+          "Data_Setting_Id": 427153,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658602
+        },
+        {
+          "Data_Setting_Id": 427154,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658602
+        },
+        {
+          "Data_Setting_Id": 427147,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658602
+        },
+        {
+          "Data_Setting_Id": 427148,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658602
+        },
+        {
+          "Data_Setting_Id": 427144,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658602
+        },
+        {
+          "Data_Setting_Id": 427149,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658602
+        },
+        {
+          "Data_Setting_Id": 427152,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658602
+        },
+        {
+          "Data_Setting_Id": 427145,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658602
+        },
+        {
+          "Data_Setting_Id": 427146,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658602
+        },
+        {
+          "Data_Setting_Id": 427150,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658602
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "SHOW_VERSION",
+      "OBJECT_ID": 49957,
+      "OBJECT_TYPE": "SHOW_VERSION",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^Show Version.*\nSwfName:=DetachedFormHolder",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 49953,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 658602,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 24,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 427162,
+          "DATASETVALUE": "VERSION",
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658603
+        },
+        {
+          "Data_Setting_Id": 427164,
+          "DATASETVALUE": "VERSION",
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658603
+        },
+        {
+          "Data_Setting_Id": 427165,
+          "DATASETVALUE": "VERSION",
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658603
+        },
+        {
+          "Data_Setting_Id": 427158,
+          "DATASETVALUE": "VERSION",
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658603
+        },
+        {
+          "Data_Setting_Id": 427159,
+          "DATASETVALUE": "VERSION",
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658603
+        },
+        {
+          "Data_Setting_Id": 427155,
+          "DATASETVALUE": "VERSION",
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658603
+        },
+        {
+          "Data_Setting_Id": 427160,
+          "DATASETVALUE": "VERSION",
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658603
+        },
+        {
+          "Data_Setting_Id": 427163,
+          "DATASETVALUE": "VERSION",
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658603
+        },
+        {
+          "Data_Setting_Id": 427156,
+          "DATASETVALUE": "VERSION",
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658603
+        },
+        {
+          "Data_Setting_Id": 427157,
+          "DATASETVALUE": "VERSION",
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658603
+        },
+        {
+          "Data_Setting_Id": 427161,
+          "DATASETVALUE": "VERSION",
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658603
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "SHOW_VERSION",
+      "OBJECT_ID": 49954,
+      "OBJECT_TYPE": "SHOW_VERSION",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^Show Version.*\nSwfName:=DetachedFormHolder",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 49953,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 658603,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 25,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 427162,
+          "DATASETVALUE": "VERSION",
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658603
+        },
+        {
+          "Data_Setting_Id": 427164,
+          "DATASETVALUE": "VERSION",
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658603
+        },
+        {
+          "Data_Setting_Id": 427165,
+          "DATASETVALUE": "VERSION",
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658603
+        },
+        {
+          "Data_Setting_Id": 427158,
+          "DATASETVALUE": "VERSION",
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658603
+        },
+        {
+          "Data_Setting_Id": 427159,
+          "DATASETVALUE": "VERSION",
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658603
+        },
+        {
+          "Data_Setting_Id": 427155,
+          "DATASETVALUE": "VERSION",
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658603
+        },
+        {
+          "Data_Setting_Id": 427160,
+          "DATASETVALUE": "VERSION",
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658603
+        },
+        {
+          "Data_Setting_Id": 427163,
+          "DATASETVALUE": "VERSION",
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658603
+        },
+        {
+          "Data_Setting_Id": 427156,
+          "DATASETVALUE": "VERSION",
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658603
+        },
+        {
+          "Data_Setting_Id": 427157,
+          "DATASETVALUE": "VERSION",
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658603
+        },
+        {
+          "Data_Setting_Id": 427161,
+          "DATASETVALUE": "VERSION",
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658603
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "SHOW_VERSION",
+      "OBJECT_ID": 49957,
+      "OBJECT_TYPE": "SHOW_VERSION",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^Show Version.*\nSwfName:=DetachedFormHolder",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 49953,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 658603,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 25,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 427173,
+          "DATASETVALUE": "TEXT|\"Swap Trade Versions \"|IMAGE:VERSION",
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658604
+        },
+        {
+          "Data_Setting_Id": 427175,
+          "DATASETVALUE": "TEXT|\"Swap Trade Versions \"|IMAGE:VERSION",
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658604
+        },
+        {
+          "Data_Setting_Id": 427176,
+          "DATASETVALUE": "TEXT|\"Swap Trade Versions \"|IMAGE:VERSION",
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658604
+        },
+        {
+          "Data_Setting_Id": 427169,
+          "DATASETVALUE": "TEXT|\"Swap Trade Versions \"|IMAGE:VERSION",
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658604
+        },
+        {
+          "Data_Setting_Id": 427170,
+          "DATASETVALUE": "TEXT|\"Swap Trade Versions \"|IMAGE:VERSION",
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658604
+        },
+        {
+          "Data_Setting_Id": 427166,
+          "DATASETVALUE": "TEXT|\"Swap Trade Versions \"|IMAGE:VERSION",
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658604
+        },
+        {
+          "Data_Setting_Id": 427171,
+          "DATASETVALUE": "TEXT|\"Swap Trade Versions \"|IMAGE:VERSION",
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658604
+        },
+        {
+          "Data_Setting_Id": 427174,
+          "DATASETVALUE": "TEXT|\"Swap Trade Versions \"|IMAGE:VERSION",
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658604
+        },
+        {
+          "Data_Setting_Id": 427167,
+          "DATASETVALUE": "TEXT|\"Swap Trade Versions \"|IMAGE:VERSION",
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658604
+        },
+        {
+          "Data_Setting_Id": 427168,
+          "DATASETVALUE": "TEXT|\"Swap Trade Versions \"|IMAGE:VERSION",
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658604
+        },
+        {
+          "Data_Setting_Id": 427172,
+          "DATASETVALUE": "TEXT|\"Swap Trade Versions \"|IMAGE:VERSION",
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658604
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 10819,
+      "KEY_WORD_NAME": "Comment",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 658604,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 26,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 427184,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658605
+        },
+        {
+          "Data_Setting_Id": 427186,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658605
+        },
+        {
+          "Data_Setting_Id": 427187,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658605
+        },
+        {
+          "Data_Setting_Id": 427180,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658605
+        },
+        {
+          "Data_Setting_Id": 427181,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658605
+        },
+        {
+          "Data_Setting_Id": 427177,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658605
+        },
+        {
+          "Data_Setting_Id": 427182,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658605
+        },
+        {
+          "Data_Setting_Id": 427185,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658605
+        },
+        {
+          "Data_Setting_Id": 427178,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658605
+        },
+        {
+          "Data_Setting_Id": 427179,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658605
+        },
+        {
+          "Data_Setting_Id": 427183,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658605
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 45,
+      "KEY_WORD_NAME": "CloseWindow",
+      "OBJECT_HAPPY_NAME": "SHOW_VERSION",
+      "OBJECT_ID": 49954,
+      "OBJECT_TYPE": "SHOW_VERSION",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^Show Version.*\nSwfName:=DetachedFormHolder",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 49953,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 658605,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 27,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 427184,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658605
+        },
+        {
+          "Data_Setting_Id": 427186,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658605
+        },
+        {
+          "Data_Setting_Id": 427187,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658605
+        },
+        {
+          "Data_Setting_Id": 427180,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658605
+        },
+        {
+          "Data_Setting_Id": 427181,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658605
+        },
+        {
+          "Data_Setting_Id": 427177,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658605
+        },
+        {
+          "Data_Setting_Id": 427182,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658605
+        },
+        {
+          "Data_Setting_Id": 427185,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658605
+        },
+        {
+          "Data_Setting_Id": 427178,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658605
+        },
+        {
+          "Data_Setting_Id": 427179,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658605
+        },
+        {
+          "Data_Setting_Id": 427183,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658605
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 45,
+      "KEY_WORD_NAME": "CloseWindow",
+      "OBJECT_HAPPY_NAME": "SHOW_VERSION",
+      "OBJECT_ID": 49957,
+      "OBJECT_TYPE": "SHOW_VERSION",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^Show Version.*\nSwfName:=DetachedFormHolder",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 49953,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 658605,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 27,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 427195,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658606
+        },
+        {
+          "Data_Setting_Id": 427197,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658606
+        },
+        {
+          "Data_Setting_Id": 427198,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658606
+        },
+        {
+          "Data_Setting_Id": 427191,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658606
+        },
+        {
+          "Data_Setting_Id": 427192,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658606
+        },
+        {
+          "Data_Setting_Id": 427188,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658606
+        },
+        {
+          "Data_Setting_Id": 427193,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658606
+        },
+        {
+          "Data_Setting_Id": 427196,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658606
+        },
+        {
+          "Data_Setting_Id": 427189,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658606
+        },
+        {
+          "Data_Setting_Id": 427190,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658606
+        },
+        {
+          "Data_Setting_Id": 427194,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658606
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 658606,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 28,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 427195,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658606
+        },
+        {
+          "Data_Setting_Id": 427197,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658606
+        },
+        {
+          "Data_Setting_Id": 427198,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658606
+        },
+        {
+          "Data_Setting_Id": 427191,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658606
+        },
+        {
+          "Data_Setting_Id": 427192,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658606
+        },
+        {
+          "Data_Setting_Id": 427188,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658606
+        },
+        {
+          "Data_Setting_Id": 427193,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658606
+        },
+        {
+          "Data_Setting_Id": 427196,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658606
+        },
+        {
+          "Data_Setting_Id": 427189,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658606
+        },
+        {
+          "Data_Setting_Id": 427190,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658606
+        },
+        {
+          "Data_Setting_Id": 427194,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658606
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 658606,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 28,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 427206,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658607
+        },
+        {
+          "Data_Setting_Id": 427208,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658607
+        },
+        {
+          "Data_Setting_Id": 427209,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658607
+        },
+        {
+          "Data_Setting_Id": 427202,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658607
+        },
+        {
+          "Data_Setting_Id": 427203,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658607
+        },
+        {
+          "Data_Setting_Id": 427199,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658607
+        },
+        {
+          "Data_Setting_Id": 427204,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658607
+        },
+        {
+          "Data_Setting_Id": 427207,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658607
+        },
+        {
+          "Data_Setting_Id": 427200,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658607
+        },
+        {
+          "Data_Setting_Id": 427201,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658607
+        },
+        {
+          "Data_Setting_Id": 427205,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658607
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 38,
+      "KEY_WORD_NAME": "Dismiss",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 658607,
+      "COLUMN_ROW_SETTING": "10",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 29,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 427217,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658608
+        },
+        {
+          "Data_Setting_Id": 427219,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658608
+        },
+        {
+          "Data_Setting_Id": 427220,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658608
+        },
+        {
+          "Data_Setting_Id": 427213,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658608
+        },
+        {
+          "Data_Setting_Id": 427214,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658608
+        },
+        {
+          "Data_Setting_Id": 427210,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658608
+        },
+        {
+          "Data_Setting_Id": 427215,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658608
+        },
+        {
+          "Data_Setting_Id": 427218,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658608
+        },
+        {
+          "Data_Setting_Id": 427211,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658608
+        },
+        {
+          "Data_Setting_Id": 427212,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658608
+        },
+        {
+          "Data_Setting_Id": 427216,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658608
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "CAP_FLOOR",
+      "OBJECT_ID": 32996,
+      "OBJECT_TYPE": "CAP_FLOOR",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24975,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 658608,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 30,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 427217,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658608
+        },
+        {
+          "Data_Setting_Id": 427219,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658608
+        },
+        {
+          "Data_Setting_Id": 427220,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658608
+        },
+        {
+          "Data_Setting_Id": 427213,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658608
+        },
+        {
+          "Data_Setting_Id": 427214,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658608
+        },
+        {
+          "Data_Setting_Id": 427210,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658608
+        },
+        {
+          "Data_Setting_Id": 427215,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658608
+        },
+        {
+          "Data_Setting_Id": 427218,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658608
+        },
+        {
+          "Data_Setting_Id": 427211,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658608
+        },
+        {
+          "Data_Setting_Id": 427212,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658608
+        },
+        {
+          "Data_Setting_Id": 427216,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658608
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "CAP_FLOOR",
+      "OBJECT_ID": 40810,
+      "OBJECT_TYPE": "CAP_FLOOR",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24975,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 658608,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 30,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 427228,
+          "DATASETVALUE": "CAP_FLOOR",
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658609
+        },
+        {
+          "Data_Setting_Id": 427230,
+          "DATASETVALUE": "CAP_FLOOR",
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658609
+        },
+        {
+          "Data_Setting_Id": 427231,
+          "DATASETVALUE": "CAP_FLOOR",
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658609
+        },
+        {
+          "Data_Setting_Id": 427224,
+          "DATASETVALUE": "CAP_FLOOR",
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658609
+        },
+        {
+          "Data_Setting_Id": 427225,
+          "DATASETVALUE": "CAP_FLOOR",
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658609
+        },
+        {
+          "Data_Setting_Id": 427221,
+          "DATASETVALUE": "CAP_FLOOR",
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658609
+        },
+        {
+          "Data_Setting_Id": 427226,
+          "DATASETVALUE": "CAP_FLOOR",
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658609
+        },
+        {
+          "Data_Setting_Id": 427229,
+          "DATASETVALUE": "CAP_FLOOR",
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658609
+        },
+        {
+          "Data_Setting_Id": 427222,
+          "DATASETVALUE": "CAP_FLOOR",
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658609
+        },
+        {
+          "Data_Setting_Id": 427223,
+          "DATASETVALUE": "CAP_FLOOR",
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658609
+        },
+        {
+          "Data_Setting_Id": 427227,
+          "DATASETVALUE": "CAP_FLOOR",
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658609
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "CAP_FLOOR_PANEL",
+      "OBJECT_ID": 48978,
+      "OBJECT_TYPE": "CAP_FLOOR",
+      "QUICK_ACCESS": "SwfName:=CapFloorView",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 48913,
+      "TYPE_NAME": "SwfWindow",
+      "STEPS_ID": 658609,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 31,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 427228,
+          "DATASETVALUE": "CAP_FLOOR",
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658609
+        },
+        {
+          "Data_Setting_Id": 427230,
+          "DATASETVALUE": "CAP_FLOOR",
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658609
+        },
+        {
+          "Data_Setting_Id": 427231,
+          "DATASETVALUE": "CAP_FLOOR",
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658609
+        },
+        {
+          "Data_Setting_Id": 427224,
+          "DATASETVALUE": "CAP_FLOOR",
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658609
+        },
+        {
+          "Data_Setting_Id": 427225,
+          "DATASETVALUE": "CAP_FLOOR",
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658609
+        },
+        {
+          "Data_Setting_Id": 427221,
+          "DATASETVALUE": "CAP_FLOOR",
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658609
+        },
+        {
+          "Data_Setting_Id": 427226,
+          "DATASETVALUE": "CAP_FLOOR",
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658609
+        },
+        {
+          "Data_Setting_Id": 427229,
+          "DATASETVALUE": "CAP_FLOOR",
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658609
+        },
+        {
+          "Data_Setting_Id": 427222,
+          "DATASETVALUE": "CAP_FLOOR",
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658609
+        },
+        {
+          "Data_Setting_Id": 427223,
+          "DATASETVALUE": "CAP_FLOOR",
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658609
+        },
+        {
+          "Data_Setting_Id": 427227,
+          "DATASETVALUE": "CAP_FLOOR",
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658609
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "CAP_FLOOR_PANEL",
+      "OBJECT_ID": 48935,
+      "OBJECT_TYPE": "CAP_FLOOR",
+      "QUICK_ACCESS": "SwfName:=CapFloorView",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 48913,
+      "TYPE_NAME": "SwfWindow",
+      "STEPS_ID": 658609,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 31,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 427239,
+          "DATASETVALUE": "TEXT|\"Swap Trade\"|IMAGE:CAP_FLOOR",
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658610
+        },
+        {
+          "Data_Setting_Id": 427241,
+          "DATASETVALUE": "TEXT|\"Swap Trade\"|IMAGE:CAP_FLOOR",
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658610
+        },
+        {
+          "Data_Setting_Id": 427242,
+          "DATASETVALUE": "TEXT|\"Swap Trade\"|IMAGE:CAP_FLOOR",
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658610
+        },
+        {
+          "Data_Setting_Id": 427235,
+          "DATASETVALUE": "TEXT|\"Swap Trade\"|IMAGE:CAP_FLOOR",
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658610
+        },
+        {
+          "Data_Setting_Id": 427236,
+          "DATASETVALUE": "TEXT|\"Swap Trade\"|IMAGE:CAP_FLOOR",
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658610
+        },
+        {
+          "Data_Setting_Id": 427232,
+          "DATASETVALUE": "TEXT|\"Swap Trade\"|IMAGE:CAP_FLOOR",
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658610
+        },
+        {
+          "Data_Setting_Id": 427237,
+          "DATASETVALUE": "TEXT|\"Swap Trade\"|IMAGE:CAP_FLOOR",
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658610
+        },
+        {
+          "Data_Setting_Id": 427240,
+          "DATASETVALUE": "TEXT|\"Swap Trade\"|IMAGE:CAP_FLOOR",
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658610
+        },
+        {
+          "Data_Setting_Id": 427233,
+          "DATASETVALUE": "TEXT|\"Swap Trade\"|IMAGE:CAP_FLOOR",
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658610
+        },
+        {
+          "Data_Setting_Id": 427234,
+          "DATASETVALUE": "TEXT|\"Swap Trade\"|IMAGE:CAP_FLOOR",
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658610
+        },
+        {
+          "Data_Setting_Id": 427238,
+          "DATASETVALUE": "TEXT|\"Swap Trade\"|IMAGE:CAP_FLOOR",
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658610
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 10819,
+      "KEY_WORD_NAME": "Comment",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 658610,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 32,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 427250,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658611
+        },
+        {
+          "Data_Setting_Id": 427252,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658611
+        },
+        {
+          "Data_Setting_Id": 427253,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658611
+        },
+        {
+          "Data_Setting_Id": 427246,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658611
+        },
+        {
+          "Data_Setting_Id": 427247,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658611
+        },
+        {
+          "Data_Setting_Id": 427243,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658611
+        },
+        {
+          "Data_Setting_Id": 427248,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658611
+        },
+        {
+          "Data_Setting_Id": 427251,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658611
+        },
+        {
+          "Data_Setting_Id": 427244,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658611
+        },
+        {
+          "Data_Setting_Id": 427245,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658611
+        },
+        {
+          "Data_Setting_Id": 427249,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658611
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 658611,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 33,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 427250,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658611
+        },
+        {
+          "Data_Setting_Id": 427252,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658611
+        },
+        {
+          "Data_Setting_Id": 427253,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658611
+        },
+        {
+          "Data_Setting_Id": 427246,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658611
+        },
+        {
+          "Data_Setting_Id": 427247,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658611
+        },
+        {
+          "Data_Setting_Id": 427243,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658611
+        },
+        {
+          "Data_Setting_Id": 427248,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658611
+        },
+        {
+          "Data_Setting_Id": 427251,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658611
+        },
+        {
+          "Data_Setting_Id": 427244,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658611
+        },
+        {
+          "Data_Setting_Id": 427245,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658611
+        },
+        {
+          "Data_Setting_Id": 427249,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658611
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 658611,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 33,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 427261,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658612
+        },
+        {
+          "Data_Setting_Id": 427263,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658612
+        },
+        {
+          "Data_Setting_Id": 427264,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658612
+        },
+        {
+          "Data_Setting_Id": 427257,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658612
+        },
+        {
+          "Data_Setting_Id": 427258,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658612
+        },
+        {
+          "Data_Setting_Id": 427254,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658612
+        },
+        {
+          "Data_Setting_Id": 427259,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658612
+        },
+        {
+          "Data_Setting_Id": 427262,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658612
+        },
+        {
+          "Data_Setting_Id": 427255,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658612
+        },
+        {
+          "Data_Setting_Id": 427256,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658612
+        },
+        {
+          "Data_Setting_Id": 427260,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658612
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 32409,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 30430,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 658612,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 34,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 427261,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658612
+        },
+        {
+          "Data_Setting_Id": 427263,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658612
+        },
+        {
+          "Data_Setting_Id": 427264,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658612
+        },
+        {
+          "Data_Setting_Id": 427257,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658612
+        },
+        {
+          "Data_Setting_Id": 427258,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658612
+        },
+        {
+          "Data_Setting_Id": 427254,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658612
+        },
+        {
+          "Data_Setting_Id": 427259,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658612
+        },
+        {
+          "Data_Setting_Id": 427262,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658612
+        },
+        {
+          "Data_Setting_Id": 427255,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658612
+        },
+        {
+          "Data_Setting_Id": 427256,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658612
+        },
+        {
+          "Data_Setting_Id": 427260,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658612
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 40727,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 30430,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 658612,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 34,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 427272,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658562,
+          "SKIP": 0,
+          "STEPS_ID": 658613
+        },
+        {
+          "Data_Setting_Id": 427274,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658564,
+          "SKIP": 0,
+          "STEPS_ID": 658613
+        },
+        {
+          "Data_Setting_Id": 427275,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658565,
+          "SKIP": 0,
+          "STEPS_ID": 658613
+        },
+        {
+          "Data_Setting_Id": 427268,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658558,
+          "SKIP": 0,
+          "STEPS_ID": 658613
+        },
+        {
+          "Data_Setting_Id": 427269,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658559,
+          "SKIP": 0,
+          "STEPS_ID": 658613
+        },
+        {
+          "Data_Setting_Id": 427265,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658555,
+          "SKIP": 0,
+          "STEPS_ID": 658613
+        },
+        {
+          "Data_Setting_Id": 427270,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658560,
+          "SKIP": 0,
+          "STEPS_ID": 658613
+        },
+        {
+          "Data_Setting_Id": 427273,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658563,
+          "SKIP": 0,
+          "STEPS_ID": 658613
+        },
+        {
+          "Data_Setting_Id": 427266,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658556,
+          "SKIP": 0,
+          "STEPS_ID": 658613
+        },
+        {
+          "Data_Setting_Id": 427267,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658557,
+          "SKIP": 0,
+          "STEPS_ID": 658613
+        },
+        {
+          "Data_Setting_Id": 427271,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 658561,
+          "SKIP": 0,
+          "STEPS_ID": 658613
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3701,
+      "TEST_CASE_NAME": "Snapshot IRG Version and Trade Image",
+      "KEY_WORD_ID": 38,
+      "KEY_WORD_NAME": "Dismiss",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 658613,
+      "COLUMN_ROW_SETTING": "5",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 35,
+      "VALUE_SETTING": null
+    }
+  ]
+}

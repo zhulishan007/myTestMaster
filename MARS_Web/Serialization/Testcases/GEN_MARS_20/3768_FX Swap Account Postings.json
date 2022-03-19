@@ -1,0 +1,3510 @@
+{
+  "currentSyncroStatus": 0,
+  "assignedApplications": [
+    193,
+    194,
+    -1
+  ],
+  "assignedTestSuiteIDs": [
+    1698
+  ],
+  "version": null,
+  "assignedDataSets": [
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 684766,
+      "ALIAS_NAME": "LAM_22_Acct",
+      "DESCRIPTION_INFO": "Capture and Compare Account postings"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 684836,
+      "ALIAS_NAME": "LAM_25_Acct",
+      "DESCRIPTION_INFO": "Capture and Compare Account postings"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 684887,
+      "ALIAS_NAME": "BO_60_Acct",
+      "DESCRIPTION_INFO": "FX Swap Account Postings"
+    }
+  ],
+  "allSteps": [
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 442616,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 685490
+        },
+        {
+          "Data_Setting_Id": 442614,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 685490
+        },
+        {
+          "Data_Setting_Id": 442615,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 685490
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 685490,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 442616,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 685490
+        },
+        {
+          "Data_Setting_Id": 442614,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 685490
+        },
+        {
+          "Data_Setting_Id": 442615,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 685490
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 685490,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 442617,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 685491
+        },
+        {
+          "Data_Setting_Id": 442618,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 685491
+        },
+        {
+          "Data_Setting_Id": 442619,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 685491
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 685491,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 2,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 442622,
+          "DATASETVALUE": "TEXT|\"Account Postings\"|IMAGE:FXWAP_TRADE",
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 685492
+        },
+        {
+          "Data_Setting_Id": 442620,
+          "DATASETVALUE": "TEXT|\"Account Postings\"|IMAGE:FXWAP_TRADE",
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 685492
+        },
+        {
+          "Data_Setting_Id": 442621,
+          "DATASETVALUE": "TEXT|\"Account Postings\"|IMAGE:FXWAP_TRADE",
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 685492
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 10819,
+      "KEY_WORD_NAME": "Comment",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 685492,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 3,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 442625,
+          "DATASETVALUE": "New Search",
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 685493
+        },
+        {
+          "Data_Setting_Id": 442623,
+          "DATASETVALUE": "New Search",
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 685493
+        },
+        {
+          "Data_Setting_Id": 442624,
+          "DATASETVALUE": "New Search",
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 685493
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 5,
+      "KEY_WORD_NAME": "ClickMenuIcon",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 685493,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 4,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 442628,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 685494
+        },
+        {
+          "Data_Setting_Id": 442626,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 685494
+        },
+        {
+          "Data_Setting_Id": 442627,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 685494
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 37247,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\n",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 685494,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 5,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 442628,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 685494
+        },
+        {
+          "Data_Setting_Id": 442626,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 685494
+        },
+        {
+          "Data_Setting_Id": 442627,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 685494
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 46046,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswfname:=Desktop|Page",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 685494,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 5,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 442631,
+          "DATASETVALUE": "FXSWAP",
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 685495
+        },
+        {
+          "Data_Setting_Id": 442629,
+          "DATASETVALUE": "FXSWAP",
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 685495
+        },
+        {
+          "Data_Setting_Id": 442630,
+          "DATASETVALUE": "FXSWAP",
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 685495
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_TYPES",
+      "OBJECT_ID": 37854,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeTypes",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 26818,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 685495,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 6,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 442631,
+          "DATASETVALUE": "FXSWAP",
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 685495
+        },
+        {
+          "Data_Setting_Id": 442629,
+          "DATASETVALUE": "FXSWAP",
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 685495
+        },
+        {
+          "Data_Setting_Id": 442630,
+          "DATASETVALUE": "FXSWAP",
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 685495
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_TYPES",
+      "OBJECT_ID": 46634,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeTypes",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 26818,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 685495,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 6,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 905751
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 905751
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 905751
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "ADVANCED_ATTRIBUTE",
+      "OBJECT_ID": 37831,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_attributeNameTextControl",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 29512,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 905751,
+      "COLUMN_ROW_SETTING": "RJ",
+      "COMMENTINFO": "RJ",
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 7,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 905751
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 905751
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 905751
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "ADVANCED_ATTRIBUTE",
+      "OBJECT_ID": 46611,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_attributeNameTextControl",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 29512,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 905751,
+      "COLUMN_ROW_SETTING": "RJ",
+      "COMMENTINFO": "RJ",
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 7,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 442634,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 4,
+          "STEPS_ID": 685496
+        },
+        {
+          "Data_Setting_Id": 442632,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 4,
+          "STEPS_ID": 685496
+        },
+        {
+          "Data_Setting_Id": 442633,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 4,
+          "STEPS_ID": 685496
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_STATUS",
+      "OBJECT_ID": 34193,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeStatus",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 32176,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 685496,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 8,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 442634,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 4,
+          "STEPS_ID": 685496
+        },
+        {
+          "Data_Setting_Id": 442632,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 4,
+          "STEPS_ID": 685496
+        },
+        {
+          "Data_Setting_Id": 442633,
+          "DATASETVALUE": "Done",
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 4,
+          "STEPS_ID": 685496
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_STATUS",
+      "OBJECT_ID": 43743,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeStatus",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 32176,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 685496,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 8,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 442637,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 685497
+        },
+        {
+          "Data_Setting_Id": 442635,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 685497
+        },
+        {
+          "Data_Setting_Id": 442636,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 685497
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_EXTERNAL_TRADE_ID",
+      "OBJECT_ID": 44105,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=ExternalTradeId",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 27732,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 685497,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 9,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 442637,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 685497
+        },
+        {
+          "Data_Setting_Id": 442635,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 685497
+        },
+        {
+          "Data_Setting_Id": 442636,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 685497
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_EXTERNAL_TRADE_ID",
+      "OBJECT_ID": 34602,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=ExternalTradeId",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 27732,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 685497,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 9,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 442638,
+          "DATASETVALUE": "MODAL_VAR:BO_60_TRADE_ID",
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 685498
+        },
+        {
+          "Data_Setting_Id": 442639,
+          "DATASETVALUE": "MODAL_VAR:LAM_22_TRADE_ID",
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 685498
+        },
+        {
+          "Data_Setting_Id": 442640,
+          "DATASETVALUE": "MODAL_VAR:LAM_25_TRADE_ID",
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 685498
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_ID",
+      "OBJECT_ID": 41222,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeID",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 29531,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 685498,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 10,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 442638,
+          "DATASETVALUE": "MODAL_VAR:BO_60_TRADE_ID",
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 685498
+        },
+        {
+          "Data_Setting_Id": 442639,
+          "DATASETVALUE": "MODAL_VAR:LAM_22_TRADE_ID",
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 685498
+        },
+        {
+          "Data_Setting_Id": 442640,
+          "DATASETVALUE": "MODAL_VAR:LAM_25_TRADE_ID",
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 685498
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_ID",
+      "OBJECT_ID": 33373,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeID",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 29531,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 685498,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 10,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 442643,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 685499
+        },
+        {
+          "Data_Setting_Id": 442641,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 685499
+        },
+        {
+          "Data_Setting_Id": 442642,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 685499
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_FIND_NOW",
+      "OBJECT_ID": 32728,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_findNowButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 32179,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 685499,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 12,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 442643,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 685499
+        },
+        {
+          "Data_Setting_Id": 442641,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 685499
+        },
+        {
+          "Data_Setting_Id": 442642,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 685499
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_FIND_NOW",
+      "OBJECT_ID": 45052,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_findNowButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 32179,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 685499,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 12,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 442646,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 685500
+        },
+        {
+          "Data_Setting_Id": 442644,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 685500
+        },
+        {
+          "Data_Setting_Id": 442645,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 685500
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 37247,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\n",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 685500,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 12,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 442646,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 685500
+        },
+        {
+          "Data_Setting_Id": 442644,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 685500
+        },
+        {
+          "Data_Setting_Id": 442645,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 685500
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 46046,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswfname:=Desktop|Page",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 685500,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 12,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 442667,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 685507
+        },
+        {
+          "Data_Setting_Id": 442665,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 685507
+        },
+        {
+          "Data_Setting_Id": 442666,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 685507
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "FXSWAP_TRADE_POPUP",
+      "OBJECT_ID": 49122,
+      "OBJECT_TYPE": "FXSWAP_TRADE_POPUP",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^IFC FX Swap Trade.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 49113,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 685507,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 13,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 442667,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 685507
+        },
+        {
+          "Data_Setting_Id": 442665,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 685507
+        },
+        {
+          "Data_Setting_Id": 442666,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 685507
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "FXSWAP_TRADE_POPUP",
+      "OBJECT_ID": 49114,
+      "OBJECT_TYPE": "FXSWAP_TRADE_POPUP",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^IFC FX Swap Trade.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 49113,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 685507,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 13,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 442670,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 685508
+        },
+        {
+          "Data_Setting_Id": 442668,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 685508
+        },
+        {
+          "Data_Setting_Id": 442669,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 685508
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 22,
+      "KEY_WORD_NAME": "SelectMenuItem",
+      "OBJECT_HAPPY_NAME": "FXSWAP_TRADE_POPUP_TOOLBAR",
+      "OBJECT_ID": 49116,
+      "OBJECT_TYPE": "FXSWAP_TRADE_POPUP",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 49115,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 685508,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 14,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 442670,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 685508
+        },
+        {
+          "Data_Setting_Id": 442668,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 685508
+        },
+        {
+          "Data_Setting_Id": 442669,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 685508
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 22,
+      "KEY_WORD_NAME": "SelectMenuItem",
+      "OBJECT_HAPPY_NAME": "FXSWAP_TRADE_POPUP_TOOLBAR",
+      "OBJECT_ID": 49123,
+      "OBJECT_TYPE": "FXSWAP_TRADE_POPUP",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 49115,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 685508,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 14,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 905752
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 905752
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 905752
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 49,
+      "KEY_WORD_NAME": "ADDDays",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 905752,
+      "COLUMN_ROW_SETTING": "RJ",
+      "COMMENTINFO": "RJ",
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 14,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 442673,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 685509
+        },
+        {
+          "Data_Setting_Id": 442671,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 685509
+        },
+        {
+          "Data_Setting_Id": 442672,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 685509
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 685509,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 15,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 442673,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 685509
+        },
+        {
+          "Data_Setting_Id": 442671,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 685509
+        },
+        {
+          "Data_Setting_Id": 442672,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 685509
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 685509,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 15,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 442655,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 685503
+        },
+        {
+          "Data_Setting_Id": 442653,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 685503
+        },
+        {
+          "Data_Setting_Id": 442654,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 685503
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 685503,
+      "COLUMN_ROW_SETTING": "F",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 16,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 442676,
+          "DATASETVALUE": "Back Office",
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 685510
+        },
+        {
+          "Data_Setting_Id": 442674,
+          "DATASETVALUE": "Back Office",
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 685510
+        },
+        {
+          "Data_Setting_Id": 442675,
+          "DATASETVALUE": "Back Office",
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 685510
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 5,
+      "KEY_WORD_NAME": "ClickMenuIcon",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 685510,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 16,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 442658,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 685504
+        },
+        {
+          "Data_Setting_Id": 442656,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 685504
+        },
+        {
+          "Data_Setting_Id": 442657,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 685504
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "FXSWAP_TRADE_POPUP",
+      "OBJECT_ID": 49122,
+      "OBJECT_TYPE": "FXSWAP_TRADE_POPUP",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^IFC FX Swap Trade.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 49113,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 685504,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 17,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 442658,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 685504
+        },
+        {
+          "Data_Setting_Id": 442656,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 685504
+        },
+        {
+          "Data_Setting_Id": 442657,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 685504
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "FXSWAP_TRADE_POPUP",
+      "OBJECT_ID": 49114,
+      "OBJECT_TYPE": "FXSWAP_TRADE_POPUP",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^IFC FX Swap Trade.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 49113,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 685504,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 17,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 442679,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 685511
+        },
+        {
+          "Data_Setting_Id": 442677,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 685511
+        },
+        {
+          "Data_Setting_Id": 442678,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 685511
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 685511,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 17,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 442682,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 685512
+        },
+        {
+          "Data_Setting_Id": 442680,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 685512
+        },
+        {
+          "Data_Setting_Id": 442681,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 685512
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "BACK_OFFICE",
+      "OBJECT_ID": 41341,
+      "OBJECT_TYPE": "BACK_OFFICE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24973,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 685512,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 18,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 442682,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 685512
+        },
+        {
+          "Data_Setting_Id": 442680,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 685512
+        },
+        {
+          "Data_Setting_Id": 442681,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 685512
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "BACK_OFFICE",
+      "OBJECT_ID": 33664,
+      "OBJECT_TYPE": "BACK_OFFICE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24973,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 685512,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 18,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 442685,
+          "DATASETVALUE": "Postings",
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 685513
+        },
+        {
+          "Data_Setting_Id": 442683,
+          "DATASETVALUE": "Postings",
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 685513
+        },
+        {
+          "Data_Setting_Id": 442684,
+          "DATASETVALUE": "Postings",
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 685513
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 24,
+      "KEY_WORD_NAME": "SelectTab",
+      "OBJECT_HAPPY_NAME": "BACK_OFFICE_TABS",
+      "OBJECT_ID": 37850,
+      "OBJECT_TYPE": "BACK_OFFICE",
+      "QUICK_ACCESS": "swfname:=tabControl1",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 30554,
+      "TYPE_NAME": "swfTab",
+      "STEPS_ID": 685513,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 19,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 442685,
+          "DATASETVALUE": "Postings",
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 685513
+        },
+        {
+          "Data_Setting_Id": 442683,
+          "DATASETVALUE": "Postings",
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 685513
+        },
+        {
+          "Data_Setting_Id": 442684,
+          "DATASETVALUE": "Postings",
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 685513
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 24,
+      "KEY_WORD_NAME": "SelectTab",
+      "OBJECT_HAPPY_NAME": "BACK_OFFICE_TABS",
+      "OBJECT_ID": 46631,
+      "OBJECT_TYPE": "BACK_OFFICE",
+      "QUICK_ACCESS": "swfname:=tabControl1",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 30554,
+      "TYPE_NAME": "swfTab",
+      "STEPS_ID": 685513,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 19,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 489232,
+          "DATASETVALUE": "MODAL_VAR:TODAY",
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 4,
+          "STEPS_ID": 740862
+        },
+        {
+          "Data_Setting_Id": 489230,
+          "DATASETVALUE": "MODAL_VAR:TODAY",
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 4,
+          "STEPS_ID": 740862
+        },
+        {
+          "Data_Setting_Id": 489231,
+          "DATASETVALUE": "MODAL_VAR:TODAY",
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 4,
+          "STEPS_ID": 740862
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "VIEW_FROM_POSTING_DATE",
+      "OBJECT_ID": 32266,
+      "OBJECT_TYPE": "BACK_OFFICE",
+      "QUICK_ACCESS": "swfname:=_postingFromDateDate",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 30515,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 740862,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 20,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 489232,
+          "DATASETVALUE": "MODAL_VAR:TODAY",
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 4,
+          "STEPS_ID": 740862
+        },
+        {
+          "Data_Setting_Id": 489230,
+          "DATASETVALUE": "MODAL_VAR:TODAY",
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 4,
+          "STEPS_ID": 740862
+        },
+        {
+          "Data_Setting_Id": 489231,
+          "DATASETVALUE": "MODAL_VAR:TODAY",
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 4,
+          "STEPS_ID": 740862
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "VIEW_FROM_POSTING_DATE",
+      "OBJECT_ID": 40586,
+      "OBJECT_TYPE": "BACK_OFFICE",
+      "QUICK_ACCESS": "swfname:=_postingFromDateDate",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 30515,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 740862,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 20,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 489238,
+          "DATASETVALUE": "MODAL_VAR:TODAY",
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 740864
+        },
+        {
+          "Data_Setting_Id": 489236,
+          "DATASETVALUE": "MODAL_VAR:TODAY",
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 740864
+        },
+        {
+          "Data_Setting_Id": 489237,
+          "DATASETVALUE": "MODAL_VAR:TODAY",
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 740864
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "VIEW_TO_POSTING_DATE",
+      "OBJECT_ID": 41293,
+      "OBJECT_TYPE": "BACK_OFFICE",
+      "QUICK_ACCESS": "swfname:=_postingToDateDate",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 27846,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 740864,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 21,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 489238,
+          "DATASETVALUE": "MODAL_VAR:TODAY",
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 740864
+        },
+        {
+          "Data_Setting_Id": 489236,
+          "DATASETVALUE": "MODAL_VAR:TODAY",
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 740864
+        },
+        {
+          "Data_Setting_Id": 489237,
+          "DATASETVALUE": "MODAL_VAR:TODAY",
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 740864
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "VIEW_TO_POSTING_DATE",
+      "OBJECT_ID": 33674,
+      "OBJECT_TYPE": "BACK_OFFICE",
+      "QUICK_ACCESS": "swfname:=_postingToDateDate",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 27846,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 740864,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 21,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 865534
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 865534
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 865534
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "POSTINGS_APPLY",
+      "OBJECT_ID": 34204,
+      "OBJECT_TYPE": "BACK_OFFICE",
+      "QUICK_ACCESS": "swfname:=_applyPostingsButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 29676,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 865534,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 22,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 865534
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 865534
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 865534
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "POSTINGS_APPLY",
+      "OBJECT_ID": 43753,
+      "OBJECT_TYPE": "BACK_OFFICE",
+      "QUICK_ACCESS": "swfname:=_applyPostingsButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 29676,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 865534,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 22,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 584975,
+          "DATASETVALUE": "N",
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 859312
+        },
+        {
+          "Data_Setting_Id": 584973,
+          "DATASETVALUE": "N",
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 859312
+        },
+        {
+          "Data_Setting_Id": 584974,
+          "DATASETVALUE": "N",
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 859312
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "VIEW_USE_HISTORY_TABLE",
+      "OBJECT_ID": 43367,
+      "OBJECT_TYPE": "BACK_OFFICE",
+      "QUICK_ACCESS": "swfname:=_historyToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 26898,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 859312,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 23,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 584975,
+          "DATASETVALUE": "N",
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 859312
+        },
+        {
+          "Data_Setting_Id": 584973,
+          "DATASETVALUE": "N",
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 859312
+        },
+        {
+          "Data_Setting_Id": 584974,
+          "DATASETVALUE": "N",
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 859312
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "VIEW_USE_HISTORY_TABLE",
+      "OBJECT_ID": 33872,
+      "OBJECT_TYPE": "BACK_OFFICE",
+      "QUICK_ACCESS": "swfname:=_historyToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 26898,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 859312,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 23,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 489250,
+          "DATASETVALUE": "BACK_OFFICE_POSTINGS",
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 740868
+        },
+        {
+          "Data_Setting_Id": 489248,
+          "DATASETVALUE": "BACK_OFFICE_POSTINGS",
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 740868
+        },
+        {
+          "Data_Setting_Id": 489249,
+          "DATASETVALUE": "BACK_OFFICE_POSTINGS",
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 740868
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "BACK_OFFICE_PANEL",
+      "OBJECT_ID": 48920,
+      "OBJECT_TYPE": "BACK_OFFICE",
+      "QUICK_ACCESS": "SwfName:=BackView",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 48885,
+      "TYPE_NAME": "SwfWindow",
+      "STEPS_ID": 740868,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 24,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 489250,
+          "DATASETVALUE": "BACK_OFFICE_POSTINGS",
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 740868
+        },
+        {
+          "Data_Setting_Id": 489248,
+          "DATASETVALUE": "BACK_OFFICE_POSTINGS",
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 740868
+        },
+        {
+          "Data_Setting_Id": 489249,
+          "DATASETVALUE": "BACK_OFFICE_POSTINGS",
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 740868
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "BACK_OFFICE_PANEL",
+      "OBJECT_ID": 48958,
+      "OBJECT_TYPE": "BACK_OFFICE",
+      "QUICK_ACCESS": "SwfName:=BackView",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 48885,
+      "TYPE_NAME": "SwfWindow",
+      "STEPS_ID": 740868,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 24,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 489229,
+          "DATASETVALUE": "TEXT|\"Account Postings\"|IMAGE:BACK_OFFICE_POSTINGS",
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 740861
+        },
+        {
+          "Data_Setting_Id": 489227,
+          "DATASETVALUE": "TEXT|\"Account Postings\"|IMAGE:BACK_OFFICE_POSTINGS",
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 740861
+        },
+        {
+          "Data_Setting_Id": 489228,
+          "DATASETVALUE": "TEXT|\"Account Postings\"|IMAGE:BACK_OFFICE_POSTINGS",
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 740861
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 10819,
+      "KEY_WORD_NAME": "Comment",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 740861,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 25,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 489235,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 740863
+        },
+        {
+          "Data_Setting_Id": 489233,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 740863
+        },
+        {
+          "Data_Setting_Id": 489234,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 740863
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 740863,
+      "COLUMN_ROW_SETTING": "f",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 26,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 489244,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 4,
+          "STEPS_ID": 740866
+        },
+        {
+          "Data_Setting_Id": 489242,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 4,
+          "STEPS_ID": 740866
+        },
+        {
+          "Data_Setting_Id": 489243,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 4,
+          "STEPS_ID": 740866
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "FILTER_SELECTION",
+      "OBJECT_ID": 37316,
+      "OBJECT_TYPE": "FILTER_SELECTION",
+      "QUICK_ACCESS": "is child window:=False\nis owned window:=True\nswfname:=BlotterFilterSelectFieldsForm|SelectFieldsForm",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24813,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 740866,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 27,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 489244,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 4,
+          "STEPS_ID": 740866
+        },
+        {
+          "Data_Setting_Id": 489242,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 4,
+          "STEPS_ID": 740866
+        },
+        {
+          "Data_Setting_Id": 489243,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 4,
+          "STEPS_ID": 740866
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "FILTER_SELECTION",
+      "OBJECT_ID": 46115,
+      "OBJECT_TYPE": "FILTER_SELECTION",
+      "QUICK_ACCESS": "is child window:=False\nis owned window:=True\nswfname:=BlotterFilterSelectFieldsForm|SelectFieldsForm",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24813,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 740866,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 27,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 489247,
+          "DATASETVALUE": "Booking",
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 4,
+          "STEPS_ID": 740867
+        },
+        {
+          "Data_Setting_Id": 489245,
+          "DATASETVALUE": "Booking",
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 4,
+          "STEPS_ID": 740867
+        },
+        {
+          "Data_Setting_Id": 489246,
+          "DATASETVALUE": "Booking",
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 4,
+          "STEPS_ID": 740867
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 40,
+      "KEY_WORD_NAME": "SelectListItem",
+      "OBJECT_HAPPY_NAME": "SETUP_AVAILABLE_FIELDS",
+      "OBJECT_ID": 47202,
+      "OBJECT_TYPE": "FILTER_SELECTION",
+      "QUICK_ACCESS": "swfname:=lstAvailable",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25123,
+      "TYPE_NAME": "SwfList",
+      "STEPS_ID": 740867,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 28,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 489247,
+          "DATASETVALUE": "Booking",
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 4,
+          "STEPS_ID": 740867
+        },
+        {
+          "Data_Setting_Id": 489245,
+          "DATASETVALUE": "Booking",
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 4,
+          "STEPS_ID": 740867
+        },
+        {
+          "Data_Setting_Id": 489246,
+          "DATASETVALUE": "Booking",
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 4,
+          "STEPS_ID": 740867
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 40,
+      "KEY_WORD_NAME": "SelectListItem",
+      "OBJECT_HAPPY_NAME": "SETUP_AVAILABLE_FIELDS",
+      "OBJECT_ID": 35605,
+      "OBJECT_TYPE": "FILTER_SELECTION",
+      "QUICK_ACCESS": "swfname:=lstAvailable",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25123,
+      "TYPE_NAME": "SwfList",
+      "STEPS_ID": 740867,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 28,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 489241,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 4,
+          "STEPS_ID": 740865
+        },
+        {
+          "Data_Setting_Id": 489239,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 4,
+          "STEPS_ID": 740865
+        },
+        {
+          "Data_Setting_Id": 489240,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 4,
+          "STEPS_ID": 740865
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "SETUP_ADD",
+      "OBJECT_ID": 32608,
+      "OBJECT_TYPE": "FILTER_SELECTION",
+      "QUICK_ACCESS": "swfname:=butAdd",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 30564,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 740865,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 29,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 489241,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 4,
+          "STEPS_ID": 740865
+        },
+        {
+          "Data_Setting_Id": 489239,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 4,
+          "STEPS_ID": 740865
+        },
+        {
+          "Data_Setting_Id": 489240,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 4,
+          "STEPS_ID": 740865
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "SETUP_ADD",
+      "OBJECT_ID": 42424,
+      "OBJECT_TYPE": "FILTER_SELECTION",
+      "QUICK_ACCESS": "swfname:=butAdd",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 30564,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 740865,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 29,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 489217,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 4,
+          "STEPS_ID": 740857
+        },
+        {
+          "Data_Setting_Id": 489215,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 4,
+          "STEPS_ID": 740857
+        },
+        {
+          "Data_Setting_Id": 489216,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 4,
+          "STEPS_ID": 740857
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 40,
+      "KEY_WORD_NAME": "SelectListItem",
+      "OBJECT_HAPPY_NAME": "SETUP_AVAILABLE_FIELDS",
+      "OBJECT_ID": 47202,
+      "OBJECT_TYPE": "FILTER_SELECTION",
+      "QUICK_ACCESS": "swfname:=lstAvailable",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25123,
+      "TYPE_NAME": "SwfList",
+      "STEPS_ID": 740857,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 30,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 489217,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 4,
+          "STEPS_ID": 740857
+        },
+        {
+          "Data_Setting_Id": 489215,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 4,
+          "STEPS_ID": 740857
+        },
+        {
+          "Data_Setting_Id": 489216,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 4,
+          "STEPS_ID": 740857
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 40,
+      "KEY_WORD_NAME": "SelectListItem",
+      "OBJECT_HAPPY_NAME": "SETUP_AVAILABLE_FIELDS",
+      "OBJECT_ID": 35605,
+      "OBJECT_TYPE": "FILTER_SELECTION",
+      "QUICK_ACCESS": "swfname:=lstAvailable",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25123,
+      "TYPE_NAME": "SwfList",
+      "STEPS_ID": 740857,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 30,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 489214,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 4,
+          "STEPS_ID": 740856
+        },
+        {
+          "Data_Setting_Id": 489212,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 4,
+          "STEPS_ID": 740856
+        },
+        {
+          "Data_Setting_Id": 489213,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 4,
+          "STEPS_ID": 740856
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "SETUP_ADD",
+      "OBJECT_ID": 32608,
+      "OBJECT_TYPE": "FILTER_SELECTION",
+      "QUICK_ACCESS": "swfname:=butAdd",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 30564,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 740856,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 31,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 489214,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 4,
+          "STEPS_ID": 740856
+        },
+        {
+          "Data_Setting_Id": 489212,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 4,
+          "STEPS_ID": 740856
+        },
+        {
+          "Data_Setting_Id": 489213,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 4,
+          "STEPS_ID": 740856
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "SETUP_ADD",
+      "OBJECT_ID": 42424,
+      "OBJECT_TYPE": "FILTER_SELECTION",
+      "QUICK_ACCESS": "swfname:=butAdd",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 30564,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 740856,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 31,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 489253,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 4,
+          "STEPS_ID": 740869
+        },
+        {
+          "Data_Setting_Id": 489251,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 4,
+          "STEPS_ID": 740869
+        },
+        {
+          "Data_Setting_Id": 489252,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 4,
+          "STEPS_ID": 740869
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "SETUP_OK",
+      "OBJECT_ID": 37828,
+      "OBJECT_TYPE": "FILTER_SELECTION",
+      "QUICK_ACCESS": "swfname:=butOK",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25126,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 740869,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 32,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 489253,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 4,
+          "STEPS_ID": 740869
+        },
+        {
+          "Data_Setting_Id": 489251,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 4,
+          "STEPS_ID": 740869
+        },
+        {
+          "Data_Setting_Id": 489252,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 4,
+          "STEPS_ID": 740869
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "SETUP_OK",
+      "OBJECT_ID": 46608,
+      "OBJECT_TYPE": "FILTER_SELECTION",
+      "QUICK_ACCESS": "swfname:=butOK",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25126,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 740869,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 32,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 442688,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 685514
+        },
+        {
+          "Data_Setting_Id": 442686,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 685514
+        },
+        {
+          "Data_Setting_Id": 442687,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 685514
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "BACK_OFFICE",
+      "OBJECT_ID": 41341,
+      "OBJECT_TYPE": "BACK_OFFICE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24973,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 685514,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 33,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 442688,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 685514
+        },
+        {
+          "Data_Setting_Id": 442686,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 685514
+        },
+        {
+          "Data_Setting_Id": 442687,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 685514
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "BACK_OFFICE",
+      "OBJECT_ID": 33664,
+      "OBJECT_TYPE": "BACK_OFFICE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24973,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 685514,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 33,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 442691,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 685515
+        },
+        {
+          "Data_Setting_Id": 442689,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 685515
+        },
+        {
+          "Data_Setting_Id": 442690,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 685515
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 685515,
+      "COLUMN_ROW_SETTING": "f",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 34,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 442694,
+          "DATASETVALUE": "TABLE_POSTINGS",
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 685516
+        },
+        {
+          "Data_Setting_Id": 442692,
+          "DATASETVALUE": "TABLE_POSTINGS",
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 685516
+        },
+        {
+          "Data_Setting_Id": 442693,
+          "DATASETVALUE": "TABLE_POSTINGS",
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 685516
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 89,
+      "KEY_WORD_NAME": "CaptureAndCompareByKey",
+      "OBJECT_HAPPY_NAME": "POSTINGS_TABLE",
+      "OBJECT_ID": 35055,
+      "OBJECT_TYPE": "BACK_OFFICE",
+      "QUICK_ACCESS": "swfname:=_postingsListSpreadsheet",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 26932,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 685516,
+      "COLUMN_ROW_SETTING": "ALLROWS:KEY:[Posting Date;Value Date;GL Date;Account ID;Currency;Debit Credit;Event Type;Posting Type];Amount",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 35,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 442694,
+          "DATASETVALUE": "TABLE_POSTINGS",
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 685516
+        },
+        {
+          "Data_Setting_Id": 442692,
+          "DATASETVALUE": "TABLE_POSTINGS",
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 685516
+        },
+        {
+          "Data_Setting_Id": 442693,
+          "DATASETVALUE": "TABLE_POSTINGS",
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 685516
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 89,
+      "KEY_WORD_NAME": "CaptureAndCompareByKey",
+      "OBJECT_HAPPY_NAME": "POSTINGS_TABLE",
+      "OBJECT_ID": 44592,
+      "OBJECT_TYPE": "BACK_OFFICE",
+      "QUICK_ACCESS": "swfname:=_postingsListSpreadsheet",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 26932,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 685516,
+      "COLUMN_ROW_SETTING": "ALLROWS:KEY:[Posting Date;Value Date;GL Date;Account ID;Currency;Debit Credit;Event Type;Posting Type];Amount",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 35,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 442697,
+          "DATASETVALUE": "TEXT|\"Account Postings\"|TABLE:POSTINGS_TABLE",
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 685517
+        },
+        {
+          "Data_Setting_Id": 442695,
+          "DATASETVALUE": "TEXT|\"Account Postings\"|TABLE:POSTINGS_TABLE",
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 685517
+        },
+        {
+          "Data_Setting_Id": 442696,
+          "DATASETVALUE": "TEXT|\"Account Postings\"|TABLE:POSTINGS_TABLE",
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 685517
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 10819,
+      "KEY_WORD_NAME": "Comment",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 685517,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 36,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 442730,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 685528
+        },
+        {
+          "Data_Setting_Id": 442728,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 685528
+        },
+        {
+          "Data_Setting_Id": 442729,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 685528
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 685528,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 37,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 442730,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 685528
+        },
+        {
+          "Data_Setting_Id": 442728,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 685528
+        },
+        {
+          "Data_Setting_Id": 442729,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 685528
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 685528,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 37,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 442733,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 685529
+        },
+        {
+          "Data_Setting_Id": 442731,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 685529
+        },
+        {
+          "Data_Setting_Id": 442732,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 685529
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 38,
+      "KEY_WORD_NAME": "Dismiss",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 685529,
+      "COLUMN_ROW_SETTING": "10",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 38,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 442736,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 685530
+        },
+        {
+          "Data_Setting_Id": 442734,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 685530
+        },
+        {
+          "Data_Setting_Id": 442735,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 685530
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "FXSWAP",
+      "OBJECT_ID": 32335,
+      "OBJECT_TYPE": "FXSWAP",
+      "QUICK_ACCESS": "is owned window:=False \nis child window:=False \nswfname:=Desktop \nswftypename:=Summit\\.Framework\\.Desktop\\.Desktop \nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24897,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 685530,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 39,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 442736,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 685530
+        },
+        {
+          "Data_Setting_Id": 442734,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 685530
+        },
+        {
+          "Data_Setting_Id": 442735,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 685530
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "FXSWAP",
+      "OBJECT_ID": 40654,
+      "OBJECT_TYPE": "FXSWAP",
+      "QUICK_ACCESS": "is owned window:=False \nis child window:=False \nswfname:=Desktop \nswftypename:=Summit\\.Framework\\.Desktop\\.Desktop \nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24897,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 685530,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 39,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 442739,
+          "DATASETVALUE": "FXSWAP_TRADE",
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 685531
+        },
+        {
+          "Data_Setting_Id": 442737,
+          "DATASETVALUE": "FXSWAP_TRADE",
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 685531
+        },
+        {
+          "Data_Setting_Id": 442738,
+          "DATASETVALUE": "FXSWAP_TRADE",
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 685531
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "FXSWAP",
+      "OBJECT_ID": 32335,
+      "OBJECT_TYPE": "FXSWAP",
+      "QUICK_ACCESS": "is owned window:=False \nis child window:=False \nswfname:=Desktop \nswftypename:=Summit\\.Framework\\.Desktop\\.Desktop \nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24897,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 685531,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 40,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 442739,
+          "DATASETVALUE": "FXSWAP_TRADE",
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 685531
+        },
+        {
+          "Data_Setting_Id": 442737,
+          "DATASETVALUE": "FXSWAP_TRADE",
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 685531
+        },
+        {
+          "Data_Setting_Id": 442738,
+          "DATASETVALUE": "FXSWAP_TRADE",
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 685531
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "FXSWAP",
+      "OBJECT_ID": 40654,
+      "OBJECT_TYPE": "FXSWAP",
+      "QUICK_ACCESS": "is owned window:=False \nis child window:=False \nswfname:=Desktop \nswftypename:=Summit\\.Framework\\.Desktop\\.Desktop \nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24897,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 685531,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 40,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 442742,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 685532
+        },
+        {
+          "Data_Setting_Id": 442740,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 685532
+        },
+        {
+          "Data_Setting_Id": 442741,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 685532
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 685532,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 41,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 442742,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 685532
+        },
+        {
+          "Data_Setting_Id": 442740,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 685532
+        },
+        {
+          "Data_Setting_Id": 442741,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 685532
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 685532,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 41,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 442745,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 685533
+        },
+        {
+          "Data_Setting_Id": 442743,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 685533
+        },
+        {
+          "Data_Setting_Id": 442744,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 685533
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 32409,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 30430,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 685533,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 42,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 442745,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 685533
+        },
+        {
+          "Data_Setting_Id": 442743,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 685533
+        },
+        {
+          "Data_Setting_Id": 442744,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 685533
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 40727,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 30430,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 685533,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 42,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 442748,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684887,
+          "SKIP": 0,
+          "STEPS_ID": 685534
+        },
+        {
+          "Data_Setting_Id": 442746,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684766,
+          "SKIP": 0,
+          "STEPS_ID": 685534
+        },
+        {
+          "Data_Setting_Id": 442747,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 684836,
+          "SKIP": 0,
+          "STEPS_ID": 685534
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3768,
+      "TEST_CASE_NAME": "FX Swap Account Postings",
+      "KEY_WORD_ID": 38,
+      "KEY_WORD_NAME": "Dismiss",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 685534,
+      "COLUMN_ROW_SETTING": "5",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 43,
+      "VALUE_SETTING": null
+    }
+  ]
+}

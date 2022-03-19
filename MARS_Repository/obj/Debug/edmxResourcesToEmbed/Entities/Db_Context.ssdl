@@ -234,8 +234,10 @@ warning 6002: The table/view 'GEN_MARS_4.MV_OBJ_WITH_PEG' does not have a primar
 warning 6002: The table/view 'GEN_MARS_4.MV_OBJECT_SNAPSHOT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="MV_OBJECT_SNAPSHOT">
     <Key>
+      <PropertyRef Name="OT_TYPE_ID" />
       <PropertyRef Name="OBJECT_ID" />
     </Key>
+    <Property Name="OT_TYPE_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
     <Property Name="OBJECT_NAME_ID" Type="number" Precision="38" Scale="0" />
     <Property Name="OBJECT_HAPPY_NAME" Type="varchar2" MaxLength="256" />
     <Property Name="COMMENT" Type="varchar2" MaxLength="250" />
@@ -1524,7 +1526,7 @@ warning 6002: The table/view 'GEN_MARS_4.V_STORYBOARD_TEST_FULLVISION' does not 
     <Property Name="DEPENDS_ON" Type="number" Precision="16" Scale="0" />
     <Property Name="ALIAS_NAME" Type="varchar2" MaxLength="64" />
     <Property Name="PARENT_ALIAS_NAME" Type="varchar2" MaxLength="64" />
-    <Property Name="DISPLAY_NAME" Type="varchar2" MaxLength="64" />
+    <Property Name="DISPLAY_NAME" Type="varchar2" MaxLength="256" />
     <Property Name="TEST_RUN_VALUE" Type="number" Precision="2" Scale="0" />
     <Property Name="LATEST_TEST_MARK_ID" Type="number" Precision="16" Scale="0" />
     <Property Name="HIST_LATEST_TEST_MARK_ID" Type="number" Precision="16" Scale="0" />
@@ -1554,8 +1556,8 @@ warning 6002: The table/view 'GEN_MARS_4.V_TEST_DATA_REPORT_SUMMARY' does not ha
     </Key>
     <Property Name="KEY_WORD_NAME" Type="varchar2" MaxLength="255" />
     <Property Name="OBJECT_HAPPY_NAME" Type="varchar2" MaxLength="256" />
-    <Property Name="INPUT_VALUE_SETTING" Type="varchar2" MaxLength="128" />
-    <Property Name="RETURN_VALUES" Type="varchar2" MaxLength="64" />
+    <Property Name="INPUT_VALUE_SETTING" Type="varchar2" MaxLength="1024" />
+    <Property Name="RETURN_VALUES" Type="varchar2" MaxLength="266" />
     <Property Name="ACTUAL_INPUT_DATA" Type="varchar2" MaxLength="128" />
     <Property Name="LATEST_TEST_MARK_ID" Type="number" Precision="16" Scale="0" />
     <Property Name="STORYBOARD_DETAIL_ID" Type="number" Precision="16" Scale="0" />
@@ -1579,8 +1581,8 @@ warning 6002: The table/view 'GEN_MARS_4.V_TEST_DATARPT_CAPTURE' does not have a
     </Key>
     <Property Name="KEY_WORD_NAME" Type="varchar2" MaxLength="255" />
     <Property Name="OBJECT_HAPPY_NAME" Type="varchar2" MaxLength="256" />
-    <Property Name="INPUT_VALUE_SETTING" Type="varchar2" MaxLength="128" />
-    <Property Name="RETURN_VALUES" Type="varchar2" MaxLength="64" />
+    <Property Name="INPUT_VALUE_SETTING" Type="varchar2" MaxLength="1024" />
+    <Property Name="RETURN_VALUES" Type="varchar2" MaxLength="266" />
     <Property Name="ACTUAL_INPUT_DATA" Type="varchar2" MaxLength="128" />
     <Property Name="LATEST_TEST_MARK_ID" Type="number" Precision="16" Scale="0" />
     <Property Name="STORYBOARD_DETAIL_ID" Type="number" Precision="16" Scale="0" />
@@ -2169,7 +2171,7 @@ warning 6002: The table/view 'GEN_MARS_4.V_USER_COMPANY' does not have a primary
     <Parameter Name="TESTCASEID" Type="number" Mode="In" />
   </Function>
   <Function Name="DELETEFOLDERDATASET" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN_MARS_4">
-    <Parameter Name="FEEDPROCESSDETAILID" Type="varchar2" Mode="In" />
+    <Parameter Name="FEEDPROCESSDETAILID" Type="number" Mode="In" />
   </Function>
   <Function Name="DeleteDatsSets" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN_MARS_4">
     <Parameter Name="DATASETID" Type="number" Mode="In" />
@@ -2650,6 +2652,7 @@ FROM "GEN_MARS_4"."MV_OBJ_WITH_PEG" "MV_OBJ_WITH_PEG"</DefiningQuery>
     </EntitySet>
     <EntitySet Name="MV_OBJECT_SNAPSHOT" EntityType="Self.MV_OBJECT_SNAPSHOT" store:Type="Tables" store:Schema="GEN_MARS_4">
       <DefiningQuery>SELECT 
+"MV_OBJECT_SNAPSHOT"."OT_TYPE_ID" AS "OT_TYPE_ID", 
 "MV_OBJECT_SNAPSHOT"."OBJECT_NAME_ID" AS "OBJECT_NAME_ID", 
 "MV_OBJECT_SNAPSHOT"."OBJECT_HAPPY_NAME" AS "OBJECT_HAPPY_NAME", 
 "MV_OBJECT_SNAPSHOT"."COMMENT" AS "COMMENT", 

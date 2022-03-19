@@ -1,0 +1,261 @@
+{
+  "currentSyncroStatus": 0,
+  "assignedApplications": [
+    393,
+    -1
+  ],
+  "assignedTestSuiteIDs": [
+    1964
+  ],
+  "version": null,
+  "assignedDataSets": [
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 295734,
+      "ALIAS_NAME": "TEST_FHLB_PORTAL_MAIN_PAGE",
+      "DESCRIPTION_INFO": null
+    }
+  ],
+  "allSteps": [
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283686,
+          "DATASETVALUE": "CURRENT_APPLICATION",
+          "DATA_SUMMARY_ID": 295734,
+          "SKIP": 0,
+          "STEPS_ID": 295771
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3905,
+      "TEST_CASE_NAME": "TEST_FHLB_PORTAL_MAIN_PAGE",
+      "KEY_WORD_ID": 13,
+      "KEY_WORD_NAME": "StartApplication",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 295771,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 1,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283687,
+          "DATASETVALUE": "3",
+          "DATA_SUMMARY_ID": 295734,
+          "SKIP": 0,
+          "STEPS_ID": 295773
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3905,
+      "TEST_CASE_NAME": "TEST_FHLB_PORTAL_MAIN_PAGE",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 295773,
+      "COLUMN_ROW_SETTING": "F",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 1,
+      "RUN_ORDER": 2,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283680,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 295734,
+          "SKIP": 0,
+          "STEPS_ID": 295756
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3905,
+      "TEST_CASE_NAME": "TEST_FHLB_PORTAL_MAIN_PAGE",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "LOGIN_MAIN_FHLB",
+      "OBJECT_ID": 50101,
+      "OBJECT_TYPE": "LOGIN_MAIN_FHLB",
+      "QUICK_ACCESS": "webTitle:=Login",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 393,
+      "OBJECT_NAME_ID": 50100,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 295756,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 3,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283681,
+          "DATASETVALUE": "automation.user1@54055.com",
+          "DATA_SUMMARY_ID": 295734,
+          "SKIP": 0,
+          "STEPS_ID": 295757
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3905,
+      "TEST_CASE_NAME": "TEST_FHLB_PORTAL_MAIN_PAGE",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "LOGIN_MAIN_USERNAME",
+      "OBJECT_ID": 50103,
+      "OBJECT_TYPE": "LOGIN_MAIN_FHLB",
+      "QUICK_ACCESS": "webName:=username",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 393,
+      "OBJECT_NAME_ID": 50102,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 295757,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 4,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283682,
+          "DATASETVALUE": "Fhlbboston12",
+          "DATA_SUMMARY_ID": 295734,
+          "SKIP": 0,
+          "STEPS_ID": 295758
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3905,
+      "TEST_CASE_NAME": "TEST_FHLB_PORTAL_MAIN_PAGE",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "LOGIN_MAIN_PASSWORD",
+      "OBJECT_ID": 50105,
+      "OBJECT_TYPE": "LOGIN_MAIN_FHLB",
+      "QUICK_ACCESS": "webName:=password",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 393,
+      "OBJECT_NAME_ID": 50104,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 295758,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 5,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283683,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 295734,
+          "SKIP": 0,
+          "STEPS_ID": 295762
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3905,
+      "TEST_CASE_NAME": "TEST_FHLB_PORTAL_MAIN_PAGE",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "LOGIN_MAIN_LOGIN_BTN",
+      "OBJECT_ID": 50114,
+      "OBJECT_TYPE": "LOGIN_MAIN_FHLB",
+      "QUICK_ACCESS": "webXPath:=//button[normalize-space()='Log In']",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 393,
+      "OBJECT_NAME_ID": 50113,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 295762,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 1,
+      "RUN_ORDER": 6,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283684,
+          "DATASETVALUE": "3",
+          "DATA_SUMMARY_ID": 295734,
+          "SKIP": 0,
+          "STEPS_ID": 295763
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3905,
+      "TEST_CASE_NAME": "TEST_FHLB_PORTAL_MAIN_PAGE",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 295763,
+      "COLUMN_ROW_SETTING": "f",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 1,
+      "RUN_ORDER": 7,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283685,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 295734,
+          "SKIP": 0,
+          "STEPS_ID": 295764
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3905,
+      "TEST_CASE_NAME": "TEST_FHLB_PORTAL_MAIN_PAGE",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "FHLB_PORTAL_MAIN",
+      "OBJECT_ID": 50107,
+      "OBJECT_TYPE": "FHLB_PORTAL_MAIN",
+      "QUICK_ACCESS": "webTitle:=Home",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 393,
+      "OBJECT_NAME_ID": 50106,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 295764,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 1,
+      "RUN_ORDER": 8,
+      "VALUE_SETTING": null
+    }
+  ]
+}

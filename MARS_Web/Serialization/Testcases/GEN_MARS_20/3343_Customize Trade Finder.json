@@ -1,0 +1,3026 @@
+{
+  "currentSyncroStatus": 0,
+  "assignedApplications": [
+    194,
+    193,
+    -1
+  ],
+  "assignedTestSuiteIDs": [
+    1517
+  ],
+  "version": null,
+  "assignedDataSets": [
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 468628,
+      "ALIAS_NAME": "OTH_08a",
+      "DESCRIPTION_INFO": "Customize Trade Finder"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 468212,
+      "ALIAS_NAME": "OTH_08",
+      "DESCRIPTION_INFO": "Customize Trade Finder"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 851545,
+      "ALIAS_NAME": "OTH_07",
+      "DESCRIPTION_INFO": "Target Mars Test  Scenario ID / Folder\tStatus\tNOTES\tTest Scenario Description\tTest Steps\tTest Case Expected Result\tTest case Note\tName of Tester\tIn Story Board?\tAuto/Manual\tPASS/FAIL\tResource\tStatus\tComments\tIFC Comments\tReport Location/Name\tDate Uploaded\tIFC USERS\tIndia Team Comments\nOTH_07\tToBeExecuted - TradeEntry\t\t\"Verify if the trades are displayed based on the below filters selected in Trade Finder Application\n1. Funding Source\n2. Loan Type\"\t\"1 Login to Summit 6.1 \n2. Click on Applications"
+    }
+  ],
+  "allSteps": [
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583743,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 0,
+          "STEPS_ID": 468214
+        },
+        {
+          "Data_Setting_Id": 347739,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 468214
+        },
+        {
+          "Data_Setting_Id": 350223,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 0,
+          "STEPS_ID": 468214
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 468214,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583743,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 0,
+          "STEPS_ID": 468214
+        },
+        {
+          "Data_Setting_Id": 347739,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 468214
+        },
+        {
+          "Data_Setting_Id": 350223,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 0,
+          "STEPS_ID": 468214
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 468214,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583742,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 0,
+          "STEPS_ID": 468219
+        },
+        {
+          "Data_Setting_Id": 347738,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 468219
+        },
+        {
+          "Data_Setting_Id": 350222,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 0,
+          "STEPS_ID": 468219
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 468219,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 2,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583742,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 0,
+          "STEPS_ID": 468219
+        },
+        {
+          "Data_Setting_Id": 347738,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 468219
+        },
+        {
+          "Data_Setting_Id": 350222,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 0,
+          "STEPS_ID": 468219
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 468219,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 2,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583739,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 0,
+          "STEPS_ID": 468216
+        },
+        {
+          "Data_Setting_Id": 347735,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 468216
+        },
+        {
+          "Data_Setting_Id": 350219,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 0,
+          "STEPS_ID": 468216
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 12,
+      "KEY_WORD_NAME": "LaunchApplication",
+      "OBJECT_HAPPY_NAME": "ApplicationName",
+      "OBJECT_ID": 35170,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockAreaTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 29559,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 468216,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 3,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583739,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 0,
+          "STEPS_ID": 468216
+        },
+        {
+          "Data_Setting_Id": 347735,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 468216
+        },
+        {
+          "Data_Setting_Id": 350219,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 0,
+          "STEPS_ID": 468216
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 12,
+      "KEY_WORD_NAME": "LaunchApplication",
+      "OBJECT_HAPPY_NAME": "ApplicationName",
+      "OBJECT_ID": 44673,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockAreaTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 29559,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 468216,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 3,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583740,
+          "DATASETVALUE": "20",
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 0,
+          "STEPS_ID": 468217
+        },
+        {
+          "Data_Setting_Id": 347736,
+          "DATASETVALUE": "20",
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 468217
+        },
+        {
+          "Data_Setting_Id": 350220,
+          "DATASETVALUE": "20",
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 0,
+          "STEPS_ID": 468217
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 468217,
+      "COLUMN_ROW_SETTING": "f",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 4,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583741,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 0,
+          "STEPS_ID": 468218
+        },
+        {
+          "Data_Setting_Id": 347737,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 468218
+        },
+        {
+          "Data_Setting_Id": 350221,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 0,
+          "STEPS_ID": 468218
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 37247,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\n",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 468218,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 5,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583741,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 0,
+          "STEPS_ID": 468218
+        },
+        {
+          "Data_Setting_Id": 347737,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 468218
+        },
+        {
+          "Data_Setting_Id": 350221,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 0,
+          "STEPS_ID": 468218
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 46046,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswfname:=Desktop|Page",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 468218,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 5,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583738,
+          "DATASETVALUE": "Advanced",
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 0,
+          "STEPS_ID": 468215
+        },
+        {
+          "Data_Setting_Id": 347734,
+          "DATASETVALUE": "Advanced",
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 468215
+        },
+        {
+          "Data_Setting_Id": 350218,
+          "DATASETVALUE": "Advanced",
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 0,
+          "STEPS_ID": 468215
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 24,
+      "KEY_WORD_NAME": "SelectTab",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_TAB",
+      "OBJECT_ID": 36583,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_searchControl",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 30407,
+      "TYPE_NAME": "swfTab",
+      "STEPS_ID": 468215,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 6,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583738,
+          "DATASETVALUE": "Advanced",
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 0,
+          "STEPS_ID": 468215
+        },
+        {
+          "Data_Setting_Id": 347734,
+          "DATASETVALUE": "Advanced",
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 468215
+        },
+        {
+          "Data_Setting_Id": 350218,
+          "DATASETVALUE": "Advanced",
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 0,
+          "STEPS_ID": 468215
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 24,
+      "KEY_WORD_NAME": "SelectTab",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_TAB",
+      "OBJECT_ID": 42405,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_searchControl",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 30407,
+      "TYPE_NAME": "swfTab",
+      "STEPS_ID": 468215,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 6,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583774,
+          "DATASETVALUE": "Funding Source",
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 0,
+          "STEPS_ID": 468231
+        },
+        {
+          "Data_Setting_Id": 347741,
+          "DATASETVALUE": "cFixingSource",
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 468231
+        },
+        {
+          "Data_Setting_Id": 350243,
+          "DATASETVALUE": "cBondFixingSource",
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 0,
+          "STEPS_ID": 468231
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 32,
+      "KEY_WORD_NAME": "SearchAndClick",
+      "OBJECT_HAPPY_NAME": "ADVANCED_TABLE",
+      "OBJECT_ID": 45390,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_attributeSpreadsheet",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 32165,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 468231,
+      "COLUMN_ROW_SETTING": "MarsAddins;^Attribute;Action:Scroll",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 7,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583774,
+          "DATASETVALUE": "Funding Source",
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 0,
+          "STEPS_ID": 468231
+        },
+        {
+          "Data_Setting_Id": 347741,
+          "DATASETVALUE": "cFixingSource",
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 468231
+        },
+        {
+          "Data_Setting_Id": 350243,
+          "DATASETVALUE": "cBondFixingSource",
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 0,
+          "STEPS_ID": 468231
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 32,
+      "KEY_WORD_NAME": "SearchAndClick",
+      "OBJECT_HAPPY_NAME": "ADVANCED_TABLE",
+      "OBJECT_ID": 36401,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_attributeSpreadsheet",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 32165,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 468231,
+      "COLUMN_ROW_SETTING": "MarsAddins;^Attribute;Action:Scroll",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 7,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583773,
+          "DATASETVALUE": "Funding Source",
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 0,
+          "STEPS_ID": 468229
+        },
+        {
+          "Data_Setting_Id": 347740,
+          "DATASETVALUE": "cFixingSource",
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 468229
+        },
+        {
+          "Data_Setting_Id": 350242,
+          "DATASETVALUE": "cBondFixingSource",
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 0,
+          "STEPS_ID": 468229
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 32,
+      "KEY_WORD_NAME": "SearchAndClick",
+      "OBJECT_HAPPY_NAME": "ADVANCED_TABLE",
+      "OBJECT_ID": 45390,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_attributeSpreadsheet",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 32165,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 468229,
+      "COLUMN_ROW_SETTING": "MarsAddins;^Attribute;Action:LEFT_DBL_CLICK",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 8,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583773,
+          "DATASETVALUE": "Funding Source",
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 0,
+          "STEPS_ID": 468229
+        },
+        {
+          "Data_Setting_Id": 347740,
+          "DATASETVALUE": "cFixingSource",
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 468229
+        },
+        {
+          "Data_Setting_Id": 350242,
+          "DATASETVALUE": "cBondFixingSource",
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 0,
+          "STEPS_ID": 468229
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 32,
+      "KEY_WORD_NAME": "SearchAndClick",
+      "OBJECT_HAPPY_NAME": "ADVANCED_TABLE",
+      "OBJECT_ID": 36401,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_attributeSpreadsheet",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 32165,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 468229,
+      "COLUMN_ROW_SETTING": "MarsAddins;^Attribute;Action:LEFT_DBL_CLICK",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 8,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 591958,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 0,
+          "STEPS_ID": 884081
+        },
+        {
+          "Data_Setting_Id": 591812,
+          "DATASETVALUE": "20",
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 884081
+        },
+        {
+          "Data_Setting_Id": 591957,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 0,
+          "STEPS_ID": 884081
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 884081,
+      "COLUMN_ROW_SETTING": "f",
+      "COMMENTINFO": "{+}COIBRON",
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 9,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583747,
+          "DATASETVALUE": "{+}DN",
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 0,
+          "STEPS_ID": 468591
+        },
+        {
+          "Data_Setting_Id": 350203,
+          "DATASETVALUE": "{+}COIBRON",
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 468591
+        },
+        {
+          "Data_Setting_Id": 350227,
+          "DATASETVALUE": "{+}BZPIIPCA",
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 0,
+          "STEPS_ID": 468591
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "ADVANCED_VALUE",
+      "OBJECT_ID": 32736,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=AttributeValueControl",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 27721,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 468591,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": "Object Name AttributeValueControl System.String",
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 10,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583747,
+          "DATASETVALUE": "{+}DN",
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 0,
+          "STEPS_ID": 468591
+        },
+        {
+          "Data_Setting_Id": 350203,
+          "DATASETVALUE": "{+}COIBRON",
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 468591
+        },
+        {
+          "Data_Setting_Id": 350227,
+          "DATASETVALUE": "{+}BZPIIPCA",
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 0,
+          "STEPS_ID": 468591
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "ADVANCED_VALUE",
+      "OBJECT_ID": 45060,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=AttributeValueControl",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 27721,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 468591,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": "Object Name AttributeValueControl System.String",
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 10,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583746,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 0,
+          "STEPS_ID": 468590
+        },
+        {
+          "Data_Setting_Id": 350202,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 468590
+        },
+        {
+          "Data_Setting_Id": 350226,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 0,
+          "STEPS_ID": 468590
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_ADV_APPLY",
+      "OBJECT_ID": 49636,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_applyattributeButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 49635,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 468590,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 11,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583746,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 0,
+          "STEPS_ID": 468590
+        },
+        {
+          "Data_Setting_Id": 350202,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 468590
+        },
+        {
+          "Data_Setting_Id": 350226,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 0,
+          "STEPS_ID": 468590
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_ADV_APPLY",
+      "OBJECT_ID": 49638,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_applyattributeButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 49635,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 468590,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 11,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583753,
+          "DATASETVALUE": "Loan Type",
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 0,
+          "STEPS_ID": 468597
+        },
+        {
+          "Data_Setting_Id": 350209,
+          "DATASETVALUE": "cFxFixingSource",
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 468597
+        },
+        {
+          "Data_Setting_Id": 350233,
+          "DATASETVALUE": "cBondFXFixingSource",
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 0,
+          "STEPS_ID": 468597
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 32,
+      "KEY_WORD_NAME": "SearchAndClick",
+      "OBJECT_HAPPY_NAME": "ADVANCED_TABLE",
+      "OBJECT_ID": 45390,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_attributeSpreadsheet",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 32165,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 468597,
+      "COLUMN_ROW_SETTING": "MarsAddins;^Attribute;Action:Scroll",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 12,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583753,
+          "DATASETVALUE": "Loan Type",
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 0,
+          "STEPS_ID": 468597
+        },
+        {
+          "Data_Setting_Id": 350209,
+          "DATASETVALUE": "cFxFixingSource",
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 468597
+        },
+        {
+          "Data_Setting_Id": 350233,
+          "DATASETVALUE": "cBondFXFixingSource",
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 0,
+          "STEPS_ID": 468597
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 32,
+      "KEY_WORD_NAME": "SearchAndClick",
+      "OBJECT_HAPPY_NAME": "ADVANCED_TABLE",
+      "OBJECT_ID": 36401,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_attributeSpreadsheet",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 32165,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 468597,
+      "COLUMN_ROW_SETTING": "MarsAddins;^Attribute;Action:Scroll",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 12,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583751,
+          "DATASETVALUE": "Loan Type",
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 0,
+          "STEPS_ID": 468595
+        },
+        {
+          "Data_Setting_Id": 350207,
+          "DATASETVALUE": "cFxFixingSource",
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 468595
+        },
+        {
+          "Data_Setting_Id": 350231,
+          "DATASETVALUE": "cBondFXFixingSource",
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 0,
+          "STEPS_ID": 468595
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 32,
+      "KEY_WORD_NAME": "SearchAndClick",
+      "OBJECT_HAPPY_NAME": "ADVANCED_TABLE",
+      "OBJECT_ID": 45390,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_attributeSpreadsheet",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 32165,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 468595,
+      "COLUMN_ROW_SETTING": "MarsAddins;^Attribute;Action:LEFT_DBL_CLICK",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 13,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583751,
+          "DATASETVALUE": "Loan Type",
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 0,
+          "STEPS_ID": 468595
+        },
+        {
+          "Data_Setting_Id": 350207,
+          "DATASETVALUE": "cFxFixingSource",
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 468595
+        },
+        {
+          "Data_Setting_Id": 350231,
+          "DATASETVALUE": "cBondFXFixingSource",
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 0,
+          "STEPS_ID": 468595
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 32,
+      "KEY_WORD_NAME": "SearchAndClick",
+      "OBJECT_HAPPY_NAME": "ADVANCED_TABLE",
+      "OBJECT_ID": 36401,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_attributeSpreadsheet",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 32165,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 468595,
+      "COLUMN_ROW_SETTING": "MarsAddins;^Attribute;Action:LEFT_DBL_CLICK",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 13,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583761,
+          "DATASETVALUE": "{+}FN",
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 0,
+          "STEPS_ID": 468605
+        },
+        {
+          "Data_Setting_Id": 350217,
+          "DATASETVALUE": "{+}COP_TRM",
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 468605
+        },
+        {
+          "Data_Setting_Id": 350241,
+          "DATASETVALUE": "{+}BRL_PTAX",
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 0,
+          "STEPS_ID": 468605
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "ADVANCED_VALUE",
+      "OBJECT_ID": 32736,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=AttributeValueControl",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 27721,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 468605,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": "{+}COP_TRM",
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 14,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583761,
+          "DATASETVALUE": "{+}FN",
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 0,
+          "STEPS_ID": 468605
+        },
+        {
+          "Data_Setting_Id": 350217,
+          "DATASETVALUE": "{+}COP_TRM",
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 468605
+        },
+        {
+          "Data_Setting_Id": 350241,
+          "DATASETVALUE": "{+}BRL_PTAX",
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 0,
+          "STEPS_ID": 468605
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "ADVANCED_VALUE",
+      "OBJECT_ID": 45060,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=AttributeValueControl",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 27721,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 468605,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": "{+}COP_TRM",
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 14,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583760,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 0,
+          "STEPS_ID": 468604
+        },
+        {
+          "Data_Setting_Id": 350216,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 468604
+        },
+        {
+          "Data_Setting_Id": 350240,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 0,
+          "STEPS_ID": 468604
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_ADV_APPLY",
+      "OBJECT_ID": 49636,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_applyattributeButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 49635,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 468604,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 15,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583760,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 0,
+          "STEPS_ID": 468604
+        },
+        {
+          "Data_Setting_Id": 350216,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 468604
+        },
+        {
+          "Data_Setting_Id": 350240,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 0,
+          "STEPS_ID": 468604
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_ADV_APPLY",
+      "OBJECT_ID": 49638,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_applyattributeButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 49635,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 468604,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 15,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583757,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 4,
+          "STEPS_ID": 468601
+        },
+        {
+          "Data_Setting_Id": 350213,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 4,
+          "STEPS_ID": 468601
+        },
+        {
+          "Data_Setting_Id": 350237,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 4,
+          "STEPS_ID": 468601
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 38,
+      "KEY_WORD_NAME": "Dismiss",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 468601,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": "sometime a dialog",
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 16,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583768,
+          "DATASETVALUE": "Find",
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 4,
+          "STEPS_ID": 468854
+        },
+        {
+          "Data_Setting_Id": 350452,
+          "DATASETVALUE": "Find",
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 468854
+        },
+        {
+          "Data_Setting_Id": 350453,
+          "DATASETVALUE": "Find",
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 0,
+          "STEPS_ID": 468854
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 24,
+      "KEY_WORD_NAME": "SelectTab",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_TAB",
+      "OBJECT_ID": 36583,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_searchControl",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 30407,
+      "TYPE_NAME": "swfTab",
+      "STEPS_ID": 468854,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 17,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583768,
+          "DATASETVALUE": "Find",
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 4,
+          "STEPS_ID": 468854
+        },
+        {
+          "Data_Setting_Id": 350452,
+          "DATASETVALUE": "Find",
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 468854
+        },
+        {
+          "Data_Setting_Id": 350453,
+          "DATASETVALUE": "Find",
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 0,
+          "STEPS_ID": 468854
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 24,
+      "KEY_WORD_NAME": "SelectTab",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_TAB",
+      "OBJECT_ID": 42405,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_searchControl",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 30407,
+      "TYPE_NAME": "swfTab",
+      "STEPS_ID": 468854,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 17,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583767,
+          "DATASETVALUE": "FXSWAP",
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 4,
+          "STEPS_ID": 468853
+        },
+        {
+          "Data_Setting_Id": 350450,
+          "DATASETVALUE": "FXSWAP",
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 468853
+        },
+        {
+          "Data_Setting_Id": 350451,
+          "DATASETVALUE": "FXSWAP",
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 0,
+          "STEPS_ID": 468853
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_TYPES",
+      "OBJECT_ID": 37854,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeTypes",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 26818,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 468853,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 18,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583767,
+          "DATASETVALUE": "FXSWAP",
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 4,
+          "STEPS_ID": 468853
+        },
+        {
+          "Data_Setting_Id": 350450,
+          "DATASETVALUE": "FXSWAP",
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 468853
+        },
+        {
+          "Data_Setting_Id": 350451,
+          "DATASETVALUE": "FXSWAP",
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 0,
+          "STEPS_ID": 468853
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_TYPES",
+      "OBJECT_ID": 46634,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeTypes",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 26818,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 468853,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 18,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583769,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 4,
+          "STEPS_ID": 468855
+        },
+        {
+          "Data_Setting_Id": 350454,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 468855
+        },
+        {
+          "Data_Setting_Id": 350455,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 0,
+          "STEPS_ID": 468855
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_STATUS",
+      "OBJECT_ID": 34193,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeStatus",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 32176,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 468855,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 19,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583769,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 4,
+          "STEPS_ID": 468855
+        },
+        {
+          "Data_Setting_Id": 350454,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 468855
+        },
+        {
+          "Data_Setting_Id": 350455,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 0,
+          "STEPS_ID": 468855
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_STATUS",
+      "OBJECT_ID": 43743,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeStatus",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 32176,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 468855,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 19,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583750,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 0,
+          "STEPS_ID": 468594
+        },
+        {
+          "Data_Setting_Id": 350206,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 468594
+        },
+        {
+          "Data_Setting_Id": 350230,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 0,
+          "STEPS_ID": 468594
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_FIND_NOW",
+      "OBJECT_ID": 32728,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_findNowButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 32179,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 468594,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 20,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583750,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 0,
+          "STEPS_ID": 468594
+        },
+        {
+          "Data_Setting_Id": 350206,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 468594
+        },
+        {
+          "Data_Setting_Id": 350230,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 0,
+          "STEPS_ID": 468594
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_FIND_NOW",
+      "OBJECT_ID": 45052,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_findNowButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 32179,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 468594,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 20,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583758,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 0,
+          "STEPS_ID": 468602
+        },
+        {
+          "Data_Setting_Id": 350214,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 468602
+        },
+        {
+          "Data_Setting_Id": 350238,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 0,
+          "STEPS_ID": 468602
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 468602,
+      "COLUMN_ROW_SETTING": "f",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 21,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583745,
+          "DATASETVALUE": "loop_var:ALL_TRADE_IDS",
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 0,
+          "STEPS_ID": 468589
+        },
+        {
+          "Data_Setting_Id": 350201,
+          "DATASETVALUE": "loop_var:ALL_TRADE_IDS",
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 468589
+        },
+        {
+          "Data_Setting_Id": 350225,
+          "DATASETVALUE": "loop_var:ALL_TRADE_IDS1",
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 0,
+          "STEPS_ID": 468589
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 1,
+      "KEY_WORD_NAME": "CaptureValue",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_TABLE",
+      "OBJECT_ID": 41666,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_queryResults",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 28613,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 468589,
+      "COLUMN_ROW_SETTING": "ALLROWS;Trade Id",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 22,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583745,
+          "DATASETVALUE": "loop_var:ALL_TRADE_IDS",
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 0,
+          "STEPS_ID": 468589
+        },
+        {
+          "Data_Setting_Id": 350201,
+          "DATASETVALUE": "loop_var:ALL_TRADE_IDS",
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 468589
+        },
+        {
+          "Data_Setting_Id": 350225,
+          "DATASETVALUE": "loop_var:ALL_TRADE_IDS1",
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 0,
+          "STEPS_ID": 468589
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 1,
+      "KEY_WORD_NAME": "CaptureValue",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_TABLE",
+      "OBJECT_ID": 35712,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_queryResults",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 28613,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 468589,
+      "COLUMN_ROW_SETTING": "ALLROWS;Trade Id",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 22,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583762,
+          "DATASETVALUE": "loop_var:ALL_TRADE_TYPE",
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 0,
+          "STEPS_ID": 468848
+        },
+        {
+          "Data_Setting_Id": 350440,
+          "DATASETVALUE": "loop_var:ALL_TRADE_TYPE",
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 468848
+        },
+        {
+          "Data_Setting_Id": 350441,
+          "DATASETVALUE": "loop_var:ALL_TRADE_TYPE1",
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 0,
+          "STEPS_ID": 468848
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 1,
+      "KEY_WORD_NAME": "CaptureValue",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_TABLE",
+      "OBJECT_ID": 41666,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_queryResults",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 28613,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 468848,
+      "COLUMN_ROW_SETTING": "ALLROWS;Trade Type",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 23,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583762,
+          "DATASETVALUE": "loop_var:ALL_TRADE_TYPE",
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 0,
+          "STEPS_ID": 468848
+        },
+        {
+          "Data_Setting_Id": 350440,
+          "DATASETVALUE": "loop_var:ALL_TRADE_TYPE",
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 468848
+        },
+        {
+          "Data_Setting_Id": 350441,
+          "DATASETVALUE": "loop_var:ALL_TRADE_TYPE1",
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 0,
+          "STEPS_ID": 468848
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 1,
+      "KEY_WORD_NAME": "CaptureValue",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_TABLE",
+      "OBJECT_ID": 35712,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_queryResults",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 28613,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 468848,
+      "COLUMN_ROW_SETTING": "ALLROWS;Trade Type",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 23,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583764,
+          "DATASETVALUE": "loop_var:AL_STATUS",
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 0,
+          "STEPS_ID": 468850
+        },
+        {
+          "Data_Setting_Id": 350444,
+          "DATASETVALUE": "loop_var:AL_STATUS",
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 468850
+        },
+        {
+          "Data_Setting_Id": 350445,
+          "DATASETVALUE": "loop_var:ALL_TRADE_STATUS1",
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 0,
+          "STEPS_ID": 468850
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 1,
+      "KEY_WORD_NAME": "CaptureValue",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_TABLE",
+      "OBJECT_ID": 41666,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_queryResults",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 28613,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 468850,
+      "COLUMN_ROW_SETTING": "ALLROWS;Status",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 24,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583764,
+          "DATASETVALUE": "loop_var:AL_STATUS",
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 0,
+          "STEPS_ID": 468850
+        },
+        {
+          "Data_Setting_Id": 350444,
+          "DATASETVALUE": "loop_var:AL_STATUS",
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 468850
+        },
+        {
+          "Data_Setting_Id": 350445,
+          "DATASETVALUE": "loop_var:ALL_TRADE_STATUS1",
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 0,
+          "STEPS_ID": 468850
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 1,
+      "KEY_WORD_NAME": "CaptureValue",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_TABLE",
+      "OBJECT_ID": 35712,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_queryResults",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 28613,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 468850,
+      "COLUMN_ROW_SETTING": "ALLROWS;Status",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 24,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583766,
+          "DATASETVALUE": "H:3",
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 0,
+          "STEPS_ID": 468852
+        },
+        {
+          "Data_Setting_Id": 350448,
+          "DATASETVALUE": "H:3",
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 468852
+        },
+        {
+          "Data_Setting_Id": 350449,
+          "DATASETVALUE": "H:3",
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 4,
+          "STEPS_ID": 468852
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 82,
+      "KEY_WORD_NAME": "ScrollWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_TABLE",
+      "OBJECT_ID": 41666,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_queryResults",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 28613,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 468852,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 25,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583766,
+          "DATASETVALUE": "H:3",
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 0,
+          "STEPS_ID": 468852
+        },
+        {
+          "Data_Setting_Id": 350448,
+          "DATASETVALUE": "H:3",
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 468852
+        },
+        {
+          "Data_Setting_Id": 350449,
+          "DATASETVALUE": "H:3",
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 4,
+          "STEPS_ID": 468852
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 82,
+      "KEY_WORD_NAME": "ScrollWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_TABLE",
+      "OBJECT_ID": 35712,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_queryResults",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 28613,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 468852,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 25,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583771,
+          "DATASETVALUE": "loop_var:ALL_TRADE_MEMO",
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 0,
+          "STEPS_ID": 468857
+        },
+        {
+          "Data_Setting_Id": 350459,
+          "DATASETVALUE": "loop_var:ALL_TRADE_MEMO",
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 468857
+        },
+        {
+          "Data_Setting_Id": 350458,
+          "DATASETVALUE": "loop_var:ALL_TRADE_IDS",
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 4,
+          "STEPS_ID": 468857
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 1,
+      "KEY_WORD_NAME": "CaptureValue",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_TABLE",
+      "OBJECT_ID": 41666,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_queryResults",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 28613,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 468857,
+      "COLUMN_ROW_SETTING": "ALLROWS;Memo",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 26,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583771,
+          "DATASETVALUE": "loop_var:ALL_TRADE_MEMO",
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 0,
+          "STEPS_ID": 468857
+        },
+        {
+          "Data_Setting_Id": 350459,
+          "DATASETVALUE": "loop_var:ALL_TRADE_MEMO",
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 468857
+        },
+        {
+          "Data_Setting_Id": 350458,
+          "DATASETVALUE": "loop_var:ALL_TRADE_IDS",
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 4,
+          "STEPS_ID": 468857
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 1,
+      "KEY_WORD_NAME": "CaptureValue",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_TABLE",
+      "OBJECT_ID": 35712,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_queryResults",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 28613,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 468857,
+      "COLUMN_ROW_SETTING": "ALLROWS;Memo",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 26,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583756,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 0,
+          "STEPS_ID": 468600
+        },
+        {
+          "Data_Setting_Id": 350212,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 468600
+        },
+        {
+          "Data_Setting_Id": 350236,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 0,
+          "STEPS_ID": 468600
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 468600,
+      "COLUMN_ROW_SETTING": "F",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 27,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583763,
+          "DATASETVALUE": "TRADE_FINDER_PANEL1",
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 0,
+          "STEPS_ID": 468849
+        },
+        {
+          "Data_Setting_Id": 350442,
+          "DATASETVALUE": "TRADE_FINDER_PANEL1",
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 468849
+        },
+        {
+          "Data_Setting_Id": 350443,
+          "DATASETVALUE": "TRADE_FINDER_PANEL1",
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 0,
+          "STEPS_ID": 468849
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_PANEL",
+      "OBJECT_ID": 48941,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "SwfName:=TradeQueryView",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 48890,
+      "TYPE_NAME": "SwfWindow",
+      "STEPS_ID": 468849,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 28,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583763,
+          "DATASETVALUE": "TRADE_FINDER_PANEL1",
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 0,
+          "STEPS_ID": 468849
+        },
+        {
+          "Data_Setting_Id": 350442,
+          "DATASETVALUE": "TRADE_FINDER_PANEL1",
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 468849
+        },
+        {
+          "Data_Setting_Id": 350443,
+          "DATASETVALUE": "TRADE_FINDER_PANEL1",
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 0,
+          "STEPS_ID": 468849
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_PANEL",
+      "OBJECT_ID": 48975,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "SwfName:=TradeQueryView",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 48890,
+      "TYPE_NAME": "SwfWindow",
+      "STEPS_ID": 468849,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 28,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 591786,
+          "DATASETVALUE": "TEXT|\"Trade Finder Definition\"|IMAGE:TRADE_FINDER",
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 0,
+          "STEPS_ID": 883852
+        },
+        {
+          "Data_Setting_Id": 591784,
+          "DATASETVALUE": "TEXT|\"Trade Finder Definition\"|IMAGE:TRADE_FINDER",
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 883852
+        },
+        {
+          "Data_Setting_Id": 591785,
+          "DATASETVALUE": "TEXT|\"Trade Finder Definition\"|IMAGE:TRADE_FINDER",
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 0,
+          "STEPS_ID": 883852
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 10819,
+      "KEY_WORD_NAME": "Comment",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 883852,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 29,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583770,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 0,
+          "STEPS_ID": 468856
+        },
+        {
+          "Data_Setting_Id": 350456,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 468856
+        },
+        {
+          "Data_Setting_Id": 350457,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 0,
+          "STEPS_ID": 468856
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 468856,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 30,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583770,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 0,
+          "STEPS_ID": 468856
+        },
+        {
+          "Data_Setting_Id": 350456,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 468856
+        },
+        {
+          "Data_Setting_Id": 350457,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 0,
+          "STEPS_ID": 468856
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 468856,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 30,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583765,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 0,
+          "STEPS_ID": 468851
+        },
+        {
+          "Data_Setting_Id": 350446,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 468851
+        },
+        {
+          "Data_Setting_Id": 350447,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 0,
+          "STEPS_ID": 468851
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 32409,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 30430,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 468851,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 31,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583765,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 0,
+          "STEPS_ID": 468851
+        },
+        {
+          "Data_Setting_Id": 350446,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 468851
+        },
+        {
+          "Data_Setting_Id": 350447,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 0,
+          "STEPS_ID": 468851
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 40727,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 30430,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 468851,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 31,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583772,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 0,
+          "STEPS_ID": 468858
+        },
+        {
+          "Data_Setting_Id": 350460,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 0,
+          "STEPS_ID": 468858
+        },
+        {
+          "Data_Setting_Id": 350461,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 0,
+          "STEPS_ID": 468858
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 38,
+      "KEY_WORD_NAME": "Dismiss",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 468858,
+      "COLUMN_ROW_SETTING": "5",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 32,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583754,
+          "DATASETVALUE": "loop_var:ALL_TRADE_IDS",
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 4,
+          "STEPS_ID": 468598
+        },
+        {
+          "Data_Setting_Id": 350210,
+          "DATASETVALUE": "loop_var:ALL_TRADE_IDS",
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 4,
+          "STEPS_ID": 468598
+        },
+        {
+          "Data_Setting_Id": 350234,
+          "DATASETVALUE": "loop_var:ALL_TRADE_IDS",
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 4,
+          "STEPS_ID": 468598
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 36,
+      "KEY_WORD_NAME": "Loop",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 468598,
+      "COLUMN_ROW_SETTING": "reload",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 33,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583749,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 4,
+          "STEPS_ID": 468593
+        },
+        {
+          "Data_Setting_Id": 350205,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 4,
+          "STEPS_ID": 468593
+        },
+        {
+          "Data_Setting_Id": 350229,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 4,
+          "STEPS_ID": 468593
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 37247,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\n",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 468593,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 34,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583749,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 4,
+          "STEPS_ID": 468593
+        },
+        {
+          "Data_Setting_Id": 350205,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 4,
+          "STEPS_ID": 468593
+        },
+        {
+          "Data_Setting_Id": 350229,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 4,
+          "STEPS_ID": 468593
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 46046,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswfname:=Desktop|Page",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 468593,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 34,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583748,
+          "DATASETVALUE": "loop_var:ALL_TRADE_IDS",
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 4,
+          "STEPS_ID": 468592
+        },
+        {
+          "Data_Setting_Id": 350204,
+          "DATASETVALUE": "loop_var:ALL_TRADE_IDS",
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 4,
+          "STEPS_ID": 468592
+        },
+        {
+          "Data_Setting_Id": 350228,
+          "DATASETVALUE": "loop_var:ALL_TRADE_IDS",
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 4,
+          "STEPS_ID": 468592
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_ID",
+      "OBJECT_ID": 41222,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeID",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 29531,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 468592,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 35,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583748,
+          "DATASETVALUE": "loop_var:ALL_TRADE_IDS",
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 4,
+          "STEPS_ID": 468592
+        },
+        {
+          "Data_Setting_Id": 350204,
+          "DATASETVALUE": "loop_var:ALL_TRADE_IDS",
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 4,
+          "STEPS_ID": 468592
+        },
+        {
+          "Data_Setting_Id": 350228,
+          "DATASETVALUE": "loop_var:ALL_TRADE_IDS",
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 4,
+          "STEPS_ID": 468592
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_ID",
+      "OBJECT_ID": 33373,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeID",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 29531,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 468592,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 35,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583744,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 4,
+          "STEPS_ID": 468588
+        },
+        {
+          "Data_Setting_Id": 350200,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 4,
+          "STEPS_ID": 468588
+        },
+        {
+          "Data_Setting_Id": 350224,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 4,
+          "STEPS_ID": 468588
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_FIND_NOW",
+      "OBJECT_ID": 32728,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_findNowButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 32179,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 468588,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 36,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583744,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 4,
+          "STEPS_ID": 468588
+        },
+        {
+          "Data_Setting_Id": 350200,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 4,
+          "STEPS_ID": 468588
+        },
+        {
+          "Data_Setting_Id": 350224,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 4,
+          "STEPS_ID": 468588
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_FIND_NOW",
+      "OBJECT_ID": 45052,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_findNowButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 32179,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 468588,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 36,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583752,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 4,
+          "STEPS_ID": 468596
+        },
+        {
+          "Data_Setting_Id": 350208,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 4,
+          "STEPS_ID": 468596
+        },
+        {
+          "Data_Setting_Id": 350232,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 4,
+          "STEPS_ID": 468596
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 468596,
+      "COLUMN_ROW_SETTING": "f",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 37,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583755,
+          "DATASETVALUE": "{enter}",
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 4,
+          "STEPS_ID": 468599
+        },
+        {
+          "Data_Setting_Id": 350211,
+          "DATASETVALUE": "{enter}",
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 4,
+          "STEPS_ID": 468599
+        },
+        {
+          "Data_Setting_Id": 350235,
+          "DATASETVALUE": "{enter}",
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 4,
+          "STEPS_ID": 468599
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 86,
+      "KEY_WORD_NAME": "PressKeys",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_TABLE",
+      "OBJECT_ID": 41666,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_queryResults",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 28613,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 468599,
+      "COLUMN_ROW_SETTING": "100,40",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 38,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583755,
+          "DATASETVALUE": "{enter}",
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 4,
+          "STEPS_ID": 468599
+        },
+        {
+          "Data_Setting_Id": 350211,
+          "DATASETVALUE": "{enter}",
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 4,
+          "STEPS_ID": 468599
+        },
+        {
+          "Data_Setting_Id": 350235,
+          "DATASETVALUE": "{enter}",
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 4,
+          "STEPS_ID": 468599
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 86,
+      "KEY_WORD_NAME": "PressKeys",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_TABLE",
+      "OBJECT_ID": 35712,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_queryResults",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 28613,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 468599,
+      "COLUMN_ROW_SETTING": "100,40",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 38,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 583759,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 851545,
+          "SKIP": 4,
+          "STEPS_ID": 468603
+        },
+        {
+          "Data_Setting_Id": 350215,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468212,
+          "SKIP": 4,
+          "STEPS_ID": 468603
+        },
+        {
+          "Data_Setting_Id": 350239,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 468628,
+          "SKIP": 4,
+          "STEPS_ID": 468603
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3343,
+      "TEST_CASE_NAME": "Customize Trade Finder",
+      "KEY_WORD_ID": 90,
+      "KEY_WORD_NAME": "EndLoop",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 468603,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 39,
+      "VALUE_SETTING": null
+    }
+  ]
+}

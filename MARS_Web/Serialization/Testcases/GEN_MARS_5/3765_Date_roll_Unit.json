@@ -1,0 +1,80 @@
+{
+  "currentSyncroStatus": 0,
+  "assignedApplications": [
+    1
+  ],
+  "assignedTestSuiteIDs": [
+    1528
+  ],
+  "version": null,
+  "assignedDataSets": [
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 295374,
+      "ALIAS_NAME": "Date_roll_Unit",
+      "DESCRIPTION_INFO": null
+    }
+  ],
+  "allSteps": [
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283480,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 295374,
+          "SKIP": 0,
+          "STEPS_ID": 295376
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3765,
+      "TEST_CASE_NAME": "Date_roll_Unit",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "DATE_ROLL",
+      "OBJECT_ID": 49841,
+      "OBJECT_TYPE": "DATE_ROLL",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).* index:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 1,
+      "OBJECT_NAME_ID": 49840,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 295376,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283481,
+          "DATASETVALUE": "MODAL_VAR:DATE_ROLL_CURRENT_LOCATION_DATE",
+          "DATA_SUMMARY_ID": 295374,
+          "SKIP": 0,
+          "STEPS_ID": 295377
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3765,
+      "TEST_CASE_NAME": "Date_roll_Unit",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "DATE_ROLL_CURRENT_LOCATION_DATE",
+      "OBJECT_ID": 49851,
+      "OBJECT_TYPE": "DATE_ROLL",
+      "QUICK_ACCESS": "swfname:=_todayDateControl",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 1,
+      "OBJECT_NAME_ID": 49850,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 295377,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 1,
+      "RUN_ORDER": 2,
+      "VALUE_SETTING": null
+    }
+  ]
+}

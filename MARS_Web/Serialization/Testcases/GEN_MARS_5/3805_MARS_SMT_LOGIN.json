@@ -1,0 +1,321 @@
+{
+  "currentSyncroStatus": 0,
+  "assignedApplications": [
+    -1,
+    -2
+  ],
+  "assignedTestSuiteIDs": [
+    1944
+  ],
+  "version": null,
+  "assignedDataSets": [
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 295415,
+      "ALIAS_NAME": "MARS_SMT_LOGIN",
+      "DESCRIPTION_INFO": null
+    }
+  ],
+  "allSteps": [
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283540,
+          "DATASETVALUE": "CURRENT_APPLICATION",
+          "DATA_SUMMARY_ID": 295415,
+          "SKIP": 0,
+          "STEPS_ID": 295454
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3805,
+      "TEST_CASE_NAME": "MARS_SMT_LOGIN",
+      "KEY_WORD_ID": 13,
+      "KEY_WORD_NAME": "StartApplication",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 295454,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": "No_wait;Output:(PID:SMTID)",
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283542,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 295415,
+          "SKIP": 0,
+          "STEPS_ID": 295463
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3805,
+      "TEST_CASE_NAME": "MARS_SMT_LOGIN",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 295463,
+      "COLUMN_ROW_SETTING": "F",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 2,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283543,
+          "DATASETVALUE": "Intermediate D3D Window",
+          "DATA_SUMMARY_ID": 295415,
+          "SKIP": 4,
+          "STEPS_ID": 295465
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3805,
+      "TEST_CASE_NAME": "MARS_SMT_LOGIN",
+      "KEY_WORD_ID": 38,
+      "KEY_WORD_NAME": "Dismiss",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 295465,
+      "COLUMN_ROW_SETTING": "Input:(PID:SMTID);Mars_windowsByClass",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 3,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283525,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 295415,
+          "SKIP": 0,
+          "STEPS_ID": 295417
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3805,
+      "TEST_CASE_NAME": "MARS_SMT_LOGIN",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "SMT_LOGIN",
+      "OBJECT_ID": 49881,
+      "OBJECT_TYPE": "SMT_LOGIN",
+      "QUICK_ACCESS": "SwfName:=Login\nSwftype:=summitmt.Login",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -2,
+      "OBJECT_NAME_ID": 49880,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 295417,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 4,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283521,
+          "DATASETVALUE": "PSAMERV629",
+          "DATA_SUMMARY_ID": 295415,
+          "SKIP": 0,
+          "STEPS_ID": 295419
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3805,
+      "TEST_CASE_NAME": "MARS_SMT_LOGIN",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "SMT_LOGIN_USER",
+      "OBJECT_ID": 49883,
+      "OBJECT_TYPE": "SMT_LOGIN",
+      "QUICK_ACCESS": "SwfName:=_tbxUser",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -2,
+      "OBJECT_NAME_ID": 49882,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 295419,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 5,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283520,
+          "DATASETVALUE": "PSAMERV629",
+          "DATA_SUMMARY_ID": 295415,
+          "SKIP": 0,
+          "STEPS_ID": 295418
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3805,
+      "TEST_CASE_NAME": "MARS_SMT_LOGIN",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "SMT_LOGIN_PWD",
+      "OBJECT_ID": 49885,
+      "OBJECT_TYPE": "SMT_LOGIN",
+      "QUICK_ACCESS": "SwfName:=_tbxPassword",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -2,
+      "OBJECT_NAME_ID": 49884,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 295418,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 6,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283523,
+          "DATASETVALUE": "[orclpdb.hybkaalv5llunibolgwj0r0pdf.bx.internal.cloudapp.net]:1521,Oracle",
+          "DATA_SUMMARY_ID": 295415,
+          "SKIP": 0,
+          "STEPS_ID": 295421
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3805,
+      "TEST_CASE_NAME": "MARS_SMT_LOGIN",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "SMT_LOGIN_SERVER",
+      "OBJECT_ID": 49887,
+      "OBJECT_TYPE": "SMT_LOGIN",
+      "QUICK_ACCESS": "SwfName:=_cbxServer",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -2,
+      "OBJECT_NAME_ID": 49886,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 295421,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 7,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283522,
+          "DATASETVALUE": "PSAMERV629",
+          "DATA_SUMMARY_ID": 295415,
+          "SKIP": 0,
+          "STEPS_ID": 295420
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3805,
+      "TEST_CASE_NAME": "MARS_SMT_LOGIN",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "SMT_LOGIN_DATABASE",
+      "OBJECT_ID": 49889,
+      "OBJECT_TYPE": "SMT_LOGIN",
+      "QUICK_ACCESS": "SwfName:=_tbxDatabase",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -2,
+      "OBJECT_NAME_ID": 49888,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 295420,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 8,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283524,
+          "DATASETVALUE": "http://mars18.eastus.cloudapp.azure.com:9092/SMT/control",
+          "DATA_SUMMARY_ID": 295415,
+          "SKIP": 0,
+          "STEPS_ID": 295422
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3805,
+      "TEST_CASE_NAME": "MARS_SMT_LOGIN",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "SMT_Login_URL",
+      "OBJECT_ID": 49891,
+      "OBJECT_TYPE": "SMT_LOGIN",
+      "QUICK_ACCESS": "SwfName:=_tbxURL",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -2,
+      "OBJECT_NAME_ID": 49890,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 295422,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 9,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283541,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 295415,
+          "SKIP": 0,
+          "STEPS_ID": 295423
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3805,
+      "TEST_CASE_NAME": "MARS_SMT_LOGIN",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "SMT_LOGIN_BUTTON",
+      "OBJECT_ID": 49893,
+      "OBJECT_TYPE": "SMT_LOGIN",
+      "QUICK_ACCESS": "SwfName:=_btnOK",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -2,
+      "OBJECT_NAME_ID": 49892,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 295423,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 10,
+      "VALUE_SETTING": null
+    }
+  ]
+}

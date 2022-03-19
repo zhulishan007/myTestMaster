@@ -1,0 +1,5563 @@
+{
+  "currentSyncroStatus": 0,
+  "assignedApplications": [
+    194,
+    193,
+    -1
+  ],
+  "assignedTestSuiteIDs": [
+    1407
+  ],
+  "version": null,
+  "assignedDataSets": [
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 437754,
+      "ALIAS_NAME": "FXSPOTD_03_002",
+      "DESCRIPTION_INFO": "Verify Amendment of FX Fwd trade with no credit check"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 437759,
+      "ALIAS_NAME": "RSK_54b_001",
+      "DESCRIPTION_INFO": "Verify Amendment of FX Fwd trade with no credit check"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 437765,
+      "ALIAS_NAME": "RSK_53b",
+      "DESCRIPTION_INFO": "Verify Amendment of FX Fwd trade with no credit check"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 437749,
+      "ALIAS_NAME": "RSK_53c",
+      "DESCRIPTION_INFO": "Verify Amendment of FX Fwd trade with no credit check"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 437755,
+      "ALIAS_NAME": "FXSPOTD_05_002",
+      "DESCRIPTION_INFO": "Verify Amendment of FX Fwd trade with no credit check"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 437752,
+      "ALIAS_NAME": "FXSPOTD_02_002",
+      "DESCRIPTION_INFO": "Verify Amendment of FX Fwd trade with no credit check"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 437761,
+      "ALIAS_NAME": "RSK_52c",
+      "DESCRIPTION_INFO": "Verify Amendment of FX Fwd trade with no credit check"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 437756,
+      "ALIAS_NAME": "RSK_52b",
+      "DESCRIPTION_INFO": "Verify Amendment of FX Fwd trade with no credit check"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 437760,
+      "ALIAS_NAME": "FXSPOTD_01_002",
+      "DESCRIPTION_INFO": "Verify Amendment of FX Fwd trade with no credit check"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 437767,
+      "ALIAS_NAME": "FXSPOTD_04_002",
+      "DESCRIPTION_INFO": "Verify Amendment of FX Fwd trade with no credit check"
+    }
+  ],
+  "allSteps": [
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292436,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437789
+        },
+        {
+          "Data_Setting_Id": 292431,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437789
+        },
+        {
+          "Data_Setting_Id": 292432,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437789
+        },
+        {
+          "Data_Setting_Id": 292439,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437789
+        },
+        {
+          "Data_Setting_Id": 292433,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437789
+        },
+        {
+          "Data_Setting_Id": 292434,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437789
+        },
+        {
+          "Data_Setting_Id": 292437,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437789
+        },
+        {
+          "Data_Setting_Id": 292438,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437789
+        },
+        {
+          "Data_Setting_Id": 292430,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437789
+        },
+        {
+          "Data_Setting_Id": 292435,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437789
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 437789,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292436,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437789
+        },
+        {
+          "Data_Setting_Id": 292431,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437789
+        },
+        {
+          "Data_Setting_Id": 292432,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437789
+        },
+        {
+          "Data_Setting_Id": 292439,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437789
+        },
+        {
+          "Data_Setting_Id": 292433,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437789
+        },
+        {
+          "Data_Setting_Id": 292434,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437789
+        },
+        {
+          "Data_Setting_Id": 292437,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437789
+        },
+        {
+          "Data_Setting_Id": 292438,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437789
+        },
+        {
+          "Data_Setting_Id": 292430,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437789
+        },
+        {
+          "Data_Setting_Id": 292435,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437789
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 437789,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292446,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437790
+        },
+        {
+          "Data_Setting_Id": 292441,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437790
+        },
+        {
+          "Data_Setting_Id": 292442,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437790
+        },
+        {
+          "Data_Setting_Id": 292449,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437790
+        },
+        {
+          "Data_Setting_Id": 292443,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437790
+        },
+        {
+          "Data_Setting_Id": 292444,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437790
+        },
+        {
+          "Data_Setting_Id": 292447,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437790
+        },
+        {
+          "Data_Setting_Id": 292448,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437790
+        },
+        {
+          "Data_Setting_Id": 292440,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437790
+        },
+        {
+          "Data_Setting_Id": 292445,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437790
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 437790,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 2,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292446,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437790
+        },
+        {
+          "Data_Setting_Id": 292441,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437790
+        },
+        {
+          "Data_Setting_Id": 292442,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437790
+        },
+        {
+          "Data_Setting_Id": 292449,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437790
+        },
+        {
+          "Data_Setting_Id": 292443,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437790
+        },
+        {
+          "Data_Setting_Id": 292444,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437790
+        },
+        {
+          "Data_Setting_Id": 292447,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437790
+        },
+        {
+          "Data_Setting_Id": 292448,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437790
+        },
+        {
+          "Data_Setting_Id": 292440,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437790
+        },
+        {
+          "Data_Setting_Id": 292445,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437790
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 437790,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 2,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292456,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437791
+        },
+        {
+          "Data_Setting_Id": 292451,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437791
+        },
+        {
+          "Data_Setting_Id": 292452,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437791
+        },
+        {
+          "Data_Setting_Id": 292459,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437791
+        },
+        {
+          "Data_Setting_Id": 292453,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437791
+        },
+        {
+          "Data_Setting_Id": 292454,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437791
+        },
+        {
+          "Data_Setting_Id": 292457,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437791
+        },
+        {
+          "Data_Setting_Id": 292458,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437791
+        },
+        {
+          "Data_Setting_Id": 292450,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437791
+        },
+        {
+          "Data_Setting_Id": 292455,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437791
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 12,
+      "KEY_WORD_NAME": "LaunchApplication",
+      "OBJECT_HAPPY_NAME": "ApplicationName",
+      "OBJECT_ID": 35170,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockAreaTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 29559,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 437791,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 3,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292456,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437791
+        },
+        {
+          "Data_Setting_Id": 292451,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437791
+        },
+        {
+          "Data_Setting_Id": 292452,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437791
+        },
+        {
+          "Data_Setting_Id": 292459,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437791
+        },
+        {
+          "Data_Setting_Id": 292453,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437791
+        },
+        {
+          "Data_Setting_Id": 292454,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437791
+        },
+        {
+          "Data_Setting_Id": 292457,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437791
+        },
+        {
+          "Data_Setting_Id": 292458,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437791
+        },
+        {
+          "Data_Setting_Id": 292450,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437791
+        },
+        {
+          "Data_Setting_Id": 292455,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437791
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 12,
+      "KEY_WORD_NAME": "LaunchApplication",
+      "OBJECT_HAPPY_NAME": "ApplicationName",
+      "OBJECT_ID": 44673,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockAreaTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 29559,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 437791,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 3,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292466,
+          "DATASETVALUE": "50",
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437792
+        },
+        {
+          "Data_Setting_Id": 292461,
+          "DATASETVALUE": "50",
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437792
+        },
+        {
+          "Data_Setting_Id": 292462,
+          "DATASETVALUE": "50",
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437792
+        },
+        {
+          "Data_Setting_Id": 292469,
+          "DATASETVALUE": "50",
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437792
+        },
+        {
+          "Data_Setting_Id": 292463,
+          "DATASETVALUE": "50",
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437792
+        },
+        {
+          "Data_Setting_Id": 292464,
+          "DATASETVALUE": "50",
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437792
+        },
+        {
+          "Data_Setting_Id": 292467,
+          "DATASETVALUE": "50",
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437792
+        },
+        {
+          "Data_Setting_Id": 292468,
+          "DATASETVALUE": "50",
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437792
+        },
+        {
+          "Data_Setting_Id": 292460,
+          "DATASETVALUE": "50",
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437792
+        },
+        {
+          "Data_Setting_Id": 292465,
+          "DATASETVALUE": "50",
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437792
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 437792,
+      "COLUMN_ROW_SETTING": "F",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 4,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 581952,
+          "DATASETVALUE": "TEXT|\"Trade Finder Window\"|TRADE_FINDER",
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 848288
+        },
+        {
+          "Data_Setting_Id": 581947,
+          "DATASETVALUE": "TEXT|\"Trade Finder Window\"|TRADE_FINDER",
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 848288
+        },
+        {
+          "Data_Setting_Id": 581948,
+          "DATASETVALUE": "TEXT|\"Trade Finder Window\"|TRADE_FINDER",
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 848288
+        },
+        {
+          "Data_Setting_Id": 581955,
+          "DATASETVALUE": "TEXT|\"Trade Finder Window\"|TRADE_FINDER",
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 848288
+        },
+        {
+          "Data_Setting_Id": 581949,
+          "DATASETVALUE": "TEXT|\"Trade Finder Window\"|TRADE_FINDER",
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 848288
+        },
+        {
+          "Data_Setting_Id": 581950,
+          "DATASETVALUE": "TEXT|\"Trade Finder Window\"|TRADE_FINDER",
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 848288
+        },
+        {
+          "Data_Setting_Id": 581953,
+          "DATASETVALUE": "TEXT|\"Trade Finder Window\"|TRADE_FINDER",
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 848288
+        },
+        {
+          "Data_Setting_Id": 581954,
+          "DATASETVALUE": "TEXT|\"Trade Finder Window\"|TRADE_FINDER",
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 848288
+        },
+        {
+          "Data_Setting_Id": 581946,
+          "DATASETVALUE": "TEXT|\"Trade Finder Window\"|TRADE_FINDER",
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 848288
+        },
+        {
+          "Data_Setting_Id": 581951,
+          "DATASETVALUE": "TEXT|\"Trade Finder Window\"|TRADE_FINDER",
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 848288
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 10819,
+      "KEY_WORD_NAME": "Comment",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 848288,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 5,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 581932,
+          "DATASETVALUE": "TEXT|\"Trade Window After Action\"|FXSPOT",
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 848286
+        },
+        {
+          "Data_Setting_Id": 581927,
+          "DATASETVALUE": "TEXT|\"Trade Window After Action\"|FXSPOT",
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 848286
+        },
+        {
+          "Data_Setting_Id": 581928,
+          "DATASETVALUE": "TEXT|\"Trade Window After Action\"|FXSPOT",
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 848286
+        },
+        {
+          "Data_Setting_Id": 581935,
+          "DATASETVALUE": "TEXT|\"Trade Window After Action\"|FXSPOT",
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 848286
+        },
+        {
+          "Data_Setting_Id": 581929,
+          "DATASETVALUE": "TEXT|\"Trade Window After Action\"|FXSPOT",
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 848286
+        },
+        {
+          "Data_Setting_Id": 581930,
+          "DATASETVALUE": "TEXT|\"Trade Window After Action\"|FXSPOT",
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 848286
+        },
+        {
+          "Data_Setting_Id": 581933,
+          "DATASETVALUE": "TEXT|\"Trade Window After Action\"|FXSPOT",
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 848286
+        },
+        {
+          "Data_Setting_Id": 581934,
+          "DATASETVALUE": "TEXT|\"Trade Window After Action\"|FXSPOT",
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 848286
+        },
+        {
+          "Data_Setting_Id": 581926,
+          "DATASETVALUE": "TEXT|\"Trade Window After Action\"|FXSPOT",
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 848286
+        },
+        {
+          "Data_Setting_Id": 581931,
+          "DATASETVALUE": "TEXT|\"Trade Window After Action\"|FXSPOT",
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 848286
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 10819,
+      "KEY_WORD_NAME": "Comment",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 848286,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 6,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292476,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437793
+        },
+        {
+          "Data_Setting_Id": 292471,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437793
+        },
+        {
+          "Data_Setting_Id": 292472,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437793
+        },
+        {
+          "Data_Setting_Id": 292479,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437793
+        },
+        {
+          "Data_Setting_Id": 292473,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437793
+        },
+        {
+          "Data_Setting_Id": 292474,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437793
+        },
+        {
+          "Data_Setting_Id": 292477,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437793
+        },
+        {
+          "Data_Setting_Id": 292478,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437793
+        },
+        {
+          "Data_Setting_Id": 292470,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437793
+        },
+        {
+          "Data_Setting_Id": 292475,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437793
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 37247,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\n",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 437793,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 7,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292476,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437793
+        },
+        {
+          "Data_Setting_Id": 292471,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437793
+        },
+        {
+          "Data_Setting_Id": 292472,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437793
+        },
+        {
+          "Data_Setting_Id": 292479,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437793
+        },
+        {
+          "Data_Setting_Id": 292473,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437793
+        },
+        {
+          "Data_Setting_Id": 292474,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437793
+        },
+        {
+          "Data_Setting_Id": 292477,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437793
+        },
+        {
+          "Data_Setting_Id": 292478,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437793
+        },
+        {
+          "Data_Setting_Id": 292470,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437793
+        },
+        {
+          "Data_Setting_Id": 292475,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437793
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 46046,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswfname:=Desktop|Page",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 437793,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 7,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292486,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437794
+        },
+        {
+          "Data_Setting_Id": 292481,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437794
+        },
+        {
+          "Data_Setting_Id": 292482,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437794
+        },
+        {
+          "Data_Setting_Id": 292489,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437794
+        },
+        {
+          "Data_Setting_Id": 292483,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437794
+        },
+        {
+          "Data_Setting_Id": 292484,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437794
+        },
+        {
+          "Data_Setting_Id": 292487,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437794
+        },
+        {
+          "Data_Setting_Id": 292488,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437794
+        },
+        {
+          "Data_Setting_Id": 292480,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437794
+        },
+        {
+          "Data_Setting_Id": 292485,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437794
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 37247,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\n",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 437794,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 8,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292486,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437794
+        },
+        {
+          "Data_Setting_Id": 292481,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437794
+        },
+        {
+          "Data_Setting_Id": 292482,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437794
+        },
+        {
+          "Data_Setting_Id": 292489,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437794
+        },
+        {
+          "Data_Setting_Id": 292483,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437794
+        },
+        {
+          "Data_Setting_Id": 292484,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437794
+        },
+        {
+          "Data_Setting_Id": 292487,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437794
+        },
+        {
+          "Data_Setting_Id": 292488,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437794
+        },
+        {
+          "Data_Setting_Id": 292480,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437794
+        },
+        {
+          "Data_Setting_Id": 292485,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437794
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 46046,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswfname:=Desktop|Page",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 437794,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 8,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292496,
+          "DATASETVALUE": "FXSPOT",
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437795
+        },
+        {
+          "Data_Setting_Id": 292491,
+          "DATASETVALUE": "FXSPOT",
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437795
+        },
+        {
+          "Data_Setting_Id": 292492,
+          "DATASETVALUE": "FXSPOT",
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437795
+        },
+        {
+          "Data_Setting_Id": 292499,
+          "DATASETVALUE": "FXSPOT",
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437795
+        },
+        {
+          "Data_Setting_Id": 292493,
+          "DATASETVALUE": "FXSPOT",
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437795
+        },
+        {
+          "Data_Setting_Id": 292494,
+          "DATASETVALUE": "FXSPOT",
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437795
+        },
+        {
+          "Data_Setting_Id": 292497,
+          "DATASETVALUE": "FXSPOT",
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437795
+        },
+        {
+          "Data_Setting_Id": 292498,
+          "DATASETVALUE": "FXSPOT",
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437795
+        },
+        {
+          "Data_Setting_Id": 292490,
+          "DATASETVALUE": "FXSPOT",
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437795
+        },
+        {
+          "Data_Setting_Id": 292495,
+          "DATASETVALUE": "FXFWD",
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437795
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_TYPES",
+      "OBJECT_ID": 37854,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeTypes",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 26818,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 437795,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 9,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292496,
+          "DATASETVALUE": "FXSPOT",
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437795
+        },
+        {
+          "Data_Setting_Id": 292491,
+          "DATASETVALUE": "FXSPOT",
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437795
+        },
+        {
+          "Data_Setting_Id": 292492,
+          "DATASETVALUE": "FXSPOT",
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437795
+        },
+        {
+          "Data_Setting_Id": 292499,
+          "DATASETVALUE": "FXSPOT",
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437795
+        },
+        {
+          "Data_Setting_Id": 292493,
+          "DATASETVALUE": "FXSPOT",
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437795
+        },
+        {
+          "Data_Setting_Id": 292494,
+          "DATASETVALUE": "FXSPOT",
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437795
+        },
+        {
+          "Data_Setting_Id": 292497,
+          "DATASETVALUE": "FXSPOT",
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437795
+        },
+        {
+          "Data_Setting_Id": 292498,
+          "DATASETVALUE": "FXSPOT",
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437795
+        },
+        {
+          "Data_Setting_Id": 292490,
+          "DATASETVALUE": "FXSPOT",
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437795
+        },
+        {
+          "Data_Setting_Id": 292495,
+          "DATASETVALUE": "FXFWD",
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437795
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_TYPES",
+      "OBJECT_ID": 46634,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeTypes",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 26818,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 437795,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 9,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292506,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437796
+        },
+        {
+          "Data_Setting_Id": 292501,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437796
+        },
+        {
+          "Data_Setting_Id": 292502,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437796
+        },
+        {
+          "Data_Setting_Id": 292509,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437796
+        },
+        {
+          "Data_Setting_Id": 292503,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437796
+        },
+        {
+          "Data_Setting_Id": 292504,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437796
+        },
+        {
+          "Data_Setting_Id": 292507,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437796
+        },
+        {
+          "Data_Setting_Id": 292508,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437796
+        },
+        {
+          "Data_Setting_Id": 292500,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437796
+        },
+        {
+          "Data_Setting_Id": 292505,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437796
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_STATUS",
+      "OBJECT_ID": 34193,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeStatus",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 32176,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 437796,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 10,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292506,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437796
+        },
+        {
+          "Data_Setting_Id": 292501,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437796
+        },
+        {
+          "Data_Setting_Id": 292502,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437796
+        },
+        {
+          "Data_Setting_Id": 292509,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437796
+        },
+        {
+          "Data_Setting_Id": 292503,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437796
+        },
+        {
+          "Data_Setting_Id": 292504,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437796
+        },
+        {
+          "Data_Setting_Id": 292507,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437796
+        },
+        {
+          "Data_Setting_Id": 292508,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437796
+        },
+        {
+          "Data_Setting_Id": 292500,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437796
+        },
+        {
+          "Data_Setting_Id": 292505,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437796
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_STATUS",
+      "OBJECT_ID": 43743,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeStatus",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 32176,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 437796,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 10,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292516,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437797
+        },
+        {
+          "Data_Setting_Id": 292511,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437797
+        },
+        {
+          "Data_Setting_Id": 292512,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437797
+        },
+        {
+          "Data_Setting_Id": 292519,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437797
+        },
+        {
+          "Data_Setting_Id": 292513,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437797
+        },
+        {
+          "Data_Setting_Id": 292514,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437797
+        },
+        {
+          "Data_Setting_Id": 292517,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437797
+        },
+        {
+          "Data_Setting_Id": 292518,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437797
+        },
+        {
+          "Data_Setting_Id": 292510,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437797
+        },
+        {
+          "Data_Setting_Id": 292515,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437797
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_EXTERNAL_TRADE_ID",
+      "OBJECT_ID": 44105,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=ExternalTradeId",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 27732,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 437797,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 11,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292516,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437797
+        },
+        {
+          "Data_Setting_Id": 292511,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437797
+        },
+        {
+          "Data_Setting_Id": 292512,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437797
+        },
+        {
+          "Data_Setting_Id": 292519,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437797
+        },
+        {
+          "Data_Setting_Id": 292513,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437797
+        },
+        {
+          "Data_Setting_Id": 292514,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437797
+        },
+        {
+          "Data_Setting_Id": 292517,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437797
+        },
+        {
+          "Data_Setting_Id": 292518,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437797
+        },
+        {
+          "Data_Setting_Id": 292510,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437797
+        },
+        {
+          "Data_Setting_Id": 292515,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437797
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_EXTERNAL_TRADE_ID",
+      "OBJECT_ID": 34602,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=ExternalTradeId",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 27732,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 437797,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 11,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292526,
+          "DATASETVALUE": "MODAL_VAR:FXSPOTD_01_TRADE_ID",
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437798
+        },
+        {
+          "Data_Setting_Id": 292521,
+          "DATASETVALUE": "MODAL_VAR:FXSPOTD_02_TRADE_ID",
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437798
+        },
+        {
+          "Data_Setting_Id": 292522,
+          "DATASETVALUE": "MODAL_VAR:FXSPOTD_03_TRADE_ID",
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437798
+        },
+        {
+          "Data_Setting_Id": 292529,
+          "DATASETVALUE": "MODAL_VAR:FXSPOTD_04_TRADE_ID",
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437798
+        },
+        {
+          "Data_Setting_Id": 292523,
+          "DATASETVALUE": "MODAL_VAR:FXSPOTD_05_TRADE_ID",
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437798
+        },
+        {
+          "Data_Setting_Id": 292524,
+          "DATASETVALUE": "MODAL_VAR:RSK_52_TRADE_ID",
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437798
+        },
+        {
+          "Data_Setting_Id": 292527,
+          "DATASETVALUE": "MODAL_VAR:RSK_52_TRADE_ID",
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437798
+        },
+        {
+          "Data_Setting_Id": 292528,
+          "DATASETVALUE": "MODAL_VAR:RSK_53_TRADE_ID",
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437798
+        },
+        {
+          "Data_Setting_Id": 292520,
+          "DATASETVALUE": "MODAL_VAR:RSK_53_TRADE_ID",
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437798
+        },
+        {
+          "Data_Setting_Id": 292525,
+          "DATASETVALUE": "MODAL_VAR:RSK_54_TRADE_ID",
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437798
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_ID",
+      "OBJECT_ID": 41222,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeID",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 29531,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 437798,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 12,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292526,
+          "DATASETVALUE": "MODAL_VAR:FXSPOTD_01_TRADE_ID",
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437798
+        },
+        {
+          "Data_Setting_Id": 292521,
+          "DATASETVALUE": "MODAL_VAR:FXSPOTD_02_TRADE_ID",
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437798
+        },
+        {
+          "Data_Setting_Id": 292522,
+          "DATASETVALUE": "MODAL_VAR:FXSPOTD_03_TRADE_ID",
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437798
+        },
+        {
+          "Data_Setting_Id": 292529,
+          "DATASETVALUE": "MODAL_VAR:FXSPOTD_04_TRADE_ID",
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437798
+        },
+        {
+          "Data_Setting_Id": 292523,
+          "DATASETVALUE": "MODAL_VAR:FXSPOTD_05_TRADE_ID",
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437798
+        },
+        {
+          "Data_Setting_Id": 292524,
+          "DATASETVALUE": "MODAL_VAR:RSK_52_TRADE_ID",
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437798
+        },
+        {
+          "Data_Setting_Id": 292527,
+          "DATASETVALUE": "MODAL_VAR:RSK_52_TRADE_ID",
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437798
+        },
+        {
+          "Data_Setting_Id": 292528,
+          "DATASETVALUE": "MODAL_VAR:RSK_53_TRADE_ID",
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437798
+        },
+        {
+          "Data_Setting_Id": 292520,
+          "DATASETVALUE": "MODAL_VAR:RSK_53_TRADE_ID",
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437798
+        },
+        {
+          "Data_Setting_Id": 292525,
+          "DATASETVALUE": "MODAL_VAR:RSK_54_TRADE_ID",
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437798
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_ID",
+      "OBJECT_ID": 33373,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeID",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 29531,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 437798,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 12,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292536,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437799
+        },
+        {
+          "Data_Setting_Id": 292531,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437799
+        },
+        {
+          "Data_Setting_Id": 292532,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437799
+        },
+        {
+          "Data_Setting_Id": 292539,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437799
+        },
+        {
+          "Data_Setting_Id": 292533,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437799
+        },
+        {
+          "Data_Setting_Id": 292534,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437799
+        },
+        {
+          "Data_Setting_Id": 292537,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437799
+        },
+        {
+          "Data_Setting_Id": 292538,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437799
+        },
+        {
+          "Data_Setting_Id": 292530,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437799
+        },
+        {
+          "Data_Setting_Id": 292535,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437799
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_FIND_NOW",
+      "OBJECT_ID": 32728,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_findNowButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 32179,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 437799,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 13,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292536,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437799
+        },
+        {
+          "Data_Setting_Id": 292531,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437799
+        },
+        {
+          "Data_Setting_Id": 292532,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437799
+        },
+        {
+          "Data_Setting_Id": 292539,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437799
+        },
+        {
+          "Data_Setting_Id": 292533,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437799
+        },
+        {
+          "Data_Setting_Id": 292534,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437799
+        },
+        {
+          "Data_Setting_Id": 292537,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437799
+        },
+        {
+          "Data_Setting_Id": 292538,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437799
+        },
+        {
+          "Data_Setting_Id": 292530,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437799
+        },
+        {
+          "Data_Setting_Id": 292535,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437799
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_FIND_NOW",
+      "OBJECT_ID": 45052,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_findNowButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 32179,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 437799,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 13,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292546,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437800
+        },
+        {
+          "Data_Setting_Id": 292541,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437800
+        },
+        {
+          "Data_Setting_Id": 292542,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437800
+        },
+        {
+          "Data_Setting_Id": 292549,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437800
+        },
+        {
+          "Data_Setting_Id": 292543,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437800
+        },
+        {
+          "Data_Setting_Id": 292544,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437800
+        },
+        {
+          "Data_Setting_Id": 292547,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437800
+        },
+        {
+          "Data_Setting_Id": 292548,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437800
+        },
+        {
+          "Data_Setting_Id": 292540,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437800
+        },
+        {
+          "Data_Setting_Id": 292545,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437800
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 37247,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\n",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 437800,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 14,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292546,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437800
+        },
+        {
+          "Data_Setting_Id": 292541,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437800
+        },
+        {
+          "Data_Setting_Id": 292542,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437800
+        },
+        {
+          "Data_Setting_Id": 292549,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437800
+        },
+        {
+          "Data_Setting_Id": 292543,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437800
+        },
+        {
+          "Data_Setting_Id": 292544,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437800
+        },
+        {
+          "Data_Setting_Id": 292547,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437800
+        },
+        {
+          "Data_Setting_Id": 292548,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437800
+        },
+        {
+          "Data_Setting_Id": 292540,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437800
+        },
+        {
+          "Data_Setting_Id": 292545,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437800
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 46046,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswfname:=Desktop|Page",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 437800,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 14,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 581942,
+          "DATASETVALUE": "TRADE_FINDER",
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 848287
+        },
+        {
+          "Data_Setting_Id": 581937,
+          "DATASETVALUE": "TRADE_FINDER",
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 848287
+        },
+        {
+          "Data_Setting_Id": 581938,
+          "DATASETVALUE": "TRADE_FINDER",
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 848287
+        },
+        {
+          "Data_Setting_Id": 581945,
+          "DATASETVALUE": "TRADE_FINDER",
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 848287
+        },
+        {
+          "Data_Setting_Id": 581939,
+          "DATASETVALUE": "TRADE_FINDER",
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 848287
+        },
+        {
+          "Data_Setting_Id": 581940,
+          "DATASETVALUE": "TRADE_FINDER",
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 848287
+        },
+        {
+          "Data_Setting_Id": 581943,
+          "DATASETVALUE": "TRADE_FINDER",
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 848287
+        },
+        {
+          "Data_Setting_Id": 581944,
+          "DATASETVALUE": "TRADE_FINDER",
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 848287
+        },
+        {
+          "Data_Setting_Id": 581936,
+          "DATASETVALUE": "TRADE_FINDER",
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 848287
+        },
+        {
+          "Data_Setting_Id": 581941,
+          "DATASETVALUE": "TRADE_FINDER",
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 848287
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 37247,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\n",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 848287,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 15,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 581942,
+          "DATASETVALUE": "TRADE_FINDER",
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 848287
+        },
+        {
+          "Data_Setting_Id": 581937,
+          "DATASETVALUE": "TRADE_FINDER",
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 848287
+        },
+        {
+          "Data_Setting_Id": 581938,
+          "DATASETVALUE": "TRADE_FINDER",
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 848287
+        },
+        {
+          "Data_Setting_Id": 581945,
+          "DATASETVALUE": "TRADE_FINDER",
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 848287
+        },
+        {
+          "Data_Setting_Id": 581939,
+          "DATASETVALUE": "TRADE_FINDER",
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 848287
+        },
+        {
+          "Data_Setting_Id": 581940,
+          "DATASETVALUE": "TRADE_FINDER",
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 848287
+        },
+        {
+          "Data_Setting_Id": 581943,
+          "DATASETVALUE": "TRADE_FINDER",
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 848287
+        },
+        {
+          "Data_Setting_Id": 581944,
+          "DATASETVALUE": "TRADE_FINDER",
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 848287
+        },
+        {
+          "Data_Setting_Id": 581936,
+          "DATASETVALUE": "TRADE_FINDER",
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 848287
+        },
+        {
+          "Data_Setting_Id": 581941,
+          "DATASETVALUE": "TRADE_FINDER",
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 848287
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 46046,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswfname:=Desktop|Page",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 848287,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 15,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292556,
+          "DATASETVALUE": "MODAL_VAR:FXSPOTD_01_TRADE_ID",
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437801
+        },
+        {
+          "Data_Setting_Id": 292551,
+          "DATASETVALUE": "MODAL_VAR:FXSPOTD_02_TRADE_ID",
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437801
+        },
+        {
+          "Data_Setting_Id": 292552,
+          "DATASETVALUE": "MODAL_VAR:FXSPOTD_03_TRADE_ID",
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437801
+        },
+        {
+          "Data_Setting_Id": 292559,
+          "DATASETVALUE": "MODAL_VAR:FXSPOTD_04_TRADE_ID",
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437801
+        },
+        {
+          "Data_Setting_Id": 292553,
+          "DATASETVALUE": "MODAL_VAR:FXSPOTD_05_TRADE_ID",
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437801
+        },
+        {
+          "Data_Setting_Id": 292554,
+          "DATASETVALUE": "MODAL_VAR:RSK_52_TRADE_ID",
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437801
+        },
+        {
+          "Data_Setting_Id": 292557,
+          "DATASETVALUE": "MODAL_VAR:RSK_52_TRADE_ID",
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437801
+        },
+        {
+          "Data_Setting_Id": 292558,
+          "DATASETVALUE": "MODAL_VAR:RSK_53_TRADE_ID",
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437801
+        },
+        {
+          "Data_Setting_Id": 292550,
+          "DATASETVALUE": "MODAL_VAR:RSK_53_TRADE_ID",
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437801
+        },
+        {
+          "Data_Setting_Id": 292555,
+          "DATASETVALUE": "MODAL_VAR:RSK_54_TRADE_ID",
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437801
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 32,
+      "KEY_WORD_NAME": "SearchAndClick",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_TABLE",
+      "OBJECT_ID": 41666,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_queryResults",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 28613,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 437801,
+      "COLUMN_ROW_SETTING": "MarsAddins;Trade ID;Action:LEFT_DBL_CLICK",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 16,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292556,
+          "DATASETVALUE": "MODAL_VAR:FXSPOTD_01_TRADE_ID",
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437801
+        },
+        {
+          "Data_Setting_Id": 292551,
+          "DATASETVALUE": "MODAL_VAR:FXSPOTD_02_TRADE_ID",
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437801
+        },
+        {
+          "Data_Setting_Id": 292552,
+          "DATASETVALUE": "MODAL_VAR:FXSPOTD_03_TRADE_ID",
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437801
+        },
+        {
+          "Data_Setting_Id": 292559,
+          "DATASETVALUE": "MODAL_VAR:FXSPOTD_04_TRADE_ID",
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437801
+        },
+        {
+          "Data_Setting_Id": 292553,
+          "DATASETVALUE": "MODAL_VAR:FXSPOTD_05_TRADE_ID",
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437801
+        },
+        {
+          "Data_Setting_Id": 292554,
+          "DATASETVALUE": "MODAL_VAR:RSK_52_TRADE_ID",
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437801
+        },
+        {
+          "Data_Setting_Id": 292557,
+          "DATASETVALUE": "MODAL_VAR:RSK_52_TRADE_ID",
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437801
+        },
+        {
+          "Data_Setting_Id": 292558,
+          "DATASETVALUE": "MODAL_VAR:RSK_53_TRADE_ID",
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437801
+        },
+        {
+          "Data_Setting_Id": 292550,
+          "DATASETVALUE": "MODAL_VAR:RSK_53_TRADE_ID",
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437801
+        },
+        {
+          "Data_Setting_Id": 292555,
+          "DATASETVALUE": "MODAL_VAR:RSK_54_TRADE_ID",
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437801
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 32,
+      "KEY_WORD_NAME": "SearchAndClick",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_TABLE",
+      "OBJECT_ID": 35712,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_queryResults",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 28613,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 437801,
+      "COLUMN_ROW_SETTING": "MarsAddins;Trade ID;Action:LEFT_DBL_CLICK",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 16,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292566,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437802
+        },
+        {
+          "Data_Setting_Id": 292561,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437802
+        },
+        {
+          "Data_Setting_Id": 292562,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437802
+        },
+        {
+          "Data_Setting_Id": 292569,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437802
+        },
+        {
+          "Data_Setting_Id": 292563,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437802
+        },
+        {
+          "Data_Setting_Id": 292564,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437802
+        },
+        {
+          "Data_Setting_Id": 292567,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437802
+        },
+        {
+          "Data_Setting_Id": 292568,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437802
+        },
+        {
+          "Data_Setting_Id": 292560,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437802
+        },
+        {
+          "Data_Setting_Id": 292565,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437802
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "FXSPOT_TRADE_POPUP",
+      "OBJECT_ID": 32931,
+      "OBJECT_TYPE": "FXSPOT_TRADE_POPUP",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^IFC FX Spot Trade.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24896,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 437802,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": "MultiplePane:Runtime:REPO_TRADE_POPUP",
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 17,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292566,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437802
+        },
+        {
+          "Data_Setting_Id": 292561,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437802
+        },
+        {
+          "Data_Setting_Id": 292562,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437802
+        },
+        {
+          "Data_Setting_Id": 292569,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437802
+        },
+        {
+          "Data_Setting_Id": 292563,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437802
+        },
+        {
+          "Data_Setting_Id": 292564,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437802
+        },
+        {
+          "Data_Setting_Id": 292567,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437802
+        },
+        {
+          "Data_Setting_Id": 292568,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437802
+        },
+        {
+          "Data_Setting_Id": 292560,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437802
+        },
+        {
+          "Data_Setting_Id": 292565,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437802
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "FXSPOT_TRADE_POPUP",
+      "OBJECT_ID": 40738,
+      "OBJECT_TYPE": "FXSPOT_TRADE_POPUP",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^IFC FX Spot Trade.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24896,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 437802,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": "MultiplePane:Runtime:REPO_TRADE_POPUP",
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 17,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292576,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437803
+        },
+        {
+          "Data_Setting_Id": 292571,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437803
+        },
+        {
+          "Data_Setting_Id": 292572,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437803
+        },
+        {
+          "Data_Setting_Id": 292579,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437803
+        },
+        {
+          "Data_Setting_Id": 292573,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437803
+        },
+        {
+          "Data_Setting_Id": 292574,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437803
+        },
+        {
+          "Data_Setting_Id": 292577,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437803
+        },
+        {
+          "Data_Setting_Id": 292578,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437803
+        },
+        {
+          "Data_Setting_Id": 292570,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437803
+        },
+        {
+          "Data_Setting_Id": 292575,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437803
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 22,
+      "KEY_WORD_NAME": "SelectMenuItem",
+      "OBJECT_HAPPY_NAME": "FXSPOT_TRADE_POPUP_TOOLBAR",
+      "OBJECT_ID": 48322,
+      "OBJECT_TYPE": "FXSPOT_TRADE_POPUP",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 31038,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 437803,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 18,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292576,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437803
+        },
+        {
+          "Data_Setting_Id": 292571,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437803
+        },
+        {
+          "Data_Setting_Id": 292572,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437803
+        },
+        {
+          "Data_Setting_Id": 292579,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437803
+        },
+        {
+          "Data_Setting_Id": 292573,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437803
+        },
+        {
+          "Data_Setting_Id": 292574,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437803
+        },
+        {
+          "Data_Setting_Id": 292577,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437803
+        },
+        {
+          "Data_Setting_Id": 292578,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437803
+        },
+        {
+          "Data_Setting_Id": 292570,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437803
+        },
+        {
+          "Data_Setting_Id": 292575,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437803
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 22,
+      "KEY_WORD_NAME": "SelectMenuItem",
+      "OBJECT_HAPPY_NAME": "FXSPOT_TRADE_POPUP_TOOLBAR",
+      "OBJECT_ID": 40154,
+      "OBJECT_TYPE": "FXSPOT_TRADE_POPUP",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 31038,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 437803,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 18,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292586,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437804
+        },
+        {
+          "Data_Setting_Id": 292581,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437804
+        },
+        {
+          "Data_Setting_Id": 292582,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437804
+        },
+        {
+          "Data_Setting_Id": 292589,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437804
+        },
+        {
+          "Data_Setting_Id": 292583,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437804
+        },
+        {
+          "Data_Setting_Id": 292584,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437804
+        },
+        {
+          "Data_Setting_Id": 292587,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437804
+        },
+        {
+          "Data_Setting_Id": 292588,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437804
+        },
+        {
+          "Data_Setting_Id": 292580,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437804
+        },
+        {
+          "Data_Setting_Id": 292585,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437804
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "FXSPOT",
+      "OBJECT_ID": 33325,
+      "OBJECT_TYPE": "FXSPOT",
+      "QUICK_ACCESS": "is owned window:=False \nis child window:=False \nswfname:=Desktop \nswftypename:=Summit\\.Framework\\.Desktop\\.Desktop \nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24895,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 437804,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 19,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292586,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437804
+        },
+        {
+          "Data_Setting_Id": 292581,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437804
+        },
+        {
+          "Data_Setting_Id": 292582,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437804
+        },
+        {
+          "Data_Setting_Id": 292589,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437804
+        },
+        {
+          "Data_Setting_Id": 292583,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437804
+        },
+        {
+          "Data_Setting_Id": 292584,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437804
+        },
+        {
+          "Data_Setting_Id": 292587,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437804
+        },
+        {
+          "Data_Setting_Id": 292588,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437804
+        },
+        {
+          "Data_Setting_Id": 292580,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437804
+        },
+        {
+          "Data_Setting_Id": 292585,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437804
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "FXSPOT",
+      "OBJECT_ID": 41105,
+      "OBJECT_TYPE": "FXSPOT",
+      "QUICK_ACCESS": "is owned window:=False \nis child window:=False \nswfname:=Desktop \nswftypename:=Summit\\.Framework\\.Desktop\\.Desktop \nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24895,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 437804,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 19,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292596,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437805
+        },
+        {
+          "Data_Setting_Id": 292591,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437805
+        },
+        {
+          "Data_Setting_Id": 292592,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437805
+        },
+        {
+          "Data_Setting_Id": 292599,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437805
+        },
+        {
+          "Data_Setting_Id": 292593,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437805
+        },
+        {
+          "Data_Setting_Id": 292594,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437805
+        },
+        {
+          "Data_Setting_Id": 292597,
+          "DATASETVALUE": "-200000",
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437805
+        },
+        {
+          "Data_Setting_Id": 292598,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437805
+        },
+        {
+          "Data_Setting_Id": 292590,
+          "DATASETVALUE": "-200000",
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437805
+        },
+        {
+          "Data_Setting_Id": 292595,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437805
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FXSPOT_CCY2_AMOUNT",
+      "OBJECT_ID": 48432,
+      "OBJECT_TYPE": "FXSPOT",
+      "QUICK_ACCESS": "Swfname:=_ccy2AmountEntry",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 31916,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 437805,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 20,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292596,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437805
+        },
+        {
+          "Data_Setting_Id": 292591,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437805
+        },
+        {
+          "Data_Setting_Id": 292592,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437805
+        },
+        {
+          "Data_Setting_Id": 292599,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437805
+        },
+        {
+          "Data_Setting_Id": 292593,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437805
+        },
+        {
+          "Data_Setting_Id": 292594,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437805
+        },
+        {
+          "Data_Setting_Id": 292597,
+          "DATASETVALUE": "-200000",
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437805
+        },
+        {
+          "Data_Setting_Id": 292598,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437805
+        },
+        {
+          "Data_Setting_Id": 292590,
+          "DATASETVALUE": "-200000",
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437805
+        },
+        {
+          "Data_Setting_Id": 292595,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437805
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FXSPOT_CCY2_AMOUNT",
+      "OBJECT_ID": 38087,
+      "OBJECT_TYPE": "FXSPOT",
+      "QUICK_ACCESS": "Swfname:=_ccy2AmountEntry",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 31916,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 437805,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 20,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292606,
+          "DATASETVALUE": "Desktop Menu;Action;Verify",
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437806
+        },
+        {
+          "Data_Setting_Id": 292601,
+          "DATASETVALUE": "Desktop Menu;Action;Verify",
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437806
+        },
+        {
+          "Data_Setting_Id": 292602,
+          "DATASETVALUE": "Desktop Menu;Action;Verify",
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437806
+        },
+        {
+          "Data_Setting_Id": 292609,
+          "DATASETVALUE": "Desktop Menu;Action;Verify",
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437806
+        },
+        {
+          "Data_Setting_Id": 292603,
+          "DATASETVALUE": "Desktop Menu;Action;Verify",
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437806
+        },
+        {
+          "Data_Setting_Id": 292604,
+          "DATASETVALUE": "Desktop Menu;Action;Verify",
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437806
+        },
+        {
+          "Data_Setting_Id": 292607,
+          "DATASETVALUE": "Desktop Menu;Action;Save",
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437806
+        },
+        {
+          "Data_Setting_Id": 292608,
+          "DATASETVALUE": "Desktop Menu;Action;Verify",
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437806
+        },
+        {
+          "Data_Setting_Id": 292600,
+          "DATASETVALUE": "Desktop Menu;Action;Save",
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437806
+        },
+        {
+          "Data_Setting_Id": 292605,
+          "DATASETVALUE": "Desktop Menu;Action;Verify",
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437806
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 22,
+      "KEY_WORD_NAME": "SelectMenuItem",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 437806,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 21,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292616,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437807
+        },
+        {
+          "Data_Setting_Id": 292611,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437807
+        },
+        {
+          "Data_Setting_Id": 292612,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437807
+        },
+        {
+          "Data_Setting_Id": 292619,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437807
+        },
+        {
+          "Data_Setting_Id": 292613,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437807
+        },
+        {
+          "Data_Setting_Id": 292614,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437807
+        },
+        {
+          "Data_Setting_Id": 292617,
+          "DATASETVALUE": "2",
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437807
+        },
+        {
+          "Data_Setting_Id": 292618,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437807
+        },
+        {
+          "Data_Setting_Id": 292610,
+          "DATASETVALUE": "2",
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437807
+        },
+        {
+          "Data_Setting_Id": 292615,
+          "DATASETVALUE": "2",
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437807
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 437807,
+      "COLUMN_ROW_SETTING": "F",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 22,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292626,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437808
+        },
+        {
+          "Data_Setting_Id": 292621,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437808
+        },
+        {
+          "Data_Setting_Id": 292622,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437808
+        },
+        {
+          "Data_Setting_Id": 292629,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437808
+        },
+        {
+          "Data_Setting_Id": 292623,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437808
+        },
+        {
+          "Data_Setting_Id": 292624,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437808
+        },
+        {
+          "Data_Setting_Id": 292627,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437808
+        },
+        {
+          "Data_Setting_Id": 292628,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437808
+        },
+        {
+          "Data_Setting_Id": 292620,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437808
+        },
+        {
+          "Data_Setting_Id": 292625,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437808
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 38,
+      "KEY_WORD_NAME": "Dismiss",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 437808,
+      "COLUMN_ROW_SETTING": "5",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 23,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292636,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437809
+        },
+        {
+          "Data_Setting_Id": 292631,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437809
+        },
+        {
+          "Data_Setting_Id": 292632,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437809
+        },
+        {
+          "Data_Setting_Id": 292639,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437809
+        },
+        {
+          "Data_Setting_Id": 292633,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437809
+        },
+        {
+          "Data_Setting_Id": 292634,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437809
+        },
+        {
+          "Data_Setting_Id": 292637,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437809
+        },
+        {
+          "Data_Setting_Id": 292638,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437809
+        },
+        {
+          "Data_Setting_Id": 292630,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437809
+        },
+        {
+          "Data_Setting_Id": 292635,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437809
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "FXSPOT",
+      "OBJECT_ID": 33325,
+      "OBJECT_TYPE": "FXSPOT",
+      "QUICK_ACCESS": "is owned window:=False \nis child window:=False \nswfname:=Desktop \nswftypename:=Summit\\.Framework\\.Desktop\\.Desktop \nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24895,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 437809,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 24,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292636,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437809
+        },
+        {
+          "Data_Setting_Id": 292631,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437809
+        },
+        {
+          "Data_Setting_Id": 292632,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437809
+        },
+        {
+          "Data_Setting_Id": 292639,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437809
+        },
+        {
+          "Data_Setting_Id": 292633,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437809
+        },
+        {
+          "Data_Setting_Id": 292634,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437809
+        },
+        {
+          "Data_Setting_Id": 292637,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437809
+        },
+        {
+          "Data_Setting_Id": 292638,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437809
+        },
+        {
+          "Data_Setting_Id": 292630,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437809
+        },
+        {
+          "Data_Setting_Id": 292635,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437809
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "FXSPOT",
+      "OBJECT_ID": 41105,
+      "OBJECT_TYPE": "FXSPOT",
+      "QUICK_ACCESS": "is owned window:=False \nis child window:=False \nswfname:=Desktop \nswftypename:=Summit\\.Framework\\.Desktop\\.Desktop \nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24895,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 437809,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 24,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292646,
+          "DATASETVALUE": "FXSPOT",
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437810
+        },
+        {
+          "Data_Setting_Id": 292641,
+          "DATASETVALUE": "FXSPOT",
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437810
+        },
+        {
+          "Data_Setting_Id": 292642,
+          "DATASETVALUE": "FXSPOT",
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437810
+        },
+        {
+          "Data_Setting_Id": 292649,
+          "DATASETVALUE": "FXSPOT",
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437810
+        },
+        {
+          "Data_Setting_Id": 292643,
+          "DATASETVALUE": "FXSPOT",
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437810
+        },
+        {
+          "Data_Setting_Id": 292644,
+          "DATASETVALUE": "FXSPOT",
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437810
+        },
+        {
+          "Data_Setting_Id": 292647,
+          "DATASETVALUE": "FXSPOT",
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437810
+        },
+        {
+          "Data_Setting_Id": 292648,
+          "DATASETVALUE": "FXSPOT",
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437810
+        },
+        {
+          "Data_Setting_Id": 292640,
+          "DATASETVALUE": "FXSPOT",
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437810
+        },
+        {
+          "Data_Setting_Id": 292645,
+          "DATASETVALUE": "FXSPOT",
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437810
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "FXSPOT",
+      "OBJECT_ID": 33325,
+      "OBJECT_TYPE": "FXSPOT",
+      "QUICK_ACCESS": "is owned window:=False \nis child window:=False \nswfname:=Desktop \nswftypename:=Summit\\.Framework\\.Desktop\\.Desktop \nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24895,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 437810,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 25,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292646,
+          "DATASETVALUE": "FXSPOT",
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437810
+        },
+        {
+          "Data_Setting_Id": 292641,
+          "DATASETVALUE": "FXSPOT",
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437810
+        },
+        {
+          "Data_Setting_Id": 292642,
+          "DATASETVALUE": "FXSPOT",
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437810
+        },
+        {
+          "Data_Setting_Id": 292649,
+          "DATASETVALUE": "FXSPOT",
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437810
+        },
+        {
+          "Data_Setting_Id": 292643,
+          "DATASETVALUE": "FXSPOT",
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437810
+        },
+        {
+          "Data_Setting_Id": 292644,
+          "DATASETVALUE": "FXSPOT",
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437810
+        },
+        {
+          "Data_Setting_Id": 292647,
+          "DATASETVALUE": "FXSPOT",
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437810
+        },
+        {
+          "Data_Setting_Id": 292648,
+          "DATASETVALUE": "FXSPOT",
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437810
+        },
+        {
+          "Data_Setting_Id": 292640,
+          "DATASETVALUE": "FXSPOT",
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437810
+        },
+        {
+          "Data_Setting_Id": 292645,
+          "DATASETVALUE": "FXSPOT",
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437810
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "FXSPOT",
+      "OBJECT_ID": 41105,
+      "OBJECT_TYPE": "FXSPOT",
+      "QUICK_ACCESS": "is owned window:=False \nis child window:=False \nswfname:=Desktop \nswftypename:=Summit\\.Framework\\.Desktop\\.Desktop \nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24895,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 437810,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 25,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292656,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437811
+        },
+        {
+          "Data_Setting_Id": 292651,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437811
+        },
+        {
+          "Data_Setting_Id": 292652,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437811
+        },
+        {
+          "Data_Setting_Id": 292659,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437811
+        },
+        {
+          "Data_Setting_Id": 292653,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437811
+        },
+        {
+          "Data_Setting_Id": 292654,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437811
+        },
+        {
+          "Data_Setting_Id": 292657,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437811
+        },
+        {
+          "Data_Setting_Id": 292658,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437811
+        },
+        {
+          "Data_Setting_Id": 292650,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437811
+        },
+        {
+          "Data_Setting_Id": 292655,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437811
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 38,
+      "KEY_WORD_NAME": "Dismiss",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 437811,
+      "COLUMN_ROW_SETTING": "10",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 26,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292666,
+          "DATASETVALUE": "FXSPOT_TRADE_ID",
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437812
+        },
+        {
+          "Data_Setting_Id": 292661,
+          "DATASETVALUE": "FXSPOT_TRADE_ID",
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437812
+        },
+        {
+          "Data_Setting_Id": 292662,
+          "DATASETVALUE": "FXSPOT_TRADE_ID",
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437812
+        },
+        {
+          "Data_Setting_Id": 292669,
+          "DATASETVALUE": "FXSPOT_TRADE_ID",
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437812
+        },
+        {
+          "Data_Setting_Id": 292663,
+          "DATASETVALUE": "FXSPOT_TRADE_ID",
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437812
+        },
+        {
+          "Data_Setting_Id": 292664,
+          "DATASETVALUE": "FXSPOT_TRADE_ID",
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437812
+        },
+        {
+          "Data_Setting_Id": 292667,
+          "DATASETVALUE": "FXSPOT_TRADE_ID",
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437812
+        },
+        {
+          "Data_Setting_Id": 292668,
+          "DATASETVALUE": "FXSPOT_TRADE_ID",
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437812
+        },
+        {
+          "Data_Setting_Id": 292660,
+          "DATASETVALUE": "FXSPOT_TRADE_ID",
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437812
+        },
+        {
+          "Data_Setting_Id": 292665,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437812
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "FXSPOT_STATE_LAB",
+      "OBJECT_ID": 39104,
+      "OBJECT_TYPE": "FXSPOT",
+      "QUICK_ACCESS": "Swfname:=_stateEntry",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 28339,
+      "TYPE_NAME": "SwfLabel",
+      "STEPS_ID": 437812,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 27,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292666,
+          "DATASETVALUE": "FXSPOT_TRADE_ID",
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437812
+        },
+        {
+          "Data_Setting_Id": 292661,
+          "DATASETVALUE": "FXSPOT_TRADE_ID",
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437812
+        },
+        {
+          "Data_Setting_Id": 292662,
+          "DATASETVALUE": "FXSPOT_TRADE_ID",
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437812
+        },
+        {
+          "Data_Setting_Id": 292669,
+          "DATASETVALUE": "FXSPOT_TRADE_ID",
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437812
+        },
+        {
+          "Data_Setting_Id": 292663,
+          "DATASETVALUE": "FXSPOT_TRADE_ID",
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437812
+        },
+        {
+          "Data_Setting_Id": 292664,
+          "DATASETVALUE": "FXSPOT_TRADE_ID",
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437812
+        },
+        {
+          "Data_Setting_Id": 292667,
+          "DATASETVALUE": "FXSPOT_TRADE_ID",
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437812
+        },
+        {
+          "Data_Setting_Id": 292668,
+          "DATASETVALUE": "FXSPOT_TRADE_ID",
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437812
+        },
+        {
+          "Data_Setting_Id": 292660,
+          "DATASETVALUE": "FXSPOT_TRADE_ID",
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437812
+        },
+        {
+          "Data_Setting_Id": 292665,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437812
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "FXSPOT_STATE_LAB",
+      "OBJECT_ID": 43099,
+      "OBJECT_TYPE": "FXSPOT",
+      "QUICK_ACCESS": "Swfname:=_stateEntry",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 28339,
+      "TYPE_NAME": "SwfLabel",
+      "STEPS_ID": 437812,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 27,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292676,
+          "DATASETVALUE": "FXSPOT_TRADE_STATUS",
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437813
+        },
+        {
+          "Data_Setting_Id": 292671,
+          "DATASETVALUE": "FXSPOT_TRADE_STATUS",
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437813
+        },
+        {
+          "Data_Setting_Id": 292672,
+          "DATASETVALUE": "FXSPOT_TRADE_STATUS",
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437813
+        },
+        {
+          "Data_Setting_Id": 292679,
+          "DATASETVALUE": "FXSPOT_TRADE_STATUS",
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437813
+        },
+        {
+          "Data_Setting_Id": 292673,
+          "DATASETVALUE": "FXSPOT_TRADE_STATUS",
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437813
+        },
+        {
+          "Data_Setting_Id": 292674,
+          "DATASETVALUE": "FXSPOT_TRADE_STATUS",
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437813
+        },
+        {
+          "Data_Setting_Id": 292677,
+          "DATASETVALUE": "FXSPOT_TRADE_STATUS",
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437813
+        },
+        {
+          "Data_Setting_Id": 292678,
+          "DATASETVALUE": "FXSPOT_TRADE_STATUS",
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437813
+        },
+        {
+          "Data_Setting_Id": 292670,
+          "DATASETVALUE": "FXSPOT_TRADE_STATUS",
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437813
+        },
+        {
+          "Data_Setting_Id": 292675,
+          "DATASETVALUE": "FXFWD_TRADE_STATUS",
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437813
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "FXSPOT_STATE_LAB",
+      "OBJECT_ID": 39104,
+      "OBJECT_TYPE": "FXSPOT",
+      "QUICK_ACCESS": "Swfname:=_stateEntry",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 28339,
+      "TYPE_NAME": "SwfLabel",
+      "STEPS_ID": 437813,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 28,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292676,
+          "DATASETVALUE": "FXSPOT_TRADE_STATUS",
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437813
+        },
+        {
+          "Data_Setting_Id": 292671,
+          "DATASETVALUE": "FXSPOT_TRADE_STATUS",
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437813
+        },
+        {
+          "Data_Setting_Id": 292672,
+          "DATASETVALUE": "FXSPOT_TRADE_STATUS",
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437813
+        },
+        {
+          "Data_Setting_Id": 292679,
+          "DATASETVALUE": "FXSPOT_TRADE_STATUS",
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437813
+        },
+        {
+          "Data_Setting_Id": 292673,
+          "DATASETVALUE": "FXSPOT_TRADE_STATUS",
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437813
+        },
+        {
+          "Data_Setting_Id": 292674,
+          "DATASETVALUE": "FXSPOT_TRADE_STATUS",
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437813
+        },
+        {
+          "Data_Setting_Id": 292677,
+          "DATASETVALUE": "FXSPOT_TRADE_STATUS",
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437813
+        },
+        {
+          "Data_Setting_Id": 292678,
+          "DATASETVALUE": "FXSPOT_TRADE_STATUS",
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437813
+        },
+        {
+          "Data_Setting_Id": 292670,
+          "DATASETVALUE": "FXSPOT_TRADE_STATUS",
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437813
+        },
+        {
+          "Data_Setting_Id": 292675,
+          "DATASETVALUE": "FXFWD_TRADE_STATUS",
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437813
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "FXSPOT_STATE_LAB",
+      "OBJECT_ID": 43099,
+      "OBJECT_TYPE": "FXSPOT",
+      "QUICK_ACCESS": "Swfname:=_stateEntry",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 28339,
+      "TYPE_NAME": "SwfLabel",
+      "STEPS_ID": 437813,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 28,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292686,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437814
+        },
+        {
+          "Data_Setting_Id": 292681,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437814
+        },
+        {
+          "Data_Setting_Id": 292682,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437814
+        },
+        {
+          "Data_Setting_Id": 292689,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437814
+        },
+        {
+          "Data_Setting_Id": 292683,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437814
+        },
+        {
+          "Data_Setting_Id": 292684,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437814
+        },
+        {
+          "Data_Setting_Id": 292687,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437814
+        },
+        {
+          "Data_Setting_Id": 292688,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437814
+        },
+        {
+          "Data_Setting_Id": 292680,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437814
+        },
+        {
+          "Data_Setting_Id": 292685,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437814
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 437814,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 29,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292686,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437814
+        },
+        {
+          "Data_Setting_Id": 292681,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437814
+        },
+        {
+          "Data_Setting_Id": 292682,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437814
+        },
+        {
+          "Data_Setting_Id": 292689,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437814
+        },
+        {
+          "Data_Setting_Id": 292683,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437814
+        },
+        {
+          "Data_Setting_Id": 292684,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437814
+        },
+        {
+          "Data_Setting_Id": 292687,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437814
+        },
+        {
+          "Data_Setting_Id": 292688,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437814
+        },
+        {
+          "Data_Setting_Id": 292680,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437814
+        },
+        {
+          "Data_Setting_Id": 292685,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437814
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 437814,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 29,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292696,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437815
+        },
+        {
+          "Data_Setting_Id": 292691,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437815
+        },
+        {
+          "Data_Setting_Id": 292692,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437815
+        },
+        {
+          "Data_Setting_Id": 292699,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437815
+        },
+        {
+          "Data_Setting_Id": 292693,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437815
+        },
+        {
+          "Data_Setting_Id": 292694,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437815
+        },
+        {
+          "Data_Setting_Id": 292697,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437815
+        },
+        {
+          "Data_Setting_Id": 292698,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437815
+        },
+        {
+          "Data_Setting_Id": 292690,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437815
+        },
+        {
+          "Data_Setting_Id": 292695,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437815
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 32409,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 30430,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 437815,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 30,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292696,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437815
+        },
+        {
+          "Data_Setting_Id": 292691,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437815
+        },
+        {
+          "Data_Setting_Id": 292692,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437815
+        },
+        {
+          "Data_Setting_Id": 292699,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437815
+        },
+        {
+          "Data_Setting_Id": 292693,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437815
+        },
+        {
+          "Data_Setting_Id": 292694,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437815
+        },
+        {
+          "Data_Setting_Id": 292697,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437815
+        },
+        {
+          "Data_Setting_Id": 292698,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437815
+        },
+        {
+          "Data_Setting_Id": 292690,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437815
+        },
+        {
+          "Data_Setting_Id": 292695,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437815
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 40727,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 30430,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 437815,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 30,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292706,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437816
+        },
+        {
+          "Data_Setting_Id": 292701,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437816
+        },
+        {
+          "Data_Setting_Id": 292702,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437816
+        },
+        {
+          "Data_Setting_Id": 292709,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437816
+        },
+        {
+          "Data_Setting_Id": 292703,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437816
+        },
+        {
+          "Data_Setting_Id": 292704,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437816
+        },
+        {
+          "Data_Setting_Id": 292707,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437816
+        },
+        {
+          "Data_Setting_Id": 292708,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437816
+        },
+        {
+          "Data_Setting_Id": 292700,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437816
+        },
+        {
+          "Data_Setting_Id": 292705,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437816
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 38,
+      "KEY_WORD_NAME": "Dismiss",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 437816,
+      "COLUMN_ROW_SETTING": "3",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 31,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292716,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437817
+        },
+        {
+          "Data_Setting_Id": 292711,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437817
+        },
+        {
+          "Data_Setting_Id": 292712,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437817
+        },
+        {
+          "Data_Setting_Id": 292719,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437817
+        },
+        {
+          "Data_Setting_Id": 292713,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437817
+        },
+        {
+          "Data_Setting_Id": 292714,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437817
+        },
+        {
+          "Data_Setting_Id": 292717,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437817
+        },
+        {
+          "Data_Setting_Id": 292718,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437817
+        },
+        {
+          "Data_Setting_Id": 292710,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437817
+        },
+        {
+          "Data_Setting_Id": 292715,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437817
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 437817,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 32,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292716,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437817
+        },
+        {
+          "Data_Setting_Id": 292711,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437817
+        },
+        {
+          "Data_Setting_Id": 292712,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437817
+        },
+        {
+          "Data_Setting_Id": 292719,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437817
+        },
+        {
+          "Data_Setting_Id": 292713,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437817
+        },
+        {
+          "Data_Setting_Id": 292714,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437817
+        },
+        {
+          "Data_Setting_Id": 292717,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437817
+        },
+        {
+          "Data_Setting_Id": 292718,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437817
+        },
+        {
+          "Data_Setting_Id": 292710,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437817
+        },
+        {
+          "Data_Setting_Id": 292715,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437817
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 437817,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 32,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292726,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437818
+        },
+        {
+          "Data_Setting_Id": 292721,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437818
+        },
+        {
+          "Data_Setting_Id": 292722,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437818
+        },
+        {
+          "Data_Setting_Id": 292729,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437818
+        },
+        {
+          "Data_Setting_Id": 292723,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437818
+        },
+        {
+          "Data_Setting_Id": 292724,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437818
+        },
+        {
+          "Data_Setting_Id": 292727,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437818
+        },
+        {
+          "Data_Setting_Id": 292728,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437818
+        },
+        {
+          "Data_Setting_Id": 292720,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437818
+        },
+        {
+          "Data_Setting_Id": 292725,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437818
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 32409,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 30430,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 437818,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 33,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292726,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437818
+        },
+        {
+          "Data_Setting_Id": 292721,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437818
+        },
+        {
+          "Data_Setting_Id": 292722,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437818
+        },
+        {
+          "Data_Setting_Id": 292729,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437818
+        },
+        {
+          "Data_Setting_Id": 292723,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437818
+        },
+        {
+          "Data_Setting_Id": 292724,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437818
+        },
+        {
+          "Data_Setting_Id": 292727,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437818
+        },
+        {
+          "Data_Setting_Id": 292728,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437818
+        },
+        {
+          "Data_Setting_Id": 292720,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437818
+        },
+        {
+          "Data_Setting_Id": 292725,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437818
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 40727,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 30430,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 437818,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 33,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 292736,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437760,
+          "SKIP": 0,
+          "STEPS_ID": 437819
+        },
+        {
+          "Data_Setting_Id": 292731,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437752,
+          "SKIP": 0,
+          "STEPS_ID": 437819
+        },
+        {
+          "Data_Setting_Id": 292732,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437754,
+          "SKIP": 0,
+          "STEPS_ID": 437819
+        },
+        {
+          "Data_Setting_Id": 292739,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437767,
+          "SKIP": 0,
+          "STEPS_ID": 437819
+        },
+        {
+          "Data_Setting_Id": 292733,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437755,
+          "SKIP": 0,
+          "STEPS_ID": 437819
+        },
+        {
+          "Data_Setting_Id": 292734,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437756,
+          "SKIP": 0,
+          "STEPS_ID": 437819
+        },
+        {
+          "Data_Setting_Id": 292737,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437761,
+          "SKIP": 0,
+          "STEPS_ID": 437819
+        },
+        {
+          "Data_Setting_Id": 292738,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437765,
+          "SKIP": 0,
+          "STEPS_ID": 437819
+        },
+        {
+          "Data_Setting_Id": 292730,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437749,
+          "SKIP": 0,
+          "STEPS_ID": 437819
+        },
+        {
+          "Data_Setting_Id": 292735,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 437759,
+          "SKIP": 0,
+          "STEPS_ID": 437819
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3100,
+      "TEST_CASE_NAME": "FX Spot Trade Action",
+      "KEY_WORD_ID": 38,
+      "KEY_WORD_NAME": "Dismiss",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 437819,
+      "COLUMN_ROW_SETTING": "10",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 34,
+      "VALUE_SETTING": null
+    }
+  ]
+}

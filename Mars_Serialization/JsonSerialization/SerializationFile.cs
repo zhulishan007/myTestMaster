@@ -469,11 +469,14 @@ namespace Mars_Serialization.JsonSerialization
                     DataTable testCaseDatatable = Common.Common.GetRecordAsDatatable(conString, query);
                     testCases = Common.Common.ConvertDataTableToList<MB_V_TEST_STEPS>(testCaseDatatable);
                 }
+                
                 var testCasesListById = testCases.Where(x => x.TEST_CASE_ID == testcaseId).ToList();
                 if (testCasesListById.Count() > 0)
                 {
+                    Console.WriteLine($"\tTest case:[{testCasesListById.FirstOrDefault().TEST_CASE_NAME}].....");
                     string fileName = string.Format("{0}_{1}.json", testcaseId, testCasesListById.FirstOrDefault().TEST_CASE_NAME.Replace("/", ""));
                     string filePath = Path.Combine(folderPath, fileName);
+                    Console.WriteLine($"\t\t{filePath} begin "+DateTime.Now.ToString("yyyyMMdd HH:mm:ss fff"));
                     if (!File.Exists(filePath)|| needReflesh)
                     {
                         long[] AppId = testCasesListById.Select(x => (long)x.APPLICATION_ID).Distinct().ToArray();
@@ -489,16 +492,18 @@ namespace Mars_Serialization.JsonSerialization
 
 
                         List<DataForDataSets> DataSettingsValues = new List<DataForDataSets>();
-                        var listIds = testCasesListById.Select(x => x.STEPS_ID).ToList();
+                        var listIds = testCasesListById.Select(x => x.STEPS_ID).Distinct().ToList();
+
                         string listIdStr = string.Join(",", listIds);
-                        string alldataSettingIdAndValues = "SELECT * FROM ( SELECT TESTDS.DATA_VALUE AS DATASETVALUE, testds.Data_Setting_Id AS Data_Setting_Id, CAST(ttds.DATA_SUMMARY_ID AS NUMBER(16,0)) AS DATA_SUMMARY_ID, TESTDS.DATA_DIRECTION AS SKIP, TS1.STEPS_ID FROM REL_TC_DATA_SUMMARY reltcds INNER JOIN T_TEST_DATA_SUMMARY ttds ON ttds.DATA_SUMMARY_ID = reltcds.DATA_SUMMARY_ID INNER JOIN T_TEST_STEPS ts1 ON ts1.TEST_CASE_ID = reltcds.TEST_CASE_ID LEFT JOIN TEST_DATA_SETTING testds ON testds.DATA_SUMMARY_ID = reltcds.DATA_SUMMARY_ID AND testds.steps_id = ts1.STEPS_ID WHERE reltcds.TEST_CASE_ID = " + testcaseId + " AND ts1.STEPS_ID IN (" + listIdStr + ") ORDER BY ttds.ALIAS_NAME)";
+                        string alldataSettingIdAndValues = "SELECT * FROM ( SELECT TESTDS.DATA_VALUE AS DATASETVALUE, testds.Data_Setting_Id AS Data_Setting_Id, CAST(ttds.DATA_SUMMARY_ID AS NUMBER(16,0)) AS DATA_SUMMARY_ID, TESTDS.DATA_DIRECTION AS SKIP, TS1.STEPS_ID FROM REL_TC_DATA_SUMMARY reltcds INNER JOIN T_TEST_DATA_SUMMARY ttds ON ttds.DATA_SUMMARY_ID = reltcds.DATA_SUMMARY_ID INNER JOIN T_TEST_STEPS ts1 ON ts1.TEST_CASE_ID = reltcds.TEST_CASE_ID LEFT JOIN TEST_DATA_SETTING testds ON testds.DATA_SUMMARY_ID = reltcds.DATA_SUMMARY_ID AND testds.steps_id = ts1.STEPS_ID WHERE reltcds.TEST_CASE_ID = " + testcaseId 
+                            + " AND ts1.STEPS_ID IN (" + listIdStr + ") ORDER BY ttds.ALIAS_NAME)";
                         DataTable allDataSettingIdAndValuesDatatable = Common.Common.GetRecordAsDatatable(conString, alldataSettingIdAndValues);
                         DataSettingsValues = Common.Common.ConvertDataTableToList<DataForDataSets>(allDataSettingIdAndValuesDatatable);
-
-                        foreach (var item in testCasesListById)
-                        {
-                            item.dataForDataSets = DataSettingsValues.Where(x => x.STEPS_ID == item.STEPS_ID).ToList();
-                        }
+                        if (DataSettingsValues!=null)
+                            foreach (var item in testCasesListById)
+                            {                            
+                                item.dataForDataSets = DataSettingsValues.Where(x => x.STEPS_ID == item.STEPS_ID).ToList();
+                            }
 
                         //testCasesListById.ForEach(x =>
                         //{
@@ -523,11 +528,13 @@ namespace Mars_Serialization.JsonSerialization
 
                         File.WriteAllText(filePath, testcaseJsonData);
                     }
+                    Console.WriteLine($"\t\t\tEnd " + DateTime.Now.ToString("yyyyMMdd HH:mm:ss fff"));
                 }
                 return true;
             }
             catch (Exception ex)
             {
+                Console.WriteLine($"{ex.Message}\r\n{ex.StackTrace}");
                 return false;
             }
         }
@@ -549,6 +556,7 @@ namespace Mars_Serialization.JsonSerialization
         {
             try
             {
+                Console.WriteLine($"total {appList.Count} Application(s)...,going to generate [{flag}] files....");
                 if (appList.Count() > 0)
                 {
                     if (FolderName.Object.ToString().Equals(flag))
@@ -622,15 +630,24 @@ namespace Mars_Serialization.JsonSerialization
                             //File.WriteAllText(parentPagWindowPath, applicationJsonData);
                         }
                     }
-                    else if (FolderName.Testcases.ToString().Equals(flag))
+                    else if (FolderName.Testcases.ToString().Equals(flag,StringComparison.OrdinalIgnoreCase))
                     {
+                        Console.WriteLine($"\tGoing to generate All testcases files.....");
                         List<MB_V_TEST_STEPS> testCases = new List<MB_V_TEST_STEPS>();
-                        string query = "SELECT CAST(TEST_CASE_ID AS NUMBER(16,0)) AS TEST_CASE_ID, TEST_CASE_NAME, CAST(KEY_WORD_ID AS NUMBER(16,0)) AS KEY_WORD_ID, KEY_WORD_NAME, OBJECT_HAPPY_NAME, CAST(OBJECT_ID AS NUMBER(16,0)) AS OBJECT_ID, OBJECT_TYPE, QUICK_ACCESS, ENUM_TYPE, CAST(APPLICATION_ID AS NUMBER(16,0)) AS APPLICATION_ID, CAST(OBJECT_NAME_ID AS NUMBER(16,0)) AS OBJECT_NAME_ID, TYPE_NAME, STEPS_ID, COLUMN_ROW_SETTING, COMMENTINFO, CAST(IS_RUNNABLE AS NUMBER(16,0)) AS IS_RUNNABLE, CAST(RUN_ORDER AS NUMBER(16,0)) AS RUN_ORDER, VALUE_SETTING FROM V_TEST_STEPS_FULLVISION"; //"SELECT * FROM V_TEST_STEPS_FULLVISION ORDER BY TEST_CASE_ID";
+                        string query = @"SELECT CAST(TEST_CASE_ID AS NUMBER(16,0)) AS TEST_CASE_ID, 
+                                            TEST_CASE_NAME, CAST(KEY_WORD_ID AS NUMBER(16,0)) AS KEY_WORD_ID, 
+                                            KEY_WORD_NAME, OBJECT_HAPPY_NAME, CAST(OBJECT_ID AS NUMBER(16,0)) AS OBJECT_ID, 
+                                            OBJECT_TYPE, QUICK_ACCESS, ENUM_TYPE, CAST(APPLICATION_ID AS NUMBER(16,0)) AS APPLICATION_ID, 
+                                            CAST(OBJECT_NAME_ID AS NUMBER(16,0)) AS OBJECT_NAME_ID, TYPE_NAME, 
+                                            STEPS_ID, COLUMN_ROW_SETTING, COMMENTINFO, CAST(IS_RUNNABLE AS NUMBER(16,0)) AS IS_RUNNABLE, 
+                                            CAST(RUN_ORDER AS NUMBER(16,0)) AS RUN_ORDER, VALUE_SETTING 
+                                        FROM V_TEST_STEPS_FULLVISION"; //"SELECT * FROM V_TEST_STEPS_FULLVISION ORDER BY TEST_CASE_ID";
                         if (dataid != 0) {
                             query = $"{query} where TEST_CASE_ID={dataid}";
                         }
                         DataTable testCaseDatatable = Common.Common.GetRecordAsDatatable(conString, query);
                         testCases = Common.Common.ConvertDataTableToList<MB_V_TEST_STEPS>(testCaseDatatable);
+                        Console.WriteLine($"\tGet all [{testCases.Count}] testcases...");
                         if (testCases.Count() > 0)
                         {
                             long[] testCasesId = testCases.Select(x => (long)x.TEST_CASE_ID).Distinct().ToArray();
@@ -699,16 +716,17 @@ namespace Mars_Serialization.JsonSerialization
             return Common.Common.ConvertDataTableToList<ApplicationViewModel>(appData);
 
         }
-        public static void CreateJsonFilesNew(string databaseName, string projectPath, string cashName,List<ApplicationViewModel> appList,long dataid=0,bool needReflesh=false)
+        public static void CreateJsonFilesNew(string databaseName, string projectPath, string caseName,List<ApplicationViewModel> appList,long dataid=0,bool needReflesh=false)
         {
             string F_Serialization = Path.Combine(projectPath, FolderName.Serialization.ToString());
-            string  filePath = Path.Combine(F_Serialization, cashName,databaseName.Trim());
+            string  filePath = Path.Combine(F_Serialization, caseName, databaseName.Trim());
 
             if (!Directory.Exists(filePath))
                 Directory.CreateDirectory(filePath);
- 
-            ApplicationFolderNew(filePath, appList, cashName, dataid,needReflesh);
-          
+
+            //ApplicationFolderNew(filePath, appList, FolderName.Object.ToString(),dataid,needReflesh);
+            ApplicationFolderNew(filePath, appList, caseName, dataid, needReflesh);
+
         }
     }
 }

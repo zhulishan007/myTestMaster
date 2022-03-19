@@ -18,6 +18,8 @@ namespace MarsCacheTool
             string jsonPath = System.Configuration.ConfigurationManager.AppSettings["JsonFilePath"];
             MarsConfig mc = MarsConfig.Configure(configPath,string.Empty);
 
+            JsonFileHelper.IsForWeb = false;
+
             var connections = mc.GetConnectionDetails();
             //storyboard  (all /id) db  (db)   
             try
@@ -45,7 +47,8 @@ namespace MarsCacheTool
                         }
                         if (args[0]  == "Storyboard")
                         {
-                            JsonFileHelper.InitStoryBoardJson(det.Schema, configPath, dataid,needReflesh);
+                            //JsonFileHelper.InitStoryBoardJson(det.Schema, configPath, dataid,needReflesh);
+                            JsonFileHelper.InitStoryBoardJson(det.Schema, configPath, dataid,needReflesh,jsonPath);
                         }
                         else 
                         { 

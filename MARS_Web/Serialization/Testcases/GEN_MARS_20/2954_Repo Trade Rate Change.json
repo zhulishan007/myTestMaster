@@ -1,0 +1,5170 @@
+{
+  "currentSyncroStatus": 0,
+  "assignedApplications": [
+    194,
+    193,
+    -1
+  ],
+  "assignedTestSuiteIDs": [
+    1354
+  ],
+  "version": null,
+  "assignedDataSets": [
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 398072,
+      "ALIAS_NAME": "LAM_92",
+      "DESCRIPTION_INFO": "Verify Rate Change on an OPEN Repo that was Repriced (Trade created for LAM_58 used here)"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 398163,
+      "ALIAS_NAME": "LAM_87",
+      "DESCRIPTION_INFO": "Verify Rate Change on an OPEN Repo that was Repriced (Trade created for LAM_54 used here)"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 398043,
+      "ALIAS_NAME": "LAM_37c",
+      "DESCRIPTION_INFO": "Verify Reprice Process for Open Repo Trade"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 398039,
+      "ALIAS_NAME": "LAM_95",
+      "DESCRIPTION_INFO": "Verify Rate Change on an OPEN Repo that was Repriced (Trade created for LAM_58 used here)"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 398127,
+      "ALIAS_NAME": "LAM_93",
+      "DESCRIPTION_INFO": "Verify Rate Change on an OPEN Repo that was Repriced (Trade created for LAM_58 used here)"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 398126,
+      "ALIAS_NAME": "LAM_82",
+      "DESCRIPTION_INFO": "Repo Trade Rate Change"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 398099,
+      "ALIAS_NAME": "LAM_38c",
+      "DESCRIPTION_INFO": "Repo Trade Rate Change"
+    }
+  ],
+  "allSteps": [
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273302,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398672
+        },
+        {
+          "Data_Setting_Id": 273304,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398672
+        },
+        {
+          "Data_Setting_Id": 273305,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398672
+        },
+        {
+          "Data_Setting_Id": 273307,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398672
+        },
+        {
+          "Data_Setting_Id": 273303,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398672
+        },
+        {
+          "Data_Setting_Id": 273306,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398672
+        },
+        {
+          "Data_Setting_Id": 273301,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398672
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 398672,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273302,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398672
+        },
+        {
+          "Data_Setting_Id": 273304,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398672
+        },
+        {
+          "Data_Setting_Id": 273305,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398672
+        },
+        {
+          "Data_Setting_Id": 273307,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398672
+        },
+        {
+          "Data_Setting_Id": 273303,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398672
+        },
+        {
+          "Data_Setting_Id": 273306,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398672
+        },
+        {
+          "Data_Setting_Id": 273301,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398672
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 398672,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273309,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398673
+        },
+        {
+          "Data_Setting_Id": 273311,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398673
+        },
+        {
+          "Data_Setting_Id": 273312,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398673
+        },
+        {
+          "Data_Setting_Id": 273314,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398673
+        },
+        {
+          "Data_Setting_Id": 273310,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398673
+        },
+        {
+          "Data_Setting_Id": 273313,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398673
+        },
+        {
+          "Data_Setting_Id": 273308,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398673
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 398673,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 2,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273309,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398673
+        },
+        {
+          "Data_Setting_Id": 273311,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398673
+        },
+        {
+          "Data_Setting_Id": 273312,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398673
+        },
+        {
+          "Data_Setting_Id": 273314,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398673
+        },
+        {
+          "Data_Setting_Id": 273310,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398673
+        },
+        {
+          "Data_Setting_Id": 273313,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398673
+        },
+        {
+          "Data_Setting_Id": 273308,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398673
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 398673,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 2,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273316,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398674
+        },
+        {
+          "Data_Setting_Id": 273318,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398674
+        },
+        {
+          "Data_Setting_Id": 273319,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398674
+        },
+        {
+          "Data_Setting_Id": 273321,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398674
+        },
+        {
+          "Data_Setting_Id": 273317,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398674
+        },
+        {
+          "Data_Setting_Id": 273320,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398674
+        },
+        {
+          "Data_Setting_Id": 273315,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398674
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 12,
+      "KEY_WORD_NAME": "LaunchApplication",
+      "OBJECT_HAPPY_NAME": "ApplicationName",
+      "OBJECT_ID": 35170,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockAreaTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 29559,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 398674,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 3,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273316,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398674
+        },
+        {
+          "Data_Setting_Id": 273318,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398674
+        },
+        {
+          "Data_Setting_Id": 273319,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398674
+        },
+        {
+          "Data_Setting_Id": 273321,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398674
+        },
+        {
+          "Data_Setting_Id": 273317,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398674
+        },
+        {
+          "Data_Setting_Id": 273320,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398674
+        },
+        {
+          "Data_Setting_Id": 273315,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398674
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 12,
+      "KEY_WORD_NAME": "LaunchApplication",
+      "OBJECT_HAPPY_NAME": "ApplicationName",
+      "OBJECT_ID": 44673,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockAreaTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 29559,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 398674,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 3,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273323,
+          "DATASETVALUE": "15",
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398675
+        },
+        {
+          "Data_Setting_Id": 273325,
+          "DATASETVALUE": "15",
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398675
+        },
+        {
+          "Data_Setting_Id": 273326,
+          "DATASETVALUE": "15",
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398675
+        },
+        {
+          "Data_Setting_Id": 273328,
+          "DATASETVALUE": "15",
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398675
+        },
+        {
+          "Data_Setting_Id": 273324,
+          "DATASETVALUE": "15",
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398675
+        },
+        {
+          "Data_Setting_Id": 273327,
+          "DATASETVALUE": "15",
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398675
+        },
+        {
+          "Data_Setting_Id": 273322,
+          "DATASETVALUE": "15",
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398675
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 398675,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 4,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273330,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398676
+        },
+        {
+          "Data_Setting_Id": 273332,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398676
+        },
+        {
+          "Data_Setting_Id": 273333,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398676
+        },
+        {
+          "Data_Setting_Id": 273335,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398676
+        },
+        {
+          "Data_Setting_Id": 273331,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398676
+        },
+        {
+          "Data_Setting_Id": 273334,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398676
+        },
+        {
+          "Data_Setting_Id": 273329,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398676
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 37247,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\n",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 398676,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 5,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273330,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398676
+        },
+        {
+          "Data_Setting_Id": 273332,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398676
+        },
+        {
+          "Data_Setting_Id": 273333,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398676
+        },
+        {
+          "Data_Setting_Id": 273335,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398676
+        },
+        {
+          "Data_Setting_Id": 273331,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398676
+        },
+        {
+          "Data_Setting_Id": 273334,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398676
+        },
+        {
+          "Data_Setting_Id": 273329,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398676
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 46046,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswfname:=Desktop|Page",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 398676,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 5,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273337,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398677
+        },
+        {
+          "Data_Setting_Id": 273339,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398677
+        },
+        {
+          "Data_Setting_Id": 273340,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398677
+        },
+        {
+          "Data_Setting_Id": 273342,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398677
+        },
+        {
+          "Data_Setting_Id": 273338,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398677
+        },
+        {
+          "Data_Setting_Id": 273341,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398677
+        },
+        {
+          "Data_Setting_Id": 273336,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398677
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 37247,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\n",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 398677,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 6,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273337,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398677
+        },
+        {
+          "Data_Setting_Id": 273339,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398677
+        },
+        {
+          "Data_Setting_Id": 273340,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398677
+        },
+        {
+          "Data_Setting_Id": 273342,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398677
+        },
+        {
+          "Data_Setting_Id": 273338,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398677
+        },
+        {
+          "Data_Setting_Id": 273341,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398677
+        },
+        {
+          "Data_Setting_Id": 273336,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398677
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 46046,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswfname:=Desktop|Page",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 398677,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 6,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273344,
+          "DATASETVALUE": "REPO",
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398678
+        },
+        {
+          "Data_Setting_Id": 273346,
+          "DATASETVALUE": "REPO",
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398678
+        },
+        {
+          "Data_Setting_Id": 273347,
+          "DATASETVALUE": "REPO",
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398678
+        },
+        {
+          "Data_Setting_Id": 273349,
+          "DATASETVALUE": "REPO",
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398678
+        },
+        {
+          "Data_Setting_Id": 273345,
+          "DATASETVALUE": "REPO",
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398678
+        },
+        {
+          "Data_Setting_Id": 273348,
+          "DATASETVALUE": "REPO",
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398678
+        },
+        {
+          "Data_Setting_Id": 273343,
+          "DATASETVALUE": "REPO",
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398678
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_TYPES",
+      "OBJECT_ID": 37854,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeTypes",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 26818,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 398678,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 7,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273344,
+          "DATASETVALUE": "REPO",
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398678
+        },
+        {
+          "Data_Setting_Id": 273346,
+          "DATASETVALUE": "REPO",
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398678
+        },
+        {
+          "Data_Setting_Id": 273347,
+          "DATASETVALUE": "REPO",
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398678
+        },
+        {
+          "Data_Setting_Id": 273349,
+          "DATASETVALUE": "REPO",
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398678
+        },
+        {
+          "Data_Setting_Id": 273345,
+          "DATASETVALUE": "REPO",
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398678
+        },
+        {
+          "Data_Setting_Id": 273348,
+          "DATASETVALUE": "REPO",
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398678
+        },
+        {
+          "Data_Setting_Id": 273343,
+          "DATASETVALUE": "REPO",
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398678
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_TYPES",
+      "OBJECT_ID": 46634,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeTypes",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 26818,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 398678,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 7,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273351,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398679
+        },
+        {
+          "Data_Setting_Id": 273353,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398679
+        },
+        {
+          "Data_Setting_Id": 273354,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398679
+        },
+        {
+          "Data_Setting_Id": 273356,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398679
+        },
+        {
+          "Data_Setting_Id": 273352,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398679
+        },
+        {
+          "Data_Setting_Id": 273355,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398679
+        },
+        {
+          "Data_Setting_Id": 273350,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398679
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_STATUS",
+      "OBJECT_ID": 34193,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeStatus",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 32176,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 398679,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 8,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273351,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398679
+        },
+        {
+          "Data_Setting_Id": 273353,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398679
+        },
+        {
+          "Data_Setting_Id": 273354,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398679
+        },
+        {
+          "Data_Setting_Id": 273356,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398679
+        },
+        {
+          "Data_Setting_Id": 273352,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398679
+        },
+        {
+          "Data_Setting_Id": 273355,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398679
+        },
+        {
+          "Data_Setting_Id": 273350,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398679
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_STATUS",
+      "OBJECT_ID": 43743,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeStatus",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 32176,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 398679,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 8,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273358,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398680
+        },
+        {
+          "Data_Setting_Id": 273360,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398680
+        },
+        {
+          "Data_Setting_Id": 273361,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398680
+        },
+        {
+          "Data_Setting_Id": 273363,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398680
+        },
+        {
+          "Data_Setting_Id": 273359,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398680
+        },
+        {
+          "Data_Setting_Id": 273362,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398680
+        },
+        {
+          "Data_Setting_Id": 273357,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398680
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_EXTERNAL_TRADE_ID",
+      "OBJECT_ID": 44105,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=ExternalTradeId",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 27732,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 398680,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 9,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273358,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398680
+        },
+        {
+          "Data_Setting_Id": 273360,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398680
+        },
+        {
+          "Data_Setting_Id": 273361,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398680
+        },
+        {
+          "Data_Setting_Id": 273363,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398680
+        },
+        {
+          "Data_Setting_Id": 273359,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398680
+        },
+        {
+          "Data_Setting_Id": 273362,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398680
+        },
+        {
+          "Data_Setting_Id": 273357,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398680
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_EXTERNAL_TRADE_ID",
+      "OBJECT_ID": 34602,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=ExternalTradeId",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 27732,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 398680,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 9,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273364,
+          "DATASETVALUE": "217354I",
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398681
+        },
+        {
+          "Data_Setting_Id": 273366,
+          "DATASETVALUE": "MODAL_VAR:LAM_38_TRADE_ID",
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398681
+        },
+        {
+          "Data_Setting_Id": 273368,
+          "DATASETVALUE": "MODAL_VAR:LAM_82_TRADE_ID",
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398681
+        },
+        {
+          "Data_Setting_Id": 273367,
+          "DATASETVALUE": "MODAL_VAR:LAM_54_TRADE_ID",
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398681
+        },
+        {
+          "Data_Setting_Id": 273365,
+          "DATASETVALUE": "239949I",
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398681
+        },
+        {
+          "Data_Setting_Id": 273369,
+          "DATASETVALUE": "MODAL_VAR:LAM_93_TRADE_ID",
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398681
+        },
+        {
+          "Data_Setting_Id": 273370,
+          "DATASETVALUE": "MODAL_VAR:LAM_95_TRADE_ID",
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398681
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_ID",
+      "OBJECT_ID": 41222,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeID",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 29531,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 398681,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": "228004I",
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 10,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273364,
+          "DATASETVALUE": "217354I",
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398681
+        },
+        {
+          "Data_Setting_Id": 273366,
+          "DATASETVALUE": "MODAL_VAR:LAM_38_TRADE_ID",
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398681
+        },
+        {
+          "Data_Setting_Id": 273368,
+          "DATASETVALUE": "MODAL_VAR:LAM_82_TRADE_ID",
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398681
+        },
+        {
+          "Data_Setting_Id": 273367,
+          "DATASETVALUE": "MODAL_VAR:LAM_54_TRADE_ID",
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398681
+        },
+        {
+          "Data_Setting_Id": 273365,
+          "DATASETVALUE": "239949I",
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398681
+        },
+        {
+          "Data_Setting_Id": 273369,
+          "DATASETVALUE": "MODAL_VAR:LAM_93_TRADE_ID",
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398681
+        },
+        {
+          "Data_Setting_Id": 273370,
+          "DATASETVALUE": "MODAL_VAR:LAM_95_TRADE_ID",
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398681
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_ID",
+      "OBJECT_ID": 33373,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeID",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 29531,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 398681,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": "228004I",
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 10,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273372,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398682
+        },
+        {
+          "Data_Setting_Id": 273374,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398682
+        },
+        {
+          "Data_Setting_Id": 273375,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398682
+        },
+        {
+          "Data_Setting_Id": 273377,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398682
+        },
+        {
+          "Data_Setting_Id": 273373,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398682
+        },
+        {
+          "Data_Setting_Id": 273376,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398682
+        },
+        {
+          "Data_Setting_Id": 273371,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398682
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_FIND_NOW",
+      "OBJECT_ID": 32728,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_findNowButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 32179,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 398682,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 11,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273372,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398682
+        },
+        {
+          "Data_Setting_Id": 273374,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398682
+        },
+        {
+          "Data_Setting_Id": 273375,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398682
+        },
+        {
+          "Data_Setting_Id": 273377,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398682
+        },
+        {
+          "Data_Setting_Id": 273373,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398682
+        },
+        {
+          "Data_Setting_Id": 273376,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398682
+        },
+        {
+          "Data_Setting_Id": 273371,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398682
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_FIND_NOW",
+      "OBJECT_ID": 45052,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_findNowButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 32179,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 398682,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 11,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273379,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398683
+        },
+        {
+          "Data_Setting_Id": 273381,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398683
+        },
+        {
+          "Data_Setting_Id": 273382,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398683
+        },
+        {
+          "Data_Setting_Id": 273384,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398683
+        },
+        {
+          "Data_Setting_Id": 273380,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398683
+        },
+        {
+          "Data_Setting_Id": 273383,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398683
+        },
+        {
+          "Data_Setting_Id": 273378,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398683
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 37247,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\n",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 398683,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 12,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273379,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398683
+        },
+        {
+          "Data_Setting_Id": 273381,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398683
+        },
+        {
+          "Data_Setting_Id": 273382,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398683
+        },
+        {
+          "Data_Setting_Id": 273384,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398683
+        },
+        {
+          "Data_Setting_Id": 273380,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398683
+        },
+        {
+          "Data_Setting_Id": 273383,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398683
+        },
+        {
+          "Data_Setting_Id": 273378,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398683
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 46046,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswfname:=Desktop|Page",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24794,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 398683,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 12,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 575982,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 835450
+        },
+        {
+          "Data_Setting_Id": 575983,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 835450
+        },
+        {
+          "Data_Setting_Id": 575984,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 835450
+        },
+        {
+          "Data_Setting_Id": 575986,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 835450
+        },
+        {
+          "Data_Setting_Id": 575966,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 835450
+        },
+        {
+          "Data_Setting_Id": 575985,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 835450
+        },
+        {
+          "Data_Setting_Id": 575981,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 835450
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 86,
+      "KEY_WORD_NAME": "PressKeys",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_TABLE",
+      "OBJECT_ID": 41666,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_queryResults",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 28613,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 835450,
+      "COLUMN_ROW_SETTING": "100,40",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 13,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 575982,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 835450
+        },
+        {
+          "Data_Setting_Id": 575983,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 835450
+        },
+        {
+          "Data_Setting_Id": 575984,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 835450
+        },
+        {
+          "Data_Setting_Id": 575986,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 835450
+        },
+        {
+          "Data_Setting_Id": 575966,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 835450
+        },
+        {
+          "Data_Setting_Id": 575985,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 835450
+        },
+        {
+          "Data_Setting_Id": 575981,
+          "DATASETVALUE": "{ENTER}",
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 835450
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 86,
+      "KEY_WORD_NAME": "PressKeys",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_TABLE",
+      "OBJECT_ID": 35712,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_queryResults",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 28613,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 835450,
+      "COLUMN_ROW_SETTING": "100,40",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 13,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273385,
+          "DATASETVALUE": "217354I",
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 4,
+          "STEPS_ID": 398684
+        },
+        {
+          "Data_Setting_Id": 273387,
+          "DATASETVALUE": "MODAL_VAR:LAM_38_TRADE_ID",
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 4,
+          "STEPS_ID": 398684
+        },
+        {
+          "Data_Setting_Id": 273389,
+          "DATASETVALUE": "MODAL_VAR:LAM_82_TRADE_ID",
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 4,
+          "STEPS_ID": 398684
+        },
+        {
+          "Data_Setting_Id": 273388,
+          "DATASETVALUE": "MODAL_VAR:LAM_54_TRADE_ID",
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 4,
+          "STEPS_ID": 398684
+        },
+        {
+          "Data_Setting_Id": 273386,
+          "DATASETVALUE": "239949I",
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 4,
+          "STEPS_ID": 398684
+        },
+        {
+          "Data_Setting_Id": 273390,
+          "DATASETVALUE": "MODAL_VAR:LAM_93_TRADE_ID",
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 4,
+          "STEPS_ID": 398684
+        },
+        {
+          "Data_Setting_Id": 273391,
+          "DATASETVALUE": "MODAL_VAR:LAM_95_TRADE_ID",
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 4,
+          "STEPS_ID": 398684
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 32,
+      "KEY_WORD_NAME": "SearchAndClick",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_TABLE",
+      "OBJECT_ID": 41666,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_queryResults",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 28613,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 398684,
+      "COLUMN_ROW_SETTING": "MarsAddins;Trade ID;Action:LEFT_DBL_CLICK",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 14,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273385,
+          "DATASETVALUE": "217354I",
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 4,
+          "STEPS_ID": 398684
+        },
+        {
+          "Data_Setting_Id": 273387,
+          "DATASETVALUE": "MODAL_VAR:LAM_38_TRADE_ID",
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 4,
+          "STEPS_ID": 398684
+        },
+        {
+          "Data_Setting_Id": 273389,
+          "DATASETVALUE": "MODAL_VAR:LAM_82_TRADE_ID",
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 4,
+          "STEPS_ID": 398684
+        },
+        {
+          "Data_Setting_Id": 273388,
+          "DATASETVALUE": "MODAL_VAR:LAM_54_TRADE_ID",
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 4,
+          "STEPS_ID": 398684
+        },
+        {
+          "Data_Setting_Id": 273386,
+          "DATASETVALUE": "239949I",
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 4,
+          "STEPS_ID": 398684
+        },
+        {
+          "Data_Setting_Id": 273390,
+          "DATASETVALUE": "MODAL_VAR:LAM_93_TRADE_ID",
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 4,
+          "STEPS_ID": 398684
+        },
+        {
+          "Data_Setting_Id": 273391,
+          "DATASETVALUE": "MODAL_VAR:LAM_95_TRADE_ID",
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 4,
+          "STEPS_ID": 398684
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 32,
+      "KEY_WORD_NAME": "SearchAndClick",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_TABLE",
+      "OBJECT_ID": 35712,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_queryResults",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 28613,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 398684,
+      "COLUMN_ROW_SETTING": "MarsAddins;Trade ID;Action:LEFT_DBL_CLICK",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 14,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273393,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398685
+        },
+        {
+          "Data_Setting_Id": 273395,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398685
+        },
+        {
+          "Data_Setting_Id": 273396,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398685
+        },
+        {
+          "Data_Setting_Id": 273398,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398685
+        },
+        {
+          "Data_Setting_Id": 273394,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398685
+        },
+        {
+          "Data_Setting_Id": 273397,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398685
+        },
+        {
+          "Data_Setting_Id": 273392,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398685
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "REPO_TRADE_POPUP",
+      "OBJECT_ID": 32753,
+      "OBJECT_TYPE": "REPO_TRADE_POPUP",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^IFC Repo Trade.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25029,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 398685,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": "MultiplePane:Runtime:REPO_TRADE_POPUP",
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 15,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273393,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398685
+        },
+        {
+          "Data_Setting_Id": 273395,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398685
+        },
+        {
+          "Data_Setting_Id": 273396,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398685
+        },
+        {
+          "Data_Setting_Id": 273398,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398685
+        },
+        {
+          "Data_Setting_Id": 273394,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398685
+        },
+        {
+          "Data_Setting_Id": 273397,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398685
+        },
+        {
+          "Data_Setting_Id": 273392,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398685
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "REPO_TRADE_POPUP",
+      "OBJECT_ID": 45075,
+      "OBJECT_TYPE": "REPO_TRADE_POPUP",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^IFC Repo Trade.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25029,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 398685,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": "MultiplePane:Runtime:REPO_TRADE_POPUP",
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 15,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273400,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398686
+        },
+        {
+          "Data_Setting_Id": 273402,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398686
+        },
+        {
+          "Data_Setting_Id": 273403,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398686
+        },
+        {
+          "Data_Setting_Id": 273405,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398686
+        },
+        {
+          "Data_Setting_Id": 273401,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398686
+        },
+        {
+          "Data_Setting_Id": 273404,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398686
+        },
+        {
+          "Data_Setting_Id": 273399,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398686
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 22,
+      "KEY_WORD_NAME": "SelectMenuItem",
+      "OBJECT_HAPPY_NAME": "REPO_TRADE_POPUP_TOOLBAR",
+      "OBJECT_ID": 42002,
+      "OBJECT_TYPE": "REPO_TRADE_POPUP",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 28539,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 398686,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 16,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273400,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398686
+        },
+        {
+          "Data_Setting_Id": 273402,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398686
+        },
+        {
+          "Data_Setting_Id": 273403,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398686
+        },
+        {
+          "Data_Setting_Id": 273405,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398686
+        },
+        {
+          "Data_Setting_Id": 273401,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398686
+        },
+        {
+          "Data_Setting_Id": 273404,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398686
+        },
+        {
+          "Data_Setting_Id": 273399,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398686
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 22,
+      "KEY_WORD_NAME": "SelectMenuItem",
+      "OBJECT_HAPPY_NAME": "REPO_TRADE_POPUP_TOOLBAR",
+      "OBJECT_ID": 36013,
+      "OBJECT_TYPE": "REPO_TRADE_POPUP",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 28539,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 398686,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 16,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273407,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398687
+        },
+        {
+          "Data_Setting_Id": 273409,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398687
+        },
+        {
+          "Data_Setting_Id": 273410,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398687
+        },
+        {
+          "Data_Setting_Id": 273412,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398687
+        },
+        {
+          "Data_Setting_Id": 273408,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398687
+        },
+        {
+          "Data_Setting_Id": 273411,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398687
+        },
+        {
+          "Data_Setting_Id": 273406,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398687
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "REPO_TRADE",
+      "OBJECT_ID": 43662,
+      "OBJECT_TYPE": "REPO_TRADE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24790,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 398687,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 17,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273407,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398687
+        },
+        {
+          "Data_Setting_Id": 273409,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398687
+        },
+        {
+          "Data_Setting_Id": 273410,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398687
+        },
+        {
+          "Data_Setting_Id": 273412,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398687
+        },
+        {
+          "Data_Setting_Id": 273408,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398687
+        },
+        {
+          "Data_Setting_Id": 273411,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398687
+        },
+        {
+          "Data_Setting_Id": 273406,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398687
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "REPO_TRADE",
+      "OBJECT_ID": 34153,
+      "OBJECT_TYPE": "REPO_TRADE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24790,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 398687,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 17,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 575988,
+          "DATASETVALUE": "REPO_TRADE_1",
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 835474
+        },
+        {
+          "Data_Setting_Id": 575990,
+          "DATASETVALUE": "REPO_TRADE_1",
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 835474
+        },
+        {
+          "Data_Setting_Id": 575991,
+          "DATASETVALUE": "REPO_TRADE_1",
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 835474
+        },
+        {
+          "Data_Setting_Id": 575993,
+          "DATASETVALUE": "REPO_TRADE_1",
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 835474
+        },
+        {
+          "Data_Setting_Id": 575989,
+          "DATASETVALUE": "REPO_TRADE_1",
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 835474
+        },
+        {
+          "Data_Setting_Id": 575992,
+          "DATASETVALUE": "REPO_TRADE_1",
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 835474
+        },
+        {
+          "Data_Setting_Id": 575987,
+          "DATASETVALUE": "REPO_TRADE_1",
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 835474
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "REPO_TRADE",
+      "OBJECT_ID": 43662,
+      "OBJECT_TYPE": "REPO_TRADE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24790,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 835474,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 18,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 575988,
+          "DATASETVALUE": "REPO_TRADE_1",
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 835474
+        },
+        {
+          "Data_Setting_Id": 575990,
+          "DATASETVALUE": "REPO_TRADE_1",
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 835474
+        },
+        {
+          "Data_Setting_Id": 575991,
+          "DATASETVALUE": "REPO_TRADE_1",
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 835474
+        },
+        {
+          "Data_Setting_Id": 575993,
+          "DATASETVALUE": "REPO_TRADE_1",
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 835474
+        },
+        {
+          "Data_Setting_Id": 575989,
+          "DATASETVALUE": "REPO_TRADE_1",
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 835474
+        },
+        {
+          "Data_Setting_Id": 575992,
+          "DATASETVALUE": "REPO_TRADE_1",
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 835474
+        },
+        {
+          "Data_Setting_Id": 575987,
+          "DATASETVALUE": "REPO_TRADE_1",
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 835474
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "REPO_TRADE",
+      "OBJECT_ID": 34153,
+      "OBJECT_TYPE": "REPO_TRADE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24790,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 835474,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 18,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 575995,
+          "DATASETVALUE": "TEXT|\"Repo Trade Window Before Rate Change\"|IMAGE_REPO_TRADE_1",
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 835475
+        },
+        {
+          "Data_Setting_Id": 575997,
+          "DATASETVALUE": "TEXT|\"Repo Trade Window Before Rate Change\"|IMAGE_REPO_TRADE_1",
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 835475
+        },
+        {
+          "Data_Setting_Id": 575998,
+          "DATASETVALUE": "TEXT|\"Repo Trade Window Before Rate Change\"|IMAGE_REPO_TRADE_1",
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 835475
+        },
+        {
+          "Data_Setting_Id": 576000,
+          "DATASETVALUE": "TEXT|\"Repo Trade Window Before Rate Change\"|IMAGE_REPO_TRADE_1",
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 835475
+        },
+        {
+          "Data_Setting_Id": 575996,
+          "DATASETVALUE": "TEXT|\"Repo Trade Window Before Rate Change\"|IMAGE_REPO_TRADE_1",
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 835475
+        },
+        {
+          "Data_Setting_Id": 575999,
+          "DATASETVALUE": "TEXT|\"Repo Trade Window Before Rate Change\"|IMAGE_REPO_TRADE_1",
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 835475
+        },
+        {
+          "Data_Setting_Id": 575994,
+          "DATASETVALUE": "TEXT|\"Repo Trade Window Before Rate Change\"|IMAGE_REPO_TRADE_1",
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 835475
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 10819,
+      "KEY_WORD_NAME": "Comment",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 835475,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 19,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273414,
+          "DATASETVALUE": "Desktop Menu;Action;Repo Rate Change",
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398688
+        },
+        {
+          "Data_Setting_Id": 273416,
+          "DATASETVALUE": "Desktop Menu;Action;Repo Rate Change",
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398688
+        },
+        {
+          "Data_Setting_Id": 273417,
+          "DATASETVALUE": "Desktop Menu;Action;Repo Rate Change",
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398688
+        },
+        {
+          "Data_Setting_Id": 273419,
+          "DATASETVALUE": "Desktop Menu;Action;Repo Rate Change",
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398688
+        },
+        {
+          "Data_Setting_Id": 273415,
+          "DATASETVALUE": "Desktop Menu;Action;Repo Rate Change",
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398688
+        },
+        {
+          "Data_Setting_Id": 273418,
+          "DATASETVALUE": "Desktop Menu;Action;Repo Rate Change",
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398688
+        },
+        {
+          "Data_Setting_Id": 273413,
+          "DATASETVALUE": "Desktop Menu;Action;Repo Rate Change",
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398688
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 22,
+      "KEY_WORD_NAME": "SelectMenuItem",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 398688,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 20,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273421,
+          "DATASETVALUE": "3",
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398689
+        },
+        {
+          "Data_Setting_Id": 273423,
+          "DATASETVALUE": "3",
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398689
+        },
+        {
+          "Data_Setting_Id": 273424,
+          "DATASETVALUE": "3",
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398689
+        },
+        {
+          "Data_Setting_Id": 273426,
+          "DATASETVALUE": "3",
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398689
+        },
+        {
+          "Data_Setting_Id": 273422,
+          "DATASETVALUE": "3",
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398689
+        },
+        {
+          "Data_Setting_Id": 273425,
+          "DATASETVALUE": "3",
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398689
+        },
+        {
+          "Data_Setting_Id": 273420,
+          "DATASETVALUE": "3",
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398689
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 398689,
+      "COLUMN_ROW_SETTING": "F",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 21,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273428,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398690
+        },
+        {
+          "Data_Setting_Id": 273430,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398690
+        },
+        {
+          "Data_Setting_Id": 273431,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398690
+        },
+        {
+          "Data_Setting_Id": 273433,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398690
+        },
+        {
+          "Data_Setting_Id": 273429,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398690
+        },
+        {
+          "Data_Setting_Id": 273432,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398690
+        },
+        {
+          "Data_Setting_Id": 273427,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398690
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "REPO_RATE_CHANGE",
+      "OBJECT_ID": 37555,
+      "OBJECT_TYPE": "REPO_RATE_CHANGE",
+      "QUICK_ACCESS": "is owned window:=False \nis child window:=False \ntext:=^Repo Rate Change.*\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24964,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 398690,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 22,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273428,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398690
+        },
+        {
+          "Data_Setting_Id": 273430,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398690
+        },
+        {
+          "Data_Setting_Id": 273431,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398690
+        },
+        {
+          "Data_Setting_Id": 273433,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398690
+        },
+        {
+          "Data_Setting_Id": 273429,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398690
+        },
+        {
+          "Data_Setting_Id": 273432,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398690
+        },
+        {
+          "Data_Setting_Id": 273427,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398690
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "REPO_RATE_CHANGE",
+      "OBJECT_ID": 44444,
+      "OBJECT_TYPE": "REPO_RATE_CHANGE",
+      "QUICK_ACCESS": "is owned window:=False \nis child window:=False \ntext:=^Repo Rate Change.*\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24964,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 398690,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 22,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273440,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398691
+        },
+        {
+          "Data_Setting_Id": 273436,
+          "DATASETVALUE": "0.5789",
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398691
+        },
+        {
+          "Data_Setting_Id": 273437,
+          "DATASETVALUE": "0.5789",
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398691
+        },
+        {
+          "Data_Setting_Id": 273439,
+          "DATASETVALUE": "0.5789",
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398691
+        },
+        {
+          "Data_Setting_Id": 273435,
+          "DATASETVALUE": "0.5789",
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398691
+        },
+        {
+          "Data_Setting_Id": 273438,
+          "DATASETVALUE": "0.5789",
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398691
+        },
+        {
+          "Data_Setting_Id": 273434,
+          "DATASETVALUE": "0.5789",
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398691
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "REPO_RATE_CHANGE_NEWPRICE",
+      "OBJECT_ID": 42850,
+      "OBJECT_TYPE": "REPO_RATE_CHANGE",
+      "QUICK_ACCESS": "SwfName:=newRate",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 30307,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 398691,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 23,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273440,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398691
+        },
+        {
+          "Data_Setting_Id": 273436,
+          "DATASETVALUE": "0.5789",
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398691
+        },
+        {
+          "Data_Setting_Id": 273437,
+          "DATASETVALUE": "0.5789",
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398691
+        },
+        {
+          "Data_Setting_Id": 273439,
+          "DATASETVALUE": "0.5789",
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398691
+        },
+        {
+          "Data_Setting_Id": 273435,
+          "DATASETVALUE": "0.5789",
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398691
+        },
+        {
+          "Data_Setting_Id": 273438,
+          "DATASETVALUE": "0.5789",
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398691
+        },
+        {
+          "Data_Setting_Id": 273434,
+          "DATASETVALUE": "0.5789",
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398691
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "REPO_RATE_CHANGE_NEWPRICE",
+      "OBJECT_ID": 38753,
+      "OBJECT_TYPE": "REPO_RATE_CHANGE",
+      "QUICK_ACCESS": "SwfName:=newRate",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 30307,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 398691,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 23,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 575968,
+          "DATASETVALUE": "REPO_RATE_CHANGE",
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 835451
+        },
+        {
+          "Data_Setting_Id": 575970,
+          "DATASETVALUE": "REPO_RATE_CHANGE",
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 835451
+        },
+        {
+          "Data_Setting_Id": 575971,
+          "DATASETVALUE": "REPO_RATE_CHANGE",
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 835451
+        },
+        {
+          "Data_Setting_Id": 575973,
+          "DATASETVALUE": "REPO_RATE_CHANGE",
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 835451
+        },
+        {
+          "Data_Setting_Id": 575969,
+          "DATASETVALUE": "REPO_RATE_CHANGE",
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 835451
+        },
+        {
+          "Data_Setting_Id": 575972,
+          "DATASETVALUE": "REPO_RATE_CHANGE",
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 835451
+        },
+        {
+          "Data_Setting_Id": 575967,
+          "DATASETVALUE": "REPO_RATE_CHANGE",
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 835451
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "REPO_RATE_CHANGE",
+      "OBJECT_ID": 37555,
+      "OBJECT_TYPE": "REPO_RATE_CHANGE",
+      "QUICK_ACCESS": "is owned window:=False \nis child window:=False \ntext:=^Repo Rate Change.*\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24964,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 835451,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 24,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 575968,
+          "DATASETVALUE": "REPO_RATE_CHANGE",
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 835451
+        },
+        {
+          "Data_Setting_Id": 575970,
+          "DATASETVALUE": "REPO_RATE_CHANGE",
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 835451
+        },
+        {
+          "Data_Setting_Id": 575971,
+          "DATASETVALUE": "REPO_RATE_CHANGE",
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 835451
+        },
+        {
+          "Data_Setting_Id": 575973,
+          "DATASETVALUE": "REPO_RATE_CHANGE",
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 835451
+        },
+        {
+          "Data_Setting_Id": 575969,
+          "DATASETVALUE": "REPO_RATE_CHANGE",
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 835451
+        },
+        {
+          "Data_Setting_Id": 575972,
+          "DATASETVALUE": "REPO_RATE_CHANGE",
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 835451
+        },
+        {
+          "Data_Setting_Id": 575967,
+          "DATASETVALUE": "REPO_RATE_CHANGE",
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 835451
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "REPO_RATE_CHANGE",
+      "OBJECT_ID": 44444,
+      "OBJECT_TYPE": "REPO_RATE_CHANGE",
+      "QUICK_ACCESS": "is owned window:=False \nis child window:=False \ntext:=^Repo Rate Change.*\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24964,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 835451,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 24,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 575975,
+          "DATASETVALUE": "TEXT|\"Repo Rate Change Window\"|IMAGE:REPO_RATE_CHANGE",
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 835452
+        },
+        {
+          "Data_Setting_Id": 575977,
+          "DATASETVALUE": "TEXT|\"Repo Rate Change Window\"|IMAGE:REPO_RATE_CHANGE",
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 835452
+        },
+        {
+          "Data_Setting_Id": 575978,
+          "DATASETVALUE": "TEXT|\"Repo Rate Change Window\"|IMAGE:REPO_RATE_CHANGE",
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 835452
+        },
+        {
+          "Data_Setting_Id": 575980,
+          "DATASETVALUE": "TEXT|\"Repo Rate Change Window\"|IMAGE:REPO_RATE_CHANGE",
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 835452
+        },
+        {
+          "Data_Setting_Id": 575976,
+          "DATASETVALUE": "TEXT|\"Repo Rate Change Window\"|IMAGE:REPO_RATE_CHANGE",
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 835452
+        },
+        {
+          "Data_Setting_Id": 575979,
+          "DATASETVALUE": "TEXT|\"Repo Rate Change Window\"|IMAGE:REPO_RATE_CHANGE",
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 835452
+        },
+        {
+          "Data_Setting_Id": 575974,
+          "DATASETVALUE": "TEXT|\"Repo Rate Change Window\"|IMAGE:REPO_RATE_CHANGE",
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 835452
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 10819,
+      "KEY_WORD_NAME": "Comment",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 835452,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 25,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273442,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398692
+        },
+        {
+          "Data_Setting_Id": 273444,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398692
+        },
+        {
+          "Data_Setting_Id": 273445,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398692
+        },
+        {
+          "Data_Setting_Id": 273447,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398692
+        },
+        {
+          "Data_Setting_Id": 273443,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398692
+        },
+        {
+          "Data_Setting_Id": 273446,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398692
+        },
+        {
+          "Data_Setting_Id": 273441,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398692
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "REPO_RATE_CHANGE_OK_BUT",
+      "OBJECT_ID": 37638,
+      "OBJECT_TYPE": "REPO_RATE_CHANGE",
+      "QUICK_ACCESS": "SwfName:=applyButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 30308,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 398692,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 26,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273442,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398692
+        },
+        {
+          "Data_Setting_Id": 273444,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398692
+        },
+        {
+          "Data_Setting_Id": 273445,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398692
+        },
+        {
+          "Data_Setting_Id": 273447,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398692
+        },
+        {
+          "Data_Setting_Id": 273443,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398692
+        },
+        {
+          "Data_Setting_Id": 273446,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398692
+        },
+        {
+          "Data_Setting_Id": 273441,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398692
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "REPO_RATE_CHANGE_OK_BUT",
+      "OBJECT_ID": 46373,
+      "OBJECT_TYPE": "REPO_RATE_CHANGE",
+      "QUICK_ACCESS": "SwfName:=applyButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 30308,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 398692,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 26,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273454,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398693
+        },
+        {
+          "Data_Setting_Id": 273450,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398693
+        },
+        {
+          "Data_Setting_Id": 273451,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398693
+        },
+        {
+          "Data_Setting_Id": 273453,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398693
+        },
+        {
+          "Data_Setting_Id": 273449,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398693
+        },
+        {
+          "Data_Setting_Id": 273452,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398693
+        },
+        {
+          "Data_Setting_Id": 273448,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398693
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 398693,
+      "COLUMN_ROW_SETTING": "F",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 27,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273456,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398694
+        },
+        {
+          "Data_Setting_Id": 273458,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398694
+        },
+        {
+          "Data_Setting_Id": 273459,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398694
+        },
+        {
+          "Data_Setting_Id": 273461,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398694
+        },
+        {
+          "Data_Setting_Id": 273457,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398694
+        },
+        {
+          "Data_Setting_Id": 273460,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398694
+        },
+        {
+          "Data_Setting_Id": 273455,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398694
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "REPO_TRADE",
+      "OBJECT_ID": 43662,
+      "OBJECT_TYPE": "REPO_TRADE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24790,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 398694,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 28,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273456,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398694
+        },
+        {
+          "Data_Setting_Id": 273458,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398694
+        },
+        {
+          "Data_Setting_Id": 273459,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398694
+        },
+        {
+          "Data_Setting_Id": 273461,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398694
+        },
+        {
+          "Data_Setting_Id": 273457,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398694
+        },
+        {
+          "Data_Setting_Id": 273460,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398694
+        },
+        {
+          "Data_Setting_Id": 273455,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398694
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "REPO_TRADE",
+      "OBJECT_ID": 34153,
+      "OBJECT_TYPE": "REPO_TRADE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24790,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 398694,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 28,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273463,
+          "DATASETVALUE": "REPO_TRADE",
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398695
+        },
+        {
+          "Data_Setting_Id": 273465,
+          "DATASETVALUE": "REPO_TRADE",
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398695
+        },
+        {
+          "Data_Setting_Id": 273466,
+          "DATASETVALUE": "REPO_TRADE",
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398695
+        },
+        {
+          "Data_Setting_Id": 273468,
+          "DATASETVALUE": "REPO_TRADE",
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398695
+        },
+        {
+          "Data_Setting_Id": 273464,
+          "DATASETVALUE": "REPO_TRADE",
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398695
+        },
+        {
+          "Data_Setting_Id": 273467,
+          "DATASETVALUE": "REPO_TRADE",
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398695
+        },
+        {
+          "Data_Setting_Id": 273462,
+          "DATASETVALUE": "REPO_TRADE",
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398695
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "REPO_TRADE",
+      "OBJECT_ID": 43662,
+      "OBJECT_TYPE": "REPO_TRADE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24790,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 398695,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 29,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273463,
+          "DATASETVALUE": "REPO_TRADE",
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398695
+        },
+        {
+          "Data_Setting_Id": 273465,
+          "DATASETVALUE": "REPO_TRADE",
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398695
+        },
+        {
+          "Data_Setting_Id": 273466,
+          "DATASETVALUE": "REPO_TRADE",
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398695
+        },
+        {
+          "Data_Setting_Id": 273468,
+          "DATASETVALUE": "REPO_TRADE",
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398695
+        },
+        {
+          "Data_Setting_Id": 273464,
+          "DATASETVALUE": "REPO_TRADE",
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398695
+        },
+        {
+          "Data_Setting_Id": 273467,
+          "DATASETVALUE": "REPO_TRADE",
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398695
+        },
+        {
+          "Data_Setting_Id": 273462,
+          "DATASETVALUE": "REPO_TRADE",
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398695
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "REPO_TRADE",
+      "OBJECT_ID": 34153,
+      "OBJECT_TYPE": "REPO_TRADE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24790,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 398695,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 29,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 574948,
+          "DATASETVALUE": "TEXT|\"Repo Trade Image\"|IMAGE:REPO_TRADE",
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 834365
+        },
+        {
+          "Data_Setting_Id": 574950,
+          "DATASETVALUE": "TEXT|\"Repo Trade Image\"|IMAGE:REPO_TRADE",
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 834365
+        },
+        {
+          "Data_Setting_Id": 574951,
+          "DATASETVALUE": "TEXT|\"Repo Trade Image\"|IMAGE:REPO_TRADE",
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 834365
+        },
+        {
+          "Data_Setting_Id": 574953,
+          "DATASETVALUE": "TEXT|\"Repo Trade Image\"|IMAGE:REPO_TRADE",
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 834365
+        },
+        {
+          "Data_Setting_Id": 574949,
+          "DATASETVALUE": "TEXT|\"Repo Trade Image\"|IMAGE:REPO_TRADE",
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 834365
+        },
+        {
+          "Data_Setting_Id": 574952,
+          "DATASETVALUE": "TEXT|\"Repo Trade Image\"|IMAGE:REPO_TRADE",
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 834365
+        },
+        {
+          "Data_Setting_Id": 574947,
+          "DATASETVALUE": "TEXT|\"Repo Trade Image\"|IMAGE:REPO_TRADE",
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 834365
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 10819,
+      "KEY_WORD_NAME": "Comment",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 834365,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 30,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273475,
+          "DATASETVALUE": "SETTLEMENT",
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398696
+        },
+        {
+          "Data_Setting_Id": 273471,
+          "DATASETVALUE": "SETTLEMENT",
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398696
+        },
+        {
+          "Data_Setting_Id": 273472,
+          "DATASETVALUE": "SETTLEMENT",
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398696
+        },
+        {
+          "Data_Setting_Id": 273474,
+          "DATASETVALUE": "SETTLEMENT",
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398696
+        },
+        {
+          "Data_Setting_Id": 273470,
+          "DATASETVALUE": "SETTLEMENT",
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398696
+        },
+        {
+          "Data_Setting_Id": 273473,
+          "DATASETVALUE": "SETTLEMENT",
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398696
+        },
+        {
+          "Data_Setting_Id": 273469,
+          "DATASETVALUE": "SETTLEMENT",
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398696
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "MORE_CURRENT_SETTLEMENT",
+      "OBJECT_ID": 48589,
+      "OBJECT_TYPE": "REPO_TRADE",
+      "QUICK_ACCESS": "swfname:=_currSettleAmt",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 29365,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 398696,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 31,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273475,
+          "DATASETVALUE": "SETTLEMENT",
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398696
+        },
+        {
+          "Data_Setting_Id": 273471,
+          "DATASETVALUE": "SETTLEMENT",
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398696
+        },
+        {
+          "Data_Setting_Id": 273472,
+          "DATASETVALUE": "SETTLEMENT",
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398696
+        },
+        {
+          "Data_Setting_Id": 273474,
+          "DATASETVALUE": "SETTLEMENT",
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398696
+        },
+        {
+          "Data_Setting_Id": 273470,
+          "DATASETVALUE": "SETTLEMENT",
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398696
+        },
+        {
+          "Data_Setting_Id": 273473,
+          "DATASETVALUE": "SETTLEMENT",
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398696
+        },
+        {
+          "Data_Setting_Id": 273469,
+          "DATASETVALUE": "SETTLEMENT",
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398696
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "MORE_CURRENT_SETTLEMENT",
+      "OBJECT_ID": 38265,
+      "OBJECT_TYPE": "REPO_TRADE",
+      "QUICK_ACCESS": "swfname:=_currSettleAmt",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 29365,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 398696,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 31,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273482,
+          "DATASETVALUE": "INTEREST",
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398697
+        },
+        {
+          "Data_Setting_Id": 273478,
+          "DATASETVALUE": "INTEREST",
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398697
+        },
+        {
+          "Data_Setting_Id": 273479,
+          "DATASETVALUE": "INTEREST",
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398697
+        },
+        {
+          "Data_Setting_Id": 273481,
+          "DATASETVALUE": "INTEREST",
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398697
+        },
+        {
+          "Data_Setting_Id": 273477,
+          "DATASETVALUE": "INTEREST",
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398697
+        },
+        {
+          "Data_Setting_Id": 273480,
+          "DATASETVALUE": "INTEREST",
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398697
+        },
+        {
+          "Data_Setting_Id": 273476,
+          "DATASETVALUE": "INTEREST",
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398697
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "MORE_INTEREST",
+      "OBJECT_ID": 42170,
+      "OBJECT_TYPE": "REPO_TRADE",
+      "QUICK_ACCESS": "swfname:=_interest",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 26643,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 398697,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 32,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273482,
+          "DATASETVALUE": "INTEREST",
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398697
+        },
+        {
+          "Data_Setting_Id": 273478,
+          "DATASETVALUE": "INTEREST",
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398697
+        },
+        {
+          "Data_Setting_Id": 273479,
+          "DATASETVALUE": "INTEREST",
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398697
+        },
+        {
+          "Data_Setting_Id": 273481,
+          "DATASETVALUE": "INTEREST",
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398697
+        },
+        {
+          "Data_Setting_Id": 273477,
+          "DATASETVALUE": "INTEREST",
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398697
+        },
+        {
+          "Data_Setting_Id": 273480,
+          "DATASETVALUE": "INTEREST",
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398697
+        },
+        {
+          "Data_Setting_Id": 273476,
+          "DATASETVALUE": "INTEREST",
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398697
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "MORE_INTEREST",
+      "OBJECT_ID": 36177,
+      "OBJECT_TYPE": "REPO_TRADE",
+      "QUICK_ACCESS": "swfname:=_interest",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 26643,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 398697,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 32,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273489,
+          "DATASETVALUE": "NPV",
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398698
+        },
+        {
+          "Data_Setting_Id": 273485,
+          "DATASETVALUE": "NPV",
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398698
+        },
+        {
+          "Data_Setting_Id": 273486,
+          "DATASETVALUE": "NPV",
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398698
+        },
+        {
+          "Data_Setting_Id": 273488,
+          "DATASETVALUE": "NPV",
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398698
+        },
+        {
+          "Data_Setting_Id": 273484,
+          "DATASETVALUE": "NPV",
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398698
+        },
+        {
+          "Data_Setting_Id": 273487,
+          "DATASETVALUE": "NPV",
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398698
+        },
+        {
+          "Data_Setting_Id": 273483,
+          "DATASETVALUE": "NPV",
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398698
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "MORE_NPV",
+      "OBJECT_ID": 48423,
+      "OBJECT_TYPE": "REPO_TRADE",
+      "QUICK_ACCESS": "swfname:=_net",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 27558,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 398698,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 33,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273489,
+          "DATASETVALUE": "NPV",
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398698
+        },
+        {
+          "Data_Setting_Id": 273485,
+          "DATASETVALUE": "NPV",
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398698
+        },
+        {
+          "Data_Setting_Id": 273486,
+          "DATASETVALUE": "NPV",
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398698
+        },
+        {
+          "Data_Setting_Id": 273488,
+          "DATASETVALUE": "NPV",
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398698
+        },
+        {
+          "Data_Setting_Id": 273484,
+          "DATASETVALUE": "NPV",
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398698
+        },
+        {
+          "Data_Setting_Id": 273487,
+          "DATASETVALUE": "NPV",
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398698
+        },
+        {
+          "Data_Setting_Id": 273483,
+          "DATASETVALUE": "NPV",
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398698
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "MORE_NPV",
+      "OBJECT_ID": 38077,
+      "OBJECT_TYPE": "REPO_TRADE",
+      "QUICK_ACCESS": "swfname:=_net",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 27558,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 398698,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 33,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273496,
+          "DATASETVALUE": "TRADE_STATE",
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398699
+        },
+        {
+          "Data_Setting_Id": 273492,
+          "DATASETVALUE": "TRADE_STATE",
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398699
+        },
+        {
+          "Data_Setting_Id": 273493,
+          "DATASETVALUE": "TRADE_STATE",
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398699
+        },
+        {
+          "Data_Setting_Id": 273495,
+          "DATASETVALUE": "TRADE_STATE",
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398699
+        },
+        {
+          "Data_Setting_Id": 273491,
+          "DATASETVALUE": "TRADE_STATE",
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398699
+        },
+        {
+          "Data_Setting_Id": 273494,
+          "DATASETVALUE": "TRADE_STATE",
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398699
+        },
+        {
+          "Data_Setting_Id": 273490,
+          "DATASETVALUE": "TRADE_STATE",
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398699
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "REPO_TRADE_STATE",
+      "OBJECT_ID": 35187,
+      "OBJECT_TYPE": "REPO_TRADE",
+      "QUICK_ACCESS": "swfname:=_stateDLLabel",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 27561,
+      "TYPE_NAME": "SwfLabel",
+      "STEPS_ID": 398699,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 34,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273496,
+          "DATASETVALUE": "TRADE_STATE",
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398699
+        },
+        {
+          "Data_Setting_Id": 273492,
+          "DATASETVALUE": "TRADE_STATE",
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398699
+        },
+        {
+          "Data_Setting_Id": 273493,
+          "DATASETVALUE": "TRADE_STATE",
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398699
+        },
+        {
+          "Data_Setting_Id": 273495,
+          "DATASETVALUE": "TRADE_STATE",
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398699
+        },
+        {
+          "Data_Setting_Id": 273491,
+          "DATASETVALUE": "TRADE_STATE",
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398699
+        },
+        {
+          "Data_Setting_Id": 273494,
+          "DATASETVALUE": "TRADE_STATE",
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398699
+        },
+        {
+          "Data_Setting_Id": 273490,
+          "DATASETVALUE": "TRADE_STATE",
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398699
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "REPO_TRADE_STATE",
+      "OBJECT_ID": 44747,
+      "OBJECT_TYPE": "REPO_TRADE",
+      "QUICK_ACCESS": "swfname:=_stateDLLabel",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 27561,
+      "TYPE_NAME": "SwfLabel",
+      "STEPS_ID": 398699,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 34,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273498,
+          "DATASETVALUE": "TOTAL_FACE",
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 4,
+          "STEPS_ID": 398700
+        },
+        {
+          "Data_Setting_Id": 273500,
+          "DATASETVALUE": "TOTAL_FACE",
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 4,
+          "STEPS_ID": 398700
+        },
+        {
+          "Data_Setting_Id": 273501,
+          "DATASETVALUE": "TOTAL_FACE",
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 4,
+          "STEPS_ID": 398700
+        },
+        {
+          "Data_Setting_Id": 273503,
+          "DATASETVALUE": "TOTAL_FACE",
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 4,
+          "STEPS_ID": 398700
+        },
+        {
+          "Data_Setting_Id": 273499,
+          "DATASETVALUE": "TOTAL_FACE",
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 4,
+          "STEPS_ID": 398700
+        },
+        {
+          "Data_Setting_Id": 273502,
+          "DATASETVALUE": "TOTAL_FACE",
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 4,
+          "STEPS_ID": 398700
+        },
+        {
+          "Data_Setting_Id": 273497,
+          "DATASETVALUE": "TOTAL_FACE",
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 4,
+          "STEPS_ID": 398700
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "MORE_TOTAL_FACE",
+      "OBJECT_ID": 39093,
+      "OBJECT_TYPE": "REPO_TRADE",
+      "QUICK_ACCESS": "swfname:=_face",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 29367,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 398700,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 35,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273498,
+          "DATASETVALUE": "TOTAL_FACE",
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 4,
+          "STEPS_ID": 398700
+        },
+        {
+          "Data_Setting_Id": 273500,
+          "DATASETVALUE": "TOTAL_FACE",
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 4,
+          "STEPS_ID": 398700
+        },
+        {
+          "Data_Setting_Id": 273501,
+          "DATASETVALUE": "TOTAL_FACE",
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 4,
+          "STEPS_ID": 398700
+        },
+        {
+          "Data_Setting_Id": 273503,
+          "DATASETVALUE": "TOTAL_FACE",
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 4,
+          "STEPS_ID": 398700
+        },
+        {
+          "Data_Setting_Id": 273499,
+          "DATASETVALUE": "TOTAL_FACE",
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 4,
+          "STEPS_ID": 398700
+        },
+        {
+          "Data_Setting_Id": 273502,
+          "DATASETVALUE": "TOTAL_FACE",
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 4,
+          "STEPS_ID": 398700
+        },
+        {
+          "Data_Setting_Id": 273497,
+          "DATASETVALUE": "TOTAL_FACE",
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 4,
+          "STEPS_ID": 398700
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "MORE_TOTAL_FACE",
+      "OBJECT_ID": 43090,
+      "OBJECT_TYPE": "REPO_TRADE",
+      "QUICK_ACCESS": "swfname:=_face",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 29367,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 398700,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 35,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273505,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398701
+        },
+        {
+          "Data_Setting_Id": 273507,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398701
+        },
+        {
+          "Data_Setting_Id": 273508,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398701
+        },
+        {
+          "Data_Setting_Id": 273510,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398701
+        },
+        {
+          "Data_Setting_Id": 273506,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398701
+        },
+        {
+          "Data_Setting_Id": 273509,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398701
+        },
+        {
+          "Data_Setting_Id": 273504,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398701
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 398701,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 36,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273505,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398701
+        },
+        {
+          "Data_Setting_Id": 273507,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398701
+        },
+        {
+          "Data_Setting_Id": 273508,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398701
+        },
+        {
+          "Data_Setting_Id": 273510,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398701
+        },
+        {
+          "Data_Setting_Id": 273506,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398701
+        },
+        {
+          "Data_Setting_Id": 273509,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398701
+        },
+        {
+          "Data_Setting_Id": 273504,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398701
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 398701,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 36,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273512,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398702
+        },
+        {
+          "Data_Setting_Id": 273514,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398702
+        },
+        {
+          "Data_Setting_Id": 273515,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398702
+        },
+        {
+          "Data_Setting_Id": 273517,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398702
+        },
+        {
+          "Data_Setting_Id": 273513,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398702
+        },
+        {
+          "Data_Setting_Id": 273516,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398702
+        },
+        {
+          "Data_Setting_Id": 273511,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398702
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 32409,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 30430,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 398702,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 37,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273512,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398702
+        },
+        {
+          "Data_Setting_Id": 273514,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398702
+        },
+        {
+          "Data_Setting_Id": 273515,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398702
+        },
+        {
+          "Data_Setting_Id": 273517,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398702
+        },
+        {
+          "Data_Setting_Id": 273513,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398702
+        },
+        {
+          "Data_Setting_Id": 273516,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398702
+        },
+        {
+          "Data_Setting_Id": 273511,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398702
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 40727,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 30430,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 398702,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 37,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273519,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398703
+        },
+        {
+          "Data_Setting_Id": 273521,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398703
+        },
+        {
+          "Data_Setting_Id": 273522,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398703
+        },
+        {
+          "Data_Setting_Id": 273524,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398703
+        },
+        {
+          "Data_Setting_Id": 273520,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398703
+        },
+        {
+          "Data_Setting_Id": 273523,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398703
+        },
+        {
+          "Data_Setting_Id": 273518,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398703
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 38,
+      "KEY_WORD_NAME": "Dismiss",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 398703,
+      "COLUMN_ROW_SETTING": "3",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 38,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273526,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398704
+        },
+        {
+          "Data_Setting_Id": 273528,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398704
+        },
+        {
+          "Data_Setting_Id": 273529,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398704
+        },
+        {
+          "Data_Setting_Id": 273531,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398704
+        },
+        {
+          "Data_Setting_Id": 273527,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398704
+        },
+        {
+          "Data_Setting_Id": 273530,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398704
+        },
+        {
+          "Data_Setting_Id": 273525,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398704
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 32409,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 30430,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 398704,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 39,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273526,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398704
+        },
+        {
+          "Data_Setting_Id": 273528,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398704
+        },
+        {
+          "Data_Setting_Id": 273529,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398704
+        },
+        {
+          "Data_Setting_Id": 273531,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398704
+        },
+        {
+          "Data_Setting_Id": 273527,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398704
+        },
+        {
+          "Data_Setting_Id": 273530,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398704
+        },
+        {
+          "Data_Setting_Id": 273525,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398704
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 40727,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 30430,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 398704,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 39,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 273533,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398043,
+          "SKIP": 0,
+          "STEPS_ID": 398705
+        },
+        {
+          "Data_Setting_Id": 273535,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398099,
+          "SKIP": 0,
+          "STEPS_ID": 398705
+        },
+        {
+          "Data_Setting_Id": 273536,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398126,
+          "SKIP": 0,
+          "STEPS_ID": 398705
+        },
+        {
+          "Data_Setting_Id": 273538,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398163,
+          "SKIP": 0,
+          "STEPS_ID": 398705
+        },
+        {
+          "Data_Setting_Id": 273534,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398072,
+          "SKIP": 0,
+          "STEPS_ID": 398705
+        },
+        {
+          "Data_Setting_Id": 273537,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398127,
+          "SKIP": 0,
+          "STEPS_ID": 398705
+        },
+        {
+          "Data_Setting_Id": 273532,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 398039,
+          "SKIP": 0,
+          "STEPS_ID": 398705
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2954,
+      "TEST_CASE_NAME": "Repo Trade Rate Change",
+      "KEY_WORD_ID": 38,
+      "KEY_WORD_NAME": "Dismiss",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 398705,
+      "COLUMN_ROW_SETTING": "3",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 40,
+      "VALUE_SETTING": null
+    }
+  ]
+}

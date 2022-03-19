@@ -1,0 +1,5707 @@
+{
+  "currentSyncroStatus": 0,
+  "assignedApplications": [
+    194,
+    193,
+    -1
+  ],
+  "assignedTestSuiteIDs": [
+    1921
+  ],
+  "version": null,
+  "assignedDataSets": [
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 793261,
+      "ALIAS_NAME": "SWAPD_32FT",
+      "DESCRIPTION_INFO": "Swap Document Creation"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 790836,
+      "ALIAS_NAME": "SWAPD_31FT",
+      "DESCRIPTION_INFO": "Swap Document Creation"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 790830,
+      "ALIAS_NAME": "SWAPD_11FT",
+      "DESCRIPTION_INFO": "Swap Document Creation"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 790826,
+      "ALIAS_NAME": "SWAPD_16FT",
+      "DESCRIPTION_INFO": "Swap Trade Full Trade Termination"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 790821,
+      "ALIAS_NAME": "SWAPD_17FT",
+      "DESCRIPTION_INFO": "Swap Document Creation"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 790820,
+      "ALIAS_NAME": "SWAPD_05FT",
+      "DESCRIPTION_INFO": "Swap Document Creation"
+    }
+  ],
+  "allSteps": [
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555331,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790967
+        },
+        {
+          "Data_Setting_Id": 555334,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790967
+        },
+        {
+          "Data_Setting_Id": 555333,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790967
+        },
+        {
+          "Data_Setting_Id": 555332,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790967
+        },
+        {
+          "Data_Setting_Id": 555335,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790967
+        },
+        {
+          "Data_Setting_Id": 555641,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790967
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 790967,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555331,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790967
+        },
+        {
+          "Data_Setting_Id": 555334,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790967
+        },
+        {
+          "Data_Setting_Id": 555333,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790967
+        },
+        {
+          "Data_Setting_Id": 555332,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790967
+        },
+        {
+          "Data_Setting_Id": 555335,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790967
+        },
+        {
+          "Data_Setting_Id": 555641,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790967
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 790967,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555336,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790968
+        },
+        {
+          "Data_Setting_Id": 555339,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790968
+        },
+        {
+          "Data_Setting_Id": 555338,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790968
+        },
+        {
+          "Data_Setting_Id": 555337,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790968
+        },
+        {
+          "Data_Setting_Id": 555340,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790968
+        },
+        {
+          "Data_Setting_Id": 555642,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790968
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 790968,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 2,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555336,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790968
+        },
+        {
+          "Data_Setting_Id": 555339,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790968
+        },
+        {
+          "Data_Setting_Id": 555338,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790968
+        },
+        {
+          "Data_Setting_Id": 555337,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790968
+        },
+        {
+          "Data_Setting_Id": 555340,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790968
+        },
+        {
+          "Data_Setting_Id": 555642,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790968
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 790968,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 2,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555341,
+          "DATASETVALUE": "IFC Swap Trade",
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790969
+        },
+        {
+          "Data_Setting_Id": 555344,
+          "DATASETVALUE": "IFC Swap Trade",
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790969
+        },
+        {
+          "Data_Setting_Id": 555343,
+          "DATASETVALUE": "IFC Swap Trade",
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790969
+        },
+        {
+          "Data_Setting_Id": 555342,
+          "DATASETVALUE": "IFC Swap Trade",
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790969
+        },
+        {
+          "Data_Setting_Id": 555345,
+          "DATASETVALUE": "IFC Swap Trade",
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790969
+        },
+        {
+          "Data_Setting_Id": 555643,
+          "DATASETVALUE": "IFC Swap Trade",
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790969
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 12,
+      "KEY_WORD_NAME": "LaunchApplication",
+      "OBJECT_HAPPY_NAME": "ApplicationName",
+      "OBJECT_ID": 35170,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockAreaTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 29559,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 790969,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 3,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555341,
+          "DATASETVALUE": "IFC Swap Trade",
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790969
+        },
+        {
+          "Data_Setting_Id": 555344,
+          "DATASETVALUE": "IFC Swap Trade",
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790969
+        },
+        {
+          "Data_Setting_Id": 555343,
+          "DATASETVALUE": "IFC Swap Trade",
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790969
+        },
+        {
+          "Data_Setting_Id": 555342,
+          "DATASETVALUE": "IFC Swap Trade",
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790969
+        },
+        {
+          "Data_Setting_Id": 555345,
+          "DATASETVALUE": "IFC Swap Trade",
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790969
+        },
+        {
+          "Data_Setting_Id": 555643,
+          "DATASETVALUE": "IFC Swap Trade",
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790969
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 12,
+      "KEY_WORD_NAME": "LaunchApplication",
+      "OBJECT_HAPPY_NAME": "ApplicationName",
+      "OBJECT_ID": 44673,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockAreaTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 29559,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 790969,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 3,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555346,
+          "DATASETVALUE": "15",
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790970
+        },
+        {
+          "Data_Setting_Id": 555349,
+          "DATASETVALUE": "15",
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790970
+        },
+        {
+          "Data_Setting_Id": 555348,
+          "DATASETVALUE": "15",
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790970
+        },
+        {
+          "Data_Setting_Id": 555347,
+          "DATASETVALUE": "15",
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790970
+        },
+        {
+          "Data_Setting_Id": 555350,
+          "DATASETVALUE": "15",
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790970
+        },
+        {
+          "Data_Setting_Id": 555644,
+          "DATASETVALUE": "15",
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790970
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 790970,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 4,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555351,
+          "DATASETVALUE": "TEXT|\"Trade ID\"|TAG:TRADE_ID",
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790971
+        },
+        {
+          "Data_Setting_Id": 555354,
+          "DATASETVALUE": "TEXT|\"Trade ID\"|TAG:TRADE_ID",
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790971
+        },
+        {
+          "Data_Setting_Id": 555353,
+          "DATASETVALUE": "TEXT|\"Trade ID\"|TAG:TRADE_ID",
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790971
+        },
+        {
+          "Data_Setting_Id": 555352,
+          "DATASETVALUE": "TEXT|\"Trade ID\"|TAG:TRADE_ID",
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790971
+        },
+        {
+          "Data_Setting_Id": 555355,
+          "DATASETVALUE": "TEXT|\"Trade ID\"|TAG:TRADE_ID",
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790971
+        },
+        {
+          "Data_Setting_Id": 555645,
+          "DATASETVALUE": "TEXT|\"Trade ID\"|TAG:TRADE_ID",
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790971
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 10819,
+      "KEY_WORD_NAME": "Comment",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 790971,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 5,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555356,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790972
+        },
+        {
+          "Data_Setting_Id": 555359,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790972
+        },
+        {
+          "Data_Setting_Id": 555358,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790972
+        },
+        {
+          "Data_Setting_Id": 555357,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790972
+        },
+        {
+          "Data_Setting_Id": 555360,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790972
+        },
+        {
+          "Data_Setting_Id": 555646,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790972
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "SWAP_TRADE",
+      "OBJECT_ID": 41203,
+      "OBJECT_TYPE": "SWAP_TRADE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24908,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 790972,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 6,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555356,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790972
+        },
+        {
+          "Data_Setting_Id": 555359,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790972
+        },
+        {
+          "Data_Setting_Id": 555358,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790972
+        },
+        {
+          "Data_Setting_Id": 555357,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790972
+        },
+        {
+          "Data_Setting_Id": 555360,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790972
+        },
+        {
+          "Data_Setting_Id": 555646,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790972
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "SWAP_TRADE",
+      "OBJECT_ID": 33353,
+      "OBJECT_TYPE": "SWAP_TRADE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24908,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 790972,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 6,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555361,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790973
+        },
+        {
+          "Data_Setting_Id": 555364,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790973
+        },
+        {
+          "Data_Setting_Id": 555363,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790973
+        },
+        {
+          "Data_Setting_Id": 555362,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790973
+        },
+        {
+          "Data_Setting_Id": 555365,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790973
+        },
+        {
+          "Data_Setting_Id": 555647,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790973
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "SWAP_TRADE",
+      "OBJECT_ID": 41203,
+      "OBJECT_TYPE": "SWAP_TRADE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24908,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 790973,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 7,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555361,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790973
+        },
+        {
+          "Data_Setting_Id": 555364,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790973
+        },
+        {
+          "Data_Setting_Id": 555363,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790973
+        },
+        {
+          "Data_Setting_Id": 555362,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790973
+        },
+        {
+          "Data_Setting_Id": 555365,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790973
+        },
+        {
+          "Data_Setting_Id": 555647,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790973
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "SWAP_TRADE",
+      "OBJECT_ID": 33353,
+      "OBJECT_TYPE": "SWAP_TRADE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24908,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 790973,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 7,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555366,
+          "DATASETVALUE": "Open IFC Swap Trade.*",
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790974
+        },
+        {
+          "Data_Setting_Id": 555369,
+          "DATASETVALUE": "Open IFC Swap Trade.*",
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790974
+        },
+        {
+          "Data_Setting_Id": 555368,
+          "DATASETVALUE": "Open IFC Swap Trade.*",
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790974
+        },
+        {
+          "Data_Setting_Id": 555367,
+          "DATASETVALUE": "Open IFC Swap Trade.*",
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790974
+        },
+        {
+          "Data_Setting_Id": 555370,
+          "DATASETVALUE": "Open IFC Swap Trade.*",
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790974
+        },
+        {
+          "Data_Setting_Id": 555648,
+          "DATASETVALUE": "Open IFC Swap Trade.*",
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790974
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 5,
+      "KEY_WORD_NAME": "ClickMenuIcon",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 790974,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 8,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555371,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790975
+        },
+        {
+          "Data_Setting_Id": 555374,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790975
+        },
+        {
+          "Data_Setting_Id": 555373,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790975
+        },
+        {
+          "Data_Setting_Id": 555372,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790975
+        },
+        {
+          "Data_Setting_Id": 555375,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790975
+        },
+        {
+          "Data_Setting_Id": 555649,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790975
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_POPUP",
+      "OBJECT_ID": 45858,
+      "OBJECT_TYPE": "TRADE_FINDER_POPUP",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^Trade Finder.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24871,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 790975,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 9,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555371,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790975
+        },
+        {
+          "Data_Setting_Id": 555374,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790975
+        },
+        {
+          "Data_Setting_Id": 555373,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790975
+        },
+        {
+          "Data_Setting_Id": 555372,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790975
+        },
+        {
+          "Data_Setting_Id": 555375,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790975
+        },
+        {
+          "Data_Setting_Id": 555649,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790975
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_POPUP",
+      "OBJECT_ID": 37077,
+      "OBJECT_TYPE": "TRADE_FINDER_POPUP",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^Trade Finder.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24871,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 790975,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 9,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555376,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790976
+        },
+        {
+          "Data_Setting_Id": 555379,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790976
+        },
+        {
+          "Data_Setting_Id": 555378,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790976
+        },
+        {
+          "Data_Setting_Id": 555377,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790976
+        },
+        {
+          "Data_Setting_Id": 555380,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790976
+        },
+        {
+          "Data_Setting_Id": 555650,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790976
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_POPUP",
+      "OBJECT_ID": 45858,
+      "OBJECT_TYPE": "TRADE_FINDER_POPUP",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^Trade Finder.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24871,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 790976,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 10,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555376,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790976
+        },
+        {
+          "Data_Setting_Id": 555379,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790976
+        },
+        {
+          "Data_Setting_Id": 555378,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790976
+        },
+        {
+          "Data_Setting_Id": 555377,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790976
+        },
+        {
+          "Data_Setting_Id": 555380,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790976
+        },
+        {
+          "Data_Setting_Id": 555650,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790976
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_POPUP",
+      "OBJECT_ID": 37077,
+      "OBJECT_TYPE": "TRADE_FINDER_POPUP",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^Trade Finder.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24871,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 790976,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 10,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555381,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790977
+        },
+        {
+          "Data_Setting_Id": 555384,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790977
+        },
+        {
+          "Data_Setting_Id": 555383,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790977
+        },
+        {
+          "Data_Setting_Id": 555382,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790977
+        },
+        {
+          "Data_Setting_Id": 555385,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790977
+        },
+        {
+          "Data_Setting_Id": 555651,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790977
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_STATUS",
+      "OBJECT_ID": 41748,
+      "OBJECT_TYPE": "TRADE_FINDER_POPUP",
+      "QUICK_ACCESS": "swfname:=TradeStatus",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 32176,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 790977,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 11,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555381,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790977
+        },
+        {
+          "Data_Setting_Id": 555384,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790977
+        },
+        {
+          "Data_Setting_Id": 555383,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790977
+        },
+        {
+          "Data_Setting_Id": 555382,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790977
+        },
+        {
+          "Data_Setting_Id": 555385,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790977
+        },
+        {
+          "Data_Setting_Id": 555651,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790977
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_STATUS",
+      "OBJECT_ID": 35783,
+      "OBJECT_TYPE": "TRADE_FINDER_POPUP",
+      "QUICK_ACCESS": "swfname:=TradeStatus",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 32176,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 790977,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 11,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555386,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790978
+        },
+        {
+          "Data_Setting_Id": 555389,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790978
+        },
+        {
+          "Data_Setting_Id": 555388,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790978
+        },
+        {
+          "Data_Setting_Id": 555387,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790978
+        },
+        {
+          "Data_Setting_Id": 555390,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790978
+        },
+        {
+          "Data_Setting_Id": 555652,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790978
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_EXTERNAL_TRADE_ID",
+      "OBJECT_ID": 32234,
+      "OBJECT_TYPE": "TRADE_FINDER_POPUP",
+      "QUICK_ACCESS": "swfname:=ExternalTradeId",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 27732,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 790978,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 12,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555386,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790978
+        },
+        {
+          "Data_Setting_Id": 555389,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790978
+        },
+        {
+          "Data_Setting_Id": 555388,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790978
+        },
+        {
+          "Data_Setting_Id": 555387,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790978
+        },
+        {
+          "Data_Setting_Id": 555390,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790978
+        },
+        {
+          "Data_Setting_Id": 555652,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790978
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_EXTERNAL_TRADE_ID",
+      "OBJECT_ID": 40552,
+      "OBJECT_TYPE": "TRADE_FINDER_POPUP",
+      "QUICK_ACCESS": "swfname:=ExternalTradeId",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 27732,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 790978,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 12,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555391,
+          "DATASETVALUE": "MODAL_VAR:SWAPD_05_TRADE_ID",
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790979
+        },
+        {
+          "Data_Setting_Id": 555392,
+          "DATASETVALUE": "MODAL_VAR:SWAPD_11_TRADE_ID",
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790979
+        },
+        {
+          "Data_Setting_Id": 555393,
+          "DATASETVALUE": "MODAL_VAR:SWAPD_16_TRADE_ID",
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790979
+        },
+        {
+          "Data_Setting_Id": 555394,
+          "DATASETVALUE": "MODAL_VAR:SWAPD_17_TRADE_ID",
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790979
+        },
+        {
+          "Data_Setting_Id": 555395,
+          "DATASETVALUE": "MODAL_VAR:SWAPD_31_TRADE_ID",
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790979
+        },
+        {
+          "Data_Setting_Id": 555653,
+          "DATASETVALUE": "MODAL_VAR:SWAPD_32_TRADE_ID",
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790979
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_ID",
+      "OBJECT_ID": 35020,
+      "OBJECT_TYPE": "TRADE_FINDER_POPUP",
+      "QUICK_ACCESS": "swfname:=TradeID",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 29531,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 790979,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 13,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555391,
+          "DATASETVALUE": "MODAL_VAR:SWAPD_05_TRADE_ID",
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790979
+        },
+        {
+          "Data_Setting_Id": 555392,
+          "DATASETVALUE": "MODAL_VAR:SWAPD_11_TRADE_ID",
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790979
+        },
+        {
+          "Data_Setting_Id": 555393,
+          "DATASETVALUE": "MODAL_VAR:SWAPD_16_TRADE_ID",
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790979
+        },
+        {
+          "Data_Setting_Id": 555394,
+          "DATASETVALUE": "MODAL_VAR:SWAPD_17_TRADE_ID",
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790979
+        },
+        {
+          "Data_Setting_Id": 555395,
+          "DATASETVALUE": "MODAL_VAR:SWAPD_31_TRADE_ID",
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790979
+        },
+        {
+          "Data_Setting_Id": 555653,
+          "DATASETVALUE": "MODAL_VAR:SWAPD_32_TRADE_ID",
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790979
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_ID",
+      "OBJECT_ID": 44557,
+      "OBJECT_TYPE": "TRADE_FINDER_POPUP",
+      "QUICK_ACCESS": "swfname:=TradeID",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 29531,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 790979,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 13,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555396,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790980
+        },
+        {
+          "Data_Setting_Id": 555399,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790980
+        },
+        {
+          "Data_Setting_Id": 555398,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790980
+        },
+        {
+          "Data_Setting_Id": 555397,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790980
+        },
+        {
+          "Data_Setting_Id": 555400,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790980
+        },
+        {
+          "Data_Setting_Id": 555654,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790980
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_FIND_NOW",
+      "OBJECT_ID": 36606,
+      "OBJECT_TYPE": "TRADE_FINDER_POPUP",
+      "QUICK_ACCESS": "swfname:=_findNowButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 32179,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 790980,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 14,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555396,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790980
+        },
+        {
+          "Data_Setting_Id": 555399,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790980
+        },
+        {
+          "Data_Setting_Id": 555398,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790980
+        },
+        {
+          "Data_Setting_Id": 555397,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790980
+        },
+        {
+          "Data_Setting_Id": 555400,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790980
+        },
+        {
+          "Data_Setting_Id": 555654,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790980
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_FIND_NOW",
+      "OBJECT_ID": 43027,
+      "OBJECT_TYPE": "TRADE_FINDER_POPUP",
+      "QUICK_ACCESS": "swfname:=_findNowButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 32179,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 790980,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 14,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555401,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790981
+        },
+        {
+          "Data_Setting_Id": 555404,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790981
+        },
+        {
+          "Data_Setting_Id": 555403,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790981
+        },
+        {
+          "Data_Setting_Id": 555402,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790981
+        },
+        {
+          "Data_Setting_Id": 555405,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790981
+        },
+        {
+          "Data_Setting_Id": 555655,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790981
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_OK",
+      "OBJECT_ID": 34635,
+      "OBJECT_TYPE": "TRADE_FINDER_POPUP",
+      "QUICK_ACCESS": "swfname:=_okButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 32180,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 790981,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 15,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555401,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790981
+        },
+        {
+          "Data_Setting_Id": 555404,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790981
+        },
+        {
+          "Data_Setting_Id": 555403,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790981
+        },
+        {
+          "Data_Setting_Id": 555402,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790981
+        },
+        {
+          "Data_Setting_Id": 555405,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790981
+        },
+        {
+          "Data_Setting_Id": 555655,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790981
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_OK",
+      "OBJECT_ID": 44213,
+      "OBJECT_TYPE": "TRADE_FINDER_POPUP",
+      "QUICK_ACCESS": "swfname:=_okButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 32180,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 790981,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 15,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555406,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790982
+        },
+        {
+          "Data_Setting_Id": 555409,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790982
+        },
+        {
+          "Data_Setting_Id": 555408,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790982
+        },
+        {
+          "Data_Setting_Id": 555407,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790982
+        },
+        {
+          "Data_Setting_Id": 555410,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790982
+        },
+        {
+          "Data_Setting_Id": 555656,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790982
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "SWAP_TRADE",
+      "OBJECT_ID": 41203,
+      "OBJECT_TYPE": "SWAP_TRADE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24908,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 790982,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 16,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555406,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790982
+        },
+        {
+          "Data_Setting_Id": 555409,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790982
+        },
+        {
+          "Data_Setting_Id": 555408,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790982
+        },
+        {
+          "Data_Setting_Id": 555407,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790982
+        },
+        {
+          "Data_Setting_Id": 555410,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790982
+        },
+        {
+          "Data_Setting_Id": 555656,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790982
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "SWAP_TRADE",
+      "OBJECT_ID": 33353,
+      "OBJECT_TYPE": "SWAP_TRADE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24908,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 790982,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 16,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555411,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790983
+        },
+        {
+          "Data_Setting_Id": 555414,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790983
+        },
+        {
+          "Data_Setting_Id": 555413,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790983
+        },
+        {
+          "Data_Setting_Id": 555412,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790983
+        },
+        {
+          "Data_Setting_Id": 555415,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790983
+        },
+        {
+          "Data_Setting_Id": 555657,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790983
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "SWAP_TRADE",
+      "OBJECT_ID": 41203,
+      "OBJECT_TYPE": "SWAP_TRADE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24908,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 790983,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 17,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555411,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790983
+        },
+        {
+          "Data_Setting_Id": 555414,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790983
+        },
+        {
+          "Data_Setting_Id": 555413,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790983
+        },
+        {
+          "Data_Setting_Id": 555412,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790983
+        },
+        {
+          "Data_Setting_Id": 555415,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790983
+        },
+        {
+          "Data_Setting_Id": 555657,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790983
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "SWAP_TRADE",
+      "OBJECT_ID": 33353,
+      "OBJECT_TYPE": "SWAP_TRADE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24908,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 790983,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 17,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555416,
+          "DATASETVALUE": "SWAP_TRADE_BEFORE",
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790984
+        },
+        {
+          "Data_Setting_Id": 555419,
+          "DATASETVALUE": "SWAP_TRADE_BEFORE",
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790984
+        },
+        {
+          "Data_Setting_Id": 555418,
+          "DATASETVALUE": "SWAP_TRADE_BEFORE",
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790984
+        },
+        {
+          "Data_Setting_Id": 555417,
+          "DATASETVALUE": "SWAP_TRADE_BEFORE",
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790984
+        },
+        {
+          "Data_Setting_Id": 555420,
+          "DATASETVALUE": "SWAP_TRADE_BEFORE",
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790984
+        },
+        {
+          "Data_Setting_Id": 555658,
+          "DATASETVALUE": "SWAP_TRADE_BEFORE",
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790984
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "SWAP_TRADE_PANEL",
+      "OBJECT_ID": 48986,
+      "OBJECT_TYPE": "SWAP_TRADE",
+      "QUICK_ACCESS": "SwfName:=SwapView",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 48915,
+      "TYPE_NAME": "SwfWindow",
+      "STEPS_ID": 790984,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 18,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555416,
+          "DATASETVALUE": "SWAP_TRADE_BEFORE",
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790984
+        },
+        {
+          "Data_Setting_Id": 555419,
+          "DATASETVALUE": "SWAP_TRADE_BEFORE",
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790984
+        },
+        {
+          "Data_Setting_Id": 555418,
+          "DATASETVALUE": "SWAP_TRADE_BEFORE",
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790984
+        },
+        {
+          "Data_Setting_Id": 555417,
+          "DATASETVALUE": "SWAP_TRADE_BEFORE",
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790984
+        },
+        {
+          "Data_Setting_Id": 555420,
+          "DATASETVALUE": "SWAP_TRADE_BEFORE",
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790984
+        },
+        {
+          "Data_Setting_Id": 555658,
+          "DATASETVALUE": "SWAP_TRADE_BEFORE",
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790984
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "SWAP_TRADE_PANEL",
+      "OBJECT_ID": 48950,
+      "OBJECT_TYPE": "SWAP_TRADE",
+      "QUICK_ACCESS": "SwfName:=SwapView",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 48915,
+      "TYPE_NAME": "SwfWindow",
+      "STEPS_ID": 790984,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 18,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555421,
+          "DATASETVALUE": "TEXT|\"Swap Trade Before Full Termination\"|IMAGE:SWAP_TRADE_BEFORE",
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790985
+        },
+        {
+          "Data_Setting_Id": 555424,
+          "DATASETVALUE": "TEXT|\"Swap Trade Before Full Termination\"|IMAGE:SWAP_TRADE_BEFORE",
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790985
+        },
+        {
+          "Data_Setting_Id": 555423,
+          "DATASETVALUE": "TEXT|\"Swap Trade Before Full Termination\"|IMAGE:SWAP_TRADE_BEFORE",
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790985
+        },
+        {
+          "Data_Setting_Id": 555422,
+          "DATASETVALUE": "TEXT|\"Swap Trade Before Full Termination\"|IMAGE:SWAP_TRADE_BEFORE",
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790985
+        },
+        {
+          "Data_Setting_Id": 555425,
+          "DATASETVALUE": "TEXT|\"Swap Trade Before Full Termination\"|IMAGE:SWAP_TRADE_BEFORE",
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790985
+        },
+        {
+          "Data_Setting_Id": 555659,
+          "DATASETVALUE": "TEXT|\"Swap Trade Before Full Termination\"|IMAGE:SWAP_TRADE_BEFORE",
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790985
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 10819,
+      "KEY_WORD_NAME": "Comment",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 790985,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 19,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555426,
+          "DATASETVALUE": "Desktop Menu;Action;Full Termination",
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790986
+        },
+        {
+          "Data_Setting_Id": 555429,
+          "DATASETVALUE": "Desktop Menu;Action;Full Termination",
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790986
+        },
+        {
+          "Data_Setting_Id": 555428,
+          "DATASETVALUE": "Desktop Menu;Action;Full Termination",
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790986
+        },
+        {
+          "Data_Setting_Id": 555427,
+          "DATASETVALUE": "Desktop Menu;Action;Full Termination",
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790986
+        },
+        {
+          "Data_Setting_Id": 555430,
+          "DATASETVALUE": "Desktop Menu;Action;Full Termination",
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790986
+        },
+        {
+          "Data_Setting_Id": 555660,
+          "DATASETVALUE": "Desktop Menu;Action;Full Termination",
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790986
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 22,
+      "KEY_WORD_NAME": "SelectMenuItem",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 790986,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 20,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555431,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790987
+        },
+        {
+          "Data_Setting_Id": 555434,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790987
+        },
+        {
+          "Data_Setting_Id": 555433,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790987
+        },
+        {
+          "Data_Setting_Id": 555432,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790987
+        },
+        {
+          "Data_Setting_Id": 555435,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790987
+        },
+        {
+          "Data_Setting_Id": 555661,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790987
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "PARTIAL_TERMINATION",
+      "OBJECT_ID": 34167,
+      "OBJECT_TYPE": "PARTIAL_TERMINATION",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^Partial Termination.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24902,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 790987,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 21,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555431,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790987
+        },
+        {
+          "Data_Setting_Id": 555434,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790987
+        },
+        {
+          "Data_Setting_Id": 555433,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790987
+        },
+        {
+          "Data_Setting_Id": 555432,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790987
+        },
+        {
+          "Data_Setting_Id": 555435,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790987
+        },
+        {
+          "Data_Setting_Id": 555661,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790987
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "PARTIAL_TERMINATION",
+      "OBJECT_ID": 43677,
+      "OBJECT_TYPE": "PARTIAL_TERMINATION",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^Partial Termination.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24902,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 790987,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 21,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555436,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790988
+        },
+        {
+          "Data_Setting_Id": 555439,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790988
+        },
+        {
+          "Data_Setting_Id": 555438,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790988
+        },
+        {
+          "Data_Setting_Id": 555437,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790988
+        },
+        {
+          "Data_Setting_Id": 555440,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790988
+        },
+        {
+          "Data_Setting_Id": 555662,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790988
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "PARTIAL_TERMINATION_NEXT",
+      "OBJECT_ID": 43400,
+      "OBJECT_TYPE": "PARTIAL_TERMINATION",
+      "QUICK_ACCESS": "swfname:=_okButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 31159,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 790988,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 22,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555436,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790988
+        },
+        {
+          "Data_Setting_Id": 555439,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790988
+        },
+        {
+          "Data_Setting_Id": 555438,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790988
+        },
+        {
+          "Data_Setting_Id": 555437,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790988
+        },
+        {
+          "Data_Setting_Id": 555440,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790988
+        },
+        {
+          "Data_Setting_Id": 555662,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790988
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "PARTIAL_TERMINATION_NEXT",
+      "OBJECT_ID": 33852,
+      "OBJECT_TYPE": "PARTIAL_TERMINATION",
+      "QUICK_ACCESS": "swfname:=_okButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 31159,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 790988,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 22,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555441,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790989
+        },
+        {
+          "Data_Setting_Id": 555444,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790989
+        },
+        {
+          "Data_Setting_Id": 555443,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790989
+        },
+        {
+          "Data_Setting_Id": 555442,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790989
+        },
+        {
+          "Data_Setting_Id": 555445,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790989
+        },
+        {
+          "Data_Setting_Id": 555663,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790989
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 790989,
+      "COLUMN_ROW_SETTING": "F",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 23,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555446,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790990
+        },
+        {
+          "Data_Setting_Id": 555449,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790990
+        },
+        {
+          "Data_Setting_Id": 555448,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790990
+        },
+        {
+          "Data_Setting_Id": 555447,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790990
+        },
+        {
+          "Data_Setting_Id": 555450,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790990
+        },
+        {
+          "Data_Setting_Id": 555664,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790990
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "PARTIAL_TERMINATION",
+      "OBJECT_ID": 34167,
+      "OBJECT_TYPE": "PARTIAL_TERMINATION",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^Partial Termination.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24902,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 790990,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 24,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555446,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790990
+        },
+        {
+          "Data_Setting_Id": 555449,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790990
+        },
+        {
+          "Data_Setting_Id": 555448,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790990
+        },
+        {
+          "Data_Setting_Id": 555447,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790990
+        },
+        {
+          "Data_Setting_Id": 555450,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790990
+        },
+        {
+          "Data_Setting_Id": 555664,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790990
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "PARTIAL_TERMINATION",
+      "OBJECT_ID": 43677,
+      "OBJECT_TYPE": "PARTIAL_TERMINATION",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^Partial Termination.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24902,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 790990,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 24,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555451,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790991
+        },
+        {
+          "Data_Setting_Id": 555454,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790991
+        },
+        {
+          "Data_Setting_Id": 555453,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790991
+        },
+        {
+          "Data_Setting_Id": 555452,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790991
+        },
+        {
+          "Data_Setting_Id": 555455,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790991
+        },
+        {
+          "Data_Setting_Id": 555665,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790991
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "PARTIAL_TERMINATION_EFFECTIVE_DATE",
+      "OBJECT_ID": 39657,
+      "OBJECT_TYPE": "PARTIAL_TERMINATION",
+      "QUICK_ACCESS": "swfname:=_effectiveDate",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 32037,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 790991,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 25,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555451,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790991
+        },
+        {
+          "Data_Setting_Id": 555454,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790991
+        },
+        {
+          "Data_Setting_Id": 555453,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790991
+        },
+        {
+          "Data_Setting_Id": 555452,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790991
+        },
+        {
+          "Data_Setting_Id": 555455,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790991
+        },
+        {
+          "Data_Setting_Id": 555665,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790991
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "PARTIAL_TERMINATION_EFFECTIVE_DATE",
+      "OBJECT_ID": 47828,
+      "OBJECT_TYPE": "PARTIAL_TERMINATION",
+      "QUICK_ACCESS": "swfname:=_effectiveDate",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 32037,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 790991,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 25,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555456,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790992
+        },
+        {
+          "Data_Setting_Id": 555459,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790992
+        },
+        {
+          "Data_Setting_Id": 555458,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790992
+        },
+        {
+          "Data_Setting_Id": 555457,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790992
+        },
+        {
+          "Data_Setting_Id": 555460,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790992
+        },
+        {
+          "Data_Setting_Id": 555666,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790992
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "FULL_TERMINATION",
+      "OBJECT_ID": 36241,
+      "OBJECT_TYPE": "FULL_TERMINATION",
+      "QUICK_ACCESS": "text:=^Full Termination.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24955,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 790992,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 26,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555456,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790992
+        },
+        {
+          "Data_Setting_Id": 555459,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790992
+        },
+        {
+          "Data_Setting_Id": 555458,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790992
+        },
+        {
+          "Data_Setting_Id": 555457,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790992
+        },
+        {
+          "Data_Setting_Id": 555460,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790992
+        },
+        {
+          "Data_Setting_Id": 555666,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790992
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "FULL_TERMINATION",
+      "OBJECT_ID": 45231,
+      "OBJECT_TYPE": "FULL_TERMINATION",
+      "QUICK_ACCESS": "text:=^Full Termination.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24955,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 790992,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 26,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555461,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790993
+        },
+        {
+          "Data_Setting_Id": 555464,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790993
+        },
+        {
+          "Data_Setting_Id": 555463,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790993
+        },
+        {
+          "Data_Setting_Id": 555462,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790993
+        },
+        {
+          "Data_Setting_Id": 555465,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790993
+        },
+        {
+          "Data_Setting_Id": 555667,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790993
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FULL_TERMINATION_TRADE_DATE",
+      "OBJECT_ID": 41584,
+      "OBJECT_TYPE": "FULL_TERMINATION",
+      "QUICK_ACCESS": "swfname:=_tradeDate",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 26458,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 790993,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 27,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555461,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790993
+        },
+        {
+          "Data_Setting_Id": 555464,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790993
+        },
+        {
+          "Data_Setting_Id": 555463,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790993
+        },
+        {
+          "Data_Setting_Id": 555462,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790993
+        },
+        {
+          "Data_Setting_Id": 555465,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790993
+        },
+        {
+          "Data_Setting_Id": 555667,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790993
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FULL_TERMINATION_TRADE_DATE",
+      "OBJECT_ID": 32526,
+      "OBJECT_TYPE": "FULL_TERMINATION",
+      "QUICK_ACCESS": "swfname:=_tradeDate",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 26458,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 790993,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 27,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555466,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790994
+        },
+        {
+          "Data_Setting_Id": 555469,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790994
+        },
+        {
+          "Data_Setting_Id": 555468,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790994
+        },
+        {
+          "Data_Setting_Id": 555467,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790994
+        },
+        {
+          "Data_Setting_Id": 555470,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790994
+        },
+        {
+          "Data_Setting_Id": 555668,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790994
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FULL_TERMINATION_EFFECTIVE_DATE",
+      "OBJECT_ID": 37960,
+      "OBJECT_TYPE": "FULL_TERMINATION",
+      "QUICK_ACCESS": "swfname:=_effectiveDate",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 30100,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 790994,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 28,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555466,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790994
+        },
+        {
+          "Data_Setting_Id": 555469,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790994
+        },
+        {
+          "Data_Setting_Id": 555468,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790994
+        },
+        {
+          "Data_Setting_Id": 555467,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790994
+        },
+        {
+          "Data_Setting_Id": 555470,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790994
+        },
+        {
+          "Data_Setting_Id": 555668,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790994
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FULL_TERMINATION_EFFECTIVE_DATE",
+      "OBJECT_ID": 46702,
+      "OBJECT_TYPE": "FULL_TERMINATION",
+      "QUICK_ACCESS": "swfname:=_effectiveDate",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 30100,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 790994,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 28,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555471,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790995
+        },
+        {
+          "Data_Setting_Id": 555474,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790995
+        },
+        {
+          "Data_Setting_Id": 555473,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790995
+        },
+        {
+          "Data_Setting_Id": 555472,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790995
+        },
+        {
+          "Data_Setting_Id": 555475,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790995
+        },
+        {
+          "Data_Setting_Id": 555669,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790995
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "FULL_TERMINATION_NEXT",
+      "OBJECT_ID": 44185,
+      "OBJECT_TYPE": "FULL_TERMINATION",
+      "QUICK_ACCESS": "swfname:=_okButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 27400,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 790995,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 29,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555471,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790995
+        },
+        {
+          "Data_Setting_Id": 555474,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790995
+        },
+        {
+          "Data_Setting_Id": 555473,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790995
+        },
+        {
+          "Data_Setting_Id": 555472,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790995
+        },
+        {
+          "Data_Setting_Id": 555475,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790995
+        },
+        {
+          "Data_Setting_Id": 555669,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790995
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "FULL_TERMINATION_NEXT",
+      "OBJECT_ID": 34673,
+      "OBJECT_TYPE": "FULL_TERMINATION",
+      "QUICK_ACCESS": "swfname:=_okButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 27400,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 790995,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 29,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555476,
+          "DATASETVALUE": "0",
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790996
+        },
+        {
+          "Data_Setting_Id": 555479,
+          "DATASETVALUE": "0",
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790996
+        },
+        {
+          "Data_Setting_Id": 555478,
+          "DATASETVALUE": "0",
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790996
+        },
+        {
+          "Data_Setting_Id": 555477,
+          "DATASETVALUE": "0",
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790996
+        },
+        {
+          "Data_Setting_Id": 555480,
+          "DATASETVALUE": "0",
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790996
+        },
+        {
+          "Data_Setting_Id": 555670,
+          "DATASETVALUE": "0",
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790996
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 33,
+      "KEY_WORD_NAME": "SearchAndUpdateTable",
+      "OBJECT_HAPPY_NAME": "FULL_TERMINATION_SERIALIZE_DATA_TABLE",
+      "OBJECT_ID": 45746,
+      "OBJECT_TYPE": "FULL_TERMINATION",
+      "QUICK_ACCESS": "swfname:=serializedDataSpreadsheetControl1",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25555,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 790996,
+      "COLUMN_ROW_SETTING": "1;_NotlNewCol;1",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 30,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555476,
+          "DATASETVALUE": "0",
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790996
+        },
+        {
+          "Data_Setting_Id": 555479,
+          "DATASETVALUE": "0",
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790996
+        },
+        {
+          "Data_Setting_Id": 555478,
+          "DATASETVALUE": "0",
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790996
+        },
+        {
+          "Data_Setting_Id": 555477,
+          "DATASETVALUE": "0",
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790996
+        },
+        {
+          "Data_Setting_Id": 555480,
+          "DATASETVALUE": "0",
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790996
+        },
+        {
+          "Data_Setting_Id": 555670,
+          "DATASETVALUE": "0",
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790996
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 33,
+      "KEY_WORD_NAME": "SearchAndUpdateTable",
+      "OBJECT_HAPPY_NAME": "FULL_TERMINATION_SERIALIZE_DATA_TABLE",
+      "OBJECT_ID": 36940,
+      "OBJECT_TYPE": "FULL_TERMINATION",
+      "QUICK_ACCESS": "swfname:=serializedDataSpreadsheetControl1",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25555,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 790996,
+      "COLUMN_ROW_SETTING": "1;_NotlNewCol;1",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 30,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555481,
+          "DATASETVALUE": "0",
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790997
+        },
+        {
+          "Data_Setting_Id": 555484,
+          "DATASETVALUE": "0",
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790997
+        },
+        {
+          "Data_Setting_Id": 555483,
+          "DATASETVALUE": "0",
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790997
+        },
+        {
+          "Data_Setting_Id": 555482,
+          "DATASETVALUE": "0",
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790997
+        },
+        {
+          "Data_Setting_Id": 555485,
+          "DATASETVALUE": "0",
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790997
+        },
+        {
+          "Data_Setting_Id": 555671,
+          "DATASETVALUE": "0",
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790997
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 33,
+      "KEY_WORD_NAME": "SearchAndUpdateTable",
+      "OBJECT_HAPPY_NAME": "FULL_TERMINATION_SERIALIZE_DATA_TABLE",
+      "OBJECT_ID": 45746,
+      "OBJECT_TYPE": "FULL_TERMINATION",
+      "QUICK_ACCESS": "swfname:=serializedDataSpreadsheetControl1",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25555,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 790997,
+      "COLUMN_ROW_SETTING": "2;_NotlNewCol;1",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 31,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555481,
+          "DATASETVALUE": "0",
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790997
+        },
+        {
+          "Data_Setting_Id": 555484,
+          "DATASETVALUE": "0",
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790997
+        },
+        {
+          "Data_Setting_Id": 555483,
+          "DATASETVALUE": "0",
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790997
+        },
+        {
+          "Data_Setting_Id": 555482,
+          "DATASETVALUE": "0",
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790997
+        },
+        {
+          "Data_Setting_Id": 555485,
+          "DATASETVALUE": "0",
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790997
+        },
+        {
+          "Data_Setting_Id": 555671,
+          "DATASETVALUE": "0",
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790997
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 33,
+      "KEY_WORD_NAME": "SearchAndUpdateTable",
+      "OBJECT_HAPPY_NAME": "FULL_TERMINATION_SERIALIZE_DATA_TABLE",
+      "OBJECT_ID": 36940,
+      "OBJECT_TYPE": "FULL_TERMINATION",
+      "QUICK_ACCESS": "swfname:=serializedDataSpreadsheetControl1",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25555,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 790997,
+      "COLUMN_ROW_SETTING": "2;_NotlNewCol;1",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 31,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555486,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790998
+        },
+        {
+          "Data_Setting_Id": 555489,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790998
+        },
+        {
+          "Data_Setting_Id": 555488,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790998
+        },
+        {
+          "Data_Setting_Id": 555487,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790998
+        },
+        {
+          "Data_Setting_Id": 555490,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790998
+        },
+        {
+          "Data_Setting_Id": 555672,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790998
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 790998,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 32,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555491,
+          "DATASETVALUE": "{down}",
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790999
+        },
+        {
+          "Data_Setting_Id": 555494,
+          "DATASETVALUE": "{down}",
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790999
+        },
+        {
+          "Data_Setting_Id": 555493,
+          "DATASETVALUE": "{down}",
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790999
+        },
+        {
+          "Data_Setting_Id": 555492,
+          "DATASETVALUE": "{down}",
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790999
+        },
+        {
+          "Data_Setting_Id": 555495,
+          "DATASETVALUE": "{down}",
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790999
+        },
+        {
+          "Data_Setting_Id": 555673,
+          "DATASETVALUE": "{down}",
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790999
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 33,
+      "KEY_WORD_NAME": "SearchAndUpdateTable",
+      "OBJECT_HAPPY_NAME": "FULL_TERMINATION_SERIALIZE_DATA_TABLE",
+      "OBJECT_ID": 45746,
+      "OBJECT_TYPE": "FULL_TERMINATION",
+      "QUICK_ACCESS": "swfname:=serializedDataSpreadsheetControl1",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25555,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 790999,
+      "COLUMN_ROW_SETTING": "1;_FeeTypeCol;1",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 33,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555491,
+          "DATASETVALUE": "{down}",
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 790999
+        },
+        {
+          "Data_Setting_Id": 555494,
+          "DATASETVALUE": "{down}",
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 790999
+        },
+        {
+          "Data_Setting_Id": 555493,
+          "DATASETVALUE": "{down}",
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 790999
+        },
+        {
+          "Data_Setting_Id": 555492,
+          "DATASETVALUE": "{down}",
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 790999
+        },
+        {
+          "Data_Setting_Id": 555495,
+          "DATASETVALUE": "{down}",
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 790999
+        },
+        {
+          "Data_Setting_Id": 555673,
+          "DATASETVALUE": "{down}",
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 790999
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 33,
+      "KEY_WORD_NAME": "SearchAndUpdateTable",
+      "OBJECT_HAPPY_NAME": "FULL_TERMINATION_SERIALIZE_DATA_TABLE",
+      "OBJECT_ID": 36940,
+      "OBJECT_TYPE": "FULL_TERMINATION",
+      "QUICK_ACCESS": "swfname:=serializedDataSpreadsheetControl1",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25555,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 790999,
+      "COLUMN_ROW_SETTING": "1;_FeeTypeCol;1",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 33,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555496,
+          "DATASETVALUE": "F/E{TAB}",
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 791000
+        },
+        {
+          "Data_Setting_Id": 555499,
+          "DATASETVALUE": "F/E{TAB}",
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 791000
+        },
+        {
+          "Data_Setting_Id": 555498,
+          "DATASETVALUE": "F/E{TAB}",
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 791000
+        },
+        {
+          "Data_Setting_Id": 555497,
+          "DATASETVALUE": "F/E{TAB}",
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 791000
+        },
+        {
+          "Data_Setting_Id": 555500,
+          "DATASETVALUE": "F/E{TAB}",
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 791000
+        },
+        {
+          "Data_Setting_Id": 555674,
+          "DATASETVALUE": "F/E{TAB}",
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 791000
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 33,
+      "KEY_WORD_NAME": "SearchAndUpdateTable",
+      "OBJECT_HAPPY_NAME": "FULL_TERMINATION_SERIALIZE_DATA_TABLE",
+      "OBJECT_ID": 45746,
+      "OBJECT_TYPE": "FULL_TERMINATION",
+      "QUICK_ACCESS": "swfname:=serializedDataSpreadsheetControl1",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25555,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 791000,
+      "COLUMN_ROW_SETTING": "1;_FeeTypeCol;1",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 34,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555496,
+          "DATASETVALUE": "F/E{TAB}",
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 791000
+        },
+        {
+          "Data_Setting_Id": 555499,
+          "DATASETVALUE": "F/E{TAB}",
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 791000
+        },
+        {
+          "Data_Setting_Id": 555498,
+          "DATASETVALUE": "F/E{TAB}",
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 791000
+        },
+        {
+          "Data_Setting_Id": 555497,
+          "DATASETVALUE": "F/E{TAB}",
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 791000
+        },
+        {
+          "Data_Setting_Id": 555500,
+          "DATASETVALUE": "F/E{TAB}",
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 791000
+        },
+        {
+          "Data_Setting_Id": 555674,
+          "DATASETVALUE": "F/E{TAB}",
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 791000
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 33,
+      "KEY_WORD_NAME": "SearchAndUpdateTable",
+      "OBJECT_HAPPY_NAME": "FULL_TERMINATION_SERIALIZE_DATA_TABLE",
+      "OBJECT_ID": 36940,
+      "OBJECT_TYPE": "FULL_TERMINATION",
+      "QUICK_ACCESS": "swfname:=serializedDataSpreadsheetControl1",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25555,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 791000,
+      "COLUMN_ROW_SETTING": "1;_FeeTypeCol;1",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 34,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555501,
+          "DATASETVALUE": "50T",
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 791001
+        },
+        {
+          "Data_Setting_Id": 555504,
+          "DATASETVALUE": "50T",
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 791001
+        },
+        {
+          "Data_Setting_Id": 555503,
+          "DATASETVALUE": "50T",
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 791001
+        },
+        {
+          "Data_Setting_Id": 555502,
+          "DATASETVALUE": "50T",
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 791001
+        },
+        {
+          "Data_Setting_Id": 555505,
+          "DATASETVALUE": "50T",
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 791001
+        },
+        {
+          "Data_Setting_Id": 555675,
+          "DATASETVALUE": "50T",
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 791001
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 33,
+      "KEY_WORD_NAME": "SearchAndUpdateTable",
+      "OBJECT_HAPPY_NAME": "FULL_TERMINATION_SERIALIZE_DATA_TABLE",
+      "OBJECT_ID": 45746,
+      "OBJECT_TYPE": "FULL_TERMINATION",
+      "QUICK_ACCESS": "swfname:=serializedDataSpreadsheetControl1",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25555,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 791001,
+      "COLUMN_ROW_SETTING": "1;_FeeAmountCol;1",
+      "COMMENTINFO": "1;_FeeAmountCol;1",
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 35,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555501,
+          "DATASETVALUE": "50T",
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 791001
+        },
+        {
+          "Data_Setting_Id": 555504,
+          "DATASETVALUE": "50T",
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 791001
+        },
+        {
+          "Data_Setting_Id": 555503,
+          "DATASETVALUE": "50T",
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 791001
+        },
+        {
+          "Data_Setting_Id": 555502,
+          "DATASETVALUE": "50T",
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 791001
+        },
+        {
+          "Data_Setting_Id": 555505,
+          "DATASETVALUE": "50T",
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 791001
+        },
+        {
+          "Data_Setting_Id": 555675,
+          "DATASETVALUE": "50T",
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 791001
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 33,
+      "KEY_WORD_NAME": "SearchAndUpdateTable",
+      "OBJECT_HAPPY_NAME": "FULL_TERMINATION_SERIALIZE_DATA_TABLE",
+      "OBJECT_ID": 36940,
+      "OBJECT_TYPE": "FULL_TERMINATION",
+      "QUICK_ACCESS": "swfname:=serializedDataSpreadsheetControl1",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25555,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 791001,
+      "COLUMN_ROW_SETTING": "1;_FeeAmountCol;1",
+      "COMMENTINFO": "1;_FeeAmountCol;1",
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 35,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555506,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 791002
+        },
+        {
+          "Data_Setting_Id": 555509,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 791002
+        },
+        {
+          "Data_Setting_Id": 555508,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 791002
+        },
+        {
+          "Data_Setting_Id": 555507,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 791002
+        },
+        {
+          "Data_Setting_Id": 555510,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 791002
+        },
+        {
+          "Data_Setting_Id": 555676,
+          "DATASETVALUE": "10",
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 791002
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 791002,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 36,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555511,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 791003
+        },
+        {
+          "Data_Setting_Id": 555514,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 791003
+        },
+        {
+          "Data_Setting_Id": 555513,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 791003
+        },
+        {
+          "Data_Setting_Id": 555512,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 791003
+        },
+        {
+          "Data_Setting_Id": 555515,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 791003
+        },
+        {
+          "Data_Setting_Id": 555677,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 791003
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "FULL_TERMINATION_CALCULATE",
+      "OBJECT_ID": 41168,
+      "OBJECT_TYPE": "FULL_TERMINATION",
+      "QUICK_ACCESS": "swfname:=_calcBtn",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 31813,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 791003,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 37,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555511,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 791003
+        },
+        {
+          "Data_Setting_Id": 555514,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 791003
+        },
+        {
+          "Data_Setting_Id": 555513,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 791003
+        },
+        {
+          "Data_Setting_Id": 555512,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 791003
+        },
+        {
+          "Data_Setting_Id": 555515,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 791003
+        },
+        {
+          "Data_Setting_Id": 555677,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 791003
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "FULL_TERMINATION_CALCULATE",
+      "OBJECT_ID": 33315,
+      "OBJECT_TYPE": "FULL_TERMINATION",
+      "QUICK_ACCESS": "swfname:=_calcBtn",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 31813,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 791003,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 37,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555516,
+          "DATASETVALUE": "FULL_TERMINATION",
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 791004
+        },
+        {
+          "Data_Setting_Id": 555519,
+          "DATASETVALUE": "FULL_TERMINATION",
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 791004
+        },
+        {
+          "Data_Setting_Id": 555518,
+          "DATASETVALUE": "FULL_TERMINATION",
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 791004
+        },
+        {
+          "Data_Setting_Id": 555517,
+          "DATASETVALUE": "FULL_TERMINATION",
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 791004
+        },
+        {
+          "Data_Setting_Id": 555520,
+          "DATASETVALUE": "FULL_TERMINATION",
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 791004
+        },
+        {
+          "Data_Setting_Id": 555678,
+          "DATASETVALUE": "FULL_TERMINATION",
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 791004
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "FULL_TERMINATION",
+      "OBJECT_ID": 36241,
+      "OBJECT_TYPE": "FULL_TERMINATION",
+      "QUICK_ACCESS": "text:=^Full Termination.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24955,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 791004,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 38,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555516,
+          "DATASETVALUE": "FULL_TERMINATION",
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 791004
+        },
+        {
+          "Data_Setting_Id": 555519,
+          "DATASETVALUE": "FULL_TERMINATION",
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 791004
+        },
+        {
+          "Data_Setting_Id": 555518,
+          "DATASETVALUE": "FULL_TERMINATION",
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 791004
+        },
+        {
+          "Data_Setting_Id": 555517,
+          "DATASETVALUE": "FULL_TERMINATION",
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 791004
+        },
+        {
+          "Data_Setting_Id": 555520,
+          "DATASETVALUE": "FULL_TERMINATION",
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 791004
+        },
+        {
+          "Data_Setting_Id": 555678,
+          "DATASETVALUE": "FULL_TERMINATION",
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 791004
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "FULL_TERMINATION",
+      "OBJECT_ID": 45231,
+      "OBJECT_TYPE": "FULL_TERMINATION",
+      "QUICK_ACCESS": "text:=^Full Termination.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24955,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 791004,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 38,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555521,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 791005
+        },
+        {
+          "Data_Setting_Id": 555524,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 791005
+        },
+        {
+          "Data_Setting_Id": 555523,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 791005
+        },
+        {
+          "Data_Setting_Id": 555522,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 791005
+        },
+        {
+          "Data_Setting_Id": 555525,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 791005
+        },
+        {
+          "Data_Setting_Id": 555679,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 791005
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 791005,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 39,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555526,
+          "DATASETVALUE": "TEXT|\"Full Termination\"|IMAGE:FULL_TERMINATION",
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 791006
+        },
+        {
+          "Data_Setting_Id": 555529,
+          "DATASETVALUE": "TEXT|\"Full Termination\"|IMAGE:FULL_TERMINATION",
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 791006
+        },
+        {
+          "Data_Setting_Id": 555528,
+          "DATASETVALUE": "TEXT|\"Full Termination\"|IMAGE:FULL_TERMINATION",
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 791006
+        },
+        {
+          "Data_Setting_Id": 555527,
+          "DATASETVALUE": "TEXT|\"Full Termination\"|IMAGE:FULL_TERMINATION",
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 791006
+        },
+        {
+          "Data_Setting_Id": 555530,
+          "DATASETVALUE": "TEXT|\"Full Termination\"|IMAGE:FULL_TERMINATION",
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 791006
+        },
+        {
+          "Data_Setting_Id": 555680,
+          "DATASETVALUE": "TEXT|\"Full Termination\"|IMAGE:FULL_TERMINATION",
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 791006
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 10819,
+      "KEY_WORD_NAME": "Comment",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 791006,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 40,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555531,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 791007
+        },
+        {
+          "Data_Setting_Id": 555534,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 791007
+        },
+        {
+          "Data_Setting_Id": 555533,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 791007
+        },
+        {
+          "Data_Setting_Id": 555532,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 791007
+        },
+        {
+          "Data_Setting_Id": 555535,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 791007
+        },
+        {
+          "Data_Setting_Id": 555681,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 791007
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "FULL_TERMINATION_OK",
+      "OBJECT_ID": 48132,
+      "OBJECT_TYPE": "FULL_TERMINATION",
+      "QUICK_ACCESS": "swfname:=_okBtn",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 28297,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 791007,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 41,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555531,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 791007
+        },
+        {
+          "Data_Setting_Id": 555534,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 791007
+        },
+        {
+          "Data_Setting_Id": 555533,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 791007
+        },
+        {
+          "Data_Setting_Id": 555532,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 791007
+        },
+        {
+          "Data_Setting_Id": 555535,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 791007
+        },
+        {
+          "Data_Setting_Id": 555681,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 791007
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "FULL_TERMINATION_OK",
+      "OBJECT_ID": 39936,
+      "OBJECT_TYPE": "FULL_TERMINATION",
+      "QUICK_ACCESS": "swfname:=_okBtn",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 28297,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 791007,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 41,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555536,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 791008
+        },
+        {
+          "Data_Setting_Id": 555539,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 791008
+        },
+        {
+          "Data_Setting_Id": 555538,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 791008
+        },
+        {
+          "Data_Setting_Id": 555537,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 791008
+        },
+        {
+          "Data_Setting_Id": 555540,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 791008
+        },
+        {
+          "Data_Setting_Id": 555682,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 791008
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 38,
+      "KEY_WORD_NAME": "Dismiss",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 791008,
+      "COLUMN_ROW_SETTING": "5",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 42,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555541,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 791009
+        },
+        {
+          "Data_Setting_Id": 555544,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 791009
+        },
+        {
+          "Data_Setting_Id": 555543,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 791009
+        },
+        {
+          "Data_Setting_Id": 555542,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 791009
+        },
+        {
+          "Data_Setting_Id": 555545,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 791009
+        },
+        {
+          "Data_Setting_Id": 555683,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 791009
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "SWAP_TRADE",
+      "OBJECT_ID": 41203,
+      "OBJECT_TYPE": "SWAP_TRADE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24908,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 791009,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 43,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555541,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 791009
+        },
+        {
+          "Data_Setting_Id": 555544,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 791009
+        },
+        {
+          "Data_Setting_Id": 555543,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 791009
+        },
+        {
+          "Data_Setting_Id": 555542,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 791009
+        },
+        {
+          "Data_Setting_Id": 555545,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 791009
+        },
+        {
+          "Data_Setting_Id": 555683,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 791009
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "SWAP_TRADE",
+      "OBJECT_ID": 33353,
+      "OBJECT_TYPE": "SWAP_TRADE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24908,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 791009,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 43,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555546,
+          "DATASETVALUE": "TRADE_FTERMINATION",
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 791010
+        },
+        {
+          "Data_Setting_Id": 555549,
+          "DATASETVALUE": "TRADE_FTERMINATION",
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 791010
+        },
+        {
+          "Data_Setting_Id": 555548,
+          "DATASETVALUE": "TRADE_FTERMINATION",
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 791010
+        },
+        {
+          "Data_Setting_Id": 555547,
+          "DATASETVALUE": "TRADE_FTERMINATION",
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 791010
+        },
+        {
+          "Data_Setting_Id": 555550,
+          "DATASETVALUE": "TRADE_FTERMINATION",
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 791010
+        },
+        {
+          "Data_Setting_Id": 555684,
+          "DATASETVALUE": "TRADE_FTERMINATION",
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 791010
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "SWAP_TRADE_STATE",
+      "OBJECT_ID": 39323,
+      "OBJECT_TYPE": "SWAP_TRADE",
+      "QUICK_ACCESS": "swfname:=_extStateLabel",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 32109,
+      "TYPE_NAME": "SwfLabel",
+      "STEPS_ID": 791010,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 44,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555546,
+          "DATASETVALUE": "TRADE_FTERMINATION",
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 791010
+        },
+        {
+          "Data_Setting_Id": 555549,
+          "DATASETVALUE": "TRADE_FTERMINATION",
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 791010
+        },
+        {
+          "Data_Setting_Id": 555548,
+          "DATASETVALUE": "TRADE_FTERMINATION",
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 791010
+        },
+        {
+          "Data_Setting_Id": 555547,
+          "DATASETVALUE": "TRADE_FTERMINATION",
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 791010
+        },
+        {
+          "Data_Setting_Id": 555550,
+          "DATASETVALUE": "TRADE_FTERMINATION",
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 791010
+        },
+        {
+          "Data_Setting_Id": 555684,
+          "DATASETVALUE": "TRADE_FTERMINATION",
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 791010
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "SWAP_TRADE_STATE",
+      "OBJECT_ID": 47501,
+      "OBJECT_TYPE": "SWAP_TRADE",
+      "QUICK_ACCESS": "swfname:=_extStateLabel",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 32109,
+      "TYPE_NAME": "SwfLabel",
+      "STEPS_ID": 791010,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 44,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555551,
+          "DATASETVALUE": "TRADE_ID",
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 791011
+        },
+        {
+          "Data_Setting_Id": 555554,
+          "DATASETVALUE": "TRADE_ID",
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 791011
+        },
+        {
+          "Data_Setting_Id": 555553,
+          "DATASETVALUE": "TRADE_ID",
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 791011
+        },
+        {
+          "Data_Setting_Id": 555552,
+          "DATASETVALUE": "TRADE_ID",
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 791011
+        },
+        {
+          "Data_Setting_Id": 555555,
+          "DATASETVALUE": "TRADE_ID",
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 791011
+        },
+        {
+          "Data_Setting_Id": 555685,
+          "DATASETVALUE": "TRADE_ID",
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 791011
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 1,
+      "KEY_WORD_NAME": "CaptureValue",
+      "OBJECT_HAPPY_NAME": "SWAP_TRADE_ID",
+      "OBJECT_ID": 45725,
+      "OBJECT_TYPE": "SWAP_TRADE",
+      "QUICK_ACCESS": "swfname:=_tradeIDLabel",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 25779,
+      "TYPE_NAME": "SwfLabel",
+      "STEPS_ID": 791011,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 45,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555551,
+          "DATASETVALUE": "TRADE_ID",
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 791011
+        },
+        {
+          "Data_Setting_Id": 555554,
+          "DATASETVALUE": "TRADE_ID",
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 791011
+        },
+        {
+          "Data_Setting_Id": 555553,
+          "DATASETVALUE": "TRADE_ID",
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 791011
+        },
+        {
+          "Data_Setting_Id": 555552,
+          "DATASETVALUE": "TRADE_ID",
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 791011
+        },
+        {
+          "Data_Setting_Id": 555555,
+          "DATASETVALUE": "TRADE_ID",
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 791011
+        },
+        {
+          "Data_Setting_Id": 555685,
+          "DATASETVALUE": "TRADE_ID",
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 791011
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 1,
+      "KEY_WORD_NAME": "CaptureValue",
+      "OBJECT_HAPPY_NAME": "SWAP_TRADE_ID",
+      "OBJECT_ID": 36919,
+      "OBJECT_TYPE": "SWAP_TRADE",
+      "QUICK_ACCESS": "swfname:=_tradeIDLabel",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 25779,
+      "TYPE_NAME": "SwfLabel",
+      "STEPS_ID": 791011,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 45,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555556,
+          "DATASETVALUE": "SWAP_TRADE_AFTER",
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 791012
+        },
+        {
+          "Data_Setting_Id": 555559,
+          "DATASETVALUE": "SWAP_TRADE_AFTER",
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 791012
+        },
+        {
+          "Data_Setting_Id": 555558,
+          "DATASETVALUE": "SWAP_TRADE_AFTER",
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 791012
+        },
+        {
+          "Data_Setting_Id": 555557,
+          "DATASETVALUE": "SWAP_TRADE_AFTER",
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 791012
+        },
+        {
+          "Data_Setting_Id": 555560,
+          "DATASETVALUE": "SWAP_TRADE_AFTER",
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 791012
+        },
+        {
+          "Data_Setting_Id": 555686,
+          "DATASETVALUE": "SWAP_TRADE_AFTER",
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 791012
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "SWAP_TRADE",
+      "OBJECT_ID": 41203,
+      "OBJECT_TYPE": "SWAP_TRADE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24908,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 791012,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 46,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555556,
+          "DATASETVALUE": "SWAP_TRADE_AFTER",
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 791012
+        },
+        {
+          "Data_Setting_Id": 555559,
+          "DATASETVALUE": "SWAP_TRADE_AFTER",
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 791012
+        },
+        {
+          "Data_Setting_Id": 555558,
+          "DATASETVALUE": "SWAP_TRADE_AFTER",
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 791012
+        },
+        {
+          "Data_Setting_Id": 555557,
+          "DATASETVALUE": "SWAP_TRADE_AFTER",
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 791012
+        },
+        {
+          "Data_Setting_Id": 555560,
+          "DATASETVALUE": "SWAP_TRADE_AFTER",
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 791012
+        },
+        {
+          "Data_Setting_Id": 555686,
+          "DATASETVALUE": "SWAP_TRADE_AFTER",
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 791012
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "SWAP_TRADE",
+      "OBJECT_ID": 33353,
+      "OBJECT_TYPE": "SWAP_TRADE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24908,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 791012,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 46,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555561,
+          "DATASETVALUE": "TEXT|\"Swap Trade After Full Termination\"|IMAGE:SWAP_TRADE_AFTER",
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 791013
+        },
+        {
+          "Data_Setting_Id": 555564,
+          "DATASETVALUE": "TEXT|\"Swap Trade After Full Termination\"|IMAGE:SWAP_TRADE_AFTER",
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 791013
+        },
+        {
+          "Data_Setting_Id": 555563,
+          "DATASETVALUE": "TEXT|\"Swap Trade After Full Termination\"|IMAGE:SWAP_TRADE_AFTER",
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 791013
+        },
+        {
+          "Data_Setting_Id": 555562,
+          "DATASETVALUE": "TEXT|\"Swap Trade After Full Termination\"|IMAGE:SWAP_TRADE_AFTER",
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 791013
+        },
+        {
+          "Data_Setting_Id": 555565,
+          "DATASETVALUE": "TEXT|\"Swap Trade After Full Termination\"|IMAGE:SWAP_TRADE_AFTER",
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 791013
+        },
+        {
+          "Data_Setting_Id": 555687,
+          "DATASETVALUE": "TEXT|\"Swap Trade After Full Termination\"|IMAGE:SWAP_TRADE_AFTER",
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 791013
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 10819,
+      "KEY_WORD_NAME": "Comment",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 791013,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 47,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555566,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 791014
+        },
+        {
+          "Data_Setting_Id": 555569,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 791014
+        },
+        {
+          "Data_Setting_Id": 555568,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 791014
+        },
+        {
+          "Data_Setting_Id": 555567,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 791014
+        },
+        {
+          "Data_Setting_Id": 555570,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 791014
+        },
+        {
+          "Data_Setting_Id": 555688,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 791014
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 3,
+      "KEY_WORD_NAME": "CheckError",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 791014,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 48,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555571,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 791015
+        },
+        {
+          "Data_Setting_Id": 555574,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 791015
+        },
+        {
+          "Data_Setting_Id": 555573,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 791015
+        },
+        {
+          "Data_Setting_Id": 555572,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 791015
+        },
+        {
+          "Data_Setting_Id": 555575,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 791015
+        },
+        {
+          "Data_Setting_Id": 555689,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 791015
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 32286,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 791015,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 49,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555571,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 791015
+        },
+        {
+          "Data_Setting_Id": 555574,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 791015
+        },
+        {
+          "Data_Setting_Id": 555573,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 791015
+        },
+        {
+          "Data_Setting_Id": 555572,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 791015
+        },
+        {
+          "Data_Setting_Id": 555575,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 791015
+        },
+        {
+          "Data_Setting_Id": 555689,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 791015
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 40604,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 24912,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 791015,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 49,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555576,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 791016
+        },
+        {
+          "Data_Setting_Id": 555579,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 791016
+        },
+        {
+          "Data_Setting_Id": 555578,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 791016
+        },
+        {
+          "Data_Setting_Id": 555577,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 791016
+        },
+        {
+          "Data_Setting_Id": 555580,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 791016
+        },
+        {
+          "Data_Setting_Id": 555690,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 791016
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 32409,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 193,
+      "OBJECT_NAME_ID": 30430,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 791016,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 50,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 555576,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790820,
+          "SKIP": 0,
+          "STEPS_ID": 791016
+        },
+        {
+          "Data_Setting_Id": 555579,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790830,
+          "SKIP": 0,
+          "STEPS_ID": 791016
+        },
+        {
+          "Data_Setting_Id": 555578,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790826,
+          "SKIP": 0,
+          "STEPS_ID": 791016
+        },
+        {
+          "Data_Setting_Id": 555577,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790821,
+          "SKIP": 0,
+          "STEPS_ID": 791016
+        },
+        {
+          "Data_Setting_Id": 555580,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 790836,
+          "SKIP": 0,
+          "STEPS_ID": 791016
+        },
+        {
+          "Data_Setting_Id": 555690,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 793261,
+          "SKIP": 0,
+          "STEPS_ID": 791016
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 4167,
+      "TEST_CASE_NAME": "DOC Swap Full Termination",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 40727,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 30430,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 791016,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 50,
+      "VALUE_SETTING": null
+    }
+  ]
+}
