@@ -165,6 +165,13 @@ namespace MARS_Web.Controllers
                     Session["ProjectId"] = null;
                     resultModel.data = lResult;
                     resultModel.message = "Test Case Deleted Successfully";
+                    var repTree = new GetTreeRepository();
+                    var lSchema = SessionManager.Schema;
+                    var lConnectionStr = SessionManager.APP;
+                    var entityConnectString = SessionManager.ConnectionString;
+                    InitCacheHelper.TestCaseInit(entityConnectString,lSchema, repTree, lConnectionStr);
+                    InitCacheHelper.TestSuitInit(entityConnectString,lSchema, repTree, lConnectionStr);
+                    InitCacheHelper.DataSetInit(entityConnectString,lSchema, repTree, lConnectionStr);
                 }
                 else
                     resultModel.data = lflag;
@@ -219,6 +226,11 @@ namespace MARS_Web.Controllers
                     resultModel.message = "Successfully " + flag + " Test Case.";
                     Session["LeftProjectList"] = repTree.GetProjectList(SessionManager.TESTER_ID, lSchema, lConnectionStr);
                 }
+                var entityConnectString = SessionManager.ConnectionString;
+                InitCacheHelper.TestCaseInit(entityConnectString,lSchema, repTree,lConnectionStr);
+                InitCacheHelper.TestSuitInit(entityConnectString,lSchema, repTree, lConnectionStr);
+                InitCacheHelper.DataSetInit(entityConnectString, lSchema, repTree, lConnectionStr);
+
                 resultModel.status = 1;
             }
             catch (Exception ex)
@@ -865,7 +877,17 @@ namespace MARS_Web.Controllers
                 };
                 TestCaseRepository tc = new TestCaseRepository();
                 string fullFilePath = CreateTestcaseFolder();
-                string filePath = string.Format("{0}_{1}.json", testCaseId, tc.GetTestCaseNameById(testCaseId));
+                var schema = SessionManager.Schema;
+                string testCaseName = "";
+                if (GlobalVariable.TestCaseListCache != null && GlobalVariable.TestCaseListCache.ContainsKey(schema))
+                {
+                    testCaseName = GlobalVariable.TestCaseListCache[schema].FirstOrDefault(r => r.TestcaseId == testCaseId)?.TestcaseName;
+                } 
+                else
+                {
+                    testCaseName = tc.GetTestCaseNameById(testCaseId);
+                }
+                string filePath = string.Format("{0}_{1}.json", testCaseId, testCaseName);
 
                 Mars_Memory_TestCase allList = new Mars_Memory_TestCase();
                 string testcaseSessionName = string.Format("{0}_Testcase_{1}", SessionManager.Schema, testCaseId);

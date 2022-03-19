@@ -188,7 +188,7 @@ namespace MARS_Web.Controllers
                                 SessionManager.TESTER_LOGIN_NAME = loginUser.TESTER_LOGIN_NAME;
                                 SessionManager.TESTER_NUMBER = loginUser.TESTER_NUMBER;
                                 lMsg = "Succefully Logged!!";
-                                repTestCase.UpdateIsAvailableReload((long)loginUser.TESTER_ID);
+                                System.Threading.Tasks.Task.Run(()=>repTestCase.UpdateIsAvailableReload((long)loginUser.TESTER_ID));
                             }
                             else
                                 lMsg = "Password did not match.";
@@ -539,9 +539,16 @@ namespace MARS_Web.Controllers
             {
                 DBEntities.ConnectionString = SessionManager.ConnectionString;
                 DBEntities.Schema = SessionManager.Schema;
-
-                var repTree = new GetTreeRepository();
-                lTestSuiteList = repTree.GetTestSuiteList(ProjectId);
+                if (GlobalVariable.TestSuiteListCache != null && GlobalVariable.TestSuiteListCache.ContainsKey(SessionManager.Schema))
+                {
+                    lTestSuiteList = GlobalVariable.TestSuiteListCache[SessionManager.Schema].FindAll(r => r.ProjectId == ProjectId);
+                    lTestSuiteList.OrderBy(x => x.TestsuiteName);
+                }
+                else
+                {
+                    var repTree = new GetTreeRepository();
+                    lTestSuiteList = repTree.GetTestSuiteList(ProjectId);
+                }
             }
             catch (Exception ex)
             {
@@ -561,9 +568,16 @@ namespace MARS_Web.Controllers
             {
                 DBEntities.ConnectionString = SessionManager.ConnectionString;
                 DBEntities.Schema = SessionManager.Schema;
-
-                var repTree = new GetTreeRepository();
-                lTestSuiteList = repTree.GetTestCaseList(ProjectId, TestSuiteId);
+                if (GlobalVariable.TestCaseListCache != null && GlobalVariable.TestCaseListCache.ContainsKey(SessionManager.Schema))
+                {
+                    lTestSuiteList = GlobalVariable.TestCaseListCache[SessionManager.Schema].FindAll(r=>r.ProjectId==ProjectId && r.TestsuiteId==TestSuiteId);
+                    lTestSuiteList.OrderBy(x => x.TestcaseName);
+                }
+                else
+                {
+                    var repTree = new GetTreeRepository();
+                    lTestSuiteList = repTree.GetTestCaseList(ProjectId, TestSuiteId);
+                }
             }
             catch (Exception ex)
             {
@@ -582,9 +596,17 @@ namespace MARS_Web.Controllers
             {
                 DBEntities.ConnectionString = SessionManager.ConnectionString;
                 DBEntities.Schema = SessionManager.Schema;
-
-                var repTree = new GetTreeRepository();
-                ldatasetlist = repTree.GetDataSetList(lProjectId, lTestSuiteId, lTestCaseId, lProjectName, lTestSuiteName, lTestCaseName);
+                if (GlobalVariable.DataSetListCache != null && GlobalVariable.DataSetListCache.ContainsKey(SessionManager.Schema))
+                {
+                    ldatasetlist = GlobalVariable.DataSetListCache[SessionManager.Schema].FindAll(r=>r.ProjectId==lProjectId && 
+                                r.TestsuiteId ==lTestSuiteId && r.TestcaseId ==lTestCaseId);
+                    ldatasetlist.OrderBy(x => x.Datasetname);
+                }
+                else
+                {
+                    var repTree = new GetTreeRepository();
+                    ldatasetlist = repTree.GetDataSetList(lProjectId, lTestSuiteId, lTestCaseId, lProjectName, lTestSuiteName, lTestCaseName);
+                }
             }
             catch (Exception ex)
             {
@@ -603,9 +625,16 @@ namespace MARS_Web.Controllers
             {
                 DBEntities.ConnectionString = SessionManager.ConnectionString;
                 DBEntities.Schema = SessionManager.Schema;
-
-                var repTree = new GetTreeRepository();
-                lstoryboardlist = repTree.GetStoryboardList(ProjectId);
+                if (GlobalVariable.StoryBoardListCache != null && GlobalVariable.StoryBoardListCache.ContainsKey(SessionManager.Schema))
+                {
+                    lstoryboardlist = GlobalVariable.StoryBoardListCache[SessionManager.Schema].FindAll(r=>r.ProjectId==ProjectId);
+                    lstoryboardlist.OrderBy(x => x.StoryboardName).ToList();
+                }
+                else
+                {
+                    var repTree = new GetTreeRepository();
+                    lstoryboardlist = repTree.GetStoryboardList(ProjectId);
+                }
             }
             catch (Exception ex)
             {

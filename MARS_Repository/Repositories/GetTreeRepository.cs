@@ -264,6 +264,8 @@ namespace MARS_Repository.Repositories
             try
             {
                 logger.Info(string.Format("Get Storyboard List start | ProjectId: {0} | UserName: {1}", lProjectId, Username));
+                System.Diagnostics.Stopwatch sw = new System.Diagnostics.Stopwatch();
+                sw.Start();
                 var lStoryboardTree = new List<StoryBoardListByProject>();
                 var lResult = from t2 in entity.T_STORYBOARD_SUMMARY
                               join t1 in entity.T_TEST_PROJECT on t2.ASSIGNED_PROJECT_ID equals t1.PROJECT_ID
@@ -277,12 +279,48 @@ namespace MARS_Repository.Repositories
                                   Storyboardescription = t2.DESCRIPTION
                               };
 
-                if (lResult.Count() > 0)
-                {
+                //if (lResult.Count() > 0)
+                //{
                     lStoryboardTree = lResult.Distinct().OrderBy(x => x.StoryboardName).ToList();
-                }
-                logger.Info(string.Format("Get Storyboard List end | ProjectId: {0} | UserName: {1}", lProjectId, Username));
+                //}
+                sw.Stop();
+                sw.Restart();
+                //               var result =  entity.Database.SqlQuery<StoryBoardListByProject>($@"select distinct t1.PROJECT_ID as  ProjectId, t1.PROJECT_NAME as  ProjectName ,
+                //t2.STORYBOARD_ID as StoryboardId, t2.STORYBOARD_NAME as StoryboardName,
+                // t2.DESCRIPTION as Storyboardescription  from T_STORYBOARD_SUMMARY t2
+                // join T_TEST_PROJECT t1 on t1.PROJECT_ID = t2.ASSIGNED_PROJECT_ID
+                //where t2.ASSIGNED_PROJECT_ID = {lProjectId} and t2.STORYBOARD_NAME is not null");
+                //                var ss = result.ToList();
+                /*var lStoryboardTree1 = new List<StoryBoardListByProject>();
+                using (OracleConnection con = new OracleConnection(@"Data Source=(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=40.76.111.78)(PORT=1521))(CONNECT_DATA=(SERVER=DEDICACATED)(SERVICE_NAME=orclpdb.hybkaalv5llunibolgwj0r0pdf.bx.internal.cloudapp.net)));User Id=GEN_MARS_20;Password=GEN_MARS_20;pooling=false;Connection Timeout=100;"))
+                {
+                    OracleCommand cmd = new OracleCommand
+                    {
+                        CommandText = $@"select distinct t1.PROJECT_ID as  ProjectId, t1.PROJECT_NAME as  ProjectName ,
+                t2.STORYBOARD_ID as StoryboardId, t2.STORYBOARD_NAME as StoryboardName,
+                 t2.DESCRIPTION as Storyboardescription  from T_STORYBOARD_SUMMARY t2
+                 join T_TEST_PROJECT t1 on t1.PROJECT_ID = t2.ASSIGNED_PROJECT_ID
+                where t2.ASSIGNED_PROJECT_ID = {lProjectId} and t2.STORYBOARD_NAME is not null",
+                        Connection = con
+                    };
+                    con.Open();
+                    OracleDataReader dr = cmd.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        StoryBoardListByProject sb = new StoryBoardListByProject();
+                        sb.ProjectId = (long) dr["ProjectId"];
+                        sb.ProjectName = dr["ProjectName"].ToString();
+                        sb.StoryboardId = (long)dr["StoryboardId"];
+                        sb.StoryboardName =  dr["StoryboardName"].ToString(); 
+                        sb.Storyboardescription = dr["Storyboardescription"].ToString();
 
+                    }
+                }
+
+                sw.Stop();*/
+                 
+                logger.Info(string.Format("Get Storyboard List end | ProjectId: {0} | UserName: {1}", lProjectId, Username));
+                
                 return lStoryboardTree;
             }
             catch (Exception ex)
@@ -488,5 +526,324 @@ namespace MARS_Repository.Repositories
             }
         }
 
+
+
+        public List<StoryBoardListByProject> GetStoryboardListCache()
+        {
+            try
+            {
+                logger.Info(string.Format("Get All Storyboard List start  | UserName: {0}",  Username));
+
+                var lStoryboardTree = new List<StoryBoardListByProject>();
+                var lResult = from t2 in entity.T_STORYBOARD_SUMMARY
+                              join t1 in entity.T_TEST_PROJECT on t2.ASSIGNED_PROJECT_ID equals t1.PROJECT_ID
+                              where  t2.STORYBOARD_NAME != null
+                              select new StoryBoardListByProject
+                              {
+                                  ProjectId = t1.PROJECT_ID,
+                                  ProjectName = t1.PROJECT_NAME,
+                                  StoryboardId = t2.STORYBOARD_ID,
+                                  StoryboardName = t2.STORYBOARD_NAME,
+                                  Storyboardescription = t2.DESCRIPTION
+                              };
+
+                lStoryboardTree = lResult.Distinct().ToList();
+                 
+                logger.Info(string.Format("Get All Storyboard List end  | UserName: {0}", Username));
+
+                return lStoryboardTree;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured GetTree in GetStoryboardList method   Username: {0}",  Username));
+                ELogger.ErrorException(string.Format("Error occured GetTree in GetStoryboardList method | Username: {0}",  Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured GetStoryboardList in GetRoleByUser method Username: {0}",Username), ex.InnerException);
+                throw;
+            }
+        }
+
+        public List<TestSuiteListByProject> GetTestSuiteListCache(string connectString="")
+        {
+            try
+            {
+                logger.Info(string.Format("Get TestSuiteList start  UserName: {0}",  Username));
+                var lTestSuiteTree = new List<TestSuiteListByProject>();
+
+                if (!string.IsNullOrWhiteSpace(connectString))
+                {
+                    using (OracleConnection con = new OracleConnection (connectString))
+                    {
+                        OracleCommand cmd = new OracleCommand
+                        {
+                            CommandText = @"select t1.PROJECT_ID, t1.PROJECT_NAME, t3.TEST_SUITE_ID, t3.TEST_SUITE_NAME,  t3.TEST_SUITE_DESCRIPTION,
+                                count(t5.TEST_CASE_ID) as testCaseCount from T_TEST_PROJECT t1 
+                                join REL_TEST_SUIT_PROJECT t2 on t2.PROJECT_ID = t1.PROJECT_ID 
+                                join T_TEST_SUITE t3 on t3.TEST_SUITE_ID =t2.TEST_SUITE_ID
+                                 join REL_TEST_CASE_TEST_SUITE t4 on t4.TEST_SUITE_ID =t3.TEST_SUITE_ID
+                                 join T_TEST_CASE_SUMMARY t5 on  t4.TEST_CASE_ID = t5.TEST_CASE_ID 
+                                 group by t1.PROJECT_ID,   t1.PROJECT_NAME,   t3.TEST_SUITE_ID,  t3.TEST_SUITE_NAME,   t3.TEST_SUITE_DESCRIPTION",
+                            Connection = con
+                        };
+                        con.Open();
+                        using (OracleDataReader dr = cmd.ExecuteReader())
+                        {
+                            while (dr.Read())
+                            {
+                                TestSuiteListByProject testSuite = new TestSuiteListByProject();
+                                testSuite.ProjectId = (long)dr["PROJECT_ID"];
+                                testSuite.ProjectName = dr["PROJECT_NAME"].ToString();
+                                testSuite.TestsuiteId = (long)dr["TEST_SUITE_ID"];
+                                testSuite.TestsuiteName = dr["TEST_SUITE_NAME"].ToString();
+                                testSuite.TestSuiteDesc = dr["TEST_SUITE_DESCRIPTION"].ToString();
+                                testSuite.TestCaseCount = (long)((decimal)dr["testCaseCount"]);
+                                lTestSuiteTree.Add(testSuite);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    var lList = from t1 in entity.T_TEST_PROJECT
+                                join t2 in entity.REL_TEST_SUIT_PROJECT on t1.PROJECT_ID equals t2.PROJECT_ID
+                                join t3 in entity.T_TEST_SUITE on t2.TEST_SUITE_ID equals t3.TEST_SUITE_ID
+                                join t4 in entity.REL_TEST_CASE_TEST_SUITE on t3.TEST_SUITE_ID equals t4.TEST_SUITE_ID
+                                join t5 in entity.T_TEST_CASE_SUMMARY on t4.TEST_CASE_ID equals t5.TEST_CASE_ID
+                                select new TestSuiteListByProject
+                                {
+                                    ProjectId = t1.PROJECT_ID,
+                                    ProjectName = t1.PROJECT_NAME,
+                                    TestsuiteId = t3.TEST_SUITE_ID,
+                                    TestsuiteName = t3.TEST_SUITE_NAME,
+                                    TestCaseCount = (long)t5.TEST_CASE_ID,
+                                    TestSuiteDesc = t3.TEST_SUITE_DESCRIPTION
+                                };
+
+                    var lResult = lList.Distinct().ToList();
+                    lResult = lResult.GroupBy(x => new { x.ProjectId, x.TestsuiteId, x.TestsuiteName, x.ProjectName, x.TestSuiteDesc }).Select(c => new TestSuiteListByProject
+                    {
+                        ProjectId = c.Key.ProjectId,
+                        ProjectName = c.Key.ProjectName,
+                        TestsuiteId = c.Key.TestsuiteId,
+                        TestsuiteName = c.Key.TestsuiteName,
+                        TestCaseCount = c.Count(),
+                        TestSuiteDesc = c.Key.TestSuiteDesc
+                    }).ToList();
+
+
+                    if (lResult.Count() > 0)
+                    {
+                        lTestSuiteTree = lResult.Distinct().OrderBy(x => x.TestsuiteName).ToList();
+                    }
+                }
+
+                logger.Info(string.Format("Get TestSuiteList end | UserName: {0}",  Username));
+                return lTestSuiteTree;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured GetTree in GetTestSuiteList method | Username: {0}",  Username));
+                ELogger.ErrorException(string.Format("Error occured GetTree in GetTestSuiteList method | Username: {0}",  Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured GetTestSuiteList in GetRoleByUser method  Username: {0}",  Username), ex.InnerException);
+                throw;
+            }
+        }
+
+        public List<TestCaseListByProject> GetTestCaseListCache(string connectString = "")
+        {
+            try
+            {
+                logger.Info(string.Format("Get All TestCase List Cache start   UserName: {0}",   Username));
+                var lTestcaseTree = new List<TestCaseListByProject>();
+                if (!string.IsNullOrWhiteSpace(connectString))
+                {
+                    using (OracleConnection con = new OracleConnection(connectString))
+                    {
+                        OracleCommand cmd = new OracleCommand
+                        {
+                            CommandText = @"select t1.PROJECT_ID,   t1.PROJECT_NAME,  t3.TEST_SUITE_ID, t3.TEST_SUITE_NAME,
+                                         t5.TEST_CASE_ID, t5.TEST_CASE_NAME,t5.TEST_STEP_DESCRIPTION,
+                                         count(t6.DATA_SUMMARY_ID)  as DataSetCount  from T_TEST_PROJECT t1 
+                                         join REL_TEST_SUIT_PROJECT t2 on t2.PROJECT_ID = t1.PROJECT_ID 
+                                         join T_TEST_SUITE t3 on t3.TEST_SUITE_ID =t2.TEST_SUITE_ID
+                                         join REL_TEST_CASE_TEST_SUITE t4 on t4.TEST_SUITE_ID =t3.TEST_SUITE_ID
+                                         join T_TEST_CASE_SUMMARY t5 on  t5.TEST_CASE_ID = t4.TEST_CASE_ID
+                                         join REL_TC_DATA_SUMMARY t6 on t6.TEST_CASE_ID = t5.TEST_CASE_ID
+                                         group by t1.PROJECT_ID,   t1.PROJECT_NAME,   t3.TEST_SUITE_ID,  t3.TEST_SUITE_NAME,  
+                                         t5.TEST_CASE_ID, t5.TEST_CASE_NAME,t5.TEST_STEP_DESCRIPTION",
+                            Connection = con
+                        };
+                        con.Open();
+                        using (OracleDataReader dr = cmd.ExecuteReader())
+                        {
+                            while (dr.Read())
+                            {
+                                TestCaseListByProject testSuite = new TestCaseListByProject();
+                                testSuite.ProjectId = (long)dr["PROJECT_ID"];
+                                testSuite.ProjectName = dr["PROJECT_NAME"].ToString();
+                                testSuite.TestsuiteId = (long)dr["TEST_SUITE_ID"];
+                                testSuite.TestsuiteName = dr["TEST_SUITE_NAME"].ToString();
+                                testSuite.TestcaseId = (long)dr["TEST_CASE_ID"];
+                                testSuite.TestcaseName = dr["TEST_CASE_NAME"].ToString();
+                                testSuite.TestCaseDesc = dr["TEST_STEP_DESCRIPTION"].ToString();
+                                testSuite.DataSetCount = (long)((decimal)dr["DataSetCount"]);
+                                lTestcaseTree.Add(testSuite);
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    var lList = from t1 in entity.T_TEST_PROJECT
+                                join t2 in entity.REL_TEST_SUIT_PROJECT on t1.PROJECT_ID equals t2.PROJECT_ID
+                                join t3 in entity.T_TEST_SUITE on t2.TEST_SUITE_ID equals t3.TEST_SUITE_ID
+                                join t4 in entity.REL_TEST_CASE_TEST_SUITE on t2.TEST_SUITE_ID equals t4.TEST_SUITE_ID
+                                join t5 in entity.T_TEST_CASE_SUMMARY on t4.TEST_CASE_ID equals t5.TEST_CASE_ID
+                                join t6 in entity.REL_TC_DATA_SUMMARY on t5.TEST_CASE_ID equals t6.TEST_CASE_ID
+                                select new TestCaseListByProject
+                                {
+                                    ProjectId = t1.PROJECT_ID,
+                                    ProjectName = t1.PROJECT_NAME,
+                                    TestcaseId = t5.TEST_CASE_ID,
+                                    TestcaseName = t5.TEST_CASE_NAME,
+                                    TestsuiteId = t3.TEST_SUITE_ID,
+                                    TestsuiteName = t3.TEST_SUITE_NAME,
+                                    TestCaseDesc = t5.TEST_STEP_DESCRIPTION,
+                                    DataSetCount = (long)t6.DATA_SUMMARY_ID
+                                };
+                    var lResult = lList.Distinct().ToList();
+
+                    lResult = lResult.GroupBy(x => new { x.ProjectId, x.ProjectName, x.TestsuiteId, x.TestsuiteName, x.TestcaseId, x.TestcaseName, x.TestCaseDesc }).Select(gcs => new TestCaseListByProject()
+                    {
+                        ProjectId = gcs.Key.ProjectId,
+                        ProjectName = gcs.Key.ProjectName,
+                        TestsuiteId = gcs.Key.TestsuiteId,
+                        TestsuiteName = gcs.Key.TestsuiteName,
+                        TestcaseId = gcs.Key.TestcaseId,
+                        TestcaseName = gcs.Key.TestcaseName,
+                        TestCaseDesc = gcs.Key.TestCaseDesc,
+                        DataSetCount = gcs.Count()
+                    }).ToList();
+
+                    if (lResult.Count() > 0)
+                    {
+                        lTestcaseTree = lResult.Distinct().OrderBy(x => x.TestcaseName).ToList();
+                    }
+                }
+                logger.Info(string.Format("Get TestCase List end UserName: {0}",   Username));
+                return lTestcaseTree;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured GetTree in GetTestCaseList    | Username: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured GetTree in GetTestCaseList method   | Username: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured GetTestCaseList in GetRoleByUser method   Username: {0}",  Username), ex.InnerException);
+                throw;
+            }
+        }
+
+        public List<DataSetListByTestCase> GetDataSetListCache(string connectString = "")
+        {
+            try
+            {
+                logger.Info(string.Format("Get Dataset List Cache UserName: {0}",  Username));
+                var lList = new List<DataSetListByTestCase>();
+
+                if (!string.IsNullOrWhiteSpace(connectString))
+                {
+
+                    using (OracleConnection con = new OracleConnection(connectString))
+                    {
+                        OracleCommand cmd = new OracleCommand
+                        {
+                            CommandText = @"select t1.PROJECT_ID,   t1.PROJECT_NAME,  t3.TEST_SUITE_ID, t3.TEST_SUITE_NAME,
+                                             t5.TEST_CASE_ID, t5.TEST_CASE_NAME,t7.DATA_SUMMARY_ID,t7.ALIAS_NAME
+                                               from T_TEST_PROJECT t1 
+                                             join REL_TEST_SUIT_PROJECT t2 on t2.PROJECT_ID = t1.PROJECT_ID 
+                                             join T_TEST_SUITE t3 on t3.TEST_SUITE_ID =t2.TEST_SUITE_ID
+                                             join REL_TEST_CASE_TEST_SUITE t4 on t4.TEST_SUITE_ID =t3.TEST_SUITE_ID
+                                             join T_TEST_CASE_SUMMARY t5 on  t5.TEST_CASE_ID = t4.TEST_CASE_ID
+                                             join REL_TC_DATA_SUMMARY t6 on t6.TEST_CASE_ID = t5.TEST_CASE_ID
+                                             join T_TEST_DATA_SUMMARY t7 on t7.DATA_SUMMARY_ID =t6.DATA_SUMMARY_ID",
+                            Connection = con
+                        };
+                        con.Open();
+                        using (OracleDataReader dr = cmd.ExecuteReader())
+                        {
+                            while (dr.Read())
+                            {
+                                DataSetListByTestCase dataSet = new DataSetListByTestCase();
+                                dataSet.ProjectId = (long)dr["PROJECT_ID"];
+                                dataSet.ProjectName = dr["PROJECT_NAME"].ToString();
+                                dataSet.TestsuiteId = (long)dr["TEST_SUITE_ID"];
+                                dataSet.TestsuiteName = dr["TEST_SUITE_NAME"].ToString();
+                                dataSet.TestcaseId = (long)dr["TEST_CASE_ID"];
+                                dataSet.TestcaseName =  dr["TEST_CASE_NAME"].ToString();
+                                dataSet.Datasetid = (long)dr["DATA_SUMMARY_ID"];
+                                dataSet.Datasetname = dr["ALIAS_NAME"].ToString();
+                                lList.Add(dataSet);
+                            }
+                        }
+                    }
+
+                }
+                else
+                {
+                    var lResult = from t1 in entity.T_TEST_PROJECT
+                                  join t2 in entity.REL_TEST_SUIT_PROJECT on t1.PROJECT_ID equals t2.PROJECT_ID
+                                  join t3 in entity.T_TEST_SUITE on t2.TEST_SUITE_ID equals t3.TEST_SUITE_ID
+                                  join t4 in entity.REL_TEST_CASE_TEST_SUITE on t2.TEST_SUITE_ID equals t4.TEST_SUITE_ID
+                                  join t5 in entity.T_TEST_CASE_SUMMARY on t4.TEST_CASE_ID equals t5.TEST_CASE_ID
+                                  join t6 in entity.REL_TC_DATA_SUMMARY on t5.TEST_CASE_ID equals t6.TEST_CASE_ID
+                                  join t7 in entity.T_TEST_DATA_SUMMARY on t6.DATA_SUMMARY_ID equals t7.DATA_SUMMARY_ID
+                                  select new DataSetListByTestCase
+                                  {
+                                      ProjectId = t1.PROJECT_ID,
+                                      ProjectName = t1.PROJECT_NAME,
+                                      TestsuiteId = t3.TEST_SUITE_ID,
+                                      TestsuiteName = t3.TEST_SUITE_NAME,
+                                      TestcaseId = t5.TEST_CASE_ID,
+                                      TestcaseName = t5.TEST_CASE_NAME,
+                                      Datasetid = t7.DATA_SUMMARY_ID,
+                                      Datasetname = t7.ALIAS_NAME
+                                  };
+                    if (lResult.Count() > 0)
+                    {
+                        lList = lResult.OrderBy(x => x.Datasetname).ToList();
+                    }
+                }
+                logger.Info(string.Format("Get Dataset List Cache end UserName: {0}", Username));
+                return lList;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured GetTree in GetDataSetList method   UserName: {0}",  Username));
+                ELogger.ErrorException(string.Format("Error occured GetTree in GetDataSetList method | UserName: {0}",  Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured GetTree in GetDataSetList method  | UserName: {0}", Username), ex.InnerException);
+                throw;
+            }
+        }
+
+        public List<T_TEST_PROJECT> GetProjectListCache()
+        {
+            try
+            {
+                logger.Info(string.Format("Get Project List Cache UserName: {0}", Username));
+                var lResult = entity.T_TEST_PROJECT.ToList();        
+                logger.Info(string.Format("Get Project List Cache end UserName: {0}", Username));
+                return lResult;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured GetTree in Project method   UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured GetTree in Project method | UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured GetTree in Project method  | UserName: {0}", Username), ex.InnerException);
+                throw;
+            }
+        }
     }
 }

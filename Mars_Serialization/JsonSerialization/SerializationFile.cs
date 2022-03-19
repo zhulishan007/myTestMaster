@@ -707,7 +707,7 @@ namespace Mars_Serialization.JsonSerialization
             if (!Directory.Exists(filePath))
                 Directory.CreateDirectory(filePath);
  
-            ApplicationFolderNew(filePath, appList, FolderName.Object.ToString(),dataid,needReflesh);
+            ApplicationFolderNew(filePath, appList, cashName, dataid,needReflesh);
           
         }
     }

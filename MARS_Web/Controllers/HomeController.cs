@@ -49,7 +49,8 @@ namespace MARS_Web.Controllers
                 //};
                 var lSchema = SessionManager.Schema;
                 var lConnectionStr = SessionManager.APP;
-                lRep.UpdateIsAvailableReload((long)SessionManager.TESTER_ID);
+                var testId = (long)SessionManager.TESTER_ID;
+                Task.Run(()=> lRep.UpdateIsAvailableReload(testId));
                 ViewBag.Title = "Home Page";
                 if (TestcaseId == 0 && TestsuiteId == 0 && ProjectId == 0)
                 {
@@ -337,15 +338,15 @@ namespace MARS_Web.Controllers
                     {
                         filesName = Directory.GetFiles(directoryPath);
                         filesName = filesName.Select(x => Path.GetFileName(x)).ToArray();
-                        testCaseName = filesName.FirstOrDefault(x => x.StartsWith(TestcaseId.ToString()));
+                        testCaseName = filesName.FirstOrDefault(x => x.StartsWith($"{TestcaseId.ToString()}_"));
                         if (string.IsNullOrEmpty(testCaseName))
                             testCaseName = lRep.GetTestCaseNameById(TestcaseId);
                     }
                     else
                         testCaseName = lRep.GetTestCaseNameById(TestcaseId);
                     directoryPath = Path.Combine(directoryPath, testCaseName);
-                    testCaseName = testCaseName.Replace(string.Format("{0}_", TestcaseId), string.Empty).Replace(".json", string.Empty);
-                    ViewBag.TestCaseName = testCaseName;
+                    //testCaseName = testCaseName.Replace(string.Format("{0}_", TestcaseId), string.Empty).Replace(".json", string.Empty);
+                    //ViewBag.TestCaseName = testCaseName;
 
                     logger.Info(string.Format("GET TEST CASE NAME FROM MAPPING FILE | END | END TIME : {0}", DateTime.Now.ToString("HH:mm:ss.ffff tt")));
                     #endregion
@@ -413,10 +414,11 @@ namespace MARS_Web.Controllers
                     List<TestCaseResult> newResult = new List<TestCaseResult>();
                     newResult = lRep.ConvertTestcaseJsonToList(finalList, TestcaseId, SessionManager.Schema, SessionManager.APP, (long)SessionManager.TESTER_ID);
                     ViewBag.TestcaseData = newResult; //js.Serialize(newResult);
-
+                    
                     Session["TestsuiteId"] = ViewBag.TestsuiteId;
                     Session["TestcaseId"] = ViewBag.TestcaseId;
                     Session["ProjectId"] = ViewBag.ProjectId;
+                    ViewBag.TestCaseName = allList.allSteps.FirstOrDefault()?.TEST_CASE_NAME;
                 }
 
 
@@ -436,11 +438,23 @@ namespace MARS_Web.Controllers
                 };
 
                 logger.Info(string.Format("GET KEYWORD LIST | START | START TIME : {0}", DateTime.Now.ToString("HH:mm:ss.ffff tt")));
-                var keywordsResult = lKeyRepo.GetKeywords().Select(y => new KeywordList
+                List<KeywordList> keywordsResult = new List<KeywordList>();
+                if (GlobalVariable.AllKeywords!=null && GlobalVariable.AllKeywords.ContainsKey(SessionManager.Schema))
                 {
-                    KeywordName = y.KEY_WORD_NAME,
-                    KeywordId = y.KEY_WORD_ID
-                }).ToList();
+                    keywordsResult = GlobalVariable.AllKeywords[SessionManager.Schema].Select(y => new KeywordList
+                    {
+                        KeywordName = y.KEY_WORD_NAME,
+                        KeywordId = y.KEY_WORD_ID
+                    }).Distinct().ToList();
+                }
+                else 
+                {
+                    keywordsResult = lKeyRepo.GetKeywords().Select(y => new KeywordList
+                    {
+                        KeywordName = y.KEY_WORD_NAME,
+                        KeywordId = y.KEY_WORD_ID
+                    }).ToList();
+                }
                 logger.Info(string.Format("GET KEYWORD LIST | END | END TIME : {0}", DateTime.Now.ToString("HH:mm:ss.ffff tt")));
 
                 var keywordsPegWindow = keywordsResult.Where(x => lKeywordList.Contains(x.KeywordName.ToLower().Trim())).ToList();

@@ -1,4 +1,6 @@
-﻿using MARS_Repository.ViewModel;
+﻿using MARS_Repository.Entities;
+using MARS_Repository.Repositories;
+using MARS_Repository.ViewModel;
 using Mars_Serialization.ViewModel;
 using MARS_Web.Helper;
 using Newtonsoft.Json;
@@ -10,6 +12,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Hosting;
 using System.Web.Mvc;
@@ -58,6 +61,16 @@ namespace MARS_Web
                 GlobalVariable.AllFolders = foldersData;
                 GlobalVariable.AllSets = setsData;
 
+                var storyBoards = new ConcurrentDictionary<string, List<StoryBoardListByProject>>();
+                var testCases = new ConcurrentDictionary<string, List<TestCaseListByProject>>();
+                var dataSets= new ConcurrentDictionary<string, List<DataSetListByTestCase>>();
+                var testSuits = new ConcurrentDictionary<string, List<TestSuiteListByProject>>();
+                var projects = new ConcurrentDictionary<string, List<T_TEST_PROJECT>>();
+                GlobalVariable.StoryBoardListCache = storyBoards;
+                GlobalVariable.TestCaseListCache = testCases;
+                GlobalVariable.DataSetListCache = dataSets;
+                GlobalVariable.TestSuiteListCache = testSuits;
+                GlobalVariable.ProjectListCache = projects;
                 Thread Serializations = new Thread(delegate ()
                 {
                     if (dbNameList.Count() > 0)
@@ -66,6 +79,23 @@ namespace MARS_Web
                         {
                             MarsConfig mc = MarsConfig.Configure(databaseName);
                             DatabaseConnectionDetails det = mc.GetDatabaseConnectionDetails();
+                            InitCacheHelper.InitAll(det.EntityConnString,det.ConnString,databaseName);
+                           /* Task.Run(() =>
+                            {
+                                DBEntities.ConnectionString = det.EntityConnString;
+                                DBEntities.Schema = databaseName;
+                                var repTree = new GetTreeRepository();
+                                var project = repTree.GetProjectListCache();
+                                projects.TryAdd(databaseName, project);
+                                var  storyboardlistCache = repTree.GetStoryboardListCache();
+                                storyBoards.TryAdd(databaseName, storyboardlistCache);
+                                var testSuit = repTree.GetTestSuiteListCache(det.ConnString);
+                                testSuits.TryAdd(databaseName, testSuit);
+                                var testCaseListCache = repTree.GetTestCaseListCache(det.ConnString);
+                                testCases.TryAdd(databaseName, testCaseListCache);
+                                var dataSet = repTree.GetDataSetListCache(det.ConnString);
+                                dataSets.TryAdd(databaseName, dataSet);
+                            });*/
 
                             #region GET USER DATA AND STORE IN MEMORY
                             var userDictionary = Mars_Serialization.JsonSerialization.SerializationFile.GetDictionary(det.ConnString);
@@ -76,6 +106,7 @@ namespace MARS_Web
                             {
                                 JsonFileHelper.InitStoryBoardJson(databaseName);
                             });
+                           
                             #region GET APPLICATOINS DATA AND STORE IN MEMORY
                             var appDictionary = GetAppData(databaseName);
                             appsData.TryAdd(databaseName, appDictionary);

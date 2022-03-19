@@ -148,22 +148,26 @@ namespace MARS_Web.Controllers
                 var testsuiterepo = new TestSuiteRepository();
                 testsuiterepo.Username = SessionManager.TESTER_LOGIN_NAME;
                 //checkes if the testsuite is used in any storyboard
-                    var result = testsuiterepo.CheckTestSuiteInStoryboardByProject(lModel.TestSuiteId, lModel.ProjectId);
-                    if (result.Count > 0)
-                        resultModel.data = result;
-                    else
-                    {
-                        var lResult = testsuiterepo.AddEditTestSuite(lModel);
-                        var repTree = new GetTreeRepository();
-                        repTree.Username = SessionManager.TESTER_LOGIN_NAME;
-                        var lSchema = SessionManager.Schema;
-                        var lConnectionStr = SessionManager.APP;
-                        //refreshes Mars Tree
-                        Session["LeftProjectList"] = repTree.GetProjectList(SessionManager.TESTER_ID, lSchema, lConnectionStr);
-                        resultModel.data = lResult;
-                        resultModel.message = "Test Suite [" + lModel.TestSuiteName + "] saved successfully.";
-                    }
-                    resultModel.status = 1;
+                var result = testsuiterepo.CheckTestSuiteInStoryboardByProject(lModel.TestSuiteId, lModel.ProjectId);
+                if (result.Count > 0)
+                    resultModel.data = result;
+                else
+                {
+                    var lResult = testsuiterepo.AddEditTestSuite(lModel);
+                    var repTree = new GetTreeRepository();
+                    repTree.Username = SessionManager.TESTER_LOGIN_NAME;
+                    var lSchema = SessionManager.Schema;
+                    var lConnectionStr = SessionManager.APP;
+                    var entityConnectString = SessionManager.ConnectionString;
+                    InitCacheHelper.TestCaseInit(entityConnectString, lSchema, repTree, lConnectionStr);
+                    InitCacheHelper.TestSuitInit(entityConnectString, lSchema, repTree, lConnectionStr);
+                    InitCacheHelper.DataSetInit(entityConnectString, lSchema, repTree, lConnectionStr);
+                    //refreshes Mars Tree
+                    Session["LeftProjectList"] = repTree.GetProjectList(SessionManager.TESTER_ID, lSchema, lConnectionStr);
+                    resultModel.data = lResult;
+                    resultModel.message = "Test Suite [" + lModel.TestSuiteName + "] saved successfully.";
+                }
+                resultModel.status = 1;
             }
             catch (Exception ex)
             {
@@ -193,6 +197,14 @@ namespace MARS_Web.Controllers
                 {
                     TestSuiteName = testSuiterepo.GetTestSuiteNameById(TestsuiteId);
                     var lResult = testSuiterepo.DeleteTestSuite(TestsuiteId);
+                    var repTree = new GetTreeRepository();
+                    var lSchema = SessionManager.Schema;
+                    var lConnectionStr = SessionManager.APP;
+                    var entityConnectString = SessionManager.ConnectionString;
+                    InitCacheHelper.TestCaseInit(entityConnectString, lSchema, repTree, lConnectionStr);
+                    InitCacheHelper.TestSuitInit(entityConnectString, lSchema, repTree, lConnectionStr);
+                    InitCacheHelper.DataSetInit(entityConnectString, lSchema, repTree, lConnectionStr);
+
                     Session["TestSuiteDeleteMsg"] = "Successfully TestSuite Deleted.";
                     Session["TestcaseId"] = null;
                     Session["TestsuiteId"] = null;

@@ -79,6 +79,10 @@ namespace MARS_Web.Controllers
                 else
                 {
                     var result = repo.AddEditStoryboard(model);
+                     
+                    var entityConnectString = SessionManager.ConnectionString;
+                    InitCacheHelper.StoryBoardInit(entityConnectString, lSchema, _treerepository);
+
                     Session["LeftProjectList"] = _treerepository.GetProjectList(SessionManager.TESTER_ID, lSchema, lConnectionStr);
 
                     var flag = model.Storyboardid == 0 ? "Added" : "Updated";
@@ -157,6 +161,9 @@ namespace MARS_Web.Controllers
                 var lConnectionStr = SessionManager.APP;
                 var storyboradname = repo.GetStoryboardNamebyId(sid);
                 var result = repo.DeleteStoryboard(sid);
+
+                var entityConnectString = SessionManager.ConnectionString;
+                InitCacheHelper.StoryBoardInit(entityConnectString, lSchema, repTree);
 
                 Session["LeftProjectList"] = repTree.GetProjectList(SessionManager.TESTER_ID, lSchema, lConnectionStr);
                 logger.Info(string.Format("Delete Storyboard successfully | Username: {0}", SessionManager.TESTER_LOGIN_NAME));

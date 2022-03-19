@@ -459,7 +459,9 @@ namespace MARS_Web.Controllers
                 var lSchema = SessionManager.Schema;
                 var lConnectionStr = SessionManager.APP;
                 var lResult = projectrepo.AddEditProject(lModel);
+                var entityConnectString = SessionManager.ConnectionString;
                 var repTree = new GetTreeRepository();
+                InitCacheHelper.ProjectInit(entityConnectString, lSchema, repTree);
                 Session["LeftProjectList"] = repTree.GetProjectList(SessionManager.TESTER_ID, lSchema, lConnectionStr);
                 resultModel.status = 1;
                 resultModel.message = "Successfully saved Project [" + lModel.ProjectName + "]";
@@ -493,6 +495,8 @@ namespace MARS_Web.Controllers
                 var repTree = new GetTreeRepository();
                 var lSchema = SessionManager.Schema;
                 var lConnectionStr = SessionManager.APP;
+                var entityConnectString = SessionManager.ConnectionString;
+                InitCacheHelper.ProjectInit(entityConnectString, lSchema, repTree);
                 Session["LeftProjectList"] = repTree.GetProjectList(SessionManager.TESTER_ID, lSchema, lConnectionStr);
                 resultModel.status = 1;
                 resultModel.message = "Project [" + projectName + "] deleted Successfully.";

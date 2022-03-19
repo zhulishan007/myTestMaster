@@ -1280,7 +1280,7 @@ namespace MARS_Repository.Repositories
             {
                 logger.Info(string.Format("Get TestCase Detail start | TestCaseId: {0} | UserName: {1}", TestCaseId, Username));
 
-                string test_suiteName = entity.T_TEST_SUITE.FirstOrDefault(x => x.TEST_SUITE_ID == testCaseObj.assignedTestSuiteIDs.FirstOrDefault()).TEST_SUITE_NAME;
+                //string test_suiteName = entity.T_TEST_SUITE.FirstOrDefault(x => x.TEST_SUITE_ID == testCaseObj.assignedTestSuiteIDs.FirstOrDefault()).TEST_SUITE_NAME;
                 //var lVersion = GetTestCaseVersion(TestCaseId, UserId);
                 resultList = testCaseObj.allSteps.Select(x => new TestCaseResult()
                 {
@@ -1298,7 +1298,7 @@ namespace MARS_Repository.Repositories
                     key_word_name = x.KEY_WORD_NAME,
                     test_step_description = string.Empty, // Need to get
                     test_case_name = x.TEST_CASE_NAME,
-                    test_suite_name = test_suiteName,
+                    //test_suite_name = test_suiteName,
                     Application = string.Empty, // Need to get application name
                     COMMENT = x.COMMENTINFO,
                     ROW_NUM = 1.ToString(),

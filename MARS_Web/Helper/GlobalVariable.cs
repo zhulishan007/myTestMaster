@@ -1,4 +1,6 @@
-﻿using Mars_Serialization.ViewModel;
+﻿using MARS_Repository.Entities;
+using MARS_Repository.ViewModel;
+using Mars_Serialization.ViewModel;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Concurrent;
@@ -21,6 +23,14 @@ namespace MARS_Web.Helper
         public static ConcurrentDictionary<string, List<GroupsViewModel>> AllGroups { get; set; }
         public static ConcurrentDictionary<string, List<FoldersViewModel>> AllFolders { get; set; }
         public static ConcurrentDictionary<string, List<SetsViewModel>> AllSets { get; set; }
+
+        public static ConcurrentDictionary<string, List<StoryBoardListByProject>> StoryBoardListCache { get; set; }
+        public static ConcurrentDictionary<string, List<TestCaseListByProject>> TestCaseListCache { get; set; }
+        public static ConcurrentDictionary<string, List<DataSetListByTestCase>> DataSetListCache { get; set; }
+        public static ConcurrentDictionary<string, List<TestSuiteListByProject>> TestSuiteListCache { get; set; }
+        public static ConcurrentDictionary<string, List<T_TEST_PROJECT>> ProjectListCache { get; set; }
+        
+
     }
 
     //public static class ConvertJsonToList
