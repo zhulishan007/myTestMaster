@@ -23,6 +23,7 @@ using NLog;
 using Oracle.ManagedDataAccess.Client;
 using static Mars_Serialization.JsonSerialization.SerializationFile;
 using EmailHelper = MARS_Web.Helper.EmailHelper;
+using System.Threading.Tasks;
 
 namespace MARS_Web.Controllers
 {
@@ -156,22 +157,25 @@ namespace MARS_Web.Controllers
                 var testCaserepo = new TestCaseRepository();
                 testCaserepo.Username = SessionManager.TESTER_LOGIN_NAME;
                 //Checks if the testcase is present in the storyboard
-                var lflag = testCaserepo.CheckTestCaseExistsInStoryboard(TestCaseId);
+                //var lflag = testCaserepo.CheckTestCaseExistsInStoryboard(TestCaseId);
+                var lflag = testCaserepo.CheckTestCaseExistsInStoryboardNew(TestCaseId);
                 if (lflag.Count <= 0)
                 {
-                    var lResult = testCaserepo.DeleteTestCase(TestCaseId);
-                    Session["TestcaseId"] = null;
-                    Session["TestsuiteId"] = null;
-                    Session["ProjectId"] = null;
-                    resultModel.data = lResult;
-                    resultModel.message = "Test Case Deleted Successfully";
                     var repTree = new GetTreeRepository();
                     var lSchema = SessionManager.Schema;
                     var lConnectionStr = SessionManager.APP;
                     var entityConnectString = SessionManager.ConnectionString;
-                    InitCacheHelper.TestCaseInit(entityConnectString,lSchema, repTree, lConnectionStr);
-                    InitCacheHelper.TestSuitInit(entityConnectString,lSchema, repTree, lConnectionStr);
-                    InitCacheHelper.DataSetInit(entityConnectString,lSchema, repTree, lConnectionStr);
+                    Task.Run(() => {
+                        testCaserepo.DeleteTestCase(TestCaseId);
+                        InitCacheHelper.TestSuitInit(entityConnectString, lSchema, repTree, lConnectionStr);
+                    });
+ 
+                    Session["TestcaseId"] = null;
+                    Session["TestsuiteId"] = null;
+                    Session["ProjectId"] = null;
+                    resultModel.data = true;
+                    resultModel.message = "Test Case Deleted Successfully";
+                    InitCacheHelper.DeleteTestCase(lSchema, TestCaseId);
                 }
                 else
                     resultModel.data = lflag;
@@ -205,15 +209,16 @@ namespace MARS_Web.Controllers
                 var lSchema = SessionManager.Schema;
                 var lConnectionStr = SessionManager.APP;
                 var flag = lModel.TestCaseId == 0 ? "added" : "Saved";
+                var testId = lModel.TestCaseId;
                 if (rel == true)
                 {
                     //checks if the testcase is present in the storyboard
                     var result = repTestSuite.CheckTestCaseExistsInStoryboard(lModel.TestCaseId);
                     if (result.Count <= 0)
                     {
-                        var editresult = repTestSuite.AddEditTestCase(lModel, SessionManager.TESTER_LOGIN_NAME);
+                        testId = repTestSuite.AddEditTestCase(lModel, SessionManager.TESTER_LOGIN_NAME);
                         Session["LeftProjectList"] = repTree.GetProjectList(SessionManager.TESTER_ID, lSchema, lConnectionStr);
-                        resultModel.data = editresult;
+                        resultModel.data = true;
                         resultModel.message = "Successfully " + flag + " Test Case.";
                     }
                     else
@@ -221,8 +226,8 @@ namespace MARS_Web.Controllers
                 }
                 else
                 {
-                    var fresult = repTestSuite.AddEditTestCase(lModel, SessionManager.TESTER_LOGIN_NAME);
-                    resultModel.data = fresult;
+                    testId = repTestSuite.AddEditTestCase(lModel, SessionManager.TESTER_LOGIN_NAME);
+                    resultModel.data = true;
                     resultModel.message = "Successfully " + flag + " Test Case.";
                     Session["LeftProjectList"] = repTree.GetProjectList(SessionManager.TESTER_ID, lSchema, lConnectionStr);
                 }
@@ -230,6 +235,12 @@ namespace MARS_Web.Controllers
                 InitCacheHelper.TestCaseInit(entityConnectString,lSchema, repTree,lConnectionStr);
                 InitCacheHelper.TestSuitInit(entityConnectString,lSchema, repTree, lConnectionStr);
                 InitCacheHelper.DataSetInit(entityConnectString, lSchema, repTree, lConnectionStr);
+                if (flag == "added")
+                {
+                    string fullFilePath = CreateTestcaseFolder();
+                    Task.Run(() =>LoadTestcaseJsonFile(fullFilePath, new List<MB_V_TEST_STEPS>(), testId, lConnectionStr));
+
+                }
 
                 resultModel.status = 1;
             }
@@ -349,13 +360,43 @@ namespace MARS_Web.Controllers
             {
                 var testCaserepo = new TestCaseRepository();
                 testCaserepo.Username = SessionManager.TESTER_LOGIN_NAME;
-                var result = testCaserepo.CheckDuplicateTestCaseName(TestCaseName, TestCaseId);
+                bool result = false;
+                if (GlobalVariable.TestCaseListCache != null && GlobalVariable.TestCaseListCache.ContainsKey(SessionManager.Schema))
+                {
+                    result = GlobalVariable.TestCaseListCache[SessionManager.Schema].Any(a => a.TestcaseId != TestCaseId && a.TestcaseName.ToLower().Trim() == TestCaseName.ToLower().Trim());
+                    var testcases = GlobalVariable.TestCaseListCache[SessionManager.Schema].FindAll(r => r.TestcaseId == TestCaseId);
+                    string orginName = string.Empty;
+                    if (testcases != null)
+                    {
+                        orginName = testcases.FirstOrDefault()?.TestcaseName;
+                        testcases.ForEach(f =>
+                        {
+                            f.TestcaseName = TestCaseName;
+                            f.TestCaseDesc = TestCaseDes;
+                        });
+                        string path = JsonFileHelper.GetJsonFilePath(SessionManager.Schema, FolderName.Testcases.ToString());
+                        string fileName = $"{TestCaseId}_{orginName}.json";
+                        string targetName = $"{TestCaseId}_{TestCaseName}.json";
+                        JsonFileHelper.ChangeJsonFileName(Path.Combine(path, fileName), Path.Combine(path, targetName));
+                    }
+                    var datasets = GlobalVariable.DataSetListCache[SessionManager.Schema].FindAll(r => r.TestcaseId == TestCaseId);
+                    if (datasets != null)
+                    {
+                        datasets.ForEach(f =>f.TestcaseName = TestCaseName);
+                    }
+                }
+                else
+                {
+                    result = testCaserepo.CheckDuplicateTestCaseName(TestCaseName, TestCaseId);
+                }
+
                 if (result)
                     resultModel.data = result;
                 else
                 {
-                    var renamecase = testCaserepo.ChangeTestCaseName(TestCaseName, TestCaseId, TestCaseDes);
-                    resultModel.data = renamecase;
+                    Task.Run(()=> testCaserepo.ChangeTestCaseName(TestCaseName, TestCaseId, TestCaseDes));
+                    
+                    resultModel.data = "success";
                     resultModel.message = "Test Case name successfully changed";
                 }
                 resultModel.status = 1;
@@ -381,7 +422,19 @@ namespace MARS_Web.Controllers
                 TestCaseName = TestCaseName.Trim();
                 var testCaserepo = new TestCaseRepository();
                 testCaserepo.Username = SessionManager.TESTER_LOGIN_NAME;
-                var result = testCaserepo.CheckDuplicateTestCaseName(TestCaseName, TestCaseId);
+                bool result = false;
+                if (GlobalVariable.TestCaseListCache != null && GlobalVariable.TestCaseListCache.ContainsKey(SessionManager.Schema))
+                {
+                    if (TestCaseId != null)
+                        result = GlobalVariable.TestCaseListCache[SessionManager.Schema].Any(a =>a.TestcaseId!=TestCaseId && a.TestcaseName.ToLower().Trim() == TestCaseName.ToLower().Trim());
+                    else
+                        result = GlobalVariable.TestCaseListCache[SessionManager.Schema].Any(a => a.TestcaseName.ToLower().Trim() == TestCaseName.ToLower().Trim());
+
+                }
+                else
+                {
+                     result = testCaserepo.CheckDuplicateTestCaseName(TestCaseName, TestCaseId);
+                }
                 resultModel.status = 1;
                 resultModel.data = result;
             }
@@ -871,6 +924,8 @@ namespace MARS_Web.Controllers
             ResultModel resultModel = new ResultModel();
             try
             {
+                logger.Info(string.Format($"Save  TESTCASE DETAILS Start  TIME: {DateTime.Now.ToString("HH:mm:ss.ffff tt")}" ));
+
                 var _testCaseRepository = new TestCaseRepository
                 {
                     Username = SessionManager.TESTER_LOGIN_NAME
@@ -892,7 +947,10 @@ namespace MARS_Web.Controllers
                 Mars_Memory_TestCase allList = new Mars_Memory_TestCase();
                 string testcaseSessionName = string.Format("{0}_Testcase_{1}", SessionManager.Schema, testCaseId);
                 if (Session[testcaseSessionName] != null)
+                {
                     allList = Session[testcaseSessionName] as Mars_Memory_TestCase;
+                    logger.Info(string.Format($"Save TESTCASE DETAILS Start  TIME: {DateTime.Now.ToString("HH:mm:ss.ffff tt")},{allList==null}"));
+                }
                 else
                 {
                     if (System.IO.File.Exists(Path.Combine(fullFilePath, filePath)))
@@ -919,6 +977,7 @@ namespace MARS_Web.Controllers
                 var newAddedSteps = allList.allSteps.Where(x => x.STEPS_ID <= 0).ToList();
                 if (newAddedSteps.Count() > 0)
                 {
+                    logger.Info(string.Format($"Save TESTCASE DETAILS newAddedSteps    TIME: {DateTime.Now.ToString("HH:mm:ss.ffff tt")},{newAddedSteps.Count()}"));
                     newAddedSteps.ForEach(x =>
                     {
                         long stepID = MARS_Repository.Helper.NextTestSuiteId("T_TEST_STEPS_SEQ");
@@ -930,6 +989,7 @@ namespace MARS_Web.Controllers
                         });
                     });
                 }
+                logger.Info(string.Format($"Save TESTCASE DETAILS newAddedSteps    TIME: {DateTime.Now.ToString("HH:mm:ss.ffff tt")},{allList.allSteps.Count()}"));
 
                 StepsJsonMemoryModel dbSaveData = new StepsJsonMemoryModel
                 {
@@ -964,9 +1024,12 @@ namespace MARS_Web.Controllers
                 };
                 var deletedSteps = dbSaveData.allSteps.Where(x => x.recordStatus == RecordStatus.en_DeletedToDb).ToList();
                 deletedSteps.ForEach(x => { dbSaveData.allSteps.Remove(x); });
+                logger.Info(string.Format($"Save TESTCASE DETAILS deletedSteps   TIME: {DateTime.Now.ToString("HH:mm:ss.ffff tt")},{deletedSteps.Count()}"));
 
                 var deletedDatasets = dbSaveData.assignedDataSets.Where(x => x.recordStatus == RecordStatus.en_DeletedToDb).ToList();
                 deletedDatasets.ForEach(x => { dbSaveData.assignedDataSets.Remove(x); });
+                logger.Info(string.Format($"Save TESTCASE DETAILS deletedDatasets   TIME: {DateTime.Now.ToString("HH:mm:ss.ffff tt")},{deletedDatasets.Count()}"));
+
                 long[] datasetId = deletedDatasets.Select(x => x.DATA_SUMMARY_ID).ToArray();
                 dbSaveData.allSteps.ForEach(x =>
                 {
@@ -3072,8 +3135,15 @@ namespace MARS_Web.Controllers
             {
                 var repo = new GetTreeRepository();
                 repo.Username = SessionManager.TESTER_LOGIN_NAME;
-                var result = repo.GetDatasetCount(ProjectId, TestSuiteId, TestCaseId);
-                resultModel.data = result;
+                if (GlobalVariable.TestCaseListCache != null && GlobalVariable.TestCaseListCache.ContainsKey(SessionManager.Schema))
+                {
+                    resultModel.data = GlobalVariable.TestCaseListCache[SessionManager.Schema].FindAll(r=>r.TestcaseId== TestCaseId && r.TestsuiteId ==TestSuiteId);
+                }
+                else
+                {
+                    var result = repo.GetDatasetCount(ProjectId, TestSuiteId, TestCaseId);
+                    resultModel.data = result;
+                }
                 resultModel.status = 1;
             }
             catch (Exception ex)
@@ -3272,22 +3342,40 @@ namespace MARS_Web.Controllers
                 {
                     suffix = suffix.Trim();
                 }
-                if (optionval == "1")
+                bool hasTestCase = false;
+                if (GlobalVariable.TestCaseListCache != null && GlobalVariable.TestCaseListCache.ContainsKey(SessionManager.Schema))
                 {
-                    result = repo.SaveAsTestcase(testcasename, oldtestcaseid, testcasedesc, testsuiteid, projectid, lSchema, lConnectionStr, SessionManager.TESTER_LOGIN_NAME);
+                    hasTestCase = GlobalVariable.TestCaseListCache[SessionManager.Schema].Any(a => a.TestcaseName.ToLower().Trim() == testcasename.ToLower().Trim());
                 }
-                else if (optionval == "2")
+                else
                 {
-                    result = repo.SaveAsTestCaseOneCopiedDataSet(testcasename, oldtestcaseid, testcasedesc, datasetName, testsuiteid, projectid, suffix, lSchema, lConnectionStr, SessionManager.TESTER_LOGIN_NAME);
+                    hasTestCase = repo.CheckDuplicateTestCaseName(testcasename, null);
                 }
-                else if (optionval == "3")
+                if (hasTestCase)
                 {
-                    result = repo.SaveAsTestCaseAllCopiedDataSet(testcasename, oldtestcaseid, testcasedesc, testsuiteid, projectid, suffix, lSchema, lConnectionStr, SessionManager.TESTER_LOGIN_NAME);
+                    resultModel.message = "Testcase name must be unique.";
+                    resultModel.data = "Testcase name must be unique.";
+                }
+                else
+                {
+                    if (optionval == "1")
+                    {
+                        result = repo.SaveAsTestcaseNew(testcasename, oldtestcaseid, testcasedesc, testsuiteid, projectid, lSchema, lConnectionStr, SessionManager.TESTER_LOGIN_NAME);
+                        //result = repo.SaveAsTestcase(testcasename, oldtestcaseid, testcasedesc, testsuiteid, projectid, lSchema, lConnectionStr, SessionManager.TESTER_LOGIN_NAME);
+                    }
+                    else if (optionval == "2")
+                    {
+                        result = repo.SaveAsTestCaseOneCopiedDataSet(testcasename, oldtestcaseid, testcasedesc, datasetName, testsuiteid, projectid, suffix, lSchema, lConnectionStr, SessionManager.TESTER_LOGIN_NAME);
+                    }
+                    else if (optionval == "3")
+                    {
+                        result = repo.SaveAsTestCaseAllCopiedDataSet(testcasename, oldtestcaseid, testcasedesc, testsuiteid, projectid, suffix, lSchema, lConnectionStr, SessionManager.TESTER_LOGIN_NAME);
+                    }
+                    resultModel.message = result == "success" ? "TestCase created successfully." : "Dataset already exist in the system, please use another suffix.";
+                    resultModel.data = result;
                 }
 
-                resultModel.message = result == "success" ? "TestCase created successfully." : "Dataset already exist in the system, please use another suffix.";
                 resultModel.status = 1;
-                resultModel.data = result;
                 logger.Info(string.Format("SaveAs Testcase successfully | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
                 logger.Info(string.Format("SaveAs Testcase Modal close | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
             }
@@ -3298,7 +3386,7 @@ namespace MARS_Web.Controllers
                 if (ex.InnerException != null)
                     ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for SaveAsTestCase method | testcasename: {0} | OldTestCaseId: {1} | testcasedesc: {2} | testsuiteid: {3} | projectid: {4} | optionval: {5} | datasetName: {6} | suffix: {7} | UserName: {8}", testcasename, oldtestcaseid, testcasedesc, testsuiteid, projectid, optionval, datasetName, suffix, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
 
-                if (ex.InnerException.InnerException != null)
+                if (ex.InnerException != null && ex.InnerException.InnerException != null)
                     ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for SaveAsTestCase method | testcasename: {0} | OldTestCaseId: {1} | testcasedesc: {2} | testsuiteid: {3} | projectid: {4} | optionval: {5} | datasetName: {6} | suffix: {7} | UserName: {8}", testcasename, oldtestcaseid, testcasedesc, testsuiteid, projectid, optionval, datasetName, suffix, SessionManager.TESTER_LOGIN_NAME), ex.InnerException.InnerException);
 
                 resultModel.status = 0;
@@ -3678,12 +3766,21 @@ namespace MARS_Web.Controllers
                 repAcc.Username = SessionManager.TESTER_LOGIN_NAME;
                 ProjectRepository repo = new ProjectRepository();
                 repo.Username = SessionManager.TESTER_LOGIN_NAME;
-                var Widthgridlst = repAcc.GetGridList((long)userId, GridNameList.ResizeLeftPanel);
-                var Rgriddata = GridHelper.GetLeftpanelgridwidth(Widthgridlst);
-                var result = repo.ListProject();
-                var projectlist = result.Select(c => new SelectListItem { Text = c.PROJECT_NAME, Value = c.PROJECT_ID.ToString() }).OrderBy(x => x.Text).ToList();
-                ViewBag.ProjectList = JsonConvert.SerializeObject(projectlist);
-                ViewBag.width = Rgriddata.Resize == null ? ConfigurationManager.AppSettings["DefultLeftPanel"] + "px" : Rgriddata.Resize.Trim() + "px";
+                //var Widthgridlst = repAcc.GetGridList((long)userId, GridNameList.ResizeLeftPanel);
+                //var Rgriddata = GridHelper.GetLeftpanelgridwidth(Widthgridlst);
+                if (GlobalVariable.ProjectListCache != null && GlobalVariable.ProjectListCache.ContainsKey(SessionManager.Schema))
+                {
+                    var projectlist = GlobalVariable.ProjectListCache[SessionManager.Schema].Select(c => new SelectListItem { Text = c.PROJECT_NAME, Value = c.PROJECT_ID.ToString() }).OrderBy(x => x.Text).ToList();
+                    ViewBag.ProjectList = JsonConvert.SerializeObject(projectlist);
+                }
+                else
+                {
+                    var result = repo.ListProject();
+                    var projectlist = result.Select(c => new SelectListItem { Text = c.PROJECT_NAME, Value = c.PROJECT_ID.ToString() }).OrderBy(x => x.Text).ToList();
+                    ViewBag.ProjectList = JsonConvert.SerializeObject(projectlist);
+                }
+                //ViewBag.width = Rgriddata.Resize == null ? ConfigurationManager.AppSettings["DefultLeftPanel"] + "px" : Rgriddata.Resize.Trim() + "px";
+                ViewBag.width = ConfigurationManager.AppSettings["DefultLeftPanel"] + "px";
             }
             catch (Exception ex)
             {
@@ -3714,8 +3811,24 @@ namespace MARS_Web.Controllers
                 string orderDir = Request.Form.GetValues("order[0][dir]")[0];
                 int startRec = Convert.ToInt32(Request.Form.GetValues("start")[0]);
                 int pageSize = Convert.ToInt32(Request.Form.GetValues("length")[0]);
+                if (GlobalVariable.FolderListCache != null && GlobalVariable.FolderListCache.ContainsKey(SessionManager.Schema))
+                {
+                    if (GlobalVariable.FolderListCache[SessionManager.Schema].Count <= 0)
+                        InitCacheHelper.FolderInit(SessionManager.ConnectionString, SessionManager.Schema, new GetTreeRepository());
 
-                data = repo.ListOfFolder();
+                    data = GlobalVariable.FolderListCache[SessionManager.Schema].Select(y => new DataTagCommonViewModel
+                    {
+                        Id = y.FOLDERID,
+                        Name = y.FOLDERNAME,
+                        Description = y.DESCRIPTION,
+                        IsActive = y.ACTIVE,
+                        Active = y.ACTIVE == 1 ? "Y" : "N"
+                    }).OrderBy(z => z.Name).ToList();
+                }
+                else
+                {
+                    data = repo.ListOfFolder();
+                }
 
                 string NameSearch = Request.Form.GetValues("columns[0][search][value]")[0];
                 string DescSearch = Request.Form.GetValues("columns[1][search][value]")[0];
@@ -3802,12 +3915,22 @@ namespace MARS_Web.Controllers
             {
                 var repo = new TestCaseRepository();
                 repo.Username = SessionManager.TESTER_LOGIN_NAME;
-
-                var _addeditResult = repo.AddEditFolder(model);
-
+                if (model.Id == 0)
+                {
+                    model.Id = MARS_Repository.Helper.NextTestSuiteId("SEQ_T_TEST_FOLDER");
+                    InitCacheHelper.FolderAddOrEdit(SessionManager.Schema, model,true,repo.Username);
+                    Task.Run(() => repo.AddEditFolder(model, true));
+                }
+                else 
+                {
+                    InitCacheHelper.FolderAddOrEdit(SessionManager.Schema, model);
+                    Task.Run(() => repo.AddEditFolder(model));
+                }
+                
                 resultModel.message = "Saved [" + model.Name + "] Folder.";
-                resultModel.data = _addeditResult;
+                resultModel.data = true;
                 resultModel.status = 1;
+                //InitCacheHelper.FolderInit(SessionManager.ConnectionString, SessionManager.Schema, new GetTreeRepository());
 
                 logger.Info(string.Format("Folder Add/Edit  Modal close | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
                 logger.Info(string.Format("Folder Save successfully | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
@@ -3858,7 +3981,40 @@ namespace MARS_Web.Controllers
             {
                 TestCaseRepository repo = new TestCaseRepository();
                 repo.Username = SessionManager.TESTER_LOGIN_NAME;
-                var dataresults = repo.GetTagDetails(datasetid);
+                List<DataSetTagModel> dataresults = new List<DataSetTagModel>();
+                var schema = SessionManager.Schema;
+                if (GlobalVariable.FolderListCache != null && GlobalVariable.FolderListCache.ContainsKey(schema) &&
+                    GlobalVariable.DataSetTagListCache != null && GlobalVariable.DataSetTagListCache.ContainsKey(schema) &&
+                    GlobalVariable.SetListCache != null && GlobalVariable.SetListCache.ContainsKey(schema) &&
+                    GlobalVariable.GroupListCache != null && GlobalVariable.GroupListCache.ContainsKey(schema))
+                {
+                    var dataSetTag = GlobalVariable.DataSetTagListCache[schema].FirstOrDefault(r => r.DATASETID == datasetid);
+                    if (dataSetTag != null)
+                    {
+                        var group = GlobalVariable.GroupListCache[schema].FirstOrDefault(r => r.GROUPID.ToString() == dataSetTag.GROUPID);
+                        var folders = GlobalVariable.FolderListCache[schema].FirstOrDefault(r => r.FOLDERID.ToString() == dataSetTag.FOLDERID);
+                        var set = GlobalVariable.SetListCache[schema].FirstOrDefault(r => r.SETID.ToString() == dataSetTag.SETID);
+                        var model = new DataSetTagModel()
+                        {
+                            Group = group == null ? "" : group.GROUPNAME,
+                            Set = set == null ? "" : set.SETNAME,
+                            Folder = folders == null ? "" : folders.FOLDERNAME,
+                            Sequence = dataSetTag.SEQUENCE,
+                            Expectedresults = dataSetTag.EXPECTEDRESULTS,
+                            Diary = dataSetTag.DIARY,
+                            Datasetid = dataSetTag.DATASETID,
+                            Tagid = dataSetTag.T_TEST_DATASETTAG_ID,
+                            StepDesc = dataSetTag.STEPDESC
+                        };
+                        dataresults.Add(model);
+                    }
+                }
+
+                //if(dataresults.Count<=0)
+                //{
+                //    dataresults = repo.GetTagDetails(datasetid);
+                //}
+
                 ViewBag.Folder = dataresults.Count == 0 ? "" : dataresults[0].Folder;
                 ViewBag.Group = dataresults.Count == 0 ? "" : dataresults[0].Group;
                 ViewBag.Set = dataresults.Count == 0 ? "" : dataresults[0].Set;
@@ -3884,11 +4040,24 @@ namespace MARS_Web.Controllers
 
                 //var sets = repo.GetSets();
                 //ViewBag.TagSet = sets.Select(x => new SelectListItem { Text = x.SETNAME, Value = Convert.ToString(x.SETID), Selected = x.SETNAME == (dataresults.Count == 0 ? "" : dataresults[0].Set) ? true : false }).Distinct().ToList();
-
-                var dataset = repo.GetDataSetName(datasetid);
                 ViewBag.datasetid = datasetid;
-                ViewBag.Datasetname = dataset[0].Data_Summary_Name;
-                ViewBag.Datasetdesc = dataset[0].Dataset_desc;
+                DataSetListByTestCase dataSetCache = null;
+                if (GlobalVariable.DataSetListCache != null && GlobalVariable.DataSetListCache.ContainsKey(schema))
+                {
+                    dataSetCache = GlobalVariable.DataSetListCache[schema].FirstOrDefault(r => r.Datasetid == datasetid);
+                    if (dataSetCache != null)
+                    {
+                        ViewBag.Datasetname = dataSetCache.Datasetname;
+                        ViewBag.Datasetdesc = dataSetCache.Description;
+                    }
+                }
+                if(dataSetCache == null)
+                {
+                    var dataset = repo.GetDataSetName(datasetid);
+                    ViewBag.Datasetname = dataset[0].Data_Summary_Name;
+                    ViewBag.Datasetdesc = dataset[0].Dataset_desc;
+                }
+                
                 return PartialView("GetDatasetTagDetails");
 
             }
@@ -4240,15 +4409,23 @@ namespace MARS_Web.Controllers
                 var lRep = new TestCaseRepository();
                 lRep.Username = SessionManager.TESTER_LOGIN_NAME;
                 repacc.Username = SessionManager.TESTER_LOGIN_NAME;
-                var Widthgridlst = repacc.GetGridList((long)userid, GridNameList.ResizeLeftPanel);
-                var Rgriddata = GridHelper.GetLeftpanelgridwidth(Widthgridlst);
+                //var Widthgridlst = repacc.GetGridList((long)userid, GridNameList.ResizeLeftPanel);
+                //var Rgriddata = GridHelper.GetLeftpanelgridwidth(Widthgridlst);
                 string lSchema = SessionManager.Schema;
                 var lConnectionStr = SessionManager.APP;
-                var lList = lRep.GetDatasets();
+                if (GlobalVariable.DataSetListCache != null && GlobalVariable.DataSetListCache.ContainsKey(lSchema))
+                {
+                    var list = GlobalVariable.DataSetListCache[lSchema].Select(u => new DataSummaryModel { Data_Summary_Name = u.Datasetname, DATA_SUMMARY_ID = u.Datasetid }).Distinct().ToList();
+                    ViewBag.datasetlist = JsonConvert.SerializeObject(list);
+                }
+                else
+                {
+                    var lList = lRep.GetDatasets();
+                    ViewBag.datasetlist = JsonConvert.SerializeObject(lList);
+                }
 
-                ViewBag.datasetlist = JsonConvert.SerializeObject(lList);
-
-                ViewBag.width = Rgriddata.Resize == null ? ConfigurationManager.AppSettings["DefultLeftPanel"] + "px" : Rgriddata.Resize.Trim() + "px";
+                //ViewBag.width = Rgriddata.Resize == null ? ConfigurationManager.AppSettings["DefultLeftPanel"] + "px" : Rgriddata.Resize.Trim() + "px";
+                ViewBag.width = ConfigurationManager.AppSettings["DefultLeftPanel"] + "px";
                 ViewBag.FolderName = name;
                 ViewBag.FolderId = lId;
             }
@@ -4271,6 +4448,16 @@ namespace MARS_Web.Controllers
                 rep.Username = SessionManager.TESTER_LOGIN_NAME;
                 string lSchema = SessionManager.Schema;
                 var lConnectionStr = SessionManager.APP;
+                //if (GlobalVariable.FolderListCache != null && GlobalVariable.FolderListCache.ContainsKey(lSchema) &&
+                //    GlobalVariable.FolderFilterListCache != null && GlobalVariable.FolderFilterListCache.ContainsKey(lSchema))
+                //{
+                //    var folders = GlobalVariable.FolderListCache[lSchema].FindAll(r=>r.FOLDERID ==FolderId);
+                //    var folderFilters = GlobalVariable.FolderFilterListCache[lSchema];
+                //    var relFolderFilters = GlobalVariable.RelFolderFilterListCache[lSchema];
+                //    var result = from a in  folders 
+                //                 join b in  relFolderFilters  on a.FOLDERID  equals b.FOLDER_ID
+                //}
+
                 var lModel = rep.GetFolderDatasetList(lSchema, lConnectionStr, FolderId);
 
                 var jsonresult = JsonConvert.SerializeObject(lModel);
@@ -4454,14 +4641,63 @@ namespace MARS_Web.Controllers
                 srepo.Username = SessionManager.TESTER_LOGIN_NAME;
                 string lSchema = SessionManager.Schema;
                 var lConnectionStr = SessionManager.APP;
-                string lreturnValues = srepo.InsertFeedProcess();
-                var lvalFeed = lreturnValues.Split('~')[0];
-                var lvalFeedD = lreturnValues.Split('~')[1];
-                logger.Info(string.Format("Storyborad Saves 4 | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                //var result = srepo.CreateStoryboradForFolder(folderId, proId, SBName, SBDesc);
-                var result = srepo.CreateStoryboradForFolder(folderId, fName, lSchema, lConnectionStr, lvalFeed, lvalFeedD);
+                bool result = false;
+                if (GlobalVariable.ProjectListCache != null && GlobalVariable.ProjectListCache.ContainsKey(lSchema) &&
+                    GlobalVariable.AppListCache != null && GlobalVariable.AppListCache.ContainsKey(lSchema) &&
+                    GlobalVariable.StoryBoardListCache != null && GlobalVariable.StoryBoardListCache.ContainsKey(lSchema) &&
+                    GlobalVariable.ActionsCache!= null && GlobalVariable.ActionsCache.ContainsKey(lSchema))
+                {
+                    var project = GlobalVariable.ProjectListCache[lSchema].FirstOrDefault(x => x.PROJECT_NAME == "Project Zero");
+                    var applist = GlobalVariable.AppListCache[lSchema];
+                    var actions = GlobalVariable.ActionsCache[lSchema].FirstOrDefault(r => r.DISPLAY_NAME.ToUpper() == "RUN");
+                    List<long> detailList = null;
+                    if (project == null)
+                    {
+                        project = new T_TEST_PROJECT()
+                        {
+                            PROJECT_ID = MARS_Repository.Helper.NextTestSuiteId("T_TEST_PROJECT_SEQ"),
+                            PROJECT_NAME = "Project Zero",
+                            PROJECT_DESCRIPTION = "Project Zero",
+                            STATUS = 2,
+                            CREATOR = SessionManager.TESTER_LOGIN_NAME,
+                            CREATE_DATE = DateTime.Now
+                        };
+                        GlobalVariable.ProjectListCache[lSchema].Add(project);
+                        detailList = srepo.CreateStoryboradForFolderNew(folderId, fName, lSchema, lConnectionStr, project,true, applist, null, (int)actions.VALUE);
+                        addStoryBoardIntoCache(null, project, detailList[0], fName, lSchema);
+                    }
+                    else
+                    {
+                        var storyBoard = GlobalVariable.StoryBoardListCache[lSchema].FirstOrDefault(r => r.ProjectId == project.PROJECT_ID && r.StoryboardName == fName + "_Project Zero");
 
-                resultModel.data = result;
+                        detailList = srepo.CreateStoryboradForFolderNew(folderId, fName, lSchema, lConnectionStr, project, false, applist, storyBoard, (int) actions.VALUE);
+                        addStoryBoardIntoCache(storyBoard, project, detailList[0], fName, lSchema);
+                    }
+                    InitCacheHelper.StoryBoardInit(SessionManager.ConnectionString,lSchema,new GetTreeRepository());
+                    if (detailList != null && detailList.Count > 0)
+                    { 
+                        Task.Run(() =>
+                        {
+                            foreach (var detail in detailList)
+                            {
+                                JsonFileHelper.InitStoryBoardJson(lSchema, "", detail,true);
+                            }
+                        });
+                    }
+                    resultModel.data = true; 
+                }
+                else
+                {
+                    string lreturnValues = srepo.InsertFeedProcess();
+                    var lvalFeed = lreturnValues.Split('~')[0];
+                    var lvalFeedD = lreturnValues.Split('~')[1];
+                    logger.Info(string.Format("Storyborad Saves 4 | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                    //var result = srepo.CreateStoryboradForFolder(folderId, proId, SBName, SBDesc);
+                    result = srepo.CreateStoryboradForFolder(folderId, fName, lSchema, lConnectionStr, lvalFeed, lvalFeedD);
+                    resultModel.data = result;
+                }
+
+                
                 resultModel.message = "Storyboard saved successfully.";
                 resultModel.status = 1;
             }
@@ -4476,6 +4712,29 @@ namespace MARS_Web.Controllers
             }
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
+
+        private void CreateFolderProject()
+        { 
+        
+        
+        }
+
+        private void addStoryBoardIntoCache(StoryBoardListByProject storyBoard, T_TEST_PROJECT project,long id,string fname,string lSchema)
+        {
+            if (storyBoard == null)
+            {
+                storyBoard = new StoryBoardListByProject() {
+                    ProjectId = project.PROJECT_ID,
+                    ProjectName = project.PROJECT_NAME,
+                    StoryboardId = id,
+                    StoryboardName = $"{fname}_Project Zero",
+                    Storyboardescription = $"{fname}_Project Zero"
+                };
+
+                GlobalVariable.StoryBoardListCache[lSchema].Add(storyBoard);
+            }
+        }
+
 
         [HttpPost]
         public JsonResult GetFolderDatasetDetails(string DatasetName)
@@ -4529,9 +4788,31 @@ namespace MARS_Web.Controllers
                 string lSchema = SessionManager.Schema;
                 var lConnectionStr = SessionManager.APP;
                 string filter = "";
-                var result = repo.GetFilterList();
+                var result = new List<T_FOLDER_FILTER>();
+                if (GlobalVariable.FolderFilterListCache != null && GlobalVariable.FolderFilterListCache.ContainsKey(lSchema))
+                {
+                    result = GlobalVariable.FolderFilterListCache[lSchema];
+                }
+                else
+                {
+                    result = repo.GetFilterList().ToList();
+                }
+
                 if (folderId > 0)
-                    filter = repo.GetFilterByFolderId(folderId);
+                {
+                    if (GlobalVariable.RelFolderFilterListCache != null && GlobalVariable.RelFolderFilterListCache.ContainsKey(lSchema)
+                        && GlobalVariable.FolderFilterListCache != null && GlobalVariable.FolderFilterListCache.ContainsKey(lSchema))
+                    {
+                        var rels = GlobalVariable.RelFolderFilterListCache[lSchema].FindAll(x => x.FOLDER_ID == folderId);
+                        var folder = GlobalVariable.FolderFilterListCache[lSchema].FirstOrDefault(x => rels.Exists(c => c.FILTER_ID == x.FILTER_ID) && x.FILTER_NAME != null);
+                        if (folder != null)
+                            filter = folder.FILTER_ID.ToString();
+                    }
+                    else
+                    {
+                        filter = repo.GetFilterByFolderId(folderId);
+                    }
+                }
 
                 resultModel.message = filter;
                 resultModel.status = 1;
@@ -4586,9 +4867,19 @@ namespace MARS_Web.Controllers
                 repo.Username = SessionManager.TESTER_LOGIN_NAME;
                 string lSchema = SessionManager.Schema;
                 var lConnectionStr = SessionManager.APP;
+                bool isupdate = false;
                 if (Id <= 0)
                 {
-                    var checkduplicateflag = repo.CheckDuplicateFilterName(filtername);
+                    isupdate = true;
+                    var checkduplicateflag = false;
+                    if (GlobalVariable.FolderFilterListCache != null && GlobalVariable.FolderFilterListCache.ContainsKey(lSchema))
+                    {
+                        checkduplicateflag = GlobalVariable.FolderFilterListCache[lSchema].Any(r => r.FILTER_NAME.Trim().ToLower() == filtername.Trim().ToLower());
+                    }
+                    else
+                    {
+                        checkduplicateflag = repo.CheckDuplicateFilterName(filtername);
+                    }
                     if (checkduplicateflag)
                     {
                         resultModel.data = checkduplicateflag;
@@ -4598,9 +4889,36 @@ namespace MARS_Web.Controllers
                     }
                 }
 
-                var saveresult = repo.SaveFolderFilter(ProjectIds, storybaordIds, filtername, Id);
-                var result = repo.GetFilterList();
-                resultModel.data = JsonConvert.SerializeObject(result);
+                if (GlobalVariable.FolderFilterListCache != null && GlobalVariable.FolderFilterListCache.ContainsKey(lSchema))
+                {
+                    if (isupdate)
+                    {
+                        var filter = GlobalVariable.FolderFilterListCache[lSchema].FirstOrDefault(r => r.FILTER_ID == Id);
+                        if (filter != null)
+                        {
+                            filter.FILTER_NAME = filtername;
+                            filter.PROJECT_IDS = ProjectIds;
+                            filter.STORYBOARD_IDS = storybaordIds;
+                        }
+                    }
+                    else
+                    {
+                        var filter = new T_FOLDER_FILTER();
+                        filter.FILTER_ID = MARS_Repository.Helper.NextTestSuiteId("SEQ_T_FOLDER_FILTER");
+                        filter.FILTER_NAME = filtername;
+                        filter.PROJECT_IDS = ProjectIds;
+                        filter.STORYBOARD_IDS = storybaordIds;
+                        GlobalVariable.FolderFilterListCache[lSchema].Add(filter);
+                    }
+
+                    Task.Run(() => repo.SaveFolderFilter(ProjectIds, storybaordIds, filtername, Id, isupdate));
+                    resultModel.data = JsonConvert.SerializeObject(GlobalVariable.FolderFilterListCache[lSchema]);
+                }            
+                else
+                {
+                    var result = repo.GetFilterList();
+                    resultModel.data = JsonConvert.SerializeObject(result);
+                }
                 resultModel.status = 1;
             }
             catch (Exception ex)
@@ -4635,9 +4953,35 @@ namespace MARS_Web.Controllers
                 var fullpath = Path.Combine(Server.MapPath("~/" + MARS_REPORT_BATCHFILE_PATH), batchfilename);
                 var outputpath = Server.MapPath("~/" + MARS_REPORT_REPORTOUTPUT_PATH);
                 var logpath = Path.Combine(Server.MapPath("~/" + MARS_REPORT_REPORTOUTPUT_LOG_PATH), logFile);
-                var checkduplicateflag = repo.SaveFolderForFilter(FolderID, FilterId);
-                if (checkduplicateflag)
+
+                if (GlobalVariable.RelFolderFilterListCache != null && GlobalVariable.RelFolderFilterListCache.ContainsKey(lSchema)) 
                 {
+                    bool isAdd = false;
+                    var filter = GlobalVariable.RelFolderFilterListCache[lSchema].FirstOrDefault(r => r.FOLDER_ID == FolderID);
+                    if (filter != null)
+                    {
+                        filter.FILTER_ID = FilterId;
+                    }
+                    else
+                    {
+                        filter = new REL_FOLDER_FILTER()
+                        {
+                            FILTER_ID = FilterId,
+                            FOLDER_ID = FolderID,
+                            REL_FOLDER_FILTER_ID = MARS_Repository.Helper.NextTestSuiteId("SEQ_REL_FOLDER_FILTER")
+                        };
+                        GlobalVariable.RelFolderFilterListCache[lSchema].Add(filter);
+                        isAdd = true;
+                    }
+
+                    Task.Run(() => repo.SaveFolderForFilter(filter, isAdd));
+                }
+                else 
+                {
+                    repo.SaveFolderForFilter(FolderID, FilterId);
+                }
+                //if (checkduplicateflag)
+                //{
                     var filename = ExportDatasetTagReportExcal(FilterId.ToString(), Fname);
 
                     if (!string.IsNullOrEmpty(filename))
@@ -4671,7 +5015,7 @@ namespace MARS_Web.Controllers
                             resultModel.status = 0;
                         }
                     }
-                }
+                //}
             }
             catch (Exception ex)
             {
@@ -4834,10 +5178,21 @@ namespace MARS_Web.Controllers
             {
                 var repo = new TestCaseRepository();
                 repo.Username = SessionManager.TESTER_LOGIN_NAME;
-                var lresult = repo.DeleteFilter(Id);
-
+                var lSchema = SessionManager.Schema;
+                if (GlobalVariable.FolderFilterListCache != null && GlobalVariable.FolderFilterListCache.ContainsKey(lSchema))
+                {
+                    var filter = GlobalVariable.FolderFilterListCache[lSchema].FirstOrDefault(r => r.FILTER_ID == Id);
+                    if (filter != null)
+                    {
+                        GlobalVariable.FolderFilterListCache[lSchema].Remove(filter);
+                    }
+                }
+                else
+                {
+                     repo.DeleteFilter(Id);
+                }
                 resultModel.message = "success";
-                resultModel.data = lresult;
+                resultModel.data = true;
                 resultModel.status = 1;
             }
             catch (Exception ex)

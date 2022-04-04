@@ -3,11 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace MARS_Web.Helper
+namespace MARS_Repository
 {
-    /// <summary>
-    /// pleas user the IdWorker in MARS_Repository
-    /// </summary>
     public class IdWorker
     {
         private static long workerId;

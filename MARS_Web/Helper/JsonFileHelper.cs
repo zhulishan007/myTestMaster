@@ -22,7 +22,7 @@ namespace MARS_Web.Helper
 
         public static bool IsForWeb = true;
 
-        public static string GetFilePath(string fileName, string databaseName,string caseName="Storyboard" )
+        public static string GetFilePath(string fileName, string databaseName,string caseName="Storyboard")
         {
             string fullName = IsForWeb?Path.Combine(HostingEnvironment.MapPath("~/"), "Serialization" , caseName, databaseName,fileName): fileName;
             if (File.Exists(fullName))
@@ -158,7 +158,7 @@ namespace MARS_Web.Helper
                     StoryBoardRepository repo = new StoryBoardRepository();
                     repo.Username = user.username;
 
-                    Dictionary<string, object> keyValues = new Dictionary<string, object>();
+                    /*Dictionary<string, object> keyValues = new Dictionary<string, object>();
                    
                     var datasetList = repo.GetDataSetListNew(Projectid);
                     keyValues.Add("datasetList", datasetList);
@@ -170,7 +170,7 @@ namespace MARS_Web.Helper
                     keyValues.Add("testSuiteList", testSuiteList);
                    
                     var testCaseLists = repo.GetTestCaseListNew(Projectid);
-                    keyValues.Add("testCaseLists", testCaseLists);
+                    keyValues.Add("testCaseLists", testCaseLists);*/
                    
                     
                     var lAppList = repo.GetApplicationListByStoryboardId(Storyboardid);
@@ -203,7 +203,7 @@ namespace MARS_Web.Helper
                     storyBoardDetails = storyBoardDetails.Replace("\\", "\\\\");
                     storyBoardDetails = storyBoardDetails.Trim();
                     keyValuePairs.TryAdd("StoryBoardDetails", storyBoardDetails);
-                    keyValuePairs.TryAdd("keyValues", JsonConvert.SerializeObject(keyValues));
+                    //keyValuePairs.TryAdd("keyValues", JsonConvert.SerializeObject(keyValues));
                     string jsonData = JsonConvert.SerializeObject(keyValuePairs);
                     SaveToJsonFile(jsonData, IsForWeb?$"{Projectid}_{Storyboardid}_{storyboardname}.json":key, databaseName);
                     Console.WriteLine($"\t file {key} is created");
@@ -221,5 +221,45 @@ namespace MARS_Web.Helper
             }
          }
 
+        public static void ChangeJsonFileName(string originalName, string targetName)
+        {
+            if (!File.Exists(targetName) && File.Exists(originalName))
+            {
+                var file = new FileInfo(originalName);
+                file.MoveTo(targetName);
+                //File.Copy(originalName, targetName);
+            }
+        }
+
+        public static string GetJsonFilePath(string databaseName, string type)
+        {
+            return Path.Combine(HostingEnvironment.MapPath("~/"), "Serialization", type, databaseName);
+        }
+
+        public static void DeleteFile(string databaseName, long storyBoardId,string storyBoardName, long projectid = 0)
+        {
+            var filepath = GetJsonFilePath(databaseName, "Storyboard");
+            if (projectid != 0)
+            {
+                var name = $"{projectid}_{storyBoardId}_{storyBoardName}.json";
+                var fileName = Path.Combine(filepath, name);
+                if (File.Exists(fileName))
+                {
+                    File.Delete(fileName);
+                }
+            }
+            else
+            {
+                DirectoryInfo dir = new DirectoryInfo(filepath);
+                FileSystemInfo[] fileinfo = dir.GetFileSystemInfos();
+                foreach (FileSystemInfo i in fileinfo)
+                {
+                    if (i.Name.EndsWith($"_{storyBoardId}_{storyBoardName}.json"))
+                    {
+                        System.IO.File.Delete(i.FullName);
+                    }
+                }
+            }
+        }
     }
 }

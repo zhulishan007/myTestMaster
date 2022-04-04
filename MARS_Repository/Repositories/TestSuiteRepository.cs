@@ -527,6 +527,30 @@ namespace MARS_Repository.Repositories
             }
         }
 
+        public List<string> CheckTestSuiteExistInStoryboardNew(long TestSuiteId)
+        {
+            try
+            {
+                logger.Info(string.Format("Check TestSuite Exist In Storyboard start | TestSuiteId: {0} | UserName: {1}", TestSuiteId, Username));
+             
+                var lStoryboardList = (from t1 in enty.T_PROJ_TC_MGR
+                                       join t2 in enty.T_STORYBOARD_SUMMARY on t1.STORYBOARD_ID equals t2.STORYBOARD_ID
+                                       where t1.TEST_SUITE_ID == TestSuiteId
+                                       select t2.STORYBOARD_NAME).Distinct().ToList();
+
+                logger.Info(string.Format("Check TestSuite Exist In Storyboard end | TestSuiteId: {0} | UserName: {1}", TestSuiteId, Username));
+                return lStoryboardList;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in TestSuite for CheckTestSuiteExistInStoryboard method | TestSuiteId: {0} | UserName: {1}", TestSuiteId, Username));
+                ELogger.ErrorException(string.Format("Error occured in TestSuite for CheckTestSuiteExistInStoryboard method | TestSuiteId: {0} | UserName: {1}", TestSuiteId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestSuite for CheckTestSuiteExistInStoryboard method | TestSuiteId: {0} | UserName: {1}", TestSuiteId, Username), ex.InnerException);
+                throw;
+            }
+        }
+
         public bool ExportTestSuite(long TestSuiteId, string Path)
         {
             try

@@ -14,6 +14,7 @@ using MARS_Web.Helper;
 using NLog;
 using MARSUtility;
 using Mars_Serialization.ViewModel;
+using System.Threading.Tasks;
 
 namespace MARS_Web.Controllers
 {
@@ -191,26 +192,43 @@ namespace MARS_Web.Controllers
                 var testSuiterepo = new TestSuiteRepository();
                 testSuiterepo.Username = SessionManager.TESTER_LOGIN_NAME;
                 var TestSuiteName = string.Empty;
-                var lflag = testSuiterepo.CheckTestSuiteExistInStoryboard(TestsuiteId);
+                //var lflag = testSuiterepo.CheckTestSuiteExistInStoryboard(TestsuiteId);
+                var lflag = testSuiterepo.CheckTestSuiteExistInStoryboardNew(TestsuiteId);
 
                 if (lflag.Count <= 0)
                 {
-                    TestSuiteName = testSuiterepo.GetTestSuiteNameById(TestsuiteId);
-                    var lResult = testSuiterepo.DeleteTestSuite(TestsuiteId);
                     var repTree = new GetTreeRepository();
                     var lSchema = SessionManager.Schema;
                     var lConnectionStr = SessionManager.APP;
                     var entityConnectString = SessionManager.ConnectionString;
+                    if (GlobalVariable.TestSuiteListCache != null && GlobalVariable.TestSuiteListCache.ContainsKey(lSchema)) 
+                    {
+                        TestSuiteName = GlobalVariable.TestSuiteListCache[lSchema].FirstOrDefault(r => r.TestsuiteId == TestsuiteId)?.TestsuiteName;
+                        GlobalVariable.TestSuiteListCache[lSchema].RemoveAll(r => r.TestsuiteId == TestsuiteId);
+                    } 
+                    else {
+                        TestSuiteName = testSuiterepo.GetTestSuiteNameById(TestsuiteId);
+                    }
+                    if (GlobalVariable.TestCaseListCache != null && GlobalVariable.TestCaseListCache.ContainsKey(lSchema))
+                    {
+                        GlobalVariable.TestCaseListCache[lSchema].RemoveAll(r => r.TestsuiteId == TestsuiteId);
+                    }
+                    if (GlobalVariable.DataSetListCache != null && GlobalVariable.DataSetListCache.ContainsKey(lSchema))
+                    {
+                        GlobalVariable.DataSetListCache[lSchema].RemoveAll(r => r.TestsuiteId == TestsuiteId);
+                    }
+                    Task.Run(() => testSuiterepo.DeleteTestSuite(TestsuiteId));
+                    /*
                     InitCacheHelper.TestCaseInit(entityConnectString, lSchema, repTree, lConnectionStr);
                     InitCacheHelper.TestSuitInit(entityConnectString, lSchema, repTree, lConnectionStr);
-                    InitCacheHelper.DataSetInit(entityConnectString, lSchema, repTree, lConnectionStr);
+                    InitCacheHelper.DataSetInit(entityConnectString, lSchema, repTree, lConnectionStr);*/
 
                     Session["TestSuiteDeleteMsg"] = "Successfully TestSuite Deleted.";
                     Session["TestcaseId"] = null;
                     Session["TestsuiteId"] = null;
                     Session["ProjectId"] = null;
 
-                    resultModel.data = lResult;
+                    resultModel.data = true;
                     resultModel.message = "Test Suite [" + TestSuiteName + "] deleted Successfully";
                 }
                 else
@@ -242,13 +260,25 @@ namespace MARS_Web.Controllers
             {
                 var testsuiterepo = new TestSuiteRepository();
                 testsuiterepo.Username = SessionManager.TESTER_LOGIN_NAME;
-                var result = testsuiterepo.CheckDuplicateTestSuiteName(TestSuiteName, TestSuiteId);
+                bool result = false;
+                if (GlobalVariable.TestSuiteListCache != null && GlobalVariable.TestSuiteListCache.ContainsKey(SessionManager.Schema)) 
+                {
+                    result = InitCacheHelper.CheckTestSuiteFromCache(SessionManager.Schema, TestSuiteName, TestSuiteId);
+                }
+                else 
+                { 
+                    result = testsuiterepo.CheckDuplicateTestSuiteName(TestSuiteName, TestSuiteId);
+                }
                 if (result)
                     resultModel.data = result;
-                else{
-                    var lresult = testsuiterepo.ChangeTestSuiteName(TestSuiteName, Testsuitedesc, TestSuiteId);
+                else
+                {
+                    InitCacheHelper.RefreshTestSuiteName(SessionManager.Schema, TestSuiteName, Testsuitedesc, TestSuiteId);
+
+                    Task.Run(() => testsuiterepo.ChangeTestSuiteName(TestSuiteName, Testsuitedesc, TestSuiteId));
+
                     resultModel.message = "Test Suite name successfully changed.";
-                    resultModel.data = lresult;
+                    resultModel.data = "success";
                     logger.Info(string.Format("Rename TestSuite successfully | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
                 }
                 resultModel.status = 1;
@@ -275,8 +305,17 @@ namespace MARS_Web.Controllers
                 TestSuiteName = TestSuiteName.Trim();
                 var testsuiterepo = new TestSuiteRepository();
                 testsuiterepo.Username = SessionManager.TESTER_LOGIN_NAME;
-                var lresult = testsuiterepo.CheckDuplicateTestSuiteName(TestSuiteName, TestSuiteId);
-                resultModel.data = lresult;
+                bool result = false;
+                if (GlobalVariable.TestSuiteListCache != null && GlobalVariable.TestSuiteListCache.ContainsKey(SessionManager.Schema))
+                {
+                    result = InitCacheHelper.CheckTestSuiteFromCache(SessionManager.Schema, TestSuiteName, TestSuiteId);
+                }
+                else
+                {
+                    result = testsuiterepo.CheckDuplicateTestSuiteName(TestSuiteName, TestSuiteId);
+                }
+                //var lresult = testsuiterepo.CheckDuplicateTestSuiteName(TestSuiteName, TestSuiteId);
+                resultModel.data = result;
                 resultModel.status = 1;
             }
             catch (Exception ex)

@@ -1231,10 +1231,22 @@ namespace MARS_Web.Controllers
                 DBEntities.ConnectionString = SessionManager.ConnectionString;
                 DBEntities.Schema = SessionManager.Schema;
 
-                var repTree = new GetTreeRepository();
-                var ldatasetlist = repTree.GetDataSetListbyId(lTestCaseId);
-
-                resultModel.data = ldatasetlist;
+                
+                if (GlobalVariable.DataSetListCache != null && GlobalVariable.DataSetListCache.ContainsKey(SessionManager.Schema)) {
+                    var list = GlobalVariable.DataSetListCache[SessionManager.Schema].FindAll(f => f.TestcaseId == lTestCaseId);
+                    var datasets = list.Select(c => new DataSetListByTestCase
+                    {
+                        TestcaseId = lTestCaseId,
+                        Datasetid = c.Datasetid,
+                        Datasetname = c.Datasetname
+                    }).ToList();
+                    resultModel.data = datasets.OrderBy(r=>r.Datasetname);
+                }
+                else {
+                    var repTree = new GetTreeRepository();
+                    var ldatasetlist = repTree.GetDataSetListbyId(lTestCaseId);
+                    resultModel.data = ldatasetlist;
+                }
                 resultModel.status = 1;
             }
             catch (Exception ex)

@@ -66,5 +66,6 @@ namespace MARS_Repository.ViewModel
         public string TestcaseName { get; set; }
         public long Datasetid { get; set; }
         public string Datasetname { get; set; }
+        public string Description { get; set; }
     }
 }

@@ -662,7 +662,7 @@ namespace MARS_Repository.Repositories
                     {
                         OracleCommand cmd = new OracleCommand
                         {
-                            CommandText = @"select t1.PROJECT_ID,   t1.PROJECT_NAME,  t3.TEST_SUITE_ID, t3.TEST_SUITE_NAME,
+                            /*CommandText = @"select t1.PROJECT_ID,   t1.PROJECT_NAME,  t3.TEST_SUITE_ID, t3.TEST_SUITE_NAME,
                                          t5.TEST_CASE_ID, t5.TEST_CASE_NAME,t5.TEST_STEP_DESCRIPTION,
                                          count(t6.DATA_SUMMARY_ID)  as DataSetCount  from T_TEST_PROJECT t1 
                                          join REL_TEST_SUIT_PROJECT t2 on t2.PROJECT_ID = t1.PROJECT_ID 
@@ -671,7 +671,16 @@ namespace MARS_Repository.Repositories
                                          join T_TEST_CASE_SUMMARY t5 on  t5.TEST_CASE_ID = t4.TEST_CASE_ID
                                          join REL_TC_DATA_SUMMARY t6 on t6.TEST_CASE_ID = t5.TEST_CASE_ID
                                          group by t1.PROJECT_ID,   t1.PROJECT_NAME,   t3.TEST_SUITE_ID,  t3.TEST_SUITE_NAME,  
+                                         t5.TEST_CASE_ID, t5.TEST_CASE_NAME,t5.TEST_STEP_DESCRIPTION",*/
+                            CommandText = @"select distinct  t3.TEST_SUITE_ID, t3.TEST_SUITE_NAME,
+                                         t5.TEST_CASE_ID, t5.TEST_CASE_NAME,t5.TEST_STEP_DESCRIPTION,
+                                         count(t6.DATA_SUMMARY_ID)  as DataSetCount  from   T_TEST_SUITE t3 
+                                         join REL_TEST_CASE_TEST_SUITE t4 on t4.TEST_SUITE_ID =t3.TEST_SUITE_ID
+                                         join T_TEST_CASE_SUMMARY t5 on  t5.TEST_CASE_ID = t4.TEST_CASE_ID
+                                         join REL_TC_DATA_SUMMARY t6 on t6.TEST_CASE_ID = t5.TEST_CASE_ID
+                                         group by   t3.TEST_SUITE_ID,  t3.TEST_SUITE_NAME,  
                                          t5.TEST_CASE_ID, t5.TEST_CASE_NAME,t5.TEST_STEP_DESCRIPTION",
+
                             Connection = con
                         };
                         con.Open();
@@ -680,8 +689,8 @@ namespace MARS_Repository.Repositories
                             while (dr.Read())
                             {
                                 TestCaseListByProject testSuite = new TestCaseListByProject();
-                                testSuite.ProjectId = (long)dr["PROJECT_ID"];
-                                testSuite.ProjectName = dr["PROJECT_NAME"].ToString();
+                                //testSuite.ProjectId = (long)dr["PROJECT_ID"];
+                                //testSuite.ProjectName = dr["PROJECT_NAME"].ToString();
                                 testSuite.TestsuiteId = (long)dr["TEST_SUITE_ID"];
                                 testSuite.TestsuiteName = dr["TEST_SUITE_NAME"].ToString();
                                 testSuite.TestcaseId = (long)dr["TEST_CASE_ID"];
@@ -758,7 +767,7 @@ namespace MARS_Repository.Repositories
                     {
                         OracleCommand cmd = new OracleCommand
                         {
-                            CommandText = @"select t1.PROJECT_ID,   t1.PROJECT_NAME,  t3.TEST_SUITE_ID, t3.TEST_SUITE_NAME,
+                            /*CommandText = @"select t1.PROJECT_ID,   t1.PROJECT_NAME,  t3.TEST_SUITE_ID, t3.TEST_SUITE_NAME,
                                              t5.TEST_CASE_ID, t5.TEST_CASE_NAME,t7.DATA_SUMMARY_ID,t7.ALIAS_NAME
                                                from T_TEST_PROJECT t1 
                                              join REL_TEST_SUIT_PROJECT t2 on t2.PROJECT_ID = t1.PROJECT_ID 
@@ -766,23 +775,29 @@ namespace MARS_Repository.Repositories
                                              join REL_TEST_CASE_TEST_SUITE t4 on t4.TEST_SUITE_ID =t3.TEST_SUITE_ID
                                              join T_TEST_CASE_SUMMARY t5 on  t5.TEST_CASE_ID = t4.TEST_CASE_ID
                                              join REL_TC_DATA_SUMMARY t6 on t6.TEST_CASE_ID = t5.TEST_CASE_ID
+                                             join T_TEST_DATA_SUMMARY t7 on t7.DATA_SUMMARY_ID =t6.DATA_SUMMARY_ID",*/
+                            CommandText = @"select distinct  t5.TEST_CASE_ID, t5.TEST_CASE_NAME,t7.DATA_SUMMARY_ID,t7.ALIAS_NAME,t7.DESCRIPTION_INFO
+                                               from  T_TEST_CASE_SUMMARY  T5
+                                             join REL_TC_DATA_SUMMARY t6 on t6.TEST_CASE_ID = t5.TEST_CASE_ID
                                              join T_TEST_DATA_SUMMARY t7 on t7.DATA_SUMMARY_ID =t6.DATA_SUMMARY_ID",
                             Connection = con
                         };
                         con.Open();
+                        //cmd.ExecuteNonQuery();
                         using (OracleDataReader dr = cmd.ExecuteReader())
                         {
                             while (dr.Read())
                             {
                                 DataSetListByTestCase dataSet = new DataSetListByTestCase();
-                                dataSet.ProjectId = (long)dr["PROJECT_ID"];
-                                dataSet.ProjectName = dr["PROJECT_NAME"].ToString();
-                                dataSet.TestsuiteId = (long)dr["TEST_SUITE_ID"];
-                                dataSet.TestsuiteName = dr["TEST_SUITE_NAME"].ToString();
+                                //dataSet.ProjectId = (long)dr["PROJECT_ID"];
+                                //dataSet.ProjectName = dr["PROJECT_NAME"].ToString();
+                                //dataSet.TestsuiteId = (long)dr["TEST_SUITE_ID"];
+                                //dataSet.TestsuiteName = dr["TEST_SUITE_NAME"].ToString();
                                 dataSet.TestcaseId = (long)dr["TEST_CASE_ID"];
                                 dataSet.TestcaseName =  dr["TEST_CASE_NAME"].ToString();
                                 dataSet.Datasetid = (long)dr["DATA_SUMMARY_ID"];
                                 dataSet.Datasetname = dr["ALIAS_NAME"].ToString();
+                                dataSet.Description = dr["DESCRIPTION_INFO"].ToString();
                                 lList.Add(dataSet);
                             }
                         }
@@ -845,5 +860,670 @@ namespace MARS_Repository.Repositories
                 throw;
             }
         }
+
+        public List<SYSTEM_LOOKUP> GetActionsCache()
+        {
+            try
+            {
+                logger.Info(string.Format("Get Actions start | UserName: {0}",   Username));
+                
+                var result = entity.SYSTEM_LOOKUP.Where(x => x.FIELD_NAME == "RUN_TYPE" && x.TABLE_NAME == "T_PROJ_TC_MGR" && x.DISPLAY_NAME != "FAILUE").ToList();
+                 
+                return result;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in StoryBoard for GetActions method| UserName: {0}",  Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in GetActions method | UserName: {0}",  Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in GetActions method | UserName: {0}",  Username), ex.InnerException);
+                throw;
+            }
+        }
+
+        public List<T_TEST_FOLDER> GetFolderCache()
+        {
+            try
+            {
+                logger.Info(string.Format("Get FOLDER start | UserName: {0}", Username));
+
+                var result = entity.T_TEST_FOLDER.Where(x => !string.IsNullOrEmpty(x.FOLDERNAME)).ToList();
+
+                logger.Info(string.Format("Get FOLDER end | UserName: {0}", Username));
+                return result;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in GetTreeRepository for GetFolderCache method| UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured GetTreeRepository in GetFolderCache method | UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured GetTreeRepository in GetFolderCache method | UserName: {0}", Username), ex.InnerException);
+                throw;
+            }
+        }
+        public List<T_FOLDER_FILTER> GetFilterCache()
+        {
+            try
+            {
+                logger.Info(string.Format("GetFilterList start | UserName: {0}", Username));
+                var List = entity.T_FOLDER_FILTER.Distinct().ToList();
+                logger.Info(string.Format("GetFilterList end | UserName: {0}", Username));
+                return List;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in TestCase for GetFilterList method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured in TestCase for GetFilterList method | UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase for GetFilterList method | UserName: {0}", Username), ex.InnerException);
+                throw;
+            }
+        }
+
+        public List<REL_FOLDER_FILTER> GetRelFolderFilterCache()
+        {
+            try
+            {
+                logger.Info(string.Format("GetRelFolderFilterCache start  UserName: {0}",  Username));
+                var lResult = entity.REL_FOLDER_FILTER.ToList();
+
+                logger.Info(string.Format("GetRelFolderFilterCache end   | UserName: {0}", Username));
+                return lResult;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in TestCase for GetRelFolderFilterCache method | UserName: {0}",  Username));
+                ELogger.ErrorException(string.Format("Error occured in TestCase for GetRelFolderFilterCache method |UserName: {0}",  Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase for GetRelFolderFilterCache method | UserName: {0}",  Username), ex.InnerException);
+                throw;
+            }
+        }
+
+        public List<T_REGISTERED_APPS> GetAppCache()
+        {
+            try
+            {
+                logger.Info(string.Format("GetAppCache start  UserName: {0}", Username));
+                var lResult = entity.T_REGISTERED_APPS.ToList();
+
+                logger.Info(string.Format("GetAppCache end   | UserName: {0}", Username));
+                return lResult;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in TestCase for GetAppCache method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured in TestCase for GetAppCache method |UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase for GetAppCache method | UserName: {0}", Username), ex.InnerException);
+                throw;
+            }
+        }
+
+        public List<T_TEST_SET> GetSetCache()
+        {
+            try
+            {
+                logger.Info(string.Format("GetSetCache start  UserName: {0}", Username));
+                var lResult = entity.T_TEST_SET.ToList();
+
+                logger.Info(string.Format("GetSetCache end   | UserName: {0}", Username));
+                return lResult;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in TestCase for GetSetCache method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured in TestCase for GetSetCache method |UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase for GetSetCache method | UserName: {0}", Username), ex.InnerException);
+                throw;
+            }
+        }
+
+
+        public List<T_TEST_GROUP> GetGroupCache()
+        {
+            try
+            {
+                logger.Info(string.Format("GetGroupCache start  UserName: {0}", Username));
+                var lResult = entity.T_TEST_GROUP.ToList();
+
+                logger.Info(string.Format("GetGroupCache end   | UserName: {0}", Username));
+                return lResult;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in TestCase for GetGroupCache method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured in TestCase for GetGroupCache method |UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase for GetGroupCache method | UserName: {0}", Username), ex.InnerException);
+                throw;
+            }
+        }
+
+        public List<T_TEST_DATASETTAG> GetDataSetTagCache()
+        {
+            try
+            {
+                logger.Info(string.Format("GetDataSetTagCache start  UserName: {0}", Username));
+                var lResult = entity.T_TEST_DATASETTAG.ToList();
+                logger.Info(string.Format("GetDataSetTagCache end   | UserName: {0}", Username));
+                return lResult;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in TestCase for GetDataSetTagCache method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured in TestCase for GetDataSetTagCache method |UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase for GetDataSetTagCache method | UserName: {0}", Username), ex.InnerException);
+                throw;
+            }
+        }
+
+
+
+        public List<StoryBoardListByProject> GetStoryboardListCache(OracleCommand cmd)
+        {
+            try
+            {
+                logger.Info(string.Format("Get All Storyboard List start  | UserName: {0}", Username));
+
+                var lStoryboardTree = new List<StoryBoardListByProject>();
+                cmd.CommandText = @"select distinct  t1.PROJECT_ID, t1.PROJECT_NAME,t2.STORYBOARD_ID,t2.STORYBOARD_NAME,t2.DESCRIPTION
+                                        from  T_STORYBOARD_SUMMARY  T2
+                                        join T_TEST_PROJECT t1 on  t1.PROJECT_ID =t2.ASSIGNED_PROJECT_ID  where  t2.STORYBOARD_NAME is not null";
+
+                using (OracleDataReader dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        StoryBoardListByProject project = new StoryBoardListByProject();
+                        project.ProjectId = Helper.GetDBValue<long>(dr["PROJECT_ID"],0);
+                        project.ProjectName = Helper.GetDBValue<string>( dr["PROJECT_NAME"],"");
+                        project.StoryboardId = Helper.GetDBValue<long>(dr["STORYBOARD_ID"],0);
+                        project.StoryboardName = Helper.GetDBValue<string>(dr["STORYBOARD_NAME"],"");
+                        project.Storyboardescription = Helper.GetDBValue<string>(dr["DESCRIPTION"],"");
+                        lStoryboardTree.Add(project);
+                    }
+                }
+
+                logger.Info(string.Format("Get All Storyboard List end  | UserName: {0}", Username));
+
+                return lStoryboardTree;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured GetTree in GetStoryboardList method   Username: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured GetTree in GetStoryboardList method | Username: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured GetStoryboardList in GetRoleByUser method Username: {0}", Username), ex.InnerException);
+                throw;
+            }
+        }
+
+        public List<TestSuiteListByProject> GetTestSuiteListCache(OracleCommand cmd)
+        {
+            try
+            {
+                logger.Info(string.Format("Get TestSuiteList start  UserName: {0}", Username));
+                var lTestSuiteTree = new List<TestSuiteListByProject>();
+                    
+                cmd.CommandText = @"select t1.PROJECT_ID, t1.PROJECT_NAME, t3.TEST_SUITE_ID, t3.TEST_SUITE_NAME,  t3.TEST_SUITE_DESCRIPTION,
+                        count(t5.TEST_CASE_ID) as testCaseCount from T_TEST_PROJECT t1 
+                        join REL_TEST_SUIT_PROJECT t2 on t2.PROJECT_ID = t1.PROJECT_ID 
+                        join T_TEST_SUITE t3 on t3.TEST_SUITE_ID =t2.TEST_SUITE_ID
+                            join REL_TEST_CASE_TEST_SUITE t4 on t4.TEST_SUITE_ID =t3.TEST_SUITE_ID
+                            join T_TEST_CASE_SUMMARY t5 on  t4.TEST_CASE_ID = t5.TEST_CASE_ID 
+                            group by t1.PROJECT_ID,   t1.PROJECT_NAME,   t3.TEST_SUITE_ID,  t3.TEST_SUITE_NAME,   t3.TEST_SUITE_DESCRIPTION";                     
+                        
+                using (OracleDataReader dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        TestSuiteListByProject testSuite = new TestSuiteListByProject();
+                        testSuite.ProjectId = (long)dr["PROJECT_ID"];
+                        testSuite.ProjectName = dr["PROJECT_NAME"].ToString();
+                        testSuite.TestsuiteId = (long)dr["TEST_SUITE_ID"];
+                        testSuite.TestsuiteName = dr["TEST_SUITE_NAME"].ToString();
+                        testSuite.TestSuiteDesc = dr["TEST_SUITE_DESCRIPTION"].ToString();
+                        testSuite.TestCaseCount = (long)((decimal)dr["testCaseCount"]);
+                        lTestSuiteTree.Add(testSuite);
+                    }
+                }  
+
+                logger.Info(string.Format("Get TestSuiteList end | UserName: {0}", Username));
+                return lTestSuiteTree;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured GetTree in GetTestSuiteList method | Username: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured GetTree in GetTestSuiteList method | Username: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured GetTestSuiteList in GetRoleByUser method  Username: {0}", Username), ex.InnerException);
+                throw;
+            }
+        }
+
+        public List<TestCaseListByProject> GetTestCaseListCache(OracleCommand cmd)
+        {
+            try
+            {
+                logger.Info(string.Format("Get All TestCase List Cache start   UserName: {0}", Username));
+                var lTestcaseTree = new List<TestCaseListByProject>();
+                cmd.CommandText = @"select distinct  t3.TEST_SUITE_ID, t3.TEST_SUITE_NAME,
+                                         t5.TEST_CASE_ID, t5.TEST_CASE_NAME,t5.TEST_STEP_DESCRIPTION,
+                                         count(t6.DATA_SUMMARY_ID)  as DataSetCount  from   T_TEST_SUITE t3 
+                                         join REL_TEST_CASE_TEST_SUITE t4 on t4.TEST_SUITE_ID =t3.TEST_SUITE_ID
+                                         join T_TEST_CASE_SUMMARY t5 on  t5.TEST_CASE_ID = t4.TEST_CASE_ID
+                                         join REL_TC_DATA_SUMMARY t6 on t6.TEST_CASE_ID = t5.TEST_CASE_ID
+                                         group by   t3.TEST_SUITE_ID,  t3.TEST_SUITE_NAME,  
+                                         t5.TEST_CASE_ID, t5.TEST_CASE_NAME,t5.TEST_STEP_DESCRIPTION";
+                 
+                using (OracleDataReader dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        TestCaseListByProject testSuite = new TestCaseListByProject();
+                        //testSuite.ProjectId = (long)dr["PROJECT_ID"];
+                        //testSuite.ProjectName = dr["PROJECT_NAME"].ToString();
+                        testSuite.TestsuiteId = (long)dr["TEST_SUITE_ID"];
+                        testSuite.TestsuiteName = dr["TEST_SUITE_NAME"].ToString();
+                        testSuite.TestcaseId = (long)dr["TEST_CASE_ID"];
+                        testSuite.TestcaseName = dr["TEST_CASE_NAME"].ToString();
+                        testSuite.TestCaseDesc = dr["TEST_STEP_DESCRIPTION"].ToString();
+                        testSuite.DataSetCount = (long)((decimal)dr["DataSetCount"]);
+                        lTestcaseTree.Add(testSuite);
+                    }
+                }
+
+                logger.Info(string.Format("Get TestCase List end UserName: {0}", Username));
+                return lTestcaseTree;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured GetTree in GetTestCaseList  | Username: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured GetTree in GetTestCaseList method   | Username: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured GetTestCaseList in GetRoleByUser method   Username: {0}", Username), ex.InnerException);
+                throw;
+            }
+        }
+
+        public List<DataSetListByTestCase> GetDataSetListCache(OracleCommand cmd)
+        {
+            try
+            {
+                logger.Info(string.Format("Get Dataset List Cache UserName: {0}", Username));
+                var lList = new List<DataSetListByTestCase>();
+
+                cmd.CommandText = @"select distinct  t5.TEST_CASE_ID, t5.TEST_CASE_NAME,t7.DATA_SUMMARY_ID,t7.ALIAS_NAME,t7.DESCRIPTION_INFO
+                                        from  T_TEST_CASE_SUMMARY  T5
+                                        join REL_TC_DATA_SUMMARY t6 on t6.TEST_CASE_ID = t5.TEST_CASE_ID
+                                        join T_TEST_DATA_SUMMARY t7 on t7.DATA_SUMMARY_ID =t6.DATA_SUMMARY_ID";
+                       
+                using (OracleDataReader dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        DataSetListByTestCase dataSet = new DataSetListByTestCase();
+
+                        dataSet.TestcaseId = (long)dr["TEST_CASE_ID"];
+                        dataSet.TestcaseName = dr["TEST_CASE_NAME"].ToString();
+                        dataSet.Datasetid = (long)dr["DATA_SUMMARY_ID"];
+                        dataSet.Datasetname = dr["ALIAS_NAME"].ToString();
+                        dataSet.Description = dr["DESCRIPTION_INFO"].ToString();
+                        lList.Add(dataSet);
+                    }
+                }
+                logger.Info(string.Format("Get Dataset List Cache End UserName: {0}", Username));
+                return lList;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured GetTree in GetDataSetList method   UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured GetTree in GetDataSetList method | UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured GetTree in GetDataSetList method  | UserName: {0}", Username), ex.InnerException);
+                throw;
+            }
+        }
+
+        public List<T_TEST_PROJECT> GetProjectListCache(OracleCommand cmd)
+        {
+            try
+            {
+                logger.Info(string.Format("Get Project List Cache UserName: {0}", Username));
+                var lList = new List<T_TEST_PROJECT>();
+                cmd.CommandText = @"select * from T_TEST_PROJECT";
+                using (OracleDataReader dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        T_TEST_PROJECT project = new T_TEST_PROJECT();
+
+                        project.PROJECT_ID = Helper.GetDBValue<long>(dr["PROJECT_ID"],0);
+                        project.PROJECT_NAME = Helper.GetDBValue<string>(dr["PROJECT_NAME"],"");
+                        project.PROJECT_DESCRIPTION = Helper.GetDBValue<string>(dr["PROJECT_DESCRIPTION"],"");
+                        project.CREATOR = Helper.GetDBValue<string>(dr["CREATOR"].ToString(),"");
+                        project.CREATE_DATE = Helper.GetDBValue<DateTime>(dr["CREATE_DATE"],DateTime.MinValue);
+                        project.STATUS = Helper.GetDBValue<short>(dr["STATUS"],0);
+                        lList.Add(project);
+                    }
+                }
+ 
+                logger.Info(string.Format("Get Project List Cache end UserName: {0}", Username));
+                return lList;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured GetTree in Project method   UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured GetTree in Project method | UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured GetTree in Project method  | UserName: {0}", Username), ex.InnerException);
+                throw;
+            }
+        }
+
+        public List<SYSTEM_LOOKUP> GetActionsCache(OracleCommand cmd)
+        {
+            try
+            {
+                logger.Info(string.Format("Get Actions start | UserName: {0}", Username));
+
+                var lList = new List<SYSTEM_LOOKUP>();
+                cmd.CommandText = @"select * from SYSTEM_LOOKUP where FIELD_NAME='RUN_TYPE' and TABLE_NAME='T_PROJ_TC_MGR' and DISPLAY_NAME <>'FAILUE' ";
+                using (OracleDataReader dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        SYSTEM_LOOKUP lookup = new SYSTEM_LOOKUP();
+                        lookup.LOOKUP_ID = Helper.GetDBValue<long>(dr["LOOKUP_ID"], 0);
+                        lookup.TABLE_NAME = Helper.GetDBValue<string>(dr["TABLE_NAME"], "");
+                        lookup.FIELD_NAME = Helper.GetDBValue<string>(dr["FIELD_NAME"], "");
+                        lookup.DISPLAY_NAME = Helper.GetDBValue<string>(dr["DISPLAY_NAME"].ToString(), "");
+                        lookup.VALUE = Helper.GetDBValue<short>(dr["VALUE"], 0);
+                        lookup.STATUS = Helper.GetDBValue<short>(dr["STATUS"], 0);
+                        lList.Add(lookup);
+                    }
+                }
+
+                logger.Info(string.Format("Get Actions end | UserName: {0}", Username));
+
+                return lList;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in StoryBoard for GetActions method| UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in GetActions method | UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in GetActions method | UserName: {0}", Username), ex.InnerException);
+                throw;
+            }
+        }
+
+        public List<T_TEST_FOLDER> GetFolderCache(OracleCommand cmd)
+        {
+            try
+            {
+                logger.Info(string.Format("Get FOLDER start | UserName: {0}", Username));
+                var lList = new List<T_TEST_FOLDER>();
+                cmd.CommandText = @"select * from T_TEST_FOLDER where FOLDERNAME is not null ";
+                using (OracleDataReader dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        T_TEST_FOLDER folder = new T_TEST_FOLDER();
+                        folder.FOLDERID = Helper.GetDBValue<long>(dr["FOLDERID"], 0);
+                        folder.DESCRIPTION = Helper.GetDBValue<string>(dr["DESCRIPTION"], "");
+                        folder.FOLDERNAME = Helper.GetDBValue<string>(dr["FOLDERNAME"], "");
+                        folder.CREATION_DATE = Helper.GetDBValue<DateTime>(dr["CREATION_DATE"],DateTime.MinValue);
+                        folder.UPDATE_DATE = Helper.GetDBValue<DateTime>(dr["UPDATE_DATE"], DateTime.MinValue);
+                        folder.ACTIVE = Helper.GetDBValue<short>(dr["ACTIVE"], 0);
+                        folder.CREATION_USER = Helper.GetDBValue<string>(dr["CREATION_USER"], "");
+                        folder.UPDATE_CREATION_USER = Helper.GetDBValue<string>(dr["UPDATE_CREATION_USER"], "");
+                        lList.Add(folder);
+                    }
+                }
+
+                logger.Info(string.Format("Get FOLDER start | UserName: {0}", Username));
+
+                return lList;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in GetTreeRepository for GetFolderCache method| UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured GetTreeRepository in GetFolderCache method | UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured GetTreeRepository in GetFolderCache method | UserName: {0}", Username), ex.InnerException);
+                throw;
+            }
+        }
+        public List<T_FOLDER_FILTER> GetFilterCache(OracleCommand cmd)
+        {
+            try
+            {
+                logger.Info(string.Format("GetFilterList start | UserName: {0}", Username));
+                var list = new List<T_FOLDER_FILTER>();
+                cmd.CommandText = @"select distinct * from T_FOLDER_FILTER ";
+                using (OracleDataReader dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        T_FOLDER_FILTER folder = new T_FOLDER_FILTER();
+                        folder.FILTER_ID = Helper.GetDBValue<long>(dr["FILTER_ID"], 0);
+                        folder.FILTER_NAME = Helper.GetDBValue<string>(dr["FILTER_NAME"], "");
+                        folder.PROJECT_IDS = Helper.GetDBValue<string>(dr["PROJECT_IDS"], "");
+                        folder.STORYBOARD_IDS = Helper.GetDBValue<string>(dr["STORYBOARD_IDS"],"");
+                        list.Add(folder);
+                    }
+                }
+                logger.Info(string.Format("GetFilterList end | UserName: {0}", Username));
+                return list;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in TestCase for GetFilterList method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured in TestCase for GetFilterList method | UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase for GetFilterList method | UserName: {0}", Username), ex.InnerException);
+                throw;
+            }
+        }
+
+        public List<REL_FOLDER_FILTER> GetRelFolderFilterCache(OracleCommand cmd)
+        {
+            try
+            {
+                logger.Info(string.Format("GetRelFolderFilterCache start  UserName: {0}", Username));
+                var list = new List<REL_FOLDER_FILTER>();
+                cmd.CommandText = @"select  * from REL_FOLDER_FILTER ";
+                using (OracleDataReader dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        REL_FOLDER_FILTER folder = new REL_FOLDER_FILTER();
+                        folder.FILTER_ID = Helper.GetDBValue<long>(dr["FILTER_ID"], 0);
+                        folder.REL_FOLDER_FILTER_ID = Helper.GetDBValue<long>(dr["REL_FOLDER_FILTER_ID"], 0);
+                        folder.FOLDER_ID = Helper.GetDBValue<long>(dr["FOLDER_ID"], 0);
+                        list.Add(folder);
+                    }
+                }
+                //var lResult = entity.REL_FOLDER_FILTER.ToList();
+                logger.Info(string.Format("GetRelFolderFilterCache end   | UserName: {0}", Username));
+                return list;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in TestCase for GetRelFolderFilterCache method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured in TestCase for GetRelFolderFilterCache method |UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase for GetRelFolderFilterCache method | UserName: {0}", Username), ex.InnerException);
+                throw;
+            }
+        }
+
+        public List<T_REGISTERED_APPS> GetAppCache(OracleCommand cmd)
+        {
+            try
+            {
+                logger.Info(string.Format("GetAppCache start  UserName: {0}", Username));
+
+                var list = new List<T_REGISTERED_APPS>();
+                cmd.CommandText = @"select  * from T_REGISTERED_APPS ";
+                using (OracleDataReader dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        T_REGISTERED_APPS app = new T_REGISTERED_APPS();
+                        app.APPLICATION_ID = Helper.GetDBValue<long>(dr["APPLICATION_ID"], 0);
+                        app.APP_SHORT_NAME = Helper.GetDBValue<string>(dr["APP_SHORT_NAME"], "");
+                        app.PROCESS_IDENTIFIER = Helper.GetDBValue<string>(dr["PROCESS_IDENTIFIER"], "");
+                        app.STARTER_PATH = Helper.GetDBValue<string>(dr["STARTER_PATH"], "");
+                        app.STARTER_COMMAND = Helper.GetDBValue<string>(dr["STARTER_COMMAND"], "");
+                        app.VERSION = Helper.GetDBValue<string>(dr["VERSION"], "");
+                        app.COMMENT = Helper.GetDBValue<string>(dr["COMMENT"], "");
+                        app.APPLICATION_TYPE_ID = Helper.GetDBValue<short>(dr["APPLICATION_TYPE_ID"], 0);
+                        app.RECORD_CREATE_PERSON = Helper.GetDBValue<string>(dr["RECORD_CREATE_PERSON"], "");
+                        app.RECORD_CREATE_DATE = Helper.GetDBValue<DateTime>(dr["RECORD_CREATE_DATE"], DateTime.MinValue);
+                        app.EXTRAREQUIREMENT = Helper.GetDBValue<string>(dr["EXTRAREQUIREMENT"], ""); 
+                        app.EXTRAPOPUPMENU = Helper.GetDBValue<string>(dr["EXTRAPOPUPMENU"], "");
+                        app.ISBASELINE = Helper.GetDBValue<decimal>(dr["ISBASELINE"], 0);
+                        app.IS64BIT = Helper.GetDBValue<decimal>(dr["IS64BIT"], 0);
+
+                        list.Add(app);
+                    }
+                }
+                //var lResult = entity.T_REGISTERED_APPS.ToList();
+                logger.Info(string.Format("GetAppCache end   | UserName: {0}", Username));
+                return list;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in TestCase for GetAppCache method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured in TestCase for GetAppCache method |UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase for GetAppCache method | UserName: {0}", Username), ex.InnerException);
+                throw;
+            }
+        }
+
+        public List<T_TEST_SET> GetSetCache(OracleCommand cmd)
+        {
+            try
+            {
+                logger.Info(string.Format("GetSetCache start  UserName: {0}", Username));
+
+                var list = new List<T_TEST_SET>();
+                cmd.CommandText = @"select  * from T_TEST_SET ";
+                using (OracleDataReader dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        T_TEST_SET set = new T_TEST_SET();
+                        set.SETID = Helper.GetDBValue<long>(dr["SETID"], 0);
+                        set.SETNAME = Helper.GetDBValue<string>(dr["SETNAME"], "");
+                        set.DESCRIPTION = Helper.GetDBValue<string>(dr["DESCRIPTION"], "");
+                        set.ACTIVE = Helper.GetDBValue<short>(dr["ACTIVE"], 0);
+                        set.CREATION_DATE = Helper.GetDBValue<DateTime>(dr["CREATION_DATE"], DateTime.MinValue);
+                        set.UPDATE_DATE = Helper.GetDBValue<DateTime>(dr["UPDATE_DATE"], DateTime.MinValue);
+                        set.CREATION_USER = Helper.GetDBValue<string>(dr["CREATION_USER"], "");
+                        set.UPDATE_CREATION_USER = Helper.GetDBValue<string>(dr["UPDATE_CREATION_USER"], "");
+
+                        list.Add(set);
+                    }
+                }
+                //var lResult = entity.T_TEST_SET.ToList();
+
+                logger.Info(string.Format("GetSetCache end   | UserName: {0}", Username));
+                return list;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in TestCase for GetSetCache method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured in TestCase for GetSetCache method |UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase for GetSetCache method | UserName: {0}", Username), ex.InnerException);
+                throw;
+            }
+        }
+
+        public List<T_TEST_GROUP> GetGroupCache(OracleCommand cmd)
+        {
+            try
+            {
+                logger.Info(string.Format("GetGroupCache start  UserName: {0}", Username));
+                var list = new List<T_TEST_GROUP>();
+                cmd.CommandText = @"select  * from T_TEST_GROUP ";
+                using (OracleDataReader dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        T_TEST_GROUP group = new T_TEST_GROUP();
+                        group.GROUPID = Helper.GetDBValue<long>(dr["GROUPID"], 0);
+                        group.GROUPNAME = Helper.GetDBValue<string>(dr["GROUPNAME"], "");
+                        group.DESCRIPTION = Helper.GetDBValue<string>(dr["DESCRIPTION"], "");
+                        group.ACTIVE = Helper.GetDBValue<short>(dr["ACTIVE"], 0);
+                        group.CREATION_DATE = Helper.GetDBValue<DateTime>(dr["CREATION_DATE"], DateTime.MinValue);
+                        group.UPDATE_DATE = Helper.GetDBValue<DateTime>(dr["UPDATE_DATE"], DateTime.MinValue);
+                        group.CREATION_USER = Helper.GetDBValue<string>(dr["CREATION_USER"], "");
+                        group.UPDATE_CREATION_USER = Helper.GetDBValue<string>(dr["UPDATE_CREATION_USER"], "");
+
+                        list.Add(group);
+                    }
+                }
+                //var lResult = entity.T_TEST_GROUP.ToList();
+
+                logger.Info(string.Format("GetGroupCache end   | UserName: {0}", Username));
+                return list;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in TestCase for GetGroupCache method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured in TestCase for GetGroupCache method |UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase for GetGroupCache method | UserName: {0}", Username), ex.InnerException);
+                throw;
+            }
+        }
+
+        public List<T_TEST_DATASETTAG> GetDataSetTagCache(OracleCommand cmd)
+        {
+            try
+            {
+                logger.Info(string.Format("GetDataSetTagCache start  UserName: {0}", Username));
+                var list = new List<T_TEST_DATASETTAG>();
+                cmd.CommandText = @"select  * from T_TEST_DATASETTAG ";
+                using (OracleDataReader dr = cmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        T_TEST_DATASETTAG set = new T_TEST_DATASETTAG();
+                        set.GROUPID = Helper.GetDBValue<string>(dr["GROUPID"], "");
+                        set.T_TEST_DATASETTAG_ID = Helper.GetDBValue<long>(dr["T_TEST_DATASETTAG_ID"], 0);
+                        set.SEQUENCE = Helper.GetDBValue<long>(dr["SEQUENCE"],0);
+                        set.DATASETID = Helper.GetDBValue<long>(dr["DATASETID"], 0);
+                        set.SETID = Helper.GetDBValue<string>(dr["SETID"],"");
+                        set.FOLDERID = Helper.GetDBValue<string>(dr["FOLDERID"], "");
+                        set.EXPECTEDRESULTS = Helper.GetDBValue<string>(dr["EXPECTEDRESULTS"], "");
+                        set.STEPDESC = Helper.GetDBValue<string>(dr["STEPDESC"], "");
+                        set.DIARY = Helper.GetDBValue<string>(dr["DIARY"], "");
+                        list.Add(set);
+                    }
+                }
+                //var lResult = entity.T_TEST_DATASETTAG.ToList();
+                logger.Info(string.Format("GetDataSetTagCache end   | UserName: {0}", Username));
+                return list;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in TestCase for GetDataSetTagCache method | UserName: {0}", Username));
+                ELogger.ErrorException(string.Format("Error occured in TestCase for GetDataSetTagCache method |UserName: {0}", Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase for GetDataSetTagCache method | UserName: {0}", Username), ex.InnerException);
+                throw;
+            }
+        }
+
+
     }
 }

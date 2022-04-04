@@ -452,6 +452,7 @@
       <DependentUpon>Db_Context.tt</DependentUpon>
     </Compile>
     <Compile Include="Helper.cs" />
+    <Compile Include="IdWorker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\AccountRepository.cs" />
     <Compile Include="Repositories\ApplicationRepository.cs" />
@@ -548,7 +549,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DLL\" />
-    <Folder Include="Helper\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Mars_Serialization\Mars_Serialization.csproj">

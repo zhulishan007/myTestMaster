@@ -516,7 +516,8 @@ function ActiveTab(Activetab) {
 
     if (lTestCaseId != null && lTestsuiteId != null && lProjectId != null && lTestCaseName != null
         && lTestCaseId > 0 && lTestsuiteId > 0 && lProjectId > 0) {
-        setTimeout(function () { gridobj[".grid" + lTestCaseName].reset({ filter: true }); }, 500);
+        //if (gridobj[".grid" + lTestCaseName] != null && gridobj[".grid" + lTestCaseName] != undefined && gridobj[".grid" + lTestCaseName].hasOwnProperty("reset"))
+            setTimeout(function () { gridobj[".grid" + lTestCaseName].reset({ filter: true }); }, 500);
 
         //   PartialRightGrid(lTestCaseId, lTestsuiteId, lProjectId, lTestCaseName, Activetab, null);
     }
@@ -531,30 +532,51 @@ function ActiveTab(Activetab) {
     $.each(TestCaselst, function (key, value) {
         var obj = value.innerText;
         var classlst = value.classList;
+        
         if (classlst.length > 3) {
             if (classlst[3].trim() == "kt-menu__item--open") {
                 classlst.remove("kt-menu__item--open");
             }
         }
-        lTestCaseName = lTestCaseName == undefined ? "" : lTestCaseName.replace(/_/g, ' ');
-        obj = obj == undefined ? obj : obj.replace(/_/g, ' ').trim();
-        if (obj.includes(lTestCaseName.trim())) {
-            value.classList.add("kt-menu__item--open");
+
+        if (value.innerHTML.indexOf('data-id="' + lTestCaseId + '"') > 0) {            
+            lTestCaseName = lTestCaseName == undefined ? "" : lTestCaseName.replace(/_/g, ' ');
+            obj = obj == undefined ? obj : obj.replace(/_/g, ' ').trim();
+            if (obj.includes(lTestCaseName.trim())) {
+                value.classList.add("kt-menu__item--open");
+                if (value.parentNode.parentNode.parentNode != null && value.parentNode.parentNode.parentNode.children.length >= 2) {
+                    value.parentNode.parentNode.parentNode.children[1].style.display = "block";
+                    value.parentNode.parentNode.parentNode.children[1].style.overflow = "hidden";
+                }
+                /*if (value.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode != null && value.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.children.length >= 2) {
+                    value.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.classList.add("kt-menu__item--open");
+                    value.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.children[1].style.display = "block";
+                    value.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode.children[1].style.overflow = "hidden";
+                }*/
+            }
         }
     });
     $.each(Storyboardlst, function (key, value) {
         var obj = value.innerText;
         var classlst = value.classList;
+        console.log(value.parentNode.innerHTML);
         if (classlst.length > 2) {
             if (classlst[2].trim() == "kt-menu__item--open") {
                 classlst.remove("kt-menu__item--open");
             }
         }
-        storyboardname = storyboardname == undefined ? "" : storyboardname.replace(/_/g, ' ');
-        obj = obj == undefined ? obj : obj.replace(/_/g, ' ').trim();
-        if (storyboardname != undefined) {
-            if (obj.includes(storyboardname.trim())) {
-                value.classList.add("kt-menu__item--open");
+        if (value.innerHTML.indexOf('data-id="' + storyboardid + '"') > 0) {
+                   
+            storyboardname = storyboardname == undefined ? "" : storyboardname.replace(/_/g, ' ');
+            obj = obj == undefined ? obj : obj.replace(/_/g, ' ').trim();
+            if (storyboardname != undefined) {
+                if (obj.includes(storyboardname.trim())) {
+                    value.classList.add("kt-menu__item--open");
+                    if (value.parentNode.parentNode.parentNode != null && value.parentNode.parentNode.parentNode.children.length >= 2) {
+                        value.parentNode.parentNode.parentNode.children[1].style.display = "block";
+                        value.parentNode.parentNode.parentNode.children[1].style.overflow = "hidden";
+                    }
+                }
             }
         }
     });
@@ -2125,16 +2147,25 @@ function closetab(tabcloseObj) {
 
         if (tab == "DataTag" && baseid != undefined && compareid != undefined && storyboard != undefined && runorder != undefined) {
             var lresultset = "ResultView_BHistoryId_" + baseid + "_CHistoryId_" + compareid;
-            setTimeout(function () { gridobj[".grid" + lresultset].reset({ filter: true }); }, 500);
+            setTimeout(function () {
+                if (gridobj[".grid" + lresultset] != null)
+                    gridobj[".grid" + lresultset].reset({ filter: true });
+            }, 500);
         }
         if (lTestCaseId != null && lTestsuiteId != null && lProjectId != null && lTestCaseName != null
             && lTestCaseId > 0 && lTestsuiteId > 0 && lProjectId > 0) {
-            setTimeout(function () { gridobj[".grid" + lTestCaseName].reset({ filter: true }); }, 500);
+            setTimeout(function () {
+                if (gridobj[".grid" + lTestCaseName]!=null)
+                    gridobj[".grid" + lTestCaseName].reset({ filter: true });
+            }, 500);
             //  PartialRightGrid(lTestCaseId, lTestsuiteId, lProjectId, lTestCaseName, Activetab, null);
         }
         if (storyboardid != null && lProjectId != null && storyboardname != null && storyboardname != undefined
             && storyboardid > 0 && lProjectId > 0) {
-            setTimeout(function () { gridobj[".gridSB" + storyboardname.replace(/ /g, '_')].reset({ filter: true }); }, 500);
+            setTimeout(function () {
+                if (gridobj[".gridSB" + storyboardname.replace(/ /g, '_')]!=null)
+                    gridobj[".gridSB" + storyboardname.replace(/ /g, '_')].reset({ filter: true });
+            }, 500);
             //setTimeout(function () { gridobj[".grid" + storyboardname].reset({ filter: true }); }, 500);
             //   PartialRightStoryboardGrid(lProjectId, storyboardid, storyboardname, Activetab, null);
         }

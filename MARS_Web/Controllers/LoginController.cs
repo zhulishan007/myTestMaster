@@ -524,7 +524,10 @@ namespace MARS_Web.Controllers
                 var repTree = new GetTreeRepository();
                 var lSchema = SessionManager.Schema;
                 var lConnectionStr = SessionManager.APP;
-                lProjectList = repTree.GetProjectList(SessionManager.TESTER_ID, lSchema, lConnectionStr);
+                if (!InitCacheHelper.GetProjectUserFromCache(lSchema, SessionManager.TESTER_ID, lProjectList))
+                {
+                    lProjectList = repTree.GetProjectList(SessionManager.TESTER_ID, lSchema, lConnectionStr);
+                }
             }
             catch (Exception ex)
             {
@@ -544,7 +547,7 @@ namespace MARS_Web.Controllers
                 TestSuiteCount = x.TestSuiteCount,
                 userId = x.userId,
                 username = x.username
-            }).ToList();
+            }).OrderBy(r=>r.ProjectName).ToList();
             Session["LeftProjectList"] = allProject;
             return PartialView(allProject);
         }
@@ -585,9 +588,23 @@ namespace MARS_Web.Controllers
             {
                 DBEntities.ConnectionString = SessionManager.ConnectionString;
                 DBEntities.Schema = SessionManager.Schema;
-                if (GlobalVariable.TestCaseListCache != null && GlobalVariable.TestCaseListCache.ContainsKey(SessionManager.Schema))
+                if (GlobalVariable.TestCaseListCache != null && GlobalVariable.TestCaseListCache.ContainsKey(SessionManager.Schema) &&
+                    GlobalVariable.TestSuiteListCache != null && GlobalVariable.TestSuiteListCache.ContainsKey(SessionManager.Schema))
                 {
-                    lTestSuiteList = GlobalVariable.TestCaseListCache[SessionManager.Schema].FindAll(r=>r.ProjectId==ProjectId && r.TestsuiteId==TestSuiteId);
+                    var testSuite = GlobalVariable.TestSuiteListCache[SessionManager.Schema].FirstOrDefault(r => r.ProjectId == ProjectId && r.TestsuiteId == TestSuiteId);
+                    var caseCache = GlobalVariable.TestCaseListCache[SessionManager.Schema].FindAll(r=>r.TestsuiteId==TestSuiteId);
+                    lTestSuiteList = caseCache.Select(c => new TestCaseListByProject()
+                    {
+                        TestcaseId = c.TestcaseId,
+                        TestcaseName = c.TestcaseName,
+                        TestCaseDesc = c.TestCaseDesc,
+                        ProjectId = testSuite.ProjectId,
+                        ProjectName = testSuite.ProjectName,
+                        TestsuiteId = c.TestsuiteId,
+                        TestsuiteName = c.TestsuiteName,
+                        DataSetCount =c.DataSetCount
+                    }).ToList() ;
+
                     lTestSuiteList.OrderBy(x => x.TestcaseName);
                 }
                 else
@@ -613,10 +630,18 @@ namespace MARS_Web.Controllers
             {
                 DBEntities.ConnectionString = SessionManager.ConnectionString;
                 DBEntities.Schema = SessionManager.Schema;
-                if (GlobalVariable.DataSetListCache != null && GlobalVariable.DataSetListCache.ContainsKey(SessionManager.Schema))
+                if (GlobalVariable.DataSetListCache != null && GlobalVariable.DataSetListCache.ContainsKey(SessionManager.Schema) &&
+                    GlobalVariable.TestSuiteListCache != null && GlobalVariable.TestSuiteListCache.ContainsKey(SessionManager.Schema) &&
+                    GlobalVariable.TestCaseListCache != null && GlobalVariable.TestCaseListCache.ContainsKey(SessionManager.Schema))
                 {
-                    ldatasetlist = GlobalVariable.DataSetListCache[SessionManager.Schema].FindAll(r=>r.ProjectId==lProjectId && 
-                                r.TestsuiteId ==lTestSuiteId && r.TestcaseId ==lTestCaseId);
+                    var testSuite = GlobalVariable.TestSuiteListCache[SessionManager.Schema].FirstOrDefault(r => r.ProjectId== lProjectId && r.TestsuiteId == r.TestsuiteId);
+                    //var testSuite = GlobalVariable.TestSuiteListCache[SessionManager.Schema].FirstOrDefault(r => r.TestsuiteId == r.TestsuiteId);
+                    var dataCache = GlobalVariable.DataSetListCache[SessionManager.Schema].FindAll(r=> r.TestcaseId ==lTestCaseId);
+                    ldatasetlist = dataCache.Select(c => new DataSetListByTestCase()
+                    {
+                        ProjectId = testSuite.ProjectId, ProjectName = testSuite.ProjectName, TestsuiteId = testSuite.TestsuiteId, TestsuiteName = testSuite.TestsuiteName,
+                        TestcaseName = c.TestcaseName, TestcaseId = c.TestcaseId, Datasetid = c.Datasetid, Datasetname = c.Datasetname
+                    }).ToList();
                     ldatasetlist.OrderBy(x => x.Datasetname);
                 }
                 else
@@ -644,7 +669,7 @@ namespace MARS_Web.Controllers
                 DBEntities.Schema = SessionManager.Schema;
                 if (GlobalVariable.StoryBoardListCache != null && GlobalVariable.StoryBoardListCache.ContainsKey(SessionManager.Schema))
                 {
-                    lstoryboardlist = GlobalVariable.StoryBoardListCache[SessionManager.Schema].FindAll(r=>r.ProjectId==ProjectId);
+                    lstoryboardlist = GlobalVariable.StoryBoardListCache[SessionManager.Schema].FindAll(r=>r!=null && r.ProjectId==ProjectId);
                     lstoryboardlist.OrderBy(x => x.StoryboardName).ToList();
                 }
                 else
