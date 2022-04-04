@@ -237,7 +237,7 @@
             title: "CHistoryId", copy: false, hidden: true, dataType: "int", dataIndx: "chistid", align: "center", menuInHide: true, sortable: false,
         });
         dt.push({
-            title: "Actions", dataIndx: "ActionId" /*"actions"*/, dataType: "string", align: "left", menuInHide: true, halign: "center", sortable: false, resizable: true, nodrag: true, nodrop: true, width: @ViewBag.actionwidth, minWidth: 20,
+            title: "Actions", dataIndx: "ActionId" /*"actions"*/, dataType: "int", align: "left", menuInHide: true, halign: "center", sortable: false, resizable: true, nodrag: true, nodrop: true, width: @ViewBag.actionwidth, minWidth: 20,
             editor: {
                 type: 'select',
                 valueIndx: "value",
@@ -308,7 +308,7 @@
         dt.push({
             title: "Steps", width: @ViewBag.stepswidth, minWidth: 20, menuInHide: false, align: "left", halign: "center", sortable: false, nodrag: true, nodrop: true, dataIndx: "steps", filter: { crules: [{ condition: 'contain' }] }, resizable: true});
         dt.push({
-            title: "Test Suite", width: @ViewBag.testsuitewidth, minWidth: 20, dataIndx: "suiteid"/*"testsuite"*/, dataType: "string", align: "left", menuInHide: false, halign: "center", sortable: false, resizable: true, nodrag: true, nodrop: true,
+            title: "Test Suite", width: @ViewBag.testsuitewidth, minWidth: 20, dataIndx: "suiteid"/*"testsuite"*/, dataType: "int", align: "left", menuInHide: false, halign: "center", sortable: false, resizable: true, nodrag: true, nodrop: true,
             editor: {
                 type: 'select',
                 valueIndx: "value",
@@ -389,7 +389,7 @@
             }
         });
         dt.push({
-            title: "Test Case", dataIndx: "caseid"/*"testcase"*/, dataType: "string", align: "left", menuInHide: false, halign: "center", sortable: false, resizable: true, nodrag: true, nodrop: true, width: @ViewBag.testcasewidth, minWidth: 20,
+            title: "Test Case", dataIndx: "caseid"/*"testcase"*/, dataType: "int", align: "left", menuInHide: false, halign: "center", sortable: false, resizable: true, nodrag: true, nodrop: true, width: @ViewBag.testcasewidth, minWidth: 20,
         editor: {
                 type: 'select',
                 valueIndx: "value",
@@ -461,7 +461,7 @@
             }
         });
         dt.push({
-            title: "Dataset", dataIndx:"datasetid"/* "dataset"*/, dataType: "string", align: "left", menuInHide: false, halign: "center", sortable: false, resizable: true, nodrag: true, nodrop: true, width: @ViewBag.datasetwidth, minWidth: 20,
+            title: "Dataset", dataIndx:"datasetid"/* "dataset"*/, dataType: "int", align: "left", menuInHide: false, halign: "center", sortable: false, resizable: true, nodrag: true, nodrop: true, width: @ViewBag.datasetwidth, minWidth: 20,
             editor: {
                 type: 'select',
                 valueIndx: "value",
@@ -725,11 +725,11 @@
                     this.refreshRow({ rowIndx: ui.rowIndx });
                 }
                 if (ui.dataIndx == "caseid"/*"testcase"*/ && ui.newVal != ui.oldVal) {
-                   @* this.updateRow({
-                        rowIndx: ui.rowIndx,
-                        row: { 'dataset': '','datasetid':0}
-                    });
-*@
+                    //this.updateRow({
+                    //    rowIndx: ui.rowIndx,
+                    //    row: { 'dataset': '','datasetid':0}
+                    //});
+
                     ui.rowData.datasetid = 0;
                     this.refreshRow({ rowIndx: ui.rowIndx });
                 }
@@ -2160,7 +2160,18 @@
           });
         })*@
 
-
+    function RefleshData()
+    {
+        swal.fire({
+            //html:"",
+            //title: 'System Remind',
+            text: "This tab has locked by someone else.",
+            icon: 'warning',
+            showCancelButton: true,
+            showConfirmButton: true,
+            closeOnConfirm: true
+        });
+    }
 
 </script>
 

@@ -88,6 +88,7 @@ namespace MARS_Web.Controllers
         [HttpPost]
         public ActionResult Login(string lUserLogin, string lPassword, string lconnection, string accesstoken, bool lRememberme = false)
         {
+            logger.Info($"[{DateTime.Now.ToString()}]\tLogin begin...{lUserLogin}, {lconnection}, {accesstoken}");
             ResultModel resultModel = new ResultModel();
             string ipAddress = Request.UserHostAddress;
             SessionManager.Accesstoken = "Bearer " + accesstoken;
@@ -143,11 +144,12 @@ namespace MARS_Web.Controllers
 
         public virtual string CheckCredential(string lUserLogin, string lPassword, string lconnection)
         {
+            logger.Info($"{DateTime.Now.ToString()}\tCheckCredential begin...");
             string MarsEnvironment = string.Empty;
             var lMsg = "Error";
             string[] connlist = new string[10];
             try
-            {
+            {                
                 if (!string.IsNullOrEmpty(lconnection))
                 {
                     connlist = lconnection.Split('/');
@@ -155,13 +157,21 @@ namespace MARS_Web.Controllers
                 }
                 MarsConfig mc = MarsConfig.Configure(MarsEnvironment);
                 DatabaseConnectionDetails det = mc.GetDatabaseConnectionDetails();
-
-                if (det != null && !string.IsNullOrEmpty(det.EntityConnString) && !string.IsNullOrEmpty(det.ConnString) && !string.IsNullOrEmpty(det.Host) && !string.IsNullOrEmpty(det.Schema))
+                logger.Info(det==null?"NULL":
+                    $"DBInfo:[{det.Host}-{det.Port}-{det.ServiceName}-{lconnection}]");
+                if (det != null && !string.IsNullOrEmpty(det.EntityConnString) 
+                    && !string.IsNullOrEmpty(det.ConnString) 
+                    && !string.IsNullOrEmpty(det.Host)
+                    && !string.IsNullOrEmpty(det.Schema))
                 {
                     SessionManager.ConnectionString = det.EntityConnString;
                     SessionManager.Schema = det.Schema;
                     SessionManager.APP = det.ConnString;
                     SessionManager.Host = det.Host;
+                }
+                else
+                {
+
                 }
 
                 DBEntities.ConnectionString = SessionManager.ConnectionString;
@@ -197,7 +207,7 @@ namespace MARS_Web.Controllers
                             lMsg = "User Name does not exist in system.";
                     }
                     else
-                        lMsg = connlist[0] + " database does not exist.";
+                        lMsg = connlist[0] + " database does not exist--AllUser is NULL.";
                     #region OLD CODE
                     //var lUser = Accountrepo.GetUserByEmailAndLoginName(lUserLogin);
                     //if (lUser != null)
@@ -235,7 +245,9 @@ namespace MARS_Web.Controllers
                 }
                 else
                 {
-                    lMsg = connlist[0] + " database does not exist.";
+                    lMsg = connlist[0] 
+                        + $" database does not exist. DBEntities.ConnectionString [{DBEntities.ConnectionString}]" +
+                        $" -schema [{DBEntities.Schema}]";
                 }
             }
             catch (Exception ex)
@@ -244,6 +256,11 @@ namespace MARS_Web.Controllers
                 ELogger.ErrorException(string.Format("Error occured in Login for CheckCredential method | UserLogin : {0} | Password : {1} | Connection String : {2} | UserName: {3}", lUserLogin, lPassword, lconnection, SessionManager.TESTER_LOGIN_NAME), ex);
                 if (ex.InnerException != null)
                     ELogger.ErrorException(string.Format("InnerException : Error occured in Login for CheckCredential method | UserLogin : {0} | Password : {1} | Connection String : {2} | UserName: {3}", lUserLogin, lPassword, lconnection, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+                logger.Info($"CheckCredential exception:{ex.Message}\r\n{ex.StackTrace}");
+            }
+            finally
+            {
+                logger.Info($"CheckCredential end, return {lMsg}");
             }
             return lMsg;
         }

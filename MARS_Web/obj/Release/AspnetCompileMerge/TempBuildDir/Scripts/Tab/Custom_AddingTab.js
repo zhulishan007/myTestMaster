@@ -139,6 +139,7 @@ function removeleftpenalactivetab() {
 }
 
 function PartialRightStoryboardGrid(ProjectId, StoryBoardid, storyboardname, Activetab, strObj, Default) {
+    //debugger;
     tempflag = false;
     startloader();
     removeleftpenalactivetab();
@@ -162,6 +163,7 @@ function PartialRightStoryboardGrid(ProjectId, StoryBoardid, storyboardname, Act
         contentType: "application/json;charset=utf-8",
         dataType: "HTML",
         success: function (result) {
+            //debugger;
             var lflag = false;
             var ltabName = "#tabSB" + storyboard;
             var ltabIdName = "tabSB" + storyboard;
@@ -184,15 +186,16 @@ function PartialRightStoryboardGrid(ProjectId, StoryBoardid, storyboardname, Act
             var ldiv = '<div class="tab-pane active div" id="' + ltabIdName + '" role="tabpanel">' + result + '</div>';
             if (lflag) {
                 if (Activetab != null) {
-                    var lParentli = $(Activetab).parent();
-                    var ltab = '<a href="' + ltabName + '" class="nav-link active context-tab" data-tab="Storyboard" data-id="' + StoryBoardid + '" data-name="' + storyboard + '" data-storyboardid="' + StoryBoardid + '" data-projectId="' + ProjectId + '" data-storyboardname="' + storyboard + '" data-toggle="tab"  data-target="' + ltabName + '" onclick="ActiveTab($(this))"><img alt="Storyboard" class="tab_icons_img" src="/assets/media/icons/storyboard.png">' + storyboard + '</a><i class="fa fa-times-circle tab_close" style="cursor:pointer" onclick="closetab($(this))"></i>';
-                    var ldiv = result;
-                    var lId = "tabSB" + storyboard;
-                    var lGridDiv = $(".divtablist").find("#" + lId);
-                    $(lParentli).html("");
-                    $(lParentli).html(ltab);
-                    $(lGridDiv).html("");
-                    $(lGridDiv).html(ldiv);
+                    ActiveTab(Activetab);
+                    //var lParentli = $(Activetab).parent();
+                    //var ltab = '<a href="' + ltabName + '" class="nav-link active context-tab" data-tab="Storyboard" data-id="' + StoryBoardid + '" data-name="' + storyboard + '" data-storyboardid="' + StoryBoardid + '" data-projectId="' + ProjectId + '" data-storyboardname="' + storyboard + '" data-toggle="tab"  data-target="' + ltabName + '" onclick="ActiveTab($(this))"><img alt="Storyboard" class="tab_icons_img" src="/assets/media/icons/storyboard.png">' + storyboard + '</a><i class="fa fa-times-circle tab_close" style="cursor:pointer" onclick="closetab($(this))"></i>';
+                    ////var ldiv = result;
+                    //var lId = "tabSB" + storyboard;
+                    //var lGridDiv = $(".divtablist").find("#" + lId);
+                    //$(lParentli).html("");
+                    //$(lParentli).html(ltab);
+                    //$(lGridDiv).html("");
+                    //$(lGridDiv).html(ldiv);
                 }
                 $('.ULtablist li').each(function (index, value) {
                     if ($(value).children().first().attr("data-target") == ltabName) {
@@ -515,7 +518,7 @@ function ActiveTab(Activetab) {
         && lTestCaseId > 0 && lTestsuiteId > 0 && lProjectId > 0) {
         setTimeout(function () { gridobj[".grid" + lTestCaseName].reset({ filter: true }); }, 500);
 
-        //   PartialRightGrid(lTestCaseId, lTestsuiteId, lProjectId, lTestCaseName, Activetab,null);
+        //   PartialRightGrid(lTestCaseId, lTestsuiteId, lProjectId, lTestCaseName, Activetab, null);
     }
     if (storyboardid != null && lProjectId != null && storyboardname != null && storyboardname != undefined
         && storyboardid > 0 && lProjectId > 0) {
@@ -1833,7 +1836,6 @@ function checkTCSBChangesOnClose(value) {
     var lParent = $(value).parent();
     var lFindTab = $(lParent).children().first().attr("data-tab");
     var lfindname = $(lParent).children().first().attr("data-name");
-
 
     if (lFindTab == "TestCase" || lFindTab == "Storyboard" || lFindTab == "DataTag") {
         var checkarray = lFindTab == "Storyboard" ? gridobj[".gridSB" + lfindname].getChanges({ format: "byVal" }) : gridobj[".grid" + lfindname].getChanges({ format: "byVal" });
