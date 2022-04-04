@@ -238,6 +238,31 @@ namespace MARS_Repository.Repositories
                 throw;
             }
         }
+
+        public List<string> CheckTestCaseExistsInStoryboardNew(long testcaseId)
+        {
+            try
+            {
+                logger.Info(string.Format("Check TestCase Exists In Storyboard start | testcaseId: {0} | UserName: {1}", testcaseId, Username));
+
+                List<string> storyboarname = (from t1 in entity.T_PROJ_TC_MGR
+                                 join t2 in entity.T_STORYBOARD_SUMMARY on t1.STORYBOARD_ID equals t2.STORYBOARD_ID
+                                 where t1.TEST_CASE_ID == testcaseId
+                                 select t2.STORYBOARD_NAME).Distinct().ToList();
+                 
+                logger.Info(string.Format("Check TestCase Exists In Storyboard end | testcaseId: {0} | UserName: {1}", testcaseId, Username));
+                return storyboarname;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured TestCase in CheckTestCaseExistsInStoryboard method | testcaseId: {0} | UserName: {1}", testcaseId, Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase in CheckTestCaseExistsInStoryboard method | testcaseId: {0} | UserName: {1}", testcaseId, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in CheckTestCaseExistsInStoryboard method | testcaseId: {0} | UserName: {1}", testcaseId, Username), ex.InnerException);
+                throw;
+            }
+        }
+
         public string GetTestcaseNameById(long caseId)
         {
             try
@@ -1043,7 +1068,7 @@ namespace MARS_Repository.Repositories
             }
         }
 
-        public bool AddEditTestCase(TestCaseModel lEntity, string LoginName)
+        public long AddEditTestCase(TestCaseModel lEntity, string LoginName)
         {
             try
             {
@@ -1053,7 +1078,7 @@ namespace MARS_Repository.Repositories
                     {
                         lEntity.TestCaseName = lEntity.TestCaseName.Trim();
                     }
-                    var flag = false;
+                    var flag = lEntity.TestCaseId;
                     if (lEntity.TestCaseId == 0)
                     {
                         logger.Info(string.Format("Add TestCase start | TestCaseName: {0} | UserName: {1}", lEntity.TestCaseName, Username));
@@ -1099,7 +1124,7 @@ namespace MARS_Repository.Repositories
                         entity.SaveChanges();
                         #endregion
 
-                        flag = true;
+                        flag = tbl.TEST_CASE_ID;
                     }
                     else
                     {
@@ -1131,7 +1156,7 @@ namespace MARS_Repository.Repositories
                             #endregion
                             logger.Info(string.Format("Edit TestCase end | TestCaseName: {0} | UserName: {1}", lEntity.TestCaseName, Username));
                         }
-                        flag = true;
+                        //flag = true;
                     }
 
                     #region Testcase and Application Mapping Adding
@@ -1180,7 +1205,7 @@ namespace MARS_Repository.Repositories
                         }
                         entity.SaveChanges();
 
-                        flag = true;
+                        //flag = true;
                     }
                     scope.Complete();
                     return flag;
@@ -1826,6 +1851,83 @@ namespace MARS_Repository.Repositories
                 ELogger.ErrorException(string.Format("Error occured TestCase in SaveAsTestcase method | ProjectId: {0} | TestSuite Id : {1} | TestCase Id : {2} | Testcase Name : {3} | Testcase Desc : {4} | Conn string : {5} | Schema : {6} | UserName: {7}", projectid, testsuiteid, oldtestcaseid, testcasename, testcasedesc, constring, schema, Username), ex);
                 if (ex.InnerException != null)
                     ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in SaveAsTestcase method | ProjectId: {0} | TestSuite Id : {1} | TestCase Id : {2} | Testcase Name : {3} | Testcase Desc : {4} | Conn string : {5} | Schema : {6} | UserName: {7}", projectid, testsuiteid, oldtestcaseid, testcasename, testcasedesc, constring, schema, Username), ex.InnerException);
+                throw;
+            }
+        }
+
+
+        public string SaveAsTestcaseNew(string testcasename, long oldtestcaseid, string testcasedesc, long testsuiteid, long projectid, string schema, string constring, string LoginName)
+        {
+            logger.Info(string.Format("SaveAs TestcaseNew start | Oldtestcaseid: {0} | Testcasename: {1} | UserName: {2}", oldtestcaseid, testcasename, Username));
+            try
+            {
+                using (OracleConnection pconnection = GetOracleConnection(constring))
+                {
+                    pconnection.Open();
+                    OracleCommand pcmd = pconnection.CreateCommand();
+                    OracleTransaction ptransaction = pconnection.BeginTransaction();
+                    pcmd.Transaction = ptransaction;
+                    var newTestCaseId =  Helper.GetIdFromSeq(pcmd,"T_TEST_CASE_SUMMARY_SEQ");
+                    pcmd.CommandText = $@" insert into T_TEST_CASE_SUMMARY (TEST_CASE_ID,TEST_CASE_NAME,TEST_STEP_DESCRIPTION,TEST_STEP_CREATOR,TEST_STEP_CREATE_TIME) 
+                                           values (:1,:2,:3,:4,sysdate) "; 
+                    pcmd.Parameters.Add(new OracleParameter(":1",newTestCaseId));
+                    pcmd.Parameters.Add(new OracleParameter(":2", testcasename));
+                    pcmd.Parameters.Add(new OracleParameter(":3", testcasedesc));
+                    pcmd.Parameters.Add(new OracleParameter(":4", LoginName));                     
+                    pcmd.ExecuteNonQuery();
+
+                    pcmd.Parameters.Clear();
+                    pcmd.CommandText = $@" insert into REL_TEST_CASE_TEST_SUITE (RELATIONSHIP_ID,TEST_CASE_ID,TEST_SUITE_ID) 
+                                           values (REL_TEST_CASE_TEST_SUITE_SEQ.nextval,:1,:2) ";
+                    pcmd.Parameters.Add(new OracleParameter(":1", newTestCaseId));
+                    pcmd.Parameters.Add(new OracleParameter(":2", testsuiteid));
+                    pcmd.ExecuteNonQuery();
+
+                    pcmd.Parameters.Clear();
+                    var dataSummaryId = Helper.GetIdFromSeq(pcmd, "T_TEST_STEPS_SEQ");
+                    pcmd.CommandText = $@" insert into T_TEST_DATA_SUMMARY (DATA_SUMMARY_ID,ALIAS_NAME,SHARE_MARK,STATUS,CREATE_TIME) 
+                                           values (:1,:2,1,0,sysdate) ";
+                    pcmd.Parameters.Add(new OracleParameter(":1", dataSummaryId));
+                    pcmd.Parameters.Add(new OracleParameter(":2", testcasename));
+                    pcmd.ExecuteNonQuery();
+
+                    pcmd.Parameters.Clear();    
+                    pcmd.CommandText = $@" insert into REL_TC_DATA_SUMMARY (ID,TEST_CASE_ID,DATA_SUMMARY_ID) 
+                                           values (T_TEST_STEPS_SEQ.nextval,:1,:2) ";
+                    pcmd.Parameters.Add(new OracleParameter(":1", newTestCaseId));
+                    pcmd.Parameters.Add(new OracleParameter(":2", dataSummaryId));
+                    pcmd.ExecuteNonQuery();
+
+                    pcmd.Parameters.Clear();
+                    pcmd.CommandText = $@" insert into T_TEST_STEPS (STEPS_ID,RUN_ORDER,TEST_CASE_ID,COLUMN_ROW_SETTING,""COMMENT"",IS_RUNNABLE,KEY_WORD_ID,
+                                        OBJECT_ID,OBJECT_NAME_ID,VALUE_SETTING) select T_TEST_STEPS_SEQ.nextval,RUN_ORDER,:1,COLUMN_ROW_SETTING,""COMMENT"",IS_RUNNABLE,
+                                        KEY_WORD_ID,OBJECT_ID,OBJECT_NAME_ID,VALUE_SETTING from T_TEST_STEPS where TEST_CASE_ID =:2 ";
+                    pcmd.Parameters.Add(new OracleParameter(":1", newTestCaseId));
+                    pcmd.Parameters.Add(new OracleParameter(":2", oldtestcaseid));
+                    pcmd.ExecuteNonQuery();
+
+                    pcmd.Parameters.Clear();
+                    pcmd.CommandText = $@" insert into REL_APP_TESTCASE (APPLICATION_ID,TEST_CASE_ID,RELATIONSHIP_ID)
+                                select   t1.APPLICATION_ID , :1, REL_APP_TESTCASE_SEQ.nextval from T_TEST_SUITE t
+                                    join REL_APP_TESTSUITE t1 on t1.TEST_SUITE_ID =t.TEST_SUITE_ID
+                                     where t.TEST_SUITE_ID =:2 ";
+                    pcmd.Parameters.Add(new OracleParameter(":1", newTestCaseId));
+                    pcmd.Parameters.Add(new OracleParameter(":2", testsuiteid));
+                    pcmd.ExecuteNonQuery();
+
+                    ptransaction.Commit();
+                 }
+
+                logger.Info(string.Format("SaveAs TestcaseNew end | Oldtestcaseid: {0} | Testcasename: {1} | UserName: {2}", oldtestcaseid, testcasename, Username));
+                return "success";
+                
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured TestcaseNew in SaveAsTestcase method | ProjectId: {0} | TestSuite Id : {1} | TestCase Id : {2} | Testcase Name : {3} | Testcase Desc : {4} | Conn string : {5} | Schema : {6} | UserName: {7}", projectid, testsuiteid, oldtestcaseid, testcasename, testcasedesc, constring, schema, Username));
+                ELogger.ErrorException(string.Format("Error occured TestcaseNew in SaveAsTestcase method | ProjectId: {0} | TestSuite Id : {1} | TestCase Id : {2} | Testcase Name : {3} | Testcase Desc : {4} | Conn string : {5} | Schema : {6} | UserName: {7}", projectid, testsuiteid, oldtestcaseid, testcasename, testcasedesc, constring, schema, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestcaseNew in SaveAsTestcase method | ProjectId: {0} | TestSuite Id : {1} | TestCase Id : {2} | Testcase Name : {3} | Testcase Desc : {4} | Conn string : {5} | Schema : {6} | UserName: {7}", projectid, testsuiteid, oldtestcaseid, testcasename, testcasedesc, constring, schema, Username), ex.InnerException);
                 throw;
             }
         }
@@ -3279,7 +3381,7 @@ namespace MARS_Repository.Repositories
             }
         }
 
-        public bool AddEditFolder(DataTagCommonViewModel lEntity)
+        public bool AddEditFolder(DataTagCommonViewModel lEntity,bool isAdd=false)
         {
             try
             {
@@ -3290,11 +3392,11 @@ namespace MARS_Repository.Repositories
                         lEntity.Name = lEntity.Name.Trim();
                     }
                     var flag = false;
-                    if (lEntity.Id == 0)
+                    if (isAdd)
                     {
                         logger.Info(string.Format("Add Folder start | Folder: {0} | UserName: {1}", lEntity.Name, Username));
                         var tbl = new T_TEST_FOLDER();
-                        tbl.FOLDERID = Helper.NextTestSuiteId("SEQ_T_TEST_FOLDER");
+                        tbl.FOLDERID = lEntity.Id;// Helper.NextTestSuiteId("SEQ_T_TEST_FOLDER");
                         tbl.FOLDERNAME = lEntity.Name;
                         tbl.DESCRIPTION = lEntity.Description;
                         tbl.ACTIVE = lEntity.IsActive;
@@ -3997,7 +4099,7 @@ namespace MARS_Repository.Repositories
             }
         }
 
-        public IList<T_FOLDER_FILTER> GetFilterList()
+        public List<T_FOLDER_FILTER> GetFilterList()
         {
             try
             {
@@ -4069,7 +4171,7 @@ namespace MARS_Repository.Repositories
             }
         }
 
-        public bool SaveFolderFilter(string ProjectIds, string SBIds, string filtername, int Id)
+        public bool SaveFolderFilter(string ProjectIds, string SBIds, string filtername, int Id,bool isupdate)
         {
             try
             {
@@ -4077,7 +4179,7 @@ namespace MARS_Repository.Repositories
                 {
                     logger.Info(string.Format("SaveFolderFilter start | filtername: {0} | ProjectIds: {1} | SBIds: {2} | UserName: {3}", filtername, ProjectIds, SBIds, Username));
                     var flag = false;
-                    if (Id > 0)
+                    if (isupdate)
                     {
                         var filter = entity.T_FOLDER_FILTER.Where(x => x.FILTER_ID == Id).FirstOrDefault();
                         if (filter != null)
@@ -4092,8 +4194,8 @@ namespace MARS_Repository.Repositories
                     else
                     {
                         T_FOLDER_FILTER filter = new T_FOLDER_FILTER();
-                        var filterID = Helper.NextTestSuiteId("SEQ_T_FOLDER_FILTER");
-                        filter.FILTER_ID = filterID;
+                        //var filterID = Helper.NextTestSuiteId("SEQ_T_FOLDER_FILTER");
+                        filter.FILTER_ID = Id;
                         filter.FILTER_NAME = filtername;
                         filter.PROJECT_IDS = ProjectIds;
                         filter.STORYBOARD_IDS = SBIds;
@@ -4177,6 +4279,45 @@ namespace MARS_Repository.Repositories
                 throw;
             }
         }
+
+
+        public bool SaveFolderForFilter(REL_FOLDER_FILTER filter, bool isAdd )
+        {
+            try
+            {
+                using (TransactionScope scope = new TransactionScope())
+                {
+                    logger.Info(string.Format("SaveFolderFilter start | FolderID: {0} | FilterId: {1} | UserName: {2}", filter.FOLDER_ID, filter.FILTER_ID, Username));
+                    var flag = false;
+                    if (isAdd)
+                    {
+                        entity.REL_FOLDER_FILTER.Add(filter);
+                        entity.SaveChanges();
+                        flag = true;
+                    }
+                    else
+                    {
+                        var filterIsExist = entity.REL_FOLDER_FILTER.Where(x => x.FOLDER_ID == filter.FOLDER_ID).FirstOrDefault();
+                        filterIsExist.FOLDER_ID = filter.FOLDER_ID;
+                        filterIsExist.FILTER_ID = filter.FILTER_ID;
+                        entity.SaveChanges();
+                        flag = true;
+                    }
+                    logger.Info(string.Format("SaveFolderFilter end | FolderID: {0} | FilterId: {1} | UserName: {2}", filter.FOLDER_ID, filter.FILTER_ID, Username));
+                    scope.Complete();
+                    return flag;
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in Testcase for SaveFolderFilter method | FolderID: {0} | FilterId: {1} | UserName: {2}", filter.FOLDER_ID, filter.FILTER_ID, Username));
+                ELogger.ErrorException(string.Format("Error occured Testcase in SaveFolderFilter method | FolderID: {0} | FilterId: {1} | UserName: {2}", filter.FOLDER_ID, filter.FILTER_ID, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured Testcase in SaveFolderFilter method | FolderID: {0} | FilterId: {1} | UserName: {2}", filter.FOLDER_ID, filter.FILTER_ID, Username), ex.InnerException);
+                throw;
+            }
+        }
+
 
         public string GetFilterByFolderId(long FolderID)
         {
@@ -4290,6 +4431,8 @@ namespace MARS_Repository.Repositories
                 List<MB_V_TEST_STEPS> addedSteps = steps.allSteps.Where(x => x.recordStatus.Equals(CommonEnum.MarsRecordStatus.en_NewToDb)).ToList();
                 List<MB_V_TEST_STEPS> updatedSteps = steps.allSteps.Where(x => x.recordStatus.Equals(CommonEnum.MarsRecordStatus.en_ModifiedToDb)).ToList();
                 List<MB_V_TEST_STEPS> deletedSteps = steps.allSteps.Where(x => x.recordStatus.Equals(CommonEnum.MarsRecordStatus.en_DeletedToDb)).ToList();
+                logger.Info( $"SAVE TESTCASE SESSION VALUES INTO DATABASE | TESTCASEID : {testCaseId} | USERNAME: {Username} | START : { DateTime.Now.ToString("HH:mm:ss.ffff tt")} | addCount: {addedSteps.Count} | updatedCount: {updatedSteps.Count} | deletedSteps :{deletedSteps.Count}" );
+
                 using (OracleConnection connection = new OracleConnection(connectionString))
                 {
                     connection.Open();

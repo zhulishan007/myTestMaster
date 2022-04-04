@@ -40,7 +40,7 @@ namespace MARS_Repository.Repositories
                 throw;
             }
         }
-        public string AddEditStoryboard(StoryboardModel Model)
+        public string AddEditStoryboard(StoryboardModel Model,bool needCreateSeq)
         {
             try
             {
@@ -51,13 +51,15 @@ namespace MARS_Repository.Repositories
                         Model.Storyboardname = Model.Storyboardname.Trim();
                         Model.StoryboardDescription = Model.StoryboardDescription.Trim();
                     }
+                    var storyboardid = Model.Storyboardid;
                     var result = enty.T_STORYBOARD_SUMMARY.Find(Model.Storyboardid);
-                    if (result == null)
+                    if (result==null)
                     {
                         logger.Info(string.Format("Add Storyboard start | Storyboard: {0} | Username: {1}", Model.Storyboardname, Username));
                         T_STORYBOARD_SUMMARY summary = new T_STORYBOARD_SUMMARY();
-                        var storyboardid = Helper.NextTestSuiteId("T_TEST_STEPS_SEQ");
-                        summary.STORYBOARD_ID = storyboardid;
+                        if(needCreateSeq)
+                            storyboardid = Helper.NextTestSuiteId("T_TEST_STEPS_SEQ");
+                        summary.STORYBOARD_ID = Model.Storyboardid;
                         summary.STORYBOARD_NAME = Model.Storyboardname;
                         summary.DESCRIPTION = Model.StoryboardDescription;
                         summary.ASSIGNED_PROJECT_ID = Model.ProjectId;
@@ -75,7 +77,7 @@ namespace MARS_Repository.Repositories
                         logger.Info(string.Format("Edit Storyboard end | Storyboard: {0} | Storyboardid: {1} | Username: {2}", Model.Storyboardname, Model.Storyboardid, Username));
                     }
                     scope.Complete();
-                    return "success";
+                    return storyboardid.ToString();
                 }
             }
             catch (Exception ex)
@@ -88,6 +90,7 @@ namespace MARS_Repository.Repositories
                 throw;
             }
         }
+
         public IList<StoryboardModel> GetStoryboards(string lconstring, string schema, int startrec, int pagesize, string Storyboardsnamesearch, string Storyboarddescsearch, string Projectnamesearch, string colname, string colorder)
         {
             try
@@ -2319,10 +2322,11 @@ namespace MARS_Repository.Repositories
                 throw;
             }
         }
-        public string NewSaveAsStoryboard(string storyboardname, string storyboarddesc, long oldsid, long projectid, string schema, string constring, string LoginName)
+        public long NewSaveAsStoryboard(string storyboardname, string storyboarddesc, long oldsid, long projectid, string schema, string constring, string LoginName)
         {
             try
             {
+                long result = 0;
                 using (TransactionScope scope = new TransactionScope())
                 {
                     logger.Info(string.Format("New SaveAs Storyboard start | storyboardname: {0} | UserName: {1}", storyboardname, Username));
@@ -2331,19 +2335,19 @@ namespace MARS_Repository.Repositories
                         storyboardname = storyboardname.Trim();
                     }
                     var lflag = "success";
-                    var result = CheckDuplicateStoryboardNameSaveAs(storyboardname, oldsid);
-                    if (result == true)
+                    var checkResult = CheckDuplicateStoryboardNameSaveAs(storyboardname, oldsid);
+                    if (checkResult == true)
                     {
                         var sresult = enty.T_STORYBOARD_SUMMARY.Find(oldsid);
 
                         if (sresult.STORYBOARD_NAME == storyboardname && sresult.DESCRIPTION != storyboarddesc)
                         {
                             lflag = "description cannot be changed";
-                            return lflag;
+                            return result;
                         }
 
                         lflag = "error";
-                        return lflag;
+                        return result;
                     }
                     var tbl = new T_STORYBOARD_SUMMARY();
                     tbl.STORYBOARD_ID = Helper.NextTestSuiteId("T_TEST_STEPS_SEQ");
@@ -2354,7 +2358,7 @@ namespace MARS_Repository.Repositories
                     tbl.ASSIGNED_PROJECT_ID = projectid;
                     enty.T_STORYBOARD_SUMMARY.Add(tbl);
                     //enty.SaveChanges();
-
+                    result = tbl.STORYBOARD_ID;
                     var lresult = (from t in enty.T_PROJ_TC_MGR
                                    where t.STORYBOARD_ID == oldsid
                                    select new InsertStoryboardModel
@@ -2436,7 +2440,7 @@ namespace MARS_Repository.Repositories
                 }
 
 
-                return "success";
+                return result;
             }
             catch (Exception ex)
             {
@@ -2447,6 +2451,68 @@ namespace MARS_Repository.Repositories
                 throw;
             }
         }
+
+        public StoryBoardListByProject NewSaveAsStoryboardNew(string storyboardname, string storyboarddesc, long oldsid, long projectid, string schema, string constring, string LoginName)
+        {
+            try
+            {
+                logger.Info(string.Format("New SaveAs Storyboard start | storyboardname: {0} | UserName: {1}", storyboardname, Username));
+                StoryBoardListByProject storyBoard = null;
+                using (OracleConnection pconnection = GetOracleConnection(constring))
+                {
+                    pconnection.Open();
+                    OracleCommand pcmd = pconnection.CreateCommand();
+                    OracleTransaction ptransaction = pconnection.BeginTransaction();
+                    pcmd.Transaction = ptransaction;
+                    long newStoryBoardId = Helper.GetIdFromSeq(pcmd, "T_TEST_STEPS_SEQ");
+                    pcmd.CommandText = $@"insert into T_STORYBOARD_SUMMARY(STORYBOARD_ID,CREATE_TIME,LATEST_VERISON,DESCRIPTION,CREATER,ASSIGNED_PROJECT_ID,STORYBOARD_NAME)
+                        SELECT {newStoryBoardId},SYSDATE,NVL(LATEST_VERISON,''),nvl('{storyboarddesc}',''),nvl(CREATER,''),ASSIGNED_PROJECT_ID,'{storyboardname}' FROM 
+                        T_STORYBOARD_SUMMARY where STORYBOARD_ID ={oldsid}";
+                    pcmd.ExecuteNonQuery();
+
+                    pcmd.CommandText = $@"insert into T_PROJ_TC_MGR (select T_TEST_STEPS_SEQ.nextval ,project_id,test_case_id,{newStoryBoardId} ,run_type,nvl(depends_on,null),
+                            run_order,nvl(latest_test_mark_id,null),nvl(record_version,null),nvl(alias_name,null),test_suite_id from T_PROJ_TC_MGR  where storyboard_id={oldsid})";
+                    pcmd.ExecuteNonQuery();
+
+                    pcmd.CommandText = $@"insert into T_STORYBOARD_DATASET_SETTING (setting_id,storyboard_detail_id,data_summary_id,createtime, version , tester_id, run_order)
+                            ( select T_TEST_STEPS_SEQ.nextval,t2.storyboard_detail_id, s.DATA_SUMMARY_ID,sysdate, s.version , s.tester_id, s.run_order
+                                  from T_STORYBOARD_DATASET_SETTING  s
+                                  left join T_PROJ_TC_MGR t1 on t1.storyboard_detail_id =s.storyboard_detail_id  
+                                  left join T_PROJ_TC_MGR t2 on t2.RUN_ORDER =t1.RUN_ORDER and t2.STORYBOARD_ID ={newStoryBoardId}
+                                 where t1.STORYBOARD_ID={oldsid})";
+                    pcmd.ExecuteNonQuery();
+                    ptransaction.Commit();
+                    pcmd.CommandText = $@"select t1.PROJECT_ID,t1.PROJECT_NAME, t2.STORYBOARD_ID,t2.STORYBOARD_NAME,t2.DESCRIPTION  from 
+                                        T_STORYBOARD_SUMMARY  t2 join  T_TEST_PROJECT  t1 on t1.project_id =t2.assigned_project_id
+                                        where t2.STORYBOARD_ID ={newStoryBoardId}";
+                    using (OracleDataReader dr = pcmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            storyBoard = new StoryBoardListByProject();
+                            storyBoard.ProjectId = Helper.GetDBLong (dr["PROJECT_ID"]);
+                            storyBoard.ProjectName = Helper.GetDBString(dr["PROJECT_NAME"]);
+                            storyBoard.StoryboardId = Helper.GetDBLong(dr["STORYBOARD_ID"]);
+                            storyBoard.StoryboardName = Helper.GetDBString(dr["STORYBOARD_NAME"]);
+                            storyBoard.Storyboardescription = Helper.GetDBString( dr["DESCRIPTION"]);
+                         }
+                    }
+                }
+                   
+                logger.Info(string.Format("New SaveAs Storyboard end | storyboardname: {0} | UserName: {1}", storyboardname, Username));
+
+                return storyBoard;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in StoryBoard for NewSaveAsStoryboard method | Old StoryBoardId: {0} | StoryBoard Name : {1} | StoryBoard Desc : {2} | ProjectId : {3} | Connection string : {4} | Schema : {5} | UserName: {6}", oldsid, storyboardname, storyboarddesc, projectid, constring, schema, Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in NewSaveAsStoryboard method | Old StoryBoardId: {0} | StoryBoard Name : {1} | StoryBoard Desc : {2} | ProjectId : {3} | Connection string : {4} | Schema : {5} | UserName: {6}", oldsid, storyboardname, storyboarddesc, projectid, constring, schema, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in NewSaveAsStoryboard method | Old StoryBoardId: {0} | StoryBoard Name : {1} | StoryBoard Desc : {2} | ProjectId : {3} | Connection string : {4} | Schema : {5} | UserName: {6}", oldsid, storyboardname, storyboarddesc, projectid, constring, schema, Username), ex.InnerException);
+                throw;
+            }
+        }
+
 
         public List<StoryboardResultDataModel> GetStoryBoardResultData(string schema, string lconstring, long lCompareHistId, long lBaselineHistId)
         {
@@ -3490,6 +3556,156 @@ namespace MARS_Repository.Repositories
             }
         }
 
+        public List<long> CreateStoryboradForFolderNew(long folderId, string fName, string lSchema, string lConnectionStr, T_TEST_PROJECT project,bool projectAdd,List<T_REGISTERED_APPS> apps, StoryBoardListByProject story,int actionId)
+        {
+            try
+            {
+                List<long> detailList = new List<long>();
+                logger.Info(string.Format("CreateStoryboradForFolderNew start | folderId: {0} | fName: {1} | UserName: {2}", folderId, fName, Username));
+                var lresult = false;
+                var folder = folderId.ToString();
+                long ProjectId = project.PROJECT_ID;
+                long storyboardid = 0;
+                /*var datasetsx = (from df in enty.T_TEST_DATASETTAG
+                                join u in enty.T_TEST_DATA_SUMMARY on df.DATASETID equals u.DATA_SUMMARY_ID
+                                join ds in enty.REL_TC_DATA_SUMMARY on u.DATA_SUMMARY_ID equals ds.DATA_SUMMARY_ID
+                                join tc in enty.T_TEST_CASE_SUMMARY on ds.TEST_CASE_ID equals tc.TEST_CASE_ID
+                                join rtc in enty.REL_TEST_CASE_TEST_SUITE on tc.TEST_CASE_ID equals rtc.TEST_CASE_ID
+                                join suits in enty.T_TEST_SUITE on rtc.TEST_SUITE_ID equals suits.TEST_SUITE_ID
+                                join rtp in enty.REL_TEST_SUIT_PROJECT on suits.TEST_SUITE_ID equals rtp.TEST_SUITE_ID
+                                where df.FOLDERID == folder
+                                select new FolderDatasetViewModel
+                                {
+                                    DataSetId = u.DATA_SUMMARY_ID,
+                                    TestCaseId = tc.TEST_CASE_ID,
+                                    DatasetName = u.ALIAS_NAME,
+                                    TestCase = tc.TEST_CASE_NAME,
+                                    TestSuite = suits.TEST_SUITE_NAME,
+                                    TestSuiteId = suits.TEST_SUITE_ID,
+                                    SEQ = df.SEQUENCE
+                                }
+                                ).Distinct().OrderBy(x => x.SEQ);
+                logger.Info(datasetsx.ToString());
+                var datasets = datasetsx.ToList();*/
+                var datasets = new List<FolderDatasetViewModel>();
+                using (OracleConnection pconnection = GetOracleConnection(lConnectionStr))
+                {
+                    pconnection.Open();
+                    OracleCommand pcmd = pconnection.CreateCommand();
+                    OracleTransaction ptransaction = pconnection.BeginTransaction();
+
+                    pcmd.CommandText = $@"select distinct u.DATA_SUMMARY_ID,tc.TEST_CASE_ID,u.ALIAS_NAME,tc.TEST_CASE_NAME,suits.TEST_SUITE_NAME,
+                                            suits.TEST_SUITE_ID,df.SEQUENCE from  T_TEST_DATASETTAG df 
+                                            join   T_TEST_DATA_SUMMARY u on u.DATA_SUMMARY_ID = df.DATASETID
+                                            join   REL_TC_DATA_SUMMARY ds   on  ds.DATA_SUMMARY_ID= u.DATA_SUMMARY_ID 
+                                            join   T_TEST_CASE_SUMMARY   tc  on tc.TEST_CASE_ID =ds.TEST_CASE_ID 
+                                            join   REL_TEST_CASE_TEST_SUITE rtc on rtc.TEST_CASE_ID =tc.TEST_CASE_ID 
+                                            join   T_TEST_SUITE suits on  suits.TEST_SUITE_ID =rtc.TEST_SUITE_ID 
+                                            join   REL_TEST_SUIT_PROJECT rtp on rtp.TEST_SUITE_ID =suits.TEST_SUITE_ID  
+                                            where df.FOLDERID ={folder}  ";
+ 
+                    using (OracleDataReader dr = pcmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            var dataset = new FolderDatasetViewModel();
+                            dataset.DataSetId = Helper.GetDBLong( dr["DATA_SUMMARY_ID"]);
+                            dataset.TestCaseId = Helper.GetDBLong(dr["TEST_CASE_ID"]);
+                            dataset.DatasetName = Helper.GetDBString(dr["ALIAS_NAME"]);
+                            dataset.TestCase = Helper.GetDBString(dr["TEST_CASE_NAME"]);
+                            dataset.TestSuite = Helper.GetDBString(dr["TEST_SUITE_NAME"]);
+                            dataset.TestSuiteId = Helper.GetDBLong(dr["TEST_SUITE_ID"]);
+                            dataset.SEQ = Helper.GetDBLong(dr["SEQUENCE"]);
+                            datasets.Add(dataset);
+                        }
+                    }
+
+                    if (projectAdd)
+                    {
+                        pcmd.CommandText = $@"insert into T_TEST_PROJECT (PROJECT_ID,PROJECT_NAME,PROJECT_DESCRIPTION,CREATOR,CREATE_DATE,STATUS) VALUES
+                                        ({project.PROJECT_ID},'{project.PROJECT_NAME}','{project.PROJECT_DESCRIPTION}','{project.CREATOR}',{project.CREATE_DATE},{project.STATUS}) ";
+                        pcmd.ExecuteNonQuery();
+          
+                        foreach (var app in apps)
+                        {
+                            pcmd.CommandText = $@"insert into REL_APP_PROJ (RELATIONSHIP_ID,PROJECT_ID,APPLICATION_ID) select
+                                        REL_APP_PROJ_SEQ.nextval,{ProjectId},{app.APPLICATION_ID} from dual
+                                        where not exists (select 1 from REL_APP_PROJ x where x.PROJECT_ID ={ProjectId} and  x.APPLICATION_ID={app.APPLICATION_ID}) ";
+                            pcmd.ExecuteNonQuery();
+                        }
+                    }
+
+                    if (story == null)
+                    {
+                        storyboardid = Helper.GetIdFromSeq(pcmd, "T_TEST_STEPS_SEQ");
+                        pcmd.CommandText = $@"insert into T_STORYBOARD_SUMMARY (STORYBOARD_ID,STORYBOARD_NAME,DESCRIPTION,ASSIGNED_PROJECT_ID,CREATE_TIME) VALUES
+                                        ({storyboardid},'{fName}_Project Zero','{fName}_Project Zero',{ProjectId},sysdate) ";
+                        pcmd.ExecuteNonQuery();
+                    }
+                    else
+                    {
+                        storyboardid = story.StoryboardId;
+                        pcmd.CommandText = $@"delete from T_STORYBOARD_DATASET_SETTING x where x.STORYBOARD_DETAIL_ID in 
+                                               (select t.STORYBOARD_DETAIL_ID from T_PROJ_TC_MGR t where t.STORYBOARD_ID={story.StoryboardId})";
+                        pcmd.ExecuteNonQuery();
+
+                        pcmd.CommandText = $@"delete from T_PROJ_TC_MGR t where t.STORYBOARD_ID={story.StoryboardId} ";
+                        pcmd.ExecuteNonQuery();
+                    }
+                    detailList.Add(storyboardid);
+                    
+                    if (datasets != null && datasets.Count > 0)
+                    {
+                        int index = 0;
+                        string sql = "begin ";
+                        foreach (var item in datasets)
+                        {
+                            sql += $@"insert into REL_TEST_SUIT_PROJECT (RELATIONSHIP_ID,PROJECT_ID,TEST_SUITE_ID) select
+                                         REL_TEST_SUIT_PROJECT_SEQ.nextval,{ProjectId},{item.TestSuiteId}  from dual
+                                        where not exists (select 1 from REL_TEST_SUIT_PROJECT x where x.PROJECT_ID ={ProjectId} and  x.TEST_SUITE_ID={item.TestSuiteId}) ;";
+                            var detailid = IdWorker.Instance.NextId();
+                            sql += $@"insert into T_PROJ_TC_MGR(STORYBOARD_DETAIL_ID,TEST_SUITE_ID,TEST_CASE_ID,RUN_TYPE,RUN_ORDER,PROJECT_ID,STORYBOARD_ID)  values
+                                         ({detailid},{item.TestSuiteId},{item.TestCaseId},{actionId},{index + 1},{ProjectId},{storyboardid}) ; ";
+                            sql += $@"insert into T_STORYBOARD_DATASET_SETTING(SETTING_ID,STORYBOARD_DETAIL_ID,DATA_SUMMARY_ID) values   
+                                             (T_TEST_STEPS_SEQ.nextval, {detailid},{item.DataSetId} );";
+
+                            index++;
+                            /* pcmd.CommandText = $@"insert into REL_TEST_SUIT_PROJECT (RELATIONSHIP_ID,PROJECT_ID,TEST_SUITE_ID) select
+                                              REL_TEST_SUIT_PROJECT_SEQ.nextval,{ProjectId},{item.TestSuiteId}  from dual
+                                             where not exists (select 1 from REL_TEST_SUIT_PROJECT x where x.PROJECT_ID ={ProjectId} and  x.TEST_SUITE_ID={item.TestSuiteId}) ";
+                             pcmd.ExecuteNonQuery();
+
+                             var detailid = IdWorker.Instance.NextId();
+                             pcmd.CommandText = $@"insert into T_PROJ_TC_MGR(STORYBOARD_DETAIL_ID,TEST_SUITE_ID,TEST_CASE_ID,RUN_TYPE,RUN_ORDER,PROJECT_ID,STORYBOARD_ID)  values
+                                             ({detailid},{item.TestSuiteId},{item.TestCaseId},{actionId},{index +1},{ProjectId},{storyboardid}) ";
+                             pcmd.ExecuteNonQuery();
+
+                             pcmd.CommandText = $@"insert into T_STORYBOARD_DATASET_SETTING(SETTING_ID,STORYBOARD_DETAIL_ID,DATA_SUMMARY_ID) values   
+                                                 (T_TEST_STEPS_SEQ.nextval, {detailid},{item.DataSetId} )";
+                             pcmd.ExecuteNonQuery();
+                             index++;*/
+                        }
+                        sql += "end;";
+                        pcmd.CommandText = sql;
+                        pcmd.ExecuteNonQuery();
+                    }
+                    pcmd.CommandText = @"update T_TEST_DATA_SUMMARY set status = 0 where status is null";
+                    pcmd.ExecuteNonQuery();
+                    ptransaction.Commit();
+                 }
+                return detailList;
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in StoryBoard for CreateStoryboradForFolderNew method | folderId: {0} | | fName: {1} | UserName: {2}", folderId, fName, Username));
+                ELogger.ErrorException(string.Format("Error occured StoryBoard in CreateStoryboradForFolderNew method | folderId: {0} | fName: {1} | UserName: {2}", folderId, fName, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured StoryBoard in CreateStoryboradForFolderNew method | folderId: {0} | fName: {1} | UserName: {2}", folderId, fName, Username), ex.InnerException);
+                throw;
+            }
+        }
+
+
         public void SaveStoryboardGrid(string lConnectionStr, string schema, long lStoryboardId, string lFeedProceID, string lProjectId,List<StoryBoardResultModel> list,bool needSp = true)
         {
             try
@@ -3678,7 +3894,6 @@ where stg.FEEDPROCESSID = {lFeedProceID} and stg.DEPENDENCY not in ('None') and 
                 throw;
             }
         }
-
-
+    
     }
 }

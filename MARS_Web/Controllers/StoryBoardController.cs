@@ -24,6 +24,7 @@ using MARSUtility;
 using System.Collections.Concurrent;
 using System.Threading.Tasks;
 using static Mars_Serialization.JsonSerialization.SerializationFile;
+using MARS_Repository;
 
 namespace MARS_Web.Controllers
 {
@@ -72,22 +73,72 @@ namespace MARS_Web.Controllers
                 var _treerepository = new GetTreeRepository();
                 var lSchema = SessionManager.Schema;
                 var lConnectionStr = SessionManager.APP;
-
-                var checkduplicateflag = repo.CheckDuplicateStoryboardName(model.Storyboardname, model.Storyboardid);
+                bool checkduplicateflag = false;
+                if (GlobalVariable.StoryBoardListCache != null && GlobalVariable.StoryBoardListCache.ContainsKey(lSchema))
+                {
+                    checkduplicateflag = InitCacheHelper.CheckStoryBoardFromCache(lSchema, model.Storyboardname, model.Storyboardid);
+                }
+                else
+                {
+                    checkduplicateflag = repo.CheckDuplicateStoryboardName(model.Storyboardname, model.Storyboardid);
+                }
                 if (checkduplicateflag)
                     resultModel.data = checkduplicateflag;
                 else
                 {
-                    var result = repo.AddEditStoryboard(model);
+                    string storyBoradId = "";
+                    if (GlobalVariable.StoryBoardListCache != null && GlobalVariable.StoryBoardListCache.ContainsKey(lSchema)
+                        && GlobalVariable.ProjectListCache != null && GlobalVariable.ProjectListCache.ContainsKey(lSchema))
+                    {
+                        var project = GlobalVariable.ProjectListCache[lSchema].FirstOrDefault(r => r.PROJECT_ID == model.ProjectId);
+                        var storyBoard = GlobalVariable.StoryBoardListCache[lSchema].FirstOrDefault(r => r.StoryboardId == model.Storyboardid);
+                        if (storyBoard == null)
+                        {
+                            storyBoard = new StoryBoardListByProject() { 
+                                ProjectId =model.ProjectId,ProjectName =model.Projectname,
+                                StoryboardId =MARS_Repository.Helper.NextTestSuiteId("T_TEST_STEPS_SEQ"),
+                                Storyboardescription =model.StoryboardDescription,StoryboardName =model.Storyboardname
+                            };
+                            GlobalVariable.StoryBoardListCache[lSchema].Add(storyBoard);
+                         }
+                        else
+                        {
+                            storyBoard.Storyboardescription = model.StoryboardDescription;
+                            storyBoard.StoryboardName = model.Storyboardname;
+                        }
+                        storyBoradId = storyBoard.StoryboardId.ToString();
+                        Task.Run(() =>
+                        {
+                            var saveModel = new StoryboardModel()
+                            {
+                                ProjectId=model.ProjectId,Storyboardid =storyBoard.StoryboardId,Projectname =model.Projectname,
+                                StoryboardDescription =model.StoryboardDescription,Storyboardname =model.Storyboardname,TotalCount =model.TotalCount
+                            };
+                            repo.AddEditStoryboard(saveModel, false);
+                            JsonFileHelper.InitStoryBoardJson(lSchema, "", Convert.ToInt64(storyBoradId));
+                        }); 
+                    }
+                    else
+                    {
+                        storyBoradId = repo.AddEditStoryboard(model,true);
+                        Task.Run(() => JsonFileHelper.InitStoryBoardJson(lSchema, "", Convert.ToInt64(storyBoradId)));
+                    }
                      
                     var entityConnectString = SessionManager.ConnectionString;
-                    InitCacheHelper.StoryBoardInit(entityConnectString, lSchema, _treerepository);
-
-                    Session["LeftProjectList"] = _treerepository.GetProjectList(SessionManager.TESTER_ID, lSchema, lConnectionStr);
-
+                    //InitCacheHelper.StoryBoardInit(entityConnectString, lSchema, _treerepository);
+                    List<ProjectByUser> projects = new List<ProjectByUser>();
+                    if (!InitCacheHelper.GetProjectUserFromCache(lSchema, SessionManager.TESTER_ID, projects))
+                    {
+                        Session["LeftProjectList"] = projects.OrderBy(r => r.ProjectName).ToList();
+                    }
+                    else 
+                    {
+                        Session["LeftProjectList"] = _treerepository.GetProjectList(SessionManager.TESTER_ID, lSchema, lConnectionStr);
+                    }
+                    
                     var flag = model.Storyboardid == 0 ? "Added" : "Updated";
                     resultModel.message = "Storyboard " + flag + " successfully";
-                    resultModel.data = result;
+                    resultModel.data = "success";
                     logger.Info(string.Format("Satoryboard " + flag + " successfully | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
                 }
                 resultModel.status = 1;
@@ -159,17 +210,42 @@ namespace MARS_Web.Controllers
                 var repTree = new GetTreeRepository();
                 var lSchema = SessionManager.Schema;
                 var lConnectionStr = SessionManager.APP;
-                var storyboradname = repo.GetStoryboardNamebyId(sid);
-                var result = repo.DeleteStoryboard(sid);
+                string storyboradname = string.Empty;
+                if (GlobalVariable.StoryBoardListCache != null && GlobalVariable.StoryBoardListCache.ContainsKey(lSchema))
+                {
+                    var story = GlobalVariable.StoryBoardListCache[lSchema].FirstOrDefault(r => r.StoryboardId == sid);
+                    if (story != null)
+                    {
+                        storyboradname = story.StoryboardName;
+                        GlobalVariable.StoryBoardListCache[lSchema].Remove(story);
+                    }
+                    else 
+                    {
+                        storyboradname = repo.GetStoryboardNamebyId(sid);
+                    }
+                }
+                else
+                {
+                    storyboradname = repo.GetStoryboardNamebyId(sid);
+                }
 
+                JsonFileHelper.DeleteFile(lSchema, sid, storyboradname);
+                Task.Run(() => repo.DeleteStoryboard(sid));
                 var entityConnectString = SessionManager.ConnectionString;
-                InitCacheHelper.StoryBoardInit(entityConnectString, lSchema, repTree);
+                List<ProjectByUser> projects = new List<ProjectByUser>();
+                if (InitCacheHelper.GetProjectUserFromCache(lSchema, SessionManager.TESTER_ID, projects))
+                {
+                    Session["LeftProjectList"] = projects;
+                }
+                else
+                {
+                    Session["LeftProjectList"] = repTree.GetProjectList(SessionManager.TESTER_ID, lSchema, lConnectionStr);
+                }
 
-                Session["LeftProjectList"] = repTree.GetProjectList(SessionManager.TESTER_ID, lSchema, lConnectionStr);
                 logger.Info(string.Format("Delete Storyboard successfully | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
 
                 resultModel.message = "Storyboard [" + storyboradname + "] deleted Successfully";
-                resultModel.data = result;
+                resultModel.data = true;
                 resultModel.status = 1;
             }
             catch (Exception ex)
@@ -194,7 +270,15 @@ namespace MARS_Web.Controllers
                 storyboardname = storyboardname.Trim();
                 var repo = new StoryBoardRepository();
                 repo.Username = SessionManager.TESTER_LOGIN_NAME;
-                var result = repo.CheckDuplicateStoryboardName(storyboardname, storyboardid);
+                bool result = false;
+                if (GlobalVariable.StoryBoardListCache != null && GlobalVariable.StoryBoardListCache.ContainsKey(SessionManager.Schema))
+                {
+                    result = GlobalVariable.StoryBoardListCache[SessionManager.Schema].Any(r =>r!=null &&  r.StoryboardName.ToLower().Trim() == storyboardname.ToLower().Trim());
+                }
+                else
+                {
+                    result = repo.CheckDuplicateStoryboardName(storyboardname, storyboardid);
+                }
                 resultModel.data = result;
                 resultModel.status = 1;
             }
@@ -218,7 +302,15 @@ namespace MARS_Web.Controllers
                 var repo = new StoryBoardRepository();
                 repo.Username = SessionManager.TESTER_LOGIN_NAME;
                 var controller = new LoginController();
-                var checksb = repo.CheckDuplicateStoryboardName(storyboardname, storyboardid);
+                bool checksb = false;
+                if (GlobalVariable.StoryBoardListCache != null && GlobalVariable.StoryBoardListCache.ContainsKey(SessionManager.Schema))
+                {
+                    checksb = InitCacheHelper.CheckStoryBoardFromCache(SessionManager.Schema, storyboardname, storyboardid);
+                }
+                else
+                {
+                    checksb = repo.CheckDuplicateStoryboardName(storyboardname, storyboardid);
+                }
                 if (checksb)
                 {
                     resultModel.message = "Storyboard [" + storyboardname + "] already exists";
@@ -228,10 +320,24 @@ namespace MARS_Web.Controllers
                 }
                 else
                 {
-                    var result = repo.ChangeStoryboardName(storyboardname, storyboarddesc, storyboardid);
-
+                    if (GlobalVariable.StoryBoardListCache != null && GlobalVariable.StoryBoardListCache.ContainsKey(SessionManager.Schema))
+                    {
+                        var story = GlobalVariable.StoryBoardListCache[SessionManager.Schema].FirstOrDefault(r => r.StoryboardId == storyboardid);
+                        if (story != null)
+                        {
+                            string path = JsonFileHelper.GetJsonFilePath(SessionManager.Schema, "Storyboard");
+                            string fileName = $"{projectid}_{storyboardid}_{story.StoryboardName}.json";
+                            string targetName = $"{projectid}_{storyboardid}_{storyboardname}.json";
+                            JsonFileHelper.ChangeJsonFileName(Path.Combine(path, fileName), Path.Combine(path, targetName));
+                            story.StoryboardName = storyboardname;
+                            story.Storyboardescription = storyboarddesc;
+                        }
+                    }
+                     
+                    Task.Run(()=> repo.ChangeStoryboardName(storyboardname, storyboarddesc, storyboardid));
+                    
                     resultModel.message = "Storyboard name successfully changed.";
-                    resultModel.data = result;
+                    resultModel.data = true;
                     resultModel.status = 1;
 
                     logger.Info(string.Format("Rename Storyboard  Modal close | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
@@ -301,12 +407,27 @@ namespace MARS_Web.Controllers
             if (Storyboardid > 0 && Projectid > 0)
             {
                 var projrepo = new ProjectRepository();
-                var Projectname = projrepo.GetProjectNameById(Convert.ToInt64(Projectid));
+                string Projectname = string.Empty;
                 var repo = new StoryBoardRepository();
-                var Storyboardname = repo.GetStoryboardNameById(Convert.ToInt64(Storyboardid));
-
+                string Storyboardname = string.Empty;
+                
                 string lSchema = SessionManager.Schema;
                 var lConnectionStr = SessionManager.APP;
+
+                if (GlobalVariable.StoryBoardListCache != null && GlobalVariable.StoryBoardListCache.ContainsKey(lSchema))
+                {
+                    var story = GlobalVariable.StoryBoardListCache[lSchema].FirstOrDefault(f => f.ProjectId == Convert.ToInt64(Projectid) && f.StoryboardId == Convert.ToInt64(Storyboardid));
+                    if (story != null)
+                    {
+                        Projectname = story.ProjectName;
+                        Storyboardname = story.StoryboardName;
+                    }
+
+                }
+                else {
+                      Projectname = projrepo.GetProjectNameById(Convert.ToInt64(Projectid));
+                      Storyboardname = repo.GetStoryboardNameById(Convert.ToInt64(Storyboardid));
+                }
 
                 Regex re = new Regex("[;\\/:*?\"<>|&']");
                 var SBName = re.Replace(Storyboardname, "_").Replace("\\", "&bs").Replace("/", "&fs").Replace("*", "&ast").Replace("[", "&ob").Replace("]", "&cb").Replace(":", "&col").Replace("?", "&qtn");
@@ -394,7 +515,14 @@ namespace MARS_Web.Controllers
             {
                 var prepo = new ProjectRepository();
                 MARSUtility.ExportExcel exp = new MARSUtility.ExportExcel();
-                var projectname = prepo.GetProjectNameById(Convert.ToInt64(projectid));
+                string projectname = "";
+                if (GlobalVariable.ProjectListCache != null && GlobalVariable.ProjectListCache.ContainsKey(SessionManager.Schema))
+                {
+                    projectname = GlobalVariable.ProjectListCache[SessionManager.Schema].FirstOrDefault(r => r.PROJECT_ID == Convert.ToInt64(projectid))?.PROJECT_NAME;
+                }
+                else { 
+                    projectname = prepo.GetProjectNameById(Convert.ToInt64(projectid));
+                }
                 string lFileName = projectname + "_" + DateTime.Now.ToString("yyyyMMdd") + "_" + DateTime.Now.ToString("HHmmss") + ".xlsx";
                 name = "Log_" + projectname + "_Export" + DateTime.Now.ToString(" yyyy-MM-dd HH-mm-ss") + ".xlsx";
                 strPath = Path.Combine(Server.MapPath("~/" + log_path), name);
@@ -775,11 +903,30 @@ namespace MARS_Web.Controllers
                 JavaScriptSerializer js = new JavaScriptSerializer();
                 StoryBoardRepository repo = new StoryBoardRepository();
                 repo.Username = SessionManager.TESTER_LOGIN_NAME;
-                var keyValue = getStoryBoardCache(projectId, Storyboardid, Storyboardname);
-                if (keyValue != null && keyValue.ContainsKey("keyValues"))
+
+                //var keyValue = getStoryBoardCache(projectId, Storyboardid, Storyboardname);
+                //if (keyValue != null && keyValue.ContainsKey("keyValues"))
+                //{
+                //    var test = JsonConvert.DeserializeObject<Dictionary<string, List<TestCaseListByProject>>>(keyValue["keyValues"]);
+                //    resultModel.data = test["testCaseLists"].FindAll(r=>r.TestsuiteId==testSuiteId);
+                //}
+                if (GlobalVariable.TestCaseListCache != null && GlobalVariable.TestCaseListCache.ContainsKey(SessionManager.Schema) &&
+                      GlobalVariable.TestSuiteListCache != null && GlobalVariable.TestSuiteListCache.ContainsKey(SessionManager.Schema))
                 {
-                    var test = JsonConvert.DeserializeObject<Dictionary<string, List<TestCaseListByProject>>>(keyValue["keyValues"]);
-                    resultModel.data = test["testCaseLists"].FindAll(r=>r.TestsuiteId==testSuiteId);
+                    var testSuite = GlobalVariable.TestSuiteListCache[SessionManager.Schema].FirstOrDefault(r => r.ProjectId == projectId && r.TestsuiteId == testSuiteId);
+                    var caseCache = GlobalVariable.TestCaseListCache[SessionManager.Schema].FindAll(r => r.TestsuiteId == testSuiteId);
+                    var testCaseLists = caseCache.Select(c => new TestCaseListByProject()
+                    {
+                        TestcaseId = c.TestcaseId,
+                        TestcaseName = c.TestcaseName,
+                        TestCaseDesc = c.TestCaseDesc,
+                        ProjectId = testSuite.ProjectId,
+                        ProjectName = testSuite.ProjectName,
+                        TestsuiteId = c.TestsuiteId,
+                        TestsuiteName = c.TestsuiteName
+                    }).ToList();
+                    resultModel.data = testCaseLists;
+                    //resultModel.data = GlobalVariable.TestCaseListCache[SessionManager.Schema].FindAll(r => r.ProjectId == projectId && r.TestsuiteId == testSuiteId).Distinct();
                 }
                 else
                 {
@@ -808,12 +955,15 @@ namespace MARS_Web.Controllers
             {
                 GetTreeRepository repo = new GetTreeRepository();
                 repo.Username = SessionManager.TESTER_LOGIN_NAME;
-
-                var keyValue = getStoryBoardCache(ProjectId, Storyboardid, Storyboardname);
-                if (keyValue != null && keyValue.ContainsKey("keyValues"))
+                //var keyValue = getStoryBoardCache(ProjectId, Storyboardid, Storyboardname);
+                //if (keyValue != null && keyValue.ContainsKey("keyValues"))
+                //{
+                //    var  test = JsonConvert.DeserializeObject< Dictionary<string, List<TestCaseListByProject>> >(keyValue["keyValues"])  ;
+                //    resultModel.data = test["testSuiteList"];
+                //}
+                if (GlobalVariable.TestSuiteListCache != null && GlobalVariable.TestSuiteListCache.ContainsKey(SessionManager.Schema))
                 {
-                    var  test = JsonConvert.DeserializeObject< Dictionary<string, List<TestCaseListByProject>> >(keyValue["keyValues"])  ;
-                    resultModel.data = test["testSuiteList"];
+                    resultModel.data = GlobalVariable.TestSuiteListCache[SessionManager.Schema].FindAll(r => r.ProjectId == ProjectId).Distinct();
                 }
                 else
                 {
@@ -882,11 +1032,33 @@ namespace MARS_Web.Controllers
                 JavaScriptSerializer js = new JavaScriptSerializer();
                 StoryBoardRepository repo = new StoryBoardRepository();
                 repo.Username = SessionManager.TESTER_LOGIN_NAME;
-                var keyValue = getStoryBoardCache(projectid, Storyboardid, Storyboardname);
-                if (keyValue != null && keyValue.ContainsKey("keyValues"))
+                //var keyValue = getStoryBoardCache(projectid, Storyboardid, Storyboardname);
+                //if (keyValue != null && keyValue.ContainsKey("keyValues"))
+                //{
+                //    var test = JsonConvert.DeserializeObject<Dictionary<string, List<DataSetListByTestCase>>>(keyValue["keyValues"]);
+                //    resultModel.data = test["datasetList"].FindAll(r=>r.TestcaseId==testCaseId);
+                //}
+                if (GlobalVariable.DataSetListCache != null && GlobalVariable.DataSetListCache.ContainsKey(SessionManager.Schema) &&
+                    GlobalVariable.TestSuiteListCache != null && GlobalVariable.TestSuiteListCache.ContainsKey(SessionManager.Schema) &&
+                    GlobalVariable.TestCaseListCache != null && GlobalVariable.TestCaseListCache.ContainsKey(SessionManager.Schema))
                 {
-                    var test = JsonConvert.DeserializeObject<Dictionary<string, List<DataSetListByTestCase>>>(keyValue["keyValues"]);
-                    resultModel.data = test["datasetList"].FindAll(r=>r.TestcaseId==testCaseId);
+                    var testSuite = GlobalVariable.TestSuiteListCache[SessionManager.Schema].FirstOrDefault(r => r.ProjectId == projectid && r.TestsuiteId == r.TestsuiteId);
+                    //var testSuite = GlobalVariable.TestSuiteListCache[SessionManager.Schema].FirstOrDefault(r => r.TestsuiteId == r.TestsuiteId);
+                    var dataCache = GlobalVariable.DataSetListCache[SessionManager.Schema].FindAll(r => r.TestcaseId == testCaseId);
+                    var  ldatasetlist = dataCache.Select(c => new DataSetListByTestCase()
+                    {
+                        ProjectId = testSuite.ProjectId,
+                        ProjectName = testSuite.ProjectName,
+                        TestsuiteId = testSuite.TestsuiteId,
+                        TestsuiteName = testSuite.TestsuiteName,
+                        TestcaseName = c.TestcaseName,
+                        TestcaseId = c.TestcaseId,
+                        Datasetid = c.Datasetid,
+                        Datasetname = c.Datasetname
+                    }).ToList();
+                    resultModel.data = ldatasetlist;
+                    //resultModel.data = GlobalVariable.DataSetListCache[SessionManager.Schema].
+                    //    FindAll(r => r.ProjectId == projectid && r.TestcaseId== testCaseId).Distinct();
                 }
                 else
                 {
@@ -1387,12 +1559,45 @@ namespace MARS_Web.Controllers
                 var repo = new StoryBoardRepository();
                 repo.Username = SessionManager.TESTER_LOGIN_NAME;
                 var repTree = new GetTreeRepository();
-                var result = repo.NewSaveAsStoryboard(storyboardname, storyboarddesc, oldstoryboardid, projectid, lSchema, lConnectionStr, SessionManager.TESTER_LOGIN_NAME);
-                Session["LeftProjectList"] = repTree.GetProjectList(SessionManager.TESTER_ID, lSchema, lConnectionStr);
-
-                resultModel.message = result == "success" ? "Storyboard is created successfully" : "Storyboard name must be unique";
-                resultModel.data = result;
-                resultModel.status = result == "success" ? 1 : 0;
+                long result = 0;
+                if (GlobalVariable.StoryBoardListCache != null && GlobalVariable.StoryBoardListCache.ContainsKey(lSchema))
+                {
+                    var story = GlobalVariable.StoryBoardListCache[lSchema].FirstOrDefault(f =>f!=null &&  f.StoryboardName.ToLower().Trim() == storyboardname.ToLower().Trim());
+                    if (story != null)
+                    {
+                        result = 0;
+                    }
+                    else
+                    {
+                        var storyBoard = repo.NewSaveAsStoryboardNew(storyboardname, storyboarddesc, oldstoryboardid, projectid, lSchema, lConnectionStr, SessionManager.TESTER_LOGIN_NAME);
+                        if (storyBoard != null)
+                        {
+                            result = storyBoard.StoryboardId;
+                            GlobalVariable.StoryBoardListCache[lSchema].Add(storyBoard);
+                        }
+                    }
+                }
+                else
+                {
+                    result = repo.NewSaveAsStoryboard(storyboardname, storyboarddesc, oldstoryboardid, projectid, lSchema, lConnectionStr, SessionManager.TESTER_LOGIN_NAME);
+                    InitCacheHelper.StoryBoardInit(SessionManager.ConnectionString, lSchema, repTree);
+                }
+                
+                Task.Run(() => JsonFileHelper.InitStoryBoardJson(lSchema, "", result, true));
+                 
+                List<ProjectByUser> list = new List<ProjectByUser>();
+                if (InitCacheHelper.GetProjectUserFromCache(lSchema, SessionManager.TESTER_ID, list))
+                {
+                    Session["LeftProjectList"] = list;
+                }
+                else
+                {
+                    Session["LeftProjectList"] = repTree.GetProjectList(SessionManager.TESTER_ID, lSchema, lConnectionStr);
+                }
+                
+                resultModel.message = result > 0 ? "Storyboard is created successfully" : "Storyboard name must be unique";
+                resultModel.data = result>0 ?"success":"error";
+                resultModel.status = result >0 ? 1 : 0;
                 logger.Info(string.Format("SaveAs Storyboard Modal close | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
                 logger.Info(string.Format("Storyboard SaveAs successfully | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
             }

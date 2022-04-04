@@ -162,7 +162,7 @@ namespace MARS_Web.Controllers
                     var Rgriddata = GridHelper.GetLeftpanelgridwidth(Widthgridlst);
 
                     ViewBag.width = Rgriddata.Resize == null ? ConfigurationManager.AppSettings["DefultLeftPanel"] + "px" : Rgriddata.Resize.Trim() + "px";
-                    ViewBag.actionwidth = SPgriddata.Action == null ? "70" : SPgriddata.Action.Trim();
+                    ViewBag.actionwidth = SPgriddata.Action == null ? "75" : SPgriddata.Action.Trim();
                     ViewBag.stepswidth = SPgriddata.Steps == null ? "100" : SPgriddata.Steps.Trim();
                     ViewBag.testsuitewidth = SPgriddata.TestSuite == null ? "180" : SPgriddata.TestSuite.Trim();
                     ViewBag.testcasewidth = SPgriddata.TestCase == null ? "180" : SPgriddata.TestCase.Trim();
@@ -177,8 +177,8 @@ namespace MARS_Web.Controllers
                     ViewBag.cscriptdurationwidth = SPgriddata.CScriptDuration == null ? "75" : SPgriddata.CScriptDuration.Trim();
                     ViewBag.dependencywidth = SPgriddata.Dependency == null ? "50" : SPgriddata.Dependency.Trim();
                     ViewBag.descriptionwidth = SPgriddata.Dependency == null ? "100" : SPgriddata.Dependency.Trim();
-                    ViewBag.StoryBoardDetails = keyValuePairs["StoryBoardDetails"];
-                    ViewBag.keyValues = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string,object>>(keyValuePairs["keyValues"]);
+                    ViewBag.StoryBoardDetails = keyValuePairs["StoryBoardDetails"].Replace("\\r", "\\\\r").Replace("\\n", "\\\\n").Replace("\\t", " ").Replace("\\", "\\\\");
+                    //ViewBag.keyValues = Newtonsoft.Json.JsonConvert.DeserializeObject<Dictionary<string,object>>(keyValuePairs["keyValues"]);
                 }
                 else
                 {
@@ -236,7 +236,7 @@ namespace MARS_Web.Controllers
                     keyValuePairs.TryAdd("ProjectName", ViewBag.ProjectName);
 
                     ViewBag.width = Rgriddata.Resize == null ? ConfigurationManager.AppSettings["DefultLeftPanel"] + "px" : Rgriddata.Resize.Trim() + "px";
-                    ViewBag.actionwidth = SPgriddata.Action == null ? "70" : SPgriddata.Action.Trim();
+                    ViewBag.actionwidth = SPgriddata.Action == null ? "75" : SPgriddata.Action.Trim();
                     ViewBag.stepswidth = SPgriddata.Steps == null ? "100" : SPgriddata.Steps.Trim();
                     ViewBag.testsuitewidth = SPgriddata.TestSuite == null ? "180" : SPgriddata.TestSuite.Trim();
                     ViewBag.testcasewidth = SPgriddata.TestCase == null ? "180" : SPgriddata.TestCase.Trim();
@@ -262,7 +262,7 @@ namespace MARS_Web.Controllers
                     ViewBag.StoryBoardDetails = storyBoardDetails;
                     //StoryBoardRepository repo1 = new StoryBoardRepository();
                     //repo1.Username = SessionManager.TESTER_LOGIN_NAME;
-                    Dictionary<string, object> keyValues = new Dictionary<string, object>();
+                    /*Dictionary<string, object> keyValues = new Dictionary<string, object>();
                   
                     var datasetList = repo.GetDataSetListNew(Projectid);
                     keyValues.Add("datasetList", datasetList);
@@ -272,20 +272,40 @@ namespace MARS_Web.Controllers
                    
                     var testSuiteList = repo.GetTestSuites(Projectid);
                     keyValues.Add("testSuiteList", testSuiteList);
-                  
-        
+
                     var testCaseLists = repo.GetTestCaseListNew(Projectid);
                     keyValues.Add("testCaseLists", testCaseLists);
 
                     keyValuePairs.TryAdd("keyValues", JsonConvert.SerializeObject(keyValues));
-                    ViewBag.keyValues = keyValues;
+                    ViewBag.keyValues = keyValues;*/
                     string jsonData = JsonConvert.SerializeObject(keyValuePairs);
                     JsonFileHelper.SaveToJsonFile(jsonData,key, SessionManager.Schema);
                     logger.Info(string.Format("successfully open storyborad | Projectid: {0} | Storyboardid: {1} | Username: {2}", Projectid, Storyboardid, SessionManager.TESTER_LOGIN_NAME));
                 }
+                Dictionary<string, object> dictionary = new Dictionary<string, object>();
+                if (GlobalVariable.TestSuiteListCache != null && GlobalVariable.TestSuiteListCache.ContainsKey(SessionManager.Schema))
+                {
+                    dictionary.Add("testSuiteList", GlobalVariable.TestSuiteListCache[SessionManager.Schema].
+                        FindAll(r => r.ProjectId == Projectid).Select(x => new { TestsuiteId = x.TestsuiteId, TestsuiteName = x.TestsuiteName }).Distinct());
+                }
+                if (GlobalVariable.TestCaseListCache != null && GlobalVariable.TestCaseListCache.ContainsKey(SessionManager.Schema))
+                {
+                    dictionary.Add("testCaseLists", GlobalVariable.TestCaseListCache[SessionManager.Schema].Select(r=> new { TestcaseId = r.TestcaseId, TestcaseName =r.TestcaseName}).Distinct());
+                }
+                if (GlobalVariable.DataSetListCache != null && GlobalVariable.DataSetListCache.ContainsKey(SessionManager.Schema))
+                {
+                    dictionary.Add("datasetList",  GlobalVariable.DataSetListCache[SessionManager.Schema].Select(s=>new  { Datasetid = s.Datasetid, Datasetname = s.Datasetname }).Distinct());
+                }
+                if (GlobalVariable.ActionsCache != null && GlobalVariable.ActionsCache.ContainsKey(SessionManager.Schema))
+                {
+                    dictionary.Add("actions", GlobalVariable.ActionsCache[SessionManager.Schema].Distinct());
+                }
+                else {
+                    InitCacheHelper.ActionsInit(SessionManager.ConnectionString, SessionManager.Schema, new GetTreeRepository());
+                }
+                ViewBag.keyValues = dictionary;
 
-                
-             }
+            }
             catch (Exception ex)
             {
                 logger.Error(string.Format("Error occured in Home for PartialRightStoryboardGrid method | StoryBoard Id : {0} | Project Id : {1} | UserName: {2}", Storyboardid, Projectid, SessionManager.TESTER_LOGIN_NAME));
@@ -340,10 +360,10 @@ namespace MARS_Web.Controllers
                         filesName = filesName.Select(x => Path.GetFileName(x)).ToArray();
                         testCaseName = filesName.FirstOrDefault(x => x.StartsWith($"{TestcaseId.ToString()}_"));
                         if (string.IsNullOrEmpty(testCaseName))
-                            testCaseName = lRep.GetTestCaseNameById(TestcaseId);
+                            testCaseName = TestcaseId.ToString()+"_" + lRep.GetTestCaseNameById(TestcaseId)+".json";
                     }
                     else
-                        testCaseName = lRep.GetTestCaseNameById(TestcaseId);
+                        testCaseName = TestcaseId.ToString() + "_" + lRep.GetTestCaseNameById(TestcaseId)+ ".json";
                     directoryPath = Path.Combine(directoryPath, testCaseName);
                     //testCaseName = testCaseName.Replace(string.Format("{0}_", TestcaseId), string.Empty).Replace(".json", string.Empty);
                     //ViewBag.TestCaseName = testCaseName;
@@ -384,7 +404,7 @@ namespace MARS_Web.Controllers
                     if (allList != null)
                     {
                         appId = allList.assignedApplications
-                            //.Where(x => x > 0)
+                            .Where(x => x > 0)
                             .ToList();                       
                         var applications = GlobalVariable.AllApps.FirstOrDefault(x => x.Key.Trim().Equals(SessionManager.Schema)).Value;
                         if (applications.Count() > 0)

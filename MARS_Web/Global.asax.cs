@@ -48,7 +48,7 @@ namespace MARS_Web
             {
                 logger.Info(string.Format("Load_Serializations_Files | Database Names: {0} ", string.Join(", ", dbNameList)));
 
-                var usersData = new ConcurrentDictionary<string, ConcurrentDictionary<UserViewModal, List<Mars_Serialization.ViewModel.ProjectByUser>>>();
+                 var usersData = new ConcurrentDictionary<string, ConcurrentDictionary<UserViewModal, List<Mars_Serialization.ViewModel.ProjectByUser>>>();
                 var appsData = new ConcurrentDictionary<string, List<T_Memory_REGISTERED_APPS>>();
                 var keywordsData = new ConcurrentDictionary<string, List<Mars_Serialization.ViewModel.KeywordViewModel>>();
                 var groupsData = new ConcurrentDictionary<string, List<Mars_Serialization.ViewModel.GroupsViewModel>>();
@@ -61,16 +61,21 @@ namespace MARS_Web
                 GlobalVariable.AllFolders = foldersData;
                 GlobalVariable.AllSets = setsData;
 
-                var storyBoards = new ConcurrentDictionary<string, List<StoryBoardListByProject>>();
-                var testCases = new ConcurrentDictionary<string, List<TestCaseListByProject>>();
-                var dataSets= new ConcurrentDictionary<string, List<DataSetListByTestCase>>();
-                var testSuits = new ConcurrentDictionary<string, List<TestSuiteListByProject>>();
-                var projects = new ConcurrentDictionary<string, List<T_TEST_PROJECT>>();
-                GlobalVariable.StoryBoardListCache = storyBoards;
-                GlobalVariable.TestCaseListCache = testCases;
-                GlobalVariable.DataSetListCache = dataSets;
-                GlobalVariable.TestSuiteListCache = testSuits;
-                GlobalVariable.ProjectListCache = projects;
+                GlobalVariable.StoryBoardListCache = new ConcurrentDictionary<string, List<StoryBoardListByProject>>();
+                GlobalVariable.TestCaseListCache = new ConcurrentDictionary<string, List<TestCaseListByProject>>();
+                GlobalVariable.DataSetListCache = new ConcurrentDictionary<string, List<DataSetListByTestCase>>();
+                GlobalVariable.TestSuiteListCache = new ConcurrentDictionary<string, List<TestSuiteListByProject>>();
+                GlobalVariable.ProjectListCache = new ConcurrentDictionary<string, List<T_TEST_PROJECT>>();
+                GlobalVariable.ActionsCache = new ConcurrentDictionary<string, List<SYSTEM_LOOKUP>>();
+                GlobalVariable.FolderListCache = new ConcurrentDictionary<string, List<T_TEST_FOLDER>>();
+                GlobalVariable.FolderFilterListCache = new ConcurrentDictionary<string, List<T_FOLDER_FILTER>>();
+                GlobalVariable.RelFolderFilterListCache = new ConcurrentDictionary<string, List<REL_FOLDER_FILTER>>();
+                GlobalVariable.AppListCache = new ConcurrentDictionary<string, List<T_REGISTERED_APPS>>();
+                GlobalVariable.DataSetTagListCache  =new ConcurrentDictionary<string, List<T_TEST_DATASETTAG>>();
+                GlobalVariable.GroupListCache = new ConcurrentDictionary<string, List<T_TEST_GROUP>>();
+                GlobalVariable.SetListCache = new ConcurrentDictionary<string, List<T_TEST_SET>>();
+
+
                 Thread Serializations = new Thread(delegate ()
                 {
                     if (dbNameList.Count() > 0)

@@ -29,8 +29,18 @@ namespace MARS_Web.Helper
         public static ConcurrentDictionary<string, List<DataSetListByTestCase>> DataSetListCache { get; set; }
         public static ConcurrentDictionary<string, List<TestSuiteListByProject>> TestSuiteListCache { get; set; }
         public static ConcurrentDictionary<string, List<T_TEST_PROJECT>> ProjectListCache { get; set; }
+        public static ConcurrentDictionary<string, List<SYSTEM_LOOKUP>> ActionsCache { get; set; }
         
+        public static ConcurrentDictionary<string, List<T_TEST_FOLDER>> FolderListCache { get; set; }
 
+        public static ConcurrentDictionary<string, List<T_FOLDER_FILTER>> FolderFilterListCache { get; set; }
+
+        public static ConcurrentDictionary<string, List<REL_FOLDER_FILTER>> RelFolderFilterListCache { get; set; }
+        public static ConcurrentDictionary<string, List<T_REGISTERED_APPS>> AppListCache { get; set; }
+
+        public static ConcurrentDictionary<string, List<T_TEST_GROUP>> GroupListCache { get; set; }
+        public static ConcurrentDictionary<string, List<T_TEST_SET>> SetListCache { get; set; }    
+        public static ConcurrentDictionary<string, List<T_TEST_DATASETTAG>> DataSetTagListCache { get; set; }
     }
 
     //public static class ConvertJsonToList

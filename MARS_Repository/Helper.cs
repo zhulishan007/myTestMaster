@@ -1,6 +1,5 @@
 ﻿using MARS_Repository.Entities;
-
-
+using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -257,5 +256,56 @@ namespace MARS_Repository
 
             return gMarsEntites;
         }
+
+        public static long GetDBLong(object value)
+        {
+            long result = 0;
+            if (!Convert.IsDBNull(value))
+                long.TryParse(value.ToString(), out result);
+            return result;
+        }
+
+        public static string GetDBString(object value)
+        {
+            string result = "";
+            if (!Convert.IsDBNull(value))
+                result = value.ToString();
+            return result;
+        }
+
+        public static int GetDBInt(object value)
+        {
+            int result = 0;
+            if (!Convert.IsDBNull(value))
+                int.TryParse(value.ToString(), out result);
+            return result;
+        }
+        public static T GetDBValue<T>(object value,T defaultValue)
+        {
+            if (!Convert.IsDBNull(value))
+                return (T)value;
+            return defaultValue;
+        }
+
+        public static long GetIdFromSeq(OracleCommand command, string seqName)
+        {
+            command.CommandText = $@"select {seqName}.nextval as longId from dual ";
+            long longid = 0;
+            using (OracleDataReader dr = command.ExecuteReader())
+            {
+                while (dr.Read())
+                {
+                    longid =Helper.GetDBLong(dr["longId"]);
+                    break;
+                }
+            }
+            if (longid == 0)
+            {
+                longid = NextTestSuiteId(seqName);
+            }
+            return longid;
+        }
     }
+
+   
 }

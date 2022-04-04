@@ -53,6 +53,10 @@
     {
         SAVEButtonStyle = "block";
     }
+    //var actionlist = @ViewBag.keyValues["actions"];
+    //var testCaseLists = @ViewBag.keyValues["testCaseLists"];
+    //var testSuiteList = @ViewBag.keyValues["testSuiteList"];
+    //var datasetList = @ViewBag.keyValues["datasetList"];
 }
 <style>
     .SBExportRoleHide{
@@ -127,22 +131,23 @@
             }
         });*@
     (function () {
-        var actionlist = @Html.Raw(ViewBag.keyValues["actions"]);
+        var actionlist =  JSON.parse('@Html.Raw( Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.keyValues["actions"]).Replace("\\r", "\\\\r").Replace("\\n", "\\\\n").Replace("\\", "\\\\").Replace("\\t", " "))');
         $.each(actionlist, function (key, value) {
             initActions.push({ "value": value.VALUE, "text": value.DISPLAY_NAME });
             //actions.push({ "value": value.DISPLAY_NAME, "text": value.DISPLAY_NAME });
         });
-        var testCaseLists = @Html.Raw(ViewBag.keyValues["testCaseLists"]);
+        //var testCaseLists = //Html.Raw(ViewBag.keyValues["testCaseLists"]);
+        var testCaseLists =JSON.parse('@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.keyValues["testCaseLists"]).Replace("\\r", "\\\\r").Replace("\\n", "\\\\n").Replace("\\", "\\\\").Replace("\\t", " "))');
         $.each(testCaseLists, function (key, value) {
             inittestCaseLists.push({ "value": value.TestcaseId, "text": value.TestcaseName });
         });
         inittestCaseLists.push({ "value":0, "text": ''});
-        var testSuiteList = @Html.Raw(ViewBag.keyValues["testSuiteList"]);
+        var testSuiteList =JSON.parse('@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.keyValues["testSuiteList"]).Replace("\\r", "\\\\r").Replace("\\n", "\\\\n").Replace("\\", "\\\\").Replace("\\t", " "))'); 
         $.each(testSuiteList, function (key, value) {
             inittestSuiteList.push({ "value": value.TestsuiteId, "text": value.TestsuiteName });
         });
         inittestSuiteList.push({ "value":0, "text": ''});
-        var datasetList = @Html.Raw(ViewBag.keyValues["datasetList"]);
+        var datasetList =JSON.parse('@Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ViewBag.keyValues["datasetList"]).Replace("\\r", "\\\\r").Replace("\\n", "\\\\n").Replace("\\t", " ").Replace("\\", "\\\\"))'); 
         $.each(datasetList, function (key, value) {
             initdatasetList.push({ "value": value.Datasetid, "text": value.Datasetname });
         });
@@ -298,8 +303,10 @@
                 //debugger;
                 var value = ui.rowData.ActionId;
                 var index = initActions.find(r => r.value == value);
-                if (index != null || index != undefined)
+                if (index != null || index != undefined) {
+                    ui.rowData.actions = index.text;
                     return index.text;
+                }
                 else
                     return value;
             }
@@ -382,8 +389,10 @@
                 //debugger;
                 var value = ui.rowData.suiteid;
                 var index = inittestSuiteList.find(r => r.value == value);
-                if (index != null || index != undefined)
+                if (index != null || index != undefined) {
+                    ui.rowData.testsuite = index.text;
                     return index.text;
+                }
                 else
                     return value;
             }
@@ -454,8 +463,10 @@
                 var value = ui.rowData.caseid;
                 //var index = testcases.find(r => r.value == value);
                 var index = inittestCaseLists.find(r => r.value == value);
-                if (index != null || index != undefined)
+                if (index != null || index != undefined) {
+                    ui.rowData.testcase = index.text;
                     return index.text;
+                }
                 else
                     return value;
             }
@@ -528,8 +539,10 @@
                 var value = ui.rowData.datasetid;
                 //var index = datasets.find(r => r.value == value);
                 var index = initdatasetList.find(r => r.value == value);
-                if (index != null || index != undefined)
+                if (index != null || index != undefined) {
+                    ui.rowData.dataset = index.text;
                     return index.text;
+                }
                 else
                     return value;
             }
