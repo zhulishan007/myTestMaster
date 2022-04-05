@@ -1211,12 +1211,12 @@ namespace MARS_Web.Controllers
 
                     var addAndUpdateList = lobj.FindAll(r => !string.IsNullOrWhiteSpace(r.status) && (r.status == "update" || r.status == "add"));
                     List<TestCaseValidationResultModel> ValidationResult = new List<TestCaseValidationResultModel>();
-                    long lvalFeedLong = IdWorker.Instance.NextId();
+                    long lvalFeedLong = MARS_Web.Helper.IdWorker.Instance.NextId();
                     if (addAndUpdateList != null && addAndUpdateList.Count > 0)
                     {
                         logger.Info(string.Format("Storyborad Saves 1 | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
                         var lvalFeed = lvalFeedLong.ToString();
-                        var lvalFeedD = IdWorker.Instance.NextId().ToString();
+                        var lvalFeedD = MARS_Web.Helper.IdWorker.Instance.NextId().ToString();
                         ValidationResult = sbRep.InsertStgStoryboardValidationTable(lConnectionStr, lSchema, addAndUpdateList, lStoryboardId, lvalFeed, lvalFeedD, lProjectId);
                         logger.Info(string.Format("Storyborad Saves 2 | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
                     }
@@ -1273,7 +1273,7 @@ namespace MARS_Web.Controllers
                                             TestCaseName = obj.TestCaseName,
                                             DataSetName = obj.DataSetName,
                                             Dependency = obj.Dependency,
-                                            storyboarddetailid = IdWorker.Instance.NextId(),
+                                            storyboarddetailid = MARS_Web.Helper.IdWorker.Instance.NextId(),
                                             Storyboardid = long.Parse(lStoryboardId),
                                             Storyboardname = storyBoardName
                                         });
@@ -1399,7 +1399,7 @@ namespace MARS_Web.Controllers
                     sbRep.Username = SessionManager.TESTER_LOGIN_NAME;
                     //var addAndUpdateList = lobj.FindAll(r => !string.IsNullOrWhiteSpace(r.status) && (r.status == "update" || r.status == "add"));
                     List<TestCaseValidationResultModel> ValidationResult = new List<TestCaseValidationResultModel>();
-                    long lvalFeedLong = IdWorker.Instance.NextId();
+                    long lvalFeedLong = MARS_Web.Helper.IdWorker.Instance.NextId();
                     //if (addAndUpdateList != null && addAndUpdateList.Count > 0)
                     //{
                     logger.Info(string.Format("Storyborad Saves 1 | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
@@ -1422,7 +1422,7 @@ namespace MARS_Web.Controllers
                                 else if (obj.status == "add")
                                 {
                                     obj.Storyboardid = long.Parse(lStoryboardId);
-                                    obj.storyboarddetailid = IdWorker.Instance.NextId();
+                                    obj.storyboarddetailid = MARS_Web.Helper.IdWorker.Instance.NextId();
                                     values.Add(new StoryBoardResultModel()
                                     {
                                         ProjectId = obj.ProjectId,

@@ -5,15 +5,19 @@ using System.Data;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using NLog;
 using System.Threading.Tasks;
 
 namespace Mars_Serialization.Common
 {
     public static class Common
     {
+        static Logger logger = LogManager.GetLogger("Log");
+
         #region GET DATA FROM THE DATABASE
         public static DataTable GetRecordAsDatatable(string connectionString, string query)
         {
+            logger.Info($"GetRecordAsDatatable begin...[{connectionString}]");
             try
             {
                 OracleConnection con = new OracleConnection(connectionString);
@@ -31,6 +35,7 @@ namespace Mars_Serialization.Common
             }
             catch (Exception ex)
             {
+                logger.Error($"[{ex.Message}], \r\n[{ex.StackTrace}]");
                 throw;
             }
         }

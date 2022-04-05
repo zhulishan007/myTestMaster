@@ -41,7 +41,7 @@
 && ViewBag.TestcaseId != 0 && ViewBag.TestsuiteId != 0 && ViewBag.ProjectId != 0
 )
 {
-    <script>
+<script>
       var selectChange = "";
       var undonum;
    var draggedRow;
@@ -237,7 +237,8 @@
                             }
                         }
                         var run_Orders = rowDatas.RUN_ORDER == undefined ? rowDatas.pq_ri + 1 : rowDatas.RUN_ORDER;
-                        DeleteTestCaseRowInSession(rowDatas.stepsID, run_Orders);
+                        var testCaseId =@ViewBag.TestcaseId;
+                        DeleteTestCaseRowInSession(testCaseId,rowDatas.stepsID, run_Orders);
                     }
                    //} else {
                       // gridobj["@lTestCasegrid"].removeClass({ rowIndx: rowIndx, cls: 'pq-row-delete' });
@@ -245,6 +246,9 @@
               // });
                 });
             }
+        });
+        dt.push({
+            title: "testCaseid", copy: false, hidden: true, menuInHide: true, sortable: false, dataType: "int", dataIndx: "testCaseid", align: "center",
         });
    dt.push({
        title: "StepsID", copy: false, hidden: true,menuInHide: true,sortable: false, dataType: "int", dataIndx: "stepsID", align: "center",
@@ -790,7 +794,7 @@
                                     //*********************************************************************
                                     // START - DYNAMIC - Define DATA for the PQGrid and Create JSON
                                     //*********************************************************************
-                                    jsonData += '{"stepsID":"' + result.data[i].STEPS_ID + '", "keyword":"' + result.data[i].key_word_name + '", "object":"' + objvalue + '", "parameters":"'
+                                    jsonData += '{"testCaseid":"' + result.data[i].TEST_CASE_ID+'", "stepsID":"' + result.data[i].STEPS_ID + '", "keyword":"' + result.data[i].key_word_name + '", "object":"' + objvalue + '", "parameters":"'
                                         + parametervalue + '", "comment":"' + commentvalue + '", "RUN_ORDER":"' + result.data[i].RUN_ORDER + '", "hdnVERSION":"' + result.data[i].VERSION + '", "hdnISAVAILABLE":"' + result.data[i].ISAVAILABLE + '"';
 
                                     if (Version == 0) {
@@ -923,6 +927,7 @@
                    if (ui.column !== undefined) {
                        if (ui.column.type == "checkbox") {
                            var chkBoxValue = false;
+
                            if (ui.rowData.hasOwnProperty(ui.dataIndx)) {
                                chkBoxValue = ui.rowData[ui.dataIndx] == true ? false : true;
                            }
@@ -930,9 +935,10 @@
                            var propertyValue = ui.newVal;
                            var stepId = ui.rowData.stepsID;
                            var runOrder = ui.rowData.pq_ri + 1;
-                           UpdateValuesInTestCaseSession(propertyName, propertyValue, stepId, true, chkBoxValue, runOrder);
+                           var testCaseId= @ViewBag.TestcaseId;
+                           UpdateValuesInTestCaseSession(testCaseId,propertyName, propertyValue, stepId, true, chkBoxValue, runOrder);
                        }
-                   }                   
+                   }
                },
                cellSave: function (evt, ui) {
                    if (ui.dataIndx == "keyword" && ui.newVal !== ui.oldVal) {
@@ -942,12 +948,13 @@
                            row: { 'object': '' }
                        });
                    }
-
+                   //debugger;
                    var propertyName = ui.dataIndx;
                    var propertyValue = ui.newVal;
                    var stepId = ui.rowData.stepsID;
                    var runOrder = ui.rowData.pq_ri + 1;
-                   UpdateValuesInTestCaseSession(propertyName, propertyValue, stepId, false, false, runOrder);
+                   var testCaseId= @ViewBag.TestcaseId;
+                   UpdateValuesInTestCaseSession(testCaseId,propertyName, propertyValue, stepId, false, false, runOrder);
                },
                beforeValidate: function (event, ui) {
 
@@ -1110,7 +1117,8 @@
                                var selectedRowRunOrder = rowIndx;
                                var newRowRunOrder = rowIndx + 1;
                                var stepId = lMinValueStepId;
-                               AddNewRowTestCaseInSession(selectedRowRunOrder, newRowRunOrder, stepId);
+                               var testCaseId =@ViewBag.TestcaseId;
+                               AddNewRowTestCaseInSession(testCaseId,selectedRowRunOrder, newRowRunOrder, stepId);
                            }
                        },
 
@@ -1432,7 +1440,8 @@
                     var destinationRowRunOrder = uiDrop.rowData.RUN_ORDER;
                     var selectedRowStepId = [rdDrag][0].stepsID;
                     var destinationRowStepId = uiDrop.rowData.stepsID;
-                    DragAndDropRowInSession(selectedRowRunOrder, destinationRowRunOrder, selectedRowStepId, destinationRowStepId);
+                    var testCaseId =@ViewBag.TestcaseId;
+                    DragAndDropRowInSession(testCaseId,selectedRowRunOrder, destinationRowRunOrder, selectedRowStepId, destinationRowStepId);
             }
         },
            };
@@ -1571,7 +1580,7 @@
                         //*********************************************************************
                         // START - DYNAMIC - Define DATA for the PQGrid and Create JSON
                         //*********************************************************************
-                            jsonData += '{"stepsID":"' + result.data[i].STEPS_ID + '", "keyword":"' + result.data[i].key_word_name + '", "object":"' + objvalue + '", "parameters":"'
+                        jsonData += '{"testCaseid":"' + result.data[i].TEST_CASE_ID +'", "stepsID":"' + result.data[i].STEPS_ID + '", "keyword":"' + result.data[i].key_word_name + '", "object":"' + objvalue + '", "parameters":"'
                                 + parametervalue + '", "comment":"' + commentvalue + '", "RUN_ORDER":"' + result.data[i].RUN_ORDER + '", "hdnVERSION":"' + result.data[i].VERSION + '", "hdnISAVAILABLE":"' + result.data[i].ISAVAILABLE + '"';
 
                         if (Version == 0) {
@@ -1833,7 +1842,8 @@
                             }
 
                             var run_Orders = rowDatas.RUN_ORDER == undefined ? rowDatas.pq_ri + 1 : rowDatas.RUN_ORDER;
-                            DeleteTestCaseRowInSession(rowDatas.stepsID, run_Orders);
+                            var testCaseId =@ViewBag.TestcaseId;
+                            DeleteTestCaseRowInSession(testCaseId,rowDatas.stepsID, run_Orders);
                         }
                   // } else {
                     //   gridobj[tcgrid].removeClass({ rowIndx: rowIndx, cls: 'pq-row-delete' });
@@ -1843,7 +1853,9 @@
                     });
                 }
             });
-
+            dt.push({
+                title: "testCaseid", copy: false, hidden: true, menuInHide: true, sortable: false, dataType: "int", dataIndx: "testCaseid", align: "center",
+            });
             dt.push({
                 title: "StepsID", copy: false, hidden: true, menuInHide: true, sortable: false, dataType: "int", dataIndx: "stepsID", align: "center",
             });
@@ -2468,7 +2480,8 @@
                             }
                         }
                         var run_Orders = rowDatas.RUN_ORDER == undefined ? rowDatas.pq_ri + 1 : rowDatas.RUN_ORDER;
-                        DeleteTestCaseRowInSession(rowDatas.stepsID, run_Orders);
+                        var testCaseId =@ViewBag.TestcaseId;
+                        DeleteTestCaseRowInSession(testCaseId, rowDatas.stepsID, run_Orders);
                     }
                                 //} else {
                                   //  gridobj[tcgrid].removeClass({ rowIndx: rowIndx, cls: 'pq-row-delete' });
@@ -2477,7 +2490,9 @@
                 });
             }
         });
-
+       dt.push({
+           title: "testCaseid", copy: false, hidden: true, menuInHide: true, sortable: false, dataType: "int", dataIndx: "testCaseid", align: "center",
+       });
         dt.push({
             title: "StepsID", copy: false, hidden: true, menuInHide: true, sortable: false, dataType: "int", dataIndx: "stepsID", align: "center",
         });
@@ -2961,7 +2976,7 @@
                         //*********************************************************************
                         // START - DYNAMIC - Define DATA for the PQGrid and Create JSON
                         //*********************************************************************
-                            jsonData += '{"stepsID":"' + result.data[i].STEPS_ID + '", "keyword":"' + result.data[i].key_word_name + '", "object":"' + objvalue + '", "parameters":"'
+                        jsonData += '{"testCaseid":"' + result.data[i].TEST_CASE_ID +'", "stepsID":"' + result.data[i].STEPS_ID + '", "keyword":"' + result.data[i].key_word_name + '", "object":"' + objvalue + '", "parameters":"'
                                 + parametervalue + '", "comment":"' + commentvalue + '", "RUN_ORDER":"' + result.data[i].RUN_ORDER + '", "hdnVERSION":"' + result.data[i].VERSION + '", "hdnISAVAILABLE":"' + result.data[i].ISAVAILABLE + '"';
 
                         if (Version == 0) {
@@ -4743,7 +4758,8 @@
                 });
             }
         }
-        function UpdateValuesInTestCaseSession(propertyName, propertyValue, stepId, isSkipChange, skipValue, runOrder) {
+        function UpdateValuesInTestCaseSession(caseid,propertyName, propertyValue, stepId, isSkipChange, skipValue, runOrder) {
+            //debugger;
             if ((propertyValue != "" && propertyValue != undefined && propertyValue != null) || isSkipChange == true) {
                 $.ajax({
                     url: "/TestCase/UpdateTestcaseValueInSession",
@@ -4752,7 +4768,7 @@
                         PropertyName: propertyName,
                         PropertyValue: propertyValue,
                         stepId: stepId,
-                        testCaseId: @ViewBag.TestcaseId,
+                        testCaseId: caseid,// ViewBag.TestcaseId,
                         isSkipChange: isSkipChange,
                         skipValue: skipValue,
                         runOrder: runOrder
@@ -4764,14 +4780,14 @@
                 });
             }
         }
-        function DeleteTestCaseRowInSession(stepId, runOrder) {
+        function DeleteTestCaseRowInSession(caseid,stepId, runOrder) {
             $.ajax({
                 url: "/TestCase/DeleteTestCaseRowInSession",
                 type: "GET",
                 data: {
                     stepId: stepId,
                     runOrder: runOrder,
-                    testCaseId: @ViewBag.TestcaseId,
+                    testCaseId: caseid,// ViewBag.TestcaseId,
                 },
                 contentType: "application/json;charset=utf-8",
                 dataType: "json",
@@ -4779,7 +4795,7 @@
                 }
             });
         }
-        function AddNewRowTestCaseInSession(selectedRowRunOrder, newRowRunOrder, stepId) {
+        function AddNewRowTestCaseInSession(caseid,selectedRowRunOrder, newRowRunOrder, stepId) {
             $.ajax({
                 url: "/TestCase/AddNewRowTestCaseInSession",
                 type: "GET",
@@ -4787,7 +4803,7 @@
                     selectedRowRunOrder: selectedRowRunOrder,
                     newRowRunOrder: newRowRunOrder,
                     stepId: stepId,
-                    testCaseId: @ViewBag.TestcaseId,
+                    testCaseId: caseid,//ViewBag.TestcaseId,
                 },
                 contentType: "application/json;charset=utf-8",
                 dataType: "json",
@@ -4795,7 +4811,7 @@
                 }
             });
         }
-        function DragAndDropRowInSession(selectedRowRunOrder, destinationRowRunOrder, selectedRowStepId, destinationRowStepId) {
+        function DragAndDropRowInSession(caseid,selectedRowRunOrder, destinationRowRunOrder, selectedRowStepId, destinationRowStepId) {
             $.ajax({
                 url: "/TestCase/DragAndDropRowInSession",
                 type: "GET",
@@ -4804,7 +4820,7 @@
                     destinationRowRunOrder: destinationRowRunOrder,
                     selectedRowStepId: selectedRowStepId,
                     destinationRowStepId: destinationRowStepId,
-                    testCaseId: @ViewBag.TestcaseId,
+                    testCaseId: caseid,//ViewBag.TestcaseId,
                 },
                 contentType: "application/json;charset=utf-8",
                 dataType: "json",
@@ -4812,7 +4828,7 @@
                 }
             });
         }
-    </script>
+</script>
 }
 @{
 
@@ -4825,7 +4841,7 @@
         <div class="kt-subheader__main">
             <input type="hidden" id="hdnProjectId" value="@ViewBag.ProjectId" />
             <input type="hidden" id="hdnTestsuiteId" value="@ViewBag.TestsuiteId" />
-            <input type="hidden" id="hdnTestcaseId" value="@ViewBag.TestcaseId" />
+            <input type="hidden" id="hdnTestcaseId" value="@Html.Raw(ViewBag.TestcaseId)" />
             <span class="kt-subheader__separator kt-hidden"></span>
             <div class="kt-subheader__breadcrumbs">
                 @*<a href="#" class="kt-subheader__breadcrumbs-home">

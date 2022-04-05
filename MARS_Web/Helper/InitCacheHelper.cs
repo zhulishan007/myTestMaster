@@ -7,11 +7,13 @@ using System.Web;
 using System.Threading.Tasks;
 using MARS_Repository.ViewModel;
 using Oracle.ManagedDataAccess.Client;
+using NLog;
 
 namespace MARS_Web.Helper
 {
     public class InitCacheHelper
     {
+        private static Logger logger = LogManager.GetLogger("Log");
         public static void InitAll(string entityConnString, string connString,string databaseName)
         {
             DBEntities.ConnectionString = entityConnString;
@@ -50,14 +52,17 @@ namespace MARS_Web.Helper
         {
             DBEntities.ConnectionString = entityConnString;
             DBEntities.Schema = databaseName;
+            logger.Info("TestSuitInit begin");
             Task.Run(() =>
             {
+                InitCacheHelper.logger.Info("TestSuitInit.task begin");
                 var testSuit = repTree.GetTestSuiteListCache(connString);
                 if (GlobalVariable.TestSuiteListCache.ContainsKey(databaseName))
                     GlobalVariable.TestSuiteListCache[databaseName] = testSuit;
                 else
                     GlobalVariable.TestSuiteListCache.TryAdd(databaseName, testSuit);
             });
+            logger.Info("TestSuitInit end");
         }
 
         public static void StoryBoardInit(String entityConnString, string databaseName, GetTreeRepository repTree)
@@ -162,6 +167,7 @@ namespace MARS_Web.Helper
         {
             DBEntities.ConnectionString = entityConnString;
             DBEntities.Schema = databaseName;
+
             Task.Run(() =>
             {
                 var apps = repTree.GetAppCache();
@@ -248,6 +254,7 @@ namespace MARS_Web.Helper
 
         public static bool GetProjectUserFromCache(string lSchema,decimal testid,List<ProjectByUser> projectList)
         {
+            
             bool result = false;
             if (GlobalVariable.UsersDictionary != null && GlobalVariable.UsersDictionary.ContainsKey(lSchema) &&
                 GlobalVariable.ProjectListCache != null && GlobalVariable.ProjectListCache.ContainsKey(lSchema) &&

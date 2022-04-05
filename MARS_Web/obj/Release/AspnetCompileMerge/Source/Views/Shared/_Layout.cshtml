@@ -475,7 +475,7 @@
 
     <script src="~/PQGridPro/js/jquery-1.9.1.min.js"></script>
     <script src="~/assets/plugins/global/plugins.bundle.js" type="text/javascript"></script>
-
+    
     <script src="~/PQGridPro/js/jquery-ui.min.js"></script>
     <script src="~/PQGridPro/js/pqgrid.dev.js"></script>
 
@@ -4241,6 +4241,9 @@
                         cls: 'VIEWTESTCASERoleHide cstm_ts_tr',
                         action: function (evt, ui) {
                             var lProjectId = ProjectId;
+                            PartialRightGridTestCaseFromStoryboard(ui.rowData.caseid, ui.rowData.suiteid, lProjectId, ldatasetName, lTestCaseName, null, storyboradId, lstoryboardname);
+@*
+                            debugger;
                             $.ajax({
                                 url: "/Home/GetTSTCDSName",
                                 data: JSON.stringify({ TestCasename: lTestCaseName, TestSuitname: ltestsuitename, Datasetname: ldatasetName }),
@@ -4266,7 +4269,7 @@
                                         });
                                     }
                                 },
-                            });
+                            });*@
                         }
                     },
                     {
