@@ -233,6 +233,7 @@
     <EntitySetMapping Name="T_DBCONNECTION">
       <EntityTypeMapping TypeName="Model.T_DBCONNECTION">
         <MappingFragment StoreEntitySet="T_DBCONNECTION">
+          <ScalarProperty Name="DATABASE_VALUE" ColumnName="DATABASE_VALUE" />
           <ScalarProperty Name="DBCONNECTION_ID" ColumnName="DBCONNECTION_ID" />
           <ScalarProperty Name="DATABASENAME" ColumnName="DATABASENAME" />
           <ScalarProperty Name="USERNAME" ColumnName="USERNAME" />
@@ -823,25 +824,6 @@
           <ScalarProperty Name="APPLICATION_ID" ColumnName="APPLICATION_ID" />
           <ScalarProperty Name="QUICK_ACCESS" ColumnName="QUICK_ACCESS" />
           <ScalarProperty Name="OBJECT_NAME_ID" ColumnName="OBJECT_NAME_ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="MV_OBJECT_SNAPSHOT">
-      <EntityTypeMapping TypeName="Model.MV_OBJECT_SNAPSHOT">
-        <MappingFragment StoreEntitySet="MV_OBJECT_SNAPSHOT">
-          <ScalarProperty Name="OBJECT_NAME_ID" ColumnName="OBJECT_NAME_ID" />
-          <ScalarProperty Name="OBJECT_HAPPY_NAME" ColumnName="OBJECT_HAPPY_NAME" />
-          <ScalarProperty Name="COMMENT" ColumnName="COMMENT" />
-          <ScalarProperty Name="APPLICATION_ID" ColumnName="APPLICATION_ID" />
-          <ScalarProperty Name="ENUM_TYPE" ColumnName="ENUM_TYPE" />
-          <ScalarProperty Name="OBJECT_ID" ColumnName="OBJECT_ID" />
-          <ScalarProperty Name="OBJECT_TYPE" ColumnName="OBJECT_TYPE" />
-          <ScalarProperty Name="QUICK_ACCESS" ColumnName="QUICK_ACCESS" />
-          <ScalarProperty Name="TYPE_ID" ColumnName="TYPE_ID" />
-          <ScalarProperty Name="TYPE_NAME" ColumnName="TYPE_NAME" />
-          <ScalarProperty Name="PEG_NAME" ColumnName="PEG_NAME" />
-          <ScalarProperty Name="PEG_QUICK_ACCESS" ColumnName="PEG_QUICK_ACCESS" />
-          <ScalarProperty Name="PEG_ID" ColumnName="PEG_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -1539,21 +1521,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="T_TEST_DATASETTAG">
-      <EntityTypeMapping TypeName="Model.T_TEST_DATASETTAG">
-        <MappingFragment StoreEntitySet="T_TEST_DATASETTAG">
-          <ScalarProperty Name="SEQUENCE" ColumnName="SEQUENCE" />
-          <ScalarProperty Name="DIARY" ColumnName="DIARY" />
-          <ScalarProperty Name="STEPDESC" ColumnName="STEPDESC" />
-          <ScalarProperty Name="EXPECTEDRESULTS" ColumnName="EXPECTEDRESULTS" />
-          <ScalarProperty Name="FOLDERID" ColumnName="FOLDERID" />
-          <ScalarProperty Name="SETID" ColumnName="SETID" />
-          <ScalarProperty Name="GROUPID" ColumnName="GROUPID" />
-          <ScalarProperty Name="DATASETID" ColumnName="DATASETID" />
-          <ScalarProperty Name="T_TEST_DATASETTAG_ID" ColumnName="T_TEST_DATASETTAG_ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <FunctionImportMapping FunctionImportName="SP_CheckValidationStoryboard" FunctionName="Model.Store.SP_CheckValidationStoryboard" />
     <FunctionImportMapping FunctionImportName="SP_SaveStoryboard" FunctionName="Model.Store.SP_SaveStoryboard" />
     <EntitySetMapping Name="T_USER_CONFIGURATION">
@@ -1608,6 +1575,18 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="T_AXIS_LIST">
+      <EntityTypeMapping TypeName="Model.T_AXIS_LIST">
+        <MappingFragment StoreEntitySet="T_AXIS_LIST">
+          <ScalarProperty Name="Z_AXIS" ColumnName="Z_AXIS" />
+          <ScalarProperty Name="Y_AXIS" ColumnName="Y_AXIS" />
+          <ScalarProperty Name="X_AXIS" ColumnName="X_AXIS" />
+          <ScalarProperty Name="COMMAND_TYPE_ID" ColumnName="COMMAND_TYPE_ID" />
+          <ScalarProperty Name="QUERY_ID" ColumnName="QUERY_ID" />
+          <ScalarProperty Name="AXIS_LIST_ID" ColumnName="AXIS_LIST_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="T_QUERY">
       <EntityTypeMapping TypeName="Model.T_QUERY">
         <MappingFragment StoreEntitySet="T_QUERY">
@@ -1623,15 +1602,60 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="T_AXIS_LIST">
-      <EntityTypeMapping TypeName="Model.T_AXIS_LIST">
-        <MappingFragment StoreEntitySet="T_AXIS_LIST">
-          <ScalarProperty Name="Z_AXIS" ColumnName="Z_AXIS" />
-          <ScalarProperty Name="Y_AXIS" ColumnName="Y_AXIS" />
-          <ScalarProperty Name="X_AXIS" ColumnName="X_AXIS" />
-          <ScalarProperty Name="COMMAND_TYPE_ID" ColumnName="COMMAND_TYPE_ID" />
-          <ScalarProperty Name="QUERY_ID" ColumnName="QUERY_ID" />
-          <ScalarProperty Name="AXIS_LIST_ID" ColumnName="AXIS_LIST_ID" />
+    <FunctionImportMapping FunctionImportName="SP_SAVE_FOLDER_DATASET" FunctionName="Model.Store.SP_SAVE_FOLDER_DATASET" />
+    <FunctionImportMapping FunctionImportName="DeleteDatsSets" FunctionName="Model.Store.DeleteDatsSets" />
+    <EntitySetMapping Name="T_TEST_DATASETTAG">
+      <EntityTypeMapping TypeName="Model.T_TEST_DATASETTAG">
+        <MappingFragment StoreEntitySet="T_TEST_DATASETTAG">
+          <ScalarProperty Name="SEQUENCE" ColumnName="SEQUENCE" />
+          <ScalarProperty Name="DIARY" ColumnName="DIARY" />
+          <ScalarProperty Name="STEPDESC" ColumnName="STEPDESC" />
+          <ScalarProperty Name="EXPECTEDRESULTS" ColumnName="EXPECTEDRESULTS" />
+          <ScalarProperty Name="FOLDERID" ColumnName="FOLDERID" />
+          <ScalarProperty Name="SETID" ColumnName="SETID" />
+          <ScalarProperty Name="GROUPID" ColumnName="GROUPID" />
+          <ScalarProperty Name="DATASETID" ColumnName="DATASETID" />
+          <ScalarProperty Name="T_TEST_DATASETTAG_ID" ColumnName="T_TEST_DATASETTAG_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="DELETEFOLDERDATASET" FunctionName="Model.Store.DELETEFOLDERDATASET" />
+    <EntitySetMapping Name="T_FOLDER_FILTER">
+      <EntityTypeMapping TypeName="Model.T_FOLDER_FILTER">
+        <MappingFragment StoreEntitySet="T_FOLDER_FILTER">
+          <ScalarProperty Name="STORYBOARD_IDS" ColumnName="STORYBOARD_IDS" />
+          <ScalarProperty Name="PROJECT_IDS" ColumnName="PROJECT_IDS" />
+          <ScalarProperty Name="FILTER_NAME" ColumnName="FILTER_NAME" />
+          <ScalarProperty Name="FILTER_ID" ColumnName="FILTER_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="REL_FOLDER_FILTER">
+      <EntityTypeMapping TypeName="Model.REL_FOLDER_FILTER">
+        <MappingFragment StoreEntitySet="REL_FOLDER_FILTER">
+          <ScalarProperty Name="FILTER_ID" ColumnName="FILTER_ID" />
+          <ScalarProperty Name="FOLDER_ID" ColumnName="FOLDER_ID" />
+          <ScalarProperty Name="REL_FOLDER_FILTER_ID" ColumnName="REL_FOLDER_FILTER_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MV_OBJECT_SNAPSHOT">
+      <EntityTypeMapping TypeName="Model.MV_OBJECT_SNAPSHOT">
+        <MappingFragment StoreEntitySet="MV_OBJECT_SNAPSHOT">
+          <ScalarProperty Name="PEG_ID" ColumnName="PEG_ID" />
+          <ScalarProperty Name="PEG_QUICK_ACCESS" ColumnName="PEG_QUICK_ACCESS" />
+          <ScalarProperty Name="PEG_NAME" ColumnName="PEG_NAME" />
+          <ScalarProperty Name="TYPE_NAME" ColumnName="TYPE_NAME" />
+          <ScalarProperty Name="TYPE_ID" ColumnName="TYPE_ID" />
+          <ScalarProperty Name="QUICK_ACCESS" ColumnName="QUICK_ACCESS" />
+          <ScalarProperty Name="OBJECT_TYPE" ColumnName="OBJECT_TYPE" />
+          <ScalarProperty Name="OBJECT_ID" ColumnName="OBJECT_ID" />
+          <ScalarProperty Name="ENUM_TYPE" ColumnName="ENUM_TYPE" />
+          <ScalarProperty Name="APPLICATION_ID" ColumnName="APPLICATION_ID" />
+          <ScalarProperty Name="COMMENT" ColumnName="COMMENT" />
+          <ScalarProperty Name="OBJECT_HAPPY_NAME" ColumnName="OBJECT_HAPPY_NAME" />
+          <ScalarProperty Name="OBJECT_NAME_ID" ColumnName="OBJECT_NAME_ID" />
+          <ScalarProperty Name="OT_TYPE_ID" ColumnName="OT_TYPE_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

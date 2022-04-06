@@ -475,13 +475,14 @@
 
     <script src="~/PQGridPro/js/jquery-1.9.1.min.js"></script>
     <script src="~/assets/plugins/global/plugins.bundle.js" type="text/javascript"></script>
-
+    
     <script src="~/PQGridPro/js/jquery-ui.min.js"></script>
     <script src="~/PQGridPro/js/pqgrid.dev.js"></script>
 
     <script src="~/PQGridPro/pqSelect/pqselect.dev.js"></script>
     @*<script  type="text/javascript" src="~/Scripts/splitter/jquery-1.4.3.min.js"></script>
-    <script type="text/javascript" src="~/Scripts/splitter/splitter.js"></script>*@
+        <script type="text/javascript" src="~/Scripts/jquery.splitter/js/jquery.splitter.js"></script>
+        <link href="~/Scripts/jquery.splitter/css/jquery.splitter.css" rel="stylesheet" />*@
     <script src="~/PQGridPro/jsZip-2.5.0/jszip.min.js"></script>
 
     <script src="~/assets/js/simplebar.min.js"></script>
@@ -582,65 +583,65 @@
                         <div id="kt_header_menu" class="kt-header-menu kt-header-menu-mobile  kt-header-menu--layout-default ">
                             <ul class="kt-menu__nav ">
                                 @*<li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
-                                        <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
-                                            <span class="kt-menu__link-text">Dummy</span>
-                                            <i class="kt-menu__ver-arrow la la-angle-right"></i>
-                                        </a>
-                                        <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
-                                            <ul class="kt-menu__subnav">
-                                                <li class="kt-menu__item mr_custom_menu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
-                                                    <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
-                                                        <span class="kt-menu__link-icon">
-                                                            <i class="flaticon-list-2"></i>
-                                                        </span><span class="kt-menu__link-text">List</span><i class="la la-angle-right"></i>
-                                                    </a>
-                                                    <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--right mr_custom_submenu" data-kthor-direction="menu-submenu-right">
-                                                        <ul class="kt-menu__subnav">
-                                                            <li class="kt-menu__item " aria-haspopup="true">
-                                                                <a href="javascript:;" class="kt-menu__link ">
-                                                                    <span class="kt-menu__link-icon">
-                                                                        <i class="fa fa-circle"></i>
-                                                                    </span><span class="kt-menu__link-text">TEST 1</span>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                                <li class="kt-menu__item mr_custom_menu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
-                                                    <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
-                                                        <span class="kt-menu__link-icon">
-                                                            <i class="flaticon-list-2"></i>
-                                                        </span><span class="kt-menu__link-text">Listsdsdsd</span><i class="la la-angle-right"></i>
-                                                    </a>
-                                                    <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--right mr_custom_submenu" data-kthor-direction="menu-submenu-right">
-                                                        <ul class="kt-menu__subnav">
-                                                            <li class="kt-menu__item " aria-haspopup="true">
-                                                                <a href="javascript:;" class="kt-menu__link ">
-                                                                    <span class="kt-menu__link-icon">
-                                                                        <i class="fa fa-circle"></i>
-                                                                    </span><span class="kt-menu__link-text">TEST 13434</span>
-                                                                </a>
-                                                            </li>
-                                                            <li class="kt-menu__item " aria-haspopup="true">
-                                                                <a href="javascript:;" class="kt-menu__link ">
-                                                                    <span class="kt-menu__link-icon">
-                                                                        <i class="fa fa-circle"></i>
-                                                                    </span><span class="kt-menu__link-text">TEST 13</span>
-                                                                </a>
-                                                            </li>
-                                                            <li class="kt-menu__item " aria-haspopup="true">
-                                                                <a href="javascript:;" class="kt-menu__link ">
-                                                                    <span class="kt-menu__link-icon">
-                                                                        <i class="fa fa-circle"></i>
-                                                                    </span><span class="kt-menu__link-text">TEST 1343</span>
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>*@
+                                    <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
+                                        <span class="kt-menu__link-text">Dummy</span>
+                                        <i class="kt-menu__ver-arrow la la-angle-right"></i>
+                                    </a>
+                                    <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
+                                        <ul class="kt-menu__subnav">
+                                            <li class="kt-menu__item mr_custom_menu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
+                                                <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
+                                                    <span class="kt-menu__link-icon">
+                                                        <i class="flaticon-list-2"></i>
+                                                    </span><span class="kt-menu__link-text">List</span><i class="la la-angle-right"></i>
+                                                </a>
+                                                <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--right mr_custom_submenu" data-kthor-direction="menu-submenu-right">
+                                                    <ul class="kt-menu__subnav">
+                                                        <li class="kt-menu__item " aria-haspopup="true">
+                                                            <a href="javascript:;" class="kt-menu__link ">
+                                                                <span class="kt-menu__link-icon">
+                                                                    <i class="fa fa-circle"></i>
+                                                                </span><span class="kt-menu__link-text">TEST 1</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                            <li class="kt-menu__item mr_custom_menu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
+                                                <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
+                                                    <span class="kt-menu__link-icon">
+                                                        <i class="flaticon-list-2"></i>
+                                                    </span><span class="kt-menu__link-text">Listsdsdsd</span><i class="la la-angle-right"></i>
+                                                </a>
+                                                <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--right mr_custom_submenu" data-kthor-direction="menu-submenu-right">
+                                                    <ul class="kt-menu__subnav">
+                                                        <li class="kt-menu__item " aria-haspopup="true">
+                                                            <a href="javascript:;" class="kt-menu__link ">
+                                                                <span class="kt-menu__link-icon">
+                                                                    <i class="fa fa-circle"></i>
+                                                                </span><span class="kt-menu__link-text">TEST 13434</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="kt-menu__item " aria-haspopup="true">
+                                                            <a href="javascript:;" class="kt-menu__link ">
+                                                                <span class="kt-menu__link-icon">
+                                                                    <i class="fa fa-circle"></i>
+                                                                </span><span class="kt-menu__link-text">TEST 13</span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="kt-menu__item " aria-haspopup="true">
+                                                            <a href="javascript:;" class="kt-menu__link ">
+                                                                <span class="kt-menu__link-icon">
+                                                                    <i class="fa fa-circle"></i>
+                                                                </span><span class="kt-menu__link-text">TEST 1343</span>
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>*@
                                 <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel custm_singl_menu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
                                     <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
                                         <span class="kt-menu__link-text">Test Admin</span>
@@ -821,57 +822,57 @@
                                 </li>
 
                                 @*@if (PrivilegeList.Select(y => y.MODULE).ToList().Contains("TestSuite"))
-                                    {
-                                        <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
-                                            <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
-                                                <span class="kt-menu__link-text">Test Suite</span>
-                                                <i class="kt-menu__ver-arrow la la-angle-right"></i>
-                                            </a>
-                                            <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
-                                                <ul class="kt-menu__subnav">
-                                                    @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Add TestSuite") || PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Edit TestSuite") ||
-                                                        PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("View TestSuite") || PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Delete TestSuite"))
-                                                    {
-                                                        <li class="kt-menu__item " aria-haspopup="true">
-                                                            <a href="javascript:;" onclick=PartialRightSideTestSuiteGrid("0") class="kt-menu__link ">
-                                                                <span class="kt-menu__link-icon">
-                                                                    <i class="flaticon-list-2"></i>
-                                                                </span><span class="kt-menu__link-text">List</span>
-                                                            </a>
-                                                        </li>
-                                                    }
-                                                    @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Import TestSuite"))
-                                                    {
-                                                        <li class="kt-menu__item " aria-haspopup="true">
-                                                            <a href="javascript:;" onclick=PartialRightSideImportTestSuite("0") class="kt-menu__link ">
-                                                                <span class="kt-menu__link-icon">
-                                                                    <i class="fa fa-file-import"></i>
-                                                                </span><span class="kt-menu__link-text">Import</span>
-                                                            </a>
-
-                                                        </li>
-                                                    }
-                                                </ul>
-                                            </div>
-                                        </li>
-                                    }
-                                    @if (PrivilegeList.Select(y => y.MODULE).ToList().Contains("TestCase"))
-                                    {
-                                        <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
-                                            <a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-text">Test Case</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
-                                            <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
-                                                <ul class="kt-menu__subnav">
+                                {
+                                    <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
+                                        <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
+                                            <span class="kt-menu__link-text">Test Suite</span>
+                                            <i class="kt-menu__ver-arrow la la-angle-right"></i>
+                                        </a>
+                                        <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
+                                            <ul class="kt-menu__subnav">
+                                                @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Add TestSuite") || PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Edit TestSuite") ||
+                                                    PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("View TestSuite") || PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Delete TestSuite"))
+                                                {
                                                     <li class="kt-menu__item " aria-haspopup="true">
-                                                        <a href="javascript:;" onclick=PartialRightSideTestCaseGrid("0") class="kt-menu__link ">
+                                                        <a href="javascript:;" onclick=PartialRightSideTestSuiteGrid("0") class="kt-menu__link ">
                                                             <span class="kt-menu__link-icon">
                                                                 <i class="flaticon-list-2"></i>
                                                             </span><span class="kt-menu__link-text">List</span>
                                                         </a>
                                                     </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                    }*@
+                                                }
+                                                @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Import TestSuite"))
+                                                {
+                                                    <li class="kt-menu__item " aria-haspopup="true">
+                                                        <a href="javascript:;" onclick=PartialRightSideImportTestSuite("0") class="kt-menu__link ">
+                                                            <span class="kt-menu__link-icon">
+                                                                <i class="fa fa-file-import"></i>
+                                                            </span><span class="kt-menu__link-text">Import</span>
+                                                        </a>
+
+                                                    </li>
+                                                }
+                                            </ul>
+                                        </div>
+                                    </li>
+                                }
+                                @if (PrivilegeList.Select(y => y.MODULE).ToList().Contains("TestCase"))
+                                {
+                                    <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
+                                        <a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-text">Test Case</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
+                                        <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
+                                            <ul class="kt-menu__subnav">
+                                                <li class="kt-menu__item " aria-haspopup="true">
+                                                    <a href="javascript:;" onclick=PartialRightSideTestCaseGrid("0") class="kt-menu__link ">
+                                                        <span class="kt-menu__link-icon">
+                                                            <i class="flaticon-list-2"></i>
+                                                        </span><span class="kt-menu__link-text">List</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                }*@
                                 <textarea class="form-control" id="txtareacopy" style="display:none;"></textarea>
                                 @if (PrivilegeList.Select(y => y.MODULE).ToList().Contains("Storyboard") && PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Import Storyboard"))
                                 {
@@ -897,51 +898,51 @@
                                                     </a>
                                                 </li>
                                                 @*@if (PrivilegeList.Select(y => y.MODULE).ToList().Contains("Object"))
-                                                    {
-                                                        <li class="kt-menu__item mr_custom_menu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
-                                                            <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
-                                                                <span class="kt-menu__link-icon">
-                                                                    <i class="flaticon-list-2"></i>
-                                                                </span><span class="kt-menu__link-text">Object</span><i class="la la-angle-right"></i>
-                                                            </a>
-                                                            <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--right mr_custom_submenu" data-kthor-direction="menu-submenu-right">
-                                                                <ul class="kt-menu__subnav">
-                                                                    @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Import Object"))
-                                                                    {
-                                                                        <li class="kt-menu__item " aria-haspopup="true">
-                                                                            <a href="javascript:;" class="kt-menu__link" onclick=ImportObjects("0")>
-                                                                                <span class="kt-menu__link-icon">
-                                                                                    <i class="fa fa-circle"></i>
-                                                                                </span><span class="kt-menu__link-text">Import</span>
-                                                                            </a>
-                                                                        </li>
-                                                                    }
-                                                                    @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Export Object"))
-                                                                    {
-                                                                        <li class="kt-menu__item " aria-haspopup="true">
-                                                                            <a href="javascript:;" class="kt-menu__link" data-toggle="modal" data-target="#ExportPopup" onclick="getApplicationList()">
-                                                                                <span class="kt-menu__link-icon">
-                                                                                    <i class="fa fa-circle"></i>
-                                                                                </span><span class="kt-menu__link-text">Export</span>
-                                                                            </a>
-                                                                        </li>
-                                                                    }
-                                                                    @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Add Object") || PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Add Pegwindow Object") ||
-                                                                        PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Edit Object") || PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("View Object") ||
-                                                                        PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Delete Object") || PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("SaveAs Object"))
-                                                                    {
-                                                                        <li class="kt-menu__item " aria-haspopup="true">
-                                                                            <a href="javascript:;" onclick=partialOpenObjectList("0") class="kt-menu__link">
-                                                                                <span class="kt-menu__link-icon">
-                                                                                    <i class="fa fa-circle"></i>
-                                                                                </span><span class="kt-menu__link-text">Object Management</span>
-                                                                            </a>
-                                                                        </li>
-                                                                    }
-                                                                </ul>
-                                                            </div>
-                                                        </li>
-                                                    }*@
+                                                {
+                                                    <li class="kt-menu__item mr_custom_menu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
+                                                        <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
+                                                            <span class="kt-menu__link-icon">
+                                                                <i class="flaticon-list-2"></i>
+                                                            </span><span class="kt-menu__link-text">Object</span><i class="la la-angle-right"></i>
+                                                        </a>
+                                                        <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--right mr_custom_submenu" data-kthor-direction="menu-submenu-right">
+                                                            <ul class="kt-menu__subnav">
+                                                                @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Import Object"))
+                                                                {
+                                                                    <li class="kt-menu__item " aria-haspopup="true">
+                                                                        <a href="javascript:;" class="kt-menu__link" onclick=ImportObjects("0")>
+                                                                            <span class="kt-menu__link-icon">
+                                                                                <i class="fa fa-circle"></i>
+                                                                            </span><span class="kt-menu__link-text">Import</span>
+                                                                        </a>
+                                                                    </li>
+                                                                }
+                                                                @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Export Object"))
+                                                                {
+                                                                    <li class="kt-menu__item " aria-haspopup="true">
+                                                                        <a href="javascript:;" class="kt-menu__link" data-toggle="modal" data-target="#ExportPopup" onclick="getApplicationList()">
+                                                                            <span class="kt-menu__link-icon">
+                                                                                <i class="fa fa-circle"></i>
+                                                                            </span><span class="kt-menu__link-text">Export</span>
+                                                                        </a>
+                                                                    </li>
+                                                                }
+                                                                @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Add Object") || PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Add Pegwindow Object") ||
+                                                                    PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Edit Object") || PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("View Object") ||
+                                                                    PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Delete Object") || PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("SaveAs Object"))
+                                                                {
+                                                                    <li class="kt-menu__item " aria-haspopup="true">
+                                                                        <a href="javascript:;" onclick=partialOpenObjectList("0") class="kt-menu__link">
+                                                                            <span class="kt-menu__link-icon">
+                                                                                <i class="fa fa-circle"></i>
+                                                                            </span><span class="kt-menu__link-text">Object Management</span>
+                                                                        </a>
+                                                                    </li>
+                                                                }
+                                                            </ul>
+                                                        </div>
+                                                    </li>
+                                                }*@
                                             </ul>
                                         </div>
                                     </li>
@@ -1139,252 +1140,252 @@
                                 </li>
 
                                 @*@if (PrivilegeList.Select(y => y.MODULE).ToList().Contains("Storyboard") && PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Import Storyboard"))
-                                    {
-                                        <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
-                                            <a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-text">Storyboard</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
-                                            <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
-                                                <ul class="kt-menu__subnav">
-                                                    <li class="kt-menu__item " aria-haspopup="true">
-                                                        <a href="javascript:;" onclick=PartialRightImportStoryboard("0") class="kt-menu__link ">
-                                                            <span class="kt-menu__link-icon">
-                                                                <i class="fa fa-file-import"></i>
-                                                            </span><span class="kt-menu__link-text">Import</span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                    }*@
+                                {
+                                    <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
+                                        <a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-text">Storyboard</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
+                                        <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
+                                            <ul class="kt-menu__subnav">
+                                                <li class="kt-menu__item " aria-haspopup="true">
+                                                    <a href="javascript:;" onclick=PartialRightImportStoryboard("0") class="kt-menu__link ">
+                                                        <span class="kt-menu__link-icon">
+                                                            <i class="fa fa-file-import"></i>
+                                                        </span><span class="kt-menu__link-text">Import</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                }*@
                                 @*@if (PrivilegeList.Select(y => y.MODULE).ToList().Contains("Variable"))
-                                    {
-                                        <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
-                                            <a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-text">Variables</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
-                                            <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
-                                                <ul class="kt-menu__subnav">
+                                {
+                                    <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
+                                        <a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-text">Variables</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
+                                        <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
+                                            <ul class="kt-menu__subnav">
 
-                                                    @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Add Variable") || PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Edit Variable") ||
-                                                        PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("View Variable") || PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Delete Variable"))
-                                                    {
-                                                        <li class="kt-menu__item " aria-haspopup="true">
-                                                            <a href="javascript:;" onclick=PartialRightSideVariablesGrid("0") class="kt-menu__link ">
-                                                                <span class="kt-menu__link-icon">
-                                                                    <i class="flaticon-list-2"></i>
-                                                                </span><span class="kt-menu__link-text">List</span>
-                                                            </a>
-                                                        </li>
-                                                    }
-                                                    @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Export Variable"))
-                                                    {
-                                                        <li class="kt-menu__item " aria-haspopup="true">
-                                                            <a href="javascript:;" onclick="ExportVariables()" class="kt-menu__link ">
-                                                                <span class="kt-menu__link-icon">
-                                                                    <i class="fa fa-file-export"></i>
-                                                                </span><span class="kt-menu__link-text">Export</span>
-                                                            </a>
-                                                        </li>
-                                                    }
-                                                    @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Import Variable"))
-                                                    {
-                                                        <li class="kt-menu__item " aria-haspopup="true">
-                                                            <a href="javascript:;" onclick=ImportVariables("0") class="kt-menu__link ">
-                                                                <span class="kt-menu__link-icon">
-                                                                    <i class="fa fa-file-import"></i>
-                                                                </span><span class="kt-menu__link-text">Import</span>
-                                                            </a>
-                                                        </li>
-                                                    }
-                                                </ul>
-                                            </div>
-                                        </li>
-                                    }*@
-
-                                @*@if (PrivilegeList.Select(y => y.MODULE).ToList().Contains("Keyword"))
-                                    {
-                                        <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
-                                            <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
-                                                <span class="kt-menu__link-text">Keyword</span>
-                                                <i class="kt-menu__ver-arrow la la-angle-right"></i>
-                                            </a>
-                                            <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
-                                                <ul class="kt-menu__subnav">
+                                                @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Add Variable") || PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Edit Variable") ||
+                                                    PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("View Variable") || PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Delete Variable"))
+                                                {
                                                     <li class="kt-menu__item " aria-haspopup="true">
-                                                        <a href="javascript:;" onclick=PartialRightSideKeywordGrid("0") class="kt-menu__link ">
+                                                        <a href="javascript:;" onclick=PartialRightSideVariablesGrid("0") class="kt-menu__link ">
                                                             <span class="kt-menu__link-icon">
                                                                 <i class="flaticon-list-2"></i>
                                                             </span><span class="kt-menu__link-text">List</span>
                                                         </a>
                                                     </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                    }*@
-
-                                @*@if (PrivilegeList.Select(y => y.MODULE).ToList().Contains("Object"))
-                                    {
-                                        <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
-                                            <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
-                                                <span class="kt-menu__link-text">Objects</span>
-                                                <i class="kt-menu__ver-arrow la la-angle-right"></i>
-                                            </a>
-                                            <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
-                                                <ul class="kt-menu__subnav">
-                                                    @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Add Object") || PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Add Pegwindow Object") ||
-                                                       PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Edit Object") || PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("View Object") ||
-                                                       PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Delete Object") || PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("SaveAs Object"))
-                                                    {
-                                                        <li class="kt-menu__item " aria-haspopup="true">
-                                                            <a href="javascript:;" class="kt-menu__link " onclick=partialOpenObjectList("0")>
-                                                                <span class="kt-menu__link-icon">
-                                                                    <i class="flaticon-list-2"></i>
-                                                                </span><span class="kt-menu__link-text">List</span>
-                                                            </a>
-                                                        </li>
-                                                    }
-                                                    @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Import Object"))
-                                                    {
-                                                        <li class="kt-menu__item " aria-haspopup="true">
-                                                            <a href="javascript:;" class="kt-menu__link " onclick=ImportObjects("0")>
-                                                                <span class="kt-menu__link-icon">
-                                                                    <i class="fa fa-file-import"></i>
-                                                                </span><span class="kt-menu__link-text">Import</span>
-                                                            </a>
-
-                                                        </li>
-                                                    }
-                                                    @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Export Object"))
-                                                    {
-                                                        <li class="kt-menu__item " aria-haspopup="true">
-                                                            <a href="javascript:;" class="kt-menu__link " data-toggle="modal" data-target="#ExportPopup" onclick="getApplicationList()">
-                                                                <span class="kt-menu__link-icon">
-                                                                    <i class="fa fa-file-export"></i>
-                                                                </span><span class="kt-menu__link-text">Export</span>
-                                                            </a>
-                                                        </li>
-                                                    }
-                                                </ul>
-                                            </div>
-                                        </li>
-                                    }*@
-
-                                @*@if (PrivilegeList.Select(y => y.MODULE).ToList().Contains("Result Data") && PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Import Result Data"))
-                                    {
-                                        <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
-                                            <a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-text">Result Set</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
-                                            <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
-                                                <ul class="kt-menu__subnav">
+                                                }
+                                                @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Export Variable"))
+                                                {
                                                     <li class="kt-menu__item " aria-haspopup="true">
-                                                        <a href="javascript:;" onclick='PartialRightImportResultSet("0", null)' class="kt-menu__link ">
+                                                        <a href="javascript:;" onclick="ExportVariables()" class="kt-menu__link ">
+                                                            <span class="kt-menu__link-icon">
+                                                                <i class="fa fa-file-export"></i>
+                                                            </span><span class="kt-menu__link-text">Export</span>
+                                                        </a>
+                                                    </li>
+                                                }
+                                                @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Import Variable"))
+                                                {
+                                                    <li class="kt-menu__item " aria-haspopup="true">
+                                                        <a href="javascript:;" onclick=ImportVariables("0") class="kt-menu__link ">
                                                             <span class="kt-menu__link-icon">
                                                                 <i class="fa fa-file-import"></i>
                                                             </span><span class="kt-menu__link-text">Import</span>
                                                         </a>
                                                     </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                    }*@
-                                @*@if (PrivilegeList.Select(y => y.MODULE).ToList().Contains("Datasettag"))
-                                    {
-                                        <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
-                                            <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
-                                                <span class="kt-menu__link-text">DatasetTag</span>
-                                                <i class="kt-menu__ver-arrow la la-angle-right"></i>
-                                            </a>
-                                            <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
-                                                <ul class="kt-menu__subnav">
-                                                    @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Import Datasettag"))
-                                                    {
-                                                        <li class="kt-menu__item " aria-haspopup="true">
-                                                            <a href="javascript:;" class="kt-menu__link " onclick=ImportDatasetTag("0")>
-                                                                <span class="kt-menu__link-icon">
-                                                                    <i class="fa fa-file-import"></i>
-                                                                </span><span class="kt-menu__link-text">Import</span>
-                                                            </a>
+                                                }
+                                            </ul>
+                                        </div>
+                                    </li>
+                                }*@
 
-                                                        </li>
-                                                    }
-                                                    @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Export Datasettag"))
-                                                    {
-                                                        <li class="kt-menu__item " aria-haspopup="true">
-                                                            <a href="javascript:;" class="kt-menu__link" onclick="ExportDatasetTag()">
-                                                                <span class="kt-menu__link-icon">
-                                                                    <i class="fa fa-file-export"></i>
-                                                                </span><span class="kt-menu__link-text">Export</span>
-                                                            </a>
-                                                        </li>
-                                                    }
-                                                    @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Export Datasettag Report"))
-                                                    {
-                                                        <li class="kt-menu__item " aria-haspopup="true">
-                                                            <a href="javascript:;" class="kt-menu__link" onclick="ExportReportDatasetTag()">
-                                                                <span class="kt-menu__link-icon">
-                                                                    <i class="fa fa-file-export"></i>
-                                                                </span><span class="kt-menu__link-text">Report Export</span>
-                                                            </a>
-                                                        </li>
-                                                    }
-                                                </ul>
-                                            </div>
-                                        </li>
-                                    }*@
-                                @*@if (PrivilegeList.Select(y => y.MODULE).ToList().Contains("CompareConfig"))
-                                    {
-                                        <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
-                                            <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
-                                                <span class="kt-menu__link-text">Config</span>
-                                                <i class="kt-menu__ver-arrow la la-angle-right"></i>
-                                            </a>
-                                            <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
-                                                <ul class="kt-menu__subnav">
-                                                    @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Import CompareConfig"))
-                                                    {
-                                                        <li class="kt-menu__item " aria-haspopup="true">
-                                                            <a href="javascript:;" class="kt-menu__link " onclick=ImportCompareConfig("0")>
-                                                                <span class="kt-menu__link-icon">
-                                                                    <i class="fa fa-file-import"></i>
-                                                                </span><span class="kt-menu__link-text">Import</span>
-                                                            </a>
+                                @*@if (PrivilegeList.Select(y => y.MODULE).ToList().Contains("Keyword"))
+                                {
+                                    <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
+                                        <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
+                                            <span class="kt-menu__link-text">Keyword</span>
+                                            <i class="kt-menu__ver-arrow la la-angle-right"></i>
+                                        </a>
+                                        <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
+                                            <ul class="kt-menu__subnav">
+                                                <li class="kt-menu__item " aria-haspopup="true">
+                                                    <a href="javascript:;" onclick=PartialRightSideKeywordGrid("0") class="kt-menu__link ">
+                                                        <span class="kt-menu__link-icon">
+                                                            <i class="flaticon-list-2"></i>
+                                                        </span><span class="kt-menu__link-text">List</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                }*@
 
-                                                        </li>
-                                                    }
-                                                    @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Export CompareConfig"))
-                                                    {
-                                                        <li class="kt-menu__item " aria-haspopup="true">
-                                                            <a href="javascript:;" class="kt-menu__link" onclick="ExportCompareConfig()">
-                                                                <span class="kt-menu__link-icon">
-                                                                    <i class="fa fa-file-export"></i>
-                                                                </span><span class="kt-menu__link-text">Export</span>
-                                                            </a>
-                                                        </li>
-                                                    }
-
-                                                </ul>
-                                            </div>
-                                        </li>
-                                    }*@
-                                @*@if (PrivilegeList.Select(y => y.MODULE).ToList().Contains("Display Chart"))
-                                    {
-                                        <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel custm_singl_menu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
-                                            <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
-                                                <span class="kt-menu__link-text">Charts</span>
-                                                <i class="kt-menu__ver-arrow la la-angle-right"></i>
-                                            </a>
-                                            <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
-                                                <ul class="kt-menu__subnav">
+                                @*@if (PrivilegeList.Select(y => y.MODULE).ToList().Contains("Object"))
+                                {
+                                    <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
+                                        <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
+                                            <span class="kt-menu__link-text">Objects</span>
+                                            <i class="kt-menu__ver-arrow la la-angle-right"></i>
+                                        </a>
+                                        <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
+                                            <ul class="kt-menu__subnav">
+                                                @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Add Object") || PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Add Pegwindow Object") ||
+                                                   PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Edit Object") || PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("View Object") ||
+                                                   PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Delete Object") || PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("SaveAs Object"))
+                                                {
                                                     <li class="kt-menu__item " aria-haspopup="true">
-                                                        <a href="javascript:;" onclick=window.open("/Chart/ChartIndex") class="kt-menu__link ">
+                                                        <a href="javascript:;" class="kt-menu__link " onclick=partialOpenObjectList("0")>
                                                             <span class="kt-menu__link-icon">
                                                                 <i class="flaticon-list-2"></i>
-                                                            </span><span class="kt-menu__link-text">3D Charts</span>
+                                                            </span><span class="kt-menu__link-text">List</span>
                                                         </a>
                                                     </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-                                    }*@
+                                                }
+                                                @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Import Object"))
+                                                {
+                                                    <li class="kt-menu__item " aria-haspopup="true">
+                                                        <a href="javascript:;" class="kt-menu__link " onclick=ImportObjects("0")>
+                                                            <span class="kt-menu__link-icon">
+                                                                <i class="fa fa-file-import"></i>
+                                                            </span><span class="kt-menu__link-text">Import</span>
+                                                        </a>
+
+                                                    </li>
+                                                }
+                                                @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Export Object"))
+                                                {
+                                                    <li class="kt-menu__item " aria-haspopup="true">
+                                                        <a href="javascript:;" class="kt-menu__link " data-toggle="modal" data-target="#ExportPopup" onclick="getApplicationList()">
+                                                            <span class="kt-menu__link-icon">
+                                                                <i class="fa fa-file-export"></i>
+                                                            </span><span class="kt-menu__link-text">Export</span>
+                                                        </a>
+                                                    </li>
+                                                }
+                                            </ul>
+                                        </div>
+                                    </li>
+                                }*@
+
+                                @*@if (PrivilegeList.Select(y => y.MODULE).ToList().Contains("Result Data") && PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Import Result Data"))
+                                {
+                                    <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
+                                        <a href="javascript:;" class="kt-menu__link kt-menu__toggle"><span class="kt-menu__link-text">Result Set</span><i class="kt-menu__ver-arrow la la-angle-right"></i></a>
+                                        <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
+                                            <ul class="kt-menu__subnav">
+                                                <li class="kt-menu__item " aria-haspopup="true">
+                                                    <a href="javascript:;" onclick='PartialRightImportResultSet("0", null)' class="kt-menu__link ">
+                                                        <span class="kt-menu__link-icon">
+                                                            <i class="fa fa-file-import"></i>
+                                                        </span><span class="kt-menu__link-text">Import</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                }*@
+                                @*@if (PrivilegeList.Select(y => y.MODULE).ToList().Contains("Datasettag"))
+                                {
+                                    <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
+                                        <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
+                                            <span class="kt-menu__link-text">DatasetTag</span>
+                                            <i class="kt-menu__ver-arrow la la-angle-right"></i>
+                                        </a>
+                                        <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
+                                            <ul class="kt-menu__subnav">
+                                                @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Import Datasettag"))
+                                                {
+                                                    <li class="kt-menu__item " aria-haspopup="true">
+                                                        <a href="javascript:;" class="kt-menu__link " onclick=ImportDatasetTag("0")>
+                                                            <span class="kt-menu__link-icon">
+                                                                <i class="fa fa-file-import"></i>
+                                                            </span><span class="kt-menu__link-text">Import</span>
+                                                        </a>
+
+                                                    </li>
+                                                }
+                                                @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Export Datasettag"))
+                                                {
+                                                    <li class="kt-menu__item " aria-haspopup="true">
+                                                        <a href="javascript:;" class="kt-menu__link" onclick="ExportDatasetTag()">
+                                                            <span class="kt-menu__link-icon">
+                                                                <i class="fa fa-file-export"></i>
+                                                            </span><span class="kt-menu__link-text">Export</span>
+                                                        </a>
+                                                    </li>
+                                                }
+                                                @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Export Datasettag Report"))
+                                                {
+                                                    <li class="kt-menu__item " aria-haspopup="true">
+                                                        <a href="javascript:;" class="kt-menu__link" onclick="ExportReportDatasetTag()">
+                                                            <span class="kt-menu__link-icon">
+                                                                <i class="fa fa-file-export"></i>
+                                                            </span><span class="kt-menu__link-text">Report Export</span>
+                                                        </a>
+                                                    </li>
+                                                }
+                                            </ul>
+                                        </div>
+                                    </li>
+                                }*@
+                                @*@if (PrivilegeList.Select(y => y.MODULE).ToList().Contains("CompareConfig"))
+                                {
+                                    <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
+                                        <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
+                                            <span class="kt-menu__link-text">Config</span>
+                                            <i class="kt-menu__ver-arrow la la-angle-right"></i>
+                                        </a>
+                                        <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
+                                            <ul class="kt-menu__subnav">
+                                                @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Import CompareConfig"))
+                                                {
+                                                    <li class="kt-menu__item " aria-haspopup="true">
+                                                        <a href="javascript:;" class="kt-menu__link " onclick=ImportCompareConfig("0")>
+                                                            <span class="kt-menu__link-icon">
+                                                                <i class="fa fa-file-import"></i>
+                                                            </span><span class="kt-menu__link-text">Import</span>
+                                                        </a>
+
+                                                    </li>
+                                                }
+                                                @if (PrivilegeList.Select(y => y.PRIVILEGE_NAME.Trim()).ToList().Contains("Export CompareConfig"))
+                                                {
+                                                    <li class="kt-menu__item " aria-haspopup="true">
+                                                        <a href="javascript:;" class="kt-menu__link" onclick="ExportCompareConfig()">
+                                                            <span class="kt-menu__link-icon">
+                                                                <i class="fa fa-file-export"></i>
+                                                            </span><span class="kt-menu__link-text">Export</span>
+                                                        </a>
+                                                    </li>
+                                                }
+
+                                            </ul>
+                                        </div>
+                                    </li>
+                                }*@
+                                @*@if (PrivilegeList.Select(y => y.MODULE).ToList().Contains("Display Chart"))
+                                {
+                                    <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel custm_singl_menu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
+                                        <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
+                                            <span class="kt-menu__link-text">Charts</span>
+                                            <i class="kt-menu__ver-arrow la la-angle-right"></i>
+                                        </a>
+                                        <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
+                                            <ul class="kt-menu__subnav">
+                                                <li class="kt-menu__item " aria-haspopup="true">
+                                                    <a href="javascript:;" onclick=window.open("/Chart/ChartIndex") class="kt-menu__link ">
+                                                        <span class="kt-menu__link-icon">
+                                                            <i class="flaticon-list-2"></i>
+                                                        </span><span class="kt-menu__link-text">3D Charts</span>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                }*@
 
                                 @*@if (PrivilegeList.Select(y => y.MODULE).ToList().Contains("Project"))
-                                    {*@
+                                {*@
                                 <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel custm_singl_menu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
                                     <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
                                         <span class="kt-menu__link-text">CI Integeration</span>
@@ -1403,31 +1404,31 @@
                                     </div>
                                 </li>
                                 @*<li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
-                                        <a href="javascript:;" class="kt-menu__link kt-menu__toggle" onclick=PartialRightSideJenkinsIntegrationGrid("1")>
-                                            <span class="kt-menu__link-text">Jenkins Integration</span>
-                                            <i class="kt-menu__ver-arrow la la-angle-right"></i>
-                                        </a>
+                                    <a href="javascript:;" class="kt-menu__link kt-menu__toggle" onclick=PartialRightSideJenkinsIntegrationGrid("1")>
+                                        <span class="kt-menu__link-text">Jenkins Integration</span>
+                                        <i class="kt-menu__ver-arrow la la-angle-right"></i>
+                                    </a>
 
-                                    </li>*@
+                                </li>*@
                                 @*}*@
 
                                 @*<li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel custm_singl_menu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
-                                        <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
-                                            <span class="kt-menu__link-text">Download</span>
-                                            <i class="kt-menu__ver-arrow la la-angle-right"></i>
-                                        </a>
-                                        <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
-                                            <ul class="kt-menu__subnav">
-                                                <li class="kt-menu__item " aria-haspopup="true">
-                                                    <a href="~/Download/DownloadFile.pdf" class="kt-menu__link " target="_blank">
-                                                        <span class="kt-menu__link-icon">
-                                                            <i class="fa fa-file-pdf"></i>
-                                                        </span><span class="kt-menu__link-text">Download File</span>
-                                                    </a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>*@
+                                    <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
+                                        <span class="kt-menu__link-text">Download</span>
+                                        <i class="kt-menu__ver-arrow la la-angle-right"></i>
+                                    </a>
+                                    <div class="kt-menu__submenu kt-menu__submenu--classic kt-menu__submenu--left">
+                                        <ul class="kt-menu__subnav">
+                                            <li class="kt-menu__item " aria-haspopup="true">
+                                                <a href="~/Download/DownloadFile.pdf" class="kt-menu__link " target="_blank">
+                                                    <span class="kt-menu__link-icon">
+                                                        <i class="fa fa-file-pdf"></i>
+                                                    </span><span class="kt-menu__link-text">Download File</span>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>*@
                                 <li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--rel custm_singl_menu" data-ktmenu-submenu-toggle="hover" aria-haspopup="true">
                                     <a href="javascript:;" class="kt-menu__link kt-menu__toggle">
                                         <span class="kt-menu__link-text">User Privilege</span>
@@ -1445,7 +1446,7 @@
                                                     </a>
                                                 </li>
                                             }
-                                           
+
                                             <li class="kt-menu__item " aria-haspopup="true">
                                                 <a href="javascript:;" onclick=PartialConnectionList() class="kt-menu__link">
                                                     <span class="kt-menu__link-icon">
@@ -1614,14 +1615,14 @@
                     <!-- end:: Header Menu -->
                     <!-- begin:: Header Topbar -->
                     <div class="kt-header__topbar">
-                        <div class="kt-header__topbar-item kt-header__topbar-item--quick-panel" data-toggle="dropdown"  title="Quick panel" data-placement="right">
+                        <div class="kt-header__topbar-item kt-header__topbar-item--quick-panel" data-toggle="dropdown" title="Quick panel" data-placement="right">
                             <span class="kt-header__topbar-icon">
                                 <i class="fa fa-envelope-square"></i>
                             </span>
                             @*<div id="WebSocketMessageListDiv" class="kt-notification" style="visibility:hidden;border:2px solid #c0c0c0;height:auto;max-height:200px; overflow-y:auto">
-                <ul id="WebSocketMessageList">
-                </ul>
-            </div>*@
+                                <ul id="WebSocketMessageList">
+                                </ul>
+                            </div>*@
                         </div>
                         <div id="WebSocketMessageListDiv" class="dropdown-menu dropdown-menu-fit dropdown-menu-center dropdown-menu-anim dropdown-menu-top-unround dropdown-menu-xl" style="visibility:hidden;border:2px solid #c0c0c0;height:auto;max-height:200px; overflow-y:auto">
                             <ul id="WebSocketMessageList">
@@ -1630,8 +1631,8 @@
                         <div class="kt-header__topbar-item kt-header__topbar-item--quick-panel">
                             @*<span class="kt-header__topbar-icon" data-toggle="kt-tooltip" data-placement="top" title="@SessionManager.Schema">
 
-                <i class="flaticon-coins"></i>
-            </span>*@
+                                <i class="flaticon-coins"></i>
+                            </span>*@
                             <span class="kt-header__topbar-icon" data-skin="brand" data-container="body" data-toggle="kt-popover" data-placement="bottom" data-content="Database: @SessionManager.Schema/@SessionManager.Host" data-original-title="" title=""><i class="fa fa-database"></i></span>
                         </div>
                         <!--begin: Quick panel toggler -->
@@ -1656,13 +1657,13 @@
                             <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-top-unround dropdown-menu-xl" id="UserHeaderDropdown">
                                 <!--begin: Head -->
                                 @*<div class="kt-user-card kt-user-card--skin-dark kt-notification-item-padding-x" style="background-image: url(assets/media/misc/bg-1.jpg)">
-                    <div class="kt-user-card__avatar">
-                        <img class="kt-hidden" alt="Pic" src="~/assets/media/users/300_25.jpg" />
-                        <span class="kt-badge kt-badge--lg kt-badge--rounded kt-badge--bold kt-font-success"></span>
+                                    <div class="kt-user-card__avatar">
+                                        <img class="kt-hidden" alt="Pic" src="~/assets/media/users/300_25.jpg" />
+                                        <span class="kt-badge kt-badge--lg kt-badge--rounded kt-badge--bold kt-font-success"></span>
 
-                    </div>
-                    <div style="font-size: xx-large;color: lightblue;"> @(SessionManager.TESTER_NAME_F + "  " + SessionManager.TESTER_NAME_LAST)</div>
-                </div>*@
+                                    </div>
+                                    <div style="font-size: xx-large;color: lightblue;"> @(SessionManager.TESTER_NAME_F + "  " + SessionManager.TESTER_NAME_LAST)</div>
+                                </div>*@
                                 <!--end: Head -->
                                 <!--begin: Navigation -->
                                 <div class="kt-notification">
@@ -1690,7 +1691,7 @@
                         <!--end: User Bar -->
                     </div>
                     <div id="AdLayer_div" style=" position:absolute; width:300px; height:20px; z-index:20;overflow:hidden;text-overflow:ellipsis; visibility:hidden; opacity:1; top: 43px;right:50px;text-align:right;">
-                        <div id="AdLayer" > you have new message.</div>
+                        <div id="AdLayer"> you have new message.</div>
                         <div id="AdLayerSpace"></div>
                     </div>
                     <!-- end:: Header Topbar -->
@@ -3396,6 +3397,13 @@
         }
 
         function GetStoryboard(ProjectId, obj) {
+            //debugger;
+           @* var element = $(obj).next(".kt-menu__submenu");
+            if (element != null && element != undefined && element[0] != null && element[0] != undefined &&
+                element[0].innerText != null && element[0].innerText != "" && element[0].innerText != undefined) {
+                return;
+            }*@
+
             $.ajax({
                 type: "post",
                 url: "/Login/LeftPanelStoryboard",
@@ -4233,6 +4241,9 @@
                         cls: 'VIEWTESTCASERoleHide cstm_ts_tr',
                         action: function (evt, ui) {
                             var lProjectId = ProjectId;
+                            PartialRightGridTestCaseFromStoryboard(ui.rowData.caseid, ui.rowData.suiteid, lProjectId, ldatasetName, lTestCaseName, null, storyboradId, lstoryboardname);
+@*
+                            debugger;
                             $.ajax({
                                 url: "/Home/GetTSTCDSName",
                                 data: JSON.stringify({ TestCasename: lTestCaseName, TestSuitname: ltestsuitename, Datasetname: ldatasetName }),
@@ -4258,7 +4269,7 @@
                                         });
                                     }
                                 },
-                            });
+                            });*@
                         }
                     },
                     {
@@ -5382,7 +5393,7 @@
         }
 
         $("#kt_aside_toggler").click(function () {
-
+            debugger;
             if ($(this).attr("class") == "kt-aside__brand-aside-toggler") {
                 var lwidth = $("#hdnLeftPanelWidth").val();
                 $(".kt-aside").css("width", lwidth + "px");
@@ -5405,7 +5416,7 @@
                     }
                     if (tabobj.attr("data-tab") == "Storyboard") {
                         var lStoryboardName = tabobj.attr("data-storyboardname");
-                        setTimeout(function () { gridobj[".grid" + lStoryboardName].reset({ filter: true }); }, 500);
+                        setTimeout(function () { gridobj[".gridSB" + lStoryboardName].reset({ filter: true }); }, 500);
                     }
                 }
             });
@@ -5524,6 +5535,7 @@
                             else if (receiveMessage.SocketType == 2) {
                                 message = receiveMessage.TestCaseName + " has been saved by <font color='#0000ff'>" + receiveMessage.UserName + "</font>, you can refresh the data.";
                                 setTimeout(function () { $("#AdLayer_div").css("visibility", "hidden"); }, 10000);
+
                             }
                             document.getElementById("AdLayer").innerHTML = message;
                             AddWebSocketMessage(message);
@@ -5560,6 +5572,7 @@
         //window.addEventListener("load", init, false);
 
         window.onload = function () {
+
             init();
             document.getElementById("AdLayer_div").onmouseover = function () {
                 if (adLayerDivTimer != null)
@@ -5576,6 +5589,12 @@
                 li.innerHTML = "11111111 1111 11111111 zhu 22222 22222222 2222";
                 ul.appendChild(li);
             }*@
+           @* $('#splitterContainer').split({
+                orientation: 'vertical',
+                limit: 100,
+                position: '20%',
+                percent: true
+            });*@
          };
         window.onunload = function () {
             websocket.close();

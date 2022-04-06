@@ -66,10 +66,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\MARS_Utility\MARSUtility\bin\Debug\MARSUtility.dll</HintPath>
     </Reference>
-    <Reference Include="MARS_Repository, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\MARS_Repository\bin\Debug\MARS_Repository.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.4.1\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
     </Reference>
@@ -215,6 +211,7 @@
     <Compile Include="Helper\DatabaseConnectionDetails.cs" />
     <Compile Include="Helper\EmailHelper.cs" />
     <Compile Include="Helper\IdWorker.cs" />
+    <Compile Include="Helper\InitCacheHelper.cs" />
     <Compile Include="Helper\JsonFileHelper.cs" />
     <Compile Include="Helper\GlobalVariable.cs" />
     <Compile Include="Helper\GridHelper.cs" />
@@ -3977,6 +3974,10 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\MARS_Repository\MARS_Repository.csproj">
+      <Project>{b98d1504-d9e4-47c7-913e-c285339c1db2}</Project>
+      <Name>MARS_Repository</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Mars_Serialization\Mars_Serialization.csproj">
       <Project>{35e9f246-4664-453e-8e09-1e3c4dfdb3fa}</Project>
       <Name>Mars_Serialization</Name>

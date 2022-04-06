@@ -17,7 +17,10 @@ namespace MARS_Web.Helper
 {
     public static class GlobalVariable
     {
-        public static ConcurrentDictionary<string, ConcurrentDictionary<UserViewModal, List<Mars_Serialization.ViewModel.ProjectByUser>>> UsersDictionary { get; set; }
+        private static ConcurrentDictionary<string, ConcurrentDictionary<UserViewModal, List<Mars_Serialization.ViewModel.ProjectByUser>>> userInfo = null;
+        public static ConcurrentDictionary<string, ConcurrentDictionary<UserViewModal, List<Mars_Serialization.ViewModel.ProjectByUser>>> UsersDictionary { 
+            get => userInfo; 
+            set => userInfo=value; }
         public static ConcurrentDictionary<string, List<T_Memory_REGISTERED_APPS>> AllApps { get; set; }
         public static ConcurrentDictionary<string, List<Mars_Serialization.ViewModel.KeywordViewModel>> AllKeywords { get; set; }
         public static ConcurrentDictionary<string, List<GroupsViewModel>> AllGroups { get; set; }

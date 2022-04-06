@@ -48,7 +48,7 @@ namespace MARS_Web
             {
                 logger.Info(string.Format("Load_Serializations_Files | Database Names: {0} ", string.Join(", ", dbNameList)));
 
-                 var usersData = new ConcurrentDictionary<string, ConcurrentDictionary<UserViewModal, List<Mars_Serialization.ViewModel.ProjectByUser>>>();
+                var usersData = new ConcurrentDictionary<string, ConcurrentDictionary<UserViewModal, List<Mars_Serialization.ViewModel.ProjectByUser>>>();
                 var appsData = new ConcurrentDictionary<string, List<T_Memory_REGISTERED_APPS>>();
                 var keywordsData = new ConcurrentDictionary<string, List<Mars_Serialization.ViewModel.KeywordViewModel>>();
                 var groupsData = new ConcurrentDictionary<string, List<Mars_Serialization.ViewModel.GroupsViewModel>>();

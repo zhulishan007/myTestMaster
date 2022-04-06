@@ -234,8 +234,10 @@ warning 6002: The table/view 'GEN_MARS_4.MV_OBJ_WITH_PEG' does not have a primar
 warning 6002: The table/view 'GEN_MARS_4.MV_OBJECT_SNAPSHOT' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="MV_OBJECT_SNAPSHOT">
     <Key>
+      <PropertyRef Name="OT_TYPE_ID" />
       <PropertyRef Name="OBJECT_ID" />
     </Key>
+    <Property Name="OT_TYPE_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
     <Property Name="OBJECT_NAME_ID" Type="number" Precision="38" Scale="0" />
     <Property Name="OBJECT_HAPPY_NAME" Type="varchar2" MaxLength="256" />
     <Property Name="COMMENT" Type="varchar2" MaxLength="250" />
@@ -316,6 +318,14 @@ warning 6002: The table/view 'GEN_MARS_4.MV_TC_DATASUMMARY' does not have a prim
     <Property Name="QUERY_ID" Type="number" Precision="16" Scale="0" />
     <Property Name="DATABASE_CONN_ID" Type="number" Precision="16" Scale="0" />
   </EntityType>
+  <EntityType Name="REL_FOLDER_FILTER">
+    <Key>
+      <PropertyRef Name="REL_FOLDER_FILTER_ID" />
+    </Key>
+    <Property Name="REL_FOLDER_FILTER_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="FOLDER_ID" Type="number" Precision="16" Scale="0" />
+    <Property Name="FILTER_ID" Type="number" Precision="16" Scale="0" />
+  </EntityType>
   <EntityType Name="REL_OBJ_APP">
     <Key>
       <PropertyRef Name="RELATIONSHIP_ID" />
@@ -374,7 +384,7 @@ warning 6002: The table/view 'GEN_MARS_4.MV_TC_DATASUMMARY' does not have a prim
     <Property Name="TABLE_NAME" Type="varchar2" MaxLength="32" />
     <Property Name="FIELD_NAME" Type="varchar2" MaxLength="32" />
     <Property Name="VALUE" Type="number" Precision="2" Scale="0" />
-    <Property Name="DISPLAY_NAME" Type="varchar2" MaxLength="64" />
+    <Property Name="DISPLAY_NAME" Type="varchar2" MaxLength="256" />
     <Property Name="STATUS" Type="number" Precision="2" Scale="0" />
   </EntityType>
   <EntityType Name="T_AXIS_LIST">
@@ -495,7 +505,7 @@ warning 6002: The table/view 'GEN_MARS_4.MV_TC_DATASUMMARY' does not have a prim
     <Property Name="HOST_NAME" Type="varchar2" MaxLength="128" />
     <Property Name="PORT_NUMBER" Type="number" Precision="8" Scale="0" />
     <Property Name="PROTOCOL" Type="varchar2" MaxLength="16" />
-    <Property Name="SERVICE_NAME" Type="varchar2" MaxLength="64" />
+    <Property Name="SERVICE_NAME" Type="varchar2" MaxLength="128" />
     <Property Name="DB_SID" Type="varchar2" MaxLength="64" />
     <Property Name="DB_USERNAME" Type="varchar2" MaxLength="32" />
     <Property Name="DB_PASSWORD" Type="varchar2" MaxLength="32" />
@@ -522,6 +532,7 @@ warning 6002: The table/view 'GEN_MARS_4.MV_TC_DATASUMMARY' does not have a prim
     <Property Name="SERVICENAME" Type="varchar2" MaxLength="64" />
     <Property Name="DECODE_METHOD" Type="varchar2" MaxLength="64" />
     <Property Name="SCHEMA" Type="varchar2" MaxLength="64" />
+    <Property Name="DATABASE_VALUE" Type="blob" />
   </EntityType>
   <EntityType Name="T_DIC_RELATION_KEYWORD">
     <Key>
@@ -530,6 +541,15 @@ warning 6002: The table/view 'GEN_MARS_4.MV_TC_DATASUMMARY' does not have a prim
     <Property Name="RELATION_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
     <Property Name="TYPE_ID" Type="number" Precision="16" Scale="0" />
     <Property Name="KEY_WORD_ID" Type="number" Precision="16" Scale="0" />
+  </EntityType>
+  <EntityType Name="T_FOLDER_FILTER">
+    <Key>
+      <PropertyRef Name="FILTER_ID" />
+    </Key>
+    <Property Name="FILTER_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
+    <Property Name="FILTER_NAME" Type="varchar2" MaxLength="250" />
+    <Property Name="PROJECT_IDS" Type="varchar2" MaxLength="2000" />
+    <Property Name="STORYBOARD_IDS" Type="varchar2" MaxLength="2000" />
   </EntityType>
   <EntityType Name="T_GRIDLIST">
     <Key>
@@ -824,13 +844,13 @@ warning 6002: The table/view 'GEN_MARS_4.T_REGISTED_OBJECT_TEST' does not have a
     </Key>
     <Property Name="T_TEST_DATASETTAG_ID" Type="number" Precision="16" Scale="0" Nullable="false" />
     <Property Name="DATASETID" Type="number" Precision="16" Scale="0" />
-    <Property Name="GROUPID" Type="number" Precision="16" Scale="0" />
-    <Property Name="SETID" Type="number" Precision="16" Scale="0" />
-    <Property Name="FOLDERID" Type="number" Precision="16" Scale="0" />
-    <Property Name="EXPECTEDRESULTS" Type="varchar2" MaxLength="256" />
-    <Property Name="STEPDESC" Type="varchar2" MaxLength="256" />
-    <Property Name="DIARY" Type="varchar2" MaxLength="256" />
-    <Property Name="SEQUENCE" Type="number" Precision="38" Scale="0" />
+    <Property Name="GROUPID" Type="varchar2" MaxLength="64" />
+    <Property Name="SETID" Type="varchar2" MaxLength="64" />
+    <Property Name="FOLDERID" Type="varchar2" MaxLength="64" />
+    <Property Name="EXPECTEDRESULTS" Type="varchar2" MaxLength="4000" />
+    <Property Name="STEPDESC" Type="varchar2" MaxLength="4000" />
+    <Property Name="DIARY" Type="varchar2" MaxLength="4000" />
+    <Property Name="SEQUENCE" Type="number" Precision="16" Scale="0" />
   </EntityType>
   <EntityType Name="T_TEST_ENUM">
     <Key>
@@ -1506,7 +1526,7 @@ warning 6002: The table/view 'GEN_MARS_4.V_STORYBOARD_TEST_FULLVISION' does not 
     <Property Name="DEPENDS_ON" Type="number" Precision="16" Scale="0" />
     <Property Name="ALIAS_NAME" Type="varchar2" MaxLength="64" />
     <Property Name="PARENT_ALIAS_NAME" Type="varchar2" MaxLength="64" />
-    <Property Name="DISPLAY_NAME" Type="varchar2" MaxLength="64" />
+    <Property Name="DISPLAY_NAME" Type="varchar2" MaxLength="256" />
     <Property Name="TEST_RUN_VALUE" Type="number" Precision="2" Scale="0" />
     <Property Name="LATEST_TEST_MARK_ID" Type="number" Precision="16" Scale="0" />
     <Property Name="HIST_LATEST_TEST_MARK_ID" Type="number" Precision="16" Scale="0" />
@@ -1536,8 +1556,8 @@ warning 6002: The table/view 'GEN_MARS_4.V_TEST_DATA_REPORT_SUMMARY' does not ha
     </Key>
     <Property Name="KEY_WORD_NAME" Type="varchar2" MaxLength="255" />
     <Property Name="OBJECT_HAPPY_NAME" Type="varchar2" MaxLength="256" />
-    <Property Name="INPUT_VALUE_SETTING" Type="varchar2" MaxLength="128" />
-    <Property Name="RETURN_VALUES" Type="varchar2" MaxLength="64" />
+    <Property Name="INPUT_VALUE_SETTING" Type="varchar2" MaxLength="1024" />
+    <Property Name="RETURN_VALUES" Type="varchar2" MaxLength="266" />
     <Property Name="ACTUAL_INPUT_DATA" Type="varchar2" MaxLength="128" />
     <Property Name="LATEST_TEST_MARK_ID" Type="number" Precision="16" Scale="0" />
     <Property Name="STORYBOARD_DETAIL_ID" Type="number" Precision="16" Scale="0" />
@@ -1561,8 +1581,8 @@ warning 6002: The table/view 'GEN_MARS_4.V_TEST_DATARPT_CAPTURE' does not have a
     </Key>
     <Property Name="KEY_WORD_NAME" Type="varchar2" MaxLength="255" />
     <Property Name="OBJECT_HAPPY_NAME" Type="varchar2" MaxLength="256" />
-    <Property Name="INPUT_VALUE_SETTING" Type="varchar2" MaxLength="128" />
-    <Property Name="RETURN_VALUES" Type="varchar2" MaxLength="64" />
+    <Property Name="INPUT_VALUE_SETTING" Type="varchar2" MaxLength="1024" />
+    <Property Name="RETURN_VALUES" Type="varchar2" MaxLength="266" />
     <Property Name="ACTUAL_INPUT_DATA" Type="varchar2" MaxLength="128" />
     <Property Name="LATEST_TEST_MARK_ID" Type="number" Precision="16" Scale="0" />
     <Property Name="STORYBOARD_DETAIL_ID" Type="number" Precision="16" Scale="0" />
@@ -2053,31 +2073,17 @@ warning 6002: The table/view 'GEN_MARS_4.V_USER_COMPANY' does not have a primary
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="T_AXIS_LIST_FK1">
-    <End Role="T_QUERY" Type="Self.T_QUERY" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Role="T_AXIS_LIST" Type="Self.T_AXIS_LIST" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="T_QUERY">
-        <PropertyRef Name="QUERY_ID" />
-      </Principal>
-      <Dependent Role="T_AXIS_LIST">
-        <PropertyRef Name="QUERY_ID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="T_QUERY_FK1">
-    <End Role="T_DATABASE_CONNECTIONS" Type="Self.T_DATABASE_CONNECTIONS" Multiplicity="0..1">
+    <End Role="T_DBCONNECTION" Type="Self.T_DBCONNECTION" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
-    <End Role="T_QUERY" Type="Self.T_QUERY" Multiplicity="*" />
+    <End Role="T_QUERY" Type="Self.T_QUERY" Multiplicity="0..1" />
     <ReferentialConstraint>
-      <Principal Role="T_DATABASE_CONNECTIONS">
-        <PropertyRef Name="CONNECTION_ID" />
+      <Principal Role="T_DBCONNECTION">
+        <PropertyRef Name="DBCONNECTION_ID" />
       </Principal>
       <Dependent Role="T_QUERY">
-        <PropertyRef Name="CONN_ID" />
+        <PropertyRef Name="QUERY_ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -2116,12 +2122,15 @@ warning 6002: The table/view 'GEN_MARS_4.V_USER_COMPANY' does not have a primary
   </Function>
   <Function Name="CONCATENATE_DATASETDESCRIPTION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN_MARS_4" ReturnType="clob">
     <Parameter Name="TEST_CASE_ID1" Type="number" Mode="In" />
+    <Parameter Name="DATA_SET_ID" Type="number" Mode="In" />
   </Function>
   <Function Name="CONCATENATE_DATASETIDS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN_MARS_4" ReturnType="clob">
     <Parameter Name="TEST_CASE_ID1" Type="number" Mode="In" />
+    <Parameter Name="DATA_SET_ID" Type="number" Mode="In" />
   </Function>
   <Function Name="CONCATENATE_DATASETNAMES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN_MARS_4" ReturnType="clob">
     <Parameter Name="TEST_CASE_ID1" Type="number" Mode="In" />
+    <Parameter Name="DATA_SET_ID" Type="number" Mode="In" />
   </Function>
   <Function Name="CONCATENATE_KEYWORD_TYPE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN_MARS_4" ReturnType="clob">
     <Parameter Name="KEYWORDID" Type="number" Mode="In" />
@@ -2139,14 +2148,17 @@ warning 6002: The table/view 'GEN_MARS_4.V_USER_COMPANY' does not have a primary
   <Function Name="CONCATENATE_TESTSTEPDATASETID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN_MARS_4" ReturnType="clob">
     <Parameter Name="TEST_CASE_ID1" Type="number" Mode="In" />
     <Parameter Name="STEPS_ID1" Type="number" Mode="In" />
+    <Parameter Name="DATA_SET_ID" Type="number" Mode="In" />
   </Function>
   <Function Name="CONCATENATE_TESTSTEPDATAVALUE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN_MARS_4" ReturnType="clob">
     <Parameter Name="TEST_CASE_ID1" Type="number" Mode="In" />
     <Parameter Name="STEPS_ID1" Type="number" Mode="In" />
+    <Parameter Name="DATA_SET_ID" Type="number" Mode="In" />
   </Function>
   <Function Name="CONCATENATE_TESTSTEPSKIP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN_MARS_4" ReturnType="clob">
     <Parameter Name="TEST_CASE_ID1" Type="number" Mode="In" />
     <Parameter Name="STEPS_ID1" Type="number" Mode="In" />
+    <Parameter Name="DATA_SET_ID" Type="number" Mode="In" />
   </Function>
   <Function Name="CONCATENATE_TESTSTEPVALUE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN_MARS_4" ReturnType="clob">
     <Parameter Name="TEST_CASE_ID1" Type="number" Mode="In" />
@@ -2157,6 +2169,12 @@ warning 6002: The table/view 'GEN_MARS_4.V_USER_COMPANY' does not have a primary
   </Function>
   <Function Name="CONCATENATE_TS_TC" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN_MARS_4" ReturnType="clob">
     <Parameter Name="TESTCASEID" Type="number" Mode="In" />
+  </Function>
+  <Function Name="DELETEFOLDERDATASET" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN_MARS_4">
+    <Parameter Name="FEEDPROCESSDETAILID" Type="number" Mode="In" />
+  </Function>
+  <Function Name="DeleteDatsSets" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN_MARS_4">
+    <Parameter Name="DATASETID" Type="number" Mode="In" />
   </Function>
   <Function Name="DeleteResultSets" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN_MARS_4">
     <Parameter Name="HISTID" Type="number" Mode="In" />
@@ -2214,6 +2232,7 @@ warning 6002: The table/view 'GEN_MARS_4.V_USER_COMPANY' does not have a primary
   <Function Name="SP_GETTESTCASEDETAIL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN_MARS_4">
     <Parameter Name="TESTSUITEID" Type="number" Mode="In" />
     <Parameter Name="TESTCASEID" Type="number" Mode="In" />
+    <Parameter Name="DATASETID" Type="number" Mode="In" />
   </Function>
   <Function Name="SP_GETTESTCASEVALIDATIONRESULT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN_MARS_4">
     <Parameter Name="FEEDPROCESSID1" Type="number" Mode="In" />
@@ -2361,6 +2380,9 @@ warning 6002: The table/view 'GEN_MARS_4.V_USER_COMPANY' does not have a primary
     <Parameter Name="OLDCOMPARE_HISTID" Type="number" Mode="In" />
     <Parameter Name="OLDBASELINE_HISTID" Type="number" Mode="In" />
   </Function>
+  <Function Name="SP_SAVE_FOLDER_DATASET" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN_MARS_4">
+    <Parameter Name="FEEDDETAILID" Type="varchar2" Mode="In" />
+  </Function>
   <Function Name="SP_SAVE_SB_RESULTS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="GEN_MARS_4">
     <Parameter Name="FEEDDETAILID" Type="varchar2" Mode="In" />
   </Function>
@@ -2443,6 +2465,7 @@ warning 6002: The table/view 'GEN_MARS_4.V_USER_COMPANY' does not have a primary
     <EntitySet Name="REL_APP_TESTCASE" EntityType="Self.REL_APP_TESTCASE" Schema="GEN_MARS_4" store:Type="Tables" />
     <EntitySet Name="REL_APP_TESTSUITE" EntityType="Self.REL_APP_TESTSUITE" Schema="GEN_MARS_4" store:Type="Tables" />
     <EntitySet Name="REL_DB_QUERY" EntityType="Self.REL_DB_QUERY" Schema="GEN_MARS_4" store:Type="Tables" />
+    <EntitySet Name="REL_FOLDER_FILTER" EntityType="Self.REL_FOLDER_FILTER" Schema="GEN_MARS_4" store:Type="Tables" />
     <EntitySet Name="REL_OBJ_APP" EntityType="Self.REL_OBJ_APP" Schema="GEN_MARS_4" store:Type="Tables" />
     <EntitySet Name="REL_PROJECT_USER" EntityType="Self.REL_PROJECT_USER" Schema="GEN_MARS_4" store:Type="Tables" />
     <EntitySet Name="REL_TC_DATA_SUMMARY" EntityType="Self.REL_TC_DATA_SUMMARY" Schema="GEN_MARS_4" store:Type="Tables" />
@@ -2462,6 +2485,7 @@ warning 6002: The table/view 'GEN_MARS_4.V_USER_COMPANY' does not have a primary
     <EntitySet Name="T_DATABASE_CONNECTIONS" EntityType="Self.T_DATABASE_CONNECTIONS" Schema="GEN_MARS_4" store:Type="Tables" />
     <EntitySet Name="T_DBCONNECTION" EntityType="Self.T_DBCONNECTION" Schema="GEN_MARS_4" store:Type="Tables" />
     <EntitySet Name="T_DIC_RELATION_KEYWORD" EntityType="Self.T_DIC_RELATION_KEYWORD" Schema="GEN_MARS_4" store:Type="Tables" />
+    <EntitySet Name="T_FOLDER_FILTER" EntityType="Self.T_FOLDER_FILTER" Schema="GEN_MARS_4" store:Type="Tables" />
     <EntitySet Name="T_GRIDLIST" EntityType="Self.T_GRIDLIST" Schema="GEN_MARS_4" store:Type="Tables" />
     <EntitySet Name="T_GUI_COMPONENT_TYPE_DIC" EntityType="Self.T_GUI_COMPONENT_TYPE_DIC" Schema="GEN_MARS_4" store:Type="Tables" />
     <EntitySet Name="T_KEYWORD" EntityType="Self.T_KEYWORD" Schema="GEN_MARS_4" store:Type="Tables" />
@@ -2628,6 +2652,7 @@ FROM "GEN_MARS_4"."MV_OBJ_WITH_PEG" "MV_OBJ_WITH_PEG"</DefiningQuery>
     </EntitySet>
     <EntitySet Name="MV_OBJECT_SNAPSHOT" EntityType="Self.MV_OBJECT_SNAPSHOT" store:Type="Tables" store:Schema="GEN_MARS_4">
       <DefiningQuery>SELECT 
+"MV_OBJECT_SNAPSHOT"."OT_TYPE_ID" AS "OT_TYPE_ID", 
 "MV_OBJECT_SNAPSHOT"."OBJECT_NAME_ID" AS "OBJECT_NAME_ID", 
 "MV_OBJECT_SNAPSHOT"."OBJECT_HAPPY_NAME" AS "OBJECT_HAPPY_NAME", 
 "MV_OBJECT_SNAPSHOT"."COMMENT" AS "COMMENT", 
@@ -3228,12 +3253,8 @@ FROM "GEN_MARS_4"."V_USER_COMPANY" "V_USER_COMPANY"</DefiningQuery>
       <End Role="T_TEST_BATCH" EntitySet="T_TEST_BATCH" />
       <End Role="T_BAT_RESULT" EntitySet="T_BAT_RESULT" />
     </AssociationSet>
-    <AssociationSet Name="T_AXIS_LIST_FK1" Association="Self.T_AXIS_LIST_FK1">
-      <End Role="T_QUERY" EntitySet="T_QUERY" />
-      <End Role="T_AXIS_LIST" EntitySet="T_AXIS_LIST" />
-    </AssociationSet>
     <AssociationSet Name="T_QUERY_FK1" Association="Self.T_QUERY_FK1">
-      <End Role="T_DATABASE_CONNECTIONS" EntitySet="T_DATABASE_CONNECTIONS" />
+      <End Role="T_DBCONNECTION" EntitySet="T_DBCONNECTION" />
       <End Role="T_QUERY" EntitySet="T_QUERY" />
     </AssociationSet>
     <AssociationSet Name="T_TESTER_INFO_COMPANY_FK" Association="Self.T_TESTER_INFO_COMPANY_FK">

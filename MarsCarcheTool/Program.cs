@@ -12,8 +12,16 @@ namespace MarsCacheTool
 {
     class Program
     {
+        private static void PrintUsage()
+        {
+            Console.WriteLine(@"MarshCacheTool Storyboard|TestCases|Object|Keyword|Application All|OrObjectId db DbName
+DbName should be found from Mars.config");
+        }
+
         static void Main(string[] args)
         {
+            
+
             string configPath = System.Configuration.ConfigurationManager.AppSettings["ConfigFilePath"];
             string jsonPath = System.Configuration.ConfigurationManager.AppSettings["JsonFilePath"];
             MarsConfig mc = MarsConfig.Configure(configPath,string.Empty);
@@ -35,7 +43,12 @@ namespace MarsCacheTool
                 if (args.Length >= 4)
                 {
                     var connection = connections.FirstOrDefault(r => r.Schema.ToLower().Trim() == args[3].ToLower().Trim());
-                    if (connection != null&& args[2].ToLower() == "db")
+                    if (connection == null)
+                    {
+                        Console.WriteLine($"\tNo [{args[3]}] exists in configFile.Make sure the database configuration is available. ");
+                        return;
+                    }
+                    if (args[2].ToLower() == "db")
                     {
                         MarsConfig config = MarsConfig.Configure(configPath, args[3]);
                         MARS_Web.Helper.DatabaseConnectionDetails det = config.GetDatabaseConnectionDetails();
@@ -54,12 +67,18 @@ namespace MarsCacheTool
                         { 
                             var applist = SerializationFile.GetAppList(det.ConnString);
                             SerializationFile.conString = det.ConnString;
-                            SerializationFile.CreateJsonFilesNew(det.Schema, jsonPath, args[0],applist,dataid,needReflesh);
+                            if (!SerializationFile.CreateJsonFilesNew(det.Schema, jsonPath, args[0], applist, dataid, needReflesh))
+                            {
+                                PrintUsage();
+                            }
+
                         }
                     }
                     else
                     {
                         Console.WriteLine("args input error.");
+
+                        PrintUsage();
                     }
                 }
                 else if (args.Length == 2)
@@ -91,14 +110,17 @@ namespace MarsCacheTool
                     else
                     {
                         Console.WriteLine("args input error.");
+                        PrintUsage();
                     }
                 }
                 else
                 {
                     Console.WriteLine("args input error.");
+                    PrintUsage();
                 }
 
                 Console.WriteLine("Init finshed.");
+
             }
             catch (Exception ex)
             {

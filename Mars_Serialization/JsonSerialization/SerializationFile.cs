@@ -552,7 +552,7 @@ namespace Mars_Serialization.JsonSerialization
         #endregion
 
 
-        public static void ApplicationFolderNew(string folderPath, List<ApplicationViewModel> appList, string flag, long dataid=0,bool needReflesh =false)
+        public static bool ApplicationFolderNew(string folderPath, List<ApplicationViewModel> appList, string flag, long dataid=0,bool needReflesh =false)
         {
             try
             {
@@ -613,6 +613,7 @@ namespace Mars_Serialization.JsonSerialization
                                 #endregion
                             }
                         }
+                        return true;
                     }
                     else if (FolderName.Application.ToString().Equals(flag))
                     {
@@ -629,6 +630,7 @@ namespace Mars_Serialization.JsonSerialization
                             //    File.Delete(parentPagWindowPath);
                             //File.WriteAllText(parentPagWindowPath, applicationJsonData);
                         }
+                        return true;
                     }
                     else if (FolderName.Testcases.ToString().Equals(flag,StringComparison.OrdinalIgnoreCase))
                     {
@@ -701,12 +703,24 @@ namespace Mars_Serialization.JsonSerialization
                                 //}
                             }
                         }
+                        return true;
                     }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("No application find from DB");
+                    return true;
                 }
             }
             catch (Exception ex)
             {
-                throw ex;
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
+                return false;
             }
         }
 
@@ -716,7 +730,7 @@ namespace Mars_Serialization.JsonSerialization
             return Common.Common.ConvertDataTableToList<ApplicationViewModel>(appData);
 
         }
-        public static void CreateJsonFilesNew(string databaseName, string projectPath, string caseName,List<ApplicationViewModel> appList,long dataid=0,bool needReflesh=false)
+        public static bool CreateJsonFilesNew(string databaseName, string projectPath, string caseName,List<ApplicationViewModel> appList,long dataid=0,bool needReflesh=false)
         {
             string F_Serialization = Path.Combine(projectPath, FolderName.Serialization.ToString());
             string  filePath = Path.Combine(F_Serialization, caseName, databaseName.Trim());
@@ -725,7 +739,7 @@ namespace Mars_Serialization.JsonSerialization
                 Directory.CreateDirectory(filePath);
 
             //ApplicationFolderNew(filePath, appList, FolderName.Object.ToString(),dataid,needReflesh);
-            ApplicationFolderNew(filePath, appList, caseName, dataid, needReflesh);
+            return ApplicationFolderNew(filePath, appList, caseName, dataid, needReflesh);
 
         }
     }

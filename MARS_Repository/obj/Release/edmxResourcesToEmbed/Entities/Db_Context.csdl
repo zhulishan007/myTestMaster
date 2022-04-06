@@ -237,6 +237,8 @@
     <Property Name="SERVICENAME" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
     <Property Name="DECODE_METHOD" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
     <Property Name="SCHEMA" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="T_QUERY" Relationship="Model.T_QUERY_FK1" FromRole="T_DBCONNECTION" ToRole="T_QUERY" />
+    <Property Name="DATABASE_VALUE" Type="Binary" MaxLength="Max" FixedLength="false" />
   </EntityType>
   <EntityType Name="T_DIC_RELATION_KEYWORD">
     <Key>
@@ -289,7 +291,7 @@
     <Key>
       <PropertyRef Name="OBJECT_NAME_ID" />
     </Key>
-    <Property Name="OBJECT_NAME_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="OBJECT_NAME_ID" Type="Int64" Nullable="false" />
     <Property Name="OBJECT_HAPPY_NAME" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
     <Property Name="PEGWINDOW_MARK" Type="Int16" />
     <Property Name="OBJNAME_DESCRIPTION" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
@@ -901,24 +903,6 @@
     <Property Name="APPLICATION_ID" Type="Int64" />
     <Property Name="QUICK_ACCESS" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
     <Property Name="OBJECT_NAME_ID" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-  </EntityType>
-  <EntityType Name="MV_OBJECT_SNAPSHOT">
-    <Key>
-      <PropertyRef Name="OBJECT_ID" />
-    </Key>
-    <Property Name="OBJECT_NAME_ID" Type="Decimal" Precision="38" Scale="0" />
-    <Property Name="OBJECT_HAPPY_NAME" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
-    <Property Name="COMMENT" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-    <Property Name="APPLICATION_ID" Type="Int64" />
-    <Property Name="ENUM_TYPE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="OBJECT_ID" Type="Int64" Nullable="false" />
-    <Property Name="OBJECT_TYPE" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
-    <Property Name="QUICK_ACCESS" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
-    <Property Name="TYPE_ID" Type="Int64" />
-    <Property Name="TYPE_NAME" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
-    <Property Name="PEG_NAME" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
-    <Property Name="PEG_QUICK_ACCESS" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
-    <Property Name="PEG_ID" Type="Int64" />
   </EntityType>
   <EntityType Name="MV_STORYBOARD_LATEST">
     <Key>
@@ -1878,7 +1862,6 @@
     <EntitySet Name="MV_LAST_TC_INFO" EntityType="Self.MV_LAST_TC_INFO" />
     <EntitySet Name="MV_LATEST_STB_TSMOD_MARK" EntityType="Self.MV_LATEST_STB_TSMOD_MARK" />
     <EntitySet Name="MV_OBJ_WITH_PEG" EntityType="Self.MV_OBJ_WITH_PEG" />
-    <EntitySet Name="MV_OBJECT_SNAPSHOT" EntityType="Self.MV_OBJECT_SNAPSHOT" />
     <EntitySet Name="MV_STORYBOARD_LATEST" EntityType="Self.MV_STORYBOARD_LATEST" />
     <EntitySet Name="MV_TC_DATASUMMARY" EntityType="Self.MV_TC_DATASUMMARY" />
     <EntitySet Name="T_REGISTED_OBJECT_TEST" EntityType="Self.T_REGISTED_OBJECT_TEST" />
@@ -2089,6 +2072,7 @@
     <FunctionImport Name="SP_GETTESTCASEDETAIL">
       <Parameter Name="TESTSUITEID" Mode="In" Type="Decimal" />
       <Parameter Name="TESTCASEID" Mode="In" Type="Decimal" />
+      <Parameter Name="DATASETID" Mode="In" Type="Decimal" />
     </FunctionImport>
     <FunctionImport Name="SP_GET_LEFTPANELPROJECTLIST">
       <Parameter Name="USERID" Mode="In" Type="Decimal" />
@@ -2327,7 +2311,6 @@
     <EntitySet Name="T_TEST_FOLDER" EntityType="Model.T_TEST_FOLDER" />
     <EntitySet Name="T_TEST_GROUP" EntityType="Model.T_TEST_GROUP" />
     <EntitySet Name="T_TEST_SET" EntityType="Model.T_TEST_SET" />
-    <EntitySet Name="T_TEST_DATASETTAG" EntityType="Model.T_TEST_DATASETTAG" />
     <FunctionImport Name="SP_CheckValidationStoryboard">
       <Parameter Name="FEEDPROCESSID1" Mode="In" Type="Decimal" />
       <Parameter Name="RESULT" Mode="Out" Type="String" />
@@ -2345,16 +2328,25 @@
       <End Role="T_DATABASE_CONNECTIONS" EntitySet="T_DATABASE_CONNECTIONS" />
       <End Role="REL_DB_QUERY" EntitySet="REL_DB_QUERY" />
     </AssociationSet>
+    <EntitySet Name="T_AXIS_LIST" EntityType="Model.T_AXIS_LIST" />
     <EntitySet Name="T_QUERY" EntityType="Model.T_QUERY" />
     <AssociationSet Name="T_QUERY_FK1" Association="Model.T_QUERY_FK1">
-      <End Role="T_DATABASE_CONNECTIONS" EntitySet="T_DATABASE_CONNECTIONS" />
+      <End Role="T_DBCONNECTION" EntitySet="T_DBCONNECTION" />
       <End Role="T_QUERY" EntitySet="T_QUERY" />
     </AssociationSet>
-    <EntitySet Name="T_AXIS_LIST" EntityType="Model.T_AXIS_LIST" />
-    <AssociationSet Name="T_AXIS_LIST_FK1" Association="Model.T_AXIS_LIST_FK1">
-      <End Role="T_QUERY" EntitySet="T_QUERY" />
-      <End Role="T_AXIS_LIST" EntitySet="T_AXIS_LIST" />
-    </AssociationSet>
+    <FunctionImport Name="SP_SAVE_FOLDER_DATASET">
+      <Parameter Name="FEEDDETAILID" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="DeleteDatsSets">
+      <Parameter Name="DATASETID" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <EntitySet Name="T_TEST_DATASETTAG" EntityType="Model.T_TEST_DATASETTAG" />
+    <FunctionImport Name="DELETEFOLDERDATASET">
+      <Parameter Name="FEEDPROCESSDETAILID" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <EntitySet Name="T_FOLDER_FILTER" EntityType="Model.T_FOLDER_FILTER" />
+    <EntitySet Name="REL_FOLDER_FILTER" EntityType="Model.REL_FOLDER_FILTER" />
+    <EntitySet Name="MV_OBJECT_SNAPSHOT" EntityType="Model.MV_OBJECT_SNAPSHOT" />
   </EntityContainer>
   <EntityType Name="T_USER_ACTIVEPAGE">
     <Key>
@@ -2512,20 +2504,6 @@
     <Property Name="CREATION_USER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="UPDATE_CREATION_USER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
-  <EntityType Name="T_TEST_DATASETTAG">
-    <Key>
-      <PropertyRef Name="T_TEST_DATASETTAG_ID" />
-    </Key>
-    <Property Name="T_TEST_DATASETTAG_ID" Type="Int64" Nullable="false" />
-    <Property Name="DATASETID" Type="Int64" />
-    <Property Name="GROUPID" Type="Int64" />
-    <Property Name="SETID" Type="Int64" />
-    <Property Name="FOLDERID" Type="Int64" />
-    <Property Name="EXPECTEDRESULTS" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
-    <Property Name="STEPDESC" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
-    <Property Name="DIARY" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
-    <Property Name="SEQUENCE" Type="Decimal" Precision="38" Scale="0" />
-  </EntityType>
   <EntityType Name="T_USER_CONFIGURATION">
     <Key>
       <PropertyRef Name="USERCONFIGID" />
@@ -2567,7 +2545,6 @@
     <Property Name="LAST_TESTED" Type="DateTime" />
     <Property Name="ERROR_MESSAGE" Type="String" MaxLength="1028" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="REL_DB_QUERY" Relationship="Model.FK_DB_QUERY" FromRole="T_DATABASE_CONNECTIONS" ToRole="REL_DB_QUERY" />
-    <NavigationProperty Name="T_QUERY" Relationship="Model.T_QUERY_FK1" FromRole="T_DATABASE_CONNECTIONS" ToRole="T_QUERY" />
   </EntityType>
   <EntityType Name="REL_DB_QUERY">
     <Key>
@@ -2590,6 +2567,17 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <EntityType Name="T_AXIS_LIST">
+    <Key>
+      <PropertyRef Name="AXIS_LIST_ID" />
+    </Key>
+    <Property Name="AXIS_LIST_ID" Type="Int64" Nullable="false" />
+    <Property Name="QUERY_ID" Type="Int64" />
+    <Property Name="COMMAND_TYPE_ID" Type="Int16" />
+    <Property Name="X_AXIS" Type="Int16" />
+    <Property Name="Y_AXIS" Type="Int16" />
+    <Property Name="Z_AXIS" Type="Int16" />
+  </EntityType>
   <EntityType Name="T_QUERY">
     <Key>
       <PropertyRef Name="QUERY_ID" />
@@ -2603,47 +2591,71 @@
     <Property Name="MODIFIEDBY" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
     <Property Name="MODIFIED_DATE" Type="DateTime" />
     <Property Name="CONN_ID" Type="Int64" />
-    <NavigationProperty Name="T_DATABASE_CONNECTIONS" Relationship="Model.T_QUERY_FK1" FromRole="T_QUERY" ToRole="T_DATABASE_CONNECTIONS" />
-    <NavigationProperty Name="T_AXIS_LIST" Relationship="Model.T_AXIS_LIST_FK1" FromRole="T_QUERY" ToRole="T_AXIS_LIST" />
+    <NavigationProperty Name="T_DBCONNECTION" Relationship="Model.T_QUERY_FK1" FromRole="T_QUERY" ToRole="T_DBCONNECTION" />
   </EntityType>
   <Association Name="T_QUERY_FK1">
-    <End Type="Model.T_DATABASE_CONNECTIONS" Role="T_DATABASE_CONNECTIONS" Multiplicity="0..1">
+    <End Type="Model.T_DBCONNECTION" Role="T_DBCONNECTION" Multiplicity="1">
       <OnDelete Action="Cascade" />
     </End>
-    <End Type="Model.T_QUERY" Role="T_QUERY" Multiplicity="*" />
+    <End Type="Model.T_QUERY" Role="T_QUERY" Multiplicity="0..1" />
     <ReferentialConstraint>
-      <Principal Role="T_DATABASE_CONNECTIONS">
-        <PropertyRef Name="CONNECTION_ID" />
+      <Principal Role="T_DBCONNECTION">
+        <PropertyRef Name="DBCONNECTION_ID" />
       </Principal>
       <Dependent Role="T_QUERY">
-        <PropertyRef Name="CONN_ID" />
+        <PropertyRef Name="QUERY_ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityType Name="T_AXIS_LIST">
+  <EntityType Name="T_TEST_DATASETTAG">
     <Key>
-      <PropertyRef Name="AXIS_LIST_ID" />
+      <PropertyRef Name="T_TEST_DATASETTAG_ID" />
     </Key>
-    <Property Name="AXIS_LIST_ID" Type="Int64" Nullable="false" />
-    <Property Name="QUERY_ID" Type="Int64" />
-    <Property Name="COMMAND_TYPE_ID" Type="Int16" />
-    <Property Name="X_AXIS" Type="Int16" />
-    <Property Name="Y_AXIS" Type="Int16" />
-    <Property Name="Z_AXIS" Type="Int16" />
-    <NavigationProperty Name="T_QUERY" Relationship="Model.T_AXIS_LIST_FK1" FromRole="T_AXIS_LIST" ToRole="T_QUERY" />
+    <Property Name="T_TEST_DATASETTAG_ID" Type="Int64" Nullable="false" />
+    <Property Name="DATASETID" Type="Int64" />
+    <Property Name="GROUPID" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="SETID" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="FOLDERID" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="EXPECTEDRESULTS" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="STEPDESC" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="DIARY" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="SEQUENCE" Type="Int64" />
   </EntityType>
-  <Association Name="T_AXIS_LIST_FK1">
-    <End Type="Model.T_QUERY" Role="T_QUERY" Multiplicity="0..1">
-      <OnDelete Action="Cascade" />
-    </End>
-    <End Type="Model.T_AXIS_LIST" Role="T_AXIS_LIST" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="T_QUERY">
-        <PropertyRef Name="QUERY_ID" />
-      </Principal>
-      <Dependent Role="T_AXIS_LIST">
-        <PropertyRef Name="QUERY_ID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
+  <EntityType Name="T_FOLDER_FILTER">
+    <Key>
+      <PropertyRef Name="FILTER_ID" />
+    </Key>
+    <Property Name="FILTER_ID" Type="Int64" Nullable="false" />
+    <Property Name="FILTER_NAME" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="PROJECT_IDS" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="STORYBOARD_IDS" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="REL_FOLDER_FILTER">
+    <Key>
+      <PropertyRef Name="REL_FOLDER_FILTER_ID" />
+    </Key>
+    <Property Name="REL_FOLDER_FILTER_ID" Type="Int64" Nullable="false" />
+    <Property Name="FOLDER_ID" Type="Int64" />
+    <Property Name="FILTER_ID" Type="Int64" />
+  </EntityType>
+  <EntityType Name="MV_OBJECT_SNAPSHOT">
+    <Key>
+      <PropertyRef Name="OT_TYPE_ID" />
+      <PropertyRef Name="OBJECT_ID" />
+    </Key>
+    <Property Name="OT_TYPE_ID" Type="Int64" Nullable="false" />
+    <Property Name="OBJECT_NAME_ID" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="OBJECT_HAPPY_NAME" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="COMMENT" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="APPLICATION_ID" Type="Int64" />
+    <Property Name="ENUM_TYPE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="OBJECT_ID" Type="Int64" Nullable="false" />
+    <Property Name="OBJECT_TYPE" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="QUICK_ACCESS" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+    <Property Name="TYPE_ID" Type="Int64" />
+    <Property Name="TYPE_NAME" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="PEG_NAME" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="PEG_QUICK_ACCESS" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+    <Property Name="PEG_ID" Type="Int64" />
+  </EntityType>
 </Schema>
