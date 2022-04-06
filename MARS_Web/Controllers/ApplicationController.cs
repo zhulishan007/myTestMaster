@@ -41,7 +41,7 @@ namespace MARS_Web.Controllers
             string currentPath = GetLogPathLocation();
             try
             {
-                var userid = SessionManager.TESTER_ID;
+                /*var userid = SessionManager.TESTER_ID;
                 var repacc = new ConfigurationGridRepository();
                 repacc.Username = SessionManager.TESTER_LOGIN_NAME;
                 var gridlst = repacc.GetGridList((long)userid, GridNameList.ApplicationList);
@@ -55,7 +55,16 @@ namespace MARS_Web.Controllers
                 ViewBag.extrarequirementwidth = appgriddata.ExtraRequirement == null ? "20%" : appgriddata.ExtraRequirement.Trim() + '%';
                 ViewBag.modewidth = appgriddata.Mode == null ? "10%" : appgriddata.Mode.Trim() + '%';
                 ViewBag.bitswidth = appgriddata.ExplorerBits == null ? "10%" : appgriddata.ExplorerBits.Trim() + '%';
-                ViewBag.actionswidth = appgriddata.Actions == null ? "10%" : appgriddata.Actions.Trim() + '%';
+                ViewBag.actionswidth = appgriddata.Actions == null ? "10%" : appgriddata.Actions.Trim() + '%';*/
+
+                ViewBag.width =   ConfigurationManager.AppSettings["DefultLeftPanel"] + "px"  ;
+                ViewBag.namewidth =  "20%"  ;
+                ViewBag.descriptionwidth ="20%";
+                ViewBag.versionwidth =  "10%"  ;
+                ViewBag.extrarequirementwidth = "20%"; ;
+                ViewBag.modewidth =  "10%" ;
+                ViewBag.bitswidth ="10%" ;
+                ViewBag.actionswidth ="10%" ;
             }
             catch (Exception ex)
             {
@@ -281,7 +290,26 @@ namespace MARS_Web.Controllers
                 };
 
                 if (applicationviewmodel.ApplicationId == 0)
+                {
                     GlobalVariable.AllApps.FirstOrDefault(x => x.Key.Equals(SessionManager.Schema)).Value.Add(appObj);
+                    if (GlobalVariable.AppListCache != null && GlobalVariable.AppListCache.ContainsKey(SessionManager.Schema))
+                    {
+                        var RegisterTbl = new T_REGISTERED_APPS
+                        {
+                            APPLICATION_ID = appObj.APPLICATION_ID,
+                            APP_SHORT_NAME = appObj.APP_SHORT_NAME,
+                            PROCESS_IDENTIFIER = appObj.PROCESS_IDENTIFIER,
+                            VERSION = appObj.VERSION,
+                            RECORD_CREATE_PERSON = appObj.RECORD_CREATE_PERSON,
+                            EXTRAREQUIREMENT = appObj.EXTRAREQUIREMENT,
+                            RECORD_CREATE_DATE = appObj.RECORD_CREATE_DATE,
+                            ISBASELINE = appObj.ISBASELINE,
+                            IS64BIT = appObj.IS64BIT,
+                            STARTER_COMMAND = appObj.STARTER_COMMAND
+                        };
+                        GlobalVariable.AppListCache[SessionManager.Schema].Add(RegisterTbl);
+                    }
+                }
                 else
                 {
                     var app = GlobalVariable.AllApps.FirstOrDefault(x => x.Key.Equals(SessionManager.Schema)).Value;
@@ -294,6 +322,22 @@ namespace MARS_Web.Controllers
                             GlobalVariable.AllApps.FirstOrDefault(x => x.Key.Equals(SessionManager.Schema)).Value.Add(appObj);
                         }
                     }
+                    if (GlobalVariable.AppListCache != null && GlobalVariable.AppListCache.ContainsKey(SessionManager.Schema))
+                    {
+                        var singleApp = GlobalVariable.AppListCache[SessionManager.Schema].FirstOrDefault(x => x.APPLICATION_ID == applicationviewmodel.ApplicationId);
+                        if (singleApp != null)
+                        {
+                            singleApp.APP_SHORT_NAME = appObj.APP_SHORT_NAME;
+                            singleApp.PROCESS_IDENTIFIER = appObj.PROCESS_IDENTIFIER;
+                            singleApp.VERSION = appObj.VERSION;
+                            singleApp.RECORD_CREATE_PERSON = appObj.RECORD_CREATE_PERSON;
+                            singleApp.EXTRAREQUIREMENT = appObj.EXTRAREQUIREMENT;
+                            singleApp.RECORD_CREATE_DATE = appObj.RECORD_CREATE_DATE;
+                            singleApp.ISBASELINE = appObj.ISBASELINE;
+                            singleApp.IS64BIT = appObj.IS64BIT;
+                            singleApp.STARTER_COMMAND = appObj.STARTER_COMMAND;
+                        }
+                     }
                 }
                 #region Reload Application file
                 var AllApps = GlobalVariable.AllApps.FirstOrDefault(x => x.Key.Equals(SessionManager.Schema)).Value;
@@ -312,8 +356,18 @@ namespace MARS_Web.Controllers
                 };
                 AddEditApp.Start();
 
-                var _treerepository = new GetTreeRepository();
-                Session["LeftProjectList"] = _treerepository.GetProjectList(SessionManager.TESTER_ID, SessionManager.Schema, SessionManager.APP);
+                List<MARS_Repository.ViewModel.ProjectByUser> projects = new List<MARS_Repository.ViewModel.ProjectByUser>();
+                if (InitCacheHelper.GetProjectUserFromCache(SessionManager.Schema, SessionManager.TESTER_ID, projects))
+                {
+                    Session["LeftProjectList"] = projects.OrderBy(r => r.ProjectName).ToList();
+                }
+                else
+                {
+                    var _treerepository = new GetTreeRepository();
+                    Session["LeftProjectList"] = _treerepository.GetProjectList(SessionManager.TESTER_ID, SessionManager.Schema, SessionManager.APP);
+                }
+                //var _treerepository = new GetTreeRepository();
+                //Session["LeftProjectList"] = _treerepository.GetProjectList(SessionManager.TESTER_ID, SessionManager.Schema, SessionManager.APP);
 
                 resultModel.message = "Saved Application [" + applicationviewmodel.ApplicationName + "].";
                 resultModel.data = true;
@@ -374,9 +428,21 @@ namespace MARS_Web.Controllers
                     {
                         IsBackground = true
                     };
-                    DeleteApp.Start();                    
-                    
-                    Session["LeftProjectList"] = _treerepository.GetProjectList(SessionManager.TESTER_ID, SessionManager.Schema, SessionManager.APP);
+                    DeleteApp.Start();
+                    if (GlobalVariable.AppListCache != null && GlobalVariable.AppListCache.ContainsKey(SessionManager.Schema)) 
+                    {
+                        GlobalVariable.AppListCache[SessionManager.Schema].RemoveAll(r => r == null || r.APPLICATION_ID == ApplicationId);
+                    }
+                    List<MARS_Repository.ViewModel.ProjectByUser> projects = new List<MARS_Repository.ViewModel.ProjectByUser>();
+                    if (InitCacheHelper.GetProjectUserFromCache(SessionManager.Schema, SessionManager.TESTER_ID, projects))
+                    {
+                        Session["LeftProjectList"] = projects.OrderBy(r => r.ProjectName).ToList();
+                    }
+                    else
+                    {
+                         Session["LeftProjectList"] = _treerepository.GetProjectList(SessionManager.TESTER_ID, SessionManager.Schema, SessionManager.APP);
+                    }
+                    //Session["LeftProjectList"] = _treerepository.GetProjectList(SessionManager.TESTER_ID, SessionManager.Schema, SessionManager.APP);
                     resultModel.data = "success";
                     resultModel.message = "Application [" + Applicationname + "] has been deleted.";
                     resultModel.status = 1;
@@ -411,7 +477,19 @@ namespace MARS_Web.Controllers
                 var _apprepository = new ApplicationRepository();
                 _apprepository.Username = SessionManager.TESTER_LOGIN_NAME;
                 _apprepository.currentPath = currentPath;
-                var result = _apprepository.CheckDuplicateApplicationNameExist(applicationname, ApplicationId);
+                var result = false;
+                if (GlobalVariable.AppListCache != null && GlobalVariable.AppListCache.ContainsKey(SessionManager.Schema))
+                {
+                    if (ApplicationId != null)
+                        result = GlobalVariable.AppListCache[SessionManager.Schema].Any(a => a != null && a.APPLICATION_ID!= ApplicationId && a.APP_SHORT_NAME.ToLower().Trim() == applicationname.ToLower().Trim());
+                    else
+                        result = GlobalVariable.AppListCache[SessionManager.Schema].Any(a => a != null && a.APP_SHORT_NAME.ToLower().Trim() == applicationname.ToLower().Trim());
+
+                }
+                else
+                {
+                    result = _apprepository.CheckDuplicateApplicationNameExist(applicationname, ApplicationId);
+                }
                 resultModel.status = 1;
                 resultModel.message = "success";
                 resultModel.data = result;
@@ -429,5 +507,37 @@ namespace MARS_Web.Controllers
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
         #endregion
+
+        public ActionResult GetApplicationList()
+        {
+            ResultModel resultModel = new ResultModel();
+            try
+            {
+                logger.Info(string.Format("Load GetApplicationList start | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                GetTreeRepository repo = new GetTreeRepository();
+                repo.Username = SessionManager.TESTER_LOGIN_NAME;
+                
+                if (GlobalVariable.AppListCache != null && GlobalVariable.AppListCache.ContainsKey(SessionManager.Schema))
+                {
+                    resultModel.data = GlobalVariable.AppListCache[SessionManager.Schema].Distinct();
+                }
+                else
+                {
+                    resultModel.data = repo.GetAppCache();
+                }
+                resultModel.status = 1;
+                logger.Info(string.Format("Load GetApplicationList end | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in  GetApplicationList method |   UserName: {0}",  SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in   GetApplicationList method |  UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in   GetApplicationList method | UserName: {0}",  SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+                resultModel.status = 0;
+                resultModel.message = ex.Message.ToString();
+            }
+            return Json(resultModel, JsonRequestBehavior.AllowGet);
+        }
     }
 }

@@ -58,6 +58,7 @@ function AddProject() {
     $("#hdnProjectId").val("");
     $("#projectname").val("");
     $("#projectdesc").val("");
+    loadAppdata();
     $("#sDrpApplication").val("");
     $("#sDrpApplication").select2();
     var validator = $("#frmproject").validate();

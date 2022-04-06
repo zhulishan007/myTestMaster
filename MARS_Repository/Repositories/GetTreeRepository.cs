@@ -9,6 +9,7 @@ using MARS_Repository.Entities;
 using System.Data;
 using Oracle.ManagedDataAccess.Client;
 using NLog;
+using System.Data.Common;
 
 namespace MARS_Repository.Repositories
 {
@@ -1020,9 +1021,7 @@ namespace MARS_Repository.Repositories
             }
         }
 
-
-
-        public List<StoryBoardListByProject> GetStoryboardListCache(OracleCommand cmd)
+        public List<StoryBoardListByProject> GetStoryboardListCache(DbCommand cmd)
         {
             try
             {
@@ -1033,7 +1032,7 @@ namespace MARS_Repository.Repositories
                                         from  T_STORYBOARD_SUMMARY  T2
                                         join T_TEST_PROJECT t1 on  t1.PROJECT_ID =t2.ASSIGNED_PROJECT_ID  where  t2.STORYBOARD_NAME is not null";
 
-                using (OracleDataReader dr = cmd.ExecuteReader())
+                using (DbDataReader dr = cmd.ExecuteReader())
                 {
                     while (dr.Read())
                     {
@@ -1061,7 +1060,7 @@ namespace MARS_Repository.Repositories
             }
         }
 
-        public List<TestSuiteListByProject> GetTestSuiteListCache(OracleCommand cmd)
+        public List<TestSuiteListByProject> GetTestSuiteListCache(DbCommand cmd)
         {
             try
             {
@@ -1076,7 +1075,7 @@ namespace MARS_Repository.Repositories
                             join T_TEST_CASE_SUMMARY t5 on  t4.TEST_CASE_ID = t5.TEST_CASE_ID 
                             group by t1.PROJECT_ID,   t1.PROJECT_NAME,   t3.TEST_SUITE_ID,  t3.TEST_SUITE_NAME,   t3.TEST_SUITE_DESCRIPTION";                     
                         
-                using (OracleDataReader dr = cmd.ExecuteReader())
+                using (DbDataReader dr = cmd.ExecuteReader())
                 {
                     while (dr.Read())
                     {
@@ -1104,7 +1103,7 @@ namespace MARS_Repository.Repositories
             }
         }
 
-        public List<TestCaseListByProject> GetTestCaseListCache(OracleCommand cmd)
+        public List<TestCaseListByProject> GetTestCaseListCache(DbCommand cmd)
         {
             try
             {
@@ -1119,7 +1118,7 @@ namespace MARS_Repository.Repositories
                                          group by   t3.TEST_SUITE_ID,  t3.TEST_SUITE_NAME,  
                                          t5.TEST_CASE_ID, t5.TEST_CASE_NAME,t5.TEST_STEP_DESCRIPTION";
                  
-                using (OracleDataReader dr = cmd.ExecuteReader())
+                using (DbDataReader dr = cmd.ExecuteReader())
                 {
                     while (dr.Read())
                     {
@@ -1149,7 +1148,7 @@ namespace MARS_Repository.Repositories
             }
         }
 
-        public List<DataSetListByTestCase> GetDataSetListCache(OracleCommand cmd)
+        public List<DataSetListByTestCase> GetDataSetListCache(DbCommand cmd)
         {
             try
             {
@@ -1161,7 +1160,7 @@ namespace MARS_Repository.Repositories
                                         join REL_TC_DATA_SUMMARY t6 on t6.TEST_CASE_ID = t5.TEST_CASE_ID
                                         join T_TEST_DATA_SUMMARY t7 on t7.DATA_SUMMARY_ID =t6.DATA_SUMMARY_ID";
                        
-                using (OracleDataReader dr = cmd.ExecuteReader())
+                using (DbDataReader dr = cmd.ExecuteReader())
                 {
                     while (dr.Read())
                     {
@@ -1188,14 +1187,14 @@ namespace MARS_Repository.Repositories
             }
         }
 
-        public List<T_TEST_PROJECT> GetProjectListCache(OracleCommand cmd)
+        public List<T_TEST_PROJECT> GetProjectListCache(DbCommand cmd)
         {
             try
             {
                 logger.Info(string.Format("Get Project List Cache UserName: {0}", Username));
                 var lList = new List<T_TEST_PROJECT>();
                 cmd.CommandText = @"select * from T_TEST_PROJECT";
-                using (OracleDataReader dr = cmd.ExecuteReader())
+                using (DbDataReader dr = cmd.ExecuteReader())
                 {
                     while (dr.Read())
                     {
@@ -1224,7 +1223,7 @@ namespace MARS_Repository.Repositories
             }
         }
 
-        public List<SYSTEM_LOOKUP> GetActionsCache(OracleCommand cmd)
+        public List<SYSTEM_LOOKUP> GetActionsCache(DbCommand cmd)
         {
             try
             {
@@ -1232,7 +1231,7 @@ namespace MARS_Repository.Repositories
 
                 var lList = new List<SYSTEM_LOOKUP>();
                 cmd.CommandText = @"select * from SYSTEM_LOOKUP where FIELD_NAME='RUN_TYPE' and TABLE_NAME='T_PROJ_TC_MGR' and DISPLAY_NAME <>'FAILUE' ";
-                using (OracleDataReader dr = cmd.ExecuteReader())
+                using (DbDataReader dr = cmd.ExecuteReader())
                 {
                     while (dr.Read())
                     {
@@ -1261,14 +1260,14 @@ namespace MARS_Repository.Repositories
             }
         }
 
-        public List<T_TEST_FOLDER> GetFolderCache(OracleCommand cmd)
+        public List<T_TEST_FOLDER> GetFolderCache(DbCommand cmd)
         {
             try
             {
                 logger.Info(string.Format("Get FOLDER start | UserName: {0}", Username));
                 var lList = new List<T_TEST_FOLDER>();
                 cmd.CommandText = @"select * from T_TEST_FOLDER where FOLDERNAME is not null ";
-                using (OracleDataReader dr = cmd.ExecuteReader())
+                using (DbDataReader dr = cmd.ExecuteReader())
                 {
                     while (dr.Read())
                     {
@@ -1298,14 +1297,14 @@ namespace MARS_Repository.Repositories
                 throw;
             }
         }
-        public List<T_FOLDER_FILTER> GetFilterCache(OracleCommand cmd)
+        public List<T_FOLDER_FILTER> GetFilterCache(DbCommand cmd)
         {
             try
             {
                 logger.Info(string.Format("GetFilterList start | UserName: {0}", Username));
                 var list = new List<T_FOLDER_FILTER>();
                 cmd.CommandText = @"select distinct * from T_FOLDER_FILTER ";
-                using (OracleDataReader dr = cmd.ExecuteReader())
+                using (DbDataReader dr = cmd.ExecuteReader())
                 {
                     while (dr.Read())
                     {
@@ -1330,14 +1329,14 @@ namespace MARS_Repository.Repositories
             }
         }
 
-        public List<REL_FOLDER_FILTER> GetRelFolderFilterCache(OracleCommand cmd)
+        public List<REL_FOLDER_FILTER> GetRelFolderFilterCache(DbCommand cmd)
         {
             try
             {
                 logger.Info(string.Format("GetRelFolderFilterCache start  UserName: {0}", Username));
                 var list = new List<REL_FOLDER_FILTER>();
                 cmd.CommandText = @"select  * from REL_FOLDER_FILTER ";
-                using (OracleDataReader dr = cmd.ExecuteReader())
+                using (DbDataReader dr = cmd.ExecuteReader())
                 {
                     while (dr.Read())
                     {
@@ -1362,7 +1361,7 @@ namespace MARS_Repository.Repositories
             }
         }
 
-        public List<T_REGISTERED_APPS> GetAppCache(OracleCommand cmd)
+        public List<T_REGISTERED_APPS> GetAppCache(DbCommand cmd)
         {
             try
             {
@@ -1370,7 +1369,7 @@ namespace MARS_Repository.Repositories
 
                 var list = new List<T_REGISTERED_APPS>();
                 cmd.CommandText = @"select  * from T_REGISTERED_APPS ";
-                using (OracleDataReader dr = cmd.ExecuteReader())
+                using (DbDataReader dr = cmd.ExecuteReader())
                 {
                     while (dr.Read())
                     {
@@ -1407,7 +1406,7 @@ namespace MARS_Repository.Repositories
             }
         }
 
-        public List<T_TEST_SET> GetSetCache(OracleCommand cmd)
+        public List<T_TEST_SET> GetSetCache(DbCommand cmd)
         {
             try
             {
@@ -1415,7 +1414,7 @@ namespace MARS_Repository.Repositories
 
                 var list = new List<T_TEST_SET>();
                 cmd.CommandText = @"select  * from T_TEST_SET ";
-                using (OracleDataReader dr = cmd.ExecuteReader())
+                using (DbDataReader dr = cmd.ExecuteReader())
                 {
                     while (dr.Read())
                     {
@@ -1447,14 +1446,14 @@ namespace MARS_Repository.Repositories
             }
         }
 
-        public List<T_TEST_GROUP> GetGroupCache(OracleCommand cmd)
+        public List<T_TEST_GROUP> GetGroupCache(DbCommand cmd)
         {
             try
             {
                 logger.Info(string.Format("GetGroupCache start  UserName: {0}", Username));
                 var list = new List<T_TEST_GROUP>();
                 cmd.CommandText = @"select  * from T_TEST_GROUP ";
-                using (OracleDataReader dr = cmd.ExecuteReader())
+                using (DbDataReader dr = cmd.ExecuteReader())
                 {
                     while (dr.Read())
                     {
@@ -1486,14 +1485,14 @@ namespace MARS_Repository.Repositories
             }
         }
 
-        public List<T_TEST_DATASETTAG> GetDataSetTagCache(OracleCommand cmd)
+        public List<T_TEST_DATASETTAG> GetDataSetTagCache(DbCommand cmd)
         {
             try
             {
                 logger.Info(string.Format("GetDataSetTagCache start  UserName: {0}", Username));
                 var list = new List<T_TEST_DATASETTAG>();
                 cmd.CommandText = @"select  * from T_TEST_DATASETTAG ";
-                using (OracleDataReader dr = cmd.ExecuteReader())
+                using (DbDataReader dr = cmd.ExecuteReader())
                 {
                     while (dr.Read())
                     {

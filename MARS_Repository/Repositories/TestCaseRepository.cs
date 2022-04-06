@@ -16,6 +16,7 @@ using System.Transactions;
 using MoreLinq;
 using Mars_Serialization.ViewModel;
 using Mars_Serialization.Common;
+using System.Data.Common;
 
 namespace MARS_Repository.Repositories
 {
@@ -1856,18 +1857,19 @@ namespace MARS_Repository.Repositories
         }
 
 
-        public string SaveAsTestcaseNew(string testcasename, long oldtestcaseid, string testcasedesc, long testsuiteid, long projectid, string schema, string constring, string LoginName)
+        public long SaveAsTestcaseNew(string testcasename, long oldtestcaseid, string testcasedesc, long testsuiteid, long projectid, string schema, string constring, string LoginName,Action<DbCommand, string, GetTreeRepository> action =null)
         {
             logger.Info(string.Format("SaveAs TestcaseNew start | Oldtestcaseid: {0} | Testcasename: {1} | UserName: {2}", oldtestcaseid, testcasename, Username));
             try
             {
+                long newTestCaseId = 0;
                 using (OracleConnection pconnection = GetOracleConnection(constring))
                 {
                     pconnection.Open();
                     OracleCommand pcmd = pconnection.CreateCommand();
                     OracleTransaction ptransaction = pconnection.BeginTransaction();
                     pcmd.Transaction = ptransaction;
-                    var newTestCaseId =  Helper.GetIdFromSeq(pcmd,"T_TEST_CASE_SUMMARY_SEQ");
+                    newTestCaseId =  Helper.GetIdFromSeq(pcmd,"T_TEST_CASE_SUMMARY_SEQ");
                     pcmd.CommandText = $@" insert into T_TEST_CASE_SUMMARY (TEST_CASE_ID,TEST_CASE_NAME,TEST_STEP_DESCRIPTION,TEST_STEP_CREATOR,TEST_STEP_CREATE_TIME) 
                                            values (:1,:2,:3,:4,sysdate) "; 
                     pcmd.Parameters.Add(new OracleParameter(":1",newTestCaseId));
@@ -1916,10 +1918,14 @@ namespace MARS_Repository.Repositories
                     pcmd.ExecuteNonQuery();
 
                     ptransaction.Commit();
+                    if (action != null)
+                    {
+                        action.Invoke(pcmd, schema, new GetTreeRepository());
+                    }
                  }
 
                 logger.Info(string.Format("SaveAs TestcaseNew end | Oldtestcaseid: {0} | Testcasename: {1} | UserName: {2}", oldtestcaseid, testcasename, Username));
-                return "success";
+                return newTestCaseId;
                 
             }
             catch (Exception ex)
@@ -2105,6 +2111,135 @@ namespace MARS_Repository.Repositories
                     scope.Complete();
                     return RESULT.Value.ToString();
                 }
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured TestCase in SaveAsTestCaseOneCopiedDataSet method | ProjectId: {0} | TestSuite Id : {1} | TestCase Id : {2} | Testcase Name : {3} | Testcase Desc : {4} | Conn string : {5} | Schema : {6} | Dataset Name : {7} | Suffix : {8} | UserName: {9}", projectid, testsuiteid, oldtestcaseid, testcasename, testcasedesc, constring, schema, datasetName, suffix, Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase in SaveAsTestCaseOneCopiedDataSet method | ProjectId: {0} | TestSuite Id : {1} | TestCase Id : {2} | Testcase Name : {3} | Testcase Desc : {4} | Conn string : {5} | Schema : {6} | Dataset Name : {7} | Suffix : {8} | UserName: {9}", projectid, testsuiteid, oldtestcaseid, testcasename, testcasedesc, constring, schema, datasetName, suffix, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in SaveAsTestCaseOneCopiedDataSet method | ProjectId: {0} | TestSuite Id : {1} | TestCase Id : {2} | Testcase Name : {3} | Testcase Desc : {4} | Conn string : {5} | Schema : {6} | Dataset Name : {7} | Suffix : {8} | UserName: {9}", projectid, testsuiteid, oldtestcaseid, testcasename, testcasedesc, constring, schema, datasetName, suffix, Username), ex.InnerException);
+                throw;
+            }
+        }
+
+        public long SaveAsTestCaseOneCopiedDataSetNew(string testcasename, long oldtestcaseid, string testcasedesc, string datasetName, long testsuiteid, long projectid, string suffix, string schema, string constring, string LoginName, Action<DbCommand, string, GetTreeRepository> action = null)
+        {
+            logger.Info(string.Format("SaveAs TestCas eOne Copied DataSet start | Oldtestcaseid: {0} | Testcasename: {1} | DatasetName: {2} | UserName: {3}", oldtestcaseid, testcasename, datasetName, Username));
+            long newTestCaseId = 0;
+            try
+            {
+                using (OracleConnection pconnection = GetOracleConnection(constring))
+                {
+                    pconnection.Open();
+                    OracleCommand pcmd = pconnection.CreateCommand();
+                    OracleTransaction ptransaction = pconnection.BeginTransaction();
+                    pcmd.Transaction = ptransaction;
+                    pcmd.CommandText = $@"select count(*) as num  from T_TEST_CASE_SUMMARY where lower(TEST_CASE_NAME) = :1";
+                    pcmd.Parameters.Add(new OracleParameter(":1", testcasename.Trim().ToLower()));
+                    using (DbDataReader dr = pcmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            var num = Helper.GetDBValue<decimal>(dr["num"], 0);
+                            if (num > 0)
+                                return -1;//"This Testcase already exist";
+                        }
+                    }
+
+                    pcmd.Parameters.Clear();
+                    pcmd.CommandText = $@"select count(*) as num  from T_TEST_DATA_SUMMARY where ALIAS_NAME = :1";
+                    pcmd.Parameters.Add(new OracleParameter(":1", $"{datasetName}{suffix}"));
+                    using (DbDataReader dr = pcmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            var num = Helper.GetDBValue<decimal>(dr["num"], 0);
+                            if (num > 0)
+                                return -2;//"This dataset already exist";
+                        }
+                    }
+
+                    pcmd.Parameters.Clear();
+                    newTestCaseId = Helper.GetIdFromSeq(pcmd, "T_TEST_CASE_SUMMARY_SEQ");
+                    pcmd.CommandText = $@" insert into T_TEST_CASE_SUMMARY (TEST_CASE_ID,TEST_CASE_NAME,TEST_STEP_DESCRIPTION,TEST_STEP_CREATOR,TEST_STEP_CREATE_TIME) 
+                                           values (:1,:2,:3,:4,sysdate) ";
+                    pcmd.Parameters.Add(new OracleParameter(":1", newTestCaseId));
+                    pcmd.Parameters.Add(new OracleParameter(":2", testcasename));
+                    pcmd.Parameters.Add(new OracleParameter(":3", testcasedesc));
+                    pcmd.Parameters.Add(new OracleParameter(":4", LoginName));
+                    pcmd.ExecuteNonQuery();
+
+                    pcmd.Parameters.Clear();
+                    pcmd.CommandText = $@" insert into REL_TEST_CASE_TEST_SUITE (RELATIONSHIP_ID,TEST_CASE_ID,TEST_SUITE_ID) 
+                                           values (REL_TEST_CASE_TEST_SUITE_SEQ.nextval,:1,:2) ";
+                    pcmd.Parameters.Add(new OracleParameter(":1", newTestCaseId));
+                    pcmd.Parameters.Add(new OracleParameter(":2", testsuiteid));
+                    pcmd.ExecuteNonQuery();
+
+                    pcmd.Parameters.Clear();
+                    var dataSummaryId = Helper.GetIdFromSeq(pcmd, "T_TEST_STEPS_SEQ");
+                    pcmd.CommandText = $@" insert into T_TEST_DATA_SUMMARY (DATA_SUMMARY_ID,ALIAS_NAME,SHARE_MARK,STATUS,CREATE_TIME) 
+                                           values (:1,:2,1,0,sysdate) ";
+                    pcmd.Parameters.Add(new OracleParameter(":1", dataSummaryId));
+                    pcmd.Parameters.Add(new OracleParameter(":2", $"{datasetName}{suffix}"));
+                    pcmd.ExecuteNonQuery();
+
+                    pcmd.Parameters.Clear();
+                    pcmd.CommandText = $@" insert into REL_TC_DATA_SUMMARY (ID,TEST_CASE_ID,DATA_SUMMARY_ID) 
+                                           values (T_TEST_STEPS_SEQ.nextval,:1,:2) ";
+                    pcmd.Parameters.Add(new OracleParameter(":1", newTestCaseId));
+                    pcmd.Parameters.Add(new OracleParameter(":2", dataSummaryId));
+                    pcmd.ExecuteNonQuery();
+
+                    pcmd.Parameters.Clear();
+                    pcmd.CommandText = $@" insert into T_TEST_STEPS (STEPS_ID,RUN_ORDER,TEST_CASE_ID,COLUMN_ROW_SETTING,""COMMENT"",IS_RUNNABLE,KEY_WORD_ID,
+                                        OBJECT_ID,OBJECT_NAME_ID,VALUE_SETTING) select T_TEST_STEPS_SEQ.nextval,RUN_ORDER,:1,COLUMN_ROW_SETTING,""COMMENT"",IS_RUNNABLE,
+                                        KEY_WORD_ID,OBJECT_ID,OBJECT_NAME_ID,VALUE_SETTING from T_TEST_STEPS where TEST_CASE_ID =:2 ";
+                    pcmd.Parameters.Add(new OracleParameter(":1", newTestCaseId));
+                    pcmd.Parameters.Add(new OracleParameter(":2", oldtestcaseid));
+                    pcmd.ExecuteNonQuery();
+
+                    pcmd.Parameters.Clear();
+                    pcmd.CommandText = $@" insert into REL_APP_TESTCASE (APPLICATION_ID,TEST_CASE_ID,RELATIONSHIP_ID)
+                                select  t.APPLICATION_ID , :1, REL_APP_TESTCASE_SEQ.nextval from REL_APP_TESTCASE t
+                                     where t.TEST_CASE_ID =:2 ";
+                    pcmd.Parameters.Add(new OracleParameter(":1", newTestCaseId));
+                    pcmd.Parameters.Add(new OracleParameter(":2", oldtestcaseid));
+                    pcmd.ExecuteNonQuery();
+
+                    pcmd.Parameters.Clear();
+                    pcmd.CommandText = $@" insert into TEST_DATA_SETTING (DATA_SETTING_ID,STEPS_ID,DATA_SUMMARY_ID,LOOP_ID,DATA_VALUE,POOL_ID,VALUE_OR_OBJECT,
+                                            VERSION,DATA_DIRECTION,CREATE_TIME )
+                                        select  T_TEST_STEPS_SEQ.nextval,newsetting.STEPS_ID,newsetting.DATA_SUMMARY_ID,setting.LOOP_ID,setting.DATA_VALUE,
+                                        setting.POOL_ID,setting.VALUE_OR_OBJECT,setting.VERSION,setting.DATA_DIRECTION,sysdate
+                                        from TEST_DATA_SETTING setting
+                                        join T_TEST_STEPS step on setting.STEPS_ID = step.STEPS_ID
+                                        join REL_TC_DATA_SUMMARY dataset on step.TEST_CASE_ID= dataset.TEST_CASE_ID and 
+                                            setting.DATA_SUMMARY_ID = dataset.DATA_SUMMARY_ID
+                                        join T_TEST_DATA_SUMMARY ds on dataset.DATA_SUMMARY_ID = ds.DATA_SUMMARY_ID
+                                        join (select nds.ALIAS_NAME,nstep.RUN_ORDER,nstep.STEPS_ID,ndataset.DATA_SUMMARY_ID from T_TEST_STEPS nstep 
+                                        join REL_TC_DATA_SUMMARY ndataset on nstep.TEST_CASE_ID= ndataset.TEST_CASE_ID 
+                                         join T_TEST_DATA_SUMMARY nds on ndataset.DATA_SUMMARY_ID = nds.DATA_SUMMARY_ID where nstep.TEST_CASE_ID = :1) newsetting 
+                                          on CONCAT(ds.ALIAS_NAME,:3) = newsetting.ALIAS_NAME and step.RUN_ORDER = newsetting.RUN_ORDER
+                                        where step.TEST_CASE_ID = :2 ";
+                    pcmd.Parameters.Add(new OracleParameter(":1", newTestCaseId));
+                    pcmd.Parameters.Add(new OracleParameter(":2", oldtestcaseid));
+                    pcmd.Parameters.Add(new OracleParameter(":3", suffix));
+                    pcmd.ExecuteNonQuery();
+
+                    pcmd.Parameters.Clear();
+                    pcmd.CommandText = $@" ALTER MATERIALIZED VIEW MV_LAST_TC_INFO COMPILE ";
+                    pcmd.ExecuteNonQuery();
+                    ptransaction.Commit();
+                    if (action != null)
+                    {
+                        action.Invoke(pcmd, schema, new GetTreeRepository());
+                    }
+                }
+
+                logger.Info(string.Format("SaveAs TestcaseNew end | Oldtestcaseid: {0} | Testcasename: {1} | UserName: {2}", oldtestcaseid, testcasename, Username));
+                return newTestCaseId;
+
             }
             catch (Exception ex)
             {
@@ -2313,6 +2448,145 @@ namespace MARS_Repository.Repositories
                     scope.Complete();
                     return RESULT.Value.ToString();
                 }
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured TestCase in SaveAsTestCaseAllCopiedDataSet method | ProjectId: {0} | TestSuite Id : {1} | TestCase Id : {2} | Testcase Name : {3} | Testcase Desc : {4} | Conn string : {5} | Schema : {6} | Suffix : {7} | UserName: {8}", projectid, testsuiteid, oldtestcaseid, testcasename, testcasedesc, constring, schema, suffix, Username));
+                ELogger.ErrorException(string.Format("Error occured TestCase in SaveAsTestCaseAllCopiedDataSet method | ProjectId: {0} | TestSuite Id : {1} | TestCase Id : {2} | Testcase Name : {3} | Testcase Desc : {4} | Conn string : {5} | Schema : {6} | Suffix : {7} | UserName: {8}", projectid, testsuiteid, oldtestcaseid, testcasename, testcasedesc, constring, schema, suffix, Username), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured TestCase in SaveAsTestCaseAllCopiedDataSet method | ProjectId: {0} | TestSuite Id : {1} | TestCase Id : {2} | Testcase Name : {3} | Testcase Desc : {4} | Conn string : {5} | Schema : {6} | Suffix : {7} | UserName: {8}", projectid, testsuiteid, oldtestcaseid, testcasename, testcasedesc, constring, schema, suffix, Username), ex.InnerException);
+                throw;
+            }
+        }
+
+        public long SaveAsTestCaseAllCopiedDataSetNew(string testcasename, long oldtestcaseid, string testcasedesc, long testsuiteid, long projectid, string suffix, string schema, string constring, string LoginName, Action<DbCommand, string, GetTreeRepository> action = null)
+        {
+            logger.Info(string.Format("SaveAs TestCase All Copied DataSet start | Oldtestcaseid: {0} | Testcasename: {1} | UserName: {2}", oldtestcaseid, testcasename, Username));
+            long newTestCaseId = 0;
+            try
+            {
+                using (OracleConnection pconnection = GetOracleConnection(constring))
+                {
+                    pconnection.Open();
+                    OracleCommand pcmd = pconnection.CreateCommand();
+                    OracleTransaction ptransaction = pconnection.BeginTransaction();
+                    pcmd.Transaction = ptransaction;
+                    pcmd.CommandText = $@"select count(*) as num  from T_TEST_CASE_SUMMARY where lower(TEST_CASE_NAME) = :1";
+                    pcmd.Parameters.Add(new OracleParameter(":1", testcasename.Trim().ToLower()));
+                    using (DbDataReader dr = pcmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            var num = Helper.GetDBValue<decimal>(dr["num"], 0);
+                            if (num > 0)
+                                return -1;//"This Testcase already exist";
+                        }
+                    }
+
+                    pcmd.Parameters.Clear();
+                    pcmd.CommandText = $@"select count(*) as num  from T_TEST_DATA_SUMMARY msDS
+                join ( select CONCAT(dataset.ALIAS_NAME,:1) as DataSetName from T_TEST_DATA_SUMMARY dataset
+                    join REL_TC_DATA_SUMMARY reltcds on dataset.DATA_SUMMARY_ID = reltcds.DATA_SUMMARY_ID
+                    where reltcds.TEST_CASE_ID = :2) dupDS on msDS.ALIAS_NAME = dupDS.DataSetName ";
+                    pcmd.Parameters.Add(new OracleParameter(":1", suffix));
+                    pcmd.Parameters.Add(new OracleParameter(":2", oldtestcaseid));
+                    using (DbDataReader dr = pcmd.ExecuteReader())
+                    {
+                        while (dr.Read())
+                        {
+                            var num = Helper.GetDBValue<decimal>(dr["num"], 0);
+                            if (num > 0)
+                                return -2;//"This dataset already exist";
+                        }
+                    }
+
+                    pcmd.Parameters.Clear();
+                    newTestCaseId = Helper.GetIdFromSeq(pcmd, "T_TEST_CASE_SUMMARY_SEQ");
+                    pcmd.CommandText = $@" insert into T_TEST_CASE_SUMMARY (TEST_CASE_ID,TEST_CASE_NAME,TEST_STEP_DESCRIPTION,TEST_STEP_CREATOR,TEST_STEP_CREATE_TIME) 
+                                           values (:1,:2,:3,:4,sysdate) ";
+                    pcmd.Parameters.Add(new OracleParameter(":1", newTestCaseId));
+                    pcmd.Parameters.Add(new OracleParameter(":2", testcasename));
+                    pcmd.Parameters.Add(new OracleParameter(":3", testcasedesc));
+                    pcmd.Parameters.Add(new OracleParameter(":4", LoginName));
+                    pcmd.ExecuteNonQuery();
+
+                    pcmd.Parameters.Clear();
+                    pcmd.CommandText = $@" insert into REL_TEST_CASE_TEST_SUITE (RELATIONSHIP_ID,TEST_CASE_ID,TEST_SUITE_ID) 
+                                           values (REL_TEST_CASE_TEST_SUITE_SEQ.nextval,:1,:2) ";
+                    pcmd.Parameters.Add(new OracleParameter(":1", newTestCaseId));
+                    pcmd.Parameters.Add(new OracleParameter(":2", testsuiteid));
+                    pcmd.ExecuteNonQuery();
+
+                    pcmd.Parameters.Clear();
+                     pcmd.CommandText = $@" insert into T_TEST_DATA_SUMMARY(DATA_SUMMARY_ID,ALIAS_NAME,SHARE_MARK,STATUS,CREATE_TIME)
+                                 select T_TEST_STEPS_SEQ.nextval,CONCAT(dataset.ALIAS_NAME,:1),1,0,sysdate 
+                                        from T_TEST_DATA_SUMMARY dataset
+                                        join REL_TC_DATA_SUMMARY reltcds on dataset.DATA_SUMMARY_ID = reltcds.DATA_SUMMARY_ID
+                                     where reltcds.TEST_CASE_ID = :2 ";
+                    pcmd.Parameters.Add(new OracleParameter(":1", suffix));
+                    pcmd.Parameters.Add(new OracleParameter(":2", oldtestcaseid));
+                    pcmd.ExecuteNonQuery();
+
+                    pcmd.Parameters.Clear();
+                    pcmd.CommandText = $@"  insert into REL_TC_DATA_SUMMARY(ID,DATA_SUMMARY_ID,TEST_CASE_ID,CREATE_TIME)
+                                select T_TEST_STEPS_SEQ.nextval,msDS.DATA_SUMMARY_ID,:1,sysdate from T_TEST_DATA_SUMMARY msDS
+                                join ( select CONCAT(dataset.ALIAS_NAME,:2) as DataSetName from T_TEST_DATA_SUMMARY dataset
+                                join REL_TC_DATA_SUMMARY reltcds on dataset.DATA_SUMMARY_ID = reltcds.DATA_SUMMARY_ID
+                                where reltcds.TEST_CASE_ID = :3) dupDS on msDS.ALIAS_NAME = dupDS.DataSetName";
+                    pcmd.Parameters.Add(new OracleParameter(":1", newTestCaseId));
+                    pcmd.Parameters.Add(new OracleParameter(":2", suffix));
+                    pcmd.Parameters.Add(new OracleParameter(":3", oldtestcaseid));
+                    pcmd.ExecuteNonQuery();
+
+                    pcmd.Parameters.Clear();
+                    pcmd.CommandText = $@" insert into T_TEST_STEPS (STEPS_ID,RUN_ORDER,TEST_CASE_ID,COLUMN_ROW_SETTING,""COMMENT"",IS_RUNNABLE,KEY_WORD_ID,
+                                        OBJECT_ID,OBJECT_NAME_ID,VALUE_SETTING) select T_TEST_STEPS_SEQ.nextval,RUN_ORDER,:1,COLUMN_ROW_SETTING,""COMMENT"",IS_RUNNABLE,
+                                        KEY_WORD_ID,OBJECT_ID,OBJECT_NAME_ID,VALUE_SETTING from T_TEST_STEPS where TEST_CASE_ID =:2 ";
+                    pcmd.Parameters.Add(new OracleParameter(":1", newTestCaseId));
+                    pcmd.Parameters.Add(new OracleParameter(":2", oldtestcaseid));
+                    pcmd.ExecuteNonQuery();
+
+                    pcmd.Parameters.Clear();
+                    pcmd.CommandText = $@" insert into REL_APP_TESTCASE (APPLICATION_ID,TEST_CASE_ID,RELATIONSHIP_ID)
+                                select  t.APPLICATION_ID , :1, REL_APP_TESTCASE_SEQ.nextval from REL_APP_TESTCASE t
+                                     where t.TEST_CASE_ID =:2 ";
+                    pcmd.Parameters.Add(new OracleParameter(":1", newTestCaseId));
+                    pcmd.Parameters.Add(new OracleParameter(":2", oldtestcaseid));
+                    pcmd.ExecuteNonQuery();
+
+                    pcmd.Parameters.Clear();
+                    pcmd.CommandText = $@" insert into TEST_DATA_SETTING (DATA_SETTING_ID,STEPS_ID,DATA_SUMMARY_ID,LOOP_ID,DATA_VALUE,POOL_ID,VALUE_OR_OBJECT,
+                                            VERSION,DATA_DIRECTION,CREATE_TIME )
+                                        select  T_TEST_STEPS_SEQ.nextval,newsetting.STEPS_ID,newsetting.DATA_SUMMARY_ID,setting.LOOP_ID,setting.DATA_VALUE,
+                                        setting.POOL_ID,setting.VALUE_OR_OBJECT,setting.VERSION,setting.DATA_DIRECTION,sysdate
+                                        from TEST_DATA_SETTING setting
+                                        join T_TEST_STEPS step on setting.STEPS_ID = step.STEPS_ID
+                                        join REL_TC_DATA_SUMMARY dataset on step.TEST_CASE_ID= dataset.TEST_CASE_ID and 
+                                            setting.DATA_SUMMARY_ID = dataset.DATA_SUMMARY_ID
+                                        join T_TEST_DATA_SUMMARY ds on dataset.DATA_SUMMARY_ID = ds.DATA_SUMMARY_ID
+                                        join (select nds.ALIAS_NAME,nstep.RUN_ORDER,nstep.STEPS_ID,ndataset.DATA_SUMMARY_ID from T_TEST_STEPS nstep 
+                                        join REL_TC_DATA_SUMMARY ndataset on nstep.TEST_CASE_ID= ndataset.TEST_CASE_ID 
+                                         join T_TEST_DATA_SUMMARY nds on ndataset.DATA_SUMMARY_ID = nds.DATA_SUMMARY_ID where nstep.TEST_CASE_ID = :1) newsetting 
+                                          on CONCAT(ds.ALIAS_NAME,:3) = newsetting.ALIAS_NAME and step.RUN_ORDER = newsetting.RUN_ORDER
+                                        where step.TEST_CASE_ID = :2 ";
+                    pcmd.Parameters.Add(new OracleParameter(":1", newTestCaseId));
+                    pcmd.Parameters.Add(new OracleParameter(":2", oldtestcaseid));
+                    pcmd.Parameters.Add(new OracleParameter(":3", suffix));
+                    pcmd.ExecuteNonQuery();
+
+                    pcmd.Parameters.Clear();
+                    pcmd.CommandText = $@" ALTER MATERIALIZED VIEW MV_LAST_TC_INFO COMPILE ";
+                    pcmd.ExecuteNonQuery();
+                    ptransaction.Commit();
+                    if (action != null)
+                    {
+                        action.Invoke(pcmd, schema, new GetTreeRepository());
+                    }
+                }
+
+                logger.Info(string.Format("SaveAs TestCase All Copied DataSet end | Oldtestcaseid: {0} | Testcasename: {1} | UserName: {2}", oldtestcaseid, testcasename, Username));
+                return newTestCaseId;
+
             }
             catch (Exception ex)
             {

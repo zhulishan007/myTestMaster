@@ -257,32 +257,25 @@ namespace MARS_Repository
             return gMarsEntites;
         }
 
-        public static long GetDBLong(object value)
-        {
-            long result = 0;
-            if (!Convert.IsDBNull(value))
-                long.TryParse(value.ToString(), out result);
-            return result;
-        }
+        //public static long GetDBLong(object value)
+        //{
+        //    long result = 0;
+        //    if (!Convert.IsDBNull(value))
+        //        long.TryParse(value.ToString(), out result);
+        //    return result;
+        //}
 
-        public static string GetDBString(object value)
-        {
-            string result = "";
-            if (!Convert.IsDBNull(value))
-                result = value.ToString();
-            return result;
-        }
-
-        public static int GetDBInt(object value)
-        {
-            int result = 0;
-            if (!Convert.IsDBNull(value))
-                int.TryParse(value.ToString(), out result);
-            return result;
-        }
+        //public static string GetDBString(object value)
+        //{
+        //    string result = "";
+        //    if (!Convert.IsDBNull(value))
+        //        result = value.ToString();
+        //    return result;
+        //}
+ 
         public static T GetDBValue<T>(object value,T defaultValue)
         {
-            if (!Convert.IsDBNull(value))
+            if (System.DBNull.Value!=value)
                 return (T)value;
             return defaultValue;
         }
@@ -295,7 +288,7 @@ namespace MARS_Repository
             {
                 while (dr.Read())
                 {
-                    longid =Helper.GetDBLong(dr["longId"]);
+                    longid =Convert.ToInt64(Helper.GetDBValue<decimal>(dr["longId"],0));
                     break;
                 }
             }

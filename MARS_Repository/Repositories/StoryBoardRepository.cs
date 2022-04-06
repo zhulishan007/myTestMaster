@@ -2490,11 +2490,11 @@ namespace MARS_Repository.Repositories
                         while (dr.Read())
                         {
                             storyBoard = new StoryBoardListByProject();
-                            storyBoard.ProjectId = Helper.GetDBLong (dr["PROJECT_ID"]);
-                            storyBoard.ProjectName = Helper.GetDBString(dr["PROJECT_NAME"]);
-                            storyBoard.StoryboardId = Helper.GetDBLong(dr["STORYBOARD_ID"]);
-                            storyBoard.StoryboardName = Helper.GetDBString(dr["STORYBOARD_NAME"]);
-                            storyBoard.Storyboardescription = Helper.GetDBString( dr["DESCRIPTION"]);
+                            storyBoard.ProjectId = Helper.GetDBValue<long>(dr["PROJECT_ID"],0);
+                            storyBoard.ProjectName = Helper.GetDBValue<string>(dr["PROJECT_NAME"],"");
+                            storyBoard.StoryboardId = Helper.GetDBValue<long>(dr["STORYBOARD_ID"],0);
+                            storyBoard.StoryboardName = Helper.GetDBValue<string>(dr["STORYBOARD_NAME"],"");
+                            storyBoard.Storyboardescription = Helper.GetDBValue<string>( dr["DESCRIPTION"],"");
                          }
                     }
                 }
@@ -3609,13 +3609,13 @@ namespace MARS_Repository.Repositories
                         while (dr.Read())
                         {
                             var dataset = new FolderDatasetViewModel();
-                            dataset.DataSetId = Helper.GetDBLong( dr["DATA_SUMMARY_ID"]);
-                            dataset.TestCaseId = Helper.GetDBLong(dr["TEST_CASE_ID"]);
-                            dataset.DatasetName = Helper.GetDBString(dr["ALIAS_NAME"]);
-                            dataset.TestCase = Helper.GetDBString(dr["TEST_CASE_NAME"]);
-                            dataset.TestSuite = Helper.GetDBString(dr["TEST_SUITE_NAME"]);
-                            dataset.TestSuiteId = Helper.GetDBLong(dr["TEST_SUITE_ID"]);
-                            dataset.SEQ = Helper.GetDBLong(dr["SEQUENCE"]);
+                            dataset.DataSetId = Helper.GetDBValue<long>( dr["DATA_SUMMARY_ID"],0);
+                            dataset.TestCaseId = Helper.GetDBValue<long>(dr["TEST_CASE_ID"],0);
+                            dataset.DatasetName = Helper.GetDBValue<string>(dr["ALIAS_NAME"],"");
+                            dataset.TestCase = Helper.GetDBValue<string>(dr["TEST_CASE_NAME"],"");
+                            dataset.TestSuite = Helper.GetDBValue<string>(dr["TEST_SUITE_NAME"],"");
+                            dataset.TestSuiteId = Helper.GetDBValue<long>(dr["TEST_SUITE_ID"],0);
+                            dataset.SEQ = Helper.GetDBValue<long>(dr["SEQUENCE"],0);
                             datasets.Add(dataset);
                         }
                     }

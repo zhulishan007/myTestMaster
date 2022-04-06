@@ -24,6 +24,7 @@ using Oracle.ManagedDataAccess.Client;
 using static Mars_Serialization.JsonSerialization.SerializationFile;
 using EmailHelper = MARS_Web.Helper.EmailHelper;
 using System.Threading.Tasks;
+using Mars_Serialization.JsonSerialization;
 
 namespace MARS_Web.Controllers
 {
@@ -3358,21 +3359,72 @@ namespace MARS_Web.Controllers
                 }
                 else
                 {
+                    long saveResult = 0;
                     if (optionval == "1")
                     {
-                        result = repo.SaveAsTestcaseNew(testcasename, oldtestcaseid, testcasedesc, testsuiteid, projectid, lSchema, lConnectionStr, SessionManager.TESTER_LOGIN_NAME);
+                        saveResult = repo.SaveAsTestcaseNew(testcasename, oldtestcaseid, testcasedesc, testsuiteid, projectid, lSchema, lConnectionStr, SessionManager.TESTER_LOGIN_NAME);
+                            //new Action<System.Data.Common.DbCommand, string, GetTreeRepository>((cmd,name,pos)=> {
+                            //    InitCacheHelper.TestCaseInit(cmd, name, pos);
+                            //    InitCacheHelper.TestSuitInit(cmd, name, pos);
+                            //    InitCacheHelper.DataSetInit(cmd, name, pos);
+                            //}));
+                        var tree = new GetTreeRepository();
+                        InitCacheHelper.TestSuitInit(SessionManager.ConnectionString, lSchema, tree, lConnectionStr);
+                        InitCacheHelper.TestCaseInit(SessionManager.ConnectionString, lSchema, tree, lConnectionStr);
+                        InitCacheHelper.DataSetInit(SessionManager.ConnectionString, lSchema, tree, lConnectionStr);
                         //result = repo.SaveAsTestcase(testcasename, oldtestcaseid, testcasedesc, testsuiteid, projectid, lSchema, lConnectionStr, SessionManager.TESTER_LOGIN_NAME);
                     }
                     else if (optionval == "2")
                     {
-                        result = repo.SaveAsTestCaseOneCopiedDataSet(testcasename, oldtestcaseid, testcasedesc, datasetName, testsuiteid, projectid, suffix, lSchema, lConnectionStr, SessionManager.TESTER_LOGIN_NAME);
+                        saveResult = repo.SaveAsTestCaseOneCopiedDataSetNew(testcasename, oldtestcaseid, testcasedesc, datasetName, testsuiteid, projectid, suffix, lSchema, lConnectionStr, SessionManager.TESTER_LOGIN_NAME);
+                        //new Action<System.Data.Common.DbCommand, string, GetTreeRepository>((cmd, name, pos) => {
+                        //    InitCacheHelper.TestCaseInit(cmd, name, pos);
+                        //    InitCacheHelper.TestSuitInit(cmd, name, pos);
+                        //    InitCacheHelper.DataSetInit(cmd, name, pos);
+                        //}));
+                        var tree = new GetTreeRepository();
+                        InitCacheHelper.TestSuitInit(SessionManager.ConnectionString,lSchema, tree, lConnectionStr);
+                        InitCacheHelper.TestCaseInit(SessionManager.ConnectionString, lSchema, tree, lConnectionStr);
+                        InitCacheHelper.DataSetInit(SessionManager.ConnectionString, lSchema, tree, lConnectionStr);
                     }
                     else if (optionval == "3")
                     {
-                        result = repo.SaveAsTestCaseAllCopiedDataSet(testcasename, oldtestcaseid, testcasedesc, testsuiteid, projectid, suffix, lSchema, lConnectionStr, SessionManager.TESTER_LOGIN_NAME);
+                        saveResult = repo.SaveAsTestCaseAllCopiedDataSetNew(testcasename, oldtestcaseid, testcasedesc, testsuiteid, projectid, suffix, lSchema, lConnectionStr, SessionManager.TESTER_LOGIN_NAME);
+                        //, new Action<System.Data.Common.DbCommand, string, GetTreeRepository>((cmd, name, pos) => {
+                        //    InitCacheHelper.TestCaseInit(cmd, name, pos);
+                        //    InitCacheHelper.TestSuitInit(cmd, name, pos);
+                        //    InitCacheHelper.DataSetInit(cmd, name, pos);
+                        //}));
+                        var tree = new GetTreeRepository();
+                        InitCacheHelper.TestSuitInit(SessionManager.ConnectionString,lSchema, tree, lConnectionStr);
+                        InitCacheHelper.TestCaseInit(SessionManager.ConnectionString, lSchema, tree, lConnectionStr);
+                        InitCacheHelper.DataSetInit(SessionManager.ConnectionString, lSchema, tree, lConnectionStr);
                     }
-                    resultModel.message = result == "success" ? "TestCase created successfully." : "Dataset already exist in the system, please use another suffix.";
-                    resultModel.data = result;
+                    if (saveResult == -1)
+                    {
+                        resultModel.message = "TestCase name already exist in the system, please use another name.";
+                        resultModel.data = "TestCase name already exist in the system, please use another name.";
+                    }
+                    else if (saveResult == -2)
+                    {
+                        resultModel.message = "Dataset already exist in the system, please use another suffix.";
+                        resultModel.data = "Dataset already exist in the system, please use another suffix.";
+                    }
+                    else
+                    {
+                        var path = System.Web.Hosting.HostingEnvironment.MapPath("~/");
+                        Task.Factory.StartNew((p) =>
+                        {
+                            SerializationFile.conString = lConnectionStr;
+                            var applist = SerializationFile.GetAppList(lConnectionStr);
+                            SerializationFile.CreateJsonFilesNew(lSchema, p.ToString(), FolderName.Testcases.ToString(), applist, saveResult, true); 
+                        },path);
+
+                        resultModel.message =  "TestCase created successfully." ;
+                        resultModel.data = "success";
+                    }
+                    //resultModel.message = result == "success" ? "TestCase created successfully." : "Dataset already exist in the system, please use another suffix.";
+                    //resultModel.data = result;
                 }
 
                 resultModel.status = 1;

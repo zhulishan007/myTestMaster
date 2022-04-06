@@ -293,8 +293,12 @@ namespace MARS_Repository.Repositories
             try
             {
                 Helper.WriteLogMessage(string.Format("Check TestCase Exists In Appliction start | ApplicationId: {0} | Username: {1}", ApplicationId, Username), currentPath);
-                List<string> Applicationname = new List<string>();
-                var lApplicationList = enty.REL_APP_PROJ.Where(x => x.APPLICATION_ID == ApplicationId).ToList();
+                List<string> Applicationname  = (from t1 in enty.REL_APP_PROJ
+                             join t2 in enty.T_TEST_PROJECT on t1.PROJECT_ID equals t2.PROJECT_ID
+                             where t1.APPLICATION_ID == ApplicationId
+                             select t2.PROJECT_NAME).ToList();
+
+                /*var lApplicationList = enty.REL_APP_PROJ.Where(x => x.APPLICATION_ID == ApplicationId).ToList();
 
                 if (lApplicationList.Count() > 0)
                 {
@@ -307,7 +311,7 @@ namespace MARS_Repository.Repositories
                     }
                     logger.Info(string.Format("Check TestCase Exists In Appliction end | ApplicationId: {0} | Username: {1}", ApplicationId, Username), currentPath);
                     return Applicationname;
-                }
+                }*/
                 Helper.WriteLogMessage(string.Format("Check TestCase Exists In Appliction end | ApplicationId: {0} | Username: {1}", ApplicationId, Username), currentPath);
                 return Applicationname;
             }

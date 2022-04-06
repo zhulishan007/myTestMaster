@@ -127,7 +127,7 @@ namespace MARS_Web.Controllers
                     var entityConnectString = SessionManager.ConnectionString;
                     //InitCacheHelper.StoryBoardInit(entityConnectString, lSchema, _treerepository);
                     List<ProjectByUser> projects = new List<ProjectByUser>();
-                    if (!InitCacheHelper.GetProjectUserFromCache(lSchema, SessionManager.TESTER_ID, projects))
+                    if (InitCacheHelper.GetProjectUserFromCache(lSchema, SessionManager.TESTER_ID, projects))
                     {
                         Session["LeftProjectList"] = projects.OrderBy(r => r.ProjectName).ToList();
                     }
@@ -974,10 +974,10 @@ namespace MARS_Web.Controllers
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in StoryBoard for GetTestSuiteListInStoryboard method | Project Id : {0} | UserName: {0}", ProjectId, SessionManager.TESTER_LOGIN_NAME));
-                ELogger.ErrorException(string.Format("Error occured in StoryBoard for GetTestSuiteListInStoryboard method | Project Id : {0} | UserName: {0}", ProjectId, SessionManager.TESTER_LOGIN_NAME), ex);
+                logger.Error(string.Format("Error occured in StoryBoard for GetTestSuiteListInStoryboard method | Project Id : {0} | UserName: {1}", ProjectId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in StoryBoard for GetTestSuiteListInStoryboard method | Project Id : {0} | UserName: {1}", ProjectId, SessionManager.TESTER_LOGIN_NAME), ex);
                 if (ex.InnerException != null)
-                    ELogger.ErrorException(string.Format("InnerException : Error occured in StoryBoard for GetTestSuiteListInStoryboard method | Project Id : {0} | UserName: {0}", ProjectId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in StoryBoard for GetTestSuiteListInStoryboard method | Project Id : {0} | UserName: {1}", ProjectId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
                 resultModel.status = 0;
                 resultModel.message = ex.Message.ToString();
             }
