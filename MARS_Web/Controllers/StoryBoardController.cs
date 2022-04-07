@@ -1211,12 +1211,12 @@ namespace MARS_Web.Controllers
 
                     var addAndUpdateList = lobj.FindAll(r => !string.IsNullOrWhiteSpace(r.status) && (r.status == "update" || r.status == "add"));
                     List<TestCaseValidationResultModel> ValidationResult = new List<TestCaseValidationResultModel>();
-                    long lvalFeedLong = MARS_Web.Helper.IdWorker.Instance.NextId();
+                    long lvalFeedLong = IdWorker.Instance.NextId();
                     if (addAndUpdateList != null && addAndUpdateList.Count > 0)
                     {
                         logger.Info(string.Format("Storyborad Saves 1 | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
                         var lvalFeed = lvalFeedLong.ToString();
-                        var lvalFeedD = MARS_Web.Helper.IdWorker.Instance.NextId().ToString();
+                        var lvalFeedD = IdWorker.Instance.NextId().ToString();
                         ValidationResult = sbRep.InsertStgStoryboardValidationTable(lConnectionStr, lSchema, addAndUpdateList, lStoryboardId, lvalFeed, lvalFeedD, lProjectId);
                         logger.Info(string.Format("Storyborad Saves 2 | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
                     }
@@ -1273,7 +1273,7 @@ namespace MARS_Web.Controllers
                                             TestCaseName = obj.TestCaseName,
                                             DataSetName = obj.DataSetName,
                                             Dependency = obj.Dependency,
-                                            storyboarddetailid = MARS_Web.Helper.IdWorker.Instance.NextId(),
+                                            storyboarddetailid = IdWorker.Instance.NextId(),
                                             Storyboardid = long.Parse(lStoryboardId),
                                             Storyboardname = storyBoardName
                                         });
@@ -1399,7 +1399,7 @@ namespace MARS_Web.Controllers
                     sbRep.Username = SessionManager.TESTER_LOGIN_NAME;
                     //var addAndUpdateList = lobj.FindAll(r => !string.IsNullOrWhiteSpace(r.status) && (r.status == "update" || r.status == "add"));
                     List<TestCaseValidationResultModel> ValidationResult = new List<TestCaseValidationResultModel>();
-                    long lvalFeedLong = MARS_Web.Helper.IdWorker.Instance.NextId();
+                    long lvalFeedLong = IdWorker.Instance.NextId();
                     //if (addAndUpdateList != null && addAndUpdateList.Count > 0)
                     //{
                     logger.Info(string.Format("Storyborad Saves 1 | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
@@ -1422,7 +1422,7 @@ namespace MARS_Web.Controllers
                                 else if (obj.status == "add")
                                 {
                                     obj.Storyboardid = long.Parse(lStoryboardId);
-                                    obj.storyboarddetailid = MARS_Web.Helper.IdWorker.Instance.NextId();
+                                    obj.storyboarddetailid =IdWorker.Instance.NextId();
                                     values.Add(new StoryBoardResultModel()
                                     {
                                         ProjectId = obj.ProjectId,
@@ -1448,7 +1448,6 @@ namespace MARS_Web.Controllers
                                     var value = values.FirstOrDefault(r => r.storyboarddetailid == obj.storyboarddetailid);
                                     if (value != null)
                                     {
-
                                         value.ProjectId = obj.ProjectId;
                                         value.ActionName = obj.ActionName;
                                         value.Run_order = obj.Run_order;
@@ -1478,16 +1477,16 @@ namespace MARS_Web.Controllers
                                         }
                                     }
                                 }
-                                else
-                                {
-                                    var value = values.FirstOrDefault(r => r.storyboarddetailid != null && r.storyboarddetailid == obj.storyboarddetailid);
-                                    if (value != null && value.Run_order != obj.Run_order)
-                                    {
-                                        value.Run_order = obj.Run_order;
-                                        value.status = "update";
-                                        obj.status = "update";
-                                    }
-                                }
+                                //else
+                                //{
+                                //    var value = values.FirstOrDefault(r => r.storyboarddetailid != null && r.storyboarddetailid == obj.storyboarddetailid);
+                                //    if (value != null && value.Run_order != obj.Run_order)
+                                //    {
+                                //        value.Run_order = obj.Run_order;
+                                //        value.status = "update";
+                                //        obj.status = "update";
+                                //    }
+                                //}
                             }
                             //var lresult = sbRep.GetStoryBoardDetails(lSchema, lConnectionStr, Convert.ToInt64(lProjectId), Convert.ToInt64(lStoryboardId));
                             var storyBoardDetails = JsonConvert.SerializeObject(values);
@@ -2944,7 +2943,15 @@ namespace MARS_Web.Controllers
                     }
                 }
             }
-
+            lobj.ForEach(r =>
+            {
+                long order =(long) (r.RowId + 1);
+                if (r.status == "nomal"  && r.Run_order != order)
+                {
+                    r.Run_order = order;
+                    r.status = "update";
+                }
+            });
         }
 
         private void SaveStoryBoardDetailToJsonFile(string lProjectId, string lStoryboardId, string storyBoardName, string lSchema, string lConnectionStr, StoryBoardRepository sbRep)

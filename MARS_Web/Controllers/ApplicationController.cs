@@ -405,7 +405,7 @@ namespace MARS_Web.Controllers
 
                 if (lflag.Count <= 0)
                 {
-                    var Applicationname = _apprepository.GetApplicationNameById(ApplicationId);
+                    string Applicationname ;
 
                     var app = GlobalVariable.AllApps.FirstOrDefault(x => x.Key.Equals(SessionManager.Schema)).Value;
                     if (app.Count > 0)
@@ -429,9 +429,14 @@ namespace MARS_Web.Controllers
                         IsBackground = true
                     };
                     DeleteApp.Start();
-                    if (GlobalVariable.AppListCache != null && GlobalVariable.AppListCache.ContainsKey(SessionManager.Schema)) 
+                    if (GlobalVariable.AppListCache != null && GlobalVariable.AppListCache.ContainsKey(SessionManager.Schema))
                     {
+                        Applicationname = GlobalVariable.AppListCache[SessionManager.Schema].FirstOrDefault(r => r.APPLICATION_ID == ApplicationId)?.APP_SHORT_NAME;
                         GlobalVariable.AppListCache[SessionManager.Schema].RemoveAll(r => r == null || r.APPLICATION_ID == ApplicationId);
+                    } 
+                    else
+                    {
+                        Applicationname = _apprepository.GetApplicationNameById(ApplicationId);
                     }
                     List<MARS_Repository.ViewModel.ProjectByUser> projects = new List<MARS_Repository.ViewModel.ProjectByUser>();
                     if (InitCacheHelper.GetProjectUserFromCache(SessionManager.Schema, SessionManager.TESTER_ID, projects))

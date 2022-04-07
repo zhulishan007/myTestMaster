@@ -5319,8 +5319,16 @@ namespace MARS_Web.Controllers
             {
                 dbtable.errorlog("Export is started", "Export ReportDatasetTag Excel", "", 0);
 
-
-                var Filterobj = repo.GetFilter(long.Parse(filterID));
+                T_FOLDER_FILTER Filterobj = null;
+                if (GlobalVariable.FolderFilterListCache != null && GlobalVariable.FolderFilterListCache.ContainsKey(lSchema))
+                {
+                    Filterobj = GlobalVariable.FolderFilterListCache[lSchema].FirstOrDefault(r => r != null && r.FILTER_ID == long.Parse(filterID));
+                }
+                else
+                {
+                    Filterobj = repo.GetFilter(long.Parse(filterID));
+                }
+                //var Filterobj = repo.GetFilter(long.Parse(filterID));
                 if (Filterobj != null)
                     presult = excel.ExportReportDatasetTagByFilterExcel(FullPath, lSchema, lConnectionStr, Filterobj.PROJECT_IDS, Filterobj.STORYBOARD_IDS, Fname);
 
