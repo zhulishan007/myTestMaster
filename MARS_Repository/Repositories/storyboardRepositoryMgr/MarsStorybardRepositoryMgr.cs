@@ -8,7 +8,7 @@ namespace MARS_Repository.Repositories.storyboardRepositoryMgr
 {
     class MarsStorybardRepositoryMgr
     {
-        public bool SaveStoryboardDetailsViaTempTable(List<StoryBoardResultModel>, )
+        //public bool SaveStoryboardDetailsViaTempTable(List<StoryBoardResultModel>, )
 
     }
 }

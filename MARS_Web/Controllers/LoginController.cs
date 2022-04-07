@@ -199,7 +199,7 @@ namespace MARS_Web.Controllers
                                 SessionManager.TESTER_LOGIN_NAME = loginUser.TESTER_LOGIN_NAME;
                                 SessionManager.TESTER_NUMBER = loginUser.TESTER_NUMBER;
                                 lMsg = "Succefully Logged!!";
-                                System.Threading.Tasks.Task.Run(()=>repTestCase.UpdateIsAvailableReload((long)loginUser.TESTER_ID));
+                                System.Threading.Tasks.Task.Run(() => repTestCase.UpdateIsAvailableReload((long)loginUser.TESTER_ID));
                             }
                             else
                                 lMsg = "Password did not match.";
@@ -208,7 +208,10 @@ namespace MARS_Web.Controllers
                             lMsg = "User Name does not exist in system.";
                     }
                     else
+                    {
                         lMsg = connlist[0] + " database does not exist--AllUser is NULL.";
+                        logger.Info($"\tCheckCredential [{GlobalVariable.PrintAllInfoForUsers()}]");
+                    }
                     #region OLD CODE
                     //var lUser = Accountrepo.GetUserByEmailAndLoginName(lUserLogin);
                     //if (lUser != null)

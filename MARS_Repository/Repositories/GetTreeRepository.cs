@@ -937,7 +937,7 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in TestCase for GetRelFolderFilterCache method | UserName: {0}",  Username));
+                logger.Error(string.Format("Error occured in TestCase for GetRelFolderFilterCache method | UserName: {0}, ErrorMessage:[{2}],exception:[{1}]",  Username, ex.StackTrace,ex.Message));
                 ELogger.ErrorException(string.Format("Error occured in TestCase for GetRelFolderFilterCache method |UserName: {0}",  Username), ex);
                 if (ex.InnerException != null)
                     ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase for GetRelFolderFilterCache method | UserName: {0}",  Username), ex.InnerException);
@@ -958,7 +958,7 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in TestCase for GetAppCache method | UserName: {0}", Username));
+                logger.Error(string.Format("Error occured in TestCase for GetAppCache method | UserName: {0}, ErrorMessage:[{2}],exception:[{1}]", Username, ex.StackTrace, ex.Message));
                 ELogger.ErrorException(string.Format("Error occured in TestCase for GetAppCache method |UserName: {0}", Username), ex);
                 if (ex.InnerException != null)
                     ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase for GetAppCache method | UserName: {0}", Username), ex.InnerException);
@@ -970,7 +970,7 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("GetSetCache start  UserName: {0}", Username));
+                logger.Info(string.Format("GetSetCache start  UserName: {0} ", Username));
                 var en = Helper.GetMarsEntitiesInstance();
                 //var lResult = entity.T_TEST_SET.ToList();
                 var lResult = en.T_TEST_SET.ToList();
@@ -980,7 +980,7 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in TestCase for GetSetCache method | UserName: {0}", Username));
+                logger.Error(string.Format("Error occured in TestCase for GetSetCache method | UserName: {0} ErrorMessage:[{2}],exception:[{1}]", Username, ex.StackTrace, ex.Message));
                 ELogger.ErrorException(string.Format("Error occured in TestCase for GetSetCache method |UserName: {0}", Username), ex);
                 if (ex.InnerException != null)
                     ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase for GetSetCache method | UserName: {0}", Username), ex.InnerException);
@@ -1002,7 +1002,7 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in TestCase for GetGroupCache method | UserName: {0}", Username));
+                logger.Error(string.Format("Error occured in TestCase for GetGroupCache method | UserName: {0} ErrorMessage:[{2}],exception:[{1}]", Username, ex.StackTrace, ex.Message));
                 ELogger.ErrorException(string.Format("Error occured in TestCase for GetGroupCache method |UserName: {0}", Username), ex);
                 if (ex.InnerException != null)
                     ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase for GetGroupCache method | UserName: {0}", Username), ex.InnerException);
@@ -1023,7 +1023,7 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured in TestCase for GetDataSetTagCache method | UserName: {0}", Username));
+                logger.Error(string.Format("Error occured in TestCase for GetDataSetTagCache method | UserName: {0} ErrorMessage:[{2}],exception:[{1}]", Username, ex.StackTrace, ex.Message));
                 ELogger.ErrorException(string.Format("Error occured in TestCase for GetDataSetTagCache method |UserName: {0}", Username), ex);
                 if (ex.InnerException != null)
                     ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase for GetDataSetTagCache method | UserName: {0}", Username), ex.InnerException);
@@ -1035,7 +1035,7 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("Get All Storyboard List start  | UserName: {0}", Username));
+                logger.Info(string.Format("Get All Storyboard List start  | UserName: {0} ", Username));
 
                 var lStoryboardTree = new List<StoryBoardListByProject>();
                 cmd.CommandText = @"select distinct  t1.PROJECT_ID, t1.PROJECT_NAME,t2.STORYBOARD_ID,t2.STORYBOARD_NAME,t2.DESCRIPTION
@@ -1062,7 +1062,7 @@ namespace MARS_Repository.Repositories
             }
             catch (Exception ex)
             {
-                logger.Error(string.Format("Error occured GetTree in GetStoryboardList method   Username: {0}", Username));
+                logger.Error(string.Format("Error occured GetTree in GetStoryboardList method   Username: {0} ErrorMessage:[{2}],exception:[{1}]", Username, ex.StackTrace, ex.Message));
                 ELogger.ErrorException(string.Format("Error occured GetTree in GetStoryboardList method | Username: {0}", Username), ex);
                 if (ex.InnerException != null)
                     ELogger.ErrorException(string.Format("InnerException : Error occured GetStoryboardList in GetRoleByUser method Username: {0}", Username), ex.InnerException);

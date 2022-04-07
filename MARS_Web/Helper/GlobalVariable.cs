@@ -21,6 +21,24 @@ namespace MARS_Web.Helper
         public static ConcurrentDictionary<string, ConcurrentDictionary<UserViewModal, List<Mars_Serialization.ViewModel.ProjectByUser>>> UsersDictionary { 
             get => userInfo; 
             set => userInfo=value; }
+        public static string PrintAllInfoForUsers()
+        {
+            if (userInfo == null) return "NULL";
+            StringBuilder sb = new StringBuilder();
+            foreach(var k in userInfo.Keys)
+            {
+                if (string.IsNullOrEmpty(k)) continue;
+                sb.Append($"\r\n[{k}] - ");
+                var lstProj = userInfo[k];
+                foreach(var p  in lstProj.Keys)
+                {
+                    if (p == null) continue;
+                    sb.Append($"[{p.TESTER_LOGIN_NAME}]");
+                }
+                
+            }
+            return sb.ToString();
+        }
         public static ConcurrentDictionary<string, List<T_Memory_REGISTERED_APPS>> AllApps { get; set; }
         public static ConcurrentDictionary<string, List<Mars_Serialization.ViewModel.KeywordViewModel>> AllKeywords { get; set; }
         public static ConcurrentDictionary<string, List<GroupsViewModel>> AllGroups { get; set; }
