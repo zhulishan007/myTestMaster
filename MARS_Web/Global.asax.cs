@@ -41,6 +41,110 @@ namespace MARS_Web
             #endregion
         }
 
+
+        protected bool LoadCaches(List<string> dbNameList,
+            ConcurrentDictionary<string, ConcurrentDictionary<UserViewModal, 
+                List<Mars_Serialization.ViewModel.ProjectByUser>>> userData,
+            ConcurrentDictionary<string, List<T_Memory_REGISTERED_APPS>> appsData,
+            ConcurrentDictionary<string, List<Mars_Serialization.ViewModel.KeywordViewModel>> keywordsData,
+            ConcurrentDictionary<string, List<Mars_Serialization.ViewModel.GroupsViewModel>> groupsData ,
+            ConcurrentDictionary<string, List<Mars_Serialization.ViewModel.FoldersViewModel>> foldersData,
+            ConcurrentDictionary<string, List<Mars_Serialization.ViewModel.SetsViewModel>> setsData
+            )
+        {
+            logger.Info($"LoadCaches begin....dbNames:[{dbNameList.ToArray()}]");
+            try
+            {
+                if (dbNameList.Count() > 0)
+                {
+                    foreach (var databaseName in dbNameList)
+                    {
+                        MarsConfig mc = MarsConfig.Configure(databaseName);
+                        DatabaseConnectionDetails det = mc.GetDatabaseConnectionDetails();
+                        InitCacheHelper.InitAll(det.EntityConnString, det.ConnString, databaseName);
+                        /* Task.Run(() =>
+                         {
+                             DBEntities.ConnectionString = det.EntityConnString;
+                             DBEntities.Schema = databaseName;
+                             var repTree = new GetTreeRepository();
+                             var project = repTree.GetProjectListCache();
+                             projects.TryAdd(databaseName, project);
+                             var  storyboardlistCache = repTree.GetStoryboardListCache();
+                             storyBoards.TryAdd(databaseName, storyboardlistCache);
+                             var testSuit = repTree.GetTestSuiteListCache(det.ConnString);
+                             testSuits.TryAdd(databaseName, testSuit);
+                             var testCaseListCache = repTree.GetTestCaseListCache(det.ConnString);
+                             testCases.TryAdd(databaseName, testCaseListCache);
+                             var dataSet = repTree.GetDataSetListCache(det.ConnString);
+                             dataSets.TryAdd(databaseName, dataSet);
+                         });*/
+                        logger.Info($"\t current DB Load_Serializations_Files:[{databaseName}]");
+                        #region GET USER DATA AND STORE IN MEMORY
+                        var userDictionary = Mars_Serialization.JsonSerialization.SerializationFile
+                        .GetDictionary(det.ConnString);
+                        userData.TryAdd(databaseName, userDictionary);
+                        #endregion
+
+                        System.Threading.Tasks.Task.Run(() =>
+                        {
+                            JsonFileHelper.InitStoryBoardJson(databaseName);
+                        });
+
+                        #region GET APPLICATOINS DATA AND STORE IN MEMORY
+                        var appDictionary = GetAppData(databaseName);
+                        appsData.TryAdd(databaseName, appDictionary);
+                        #endregion
+
+                        #region GET KEYWORDS DATA AND STORE IN MEMORY
+                        var keywordDictionary = Mars_Serialization.JsonSerialization.SerializationFile.GetKeywordList(det.ConnString);
+                        keywordsData.TryAdd(databaseName, keywordDictionary);
+                        #endregion
+
+                        #region GET GROUPS DATA AND STORE IN MEMORY
+                        var groupDictionary = Mars_Serialization.JsonSerialization.SerializationFile.GetAllGroups(det.ConnString);
+                        groupsData.TryAdd(databaseName, groupDictionary);
+                        #endregion
+
+                        #region GET FOLDERS DATA AND STORE IN MEMORY
+                        var folderDictionary = Mars_Serialization.JsonSerialization.SerializationFile.GetAllFolders(det.ConnString);
+                        foldersData.TryAdd(databaseName, folderDictionary);
+                        #endregion
+
+                        #region GET SETS DATA AND STORE IN MEMORY
+                        var setDictionary = Mars_Serialization.JsonSerialization.SerializationFile.GetAllSets(det.ConnString);
+                        setsData.TryAdd(databaseName, setDictionary);
+                        #endregion
+                    }
+
+
+                    foreach (var databaseName in dbNameList)
+                    {
+                        MarsConfig mc = MarsConfig.Configure(databaseName);
+                        DatabaseConnectionDetails det = mc.GetDatabaseConnectionDetails();
+
+                        //var userDictionary = Mars_Serialization.JsonSerialization.SerializationFile.GetDictionary(det.ConnString);
+                        //usersData.TryAdd(databaseName, userDictionary);
+
+                        string marsHomeFolder = HostingEnvironment.MapPath("/Config");
+                        string marsConfigFile = marsHomeFolder + @"\Mars.config";
+                        Mars_Serialization.JsonSerialization.SerializationFile.ChangeConnectionString(databaseName, marsConfigFile);
+                        //Mars_Serialization.JsonSerialization.SerializationFile.CreateJsonFiles(databaseName, HostingEnvironment.MapPath("~/"), det.ConnString);
+
+                        //var appDictionary = GetAppData(databaseName);
+                        //appsData.TryAdd(databaseName, appDictionary);
+                    }
+                }
+                return true;
+            }catch(Exception e)
+            {
+                logger.Error($"LoadCaches exceptions:[{e.Message}] \r\n{e.StackTrace}");
+                return false;
+            }
+            finally{
+                logger.Info($"LoadCaches end");
+            }
+        }
+
         protected bool Load_Serializations_Files(List<string> dbNameList)
         {
             bool status = false;
@@ -78,32 +182,39 @@ namespace MARS_Web
 
                 Thread Serializations = new Thread(delegate ()
                 {
+                    LoadCaches(dbNameList, usersData, appsData, keywordsData, groupsData, foldersData,
+                        setsData);
                     if (dbNameList.Count() > 0)
                     {
+                        
+                        /*
                         foreach (var databaseName in dbNameList)
                         {
+
+
                             MarsConfig mc = MarsConfig.Configure(databaseName);
                             DatabaseConnectionDetails det = mc.GetDatabaseConnectionDetails();
                             InitCacheHelper.InitAll(det.EntityConnString,det.ConnString,databaseName);
-                           /* Task.Run(() =>
-                            {
-                                DBEntities.ConnectionString = det.EntityConnString;
-                                DBEntities.Schema = databaseName;
-                                var repTree = new GetTreeRepository();
-                                var project = repTree.GetProjectListCache();
-                                projects.TryAdd(databaseName, project);
-                                var  storyboardlistCache = repTree.GetStoryboardListCache();
-                                storyBoards.TryAdd(databaseName, storyboardlistCache);
-                                var testSuit = repTree.GetTestSuiteListCache(det.ConnString);
-                                testSuits.TryAdd(databaseName, testSuit);
-                                var testCaseListCache = repTree.GetTestCaseListCache(det.ConnString);
-                                testCases.TryAdd(databaseName, testCaseListCache);
-                                var dataSet = repTree.GetDataSetListCache(det.ConnString);
-                                dataSets.TryAdd(databaseName, dataSet);
-                            });*/
-
+                            / * Task.Run(() =>
+                             {
+                                 DBEntities.ConnectionString = det.EntityConnString;
+                                 DBEntities.Schema = databaseName;
+                                 var repTree = new GetTreeRepository();
+                                 var project = repTree.GetProjectListCache();
+                                 projects.TryAdd(databaseName, project);
+                                 var  storyboardlistCache = repTree.GetStoryboardListCache();
+                                 storyBoards.TryAdd(databaseName, storyboardlistCache);
+                                 var testSuit = repTree.GetTestSuiteListCache(det.ConnString);
+                                 testSuits.TryAdd(databaseName, testSuit);
+                                 var testCaseListCache = repTree.GetTestCaseListCache(det.ConnString);
+                                 testCases.TryAdd(databaseName, testCaseListCache);
+                                 var dataSet = repTree.GetDataSetListCache(det.ConnString);
+                                 dataSets.TryAdd(databaseName, dataSet);
+                             });* /
+                            logger.Info($"\t current DB Load_Serializations_Files:[{databaseName}]");
                             #region GET USER DATA AND STORE IN MEMORY
-                            var userDictionary = Mars_Serialization.JsonSerialization.SerializationFile.GetDictionary(det.ConnString);
+                            var userDictionary = Mars_Serialization.JsonSerialization.SerializationFile
+                            .GetDictionary(det.ConnString);
                             usersData.TryAdd(databaseName, userDictionary);
                             #endregion
 
@@ -136,9 +247,10 @@ namespace MARS_Web
                             var setDictionary = Mars_Serialization.JsonSerialization.SerializationFile.GetAllSets(det.ConnString);
                             setsData.TryAdd(databaseName, setDictionary);
                             #endregion
+                    
                         }
-                       
 
+                       
                         foreach (var databaseName in dbNameList)
                         {
                             MarsConfig mc = MarsConfig.Configure(databaseName);
@@ -150,11 +262,11 @@ namespace MARS_Web
                             string marsHomeFolder = HostingEnvironment.MapPath("/Config");
                             string marsConfigFile = marsHomeFolder + @"\Mars.config";
                             Mars_Serialization.JsonSerialization.SerializationFile.ChangeConnectionString(databaseName, marsConfigFile);
-                            Mars_Serialization.JsonSerialization.SerializationFile.CreateJsonFiles(databaseName, HostingEnvironment.MapPath("~/"), det.ConnString);
+                            //Mars_Serialization.JsonSerialization.SerializationFile.CreateJsonFiles(databaseName, HostingEnvironment.MapPath("~/"), det.ConnString);
 
                             //var appDictionary = GetAppData(databaseName);
                             //appsData.TryAdd(databaseName, appDictionary);
-                        }                        
+                        } */
                     }
                     logger.Info(string.Format("Successfully load all the serialization files | Database Names: {0} ", string.Join(", ", dbNameList)));
                     status = true;
