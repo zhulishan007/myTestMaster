@@ -867,9 +867,10 @@ namespace MARS_Repository.Repositories
             try
             {
                 logger.Info(string.Format("Get Actions start | UserName: {0}",   Username));
-                
-                var result = entity.SYSTEM_LOOKUP.Where(x => x.FIELD_NAME == "RUN_TYPE" && x.TABLE_NAME == "T_PROJ_TC_MGR" && x.DISPLAY_NAME != "FAILUE").ToList();
-                 
+                var en = Helper.GetMarsEntitiesInstance();
+                //var result = entity.SYSTEM_LOOKUP.Where(x => x.FIELD_NAME == "RUN_TYPE" && x.TABLE_NAME == "T_PROJ_TC_MGR" && x.DISPLAY_NAME != "FAILUE").ToList();
+                var result = en.SYSTEM_LOOKUP.Where(x => x.FIELD_NAME == "RUN_TYPE" && x.TABLE_NAME == "T_PROJ_TC_MGR" && x.DISPLAY_NAME != "FAILUE").ToList();
+
                 return result;
             }
             catch (Exception ex)
@@ -887,9 +888,9 @@ namespace MARS_Repository.Repositories
             try
             {
                 logger.Info(string.Format("Get FOLDER start | UserName: {0}", Username));
-
-                var result = entity.T_TEST_FOLDER.Where(x => !string.IsNullOrEmpty(x.FOLDERNAME)).ToList();
-
+                var en = Helper.GetMarsEntitiesInstance();
+                //var result = entity.T_TEST_FOLDER.Where(x => !string.IsNullOrEmpty(x.FOLDERNAME)).ToList();
+                var result = en.T_TEST_FOLDER.Where(x => !string.IsNullOrEmpty(x.FOLDERNAME)).ToList();
                 logger.Info(string.Format("Get FOLDER end | UserName: {0}", Username));
                 return result;
             }
@@ -907,7 +908,9 @@ namespace MARS_Repository.Repositories
             try
             {
                 logger.Info(string.Format("GetFilterList start | UserName: {0}", Username));
-                var List = entity.T_FOLDER_FILTER.Distinct().ToList();
+                var en = Helper.GetMarsEntitiesInstance();
+                //var List = entity.T_FOLDER_FILTER.Distinct().ToList();
+                var List = en.T_FOLDER_FILTER.Distinct().ToList();
                 logger.Info(string.Format("GetFilterList end | UserName: {0}", Username));
                 return List;
             }
@@ -925,8 +928,9 @@ namespace MARS_Repository.Repositories
         {
             try
             {
-                logger.Info(string.Format("GetRelFolderFilterCache start  UserName: {0}",  Username));
-                var lResult = entity.REL_FOLDER_FILTER.ToList();
+                logger.Info(string.Format("GetRelFolderFilterCache start  UserName: {0} entity-{1}",  Username, entity));
+                var en = Helper.GetMarsEntitiesInstance();
+                var lResult = en.REL_FOLDER_FILTER.ToList();
 
                 logger.Info(string.Format("GetRelFolderFilterCache end   | UserName: {0}", Username));
                 return lResult;
@@ -946,7 +950,8 @@ namespace MARS_Repository.Repositories
             try
             {
                 logger.Info(string.Format("GetAppCache start  UserName: {0}", Username));
-                var lResult = entity.T_REGISTERED_APPS.ToList();
+                var en = Helper.GetMarsEntitiesInstance();
+                var lResult = en.T_REGISTERED_APPS.ToList();
 
                 logger.Info(string.Format("GetAppCache end   | UserName: {0}", Username));
                 return lResult;
@@ -966,7 +971,9 @@ namespace MARS_Repository.Repositories
             try
             {
                 logger.Info(string.Format("GetSetCache start  UserName: {0}", Username));
-                var lResult = entity.T_TEST_SET.ToList();
+                var en = Helper.GetMarsEntitiesInstance();
+                //var lResult = entity.T_TEST_SET.ToList();
+                var lResult = en.T_TEST_SET.ToList();
 
                 logger.Info(string.Format("GetSetCache end   | UserName: {0}", Username));
                 return lResult;
@@ -987,8 +994,9 @@ namespace MARS_Repository.Repositories
             try
             {
                 logger.Info(string.Format("GetGroupCache start  UserName: {0}", Username));
-                var lResult = entity.T_TEST_GROUP.ToList();
-
+                var en = Helper.GetMarsEntitiesInstance();
+                //var lResult = entity.T_TEST_GROUP.ToList();
+                var lResult = en.T_TEST_GROUP.ToList();
                 logger.Info(string.Format("GetGroupCache end   | UserName: {0}", Username));
                 return lResult;
             }
@@ -1007,7 +1015,9 @@ namespace MARS_Repository.Repositories
             try
             {
                 logger.Info(string.Format("GetDataSetTagCache start  UserName: {0}", Username));
-                var lResult = entity.T_TEST_DATASETTAG.ToList();
+                var en = Helper.GetMarsEntitiesInstance();
+                //var lResult = entity.T_TEST_DATASETTAG.ToList();
+                var lResult = en.T_TEST_DATASETTAG.ToList();
                 logger.Info(string.Format("GetDataSetTagCache end   | UserName: {0}", Username));
                 return lResult;
             }

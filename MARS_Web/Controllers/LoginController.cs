@@ -144,7 +144,7 @@ namespace MARS_Web.Controllers
 
         public virtual string CheckCredential(string lUserLogin, string lPassword, string lconnection)
         {
-            logger.Info($"{DateTime.Now.ToString()}\tCheckCredential begin...");
+            logger.Info($"{DateTime.Now.ToString()}\tCheckCredential begin...lUserLogin-[{lUserLogin}]");
             string MarsEnvironment = string.Empty;
             var lMsg = "Error";
             string[] connlist = new string[10];
@@ -181,6 +181,7 @@ namespace MARS_Web.Controllers
                     //AccountRepository Accountrepo = new AccountRepository();
                     //EntitlementRepository Entitlementrepo = new EntitlementRepository();
                     TestCaseRepository repTestCase = new TestCaseRepository();
+                    logger.Info($"\ttry to compare:{MarsEnvironment.Trim()}");
                     var allUsers = GlobalVariable.UsersDictionary.FirstOrDefault(x => x.Key.Trim().ToUpper().Equals(MarsEnvironment.Trim().ToUpper())).Value;
                     if (allUsers != null)
                     {

@@ -70,12 +70,12 @@ namespace MARS_Web.Helper
         }
         public static void InitStoryBoardJson(string databaseName,string path="", long dataId=0,bool needReflesh=false,string strJsonPath=null)
         {
+            logger.Info($"InitStoryBoardJson begin...db-[{databaseName}] pth:[{path}] dataId:[{dataId}]");
             MarsConfig mc = null;
             if (string.IsNullOrWhiteSpace(path))
                 mc = MarsConfig.Configure(databaseName);
             else
                 mc = MarsConfig.Configure(path,databaseName);
-
 
             DatabaseConnectionDetails det = mc.GetDatabaseConnectionDetails();
             DBEntities.ConnectionString = det.EntityConnString;

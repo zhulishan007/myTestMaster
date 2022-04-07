@@ -1211,12 +1211,12 @@ namespace MARS_Web.Controllers
 
                     var addAndUpdateList = lobj.FindAll(r => !string.IsNullOrWhiteSpace(r.status) && (r.status == "update" || r.status == "add"));
                     List<TestCaseValidationResultModel> ValidationResult = new List<TestCaseValidationResultModel>();
-                    long lvalFeedLong = MARS_Web.Helper.IdWorker.Instance.NextId();
+                    long lvalFeedLong = IdWorker.Instance.NextId();
                     if (addAndUpdateList != null && addAndUpdateList.Count > 0)
                     {
                         logger.Info(string.Format("Storyborad Saves 1 | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
                         var lvalFeed = lvalFeedLong.ToString();
-                        var lvalFeedD = MARS_Web.Helper.IdWorker.Instance.NextId().ToString();
+                        var lvalFeedD = IdWorker.Instance.NextId().ToString();
                         ValidationResult = sbRep.InsertStgStoryboardValidationTable(lConnectionStr, lSchema, addAndUpdateList, lStoryboardId, lvalFeed, lvalFeedD, lProjectId);
                         logger.Info(string.Format("Storyborad Saves 2 | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
                     }
@@ -1273,7 +1273,7 @@ namespace MARS_Web.Controllers
                                             TestCaseName = obj.TestCaseName,
                                             DataSetName = obj.DataSetName,
                                             Dependency = obj.Dependency,
-                                            storyboarddetailid = MARS_Web.Helper.IdWorker.Instance.NextId(),
+                                            storyboarddetailid = IdWorker.Instance.NextId(),
                                             Storyboardid = long.Parse(lStoryboardId),
                                             Storyboardname = storyBoardName
                                         });
@@ -1377,7 +1377,26 @@ namespace MARS_Web.Controllers
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
         #endregion
+        private void SaveStoryboardGridNewHost(List<StoryBoardResultModel> values,
+            List<StoryBoardResultModel> lobj, 
+            string lConnectionStr, 
+            string lSchema, 
+            string lStoryboardId,
+            long lvalFeedLong,
+            string lProjectId,
+            StoryBoardRepository sbRep,
+            string storyBoardName
+            )
+        {
+            bool needSP = false;
+            if (values != null && lobj.Exists(r => !string.IsNullOrWhiteSpace(r.status) && (r.status == "update" || r.status == "add")))
+            {
+                needSP = true;
+            }
 
+            sbRep.SaveStoryboardGridNew(lConnectionStr, lSchema, long.Parse(lStoryboardId), lvalFeedLong.ToString(), lProjectId, lobj, needSP);
+            SaveStoryBoardDetailToJsonFile(lProjectId, lStoryboardId, storyBoardName, lSchema, lConnectionStr, sbRep);
+        }
         public ActionResult SaveStoryboardGridNew(string lGridJsonData, string lStoryboardId, string lchangedGrid, string lProjectId, string storyBoardName)
         {
             logger.Info(string.Format("Storyborad Save Start | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
@@ -1399,7 +1418,7 @@ namespace MARS_Web.Controllers
                     sbRep.Username = SessionManager.TESTER_LOGIN_NAME;
                     //var addAndUpdateList = lobj.FindAll(r => !string.IsNullOrWhiteSpace(r.status) && (r.status == "update" || r.status == "add"));
                     List<TestCaseValidationResultModel> ValidationResult = new List<TestCaseValidationResultModel>();
-                    long lvalFeedLong = MARS_Web.Helper.IdWorker.Instance.NextId();
+                    long lvalFeedLong = IdWorker.Instance.NextId();
                     //if (addAndUpdateList != null && addAndUpdateList.Count > 0)
                     //{
                     logger.Info(string.Format("Storyborad Saves 1 | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
@@ -1422,7 +1441,7 @@ namespace MARS_Web.Controllers
                                 else if (obj.status == "add")
                                 {
                                     obj.Storyboardid = long.Parse(lStoryboardId);
-                                    obj.storyboarddetailid = MARS_Web.Helper.IdWorker.Instance.NextId();
+                                    obj.storyboarddetailid = IdWorker.Instance.NextId();
                                     values.Add(new StoryBoardResultModel()
                                     {
                                         ProjectId = obj.ProjectId,
@@ -1501,19 +1520,23 @@ namespace MARS_Web.Controllers
                         }
                         //}
 
-                        System.Threading.Tasks.Task.Run(() =>
-                        {
-                            bool needSP = false;
-                            if (values != null && lobj.Exists(r => !string.IsNullOrWhiteSpace(r.status) && (r.status == "update" || r.status == "add")))
-                            {
-                                needSP = true;
-                            }
-
-                            sbRep.SaveStoryboardGridNew(lConnectionStr, lSchema, long.Parse(lStoryboardId), lvalFeedLong.ToString(), lProjectId, lobj, needSP);
-                            SaveStoryBoardDetailToJsonFile(lProjectId, lStoryboardId, storyBoardName, lSchema, lConnectionStr, sbRep);
-                        });
                         logger.Info(string.Format("Storyborad Saves 9 | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
                         result = JsonConvert.SerializeObject(ValidationResult);
+
+                        //System.Threading.Tasks.Task.Run(() =>
+                        //{
+                        //    bool needSP = false;
+                        //    if (values != null && lobj.Exists(r => !string.IsNullOrWhiteSpace(r.status) && (r.status == "update" || r.status == "add")))
+                        //    {
+                        //        needSP = true;
+                        //    }
+
+                        //    sbRep.SaveStoryboardGridNew(lConnectionStr, lSchema, long.Parse(lStoryboardId), lvalFeedLong.ToString(), lProjectId, lobj, needSP);
+                        //    SaveStoryBoardDetailToJsonFile(lProjectId, lStoryboardId, storyBoardName, lSchema, lConnectionStr, sbRep);
+                        //});
+                        System.Threading.Tasks.Task.Run(() => SaveStoryboardGridNewHost(values, lobj, lConnectionStr, lSchema, lStoryboardId, lvalFeedLong,
+                            lProjectId, sbRep, storyBoardName));
+                        
                         logger.Info(string.Format("Storyborad Saves 10 | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
                     }
 
