@@ -1441,7 +1441,7 @@ namespace MARS_Web.Controllers
                                 else if (obj.status == "add")
                                 {
                                     obj.Storyboardid = long.Parse(lStoryboardId);
-                                    obj.storyboarddetailid = IdWorker.Instance.NextId();
+                                    obj.storyboarddetailid =IdWorker.Instance.NextId();
                                     values.Add(new StoryBoardResultModel()
                                     {
                                         ProjectId = obj.ProjectId,
@@ -1467,7 +1467,6 @@ namespace MARS_Web.Controllers
                                     var value = values.FirstOrDefault(r => r.storyboarddetailid == obj.storyboarddetailid);
                                     if (value != null)
                                     {
-
                                         value.ProjectId = obj.ProjectId;
                                         value.ActionName = obj.ActionName;
                                         value.Run_order = obj.Run_order;
@@ -1497,16 +1496,16 @@ namespace MARS_Web.Controllers
                                         }
                                     }
                                 }
-                                else
-                                {
-                                    var value = values.FirstOrDefault(r => r.storyboarddetailid != null && r.storyboarddetailid == obj.storyboarddetailid);
-                                    if (value != null && value.Run_order != obj.Run_order)
-                                    {
-                                        value.Run_order = obj.Run_order;
-                                        value.status = "update";
-                                        obj.status = "update";
-                                    }
-                                }
+                                //else
+                                //{
+                                //    var value = values.FirstOrDefault(r => r.storyboarddetailid != null && r.storyboarddetailid == obj.storyboarddetailid);
+                                //    if (value != null && value.Run_order != obj.Run_order)
+                                //    {
+                                //        value.Run_order = obj.Run_order;
+                                //        value.status = "update";
+                                //        obj.status = "update";
+                                //    }
+                                //}
                             }
                             //var lresult = sbRep.GetStoryBoardDetails(lSchema, lConnectionStr, Convert.ToInt64(lProjectId), Convert.ToInt64(lStoryboardId));
                             var storyBoardDetails = JsonConvert.SerializeObject(values);
@@ -2967,7 +2966,15 @@ namespace MARS_Web.Controllers
                     }
                 }
             }
-
+            lobj.ForEach(r =>
+            {
+                long order =(long) (r.RowId + 1);
+                if (r.status == "nomal"  && r.Run_order != order)
+                {
+                    r.Run_order = order;
+                    r.status = "update";
+                }
+            });
         }
 
         private void SaveStoryBoardDetailToJsonFile(string lProjectId, string lStoryboardId, string storyBoardName, string lSchema, string lConnectionStr, StoryBoardRepository sbRep)
