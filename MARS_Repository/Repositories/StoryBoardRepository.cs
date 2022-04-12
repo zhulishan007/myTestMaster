@@ -3663,7 +3663,7 @@ namespace MARS_Repository.Repositories
                             sql += $@"insert into REL_TEST_SUIT_PROJECT (RELATIONSHIP_ID,PROJECT_ID,TEST_SUITE_ID) select
                                          REL_TEST_SUIT_PROJECT_SEQ.nextval,{ProjectId},{item.TestSuiteId}  from dual
                                         where not exists (select 1 from REL_TEST_SUIT_PROJECT x where x.PROJECT_ID ={ProjectId} and  x.TEST_SUITE_ID={item.TestSuiteId}) ;";
-                            var detailid = IdWorker.Instance.NextId();
+                            var detailid = Helper.GetIdFromSeq(pcmd,"T_TEST_STEPS_SEQ"); //IdWorker.Instance.NextId();
                             sql += $@"insert into T_PROJ_TC_MGR(STORYBOARD_DETAIL_ID,TEST_SUITE_ID,TEST_CASE_ID,RUN_TYPE,RUN_ORDER,PROJECT_ID,STORYBOARD_ID)  values
                                          ({detailid},{item.TestSuiteId},{item.TestCaseId},{actionId},{index + 1},{ProjectId},{storyboardid}) ; ";
                             sql += $@"insert into T_STORYBOARD_DATASET_SETTING(SETTING_ID,STORYBOARD_DETAIL_ID,DATA_SUMMARY_ID) values   

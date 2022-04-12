@@ -1211,12 +1211,15 @@ namespace MARS_Web.Controllers
 
                     var addAndUpdateList = lobj.FindAll(r => !string.IsNullOrWhiteSpace(r.status) && (r.status == "update" || r.status == "add"));
                     List<TestCaseValidationResultModel> ValidationResult = new List<TestCaseValidationResultModel>();
-                    long lvalFeedLong = IdWorker.Instance.NextId();
+                    string lreturnValues = sbRep.InsertFeedProcess();
+                    var lvalFeed = lreturnValues.Split('~')[0];
+                    var lvalFeedD = lreturnValues.Split('~')[1];
+                    //long lvalFeedLong = IdWorker.Instance.NextId();
                     if (addAndUpdateList != null && addAndUpdateList.Count > 0)
                     {
                         logger.Info(string.Format("Storyborad Saves 1 | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
-                        var lvalFeed = lvalFeedLong.ToString();
-                        var lvalFeedD = IdWorker.Instance.NextId().ToString();
+                        //var lvalFeed = lvalFeedLong.ToString();
+                        //var lvalFeedD = IdWorker.Instance.NextId().ToString();
                         ValidationResult = sbRep.InsertStgStoryboardValidationTable(lConnectionStr, lSchema, addAndUpdateList, lStoryboardId, lvalFeed, lvalFeedD, lProjectId);
                         logger.Info(string.Format("Storyborad Saves 2 | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
                     }
@@ -1273,7 +1276,7 @@ namespace MARS_Web.Controllers
                                             TestCaseName = obj.TestCaseName,
                                             DataSetName = obj.DataSetName,
                                             Dependency = obj.Dependency,
-                                            storyboarddetailid = IdWorker.Instance.NextId(),
+                                            storyboarddetailid =MARS_Repository.Helper.NextTestSuiteId( "T_TEST_STEPS_SEQ"),//IdWorker.Instance.NextId(),
                                             Storyboardid = long.Parse(lStoryboardId),
                                             Storyboardname = storyBoardName
                                         });
@@ -1336,7 +1339,7 @@ namespace MARS_Web.Controllers
                                 needSP = true;
                             }
 
-                            sbRep.SaveStoryboardGrid(lConnectionStr, lSchema, long.Parse(lStoryboardId), lvalFeedLong.ToString(), lProjectId, lobj.FindAll(r => r.status == "delete"), needSP);
+                            sbRep.SaveStoryboardGrid(lConnectionStr, lSchema, long.Parse(lStoryboardId), lvalFeed.ToString(), lProjectId, lobj.FindAll(r => r.status == "delete"), needSP);
                             SaveStoryBoardDetailToJsonFile(lProjectId, lStoryboardId, storyBoardName, lSchema, lConnectionStr, sbRep);
                         });
                         logger.Info(string.Format("Storyborad Saves 9 | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
@@ -1441,7 +1444,7 @@ namespace MARS_Web.Controllers
                                 else if (obj.status == "add")
                                 {
                                     obj.Storyboardid = long.Parse(lStoryboardId);
-                                    obj.storyboarddetailid =IdWorker.Instance.NextId();
+                                    obj.storyboarddetailid = MARS_Repository.Helper.NextTestSuiteId("T_TEST_STEPS_SEQ");//IdWorker.Instance.NextId();
                                     values.Add(new StoryBoardResultModel()
                                     {
                                         ProjectId = obj.ProjectId,
