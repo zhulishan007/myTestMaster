@@ -525,8 +525,14 @@ namespace Mars_Serialization.JsonSerialization
 
                         string testcaseJsonData = JsonConvert.SerializeObject(obj);
                         testcaseJsonData = JValue.Parse(testcaseJsonData).ToString(Formatting.Indented);
-
-                        File.WriteAllText(filePath, testcaseJsonData);
+                        try
+                        {
+                            Console.WriteLine($"\tTestcase file:[{filePath}]");
+                            File.WriteAllText(filePath, testcaseJsonData);
+                        }catch(Exception e)
+                        {
+                            Console.WriteLine($"\tException:[{e.Message}]\r\n\t[{e.StackTrace}]");
+                        }
                     }
                     Console.WriteLine($"\t\t\tEnd " + DateTime.Now.ToString("yyyyMMdd HH:mm:ss fff"));
                 }
@@ -570,6 +576,7 @@ namespace Mars_Serialization.JsonSerialization
                         {
                             #region CREATE APPLICATION FOLDER
                             string appPath = Path.Combine(folderPath, "app_" + app.APPLICATION_ID);
+                            Console.WriteLine($"Application name :{app.APP_SHORT_NAME}-{app.APPLICATION_ID}, to Path:{appPath}");
                             if (!Directory.Exists(appPath))
                                 Directory.CreateDirectory(appPath);
                             #endregion
@@ -585,7 +592,16 @@ namespace Mars_Serialization.JsonSerialization
                                     {
                                         string pegWindowJsonData = JsonConvert.SerializeObject(appPegWindow);
                                         pegWindowJsonData = JValue.Parse(pegWindowJsonData).ToString(Formatting.Indented);
-                                        File.WriteAllText(parentPagWindowPath, pegWindowJsonData);
+                                        Console.WriteLine($"\tPegFile:[{parentPagWindowPath}]");
+                                        try
+                                        {
+                                            File.WriteAllText(parentPagWindowPath, pegWindowJsonData);
+                                        }
+                                        catch (Exception e)
+                                        {
+                                            Console.WriteLine($"\tException:[{e.Message}]\r\n\t[{e.StackTrace}]");
+                                            continue;
+                                        }
                                     }
                                     //if (File.Exists(parentPagWindowPath))
                                     //    File.Delete(parentPagWindowPath);
@@ -604,7 +620,15 @@ namespace Mars_Serialization.JsonSerialization
 
                                         string objectJsonData = JsonConvert.SerializeObject(finalObjectList);
                                         objectJsonData = JValue.Parse(objectJsonData).ToString(Formatting.Indented);
-                                        File.WriteAllText(filePath, objectJsonData);
+                                        Console.WriteLine($"\tObjFile:[{filePath}]");
+                                        try
+                                        {
+                                            File.WriteAllText(filePath, objectJsonData);
+                                        }catch(Exception e)
+                                        {
+                                            Console.WriteLine($"\tException:[{e.Message}]\r\n\t[{e.StackTrace}]");
+                                            continue;
+                                        }
                                     }
                                     //if (File.Exists(filePath))
                                     //    File.Delete(filePath);
@@ -620,11 +644,20 @@ namespace Mars_Serialization.JsonSerialization
                         if (appList.Count() > 0)
                         {
                             string parentPagWindowPath = Path.Combine(folderPath, "application.json");
+                            Console.WriteLine("Application to Path:[{parentPagWindowPat}]");
                             if (!File.Exists(parentPagWindowPath) || needReflesh)
                             {
                                 string applicationJsonData = JsonConvert.SerializeObject(appList);
                                 applicationJsonData = JValue.Parse(applicationJsonData).ToString(Formatting.Indented);
-                                File.WriteAllText(parentPagWindowPath, applicationJsonData);
+                                try
+                                {
+                                    File.WriteAllText(parentPagWindowPath, applicationJsonData);
+                                }
+                                catch (Exception e)
+                                {
+                                    Console.WriteLine($"\tException:[{e.Message}]-\r\n\t{e.StackTrace}");
+                                }
+                                
                             }
                             //if (File.Exists(parentPagWindowPath))
                             //    File.Delete(parentPagWindowPath);
@@ -649,7 +682,7 @@ namespace Mars_Serialization.JsonSerialization
                         }
                         DataTable testCaseDatatable = Common.Common.GetRecordAsDatatable(conString, query);
                         testCases = Common.Common.ConvertDataTableToList<MB_V_TEST_STEPS>(testCaseDatatable);
-                        Console.WriteLine($"\tGet all [{testCases.Count}] testcases...");
+                        Console.WriteLine($"\tGet all [{testCases.Count}] steps testcases...");
                         if (testCases.Count() > 0)
                         {
                             long[] testCasesId = testCases.Select(x => (long)x.TEST_CASE_ID).Distinct().ToArray();

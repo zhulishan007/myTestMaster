@@ -14,7 +14,7 @@ namespace MARS_Web.Helper
 {
     public class InitCacheHelper
     {
-        public static void InitAll(string entityConnString, string connString, string databaseName)
+        public  void InitAll(string entityConnString, string connString, string databaseName)
         {
             DBEntities.ConnectionString = entityConnString;
             DBEntities.Schema = databaseName;
@@ -34,32 +34,56 @@ namespace MARS_Web.Helper
             SetInit(entityConnString, databaseName, repTree);
         }
 
+        private static void InitProjectCache(string databaseName,
+            GetTreeRepository repTree)
+        {
+            var project = ((GetTreeRepository)repTree).GetProjectListCache();
+            if (GlobalVariable.ProjectListCache.ContainsKey(databaseName))
+                GlobalVariable.ProjectListCache[databaseName] = project;
+            else
+                GlobalVariable.ProjectListCache.TryAdd(databaseName, project);
+        }
         public static void ProjectInit(String entityConnString, string databaseName, GetTreeRepository repTree)
         {
             DBEntities.ConnectionString = entityConnString;
             DBEntities.Schema = databaseName;
-           
-            Task.Factory.StartNew((r) =>
-            {
-                var project = ((GetTreeRepository)r).GetProjectListCache();
-                if (GlobalVariable.ProjectListCache.ContainsKey(databaseName))
-                    GlobalVariable.ProjectListCache[databaseName] = project;
-                else
-                    GlobalVariable.ProjectListCache.TryAdd(databaseName, project);
-            }, repTree);
+            Task.Factory.StartNew(() => InitProjectCache(databaseName, repTree));
+            //Task.Factory.StartNew((r) =>
+            //{
+            //    var project = ((GetTreeRepository)r).GetProjectListCache();
+            //    if (GlobalVariable.ProjectListCache.ContainsKey(databaseName))
+            //        GlobalVariable.ProjectListCache[databaseName] = project;
+            //    else
+            //        GlobalVariable.ProjectListCache.TryAdd(databaseName, project);
+            //}, repTree);
+        }
+
+        private static void _testSuiteInit(string databaseName, string connString, 
+            string entityConnString,
+            GetTreeRepository repTree)
+        {
+            DBEntities.ConnectionString = entityConnString;
+            DBEntities.Schema = databaseName;
+
+            var testSuit = ((GetTreeRepository)repTree).GetTestSuiteListCache(connString);
+            if (GlobalVariable.TestSuiteListCache.ContainsKey(databaseName))
+                GlobalVariable.TestSuiteListCache[databaseName] = testSuit;
+            else
+                GlobalVariable.TestSuiteListCache.TryAdd(databaseName, testSuit);
         }
         public static void TestSuitInit(String entityConnString, string databaseName, GetTreeRepository repTree, string connString)
         {
             DBEntities.ConnectionString = entityConnString;
             DBEntities.Schema = databaseName;
-            Task.Factory.StartNew((r) =>
-            {
-                var testSuit = ((GetTreeRepository)r).GetTestSuiteListCache(connString);
-                if (GlobalVariable.TestSuiteListCache.ContainsKey(databaseName))
-                    GlobalVariable.TestSuiteListCache[databaseName] = testSuit;
-                else
-                    GlobalVariable.TestSuiteListCache.TryAdd(databaseName, testSuit);
-            }, repTree);
+            Task.Factory.StartNew(() => _testSuiteInit(databaseName, connString, entityConnString, repTree));
+            //Task.Factory.StartNew((r) =>
+            //{
+            //    var testSuit = ((GetTreeRepository)r).GetTestSuiteListCache(connString);
+            //    if (GlobalVariable.TestSuiteListCache.ContainsKey(databaseName))
+            //        GlobalVariable.TestSuiteListCache[databaseName] = testSuit;
+            //    else
+            //        GlobalVariable.TestSuiteListCache.TryAdd(databaseName, testSuit);
+            //}, repTree);
         }
 
         public static void StoryBoardInit(String entityConnString, string databaseName, GetTreeRepository repTree)
@@ -76,102 +100,200 @@ namespace MARS_Web.Helper
             }, repTree);
         }
 
+        private static void _testCaseInit(String entityConnString, string databaseName, GetTreeRepository repTree, string connString)
+        {
+            DBEntities.ConnectionString = entityConnString;
+            DBEntities.Schema = databaseName;
+
+            var testCase = ((GetTreeRepository)repTree).GetTestCaseListCache(connString);
+            if (GlobalVariable.TestCaseListCache.ContainsKey(databaseName))
+                GlobalVariable.TestCaseListCache[databaseName] = testCase;
+            else
+                GlobalVariable.TestCaseListCache.TryAdd(databaseName, testCase);
+        }
+
         public static void TestCaseInit(String entityConnString, string databaseName, GetTreeRepository repTree, string connString)
         {
             DBEntities.ConnectionString = entityConnString;
             DBEntities.Schema = databaseName;
-            Task.Factory.StartNew((r) =>
-            {
-                var testCase = ((GetTreeRepository)r).GetTestCaseListCache(connString);
-                if (GlobalVariable.TestCaseListCache.ContainsKey(databaseName))
-                    GlobalVariable.TestCaseListCache[databaseName] = testCase;
-                else
-                    GlobalVariable.TestCaseListCache.TryAdd(databaseName, testCase);
-            }, repTree);
+            Task.Factory.StartNew(() => _testCaseInit(entityConnString,databaseName, repTree,connString));
+            //Task.Factory.StartNew((r) =>
+            //{
+            //    var testCase = ((GetTreeRepository)r).GetTestCaseListCache(connString);
+            //    if (GlobalVariable.TestCaseListCache.ContainsKey(databaseName))
+            //        GlobalVariable.TestCaseListCache[databaseName] = testCase;
+            //    else
+            //        GlobalVariable.TestCaseListCache.TryAdd(databaseName, testCase);
+            //}, repTree);
+
         }
 
+        public static void _dataSetInit(String entityConnString, string databaseName, GetTreeRepository repTree, string connString)
+        {
+            DBEntities.ConnectionString = entityConnString;
+            DBEntities.Schema = databaseName;
+            
+            var dataSet = repTree.GetDataSetListCache(connString);
+            if (GlobalVariable.DataSetListCache.ContainsKey(databaseName))
+                GlobalVariable.DataSetListCache[databaseName] = dataSet;
+            else
+                GlobalVariable.DataSetListCache.TryAdd(databaseName, dataSet);
+            
+        }
         public static void DataSetInit(String entityConnString, string databaseName, GetTreeRepository repTree, string connString)
         {
             DBEntities.ConnectionString = entityConnString;
             DBEntities.Schema = databaseName;
-            Task.Factory.StartNew((r) =>
-            {
-                var dataSet = ((GetTreeRepository)r).GetDataSetListCache(connString);
-                if (GlobalVariable.DataSetListCache.ContainsKey(databaseName))
-                    GlobalVariable.DataSetListCache[databaseName] = dataSet;
-                else
-                    GlobalVariable.DataSetListCache.TryAdd(databaseName, dataSet);
-            }, repTree);
+            Task.Factory.StartNew(() => _dataSetInit(entityConnString, databaseName, repTree, connString));
+            //Task.Factory.StartNew((r) =>
+            //{
+            //    var dataSet = ((GetTreeRepository)r).GetDataSetListCache(connString);
+            //    if (GlobalVariable.DataSetListCache.ContainsKey(databaseName))
+            //        GlobalVariable.DataSetListCache[databaseName] = dataSet;
+            //    else
+            //        GlobalVariable.DataSetListCache.TryAdd(databaseName, dataSet);
+            //}, repTree);
+
+        }
+
+        public static void _actionsInit(String entityConnString, string databaseName, 
+            GetTreeRepository repTree)
+        {
+            DBEntities.ConnectionString = entityConnString;
+            DBEntities.Schema = databaseName;
+            var actions = repTree.GetActionsCache();
+            if (GlobalVariable.ActionsCache.ContainsKey(databaseName))
+                GlobalVariable.ActionsCache[databaseName] = actions;
+            else
+                GlobalVariable.ActionsCache.TryAdd(databaseName, actions);
+            
         }
 
         public static void ActionsInit(String entityConnString, string databaseName, GetTreeRepository repTree)
         {
             DBEntities.ConnectionString = entityConnString;
             DBEntities.Schema = databaseName;
-            Task.Factory.StartNew((r) =>
-            {
-                var actions = ((GetTreeRepository)r).GetActionsCache();
-                if (GlobalVariable.ActionsCache.ContainsKey(databaseName))
-                    GlobalVariable.ActionsCache[databaseName] = actions;
-                else
-                    GlobalVariable.ActionsCache.TryAdd(databaseName, actions);
-            }, repTree);
+            Task.Factory.StartNew(() => _actionsInit(entityConnString,databaseName, 
+                repTree));
+            //Task.Factory.StartNew((r) =>
+            //{
+            //    var actions = ((GetTreeRepository)r).GetActionsCache();
+            //    if (GlobalVariable.ActionsCache.ContainsKey(databaseName))
+            //        GlobalVariable.ActionsCache[databaseName] = actions;
+            //    else
+            //        GlobalVariable.ActionsCache.TryAdd(databaseName, actions);
+            //}, repTree);
         }
 
-        public static void FolderInit(String entityConnString, string databaseName, GetTreeRepository repTree)
+        public static void _folderInit(String entityConnString, string databaseName, GetTreeRepository repTree)
         {
             DBEntities.ConnectionString = entityConnString;
             DBEntities.Schema = databaseName;
-            Task.Factory.StartNew((r) =>
-            {
-                var folders = ((GetTreeRepository)r).GetFolderCache();
-                if (GlobalVariable.FolderListCache.ContainsKey(databaseName))
-                    GlobalVariable.FolderListCache[databaseName] = folders;
-                else
-                    GlobalVariable.FolderListCache.TryAdd(databaseName, folders);
-            }, repTree);
+            var folders = repTree.GetFolderCache();
+            if (GlobalVariable.FolderListCache.ContainsKey(databaseName))
+                GlobalVariable.FolderListCache[databaseName] = folders;
+            else
+                GlobalVariable.FolderListCache.TryAdd(databaseName, folders);
+            
+        }
+
+        public static void FolderInit(String entityConnString, string databaseName, 
+            GetTreeRepository repTree)
+        {
+            DBEntities.ConnectionString = entityConnString;
+            DBEntities.Schema = databaseName;
+            Task.Factory.StartNew(() => _folderInit(entityConnString, databaseName, repTree));
+            //Task.Factory.StartNew((r) =>
+            //{
+            //    var folders = ((GetTreeRepository)r).GetFolderCache();
+            //    if (GlobalVariable.FolderListCache.ContainsKey(databaseName))
+            //        GlobalVariable.FolderListCache[databaseName] = folders;
+            //    else
+            //        GlobalVariable.FolderListCache.TryAdd(databaseName, folders);
+            //},repTree);
+        }
+
+        public static void _folderFilterInit(String entityConnString, string databaseName, GetTreeRepository repTree)
+        {
+            DBEntities.ConnectionString = entityConnString;
+            DBEntities.Schema = databaseName;
+            
+            var folders = repTree.GetFilterCache();
+            if (GlobalVariable.FolderFilterListCache.ContainsKey(databaseName))
+                GlobalVariable.FolderFilterListCache[databaseName] = folders;
+            else
+                GlobalVariable.FolderFilterListCache.TryAdd(databaseName, folders);
+            
         }
 
         public static void FolderFilterInit(String entityConnString, string databaseName, GetTreeRepository repTree)
         {
             DBEntities.ConnectionString = entityConnString;
             DBEntities.Schema = databaseName;
-            Task.Factory.StartNew((r) =>
-            {
-                var folders = ((GetTreeRepository)r).GetFilterCache();
-                if (GlobalVariable.FolderFilterListCache.ContainsKey(databaseName))
-                    GlobalVariable.FolderFilterListCache[databaseName] = folders;
-                else
-                    GlobalVariable.FolderFilterListCache.TryAdd(databaseName, folders);
-            }, repTree);
+            Task.Factory.StartNew(() => _folderFilterInit(entityConnString, 
+                databaseName, repTree));
+            //Task.Factory.StartNew((r) =>
+            //{
+            //    var folders = ((GetTreeRepository)r).GetFilterCache();
+            //    if (GlobalVariable.FolderFilterListCache.ContainsKey(databaseName))
+            //        GlobalVariable.FolderFilterListCache[databaseName] = folders;
+            //    else
+            //        GlobalVariable.FolderFilterListCache.TryAdd(databaseName, folders);
+            //}, repTree);
         }
 
+        public static void _relFolderFilterInit(String entityConnString, 
+            string databaseName, GetTreeRepository repTree)
+        {
+            DBEntities.ConnectionString = entityConnString;
+            DBEntities.Schema = databaseName;
+            var folders = repTree.GetRelFolderFilterCache();
+            if (GlobalVariable.RelFolderFilterListCache.ContainsKey(databaseName))
+                GlobalVariable.RelFolderFilterListCache[databaseName] = folders;
+            else
+                GlobalVariable.RelFolderFilterListCache.TryAdd(databaseName, folders);
+            
+        }
         public static void RelFolderFilterInit(String entityConnString, string databaseName, GetTreeRepository repTree)
         {
             DBEntities.ConnectionString = entityConnString;
             DBEntities.Schema = databaseName;
-            Task.Factory.StartNew((r) =>
-            {
-                var folders = ((GetTreeRepository)r).GetRelFolderFilterCache();
-                if (GlobalVariable.RelFolderFilterListCache.ContainsKey(databaseName))
-                    GlobalVariable.RelFolderFilterListCache[databaseName] = folders;
-                else
-                    GlobalVariable.RelFolderFilterListCache.TryAdd(databaseName, folders);
-            }, repTree);
+            Task.Factory.StartNew(() => _relFolderFilterInit(entityConnString, databaseName, repTree));
+            //Task.Factory.StartNew((r) =>
+            //{
+            //    var folders = ((GetTreeRepository)r).GetRelFolderFilterCache();
+            //    if (GlobalVariable.RelFolderFilterListCache.ContainsKey(databaseName))
+            //        GlobalVariable.RelFolderFilterListCache[databaseName] = folders;
+            //    else
+            //        GlobalVariable.RelFolderFilterListCache.TryAdd(databaseName, folders);
+            //}, repTree);
+        }
+
+        public static void _appInit(String entityConnString, string databaseName, GetTreeRepository repTree)
+        {
+            DBEntities.ConnectionString = entityConnString;
+            DBEntities.Schema = databaseName;
+            var apps = repTree.GetAppCache();
+            if (GlobalVariable.AppListCache.ContainsKey(databaseName))
+                GlobalVariable.AppListCache[databaseName] = apps;
+            else
+                GlobalVariable.AppListCache.TryAdd(databaseName, apps);
+            
         }
 
         public static void AppInit(String entityConnString, string databaseName, GetTreeRepository repTree)
         {
             DBEntities.ConnectionString = entityConnString;
             DBEntities.Schema = databaseName;
-            Task.Factory.StartNew((r) =>
-            {
-                var apps = ((GetTreeRepository)r).GetAppCache();
-                if (GlobalVariable.AppListCache.ContainsKey(databaseName))
-                    GlobalVariable.AppListCache[databaseName] = apps;
-                else
-                    GlobalVariable.AppListCache.TryAdd(databaseName, apps);
-            }, repTree);
+            Task.Factory.StartNew(() => _appInit(entityConnString, databaseName, repTree));
+            //Task.Factory.StartNew((r) =>
+            //{
+            //    var apps = ((GetTreeRepository)r).GetAppCache();
+            //    if (GlobalVariable.AppListCache.ContainsKey(databaseName))
+            //        GlobalVariable.AppListCache[databaseName] = apps;
+            //    else
+            //        GlobalVariable.AppListCache.TryAdd(databaseName, apps);
+            //}, repTree);
         }
 
         public static void FolderAddOrEdit(string databaseName, DataTagCommonViewModel lEntity, bool isadd = false, string username = "")
@@ -205,46 +327,86 @@ namespace MARS_Web.Helper
             }
         }
 
+        public static void _groupInit(String entityConnString, string databaseName, GetTreeRepository repTree)
+        {
+            DBEntities.ConnectionString = entityConnString;
+            DBEntities.Schema = databaseName;
+            var folders = repTree.GetGroupCache();
+            if (GlobalVariable.GroupListCache.ContainsKey(databaseName))
+                GlobalVariable.GroupListCache[databaseName] = folders;
+            else
+                GlobalVariable.GroupListCache.TryAdd(databaseName, folders);
+            
+        }
         public static void GroupInit(String entityConnString, string databaseName, GetTreeRepository repTree)
         {
             DBEntities.ConnectionString = entityConnString;
             DBEntities.Schema = databaseName;
-            Task.Factory.StartNew((r) =>
-            {
-                var folders = ((GetTreeRepository)r).GetGroupCache();
-                if (GlobalVariable.GroupListCache.ContainsKey(databaseName))
-                    GlobalVariable.GroupListCache[databaseName] = folders;
-                else
-                    GlobalVariable.GroupListCache.TryAdd(databaseName, folders);
-            }, repTree);
+            Task.Factory.StartNew(() => _groupInit(entityConnString,databaseName
+                , repTree));
+            //Task.Factory.StartNew((r) =>
+            //{
+            //    var folders = ((GetTreeRepository)r).GetGroupCache();
+            //    if (GlobalVariable.GroupListCache.ContainsKey(databaseName))
+            //        GlobalVariable.GroupListCache[databaseName] = folders;
+            //    else
+            //        GlobalVariable.GroupListCache.TryAdd(databaseName, folders);
+            //}, repTree);
         }
 
+        public static void _dataSetTagInit(String entityConnString, string databaseName, GetTreeRepository repTree)
+        {
+            DBEntities.ConnectionString = entityConnString;
+            DBEntities.Schema = databaseName;
+            
+            var folders = repTree.GetDataSetTagCache();
+            if (GlobalVariable.DataSetTagListCache.ContainsKey(databaseName))
+                GlobalVariable.DataSetTagListCache[databaseName] = folders;
+            else
+                GlobalVariable.DataSetTagListCache.TryAdd(databaseName, folders);
+            
+        }
         public static void DataSetTagInit(String entityConnString, string databaseName, GetTreeRepository repTree)
         {
             DBEntities.ConnectionString = entityConnString;
             DBEntities.Schema = databaseName;
-            Task.Factory.StartNew((r) =>
-            {
-                var folders = ((GetTreeRepository)r).GetDataSetTagCache();
-                if (GlobalVariable.DataSetTagListCache.ContainsKey(databaseName))
-                    GlobalVariable.DataSetTagListCache[databaseName] = folders;
-                else
-                    GlobalVariable.DataSetTagListCache.TryAdd(databaseName, folders);
-            }, repTree);
+            Task.Factory.StartNew(() => _dataSetTagInit(entityConnString, 
+                databaseName, repTree));
+            //Task.Factory.StartNew((r) =>
+            //{
+            //    var folders = ((GetTreeRepository)r).GetDataSetTagCache();
+            //    if (GlobalVariable.DataSetTagListCache.ContainsKey(databaseName))
+            //        GlobalVariable.DataSetTagListCache[databaseName] = folders;
+            //    else
+            //        GlobalVariable.DataSetTagListCache.TryAdd(databaseName, folders);
+            //}, repTree);
+        }
+
+        public static void _setInit(String entityConnString, string databaseName, GetTreeRepository repTree)
+        {
+            DBEntities.ConnectionString = entityConnString;
+            DBEntities.Schema = databaseName;
+            var folders = repTree.GetSetCache();
+            if (GlobalVariable.SetListCache.ContainsKey(databaseName))
+                GlobalVariable.SetListCache[databaseName] = folders;
+            else
+                GlobalVariable.SetListCache.TryAdd(databaseName, folders);
+        
         }
 
         public static void SetInit(String entityConnString, string databaseName, GetTreeRepository repTree)
         {
             DBEntities.ConnectionString = entityConnString;
             DBEntities.Schema = databaseName;
-            Task.Factory.StartNew((r) =>
-            {
-                var folders = ((GetTreeRepository)r).GetSetCache();
-                if (GlobalVariable.SetListCache.ContainsKey(databaseName))
-                    GlobalVariable.SetListCache[databaseName] = folders;
-                else
-                    GlobalVariable.SetListCache.TryAdd(databaseName, folders);
-            }, repTree);
+            Task.Factory.StartNew(() => _setInit(entityConnString,databaseName, repTree));
+            //Task.Factory.StartNew((r) =>
+            //{
+            //    var folders = ((GetTreeRepository)r).GetSetCache();
+            //    if (GlobalVariable.SetListCache.ContainsKey(databaseName))
+            //        GlobalVariable.SetListCache[databaseName] = folders;
+            //    else
+            //        GlobalVariable.SetListCache.TryAdd(databaseName, folders);
+            //}, repTree);
         }
 
         public static bool GetProjectUserFromCache(string lSchema, decimal testid, List<ProjectByUser> projectList)

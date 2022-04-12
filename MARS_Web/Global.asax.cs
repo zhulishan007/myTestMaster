@@ -61,7 +61,7 @@ namespace MARS_Web
                     {
                         MarsConfig mc = MarsConfig.Configure(databaseName);
                         DatabaseConnectionDetails det = mc.GetDatabaseConnectionDetails();
-                        InitCacheHelper.InitAll(det.EntityConnString, det.ConnString, databaseName);
+                        (new InitCacheHelper()).InitAll(det.EntityConnString, det.ConnString, databaseName);
                         /* Task.Run(() =>
                          {
                              DBEntities.ConnectionString = det.EntityConnString;
