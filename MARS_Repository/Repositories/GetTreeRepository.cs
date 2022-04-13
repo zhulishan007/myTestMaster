@@ -951,6 +951,7 @@ namespace MARS_Repository.Repositories
             {
                 logger.Info(string.Format("GetAppCache start  UserName: {0}", Username));
                 var en = Helper.GetMarsEntitiesInstance();
+                en.Configuration.ProxyCreationEnabled = false;
                 var lResult = en.T_REGISTERED_APPS.ToList();
 
                 logger.Info(string.Format("GetAppCache end   | UserName: {0}", Username));

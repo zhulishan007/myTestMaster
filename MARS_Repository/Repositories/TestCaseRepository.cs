@@ -55,7 +55,7 @@ namespace MARS_Repository.Repositories
             try
             {
                 logger.Info(string.Format("Check TestCase TestSuite Rel start | testcaseId: {0} | testsuiteid: {1} | UserName: {2}", testcaseId, testsuiteid, Username));
-                var flag = false;
+                /*var flag = false;
                 var lStoryboardList = entity.T_PROJ_TC_MGR.Where(x => x.TEST_CASE_ID == testcaseId).ToList();
                 foreach (var item in lStoryboardList)
                 {
@@ -63,7 +63,8 @@ namespace MARS_Repository.Repositories
                     {
                         flag = true;
                     }
-                }
+                }*/
+                var flag = entity.T_PROJ_TC_MGR.Any(x => x.TEST_CASE_ID == testcaseId && x.TEST_SUITE_ID != testsuiteid);
                 logger.Info(string.Format("Check TestCase TestSuite Rel end | testcaseId: {0} | testsuiteid: {1} | UserName: {2}", testcaseId, testsuiteid, Username));
                 return flag;
             }
@@ -3538,7 +3539,7 @@ namespace MARS_Repository.Repositories
             }
         }
 
-        public bool AddEditSet(DataTagCommonViewModel lEntity)
+        public T_TEST_SET AddEditSet(DataTagCommonViewModel lEntity)
         {
             try
             {
@@ -3548,11 +3549,11 @@ namespace MARS_Repository.Repositories
                     {
                         lEntity.Name = lEntity.Name.Trim();
                     }
-                    var flag = false;
+                    T_TEST_SET tbl = null;
                     if (lEntity.Id == 0)
                     {
                         logger.Info(string.Format("Add Set start | Set: {0} | UserName: {1}", lEntity.Name, Username));
-                        var tbl = new T_TEST_SET();
+                        tbl = new T_TEST_SET();
                         tbl.SETID = Helper.NextTestSuiteId("SEQ_T_TEST_SET");
                         tbl.SETNAME = lEntity.Name;
                         tbl.DESCRIPTION = lEntity.Description;
@@ -3564,13 +3565,12 @@ namespace MARS_Repository.Repositories
                         lEntity.Id = tbl.SETID;
                         entity.T_TEST_SET.Add(tbl);
                         entity.SaveChanges();
-                        flag = true;
                         logger.Info(string.Format("Add Set end | Set: {0} | UserName: {1}", lEntity.Name, Username));
                     }
                     else
                     {
                         logger.Info(string.Format("Edit Set start | Set: {0} | SetId: {1} | UserName: {2}", lEntity.Name, lEntity.Id, Username));
-                        var tbl = entity.T_TEST_SET.Find(lEntity.Id);
+                        tbl = entity.T_TEST_SET.Find(lEntity.Id);
 
                         if (tbl != null)
                         {
@@ -3580,11 +3580,10 @@ namespace MARS_Repository.Repositories
                             tbl.UPDATE_CREATION_USER = Username;
                             entity.SaveChanges();
                         }
-                        flag = true;
-                        logger.Info(string.Format("Edit Set end | Set: {0} | SetId: {1} | UserName: {2}", lEntity.Name, lEntity.Id, Username));
+                         logger.Info(string.Format("Edit Set end | Set: {0} | SetId: {1} | UserName: {2}", lEntity.Name, lEntity.Id, Username));
                     }
                     scope.Complete();
-                    return flag;
+                    return tbl;
                 }
             }
             catch (Exception ex)
@@ -4426,12 +4425,16 @@ namespace MARS_Repository.Repositories
             }
         }
 
-        public bool CheckDuplicateFilterName(string Name)
+        public bool CheckDuplicateFilterName(string Name,long id)
         {
             try
             {
                 logger.Info(string.Format("Check Duplicate StoryboardName start | Filtername: {0} | UserName: {1}", Name, Username));
-                var lresult = entity.T_FOLDER_FILTER.Any(x => x.FILTER_NAME.ToLower().Trim() == Name.ToLower().Trim());
+                bool lresult = false;
+                if(id<=0)
+                     lresult = entity.T_FOLDER_FILTER.Any(x => x.FILTER_NAME.ToLower().Trim() == Name.ToLower().Trim());
+                else
+                    lresult = entity.T_FOLDER_FILTER.Any(x =>x.FILTER_ID!=id && x.FILTER_NAME.ToLower().Trim() == Name.ToLower().Trim());
                 logger.Info(string.Format("Check Duplicate StoryboardName end | Filtername: {0} | UserName: {1}", Name, Username));
                 return lresult;
             }
@@ -4445,7 +4448,7 @@ namespace MARS_Repository.Repositories
             }
         }
 
-        public bool SaveFolderFilter(string ProjectIds, string SBIds, string filtername, int Id,bool isupdate)
+        public bool SaveFolderFilter(string ProjectIds, string SBIds, string filtername, long Id,bool isupdate)
         {
             try
             {
@@ -4719,35 +4722,39 @@ namespace MARS_Repository.Repositories
 
                     try
                     {
-                        string dropTempTable = "DECLARE cnt NUMBER; BEGIN SELECT COUNT(*) INTO cnt FROM user_tables WHERE table_name = 'T_TEST_STEPS_TEMP'; IF cnt <> 0 THEN EXECUTE IMMEDIATE 'DROP TABLE T_TEST_STEPS_TEMP'; END IF; END;";
+                        string dropTempTable = "DECLARE cnt NUMBER; BEGIN SELECT COUNT(*) INTO cnt FROM user_tables WHERE table_name = 'T_TEST_STEPS_TEMP'; IF cnt <> 0 THEN EXECUTE IMMEDIATE 'TRUNCATE TABLE T_TEST_STEPS_TEMP';  EXECUTE IMMEDIATE 'DROP TABLE T_TEST_STEPS_TEMP'; END IF; END;";
                         command.CommandText = dropTempTable;
                         command.ExecuteNonQuery();
 
-                        string tempTestStepsTableQuery = "CREATE GLOBAL TEMPORARY TABLE T_TEST_STEPS_TEMP( STATUS VARCHAR2(50 BYTE), STEPS_ID NUMBER(16,0), RUN_ORDER NUMBER(38,0), KEY_WORD_ID NUMBER(16,0), TEST_CASE_ID NUMBER(16,0), OBJECT_ID NUMBER(16,0), COLUMN_ROW_SETTING VARCHAR2(128 BYTE), VALUE_SETTING VARCHAR2(128 BYTE), COMMENTS VARCHAR2(128 BYTE), IS_RUNNABLE NUMBER DEFAULT 0, OBJECT_NAME_ID NUMBER ) ON COMMIT PRESERVE ROWS";
+                        string tempTestStepsTableQuery = "CREATE GLOBAL TEMPORARY TABLE T_TEST_STEPS_TEMP( STATUS VARCHAR2(50 BYTE), STEPS_ID NUMBER(16,0), RUN_ORDER NUMBER(38,0), KEY_WORD_ID NUMBER(16,0), TEST_CASE_ID NUMBER(16,0), OBJECT_ID NUMBER(16,0), COLUMN_ROW_SETTING VARCHAR2(128 BYTE), VALUE_SETTING VARCHAR2(128 BYTE), COMMENTS VARCHAR2(128 BYTE), IS_RUNNABLE NUMBER DEFAULT 0, OBJECT_NAME_ID NUMBER ) ON COMMIT DELETE ROWS";
                         command.CommandText = tempTestStepsTableQuery;
                         command.ExecuteNonQuery();
 
                         if (steps.allSteps.Count() > 0)
                         {
                             command.CommandText = string.Empty;
-                            foreach (var item in addedSteps)
+
+                            SaveTestcaseSessionInDatabaseParam(command, "Added", addedSteps);
+                            SaveTestcaseSessionInDatabaseParam(command, "Updated", updatedSteps);
+                            SaveTestcaseSessionInDatabaseParam(command, "Deleted", deletedSteps);
+                            /*foreach (var item in addedSteps)
                             {
                                 command.CommandText = "INSERT INTO T_TEST_STEPS_TEMP (STATUS, STEPS_ID, RUN_ORDER, KEY_WORD_ID, TEST_CASE_ID, OBJECT_ID, COLUMN_ROW_SETTING, VALUE_SETTING, COMMENTS, IS_RUNNABLE, OBJECT_NAME_ID) VALUES " +
-                                                                           "('Added', " + item.STEPS_ID + ", " + item.RUN_ORDER + ", " + item.KEY_WORD_ID + ", " + testCaseId + ", '" + (item.OBJECT_ID != null ? item.OBJECT_ID : null) + "', '" + (!string.IsNullOrEmpty(item.COLUMN_ROW_SETTING) ? item.COLUMN_ROW_SETTING : string.Empty) + "', '" + (!string.IsNullOrEmpty(item.VALUE_SETTING) ? item.VALUE_SETTING : "") + "', '" + (!string.IsNullOrEmpty(item.COMMENTINFO) ? item.COMMENTINFO : "") + "', " + (item.IS_RUNNABLE != null ? item.IS_RUNNABLE : 0) + ", " + (item.OBJECT_NAME_ID != null ? item.OBJECT_NAME_ID : -1) + ") ";
+                                                                           "('Added', " + item.STEPS_ID + ", " + item.RUN_ORDER + ", " + item.KEY_WORD_ID + ", " + testCaseId + ", '" + (item.OBJECT_ID != null ? item.OBJECT_ID : null) + "', '" + (!string.IsNullOrEmpty(item.COLUMN_ROW_SETTING) ? item.COLUMN_ROW_SETTING : "") + "', '" + (!string.IsNullOrEmpty(item.VALUE_SETTING) ? item.VALUE_SETTING : "") + "', '" + (!string.IsNullOrEmpty(item.COMMENTINFO) ? item.COMMENTINFO : "") + "', " + (item.IS_RUNNABLE != null ? item.IS_RUNNABLE : 0) + ", " + (item.OBJECT_NAME_ID != null ? item.OBJECT_NAME_ID : -1) + ") ";
                                 command.ExecuteNonQuery();
                             }
                             foreach (var item in updatedSteps)
                             {
                                 command.CommandText = "INSERT INTO T_TEST_STEPS_TEMP (STATUS, STEPS_ID, RUN_ORDER, KEY_WORD_ID, TEST_CASE_ID, OBJECT_ID, COLUMN_ROW_SETTING, VALUE_SETTING, COMMENTS, IS_RUNNABLE, OBJECT_NAME_ID) VALUES " +
-                                                                            "('Updated', " + item.STEPS_ID + ", " + item.RUN_ORDER + ", " + item.KEY_WORD_ID + ", " + testCaseId + ", " + item.OBJECT_ID + ", '" + (!string.IsNullOrEmpty(item.COLUMN_ROW_SETTING) ? item.COLUMN_ROW_SETTING : string.Empty) + "', '" + (!string.IsNullOrEmpty(item.VALUE_SETTING) ? item.VALUE_SETTING : "") + "', '" + (!string.IsNullOrEmpty(item.COMMENTINFO) ? item.COMMENTINFO : "") + "', " + (item.IS_RUNNABLE != null ? item.IS_RUNNABLE : 0) + ", " + (item.OBJECT_NAME_ID != null ? item.OBJECT_NAME_ID : -1) + ") ";
+                                                                            "('Updated', " + item.STEPS_ID + ", " + item.RUN_ORDER + ", " + item.KEY_WORD_ID + ", " + testCaseId + ", " + (item.OBJECT_ID != null ? item.OBJECT_ID : null) + ", '" + (!string.IsNullOrEmpty(item.COLUMN_ROW_SETTING) ? item.COLUMN_ROW_SETTING : "") + "', '" + (!string.IsNullOrEmpty(item.VALUE_SETTING) ? item.VALUE_SETTING : "") + "', '" + (!string.IsNullOrEmpty(item.COMMENTINFO) ? item.COMMENTINFO : "") + "', " + (item.IS_RUNNABLE != null ? item.IS_RUNNABLE : 0) + ", " + (item.OBJECT_NAME_ID != null ? item.OBJECT_NAME_ID : -1) + ") ";
                                 command.ExecuteNonQuery();
                             }
                             foreach (var item in deletedSteps)
                             {
                                 command.CommandText = "INSERT INTO T_TEST_STEPS_TEMP (STATUS, STEPS_ID, RUN_ORDER, KEY_WORD_ID, TEST_CASE_ID, OBJECT_ID, COLUMN_ROW_SETTING, VALUE_SETTING, COMMENTS, IS_RUNNABLE, OBJECT_NAME_ID) VALUES " +
-                                                                           "('Deleted', " + item.STEPS_ID + ", " + item.RUN_ORDER + ", " + item.KEY_WORD_ID + ", " + testCaseId + ", " + item.OBJECT_ID + ", '" + (!string.IsNullOrEmpty(item.COLUMN_ROW_SETTING) ? item.COLUMN_ROW_SETTING : string.Empty) + "', '" + (!string.IsNullOrEmpty(item.VALUE_SETTING) ? item.VALUE_SETTING : "") + "', '" + (!string.IsNullOrEmpty(item.COMMENTINFO) ? item.COMMENTINFO : "") + "', " + (item.IS_RUNNABLE != null ? item.IS_RUNNABLE : 0) + ", " + (item.OBJECT_NAME_ID != null ? item.OBJECT_NAME_ID : -1) + ") ";
+                                                                           "('Deleted', " + item.STEPS_ID + ", " + item.RUN_ORDER + ", " + item.KEY_WORD_ID + ", " + testCaseId + ", " + (item.OBJECT_ID != null ? item.OBJECT_ID : null) + ", '" + (!string.IsNullOrEmpty(item.COLUMN_ROW_SETTING) ? item.COLUMN_ROW_SETTING : "") + "', '" + (!string.IsNullOrEmpty(item.VALUE_SETTING) ? item.VALUE_SETTING : "") + "', '" + (!string.IsNullOrEmpty(item.COMMENTINFO) ? item.COMMENTINFO : "") + "', " + (item.IS_RUNNABLE != null ? item.IS_RUNNABLE : 0) + ", " + (item.OBJECT_NAME_ID != null ? item.OBJECT_NAME_ID : -1) + ") ";
                                 command.ExecuteNonQuery();
-                            }
+                            }*/
 
                             OracleCommand cmd = new OracleCommand
                             {
@@ -4850,7 +4857,7 @@ namespace MARS_Repository.Repositories
                 string[] COLUMN_ROW_SETTING_param = addedRow.AsEnumerable().Select(r => r.Field<string>("COLUMN_ROW_SETTING")).ToArray();
                 string[] VALUE_SETTING_param = addedRow.AsEnumerable().Select(r => r.Field<string>("VALUE_SETTING")).ToArray();
                 string[] COMMENT_param = addedRow.AsEnumerable().Select(r => r.Field<string>("COMMENTS")).ToArray();
-                long[] IS_RUNNABLE_param = addedRow.AsEnumerable().Select(r => Convert.ToInt64(r.Field<decimal>("IS_RUNNABLE"))).ToArray();
+                long[] IS_RUNNABLE_param = addedRow.AsEnumerable().Select(r => Convert.ToInt64(r.Field<decimal?>("IS_RUNNABLE"))).ToArray();
                 long[] OBJECT_NAME_ID_param = addedRow.AsEnumerable().Select(r => Convert.ToInt64(r.Field<decimal?>("OBJECT_NAME_ID"))).ToArray();
 
                 OracleParameter STEPS_ID_oparam = new OracleParameter
@@ -5097,7 +5104,7 @@ namespace MARS_Repository.Repositories
                 decimal[] RUN_ORDER_param = updatedRow.AsEnumerable().Select(r => r.Field<decimal>("RUN_ORDER")).ToArray();
                 decimal[] KEY_WORD_ID_param = updatedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long>("KEY_WORD_ID"))).ToArray();
                 decimal[] TEST_CASE_ID_param = updatedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long>("TEST_CASE_ID"))).ToArray();
-                decimal[] OBJECT_ID_param = updatedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long>("OBJECT_ID"))).ToArray();
+                decimal[] OBJECT_ID_param = updatedRow.AsEnumerable().Select(r => Convert.ToDecimal(r.Field<long?>("OBJECT_ID"))).ToArray();
                 decimal?[] OBJECT_ID_NEW_Param = OBJECT_ID_param.Select(x => x > 0 ? x : (decimal?)null).ToArray();
                 string[] COLUMN_ROW_SETTING_param = updatedRow.AsEnumerable().Select(r => r.Field<string>("COLUMN_ROW_SETTING")).ToArray();
                 string[] VALUE_SETTING_param = updatedRow.AsEnumerable().Select(r => r.Field<string>("VALUE_SETTING")).ToArray();
@@ -6143,6 +6150,102 @@ namespace MARS_Repository.Repositories
             }
             logger.Info(string.Format("UPDATE DATA SETTINGS STEPS VALUES INTO DATABASE | TESTCASEID : {0} | USERNAME: {1} | END : {2}", testCaseId, Username, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
             return true;
+        }
+
+        private void SaveTestcaseSessionInDatabaseParam(DbCommand command,string type,List<MB_V_TEST_STEPS> addedSteps)
+        {
+            /* command.Parameters.Clear();
+             command.CommandText = $@"INSERT INTO T_TEST_STEPS_TEMP (STATUS, STEPS_ID, RUN_ORDER, KEY_WORD_ID, TEST_CASE_ID, OBJECT_ID, COLUMN_ROW_SETTING, VALUE_SETTING, COMMENTS, IS_RUNNABLE, OBJECT_NAME_ID)  
+                                                                          VALUES   ('{type}', :1, :2, :3, :4, :5, :6, :7, :8, :9, :10)";
+             var stepIds = addedSteps.Select(r => r.STEPS_ID).ToArray();
+             var runOrders = addedSteps.Select(r => r.RUN_ORDER).ToArray();
+             var keyWords = addedSteps.Select(r => r.KEY_WORD_ID).ToArray();
+             var testCaseIds = addedSteps.Select(r => r.TEST_CASE_ID).ToArray();
+             object[] objectIds = addedSteps.Select(r => { 
+                 if (r.OBJECT_ID == null) 
+                     return System.DBNull.Value;
+                 return r.OBJECT_ID;
+             }).ToArray();
+             var rowSettings = addedSteps.Select(r => r.COLUMN_ROW_SETTING).ToArray();
+             var valueSettings = addedSteps.Select(r => r.VALUE_SETTING).ToArray();
+             var comments = addedSteps.Select(r => r.COMMENTINFO).ToArray();
+             var runnables = addedSteps.Select(r => r.IS_RUNNABLE).ToArray();
+             object[] objNameIds = addedSteps.Select(r => {
+                 if (r.OBJECT_NAME_ID == null)
+                     return System.DBNull.Value;
+                 return r.OBJECT_NAME_ID;
+             }).ToArray();
+
+             command.Parameters.Add(new OracleParameter
+             {
+                 OracleDbType = OracleDbType.Long,
+                 Value = stepIds
+             });
+             command.Parameters.Add(new OracleParameter
+             {
+                 OracleDbType = OracleDbType.Long,
+                 Value = runOrders
+             });
+             command.Parameters.Add(new OracleParameter
+             {
+                 OracleDbType = OracleDbType.Long,
+                 Value = keyWords
+             });
+             command.Parameters.Add(new OracleParameter
+             {
+                 OracleDbType = OracleDbType.Long,
+                 Value = testCaseIds
+             });
+             command.Parameters.Add(new OracleParameter
+             {
+                 OracleDbType = OracleDbType.Long,
+                 Value = objectIds
+             });
+             command.Parameters.Add(new OracleParameter
+             {
+                 OracleDbType = OracleDbType.Varchar2,
+                 Value = rowSettings
+             });
+             command.Parameters.Add(new OracleParameter
+             {
+                 OracleDbType = OracleDbType.Varchar2,
+                 Value = valueSettings
+             });
+             command.Parameters.Add(new OracleParameter
+             {
+                 OracleDbType = OracleDbType.Varchar2,
+                 Value = comments
+             });
+             command.Parameters.Add(new OracleParameter
+             {
+                 OracleDbType = OracleDbType.Long,
+                 Value = runnables
+             });
+             command.Parameters.Add(new OracleParameter
+             {
+                 OracleDbType = OracleDbType.Long,
+                 Value = objNameIds
+             });
+             command.ExecuteNonQuery();*/
+            foreach (var step in addedSteps)
+            {
+                command.Parameters.Clear();
+                command.CommandText = $@"INSERT INTO T_TEST_STEPS_TEMP (STATUS, STEPS_ID, RUN_ORDER, KEY_WORD_ID, TEST_CASE_ID, OBJECT_ID, COLUMN_ROW_SETTING, VALUE_SETTING, COMMENTS, IS_RUNNABLE, OBJECT_NAME_ID)  
+                                                                         VALUES   ('{type}', :1, :2, :3, :4, :5, :6, :7, :8, :9, :10)";
+                 
+                command.Parameters.Add(new OracleParameter(":1", step.STEPS_ID));
+                command.Parameters.Add(new OracleParameter(":2", step.RUN_ORDER));
+                command.Parameters.Add(new OracleParameter(":3", step.KEY_WORD_ID));
+                command.Parameters.Add(new OracleParameter(":4", step.TEST_CASE_ID));
+                command.Parameters.Add(new OracleParameter(":5", step.OBJECT_ID ));
+                command.Parameters.Add(new OracleParameter(":6", string.IsNullOrEmpty(step.COLUMN_ROW_SETTING ) ? "": step.COLUMN_ROW_SETTING));
+                command.Parameters.Add(new OracleParameter(":7", string.IsNullOrEmpty(step.VALUE_SETTING ) ? "": step.VALUE_SETTING));
+                command.Parameters.Add(new OracleParameter(":8", string.IsNullOrEmpty(step.COMMENTINFO ) ? "": step.COMMENTINFO));
+                command.Parameters.Add(new OracleParameter(":9", step.IS_RUNNABLE));
+                command.Parameters.Add(new OracleParameter(":10",step.OBJECT_NAME_ID ));
+  
+                command.ExecuteNonQuery();
+            }
         }
     }
 }
