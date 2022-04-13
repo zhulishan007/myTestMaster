@@ -3063,5 +3063,57 @@ namespace MARS_Web.Controllers
 
             return null;
         }
+
+        public ActionResult ReloadStoryboardCache(long projectId, long storyBoardId)
+        {
+            ResultModel resultModel = new ResultModel();
+            try
+            {
+                logger.Info( $"ReloadStoryboardCache   start : projectId {projectId} | storyboardId {storyBoardId}");
+                JsonFileHelper.InitStoryBoardJson(SessionManager.Schema, "", storyBoardId, true);
+                logger.Info($"ReloadStoryboardCache  Json file  : projectId {projectId} | storyboardId {storyBoardId}");
+                string directoryPath = Path.Combine(Server.MapPath("~/"), FolderName.Serialization.ToString(), FolderName.Storyboard.ToString(), SessionManager.Schema);
+                string[] filesNames = new string[0];
+                if (Directory.Exists(directoryPath))
+                {
+                    filesNames = Directory.GetFiles(directoryPath);
+                    var filesName = filesNames.Select(x => Path.GetFileName(x)).ToArray();
+                    var storyName = filesName.FirstOrDefault(x => x.StartsWith($"{projectId}_{storyBoardId}_"));
+                    if (!string.IsNullOrEmpty(storyName))
+                    {
+                        var result = JsonFileHelper.GetFilePath(storyName, SessionManager.Schema);
+                        if (!string.IsNullOrEmpty(result))
+                        {
+                            ConcurrentDictionary<string, string> keyValuePairs = Newtonsoft.Json.JsonConvert.DeserializeObject<ConcurrentDictionary<string, string>>(result);
+                            if (keyValuePairs != null && keyValuePairs.ContainsKey("StoryBoardDetails"))
+                            {
+                                var jsonresult1 = keyValuePairs["StoryBoardDetails"];
+                                jsonresult1 = jsonresult1.Replace("\\r", "\\\\r");
+                                jsonresult1 = jsonresult1.Replace("\\n", "\\\\n");
+                                jsonresult1 = jsonresult1.Replace("   ", "");
+                                jsonresult1 = jsonresult1.Replace("\\", "\\\\");
+                                jsonresult1 = jsonresult1.Trim();
+                                resultModel.status = 1;
+                                resultModel.data = jsonresult1;
+                                return Json(resultModel, JsonRequestBehavior.AllowGet);
+                            }
+                        }
+
+                    }
+                }
+                logger.Info($"ReloadStoryboardCache  end : projectId {projectId} | storyboardId {storyBoardId}");
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in StoryBoard for ReloadStoryboardCache method | StoryBoard Id : {0} | Project Id : {1} | UserName: {2}", storyBoardId, projectId, SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in StoryBoard for ReloadStoryboardCache method | StoryBoard Id : {0} | Project Id : {1} | UserName: {2}", storyBoardId, projectId, SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in StoryBoard for ReloadStoryboardCache method | StoryBoard Id : {0} | Project Id : {1} | UserName: {2}", storyBoardId, projectId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+                resultModel.status = 0;
+                resultModel.message = ex.Message.ToString();
+            }
+            return Json(resultModel, JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

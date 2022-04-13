@@ -189,6 +189,7 @@ function AddSuite() {
     $("#testsuitename").val("");
     $("#testsuitedesc").val("");
     $("#hdnTestCaseId").val("");
+    loadAppdata("stDrpApplication");
     $("#stDrpApplication").val("");
     $("#stDrpApplication").select2();
     $("#DrpProject").html("");
@@ -209,7 +210,7 @@ function ChangeApplication() {
         type: "POST",
         contentType: "application/json;charset=utf-8",
         dataType: "json",
-        async: false,
+        async: true,
         success: function (result) {
             if (result.status == 1) {
                 var lTempApplication = "";

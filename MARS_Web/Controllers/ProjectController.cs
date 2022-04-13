@@ -362,7 +362,7 @@ namespace MARS_Web.Controllers
                 //var lapp = repo.ListApplication();
                 //var applist = lapp.Select(c => new SelectListItem { Text = c.APP_SHORT_NAME, Value = c.APPLICATION_ID.ToString() }).OrderBy(x => x.Text).ToList();
 
-                var gridlst = repAcc.GetGridList((long)userId, GridNameList.ProjectList);
+                /*var gridlst = repAcc.GetGridList((long)userId, GridNameList.ProjectList);
                 var proGridWidth = GridHelper.GetProjectwidth(gridlst);
 
                 var Widthgridlst = repAcc.GetGridList((long)userId, GridNameList.ResizeLeftPanel);
@@ -374,7 +374,13 @@ namespace MARS_Web.Controllers
                 ViewBag.descriptionwidth = proGridWidth.Description == null ? "25%" : proGridWidth.Description.Trim() + '%';
                 ViewBag.applicationwidth = proGridWidth.Application == null ? "25%" : proGridWidth.Application.Trim() + '%';
                 ViewBag.statuswidth = proGridWidth.Status == null ? "20%" : proGridWidth.Status.Trim() + '%';
-                ViewBag.actionswidth = proGridWidth.Actions == null ? "10%" : proGridWidth.Actions.Trim() + '%';
+                ViewBag.actionswidth = proGridWidth.Actions == null ? "10%" : proGridWidth.Actions.Trim() + '%';*/
+                ViewBag.width =  ConfigurationManager.AppSettings["DefultLeftPanel"] + "px"  ;
+                ViewBag.namewidth =  "20%" ;
+                ViewBag.descriptionwidth = "25%"   ;
+                ViewBag.applicationwidth =  "25%"  ;
+                ViewBag.statuswidth = "20%";
+                ViewBag.actionswidth = "10%";
             }
             catch (Exception ex)
             {

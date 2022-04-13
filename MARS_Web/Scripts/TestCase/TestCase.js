@@ -28,6 +28,7 @@ function AddTestCase() {
     $("#testcasename").val("");
     $("#testcasedesc").val("");
     $("#hdnTestCaseId").val("");
+    loadAppdata("DrpApplication");
     $("#DrpApplication").val("");
     $("#DrpApplication").select2();
     //$("#DrpTestSuite").html("");
@@ -146,7 +147,7 @@ function ChangeApplicationTestsuite() {
         type: "POST",
         contentType: "application/json;charset=utf-8",
         dataType: "json",
-        async: false,
+        async: true,
         success: function (result) {
             if (result.status == 1) {
                 var optionString = "<optgroup>";

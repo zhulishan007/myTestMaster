@@ -137,6 +137,62 @@ function AddEditApplicationSave() {
     });
 }
 
+
+function RefleshAppCache() {
+    swal.fire({
+        title: '',
+        text: "It will be reflesh from database.  Please confirm",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes'
+    }).then(function (result) {
+        if (result.value == true) {
+             $.ajax({
+                url: "/Application/ReloadAppCache",
+                type: "GET",
+                contentType: "application/json;charset=utf-8",
+                dataType: "json",
+                beforeSend: function () {
+                    startloader();
+                },
+                complete: function () {
+                    stoploader();
+                },
+                success: function (result) {
+                    if (result.status == 1 && result.data) {
+                        swal.fire({
+                            "title": "",
+                            "text": result.message,
+                            "icon": "success",
+                            "onClose": function (e) {
+                                console.log('on close event fired!');
+                            }
+                        });
+                    }
+                    else if (result.status == 0) {
+                        swal.fire({
+                            "title": "",
+                            "text": result.message,
+                            "icon": "error",
+                            "onClose": function (e) {
+                                console.log('on close event fired!');
+                            }
+                        });
+                    }
+                    if (typeof ApplicationTable !== 'undefined')
+                        ApplicationTable.table().draw();
+                },
+                error: function (errormessage) {
+                    stoploader();
+                    alert(errormessage.responseText);
+                }
+            });
+         }
+	});
+   
+}
+
+
 function CheckApplicationNameExist() {
     var applicationname = $("#applicationname").val();
     var ApplicationId = $("#hdnApplicationId").val();
