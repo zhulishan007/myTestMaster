@@ -218,11 +218,11 @@ namespace MARSUtility
                             lFinalResult = MAPPINGVALIDATIONFORDATASETTAG(lFeedProcessDetailsId, schemaname, constring);
                         else
                             lFinalResult = MAPPINGVALIDATION(lFeedProcessId, schemaname, constring);
-                        System.Threading.Thread.Sleep(200);
+                        //System.Threading.Thread.Sleep(200);
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("\nSpreadsheet Validation Completed {0}..!", System.DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss tt"));
 
-                        System.Threading.Thread.Sleep(200);
+                        //System.Threading.Thread.Sleep(200);
                         DataTable dt = new DataTable();
                         if (type.ToUpper() == "RESULTSET" || type.ToUpper() == "DATASETTAG")
                             dt = DbexcelResultset(lFeedProcessDetailsId, schemaname, constring);
@@ -276,14 +276,14 @@ namespace MARSUtility
 
                             }
                             dbtable.errorlog("Spreadsheet Validation Completed!", "", "", 0);
-                            System.Threading.Thread.Sleep(200);
+                            //System.Threading.Thread.Sleep(200);
                             return false;
                         }
                         else
                         {
                             dbtable.errorlog("Spreadsheet Validation Completed!", "", "", 0);
                         }
-                        System.Threading.Thread.Sleep(200);
+                        //System.Threading.Thread.Sleep(200);
                         if (lFinalResult && cflag == 1 && dbtable.dt_Log.Rows.Count <= 6)
                         {
                             Console.ForegroundColor = ConsoleColor.White;
@@ -295,10 +295,10 @@ namespace MARSUtility
                                 lFinalResult = DataTagSetMapping(lFeedProcessDetailsId, schemaname, constring); 
                             else
                                 lFinalResult = DatawareHouseMapping(lFeedProcessId, lISOVERWRITE, schemaname, constring);
-                            System.Threading.Thread.Sleep(200);
+                            //System.Threading.Thread.Sleep(200);
                             Console.ForegroundColor = ConsoleColor.White;
                             Console.WriteLine("\nMapping is completed, Log export is staring at {0}.. Please wait !", System.DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss tt"));
-                            System.Threading.Thread.Sleep(200);
+                            //System.Threading.Thread.Sleep(200);
                             dbtable.errorlog("mapping completed", "", "", 0);
                             dbtable.errorlog("log report starting", "", "", 0);
 

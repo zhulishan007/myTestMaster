@@ -14,6 +14,7 @@ using System.Threading;
 using System.Web.Configuration;
 using System.Web.Mvc;
 using static Mars_Serialization.JsonSerialization.SerializationFile;
+using Mars_Serialization.JsonSerialization;
 
 namespace MARS_Web.Controllers
 {
@@ -531,6 +532,7 @@ namespace MARS_Web.Controllers
                     resultModel.data = repo.GetAppCache();
                 }
                 resultModel.status = 1;
+                resultModel.message = "success";
                 logger.Info(string.Format("Load GetApplicationList end | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
             }
             catch (Exception ex)
@@ -544,5 +546,41 @@ namespace MARS_Web.Controllers
             }
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
+
+        public JsonResult ReloadAppCache()
+        {
+            ResultModel result = new ResultModel();
+            logger.Info($"ReloadAppCache start ");
+            try 
+            {
+                var lConnectionStr = SessionManager.APP;
+                var lSchema = SessionManager.Schema;
+                var applist = SerializationFile.GetAppList(lConnectionStr);
+                var path = System.Web.Hosting.HostingEnvironment.MapPath("~/");
+                if (SerializationFile.CreateJsonFilesNew(lSchema, path, FolderName.Application.ToString(), applist, 0, true))
+                {
+                    logger.Info($"ReloadAppCache success. ");
+                    result.message = "Reflesh data from database success";
+                    result.status = 1;
+                    result.data = applist.Skip(0).Take(100).ToList();
+                }
+                else
+                {
+                    result.message = "Reload data from database failed.";
+                    result.status = 0;
+                    logger.Info($"ReloadAppCache failed. ");
+                }
+                logger.Info($"ReloadAppCache end. ");
+            }
+            catch (Exception ex)
+            {
+                result.message = ex.Message;
+                result.status = 0;
+                logger.Error($"ReloadAppCache failed. stacktrace:{ex.StackTrace} ");
+            }
+
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

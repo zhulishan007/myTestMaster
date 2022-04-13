@@ -1388,7 +1388,30 @@
                    listener: function () {
                        this.paste();
                    }
-               },
+               },{
+                    type: 'button',
+                    //icon: '',
+                    icon: 'flaticon2-reload',
+                    attr: 'title="Reflesh data from database"',
+                    cls: 'btn btn-brand btn-elevate btn-icon-sm bgImage ',
+                    label: '',
+                    listener: function () {
+                        var lTestcaseName = "@lTestCasegrid";
+                        var testcaselist = lTestcaseName.split(".grid");
+                         swal.fire({
+		                    title: '',
+                            text: "All changes in [" + testcaselist[1] +"] will be reflesh from data.  Please confirm",
+		                    icon: 'warning',
+		                    showCancelButton: true,
+		                    confirmButtonText: 'Yes'
+	                        }).then(function (result) {
+                                if (result.value == true) {
+                                    startloader();
+                                    ReloadGridCache('@lTestCasegrid', @ViewBag.TestcaseId,@ViewBag.TestsuiteId, "");
+		                        }
+	                        });
+                    }
+                }
                @*{
                         type: 'button',
                         //icon: '',
@@ -4827,7 +4850,753 @@
                 success: function (result) {
                 }
             });
+    }
+
+    function ReloadGridCache(tcgrid, tcid, tsid, Visibledatasetname, isReload = true) {
+         dt = [];
+        data = [];
+        jsonData = "[";
+
+        dt.push({
+            dataIndx: "state", copy: false, maxWidth: 30, minWidth: 30, align: "center", resizable: false, title: "", menuIcon: false, type: 'checkbox', sortable: false, editor: false, dataType: 'bool',
+            render: function (ui) {
+                var rowData = ui.rowData,
+                    dataIndx = ui.dataIndx;
+                rowData.pq_cellcls = rowData.pq_cellcls || {};
+                if (ui.rowData != undefined) {
+                    if (ui.rowData.pq_rowcls == "collapseBorder") {
+                        return "<input type='checkbox' disabled  " + (ui.cellData ? "checked='checked'" : "") + " />";
+                    } else {
+                        return "<input type='checkbox'   " + (ui.cellData ? "checked='checked'" : "") + " />";
+                    }
+                } else {
+                    return "<input type='checkbox'   " + (ui.cellData ? "checked='checked'" : "") + " />";
+                }
+
+            }
+               // return "<input type='checkbox'   " + (ui.cellData ? "checked='checked'" : "") + " />";
+
+        });
+
+        dt.push({
+            title: "", minWidth: 30, copy: false, maxWidth: 30, filter: { on: false, menuIcon: false }, menuIcon: false, menuInHide: true, align: "left", halign: "center", sortable: false, nodrag: true,
+            nodrop: true, resizable: false, editable: false, render: function (ui) {
+                var rowIndx = ui.rowIndx,
+                    grid = this,
+                    $cell = gridobj[tcgrid].getCell(ui);
+                var lflagPegObject = false;
+                if (ui.rowData.keyword != undefined) {
+                    if (ui.rowData.keyword.toLowerCase() == "pegwindow") {
+                        lflagPegObject = true;
+                    }
+                }
+
+                var lChildCount = 0;
+                if (lflagPegObject) {
+                    var prowvisible = true;
+                    var lDM = gridobj[tcgrid].option("dataModel");
+                    ldata = lDM.data;
+                    if ((rowIndx + 1) < lDM.data.length) {
+                        if (ldata[rowIndx + 1].pq_hidden == true) {
+                            prowvisible = false;
+                        }
+                    }
+
+                    for (var k = 0; gridobj[tcgrid].pdata.length > k; k++) {
+                        if (rowIndx < k) {
+                            if (gridobj[tcgrid].pdata[k].keyword != undefined) {
+                                if (gridobj[tcgrid].pdata[k].keyword.toLowerCase() != "pegwindow") {
+                                    lChildCount = lChildCount + 1;
+                                } else {
+                                    break;
+                                }
+                            }
+                        }
+                    }
+
+                    if (prowvisible) {
+                        return "<button type='button' class='ui-icon-collapse-Row'></button>";
+                    } else {
+
+                        return "<button type='button' class='ui-icon-expand-Row'></button>";
+                    }
+                }
+            },
+
+            postRender: function (ui) {
+                var rowIndx = ui.rowIndx;
+                $cell = gridobj[tcgrid].getCell(ui);
+                if (ui.rowData.keyword != undefined) {
+                    if (ui.rowData.keyword.toLowerCase() == "pegwindow") {
+                        lflagPegObject = true;
+                    }
+                }
+                var lrowvisible;
+                $cell.find("button")
+                    .bind("click", function () {
+                        var lDM = gridobj[tcgrid].option("dataModel");
+                        ldata = lDM.data;
+                        if (ldata[rowIndx + 1].pq_hidden == true && lrowvisible == null) {
+                            lrowvisible = true;
+                        }
+
+                        for (var k = 0; gridobj[tcgrid].pdata.length > k; k++) {
+                            if (rowIndx < k) {
+                                var lflagblank = true;
+                                if (gridobj[tcgrid].pdata[k].keyword.toLowerCase() == "pegwindow") {
+                                    lflagblank = false;
+                                    break;
+                                }
+
+                                if (lflagblank) {
+                                    var DM = gridobj[tcgrid].option("dataModel");
+                                    data = DM.data;
+                                    if (lrowvisible == true) {
+                                        data[k].pq_hidden = false;
+                                        gridobj[tcgrid].removeClass({ rowIndx: rowIndx, cls: 'collapseBorder' });
+                                    }
+                                    else {
+                                        data[k].pq_hidden = true;
+                                        gridobj[tcgrid].addClass({ rowIndx: rowIndx, cls: 'collapseBorder' });
+                                    }
+                                }
+                                gridobj[tcgrid].refreshView();
+                            }
+                        }
+                        lrowvisible = null;
+                    });
+            }
+        });
+
+        dt.push({
+            title: "", editable: false, copy: false, minWidth: 40, maxWidth: 40, sortable: false, dataIndx: "IsDelete", menuInHide: true, menuIcon: false, sortable: false, filter: { on: false, menuIcon: false },
+            render: function (ui) {
+                if (ui.rowData != undefined) {
+                    if (ui.rowData.pq_rowcls == "collapseBorder") {
+                        return "<button type='button' class='delete_btn' disabled style='color:red;'></button>";
+                    } else {
+                        return "<button type='button' class='delete_btn' style='color:red;'></button>";
+                    }
+                } else {
+                    return "<button type='button' class='delete_btn' style='color:red;'></button>";
+                }
+                 //   return "<button type='button' class='delete_btn' style='color:red;'></button>";
+            },
+            postRender: function (ui) {
+                var rowIndx = ui.rowIndx,
+                    grid = this,
+                    $cell = gridobj[tcgrid].getCell(ui);
+                var lflagPegObject = false;
+                if (ui.rowData.keyword != undefined) {
+                    if (ui.rowData.keyword.toLowerCase() == "pegwindow") {
+                        lflagPegObject = true;
+                    }
+                }
+
+                $cell.find("button").button({ icons: { primary: 'ui-icon-close' } }).bind("click", function () {
+                    gridobj[tcgrid].addClass({ rowIndx: ui.rowIndx, cls: 'pq-row-delete' });
+                            //swal.fire({
+                            //    title: 'Delete',
+                            //    text: "Are you sure to delete this row No " + (rowIndx + 1) + "?",
+                            //    type: 'warning',
+                            //    showCancelButton: true,
+                            //    confirmButtonText: 'Yes, delete it!'
+                            //}).then(function (result) {
+                               // if (result.value == true) {
+                    ans = true;
+                    var rowDatas = ui.rowData;
+
+                    gridobj[tcgrid].removeClass({ rowIndx: rowIndx, cls: 'pq-row-delete' });
+                    if (ans) {
+                        gridobj[tcgrid].deleteRow({ rowIndx: rowIndx });
+                        delete newsteps[rowIndx];
+                        if (lflagPegObject) {
+                            var ldeletedRowIndex = rowIndx;
+                            var lflagblank = true;
+                            for (var k = 0; gridobj[tcgrid].pdata.length > k; k++) {
+                                if (ldeletedRowIndex <= k) {
+                                    if (gridobj[tcgrid].pdata[k].keyword.toLowerCase() == "pegwindow") {
+                                        lflagblank = false;
+                                    }
+                                    if (lflagblank) {
+                                        gridobj[tcgrid].updateRow({
+                                            rowIndx: k,
+                                            newRow: { 'object': '' }
+                                        });
+                                    }
+                                }
+                            }
+                        }
+                        var run_Orders = rowDatas.RUN_ORDER == undefined ? rowDatas.pq_ri + 1 : rowDatas.RUN_ORDER;
+                        var testCaseId =@ViewBag.TestcaseId;
+                        DeleteTestCaseRowInSession(testCaseId, rowDatas.stepsID, run_Orders);
+                    }
+                                //} else {
+                                  //  gridobj[tcgrid].removeClass({ rowIndx: rowIndx, cls: 'pq-row-delete' });
+                                //}
+                           // });
+                });
+            }
+        });
+       dt.push({
+           title: "testCaseid", copy: false, hidden: true, menuInHide: true, sortable: false, dataType: "int", dataIndx: "testCaseid", align: "center",
+       });
+        dt.push({
+            title: "StepsID", copy: false, hidden: true, menuInHide: true, sortable: false, dataType: "int", dataIndx: "stepsID", align: "center",
+        });
+        dt.push({
+            title: "RUN_ORDER", copy: false, hidden: true, dataType: "int", dataIndx: "RUN_ORDER", align: "center", menuInHide: false, sortable: false,
+        });
+
+        dt.push({
+            title: "Keyword", dataIndx: "keyword", dataType: "string", align: "left", menuInHide: true, halign: "center", nodrag: true, nodrop: true, sortable: false, resizable: true, width: @ViewBag.keywordwidth, minWidth: 20,
+            editable: function (ui) {
+                if (ui.rowData != undefined) {
+                    if (ui.rowData.pq_rowcls == "collapseBorder") {
+                        return false;
+                    } else {
+                        return true;
+                    }
+                } else {
+                    return true;
+                }
+            },
+            editor:
+            {
+                type: 'select',
+                valueIndx: "value",
+                init: function (ui) {
+                    ui.$cell.find("select").pqSelect();
+                        //  alert("1");
+                },
+                labelIndx: "text",
+                    //mapIndices: { "text": "Keyword", "value": "KeywordId" },
+                options: function (ui) {
+                    var List = [];
+                    var lGridList = [];
+                    for (i = 0; i < gridobj[tcgrid].pdata.length; i++) {
+                        lGridList.push({ "Id": gridobj[tcgrid].pdata[i].stepsID, "Keyword": gridobj[tcgrid].pdata[i].keyword });
+                    }
+                    var KeywordList = {};
+                    KeywordList.stepId = ui.rowIndx + 1;
+                    KeywordList.Grid = JSON.stringify(lGridList);
+                    var lPegStepId = 0;
+                    var lstepId = ui.rowIndx + 1;
+                    var keywordsList;
+                    for (i = 0; i < gridobj[tcgrid].pdata.length; i++)
+                    {
+                        var item = gridobj[tcgrid].pdata[i];
+                        if (item.keyword) {
+                            if (item.keyword.toLowerCase() == "pegwindow" && lPegStepId == 0) {
+                                lPegStepId = i + 1;
+                                break;
+                            }
+                        }
+                        i++;
+                    }
+                    if (lstepId == 1 || lstepId < lPegStepId || lPegStepId == 0) {
+                        keywordsList = @Html.Raw(ViewBag.KeywordsPegwindowList);
+                    }
+                    else {
+                        keywordsList = @Html.Raw(ViewBag.KeywordsList);
+                    }
+
+               keywords.push({ "value": "", "text": "" });
+               $.each(keywordsList, function (key, value) {
+                   keywords.push({ "value": value.KeywordName, "text": value.KeywordName });
+               });
+               List = keywords;
+               keywords = [];
+                        //$.ajax({
+                        //    url: "/TestCase/GetKeywordsList",
+                        //    type: "POST",
+                        //    // data: { stepId: ui.rowIndx + 1, lGrid: JSON.stringify(lGridList) },
+                        //    data: '{KeywordList: ' + JSON.stringify(KeywordList) + '}',
+                        //    contentType: "application/json;charset=utf-8",
+                        //    dataType: "json",
+                        //    async: false,
+                        //    success: function (result) {
+                        //        if (result.status == 1) {
+                        //            if (result.data != null && result.data.length > 0) {
+                        //                keywords.push({ "value": "", "text": "" });
+                        //                keywordValidate.push("");
+                        //                for (var i = 0; i < result.data.length; i++) {
+                        //                    keywords.push({ "value": result.data[i].KeywordName, "text": result.data[i].KeywordName });
+                        //                    keywordValidate.push(result.data[i].KeywordName);
+                        //                }
+                        //                List = keywords;
+                        //                keywords = [];
+                        //            }
+                        //        }
+                        //        else if (result.status == 0) {
+                        //            swal.fire({
+                        //                "title": "",
+                        //                "text": result.message,
+                        //                "icon": "error",
+                        //                "onClose": function (e) {
+                        //                    console.log('on close event fired!');
+                        //                }
+                        //            });
+                        //        }
+                        //    },
+                        //    error(a, b, c) {
+                        //    }
+                        //});
+                        return List;
+                    }
+                },
+                //validations: [
+                //    { type: 'minLen', value: 1, msg: "Required" },
+
+                //],
+                filter: { crules: [{ condition: 'range' }] }
+            });
+           
+            dt.push({
+                title: "Object", dataIndx: "object", dataType: "string", align: "left", menuInHide: true, halign: "center", sortable: false, resizable: true, nodrag: true, nodrop: true, width: @ViewBag.objectwidth, minWidth: 20,
+                editable: function (ui) {
+                    if (ui.rowData != undefined) {
+                        if (ui.rowData.pq_rowcls == "collapseBorder") {
+                            return false;
+                        } else {
+                            return true;
+                        }
+                    } else {
+                        return true;
+                    }
+                },
+                editor:
+                {
+                    type: 'select',
+                    valueIndx: "value",
+                    init: function (ui) {
+                        var lchangedRowIndex = ui.rowIndx;
+                        ui.$cell.find("select").pqSelect();
+                        ui.$editor.on('change', function () {
+                            var lflagblank = false;
+                            for (var k = 0; gridobj[tcgrid].pdata.length > k; k++) {
+                                if (lchangedRowIndex == k) {
+                                    if (gridobj[tcgrid].pdata[k].keyword.toLowerCase() == "pegwindow") {
+                                        lflagblank = true;
+                                    }
+                                }
+
+                                if (lchangedRowIndex < k) {
+                                    if (gridobj[tcgrid].pdata[k].keyword.toLowerCase() == "pegwindow") {
+                                        lflagblank = false;
+                                    }
+
+                                    if (lflagblank) {
+                                        gridobj[tcgrid].updateRow({
+                                            rowIndx: k,
+                                            newRow: { 'object': '' }
+                                        });
+                                    }
+                                }
+                            }
+
+                        });
+                    },
+                    labelIndx: "text",
+                    options: function (ui) {
+                        var List = [];
+                        var lGridList = [];
+                        for (i = 0; i < gridobj[tcgrid].pdata.length; i++) {
+                            lGridList.push({ "Id": i + 1, "StepId": gridobj[tcgrid].pdata[i].stepsID, "Keyword": gridobj[tcgrid].pdata[i].keyword, "Object": gridobj[tcgrid].pdata[i].object });
+                        }
+
+                        if (ui.rowData.keyword == "PegWindow") {
+                            var objectlist = @Html.Raw(ViewBag.ObjectList);
+                            objects.push({ "value": "", "text": "" });
+                            objectValidate.push("");
+                            $.each(objectlist, function (key, value) {
+                                objects.push({ "value": value.ObjectName, "text": value.ObjectName });
+                                objectValidate.push(value.ObjectName);
+                            });
+
+                            List = objects;
+                            objects = [];
+                        } else {
+                            var ObjectList = {};
+                            ObjectList.stepId = ui.rowIndx + 1;
+                            ObjectList.Grid = JSON.stringify(lGridList);
+                            ObjectList.TestCaseId = tcid;
+                            $.ajax({
+                                url: "/TestCase/GetObjectsList",
+                                type: "POST",
+                                data: '{ObjectList: ' + JSON.stringify(ObjectList) + '}',
+                                contentType: "application/json;charset=utf-8",
+                                dataType: "json",
+                                async: false,
+                                success: function (result) {
+                                    if (result.status == 1) {
+                                        if (result.data != null && result.data.length > 0) {
+                                            objects.push({ "value": "", "text": "" });
+                                            objectValidate.push("");
+                                            for (var i = 0; i < result.data.length; i++) {
+                                                objects.push({ "value": result.data[i].ObjectName, "text": result.data[i].ObjectName });
+                                                objectValidate.push(result.data[i].ObjectName);
+                                            }
+                                            List = objects;
+                                            objects = [];
+                                        }
+                                    }
+                                    else if (result.status == 0) {
+                                        swal.fire({
+                                            "title": "",
+                                            "text": result.message,
+                                            "icon": "error",
+                                            "onClose": function (e) {
+                                                console.log('on close event fired!');
+                                            }
+                                        });
+                                    }
+                                },
+                                error(a, b, c) {
+                                }
+                            });
+                        }
+
+
+                        return List;
+                    }
+                },
+                filter: { crules: [{ condition: 'contain' }] },
+
+            });
+            dt.push({
+                title: "Parameters", menuInHide: true, align: "left", halign: "center", sortable: false, width: @ViewBag.parameterswidth, minWidth: 20, nodrag: true, nodrop: true, dataIndx: "parameters", filter: { crules: [{ condition: 'contain' }] }, resizable: true,
+                editable: function (ui) {
+                    if (ui.rowData != undefined) {
+                        if (ui.rowData.pq_rowcls == "collapseBorder") {
+                            return false;
+                        } else {
+                            return true;
+                        }
+                    } else {
+                        return true;
+                    }
+                }});
+            dt.push({
+              title: "Comment", dataType: "string", align: "left", halign: "center", sortable: false, dataIndx: "comment", nodrag: true, nodrop: true, width: @ViewBag.commentwidth, minWidth: 20, menuInHide: true, resizable: true,
+                filter: { crules: [{ condition: 'contain' }] },
+                editable: function (ui) {
+                    if (ui.rowData != undefined) {
+                        if (ui.rowData.pq_rowcls == "collapseBorder") {
+                            return false;
+                        } else {
+                            return true;
+                        }
+                    } else {
+                        return true;
+                    }
+                },
+                resizable: true
+            });
+            dt.push({
+                title: "hdnVersionId", copy: false,dataType: "int", dataIndx: "VERSION", hidden: true, menuInHide: true, sortable: false
+            });
+            dt.push({
+                title: "hdnISAVAILABLE", copy: false,dataType: "int", dataIndx: "ISAVAILABLE", hidden: true, menuInHide: true, sortable: false
+            });
+
+         $.ajax({
+             url: "/TestCase/ReloadGridCache?testcaseId=" + tcid,
+                type: "GET",
+                contentType: "application/json;charset=utf-8",
+                async: false,
+                dataType: "json",
+                success: function (result) {
+                if (result.status == 1) {
+                        result.data = JSON.parse(result.data);
+                   
+                        if (result.data.length > 0) {
+
+                            var datasetname = result.data[0].DATASETNAME;//.replace(/\s+/g, '_');--cherish
+                        console.log(datasetname)
+                            var datasetDesc = result.data[0].DATASETDESCRIPTION;
+                        var datasetnames = [];
+                        if (datasetname != null) {
+                            datasetname = datasetname.replace(/\\/g, "\\\\");
+                            datasetnames = datasetname.split(',');
+                        }
+
+                        var datasetdescs = [];
+                        if (datasetDesc != null) {
+                            datasetdescs = datasetDesc.split(',');
+                        }
+
+                            var datasetIds = result.data[0].DATASETIDS;
+                        var datasetid = [];
+                        if (datasetIds != null) {
+                            datasetid = datasetIds.split(',');
+                        }
+                        console.log(datasetnames)
+                        console.log("8:"); console.log(ExistDataSetRenameList);
+                        for (var k = 0; k < datasetnames.length; k++) {
+                            var l = 4;
+                            datasetnames[k] = datasetnames[k].replace(/___/g, ',');
+                            //*********************************************************************
+                            // START - DYNAMIC - Define Headers for the PQGrid and Create JSON
+                            //*********************************************************************
+                            ExistDataSetRenameList.push({ TestCaseId:tcid,oldColumn: datasetnames[k], newColumn: datasetnames[k], detail: datasetdescs[k], datasetid: datasetid[k] });
+                            console.log("9:"); console.log(ExistDataSetRenameList);
+                            var lTitle = datasetnames[k];
+                            var OTitle = datasetnames[k];
+                            lTitle = lTitle.replace(/___/g, ',');
+                            if (datasetdescs[k] != null && datasetdescs[k].trim() != "") {
+                                lTitle = '<span title="' + datasetdescs[k] + '">' + datasetnames[k] + '</span>';
+                            }
+
+                            var pDatasetName = Visibledatasetname;
+
+                            var IsHidden = false;
+                            if (pDatasetName != "" && pDatasetName != null) {
+                                IsHidden = true;
+                            }
+                            if (pDatasetName != "") {
+                                if (OTitle.toUpperCase() == pDatasetName.toUpperCase()) {
+                                    IsHidden = false;
+                                }
+                            }
+
+                            dt.push({
+                                title: lTitle, clsHead: datasetid[k], menuInClose: true, sortable: false, resizable: true, hidden: IsHidden, minWidth: 50, width: 250,
+
+                                align: "center", colModel: [{
+                                    title: "", width: "2%", dataType: "bool", sortable: false,
+                                    render: function (ui) {
+                                        var rowData = ui.rowData,
+                                            dataIndx = ui.dataIndx;
+                                        ldataIndx = datasetnames[k];
+
+                                        rowData.pq_cellcls = rowData.pq_cellcls || {};
+                                        if (rowData[dataIndx] == true) {
+                                            if (rowData.pq_cellcls[dataIndx] == undefined) {
+                                                rowData.pq_cellcls[dataIndx] = 'grey';
+                                            } else {
+                                                rowData.pq_cellcls[dataIndx] = 'grey ' + rowData.pq_cellcls[dataIndx].replace("grey", "");
+                                            }
+                                            return "<input  type='checkbox' " + (ui.cellData ? "checked='checked'" : "") + " />";
+                                        }
+                                        else {
+                                            if (rowData.pq_cellcls[dataIndx] == undefined) {
+                                                rowData.pq_cellcls[dataIndx] = '';
+                                            } else {
+                                                rowData.pq_cellcls[dataIndx] = rowData.pq_cellcls[dataIndx].replace("grey", "");
+                                            }
+                                            return "<input type='checkbox'   " + (ui.cellData ? "checked='checked'" : "") + " />";
+                                        }
+                                    },
+                                    align: "center",
+                                    dataIndx: "skip_" + datasetnames[k],
+                                    exportRender: false,
+                                    editor: false,
+                                    type: 'checkbox',
+                                    nodrag: true,
+                                    nodrop: true,
+                                    cls: 'hideRightborder',
+                                    editable: function (ui) {
+                                        if (ui.rowData != undefined) {
+                                            if (ui.rowData.pq_rowcls == "collapseBorder") {
+                                                return false;
+                                            } else {
+                                                return true;
+                                            }
+                                        } else {
+                                            return true;
+                                        }
+                                    },
+                                   // resizable: true
+                                },
+                                {
+                                    title: "Data", sortable: false,
+                                    minWidth: 20, width: 200,
+                                    dataType: "string",
+                                    dataIndx: datasetnames[k],
+                                    cls: 'hideLeftborder',
+                                    nodrag: true,
+                                    nodrop: true,
+                                    filter: { crules: [{ condition: 'contain' }] },
+                                    resizable: true,
+                                    render: function (ui) {
+                                        var column = this.getColumn({ dataIndx: 'skip_' + ui.column.dataIndx }),
+                                            state = ui.rowData["skip_" + ui.dataIndx];
+                                        if (column != undefined) {
+                                            //check = column.cb.check,
+                                            //    uncheck = column.cb.uncheck;
+                                            if (state) {
+                                                return { style: "background:#c0c0c0;" }
+                                            }
+                                            else {
+                                                return { style: "" }
+                                            }
+                                        }
+                                    },
+                                    editable: function (ui) {
+                                        if (ui.rowData != undefined) {
+                                            if (ui.rowData.pq_rowcls == "collapseBorder") {
+                                                return false;
+                                            } else {
+                                                return true;
+                                            }
+                                        } else {
+                                            return true;
+                                        }
+                                    },
+                                },
+                                { title: "hdnId", dataType: "string",copy:false, dataIndx: "DataSettingId_" + datasetnames[k], hidden: true, menuInHide: true, sortable: false, }
+                                ]
+                            });
+
+
+                            IsHidden = true;
+                            l = l + 2;
+                        }
+                    }
+                    newsteps = [];
+                    for (var i = 0; i < result.data.length; i++) {
+                        if (i != 0) {
+                            jsonData += ",";
+                        }
+                        var datasetvalue = result.data[i].DATASETVALUE;
+                        if (datasetvalue != null) {
+                            datasetvalue = datasetvalue.replace(/&amp;/g, "&").replace("&lt;", "<").replace("&gt;", ">").replace(/\\/g, "\\\\").replace(/\n/g, "\\n").replace(/\t/g, "\\t").replace("&apos;", "'").replace(/"/g, "\\\"")/*.replace(",","##")*/;/*.replace(/\\\\/g, '\\')*//*.replace(/\\/g, '\\\\');*///.replace(/\\\\/g, '\\');
+                        }
+                        datasetvalues = [];
+                        if (datasetvalue != null) {
+                            datasetvalues = datasetvalue.split(',');
+
+                        }
+
+                        var DataSettingIds = [];
+                            if (result.data[i].Data_Setting_Id != null) {
+                                DataSettingIds = result.data[i].Data_Setting_Id.split(',');
+
+                        }
+                            var datasetskip = result.data[i].SKIP;
+                        var datasetskipsTest = [];
+                        var datasetskips = [];
+                        if (datasetskip != null) {
+                            datasetskipsTest = datasetskip.split(',');
+                            for (var m = 0; m <= datasetskipsTest.length; m++) {
+                                if (datasetskipsTest[m] == "4") {
+                                    datasetskips.push(true);
+                                }
+                                else {
+                                    datasetskips.push(false);
+                                }
+                            }
+                        }
+                        var objvalue = "";
+                        var parametervalue = "";
+                        var commentvalue = "";
+                            if (result.data[i].object_happy_name != null) {
+                                objvalue = result.data[i].object_happy_name;
+                        }
+                            if (result.data[i].parameter != null) {
+                                parametervalue = result.data[i].parameter;
+                            if (parametervalue != null) {
+                                parametervalue = parametervalue.replace(/&amp;/g, "&").replace(/\n/g, "\\n").replace(/\\/g, "\\\\").replace(/\t/g, "\\t").replace("&lt;", "<").replace("&gt;", ">").replace(/"/g, "\\\"");/*.replace(/\\/g, '\\\\')*/;//replace(/"/g, '\\"');
+                            }
+
+                        }
+                            if (result.data[i].COMMENT != null) {
+                                commentvalue = result.data[i].COMMENT;
+                            if (commentvalue != null) {
+                                commentvalue = commentvalue.replace(/&amp;/g, "&").replace(/\n/g, "\\n").replace(/\\/g, "\\\\").replace(/\t/g, "\\t").replace("&lt;", "<").replace("&gt;", ">").replace(/"/g, "\\\"");
+                            }
+                        }
+
+                        //*********************************************************************
+                        // START - DYNAMIC - Define DATA for the PQGrid and Create JSON
+                        //*********************************************************************
+                        jsonData += '{"testCaseid":"' + result.data[i].TEST_CASE_ID +'", "stepsID":"' + result.data[i].STEPS_ID + '", "keyword":"' + result.data[i].key_word_name + '", "object":"' + objvalue + '", "parameters":"'
+                                + parametervalue + '", "comment":"' + commentvalue + '", "RUN_ORDER":"' + result.data[i].RUN_ORDER + '", "hdnVERSION":"' + result.data[i].VERSION + '", "hdnISAVAILABLE":"' + result.data[i].ISAVAILABLE + '"';
+
+                        if (Version == 0) {
+                            Version = result.data[i].VERSION;
+                        }
+                        if (IsAvailable == 0) {
+                            IsAvailable = result.data[i].ISAVAILABLE;
+                        }
+                            EditedUserName = result.data[i].EditingUserName;
+                        if (datasetvalues.length > 0 && datasetskips.length > 0) {
+                            for (var j = 0; j < datasetnames.length; j++) {
+
+                                if (datasetnames[j] != undefined) {
+                                    var lSkip = false;
+                                    var lvalue = "";
+                                    if (datasetskips[j] != undefined) {
+                                        lSkip = datasetskips[j];
+                                    }
+                                    if (datasetvalues[j] != undefined) {
+                                        lvalue = datasetvalues[j];
+                                        lvalue = lvalue.replace(/##/g, ",");
+                                    }
+
+                                    if (DataSettingIds[j] != undefined) {
+                                        lsettingId = DataSettingIds[j];
+                                    } else {
+                                        lsettingId = "";
+                                    }
+                                    datasetnames[j] = datasetnames[j].replace(/___/g, ',');
+                                    jsonData += ', "skip_' + datasetnames[j] + '":' + lSkip + ', "' + datasetnames[j] + '":"' + lvalue + '","DataSettingId_' + datasetnames[j] + '":"' + lsettingId + '"';
+                                }
+                            }
+                        }
+                        else if (datasetvalues.length == 0 && datasetskips.length > 0) {
+                            for (var j = 0; j < datasetskips.length; j++) {
+                                if (datasetnames[j] != undefined) {
+                                    datasetnames[j] = datasetnames[j].replace(/___/g, ',');
+                                    jsonData += ', "skip_' + datasetnames[j] + '":' + datasetskips[j] + ', "' + datasetnames[j] + '":' + '"", "DataSettingId_' + datasetnames[j] + '":"' + DataSettingIds[j] + '"';
+                                }
+                            }
+                        }
+                        else if (datasetvalues.length > 0 && datasetskips.length == 0) {
+                            for (var j = 0; j < datasetvalues.length; j++) {
+                                if (datasetnames[j] != undefined) {
+                                    datasetnames[j] = datasetnames[j].replace(/___/g, ',');
+                                    jsonData += ',"skip_' + datasetnames[j] + '": false , "' + datasetnames[j] + '":"' + datasetvalues[j] + '","DataSettingId_' + datasetnames[j] + '":"' + DataSettingIds[j] + '"';
+                                }
+                            }
+                        }
+
+                        // initialize the steps and run order array
+                            newsteps.push({ "stepsid": result.data[i].STEPS_ID, "RUN_ORDER": i + 1, "RUN_ORDER_OLD": i + 1 });
+
+                        jsonData += "}";
+                        //*********************************************************************
+                        // START - DYNAMIC - Define DATA for the PQGrid and Create JSON
+                        //*********************************************************************
+
+                    }
+                    jsonData += "]";
+
+
+                    // setTimeout(function () {
+                    data = JSON.parse(jsonData);
+                    gridobj[tcgrid].refreshCM(dt);
+                    gridobj[tcgrid].refresh();
+                    gridobj[tcgrid].option("dataModel.data", data);
+                    gridobj[tcgrid].refreshDataAndView();
+                    stoploader();
+      }
+                else if(result.status == 0) {
+                    swal.fire({
+                        "title": "",
+                        "text": result.message,
+                        "icon": "error",
+                        "onClose": function (e) {
+                            console.log('on close event fired!');
+                        }
+                    });
+                    stoploader();
         }
+                }
+            });
+        }
+
 </script>
 }
 @{

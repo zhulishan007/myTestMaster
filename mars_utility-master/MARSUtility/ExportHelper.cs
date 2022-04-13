@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
+using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -1307,8 +1308,22 @@ namespace MARSUtility
 
                 OracleConnection lconnection = GetOracleConnection(constring);
                 lconnection.Open();
-
-                OracleTransaction ltransaction;
+                OracleCommand lcmd = lconnection.CreateCommand();
+                lcmd.CommandText = $@"select distinct TP.PROJECT_ID, tp.project_name,tss.storyboard_id,tss.storyboard_name, tpj.run_order, tsc.test_case_name, ts.alias_name,TS.DESCRIPTION_INFO, tg.groupname, tg.description as GROUPDESCRIPTION,  
+                               tts.setname, tts.description as SETDESCRIPTION, tf.foldername, tf.description as FOLDERDESCRIPTION,dts.EXPECTEDRESULTS, dts.sequence,dts.stepdesc, dts.diary from T_TEST_DATASETTAG dts 
+                               join t_test_data_summary ts ON dts.datasetId = ts.data_summary_id
+                               left join t_test_group tg on tg.groupid = dts.groupid
+                               left join T_test_set tts on tts.setid = dts.setid
+                               left join t_test_folder tf on tf.folderid = dts.folderid
+                               join REL_TC_DATA_SUMMARY rts on rts.data_summary_id = ts.data_summary_id
+                               join t_test_case_summary tsc on tsc.test_case_id = rts.test_case_id
+                               join t_proj_tc_mgr tpj on tpj.test_case_id = tsc.test_case_id
+                               join t_storyboard_dataset_setting tdss on tdss.data_summary_id = dts.datasetId and tpj.storyboard_detail_id=tdss.storyboard_detail_id
+                               join t_storyboard_summary tss on tss.storyboard_id = tpj.storyboard_id
+                               join T_TEST_PROJECT tp on tp.project_id = tpj.project_id 
+                               where  tf.FOLDERNAME ='{FolderName}'  and  TP.PROJECT_ID in ({projectIds}) and tss.storyboard_id in ({storyboradIds})
+                               order by  tg.groupname,tpj.run_order ";
+                /*OracleTransaction ltransaction;
                 ltransaction = lconnection.BeginTransaction();
 
                 OracleCommand lcmd;
@@ -1325,7 +1340,7 @@ namespace MARSUtility
                 }
 
                 lcmd.CommandText = schemaname + "." + "SP_EXPORT_EXPORTDATATAGREPORT";
-                lcmd.CommandType = CommandType.StoredProcedure;
+                lcmd.CommandType = CommandType.StoredProcedure;*/
                 OracleDataAdapter dataAdapter = new OracleDataAdapter(lcmd);
                 dataAdapter.Fill(lds);
                 var dt = new DataTable();
@@ -1353,11 +1368,11 @@ namespace MARSUtility
                         STEPDESC = row.Field<string>("STEPDESC"),
                     }).ToList();
 
-                List<int> projectId = projectIds.Split(',').Select(int.Parse).ToList();
+                /*List<int> projectId = projectIds.Split(',').Select(int.Parse).ToList();
                 List<int> storyboradId = storyboradIds.Split(',').Select(int.Parse).ToList();
                 resultList = resultList.Where(a => a.FOLDERNAME == FolderName).ToList();
                 resultList = resultList.Where(a => projectId.Any(b => a.PROJECT_ID == b)).ToList();
-                resultList = resultList.Where(a => storyboradId.Any(b => a.STORYBOARD_ID == b)).ToList();
+                resultList = resultList.Where(a => storyboradId.Any(b => a.STORYBOARD_ID == b)).ToList();*/
 
                 dbtable.errorlog("Fetched all ReportDatasetTag List from DB", "Export ExportReportDatasetTagById", "", 0);
                 return resultList;
@@ -1372,5 +1387,173 @@ namespace MARSUtility
             }
         }
 
+        public List<DatasetTagExportModel> ExportDatasetTag(DbCommand lcmd, string schemaname, string constring)
+        {
+            SomeGlobalVariables.functionName = SomeGlobalVariables.functionName + "->ExportDatasetTag";
+            List<DatasetTagExportModel> resultList = new List<DatasetTagExportModel>();
+            try
+            {
+                lcmd.CommandText = @"select ts.alias_name,TS.DESCRIPTION_INFO, tg.groupname,   
+                                       tts.setname, tf.foldername,dts.expectedresults, 
+                                       dts.stepdesc, dts.diary,dts.sequence from T_TEST_DATASETTAG dts 
+                                       join t_test_data_summary ts ON dts.datasetId = ts.data_summary_id
+                                       left join t_test_group tg on tg.groupid = dts.groupid
+                                       left join T_test_set tts on tts.setid = dts.setid
+                                       left join t_test_folder tf on tf.folderid = dts.folderid
+                                       order by dts.folderid, dts.sequence";
+                lcmd.CommandType = CommandType.Text;
+                using (DbDataReader dr = lcmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        DatasetTagExportModel dataset = new DatasetTagExportModel();
+                        dataset.ALIAS_NAME = GetDBValue<string>(dr["alias_name"], string.Empty);
+                        dataset.DESCRIPTION_INFO = GetDBValue<string>(dr["DESCRIPTION_INFO"], string.Empty);
+                        dataset.GROUPNAME = GetDBValue<string>(dr["groupname"], string.Empty);
+                        dataset.SETNAME = GetDBValue<string>(dr["setname"], string.Empty);
+                        dataset.FOLDERNAME = GetDBValue<string>(dr["foldername"], string.Empty);
+                        dataset.EXPECTEDRESULTS = GetDBValue<string>(dr["expectedresults"], string.Empty);
+                        dataset.STEPDESC = GetDBValue<string>(dr["stepdesc"], string.Empty);
+                        dataset.DIARY = GetDBValue<string>(dr["diary"], string.Empty);
+                        dataset.SEQUENCE = GetDBValue<long?>(dr["sequence"], null);
+                        resultList.Add(dataset);
+                    }
+                }
+                
+                dbtable.errorlog("Fetched all DatasetTag List from DB", "Export DatasetTag", "", 0);
+                return resultList;
+            }
+            catch (Exception ex)
+            {
+                int line;
+                string msg = ex.Message;
+                line = dbtable.lineNo(ex);
+                dbtable.errorlog(msg, "Export DatasetTag", SomeGlobalVariables.functionName, line);
+                throw new Exception("Error from :ExportDatasetTag " + ex.Message);
+            }
+        }
+
+        public List<DataTagCommonViewModel> ExportDatasetTagGroup(DbCommand lcmd,string schemaname, string constring)
+        {
+            SomeGlobalVariables.functionName = SomeGlobalVariables.functionName + "->ExportDatasetTagGroup";
+            List<DataTagCommonViewModel> resultList = new List<DataTagCommonViewModel>();
+            try
+            {
+                lcmd.CommandText = @"select groupid, groupname,description,active from t_test_group";
+                lcmd.CommandType = CommandType.Text;
+                using (DbDataReader dr = lcmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        DataTagCommonViewModel datatag = new DataTagCommonViewModel();
+                        datatag.Id = GetDBValue<long>(dr["GROUPID"], 0);
+                        datatag.Name = GetDBValue<string>(dr["GROUPNAME"], string.Empty);
+                        datatag.Description = GetDBValue<string>(dr["DESCRIPTION"], string.Empty);
+                        datatag.Active = GetDBValue<short>(dr["ACTIVE"],0);
+                        resultList.Add(datatag);
+                    }
+                }
+                resultList.ToList().ForEach(item =>
+                {
+                    item.Status = item.Active == 0 ? "InActive" : "Active";
+                });
+                dbtable.errorlog("Fetched all DatasetTag List from DB", "Export ExportDatasetTagGroup", "", 0);
+                return resultList;
+            }
+            catch (Exception ex)
+            {
+                int line;
+                string msg = ex.Message;
+                line = dbtable.lineNo(ex);
+                dbtable.errorlog(msg, "Export ExportDatasetTagGroup", SomeGlobalVariables.functionName, line);
+                throw new Exception("Error from :ExportDatasetTagGroup " + ex.Message);
+            }
+        }
+
+        public List<DataTagCommonViewModel> ExportDatasetTagSet(DbCommand lcmd, string schemaname, string constring)
+        {
+            SomeGlobalVariables.functionName = SomeGlobalVariables.functionName + "->ExportDatasetTagSet";
+            List<DataTagCommonViewModel> resultList = new List<DataTagCommonViewModel>();
+            try
+            {
+                lcmd.CommandText = @" select setid, setname,description, active from T_test_set ";
+                lcmd.CommandType = CommandType.Text;
+                using (DbDataReader dr = lcmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        DataTagCommonViewModel datatag = new DataTagCommonViewModel();
+                        datatag.Id = GetDBValue<long>(dr["SETID"], 0);
+                        datatag.Name = GetDBValue<string>(dr["SETNAME"], string.Empty);
+                        datatag.Description = GetDBValue<string>(dr["DESCRIPTION"], string.Empty);
+                        datatag.Active = GetDBValue<short>(dr["ACTIVE"], 0);
+                        resultList.Add(datatag);
+                    }
+                }
+                
+                resultList.ToList().ForEach(item =>
+                {
+                    item.Status = item.Active == 0 ? "InActive" : "Active";
+                });
+                dbtable.errorlog("Fetched all DatasetTag List from DB", "Export ExportDatasetTagSet", "", 0);
+                return resultList;
+            }
+            catch (Exception ex)
+            {
+                int line;
+                string msg = ex.Message;
+                line = dbtable.lineNo(ex);
+                dbtable.errorlog(msg, "Export ExportDatasetTagSet", SomeGlobalVariables.functionName, line);
+                throw new Exception("Error from :ExportDatasetTagSet " + ex.Message);
+            }
+        }
+
+        public List<DataTagCommonViewModel> ExportDatasetTagFolder(DbCommand lcmd, string schemaname, string constring)
+        {
+            SomeGlobalVariables.functionName = SomeGlobalVariables.functionName + "->ExportDatasetTagFolder";
+            List<DataTagCommonViewModel> resultList = new List<DataTagCommonViewModel>();
+            try
+            {
+                lcmd.CommandText = @" select folderid, foldername,description ,active from t_test_folder ";
+                lcmd.CommandType = CommandType.Text;
+                using (DbDataReader dr = lcmd.ExecuteReader())
+                {
+                    while (dr.Read())
+                    {
+                        DataTagCommonViewModel datatag = new DataTagCommonViewModel();
+                        datatag.Id = GetDBValue<long>(dr["FOLDERID"], 0);
+                        datatag.Name = GetDBValue<string>(dr["FOLDERNAME"], string.Empty);
+                        datatag.Description = GetDBValue<string>(dr["DESCRIPTION"], string.Empty);
+                        datatag.Active = GetDBValue<short>(dr["ACTIVE"], 0);
+                        resultList.Add(datatag);
+                    }
+                }
+
+                resultList.ToList().ForEach(item =>
+                { 
+                    item.Status = item.Active == 0 ? "InActive" : "Active";
+                });
+                dbtable.errorlog("Fetched all DatasetTag List from DB", "Export ExportDatasetTagFolder", "", 0);
+                return resultList;
+            }
+            catch (Exception ex)
+            {
+                int line;
+                string msg = ex.Message;
+                line = dbtable.lineNo(ex);
+                dbtable.errorlog(msg, "Export ExportDatasetTagFolder", SomeGlobalVariables.functionName, line);
+                throw new Exception("Error from :ExportDatasetTagFolder " + ex.Message);
+            }
+        }
+
+        public  T GetDBValue<T>(object value, T defaultValue)
+        {
+            if (System.DBNull.Value != value)
+            {
+                return (T)value; 
+            }
+
+            return defaultValue;
+        }
     }
 }

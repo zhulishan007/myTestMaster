@@ -214,7 +214,8 @@ namespace MARS_Web.Controllers
                 if (rel == true)
                 {
                     //checks if the testcase is present in the storyboard
-                    var result = repTestSuite.CheckTestCaseExistsInStoryboard(lModel.TestCaseId);
+                    //var result = repTestSuite.CheckTestCaseExistsInStoryboard(lModel.TestCaseId);
+                    var result = repTestSuite.CheckTestCaseExistsInStoryboardNew(lModel.TestCaseId);
                     if (result.Count <= 0)
                     {
                         testId = repTestSuite.AddEditTestCase(lModel, SessionManager.TESTER_LOGIN_NAME);
@@ -240,7 +241,6 @@ namespace MARS_Web.Controllers
                 {
                     string fullFilePath = CreateTestcaseFolder();
                     Task.Run(() =>LoadTestcaseJsonFile(fullFilePath, new List<MB_V_TEST_STEPS>(), testId, lConnectionStr));
-
                 }
 
                 resultModel.status = 1;
@@ -320,7 +320,8 @@ namespace MARS_Web.Controllers
             {
                 var repo = new TestCaseRepository();
                 repo.Username = SessionManager.TESTER_LOGIN_NAME;
-                var result = repo.CheckTestCaseExistsInStoryboard(caseId);
+                //var result = repo.CheckTestCaseExistsInStoryboard(caseId);
+                var result = repo.CheckTestCaseExistsInStoryboardNew(caseId);
                 var lresult = string.Empty;
                 if (result.Count > 0)
                     resultModel.data = result;
@@ -3636,10 +3637,12 @@ namespace MARS_Web.Controllers
                 var userId = SessionManager.TESTER_ID;
                 var repAcc = new ConfigurationGridRepository();
                 repAcc.Username = SessionManager.TESTER_LOGIN_NAME;
-                var Widthgridlst = repAcc.GetGridList((long)userId, GridNameList.ResizeLeftPanel);
+                /*var Widthgridlst = repAcc.GetGridList((long)userId, GridNameList.ResizeLeftPanel);
                 var Rgriddata = GridHelper.GetLeftpanelgridwidth(Widthgridlst);
 
                 ViewBag.width = Rgriddata.Resize == null ? ConfigurationManager.AppSettings["DefultLeftPanel"] + "px" : Rgriddata.Resize.Trim() + "px";
+*/
+                ViewBag.width = ConfigurationManager.AppSettings["DefultLeftPanel"] + "px";
             }
             catch (Exception ex)
             {
@@ -3670,8 +3673,21 @@ namespace MARS_Web.Controllers
                 string orderDir = Request.Form.GetValues("order[0][dir]")[0];
                 int startRec = Convert.ToInt32(Request.Form.GetValues("start")[0]);
                 int pageSize = Convert.ToInt32(Request.Form.GetValues("length")[0]);
-
-                data = repo.ListOfSet();
+                if (GlobalVariable.SetListCache != null && GlobalVariable.SetListCache.ContainsKey(SessionManager.Schema))
+                {
+                    data = GlobalVariable.SetListCache[SessionManager.Schema].FindAll(r=>r!=null && !string.IsNullOrEmpty(r.SETNAME)).Select(y => new DataTagCommonViewModel
+                    {
+                        Id = y.SETID,
+                        Name = y.SETNAME,
+                        Description = y.DESCRIPTION,
+                        IsActive = y.ACTIVE,
+                        Active = y.ACTIVE == 1 ? "Y" : "N"
+                    }).OrderBy(z => z.Name).ToList();
+                }
+                else
+                { 
+                    data = repo.ListOfSet();
+                }
 
                 string NameSearch = Request.Form.GetValues("columns[0][search][value]")[0];
                 string DescSearch = Request.Form.GetValues("columns[1][search][value]")[0];
@@ -3758,13 +3774,50 @@ namespace MARS_Web.Controllers
             {
                 var repo = new TestCaseRepository();
                 repo.Username = SessionManager.TESTER_LOGIN_NAME;
+                if (GlobalVariable.SetListCache != null && GlobalVariable.SetListCache.ContainsKey(SessionManager.Schema))
+                {
+                    if (model.Id == 0)
+                    {
+                        resultModel.data = GlobalVariable.SetListCache[SessionManager.Schema].Any(r => r != null && r.SETID != model.Id && r.SETNAME.ToLower().Trim() == model.Name.ToLower().Trim());
+                    }
+                    else
+                    {
+                        resultModel.data = GlobalVariable.SetListCache[SessionManager.Schema].Any(r => r != null && r.SETNAME.ToLower().Trim() == model.Name.ToLower().Trim()); ;
+                    }
+                }
+                else
+                {
+                    var result = repo.CheckDuplicateSetNameExist(model.Name, model.Id);
+                    resultModel.data = result;
+                }
+                if (resultModel.data)
+                {
+                    resultModel.message = "Saved failed, [" + model.Name + "] is exist.";
+                    resultModel.status = 0;
+                }
+                else
+                {
+                    var _addeditResult = repo.AddEditSet(model);
+                    if (GlobalVariable.SetListCache != null && GlobalVariable.SetListCache.ContainsKey(SessionManager.Schema))
+                    {
+                        var set = GlobalVariable.SetListCache[SessionManager.Schema].Find(r => r != null && r.SETID == _addeditResult.SETID);
+                        if (set == null)
+                        {
+                            GlobalVariable.SetListCache[SessionManager.Schema].Add(_addeditResult);
+                        }
+                        else {
+                            set.DESCRIPTION = _addeditResult.DESCRIPTION;
+                            set.ACTIVE = _addeditResult.ACTIVE;
+                            set.UPDATE_DATE = _addeditResult.UPDATE_DATE;
+                            set.UPDATE_CREATION_USER = _addeditResult.UPDATE_CREATION_USER;
+                        }
+                    }
 
-                var _addeditResult = repo.AddEditSet(model);
-
-                resultModel.message = "Saved [" + model.Name + "] Set.";
-                resultModel.data = _addeditResult;
-                resultModel.status = 1;
-
+                    resultModel.message = "Saved [" + model.Name + "] Set.";
+                    resultModel.data = _addeditResult==null?false:true;
+                    resultModel.status = 1;
+                }
+               
                 logger.Info(string.Format("Set Add/Edit  Modal close | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
                 logger.Info(string.Format("Set Save successfully | Username: {0}", SessionManager.TESTER_LOGIN_NAME));
             }
@@ -3790,9 +3843,21 @@ namespace MARS_Web.Controllers
                 Name = Name.Trim();
                 var repo = new TestCaseRepository();
                 repo.Username = SessionManager.TESTER_LOGIN_NAME;
-                var result = repo.CheckDuplicateSetNameExist(Name, Id);
-                resultModel.message = "success";
-                resultModel.data = result;
+                if (GlobalVariable.SetListCache != null && GlobalVariable.SetListCache.ContainsKey(SessionManager.Schema))
+                {
+                    if (Id != null) {
+                        resultModel.data = GlobalVariable.SetListCache[SessionManager.Schema].Any(r => r != null && r.SETID != Id && r.SETNAME.ToLower().Trim() == Name.ToLower().Trim());
+                    }
+                    else {
+                        resultModel.data = GlobalVariable.SetListCache[SessionManager.Schema].Any(r => r != null  && r.SETNAME.ToLower().Trim() == Name.ToLower().Trim()); ;
+                    }
+                }
+                else
+                {
+                    var result = repo.CheckDuplicateSetNameExist(Name, Id);
+                    resultModel.data = result;
+                }
+                resultModel.message = "success";  
                 resultModel.status = 1;
             }
             catch (Exception ex)
@@ -4229,7 +4294,8 @@ namespace MARS_Web.Controllers
             {
                 dbtable.errorlog("Export is started", "Export DatasetTag Excel", "", 0);
 
-                var presult = excel.ExportDatasetTagExcel(FullPath, lSchema, lConnectionStr);
+                //var presult = excel.ExportDatasetTagExcel(FullPath, lSchema, lConnectionStr);
+                var presult = excel.ExportDatasetTagExcelNew(FullPath, lSchema, lConnectionStr);
 
                 if (presult == true)
                 {
@@ -4257,10 +4323,11 @@ namespace MARS_Web.Controllers
             var userId = SessionManager.TESTER_ID;
             var repAcc = new ConfigurationGridRepository();
             repAcc.Username = SessionManager.TESTER_LOGIN_NAME;
-            var Widthgridlst = repAcc.GetGridList((long)userId, GridNameList.ResizeLeftPanel);
-            var Rgriddata = GridHelper.GetLeftpanelgridwidth(Widthgridlst);
+            //var Widthgridlst = repAcc.GetGridList((long)userId, GridNameList.ResizeLeftPanel);
+            //var Rgriddata = GridHelper.GetLeftpanelgridwidth(Widthgridlst);
 
-            ViewBag.width = Rgriddata.Resize == null ? ConfigurationManager.AppSettings["DefultLeftPanel"] + "px" : Rgriddata.Resize.Trim() + "px";
+            //ViewBag.width = Rgriddata.Resize == null ? ConfigurationManager.AppSettings["DefultLeftPanel"] + "px" : Rgriddata.Resize.Trim() + "px";
+            ViewBag.width = ConfigurationManager.AppSettings["DefultLeftPanel"] + "px";
             return PartialView();
         }
 
@@ -4341,6 +4408,12 @@ namespace MARS_Web.Controllers
                         }
                         else
                         {
+                            GetTreeRepository tree = new GetTreeRepository();
+                            InitCacheHelper.DataSetInit(SessionManager.ConnectionString, lSchema, tree, lConnectionStr);
+                            InitCacheHelper.DataSetTagInit(SessionManager.ConnectionString, lSchema, tree);
+                            InitCacheHelper.FolderInit(SessionManager.ConnectionString, lSchema, tree);
+                            InitCacheHelper.GroupInit(SessionManager.ConnectionString, lSchema, tree);
+                            InitCacheHelper.SetInit(SessionManager.ConnectionString, lSchema, tree);
                             dbtable.errorlog("Import is completed", "Import DatasetTag", "", 0);
                             objcommon.excel(dbtable.dt_Log, strPath, "Import", "", "DATASETTAG");
                             return Json(fileName + ",success", JsonRequestBehavior.AllowGet);
@@ -4892,10 +4965,24 @@ namespace MARS_Web.Controllers
                 repo.Username = SessionManager.TESTER_LOGIN_NAME;
                 string lSchema = SessionManager.Schema;
                 var lConnectionStr = SessionManager.APP;
-                var result = repo.GetStoryboardById(ProjectIds);
+                if (GlobalVariable.StoryBoardListCache != null && GlobalVariable.StoryBoardListCache.ContainsKey(lSchema)) {
+                    var ids= ProjectIds.Split(',').ToList();
+
+                    var result = GlobalVariable.StoryBoardListCache[lSchema].FindAll(r => r != null && ids.Contains(r.ProjectId.ToString()));
+                    var data = result.Select(r => new StoryboardModel
+                    {
+                        Storyboardid = r.StoryboardId,
+                        Storyboardname = r.StoryboardName
+                    });
+                    resultModel.data = JsonConvert.SerializeObject(data);
+                }
+                else 
+                { 
+                    var result = repo.GetStoryboardById(ProjectIds);                   
+                    resultModel.data = JsonConvert.SerializeObject(result);
+                }
                 resultModel.message = "success";
                 resultModel.status = 1;
-                resultModel.data = JsonConvert.SerializeObject(result);
             }
             catch (Exception ex)
             {
@@ -4909,7 +4996,7 @@ namespace MARS_Web.Controllers
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult SaveFolderFilter(string ProjectIds, string storybaordIds, string filtername, int Id)
+        public ActionResult SaveFolderFilter(string ProjectIds, string storybaordIds, string filtername, long Id)
         {
             ResultModel resultModel = new ResultModel();
             try
@@ -4920,25 +5007,31 @@ namespace MARS_Web.Controllers
                 string lSchema = SessionManager.Schema;
                 var lConnectionStr = SessionManager.APP;
                 bool isupdate = false;
-                if (Id <= 0)
+                
+                var checkduplicateflag = false;
+                if (GlobalVariable.FolderFilterListCache != null && GlobalVariable.FolderFilterListCache.ContainsKey(lSchema))
+                {
+                    if(Id<=0)
+                        checkduplicateflag = GlobalVariable.FolderFilterListCache[lSchema].Any(r => r != null && r.FILTER_NAME.Trim().ToLower() == filtername.Trim().ToLower());
+                    else
+                        checkduplicateflag = GlobalVariable.FolderFilterListCache[lSchema].Any(r =>r!=null  && r.FILTER_ID!=Id && r.FILTER_NAME.Trim().ToLower() == filtername.Trim().ToLower());
+
+                }
+                else
+                {
+                    checkduplicateflag = repo.CheckDuplicateFilterName(filtername,Id);
+                }
+                if (checkduplicateflag)
+                {
+                    resultModel.data = checkduplicateflag;
+                    resultModel.message = "Dublicate FilterName";
+                    resultModel.status = 0;
+                    return Json(resultModel, JsonRequestBehavior.AllowGet);
+                }
+                 
+                if(Id>0) 
                 {
                     isupdate = true;
-                    var checkduplicateflag = false;
-                    if (GlobalVariable.FolderFilterListCache != null && GlobalVariable.FolderFilterListCache.ContainsKey(lSchema))
-                    {
-                        checkduplicateflag = GlobalVariable.FolderFilterListCache[lSchema].Any(r => r.FILTER_NAME.Trim().ToLower() == filtername.Trim().ToLower());
-                    }
-                    else
-                    {
-                        checkduplicateflag = repo.CheckDuplicateFilterName(filtername);
-                    }
-                    if (checkduplicateflag)
-                    {
-                        resultModel.data = checkduplicateflag;
-                        resultModel.message = "Dublicate FilterName";
-                        resultModel.status = 0;
-                        return Json(resultModel, JsonRequestBehavior.AllowGet);
-                    }
                 }
 
                 if (GlobalVariable.FolderFilterListCache != null && GlobalVariable.FolderFilterListCache.ContainsKey(lSchema))
@@ -4957,6 +5050,7 @@ namespace MARS_Web.Controllers
                     {
                         var filter = new T_FOLDER_FILTER();
                         filter.FILTER_ID = MARS_Repository.Helper.NextTestSuiteId("SEQ_T_FOLDER_FILTER");
+                        Id = filter.FILTER_ID;
                         filter.FILTER_NAME = filtername;
                         filter.PROJECT_IDS = ProjectIds;
                         filter.STORYBOARD_IDS = storybaordIds;
@@ -5098,12 +5192,21 @@ namespace MARS_Web.Controllers
                 repAcc.Username = SessionManager.TESTER_LOGIN_NAME;
                 ProjectRepository repo = new ProjectRepository();
                 repo.Username = SessionManager.TESTER_LOGIN_NAME;
-                var Widthgridlst = repAcc.GetGridList((long)userId, GridNameList.ResizeLeftPanel);
-                var Rgriddata = GridHelper.GetLeftpanelgridwidth(Widthgridlst);
-                var result = repo.ListProject();
+                //var Widthgridlst = repAcc.GetGridList((long)userId, GridNameList.ResizeLeftPanel);
+                //var Rgriddata = GridHelper.GetLeftpanelgridwidth(Widthgridlst);
+                List<T_TEST_PROJECT> result = null;
+                if (GlobalVariable.ProjectListCache != null && GlobalVariable.ProjectListCache.ContainsKey(SessionManager.Schema))
+                {
+                    result = GlobalVariable.ProjectListCache[SessionManager.Schema];
+                }
+                else
+                {
+                    result = repo.ListProject();
+                }
                 var projectlist = result.Select(c => new SelectListItem { Text = c.PROJECT_NAME, Value = c.PROJECT_ID.ToString() }).OrderBy(x => x.Text).ToList();
                 ViewBag.ProjectList = JsonConvert.SerializeObject(projectlist);
-                ViewBag.width = Rgriddata.Resize == null ? ConfigurationManager.AppSettings["DefultLeftPanel"] + "px" : Rgriddata.Resize.Trim() + "px";
+                //ViewBag.width = Rgriddata.Resize == null ? ConfigurationManager.AppSettings["DefultLeftPanel"] + "px" : Rgriddata.Resize.Trim() + "px";
+                ViewBag.width = ConfigurationManager.AppSettings["DefultLeftPanel"] + "px";
             }
             catch (Exception ex)
             {
@@ -5133,8 +5236,44 @@ namespace MARS_Web.Controllers
                 string orderDir = Request.Form.GetValues("order[0][dir]")[0];
                 int startRec = Convert.ToInt32(Request.Form.GetValues("start")[0]);
                 int pageSize = Convert.ToInt32(Request.Form.GetValues("length")[0]);
+                string lSchema = SessionManager.Schema;
+                if (GlobalVariable.FolderFilterListCache != null && GlobalVariable.FolderFilterListCache.ContainsKey(lSchema)
+                    && GlobalVariable.StoryBoardListCache != null && GlobalVariable.StoryBoardListCache.ContainsKey(lSchema)
+                    && GlobalVariable.ProjectListCache != null && GlobalVariable.ProjectListCache.ContainsKey(lSchema))
+                {
+                    data = GlobalVariable.FolderFilterListCache[lSchema].Select(x => new FilterModelView
+                    {
+                        Id = x.FILTER_ID,
+                        Name = x.FILTER_NAME,
+                        ProjectIds = x.PROJECT_IDS,
+                        StoryboradIds = x.STORYBOARD_IDS,
+                    }).ToList();
 
-                data = repo.GetFolderFilterList();
+                    data.ForEach(item =>
+                    {
+                        item.Project = "";
+                        item.Storyborad = "";
+                        if (!string.IsNullOrEmpty(item.ProjectIds))
+                        {
+                            List<long> projectId = item.ProjectIds.Split(',').Select(long.Parse).ToList();
+                            var projectList = GlobalVariable.ProjectListCache[lSchema].Where(a => projectId.Any(b => a.PROJECT_ID == b)).Select(x => x.PROJECT_NAME).ToList();
+                            if (projectList.Any())
+                                item.Project = String.Join(",", projectList);
+                        }
+
+                        if (!string.IsNullOrEmpty(item.StoryboradIds))
+                        {
+                            List<long> storyboradId = item.StoryboradIds.Split(',').Select(long.Parse).ToList();
+                            var storyboradList = GlobalVariable.StoryBoardListCache[lSchema].Where(a => storyboradId.Any(b => a.StoryboardId == b)).Select(x => x.StoryboardName).ToList();
+                            if (storyboradList.Any())
+                                item.Storyborad = String.Join(",", storyboradList);
+                        }
+                    });
+                }
+                else
+                {
+                    data = repo.GetFolderFilterList();
+                }
 
                 string NameSearch = Request.Form.GetValues("columns[0][search][value]")[0];
                 string ProjectSearch = Request.Form.GetValues("columns[1][search][value]")[0];
@@ -5237,6 +5376,7 @@ namespace MARS_Web.Controllers
                     if (filter != null)
                     {
                         GlobalVariable.FolderFilterListCache[lSchema].Remove(filter);
+                        Task.Run(() => repo.DeleteFilter(Id));
                     }
                 }
                 else
@@ -5406,5 +5546,78 @@ namespace MARS_Web.Controllers
             TestcasePath = D_Database;
             return TestcasePath;
         }
+
+
+        public ActionResult ReloadGridCache(long testcaseId)
+        {
+            ResultModel resultModel = new ResultModel();
+            try
+            {
+                logger.Info($"ReloadGridCache  start : testcaseId  {testcaseId}  ");
+                string connectString = SessionManager.APP;
+                string fullFilePath = CreateTestcaseFolder();
+                if (SerializationFile.LoadTestcaseJsonFile(fullFilePath, new List<MB_V_TEST_STEPS>(), testcaseId, connectString, true))
+                {
+                    logger.Info($"ReloadGridCache json file ok : testcaseId  {testcaseId}  ");
+                    var tc = new TestCaseRepository();
+                    string testCaseName = string.Empty;
+                    string directoryPath = Path.Combine(Server.MapPath("~/"), FolderName.Serialization.ToString(), FolderName.Testcases.ToString(), SessionManager.Schema);
+                    if (Directory.Exists(directoryPath))
+                    {
+                        string[] filesNames = Directory.GetFiles(directoryPath);
+                        var filesName = filesNames.Select(x => Path.GetFileName(x)).ToArray();
+                        testCaseName = filesName.FirstOrDefault(x => x.StartsWith($"{testcaseId.ToString()}_"));
+                        if (string.IsNullOrEmpty(testCaseName))
+                            testCaseName = string.Format("{0}_{1}.json", testcaseId, tc.GetTestCaseNameById(testcaseId));
+                    }
+                    else
+                        testCaseName = string.Format("{0}_{1}.json", testcaseId, tc.GetTestCaseNameById(testcaseId));
+                    string fullPath = Path.Combine(fullFilePath, testCaseName);
+                    if (System.IO.File.Exists(fullPath))
+                    {
+                        string testcaseSessionName = string.Format("{0}_Testcase_{1}", SessionManager.Schema, testcaseId);
+                        string jsongString = System.IO.File.ReadAllText(fullPath);
+                        Mars_Memory_TestCase allList = JsonConvert.DeserializeObject<Mars_Memory_TestCase>(jsongString);
+                        Session[testcaseSessionName] = allList;
+
+                        Mars_Memory_TestCase finalList = new Mars_Memory_TestCase
+                        {
+                            assignedApplications = allList.assignedApplications,
+                            assignedDataSets = allList.assignedDataSets,
+                            assignedTestSuiteIDs = allList.assignedTestSuiteIDs,
+                            currentSyncroStatus = allList.currentSyncroStatus,
+                            version = allList.version,
+                            allSteps = allList.allSteps.Where(x => x.recordStatus != Mars_Serialization.Common.CommonEnum.MarsRecordStatus.en_DeletedToDb).OrderBy(y => y.RUN_ORDER).ToList()
+                        };
+                        var newResult = tc.ConvertTestcaseJsonToList(finalList, testcaseId, SessionManager.Schema, connectString, (long)SessionManager.TESTER_ID);
+                        resultModel.message = "success.";
+                        resultModel.status = 1;
+                        resultModel.data = JsonConvert.SerializeObject(newResult);
+                    }
+                    else {
+                        resultModel.message = "error get cache file path.";
+                        resultModel.status = 0;
+                    }
+                }
+                else 
+                {
+                    resultModel.message = "error reflesh data from database.";
+                    resultModel.status = 0;
+                }
+                logger.Info($"ReloadGridCache  end : testcaseId  {testcaseId}  ");
+            }
+            catch (Exception ex)
+            {
+                logger.Error(string.Format("Error occured in TestCase controller for ReloadGridCache method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME));
+                ELogger.ErrorException(string.Format("Error occured in TestCase controller for ReloadGridCache method | UserName: {0}", SessionManager.TESTER_LOGIN_NAME), ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for ReloadGridCache method | TestCaseId: {0} | UserName: {1}", testcaseId, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
+                resultModel.status = 0;
+                resultModel.message = ex.Message.ToString();
+            }
+            logger.Info(string.Format("ReloadGridCache  | EXECUTE END | END TIME: {0}", DateTime.Now.ToString("HH:mm:ss.ffff tt")));
+            return Json(resultModel, JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

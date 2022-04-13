@@ -2,6 +2,7 @@
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Spreadsheet;
 using MARSUtility.ViewModel;
+using Oracle.ManagedDataAccess.Client;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -2136,6 +2137,200 @@ namespace MARSUtility
 
                     dbtable.errorlog("Excel sheet created", "Export DatasetTag Excel", "", 0);
                     flag = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                int line;
+                string msg = ex.Message;
+                line = dbtable.lineNo(ex);
+                dbtable.errorlog(msg, "Export DatasetTag Excel", SomeGlobalVariables.functionName, line);
+                throw new Exception("Error from :ExportDatasetTagExcel " + ex.Message);
+            }
+
+            return flag;
+        }
+
+        public bool ExportDatasetTagExcelNew(string fullpath, string schema, string constring)
+        {
+            bool flag = false;
+            SomeGlobalVariables.functionName = SomeGlobalVariables.functionName + "->ExportDatasetTagExcel";
+
+            try
+            {
+                ExportHelper helper = new ExportHelper();
+
+                using (OracleConnection lconnection = helper.GetOracleConnection(constring))
+                {
+                    lconnection.Open();
+                    OracleCommand lcmd = lconnection.CreateCommand();
+                    var list = helper.ExportDatasetTag(lcmd,schema, constring);
+                    using (SpreadsheetDocument document = SpreadsheetDocument.Create(fullpath, SpreadsheetDocumentType.Workbook))
+                    {
+                        WorkbookPart workbookPart = document.AddWorkbookPart();
+                        workbookPart.Workbook = new Workbook();
+
+                        WorkbookStylesPart stylePart = workbookPart.AddNewPart<WorkbookStylesPart>();
+                        stylePart.Stylesheet = GenerateStylesheet();
+                        stylePart.Stylesheet.Save();
+                        Sheets sheets = workbookPart.Workbook.AppendChild(new Sheets());
+
+                        //frist tab
+                        WorksheetPart worksheetPart = workbookPart.AddNewPart<WorksheetPart>();
+                        worksheetPart.Worksheet = new Worksheet();
+                        worksheetPart.Worksheet.AppendChild(DatasetTagColumnsStyle());
+                        Sheet sheet = new Sheet() { Id = workbookPart.GetIdOfPart(worksheetPart), SheetId = 1, Name = "DataSetTag" };
+
+                        sheets.Append(sheet);
+                        workbookPart.Workbook.Save();
+                        SheetData sheetData = worksheetPart.Worksheet.AppendChild(new SheetData());
+
+                        Row row = new Row();
+                        row.Append(
+                            ConstructCell("DatasetName", CellValues.String, 2),
+                            ConstructCell("Description", CellValues.String, 2),
+                            ConstructCell("Group", CellValues.String, 2),
+                            ConstructCell("Set", CellValues.String, 2),
+                            ConstructCell("Folder", CellValues.String, 2),
+                            ConstructCell("ExpectedResults", CellValues.String, 2),
+                            ConstructCell("StepDesc", CellValues.String, 2),
+                            ConstructCell("Diary", CellValues.String, 2),
+                            ConstructCell("Sequence", CellValues.String, 2));
+
+                        sheetData.AppendChild(row);
+
+                        if (list.Any())
+                        {
+                            foreach (var item in list)
+                            {
+                                row = new Row();
+
+                                row.Append(
+                                    ConstructCell(item.ALIAS_NAME == null ? "" : item.ALIAS_NAME, CellValues.String, 1),
+                                    ConstructCell(item.DESCRIPTION_INFO == null ? "" : item.DESCRIPTION_INFO, CellValues.String, 1),
+                                    ConstructCell(item.GROUPNAME == null ? "" : item.GROUPNAME, CellValues.String, 1),
+                                    ConstructCell(item.SETNAME == null ? "" : item.SETNAME, CellValues.String, 1),
+                                    ConstructCell(item.FOLDERNAME == null ? "" : item.FOLDERNAME, CellValues.String, 1),
+                                    ConstructCell(item.EXPECTEDRESULTS == null ? "" : item.EXPECTEDRESULTS, CellValues.String, 1),
+                                    ConstructCell(item.STEPDESC == null ? "" : item.STEPDESC, CellValues.String, 1),
+                                    ConstructCell(item.DIARY == null ? "" : item.DIARY, CellValues.String, 1),
+                                    ConstructCell(item.SEQUENCE == null ? "" : Convert.ToString(item.SEQUENCE), CellValues.String, 1));
+
+                                sheetData.AppendChild(row);
+                            }
+                        }
+                        worksheetPart.Worksheet.Save();
+
+                        //secound sheet
+                        WorksheetPart worksheetPart2 = workbookPart.AddNewPart<WorksheetPart>();
+                        worksheetPart2.Worksheet = new Worksheet();
+                        worksheetPart2.Worksheet.AppendChild(DatasetTagCommanColumnsStyle());
+                        Sheet sheet2 = new Sheet() { Id = workbookPart.GetIdOfPart(worksheetPart2), SheetId = 2, Name = "Group" };
+
+                        sheets.Append(sheet2);
+                        workbookPart.Workbook.Save();
+                        SheetData sheetData2 = worksheetPart2.Worksheet.AppendChild(new SheetData());
+
+                        Row row1 = new Row();
+                        row1.Append(
+                            ConstructCell("Name", CellValues.String, 2),
+                            ConstructCell("Description", CellValues.String, 2),
+                            ConstructCell("Status", CellValues.String, 2));
+
+                        sheetData2.AppendChild(row1);
+
+                        var grouplist = helper.ExportDatasetTagGroup(lcmd,schema, constring);
+
+                        foreach (var item in grouplist)
+                        {
+                            row = new Row();
+                            if (item.Name != null && item.Name != "")
+                            {
+                                row.Append(
+                                ConstructCell(item.Name == null ? "" : item.Name, CellValues.String, 1),
+                                ConstructCell(item.Description == null ? "" : item.Description, CellValues.String, 1),
+                                ConstructCell(item.Status == null ? "" : item.Status, CellValues.String, 1));
+
+                                sheetData2.AppendChild(row);
+                            }
+                        }
+                        worksheetPart2.Worksheet.Save();
+
+                        //third sheet
+                        WorksheetPart worksheetPart3 = workbookPart.AddNewPart<WorksheetPart>();
+                        worksheetPart3.Worksheet = new Worksheet();
+                        worksheetPart3.Worksheet.AppendChild(DatasetTagCommanColumnsStyle());
+                        Sheet sheet3 = new Sheet() { Id = workbookPart.GetIdOfPart(worksheetPart3), SheetId = 3, Name = "Set" };
+
+                        sheets.Append(sheet3);
+                        workbookPart.Workbook.Save();
+                        SheetData sheetData3 = worksheetPart3.Worksheet.AppendChild(new SheetData());
+
+                        Row row2 = new Row();
+                        row2.Append(
+                            ConstructCell("Name", CellValues.String, 2),
+                            ConstructCell("Description", CellValues.String, 2),
+                            ConstructCell("Status", CellValues.String, 2));
+
+                        sheetData3.AppendChild(row2);
+
+                        var setlist = helper.ExportDatasetTagSet(lcmd,schema, constring);
+
+                        foreach (var item in setlist)
+                        {
+                            if (item.Name != null && item.Name != "")
+                            {
+                                row = new Row();
+
+                                row.Append(
+                                    ConstructCell(item.Name == null ? "" : item.Name, CellValues.String, 1),
+                                    ConstructCell(item.Description == null ? "" : item.Description, CellValues.String, 1),
+                                    ConstructCell(item.Status == null ? "" : item.Status, CellValues.String, 1));
+
+                                sheetData3.AppendChild(row);
+                            }
+                        }
+                        worksheetPart3.Worksheet.Save();
+
+                        //fourth sheet 
+                        WorksheetPart worksheetPart4 = workbookPart.AddNewPart<WorksheetPart>();
+                        worksheetPart4.Worksheet = new Worksheet();
+                        worksheetPart4.Worksheet.AppendChild(DatasetTagCommanColumnsStyle());
+                        Sheet sheet4 = new Sheet() { Id = workbookPart.GetIdOfPart(worksheetPart4), SheetId = 4, Name = "Folder" };
+
+                        sheets.Append(sheet4);
+                        workbookPart.Workbook.Save();
+                        SheetData sheetData4 = worksheetPart4.Worksheet.AppendChild(new SheetData());
+
+                        Row row3 = new Row();
+                        row3.Append(
+                            ConstructCell("Name", CellValues.String, 2),
+                            ConstructCell("Description", CellValues.String, 2),
+                            ConstructCell("Status", CellValues.String, 2));
+
+                        sheetData4.AppendChild(row3);
+
+                        var folderlist = helper.ExportDatasetTagFolder(lcmd,schema, constring);
+
+                        foreach (var item in folderlist)
+                        {
+                            if (item.Name != null && item.Name != "")
+                            {
+                                row = new Row();
+
+                                row.Append(
+                                    ConstructCell(item.Name == null ? "" : item.Name, CellValues.String, 1),
+                                    ConstructCell(item.Description == null ? "" : item.Description, CellValues.String, 1),
+                                    ConstructCell(item.Status == null ? "" : item.Status, CellValues.String, 1));
+
+                                sheetData4.AppendChild(row);
+                            }
+                        }
+                        worksheetPart4.Worksheet.Save();
+
+                        dbtable.errorlog("Excel sheet created", "Export DatasetTag Excel", "", 0);
+                        flag = true;
+                    }
                 }
             }
             catch (Exception ex)
