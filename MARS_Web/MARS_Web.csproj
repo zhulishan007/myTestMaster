@@ -62,10 +62,6 @@
     <Reference Include="Fleck, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Fleck.1.2.0\lib\net45\Fleck.dll</HintPath>
     </Reference>
-    <Reference Include="MARSUtility, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\MARS_Utility\MARSUtility\bin\Debug\MARSUtility.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.AspNet.SignalR.Core, Version=2.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.4.1\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
     </Reference>
@@ -3975,6 +3971,10 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\mars_utility-master\MARSUtility\MARSUtility.csproj">
+      <Project>{4cae5148-c588-4195-b639-83dc6683a3dc}</Project>
+      <Name>MARSUtility</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MARS_Repository\MARS_Repository.csproj">
       <Project>{b98d1504-d9e4-47c7-913e-c285339c1db2}</Project>
       <Name>MARS_Repository</Name>

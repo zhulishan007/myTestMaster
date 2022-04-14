@@ -1,0 +1,6068 @@
+{
+  "currentSyncroStatus": 0,
+  "assignedApplications": [
+    194,
+    195,
+    -1
+  ],
+  "assignedTestSuiteIDs": [
+    1236
+  ],
+  "version": null,
+  "assignedDataSets": [
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 321460,
+      "ALIAS_NAME": "SWOPTT_05_m",
+      "DESCRIPTION_INFO": "TREAS - UNWIND or ASSIGNMENT"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 321366,
+      "ALIAS_NAME": "SWOPTT_10_m",
+      "DESCRIPTION_INFO": "TREAS - UNWIND or ASSIGNMENT"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 321381,
+      "ALIAS_NAME": "SWOPTT_04_m",
+      "DESCRIPTION_INFO": "TREAS - UNWIND or ASSIGNMENT"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 321383,
+      "ALIAS_NAME": "SWOPTT_07_m",
+      "DESCRIPTION_INFO": "TREAS - UNWIND or ASSIGNMENT"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 321398,
+      "ALIAS_NAME": "SWOPTT_14_j",
+      "DESCRIPTION_INFO": "Acct - UNWIND or ASSIGNMENT"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 321400,
+      "ALIAS_NAME": "SWOPTT_02_m",
+      "DESCRIPTION_INFO": "TREAS - UNWIND or ASSIGNMENT"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 321401,
+      "ALIAS_NAME": "SWOPTT_06_m",
+      "DESCRIPTION_INFO": "Acct - UNWIND or ASSIGNMENT 2"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 321424,
+      "ALIAS_NAME": "SWOPTT_09_m",
+      "DESCRIPTION_INFO": "TREAS - UNWIND or ASSIGNMENT"
+    }
+  ],
+  "allSteps": [
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208440,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322379
+        },
+        {
+          "Data_Setting_Id": 208437,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322379
+        },
+        {
+          "Data_Setting_Id": 208443,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322379
+        },
+        {
+          "Data_Setting_Id": 208441,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322379
+        },
+        {
+          "Data_Setting_Id": 208438,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322379
+        },
+        {
+          "Data_Setting_Id": 208442,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322379
+        },
+        {
+          "Data_Setting_Id": 208436,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322379
+        },
+        {
+          "Data_Setting_Id": 208439,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322379
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 134311,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys |Finastra ){0,1}(FusionCapital |Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 125902,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 322379,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208440,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322379
+        },
+        {
+          "Data_Setting_Id": 208437,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322379
+        },
+        {
+          "Data_Setting_Id": 208443,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322379
+        },
+        {
+          "Data_Setting_Id": 208441,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322379
+        },
+        {
+          "Data_Setting_Id": 208438,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322379
+        },
+        {
+          "Data_Setting_Id": 208442,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322379
+        },
+        {
+          "Data_Setting_Id": 208436,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322379
+        },
+        {
+          "Data_Setting_Id": 208439,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322379
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 152274,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys |Finastra ){0,1}(FusionCapital |Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 125902,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 322379,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208448,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322380
+        },
+        {
+          "Data_Setting_Id": 208445,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322380
+        },
+        {
+          "Data_Setting_Id": 208451,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322380
+        },
+        {
+          "Data_Setting_Id": 208449,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322380
+        },
+        {
+          "Data_Setting_Id": 208446,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322380
+        },
+        {
+          "Data_Setting_Id": 208450,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322380
+        },
+        {
+          "Data_Setting_Id": 208444,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322380
+        },
+        {
+          "Data_Setting_Id": 208447,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322380
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 134311,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys |Finastra ){0,1}(FusionCapital |Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 125902,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 322380,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 2,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208448,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322380
+        },
+        {
+          "Data_Setting_Id": 208445,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322380
+        },
+        {
+          "Data_Setting_Id": 208451,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322380
+        },
+        {
+          "Data_Setting_Id": 208449,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322380
+        },
+        {
+          "Data_Setting_Id": 208446,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322380
+        },
+        {
+          "Data_Setting_Id": 208450,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322380
+        },
+        {
+          "Data_Setting_Id": 208444,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322380
+        },
+        {
+          "Data_Setting_Id": 208447,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322380
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 152274,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys |Finastra ){0,1}(FusionCapital |Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 125902,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 322380,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 2,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208456,
+          "DATASETVALUE": "STP - Trade Exception Monitor",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322381
+        },
+        {
+          "Data_Setting_Id": 208453,
+          "DATASETVALUE": "STP - Trade Exception Monitor",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322381
+        },
+        {
+          "Data_Setting_Id": 208459,
+          "DATASETVALUE": "STP - Trade Exception Monitor",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322381
+        },
+        {
+          "Data_Setting_Id": 208457,
+          "DATASETVALUE": "STP - Trade Exception Monitor",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322381
+        },
+        {
+          "Data_Setting_Id": 208454,
+          "DATASETVALUE": "STP - Trade Exception Monitor",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322381
+        },
+        {
+          "Data_Setting_Id": 208458,
+          "DATASETVALUE": "STP - Trade Exception Monitor",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322381
+        },
+        {
+          "Data_Setting_Id": 208452,
+          "DATASETVALUE": "STP - Trade Exception Monitor",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322381
+        },
+        {
+          "Data_Setting_Id": 208455,
+          "DATASETVALUE": "STP - Trade Exception Monitor",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322381
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 12,
+      "KEY_WORD_NAME": "LaunchApplication",
+      "OBJECT_HAPPY_NAME": "ApplicationName",
+      "OBJECT_ID": 136576,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockAreaTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 126579,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 322381,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 3,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208456,
+          "DATASETVALUE": "STP - Trade Exception Monitor",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322381
+        },
+        {
+          "Data_Setting_Id": 208453,
+          "DATASETVALUE": "STP - Trade Exception Monitor",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322381
+        },
+        {
+          "Data_Setting_Id": 208459,
+          "DATASETVALUE": "STP - Trade Exception Monitor",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322381
+        },
+        {
+          "Data_Setting_Id": 208457,
+          "DATASETVALUE": "STP - Trade Exception Monitor",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322381
+        },
+        {
+          "Data_Setting_Id": 208454,
+          "DATASETVALUE": "STP - Trade Exception Monitor",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322381
+        },
+        {
+          "Data_Setting_Id": 208458,
+          "DATASETVALUE": "STP - Trade Exception Monitor",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322381
+        },
+        {
+          "Data_Setting_Id": 208452,
+          "DATASETVALUE": "STP - Trade Exception Monitor",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322381
+        },
+        {
+          "Data_Setting_Id": 208455,
+          "DATASETVALUE": "STP - Trade Exception Monitor",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322381
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 12,
+      "KEY_WORD_NAME": "LaunchApplication",
+      "OBJECT_HAPPY_NAME": "ApplicationName",
+      "OBJECT_ID": 154205,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockAreaTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 126579,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 322381,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 3,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208464,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322382
+        },
+        {
+          "Data_Setting_Id": 208461,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322382
+        },
+        {
+          "Data_Setting_Id": 208467,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322382
+        },
+        {
+          "Data_Setting_Id": 208465,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322382
+        },
+        {
+          "Data_Setting_Id": 208462,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322382
+        },
+        {
+          "Data_Setting_Id": 208466,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322382
+        },
+        {
+          "Data_Setting_Id": 208460,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322382
+        },
+        {
+          "Data_Setting_Id": 208463,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322382
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "STP_TRD_EXP_MONITOR",
+      "OBJECT_ID": 154499,
+      "OBJECT_TYPE": "STP_TRD_EXP_MONITOR",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\nText:=((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 125935,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 322382,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 4,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208464,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322382
+        },
+        {
+          "Data_Setting_Id": 208461,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322382
+        },
+        {
+          "Data_Setting_Id": 208467,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322382
+        },
+        {
+          "Data_Setting_Id": 208465,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322382
+        },
+        {
+          "Data_Setting_Id": 208462,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322382
+        },
+        {
+          "Data_Setting_Id": 208466,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322382
+        },
+        {
+          "Data_Setting_Id": 208460,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322382
+        },
+        {
+          "Data_Setting_Id": 208463,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322382
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "STP_TRD_EXP_MONITOR",
+      "OBJECT_ID": 136452,
+      "OBJECT_TYPE": "STP_TRD_EXP_MONITOR",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\nText:=((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 125935,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 322382,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 4,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208472,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322383
+        },
+        {
+          "Data_Setting_Id": 208469,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322383
+        },
+        {
+          "Data_Setting_Id": 208475,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322383
+        },
+        {
+          "Data_Setting_Id": 208473,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322383
+        },
+        {
+          "Data_Setting_Id": 208470,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322383
+        },
+        {
+          "Data_Setting_Id": 208474,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322383
+        },
+        {
+          "Data_Setting_Id": 208468,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322383
+        },
+        {
+          "Data_Setting_Id": 208471,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322383
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 322383,
+      "COLUMN_ROW_SETTING": "f",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 5,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208480,
+          "DATASETVALUE": "TEXT|\"STP Trade Exception Monitor\"|IMAGE:STP_EXP_MONITOR",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322384
+        },
+        {
+          "Data_Setting_Id": 208477,
+          "DATASETVALUE": "TEXT|\"STP Trade Exception Monitor\"|IMAGE:STP_EXP_MONITOR",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322384
+        },
+        {
+          "Data_Setting_Id": 208483,
+          "DATASETVALUE": "TEXT|\"STP Trade Exception Monitor\"|IMAGE:STP_EXP_MONITOR",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322384
+        },
+        {
+          "Data_Setting_Id": 208481,
+          "DATASETVALUE": "TEXT|\"STP Trade Exception Monitor\"|IMAGE:STP_EXP_MONITOR",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322384
+        },
+        {
+          "Data_Setting_Id": 208478,
+          "DATASETVALUE": "TEXT|\"STP Trade Exception Monitor\"|IMAGE:STP_EXP_MONITOR",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322384
+        },
+        {
+          "Data_Setting_Id": 208482,
+          "DATASETVALUE": "TEXT|\"STP Trade Exception Monitor\"|IMAGE:STP_EXP_MONITOR",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322384
+        },
+        {
+          "Data_Setting_Id": 208476,
+          "DATASETVALUE": "TEXT|\"STP Trade Exception Monitor\"|IMAGE:STP_EXP_MONITOR",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322384
+        },
+        {
+          "Data_Setting_Id": 208479,
+          "DATASETVALUE": "TEXT|\"STP Trade Exception Monitor\"|IMAGE:STP_EXP_MONITOR",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322384
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 1167122941,
+      "KEY_WORD_NAME": "Comment",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 322384,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 6,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208488,
+          "DATASETVALUE": "TEXT|\"Exception Monitor Table Compare\"|TABLE:STP_TRD_EXP_MONITOR_TABLE",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322385
+        },
+        {
+          "Data_Setting_Id": 208485,
+          "DATASETVALUE": "TEXT|\"Exception Monitor Table Compare\"|TABLE:STP_TRD_EXP_MONITOR_TABLE",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322385
+        },
+        {
+          "Data_Setting_Id": 208491,
+          "DATASETVALUE": "TEXT|\"Exception Monitor Table Compare\"|TABLE:STP_TRD_EXP_MONITOR_TABLE",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322385
+        },
+        {
+          "Data_Setting_Id": 208489,
+          "DATASETVALUE": "TEXT|\"Exception Monitor Table Compare\"|TABLE:STP_TRD_EXP_MONITOR_TABLE",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322385
+        },
+        {
+          "Data_Setting_Id": 208486,
+          "DATASETVALUE": "TEXT|\"Exception Monitor Table Compare\"|TABLE:STP_TRD_EXP_MONITOR_TABLE",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322385
+        },
+        {
+          "Data_Setting_Id": 208490,
+          "DATASETVALUE": "TEXT|\"Exception Monitor Table Compare\"|TABLE:STP_TRD_EXP_MONITOR_TABLE",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322385
+        },
+        {
+          "Data_Setting_Id": 208484,
+          "DATASETVALUE": "TEXT|\"Exception Monitor Table Compare\"|TABLE:STP_TRD_EXP_MONITOR_TABLE",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322385
+        },
+        {
+          "Data_Setting_Id": 208487,
+          "DATASETVALUE": "TEXT|\"Exception Monitor Table Compare\"|TABLE:STP_TRD_EXP_MONITOR_TABLE",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322385
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 1167122941,
+      "KEY_WORD_NAME": "Comment",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 322385,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 7,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208520,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322389
+        },
+        {
+          "Data_Setting_Id": 208517,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322389
+        },
+        {
+          "Data_Setting_Id": 208523,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322389
+        },
+        {
+          "Data_Setting_Id": 208521,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322389
+        },
+        {
+          "Data_Setting_Id": 208518,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322389
+        },
+        {
+          "Data_Setting_Id": 208522,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322389
+        },
+        {
+          "Data_Setting_Id": 208516,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322389
+        },
+        {
+          "Data_Setting_Id": 208519,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322389
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 322389,
+      "COLUMN_ROW_SETTING": "f",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 8,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208528,
+          "DATASETVALUE": "MODAL_VAR:SWOPTT_02_TRADE_ID",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322390
+        },
+        {
+          "Data_Setting_Id": 208525,
+          "DATASETVALUE": "MODAL_VAR:SWOPTT_04_TRADE_ID",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322390
+        },
+        {
+          "Data_Setting_Id": 208531,
+          "DATASETVALUE": "MODAL_VAR:SWOPTT_05_TRADE_ID",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322390
+        },
+        {
+          "Data_Setting_Id": 208529,
+          "DATASETVALUE": "MODAL_VAR:SWOPTT_06_TRADE_ID",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322390
+        },
+        {
+          "Data_Setting_Id": 208526,
+          "DATASETVALUE": "MODAL_VAR:SWOPTT_07_TRADE_ID",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322390
+        },
+        {
+          "Data_Setting_Id": 208530,
+          "DATASETVALUE": "MODAL_VAR:SWOPTT_09_TRADE_ID",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322390
+        },
+        {
+          "Data_Setting_Id": 208524,
+          "DATASETVALUE": "MODAL_VAR:SWOPTT_10_TRADE_ID",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322390
+        },
+        {
+          "Data_Setting_Id": 208527,
+          "DATASETVALUE": "MODAL_VAR:SWOPTT_14_TRADE_ID",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322390
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "STP_TRD_EXP_MONITOR_TRADE_ID",
+      "OBJECT_ID": 158432,
+      "OBJECT_TYPE": "STP_TRD_EXP_MONITOR",
+      "QUICK_ACCESS": "swfname:=Trade_ID",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 132320,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 322390,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 9,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208528,
+          "DATASETVALUE": "MODAL_VAR:SWOPTT_02_TRADE_ID",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322390
+        },
+        {
+          "Data_Setting_Id": 208525,
+          "DATASETVALUE": "MODAL_VAR:SWOPTT_04_TRADE_ID",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322390
+        },
+        {
+          "Data_Setting_Id": 208531,
+          "DATASETVALUE": "MODAL_VAR:SWOPTT_05_TRADE_ID",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322390
+        },
+        {
+          "Data_Setting_Id": 208529,
+          "DATASETVALUE": "MODAL_VAR:SWOPTT_06_TRADE_ID",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322390
+        },
+        {
+          "Data_Setting_Id": 208526,
+          "DATASETVALUE": "MODAL_VAR:SWOPTT_07_TRADE_ID",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322390
+        },
+        {
+          "Data_Setting_Id": 208530,
+          "DATASETVALUE": "MODAL_VAR:SWOPTT_09_TRADE_ID",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322390
+        },
+        {
+          "Data_Setting_Id": 208524,
+          "DATASETVALUE": "MODAL_VAR:SWOPTT_10_TRADE_ID",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322390
+        },
+        {
+          "Data_Setting_Id": 208527,
+          "DATASETVALUE": "MODAL_VAR:SWOPTT_14_TRADE_ID",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322390
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "STP_TRD_EXP_MONITOR_TRADE_ID",
+      "OBJECT_ID": 140892,
+      "OBJECT_TYPE": "STP_TRD_EXP_MONITOR",
+      "QUICK_ACCESS": "swfname:=Trade_ID",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 132320,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 322390,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 9,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208536,
+          "DATASETVALUE": "STP_EXP_MONITOR",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322391
+        },
+        {
+          "Data_Setting_Id": 208533,
+          "DATASETVALUE": "STP_EXP_MONITOR",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322391
+        },
+        {
+          "Data_Setting_Id": 208539,
+          "DATASETVALUE": "STP_EXP_MONITOR",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322391
+        },
+        {
+          "Data_Setting_Id": 208537,
+          "DATASETVALUE": "STP_EXP_MONITOR",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322391
+        },
+        {
+          "Data_Setting_Id": 208534,
+          "DATASETVALUE": "STP_EXP_MONITOR",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322391
+        },
+        {
+          "Data_Setting_Id": 208538,
+          "DATASETVALUE": "STP_EXP_MONITOR",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322391
+        },
+        {
+          "Data_Setting_Id": 208532,
+          "DATASETVALUE": "STP_EXP_MONITOR",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322391
+        },
+        {
+          "Data_Setting_Id": 208535,
+          "DATASETVALUE": "STP_EXP_MONITOR",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322391
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "STP_TRD_EXP_MONITOR",
+      "OBJECT_ID": 154499,
+      "OBJECT_TYPE": "STP_TRD_EXP_MONITOR",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\nText:=((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 125935,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 322391,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 10,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208536,
+          "DATASETVALUE": "STP_EXP_MONITOR",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322391
+        },
+        {
+          "Data_Setting_Id": 208533,
+          "DATASETVALUE": "STP_EXP_MONITOR",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322391
+        },
+        {
+          "Data_Setting_Id": 208539,
+          "DATASETVALUE": "STP_EXP_MONITOR",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322391
+        },
+        {
+          "Data_Setting_Id": 208537,
+          "DATASETVALUE": "STP_EXP_MONITOR",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322391
+        },
+        {
+          "Data_Setting_Id": 208534,
+          "DATASETVALUE": "STP_EXP_MONITOR",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322391
+        },
+        {
+          "Data_Setting_Id": 208538,
+          "DATASETVALUE": "STP_EXP_MONITOR",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322391
+        },
+        {
+          "Data_Setting_Id": 208532,
+          "DATASETVALUE": "STP_EXP_MONITOR",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322391
+        },
+        {
+          "Data_Setting_Id": 208535,
+          "DATASETVALUE": "STP_EXP_MONITOR",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322391
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "STP_TRD_EXP_MONITOR",
+      "OBJECT_ID": 136452,
+      "OBJECT_TYPE": "STP_TRD_EXP_MONITOR",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\nText:=((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 125935,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 322391,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 10,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208544,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322392
+        },
+        {
+          "Data_Setting_Id": 208541,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322392
+        },
+        {
+          "Data_Setting_Id": 208547,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322392
+        },
+        {
+          "Data_Setting_Id": 208545,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322392
+        },
+        {
+          "Data_Setting_Id": 208542,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322392
+        },
+        {
+          "Data_Setting_Id": 208546,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322392
+        },
+        {
+          "Data_Setting_Id": 208540,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322392
+        },
+        {
+          "Data_Setting_Id": 208543,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322392
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "STP_TRD_EXP_MONITOR_APPLY_BUTTON",
+      "OBJECT_ID": 141993,
+      "OBJECT_TYPE": "STP_TRD_EXP_MONITOR",
+      "QUICK_ACCESS": "swfname:=butApply",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 129359,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 322392,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 11,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208544,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322392
+        },
+        {
+          "Data_Setting_Id": 208541,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322392
+        },
+        {
+          "Data_Setting_Id": 208547,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322392
+        },
+        {
+          "Data_Setting_Id": 208545,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322392
+        },
+        {
+          "Data_Setting_Id": 208542,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322392
+        },
+        {
+          "Data_Setting_Id": 208546,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322392
+        },
+        {
+          "Data_Setting_Id": 208540,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322392
+        },
+        {
+          "Data_Setting_Id": 208543,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322392
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "STP_TRD_EXP_MONITOR_APPLY_BUTTON",
+      "OBJECT_ID": 160132,
+      "OBJECT_TYPE": "STP_TRD_EXP_MONITOR",
+      "QUICK_ACCESS": "swfname:=butApply",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 129359,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 322392,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 11,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208552,
+          "DATASETVALUE": "TABLE_EXCEPTION_TYPE",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322393
+        },
+        {
+          "Data_Setting_Id": 208549,
+          "DATASETVALUE": "TABLE_EXCEPTION_TYPE",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322393
+        },
+        {
+          "Data_Setting_Id": 208555,
+          "DATASETVALUE": "TABLE_EXCEPTION_TYPE",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322393
+        },
+        {
+          "Data_Setting_Id": 208553,
+          "DATASETVALUE": "TABLE_EXCEPTION_TYPE",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322393
+        },
+        {
+          "Data_Setting_Id": 208550,
+          "DATASETVALUE": "TABLE_EXCEPTION_TYPE",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322393
+        },
+        {
+          "Data_Setting_Id": 208554,
+          "DATASETVALUE": "TABLE_EXCEPTION_TYPE",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322393
+        },
+        {
+          "Data_Setting_Id": 208548,
+          "DATASETVALUE": "TABLE_EXCEPTION_TYPE",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322393
+        },
+        {
+          "Data_Setting_Id": 208551,
+          "DATASETVALUE": "TABLE_EXCEPTION_TYPE",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322393
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "STP_TRD_EXP_MONITOR_TABLE",
+      "OBJECT_ID": 135306,
+      "OBJECT_TYPE": "STP_TRD_EXP_MONITOR",
+      "QUICK_ACCESS": "swfname:=_Spr",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 132299,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 322393,
+      "COLUMN_ROW_SETTING": "ALLROWS;Exception Type",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 12,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208552,
+          "DATASETVALUE": "TABLE_EXCEPTION_TYPE",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322393
+        },
+        {
+          "Data_Setting_Id": 208549,
+          "DATASETVALUE": "TABLE_EXCEPTION_TYPE",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322393
+        },
+        {
+          "Data_Setting_Id": 208555,
+          "DATASETVALUE": "TABLE_EXCEPTION_TYPE",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322393
+        },
+        {
+          "Data_Setting_Id": 208553,
+          "DATASETVALUE": "TABLE_EXCEPTION_TYPE",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322393
+        },
+        {
+          "Data_Setting_Id": 208550,
+          "DATASETVALUE": "TABLE_EXCEPTION_TYPE",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322393
+        },
+        {
+          "Data_Setting_Id": 208554,
+          "DATASETVALUE": "TABLE_EXCEPTION_TYPE",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322393
+        },
+        {
+          "Data_Setting_Id": 208548,
+          "DATASETVALUE": "TABLE_EXCEPTION_TYPE",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322393
+        },
+        {
+          "Data_Setting_Id": 208551,
+          "DATASETVALUE": "TABLE_EXCEPTION_TYPE",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322393
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "STP_TRD_EXP_MONITOR_TABLE",
+      "OBJECT_ID": 152863,
+      "OBJECT_TYPE": "STP_TRD_EXP_MONITOR",
+      "QUICK_ACCESS": "swfname:=_Spr",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 132299,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 322393,
+      "COLUMN_ROW_SETTING": "ALLROWS;Exception Type",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 12,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208560,
+          "DATASETVALUE": "TABLE_EXCEPTION_STATE",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322394
+        },
+        {
+          "Data_Setting_Id": 208557,
+          "DATASETVALUE": "TABLE_EXCEPTION_STATE",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322394
+        },
+        {
+          "Data_Setting_Id": 208563,
+          "DATASETVALUE": "TABLE_EXCEPTION_STATE",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322394
+        },
+        {
+          "Data_Setting_Id": 208561,
+          "DATASETVALUE": "TABLE_EXCEPTION_STATE",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322394
+        },
+        {
+          "Data_Setting_Id": 208558,
+          "DATASETVALUE": "TABLE_EXCEPTION_STATE",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322394
+        },
+        {
+          "Data_Setting_Id": 208562,
+          "DATASETVALUE": "TABLE_EXCEPTION_STATE",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322394
+        },
+        {
+          "Data_Setting_Id": 208556,
+          "DATASETVALUE": "TABLE_EXCEPTION_STATE",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322394
+        },
+        {
+          "Data_Setting_Id": 208559,
+          "DATASETVALUE": "TABLE_EXCEPTION_STATE",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322394
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "STP_TRD_EXP_MONITOR_TABLE",
+      "OBJECT_ID": 135306,
+      "OBJECT_TYPE": "STP_TRD_EXP_MONITOR",
+      "QUICK_ACCESS": "swfname:=_Spr",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 132299,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 322394,
+      "COLUMN_ROW_SETTING": "ALLROWS;Exception State",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 13,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208560,
+          "DATASETVALUE": "TABLE_EXCEPTION_STATE",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322394
+        },
+        {
+          "Data_Setting_Id": 208557,
+          "DATASETVALUE": "TABLE_EXCEPTION_STATE",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322394
+        },
+        {
+          "Data_Setting_Id": 208563,
+          "DATASETVALUE": "TABLE_EXCEPTION_STATE",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322394
+        },
+        {
+          "Data_Setting_Id": 208561,
+          "DATASETVALUE": "TABLE_EXCEPTION_STATE",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322394
+        },
+        {
+          "Data_Setting_Id": 208558,
+          "DATASETVALUE": "TABLE_EXCEPTION_STATE",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322394
+        },
+        {
+          "Data_Setting_Id": 208562,
+          "DATASETVALUE": "TABLE_EXCEPTION_STATE",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322394
+        },
+        {
+          "Data_Setting_Id": 208556,
+          "DATASETVALUE": "TABLE_EXCEPTION_STATE",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322394
+        },
+        {
+          "Data_Setting_Id": 208559,
+          "DATASETVALUE": "TABLE_EXCEPTION_STATE",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322394
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "STP_TRD_EXP_MONITOR_TABLE",
+      "OBJECT_ID": 152863,
+      "OBJECT_TYPE": "STP_TRD_EXP_MONITOR",
+      "QUICK_ACCESS": "swfname:=_Spr",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 132299,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 322394,
+      "COLUMN_ROW_SETTING": "ALLROWS;Exception State",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 13,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208568,
+          "DATASETVALUE": "TABLE_EXCEPTION_DESCRIPTION",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322395
+        },
+        {
+          "Data_Setting_Id": 208565,
+          "DATASETVALUE": "TABLE_EXCEPTION_DESCRIPTION",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322395
+        },
+        {
+          "Data_Setting_Id": 208571,
+          "DATASETVALUE": "TABLE_EXCEPTION_DESCRIPTION",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322395
+        },
+        {
+          "Data_Setting_Id": 208569,
+          "DATASETVALUE": "TABLE_EXCEPTION_DESCRIPTION",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322395
+        },
+        {
+          "Data_Setting_Id": 208566,
+          "DATASETVALUE": "TABLE_EXCEPTION_DESCRIPTION",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322395
+        },
+        {
+          "Data_Setting_Id": 208570,
+          "DATASETVALUE": "TABLE_EXCEPTION_DESCRIPTION",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322395
+        },
+        {
+          "Data_Setting_Id": 208564,
+          "DATASETVALUE": "TABLE_EXCEPTION_DESCRIPTION",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322395
+        },
+        {
+          "Data_Setting_Id": 208567,
+          "DATASETVALUE": "TABLE_EXCEPTION_DESCRIPTION",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322395
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "STP_TRD_EXP_MONITOR_TABLE",
+      "OBJECT_ID": 135306,
+      "OBJECT_TYPE": "STP_TRD_EXP_MONITOR",
+      "QUICK_ACCESS": "swfname:=_Spr",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 132299,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 322395,
+      "COLUMN_ROW_SETTING": "ALLROWS;Description",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 14,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208568,
+          "DATASETVALUE": "TABLE_EXCEPTION_DESCRIPTION",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322395
+        },
+        {
+          "Data_Setting_Id": 208565,
+          "DATASETVALUE": "TABLE_EXCEPTION_DESCRIPTION",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322395
+        },
+        {
+          "Data_Setting_Id": 208571,
+          "DATASETVALUE": "TABLE_EXCEPTION_DESCRIPTION",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322395
+        },
+        {
+          "Data_Setting_Id": 208569,
+          "DATASETVALUE": "TABLE_EXCEPTION_DESCRIPTION",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322395
+        },
+        {
+          "Data_Setting_Id": 208566,
+          "DATASETVALUE": "TABLE_EXCEPTION_DESCRIPTION",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322395
+        },
+        {
+          "Data_Setting_Id": 208570,
+          "DATASETVALUE": "TABLE_EXCEPTION_DESCRIPTION",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322395
+        },
+        {
+          "Data_Setting_Id": 208564,
+          "DATASETVALUE": "TABLE_EXCEPTION_DESCRIPTION",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322395
+        },
+        {
+          "Data_Setting_Id": 208567,
+          "DATASETVALUE": "TABLE_EXCEPTION_DESCRIPTION",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322395
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "STP_TRD_EXP_MONITOR_TABLE",
+      "OBJECT_ID": 152863,
+      "OBJECT_TYPE": "STP_TRD_EXP_MONITOR",
+      "QUICK_ACCESS": "swfname:=_Spr",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 132299,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 322395,
+      "COLUMN_ROW_SETTING": "ALLROWS;Description",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 14,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208576,
+          "DATASETVALUE": "TABLE_EXCEPTION_SERVER_NAME",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322396
+        },
+        {
+          "Data_Setting_Id": 208573,
+          "DATASETVALUE": "TABLE_EXCEPTION_SERVER_NAME",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322396
+        },
+        {
+          "Data_Setting_Id": 208579,
+          "DATASETVALUE": "TABLE_EXCEPTION_SERVER_NAME",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322396
+        },
+        {
+          "Data_Setting_Id": 208577,
+          "DATASETVALUE": "TABLE_EXCEPTION_SERVER_NAME",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322396
+        },
+        {
+          "Data_Setting_Id": 208574,
+          "DATASETVALUE": "TABLE_EXCEPTION_SERVER_NAME",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322396
+        },
+        {
+          "Data_Setting_Id": 208578,
+          "DATASETVALUE": "TABLE_EXCEPTION_SERVER_NAME",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322396
+        },
+        {
+          "Data_Setting_Id": 208572,
+          "DATASETVALUE": "TABLE_EXCEPTION_SERVER_NAME",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322396
+        },
+        {
+          "Data_Setting_Id": 208575,
+          "DATASETVALUE": "TABLE_EXCEPTION_SERVER_NAME",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322396
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "STP_TRD_EXP_MONITOR_TABLE",
+      "OBJECT_ID": 135306,
+      "OBJECT_TYPE": "STP_TRD_EXP_MONITOR",
+      "QUICK_ACCESS": "swfname:=_Spr",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 132299,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 322396,
+      "COLUMN_ROW_SETTING": "ALLROWS;Server",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 15,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208576,
+          "DATASETVALUE": "TABLE_EXCEPTION_SERVER_NAME",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322396
+        },
+        {
+          "Data_Setting_Id": 208573,
+          "DATASETVALUE": "TABLE_EXCEPTION_SERVER_NAME",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322396
+        },
+        {
+          "Data_Setting_Id": 208579,
+          "DATASETVALUE": "TABLE_EXCEPTION_SERVER_NAME",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322396
+        },
+        {
+          "Data_Setting_Id": 208577,
+          "DATASETVALUE": "TABLE_EXCEPTION_SERVER_NAME",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322396
+        },
+        {
+          "Data_Setting_Id": 208574,
+          "DATASETVALUE": "TABLE_EXCEPTION_SERVER_NAME",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322396
+        },
+        {
+          "Data_Setting_Id": 208578,
+          "DATASETVALUE": "TABLE_EXCEPTION_SERVER_NAME",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322396
+        },
+        {
+          "Data_Setting_Id": 208572,
+          "DATASETVALUE": "TABLE_EXCEPTION_SERVER_NAME",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322396
+        },
+        {
+          "Data_Setting_Id": 208575,
+          "DATASETVALUE": "TABLE_EXCEPTION_SERVER_NAME",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322396
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "STP_TRD_EXP_MONITOR_TABLE",
+      "OBJECT_ID": 152863,
+      "OBJECT_TYPE": "STP_TRD_EXP_MONITOR",
+      "QUICK_ACCESS": "swfname:=_Spr",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 132299,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 322396,
+      "COLUMN_ROW_SETTING": "ALLROWS;Server",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 15,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208584,
+          "DATASETVALUE": "TABLE_EXCEPTION_WORKFLOW_ID",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322397
+        },
+        {
+          "Data_Setting_Id": 208581,
+          "DATASETVALUE": "TABLE_EXCEPTION_WORKFLOW_ID",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322397
+        },
+        {
+          "Data_Setting_Id": 208587,
+          "DATASETVALUE": "TABLE_EXCEPTION_WORKFLOW_ID",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322397
+        },
+        {
+          "Data_Setting_Id": 208585,
+          "DATASETVALUE": "TABLE_EXCEPTION_WORKFLOW_ID",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322397
+        },
+        {
+          "Data_Setting_Id": 208582,
+          "DATASETVALUE": "TABLE_EXCEPTION_WORKFLOW_ID",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322397
+        },
+        {
+          "Data_Setting_Id": 208586,
+          "DATASETVALUE": "TABLE_EXCEPTION_WORKFLOW_ID",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322397
+        },
+        {
+          "Data_Setting_Id": 208580,
+          "DATASETVALUE": "TABLE_EXCEPTION_WORKFLOW_ID",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322397
+        },
+        {
+          "Data_Setting_Id": 208583,
+          "DATASETVALUE": "TABLE_EXCEPTION_WORKFLOW_ID",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322397
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "STP_TRD_EXP_MONITOR_TABLE",
+      "OBJECT_ID": 135306,
+      "OBJECT_TYPE": "STP_TRD_EXP_MONITOR",
+      "QUICK_ACCESS": "swfname:=_Spr",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 132299,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 322397,
+      "COLUMN_ROW_SETTING": "ALLROWS;Workflow ID",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 16,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208584,
+          "DATASETVALUE": "TABLE_EXCEPTION_WORKFLOW_ID",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322397
+        },
+        {
+          "Data_Setting_Id": 208581,
+          "DATASETVALUE": "TABLE_EXCEPTION_WORKFLOW_ID",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322397
+        },
+        {
+          "Data_Setting_Id": 208587,
+          "DATASETVALUE": "TABLE_EXCEPTION_WORKFLOW_ID",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322397
+        },
+        {
+          "Data_Setting_Id": 208585,
+          "DATASETVALUE": "TABLE_EXCEPTION_WORKFLOW_ID",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322397
+        },
+        {
+          "Data_Setting_Id": 208582,
+          "DATASETVALUE": "TABLE_EXCEPTION_WORKFLOW_ID",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322397
+        },
+        {
+          "Data_Setting_Id": 208586,
+          "DATASETVALUE": "TABLE_EXCEPTION_WORKFLOW_ID",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322397
+        },
+        {
+          "Data_Setting_Id": 208580,
+          "DATASETVALUE": "TABLE_EXCEPTION_WORKFLOW_ID",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322397
+        },
+        {
+          "Data_Setting_Id": 208583,
+          "DATASETVALUE": "TABLE_EXCEPTION_WORKFLOW_ID",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322397
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "STP_TRD_EXP_MONITOR_TABLE",
+      "OBJECT_ID": 152863,
+      "OBJECT_TYPE": "STP_TRD_EXP_MONITOR",
+      "QUICK_ACCESS": "swfname:=_Spr",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 132299,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 322397,
+      "COLUMN_ROW_SETTING": "ALLROWS;Workflow ID",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 16,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208592,
+          "DATASETVALUE": "TABLE_EXCEPTION_EXCEPTION_DESC",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322398
+        },
+        {
+          "Data_Setting_Id": 208589,
+          "DATASETVALUE": "TABLE_EXCEPTION_EXCEPTION_DESC",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322398
+        },
+        {
+          "Data_Setting_Id": 208595,
+          "DATASETVALUE": "TABLE_EXCEPTION_EXCEPTION_DESC",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322398
+        },
+        {
+          "Data_Setting_Id": 208593,
+          "DATASETVALUE": "TABLE_EXCEPTION_EXCEPTION_DESC",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322398
+        },
+        {
+          "Data_Setting_Id": 208590,
+          "DATASETVALUE": "TABLE_EXCEPTION_EXCEPTION_DESC",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322398
+        },
+        {
+          "Data_Setting_Id": 208594,
+          "DATASETVALUE": "TABLE_EXCEPTION_EXCEPTION_DESC",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322398
+        },
+        {
+          "Data_Setting_Id": 208588,
+          "DATASETVALUE": "TABLE_EXCEPTION_EXCEPTION_DESC",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322398
+        },
+        {
+          "Data_Setting_Id": 208591,
+          "DATASETVALUE": "TABLE_EXCEPTION_EXCEPTION_DESC",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322398
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "STP_TRD_EXP_MONITOR_TABLE",
+      "OBJECT_ID": 135306,
+      "OBJECT_TYPE": "STP_TRD_EXP_MONITOR",
+      "QUICK_ACCESS": "swfname:=_Spr",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 132299,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 322398,
+      "COLUMN_ROW_SETTING": "ALLROWS;Exception Desc",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 17,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208592,
+          "DATASETVALUE": "TABLE_EXCEPTION_EXCEPTION_DESC",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322398
+        },
+        {
+          "Data_Setting_Id": 208589,
+          "DATASETVALUE": "TABLE_EXCEPTION_EXCEPTION_DESC",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322398
+        },
+        {
+          "Data_Setting_Id": 208595,
+          "DATASETVALUE": "TABLE_EXCEPTION_EXCEPTION_DESC",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322398
+        },
+        {
+          "Data_Setting_Id": 208593,
+          "DATASETVALUE": "TABLE_EXCEPTION_EXCEPTION_DESC",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322398
+        },
+        {
+          "Data_Setting_Id": 208590,
+          "DATASETVALUE": "TABLE_EXCEPTION_EXCEPTION_DESC",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322398
+        },
+        {
+          "Data_Setting_Id": 208594,
+          "DATASETVALUE": "TABLE_EXCEPTION_EXCEPTION_DESC",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322398
+        },
+        {
+          "Data_Setting_Id": 208588,
+          "DATASETVALUE": "TABLE_EXCEPTION_EXCEPTION_DESC",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322398
+        },
+        {
+          "Data_Setting_Id": 208591,
+          "DATASETVALUE": "TABLE_EXCEPTION_EXCEPTION_DESC",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322398
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "STP_TRD_EXP_MONITOR_TABLE",
+      "OBJECT_ID": 152863,
+      "OBJECT_TYPE": "STP_TRD_EXP_MONITOR",
+      "QUICK_ACCESS": "swfname:=_Spr",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 132299,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 322398,
+      "COLUMN_ROW_SETTING": "ALLROWS;Exception Desc",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 17,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208600,
+          "DATASETVALUE": "TABLE_EXCEPTION_LAST_USER",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322399
+        },
+        {
+          "Data_Setting_Id": 208597,
+          "DATASETVALUE": "TABLE_EXCEPTION_LAST_USER",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322399
+        },
+        {
+          "Data_Setting_Id": 208603,
+          "DATASETVALUE": "TABLE_EXCEPTION_LAST_USER",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322399
+        },
+        {
+          "Data_Setting_Id": 208601,
+          "DATASETVALUE": "TABLE_EXCEPTION_LAST_USER",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322399
+        },
+        {
+          "Data_Setting_Id": 208598,
+          "DATASETVALUE": "TABLE_EXCEPTION_LAST_USER",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322399
+        },
+        {
+          "Data_Setting_Id": 208602,
+          "DATASETVALUE": "TABLE_EXCEPTION_LAST_USER",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322399
+        },
+        {
+          "Data_Setting_Id": 208596,
+          "DATASETVALUE": "TABLE_EXCEPTION_LAST_USER",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322399
+        },
+        {
+          "Data_Setting_Id": 208599,
+          "DATASETVALUE": "TABLE_EXCEPTION_LAST_USER",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322399
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "STP_TRD_EXP_MONITOR_TABLE",
+      "OBJECT_ID": 135306,
+      "OBJECT_TYPE": "STP_TRD_EXP_MONITOR",
+      "QUICK_ACCESS": "swfname:=_Spr",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 132299,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 322399,
+      "COLUMN_ROW_SETTING": "ALLROWS;Last User",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 18,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208600,
+          "DATASETVALUE": "TABLE_EXCEPTION_LAST_USER",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322399
+        },
+        {
+          "Data_Setting_Id": 208597,
+          "DATASETVALUE": "TABLE_EXCEPTION_LAST_USER",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322399
+        },
+        {
+          "Data_Setting_Id": 208603,
+          "DATASETVALUE": "TABLE_EXCEPTION_LAST_USER",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322399
+        },
+        {
+          "Data_Setting_Id": 208601,
+          "DATASETVALUE": "TABLE_EXCEPTION_LAST_USER",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322399
+        },
+        {
+          "Data_Setting_Id": 208598,
+          "DATASETVALUE": "TABLE_EXCEPTION_LAST_USER",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322399
+        },
+        {
+          "Data_Setting_Id": 208602,
+          "DATASETVALUE": "TABLE_EXCEPTION_LAST_USER",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322399
+        },
+        {
+          "Data_Setting_Id": 208596,
+          "DATASETVALUE": "TABLE_EXCEPTION_LAST_USER",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322399
+        },
+        {
+          "Data_Setting_Id": 208599,
+          "DATASETVALUE": "TABLE_EXCEPTION_LAST_USER",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322399
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "STP_TRD_EXP_MONITOR_TABLE",
+      "OBJECT_ID": 152863,
+      "OBJECT_TYPE": "STP_TRD_EXP_MONITOR",
+      "QUICK_ACCESS": "swfname:=_Spr",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 132299,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 322399,
+      "COLUMN_ROW_SETTING": "ALLROWS;Last User",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 18,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208608,
+          "DATASETVALUE": "TABLE_EXCEPTION_TRADE_ID",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322400
+        },
+        {
+          "Data_Setting_Id": 208605,
+          "DATASETVALUE": "TABLE_EXCEPTION_TRADE_ID",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322400
+        },
+        {
+          "Data_Setting_Id": 208611,
+          "DATASETVALUE": "TABLE_EXCEPTION_TRADE_ID",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322400
+        },
+        {
+          "Data_Setting_Id": 208609,
+          "DATASETVALUE": "TABLE_EXCEPTION_TRADE_ID",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322400
+        },
+        {
+          "Data_Setting_Id": 208606,
+          "DATASETVALUE": "TABLE_EXCEPTION_TRADE_ID",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322400
+        },
+        {
+          "Data_Setting_Id": 208610,
+          "DATASETVALUE": "TABLE_EXCEPTION_TRADE_ID",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322400
+        },
+        {
+          "Data_Setting_Id": 208604,
+          "DATASETVALUE": "TABLE_EXCEPTION_TRADE_ID",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322400
+        },
+        {
+          "Data_Setting_Id": 208607,
+          "DATASETVALUE": "TABLE_EXCEPTION_TRADE_ID",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322400
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "STP_TRD_EXP_MONITOR_TABLE",
+      "OBJECT_ID": 135306,
+      "OBJECT_TYPE": "STP_TRD_EXP_MONITOR",
+      "QUICK_ACCESS": "swfname:=_Spr",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 132299,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 322400,
+      "COLUMN_ROW_SETTING": "ALLROWS;Trade ID",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 19,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208608,
+          "DATASETVALUE": "TABLE_EXCEPTION_TRADE_ID",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322400
+        },
+        {
+          "Data_Setting_Id": 208605,
+          "DATASETVALUE": "TABLE_EXCEPTION_TRADE_ID",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322400
+        },
+        {
+          "Data_Setting_Id": 208611,
+          "DATASETVALUE": "TABLE_EXCEPTION_TRADE_ID",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322400
+        },
+        {
+          "Data_Setting_Id": 208609,
+          "DATASETVALUE": "TABLE_EXCEPTION_TRADE_ID",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322400
+        },
+        {
+          "Data_Setting_Id": 208606,
+          "DATASETVALUE": "TABLE_EXCEPTION_TRADE_ID",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322400
+        },
+        {
+          "Data_Setting_Id": 208610,
+          "DATASETVALUE": "TABLE_EXCEPTION_TRADE_ID",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322400
+        },
+        {
+          "Data_Setting_Id": 208604,
+          "DATASETVALUE": "TABLE_EXCEPTION_TRADE_ID",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322400
+        },
+        {
+          "Data_Setting_Id": 208607,
+          "DATASETVALUE": "TABLE_EXCEPTION_TRADE_ID",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322400
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "STP_TRD_EXP_MONITOR_TABLE",
+      "OBJECT_ID": 152863,
+      "OBJECT_TYPE": "STP_TRD_EXP_MONITOR",
+      "QUICK_ACCESS": "swfname:=_Spr",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 132299,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 322400,
+      "COLUMN_ROW_SETTING": "ALLROWS;Trade ID",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 19,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208616,
+          "DATASETVALUE": "TABLE_EXCEPTION_SECURITY_ID",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322401
+        },
+        {
+          "Data_Setting_Id": 208613,
+          "DATASETVALUE": "TABLE_EXCEPTION_SECURITY_ID",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322401
+        },
+        {
+          "Data_Setting_Id": 208619,
+          "DATASETVALUE": "TABLE_EXCEPTION_SECURITY_ID",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322401
+        },
+        {
+          "Data_Setting_Id": 208617,
+          "DATASETVALUE": "TABLE_EXCEPTION_SECURITY_ID",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322401
+        },
+        {
+          "Data_Setting_Id": 208614,
+          "DATASETVALUE": "TABLE_EXCEPTION_SECURITY_ID",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322401
+        },
+        {
+          "Data_Setting_Id": 208618,
+          "DATASETVALUE": "TABLE_EXCEPTION_SECURITY_ID",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322401
+        },
+        {
+          "Data_Setting_Id": 208612,
+          "DATASETVALUE": "TABLE_EXCEPTION_SECURITY_ID",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322401
+        },
+        {
+          "Data_Setting_Id": 208615,
+          "DATASETVALUE": "TABLE_EXCEPTION_SECURITY_ID",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322401
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "STP_TRD_EXP_MONITOR_TABLE",
+      "OBJECT_ID": 135306,
+      "OBJECT_TYPE": "STP_TRD_EXP_MONITOR",
+      "QUICK_ACCESS": "swfname:=_Spr",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 132299,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 322401,
+      "COLUMN_ROW_SETTING": "ALLROWS;Security ID",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 20,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208616,
+          "DATASETVALUE": "TABLE_EXCEPTION_SECURITY_ID",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322401
+        },
+        {
+          "Data_Setting_Id": 208613,
+          "DATASETVALUE": "TABLE_EXCEPTION_SECURITY_ID",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322401
+        },
+        {
+          "Data_Setting_Id": 208619,
+          "DATASETVALUE": "TABLE_EXCEPTION_SECURITY_ID",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322401
+        },
+        {
+          "Data_Setting_Id": 208617,
+          "DATASETVALUE": "TABLE_EXCEPTION_SECURITY_ID",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322401
+        },
+        {
+          "Data_Setting_Id": 208614,
+          "DATASETVALUE": "TABLE_EXCEPTION_SECURITY_ID",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322401
+        },
+        {
+          "Data_Setting_Id": 208618,
+          "DATASETVALUE": "TABLE_EXCEPTION_SECURITY_ID",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322401
+        },
+        {
+          "Data_Setting_Id": 208612,
+          "DATASETVALUE": "TABLE_EXCEPTION_SECURITY_ID",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322401
+        },
+        {
+          "Data_Setting_Id": 208615,
+          "DATASETVALUE": "TABLE_EXCEPTION_SECURITY_ID",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322401
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "STP_TRD_EXP_MONITOR_TABLE",
+      "OBJECT_ID": 152863,
+      "OBJECT_TYPE": "STP_TRD_EXP_MONITOR",
+      "QUICK_ACCESS": "swfname:=_Spr",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 132299,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 322401,
+      "COLUMN_ROW_SETTING": "ALLROWS;Security ID",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 20,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208624,
+          "DATASETVALUE": "TABLE_EXCEPTION_NOTIONAL",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322402
+        },
+        {
+          "Data_Setting_Id": 208621,
+          "DATASETVALUE": "TABLE_EXCEPTION_NOTIONAL",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322402
+        },
+        {
+          "Data_Setting_Id": 208627,
+          "DATASETVALUE": "TABLE_EXCEPTION_NOTIONAL",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322402
+        },
+        {
+          "Data_Setting_Id": 208625,
+          "DATASETVALUE": "TABLE_EXCEPTION_NOTIONAL",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322402
+        },
+        {
+          "Data_Setting_Id": 208622,
+          "DATASETVALUE": "TABLE_EXCEPTION_NOTIONAL",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322402
+        },
+        {
+          "Data_Setting_Id": 208626,
+          "DATASETVALUE": "TABLE_EXCEPTION_NOTIONAL",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322402
+        },
+        {
+          "Data_Setting_Id": 208620,
+          "DATASETVALUE": "TABLE_EXCEPTION_NOTIONAL",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322402
+        },
+        {
+          "Data_Setting_Id": 208623,
+          "DATASETVALUE": "TABLE_EXCEPTION_NOTIONAL",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322402
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "STP_TRD_EXP_MONITOR_TABLE",
+      "OBJECT_ID": 135306,
+      "OBJECT_TYPE": "STP_TRD_EXP_MONITOR",
+      "QUICK_ACCESS": "swfname:=_Spr",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 132299,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 322402,
+      "COLUMN_ROW_SETTING": "ALLROWS;Notional",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 21,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208624,
+          "DATASETVALUE": "TABLE_EXCEPTION_NOTIONAL",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322402
+        },
+        {
+          "Data_Setting_Id": 208621,
+          "DATASETVALUE": "TABLE_EXCEPTION_NOTIONAL",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322402
+        },
+        {
+          "Data_Setting_Id": 208627,
+          "DATASETVALUE": "TABLE_EXCEPTION_NOTIONAL",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322402
+        },
+        {
+          "Data_Setting_Id": 208625,
+          "DATASETVALUE": "TABLE_EXCEPTION_NOTIONAL",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322402
+        },
+        {
+          "Data_Setting_Id": 208622,
+          "DATASETVALUE": "TABLE_EXCEPTION_NOTIONAL",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322402
+        },
+        {
+          "Data_Setting_Id": 208626,
+          "DATASETVALUE": "TABLE_EXCEPTION_NOTIONAL",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322402
+        },
+        {
+          "Data_Setting_Id": 208620,
+          "DATASETVALUE": "TABLE_EXCEPTION_NOTIONAL",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322402
+        },
+        {
+          "Data_Setting_Id": 208623,
+          "DATASETVALUE": "TABLE_EXCEPTION_NOTIONAL",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322402
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "STP_TRD_EXP_MONITOR_TABLE",
+      "OBJECT_ID": 152863,
+      "OBJECT_TYPE": "STP_TRD_EXP_MONITOR",
+      "QUICK_ACCESS": "swfname:=_Spr",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 132299,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 322402,
+      "COLUMN_ROW_SETTING": "ALLROWS;Notional",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 21,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208632,
+          "DATASETVALUE": "TABLE_EXCEPTION_EXCEPTION_CCY",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322403
+        },
+        {
+          "Data_Setting_Id": 208629,
+          "DATASETVALUE": "TABLE_EXCEPTION_EXCEPTION_CCY",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322403
+        },
+        {
+          "Data_Setting_Id": 208635,
+          "DATASETVALUE": "TABLE_EXCEPTION_EXCEPTION_CCY",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322403
+        },
+        {
+          "Data_Setting_Id": 208633,
+          "DATASETVALUE": "TABLE_EXCEPTION_EXCEPTION_CCY",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322403
+        },
+        {
+          "Data_Setting_Id": 208630,
+          "DATASETVALUE": "TABLE_EXCEPTION_EXCEPTION_CCY",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322403
+        },
+        {
+          "Data_Setting_Id": 208634,
+          "DATASETVALUE": "TABLE_EXCEPTION_EXCEPTION_CCY",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322403
+        },
+        {
+          "Data_Setting_Id": 208628,
+          "DATASETVALUE": "TABLE_EXCEPTION_EXCEPTION_CCY",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322403
+        },
+        {
+          "Data_Setting_Id": 208631,
+          "DATASETVALUE": "TABLE_EXCEPTION_EXCEPTION_CCY",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322403
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "STP_TRD_EXP_MONITOR_TABLE",
+      "OBJECT_ID": 135306,
+      "OBJECT_TYPE": "STP_TRD_EXP_MONITOR",
+      "QUICK_ACCESS": "swfname:=_Spr",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 132299,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 322403,
+      "COLUMN_ROW_SETTING": "ALLROWS;Ccy",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 22,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208632,
+          "DATASETVALUE": "TABLE_EXCEPTION_EXCEPTION_CCY",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322403
+        },
+        {
+          "Data_Setting_Id": 208629,
+          "DATASETVALUE": "TABLE_EXCEPTION_EXCEPTION_CCY",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322403
+        },
+        {
+          "Data_Setting_Id": 208635,
+          "DATASETVALUE": "TABLE_EXCEPTION_EXCEPTION_CCY",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322403
+        },
+        {
+          "Data_Setting_Id": 208633,
+          "DATASETVALUE": "TABLE_EXCEPTION_EXCEPTION_CCY",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322403
+        },
+        {
+          "Data_Setting_Id": 208630,
+          "DATASETVALUE": "TABLE_EXCEPTION_EXCEPTION_CCY",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322403
+        },
+        {
+          "Data_Setting_Id": 208634,
+          "DATASETVALUE": "TABLE_EXCEPTION_EXCEPTION_CCY",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322403
+        },
+        {
+          "Data_Setting_Id": 208628,
+          "DATASETVALUE": "TABLE_EXCEPTION_EXCEPTION_CCY",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322403
+        },
+        {
+          "Data_Setting_Id": 208631,
+          "DATASETVALUE": "TABLE_EXCEPTION_EXCEPTION_CCY",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322403
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "STP_TRD_EXP_MONITOR_TABLE",
+      "OBJECT_ID": 152863,
+      "OBJECT_TYPE": "STP_TRD_EXP_MONITOR",
+      "QUICK_ACCESS": "swfname:=_Spr",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 132299,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 322403,
+      "COLUMN_ROW_SETTING": "ALLROWS;Ccy",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 22,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208640,
+          "DATASETVALUE": "TABLE_EXCEPTION_EXCEPTION_DESC",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322404
+        },
+        {
+          "Data_Setting_Id": 208637,
+          "DATASETVALUE": "TABLE_EXCEPTION_EXCEPTION_DESC",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322404
+        },
+        {
+          "Data_Setting_Id": 208643,
+          "DATASETVALUE": "TABLE_EXCEPTION_EXCEPTION_DESC",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322404
+        },
+        {
+          "Data_Setting_Id": 208641,
+          "DATASETVALUE": "TABLE_EXCEPTION_EXCEPTION_DESC",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322404
+        },
+        {
+          "Data_Setting_Id": 208638,
+          "DATASETVALUE": "TABLE_EXCEPTION_EXCEPTION_DESC",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322404
+        },
+        {
+          "Data_Setting_Id": 208642,
+          "DATASETVALUE": "TABLE_EXCEPTION_EXCEPTION_DESC",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322404
+        },
+        {
+          "Data_Setting_Id": 208636,
+          "DATASETVALUE": "TABLE_EXCEPTION_EXCEPTION_DESC",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322404
+        },
+        {
+          "Data_Setting_Id": 208639,
+          "DATASETVALUE": "TABLE_EXCEPTION_EXCEPTION_DESC",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322404
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "STP_TRD_EXP_MONITOR_TABLE",
+      "OBJECT_ID": 135306,
+      "OBJECT_TYPE": "STP_TRD_EXP_MONITOR",
+      "QUICK_ACCESS": "swfname:=_Spr",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 132299,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 322404,
+      "COLUMN_ROW_SETTING": "ALLROWS;Customer",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 23,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208640,
+          "DATASETVALUE": "TABLE_EXCEPTION_EXCEPTION_DESC",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322404
+        },
+        {
+          "Data_Setting_Id": 208637,
+          "DATASETVALUE": "TABLE_EXCEPTION_EXCEPTION_DESC",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322404
+        },
+        {
+          "Data_Setting_Id": 208643,
+          "DATASETVALUE": "TABLE_EXCEPTION_EXCEPTION_DESC",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322404
+        },
+        {
+          "Data_Setting_Id": 208641,
+          "DATASETVALUE": "TABLE_EXCEPTION_EXCEPTION_DESC",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322404
+        },
+        {
+          "Data_Setting_Id": 208638,
+          "DATASETVALUE": "TABLE_EXCEPTION_EXCEPTION_DESC",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322404
+        },
+        {
+          "Data_Setting_Id": 208642,
+          "DATASETVALUE": "TABLE_EXCEPTION_EXCEPTION_DESC",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322404
+        },
+        {
+          "Data_Setting_Id": 208636,
+          "DATASETVALUE": "TABLE_EXCEPTION_EXCEPTION_DESC",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322404
+        },
+        {
+          "Data_Setting_Id": 208639,
+          "DATASETVALUE": "TABLE_EXCEPTION_EXCEPTION_DESC",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322404
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "STP_TRD_EXP_MONITOR_TABLE",
+      "OBJECT_ID": 152863,
+      "OBJECT_TYPE": "STP_TRD_EXP_MONITOR",
+      "QUICK_ACCESS": "swfname:=_Spr",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 132299,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 322404,
+      "COLUMN_ROW_SETTING": "ALLROWS;Customer",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 23,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208648,
+          "DATASETVALUE": "TABLE_EXCEPTION_CUSTOMER",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322405
+        },
+        {
+          "Data_Setting_Id": 208645,
+          "DATASETVALUE": "TABLE_EXCEPTION_CUSTOMER",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322405
+        },
+        {
+          "Data_Setting_Id": 208651,
+          "DATASETVALUE": "TABLE_EXCEPTION_CUSTOMER",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322405
+        },
+        {
+          "Data_Setting_Id": 208649,
+          "DATASETVALUE": "TABLE_EXCEPTION_CUSTOMER",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322405
+        },
+        {
+          "Data_Setting_Id": 208646,
+          "DATASETVALUE": "TABLE_EXCEPTION_CUSTOMER",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322405
+        },
+        {
+          "Data_Setting_Id": 208650,
+          "DATASETVALUE": "TABLE_EXCEPTION_CUSTOMER",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322405
+        },
+        {
+          "Data_Setting_Id": 208644,
+          "DATASETVALUE": "TABLE_EXCEPTION_CUSTOMER",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322405
+        },
+        {
+          "Data_Setting_Id": 208647,
+          "DATASETVALUE": "TABLE_EXCEPTION_CUSTOMER",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322405
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "STP_TRD_EXP_MONITOR_TABLE",
+      "OBJECT_ID": 135306,
+      "OBJECT_TYPE": "STP_TRD_EXP_MONITOR",
+      "QUICK_ACCESS": "swfname:=_Spr",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 132299,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 322405,
+      "COLUMN_ROW_SETTING": "ALLROWS;Company",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 24,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208648,
+          "DATASETVALUE": "TABLE_EXCEPTION_CUSTOMER",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322405
+        },
+        {
+          "Data_Setting_Id": 208645,
+          "DATASETVALUE": "TABLE_EXCEPTION_CUSTOMER",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322405
+        },
+        {
+          "Data_Setting_Id": 208651,
+          "DATASETVALUE": "TABLE_EXCEPTION_CUSTOMER",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322405
+        },
+        {
+          "Data_Setting_Id": 208649,
+          "DATASETVALUE": "TABLE_EXCEPTION_CUSTOMER",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322405
+        },
+        {
+          "Data_Setting_Id": 208646,
+          "DATASETVALUE": "TABLE_EXCEPTION_CUSTOMER",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322405
+        },
+        {
+          "Data_Setting_Id": 208650,
+          "DATASETVALUE": "TABLE_EXCEPTION_CUSTOMER",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322405
+        },
+        {
+          "Data_Setting_Id": 208644,
+          "DATASETVALUE": "TABLE_EXCEPTION_CUSTOMER",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322405
+        },
+        {
+          "Data_Setting_Id": 208647,
+          "DATASETVALUE": "TABLE_EXCEPTION_CUSTOMER",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322405
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "STP_TRD_EXP_MONITOR_TABLE",
+      "OBJECT_ID": 152863,
+      "OBJECT_TYPE": "STP_TRD_EXP_MONITOR",
+      "QUICK_ACCESS": "swfname:=_Spr",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 132299,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 322405,
+      "COLUMN_ROW_SETTING": "ALLROWS;Company",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 24,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208656,
+          "DATASETVALUE": "TABLE_EXCEPTION_COMPANY",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322406
+        },
+        {
+          "Data_Setting_Id": 208653,
+          "DATASETVALUE": "TABLE_EXCEPTION_COMPANY",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322406
+        },
+        {
+          "Data_Setting_Id": 208659,
+          "DATASETVALUE": "TABLE_EXCEPTION_COMPANY",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322406
+        },
+        {
+          "Data_Setting_Id": 208657,
+          "DATASETVALUE": "TABLE_EXCEPTION_COMPANY",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322406
+        },
+        {
+          "Data_Setting_Id": 208654,
+          "DATASETVALUE": "TABLE_EXCEPTION_COMPANY",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322406
+        },
+        {
+          "Data_Setting_Id": 208658,
+          "DATASETVALUE": "TABLE_EXCEPTION_COMPANY",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322406
+        },
+        {
+          "Data_Setting_Id": 208652,
+          "DATASETVALUE": "TABLE_EXCEPTION_COMPANY",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322406
+        },
+        {
+          "Data_Setting_Id": 208655,
+          "DATASETVALUE": "TABLE_EXCEPTION_COMPANY",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322406
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "STP_TRD_EXP_MONITOR_TABLE",
+      "OBJECT_ID": 135306,
+      "OBJECT_TYPE": "STP_TRD_EXP_MONITOR",
+      "QUICK_ACCESS": "swfname:=_Spr",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 132299,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 322406,
+      "COLUMN_ROW_SETTING": "ALLROWS;Desk",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 25,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208656,
+          "DATASETVALUE": "TABLE_EXCEPTION_COMPANY",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322406
+        },
+        {
+          "Data_Setting_Id": 208653,
+          "DATASETVALUE": "TABLE_EXCEPTION_COMPANY",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322406
+        },
+        {
+          "Data_Setting_Id": 208659,
+          "DATASETVALUE": "TABLE_EXCEPTION_COMPANY",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322406
+        },
+        {
+          "Data_Setting_Id": 208657,
+          "DATASETVALUE": "TABLE_EXCEPTION_COMPANY",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322406
+        },
+        {
+          "Data_Setting_Id": 208654,
+          "DATASETVALUE": "TABLE_EXCEPTION_COMPANY",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322406
+        },
+        {
+          "Data_Setting_Id": 208658,
+          "DATASETVALUE": "TABLE_EXCEPTION_COMPANY",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322406
+        },
+        {
+          "Data_Setting_Id": 208652,
+          "DATASETVALUE": "TABLE_EXCEPTION_COMPANY",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322406
+        },
+        {
+          "Data_Setting_Id": 208655,
+          "DATASETVALUE": "TABLE_EXCEPTION_COMPANY",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322406
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "STP_TRD_EXP_MONITOR_TABLE",
+      "OBJECT_ID": 152863,
+      "OBJECT_TYPE": "STP_TRD_EXP_MONITOR",
+      "QUICK_ACCESS": "swfname:=_Spr",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 132299,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 322406,
+      "COLUMN_ROW_SETTING": "ALLROWS;Desk",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 25,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208664,
+          "DATASETVALUE": "TABLE_EXCEPTION_BOOK",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322407
+        },
+        {
+          "Data_Setting_Id": 208661,
+          "DATASETVALUE": "TABLE_EXCEPTION_BOOK",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322407
+        },
+        {
+          "Data_Setting_Id": 208667,
+          "DATASETVALUE": "TABLE_EXCEPTION_BOOK",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322407
+        },
+        {
+          "Data_Setting_Id": 208665,
+          "DATASETVALUE": "TABLE_EXCEPTION_BOOK",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322407
+        },
+        {
+          "Data_Setting_Id": 208662,
+          "DATASETVALUE": "TABLE_EXCEPTION_BOOK",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322407
+        },
+        {
+          "Data_Setting_Id": 208666,
+          "DATASETVALUE": "TABLE_EXCEPTION_BOOK",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322407
+        },
+        {
+          "Data_Setting_Id": 208660,
+          "DATASETVALUE": "TABLE_EXCEPTION_BOOK",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322407
+        },
+        {
+          "Data_Setting_Id": 208663,
+          "DATASETVALUE": "TABLE_EXCEPTION_BOOK",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322407
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "STP_TRD_EXP_MONITOR_TABLE",
+      "OBJECT_ID": 135306,
+      "OBJECT_TYPE": "STP_TRD_EXP_MONITOR",
+      "QUICK_ACCESS": "swfname:=_Spr",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 132299,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 322407,
+      "COLUMN_ROW_SETTING": "ALLROWS;Book",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 26,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208664,
+          "DATASETVALUE": "TABLE_EXCEPTION_BOOK",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322407
+        },
+        {
+          "Data_Setting_Id": 208661,
+          "DATASETVALUE": "TABLE_EXCEPTION_BOOK",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322407
+        },
+        {
+          "Data_Setting_Id": 208667,
+          "DATASETVALUE": "TABLE_EXCEPTION_BOOK",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322407
+        },
+        {
+          "Data_Setting_Id": 208665,
+          "DATASETVALUE": "TABLE_EXCEPTION_BOOK",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322407
+        },
+        {
+          "Data_Setting_Id": 208662,
+          "DATASETVALUE": "TABLE_EXCEPTION_BOOK",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322407
+        },
+        {
+          "Data_Setting_Id": 208666,
+          "DATASETVALUE": "TABLE_EXCEPTION_BOOK",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322407
+        },
+        {
+          "Data_Setting_Id": 208660,
+          "DATASETVALUE": "TABLE_EXCEPTION_BOOK",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322407
+        },
+        {
+          "Data_Setting_Id": 208663,
+          "DATASETVALUE": "TABLE_EXCEPTION_BOOK",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322407
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "STP_TRD_EXP_MONITOR_TABLE",
+      "OBJECT_ID": 152863,
+      "OBJECT_TYPE": "STP_TRD_EXP_MONITOR",
+      "QUICK_ACCESS": "swfname:=_Spr",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 132299,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 322407,
+      "COLUMN_ROW_SETTING": "ALLROWS;Book",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 26,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208672,
+          "DATASETVALUE": "TABLE_EXCEPTION_MATURITY_DATE",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322408
+        },
+        {
+          "Data_Setting_Id": 208669,
+          "DATASETVALUE": "TABLE_EXCEPTION_MATURITY_DATE",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322408
+        },
+        {
+          "Data_Setting_Id": 208675,
+          "DATASETVALUE": "TABLE_EXCEPTION_MATURITY_DATE",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322408
+        },
+        {
+          "Data_Setting_Id": 208673,
+          "DATASETVALUE": "TABLE_EXCEPTION_MATURITY_DATE",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322408
+        },
+        {
+          "Data_Setting_Id": 208670,
+          "DATASETVALUE": "TABLE_EXCEPTION_MATURITY_DATE",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322408
+        },
+        {
+          "Data_Setting_Id": 208674,
+          "DATASETVALUE": "TABLE_EXCEPTION_MATURITY_DATE",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322408
+        },
+        {
+          "Data_Setting_Id": 208668,
+          "DATASETVALUE": "TABLE_EXCEPTION_MATURITY_DATE",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322408
+        },
+        {
+          "Data_Setting_Id": 208671,
+          "DATASETVALUE": "TABLE_EXCEPTION_MATURITY_DATE",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322408
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "STP_TRD_EXP_MONITOR_TABLE",
+      "OBJECT_ID": 135306,
+      "OBJECT_TYPE": "STP_TRD_EXP_MONITOR",
+      "QUICK_ACCESS": "swfname:=_Spr",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 132299,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 322408,
+      "COLUMN_ROW_SETTING": "ALLROWS;Maturity Date",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 27,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208672,
+          "DATASETVALUE": "TABLE_EXCEPTION_MATURITY_DATE",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322408
+        },
+        {
+          "Data_Setting_Id": 208669,
+          "DATASETVALUE": "TABLE_EXCEPTION_MATURITY_DATE",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322408
+        },
+        {
+          "Data_Setting_Id": 208675,
+          "DATASETVALUE": "TABLE_EXCEPTION_MATURITY_DATE",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322408
+        },
+        {
+          "Data_Setting_Id": 208673,
+          "DATASETVALUE": "TABLE_EXCEPTION_MATURITY_DATE",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322408
+        },
+        {
+          "Data_Setting_Id": 208670,
+          "DATASETVALUE": "TABLE_EXCEPTION_MATURITY_DATE",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322408
+        },
+        {
+          "Data_Setting_Id": 208674,
+          "DATASETVALUE": "TABLE_EXCEPTION_MATURITY_DATE",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322408
+        },
+        {
+          "Data_Setting_Id": 208668,
+          "DATASETVALUE": "TABLE_EXCEPTION_MATURITY_DATE",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322408
+        },
+        {
+          "Data_Setting_Id": 208671,
+          "DATASETVALUE": "TABLE_EXCEPTION_MATURITY_DATE",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322408
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "STP_TRD_EXP_MONITOR_TABLE",
+      "OBJECT_ID": 152863,
+      "OBJECT_TYPE": "STP_TRD_EXP_MONITOR",
+      "QUICK_ACCESS": "swfname:=_Spr",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 132299,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 322408,
+      "COLUMN_ROW_SETTING": "ALLROWS;Maturity Date",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 27,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208680,
+          "DATASETVALUE": "TABLE_EXCEPTION_SETTLEMENT_DATE",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322409
+        },
+        {
+          "Data_Setting_Id": 208677,
+          "DATASETVALUE": "TABLE_EXCEPTION_SETTLEMENT_DATE",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322409
+        },
+        {
+          "Data_Setting_Id": 208683,
+          "DATASETVALUE": "TABLE_EXCEPTION_SETTLEMENT_DATE",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322409
+        },
+        {
+          "Data_Setting_Id": 208681,
+          "DATASETVALUE": "TABLE_EXCEPTION_SETTLEMENT_DATE",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322409
+        },
+        {
+          "Data_Setting_Id": 208678,
+          "DATASETVALUE": "TABLE_EXCEPTION_SETTLEMENT_DATE",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322409
+        },
+        {
+          "Data_Setting_Id": 208682,
+          "DATASETVALUE": "TABLE_EXCEPTION_SETTLEMENT_DATE",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322409
+        },
+        {
+          "Data_Setting_Id": 208676,
+          "DATASETVALUE": "TABLE_EXCEPTION_SETTLEMENT_DATE",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322409
+        },
+        {
+          "Data_Setting_Id": 208679,
+          "DATASETVALUE": "TABLE_EXCEPTION_SETTLEMENT_DATE",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322409
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "STP_TRD_EXP_MONITOR_TABLE",
+      "OBJECT_ID": 135306,
+      "OBJECT_TYPE": "STP_TRD_EXP_MONITOR",
+      "QUICK_ACCESS": "swfname:=_Spr",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 132299,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 322409,
+      "COLUMN_ROW_SETTING": "ALLROWS;Settlement Date",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 28,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208680,
+          "DATASETVALUE": "TABLE_EXCEPTION_SETTLEMENT_DATE",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322409
+        },
+        {
+          "Data_Setting_Id": 208677,
+          "DATASETVALUE": "TABLE_EXCEPTION_SETTLEMENT_DATE",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322409
+        },
+        {
+          "Data_Setting_Id": 208683,
+          "DATASETVALUE": "TABLE_EXCEPTION_SETTLEMENT_DATE",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322409
+        },
+        {
+          "Data_Setting_Id": 208681,
+          "DATASETVALUE": "TABLE_EXCEPTION_SETTLEMENT_DATE",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322409
+        },
+        {
+          "Data_Setting_Id": 208678,
+          "DATASETVALUE": "TABLE_EXCEPTION_SETTLEMENT_DATE",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322409
+        },
+        {
+          "Data_Setting_Id": 208682,
+          "DATASETVALUE": "TABLE_EXCEPTION_SETTLEMENT_DATE",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322409
+        },
+        {
+          "Data_Setting_Id": 208676,
+          "DATASETVALUE": "TABLE_EXCEPTION_SETTLEMENT_DATE",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322409
+        },
+        {
+          "Data_Setting_Id": 208679,
+          "DATASETVALUE": "TABLE_EXCEPTION_SETTLEMENT_DATE",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322409
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "STP_TRD_EXP_MONITOR_TABLE",
+      "OBJECT_ID": 152863,
+      "OBJECT_TYPE": "STP_TRD_EXP_MONITOR",
+      "QUICK_ACCESS": "swfname:=_Spr",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 132299,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 322409,
+      "COLUMN_ROW_SETTING": "ALLROWS;Settlement Date",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 28,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208688,
+          "DATASETVALUE": "TABLE_EXCEPTION_STATUS",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322410
+        },
+        {
+          "Data_Setting_Id": 208685,
+          "DATASETVALUE": "TABLE_EXCEPTION_STATUS",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322410
+        },
+        {
+          "Data_Setting_Id": 208691,
+          "DATASETVALUE": "TABLE_EXCEPTION_STATUS",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322410
+        },
+        {
+          "Data_Setting_Id": 208689,
+          "DATASETVALUE": "TABLE_EXCEPTION_STATUS",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322410
+        },
+        {
+          "Data_Setting_Id": 208686,
+          "DATASETVALUE": "TABLE_EXCEPTION_STATUS",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322410
+        },
+        {
+          "Data_Setting_Id": 208690,
+          "DATASETVALUE": "TABLE_EXCEPTION_STATUS",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322410
+        },
+        {
+          "Data_Setting_Id": 208684,
+          "DATASETVALUE": "TABLE_EXCEPTION_STATUS",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322410
+        },
+        {
+          "Data_Setting_Id": 208687,
+          "DATASETVALUE": "TABLE_EXCEPTION_STATUS",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322410
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "STP_TRD_EXP_MONITOR_TABLE",
+      "OBJECT_ID": 135306,
+      "OBJECT_TYPE": "STP_TRD_EXP_MONITOR",
+      "QUICK_ACCESS": "swfname:=_Spr",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 132299,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 322410,
+      "COLUMN_ROW_SETTING": "ALLROWS;Status",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 29,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208688,
+          "DATASETVALUE": "TABLE_EXCEPTION_STATUS",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322410
+        },
+        {
+          "Data_Setting_Id": 208685,
+          "DATASETVALUE": "TABLE_EXCEPTION_STATUS",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322410
+        },
+        {
+          "Data_Setting_Id": 208691,
+          "DATASETVALUE": "TABLE_EXCEPTION_STATUS",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322410
+        },
+        {
+          "Data_Setting_Id": 208689,
+          "DATASETVALUE": "TABLE_EXCEPTION_STATUS",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322410
+        },
+        {
+          "Data_Setting_Id": 208686,
+          "DATASETVALUE": "TABLE_EXCEPTION_STATUS",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322410
+        },
+        {
+          "Data_Setting_Id": 208690,
+          "DATASETVALUE": "TABLE_EXCEPTION_STATUS",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322410
+        },
+        {
+          "Data_Setting_Id": 208684,
+          "DATASETVALUE": "TABLE_EXCEPTION_STATUS",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322410
+        },
+        {
+          "Data_Setting_Id": 208687,
+          "DATASETVALUE": "TABLE_EXCEPTION_STATUS",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322410
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "STP_TRD_EXP_MONITOR_TABLE",
+      "OBJECT_ID": 152863,
+      "OBJECT_TYPE": "STP_TRD_EXP_MONITOR",
+      "QUICK_ACCESS": "swfname:=_Spr",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 132299,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 322410,
+      "COLUMN_ROW_SETTING": "ALLROWS;Status",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 29,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208696,
+          "DATASETVALUE": "LOOP_VAR:EXCEPTION_SWOPTT_02",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322411
+        },
+        {
+          "Data_Setting_Id": 208693,
+          "DATASETVALUE": "LOOP_VAR:EXCEPTION_SWOPTT_04",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322411
+        },
+        {
+          "Data_Setting_Id": 208699,
+          "DATASETVALUE": "LOOP_VAR:EXCEPTION_SWOPTT_05",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322411
+        },
+        {
+          "Data_Setting_Id": 208697,
+          "DATASETVALUE": "LOOP_VAR:EXCEPTION_SWOPTT_06",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322411
+        },
+        {
+          "Data_Setting_Id": 208694,
+          "DATASETVALUE": "LOOP_VAR:EXCEPTION_SWOPTT_07",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322411
+        },
+        {
+          "Data_Setting_Id": 208698,
+          "DATASETVALUE": "LOOP_VAR:EXCEPTION_SWOPTT_09",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322411
+        },
+        {
+          "Data_Setting_Id": 208692,
+          "DATASETVALUE": "LOOP_VAR:EXCEPTION_SWOPTT_10",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322411
+        },
+        {
+          "Data_Setting_Id": 208695,
+          "DATASETVALUE": "LOOP_VAR:EXCEPTION_SWOPTT_14",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322411
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "STP_TRD_EXP_MONITOR_TABLE",
+      "OBJECT_ID": 135306,
+      "OBJECT_TYPE": "STP_TRD_EXP_MONITOR",
+      "QUICK_ACCESS": "swfname:=_Spr",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 132299,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 322411,
+      "COLUMN_ROW_SETTING": "CONDITIONALL:@Exception Type=Warning@Exception State=^Active;Exception ID",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 30,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208696,
+          "DATASETVALUE": "LOOP_VAR:EXCEPTION_SWOPTT_02",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322411
+        },
+        {
+          "Data_Setting_Id": 208693,
+          "DATASETVALUE": "LOOP_VAR:EXCEPTION_SWOPTT_04",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322411
+        },
+        {
+          "Data_Setting_Id": 208699,
+          "DATASETVALUE": "LOOP_VAR:EXCEPTION_SWOPTT_05",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322411
+        },
+        {
+          "Data_Setting_Id": 208697,
+          "DATASETVALUE": "LOOP_VAR:EXCEPTION_SWOPTT_06",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322411
+        },
+        {
+          "Data_Setting_Id": 208694,
+          "DATASETVALUE": "LOOP_VAR:EXCEPTION_SWOPTT_07",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322411
+        },
+        {
+          "Data_Setting_Id": 208698,
+          "DATASETVALUE": "LOOP_VAR:EXCEPTION_SWOPTT_09",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322411
+        },
+        {
+          "Data_Setting_Id": 208692,
+          "DATASETVALUE": "LOOP_VAR:EXCEPTION_SWOPTT_10",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322411
+        },
+        {
+          "Data_Setting_Id": 208695,
+          "DATASETVALUE": "LOOP_VAR:EXCEPTION_SWOPTT_14",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322411
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "STP_TRD_EXP_MONITOR_TABLE",
+      "OBJECT_ID": 152863,
+      "OBJECT_TYPE": "STP_TRD_EXP_MONITOR",
+      "QUICK_ACCESS": "swfname:=_Spr",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 132299,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 322411,
+      "COLUMN_ROW_SETTING": "CONDITIONALL:@Exception Type=Warning@Exception State=^Active;Exception ID",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 30,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208704,
+          "DATASETVALUE": "LOOP_VAR:EXCEPTION_SWOPTT_02",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322412
+        },
+        {
+          "Data_Setting_Id": 208701,
+          "DATASETVALUE": "LOOP_VAR:EXCEPTION_SWOPTT_04",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322412
+        },
+        {
+          "Data_Setting_Id": 208707,
+          "DATASETVALUE": "LOOP_VAR:EXCEPTION_SWOPTT_05",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322412
+        },
+        {
+          "Data_Setting_Id": 208705,
+          "DATASETVALUE": "LOOP_VAR:EXCEPTION_SWOPTT_06",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322412
+        },
+        {
+          "Data_Setting_Id": 208702,
+          "DATASETVALUE": "LOOP_VAR:EXCEPTION_SWOPTT_07",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322412
+        },
+        {
+          "Data_Setting_Id": 208706,
+          "DATASETVALUE": "LOOP_VAR:EXCEPTION_SWOPTT_09",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322412
+        },
+        {
+          "Data_Setting_Id": 208700,
+          "DATASETVALUE": "LOOP_VAR:EXCEPTION_SWOPTT_10",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322412
+        },
+        {
+          "Data_Setting_Id": 208703,
+          "DATASETVALUE": "LOOP_VAR:EXCEPTION_SWOPTT_14",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322412
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 36,
+      "KEY_WORD_NAME": "Loop",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 322412,
+      "COLUMN_ROW_SETTING": "Reload",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 31,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208712,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322413
+        },
+        {
+          "Data_Setting_Id": 208709,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322413
+        },
+        {
+          "Data_Setting_Id": 208715,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322413
+        },
+        {
+          "Data_Setting_Id": 208713,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322413
+        },
+        {
+          "Data_Setting_Id": 208710,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322413
+        },
+        {
+          "Data_Setting_Id": 208714,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322413
+        },
+        {
+          "Data_Setting_Id": 208708,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322413
+        },
+        {
+          "Data_Setting_Id": 208711,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322413
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 322413,
+      "COLUMN_ROW_SETTING": "f",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 32,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208720,
+          "DATASETVALUE": "30,30",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322414
+        },
+        {
+          "Data_Setting_Id": 208717,
+          "DATASETVALUE": "30,30",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322414
+        },
+        {
+          "Data_Setting_Id": 208723,
+          "DATASETVALUE": "30,30",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322414
+        },
+        {
+          "Data_Setting_Id": 208721,
+          "DATASETVALUE": "30,30",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322414
+        },
+        {
+          "Data_Setting_Id": 208718,
+          "DATASETVALUE": "30,30",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322414
+        },
+        {
+          "Data_Setting_Id": 208722,
+          "DATASETVALUE": "30,30",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322414
+        },
+        {
+          "Data_Setting_Id": 208716,
+          "DATASETVALUE": "30,30",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322414
+        },
+        {
+          "Data_Setting_Id": 208719,
+          "DATASETVALUE": "30,30",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322414
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 44,
+      "KEY_WORD_NAME": "ClickAt",
+      "OBJECT_HAPPY_NAME": "STP_TRD_EXP_MONITOR_TABLE",
+      "OBJECT_ID": 135306,
+      "OBJECT_TYPE": "STP_TRD_EXP_MONITOR",
+      "QUICK_ACCESS": "swfname:=_Spr",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 132299,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 322414,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 33,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208720,
+          "DATASETVALUE": "30,30",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322414
+        },
+        {
+          "Data_Setting_Id": 208717,
+          "DATASETVALUE": "30,30",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322414
+        },
+        {
+          "Data_Setting_Id": 208723,
+          "DATASETVALUE": "30,30",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322414
+        },
+        {
+          "Data_Setting_Id": 208721,
+          "DATASETVALUE": "30,30",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322414
+        },
+        {
+          "Data_Setting_Id": 208718,
+          "DATASETVALUE": "30,30",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322414
+        },
+        {
+          "Data_Setting_Id": 208722,
+          "DATASETVALUE": "30,30",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322414
+        },
+        {
+          "Data_Setting_Id": 208716,
+          "DATASETVALUE": "30,30",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322414
+        },
+        {
+          "Data_Setting_Id": 208719,
+          "DATASETVALUE": "30,30",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322414
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 44,
+      "KEY_WORD_NAME": "ClickAt",
+      "OBJECT_HAPPY_NAME": "STP_TRD_EXP_MONITOR_TABLE",
+      "OBJECT_ID": 152863,
+      "OBJECT_TYPE": "STP_TRD_EXP_MONITOR",
+      "QUICK_ACCESS": "swfname:=_Spr",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 132299,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 322414,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 33,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208728,
+          "DATASETVALUE": "LOOP_VAR:EXCEPTION_SWOPTT_02",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322415
+        },
+        {
+          "Data_Setting_Id": 208725,
+          "DATASETVALUE": "LOOP_VAR:EXCEPTION_SWOPTT_04",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322415
+        },
+        {
+          "Data_Setting_Id": 208731,
+          "DATASETVALUE": "LOOP_VAR:EXCEPTION_SWOPTT_05",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322415
+        },
+        {
+          "Data_Setting_Id": 208729,
+          "DATASETVALUE": "LOOP_VAR:EXCEPTION_SWOPTT_06",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322415
+        },
+        {
+          "Data_Setting_Id": 208726,
+          "DATASETVALUE": "LOOP_VAR:EXCEPTION_SWOPTT_07",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322415
+        },
+        {
+          "Data_Setting_Id": 208730,
+          "DATASETVALUE": "LOOP_VAR:EXCEPTION_SWOPTT_09",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322415
+        },
+        {
+          "Data_Setting_Id": 208724,
+          "DATASETVALUE": "LOOP_VAR:EXCEPTION_SWOPTT_10",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322415
+        },
+        {
+          "Data_Setting_Id": 208727,
+          "DATASETVALUE": "LOOP_VAR:EXCEPTION_SWOPTT_14",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322415
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 32,
+      "KEY_WORD_NAME": "SearchAndClick",
+      "OBJECT_HAPPY_NAME": "STP_TRD_EXP_MONITOR_TABLE",
+      "OBJECT_ID": 135306,
+      "OBJECT_TYPE": "STP_TRD_EXP_MONITOR",
+      "QUICK_ACCESS": "swfname:=_Spr",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 132299,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 322415,
+      "COLUMN_ROW_SETTING": "MarsAddins;Exception ID;Action:LEFT_CLICK",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 34,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208728,
+          "DATASETVALUE": "LOOP_VAR:EXCEPTION_SWOPTT_02",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322415
+        },
+        {
+          "Data_Setting_Id": 208725,
+          "DATASETVALUE": "LOOP_VAR:EXCEPTION_SWOPTT_04",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322415
+        },
+        {
+          "Data_Setting_Id": 208731,
+          "DATASETVALUE": "LOOP_VAR:EXCEPTION_SWOPTT_05",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322415
+        },
+        {
+          "Data_Setting_Id": 208729,
+          "DATASETVALUE": "LOOP_VAR:EXCEPTION_SWOPTT_06",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322415
+        },
+        {
+          "Data_Setting_Id": 208726,
+          "DATASETVALUE": "LOOP_VAR:EXCEPTION_SWOPTT_07",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322415
+        },
+        {
+          "Data_Setting_Id": 208730,
+          "DATASETVALUE": "LOOP_VAR:EXCEPTION_SWOPTT_09",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322415
+        },
+        {
+          "Data_Setting_Id": 208724,
+          "DATASETVALUE": "LOOP_VAR:EXCEPTION_SWOPTT_10",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322415
+        },
+        {
+          "Data_Setting_Id": 208727,
+          "DATASETVALUE": "LOOP_VAR:EXCEPTION_SWOPTT_14",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322415
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 32,
+      "KEY_WORD_NAME": "SearchAndClick",
+      "OBJECT_HAPPY_NAME": "STP_TRD_EXP_MONITOR_TABLE",
+      "OBJECT_ID": 152863,
+      "OBJECT_TYPE": "STP_TRD_EXP_MONITOR",
+      "QUICK_ACCESS": "swfname:=_Spr",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 132299,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 322415,
+      "COLUMN_ROW_SETTING": "MarsAddins;Exception ID;Action:LEFT_CLICK",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 34,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208736,
+          "DATASETVALUE": "Approve.*",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322416
+        },
+        {
+          "Data_Setting_Id": 208733,
+          "DATASETVALUE": "Approve.*",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322416
+        },
+        {
+          "Data_Setting_Id": 208739,
+          "DATASETVALUE": "Approve.*",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322416
+        },
+        {
+          "Data_Setting_Id": 208737,
+          "DATASETVALUE": "Approve.*",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322416
+        },
+        {
+          "Data_Setting_Id": 208734,
+          "DATASETVALUE": "Approve.*",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322416
+        },
+        {
+          "Data_Setting_Id": 208738,
+          "DATASETVALUE": "Approve.*",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322416
+        },
+        {
+          "Data_Setting_Id": 208732,
+          "DATASETVALUE": "Approve.*",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322416
+        },
+        {
+          "Data_Setting_Id": 208735,
+          "DATASETVALUE": "Approve.*",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322416
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 5,
+      "KEY_WORD_NAME": "ClickMenuIcon",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 322416,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 35,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208744,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322417
+        },
+        {
+          "Data_Setting_Id": 208741,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322417
+        },
+        {
+          "Data_Setting_Id": 208747,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322417
+        },
+        {
+          "Data_Setting_Id": 208745,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322417
+        },
+        {
+          "Data_Setting_Id": 208742,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322417
+        },
+        {
+          "Data_Setting_Id": 208746,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322417
+        },
+        {
+          "Data_Setting_Id": 208740,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322417
+        },
+        {
+          "Data_Setting_Id": 208743,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322417
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 322417,
+      "COLUMN_ROW_SETTING": "f",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 36,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208752,
+          "DATASETVALUE": "STP_TRD_EXP_MONITOR_AFTER",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322418
+        },
+        {
+          "Data_Setting_Id": 208749,
+          "DATASETVALUE": "STP_TRD_EXP_MONITOR_AFTER",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322418
+        },
+        {
+          "Data_Setting_Id": 208755,
+          "DATASETVALUE": "STP_TRD_EXP_MONITOR_AFTER",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322418
+        },
+        {
+          "Data_Setting_Id": 208753,
+          "DATASETVALUE": "STP_TRD_EXP_MONITOR_AFTER",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322418
+        },
+        {
+          "Data_Setting_Id": 208750,
+          "DATASETVALUE": "STP_TRD_EXP_MONITOR_AFTER",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322418
+        },
+        {
+          "Data_Setting_Id": 208754,
+          "DATASETVALUE": "STP_TRD_EXP_MONITOR_AFTER",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322418
+        },
+        {
+          "Data_Setting_Id": 208748,
+          "DATASETVALUE": "STP_TRD_EXP_MONITOR_AFTER",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322418
+        },
+        {
+          "Data_Setting_Id": 208751,
+          "DATASETVALUE": "STP_TRD_EXP_MONITOR_AFTER",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322418
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "STP_TRD_EXP_MONITOR_PANEL",
+      "OBJECT_ID": 160423,
+      "OBJECT_TYPE": "STP_TRD_EXP_MONITOR",
+      "QUICK_ACCESS": "swfname:=summitBlotterFilterControl1",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 131279,
+      "TYPE_NAME": "SwfWindow",
+      "STEPS_ID": 322418,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 37,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208752,
+          "DATASETVALUE": "STP_TRD_EXP_MONITOR_AFTER",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322418
+        },
+        {
+          "Data_Setting_Id": 208749,
+          "DATASETVALUE": "STP_TRD_EXP_MONITOR_AFTER",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322418
+        },
+        {
+          "Data_Setting_Id": 208755,
+          "DATASETVALUE": "STP_TRD_EXP_MONITOR_AFTER",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322418
+        },
+        {
+          "Data_Setting_Id": 208753,
+          "DATASETVALUE": "STP_TRD_EXP_MONITOR_AFTER",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322418
+        },
+        {
+          "Data_Setting_Id": 208750,
+          "DATASETVALUE": "STP_TRD_EXP_MONITOR_AFTER",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322418
+        },
+        {
+          "Data_Setting_Id": 208754,
+          "DATASETVALUE": "STP_TRD_EXP_MONITOR_AFTER",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322418
+        },
+        {
+          "Data_Setting_Id": 208748,
+          "DATASETVALUE": "STP_TRD_EXP_MONITOR_AFTER",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322418
+        },
+        {
+          "Data_Setting_Id": 208751,
+          "DATASETVALUE": "STP_TRD_EXP_MONITOR_AFTER",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322418
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "STP_TRD_EXP_MONITOR_PANEL",
+      "OBJECT_ID": 141998,
+      "OBJECT_TYPE": "STP_TRD_EXP_MONITOR",
+      "QUICK_ACCESS": "swfname:=summitBlotterFilterControl1",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 131279,
+      "TYPE_NAME": "SwfWindow",
+      "STEPS_ID": 322418,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 37,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208760,
+          "DATASETVALUE": "TEXT|\"STP Trade Exception Monitor\"|IMAGE:STP_EXP_MONITOR_AFTER",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322419
+        },
+        {
+          "Data_Setting_Id": 208757,
+          "DATASETVALUE": "TEXT|\"STP Trade Exception Monitor\"|IMAGE:STP_EXP_MONITOR_AFTER",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322419
+        },
+        {
+          "Data_Setting_Id": 208763,
+          "DATASETVALUE": "TEXT|\"STP Trade Exception Monitor\"|IMAGE:STP_EXP_MONITOR_AFTER",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322419
+        },
+        {
+          "Data_Setting_Id": 208761,
+          "DATASETVALUE": "TEXT|\"STP Trade Exception Monitor\"|IMAGE:STP_EXP_MONITOR_AFTER",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322419
+        },
+        {
+          "Data_Setting_Id": 208758,
+          "DATASETVALUE": "TEXT|\"STP Trade Exception Monitor\"|IMAGE:STP_EXP_MONITOR_AFTER",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322419
+        },
+        {
+          "Data_Setting_Id": 208762,
+          "DATASETVALUE": "TEXT|\"STP Trade Exception Monitor\"|IMAGE:STP_EXP_MONITOR_AFTER",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322419
+        },
+        {
+          "Data_Setting_Id": 208756,
+          "DATASETVALUE": "TEXT|\"STP Trade Exception Monitor\"|IMAGE:STP_EXP_MONITOR_AFTER",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322419
+        },
+        {
+          "Data_Setting_Id": 208759,
+          "DATASETVALUE": "TEXT|\"STP Trade Exception Monitor\"|IMAGE:STP_EXP_MONITOR_AFTER",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322419
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 1167122941,
+      "KEY_WORD_NAME": "Comment",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 322419,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 38,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208768,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322420
+        },
+        {
+          "Data_Setting_Id": 208765,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322420
+        },
+        {
+          "Data_Setting_Id": 208771,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322420
+        },
+        {
+          "Data_Setting_Id": 208769,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322420
+        },
+        {
+          "Data_Setting_Id": 208766,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322420
+        },
+        {
+          "Data_Setting_Id": 208770,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322420
+        },
+        {
+          "Data_Setting_Id": 208764,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322420
+        },
+        {
+          "Data_Setting_Id": 208767,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322420
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 1168222941,
+      "KEY_WORD_NAME": "Endloop",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 322420,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 39,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208776,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322421
+        },
+        {
+          "Data_Setting_Id": 208773,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322421
+        },
+        {
+          "Data_Setting_Id": 208779,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322421
+        },
+        {
+          "Data_Setting_Id": 208777,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322421
+        },
+        {
+          "Data_Setting_Id": 208774,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322421
+        },
+        {
+          "Data_Setting_Id": 208778,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322421
+        },
+        {
+          "Data_Setting_Id": 208772,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322421
+        },
+        {
+          "Data_Setting_Id": 208775,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322421
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "STP_TRD_EXP_MONITOR",
+      "OBJECT_ID": 154499,
+      "OBJECT_TYPE": "STP_TRD_EXP_MONITOR",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\nText:=((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 125935,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 322421,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 40,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208776,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322421
+        },
+        {
+          "Data_Setting_Id": 208773,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322421
+        },
+        {
+          "Data_Setting_Id": 208779,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322421
+        },
+        {
+          "Data_Setting_Id": 208777,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322421
+        },
+        {
+          "Data_Setting_Id": 208774,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322421
+        },
+        {
+          "Data_Setting_Id": 208778,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322421
+        },
+        {
+          "Data_Setting_Id": 208772,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322421
+        },
+        {
+          "Data_Setting_Id": 208775,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322421
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "STP_TRD_EXP_MONITOR",
+      "OBJECT_ID": 136452,
+      "OBJECT_TYPE": "STP_TRD_EXP_MONITOR",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\nText:=((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 125935,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 322421,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 40,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208784,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322422
+        },
+        {
+          "Data_Setting_Id": 208781,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322422
+        },
+        {
+          "Data_Setting_Id": 208787,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322422
+        },
+        {
+          "Data_Setting_Id": 208785,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322422
+        },
+        {
+          "Data_Setting_Id": 208782,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322422
+        },
+        {
+          "Data_Setting_Id": 208786,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322422
+        },
+        {
+          "Data_Setting_Id": 208780,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322422
+        },
+        {
+          "Data_Setting_Id": 208783,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322422
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 322422,
+      "COLUMN_ROW_SETTING": "f",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 41,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208792,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322423
+        },
+        {
+          "Data_Setting_Id": 208789,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322423
+        },
+        {
+          "Data_Setting_Id": 208795,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322423
+        },
+        {
+          "Data_Setting_Id": 208793,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322423
+        },
+        {
+          "Data_Setting_Id": 208790,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322423
+        },
+        {
+          "Data_Setting_Id": 208794,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322423
+        },
+        {
+          "Data_Setting_Id": 208788,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322423
+        },
+        {
+          "Data_Setting_Id": 208791,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322423
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 134311,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys |Finastra ){0,1}(FusionCapital |Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 125902,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 322423,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 42,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208792,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322423
+        },
+        {
+          "Data_Setting_Id": 208789,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322423
+        },
+        {
+          "Data_Setting_Id": 208795,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322423
+        },
+        {
+          "Data_Setting_Id": 208793,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322423
+        },
+        {
+          "Data_Setting_Id": 208790,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322423
+        },
+        {
+          "Data_Setting_Id": 208794,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322423
+        },
+        {
+          "Data_Setting_Id": 208788,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322423
+        },
+        {
+          "Data_Setting_Id": 208791,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322423
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 152274,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys |Finastra ){0,1}(FusionCapital |Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 125902,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 322423,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 42,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208800,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322424
+        },
+        {
+          "Data_Setting_Id": 208797,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322424
+        },
+        {
+          "Data_Setting_Id": 208803,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322424
+        },
+        {
+          "Data_Setting_Id": 208801,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322424
+        },
+        {
+          "Data_Setting_Id": 208798,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322424
+        },
+        {
+          "Data_Setting_Id": 208802,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322424
+        },
+        {
+          "Data_Setting_Id": 208796,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322424
+        },
+        {
+          "Data_Setting_Id": 208799,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322424
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 160439,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 131369,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 322424,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 43,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208800,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322424
+        },
+        {
+          "Data_Setting_Id": 208797,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322424
+        },
+        {
+          "Data_Setting_Id": 208803,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322424
+        },
+        {
+          "Data_Setting_Id": 208801,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322424
+        },
+        {
+          "Data_Setting_Id": 208798,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322424
+        },
+        {
+          "Data_Setting_Id": 208802,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322424
+        },
+        {
+          "Data_Setting_Id": 208796,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322424
+        },
+        {
+          "Data_Setting_Id": 208799,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322424
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 142098,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 131369,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 322424,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 43,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 208808,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321400,
+          "SKIP": 0,
+          "STEPS_ID": 322425
+        },
+        {
+          "Data_Setting_Id": 208805,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321381,
+          "SKIP": 0,
+          "STEPS_ID": 322425
+        },
+        {
+          "Data_Setting_Id": 208811,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321460,
+          "SKIP": 0,
+          "STEPS_ID": 322425
+        },
+        {
+          "Data_Setting_Id": 208809,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321401,
+          "SKIP": 0,
+          "STEPS_ID": 322425
+        },
+        {
+          "Data_Setting_Id": 208806,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321383,
+          "SKIP": 0,
+          "STEPS_ID": 322425
+        },
+        {
+          "Data_Setting_Id": 208810,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321424,
+          "SKIP": 0,
+          "STEPS_ID": 322425
+        },
+        {
+          "Data_Setting_Id": 208804,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321366,
+          "SKIP": 0,
+          "STEPS_ID": 322425
+        },
+        {
+          "Data_Setting_Id": 208807,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 321398,
+          "SKIP": 0,
+          "STEPS_ID": 322425
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 2728,
+      "TEST_CASE_NAME": "SWAPTION Trade Exception approval 2",
+      "KEY_WORD_ID": 38,
+      "KEY_WORD_NAME": "Dismiss",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 322425,
+      "COLUMN_ROW_SETTING": "5",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 44,
+      "VALUE_SETTING": null
+    }
+  ]
+}

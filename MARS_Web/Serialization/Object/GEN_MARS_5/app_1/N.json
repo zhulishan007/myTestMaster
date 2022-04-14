@@ -1,21 +1,5 @@
 [
   {
-    "OT_TYPE_ID": 23,
-    "OBJECT_NAME_ID": 48878.0,
-    "OBJECT_HAPPY_NAME": "NETTING_SCHEMA_DEF_PANEL",
-    "COMMENT": null,
-    "APPLICATION_ID": 1,
-    "ENUM_TYPE": null,
-    "OBJECT_ID": 48879,
-    "OBJECT_TYPE": "NETTING_SCHEMA_DEF",
-    "QUICK_ACCESS": "SwfName:=NettingSchemaView",
-    "TYPE_ID": 23,
-    "TYPE_NAME": "SwfWindow",
-    "PEG_NAME": "NETTING_SCHEMA_DEF",
-    "PEG_QUICK_ACCESS": "is owned window:=False\nis child window:=False\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
-    "PEG_ID": 48756
-  },
-  {
     "OT_TYPE_ID": 6,
     "OBJECT_NAME_ID": 48753.0,
     "OBJECT_HAPPY_NAME": "NETTING_SCHEMA_DEF_CUST_SPECI",
@@ -128,22 +112,6 @@
     "PEG_ID": 48756
   },
   {
-    "OT_TYPE_ID": 18,
-    "OBJECT_NAME_ID": 48832.0,
-    "OBJECT_HAPPY_NAME": "NETTING_SCHEMA_COMPANY_AND_NET_TYPES",
-    "COMMENT": null,
-    "APPLICATION_ID": 1,
-    "ENUM_TYPE": null,
-    "OBJECT_ID": 48833,
-    "OBJECT_TYPE": "NETTING_SCHEMA_DEF",
-    "QUICK_ACCESS": "swfname:=_netSchemaTree",
-    "TYPE_ID": 18,
-    "TYPE_NAME": "SwfTreeView",
-    "PEG_NAME": "NETTING_SCHEMA_DEF",
-    "PEG_QUICK_ACCESS": "is owned window:=False\nis child window:=False\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
-    "PEG_ID": 48756
-  },
-  {
     "OT_TYPE_ID": 5,
     "OBJECT_NAME_ID": 48741.0,
     "OBJECT_HAPPY_NAME": "NETTING_SCHEMA_DEF_CUSTOMER",
@@ -187,6 +155,38 @@
     "QUICK_ACCESS": "swfname:=_crossNetSpr",
     "TYPE_ID": 11,
     "TYPE_NAME": "SwfTable",
+    "PEG_NAME": "NETTING_SCHEMA_DEF",
+    "PEG_QUICK_ACCESS": "is owned window:=False\nis child window:=False\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+    "PEG_ID": 48756
+  },
+  {
+    "OT_TYPE_ID": 23,
+    "OBJECT_NAME_ID": 48878.0,
+    "OBJECT_HAPPY_NAME": "NETTING_SCHEMA_DEF_PANEL",
+    "COMMENT": null,
+    "APPLICATION_ID": 1,
+    "ENUM_TYPE": null,
+    "OBJECT_ID": 48879,
+    "OBJECT_TYPE": "NETTING_SCHEMA_DEF",
+    "QUICK_ACCESS": "SwfName:=NettingSchemaView",
+    "TYPE_ID": 23,
+    "TYPE_NAME": "SwfWindow",
+    "PEG_NAME": "NETTING_SCHEMA_DEF",
+    "PEG_QUICK_ACCESS": "is owned window:=False\nis child window:=False\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+    "PEG_ID": 48756
+  },
+  {
+    "OT_TYPE_ID": 18,
+    "OBJECT_NAME_ID": 48832.0,
+    "OBJECT_HAPPY_NAME": "NETTING_SCHEMA_COMPANY_AND_NET_TYPES",
+    "COMMENT": null,
+    "APPLICATION_ID": 1,
+    "ENUM_TYPE": null,
+    "OBJECT_ID": 48833,
+    "OBJECT_TYPE": "NETTING_SCHEMA_DEF",
+    "QUICK_ACCESS": "swfname:=_netSchemaTree",
+    "TYPE_ID": 18,
+    "TYPE_NAME": "SwfTreeView",
     "PEG_NAME": "NETTING_SCHEMA_DEF",
     "PEG_QUICK_ACCESS": "is owned window:=False\nis child window:=False\nText:=^((Misys|Finastra ){0,1}(FusionCapital|Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
     "PEG_ID": 48756

@@ -1,0 +1,1612 @@
+{
+  "currentSyncroStatus": 0,
+  "assignedApplications": [
+    195,
+    194,
+    -1
+  ],
+  "assignedTestSuiteIDs": [
+    1229
+  ],
+  "version": null,
+  "assignedDataSets": [
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 380344,
+      "ALIAS_NAME": "SET_MMTT_02_b",
+      "DESCRIPTION_INFO": "Enter Cancel"
+    }
+  ],
+  "allSteps": [
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 237269,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 380344,
+          "SKIP": 0,
+          "STEPS_ID": 380417
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3096,
+      "TEST_CASE_NAME": "MM Trade Cancel SETTLEMENTS",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 134311,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys |Finastra ){0,1}(FusionCapital |Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 125902,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 380417,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 237269,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 380344,
+          "SKIP": 0,
+          "STEPS_ID": 380417
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3096,
+      "TEST_CASE_NAME": "MM Trade Cancel SETTLEMENTS",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 152274,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys |Finastra ){0,1}(FusionCapital |Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 125902,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 380417,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 237270,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 380344,
+          "SKIP": 0,
+          "STEPS_ID": 380418
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3096,
+      "TEST_CASE_NAME": "MM Trade Cancel SETTLEMENTS",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 134311,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys |Finastra ){0,1}(FusionCapital |Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 125902,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 380418,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 2,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 237270,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 380344,
+          "SKIP": 0,
+          "STEPS_ID": 380418
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3096,
+      "TEST_CASE_NAME": "MM Trade Cancel SETTLEMENTS",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 152274,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys |Finastra ){0,1}(FusionCapital |Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 125902,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 380418,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 2,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 237271,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 380344,
+          "SKIP": 0,
+          "STEPS_ID": 380419
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3096,
+      "TEST_CASE_NAME": "MM Trade Cancel SETTLEMENTS",
+      "KEY_WORD_ID": 12,
+      "KEY_WORD_NAME": "LaunchApplication",
+      "OBJECT_HAPPY_NAME": "ApplicationName",
+      "OBJECT_ID": 136576,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockAreaTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 126579,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 380419,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 3,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 237271,
+          "DATASETVALUE": "Trade Finder",
+          "DATA_SUMMARY_ID": 380344,
+          "SKIP": 0,
+          "STEPS_ID": 380419
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3096,
+      "TEST_CASE_NAME": "MM Trade Cancel SETTLEMENTS",
+      "KEY_WORD_ID": 12,
+      "KEY_WORD_NAME": "LaunchApplication",
+      "OBJECT_HAPPY_NAME": "ApplicationName",
+      "OBJECT_ID": 154205,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockAreaTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 126579,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 380419,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 3,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 237272,
+          "DATASETVALUE": "50",
+          "DATA_SUMMARY_ID": 380344,
+          "SKIP": 0,
+          "STEPS_ID": 380420
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3096,
+      "TEST_CASE_NAME": "MM Trade Cancel SETTLEMENTS",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 380420,
+      "COLUMN_ROW_SETTING": "F",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 4,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 237273,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 380344,
+          "SKIP": 0,
+          "STEPS_ID": 380421
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3096,
+      "TEST_CASE_NAME": "MM Trade Cancel SETTLEMENTS",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 157884,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswfname:=Desktop|Page",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 125946,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 380421,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 5,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 237273,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 380344,
+          "SKIP": 0,
+          "STEPS_ID": 380421
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3096,
+      "TEST_CASE_NAME": "MM Trade Cancel SETTLEMENTS",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 140012,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\n",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 125946,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 380421,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 5,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 237274,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 380344,
+          "SKIP": 0,
+          "STEPS_ID": 380422
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3096,
+      "TEST_CASE_NAME": "MM Trade Cancel SETTLEMENTS",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 157884,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswfname:=Desktop|Page",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 125946,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 380422,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 6,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 237274,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 380344,
+          "SKIP": 0,
+          "STEPS_ID": 380422
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3096,
+      "TEST_CASE_NAME": "MM Trade Cancel SETTLEMENTS",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 140012,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\n",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 125946,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 380422,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 6,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 237275,
+          "DATASETVALUE": "MM",
+          "DATA_SUMMARY_ID": 380344,
+          "SKIP": 0,
+          "STEPS_ID": 380423
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3096,
+      "TEST_CASE_NAME": "MM Trade Cancel SETTLEMENTS",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_TYPES",
+      "OBJECT_ID": 157125,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeTypes",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 131246,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 380423,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 7,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 237275,
+          "DATASETVALUE": "MM",
+          "DATA_SUMMARY_ID": 380344,
+          "SKIP": 0,
+          "STEPS_ID": 380423
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3096,
+      "TEST_CASE_NAME": "MM Trade Cancel SETTLEMENTS",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_TYPES",
+      "OBJECT_ID": 138677,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeTypes",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 131246,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 380423,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 7,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 237276,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 380344,
+          "SKIP": 0,
+          "STEPS_ID": 380424
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3096,
+      "TEST_CASE_NAME": "MM Trade Cancel SETTLEMENTS",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_STATUS",
+      "OBJECT_ID": 152092,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeStatus",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 127400,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 380424,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 8,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 237276,
+          "DATASETVALUE": "ALL",
+          "DATA_SUMMARY_ID": 380344,
+          "SKIP": 0,
+          "STEPS_ID": 380424
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3096,
+      "TEST_CASE_NAME": "MM Trade Cancel SETTLEMENTS",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_STATUS",
+      "OBJECT_ID": 134169,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeStatus",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 127400,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 380424,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 8,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 237277,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 380344,
+          "SKIP": 0,
+          "STEPS_ID": 380425
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3096,
+      "TEST_CASE_NAME": "MM Trade Cancel SETTLEMENTS",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_EXTERNAL_TRADE_ID",
+      "OBJECT_ID": 138650,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=ExternalTradeId",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 133166,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 380425,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 9,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 237277,
+          "DATASETVALUE": "SKIP",
+          "DATA_SUMMARY_ID": 380344,
+          "SKIP": 0,
+          "STEPS_ID": 380425
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3096,
+      "TEST_CASE_NAME": "MM Trade Cancel SETTLEMENTS",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_EXTERNAL_TRADE_ID",
+      "OBJECT_ID": 156412,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=ExternalTradeId",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 133166,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 380425,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 9,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 237278,
+          "DATASETVALUE": "MODAL_VAR:SET_MMTT_02_TRADE_ID",
+          "DATA_SUMMARY_ID": 380344,
+          "SKIP": 0,
+          "STEPS_ID": 380426
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3096,
+      "TEST_CASE_NAME": "MM Trade Cancel SETTLEMENTS",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_ID",
+      "OBJECT_ID": 138676,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeID",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 129318,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 380426,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 10,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 237278,
+          "DATASETVALUE": "MODAL_VAR:SET_MMTT_02_TRADE_ID",
+          "DATA_SUMMARY_ID": 380344,
+          "SKIP": 0,
+          "STEPS_ID": 380426
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3096,
+      "TEST_CASE_NAME": "MM Trade Cancel SETTLEMENTS",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FIND_TRADE_ID",
+      "OBJECT_ID": 156863,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=TradeID",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 129318,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 380426,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 10,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 237279,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 380344,
+          "SKIP": 0,
+          "STEPS_ID": 380427
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3096,
+      "TEST_CASE_NAME": "MM Trade Cancel SETTLEMENTS",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_FIND_NOW",
+      "OBJECT_ID": 140851,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_findNowButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 129341,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 380427,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 11,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 237279,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 380344,
+          "SKIP": 0,
+          "STEPS_ID": 380427
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3096,
+      "TEST_CASE_NAME": "MM Trade Cancel SETTLEMENTS",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_FIND_NOW",
+      "OBJECT_ID": 159010,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_findNowButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 129341,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 380427,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 11,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 237280,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 380344,
+          "SKIP": 0,
+          "STEPS_ID": 380428
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3096,
+      "TEST_CASE_NAME": "MM Trade Cancel SETTLEMENTS",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 157884,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswfname:=Desktop|Page",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 125946,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 380428,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 12,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 237280,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 380344,
+          "SKIP": 0,
+          "STEPS_ID": 380428
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3096,
+      "TEST_CASE_NAME": "MM Trade Cancel SETTLEMENTS",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER",
+      "OBJECT_ID": 140012,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\n",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 125946,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 380428,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 12,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 237281,
+          "DATASETVALUE": "MODAL_VAR:SET_MMTT_02_TRADE_ID",
+          "DATA_SUMMARY_ID": 380344,
+          "SKIP": 0,
+          "STEPS_ID": 380429
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3096,
+      "TEST_CASE_NAME": "MM Trade Cancel SETTLEMENTS",
+      "KEY_WORD_ID": 32,
+      "KEY_WORD_NAME": "SearchAndClick",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_TABLE",
+      "OBJECT_ID": 135283,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_queryResults",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 129343,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 380429,
+      "COLUMN_ROW_SETTING": "MarsAddins;Trade ID;Action:LEFT_DBL_CLICK",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 13,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 237281,
+          "DATASETVALUE": "MODAL_VAR:SET_MMTT_02_TRADE_ID",
+          "DATA_SUMMARY_ID": 380344,
+          "SKIP": 0,
+          "STEPS_ID": 380429
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3096,
+      "TEST_CASE_NAME": "MM Trade Cancel SETTLEMENTS",
+      "KEY_WORD_ID": 32,
+      "KEY_WORD_NAME": "SearchAndClick",
+      "OBJECT_HAPPY_NAME": "TRADE_FINDER_TABLE",
+      "OBJECT_ID": 153441,
+      "OBJECT_TYPE": "TRADE_FINDER",
+      "QUICK_ACCESS": "swfname:=_queryResults",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 129343,
+      "TYPE_NAME": "SwfTable",
+      "STEPS_ID": 380429,
+      "COLUMN_ROW_SETTING": "MarsAddins;Trade ID;Action:LEFT_DBL_CLICK",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 13,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 237282,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 380344,
+          "SKIP": 0,
+          "STEPS_ID": 380430
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3096,
+      "TEST_CASE_NAME": "MM Trade Cancel SETTLEMENTS",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "MONEY_MARKET_TRADE_POPUP",
+      "OBJECT_ID": 139139,
+      "OBJECT_TYPE": "MONEY_MARKET_TRADE_POPUP",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^Client Money Market Trade.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 125915,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 380430,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": "MultiplePane:Runtime:REPO_TRADE_POPUP",
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 14,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 237282,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 380344,
+          "SKIP": 0,
+          "STEPS_ID": 380430
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3096,
+      "TEST_CASE_NAME": "MM Trade Cancel SETTLEMENTS",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "MONEY_MARKET_TRADE_POPUP",
+      "OBJECT_ID": 156800,
+      "OBJECT_TYPE": "MONEY_MARKET_TRADE_POPUP",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=^Client Money Market Trade.*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 125915,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 380430,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": "MultiplePane:Runtime:REPO_TRADE_POPUP",
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 14,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 237283,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 380344,
+          "SKIP": 0,
+          "STEPS_ID": 380431
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3096,
+      "TEST_CASE_NAME": "MM Trade Cancel SETTLEMENTS",
+      "KEY_WORD_ID": 22,
+      "KEY_WORD_NAME": "SelectMenuItem",
+      "OBJECT_HAPPY_NAME": "MONEY_MARKET_TRADE_POPUP_TOOLBAR",
+      "OBJECT_ID": 138024,
+      "OBJECT_TYPE": "MONEY_MARKET_TRADE_POPUP",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 133591,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 380431,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 15,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 237283,
+          "DATASETVALUE": "Desktop Menu;Window;Reattach",
+          "DATA_SUMMARY_ID": 380344,
+          "SKIP": 0,
+          "STEPS_ID": 380431
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3096,
+      "TEST_CASE_NAME": "MM Trade Cancel SETTLEMENTS",
+      "KEY_WORD_ID": 22,
+      "KEY_WORD_NAME": "SelectMenuItem",
+      "OBJECT_HAPPY_NAME": "MONEY_MARKET_TRADE_POPUP_TOOLBAR",
+      "OBJECT_ID": 154997,
+      "OBJECT_TYPE": "MONEY_MARKET_TRADE_POPUP",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 133591,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 380431,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 15,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 237284,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 380344,
+          "SKIP": 0,
+          "STEPS_ID": 380432
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3096,
+      "TEST_CASE_NAME": "MM Trade Cancel SETTLEMENTS",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "MONEY_MARKET_TRADE",
+      "OBJECT_ID": 141271,
+      "OBJECT_TYPE": "MONEY_MARKET_TRADE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 126146,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 380432,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 16,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 237284,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 380344,
+          "SKIP": 0,
+          "STEPS_ID": 380432
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3096,
+      "TEST_CASE_NAME": "MM Trade Cancel SETTLEMENTS",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "MONEY_MARKET_TRADE",
+      "OBJECT_ID": 158972,
+      "OBJECT_TYPE": "MONEY_MARKET_TRADE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 126146,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 380432,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 16,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 237285,
+          "DATASETVALUE": "Desktop Menu;Action;Cancel",
+          "DATA_SUMMARY_ID": 380344,
+          "SKIP": 0,
+          "STEPS_ID": 380433
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3096,
+      "TEST_CASE_NAME": "MM Trade Cancel SETTLEMENTS",
+      "KEY_WORD_ID": 22,
+      "KEY_WORD_NAME": "SelectMenuItem",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 380433,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 17,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 237286,
+          "DATASETVALUE": "5",
+          "DATA_SUMMARY_ID": 380344,
+          "SKIP": 0,
+          "STEPS_ID": 380434
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3096,
+      "TEST_CASE_NAME": "MM Trade Cancel SETTLEMENTS",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 380434,
+      "COLUMN_ROW_SETTING": "F",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 18,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 237287,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 380344,
+          "SKIP": 4,
+          "STEPS_ID": 380435
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3096,
+      "TEST_CASE_NAME": "MM Trade Cancel SETTLEMENTS",
+      "KEY_WORD_ID": 3,
+      "KEY_WORD_NAME": "CheckError",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 380435,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 19,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 237288,
+          "DATASETVALUE": "MM_Trade",
+          "DATA_SUMMARY_ID": 380344,
+          "SKIP": 0,
+          "STEPS_ID": 380436
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3096,
+      "TEST_CASE_NAME": "MM Trade Cancel SETTLEMENTS",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "MONEY_MARKET_TRADE",
+      "OBJECT_ID": 141271,
+      "OBJECT_TYPE": "MONEY_MARKET_TRADE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 126146,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 380436,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 20,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 237288,
+          "DATASETVALUE": "MM_Trade",
+          "DATA_SUMMARY_ID": 380344,
+          "SKIP": 0,
+          "STEPS_ID": 380436
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3096,
+      "TEST_CASE_NAME": "MM Trade Cancel SETTLEMENTS",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "MONEY_MARKET_TRADE",
+      "OBJECT_ID": 158972,
+      "OBJECT_TYPE": "MONEY_MARKET_TRADE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 126146,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 380436,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 20,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 237289,
+          "DATASETVALUE": "TEXT|\"MM Trade\"|IMAGE:MM_Trade",
+          "DATA_SUMMARY_ID": 380344,
+          "SKIP": 0,
+          "STEPS_ID": 380437
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3096,
+      "TEST_CASE_NAME": "MM Trade Cancel SETTLEMENTS",
+      "KEY_WORD_ID": 1167122941,
+      "KEY_WORD_NAME": "Comment",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 380437,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 21,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 237290,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 380344,
+          "SKIP": 0,
+          "STEPS_ID": 380438
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3096,
+      "TEST_CASE_NAME": "MM Trade Cancel SETTLEMENTS",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 380438,
+      "COLUMN_ROW_SETTING": "F",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 22,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 237291,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 380344,
+          "SKIP": 0,
+          "STEPS_ID": 380439
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3096,
+      "TEST_CASE_NAME": "MM Trade Cancel SETTLEMENTS",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "MONEY_MARKET_TRADE",
+      "OBJECT_ID": 141271,
+      "OBJECT_TYPE": "MONEY_MARKET_TRADE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 126146,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 380439,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 23,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 237291,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 380344,
+          "SKIP": 0,
+          "STEPS_ID": 380439
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3096,
+      "TEST_CASE_NAME": "MM Trade Cancel SETTLEMENTS",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "MONEY_MARKET_TRADE",
+      "OBJECT_ID": 158972,
+      "OBJECT_TYPE": "MONEY_MARKET_TRADE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 126146,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 380439,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 23,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 237292,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 380344,
+          "SKIP": 0,
+          "STEPS_ID": 380440
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3096,
+      "TEST_CASE_NAME": "MM Trade Cancel SETTLEMENTS",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "MONEY_MARKET_TRADE",
+      "OBJECT_ID": 141271,
+      "OBJECT_TYPE": "MONEY_MARKET_TRADE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 126146,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 380440,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 24,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 237292,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 380344,
+          "SKIP": 0,
+          "STEPS_ID": 380440
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3096,
+      "TEST_CASE_NAME": "MM Trade Cancel SETTLEMENTS",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "MONEY_MARKET_TRADE",
+      "OBJECT_ID": 158972,
+      "OBJECT_TYPE": "MONEY_MARKET_TRADE",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\ntext:=((Finastra ){0,1}(Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 126146,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 380440,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 24,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 237293,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 380344,
+          "SKIP": 0,
+          "STEPS_ID": 380441
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3096,
+      "TEST_CASE_NAME": "MM Trade Cancel SETTLEMENTS",
+      "KEY_WORD_ID": 1,
+      "KEY_WORD_NAME": "CaptureValue",
+      "OBJECT_HAPPY_NAME": "MONEY_MARKET_TRADE_ID",
+      "OBJECT_ID": 134640,
+      "OBJECT_TYPE": "MONEY_MARKET_TRADE",
+      "QUICK_ACCESS": "swfname:=_tradeIDHolderLabel",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 128726,
+      "TYPE_NAME": "SwfLabel",
+      "STEPS_ID": 380441,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 25,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 237293,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 380344,
+          "SKIP": 0,
+          "STEPS_ID": 380441
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3096,
+      "TEST_CASE_NAME": "MM Trade Cancel SETTLEMENTS",
+      "KEY_WORD_ID": 1,
+      "KEY_WORD_NAME": "CaptureValue",
+      "OBJECT_HAPPY_NAME": "MONEY_MARKET_TRADE_ID",
+      "OBJECT_ID": 151958,
+      "OBJECT_TYPE": "MONEY_MARKET_TRADE",
+      "QUICK_ACCESS": "swfname:=_tradeIDHolderLabel",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 128726,
+      "TYPE_NAME": "SwfLabel",
+      "STEPS_ID": 380441,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 25,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 237294,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 380344,
+          "SKIP": 0,
+          "STEPS_ID": 380442
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3096,
+      "TEST_CASE_NAME": "MM Trade Cancel SETTLEMENTS",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 134311,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys |Finastra ){0,1}(FusionCapital |Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 125902,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 380442,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 26,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 237294,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 380344,
+          "SKIP": 0,
+          "STEPS_ID": 380442
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3096,
+      "TEST_CASE_NAME": "MM Trade Cancel SETTLEMENTS",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 152274,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys |Finastra ){0,1}(FusionCapital |Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 125902,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 380442,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 26,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 237295,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 380344,
+          "SKIP": 0,
+          "STEPS_ID": 380443
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3096,
+      "TEST_CASE_NAME": "MM Trade Cancel SETTLEMENTS",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 160439,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 131369,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 380443,
+      "COLUMN_ROW_SETTING": "SKIP_NOTEXIST",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 27,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 237295,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 380344,
+          "SKIP": 0,
+          "STEPS_ID": 380443
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3096,
+      "TEST_CASE_NAME": "MM Trade Cancel SETTLEMENTS",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 142098,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 131369,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 380443,
+      "COLUMN_ROW_SETTING": "SKIP_NOTEXIST",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 27,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 237296,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 380344,
+          "SKIP": 0,
+          "STEPS_ID": 380444
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3096,
+      "TEST_CASE_NAME": "MM Trade Cancel SETTLEMENTS",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 134311,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys |Finastra ){0,1}(FusionCapital |Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 125902,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 380444,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 28,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 237296,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 380344,
+          "SKIP": 0,
+          "STEPS_ID": 380444
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3096,
+      "TEST_CASE_NAME": "MM Trade Cancel SETTLEMENTS",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 152274,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys |Finastra ){0,1}(FusionCapital |Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 125902,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 380444,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 28,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 237297,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 380344,
+          "SKIP": 0,
+          "STEPS_ID": 380445
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3096,
+      "TEST_CASE_NAME": "MM Trade Cancel SETTLEMENTS",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 160439,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 131369,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 380445,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 29,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 237297,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 380344,
+          "SKIP": 0,
+          "STEPS_ID": 380445
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3096,
+      "TEST_CASE_NAME": "MM Trade Cancel SETTLEMENTS",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 142098,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 131369,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 380445,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 29,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 237298,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 380344,
+          "SKIP": 0,
+          "STEPS_ID": 380446
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3096,
+      "TEST_CASE_NAME": "MM Trade Cancel SETTLEMENTS",
+      "KEY_WORD_ID": 38,
+      "KEY_WORD_NAME": "Dismiss",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 380446,
+      "COLUMN_ROW_SETTING": "5",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 30,
+      "VALUE_SETTING": null
+    }
+  ]
+}

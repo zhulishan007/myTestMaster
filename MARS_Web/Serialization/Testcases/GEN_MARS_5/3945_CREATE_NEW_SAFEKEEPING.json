@@ -350,7 +350,7 @@
     {
       "dataForDataSets": [
         {
-          "Data_Setting_Id": 283746,
+          "Data_Setting_Id": 283804,
           "DATASETVALUE": "03/07/2022",
           "DATA_SUMMARY_ID": 295834,
           "SKIP": 0,
@@ -413,7 +413,7 @@
           "Data_Setting_Id": 283748,
           "DATASETVALUE": null,
           "DATA_SUMMARY_ID": 295834,
-          "SKIP": 0,
+          "SKIP": 4,
           "STEPS_ID": 295851
         }
       ],
@@ -443,7 +443,7 @@
           "Data_Setting_Id": 283749,
           "DATASETVALUE": "8",
           "DATA_SUMMARY_ID": 295834,
-          "SKIP": 0,
+          "SKIP": 4,
           "STEPS_ID": 295853
         }
       ],
@@ -465,6 +465,1206 @@
       "COMMENTINFO": null,
       "IS_RUNNABLE": 0,
       "RUN_ORDER": 15,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283800,
+          "DATASETVALUE": "03/31/2022",
+          "DATA_SUMMARY_ID": 295834,
+          "SKIP": 0,
+          "STEPS_ID": 295934
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3945,
+      "TEST_CASE_NAME": "CREATE_NEW_SAFEKEEPING",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FHLB_PORTAL_SAFEKEEPING_SETTLE_DATE_TXT",
+      "OBJECT_ID": 50137,
+      "OBJECT_TYPE": "FHLB_PORTAL_SAFEKEEPING",
+      "QUICK_ACCESS": "webName:=Safekeeping.SettlementDate",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 393,
+      "OBJECT_NAME_ID": 50138,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 295934,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 16,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283827,
+          "DATASETVALUE": "Purchase",
+          "DATA_SUMMARY_ID": 295834,
+          "SKIP": 0,
+          "STEPS_ID": 295935
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3945,
+      "TEST_CASE_NAME": "CREATE_NEW_SAFEKEEPING",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "FHLB_PORTAL_SAFEKEEPING_TRADE_TYPE",
+      "OBJECT_ID": 50140,
+      "OBJECT_TYPE": "FHLB_PORTAL_SAFEKEEPING",
+      "QUICK_ACCESS": "webName:=Safekeeping.TradeType",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 393,
+      "OBJECT_NAME_ID": 50139,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 295935,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 17,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283828,
+          "DATASETVALUE": "Standard Security",
+          "DATA_SUMMARY_ID": 295834,
+          "SKIP": 0,
+          "STEPS_ID": 295936
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3945,
+      "TEST_CASE_NAME": "CREATE_NEW_SAFEKEEPING",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "FHLB_PORTAL_SAFEKEEPING_SECURITY_TYPE",
+      "OBJECT_ID": 50142,
+      "OBJECT_TYPE": "FHLB_PORTAL_SAFEKEEPING",
+      "QUICK_ACCESS": "webName:=Safekeeping.SecurityType",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 393,
+      "OBJECT_NAME_ID": 50141,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 295936,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 18,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283805,
+          "DATASETVALUE": "Federal Book Entry",
+          "DATA_SUMMARY_ID": 295834,
+          "SKIP": 0,
+          "STEPS_ID": 295940
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3945,
+      "TEST_CASE_NAME": "CREATE_NEW_SAFEKEEPING",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "FHLB_PORTAL_SAFEKEEPING_SECURITY_LOC",
+      "OBJECT_ID": 50144,
+      "OBJECT_TYPE": "FHLB_PORTAL_SAFEKEEPING",
+      "QUICK_ACCESS": "webName:=Safekeeping.SettlementLocation",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 393,
+      "OBJECT_NAME_ID": 50143,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 295940,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 19,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283806,
+          "DATASETVALUE": "0005",
+          "DATA_SUMMARY_ID": 295834,
+          "SKIP": 0,
+          "STEPS_ID": 295941
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3945,
+      "TEST_CASE_NAME": "CREATE_NEW_SAFEKEEPING",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FHLB_PORTAL_SAFEKEEPING_BROKER_CODE",
+      "OBJECT_ID": 50146,
+      "OBJECT_TYPE": "FHLB_PORTAL_SAFEKEEPING",
+      "QUICK_ACCESS": "webName:=Safekeeping.BrokerCode",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 393,
+      "OBJECT_NAME_ID": 50145,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 295941,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 20,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283903,
+          "DATASETVALUE": "{DOWN}",
+          "DATA_SUMMARY_ID": 295834,
+          "SKIP": 0,
+          "STEPS_ID": 296169
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3945,
+      "TEST_CASE_NAME": "CREATE_NEW_SAFEKEEPING",
+      "KEY_WORD_ID": 86,
+      "KEY_WORD_NAME": "PressKeys",
+      "OBJECT_HAPPY_NAME": "FHLB_PORTAL_SAFEKEEPING_BROKER_CODE",
+      "OBJECT_ID": 50146,
+      "OBJECT_TYPE": "FHLB_PORTAL_SAFEKEEPING",
+      "QUICK_ACCESS": "webName:=Safekeeping.BrokerCode",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 393,
+      "OBJECT_NAME_ID": 50145,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 296169,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 21,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283905,
+          "DATASETVALUE": "1",
+          "DATA_SUMMARY_ID": 295834,
+          "SKIP": 0,
+          "STEPS_ID": 296172
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3945,
+      "TEST_CASE_NAME": "CREATE_NEW_SAFEKEEPING",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 296172,
+      "COLUMN_ROW_SETTING": "f",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 22,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283906,
+          "DATASETVALUE": "{tab}",
+          "DATA_SUMMARY_ID": 295834,
+          "SKIP": 0,
+          "STEPS_ID": 296170
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3945,
+      "TEST_CASE_NAME": "CREATE_NEW_SAFEKEEPING",
+      "KEY_WORD_ID": 86,
+      "KEY_WORD_NAME": "PressKeys",
+      "OBJECT_HAPPY_NAME": "FHLB_PORTAL_SAFEKEEPING_BROKER_CODE",
+      "OBJECT_ID": 50146,
+      "OBJECT_TYPE": "FHLB_PORTAL_SAFEKEEPING",
+      "QUICK_ACCESS": "webName:=Safekeeping.BrokerCode",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 393,
+      "OBJECT_NAME_ID": 50145,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 296170,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 23,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283902,
+          "DATASETVALUE": "1",
+          "DATA_SUMMARY_ID": 295834,
+          "SKIP": 0,
+          "STEPS_ID": 296167
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3945,
+      "TEST_CASE_NAME": "CREATE_NEW_SAFEKEEPING",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 296167,
+      "COLUMN_ROW_SETTING": "f",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 24,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283803,
+          "DATASETVALUE": "key.enter",
+          "DATA_SUMMARY_ID": 295834,
+          "SKIP": 4,
+          "STEPS_ID": 295942
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3945,
+      "TEST_CASE_NAME": "CREATE_NEW_SAFEKEEPING",
+      "KEY_WORD_ID": 86,
+      "KEY_WORD_NAME": "PressKeys",
+      "OBJECT_HAPPY_NAME": "FHLB_PORTAL_SAFEKEEPING_INNER_SUGGESTION",
+      "OBJECT_ID": 50239,
+      "OBJECT_TYPE": "FHLB_PORTAL_SAFEKEEPING",
+      "QUICK_ACCESS": "webXPath:=(//span[@class='tt-suggestion_extra'])[1]",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 393,
+      "OBJECT_NAME_ID": 50238,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 295942,
+      "COLUMN_ROW_SETTING": "CURRENT_POS",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 25,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283808,
+          "DATASETVALUE": "Yes",
+          "DATA_SUMMARY_ID": 295834,
+          "SKIP": 4,
+          "STEPS_ID": 295946
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3945,
+      "TEST_CASE_NAME": "CREATE_NEW_SAFEKEEPING",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "FHLB_PORTAL_SAFEKEEPING_IS_REPOS",
+      "OBJECT_ID": 50201,
+      "OBJECT_TYPE": "FHLB_PORTAL_SAFEKEEPING",
+      "QUICK_ACCESS": "webName:=Safekeeping.IsRepo",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 393,
+      "OBJECT_NAME_ID": 50200,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 295946,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 26,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283807,
+          "DATASETVALUE": "3",
+          "DATA_SUMMARY_ID": 295834,
+          "SKIP": 4,
+          "STEPS_ID": 295947
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3945,
+      "TEST_CASE_NAME": "CREATE_NEW_SAFEKEEPING",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 295947,
+      "COLUMN_ROW_SETTING": "F",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 27,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283809,
+          "DATASETVALUE": "Open",
+          "DATA_SUMMARY_ID": 295834,
+          "SKIP": 4,
+          "STEPS_ID": 295948
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3945,
+      "TEST_CASE_NAME": "CREATE_NEW_SAFEKEEPING",
+      "KEY_WORD_ID": 21,
+      "KEY_WORD_NAME": "SelectDropDown",
+      "OBJECT_HAPPY_NAME": "FHLB_PORTAL_SAFEKEEPING_IS_OPEN",
+      "OBJECT_ID": 50203,
+      "OBJECT_TYPE": "FHLB_PORTAL_SAFEKEEPING",
+      "QUICK_ACCESS": "webName:=Safekeeping.IsRepoOpen",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 393,
+      "OBJECT_NAME_ID": 50202,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 295948,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 28,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283835,
+          "DATASETVALUE": "3",
+          "DATA_SUMMARY_ID": 295834,
+          "SKIP": 0,
+          "STEPS_ID": 295999
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3945,
+      "TEST_CASE_NAME": "CREATE_NEW_SAFEKEEPING",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 295999,
+      "COLUMN_ROW_SETTING": "f",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 29,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283832,
+          "DATASETVALUE": "key.pagedown",
+          "DATA_SUMMARY_ID": 295834,
+          "SKIP": 0,
+          "STEPS_ID": 295995
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3945,
+      "TEST_CASE_NAME": "CREATE_NEW_SAFEKEEPING",
+      "KEY_WORD_ID": 86,
+      "KEY_WORD_NAME": "PressKeys",
+      "OBJECT_HAPPY_NAME": "FHLB_PORTAL_SAFEKEEPING_INSTRUCTOINS",
+      "OBJECT_ID": 50205,
+      "OBJECT_TYPE": "FHLB_PORTAL_SAFEKEEPING",
+      "QUICK_ACCESS": "webXPath:=(//input[contains(@class,'form-control ng-pristine')])[4]",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 393,
+      "OBJECT_NAME_ID": 50204,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 295995,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 30,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283810,
+          "DATASETVALUE": "ABA_NAME",
+          "DATA_SUMMARY_ID": 295834,
+          "SKIP": 0,
+          "STEPS_ID": 295952
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3945,
+      "TEST_CASE_NAME": "CREATE_NEW_SAFEKEEPING",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "FHLB_PORTAL_SAFEKEEPING_ABA_NAME",
+      "OBJECT_ID": 50209,
+      "OBJECT_TYPE": "FHLB_PORTAL_SAFEKEEPING",
+      "QUICK_ACCESS": "webXPath:=(//p[@class='form-control fhlbb-uneditable'])[2]",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 393,
+      "OBJECT_NAME_ID": 50208,
+      "TYPE_NAME": "SwfLabel",
+      "STEPS_ID": 295952,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 31,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283811,
+          "DATASETVALUE": "ABA_NUMBER",
+          "DATA_SUMMARY_ID": 295834,
+          "SKIP": 0,
+          "STEPS_ID": 295953
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3945,
+      "TEST_CASE_NAME": "CREATE_NEW_SAFEKEEPING",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "FHLB_PORTAL_SAFEKEEPING_ABA_NUMBER",
+      "OBJECT_ID": 50207,
+      "OBJECT_TYPE": "FHLB_PORTAL_SAFEKEEPING",
+      "QUICK_ACCESS": "webXPath:=(//p[@class='form-control fhlbb-uneditable'])[1]",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 393,
+      "OBJECT_NAME_ID": 50206,
+      "TYPE_NAME": "SwfLabel",
+      "STEPS_ID": 295953,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 32,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283812,
+          "DATASETVALUE": "WIRE_ADDRESS",
+          "DATA_SUMMARY_ID": 295834,
+          "SKIP": 0,
+          "STEPS_ID": 295956
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3945,
+      "TEST_CASE_NAME": "CREATE_NEW_SAFEKEEPING",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "FHLB_PORTAL_SAFEKEEPING_WIRE_ADDRESS",
+      "OBJECT_ID": 50211,
+      "OBJECT_TYPE": "FHLB_PORTAL_SAFEKEEPING",
+      "QUICK_ACCESS": "webXPath:=(//p[@class='form-control fhlbb-uneditable'])[3]",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 393,
+      "OBJECT_NAME_ID": 50210,
+      "TYPE_NAME": "SwfLabel",
+      "STEPS_ID": 295956,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 33,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283813,
+          "DATASETVALUE": "23223PGU5",
+          "DATA_SUMMARY_ID": 295834,
+          "SKIP": 0,
+          "STEPS_ID": 295958
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3945,
+      "TEST_CASE_NAME": "CREATE_NEW_SAFEKEEPING",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FHLB_PORTAL_SAFEKEEPING_CUSIP",
+      "OBJECT_ID": 50213,
+      "OBJECT_TYPE": "FHLB_PORTAL_SAFEKEEPING",
+      "QUICK_ACCESS": "webXPath:=//input[@id=\"P844-C0-C2-C0-C1-C0-F0\" and @data-typeahead-item=\"cusip\"]",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 393,
+      "OBJECT_NAME_ID": 50212,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 295958,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 34,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283911,
+          "DATASETVALUE": "{DOWN}",
+          "DATA_SUMMARY_ID": 295834,
+          "SKIP": 0,
+          "STEPS_ID": 296184
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3945,
+      "TEST_CASE_NAME": "CREATE_NEW_SAFEKEEPING",
+      "KEY_WORD_ID": 86,
+      "KEY_WORD_NAME": "PressKeys",
+      "OBJECT_HAPPY_NAME": "FHLB_PORTAL_SAFEKEEPING_CUSIP",
+      "OBJECT_ID": 50213,
+      "OBJECT_TYPE": "FHLB_PORTAL_SAFEKEEPING",
+      "QUICK_ACCESS": "webXPath:=//input[@id=\"P844-C0-C2-C0-C1-C0-F0\" and @data-typeahead-item=\"cusip\"]",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 393,
+      "OBJECT_NAME_ID": 50212,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 296184,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 35,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283910,
+          "DATASETVALUE": "1",
+          "DATA_SUMMARY_ID": 295834,
+          "SKIP": 0,
+          "STEPS_ID": 296185
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3945,
+      "TEST_CASE_NAME": "CREATE_NEW_SAFEKEEPING",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 296185,
+      "COLUMN_ROW_SETTING": "f",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 36,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283912,
+          "DATASETVALUE": "{tab}",
+          "DATA_SUMMARY_ID": 295834,
+          "SKIP": 0,
+          "STEPS_ID": 296186
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3945,
+      "TEST_CASE_NAME": "CREATE_NEW_SAFEKEEPING",
+      "KEY_WORD_ID": 86,
+      "KEY_WORD_NAME": "PressKeys",
+      "OBJECT_HAPPY_NAME": "FHLB_PORTAL_SAFEKEEPING_CUSIP",
+      "OBJECT_ID": 50213,
+      "OBJECT_TYPE": "FHLB_PORTAL_SAFEKEEPING",
+      "QUICK_ACCESS": "webXPath:=//input[@id=\"P844-C0-C2-C0-C1-C0-F0\" and @data-typeahead-item=\"cusip\"]",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 393,
+      "OBJECT_NAME_ID": 50212,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 296186,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 37,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283814,
+          "DATASETVALUE": "SECURITY_DESC",
+          "DATA_SUMMARY_ID": 295834,
+          "SKIP": 0,
+          "STEPS_ID": 295960
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3945,
+      "TEST_CASE_NAME": "CREATE_NEW_SAFEKEEPING",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "FHLB_PORTAL_SAFEKEEPING_SECU_DESC",
+      "OBJECT_ID": 50217,
+      "OBJECT_TYPE": "FHLB_PORTAL_SAFEKEEPING",
+      "QUICK_ACCESS": "webXPath:=(//p[contains(@class,'form-control fhlbb-uneditable')])[4]",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 393,
+      "OBJECT_NAME_ID": 50216,
+      "TYPE_NAME": "SwfLabel",
+      "STEPS_ID": 295960,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 38,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283815,
+          "DATASETVALUE": "5000",
+          "DATA_SUMMARY_ID": 295834,
+          "SKIP": 0,
+          "STEPS_ID": 295961
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3945,
+      "TEST_CASE_NAME": "CREATE_NEW_SAFEKEEPING",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FHLB_PORTAL_SAFEKEEPING_PAR_ORIG_FACE",
+      "OBJECT_ID": 50219,
+      "OBJECT_TYPE": "FHLB_PORTAL_SAFEKEEPING",
+      "QUICK_ACCESS": "webXPath:=(//input[@name='TradeInformation.ParOrigFace'])[1]",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 393,
+      "OBJECT_NAME_ID": 50218,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 295961,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 39,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283816,
+          "DATASETVALUE": "4999",
+          "DATA_SUMMARY_ID": 295834,
+          "SKIP": 0,
+          "STEPS_ID": 295964
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3945,
+      "TEST_CASE_NAME": "CREATE_NEW_SAFEKEEPING",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FHLB_PORTAL_SAFEKEEPING_COST_PROCEEDS",
+      "OBJECT_ID": 50221,
+      "OBJECT_TYPE": "FHLB_PORTAL_SAFEKEEPING",
+      "QUICK_ACCESS": "webXPath:=(//input[@name='TradeInformation.Cost'])[1]",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 393,
+      "OBJECT_NAME_ID": 50220,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 295964,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 40,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283818,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 295834,
+          "SKIP": 0,
+          "STEPS_ID": 295966
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3945,
+      "TEST_CASE_NAME": "CREATE_NEW_SAFEKEEPING",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "FHLB_PORTAL_SAFEKEEPING_ADDTRADE_BTN",
+      "OBJECT_ID": 50223,
+      "OBJECT_TYPE": "FHLB_PORTAL_SAFEKEEPING",
+      "QUICK_ACCESS": "webName:=AddTrade",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 393,
+      "OBJECT_NAME_ID": 50222,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 295966,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 41,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283907,
+          "DATASETVALUE": "1",
+          "DATA_SUMMARY_ID": 295834,
+          "SKIP": 0,
+          "STEPS_ID": 296174
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3945,
+      "TEST_CASE_NAME": "CREATE_NEW_SAFEKEEPING",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 296174,
+      "COLUMN_ROW_SETTING": "f",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 42,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283819,
+          "DATASETVALUE": "2350364W7",
+          "DATA_SUMMARY_ID": 295834,
+          "SKIP": 0,
+          "STEPS_ID": 295967
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3945,
+      "TEST_CASE_NAME": "CREATE_NEW_SAFEKEEPING",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "FHLB_PORTAL_SAFEKEEPING_CUSIP_2",
+      "OBJECT_ID": 50225,
+      "OBJECT_TYPE": "FHLB_PORTAL_SAFEKEEPING",
+      "QUICK_ACCESS": "webXPath:=(//input[@data-typeahead-array='citiCusips'])[4]",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 393,
+      "OBJECT_NAME_ID": 50224,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 295967,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 43,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283820,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 295834,
+          "SKIP": 0,
+          "STEPS_ID": 295968
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3945,
+      "TEST_CASE_NAME": "CREATE_NEW_SAFEKEEPING",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "FHLB_PORTAL_SAFEKEEPING_DEL_2",
+      "OBJECT_ID": 50227,
+      "OBJECT_TYPE": "FHLB_PORTAL_SAFEKEEPING",
+      "QUICK_ACCESS": "webXPath:=(//i[@class='lnr lnr-cross'])[2]",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 393,
+      "OBJECT_NAME_ID": 50226,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 295968,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 44,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283908,
+          "DATASETVALUE": "1",
+          "DATA_SUMMARY_ID": 295834,
+          "SKIP": 0,
+          "STEPS_ID": 296176
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3945,
+      "TEST_CASE_NAME": "CREATE_NEW_SAFEKEEPING",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 296176,
+      "COLUMN_ROW_SETTING": "f",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 45,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283821,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 295834,
+          "SKIP": 0,
+          "STEPS_ID": 295969
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3945,
+      "TEST_CASE_NAME": "CREATE_NEW_SAFEKEEPING",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "FHLB_PORTAL_SAFEKEEPING_DEL_SUBMIT",
+      "OBJECT_ID": 50229,
+      "OBJECT_TYPE": "FHLB_PORTAL_SAFEKEEPING",
+      "QUICK_ACCESS": "webXPath:=(//button[@name='Submit'])[1]",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 393,
+      "OBJECT_NAME_ID": 50228,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 295969,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 46,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283817,
+          "DATASETVALUE": "3",
+          "DATA_SUMMARY_ID": 295834,
+          "SKIP": 0,
+          "STEPS_ID": 295970
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3945,
+      "TEST_CASE_NAME": "CREATE_NEW_SAFEKEEPING",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 295970,
+      "COLUMN_ROW_SETTING": "f",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 47,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283834,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 295834,
+          "SKIP": 0,
+          "STEPS_ID": 295997
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3945,
+      "TEST_CASE_NAME": "CREATE_NEW_SAFEKEEPING",
+      "KEY_WORD_ID": 82,
+      "KEY_WORD_NAME": "ScrollWindow",
+      "OBJECT_HAPPY_NAME": "FHLB_PORTAL_SAFEKEEPING_TRADE_SUBMIT",
+      "OBJECT_ID": 50231,
+      "OBJECT_TYPE": "FHLB_PORTAL_SAFEKEEPING",
+      "QUICK_ACCESS": "webName:=Submit",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 393,
+      "OBJECT_NAME_ID": 50230,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 295997,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 48,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283909,
+          "DATASETVALUE": "1",
+          "DATA_SUMMARY_ID": 295834,
+          "SKIP": 0,
+          "STEPS_ID": 296178
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3945,
+      "TEST_CASE_NAME": "CREATE_NEW_SAFEKEEPING",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 296178,
+      "COLUMN_ROW_SETTING": "f",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 49,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283833,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 295834,
+          "SKIP": 0,
+          "STEPS_ID": 295971
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3945,
+      "TEST_CASE_NAME": "CREATE_NEW_SAFEKEEPING",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "FHLB_PORTAL_SAFEKEEPING_TRADE_SUBMIT",
+      "OBJECT_ID": 50231,
+      "OBJECT_TYPE": "FHLB_PORTAL_SAFEKEEPING",
+      "QUICK_ACCESS": "webName:=Submit",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 393,
+      "OBJECT_NAME_ID": 50230,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 295971,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 50,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283823,
+          "DATASETVALUE": "3",
+          "DATA_SUMMARY_ID": 295834,
+          "SKIP": 0,
+          "STEPS_ID": 295978
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3945,
+      "TEST_CASE_NAME": "CREATE_NEW_SAFEKEEPING",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 295978,
+      "COLUMN_ROW_SETTING": "f",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 51,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283824,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 295834,
+          "SKIP": 0,
+          "STEPS_ID": 295979
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3945,
+      "TEST_CASE_NAME": "CREATE_NEW_SAFEKEEPING",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "FHLB_PORTAL_SAFEKEEPING_TRADE_SUBMIT",
+      "OBJECT_ID": 50231,
+      "OBJECT_TYPE": "FHLB_PORTAL_SAFEKEEPING",
+      "QUICK_ACCESS": "webName:=Submit",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 393,
+      "OBJECT_NAME_ID": 50230,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 295979,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 52,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283836,
+          "DATASETVALUE": "2",
+          "DATA_SUMMARY_ID": 295834,
+          "SKIP": 0,
+          "STEPS_ID": 296001
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3945,
+      "TEST_CASE_NAME": "CREATE_NEW_SAFEKEEPING",
+      "KEY_WORD_ID": 37,
+      "KEY_WORD_NAME": "WaitForSeconds",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 296001,
+      "COLUMN_ROW_SETTING": "f",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 53,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283837,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 295834,
+          "SKIP": 0,
+          "STEPS_ID": 296002
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3945,
+      "TEST_CASE_NAME": "CREATE_NEW_SAFEKEEPING",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "FHLB_PORTAL_SAFEKEEPING_VIEWLIST_BTN",
+      "OBJECT_ID": 50233,
+      "OBJECT_TYPE": "FHLB_PORTAL_SAFEKEEPING",
+      "QUICK_ACCESS": "webName:=ViewSafekeepingList",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 393,
+      "OBJECT_NAME_ID": 50232,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 296002,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 54,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 283849,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 295834,
+          "SKIP": 0,
+          "STEPS_ID": 296033
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3945,
+      "TEST_CASE_NAME": "CREATE_NEW_SAFEKEEPING",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "FHLB_PORTAL_MAIN_LOGOUT_VIEW",
+      "OBJECT_ID": 50252,
+      "OBJECT_TYPE": "FHLB_PORTAL_SAFEKEEPING",
+      "QUICK_ACCESS": "webXPath:=(//button[@class='fhlbb-logout'])[2]",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 393,
+      "OBJECT_NAME_ID": 50251,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 296033,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 55,
       "VALUE_SETTING": null
     }
   ]

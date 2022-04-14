@@ -1,0 +1,6034 @@
+{
+  "currentSyncroStatus": 0,
+  "assignedApplications": [
+    195,
+    194,
+    -1
+  ],
+  "assignedTestSuiteIDs": [
+    1464
+  ],
+  "version": null,
+  "assignedDataSets": [
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 421136,
+      "ALIAS_NAME": "GAUSDCMS_01",
+      "DESCRIPTION_INFO": "Compare between 6.0 and 6.2"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 421140,
+      "ALIAS_NAME": "GAUSDCMT_01",
+      "DESCRIPTION_INFO": "Compare between 6.0 and 6.2"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 421143,
+      "ALIAS_NAME": "GAUSDCP_01",
+      "DESCRIPTION_INFO": "Compare between 6.0 and 6.2"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 421145,
+      "ALIAS_NAME": "GAUSDPRIME_01",
+      "DESCRIPTION_INFO": "Compare between 6.0 and 6.2"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 421149,
+      "ALIAS_NAME": "GAUSDFFUND_01",
+      "DESCRIPTION_INFO": "Compare between 6.0 and 6.2"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 417994,
+      "ALIAS_NAME": "GAFIXUSD_01",
+      "DESCRIPTION_INFO": "Compare between 6.0 and 6.2"
+    },
+    {
+      "recordStatus": 0,
+      "DATA_SUMMARY_ID": 421134,
+      "ALIAS_NAME": "GAFLTUSD_01",
+      "DESCRIPTION_INFO": "Compare between 6.0 and 6.2"
+    }
+  ],
+  "allSteps": [
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263874,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 417996
+        },
+        {
+          "Data_Setting_Id": 265261,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 417996
+        },
+        {
+          "Data_Setting_Id": 265300,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 417996
+        },
+        {
+          "Data_Setting_Id": 265339,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 417996
+        },
+        {
+          "Data_Setting_Id": 265378,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 417996
+        },
+        {
+          "Data_Setting_Id": 265456,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 417996
+        },
+        {
+          "Data_Setting_Id": 265417,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 417996
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 134311,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys |Finastra ){0,1}(FusionCapital |Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 125902,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 417996,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263874,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 417996
+        },
+        {
+          "Data_Setting_Id": 265261,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 417996
+        },
+        {
+          "Data_Setting_Id": 265300,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 417996
+        },
+        {
+          "Data_Setting_Id": 265339,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 417996
+        },
+        {
+          "Data_Setting_Id": 265378,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 417996
+        },
+        {
+          "Data_Setting_Id": 265456,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 417996
+        },
+        {
+          "Data_Setting_Id": 265417,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 417996
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 152274,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys |Finastra ){0,1}(FusionCapital |Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 125902,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 417996,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": null,
+      "RUN_ORDER": 1,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263864,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418000
+        },
+        {
+          "Data_Setting_Id": 265251,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418000
+        },
+        {
+          "Data_Setting_Id": 265290,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418000
+        },
+        {
+          "Data_Setting_Id": 265329,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418000
+        },
+        {
+          "Data_Setting_Id": 265368,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418000
+        },
+        {
+          "Data_Setting_Id": 265446,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418000
+        },
+        {
+          "Data_Setting_Id": 265407,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418000
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 134311,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys |Finastra ){0,1}(FusionCapital |Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 125902,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 418000,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 2,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263864,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418000
+        },
+        {
+          "Data_Setting_Id": 265251,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418000
+        },
+        {
+          "Data_Setting_Id": 265290,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418000
+        },
+        {
+          "Data_Setting_Id": 265329,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418000
+        },
+        {
+          "Data_Setting_Id": 265368,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418000
+        },
+        {
+          "Data_Setting_Id": 265446,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418000
+        },
+        {
+          "Data_Setting_Id": 265407,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418000
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 152274,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys |Finastra ){0,1}(FusionCapital |Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 125902,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 418000,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 2,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263866,
+          "DATASETVALUE": "Generic Asset Definition",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418002
+        },
+        {
+          "Data_Setting_Id": 265253,
+          "DATASETVALUE": "Generic Asset Definition",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418002
+        },
+        {
+          "Data_Setting_Id": 265292,
+          "DATASETVALUE": "Generic Asset Definition",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418002
+        },
+        {
+          "Data_Setting_Id": 265331,
+          "DATASETVALUE": "Generic Asset Definition",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418002
+        },
+        {
+          "Data_Setting_Id": 265370,
+          "DATASETVALUE": "Generic Asset Definition",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418002
+        },
+        {
+          "Data_Setting_Id": 265448,
+          "DATASETVALUE": "Generic Asset Definition",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418002
+        },
+        {
+          "Data_Setting_Id": 265409,
+          "DATASETVALUE": "Generic Asset Definition",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418002
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 12,
+      "KEY_WORD_NAME": "LaunchApplication",
+      "OBJECT_HAPPY_NAME": "ApplicationName",
+      "OBJECT_ID": 136576,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockAreaTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 126579,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 418002,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 3,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263866,
+          "DATASETVALUE": "Generic Asset Definition",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418002
+        },
+        {
+          "Data_Setting_Id": 265253,
+          "DATASETVALUE": "Generic Asset Definition",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418002
+        },
+        {
+          "Data_Setting_Id": 265292,
+          "DATASETVALUE": "Generic Asset Definition",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418002
+        },
+        {
+          "Data_Setting_Id": 265331,
+          "DATASETVALUE": "Generic Asset Definition",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418002
+        },
+        {
+          "Data_Setting_Id": 265370,
+          "DATASETVALUE": "Generic Asset Definition",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418002
+        },
+        {
+          "Data_Setting_Id": 265448,
+          "DATASETVALUE": "Generic Asset Definition",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418002
+        },
+        {
+          "Data_Setting_Id": 265409,
+          "DATASETVALUE": "Generic Asset Definition",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418002
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 12,
+      "KEY_WORD_NAME": "LaunchApplication",
+      "OBJECT_HAPPY_NAME": "ApplicationName",
+      "OBJECT_ID": 154205,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_toolbarsDockAreaTop",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 126579,
+      "TYPE_NAME": "SwfToolBar",
+      "STEPS_ID": 418002,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 3,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263869,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418005
+        },
+        {
+          "Data_Setting_Id": 265256,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418005
+        },
+        {
+          "Data_Setting_Id": 265295,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418005
+        },
+        {
+          "Data_Setting_Id": 265334,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418005
+        },
+        {
+          "Data_Setting_Id": 265373,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418005
+        },
+        {
+          "Data_Setting_Id": 265451,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418005
+        },
+        {
+          "Data_Setting_Id": 265412,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418005
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF",
+      "OBJECT_ID": 154520,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\nText:=^((Misys |Finastra ){0,1}(FusionCapital |Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 126119,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 418005,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 4,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263869,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418005
+        },
+        {
+          "Data_Setting_Id": 265256,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418005
+        },
+        {
+          "Data_Setting_Id": 265295,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418005
+        },
+        {
+          "Data_Setting_Id": 265334,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418005
+        },
+        {
+          "Data_Setting_Id": 265373,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418005
+        },
+        {
+          "Data_Setting_Id": 265451,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418005
+        },
+        {
+          "Data_Setting_Id": 265412,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418005
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF",
+      "OBJECT_ID": 137066,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\nText:=^((Misys |Finastra ){0,1}(FusionCapital |Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 126119,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 418005,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 4,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263867,
+          "DATASETVALUE": "Desktop Menu;Generic Asset Definition;Open.*",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418003
+        },
+        {
+          "Data_Setting_Id": 265254,
+          "DATASETVALUE": "Desktop Menu;Generic Asset Definition;Open.*",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418003
+        },
+        {
+          "Data_Setting_Id": 265293,
+          "DATASETVALUE": "Desktop Menu;Generic Asset Definition;Open.*",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418003
+        },
+        {
+          "Data_Setting_Id": 265332,
+          "DATASETVALUE": "Desktop Menu;Generic Asset Definition;Open.*",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418003
+        },
+        {
+          "Data_Setting_Id": 265371,
+          "DATASETVALUE": "Desktop Menu;Generic Asset Definition;Open.*",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418003
+        },
+        {
+          "Data_Setting_Id": 265449,
+          "DATASETVALUE": "Desktop Menu;Generic Asset Definition;Open.*",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418003
+        },
+        {
+          "Data_Setting_Id": 265410,
+          "DATASETVALUE": "Desktop Menu;Generic Asset Definition;Open.*",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418003
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 22,
+      "KEY_WORD_NAME": "SelectMenuItem",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 418003,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 5,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263872,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418008
+        },
+        {
+          "Data_Setting_Id": 265259,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418008
+        },
+        {
+          "Data_Setting_Id": 265298,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418008
+        },
+        {
+          "Data_Setting_Id": 265337,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418008
+        },
+        {
+          "Data_Setting_Id": 265376,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418008
+        },
+        {
+          "Data_Setting_Id": 265454,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418008
+        },
+        {
+          "Data_Setting_Id": 265415,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418008
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "STATIC_DEF_FINDER",
+      "OBJECT_ID": 135515,
+      "OBJECT_TYPE": "STATIC_DEF_FINDER",
+      "QUICK_ACCESS": "swfname:=DetachedFormHolder",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 125989,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 418008,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 6,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263872,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418008
+        },
+        {
+          "Data_Setting_Id": 265259,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418008
+        },
+        {
+          "Data_Setting_Id": 265298,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418008
+        },
+        {
+          "Data_Setting_Id": 265337,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418008
+        },
+        {
+          "Data_Setting_Id": 265376,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418008
+        },
+        {
+          "Data_Setting_Id": 265454,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418008
+        },
+        {
+          "Data_Setting_Id": 265415,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418008
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "STATIC_DEF_FINDER",
+      "OBJECT_ID": 153380,
+      "OBJECT_TYPE": "STATIC_DEF_FINDER",
+      "QUICK_ACCESS": "swfname:=DetachedFormHolder",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 125989,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 418008,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 6,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263871,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418007
+        },
+        {
+          "Data_Setting_Id": 265258,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418007
+        },
+        {
+          "Data_Setting_Id": 265297,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418007
+        },
+        {
+          "Data_Setting_Id": 265336,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418007
+        },
+        {
+          "Data_Setting_Id": 265375,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418007
+        },
+        {
+          "Data_Setting_Id": 265453,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418007
+        },
+        {
+          "Data_Setting_Id": 265414,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418007
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "STATIC_DEF_FINDER",
+      "OBJECT_ID": 135515,
+      "OBJECT_TYPE": "STATIC_DEF_FINDER",
+      "QUICK_ACCESS": "swfname:=DetachedFormHolder",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 125989,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 418007,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 7,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263871,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418007
+        },
+        {
+          "Data_Setting_Id": 265258,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418007
+        },
+        {
+          "Data_Setting_Id": 265297,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418007
+        },
+        {
+          "Data_Setting_Id": 265336,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418007
+        },
+        {
+          "Data_Setting_Id": 265375,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418007
+        },
+        {
+          "Data_Setting_Id": 265453,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418007
+        },
+        {
+          "Data_Setting_Id": 265414,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418007
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 14,
+      "KEY_WORD_NAME": "MaximizeWindow",
+      "OBJECT_HAPPY_NAME": "STATIC_DEF_FINDER",
+      "OBJECT_ID": 153380,
+      "OBJECT_TYPE": "STATIC_DEF_FINDER",
+      "QUICK_ACCESS": "swfname:=DetachedFormHolder",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 125989,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 418007,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 7,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263868,
+          "DATASETVALUE": "FIXUSD_S",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418004
+        },
+        {
+          "Data_Setting_Id": 265255,
+          "DATASETVALUE": "FLTUSD",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418004
+        },
+        {
+          "Data_Setting_Id": 265294,
+          "DATASETVALUE": "USDCMS",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418004
+        },
+        {
+          "Data_Setting_Id": 265333,
+          "DATASETVALUE": "USDCMT",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418004
+        },
+        {
+          "Data_Setting_Id": 265372,
+          "DATASETVALUE": "USDCP",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418004
+        },
+        {
+          "Data_Setting_Id": 265450,
+          "DATASETVALUE": "USDFFUND",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418004
+        },
+        {
+          "Data_Setting_Id": 265411,
+          "DATASETVALUE": "USDPRIME",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418004
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "STATIC_DEF_FINDER_GASSEST_ASSET_ID",
+      "OBJECT_ID": 159565,
+      "OBJECT_TYPE": "STATIC_DEF_FINDER",
+      "QUICK_ACCESS": "swfname:=_dmAssetIdPrmtString",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 132245,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 418004,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 8,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263868,
+          "DATASETVALUE": "FIXUSD_S",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418004
+        },
+        {
+          "Data_Setting_Id": 265255,
+          "DATASETVALUE": "FLTUSD",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418004
+        },
+        {
+          "Data_Setting_Id": 265294,
+          "DATASETVALUE": "USDCMS",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418004
+        },
+        {
+          "Data_Setting_Id": 265333,
+          "DATASETVALUE": "USDCMT",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418004
+        },
+        {
+          "Data_Setting_Id": 265372,
+          "DATASETVALUE": "USDCP",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418004
+        },
+        {
+          "Data_Setting_Id": 265450,
+          "DATASETVALUE": "USDFFUND",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418004
+        },
+        {
+          "Data_Setting_Id": 265411,
+          "DATASETVALUE": "USDPRIME",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418004
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 10,
+      "KEY_WORD_NAME": "FillEdit",
+      "OBJECT_HAPPY_NAME": "STATIC_DEF_FINDER_GASSEST_ASSET_ID",
+      "OBJECT_ID": 141948,
+      "OBJECT_TYPE": "STATIC_DEF_FINDER",
+      "QUICK_ACCESS": "swfname:=_dmAssetIdPrmtString",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 132245,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 418004,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 8,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263865,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418001
+        },
+        {
+          "Data_Setting_Id": 265252,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418001
+        },
+        {
+          "Data_Setting_Id": 265291,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418001
+        },
+        {
+          "Data_Setting_Id": 265330,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418001
+        },
+        {
+          "Data_Setting_Id": 265369,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418001
+        },
+        {
+          "Data_Setting_Id": 265447,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418001
+        },
+        {
+          "Data_Setting_Id": 265408,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418001
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "STATIC_DEF_FIND_NOW_BTN",
+      "OBJECT_ID": 135259,
+      "OBJECT_TYPE": "STATIC_DEF_FINDER",
+      "QUICK_ACCESS": "swfname:=_findNowButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 132250,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 418001,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 9,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263865,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418001
+        },
+        {
+          "Data_Setting_Id": 265252,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418001
+        },
+        {
+          "Data_Setting_Id": 265291,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418001
+        },
+        {
+          "Data_Setting_Id": 265330,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418001
+        },
+        {
+          "Data_Setting_Id": 265369,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418001
+        },
+        {
+          "Data_Setting_Id": 265447,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418001
+        },
+        {
+          "Data_Setting_Id": 265408,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418001
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "STATIC_DEF_FIND_NOW_BTN",
+      "OBJECT_ID": 152853,
+      "OBJECT_TYPE": "STATIC_DEF_FINDER",
+      "QUICK_ACCESS": "swfname:=_findNowButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 132250,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 418001,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 9,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263873,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418009
+        },
+        {
+          "Data_Setting_Id": 265260,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418009
+        },
+        {
+          "Data_Setting_Id": 265299,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418009
+        },
+        {
+          "Data_Setting_Id": 265338,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418009
+        },
+        {
+          "Data_Setting_Id": 265377,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418009
+        },
+        {
+          "Data_Setting_Id": 265455,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418009
+        },
+        {
+          "Data_Setting_Id": 265416,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418009
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "STATIC_DEF_OK_BTN",
+      "OBJECT_ID": 136444,
+      "OBJECT_TYPE": "STATIC_DEF_FINDER",
+      "QUICK_ACCESS": "swfname:=_okButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 130289,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 418009,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 10,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263873,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418009
+        },
+        {
+          "Data_Setting_Id": 265260,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418009
+        },
+        {
+          "Data_Setting_Id": 265299,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418009
+        },
+        {
+          "Data_Setting_Id": 265338,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418009
+        },
+        {
+          "Data_Setting_Id": 265377,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418009
+        },
+        {
+          "Data_Setting_Id": 265455,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418009
+        },
+        {
+          "Data_Setting_Id": 265416,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418009
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "STATIC_DEF_OK_BTN",
+      "OBJECT_ID": 154739,
+      "OBJECT_TYPE": "STATIC_DEF_FINDER",
+      "QUICK_ACCESS": "swfname:=_okButton",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 130289,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 418009,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 10,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263870,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418006
+        },
+        {
+          "Data_Setting_Id": 265257,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418006
+        },
+        {
+          "Data_Setting_Id": 265296,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418006
+        },
+        {
+          "Data_Setting_Id": 265335,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418006
+        },
+        {
+          "Data_Setting_Id": 265374,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418006
+        },
+        {
+          "Data_Setting_Id": 265452,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418006
+        },
+        {
+          "Data_Setting_Id": 265413,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418006
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF",
+      "OBJECT_ID": 154520,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\nText:=^((Misys |Finastra ){0,1}(FusionCapital |Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 126119,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 418006,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 11,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263870,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418006
+        },
+        {
+          "Data_Setting_Id": 265257,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418006
+        },
+        {
+          "Data_Setting_Id": 265296,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418006
+        },
+        {
+          "Data_Setting_Id": 265335,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418006
+        },
+        {
+          "Data_Setting_Id": 265374,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418006
+        },
+        {
+          "Data_Setting_Id": 265452,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418006
+        },
+        {
+          "Data_Setting_Id": 265413,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418006
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF",
+      "OBJECT_ID": 137066,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "is owned window:=False\nis child window:=False\nText:=^((Misys |Finastra ){0,1}(FusionCapital |Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 126119,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 418006,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 11,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263885,
+          "DATASETVALUE": "GASSEST_DEF_ASSET_ID",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418034
+        },
+        {
+          "Data_Setting_Id": 265233,
+          "DATASETVALUE": "GASSEST_DEF_ASSET_ID",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418034
+        },
+        {
+          "Data_Setting_Id": 265272,
+          "DATASETVALUE": "GASSEST_DEF_ASSET_ID",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418034
+        },
+        {
+          "Data_Setting_Id": 265311,
+          "DATASETVALUE": "GASSEST_DEF_ASSET_ID",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418034
+        },
+        {
+          "Data_Setting_Id": 265350,
+          "DATASETVALUE": "GASSEST_DEF_ASSET_ID",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418034
+        },
+        {
+          "Data_Setting_Id": 265428,
+          "DATASETVALUE": "GASSEST_DEF_ASSET_ID",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418034
+        },
+        {
+          "Data_Setting_Id": 265389,
+          "DATASETVALUE": "GASSEST_DEF_ASSET_ID",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418034
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF_ASSET_ID",
+      "OBJECT_ID": 158726,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=_dmAssetIdString",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 126994,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 418034,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 12,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263885,
+          "DATASETVALUE": "GASSEST_DEF_ASSET_ID",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418034
+        },
+        {
+          "Data_Setting_Id": 265233,
+          "DATASETVALUE": "GASSEST_DEF_ASSET_ID",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418034
+        },
+        {
+          "Data_Setting_Id": 265272,
+          "DATASETVALUE": "GASSEST_DEF_ASSET_ID",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418034
+        },
+        {
+          "Data_Setting_Id": 265311,
+          "DATASETVALUE": "GASSEST_DEF_ASSET_ID",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418034
+        },
+        {
+          "Data_Setting_Id": 265350,
+          "DATASETVALUE": "GASSEST_DEF_ASSET_ID",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418034
+        },
+        {
+          "Data_Setting_Id": 265428,
+          "DATASETVALUE": "GASSEST_DEF_ASSET_ID",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418034
+        },
+        {
+          "Data_Setting_Id": 265389,
+          "DATASETVALUE": "GASSEST_DEF_ASSET_ID",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418034
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF_ASSET_ID",
+      "OBJECT_ID": 141474,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=_dmAssetIdString",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 126994,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 418034,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 12,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263894,
+          "DATASETVALUE": "GASSEST_DEF_BASIS",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418043
+        },
+        {
+          "Data_Setting_Id": 265242,
+          "DATASETVALUE": "GASSEST_DEF_BASIS",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418043
+        },
+        {
+          "Data_Setting_Id": 265281,
+          "DATASETVALUE": "GASSEST_DEF_BASIS",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418043
+        },
+        {
+          "Data_Setting_Id": 265320,
+          "DATASETVALUE": "GASSEST_DEF_BASIS",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418043
+        },
+        {
+          "Data_Setting_Id": 265359,
+          "DATASETVALUE": "GASSEST_DEF_BASIS",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418043
+        },
+        {
+          "Data_Setting_Id": 265437,
+          "DATASETVALUE": "GASSEST_DEF_BASIS",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418043
+        },
+        {
+          "Data_Setting_Id": 265398,
+          "DATASETVALUE": "GASSEST_DEF_BASIS",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418043
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF_BASIS",
+      "OBJECT_ID": 157069,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=_basisToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 130812,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 418043,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 13,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263894,
+          "DATASETVALUE": "GASSEST_DEF_BASIS",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418043
+        },
+        {
+          "Data_Setting_Id": 265242,
+          "DATASETVALUE": "GASSEST_DEF_BASIS",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418043
+        },
+        {
+          "Data_Setting_Id": 265281,
+          "DATASETVALUE": "GASSEST_DEF_BASIS",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418043
+        },
+        {
+          "Data_Setting_Id": 265320,
+          "DATASETVALUE": "GASSEST_DEF_BASIS",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418043
+        },
+        {
+          "Data_Setting_Id": 265359,
+          "DATASETVALUE": "GASSEST_DEF_BASIS",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418043
+        },
+        {
+          "Data_Setting_Id": 265437,
+          "DATASETVALUE": "GASSEST_DEF_BASIS",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418043
+        },
+        {
+          "Data_Setting_Id": 265398,
+          "DATASETVALUE": "GASSEST_DEF_BASIS",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418043
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF_BASIS",
+      "OBJECT_ID": 139317,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=_basisToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 130812,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 418043,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 13,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263879,
+          "DATASETVALUE": "GASSEST_DEF_CCY",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418027
+        },
+        {
+          "Data_Setting_Id": 265227,
+          "DATASETVALUE": "GASSEST_DEF_CCY",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418027
+        },
+        {
+          "Data_Setting_Id": 265266,
+          "DATASETVALUE": "GASSEST_DEF_CCY",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418027
+        },
+        {
+          "Data_Setting_Id": 265305,
+          "DATASETVALUE": "GASSEST_DEF_CCY",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418027
+        },
+        {
+          "Data_Setting_Id": 265344,
+          "DATASETVALUE": "GASSEST_DEF_CCY",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418027
+        },
+        {
+          "Data_Setting_Id": 265422,
+          "DATASETVALUE": "GASSEST_DEF_CCY",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418027
+        },
+        {
+          "Data_Setting_Id": 265383,
+          "DATASETVALUE": "GASSEST_DEF_CCY",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418027
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF_CCY",
+      "OBJECT_ID": 135923,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=_ccyCcy",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 131828,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 418027,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 14,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263879,
+          "DATASETVALUE": "GASSEST_DEF_CCY",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418027
+        },
+        {
+          "Data_Setting_Id": 265227,
+          "DATASETVALUE": "GASSEST_DEF_CCY",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418027
+        },
+        {
+          "Data_Setting_Id": 265266,
+          "DATASETVALUE": "GASSEST_DEF_CCY",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418027
+        },
+        {
+          "Data_Setting_Id": 265305,
+          "DATASETVALUE": "GASSEST_DEF_CCY",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418027
+        },
+        {
+          "Data_Setting_Id": 265344,
+          "DATASETVALUE": "GASSEST_DEF_CCY",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418027
+        },
+        {
+          "Data_Setting_Id": 265422,
+          "DATASETVALUE": "GASSEST_DEF_CCY",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418027
+        },
+        {
+          "Data_Setting_Id": 265383,
+          "DATASETVALUE": "GASSEST_DEF_CCY",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418027
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF_CCY",
+      "OBJECT_ID": 152811,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=_ccyCcy",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 131828,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 418027,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 14,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263900,
+          "DATASETVALUE": "GASSEST_DEF_END",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418049
+        },
+        {
+          "Data_Setting_Id": 265248,
+          "DATASETVALUE": "GASSEST_DEF_END",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418049
+        },
+        {
+          "Data_Setting_Id": 265287,
+          "DATASETVALUE": "GASSEST_DEF_END",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418049
+        },
+        {
+          "Data_Setting_Id": 265326,
+          "DATASETVALUE": "GASSEST_DEF_END",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418049
+        },
+        {
+          "Data_Setting_Id": 265365,
+          "DATASETVALUE": "GASSEST_DEF_END",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418049
+        },
+        {
+          "Data_Setting_Id": 265443,
+          "DATASETVALUE": "GASSEST_DEF_END",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418049
+        },
+        {
+          "Data_Setting_Id": 265404,
+          "DATASETVALUE": "GASSEST_DEF_END",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418049
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF_END",
+      "OBJECT_ID": 134833,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=_matDate",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 128873,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 418049,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 15,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263900,
+          "DATASETVALUE": "GASSEST_DEF_END",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418049
+        },
+        {
+          "Data_Setting_Id": 265248,
+          "DATASETVALUE": "GASSEST_DEF_END",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418049
+        },
+        {
+          "Data_Setting_Id": 265287,
+          "DATASETVALUE": "GASSEST_DEF_END",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418049
+        },
+        {
+          "Data_Setting_Id": 265326,
+          "DATASETVALUE": "GASSEST_DEF_END",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418049
+        },
+        {
+          "Data_Setting_Id": 265365,
+          "DATASETVALUE": "GASSEST_DEF_END",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418049
+        },
+        {
+          "Data_Setting_Id": 265443,
+          "DATASETVALUE": "GASSEST_DEF_END",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418049
+        },
+        {
+          "Data_Setting_Id": 265404,
+          "DATASETVALUE": "GASSEST_DEF_END",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418049
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF_END",
+      "OBJECT_ID": 152693,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=_matDate",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 128873,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 418049,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 15,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263880,
+          "DATASETVALUE": "GASSEST_DEF_INDEX",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418028
+        },
+        {
+          "Data_Setting_Id": 265228,
+          "DATASETVALUE": "GASSEST_DEF_INDEX",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418028
+        },
+        {
+          "Data_Setting_Id": 265267,
+          "DATASETVALUE": "GASSEST_DEF_INDEX",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418028
+        },
+        {
+          "Data_Setting_Id": 265306,
+          "DATASETVALUE": "GASSEST_DEF_INDEX",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418028
+        },
+        {
+          "Data_Setting_Id": 265345,
+          "DATASETVALUE": "GASSEST_DEF_INDEX",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418028
+        },
+        {
+          "Data_Setting_Id": 265423,
+          "DATASETVALUE": "GASSEST_DEF_INDEX",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418028
+        },
+        {
+          "Data_Setting_Id": 265384,
+          "DATASETVALUE": "GASSEST_DEF_INDEX",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418028
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF_INDEX",
+      "OBJECT_ID": 137067,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=_indexEntry",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 129856,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 418028,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 16,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263880,
+          "DATASETVALUE": "GASSEST_DEF_INDEX",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418028
+        },
+        {
+          "Data_Setting_Id": 265228,
+          "DATASETVALUE": "GASSEST_DEF_INDEX",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418028
+        },
+        {
+          "Data_Setting_Id": 265267,
+          "DATASETVALUE": "GASSEST_DEF_INDEX",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418028
+        },
+        {
+          "Data_Setting_Id": 265306,
+          "DATASETVALUE": "GASSEST_DEF_INDEX",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418028
+        },
+        {
+          "Data_Setting_Id": 265345,
+          "DATASETVALUE": "GASSEST_DEF_INDEX",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418028
+        },
+        {
+          "Data_Setting_Id": 265423,
+          "DATASETVALUE": "GASSEST_DEF_INDEX",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418028
+        },
+        {
+          "Data_Setting_Id": 265384,
+          "DATASETVALUE": "GASSEST_DEF_INDEX",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418028
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF_INDEX",
+      "OBJECT_ID": 154664,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=_indexEntry",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 129856,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 418028,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 16,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263876,
+          "DATASETVALUE": "GASSEST_DEF_MARGIN",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418023
+        },
+        {
+          "Data_Setting_Id": 265224,
+          "DATASETVALUE": "GASSEST_DEF_MARGIN",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418023
+        },
+        {
+          "Data_Setting_Id": 265263,
+          "DATASETVALUE": "GASSEST_DEF_MARGIN",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418023
+        },
+        {
+          "Data_Setting_Id": 265302,
+          "DATASETVALUE": "GASSEST_DEF_MARGIN",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418023
+        },
+        {
+          "Data_Setting_Id": 265341,
+          "DATASETVALUE": "GASSEST_DEF_MARGIN",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418023
+        },
+        {
+          "Data_Setting_Id": 265419,
+          "DATASETVALUE": "GASSEST_DEF_MARGIN",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418023
+        },
+        {
+          "Data_Setting_Id": 265380,
+          "DATASETVALUE": "GASSEST_DEF_MARGIN",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418023
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF_MARGIN",
+      "OBJECT_ID": 160348,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=_addOnSpread",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 130813,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 418023,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 17,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263876,
+          "DATASETVALUE": "GASSEST_DEF_MARGIN",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418023
+        },
+        {
+          "Data_Setting_Id": 265224,
+          "DATASETVALUE": "GASSEST_DEF_MARGIN",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418023
+        },
+        {
+          "Data_Setting_Id": 265263,
+          "DATASETVALUE": "GASSEST_DEF_MARGIN",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418023
+        },
+        {
+          "Data_Setting_Id": 265302,
+          "DATASETVALUE": "GASSEST_DEF_MARGIN",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418023
+        },
+        {
+          "Data_Setting_Id": 265341,
+          "DATASETVALUE": "GASSEST_DEF_MARGIN",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418023
+        },
+        {
+          "Data_Setting_Id": 265419,
+          "DATASETVALUE": "GASSEST_DEF_MARGIN",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418023
+        },
+        {
+          "Data_Setting_Id": 265380,
+          "DATASETVALUE": "GASSEST_DEF_MARGIN",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418023
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF_MARGIN",
+      "OBJECT_ID": 142575,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=_addOnSpread",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 130813,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 418023,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 17,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263881,
+          "DATASETVALUE": "GASSEST_DEF_NOTICE",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418029
+        },
+        {
+          "Data_Setting_Id": 265229,
+          "DATASETVALUE": "GASSEST_DEF_NOTICE",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418029
+        },
+        {
+          "Data_Setting_Id": 265268,
+          "DATASETVALUE": "GASSEST_DEF_NOTICE",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418029
+        },
+        {
+          "Data_Setting_Id": 265307,
+          "DATASETVALUE": "GASSEST_DEF_NOTICE",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418029
+        },
+        {
+          "Data_Setting_Id": 265346,
+          "DATASETVALUE": "GASSEST_DEF_NOTICE",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418029
+        },
+        {
+          "Data_Setting_Id": 265424,
+          "DATASETVALUE": "GASSEST_DEF_NOTICE",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418029
+        },
+        {
+          "Data_Setting_Id": 265385,
+          "DATASETVALUE": "GASSEST_DEF_NOTICE",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418029
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF_NOTICE",
+      "OBJECT_ID": 140394,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=_rOLLNoticeDaysNum",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 129857,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 418029,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 18,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263881,
+          "DATASETVALUE": "GASSEST_DEF_NOTICE",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418029
+        },
+        {
+          "Data_Setting_Id": 265229,
+          "DATASETVALUE": "GASSEST_DEF_NOTICE",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418029
+        },
+        {
+          "Data_Setting_Id": 265268,
+          "DATASETVALUE": "GASSEST_DEF_NOTICE",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418029
+        },
+        {
+          "Data_Setting_Id": 265307,
+          "DATASETVALUE": "GASSEST_DEF_NOTICE",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418029
+        },
+        {
+          "Data_Setting_Id": 265346,
+          "DATASETVALUE": "GASSEST_DEF_NOTICE",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418029
+        },
+        {
+          "Data_Setting_Id": 265424,
+          "DATASETVALUE": "GASSEST_DEF_NOTICE",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418029
+        },
+        {
+          "Data_Setting_Id": 265385,
+          "DATASETVALUE": "GASSEST_DEF_NOTICE",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418029
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF_NOTICE",
+      "OBJECT_ID": 158049,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=_rOLLNoticeDaysNum",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 129857,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 418029,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 18,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263875,
+          "DATASETVALUE": "GASSEST_DEF_NTL",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418021
+        },
+        {
+          "Data_Setting_Id": 265223,
+          "DATASETVALUE": "GASSEST_DEF_NTL",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418021
+        },
+        {
+          "Data_Setting_Id": 265262,
+          "DATASETVALUE": "GASSEST_DEF_NTL",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418021
+        },
+        {
+          "Data_Setting_Id": 265301,
+          "DATASETVALUE": "GASSEST_DEF_NTL",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418021
+        },
+        {
+          "Data_Setting_Id": 265340,
+          "DATASETVALUE": "GASSEST_DEF_NTL",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418021
+        },
+        {
+          "Data_Setting_Id": 265418,
+          "DATASETVALUE": "GASSEST_DEF_NTL",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418021
+        },
+        {
+          "Data_Setting_Id": 265379,
+          "DATASETVALUE": "GASSEST_DEF_NTL",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418021
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF_NTL",
+      "OBJECT_ID": 142576,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=_notionalAmount",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 129858,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 418021,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 19,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263875,
+          "DATASETVALUE": "GASSEST_DEF_NTL",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418021
+        },
+        {
+          "Data_Setting_Id": 265223,
+          "DATASETVALUE": "GASSEST_DEF_NTL",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418021
+        },
+        {
+          "Data_Setting_Id": 265262,
+          "DATASETVALUE": "GASSEST_DEF_NTL",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418021
+        },
+        {
+          "Data_Setting_Id": 265301,
+          "DATASETVALUE": "GASSEST_DEF_NTL",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418021
+        },
+        {
+          "Data_Setting_Id": 265340,
+          "DATASETVALUE": "GASSEST_DEF_NTL",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418021
+        },
+        {
+          "Data_Setting_Id": 265418,
+          "DATASETVALUE": "GASSEST_DEF_NTL",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418021
+        },
+        {
+          "Data_Setting_Id": 265379,
+          "DATASETVALUE": "GASSEST_DEF_NTL",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418021
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF_NTL",
+      "OBJECT_ID": 160226,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=_notionalAmount",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 129858,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 418021,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 19,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263901,
+          "DATASETVALUE": "GASSEST_DEF_NTL_EXP",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418050
+        },
+        {
+          "Data_Setting_Id": 265249,
+          "DATASETVALUE": "GASSEST_DEF_NTL_EXP",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418050
+        },
+        {
+          "Data_Setting_Id": 265288,
+          "DATASETVALUE": "GASSEST_DEF_NTL_EXP",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418050
+        },
+        {
+          "Data_Setting_Id": 265327,
+          "DATASETVALUE": "GASSEST_DEF_NTL_EXP",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418050
+        },
+        {
+          "Data_Setting_Id": 265366,
+          "DATASETVALUE": "GASSEST_DEF_NTL_EXP",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418050
+        },
+        {
+          "Data_Setting_Id": 265444,
+          "DATASETVALUE": "GASSEST_DEF_NTL_EXP",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418050
+        },
+        {
+          "Data_Setting_Id": 265405,
+          "DATASETVALUE": "GASSEST_DEF_NTL_EXP",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418050
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF_NTL_EXP",
+      "OBJECT_ID": 141475,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=_notExpToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 130814,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 418050,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 20,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263901,
+          "DATASETVALUE": "GASSEST_DEF_NTL_EXP",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418050
+        },
+        {
+          "Data_Setting_Id": 265249,
+          "DATASETVALUE": "GASSEST_DEF_NTL_EXP",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418050
+        },
+        {
+          "Data_Setting_Id": 265288,
+          "DATASETVALUE": "GASSEST_DEF_NTL_EXP",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418050
+        },
+        {
+          "Data_Setting_Id": 265327,
+          "DATASETVALUE": "GASSEST_DEF_NTL_EXP",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418050
+        },
+        {
+          "Data_Setting_Id": 265366,
+          "DATASETVALUE": "GASSEST_DEF_NTL_EXP",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418050
+        },
+        {
+          "Data_Setting_Id": 265444,
+          "DATASETVALUE": "GASSEST_DEF_NTL_EXP",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418050
+        },
+        {
+          "Data_Setting_Id": 265405,
+          "DATASETVALUE": "GASSEST_DEF_NTL_EXP",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418050
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF_NTL_EXP",
+      "OBJECT_ID": 159244,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=_notExpToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 130814,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 418050,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 20,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263877,
+          "DATASETVALUE": "GASSEST_DEF_PAY_CALL",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418024
+        },
+        {
+          "Data_Setting_Id": 265225,
+          "DATASETVALUE": "GASSEST_DEF_PAY_CALL",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418024
+        },
+        {
+          "Data_Setting_Id": 265264,
+          "DATASETVALUE": "GASSEST_DEF_PAY_CALL",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418024
+        },
+        {
+          "Data_Setting_Id": 265303,
+          "DATASETVALUE": "GASSEST_DEF_PAY_CALL",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418024
+        },
+        {
+          "Data_Setting_Id": 265342,
+          "DATASETVALUE": "GASSEST_DEF_PAY_CALL",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418024
+        },
+        {
+          "Data_Setting_Id": 265420,
+          "DATASETVALUE": "GASSEST_DEF_PAY_CALL",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418024
+        },
+        {
+          "Data_Setting_Id": 265381,
+          "DATASETVALUE": "GASSEST_DEF_PAY_CALL",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418024
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF_PAY_CALL",
+      "OBJECT_ID": 138226,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=_payCalEntry",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 126995,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 418024,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 21,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263877,
+          "DATASETVALUE": "GASSEST_DEF_PAY_CALL",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418024
+        },
+        {
+          "Data_Setting_Id": 265225,
+          "DATASETVALUE": "GASSEST_DEF_PAY_CALL",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418024
+        },
+        {
+          "Data_Setting_Id": 265264,
+          "DATASETVALUE": "GASSEST_DEF_PAY_CALL",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418024
+        },
+        {
+          "Data_Setting_Id": 265303,
+          "DATASETVALUE": "GASSEST_DEF_PAY_CALL",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418024
+        },
+        {
+          "Data_Setting_Id": 265342,
+          "DATASETVALUE": "GASSEST_DEF_PAY_CALL",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418024
+        },
+        {
+          "Data_Setting_Id": 265420,
+          "DATASETVALUE": "GASSEST_DEF_PAY_CALL",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418024
+        },
+        {
+          "Data_Setting_Id": 265381,
+          "DATASETVALUE": "GASSEST_DEF_PAY_CALL",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418024
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF_PAY_CALL",
+      "OBJECT_ID": 155422,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=_payCalEntry",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 126995,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 418024,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 21,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263882,
+          "DATASETVALUE": "GASSEST_DEF_PAY_DAY",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418030
+        },
+        {
+          "Data_Setting_Id": 265230,
+          "DATASETVALUE": "GASSEST_DEF_PAY_DAY",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418030
+        },
+        {
+          "Data_Setting_Id": 265269,
+          "DATASETVALUE": "GASSEST_DEF_PAY_DAY",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418030
+        },
+        {
+          "Data_Setting_Id": 265308,
+          "DATASETVALUE": "GASSEST_DEF_PAY_DAY",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418030
+        },
+        {
+          "Data_Setting_Id": 265347,
+          "DATASETVALUE": "GASSEST_DEF_PAY_DAY",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418030
+        },
+        {
+          "Data_Setting_Id": 265425,
+          "DATASETVALUE": "GASSEST_DEF_PAY_DAY",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418030
+        },
+        {
+          "Data_Setting_Id": 265386,
+          "DATASETVALUE": "GASSEST_DEF_PAY_DAY",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418030
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF_PAY_DAY",
+      "OBJECT_ID": 135924,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=_payDayEntry",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 128874,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 418030,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 22,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263882,
+          "DATASETVALUE": "GASSEST_DEF_PAY_DAY",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418030
+        },
+        {
+          "Data_Setting_Id": 265230,
+          "DATASETVALUE": "GASSEST_DEF_PAY_DAY",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418030
+        },
+        {
+          "Data_Setting_Id": 265269,
+          "DATASETVALUE": "GASSEST_DEF_PAY_DAY",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418030
+        },
+        {
+          "Data_Setting_Id": 265308,
+          "DATASETVALUE": "GASSEST_DEF_PAY_DAY",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418030
+        },
+        {
+          "Data_Setting_Id": 265347,
+          "DATASETVALUE": "GASSEST_DEF_PAY_DAY",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418030
+        },
+        {
+          "Data_Setting_Id": 265425,
+          "DATASETVALUE": "GASSEST_DEF_PAY_DAY",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418030
+        },
+        {
+          "Data_Setting_Id": 265386,
+          "DATASETVALUE": "GASSEST_DEF_PAY_DAY",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418030
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF_PAY_DAY",
+      "OBJECT_ID": 153781,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=_payDayEntry",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 128874,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 418030,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 22,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263891,
+          "DATASETVALUE": "GASSEST_DEF_PAY_FREQ",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418040
+        },
+        {
+          "Data_Setting_Id": 265239,
+          "DATASETVALUE": "GASSEST_DEF_PAY_FREQ",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418040
+        },
+        {
+          "Data_Setting_Id": 265278,
+          "DATASETVALUE": "GASSEST_DEF_PAY_FREQ",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418040
+        },
+        {
+          "Data_Setting_Id": 265317,
+          "DATASETVALUE": "GASSEST_DEF_PAY_FREQ",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418040
+        },
+        {
+          "Data_Setting_Id": 265356,
+          "DATASETVALUE": "GASSEST_DEF_PAY_FREQ",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418040
+        },
+        {
+          "Data_Setting_Id": 265434,
+          "DATASETVALUE": "GASSEST_DEF_PAY_FREQ",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418040
+        },
+        {
+          "Data_Setting_Id": 265395,
+          "DATASETVALUE": "GASSEST_DEF_PAY_FREQ",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418040
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF_PAY_FREQ",
+      "OBJECT_ID": 138227,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=_payFreqToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 131829,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 418040,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 23,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263891,
+          "DATASETVALUE": "GASSEST_DEF_PAY_FREQ",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418040
+        },
+        {
+          "Data_Setting_Id": 265239,
+          "DATASETVALUE": "GASSEST_DEF_PAY_FREQ",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418040
+        },
+        {
+          "Data_Setting_Id": 265278,
+          "DATASETVALUE": "GASSEST_DEF_PAY_FREQ",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418040
+        },
+        {
+          "Data_Setting_Id": 265317,
+          "DATASETVALUE": "GASSEST_DEF_PAY_FREQ",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418040
+        },
+        {
+          "Data_Setting_Id": 265356,
+          "DATASETVALUE": "GASSEST_DEF_PAY_FREQ",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418040
+        },
+        {
+          "Data_Setting_Id": 265434,
+          "DATASETVALUE": "GASSEST_DEF_PAY_FREQ",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418040
+        },
+        {
+          "Data_Setting_Id": 265395,
+          "DATASETVALUE": "GASSEST_DEF_PAY_FREQ",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418040
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF_PAY_FREQ",
+      "OBJECT_ID": 155060,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=_payFreqToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 131829,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 418040,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 23,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263895,
+          "DATASETVALUE": "GASSEST_DEF_PAY_ROLL",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418044
+        },
+        {
+          "Data_Setting_Id": 265243,
+          "DATASETVALUE": "GASSEST_DEF_PAY_ROLL",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418044
+        },
+        {
+          "Data_Setting_Id": 265282,
+          "DATASETVALUE": "GASSEST_DEF_PAY_ROLL",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418044
+        },
+        {
+          "Data_Setting_Id": 265321,
+          "DATASETVALUE": "GASSEST_DEF_PAY_ROLL",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418044
+        },
+        {
+          "Data_Setting_Id": 265360,
+          "DATASETVALUE": "GASSEST_DEF_PAY_ROLL",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418044
+        },
+        {
+          "Data_Setting_Id": 265438,
+          "DATASETVALUE": "GASSEST_DEF_PAY_ROLL",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418044
+        },
+        {
+          "Data_Setting_Id": 265399,
+          "DATASETVALUE": "GASSEST_DEF_PAY_ROLL",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418044
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF_PAY_ROLL",
+      "OBJECT_ID": 158376,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=_payRollToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 131830,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 418044,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 24,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263895,
+          "DATASETVALUE": "GASSEST_DEF_PAY_ROLL",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418044
+        },
+        {
+          "Data_Setting_Id": 265243,
+          "DATASETVALUE": "GASSEST_DEF_PAY_ROLL",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418044
+        },
+        {
+          "Data_Setting_Id": 265282,
+          "DATASETVALUE": "GASSEST_DEF_PAY_ROLL",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418044
+        },
+        {
+          "Data_Setting_Id": 265321,
+          "DATASETVALUE": "GASSEST_DEF_PAY_ROLL",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418044
+        },
+        {
+          "Data_Setting_Id": 265360,
+          "DATASETVALUE": "GASSEST_DEF_PAY_ROLL",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418044
+        },
+        {
+          "Data_Setting_Id": 265438,
+          "DATASETVALUE": "GASSEST_DEF_PAY_ROLL",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418044
+        },
+        {
+          "Data_Setting_Id": 265399,
+          "DATASETVALUE": "GASSEST_DEF_PAY_ROLL",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418044
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF_PAY_ROLL",
+      "OBJECT_ID": 141476,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=_payRollToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 131830,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 418044,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 24,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263884,
+          "DATASETVALUE": "GASSEST_DEF_PRO_FORMULA_TEXTBOX",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418032
+        },
+        {
+          "Data_Setting_Id": 265232,
+          "DATASETVALUE": "GASSEST_DEF_PRO_FORMULA_TEXTBOX",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418032
+        },
+        {
+          "Data_Setting_Id": 265271,
+          "DATASETVALUE": "GASSEST_DEF_PRO_FORMULA_TEXTBOX",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418032
+        },
+        {
+          "Data_Setting_Id": 265310,
+          "DATASETVALUE": "GASSEST_DEF_PRO_FORMULA_TEXTBOX",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418032
+        },
+        {
+          "Data_Setting_Id": 265349,
+          "DATASETVALUE": "GASSEST_DEF_PRO_FORMULA_TEXTBOX",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418032
+        },
+        {
+          "Data_Setting_Id": 265427,
+          "DATASETVALUE": "GASSEST_DEF_PRO_FORMULA_TEXTBOX",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418032
+        },
+        {
+          "Data_Setting_Id": 265388,
+          "DATASETVALUE": "GASSEST_DEF_PRO_FORMULA_TEXTBOX",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418032
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF_PRO_FORMULA_TEXTBOX",
+      "OBJECT_ID": 138228,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=_productFormulaControl",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 133740,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 418032,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 25,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263884,
+          "DATASETVALUE": "GASSEST_DEF_PRO_FORMULA_TEXTBOX",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418032
+        },
+        {
+          "Data_Setting_Id": 265232,
+          "DATASETVALUE": "GASSEST_DEF_PRO_FORMULA_TEXTBOX",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418032
+        },
+        {
+          "Data_Setting_Id": 265271,
+          "DATASETVALUE": "GASSEST_DEF_PRO_FORMULA_TEXTBOX",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418032
+        },
+        {
+          "Data_Setting_Id": 265310,
+          "DATASETVALUE": "GASSEST_DEF_PRO_FORMULA_TEXTBOX",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418032
+        },
+        {
+          "Data_Setting_Id": 265349,
+          "DATASETVALUE": "GASSEST_DEF_PRO_FORMULA_TEXTBOX",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418032
+        },
+        {
+          "Data_Setting_Id": 265427,
+          "DATASETVALUE": "GASSEST_DEF_PRO_FORMULA_TEXTBOX",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418032
+        },
+        {
+          "Data_Setting_Id": 265388,
+          "DATASETVALUE": "GASSEST_DEF_PRO_FORMULA_TEXTBOX",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418032
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF_PRO_FORMULA_TEXTBOX",
+      "OBJECT_ID": 155026,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=_productFormulaControl",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 133740,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 418032,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 25,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263888,
+          "DATASETVALUE": "GASSEST_DEF_RATE",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418037
+        },
+        {
+          "Data_Setting_Id": 265236,
+          "DATASETVALUE": "GASSEST_DEF_RATE",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418037
+        },
+        {
+          "Data_Setting_Id": 265275,
+          "DATASETVALUE": "GASSEST_DEF_RATE",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418037
+        },
+        {
+          "Data_Setting_Id": 265314,
+          "DATASETVALUE": "GASSEST_DEF_RATE",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418037
+        },
+        {
+          "Data_Setting_Id": 265353,
+          "DATASETVALUE": "GASSEST_DEF_RATE",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418037
+        },
+        {
+          "Data_Setting_Id": 265431,
+          "DATASETVALUE": "GASSEST_DEF_RATE",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418037
+        },
+        {
+          "Data_Setting_Id": 265392,
+          "DATASETVALUE": "GASSEST_DEF_RATE",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418037
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF_RATE",
+      "OBJECT_ID": 134834,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=_rateEntry",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 126996,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 418037,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 26,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263888,
+          "DATASETVALUE": "GASSEST_DEF_RATE",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418037
+        },
+        {
+          "Data_Setting_Id": 265236,
+          "DATASETVALUE": "GASSEST_DEF_RATE",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418037
+        },
+        {
+          "Data_Setting_Id": 265275,
+          "DATASETVALUE": "GASSEST_DEF_RATE",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418037
+        },
+        {
+          "Data_Setting_Id": 265314,
+          "DATASETVALUE": "GASSEST_DEF_RATE",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418037
+        },
+        {
+          "Data_Setting_Id": 265353,
+          "DATASETVALUE": "GASSEST_DEF_RATE",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418037
+        },
+        {
+          "Data_Setting_Id": 265431,
+          "DATASETVALUE": "GASSEST_DEF_RATE",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418037
+        },
+        {
+          "Data_Setting_Id": 265392,
+          "DATASETVALUE": "GASSEST_DEF_RATE",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418037
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF_RATE",
+      "OBJECT_ID": 152034,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=_rateEntry",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 126996,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 418037,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 26,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263886,
+          "DATASETVALUE": "GASSEST_DEF_RE_INVEST",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418035
+        },
+        {
+          "Data_Setting_Id": 265234,
+          "DATASETVALUE": "GASSEST_DEF_RE_INVEST",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418035
+        },
+        {
+          "Data_Setting_Id": 265273,
+          "DATASETVALUE": "GASSEST_DEF_RE_INVEST",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418035
+        },
+        {
+          "Data_Setting_Id": 265312,
+          "DATASETVALUE": "GASSEST_DEF_RE_INVEST",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418035
+        },
+        {
+          "Data_Setting_Id": 265351,
+          "DATASETVALUE": "GASSEST_DEF_RE_INVEST",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418035
+        },
+        {
+          "Data_Setting_Id": 265429,
+          "DATASETVALUE": "GASSEST_DEF_RE_INVEST",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418035
+        },
+        {
+          "Data_Setting_Id": 265390,
+          "DATASETVALUE": "GASSEST_DEF_RE_INVEST",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418035
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF_RE_INVEST",
+      "OBJECT_ID": 137089,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=_rOLLReInvestAmtToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 132821,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 418035,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 27,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263886,
+          "DATASETVALUE": "GASSEST_DEF_RE_INVEST",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418035
+        },
+        {
+          "Data_Setting_Id": 265234,
+          "DATASETVALUE": "GASSEST_DEF_RE_INVEST",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418035
+        },
+        {
+          "Data_Setting_Id": 265273,
+          "DATASETVALUE": "GASSEST_DEF_RE_INVEST",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418035
+        },
+        {
+          "Data_Setting_Id": 265312,
+          "DATASETVALUE": "GASSEST_DEF_RE_INVEST",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418035
+        },
+        {
+          "Data_Setting_Id": 265351,
+          "DATASETVALUE": "GASSEST_DEF_RE_INVEST",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418035
+        },
+        {
+          "Data_Setting_Id": 265429,
+          "DATASETVALUE": "GASSEST_DEF_RE_INVEST",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418035
+        },
+        {
+          "Data_Setting_Id": 265390,
+          "DATASETVALUE": "GASSEST_DEF_RE_INVEST",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418035
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF_RE_INVEST",
+      "OBJECT_ID": 154046,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=_rOLLReInvestAmtToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 132821,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 418035,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 27,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263898,
+          "DATASETVALUE": "GASSEST_DEF_RESET_CALL",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418047
+        },
+        {
+          "Data_Setting_Id": 265246,
+          "DATASETVALUE": "GASSEST_DEF_RESET_CALL",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418047
+        },
+        {
+          "Data_Setting_Id": 265285,
+          "DATASETVALUE": "GASSEST_DEF_RESET_CALL",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418047
+        },
+        {
+          "Data_Setting_Id": 265324,
+          "DATASETVALUE": "GASSEST_DEF_RESET_CALL",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418047
+        },
+        {
+          "Data_Setting_Id": 265363,
+          "DATASETVALUE": "GASSEST_DEF_RESET_CALL",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418047
+        },
+        {
+          "Data_Setting_Id": 265441,
+          "DATASETVALUE": "GASSEST_DEF_RESET_CALL",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418047
+        },
+        {
+          "Data_Setting_Id": 265402,
+          "DATASETVALUE": "GASSEST_DEF_RESET_CALL",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418047
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF_RESET_CALL",
+      "OBJECT_ID": 135925,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=_resetCalToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 130815,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 418047,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 28,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263898,
+          "DATASETVALUE": "GASSEST_DEF_RESET_CALL",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418047
+        },
+        {
+          "Data_Setting_Id": 265246,
+          "DATASETVALUE": "GASSEST_DEF_RESET_CALL",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418047
+        },
+        {
+          "Data_Setting_Id": 265285,
+          "DATASETVALUE": "GASSEST_DEF_RESET_CALL",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418047
+        },
+        {
+          "Data_Setting_Id": 265324,
+          "DATASETVALUE": "GASSEST_DEF_RESET_CALL",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418047
+        },
+        {
+          "Data_Setting_Id": 265363,
+          "DATASETVALUE": "GASSEST_DEF_RESET_CALL",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418047
+        },
+        {
+          "Data_Setting_Id": 265441,
+          "DATASETVALUE": "GASSEST_DEF_RESET_CALL",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418047
+        },
+        {
+          "Data_Setting_Id": 265402,
+          "DATASETVALUE": "GASSEST_DEF_RESET_CALL",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418047
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF_RESET_CALL",
+      "OBJECT_ID": 153686,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=_resetCalToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 130815,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 418047,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 28,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263889,
+          "DATASETVALUE": "GASSEST_DEF_RESET_DAY",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418038
+        },
+        {
+          "Data_Setting_Id": 265237,
+          "DATASETVALUE": "GASSEST_DEF_RESET_DAY",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418038
+        },
+        {
+          "Data_Setting_Id": 265276,
+          "DATASETVALUE": "GASSEST_DEF_RESET_DAY",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418038
+        },
+        {
+          "Data_Setting_Id": 265315,
+          "DATASETVALUE": "GASSEST_DEF_RESET_DAY",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418038
+        },
+        {
+          "Data_Setting_Id": 265354,
+          "DATASETVALUE": "GASSEST_DEF_RESET_DAY",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418038
+        },
+        {
+          "Data_Setting_Id": 265432,
+          "DATASETVALUE": "GASSEST_DEF_RESET_DAY",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418038
+        },
+        {
+          "Data_Setting_Id": 265393,
+          "DATASETVALUE": "GASSEST_DEF_RESET_DAY",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418038
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF_RESET_DAY",
+      "OBJECT_ID": 141477,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=_resetDayEntry",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 132800,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 418038,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 29,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263889,
+          "DATASETVALUE": "GASSEST_DEF_RESET_DAY",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418038
+        },
+        {
+          "Data_Setting_Id": 265237,
+          "DATASETVALUE": "GASSEST_DEF_RESET_DAY",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418038
+        },
+        {
+          "Data_Setting_Id": 265276,
+          "DATASETVALUE": "GASSEST_DEF_RESET_DAY",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418038
+        },
+        {
+          "Data_Setting_Id": 265315,
+          "DATASETVALUE": "GASSEST_DEF_RESET_DAY",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418038
+        },
+        {
+          "Data_Setting_Id": 265354,
+          "DATASETVALUE": "GASSEST_DEF_RESET_DAY",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418038
+        },
+        {
+          "Data_Setting_Id": 265432,
+          "DATASETVALUE": "GASSEST_DEF_RESET_DAY",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418038
+        },
+        {
+          "Data_Setting_Id": 265393,
+          "DATASETVALUE": "GASSEST_DEF_RESET_DAY",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418038
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF_RESET_DAY",
+      "OBJECT_ID": 158515,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=_resetDayEntry",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 132800,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 418038,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 29,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263890,
+          "DATASETVALUE": "GASSEST_DEF_RESET_FREQ",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418039
+        },
+        {
+          "Data_Setting_Id": 265238,
+          "DATASETVALUE": "GASSEST_DEF_RESET_FREQ",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418039
+        },
+        {
+          "Data_Setting_Id": 265277,
+          "DATASETVALUE": "GASSEST_DEF_RESET_FREQ",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418039
+        },
+        {
+          "Data_Setting_Id": 265316,
+          "DATASETVALUE": "GASSEST_DEF_RESET_FREQ",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418039
+        },
+        {
+          "Data_Setting_Id": 265355,
+          "DATASETVALUE": "GASSEST_DEF_RESET_FREQ",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418039
+        },
+        {
+          "Data_Setting_Id": 265433,
+          "DATASETVALUE": "GASSEST_DEF_RESET_FREQ",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418039
+        },
+        {
+          "Data_Setting_Id": 265394,
+          "DATASETVALUE": "GASSEST_DEF_RESET_FREQ",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418039
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF_RESET_FREQ",
+      "OBJECT_ID": 158727,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=_resetFreqToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 126997,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 418039,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 30,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263890,
+          "DATASETVALUE": "GASSEST_DEF_RESET_FREQ",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418039
+        },
+        {
+          "Data_Setting_Id": 265238,
+          "DATASETVALUE": "GASSEST_DEF_RESET_FREQ",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418039
+        },
+        {
+          "Data_Setting_Id": 265277,
+          "DATASETVALUE": "GASSEST_DEF_RESET_FREQ",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418039
+        },
+        {
+          "Data_Setting_Id": 265316,
+          "DATASETVALUE": "GASSEST_DEF_RESET_FREQ",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418039
+        },
+        {
+          "Data_Setting_Id": 265355,
+          "DATASETVALUE": "GASSEST_DEF_RESET_FREQ",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418039
+        },
+        {
+          "Data_Setting_Id": 265433,
+          "DATASETVALUE": "GASSEST_DEF_RESET_FREQ",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418039
+        },
+        {
+          "Data_Setting_Id": 265394,
+          "DATASETVALUE": "GASSEST_DEF_RESET_FREQ",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418039
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF_RESET_FREQ",
+      "OBJECT_ID": 141478,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=_resetFreqToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 126997,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 418039,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 30,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263887,
+          "DATASETVALUE": "GASSEST_DEF_RESET_ROLL",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418036
+        },
+        {
+          "Data_Setting_Id": 265235,
+          "DATASETVALUE": "GASSEST_DEF_RESET_ROLL",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418036
+        },
+        {
+          "Data_Setting_Id": 265274,
+          "DATASETVALUE": "GASSEST_DEF_RESET_ROLL",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418036
+        },
+        {
+          "Data_Setting_Id": 265313,
+          "DATASETVALUE": "GASSEST_DEF_RESET_ROLL",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418036
+        },
+        {
+          "Data_Setting_Id": 265352,
+          "DATASETVALUE": "GASSEST_DEF_RESET_ROLL",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418036
+        },
+        {
+          "Data_Setting_Id": 265430,
+          "DATASETVALUE": "GASSEST_DEF_RESET_ROLL",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418036
+        },
+        {
+          "Data_Setting_Id": 265391,
+          "DATASETVALUE": "GASSEST_DEF_RESET_ROLL",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418036
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF_RESET_ROLL",
+      "OBJECT_ID": 141501,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=_resetRollToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 132820,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 418036,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 31,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263887,
+          "DATASETVALUE": "GASSEST_DEF_RESET_ROLL",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418036
+        },
+        {
+          "Data_Setting_Id": 265235,
+          "DATASETVALUE": "GASSEST_DEF_RESET_ROLL",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418036
+        },
+        {
+          "Data_Setting_Id": 265274,
+          "DATASETVALUE": "GASSEST_DEF_RESET_ROLL",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418036
+        },
+        {
+          "Data_Setting_Id": 265313,
+          "DATASETVALUE": "GASSEST_DEF_RESET_ROLL",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418036
+        },
+        {
+          "Data_Setting_Id": 265352,
+          "DATASETVALUE": "GASSEST_DEF_RESET_ROLL",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418036
+        },
+        {
+          "Data_Setting_Id": 265430,
+          "DATASETVALUE": "GASSEST_DEF_RESET_ROLL",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418036
+        },
+        {
+          "Data_Setting_Id": 265391,
+          "DATASETVALUE": "GASSEST_DEF_RESET_ROLL",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418036
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF_RESET_ROLL",
+      "OBJECT_ID": 158518,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=_resetRollToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 132820,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 418036,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 31,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263892,
+          "DATASETVALUE": "GASSEST_DEF_ROLL_NATURE",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418041
+        },
+        {
+          "Data_Setting_Id": 265240,
+          "DATASETVALUE": "GASSEST_DEF_ROLL_NATURE",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418041
+        },
+        {
+          "Data_Setting_Id": 265279,
+          "DATASETVALUE": "GASSEST_DEF_ROLL_NATURE",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418041
+        },
+        {
+          "Data_Setting_Id": 265318,
+          "DATASETVALUE": "GASSEST_DEF_ROLL_NATURE",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418041
+        },
+        {
+          "Data_Setting_Id": 265357,
+          "DATASETVALUE": "GASSEST_DEF_ROLL_NATURE",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418041
+        },
+        {
+          "Data_Setting_Id": 265435,
+          "DATASETVALUE": "GASSEST_DEF_ROLL_NATURE",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418041
+        },
+        {
+          "Data_Setting_Id": 265396,
+          "DATASETVALUE": "GASSEST_DEF_ROLL_NATURE",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418041
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF_ROLL_NATURE",
+      "OBJECT_ID": 138248,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=_rOLLRollNatureToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 133757,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 418041,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 32,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263892,
+          "DATASETVALUE": "GASSEST_DEF_ROLL_NATURE",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418041
+        },
+        {
+          "Data_Setting_Id": 265240,
+          "DATASETVALUE": "GASSEST_DEF_ROLL_NATURE",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418041
+        },
+        {
+          "Data_Setting_Id": 265279,
+          "DATASETVALUE": "GASSEST_DEF_ROLL_NATURE",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418041
+        },
+        {
+          "Data_Setting_Id": 265318,
+          "DATASETVALUE": "GASSEST_DEF_ROLL_NATURE",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418041
+        },
+        {
+          "Data_Setting_Id": 265357,
+          "DATASETVALUE": "GASSEST_DEF_ROLL_NATURE",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418041
+        },
+        {
+          "Data_Setting_Id": 265435,
+          "DATASETVALUE": "GASSEST_DEF_ROLL_NATURE",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418041
+        },
+        {
+          "Data_Setting_Id": 265396,
+          "DATASETVALUE": "GASSEST_DEF_ROLL_NATURE",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418041
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF_ROLL_NATURE",
+      "OBJECT_ID": 155029,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=_rOLLRollNatureToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 133757,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 418041,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 32,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263896,
+          "DATASETVALUE": "GASSEST_DEF_ROLL_OVER",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418045
+        },
+        {
+          "Data_Setting_Id": 265244,
+          "DATASETVALUE": "GASSEST_DEF_ROLL_OVER",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418045
+        },
+        {
+          "Data_Setting_Id": 265283,
+          "DATASETVALUE": "GASSEST_DEF_ROLL_OVER",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418045
+        },
+        {
+          "Data_Setting_Id": 265322,
+          "DATASETVALUE": "GASSEST_DEF_ROLL_OVER",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418045
+        },
+        {
+          "Data_Setting_Id": 265361,
+          "DATASETVALUE": "GASSEST_DEF_ROLL_OVER",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418045
+        },
+        {
+          "Data_Setting_Id": 265439,
+          "DATASETVALUE": "GASSEST_DEF_ROLL_OVER",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418045
+        },
+        {
+          "Data_Setting_Id": 265400,
+          "DATASETVALUE": "GASSEST_DEF_ROLL_OVER",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418045
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF_ROLL_OVER",
+      "OBJECT_ID": 158857,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=_rOLLRollOverToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 127975,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 418045,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 33,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263896,
+          "DATASETVALUE": "GASSEST_DEF_ROLL_OVER",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418045
+        },
+        {
+          "Data_Setting_Id": 265244,
+          "DATASETVALUE": "GASSEST_DEF_ROLL_OVER",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418045
+        },
+        {
+          "Data_Setting_Id": 265283,
+          "DATASETVALUE": "GASSEST_DEF_ROLL_OVER",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418045
+        },
+        {
+          "Data_Setting_Id": 265322,
+          "DATASETVALUE": "GASSEST_DEF_ROLL_OVER",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418045
+        },
+        {
+          "Data_Setting_Id": 265361,
+          "DATASETVALUE": "GASSEST_DEF_ROLL_OVER",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418045
+        },
+        {
+          "Data_Setting_Id": 265439,
+          "DATASETVALUE": "GASSEST_DEF_ROLL_OVER",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418045
+        },
+        {
+          "Data_Setting_Id": 265400,
+          "DATASETVALUE": "GASSEST_DEF_ROLL_OVER",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418045
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF_ROLL_OVER",
+      "OBJECT_ID": 141502,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=_rOLLRollOverToggle",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 127975,
+      "TYPE_NAME": "SwfCombobox",
+      "STEPS_ID": 418045,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 33,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263883,
+          "DATASETVALUE": "GASSEST_DEF_SPREAD",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418031
+        },
+        {
+          "Data_Setting_Id": 265231,
+          "DATASETVALUE": "GASSEST_DEF_SPREAD",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418031
+        },
+        {
+          "Data_Setting_Id": 265270,
+          "DATASETVALUE": "GASSEST_DEF_SPREAD",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418031
+        },
+        {
+          "Data_Setting_Id": 265309,
+          "DATASETVALUE": "GASSEST_DEF_SPREAD",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418031
+        },
+        {
+          "Data_Setting_Id": 265348,
+          "DATASETVALUE": "GASSEST_DEF_SPREAD",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418031
+        },
+        {
+          "Data_Setting_Id": 265426,
+          "DATASETVALUE": "GASSEST_DEF_SPREAD",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418031
+        },
+        {
+          "Data_Setting_Id": 265387,
+          "DATASETVALUE": "GASSEST_DEF_SPREAD",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418031
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF_SPREAD",
+      "OBJECT_ID": 142602,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=_spreadEntry",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 131855,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 418031,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 34,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263883,
+          "DATASETVALUE": "GASSEST_DEF_SPREAD",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418031
+        },
+        {
+          "Data_Setting_Id": 265231,
+          "DATASETVALUE": "GASSEST_DEF_SPREAD",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418031
+        },
+        {
+          "Data_Setting_Id": 265270,
+          "DATASETVALUE": "GASSEST_DEF_SPREAD",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418031
+        },
+        {
+          "Data_Setting_Id": 265309,
+          "DATASETVALUE": "GASSEST_DEF_SPREAD",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418031
+        },
+        {
+          "Data_Setting_Id": 265348,
+          "DATASETVALUE": "GASSEST_DEF_SPREAD",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418031
+        },
+        {
+          "Data_Setting_Id": 265426,
+          "DATASETVALUE": "GASSEST_DEF_SPREAD",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418031
+        },
+        {
+          "Data_Setting_Id": 265387,
+          "DATASETVALUE": "GASSEST_DEF_SPREAD",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418031
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF_SPREAD",
+      "OBJECT_ID": 159491,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=_spreadEntry",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 131855,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 418031,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 34,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263893,
+          "DATASETVALUE": "GASSEST_DEF_START",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418042
+        },
+        {
+          "Data_Setting_Id": 265241,
+          "DATASETVALUE": "GASSEST_DEF_START",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418042
+        },
+        {
+          "Data_Setting_Id": 265280,
+          "DATASETVALUE": "GASSEST_DEF_START",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418042
+        },
+        {
+          "Data_Setting_Id": 265319,
+          "DATASETVALUE": "GASSEST_DEF_START",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418042
+        },
+        {
+          "Data_Setting_Id": 265358,
+          "DATASETVALUE": "GASSEST_DEF_START",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418042
+        },
+        {
+          "Data_Setting_Id": 265436,
+          "DATASETVALUE": "GASSEST_DEF_START",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418042
+        },
+        {
+          "Data_Setting_Id": 265397,
+          "DATASETVALUE": "GASSEST_DEF_START",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418042
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF_START",
+      "OBJECT_ID": 152450,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=_effDate",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 129877,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 418042,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 35,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263893,
+          "DATASETVALUE": "GASSEST_DEF_START",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418042
+        },
+        {
+          "Data_Setting_Id": 265241,
+          "DATASETVALUE": "GASSEST_DEF_START",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418042
+        },
+        {
+          "Data_Setting_Id": 265280,
+          "DATASETVALUE": "GASSEST_DEF_START",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418042
+        },
+        {
+          "Data_Setting_Id": 265319,
+          "DATASETVALUE": "GASSEST_DEF_START",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418042
+        },
+        {
+          "Data_Setting_Id": 265358,
+          "DATASETVALUE": "GASSEST_DEF_START",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418042
+        },
+        {
+          "Data_Setting_Id": 265436,
+          "DATASETVALUE": "GASSEST_DEF_START",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418042
+        },
+        {
+          "Data_Setting_Id": 265397,
+          "DATASETVALUE": "GASSEST_DEF_START",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418042
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF_START",
+      "OBJECT_ID": 134864,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=_effDate",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 129877,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 418042,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 35,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263897,
+          "DATASETVALUE": "GASSEST_DEF_TERM",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418046
+        },
+        {
+          "Data_Setting_Id": 265245,
+          "DATASETVALUE": "GASSEST_DEF_TERM",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418046
+        },
+        {
+          "Data_Setting_Id": 265284,
+          "DATASETVALUE": "GASSEST_DEF_TERM",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418046
+        },
+        {
+          "Data_Setting_Id": 265323,
+          "DATASETVALUE": "GASSEST_DEF_TERM",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418046
+        },
+        {
+          "Data_Setting_Id": 265362,
+          "DATASETVALUE": "GASSEST_DEF_TERM",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418046
+        },
+        {
+          "Data_Setting_Id": 265440,
+          "DATASETVALUE": "GASSEST_DEF_TERM",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418046
+        },
+        {
+          "Data_Setting_Id": 265401,
+          "DATASETVALUE": "GASSEST_DEF_TERM",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418046
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF_TERM",
+      "OBJECT_ID": 135941,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=_termInput",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 131856,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 418046,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 36,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263897,
+          "DATASETVALUE": "GASSEST_DEF_TERM",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418046
+        },
+        {
+          "Data_Setting_Id": 265245,
+          "DATASETVALUE": "GASSEST_DEF_TERM",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418046
+        },
+        {
+          "Data_Setting_Id": 265284,
+          "DATASETVALUE": "GASSEST_DEF_TERM",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418046
+        },
+        {
+          "Data_Setting_Id": 265323,
+          "DATASETVALUE": "GASSEST_DEF_TERM",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418046
+        },
+        {
+          "Data_Setting_Id": 265362,
+          "DATASETVALUE": "GASSEST_DEF_TERM",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418046
+        },
+        {
+          "Data_Setting_Id": 265440,
+          "DATASETVALUE": "GASSEST_DEF_TERM",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418046
+        },
+        {
+          "Data_Setting_Id": 265401,
+          "DATASETVALUE": "GASSEST_DEF_TERM",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418046
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF_TERM",
+      "OBJECT_ID": 152813,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=_termInput",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 131856,
+      "TYPE_NAME": "SwfEdit",
+      "STEPS_ID": 418046,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 36,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263902,
+          "DATASETVALUE": "GASSEST_DEF_VERSION",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418051
+        },
+        {
+          "Data_Setting_Id": 265250,
+          "DATASETVALUE": "GASSEST_DEF_VERSION",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418051
+        },
+        {
+          "Data_Setting_Id": 265289,
+          "DATASETVALUE": "GASSEST_DEF_VERSION",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418051
+        },
+        {
+          "Data_Setting_Id": 265328,
+          "DATASETVALUE": "GASSEST_DEF_VERSION",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418051
+        },
+        {
+          "Data_Setting_Id": 265367,
+          "DATASETVALUE": "GASSEST_DEF_VERSION",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418051
+        },
+        {
+          "Data_Setting_Id": 265445,
+          "DATASETVALUE": "GASSEST_DEF_VERSION",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418051
+        },
+        {
+          "Data_Setting_Id": 265406,
+          "DATASETVALUE": "GASSEST_DEF_VERSION",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418051
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF_VERSION",
+      "OBJECT_ID": 142603,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=_AuditVersionLabelHolder",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 129879,
+      "TYPE_NAME": "SwfLabel",
+      "STEPS_ID": 418051,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 37,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263902,
+          "DATASETVALUE": "GASSEST_DEF_VERSION",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418051
+        },
+        {
+          "Data_Setting_Id": 265250,
+          "DATASETVALUE": "GASSEST_DEF_VERSION",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418051
+        },
+        {
+          "Data_Setting_Id": 265289,
+          "DATASETVALUE": "GASSEST_DEF_VERSION",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418051
+        },
+        {
+          "Data_Setting_Id": 265328,
+          "DATASETVALUE": "GASSEST_DEF_VERSION",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418051
+        },
+        {
+          "Data_Setting_Id": 265367,
+          "DATASETVALUE": "GASSEST_DEF_VERSION",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418051
+        },
+        {
+          "Data_Setting_Id": 265445,
+          "DATASETVALUE": "GASSEST_DEF_VERSION",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418051
+        },
+        {
+          "Data_Setting_Id": 265406,
+          "DATASETVALUE": "GASSEST_DEF_VERSION",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418051
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF_VERSION",
+      "OBJECT_ID": 160229,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=_AuditVersionLabelHolder",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 129879,
+      "TYPE_NAME": "SwfLabel",
+      "STEPS_ID": 418051,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 37,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263899,
+          "DATASETVALUE": "GASSEST_DEF_STATE",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418048
+        },
+        {
+          "Data_Setting_Id": 265247,
+          "DATASETVALUE": "GASSEST_DEF_STATE",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418048
+        },
+        {
+          "Data_Setting_Id": 265286,
+          "DATASETVALUE": "GASSEST_DEF_STATE",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418048
+        },
+        {
+          "Data_Setting_Id": 265325,
+          "DATASETVALUE": "GASSEST_DEF_STATE",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418048
+        },
+        {
+          "Data_Setting_Id": 265364,
+          "DATASETVALUE": "GASSEST_DEF_STATE",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418048
+        },
+        {
+          "Data_Setting_Id": 265442,
+          "DATASETVALUE": "GASSEST_DEF_STATE",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418048
+        },
+        {
+          "Data_Setting_Id": 265403,
+          "DATASETVALUE": "GASSEST_DEF_STATE",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418048
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF_STATE",
+      "OBJECT_ID": 138249,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=_auditExtStateName",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 129878,
+      "TYPE_NAME": "SwfLabel",
+      "STEPS_ID": 418048,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 38,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263899,
+          "DATASETVALUE": "GASSEST_DEF_STATE",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418048
+        },
+        {
+          "Data_Setting_Id": 265247,
+          "DATASETVALUE": "GASSEST_DEF_STATE",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418048
+        },
+        {
+          "Data_Setting_Id": 265286,
+          "DATASETVALUE": "GASSEST_DEF_STATE",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418048
+        },
+        {
+          "Data_Setting_Id": 265325,
+          "DATASETVALUE": "GASSEST_DEF_STATE",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418048
+        },
+        {
+          "Data_Setting_Id": 265364,
+          "DATASETVALUE": "GASSEST_DEF_STATE",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418048
+        },
+        {
+          "Data_Setting_Id": 265442,
+          "DATASETVALUE": "GASSEST_DEF_STATE",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418048
+        },
+        {
+          "Data_Setting_Id": 265403,
+          "DATASETVALUE": "GASSEST_DEF_STATE",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418048
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 77,
+      "KEY_WORD_NAME": "CaptureAndCompare",
+      "OBJECT_HAPPY_NAME": "GASSEST_DEF_STATE",
+      "OBJECT_ID": 155837,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=_auditExtStateName",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 129878,
+      "TYPE_NAME": "SwfLabel",
+      "STEPS_ID": 418048,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 38,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263878,
+          "DATASETVALUE": "GASSET_DEF_PANEL",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418025
+        },
+        {
+          "Data_Setting_Id": 265226,
+          "DATASETVALUE": "GASSET_DEF_PANEL",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418025
+        },
+        {
+          "Data_Setting_Id": 265265,
+          "DATASETVALUE": "GASSET_DEF_PANEL",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418025
+        },
+        {
+          "Data_Setting_Id": 265304,
+          "DATASETVALUE": "GASSET_DEF_PANEL",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418025
+        },
+        {
+          "Data_Setting_Id": 265343,
+          "DATASETVALUE": "GASSET_DEF_PANEL",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418025
+        },
+        {
+          "Data_Setting_Id": 265421,
+          "DATASETVALUE": "GASSET_DEF_PANEL",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418025
+        },
+        {
+          "Data_Setting_Id": 265382,
+          "DATASETVALUE": "GASSET_DEF_PANEL",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418025
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "GASSET_DEF_PANEL",
+      "OBJECT_ID": 139340,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=GenericAssetView",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 133758,
+      "TYPE_NAME": "SwfWindow",
+      "STEPS_ID": 418025,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 39,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 263878,
+          "DATASETVALUE": "GASSET_DEF_PANEL",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418025
+        },
+        {
+          "Data_Setting_Id": 265226,
+          "DATASETVALUE": "GASSET_DEF_PANEL",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418025
+        },
+        {
+          "Data_Setting_Id": 265265,
+          "DATASETVALUE": "GASSET_DEF_PANEL",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418025
+        },
+        {
+          "Data_Setting_Id": 265304,
+          "DATASETVALUE": "GASSET_DEF_PANEL",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418025
+        },
+        {
+          "Data_Setting_Id": 265343,
+          "DATASETVALUE": "GASSET_DEF_PANEL",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418025
+        },
+        {
+          "Data_Setting_Id": 265421,
+          "DATASETVALUE": "GASSET_DEF_PANEL",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418025
+        },
+        {
+          "Data_Setting_Id": 265382,
+          "DATASETVALUE": "GASSET_DEF_PANEL",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418025
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 78,
+      "KEY_WORD_NAME": "SnapShot",
+      "OBJECT_HAPPY_NAME": "GASSET_DEF_PANEL",
+      "OBJECT_ID": 156181,
+      "OBJECT_TYPE": "GASSEST_DEF",
+      "QUICK_ACCESS": "swfname:=GenericAssetView",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 133758,
+      "TYPE_NAME": "SwfWindow",
+      "STEPS_ID": 418025,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 39,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 265463,
+          "DATASETVALUE": "TEXT|\"GA FIX USD\"|IMAGE:GASSET_DEF_PANEL",
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 421154
+        },
+        {
+          "Data_Setting_Id": 265464,
+          "DATASETVALUE": "TEXT|\"GA FLT USD\"|IMAGE:GASSET_DEF_PANEL",
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 421154
+        },
+        {
+          "Data_Setting_Id": 265465,
+          "DATASETVALUE": "TEXT|\"GA USD CMS\"|IMAGE:GASSET_DEF_PANEL",
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 421154
+        },
+        {
+          "Data_Setting_Id": 265466,
+          "DATASETVALUE": "TEXT|\"GA USD CMT\"|IMAGE:GASSET_DEF_PANEL",
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 421154
+        },
+        {
+          "Data_Setting_Id": 265467,
+          "DATASETVALUE": "TEXT|\"GA USD CP\"|IMAGE:GASSET_DEF_PANEL",
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 421154
+        },
+        {
+          "Data_Setting_Id": 265468,
+          "DATASETVALUE": "TEXT|\"GA USD FFUND\"|IMAGE:GASSET_DEF_PANEL",
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 421154
+        },
+        {
+          "Data_Setting_Id": 265469,
+          "DATASETVALUE": "TEXT|\"GA USD PRIME\"|IMAGE:GASSET_DEF_PANEL",
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 421154
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 1167122941,
+      "KEY_WORD_NAME": "Comment",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 421154,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 40,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418026
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418026
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418026
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418026
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418026
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418026
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418026
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 134311,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys |Finastra ){0,1}(FusionCapital |Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 125902,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 418026,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 41,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418026
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418026
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418026
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418026
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418026
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418026
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418026
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 15,
+      "KEY_WORD_NAME": "PegWindow",
+      "OBJECT_HAPPY_NAME": "Summit Start",
+      "OBJECT_ID": 152274,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=Desktop|Page\nText:=^((Misys |Finastra ){0,1}(FusionCapital |Fusion ){0,1}(Markets ){0,1}Summit( FT){0,1})(?!(.*Login)).*\nswftypename:=Summit\\.Framework\\.Desktop\\.(Desktop|Page){1}\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 125902,
+      "TYPE_NAME": "Pegwindow",
+      "STEPS_ID": 418026,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 41,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418022
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418022
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418022
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418022
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418022
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418022
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418022
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 160439,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 194,
+      "OBJECT_NAME_ID": 131369,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 418022,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 42,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418022
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418022
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418022
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418022
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418022
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418022
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418022
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 4,
+      "KEY_WORD_NAME": "ClickButton",
+      "OBJECT_HAPPY_NAME": "CLOSE_BUTTON",
+      "OBJECT_ID": 142098,
+      "OBJECT_TYPE": "Summit Start",
+      "QUICK_ACCESS": "swfname:=_closeButton\nswftypename:=Summit.Framework.DesktopContent.ImageButton\nindex:=0",
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": 195,
+      "OBJECT_NAME_ID": 131369,
+      "TYPE_NAME": "SwfButton",
+      "STEPS_ID": 418022,
+      "COLUMN_ROW_SETTING": null,
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 42,
+      "VALUE_SETTING": null
+    },
+    {
+      "dataForDataSets": [
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 417994,
+          "SKIP": 0,
+          "STEPS_ID": 418033
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421134,
+          "SKIP": 0,
+          "STEPS_ID": 418033
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421136,
+          "SKIP": 0,
+          "STEPS_ID": 418033
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421140,
+          "SKIP": 0,
+          "STEPS_ID": 418033
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421143,
+          "SKIP": 0,
+          "STEPS_ID": 418033
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421149,
+          "SKIP": 0,
+          "STEPS_ID": 418033
+        },
+        {
+          "Data_Setting_Id": 0,
+          "DATASETVALUE": null,
+          "DATA_SUMMARY_ID": 421145,
+          "SKIP": 0,
+          "STEPS_ID": 418033
+        }
+      ],
+      "recordStatus": 0,
+      "TEST_CASE_ID": 3827,
+      "TEST_CASE_NAME": "Generic Asset Definition",
+      "KEY_WORD_ID": 38,
+      "KEY_WORD_NAME": "Dismiss",
+      "OBJECT_HAPPY_NAME": null,
+      "OBJECT_ID": -1,
+      "OBJECT_TYPE": null,
+      "QUICK_ACCESS": null,
+      "ENUM_TYPE": null,
+      "APPLICATION_ID": -1,
+      "OBJECT_NAME_ID": -1,
+      "TYPE_NAME": " ",
+      "STEPS_ID": 418033,
+      "COLUMN_ROW_SETTING": "5",
+      "COMMENTINFO": null,
+      "IS_RUNNABLE": 0,
+      "RUN_ORDER": 43,
+      "VALUE_SETTING": null
+    }
+  ]
+}
