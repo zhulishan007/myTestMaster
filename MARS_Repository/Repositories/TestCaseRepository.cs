@@ -5109,7 +5109,7 @@ namespace MARS_Repository.Repositories
                 string[] COLUMN_ROW_SETTING_param = updatedRow.AsEnumerable().Select(r => r.Field<string>("COLUMN_ROW_SETTING")).ToArray();
                 string[] VALUE_SETTING_param = updatedRow.AsEnumerable().Select(r => r.Field<string>("VALUE_SETTING")).ToArray();
                 string[] COMMENT_param = updatedRow.AsEnumerable().Select(r => r.Field<string>("COMMENTS")).ToArray();
-                long[] IS_RUNNABLE_param = updatedRow.AsEnumerable().Select(r => Convert.ToInt64(r.Field<decimal>("IS_RUNNABLE"))).ToArray();
+                long[] IS_RUNNABLE_param = updatedRow.AsEnumerable().Select(r => Convert.ToInt64(r.Field<decimal?>("IS_RUNNABLE"))).ToArray();
                 long[] OBJECT_NAME_ID_param = updatedRow.AsEnumerable().Select(r => Convert.ToInt64(r.Field<decimal?>("OBJECT_NAME_ID"))).ToArray();
 
 
@@ -5429,11 +5429,11 @@ namespace MARS_Repository.Repositories
             List<MB_REL_TC_DATA_SUMMARY> deletedDataset = steps.assignedDataSets.Where(x => x.recordStatus == CommonEnum.MarsRecordStatus.en_DeletedToDb).ToList();
             using (var command = connection.CreateCommand())
             {
-                string dropTempTable = "DECLARE cnt NUMBER; BEGIN SELECT COUNT(*) INTO cnt FROM user_tables WHERE table_name = 'T_DATASET_TEMP'; IF cnt <> 0 THEN EXECUTE IMMEDIATE 'DROP TABLE T_DATASET_TEMP'; END IF; END;";
+                string dropTempTable = "DECLARE cnt NUMBER; BEGIN SELECT COUNT(*) INTO cnt FROM user_tables WHERE table_name = 'T_DATASET_TEMP'; IF cnt <> 0 THEN  EXECUTE IMMEDIATE 'TRUNCATE TABLE T_DATASET_TEMP';  EXECUTE IMMEDIATE  'DROP TABLE T_DATASET_TEMP'; END IF; END;";
                 command.CommandText = dropTempTable;
                 command.ExecuteNonQuery();
 
-                string tempTestStepsTableQuery = "CREATE GLOBAL TEMPORARY TABLE T_DATASET_TEMP( STATUSS VARCHAR2(50 BYTE), DATA_SUMMARY_ID NUMBER(16,0), ALIAS_NAME VARCHAR2(64 BYTE), DESCRIPTION_INFO VARCHAR2(512 BYTE), AVAILABLE_MARK NUMBER(2,0), VERSION NUMBER(16,0), SHARE_MARK NUMBER(2,0), CREATE_TIME DATE, STATUS NUMBER(2,0), DATA_SET_TYPE NUMBER(2,0) ) ON COMMIT PRESERVE ROWS";
+                string tempTestStepsTableQuery = "CREATE GLOBAL TEMPORARY TABLE T_DATASET_TEMP( STATUSS VARCHAR2(50 BYTE), DATA_SUMMARY_ID NUMBER(16,0), ALIAS_NAME VARCHAR2(64 BYTE), DESCRIPTION_INFO VARCHAR2(512 BYTE), AVAILABLE_MARK NUMBER(2,0), VERSION NUMBER(16,0), SHARE_MARK NUMBER(2,0), CREATE_TIME DATE, STATUS NUMBER(2,0), DATA_SET_TYPE NUMBER(2,0) ) ON COMMIT Delete ROWS";
                 command.CommandText = tempTestStepsTableQuery;
                 command.ExecuteNonQuery();
 
