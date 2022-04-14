@@ -583,7 +583,10 @@ namespace MARS_Web.Controllers
                     if (x.RUN_ORDER >= newRowRunOrder)
                     {
                         x.RUN_ORDER++;
-                        x.recordStatus = Mars_Serialization.Common.CommonEnum.MarsRecordStatus.en_ModifiedToDb;
+                        if (x.recordStatus != Mars_Serialization.Common.CommonEnum.MarsRecordStatus.en_NewToDb)
+                        {
+                            x.recordStatus = Mars_Serialization.Common.CommonEnum.MarsRecordStatus.en_ModifiedToDb;
+                        }
                     }
                 });
                 MB_V_TEST_STEPS newStep = new MB_V_TEST_STEPS
@@ -657,7 +660,8 @@ namespace MARS_Web.Controllers
                             if (!x.recordStatus.Equals(Mars_Serialization.Common.CommonEnum.MarsRecordStatus.en_DeletedToDb))
                             {
                                 x.RUN_ORDER--;
-                                x.recordStatus = Mars_Serialization.Common.CommonEnum.MarsRecordStatus.en_ModifiedToDb;
+                                if(x.recordStatus != Mars_Serialization.Common.CommonEnum.MarsRecordStatus.en_NewToDb)
+                                    x.recordStatus = Mars_Serialization.Common.CommonEnum.MarsRecordStatus.en_ModifiedToDb;
                                 if (x.KEY_WORD_NAME.Trim().ToLower().Equals("pegwindow"))
                                     isPegWindow = false;
 
