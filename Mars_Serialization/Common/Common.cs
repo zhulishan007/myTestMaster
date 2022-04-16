@@ -17,6 +17,8 @@ namespace Mars_Serialization.Common
         #region GET DATA FROM THE DATABASE
         public static DataTable GetRecordAsDatatable(string connectionString, string query)
         {
+            var d = (new Random()).NextDouble();
+            logger.Info($"GetRecordAsDatatable begins...[{connectionString}] -[{d}]");
             logger.Info($"GetRecordAsDatatable begin...[{connectionString}]");
             try
             {
@@ -26,7 +28,8 @@ namespace Mars_Serialization.Common
                     CommandText = query,
                     Connection = con
                 };
-                con.Open();
+                if (con.State != ConnectionState.Open)
+                    con.Open();
                 OracleDataReader dr = cmd.ExecuteReader();
                 var dataTable = new DataTable();
                 dataTable.Load(dr);
@@ -35,8 +38,11 @@ namespace Mars_Serialization.Common
             }
             catch (Exception ex)
             {
-                logger.Error($"[{ex.Message}], \r\n[{ex.StackTrace}]");
+                logger.Error($"Exctption when want to open [{connectionString}] \r\n\t[{ex.Message}], \r\n\t[{ex.StackTrace}]");
                 throw;
+            }
+            finally {
+                logger.Info($"GetRecordAsDatatable end. [{connectionString}], \r\n\t Id=[{d}]");
             }
         }
         #endregion
