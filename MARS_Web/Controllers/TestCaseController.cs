@@ -237,11 +237,11 @@ namespace MARS_Web.Controllers
                 InitCacheHelper.TestCaseInit(entityConnectString,lSchema, repTree,lConnectionStr);
                 InitCacheHelper.TestSuitInit(entityConnectString,lSchema, repTree, lConnectionStr);
                 InitCacheHelper.DataSetInit(entityConnectString, lSchema, repTree, lConnectionStr);
-                if (flag == "added")
-                {
+                //if (flag == "added")
+                //{
                     string fullFilePath = CreateTestcaseFolder();
-                    Task.Run(() =>LoadTestcaseJsonFile(fullFilePath, new List<MB_V_TEST_STEPS>(), testId, lConnectionStr));
-                }
+                    Task.Run(() =>LoadTestcaseJsonFile(fullFilePath, new List<MB_V_TEST_STEPS>(), testId, lConnectionStr,true));
+                //}
 
                 resultModel.status = 1;
             }

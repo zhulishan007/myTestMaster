@@ -748,5 +748,12 @@ namespace MARS_Web.Controllers
             }
             return Json("", JsonRequestBehavior.AllowGet);
         }
+
+        public ActionResult RefleshObjectCache(long appid)
+        {
+            string path = JsonFileHelper.GetJsonFilePath(SessionManager.Schema, Mars_Serialization.JsonSerialization.SerializationFile.FolderName.Object.ToString());
+            Mars_Serialization.JsonSerialization.SerializationFile.CreateAppObjectFiles(path, appid);
+            return PartialView("loadData");
+        }
     }
 }

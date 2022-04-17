@@ -286,7 +286,7 @@ namespace MARS_Web.Controllers
                 if (GlobalVariable.TestSuiteListCache != null && GlobalVariable.TestSuiteListCache.ContainsKey(SessionManager.Schema))
                 {
                     dictionary.Add("testSuiteList", GlobalVariable.TestSuiteListCache[SessionManager.Schema].
-                        FindAll(r => r.ProjectId == Projectid).Select(x => new { TestsuiteId = x.TestsuiteId, TestsuiteName = x.TestsuiteName }).Distinct());
+                        Select(x => new { TestsuiteId = x.TestsuiteId, TestsuiteName = x.TestsuiteName }).Distinct());
                 }
                 if (GlobalVariable.TestCaseListCache != null && GlobalVariable.TestCaseListCache.ContainsKey(SessionManager.Schema))
                 {

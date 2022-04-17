@@ -775,5 +775,54 @@ namespace Mars_Serialization.JsonSerialization
             return ApplicationFolderNew(filePath, appList, caseName, dataid, needReflesh);
 
         }
+        public static void CreateAppObjectFiles(string folderPath, long appid)
+        {
+            try
+            {
+                string allObjectsListQuery = "SELECT * FROM MV_OBJECT_SNAPSHOT";
+                DataTable allAppPegWindowsData = Common.Common.GetRecordAsDatatable(conString, allObjectsListQuery);
+                var allAppPegWindowsList = Common.Common.ConvertDataTableToList<OBJECT_SNAPSHOT>(allAppPegWindowsData);
+
+                #region CREATE APPLICATION FOLDER
+                string appPath = Path.Combine(folderPath, "app_" + appid.ToString());
+                if (!Directory.Exists(appPath))
+                    Directory.CreateDirectory(appPath);
+                #endregion
+
+                #region CREATE OBJECT JSON FILE IN APPLICATION FOLDER
+                var appPegWindow = allAppPegWindowsList.Where(h => h.APPLICATION_ID == appid && h.TYPE_ID == 1).Distinct().OrderBy(v => v.OBJECT_TYPE).ToList();
+                if (appPegWindow.Count() > 0)
+                {
+                    string parentPagWindowPath = Path.Combine(appPath, "PegWindowsMapping.json");
+                    //if (!File.Exists(parentPagWindowPath))
+                    //{
+                    string pegWindowJsonData = JsonConvert.SerializeObject(appPegWindow);
+                    pegWindowJsonData = JValue.Parse(pegWindowJsonData).ToString(Formatting.Indented);
+                    File.WriteAllText(parentPagWindowPath, pegWindowJsonData);
+                    //}
+                }
+
+                var pegW_Char = appPegWindow.Select(x => x.OBJECT_TYPE.ToUpper().FirstOrDefault()).Distinct().ToList();
+                foreach (var P_char in pegW_Char)
+                {
+                    string filePath = Path.Combine(appPath, string.Format("{0}.json", P_char));
+
+                    var pegWindow = appPegWindow.Where(x => x.OBJECT_TYPE.ToUpper().Trim().StartsWith(P_char.ToString().ToUpper().Trim())).ToList();
+                    var finalObjectList = allAppPegWindowsList.Where(a => pegWindow.Any(b => a.PEG_ID.Equals(b.PEG_ID))).OrderBy(v => v.PEG_NAME).ToList();
+
+                    string objectJsonData = JsonConvert.SerializeObject(finalObjectList);
+                    objectJsonData = JValue.Parse(objectJsonData).ToString(Formatting.Indented);
+                    File.WriteAllText(filePath, objectJsonData);
+
+                }
+                #endregion
+
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
     }
 }

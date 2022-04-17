@@ -323,8 +323,9 @@
         $("#testcasename").val(Name);
         $("#testcasedesc").val(Desc);
         $("#hdnTestCaseId").val(lTestCaseId);
-        $("#DrpApplication").val(AppId.split(","));
-        $("#DrpApplication").select2();
+        loadAppdata("DrpApplication", AppId);
+        //$("#DrpApplication").val(AppId.split(","));
+        //$("#DrpApplication").select2();
         $("#DrpTestSuite").html("");
         $("#DrpTestSuite").select2();
 

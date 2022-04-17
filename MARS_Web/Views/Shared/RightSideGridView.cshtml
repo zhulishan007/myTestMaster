@@ -41,7 +41,7 @@
 && ViewBag.TestcaseId != 0 && ViewBag.TestsuiteId != 0 && ViewBag.ProjectId != 0
 )
 {
-<script>
+    <script>
       var selectChange = "";
       var undonum;
    var draggedRow;
@@ -590,7 +590,6 @@
                                 console.log("Get testCase :" + new Date().getHours() + ":" + new Date().getMinutes() + ":" + new Date().getSeconds())
                                 jsonData = "[";
                                 if (result.data.length > 0) {
-
                                     var datasetname = result.data[0].DATASETNAME;//.replace(/\s+/g, '_');--cherish
                                     var datasetDesc = result.data[0].DATASETDESCRIPTION;
                                     var datasetnames = [];
@@ -626,7 +625,7 @@
                                             lTitle = '<span title="' + datasetdescs[k] + '">' + datasetnames[k] + '</span>';
                                         }
 
-                                        var pDatasetName = "@ViewBag.VisibleDataset";
+                                        var pDatasetName = "@Html.Raw(ViewBag.VisibleDataset)";
 
                                         var IsHidden = false;
                                         var IsCopy = true;
@@ -1406,7 +1405,8 @@
 		                    confirmButtonText: 'Yes'
 	                        }).then(function (result) {
                                 if (result.value == true) {
-                                    startloader();
+                                    //debugger;
+                                    //startloader();
                                     ReloadGridCache('@lTestCasegrid', @ViewBag.TestcaseId,@ViewBag.TestsuiteId, "");
 		                        }
 	                        });
@@ -5151,7 +5151,7 @@
                 //],
                 filter: { crules: [{ condition: 'range' }] }
             });
-           
+
             dt.push({
                 title: "Object", dataIndx: "object", dataType: "string", align: "left", menuInHide: true, halign: "center", sortable: false, resizable: true, nodrag: true, nodrop: true, width: @ViewBag.objectwidth, minWidth: 20,
                 editable: function (ui) {
@@ -5299,17 +5299,22 @@
             dt.push({
                 title: "hdnISAVAILABLE", copy: false,dataType: "int", dataIndx: "ISAVAILABLE", hidden: true, menuInHide: true, sortable: false
             });
-
          $.ajax({
              url: "/TestCase/ReloadGridCache?testcaseId=" + tcid,
                 type: "GET",
                 contentType: "application/json;charset=utf-8",
                 async: false,
-                dataType: "json",
+             dataType: "json",
+             beforeSend: function () {
+                 startloader();
+             },
+             complete: function () {
+                 stoploader();
+             },
                 success: function (result) {
-                if (result.status == 1) {
+                    if (result.status == 1) {
                         result.data = JSON.parse(result.data);
-                   
+
                         if (result.data.length > 0) {
 
                             var datasetname = result.data[0].DATASETNAME;//.replace(/\s+/g, '_');--cherish
@@ -5580,9 +5585,9 @@
                     gridobj[tcgrid].refresh();
                     gridobj[tcgrid].option("dataModel.data", data);
                     gridobj[tcgrid].refreshDataAndView();
-                    stoploader();
+                    //stoploader();
       }
-                else if(result.status == 0) {
+                    else if(result.status == 0) {
                     swal.fire({
                         "title": "",
                         "text": result.message,
@@ -5591,13 +5596,13 @@
                             console.log('on close event fired!');
                         }
                     });
-                    stoploader();
+                    //stoploader();
         }
                 }
             });
         }
 
-</script>
+    </script>
 }
 @{
 
