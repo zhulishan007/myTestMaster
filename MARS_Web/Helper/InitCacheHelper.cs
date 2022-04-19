@@ -420,7 +420,7 @@ namespace MARS_Web.Helper
                 var key = GlobalVariable.UsersDictionary[lSchema].Keys.FirstOrDefault(r => r.TESTER_ID == testid);
                 if (key != null)
                 {
-                    var list = GlobalVariable.UsersDictionary[lSchema][key].Select(r => r.ProjectId);
+                    var list = GlobalVariable.UsersDictionary[lSchema][key].FindAll(u=>u.ProjectExists).Select(r => r.ProjectId);
                     var projects = GlobalVariable.ProjectListCache[lSchema].FindAll(r => list.Contains(r.PROJECT_ID));
 
                     foreach (var project in projects)

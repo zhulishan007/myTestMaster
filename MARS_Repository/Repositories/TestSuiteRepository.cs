@@ -588,6 +588,8 @@ namespace MARS_Repository.Repositories
                             {
                                 TestSuiteId = x.TEST_SUITE_ID,
                                 TestSuiteName = x.TEST_SUITE_NAME,
+                                Application = z.APP_SHORT_NAME,
+                                ApplicationId = z.APPLICATION_ID
                             };
 
                 if (lList.Count() > 0)

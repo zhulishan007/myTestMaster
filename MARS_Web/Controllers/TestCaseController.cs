@@ -4145,14 +4145,20 @@ namespace MARS_Web.Controllers
                 ViewBag.StepDesc = dataresults.Count == 0 ? "" : dataresults[0].StepDesc;
 
                 var groups = GlobalVariable.AllGroups.FirstOrDefault(x => x.Key.Equals(SessionManager.Schema)).Value;
-                ViewBag.Taggroup = groups.Select(x => new SelectListItem { Text = x.GROUPNAME, Value = Convert.ToString(x.GROUPID), Selected = x.GROUPNAME == (dataresults.Count == 0 ? "" : dataresults[0].Group) ? true : false }).Distinct().ToList();
-
+                if (groups != null)
+                    ViewBag.Taggroup = groups.Select(x => new SelectListItem { Text = x.GROUPNAME, Value = Convert.ToString(x.GROUPID), Selected = x.GROUPNAME == (dataresults.Count == 0 ? "" : dataresults[0].Group) ? true : false }).Distinct().ToList();
+                else
+                    ViewBag.Taggroup = new List<SelectListItem>();
                 var folder = GlobalVariable.AllFolders.FirstOrDefault(x => x.Key.Equals(SessionManager.Schema)).Value;
-                ViewBag.TagFolder = folder.Select(x => new SelectListItem { Text = x.FOLDERNAME, Value = Convert.ToString(x.FOLDERID), Selected = x.FOLDERNAME == (dataresults.Count == 0 ? "" : dataresults[0].Folder) ? true : false }).Distinct().ToList();
-
+                if (folder != null)
+                    ViewBag.TagFolder = folder.Select(x => new SelectListItem { Text = x.FOLDERNAME, Value = Convert.ToString(x.FOLDERID), Selected = x.FOLDERNAME == (dataresults.Count == 0 ? "" : dataresults[0].Folder) ? true : false }).Distinct().ToList();
+                else
+                    ViewBag.TagFolder = new List<SelectListItem>();
                 var sets = GlobalVariable.AllSets.FirstOrDefault(x => x.Key.Equals(SessionManager.Schema)).Value;
-                ViewBag.TagSet = sets.Select(x => new SelectListItem { Text = x.SETNAME, Value = Convert.ToString(x.SETID), Selected = x.SETNAME == (dataresults.Count == 0 ? "" : dataresults[0].Set) ? true : false }).Distinct().ToList();
-
+                if(sets!=null)
+                    ViewBag.TagSet = sets.Select(x => new SelectListItem { Text = x.SETNAME, Value = Convert.ToString(x.SETID), Selected = x.SETNAME == (dataresults.Count == 0 ? "" : dataresults[0].Set) ? true : false }).Distinct().ToList();
+                else
+                    ViewBag.TagSet = new List<SelectListItem>();
                 //var groups = repo.GetGroups();
                 //ViewBag.Taggroup = groups.Select(x => new SelectListItem { Text = x.GROUPNAME, Value = Convert.ToString(x.GROUPID), Selected = x.GROUPNAME == (dataresults.Count == 0 ? "" : dataresults[0].Group) ? true : false }).Distinct().ToList();
 
@@ -4189,7 +4195,7 @@ namespace MARS_Web.Controllers
                 if (ex.InnerException != null)
                     ELogger.ErrorException(string.Format("InnerException : Error occured in TestCase controller for GetDatasetTagDetails method | datasetid: {0} | Username: {1}", datasetid, SessionManager.TESTER_LOGIN_NAME), ex.InnerException);
 
-                throw;
+                return PartialView("Error");
             }
         }
 
