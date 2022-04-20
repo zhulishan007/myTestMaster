@@ -141,7 +141,7 @@ function AddEditApplicationSave() {
 function RefleshAppCache() {
     swal.fire({
         title: '',
-        text: "It will be reflesh from database.  Please confirm",
+        text: "It will be refresh from database.  Please confirm",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonText: 'Yes'

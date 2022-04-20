@@ -911,21 +911,28 @@ namespace MARS_Web.Controllers
                 //    resultModel.data = test["testCaseLists"].FindAll(r=>r.TestsuiteId==testSuiteId);
                 //}
                 if (GlobalVariable.TestCaseListCache != null && GlobalVariable.TestCaseListCache.ContainsKey(SessionManager.Schema) &&
-                      GlobalVariable.TestSuiteListCache != null && GlobalVariable.TestSuiteListCache.ContainsKey(SessionManager.Schema))
+                      GlobalVariable.ProjectListCache != null && GlobalVariable.ProjectListCache.ContainsKey(SessionManager.Schema))
                 {
-                    var testSuite = GlobalVariable.TestSuiteListCache[SessionManager.Schema].FirstOrDefault(r => r.ProjectId == projectId && r.TestsuiteId == testSuiteId);
+                    var project = GlobalVariable.ProjectListCache[SessionManager.Schema].FirstOrDefault(r => r.PROJECT_ID == projectId );
                     var caseCache = GlobalVariable.TestCaseListCache[SessionManager.Schema].FindAll(r => r.TestsuiteId == testSuiteId);
-                    var testCaseLists = caseCache.Select(c => new TestCaseListByProject()
+                    if (project != null && caseCache != null)
                     {
-                        TestcaseId = c.TestcaseId,
-                        TestcaseName = c.TestcaseName,
-                        TestCaseDesc = c.TestCaseDesc,
-                        ProjectId = testSuite.ProjectId,
-                        ProjectName = testSuite.ProjectName,
-                        TestsuiteId = c.TestsuiteId,
-                        TestsuiteName = c.TestsuiteName
-                    }).ToList();
-                    resultModel.data = testCaseLists;
+                        var testCaseLists = caseCache.Select(c => new TestCaseListByProject()
+                        {
+                            TestcaseId = c.TestcaseId,
+                            TestcaseName = c.TestcaseName,
+                            TestCaseDesc = c.TestCaseDesc,
+                            ProjectId = project.PROJECT_ID,
+                            ProjectName = project.PROJECT_NAME,
+                            TestsuiteId = c.TestsuiteId,
+                            TestsuiteName = c.TestsuiteName
+                        }).ToList();
+                        resultModel.data = testCaseLists;
+                    }
+                    else
+                    {
+                        resultModel.data = repo.GetTestCaseListNew(projectId, testSuiteId);
+                    }
                     //resultModel.data = GlobalVariable.TestCaseListCache[SessionManager.Schema].FindAll(r => r.ProjectId == projectId && r.TestsuiteId == testSuiteId).Distinct();
                 }
                 else

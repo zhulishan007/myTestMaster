@@ -560,7 +560,7 @@ namespace MARS_Web.Controllers
                 if (SerializationFile.CreateJsonFilesNew(lSchema, path, FolderName.Application.ToString(), applist, 0, true))
                 {
                     logger.Info($"ReloadAppCache success. ");
-                    result.message = "Reflesh data from database success";
+                    result.message = "Refresh data from database success";
                     result.status = 1;
                     result.data = applist.Skip(0).Take(100).ToList();
                 }

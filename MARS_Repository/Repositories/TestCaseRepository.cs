@@ -6247,5 +6247,89 @@ namespace MARS_Repository.Repositories
                 command.ExecuteNonQuery();
             }
         }
+
+
+        public bool InsertDatasetInDatabase(long testCaseId, string lConnectionStr, MB_REL_TC_DATA_SUMMARY dataSet,List<DataForDataSets> dataForDataSets)
+        {
+            logger.Info($"INSERT NEW ADDED DATASET AND SETTINGS STEPS VALUES INTO DATABASE | TESTCASEID : {testCaseId} | USERNAME: {Username} | START : {DateTime.Now.ToString("HH:mm:ss.ffff tt")}");
+            OracleTransaction transaction = null;
+            try
+            {
+                using (OracleConnection connection = new OracleConnection(lConnectionStr))
+                {
+                    connection.Open();
+                    OracleCommand command = connection.CreateCommand();
+                    transaction = connection.BeginTransaction();
+                    string lcmdquery = "INSERT INTO T_TEST_DATA_SUMMARY (DATA_SUMMARY_ID, ALIAS_NAME, DESCRIPTION_INFO,  CREATE_TIME ) values(:1,:2,:3,sysdate)";
+                    command.CommandText = lcmdquery;
+                    command.Parameters.Add(new OracleParameter(":1", dataSet.DATA_SUMMARY_ID));
+                    command.Parameters.Add(new OracleParameter(":2", dataSet.ALIAS_NAME));
+                    command.Parameters.Add(new OracleParameter(":3", dataSet.DESCRIPTION_INFO));
+                    command.ExecuteNonQuery();
+
+                    command.Parameters.Clear();
+                    long id = Helper.GetIdFromSeq(command, "T_TEST_STEPS_SEQ");
+                    command.CommandText = "INSERT INTO REL_TC_DATA_SUMMARY (ID, DATA_SUMMARY_ID, TEST_CASE_ID, CREATE_TIME) values(:1,:2,:3, SYSDATE)";
+                    command.Parameters.Add(new OracleParameter(":1", id));
+                    command.Parameters.Add(new OracleParameter(":2", dataSet.DATA_SUMMARY_ID));
+                    command.Parameters.Add(new OracleParameter(":3", testCaseId));
+                    command.ExecuteNonQuery();
+
+                    command.Parameters.Clear();
+
+                    if (dataForDataSets.Count > 0)
+                        InsertDataSettingsInDatabase(dataForDataSets, testCaseId, lConnectionStr, connection);
+                    transaction.Commit();
+                }
+
+                logger.Info($"INSERT NEW ADDED DATASET AND SETTINGS STEPS VALUES INTO DATABASE | TESTCASEID : {testCaseId} | USERNAME: {Username} | End : {DateTime.Now.ToString("HH:mm:ss.ffff tt")}");
+            }
+            catch (Exception ex)
+            {
+                if (transaction != null)
+                    transaction.Rollback();
+                ELogger.ErrorException($"Error occured TestCase in InsertDatasetInDatabase method |TESTCASEID : {testCaseId} | USERNAME: {Username} ",  ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException($"InnerException : Error occured TestCase in InsertDatasetInDatabase method |TESTCASEID : {testCaseId} | USERNAME: {Username} ", ex.InnerException);
+                throw ex;
+            }
+
+            return true;
+        }
+
+        public void DeleteDatasetInDatabase(long testCaseId, string lConnectionStr, long dataSummaryId)
+        {
+            logger.Info($" DELETE DATASET AND SETTINGS STEPS VALUES INTO DATABASE | TESTCASEID : {testCaseId} | DATA_SUMMARY_ID : {dataSummaryId}  | USERNAME: {Username} | START : {DateTime.Now.ToString("HH:mm:ss.ffff tt")}");
+            OracleTransaction transaction = null;
+            try
+            {
+                using (OracleConnection connection = new OracleConnection(lConnectionStr))
+                {
+                    connection.Open();
+                    OracleCommand command = connection.CreateCommand();
+                    transaction = connection.BeginTransaction();
+                    command.CommandText = $"DELETE FROM TEST_DATA_SETTING WHERE DATA_SUMMARY_ID ={dataSummaryId}";
+                    command.ExecuteNonQuery();
+                    command.CommandText = $"DELETE FROM REL_TC_DATA_SUMMARY WHERE TEST_CASE_ID = {testCaseId} AND DATA_SUMMARY_ID = {dataSummaryId}";
+                    command.ExecuteNonQuery();
+                    command.CommandText = $"DELETE FROM T_SHARED_OBJECT_POOL WHERE DATA_SUMMARY_ID = {dataSummaryId} ";
+                    command.ExecuteNonQuery();
+                    command.CommandText = $"DELETE FROM T_TEST_DATA_SUMMARY WHERE DATA_SUMMARY_ID =  {dataSummaryId}";
+                    command.ExecuteNonQuery();
+                    transaction.Commit();
+                }
+                logger.Info($" DELETE DATASET AND SETTINGS STEPS VALUES INTO DATABASE | TESTCASEID : {testCaseId} | DATA_SUMMARY_ID : {dataSummaryId}  | USERNAME: {Username} | End : {DateTime.Now.ToString("HH:mm:ss.ffff tt")}");
+            }
+            catch (Exception ex)
+            {
+                if (transaction != null)
+                    transaction.Rollback();
+                ELogger.ErrorException($"Error occured TestCase in DeleteDatasetInDatabase method |TESTCASEID : {testCaseId}| DATA_SUMMARY_ID : {dataSummaryId} | USERNAME: {Username} ", ex);
+                if (ex.InnerException != null)
+                    ELogger.ErrorException($"InnerException : Error occured TestCase in DeleteDatasetInDatabase method |TESTCASEID : {testCaseId}| DATA_SUMMARY_ID : {dataSummaryId} | USERNAME: {Username} ", ex.InnerException);
+                throw ex;
+            }
+        }
+
     }
 }

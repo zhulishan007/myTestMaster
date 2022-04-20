@@ -465,7 +465,7 @@ namespace MARS_Web.Controllers
                 if (Session[testcaseSessionName] != null)
                     allList = Session[testcaseSessionName] as Mars_Memory_TestCase;
                 List<MB_V_TEST_STEPS> allSteps = allList.allSteps;
-                MB_REL_TC_DATA_SUMMARY deleteDataset = allList.assignedDataSets.FirstOrDefault(x => x.DATA_SUMMARY_ID == datasetid); ;
+                MB_REL_TC_DATA_SUMMARY deleteDataset = allList.assignedDataSets.FirstOrDefault(x => x.DATA_SUMMARY_ID == datasetid); 
                 if (deleteDataset.recordStatus == Mars_Serialization.Common.CommonEnum.MarsRecordStatus.en_NewToDb)
                 {
                     allList.assignedDataSets.Remove(deleteDataset);
@@ -489,6 +489,18 @@ namespace MARS_Web.Controllers
                         if (x.DATA_SUMMARY_ID == datasetid)
                             x.recordStatus = Mars_Serialization.Common.CommonEnum.MarsRecordStatus.en_DeletedToDb;
                     });
+                }
+                allList.assignedDataSets.RemoveAll(r => r == null || r.DATA_SUMMARY_ID == datasetid);
+                allList.allSteps.ForEach(x=>x.dataForDataSets.RemoveAll(r => r == null || r.DATA_SUMMARY_ID == datasetid));
+
+                TestCaseRepository repository = new TestCaseRepository();
+                string schema = SessionManager.Schema;  
+                repository.DeleteDatasetInDatabase(testCaseId,SessionManager.APP,datasetid);
+                InitCacheHelper.TestCaseInit(SessionManager.ConnectionString, schema, new GetTreeRepository(), SessionManager.APP);
+                RefleshTestCaseJsonCache(schema, repository, testCaseId, allList);
+                if (GlobalVariable.DataSetListCache != null && GlobalVariable.DataSetListCache.ContainsKey(schema))
+                {
+                    GlobalVariable.DataSetListCache[schema].RemoveAll(r =>r==null ||(r.Datasetid == datasetid && r.TestcaseId == testCaseId));
                 }
 
                 resultModel.data = null;
@@ -2964,12 +2976,14 @@ namespace MARS_Web.Controllers
 
                 MB_REL_TC_DATA_SUMMARY objDataset = new MB_REL_TC_DATA_SUMMARY()
                 {
-                    recordStatus = Mars_Serialization.Common.CommonEnum.MarsRecordStatus.en_NewToDb,
+                    //recordStatus = Mars_Serialization.Common.CommonEnum.MarsRecordStatus.en_NewToDb,
+                    recordStatus = Mars_Serialization.Common.CommonEnum.MarsRecordStatus.en_None,
                     ALIAS_NAME = datasetname,
                     DATA_SUMMARY_ID = testCaserepo.GetTEST_DATA_SUMMARY_Seq(),
                     DESCRIPTION_INFO = datasetdesc
                 };
                 allList.assignedDataSets.Add(objDataset);
+                List<DataForDataSets> dataForDataSets = new List<DataForDataSets>();
                 allList.allSteps.ForEach(x =>
                 {
                     DataForDataSets obj = new DataForDataSets
@@ -2980,8 +2994,33 @@ namespace MARS_Web.Controllers
                         Data_Setting_Id = testCaserepo.GetDataSettings_Seq(),
                         STEPS_ID = x.STEPS_ID
                     };
+                    dataForDataSets.Add(obj);
                     x.dataForDataSets.Add(obj);
                 });
+                if (Testcaseid != null)
+                {
+                    if (GlobalVariable.DataSetListCache != null && GlobalVariable.DataSetListCache.ContainsKey(lSchema))
+                    {
+                        string testCaseName = string.Empty;
+                        if (GlobalVariable.TestCaseListCache != null && GlobalVariable.TestCaseListCache.ContainsKey(lSchema))
+                        {
+                            var testcase = GlobalVariable.TestCaseListCache[lSchema].FirstOrDefault(r => r.TestcaseId == Testcaseid);
+                            if (testcase != null)
+                                testCaseName = testcase.TestcaseName;
+                        }
+                        GlobalVariable.DataSetListCache[lSchema].Add(new DataSetListByTestCase()
+                        {
+                            TestcaseId = (long)Testcaseid,
+                            TestcaseName = testCaseName,
+                            Datasetid = objDataset.DATA_SUMMARY_ID,
+                            Datasetname = objDataset.ALIAS_NAME,
+                            Description = objDataset.DESCRIPTION_INFO
+                        });
+                    }
+                    testCaserepo.InsertDatasetInDatabase((long)Testcaseid, lConnectionStr, objDataset, dataForDataSets);
+                    InitCacheHelper.TestCaseInit(SessionManager.ConnectionString, lSchema, new GetTreeRepository(), lConnectionStr);
+                    RefleshTestCaseJsonCache(lSchema, testCaserepo, (long)Testcaseid, allList);
+                }
                 var result = new
                 {
                     datasetId = datasetid,
@@ -2991,6 +3030,7 @@ namespace MARS_Web.Controllers
                 resultModel.data = result;
                 resultModel.message = "Dataset is " + flag + " successfully";
                 resultModel.status = 1;
+
                 logger.Info(string.Format("ADD/ADIT DATASET IN THE SESSION | TESTCASEID : {0} | USERNAME: {1} | END : {2}", Testcaseid, SessionManager.TESTER_LOGIN_NAME, DateTime.Now.ToString("HH:mm:ss.ffff tt")));
             }
             catch (Exception ex)
@@ -4409,6 +4449,7 @@ namespace MARS_Web.Controllers
                         var lConnectionStr = SessionManager.APP;
                         dbtable.errorlog("Import is started", "Import DatasetTag", "", 0);
                         var lPath = helper.MasterImport(0, destinationPath, strPath, "DATASETTAG", 1, "", "", "", 1, lSchema, lConnectionStr);
+                        //var lPath = helper.MasterImportDataset(0, destinationPath, strPath, "DATASETTAG", 1, "", "", "", 1, lSchema, lConnectionStr);
 
                         if (lPath == false)
                         {
@@ -5611,7 +5652,7 @@ namespace MARS_Web.Controllers
                 }
                 else 
                 {
-                    resultModel.message = "error reflesh data from database.";
+                    resultModel.message = "error refresh data from database.";
                     resultModel.status = 0;
                 }
                 logger.Info($"ReloadGridCache  end : testcaseId  {testcaseId}  ");
@@ -5629,5 +5670,25 @@ namespace MARS_Web.Controllers
             return Json(resultModel, JsonRequestBehavior.AllowGet);
         }
 
+
+        private void RefleshTestCaseJsonCache(string schema, TestCaseRepository repository,long testCaseId,  Mars_Memory_TestCase allList)
+        {
+            if (allList != null && allList.allSteps != null && allList.allSteps.Count > 0)
+            {
+                string fullFilePath = CreateTestcaseFolder();
+                string testCaseName = string.Empty;
+                if (GlobalVariable.TestCaseListCache != null && GlobalVariable.TestCaseListCache.ContainsKey(schema))
+                {
+                    testCaseName = GlobalVariable.TestCaseListCache[schema].FirstOrDefault(r => r.TestcaseId == testCaseId)?.TestcaseName;
+                }
+                else
+                {
+                    testCaseName = repository.GetTestCaseNameById(testCaseId);
+                }
+                string fileName = string.Format("{0}_{1}.json", testCaseId, testCaseName);
+                var testcaseJsonData = JsonConvert.SerializeObject(allList);
+                System.IO.File.WriteAllText(Path.Combine(fullFilePath, fileName), testcaseJsonData);
+            }
+        }
     }
 }

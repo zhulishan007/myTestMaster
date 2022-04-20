@@ -4408,7 +4408,7 @@
                                                 if (lresult.data.msg == "success") {
                                                     var prj = $("#projectidtc").val();
                                                     var ts = $("#testsuiteidtc").val();
-                                                    $.ajax({
+                                                   @* $.ajax({
                                                         url: "/TestCase/GetDataSetCount",
                                                         data: JSON.stringify({ ProjectId: prj, TestSuiteId: ts, TestCaseId: tcid }),
                                                         type: "POST",
@@ -4436,6 +4436,16 @@
                                                                     }
                                                                 });
                                                             }
+                                                        }
+                                                    });*@
+                                                    $.ajax({
+                                                        url: "/Login/LeftPanel",
+                                                        type: "POST",
+                                                        contentType: "application/json;charset=utf-8",
+                                                        dataType: "HTML",
+                                                        success: function (result) {
+                                                            $("#leftProjectList").html("");
+                                                            $("#leftProjectList").html(result);
                                                         }
                                                     });
                                                     swal.fire({
@@ -5291,7 +5301,16 @@
                                                         contentType: "application/json;charset=utf-8",
                                                         dataType: "json",
                                                         success: function (lresult) {
-
+                                                            $.ajax({
+                                                                url: "/Login/LeftPanel",
+                                                                type: "POST",
+                                                                contentType: "application/json;charset=utf-8",
+                                                                dataType: "HTML",
+                                                                success: function (result) {
+                                                                    $("#leftProjectList").html("");
+                                                                    $("#leftProjectList").html(result);
+                                                                }
+                                                            });
                                                         }
                                                     });
                                                 }

@@ -4123,6 +4123,384 @@ namespace MARSUtility
             }
         }
 
+        public static bool ImportExcelDatasetTagNew(string pFilePath, long pFEEDPROCESSDETAILID, string schema, string constring)
+        {
+            SomeGlobalVariables.functionName = SomeGlobalVariables.functionName + "->ImportExcelDatasetTag";
+            try
+            {
+                bool lResult = true;
+
+                bool open = IsFileLocked(pFilePath);
+                if (open)
+                {
+                    dbtable.errorlog("File is open in Background", "", "", 0);
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("\n");
+                    Console.WriteLine("File is open in Background.... Please close it before importing..");
+                    return false;
+                }
+                using (SpreadsheetDocument doc = SpreadsheetDocument.Open(pFilePath, false))
+                {
+                    WorkbookPart wbPart = doc.WorkbookPart;
+                    int worksheetcount = doc.WorkbookPart.Workbook.Sheets.Count();
+                    lResult = true;
+                    if (worksheetcount > 0)
+                    {
+                        DataTable dtImport = new DataTable();
+                        dtImport.Columns.Add("FEEDPROCESSDETAILID");
+                        dtImport.Columns.Add("DATASETNAME");
+                        dtImport.Columns.Add("DESCRIPTION");
+                        dtImport.Columns.Add("TAGGROUP");
+                        dtImport.Columns.Add("TAGSET");
+                        dtImport.Columns.Add("TAGFOLDER");
+                        dtImport.Columns.Add("EXPECTEDRESULTS");
+                        dtImport.Columns.Add("STEPDESC");
+                        dtImport.Columns.Add("DIARY");
+                        dtImport.Columns.Add("SEQUENCE");
+                        dtImport.AcceptChanges();
+
+                        DataTable dtt = new DataTable();
+                        dtt.Columns.Add("FEEDPROCESSDETAILID");
+                        dtt.Columns.Add("NAME");
+                        dtt.Columns.Add("DESCRIPTION");
+                        dtt.Columns.Add("ACTIVE");
+                        dtt.Columns.Add("TYPE");
+                        dtt.AcceptChanges();
+                        for (int i = 0; i < worksheetcount; i++)
+                        {
+                            Sheet mysheet = (Sheet)doc.WorkbookPart.Workbook.Sheets.ChildElements.GetItem(i);
+                            Worksheet Worksheet = ((WorksheetPart)wbPart.GetPartById(mysheet.Id)).Worksheet;
+                            List<Row> rows = Worksheet.GetFirstChild<SheetData>().Descendants<Row>().ToList();
+                            DataTable dt = new DataTable();
+
+                            if (i == 0)
+                            {
+                                dt = DatasetTagValidation(rows, doc);
+                                if (dt.Rows.Count != 0)
+                                {
+                                    lResult = false;
+                                    dbtable.dt_Log.Merge(dt);
+                                }
+
+                                if (lResult)
+                                {
+                                    for (int m = 1; m < rows.Count; m++)
+                                    {
+                                        var celllst = rows[m].Descendants<Cell>().ToList();
+
+                                        DataRow dr = dtImport.NewRow();
+                                        dr["FEEDPROCESSDETAILID"] = pFEEDPROCESSDETAILID;
+                                        for (int k = 0; k < celllst.Count; k++)
+                                        {
+                                            if (celllst[k].CellReference != null)
+                                            {
+                                                var cell = celllst[k].CellReference.ToString();
+                                                int rowcell, acell = getIndexofNumber(cell);
+                                                string Numberpartcell = cell.Substring(acell, cell.Length - acell);
+                                                rowcell = Convert.ToInt32(Numberpartcell);
+                                                string Stringpart = cell.Substring(0, acell);
+
+                                                if (Stringpart == "A")
+                                                    dr["DATASETNAME"] = celllst[k].CellValue == null ? "" : GetValue(doc, celllst[k]).Trim();
+
+                                                if (Stringpart == "B")
+                                                    dr["DESCRIPTION"] = celllst[k].CellValue == null ? "" : GetValue(doc, celllst[k]).Trim();
+
+                                                if (Stringpart == "C")
+                                                    dr["TAGGROUP"] = celllst[k].CellValue == null ? "" : GetValue(doc, celllst[k]).Trim();
+
+                                                if (Stringpart == "D")
+                                                    dr["TAGSET"] = celllst[k].CellValue == null ? "" : GetValue(doc, celllst[k]).Trim();
+
+                                                if (Stringpart == "E")
+                                                    dr["TAGFOLDER"] = celllst[k].CellValue == null ? "" : GetValue(doc, celllst[k]).Trim();
+
+                                                if (Stringpart == "F")
+                                                    dr["EXPECTEDRESULTS"] = celllst[k].CellValue == null ? "" : GetValue(doc, celllst[k]).Trim();
+
+                                                if (Stringpart == "G")
+                                                    dr["STEPDESC"] = celllst[k].CellValue == null ? "" : GetValue(doc, celllst[k]).Trim();
+
+                                                if (Stringpart == "H")
+                                                    dr["DIARY"] = celllst[k].CellValue == null ? "" : GetValue(doc, celllst[k]).Trim();
+
+                                                if (Stringpart == "I")
+                                                    dr["SEQUENCE"] = celllst[k].CellValue == null ? "" : GetValue(doc, celllst[k]);
+                                            }
+                                        }
+
+                                        if (dr["DATASETNAME"].ToString() == "")
+                                            dr["DATASETNAME"] = "";
+
+                                        if (dr["DESCRIPTION"].ToString() == "")
+                                            dr["DESCRIPTION"] = "";
+
+                                        if (dr["TAGGROUP"].ToString() == "")
+                                            dr["TAGGROUP"] = "";
+
+                                        if (dr["TAGSET"].ToString() == "")
+                                            dr["TAGSET"] = "";
+
+                                        if (dr["TAGFOLDER"].ToString() == "")
+                                            dr["TAGFOLDER"] = "";
+
+                                        if (dr["EXPECTEDRESULTS"].ToString() == "")
+                                            dr["EXPECTEDRESULTS"] = "";
+
+                                        if (dr["STEPDESC"].ToString() == "")
+                                            dr["STEPDESC"] = "";
+
+                                        if (dr["DIARY"].ToString() == "")
+                                            dr["DIARY"] = "";
+
+                                        if (dr["SEQUENCE"].ToString() == "")
+                                            dr["SEQUENCE"] = "";
+
+                                        dtImport.Rows.Add(dr);
+                                        dtImport.AcceptChanges();
+                                    }
+                                }
+                                if (lResult == false)
+                                {
+                                    dtImport = null;
+
+                                }
+                                if (dtImport != null)
+                                {
+                                    if (dtImport.Rows.Count > 0)
+                                    {
+                                        OracleTransaction ltransaction;
+                                        OracleConnection lconnection = new OracleConnection(constring);
+                                        lconnection.Open();
+                                        ltransaction = lconnection.BeginTransaction();
+                                        string lcmdquery = "insert into TBLSTGDATASETTAG ( FEEDPROCESSDETAILID,DATASETNAME,TAGGROUP,TAGSET,TAGFOLDER,EXPECTEDRESULTS,STEPDESC,DIARY,SEQUENCE,DESCRIPTION) values(:1,:2,:3,:4,:5,:6,:7,:8,:9,:10)";
+                                        int[] ids = new int[dtImport.Rows.Count];
+                                        using (var lcmd = lconnection.CreateCommand())
+                                        {
+                                            lcmd.CommandText = lcmdquery;
+                                            lcmd.ArrayBindCount = ids.Length;
+                                            string[] FEEDPROCESSDETAILID_param = dtImport.AsEnumerable().Select(r => r.Field<string>("FEEDPROCESSDETAILID")).ToArray();
+                                            string[] DATASETNAME_param = dtImport.AsEnumerable().Select(r => r.Field<string>("DATASETNAME")).ToArray();
+                                            string[] DESCRIPTION_param = dtImport.AsEnumerable().Select(r => r.Field<string>("DESCRIPTION")).ToArray();
+                                            string[] TAGGROUP_param = dtImport.AsEnumerable().Select(r => r.Field<string>("TAGGROUP")).ToArray();
+                                            string[] TAGSET_param = dtImport.AsEnumerable().Select(r => r.Field<string>("TAGSET")).ToArray();
+                                            string[] TAGFOLDER_param = dtImport.AsEnumerable().Select(r => r.Field<string>("TAGFOLDER")).ToArray();
+                                            string[] EXPECTEDRESULTS_param = dtImport.AsEnumerable().Select(r => r.Field<string>("EXPECTEDRESULTS")).ToArray();
+                                            string[] STEPDESC_param = dtImport.AsEnumerable().Select(r => r.Field<string>("STEPDESC")).ToArray();
+                                            string[] DIARY_param = dtImport.AsEnumerable().Select(r => r.Field<string>("DIARY")).ToArray();
+                                            string[] SEQUENCE_param = dtImport.AsEnumerable().Select(r => r.Field<string>("SEQUENCE")).ToArray();
+
+                                            OracleParameter FEEDPROCESSDETAILID_oparam = new OracleParameter();
+                                            FEEDPROCESSDETAILID_oparam.OracleDbType = OracleDbType.Varchar2;
+                                            FEEDPROCESSDETAILID_oparam.Value = FEEDPROCESSDETAILID_param;
+
+                                            OracleParameter DATASETNAME_oparam = new OracleParameter();
+                                            DATASETNAME_oparam.OracleDbType = OracleDbType.Varchar2;
+                                            DATASETNAME_oparam.Value = DATASETNAME_param;
+
+                                            OracleParameter TAGGROUP_oparam = new OracleParameter();
+                                            TAGGROUP_oparam.OracleDbType = OracleDbType.Varchar2;
+                                            TAGGROUP_oparam.Value = TAGGROUP_param;
+
+                                            OracleParameter TAGSET_oparam = new OracleParameter();
+                                            TAGSET_oparam.OracleDbType = OracleDbType.Varchar2;
+                                            TAGSET_oparam.Value = TAGSET_param;
+
+                                            OracleParameter TAGFOLDER_oparam = new OracleParameter();
+                                            TAGFOLDER_oparam.OracleDbType = OracleDbType.Varchar2;
+                                            TAGFOLDER_oparam.Value = TAGFOLDER_param;
+
+                                            OracleParameter EXPECTEDRESULTS_oparam = new OracleParameter();
+                                            EXPECTEDRESULTS_oparam.OracleDbType = OracleDbType.Varchar2;
+                                            EXPECTEDRESULTS_oparam.Value = EXPECTEDRESULTS_param;
+
+                                            OracleParameter STEPDESC_oparam = new OracleParameter();
+                                            STEPDESC_oparam.OracleDbType = OracleDbType.Varchar2;
+                                            STEPDESC_oparam.Value = STEPDESC_param;
+
+                                            OracleParameter DIARY_oparam = new OracleParameter();
+                                            DIARY_oparam.OracleDbType = OracleDbType.Varchar2;
+                                            DIARY_oparam.Value = DIARY_param;
+
+                                            OracleParameter SEQUENCE_oparam = new OracleParameter();
+                                            SEQUENCE_oparam.OracleDbType = OracleDbType.Varchar2;
+                                            SEQUENCE_oparam.Value = SEQUENCE_param;
+
+                                            OracleParameter DESCRIPTION_oparam = new OracleParameter();
+                                            DESCRIPTION_oparam.OracleDbType = OracleDbType.Varchar2;
+                                            DESCRIPTION_oparam.Value = DESCRIPTION_param;
+
+
+                                            lcmd.Parameters.Add(FEEDPROCESSDETAILID_oparam);
+                                            lcmd.Parameters.Add(DATASETNAME_oparam);
+                                            lcmd.Parameters.Add(TAGGROUP_oparam);
+                                            lcmd.Parameters.Add(TAGSET_oparam);
+                                            lcmd.Parameters.Add(TAGFOLDER_oparam);
+                                            lcmd.Parameters.Add(EXPECTEDRESULTS_oparam);
+                                            lcmd.Parameters.Add(STEPDESC_oparam);
+                                            lcmd.Parameters.Add(DIARY_oparam);
+                                            lcmd.Parameters.Add(SEQUENCE_oparam);
+                                            lcmd.Parameters.Add(DESCRIPTION_oparam);
+                                            try
+                                            {
+                                                lcmd.ExecuteNonQuery();
+                                                lResult = true;
+                                            }
+                                            catch (Exception lex)
+                                            {
+                                                lResult = false;
+                                                ltransaction.Rollback();
+                                                throw new Exception(lex.Message);
+                                            }
+
+                                            ltransaction.Commit();
+                                            lconnection.Close();
+                                        }
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                var tabName = mysheet.Name;
+                                dt = DatasetTagCommonValidation(rows, doc, tabName);
+                                if (dt.Rows.Count != 0)
+                                {
+                                    lResult = false;
+                                    dbtable.dt_Log.Merge(dt);
+                                }
+
+                                if (lResult)
+                                {
+                                    for (int m = 1; m < rows.Count; m++)
+                                    {
+                                        var celllst = rows[m].Descendants<Cell>().ToList();
+
+                                        DataRow dr = dtt.NewRow();
+                                        dr["FEEDPROCESSDETAILID"] = pFEEDPROCESSDETAILID;
+                                        for (int k = 0; k < celllst.Count; k++)
+                                        {
+                                            if (celllst[k].CellReference != null)
+                                            {
+                                                var cell = celllst[k].CellReference.ToString();
+                                                int rowcell, acell = getIndexofNumber(cell);
+                                                string Numberpartcell = cell.Substring(acell, cell.Length - acell);
+                                                rowcell = Convert.ToInt32(Numberpartcell);
+                                                string Stringpart = cell.Substring(0, acell);
+
+                                                if (Stringpart == "A")
+                                                    dr["NAME"] = celllst[k].CellValue == null ? "" : GetValue(doc, celllst[k]);
+
+                                                if (Stringpart == "B")
+                                                    dr["DESCRIPTION"] = celllst[k].CellValue == null ? "" : GetValue(doc, celllst[k]);
+
+                                                if (Stringpart == "C")
+                                                {
+                                                    if (celllst[k].CellValue != null)
+                                                        dr["ACTIVE"] = GetValue(doc, celllst[k]) == "Active" ? 1 : 0;
+                                                }
+                                            }
+                                        }
+
+                                        if (dr["NAME"].ToString() == "")
+                                            dr["NAME"] = "";
+
+                                        if (dr["DESCRIPTION"].ToString() == "")
+                                            dr["DESCRIPTION"] = "";
+
+                                        if (dr["ACTIVE"].ToString() == "")
+                                            dr["ACTIVE"] = 0;
+
+                                        dr["TYPE"] = tabName;
+                                        dtt.Rows.Add(dr);
+                                        dtt.AcceptChanges();
+                                    }
+                                }
+                            }
+
+                        }
+
+                        if (lResult == false)
+                        {
+                            dtt = null;
+                        }
+
+                        //if (dtt != null)
+                        if (dtt != null && dtImport != null)
+                        {
+                            if (dtt.Rows.Count > 0)
+                            {
+                                OracleTransaction ltransaction;
+                                OracleConnection lconnection = new OracleConnection(constring);
+                                lconnection.Open();
+                                ltransaction = lconnection.BeginTransaction();
+                                string lcmdquery = "insert into TBLSTGCOMMONDATASETTAG ( FEEDPROCESSDETAILID,NAME,DESCRIPTION,ACTIVE,TYPE) values(:1,:2,:3,:4,:5)";
+                                int[] ids = new int[dtt.Rows.Count];
+                                using (var lcmd = lconnection.CreateCommand())
+                                {
+                                    lcmd.CommandText = lcmdquery;
+                                    lcmd.ArrayBindCount = ids.Length;
+                                    string[] FEEDPROCESSDETAILID_param = dtt.AsEnumerable().Select(r => r.Field<string>("FEEDPROCESSDETAILID")).ToArray();
+                                    string[] NAME_param = dtt.AsEnumerable().Select(r => r.Field<string>("NAME")).ToArray();
+                                    string[] DESCRIPTION_param = dtt.AsEnumerable().Select(r => r.Field<string>("DESCRIPTION")).ToArray();
+                                    string[] ACTIVE_param = dtt.AsEnumerable().Select(r => r.Field<string>("ACTIVE")).ToArray();
+                                    string[] TYPE_param = dtt.AsEnumerable().Select(r => r.Field<string>("TYPE")).ToArray();
+
+                                    OracleParameter FEEDPROCESSDETAILID_oparam = new OracleParameter();
+                                    FEEDPROCESSDETAILID_oparam.OracleDbType = OracleDbType.Varchar2;
+                                    FEEDPROCESSDETAILID_oparam.Value = FEEDPROCESSDETAILID_param;
+
+                                    OracleParameter NAME_oparam = new OracleParameter();
+                                    NAME_oparam.OracleDbType = OracleDbType.Varchar2;
+                                    NAME_oparam.Value = NAME_param;
+
+                                    OracleParameter DESCRIPTION_oparam = new OracleParameter();
+                                    DESCRIPTION_oparam.OracleDbType = OracleDbType.Varchar2;
+                                    DESCRIPTION_oparam.Value = DESCRIPTION_param;
+
+                                    OracleParameter ACTIVE_oparam = new OracleParameter();
+                                    ACTIVE_oparam.OracleDbType = OracleDbType.Long;
+                                    ACTIVE_oparam.Value = ACTIVE_param;
+
+                                    OracleParameter TYPE_oparam = new OracleParameter();
+                                    TYPE_oparam.OracleDbType = OracleDbType.Varchar2;
+                                    TYPE_oparam.Value = TYPE_param;
+
+                                    lcmd.Parameters.Add(FEEDPROCESSDETAILID_oparam);
+                                    lcmd.Parameters.Add(NAME_oparam);
+                                    lcmd.Parameters.Add(DESCRIPTION_oparam);
+                                    lcmd.Parameters.Add(ACTIVE_oparam);
+                                    lcmd.Parameters.Add(TYPE_oparam);
+                                    try
+                                    {
+                                        lcmd.ExecuteNonQuery();
+                                        lResult = true;
+                                    }
+                                    catch (Exception lex)
+                                    {
+                                        lResult = false;
+                                        ltransaction.Rollback();
+                                        throw new Exception(lex.Message);
+                                    }
+
+                                    ltransaction.Commit();
+                                    lconnection.Close();
+                                }
+                            }
+                        }
+                    }
+                }
+                return lResult;
+            }
+            catch (Exception ex)
+            {
+                int line;
+                string msg = ex.Message;
+                line = dbtable.lineNo(ex);
+                dbtable.errorlog(msg, "Import DataSetTag Excel", SomeGlobalVariables.functionName, line);
+                throw new Exception("Error from :importExcelDataSetTag " + ex.Message);
+            }
+        }
+
         static DataTable DatasetTagValidation(List<Row> rows, SpreadsheetDocument doc)
         {
             int flag = 0;

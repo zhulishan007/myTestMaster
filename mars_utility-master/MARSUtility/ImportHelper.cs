@@ -759,6 +759,40 @@ namespace MARSUtility
             return dt;
         }
 
+        public DataTable DbexcelResultsetNew(long lFeedProcessDetailId, string schema, string constring)
+        {
+            DataTable dt = new DataTable();
+            OracleConnection lconnection = GetOracleConnection(constring);
+            lconnection.Open();
+
+            OracleTransaction ltransaction;
+            ltransaction = lconnection.BeginTransaction();
+
+            OracleCommand lcmd;
+            lcmd = lconnection.CreateCommand();
+            lcmd.Transaction = ltransaction;
+
+            OracleParameter[] ladd_refer_image = new OracleParameter[2];
+            ladd_refer_image[0] = new OracleParameter("FEEDPROCESSDETAILID", OracleDbType.Int32);
+            ladd_refer_image[0].Value = lFeedProcessDetailId;
+            ladd_refer_image[1] = new OracleParameter("sl_cursor", OracleDbType.RefCursor);
+            ladd_refer_image[1].Direction = ParameterDirection.Output;
+
+            foreach (OracleParameter p in ladd_refer_image)
+            {
+                lcmd.Parameters.Add(p);
+            }
+
+            //The name of the Procedure responsible for inserting the data in the table.
+            lcmd.CommandText = schema + "." + "SP_EXPORT_LOGREPORT_RESULT";
+            lcmd.CommandType = CommandType.StoredProcedure;
+            OracleDataAdapter dataAdapter = new OracleDataAdapter(lcmd);
+            dataAdapter.Fill(dt);
+
+            lconnection.Close();
+            return dt;
+        }
+
         public bool DataTagSetMapping(int lFeedProcessDetailId, string schema, string constring)
         {
             SomeGlobalVariables.functionName = SomeGlobalVariables.functionName + "->DataTagSetMapping";
@@ -805,6 +839,53 @@ namespace MARSUtility
             lconnection.Close();
             return lResult;
         }
+        public bool DataTagSetMappingNew(long lFeedProcessDetailId, string schema, string constring)
+        {
+            SomeGlobalVariables.functionName = SomeGlobalVariables.functionName + "->DataTagSetMapping";
+            bool lResult = false;
+            OracleConnection lconnection = GetOracleConnection(constring);
+            lconnection.Open();
+
+            OracleTransaction ltransaction;
+            ltransaction = lconnection.BeginTransaction();
+
+            OracleCommand lcmd;
+            lcmd = lconnection.CreateCommand();
+            lcmd.Transaction = ltransaction;
+
+            //The name of the Procedure responsible for inserting the data in the table.
+            lcmd.CommandText = schema + "." + "SP_SAVE_IMPORT_DATATAG";
+            lcmd.CommandType = CommandType.StoredProcedure;
+
+            lcmd.Parameters.Add(new OracleParameter("feeddetailid", OracleDbType.Int32)).Value = lFeedProcessDetailId;
+
+            try
+            {
+                lcmd.ExecuteNonQuery();
+                lResult = true;
+                ltransaction.Commit();
+            }
+            catch (Exception lex)
+            {
+                lResult = false;
+                int line;
+                string msg = lex.Message;
+                if (!msg.Contains("PL/SQL: numeric or value error") && !msg.Contains("at line 1"))
+                {
+                    ltransaction.Rollback();
+                    line = dbtable.lineNo(lex);
+                    dbtable.errorlog(msg, "SP_SAVE_IMPORT_DATATAG mapping", SomeGlobalVariables.functionName, line);
+                    throw new Exception(lex.Message);
+                }
+                else
+                {
+                    ltransaction.Commit();
+                }
+            }
+            lconnection.Close();
+            return lResult;
+        }
+
 
         public bool MAPPINGVALIDATIONFORDATASETTAG(int lFeedProcessDetailId, string schema, string constring)
         {
@@ -858,5 +939,194 @@ namespace MARSUtility
             return lResult;
 
         }
+
+        public bool MAPPINGVALIDATIONFORDATASETTAGNew(long lFeedProcessDetailId, string schema, string constring)
+        {
+            SomeGlobalVariables.functionName = SomeGlobalVariables.functionName + "->MappingValidationForDatasettag";
+            bool lResult = false;
+            OracleConnection lconnection = GetOracleConnection(constring);
+            lconnection.Open();
+
+            OracleTransaction ltransaction;
+            ltransaction = lconnection.BeginTransaction();
+
+            OracleCommand lcmd;
+            lcmd = lconnection.CreateCommand();
+            lcmd.Transaction = ltransaction;
+
+            //The name of the Procedure responsible for inserting the data in the table.
+            lcmd.CommandText = schema + "." + "SP_VALIDATE_IMPORT_DATASETTAG";
+            lcmd.CommandType = CommandType.StoredProcedure;
+
+            lcmd.Parameters.Add(new OracleParameter("FPROCESSDETAILID", OracleDbType.Int32)).Value = lFeedProcessDetailId;
+            lcmd.Parameters.Add(new OracleParameter("RESULT", OracleDbType.Varchar2, 300000)).Direction = ParameterDirection.Output;
+
+            try
+            {
+                lcmd.ExecuteNonQuery();
+                string lCheckResult = string.Empty;
+                lCheckResult = lcmd.Parameters[1].Value.ToString();
+                if (!string.IsNullOrEmpty(lCheckResult) && lCheckResult.ToLower() == "error")
+                {
+                    lResult = false;
+                }
+                else
+                {
+                    lResult = true;
+                }
+            }
+            catch (Exception lex)
+            {
+
+                ltransaction.Rollback();
+
+                int line;
+                string msg = lex.Message;
+                line = dbtable.lineNo(lex);
+                dbtable.errorlog(msg, "Mapping Validations For Datasettag", SomeGlobalVariables.functionName, line);
+                throw new Exception(/*lex.Message*/);
+            }
+
+            ltransaction.Commit();
+            lconnection.Close();
+            return lResult;
+
+        }
+
+
+        public bool MasterImportDataset(int lISOVERWRITE, string lFolderLocation, string lExportLogPath, string type, int cflag, string project, string name, string desc, int resultmode, string schemaname, string constring)
+        {
+            SomeGlobalVariables.functionName = SomeGlobalVariables.functionName + "->MasterImport";
+            bool lFinalResult = true;
+            try
+            {
+                if (!string.IsNullOrEmpty(lFolderLocation))
+                {
+                    long id = MARS_Repository.IdWorker.Instance.NextMilliseconds();
+                    /*string lOperation = "INSERT";
+                    string lCreatedBy = "SYSTEM";
+                    string lStatus = "INPROCESS";
+                    int lFeedProcessId = FeedProcess(0, lOperation, lCreatedBy, lStatus, schemaname, constring);*/
+                    if (id != 0)
+                    {
+                        string lFileName = Path.GetFileName(lFolderLocation);
+                        string lFullPath = lFolderLocation;
+                        int lFeedProcessDetailsId = 0;
+                        int lDEFAULT_FEEDPROCESSDETAIL_ID = 0;
+                        string lOperationobject = "INSERT";
+                        string lCREATEDBY = "SYSTEM";
+                        string lStatusobject = "INPROCESS";
+                        string lFileType = string.Empty;
+                        bool lResult = false;
+                       
+                        if (type.ToUpper() == "DATASETTAG")
+                        {
+                            lFileType = "DATASETTAG";
+                            
+                            lResult = ImportExcel.ImportExcelDatasetTagNew(lFullPath, id, schemaname, constring);
+                            if (!lResult)
+                            {
+                                return false;
+                            }
+                             
+                        }
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("\nSpreadsheet Validation starting at {0}.. Please wait!", System.DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss tt"));
+                        dbtable.errorlog("Spreadsheet Validation Started!", "", "", 0);
+
+                        lFinalResult = MAPPINGVALIDATIONFORDATASETTAGNew(id, schemaname, constring);
+
+                        //System.Threading.Thread.Sleep(200);
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("\nSpreadsheet Validation Completed {0}..!", System.DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss tt"));
+
+                        DataTable dt = new DataTable();
+ 
+                        dt = DbexcelResultsetNew(id, schemaname, constring);
+ 
+                        if (dt.Rows.Count != 0)
+                        {
+                            Console.WriteLine("\n");
+                            for (int i = 0; i < dt.Rows.Count; i++)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine("DatasetTag\\Tab Name:- " + dt.Rows[i][8].ToString() + " =>" + " Test-step NO:-" + dt.Rows[i][11].ToString() + " =>" + " Error Description:-" + dt.Rows[i][17].ToString());                                 
+                            }
+                            dbtable.dt_Log.Merge(dt);
+                            try
+                            {                                 
+                                dbtable.dt_Log.Columns.RemoveAt(21);
+                                dbtable.dt_Log.Columns.RemoveAt(21);
+                            }
+                            catch
+                            {
+
+                            }
+                            dbtable.errorlog("Spreadsheet Validation Completed!", "", "", 0);
+                            //System.Threading.Thread.Sleep(200);
+                            return false;
+                        }
+                        else
+                        {
+                            dbtable.errorlog("Spreadsheet Validation Completed!", "", "", 0);
+                        }
+                        //System.Threading.Thread.Sleep(200);
+                        if (lFinalResult && cflag == 1 && dbtable.dt_Log.Rows.Count <= 6)
+                        {
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.WriteLine("\nMapping is starting at {0}.. Please wait!", System.DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss tt"));
+                            dbtable.errorlog("mapping started", "", "", 0);
+                            lFinalResult = DataTagSetMappingNew(id, schemaname, constring);
+                           
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.WriteLine("\nMapping is completed, Log export is staring at {0}.. Please wait !", System.DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss tt"));
+                            dbtable.errorlog("mapping completed", "", "", 0);
+                            dbtable.errorlog("log report starting", "", "", 0);
+
+                            if (lFinalResult)
+                            { 
+                                string lFileNameExport = "LOGREPORT-" + Path.GetFileName(lFolderLocation);
+                                string lExportLogFile = lExportLogPath;
+                            }
+                            dbtable.errorlog("Log export is completed ", "", "", 0);
+                            Console.ForegroundColor = ConsoleColor.White;
+                            Console.WriteLine("\nLog export is completed at {0}..", System.DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss tt"));
+                            System.Threading.Thread.Sleep(200);
+                        }
+                        else
+                        {
+                            if (cflag == 0)
+                            {
+                                dbtable.errorlog("-commit not found in the command!", "", "", 0);
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine("\nRolling back the import as -commit not found in the command!!!");
+                            }
+                            return false;
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                int line;
+                string msg = ex.Message;
+                line = dbtable.lineNo(ex);
+                if (ex.Message.Contains("Index was out of range"))
+                {
+                    msg = "Excel sheet Format is not valid. Please check excelsheet sheet issue. Please check merge cell are proper. No extra cell added in sheet.";
+                    dbtable.errorlog(msg, "Master Import", SomeGlobalVariables.functionName, line);
+                }
+                else if (!msg.Contains("PL/SQL: numeric or value error") && !msg.Contains("at line 1"))
+                {
+                    dbtable.errorlog(msg, "Master Import", SomeGlobalVariables.functionName, line);
+                    //throw new Exception("Error from:MasterImport" + ex.Message);
+                }
+                else
+                    dbtable.errorlog(msg, "Master Import", SomeGlobalVariables.functionName, line);
+                lFinalResult = false;
+            }
+            return lFinalResult;
+        }
+
     }
 }

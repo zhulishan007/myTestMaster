@@ -1391,7 +1391,7 @@
                     type: 'button',
                     //icon: '',
                     icon: 'flaticon2-reload',
-                    attr: 'title="Reflesh data from database"',
+                    attr: 'title="Refresh data from database"',
                     cls: 'btn btn-brand btn-elevate btn-icon-sm bgImage ',
                     label: '',
                     listener: function () {
@@ -1399,7 +1399,7 @@
                         var testcaselist = lTestcaseName.split(".grid");
                          swal.fire({
 		                    title: '',
-                            text: "All changes in [" + testcaselist[1] +"] will be reflesh from data.  Please confirm",
+                            text: "All changes in [" + testcaselist[1] +"] will be refresh from data.  Please confirm",
 		                    icon: 'warning',
 		                    showCancelButton: true,
 		                    confirmButtonText: 'Yes'
@@ -4815,6 +4815,16 @@
                 contentType: "application/json;charset=utf-8",
                 dataType: "json",
                 success: function (result) {
+                    $.ajax({
+                        url: "/Login/LeftPanel",
+                        type: "POST",
+                        contentType: "application/json;charset=utf-8",
+                        dataType: "HTML",
+                        success: function (result) {
+                            $("#leftProjectList").html("");
+                            $("#leftProjectList").html(result);
+                        }
+                    });
                 }
             });
         }
