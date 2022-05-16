@@ -6,5 +6,10 @@ namespace myGitTest
 {
     class testClass
     {
+        int clone;
+        public testClass()
+        { 
+        
+        }
     }
 }
