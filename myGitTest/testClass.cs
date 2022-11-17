@@ -7,7 +7,7 @@ namespace myGitTest
     class testClass
     {
         int x = 30;
-        int clone=300;
+        int clone = 300;
         public testClass()
         {
             clone = 300;
@@ -16,5 +16,6 @@ namespace myGitTest
         {
             clone = cl;
         }
+
     }
 }
