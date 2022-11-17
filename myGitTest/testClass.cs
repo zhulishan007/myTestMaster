@@ -10,7 +10,7 @@ namespace myGitTest
         int clone = 300;
         public testClass()
         {
-            Console.WriteLine("main branch");
+            Console.WriteLine("master branch");
             clone = 300;
         }
         public testClass(int cl)
